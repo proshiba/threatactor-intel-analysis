@@ -1,0 +1,166 @@
+# DEV-0343 脅威アクタープロファイル
+
+プロファイルID: `actor--dev-0343`  
+状態: draft  
+更新日時: 2026-07-25T14:07:08Z  
+構造バージョン: 1.0.0
+
+## エグゼクティブサマリー
+
+DEV-0343の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+
+## アクター名とAlias
+
+- 正規名: **DEV-0343**
+- 初回観測: 不明
+- 最終観測: 不明
+- 活動状態: unknown
+
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| Gray Sandstorm | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+
+## 帰属
+
+The repository mapping workbook places this actor in the Iran worksheet.
+
+- 国: Iran
+- スポンサー種別: state
+- 確度: 中
+- 証拠: `source--actor-mapping-workbook`
+
+## モチベーション
+
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+
+## 他アクターとの関係
+
+確認された関係なし
+
+## ダイヤモンドモデル
+
+| 要素 | 内容 |
+|---|---|
+| Adversary |  |
+| Capability |  |
+| Infrastructure |  |
+| Victim | US & Israeli defense technology companies, Persian Gulf ports of entry, or global maritime transportation companies |
+| Socio-political | Iran |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-07-25T14:07:08Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Gray Sandstorm | canonical-name | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | Gray Sandstorm | canonical-name | 高 | IR | https://www.microsoft.com/en-us/security/blog/2021/11/16/evolving-trends-in-iranian-threat-actor-activity-mstic-presentation-at-cyberwarcon-2021/<br>https://www.microsoft.com/en-us/security/blog/2021/10/11/iran-linked-dev-0343-targeting-defense-gis-and-maritime-sectors/ |
+| misp-microsoft-activity-group | Gray Sandstorm | canonical-name | 高 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
+
+## Capability
+
+### マルウェア
+
+未確認
+
+### ツール
+
+未確認
+
+### インフラ
+
+未確認
+
+### 配送・ファイル形式
+
+未確認
+
+### 脆弱性
+
+未確認
+
+### 運用能力
+
+未確認
+
+## 攻撃活動の履歴
+
+活動履歴なし
+
+
+
+## ターゲット
+
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+
+選定ロジック: 未評価
+
+## MITRE ATT&CK Matrixデータ
+
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Credential Access | T1110.003 | Password Spraying | СТВЕННЫЕ ГРУППЫ 109 GROUP-IB.RUОГЛАВЛЕНИЕ ↑ DEV-0343 Регион Начало операции TOP Mitre Америка, Ближний Восток, Европа Июль 2021 Brute Force: Password Spraying (T1110.003) DEV-0343 – это новый кластер активности, который эксперты впервые обнаружили и начали отслеживать |  |  | 不明 | 不明 | 中 | `source--dev-0343--414354816cd39001` |
+
+## IOC／artifact概要
+
+- IOC値: 2件
+- IOC観測: 2件
+- 複数攻撃で観測: 0件
+- 要レビュー候補: 2件
+- 非IOC artifact観測: 11件（`artifacts.csv`）
+
+## 主要判断と不確実性
+
+主要判断なし
+
+### 情報ギャップ
+
+- Unknown observation dates must not be replaced by publication dates.
+- Automatically mapped aliases, targets, and workbook software require analyst review.
+
+### 不確実性
+
+- Vendor cluster boundaries may differ from the canonical name used here.
+
+## 出典
+
+| Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
+|---|---|---|---|---|---|---|---|
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--dev-0343--414354816cd39001 | dev 0343 |  | 不明 | actor_profile/evidence/dev-0343.csv | structured-data | TLP:CLEAR | 中 |
+| source--dev-0343--b66695f6f61657f0 | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--dev-0343--cf673d39572f39ee | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
+| source--dev-0343--d7911094ee9a7737 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+
+## 自由記述
+
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。

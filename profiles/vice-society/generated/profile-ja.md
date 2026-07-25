@@ -1,0 +1,174 @@
+# Vice Society 脅威アクタープロファイル
+
+プロファイルID: `actor--vice-society`  
+状態: draft  
+更新日時: 2026-07-25T14:07:08Z  
+構造バージョン: 1.0.0
+
+## エグゼクティブサマリー
+
+Vice Societyの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+
+## アクター名とAlias
+
+- 正規名: **Vice Society**
+- 初回観測: 不明
+- 最終観測: 不明
+- 活動状態: unknown
+
+Aliasなし
+
+## 帰属
+
+The repository mapping workbook places this actor in the Russia worksheet.
+
+- 国: Russia
+- スポンサー種別: state
+- 確度: 中
+- 証拠: `source--actor-mapping-workbook`
+
+## モチベーション
+
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+
+## 他アクターとの関係
+
+確認された関係なし
+
+## ダイヤモンドモデル
+
+| 要素 | 内容 |
+|---|---|
+| Adversary |  |
+| Capability | PrintNightmare, HelloKitty and Zeppelin ransomware |
+| Infrastructure |  |
+| Victim | Education and research institutes |
+| Socio-political | Russia |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-07-25T14:07:08Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Vanilla Tempest | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | Vanilla Tempest | canonical-name | 高 |  | https://www.microsoft.com/en-us/security/blog/2022/10/25/dev-0832-vice-society-opportunistic-ransomware-campaigns-impacting-us-education-sector/<br>https://fourcore.io/blogs/rhysida-ransomware-history-ttp-adversary-emulation<br>https://detect.fyi/rhysida-ransomware-and-the-detection-opportunities-3599e9a02bb2 |
+| misp-microsoft-activity-group | Vanilla Tempest | canonical-name | 高 |  | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
+
+## Capability
+
+### マルウェア
+
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--printnightmare | PrintNightmare | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--hellokitty-and-zeppelin-ransomware | HelloKitty and Zeppelin ransomware | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+
+### ツール
+
+未確認
+
+### インフラ
+
+未確認
+
+### 配送・ファイル形式
+
+未確認
+
+### 脆弱性
+
+未確認
+
+### 運用能力
+
+未確認
+
+## 攻撃活動の履歴
+
+活動履歴なし
+
+
+
+## ターゲット
+
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+
+選定ロジック: 未評価
+
+## MITRE ATT&CK Matrixデータ
+
+TTPなし
+
+## IOC／artifact概要
+
+- IOC値: 4件
+- IOC観測: 4件
+- 複数攻撃で観測: 0件
+- 要レビュー候補: 4件
+- 非IOC artifact観測: 27件（`artifacts.csv`）
+
+## 主要判断と不確実性
+
+主要判断なし
+
+### 情報ギャップ
+
+- Unknown observation dates must not be replaced by publication dates.
+- Automatically mapped aliases, targets, and workbook software require analyst review.
+
+### 不確実性
+
+- Vendor cluster boundaries may differ from the canonical name used here.
+- Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review.
+
+## 出典
+
+| Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
+|---|---|---|---|---|---|---|---|
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--vice-society--cbb2021149e25c3a | vice society |  | 不明 | actor_profile/evidence/vice-society.csv | structured-data | TLP:CLEAR | 中 |
+| source--vice-society--77ff6bce69a046a1 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--78abb303ef02d1f9 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--c6993c45964e8808 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--640b74e7279a78c6 | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--000985ff0c99e8d0 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--6ec9e1c9c889aebe | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--e007f780b44a14fb | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--096e6a5ab122cf81 | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--378bd77c1a55d9ff | 2024 Trustwave Public Sector Threat Landscape |  | 2024 | summary/2024/2024_Trustwave_Public_Sector_Threat_Landscape.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--a6e96b7f3b48daa9 | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--442c439e9d287b2f | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--e2e1bc5b0435feaa | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--vice-society--4f2821a5f3b2de05 | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+
+## 自由記述
+
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。

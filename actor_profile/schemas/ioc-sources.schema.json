@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/ioc-sources.schema.json",
+  "title": "Observable Source Manifest",
+  "type": "object",
+  "required": ["schema_version", "actor_ref", "repository_root", "defaults", "sources", "source_groups"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "actor_ref": {"type": "string", "pattern": "^actor--"},
+    "repository_root": {"type": "string"},
+    "defaults": {"$ref": "#/$defs/defaults"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "path"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "path": {"type": "string"},
+          "format": {"type": "string"},
+          "published_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "default_observed_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "campaign_refs": {"type": "array", "items": {"type": "string"}},
+          "malware_refs": {"type": "array", "items": {"type": "string"}},
+          "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+          "roles": {"type": "array", "items": {"type": "string"}},
+          "confidence": {"type": "string"},
+          "tlp": {"type": "string"},
+          "allow_plain_domains": {"type": "boolean"},
+          "analyst_notes": {"type": "string"}
+        }
+      }
+    },
+    "source_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id_prefix", "path_glob"],
+        "properties": {
+          "source_id_prefix": {"type": "string"},
+          "path_glob": {"type": "string"},
+          "format": {"type": "string"},
+          "published_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "default_observed_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "campaign_refs": {"type": "array", "items": {"type": "string"}},
+          "malware_refs": {"type": "array", "items": {"type": "string"}},
+          "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+          "roles": {"type": "array", "items": {"type": "string"}},
+          "confidence": {"type": "string"},
+          "tlp": {"type": "string"},
+          "allow_plain_domains": {"type": "boolean"},
+          "analyst_notes": {"type": "string"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "defaults": {
+      "type": "object",
+      "required": ["confidence", "tlp", "campaign_refs", "malware_refs", "infrastructure_refs", "roles", "default_observed_at"],
+      "properties": {
+        "confidence": {"type": "string"},
+        "tlp": {"type": "string"},
+        "campaign_refs": {"type": "array", "items": {"type": "string"}},
+        "malware_refs": {"type": "array", "items": {"type": "string"}},
+        "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+        "roles": {"type": "array", "items": {"type": "string"}},
+        "default_observed_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"}
+      }
+    }
+  }
+}

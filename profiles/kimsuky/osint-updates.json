@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0.0",
+  "actor_ref": "actor--kimsuky",
+  "resulting_status": "review",
+  "sources": [
+    {
+      "source_id": "source--fbi-kimsuky-quishing-2026",
+      "path": "https://www.ic3.gov/CSA/2026/260108.pdf",
+      "url": "https://www.ic3.gov/CSA/2026/260108.pdf",
+      "title": "North Korean Kimsuky Actors Use Malicious QR Codes to Target Organizations",
+      "publisher": "Federal Bureau of Investigation / IC3",
+      "published_at": {
+        "value": "2026-01-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-07-25T00:00:00Z",
+      "language": "en",
+      "source_type": "government-flash",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": ["activity", "targeting", "infrastructure", "ttp"],
+      "analyst_notes": "FBI observations cover May and June 2025 Kimsuky QR-code spearphishing."
+    }
+  ],
+  "capabilities": {
+    "infrastructure": [
+      {
+        "id": "infra--qr-credential-phishing",
+        "name": "QR-code Credential Phishing Infrastructure",
+        "aliases": [],
+        "types": ["phishing", "credential-harvesting"],
+        "description": "QR codes direct targets through landing pages to actor-controlled credential harvesting pages impersonating services such as Google login.",
+        "first_observed": {
+          "value": "2025-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "fbi-observation"
+        },
+        "last_observed": {
+          "value": "2025-06-30T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "fbi-observation"
+        },
+        "confidence": "high",
+        "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+        "analyst_notes": ""
+      }
+    ]
+  },
+  "activities": [
+    {
+      "activity_id": "activity--kimsuky-quishing-2025",
+      "name": "Kimsuky QR-code Spearphishing Campaign",
+      "activity_type": "campaign",
+      "first_observed": {
+        "value": "2025-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "fbi-observation"
+      },
+      "last_observed": {
+        "value": "2025-06-30T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "fbi-observation"
+      },
+      "description": "Kimsuky impersonated foreign advisers, embassy and think-tank personnel, and conference organizers. QR codes led think-tank and strategic-advisory targets to credential-harvesting infrastructure.",
+      "target_refs": ["target--research-academia", "target--journalists-policy-experts"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--qr-credential-phishing"],
+      "confidence": "high",
+      "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+      "analyst_notes": ""
+    }
+  ],
+  "ttps": [
+    {
+      "ttp_id": "ttp--t1566-002--kimsuky-quishing-2025",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Phishing: Spearphishing Link",
+      "observed_behavior": "Delivered QR images in targeted emails; scanning the code led the victim to a registration or secure-drive lure and onward to credential harvesting.",
+      "activity_refs": ["activity--kimsuky-quishing-2025"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--qr-credential-phishing"],
+      "first_observed": {"value": "2025-05-01T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-observation"},
+      "last_observed": {"value": "2025-06-30T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+      "analyst_notes": "The FBI lifecycle also labels QR image delivery as T1660."
+    },
+    {
+      "ttp_id": "ttp--t1056-003--kimsuky-quishing-2025",
+      "tactic": "Credential Access, Collection",
+      "technique_id": "T1056.003",
+      "technique_name": "Input Capture: Web Portal Capture",
+      "observed_behavior": "A fake Google account login page collected credentials entered by targeted users.",
+      "activity_refs": ["activity--kimsuky-quishing-2025"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--qr-credential-phishing"],
+      "first_observed": {"value": "2025-06-01T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-observation"},
+      "last_observed": {"value": "2025-06-30T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--t1550-004--kimsuky-quishing-2025",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1550.004",
+      "technique_name": "Use Alternate Authentication Material: Web Session Cookie",
+      "observed_behavior": "The FBI attack lifecycle identifies session-token theft and MFA bypass following credential capture.",
+      "activity_refs": ["activity--kimsuky-quishing-2025"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--qr-credential-phishing"],
+      "first_observed": {"value": "2025-05-01T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-lifecycle"},
+      "last_observed": {"value": "2025-06-30T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-lifecycle"},
+      "confidence": "high",
+      "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--t1098--kimsuky-quishing-2025",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "observed_behavior": "The FBI lifecycle identifies account persistence or manipulation after successful credential and session theft.",
+      "activity_refs": ["activity--kimsuky-quishing-2025"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--qr-credential-phishing"],
+      "first_observed": {"value": "2025-05-01T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-lifecycle"},
+      "last_observed": {"value": "2025-06-30T00:00:00Z", "precision": "month", "status": "known", "basis": "fbi-lifecycle"},
+      "confidence": "high",
+      "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+      "analyst_notes": ""
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "Kimsuky added QR-code delivery to its established trust-building spearphishing and credential-theft workflow during May-June 2025.",
+        "confidence": "high",
+        "evidence_refs": ["source--fbi-kimsuky-quishing-2026"],
+        "analyst_notes": ""
+      }
+    ],
+    "collection_notes": "OSINT update: FBI/IC3 Flash dated 2026-01-08, accessed 2026-07-25."
+  },
+  "free_text_append": {
+    "history": "2025年5月から6月、FBIはKimsukyがQRコードを用いてシンクタンクや戦略助言組織を標的にし、偽Googleログイン等で認証情報を窃取する活動を観測した。"
+  }
+}

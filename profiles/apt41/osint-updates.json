@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0.0",
+  "actor_ref": "actor--apt41",
+  "resulting_status": "review",
+  "sources": [
+    {
+      "source_id": "source--gtig-apt41-toughprogress-2025",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-innovative-tactics/",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/apt41-innovative-tactics/",
+      "title": "Mark Your Calendar: APT41 Innovative Tactics",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {"value": "2025-05-29T00:00:00Z", "precision": "day", "status": "known", "basis": "document"},
+      "accessed_at": "2026-07-25T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": ["alias", "activity", "malware", "infrastructure", "targeting", "ttp", "ioc", "artifact"],
+      "analyst_notes": "GTIG attributes the campaign to APT41/HOODOO with high confidence."
+    }
+  ],
+  "actor": {
+    "aliases": [
+      {
+        "name": "HOODOO",
+        "scope": "vendor",
+        "source": "Google Threat Intelligence Group",
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      }
+    ]
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--plusdrop",
+        "name": "PLUSDROP",
+        "aliases": [],
+        "type": "dropper",
+        "platforms": ["Windows"],
+        "description": "DLL that decrypts and executes the next-stage payload in memory.",
+        "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--plusinject",
+        "name": "PLUSINJECT",
+        "aliases": [],
+        "type": "loader",
+        "platforms": ["Windows"],
+        "description": "Performs process hollowing in svchost.exe and injects TOUGHPROGRESS.",
+        "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--toughprogress",
+        "name": "TOUGHPROGRESS",
+        "aliases": [],
+        "type": "backdoor",
+        "platforms": ["Windows"],
+        "description": "Memory-resident backdoor that executes commands and uses attacker-controlled Google Calendar events for encrypted C2.",
+        "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infra--apt41-compromised-government-site",
+        "name": "Compromised Government Website Delivery Infrastructure",
+        "aliases": [],
+        "types": ["compromised-infrastructure", "malware-hosting"],
+        "description": "A compromised government website hosted the ZIP archive linked from spearphishing messages.",
+        "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      },
+      {
+        "id": "infra--apt41-google-calendar-c2",
+        "name": "Attacker-Controlled Google Calendar C2",
+        "aliases": [],
+        "types": ["cloud-service", "command-and-control"],
+        "description": "TOUGHPROGRESS polled encrypted commands from Calendar event descriptions and wrote encrypted results to events.",
+        "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2025-05-29T00:00:00Z", "precision": "day", "status": "known", "basis": "publication/disruption"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": "GTIG terminated attacker-controlled Calendars and Workspace projects."
+      },
+      {
+        "id": "infra--apt41-free-hosting-delivery",
+        "name": "Free Web Hosting Malware Delivery",
+        "aliases": [],
+        "types": ["cloud-service", "malware-hosting", "redirect"],
+        "description": "APT41 used Cloudflare Workers, TryCloudflare, InfinityFree and URL shorteners to distribute multiple malware families.",
+        "first_observed": {"value": "2024-08-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2025-05-29T00:00:00Z", "precision": "day", "status": "known", "basis": "publication"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": "Specific indicators may no longer be operational."
+      }
+    ]
+  },
+  "activities": [
+    {
+      "activity_id": "activity--apt41-toughprogress-2024",
+      "name": "TOUGHPROGRESS Government Targeting Campaign",
+      "activity_type": "campaign",
+      "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "description": "APT41 spearphished government entities with a link to a ZIP on a compromised government site. An LNK masquerading as a PDF launched PLUSDROP, PLUSINJECT and TOUGHPROGRESS.",
+      "target_refs": ["target--sector--government"],
+      "malware_refs": ["malware--plusdrop", "malware--plusinject", "malware--toughprogress"],
+      "infrastructure_refs": ["infra--apt41-compromised-government-site", "infra--apt41-google-calendar-c2"],
+      "confidence": "high",
+      "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+      "analyst_notes": ""
+    }
+  ],
+  "targets": {
+    "sectors": [
+      {
+        "id": "target--sector--government",
+        "name": "Government",
+        "description": "The observed TOUGHPROGRESS campaign targeted multiple government entities.",
+        "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      }
+    ]
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--t1566-002--apt41-toughprogress",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Phishing: Spearphishing Link",
+      "observed_behavior": "Sent spearphishing email links to a ZIP hosted on a compromised government website.",
+      "activity_refs": ["activity--apt41-toughprogress-2024"],
+      "malware_refs": ["malware--plusdrop"],
+      "infrastructure_refs": ["infra--apt41-compromised-government-site"],
+      "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+      "analyst_notes": "ATT&CK mapping is analyst-applied."
+    },
+    {
+      "ttp_id": "ttp--t1204-002--apt41-toughprogress",
+      "tactic": "Execution",
+      "technique_id": "T1204.002",
+      "technique_name": "User Execution: Malicious File",
+      "observed_behavior": "A user clicking an LNK disguised as a PDF launched the infection chain.",
+      "activity_refs": ["activity--apt41-toughprogress-2024"],
+      "malware_refs": ["malware--plusdrop"],
+      "infrastructure_refs": [],
+      "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+      "analyst_notes": "ATT&CK mapping is analyst-applied."
+    },
+    {
+      "ttp_id": "ttp--t1055-012--apt41-toughprogress",
+      "tactic": "Defense Evasion, Privilege Escalation",
+      "technique_id": "T1055.012",
+      "technique_name": "Process Injection: Process Hollowing",
+      "observed_behavior": "PLUSINJECT hollowed a legitimate svchost.exe process to inject TOUGHPROGRESS.",
+      "activity_refs": ["activity--apt41-toughprogress-2024"],
+      "malware_refs": ["malware--plusinject", "malware--toughprogress"],
+      "infrastructure_refs": [],
+      "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+      "analyst_notes": "ATT&CK mapping is analyst-applied."
+    },
+    {
+      "ttp_id": "ttp--t1102--apt41-toughprogress",
+      "tactic": "Command and Control",
+      "technique_id": "T1102",
+      "technique_name": "Web Service",
+      "observed_behavior": "TOUGHPROGRESS used attacker-controlled Google Calendar events for encrypted commands and command output.",
+      "activity_refs": ["activity--apt41-toughprogress-2024"],
+      "malware_refs": ["malware--toughprogress"],
+      "infrastructure_refs": ["infra--apt41-google-calendar-c2"],
+      "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+      "analyst_notes": "ATT&CK mapping is analyst-applied."
+    },
+    {
+      "ttp_id": "ttp--t1027--apt41-toughprogress",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "observed_behavior": "The chain used encryption, compression, memory-only payloads and control-flow obfuscation.",
+      "activity_refs": ["activity--apt41-toughprogress-2024"],
+      "malware_refs": ["malware--plusdrop", "malware--toughprogress"],
+      "infrastructure_refs": [],
+      "first_observed": {"value": "2024-10-01T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "last_observed": {"value": "2024-10-31T00:00:00Z", "precision": "month", "status": "known", "basis": "gtig-observation"},
+      "confidence": "high",
+      "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+      "analyst_notes": "ATT&CK mapping is analyst-applied."
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "APT41 continued to blend compromised sites and legitimate cloud services into its malware delivery and C2 chain in late 2024.",
+        "confidence": "high",
+        "evidence_refs": ["source--gtig-apt41-toughprogress-2025"],
+        "analyst_notes": ""
+      }
+    ],
+    "collection_notes": "OSINT update: GTIG report dated 2025-05-29, accessed 2026-07-25."
+  },
+  "free_text_append": {
+    "history": "2024年10月、GTIGはAPT41が侵害済み政府サイトからLNKを含むZIPを配布し、PLUSDROP、PLUSINJECT、TOUGHPROGRESSを展開する活動を確認した。最終段はGoogle Calendarを暗号化C2として悪用した。"
+  }
+}

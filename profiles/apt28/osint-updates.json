@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "actor_ref": "actor--apt28",
+  "resulting_status": "review",
+  "sources": [
+    {
+      "source_id": "source--doj-apt28-dns-disruption-2026",
+      "path": "https://www.justice.gov/opa/pr/justice-department-conducts-court-authorized-disruption-dns-hijacking-network-controlled",
+      "url": "https://www.justice.gov/opa/pr/justice-department-conducts-court-authorized-disruption-dns-hijacking-network-controlled",
+      "title": "Justice Department Conducts Court-Authorized Disruption of DNS Hijacking Network Controlled by a Russian Military Intelligence Unit",
+      "publisher": "U.S. Department of Justice",
+      "published_at": {"value": "2026-04-07T00:00:00Z", "precision": "day", "status": "known", "basis": "document"},
+      "accessed_at": "2026-07-25T00:00:00Z",
+      "language": "en",
+      "source_type": "government-disruption-announcement",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": ["alias", "attribution", "activity", "infrastructure", "targeting"],
+      "analyst_notes": ""
+    }
+  ],
+  "capabilities": {
+    "infrastructure": [
+      {
+        "id": "infra--apt28-compromised-soho-routers",
+        "name": "Compromised SOHO Router DNS Hijacking Network",
+        "aliases": [],
+        "types": ["compromised-infrastructure", "dns-hijacking", "router"],
+        "description": "APT28 used compromised small-office and home-office routers to facilitate malicious DNS hijacking against worldwide targets of Russian intelligence interest.",
+        "first_observed": {"value": null, "precision": "unknown", "status": "unknown", "basis": "not-stated"},
+        "last_observed": {"value": "2026-04-07T00:00:00Z", "precision": "day", "status": "known", "basis": "disruption-date"},
+        "confidence": "high",
+        "evidence_refs": ["source--doj-apt28-dns-disruption-2026"],
+        "analyst_notes": ""
+      }
+    ]
+  },
+  "activities": [
+    {
+      "activity_id": "activity--apt28-dns-hijacking-network",
+      "name": "APT28 SOHO Router DNS Hijacking Network",
+      "activity_type": "infrastructure-campaign",
+      "first_observed": {"value": null, "precision": "unknown", "status": "unknown", "basis": "not-stated"},
+      "last_observed": {"value": "2026-04-07T00:00:00Z", "precision": "day", "status": "known", "basis": "disruption-date"},
+      "description": "The U.S. Department of Justice and FBI disrupted the U.S. portion of a router network controlled by GRU Military Unit 26165 (APT28) and used for DNS hijacking.",
+      "target_refs": ["target--sector--government", "target--sector--defense", "target--sector--critical-infrastructure"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--apt28-compromised-soho-routers"],
+      "confidence": "high",
+      "evidence_refs": ["source--doj-apt28-dns-disruption-2026"],
+      "analyst_notes": ""
+    }
+  ],
+  "targets": {
+    "sectors": [
+      {
+        "id": "target--sector--defense",
+        "name": "Defense and Military",
+        "description": "The disrupted infrastructure supported targeting of individuals and organizations in the military sector.",
+        "first_observed": {"value": null, "precision": "unknown", "status": "unknown", "basis": "not-stated"},
+        "last_observed": {"value": "2026-04-07T00:00:00Z", "precision": "day", "status": "known", "basis": "source-reporting"},
+        "confidence": "high",
+        "evidence_refs": ["source--doj-apt28-dns-disruption-2026"],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--critical-infrastructure",
+        "name": "Critical Infrastructure",
+        "description": "The disrupted infrastructure supported targeting of worldwide critical-infrastructure interests.",
+        "first_observed": {"value": null, "precision": "unknown", "status": "unknown", "basis": "not-stated"},
+        "last_observed": {"value": "2026-04-07T00:00:00Z", "precision": "day", "status": "known", "basis": "source-reporting"},
+        "confidence": "high",
+        "evidence_refs": ["source--doj-apt28-dns-disruption-2026"],
+        "analyst_notes": ""
+      }
+    ]
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--t1584--apt28-dns-hijacking-network",
+      "tactic": "Resource Development",
+      "technique_id": "T1584",
+      "technique_name": "Compromise Infrastructure",
+      "observed_behavior": "APT28 compromised SOHO routers and used them as infrastructure for malicious DNS hijacking operations.",
+      "activity_refs": ["activity--apt28-dns-hijacking-network"],
+      "malware_refs": [],
+      "infrastructure_refs": ["infra--apt28-compromised-soho-routers"],
+      "first_observed": {"value": null, "precision": "unknown", "status": "unknown", "basis": "not-stated"},
+      "last_observed": {"value": "2026-04-07T00:00:00Z", "precision": "day", "status": "known", "basis": "disruption-date"},
+      "confidence": "high",
+      "evidence_refs": ["source--doj-apt28-dns-disruption-2026"],
+      "analyst_notes": "The source explicitly describes router compromise and DNS hijacking; the ATT&CK mapping is analyst-applied."
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "APT28 continued to operationalize compromised edge infrastructure for globally distributed intelligence collection and traffic interception through at least April 2026.",
+        "confidence": "high",
+        "evidence_refs": ["source--doj-apt28-dns-disruption-2026"],
+        "analyst_notes": ""
+      }
+    ],
+    "collection_notes": "OSINT update: U.S. DOJ disruption announcement dated 2026-04-07, accessed 2026-07-25."
+  },
+  "free_text_append": {
+    "history": "2026年4月、米司法省とFBIは、APT28（GRU第26165部隊）がDNSハイジャックに利用していた侵害済みSOHOルーターネットワークの米国内部分を無力化したと発表した。"
+  }
+}

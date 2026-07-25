@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/actor-profile.schema.json",
+  "title": "Threat Actor Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "name",
+    "status",
+    "created_at",
+    "updated_at",
+    "actor",
+    "attribution",
+    "motivations",
+    "relationships",
+    "diamond_model",
+    "capabilities",
+    "activities",
+    "targets",
+    "ttps",
+    "sources",
+    "assessment",
+    "free_text"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "profile_id": {"type": "string", "pattern": "^actor--[a-z0-9][a-z0-9-]*$"},
+    "name": {"type": "string", "minLength": 1},
+    "status": {"enum": ["draft", "review", "published", "deprecated"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "languages": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_name", "aliases", "actor_types", "first_seen", "last_seen", "active", "description", "analyst_notes"],
+      "properties": {
+        "canonical_name": {"type": "string", "minLength": 1},
+        "aliases": {"type": "array", "items": {"$ref": "#/$defs/alias"}},
+        "actor_types": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "first_seen": {"$ref": "#/$defs/timePoint"},
+        "last_seen": {"$ref": "#/$defs/timePoint"},
+        "active": {"enum": ["yes", "no", "unknown"]},
+        "description": {"type": "string"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["countries", "sponsor_type", "organizations", "assessment", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "countries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "sponsor_type": {"enum": ["state", "state-aligned", "criminal", "hacktivist", "private-sector-offensive", "unknown"]},
+        "organizations": {"type": "array", "items": {"$ref": "#/$defs/namedEntity"}},
+        "assessment": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "motivations": {"type": "array", "items": {"$ref": "#/$defs/motivation"}},
+    "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}},
+    "diamond_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adversary", "capability", "infrastructure", "victim", "socio_political", "analyst_notes"],
+      "properties": {
+        "adversary": {"type": "string"},
+        "capability": {"type": "string"},
+        "infrastructure": {"type": "string"},
+        "victim": {"type": "string"},
+        "socio_political": {"type": "string"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["malware", "tools", "infrastructure", "delivery_formats", "vulnerabilities", "operational_capabilities", "analyst_notes"],
+      "properties": {
+        "malware": {"type": "array", "items": {"$ref": "#/$defs/capability"}},
+        "tools": {"type": "array", "items": {"$ref": "#/$defs/capability"}},
+        "infrastructure": {"type": "array", "items": {"$ref": "#/$defs/capability"}},
+        "delivery_formats": {"type": "array", "items": {"$ref": "#/$defs/capability"}},
+        "vulnerabilities": {"type": "array", "items": {"$ref": "#/$defs/capability"}},
+        "operational_capabilities": {"type": "array", "items": {"$ref": "#/$defs/capability"}},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "activities": {"type": "array", "items": {"$ref": "#/$defs/activity"}},
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["countries", "regions", "sectors", "roles", "selection_logic", "analyst_notes"],
+      "properties": {
+        "countries": {"type": "array", "items": {"$ref": "#/$defs/target"}},
+        "regions": {"type": "array", "items": {"$ref": "#/$defs/target"}},
+        "sectors": {"type": "array", "items": {"$ref": "#/$defs/target"}},
+        "roles": {"type": "array", "items": {"$ref": "#/$defs/target"}},
+        "selection_logic": {"type": "string"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "ttps": {"type": "array", "items": {"$ref": "#/$defs/ttp"}},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key_judgments", "gaps", "uncertainties", "collection_notes", "analyst_notes"],
+      "properties": {
+        "key_judgments": {"type": "array", "items": {"$ref": "#/$defs/judgment"}},
+        "gaps": {"type": "array", "items": {"type": "string"}},
+        "uncertainties": {"type": "array", "items": {"type": "string"}},
+        "collection_notes": {"type": "string"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "free_text": {
+      "type": "object",
+      "additionalProperties": {"type": "string"},
+      "required": ["executive_summary", "history", "capability_details", "infrastructure_details", "targeting_details", "additional_notes"],
+      "properties": {
+        "executive_summary": {"type": "string"},
+        "history": {"type": "string"},
+        "capability_details": {"type": "string"},
+        "infrastructure_details": {"type": "string"},
+        "targeting_details": {"type": "string"},
+        "additional_notes": {"type": "string"}
+      }
+    }
+  },
+  "$defs": {
+    "confidence": {"enum": ["high", "medium", "low", "unknown"]},
+    "referenceArray": {"type": "array", "items": {"type": "string", "pattern": "^source--"}, "uniqueItems": true},
+    "timePoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "precision", "status", "basis"],
+      "properties": {
+        "value": {"type": ["string", "null"]},
+        "precision": {"enum": ["second", "day", "month", "year", "range", "unknown"]},
+        "status": {"enum": ["known", "inferred", "unknown"]},
+        "basis": {"type": "string", "minLength": 1}
+      }
+    },
+    "alias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "vendor", "scope", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "vendor": {"type": "string"},
+        "scope": {"enum": ["exact", "overlapping", "broader", "narrower", "unknown"]},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "namedEntity": {
+      "type": "object",
+      "required": ["id", "name", "relationship", "confidence", "evidence_refs"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "relationship": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "motivation": {
+      "type": "object",
+      "required": ["type", "description", "confidence", "evidence_refs"],
+      "properties": {
+        "type": {"type": "string"},
+        "description": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["relationship_id", "target_actor", "relationship_type", "description", "confidence", "evidence_refs"],
+      "properties": {
+        "relationship_id": {"type": "string", "pattern": "^relationship--"},
+        "target_actor": {"type": "string"},
+        "relationship_type": {"type": "string"},
+        "description": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "capability": {
+      "type": "object",
+      "required": ["id", "name", "description", "first_observed", "last_observed", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "aliases": {"type": "array", "items": {"type": "string"}},
+        "types": {"type": "array", "items": {"type": "string"}},
+        "description": {"type": "string"},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "activity": {
+      "type": "object",
+      "required": ["activity_id", "name", "activity_type", "first_observed", "last_observed", "description", "target_refs", "malware_refs", "infrastructure_refs", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "activity_id": {"type": "string", "pattern": "^activity--"},
+        "name": {"type": "string"},
+        "activity_type": {"type": "string"},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "description": {"type": "string"},
+        "target_refs": {"type": "array", "items": {"type": "string"}},
+        "malware_refs": {"type": "array", "items": {"type": "string"}},
+        "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["id", "name", "description", "first_observed", "last_observed", "confidence", "evidence_refs"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "ttp": {
+      "type": "object",
+      "required": ["ttp_id", "tactic", "technique_id", "technique_name", "observed_behavior", "activity_refs", "malware_refs", "infrastructure_refs", "first_observed", "last_observed", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "ttp_id": {"type": "string", "pattern": "^ttp--"},
+        "tactic": {"type": "string"},
+        "technique_id": {"type": "string", "pattern": "^T[0-9]{4}(\\.[0-9]{3})?$"},
+        "technique_name": {"type": "string"},
+        "observed_behavior": {"type": "string"},
+        "activity_refs": {"type": "array", "items": {"type": "string"}},
+        "malware_refs": {"type": "array", "items": {"type": "string"}},
+        "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_id", "path", "title", "publisher", "published_at", "language", "source_type", "tlp", "reliability", "analyst_notes"],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^source--"},
+        "path": {"type": "string"},
+        "title": {"type": "string"},
+        "publisher": {"type": "string"},
+        "published_at": {"$ref": "#/$defs/timePoint"},
+        "language": {"type": "string"},
+        "source_type": {"type": "string"},
+        "tlp": {"type": "string"},
+        "reliability": {"$ref": "#/$defs/confidence"},
+        "sha256": {"type": ["string", "null"]},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "judgment": {
+      "type": "object",
+      "required": ["statement", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "statement": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    }
+  }
+}

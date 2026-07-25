@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/schemas/iocs.schema.json",
+  "title": "Normalized IOC Dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "actor_ref", "generated_at", "sources", "indicators", "ingestion"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "actor_ref": {"type": "string", "pattern": "^actor--"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "path", "published_at", "confidence", "tlp"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "path": {"type": "string"},
+          "published_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "confidence": {"type": "string"},
+          "tlp": {"type": "string"},
+          "analyst_notes": {"type": "string"}
+        }
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "indicator_id", "type", "value", "normalized_value", "stix_pattern",
+          "disposition", "first_observed", "last_observed", "observation_count",
+          "campaign_count", "seen_in_multiple_campaigns", "campaign_refs",
+          "malware_refs", "infrastructure_refs", "roles", "observations"
+        ],
+        "properties": {
+          "indicator_id": {"type": "string", "pattern": "^indicator--sha256:"},
+          "type": {"enum": ["md5", "sha1", "sha256", "sha512", "ipv4", "ipv6", "domain", "url", "email", "certificate-fingerprint"]},
+          "value": {"type": "string"},
+          "normalized_value": {"type": "string"},
+          "stix_pattern": {"type": "string"},
+          "disposition": {"enum": ["confirmed", "candidate", "rejected"]},
+          "first_observed": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "last_observed": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+          "observation_count": {"type": "integer", "minimum": 1},
+          "campaign_count": {"type": "integer", "minimum": 0},
+          "seen_in_multiple_campaigns": {"type": "boolean"},
+          "campaign_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "malware_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "infrastructure_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "roles": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+          "observations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"$ref": "#/$defs/observation"}
+          }
+        }
+      }
+    },
+    "ingestion": {
+      "type": "object",
+      "required": ["source_count", "processed_source_count", "error_source_count", "candidate_count", "errors"],
+      "properties": {
+        "source_count": {"type": "integer", "minimum": 0},
+        "processed_source_count": {"type": "integer", "minimum": 0},
+        "error_source_count": {"type": "integer", "minimum": 0},
+        "candidate_count": {"type": "integer", "minimum": 0},
+        "errors": {"type": "array", "items": {"type": "object"}}
+      }
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "required": [
+        "observation_id", "observed_at", "source_published_at", "source_id",
+        "source_path", "source_location", "campaign_refs", "malware_refs",
+        "infrastructure_refs", "roles", "confidence", "tlp", "extraction_method",
+        "raw_value", "context_excerpt", "analyst_notes"
+      ],
+      "properties": {
+        "observation_id": {"type": "string", "pattern": "^observation--sha256:"},
+        "observed_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+        "source_published_at": {"$ref": "actor-profile.schema.json#/$defs/timePoint"},
+        "source_id": {"type": "string"},
+        "source_path": {"type": "string"},
+        "source_location": {"type": "object"},
+        "campaign_refs": {"type": "array", "items": {"type": "string"}},
+        "malware_refs": {"type": "array", "items": {"type": "string"}},
+        "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+        "roles": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"enum": ["high", "medium", "low", "unknown"]},
+        "tlp": {"type": "string"},
+        "extraction_method": {"type": "string"},
+        "raw_value": {"type": "string"},
+        "context_excerpt": {"type": "string"},
+        "analyst_notes": {"type": "string"}
+      }
+    }
+  }
+}
