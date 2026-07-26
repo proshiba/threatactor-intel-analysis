@@ -58,7 +58,7 @@ def count_csv_rows(path: Path) -> int:
         return sum(1 for _ in reader)
 
 
-def build_record(slug: str, profile_dir: Path) -> dict | None:
+def build_record(slug: str, profile_dir: Path) -> tuple[dict, list] | None:
     profile_path = profile_dir / "actor-profile.json"
     if not profile_path.exists():
         return None
@@ -117,7 +117,16 @@ def build_record(slug: str, profile_dir: Path) -> dict | None:
         "ioc_types": ioc_types,
         "updated_at": (profile.get("updated_at") or "")[:10] or None,
     }
-    return record
+    raw_relationships = [
+        {
+            "target": r.get("target_actor"),
+            "type": r.get("relationship_type"),
+            "confidence": r.get("confidence"),
+        }
+        for r in profile.get("relationships", [])
+        if r.get("target_actor")
+    ]
+    return record, raw_relationships
 
 
 def main() -> int:
@@ -126,17 +135,41 @@ def main() -> int:
         return 1
 
     records = []
+    raw_rels: dict[str, list] = {}
     errors = []
     for profile_dir in sorted(PROFILES_DIR.iterdir()):
         if not profile_dir.is_dir():
             continue
         try:
-            record = build_record(profile_dir.name, profile_dir)
+            result = build_record(profile_dir.name, profile_dir)
         except Exception as exc:  # noqa: BLE001 - report and continue
             errors.append(f"{profile_dir.name}: {exc}")
             continue
-        if record:
+        if result:
+            record, rels = result
             records.append(record)
+            raw_rels[record["slug"]] = rels
+
+    # relationships: target名をslugへ解決して索引に埋め込む(グラフ表示用)
+    name_to_slug: dict[str, str] = {}
+    for r in records:
+        name_to_slug[r["name"].lower()] = r["slug"]
+    for r in records:
+        for alias in r["aliases"]:
+            name_to_slug.setdefault(alias.lower(), r["slug"])
+    for r in records:
+        resolved = []
+        for rel in raw_rels.get(r["slug"], []):
+            target_slug = name_to_slug.get(str(rel["target"]).lower())
+            resolved.append(
+                {
+                    "target_slug": target_slug,
+                    "target_name": rel["target"],
+                    "type": rel["type"],
+                    "confidence": rel["confidence"],
+                }
+            )
+        r["relationships"] = resolved
 
     stats = {
         "actors": len(records),

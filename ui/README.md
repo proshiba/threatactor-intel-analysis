@@ -19,8 +19,14 @@ ui/
 - **一覧ページ**: 全アクターの統計、名前・alias・slug検索、帰属国 / 支援形態 /
   アクター種別 / 動機 / 標的産業のフィルタ、各種ソート。
 - **詳細ページ** (`#/actor/<slug>`): `profiles/<slug>/actor-profile.json` を実行時に取得し、
-  概要、Key Judgments、帰属、ダイヤモンドモデル、関係アクター(相互リンク)、
+  概要、Key Judgments、帰属、ダイヤモンドモデル(ひし形レイアウト)、
+  他アクターとの関係(発信・被参照の双方向、相互リンク付き)、
   マルウェア/ツール、活動、標的、ATT&CK TTP(戦術別・MITREへのリンク付き)、出典を表示。
+- **関係グラフ** (`#/relations`、ヘッダーからも遷移可): 全プロファイルの
+  アクター間関係を力学レイアウトのグラフで表示。エッジ色は関係種別
+  (overlaps-with / related-to / cooperates-with など)、ノード色は帰属国。
+  ノードクリックで詳細ページへ、`#/relations/<slug>` で特定アクターに
+  フォーカスした状態で開けます(詳細ページの関係セクションからリンクあり)。
 - **IOC**: 件数が多いためボタン押下で `iocs.json` を遅延読み込みし、
   種別・値で絞り込み表示します。表示値はdefang済み(`hxxp` / `[.]`)です。
 
@@ -47,7 +53,8 @@ python3 ui/build_data.py
 ```
 
 `profiles/*/actor-profile.json`・`iocs.json`・`artifacts.csv` を読み、
-`ui/data/actors.json`(名称、alias、帰属、動機、標的、各種件数、IOC種別内訳)を出力します。
+`ui/data/actors.json`(名称、alias、帰属、動機、標的、各種件数、IOC種別内訳、
+slug解決済みのアクター間関係)を出力します。
 
 ## ローカルでの確認
 

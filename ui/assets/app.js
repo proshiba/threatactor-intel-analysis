@@ -21,7 +21,10 @@ const TACTIC_ORDER = [
 
 const state = {
   index: null,          // data/actors.json payload
-  currentView: null,    // "list" | "actor"
+  currentView: null,    // "list" | "actor" | "graph"
+  bySlug: new Map(),
+  graph: null,          // {nodes: Map, edges: []} 遅延構築
+  graphAnim: null,      // requestAnimationFrame handle
   nameToSlug: new Map(),
   filters: { q: "", country: "", sponsor: "", type: "", motivation: "", sector: "", sort: "name" },
   listLimit: LIST_PAGE,
@@ -101,6 +104,7 @@ async function boot() {
     const data = await fetchJson("data/actors.json");
     state.index = data;
     for (const actor of data.actors) {
+      state.bySlug.set(actor.slug, actor);
       state.nameToSlug.set(actor.name.toLowerCase(), actor.slug);
       for (const alias of actor.aliases) {
         const key = alias.toLowerCase();
@@ -116,12 +120,21 @@ async function boot() {
 }
 
 function route() {
+  if (state.graphAnim) {
+    cancelAnimationFrame(state.graphAnim);
+    state.graphAnim = null;
+  }
   const hash = location.hash || "#/";
   const actorMatch = hash.match(/^#\/actor\/([A-Za-z0-9._-]+)/);
+  const graphMatch = hash.match(/^#\/relations(?:\/([A-Za-z0-9._-]+))?/);
   if (actorMatch) {
     if (state.currentView === "list") state.listScroll = window.scrollY;
     state.currentView = "actor";
     renderActor(decodeURIComponent(actorMatch[1]));
+  } else if (graphMatch) {
+    if (state.currentView === "list") state.listScroll = window.scrollY;
+    state.currentView = "graph";
+    renderGraph(graphMatch[1] ? decodeURIComponent(graphMatch[1]) : null);
   } else {
     state.currentView = "list";
     renderList();
@@ -417,27 +430,59 @@ async function renderActor(slug) {
   `;
 
   const dm = profile.diamond_model || {};
+  const dmNode = (key, label, text) => `<div class="dm-node dm-${key}">
+      <div class="k">${esc(label)}</div>
+      <div class="v small">${text ? md(text) : '<span class="muted">情報なし</span>'}</div>
+    </div>`;
   const diamondHtml = ["adversary", "capability", "infrastructure", "victim"].some((k) => dm[k])
-    ? `<div class="diamond-grid">
-        <div class="kv"><div class="k">Adversary(攻撃者)</div><div class="v small">${md(dm.adversary || "—")}</div></div>
-        <div class="kv"><div class="k">Capability(能力)</div><div class="v small">${md(dm.capability || "—")}</div></div>
-        <div class="kv"><div class="k">Infrastructure(インフラ)</div><div class="v small">${md(dm.infrastructure || "—")}</div></div>
-        <div class="kv"><div class="k">Victim(被害者)</div><div class="v small">${md(dm.victim || "—")}</div></div>
+    ? `<div class="diamond-wrap">
+        <svg class="diamond-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M50 3 L97 50 L50 97 L3 50 Z" fill="none" stroke="currentColor" stroke-width="0.5"/>
+          <path d="M50 3 L50 97 M3 50 L97 50" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 2"/>
+        </svg>
+        ${dmNode("adversary", "Adversary(攻撃者)", dm.adversary)}
+        ${dmNode("infrastructure", "Infrastructure(インフラ)", dm.infrastructure)}
+        ${dmNode("capability", "Capability(能力)", dm.capability)}
+        ${dmNode("victim", "Victim(被害者)", dm.victim)}
+        <div class="dm-center">Diamond<br>Model</div>
       </div>
       ${dm.socio_political ? `<p class="small muted">社会・政治的背景: ${md(dm.socio_political)}</p>` : ""}`
     : "";
 
   const relationships = profile.relationships || [];
-  const relationshipsHtml = relationships.length
-    ? `<div class="tbl-wrap"><table class="data">
+  const incoming = [];
+  for (const other of state.index.actors) {
+    if (other.slug === slug) continue;
+    for (const r of other.relationships || []) {
+      if (r.target_slug === slug) incoming.push({ from: other, type: r.type, confidence: r.confidence });
+    }
+  }
+  const inGraph = getGraph().nodes.has(slug);
+  const relParts = [];
+  if (relationships.length) {
+    relParts.push(`<div class="tbl-wrap"><table class="data">
         <thead><tr><th>相手アクター</th><th>関係</th><th>説明</th><th>確度</th></tr></thead>
         <tbody>${relationships.map((r) => `<tr>
           <td>${actorLink(r.target_actor)}</td>
           <td class="small">${esc(r.relationship_type || "")}</td>
           <td class="small muted">${md(r.description || "")}</td>
           <td class="small">${esc(r.confidence || "")}</td>
-        </tr>`).join("")}</tbody></table></div>`
-    : "";
+        </tr>`).join("")}</tbody></table></div>`);
+  }
+  if (incoming.length) {
+    relParts.push(`<h3>このアクターを参照する関係(${incoming.length})</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>参照元アクター</th><th>関係</th><th>確度</th></tr></thead>
+        <tbody>${incoming.map((r) => `<tr>
+          <td><a href="#/actor/${encodeURIComponent(r.from.slug)}">${esc(r.from.name)}</a></td>
+          <td class="small">${esc(r.type || "")}</td>
+          <td class="small">${esc(r.confidence || "")}</td>
+        </tr>`).join("")}</tbody></table></div>`);
+  }
+  if (inGraph) {
+    relParts.push(`<p class="small"><a href="#/relations/${encodeURIComponent(slug)}">◇ 関係グラフでこのアクターを表示 →</a></p>`);
+  }
+  const relationshipsHtml = relParts.join("");
 
   const activities = profile.activities || [];
   const activitiesHtml = activities.length
@@ -505,7 +550,7 @@ async function renderActor(slug) {
   if (judgmentsHtml) parts.push(section("主要判断(Key Judgments)", judgmentsHtml));
   parts.push(section("帰属・動機", attributionHtml));
   if (diamondHtml) parts.push(section("ダイヤモンドモデル", diamondHtml));
-  if (relationshipsHtml) parts.push(section(`他アクターとの関係(${relationships.length})`, relationshipsHtml));
+  if (relationshipsHtml) parts.push(section(`他アクターとの関係(${relationships.length + incoming.length})`, relationshipsHtml));
   if ((capabilities.malware || []).length) parts.push(section(`マルウェア(${capabilities.malware.length})`, softwareTable(capabilities.malware)));
   if ((capabilities.tools || []).length) parts.push(section(`ツール(${capabilities.tools.length})`, softwareTable(capabilities.tools)));
   if (activitiesHtml) parts.push(section(`活動・キャンペーン(${activities.length})`, activitiesHtml));
@@ -593,6 +638,337 @@ async function loadIocs(slug, summary) {
     });
   };
   render();
+}
+
+/* ---------- relations graph ---------- */
+
+const EDGE_COLORS = {
+  "overlaps-with": "#fbbf24",
+  "related-to": "#4cc2ff",
+  "cooperates-with": "#34d399",
+  "shares-tools-with": "#2dd4bf",
+  "part-of": "#a78bfa",
+  "distinct-from": "#f87171",
+};
+const COUNTRY_PALETTE = ["#f87171", "#fbbf24", "#a78bfa", "#34d399", "#4cc2ff", "#f472b6", "#fb923c", "#e2e8f0"];
+const UNKNOWN_COUNTRY = "帰属不明";
+
+function getGraph() {
+  if (state.graph) return state.graph;
+  const nodes = new Map();
+  const edges = [];
+  const seen = new Set();
+  const ensure = (slug) => {
+    if (!nodes.has(slug)) {
+      const a = state.bySlug.get(slug);
+      nodes.set(slug, {
+        slug,
+        name: a ? a.name : slug,
+        country: a?.attribution.countries[0] || UNKNOWN_COUNTRY,
+        deg: 0, x: 0, y: 0, vx: 0, vy: 0,
+      });
+    }
+    return nodes.get(slug);
+  };
+  for (const a of state.index.actors) {
+    for (const r of a.relationships || []) {
+      if (!r.target_slug || r.target_slug === a.slug) continue;
+      const key = [a.slug, r.target_slug].sort().join("|") + "|" + r.type;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      ensure(a.slug).deg += 1;
+      ensure(r.target_slug).deg += 1;
+      edges.push({ a: a.slug, b: r.target_slug, type: r.type, confidence: r.confidence });
+    }
+  }
+  state.graph = { nodes, edges };
+  return state.graph;
+}
+
+function renderGraph(initialFocus) {
+  document.title = "関係グラフ | Threat Actor Intelligence Profiles";
+  const g = getGraph();
+  const nodeArr = [...g.nodes.values()];
+  const edges = g.edges;
+
+  const countries = [...new Set(nodeArr.map((n) => n.country))]
+    .sort((a, b) => (a === UNKNOWN_COUNTRY) - (b === UNKNOWN_COUNTRY) || a.localeCompare(b));
+  const colorOf = {};
+  let ci = 0;
+  for (const c of countries) colorOf[c] = c === UNKNOWN_COUNTRY ? "#64748b" : COUNTRY_PALETTE[ci++ % COUNTRY_PALETTE.length];
+
+  const typesPresent = [...new Set(edges.map((e) => e.type))];
+  app.innerHTML = `
+    <a class="back-link" href="#/">← アクター一覧へ戻る</a>
+    <section class="section">
+      <h2>アクター関係グラフ</h2>
+      <p class="small muted">プロファイルに記録された他アクターとの関係(${num(edges.length)} 本 / ${num(nodeArr.length)} アクター)を可視化しています。
+      ノードをクリックすると詳細ページへ移動します。背景ドラッグで移動、ホイールでズーム、ノードはドラッグで動かせます。</p>
+      <div class="graph-toolbar">
+        <input id="g-search" list="g-actors" placeholder="アクター名で検索してフォーカス…" autocomplete="off">
+        <datalist id="g-actors">${nodeArr.map((n) => `<option value="${esc(n.name)}"></option>`).join("")}</datalist>
+        <button class="reset-btn" id="g-reset" type="button">全体表示</button>
+      </div>
+      <div class="graph-box">
+        <canvas id="g-canvas"></canvas>
+        <div class="graph-tip" id="g-tip"></div>
+      </div>
+      <div class="graph-legend">
+        ${typesPresent.map((t) => `<span class="lg"><span class="sw-line ${t === "distinct-from" ? "dashed" : ""}" style="border-color:${EDGE_COLORS[t] || "#8b9ab5"}"></span>${esc(t)}</span>`).join("")}
+      </div>
+      <div class="graph-legend">
+        ${countries.map((c) => `<span class="lg"><span class="sw-dot" style="background:${colorOf[c]}"></span>${esc(c)}</span>`).join("")}
+      </div>
+    </section>`;
+
+  const canvas = document.getElementById("g-canvas");
+  const tip = document.getElementById("g-tip");
+  const box = canvas.parentElement;
+  const dpr = window.devicePixelRatio || 1;
+  let W = box.clientWidth, H = box.clientHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext("2d");
+
+  // 初期配置: 次数の大きいノードを内側にした同心円
+  const sorted = [...nodeArr].sort((a, b) => b.deg - a.deg);
+  sorted.forEach((n, i) => {
+    const r = 40 + 26 * Math.sqrt(i);
+    const th = i * 2.39996; // golden angle
+    n.x = r * Math.cos(th);
+    n.y = r * Math.sin(th);
+    n.vx = 0; n.vy = 0;
+  });
+
+  const nodeOf = (slug) => g.nodes.get(slug);
+  let alpha = 1;
+  let hoverNode = null;
+  let dragNode = null;
+  function tick() {
+    for (let i = 0; i < nodeArr.length; i++) {
+      const a = nodeArr[i];
+      for (let j = i + 1; j < nodeArr.length; j++) {
+        const b = nodeArr[j];
+        let dx = a.x - b.x, dy = a.y - b.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 1) { dx = (Math.random() - 0.5); dy = (Math.random() - 0.5); d2 = 1; }
+        if (d2 > 90000) continue;
+        const f = 2200 / d2;
+        const d = Math.sqrt(d2);
+        dx /= d; dy /= d;
+        a.vx += dx * f; a.vy += dy * f;
+        b.vx -= dx * f; b.vy -= dy * f;
+      }
+    }
+    for (const e of edges) {
+      const a = nodeOf(e.a), b = nodeOf(e.b);
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.max(Math.sqrt(dx * dx + dy * dy), 1);
+      const f = (d - 120) * 0.02;
+      a.vx += (dx / d) * f; a.vy += (dy / d) * f;
+      b.vx -= (dx / d) * f; b.vy -= (dy / d) * f;
+    }
+    for (const n of nodeArr) {
+      n.vx -= n.x * 0.004; n.vy -= n.y * 0.004;
+      n.vx *= 0.82; n.vy *= 0.82;
+      if (n !== dragNode) { n.x += n.vx * alpha; n.y += n.vy * alpha; }
+    }
+    alpha = Math.max(alpha * 0.995, 0.03);
+  }
+  for (let i = 0; i < 200; i++) tick(); // 描画前にレイアウトを収束させる
+
+  const view = { k: 1, tx: W / 2, ty: H / 2 };
+  let focusSlug = null;
+  let neighborSet = new Set();
+
+  function fitAll() {
+    let minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+    for (const n of nodeArr) {
+      minX = Math.min(minX, n.x); maxX = Math.max(maxX, n.x);
+      minY = Math.min(minY, n.y); maxY = Math.max(maxY, n.y);
+    }
+    const k = Math.min((W - 80) / Math.max(maxX - minX, 1), (H - 80) / Math.max(maxY - minY, 1), 2.5);
+    view.k = k;
+    view.tx = W / 2 - ((minX + maxX) / 2) * k;
+    view.ty = H / 2 - ((minY + maxY) / 2) * k;
+  }
+
+  function setFocus(slug, updateHash) {
+    focusSlug = slug && g.nodes.has(slug) ? slug : null;
+    neighborSet = new Set();
+    if (focusSlug) {
+      neighborSet.add(focusSlug);
+      for (const e of edges) {
+        if (e.a === focusSlug) neighborSet.add(e.b);
+        if (e.b === focusSlug) neighborSet.add(e.a);
+      }
+      const n = nodeOf(focusSlug);
+      view.k = 1.6;
+      view.tx = W / 2 - n.x * view.k;
+      view.ty = H / 2 - n.y * view.k;
+    } else {
+      fitAll();
+    }
+    if (updateHash) {
+      history.replaceState(null, "", focusSlug ? `#/relations/${encodeURIComponent(focusSlug)}` : "#/relations");
+    }
+  }
+
+  const radiusOf = (n) => Math.min(5 + n.deg * 1.6, 16);
+
+  function draw() {
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.setTransform(dpr * view.k, 0, 0, dpr * view.k, dpr * view.tx, dpr * view.ty);
+
+    for (const e of edges) {
+      const a = nodeOf(e.a), b = nodeOf(e.b);
+      const active = !focusSlug || e.a === focusSlug || e.b === focusSlug;
+      ctx.globalAlpha = active ? 0.75 : 0.08;
+      ctx.strokeStyle = EDGE_COLORS[e.type] || "#8b9ab5";
+      ctx.lineWidth = (e.confidence === "high" ? 2.2 : 1.2) / view.k;
+      ctx.setLineDash(e.type === "distinct-from" ? [5 / view.k, 4 / view.k] : []);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
+    for (const n of nodeArr) {
+      const active = !focusSlug || neighborSet.has(n.slug);
+      ctx.globalAlpha = active ? 1 : 0.12;
+      ctx.fillStyle = colorOf[n.country];
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, radiusOf(n), 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = n.slug === focusSlug || n === hoverNode ? "#ffffff" : "#0b0f17";
+      ctx.lineWidth = (n.slug === focusSlug || n === hoverNode ? 2.5 : 1.5) / view.k;
+      ctx.stroke();
+    }
+
+    const fontPx = 11 / view.k;
+    ctx.font = `${fontPx}px "Hiragino Kaku Gothic ProN", system-ui, sans-serif`;
+    ctx.textAlign = "center";
+    for (const n of nodeArr) {
+      const active = !focusSlug || neighborSet.has(n.slug);
+      const showLabel = n === hoverNode || n.slug === focusSlug ||
+        (active && (n.deg >= 3 || view.k >= 1.15));
+      if (!showLabel) continue;
+      ctx.globalAlpha = active ? 0.95 : 0.15;
+      ctx.fillStyle = "#dbe4f3";
+      ctx.fillText(n.name, n.x, n.y - radiusOf(n) - 5 / view.k);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function loop() {
+    if (!document.body.contains(canvas)) return; // 画面遷移済み
+    tick();
+    draw();
+    state.graphAnim = requestAnimationFrame(loop);
+  }
+
+  // ---- interaction ----
+  const toWorld = (mx, my) => ({ x: (mx - view.tx) / view.k, y: (my - view.ty) / view.k });
+  const findNode = (mx, my) => {
+    const w = toWorld(mx, my);
+    let best = null, bestD = 1e9;
+    for (const n of nodeArr) {
+      const dx = n.x - w.x, dy = n.y - w.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < radiusOf(n) + 6 / view.k && d < bestD) { best = n; bestD = d; }
+    }
+    return best;
+  };
+
+  let pointer = null; // {mx,my,moved}
+  canvas.addEventListener("pointerdown", (ev) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+    pointer = { mx, my, moved: 0 };
+    dragNode = findNode(mx, my);
+    canvas.classList.add("dragging");
+    canvas.setPointerCapture(ev.pointerId);
+    if (dragNode) alpha = Math.max(alpha, 0.3);
+  });
+  canvas.addEventListener("pointermove", (ev) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+    if (pointer) {
+      const dx = mx - pointer.mx, dy = my - pointer.my;
+      pointer.moved += Math.abs(dx) + Math.abs(dy);
+      if (dragNode) {
+        const w = toWorld(mx, my);
+        dragNode.x = w.x; dragNode.y = w.y;
+        dragNode.vx = 0; dragNode.vy = 0;
+        alpha = Math.max(alpha, 0.25);
+      } else {
+        view.tx += dx; view.ty += dy;
+      }
+      pointer.mx = mx; pointer.my = my;
+      return;
+    }
+    const n = findNode(mx, my);
+    hoverNode = n;
+    canvas.style.cursor = n ? "pointer" : "grab";
+    if (n) {
+      const a = state.bySlug.get(n.slug);
+      tip.style.display = "block";
+      tip.style.left = Math.min(mx + 14, W - 290) + "px";
+      tip.style.top = (my + 14) + "px";
+      tip.innerHTML = `<div class="t-name">${esc(n.name)}</div>
+        <div>${esc(n.country)} / 関係 ${n.deg} 本</div>
+        ${a && a.aliases.length ? `<div class="muted">別名: ${esc(a.aliases.slice(0, 3).join(", "))}</div>` : ""}
+        <div class="muted">クリックで詳細ページへ</div>`;
+    } else {
+      tip.style.display = "none";
+    }
+  });
+  const endPointer = (ev) => {
+    if (!pointer) return;
+    const clicked = pointer.moved < 5 ? findNode(pointer.mx, pointer.my) : null;
+    pointer = null;
+    dragNode = null;
+    canvas.classList.remove("dragging");
+    if (clicked) location.hash = `#/actor/${encodeURIComponent(clicked.slug)}`;
+  };
+  canvas.addEventListener("pointerup", endPointer);
+  canvas.addEventListener("pointercancel", () => { pointer = null; dragNode = null; canvas.classList.remove("dragging"); });
+  canvas.addEventListener("pointerleave", () => { hoverNode = null; tip.style.display = "none"; });
+
+  canvas.addEventListener("wheel", (ev) => {
+    ev.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+    const factor = Math.exp(-ev.deltaY * 0.0012);
+    const k2 = Math.min(Math.max(view.k * factor, 0.15), 5);
+    view.tx = mx - ((mx - view.tx) / view.k) * k2;
+    view.ty = my - ((my - view.ty) / view.k) * k2;
+    view.k = k2;
+  }, { passive: false });
+
+  document.getElementById("g-search").addEventListener("change", (ev) => {
+    const q = ev.target.value.trim().toLowerCase();
+    if (!q) return;
+    const n = nodeArr.find((x) => x.name.toLowerCase() === q) ||
+      nodeArr.find((x) => x.name.toLowerCase().includes(q));
+    if (n) { setFocus(n.slug, true); alpha = Math.max(alpha, 0.1); }
+  });
+  document.getElementById("g-reset").addEventListener("click", () => {
+    document.getElementById("g-search").value = "";
+    setFocus(null, true);
+  });
+
+  window.addEventListener("resize", function onResize() {
+    if (!document.body.contains(canvas)) { window.removeEventListener("resize", onResize); return; }
+    W = box.clientWidth; H = box.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+  });
+
+  setFocus(initialFocus, false);
+  window.scrollTo(0, 0);
+  loop();
 }
 
 boot();

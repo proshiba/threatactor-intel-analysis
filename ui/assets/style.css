@@ -48,6 +48,7 @@ code { font-family: var(--mono); font-size: 0.9em; background: var(--chip); padd
 .brand-mark { font-size: 26px; color: var(--accent); }
 .brand-title { display: block; font-weight: 700; letter-spacing: 0.02em; }
 .brand-sub { display: block; font-size: 12px; color: var(--text-dim); }
+.header-links { display: flex; gap: 18px; }
 .header-links a { color: var(--text-dim); font-size: 14px; }
 .header-links a:hover { color: var(--accent); }
 
@@ -158,9 +159,72 @@ details.fold[open] > summary::after { content: "▴"; }
 details.fold > .fold-body { padding: 4px 14px 14px; border-top: 1px solid var(--border); }
 summary::-webkit-details-marker { display: none; }
 
-/* diamond model */
-.diamond-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (max-width: 700px) { .diamond-grid { grid-template-columns: 1fr; } }
+/* diamond model — ひし形レイアウト */
+.diamond-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 1.2fr) 1fr;
+  grid-template-rows: auto minmax(60px, auto) auto;
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+  padding: 8px 0;
+}
+.diamond-lines { position: absolute; inset: 12px; width: calc(100% - 24px); height: calc(100% - 24px); color: var(--border); z-index: 0; pointer-events: none; }
+.dm-node {
+  position: relative; z-index: 1;
+  background: var(--bg-alt); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px;
+  width: 100%; max-width: 400px;
+}
+.dm-node .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; font-weight: 700; }
+.dm-node .v { max-height: 170px; overflow-y: auto; }
+.dm-adversary       { grid-column: 2; grid-row: 1; border-color: #5a2a38; }
+.dm-adversary .k    { color: #ff9db0; }
+.dm-infrastructure  { grid-column: 1; grid-row: 2; border-color: #5a4a2a; }
+.dm-infrastructure .k { color: #ffd28a; }
+.dm-capability      { grid-column: 3; grid-row: 2; border-color: #2a465a; }
+.dm-capability .k   { color: #9dd4ff; }
+.dm-victim          { grid-column: 2; grid-row: 3; border-color: #1f5a44; }
+.dm-victim .k       { color: var(--good); }
+.dm-center {
+  grid-column: 2; grid-row: 2; z-index: 1;
+  color: var(--text-dim); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; text-align: center;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 999px; padding: 6px 14px;
+}
+@media (max-width: 760px) {
+  .diamond-wrap { display: flex; flex-direction: column; align-items: stretch; }
+  .diamond-lines, .dm-center { display: none; }
+  .dm-node { max-width: none; }
+}
+
+/* relations graph */
+.graph-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 10px 0; }
+.graph-toolbar input {
+  flex: 1 1 240px; background: var(--bg-alt); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px;
+}
+.graph-box {
+  position: relative; height: 640px;
+  background: radial-gradient(circle at 50% 40%, #101828 0%, var(--bg-alt) 70%);
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+.graph-box canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+.graph-box canvas.dragging { cursor: grabbing; }
+.graph-tip {
+  position: absolute; display: none; pointer-events: none; z-index: 5;
+  background: rgba(11, 15, 23, 0.95); border: 1px solid var(--accent);
+  border-radius: 8px; padding: 8px 12px; font-size: 12px; max-width: 280px;
+}
+.graph-tip .t-name { color: var(--accent); font-weight: 700; font-size: 13px; }
+.graph-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-size: 12px; color: var(--text-dim); }
+.graph-legend .lg { display: inline-flex; align-items: center; gap: 6px; }
+.graph-legend .sw-line { display: inline-block; width: 22px; height: 0; border-top: 2px solid; }
+.graph-legend .sw-line.dashed { border-top-style: dashed; }
+.graph-legend .sw-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+@media (max-width: 640px) { .graph-box { height: 460px; } }
 
 /* IOC */
 .ioc-controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
