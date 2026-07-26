@@ -14,7 +14,7 @@ import { PROFILES_BASE, REPO_BLOB, IOC_PAGE, TACTIC_ORDER } from "./config.js";
 import { state, findActor, slugForName, getGraph, incomingRelationships } from "./data.js";
 import {
   app, esc, md, num, chips, section, dataTable, resultCount,
-  fmtDate, confBadge, defang, fetchJson, renderError,
+  fmtDate, confBadge, defang, fetchJson, fetchText, parseCsv, renderError,
   bindLiveSearch, bindMoreButton,
 } from "./util.js";
 
@@ -359,22 +359,102 @@ function bindActivities(profile) {
   render(0);
 }
 
-/* ---------- iocs タブ ---------- */
+/* ---------- Technical Artifacts タブ(IOC+非IOC artifact) ---------- */
 
-function buildIocsTab(summary) {
-  if (!summary.counts.iocs) {
-    return section("IOC", `<p class="muted">このアクターに正規化済みIOCはありません。非IOC artifact観測は ${num(summary.counts.artifacts)} 件あります(artifacts.csv 参照)。</p>`);
+function buildArtifactsTab(summary) {
+  const parts = [];
+
+  // IOC(正規化済みの機械可読指標)
+  if (summary.counts.iocs) {
+    const typeChips = Object.entries(summary.ioc_types)
+      .sort((a, b) => b[1] - a[1])
+      .map(([t, n]) => `<span class="badge">${esc(t)}: ${num(n)}</span>`)
+      .join("");
+    parts.push(section(
+      `IOC(${num(summary.counts.iocs)})`,
+      `<div class="chip-list">${typeChips}</div>
+       <p class="defanged-note">表示上の値は defang 済みです(hxxp / [.])。原値は iocs.json を参照してください。</p>
+       <div id="ioc-area"><div class="more-row"><button class="load-btn" id="ioc-load" type="button">IOC ${num(summary.counts.iocs)} 件を読み込む</button></div></div>`
+    ));
+  } else {
+    parts.push(section("IOC", '<p class="muted">このアクターに正規化済みIOCはありません。</p>'));
   }
-  const typeChips = Object.entries(summary.ioc_types)
-    .sort((a, b) => b[1] - a[1])
-    .map(([t, n]) => `<span class="badge">${esc(t)}: ${num(n)}</span>`)
-    .join("");
-  return section(
-    `IOC(${num(summary.counts.iocs)})/ 非IOC artifact(${num(summary.counts.artifacts)})`,
-    `<div class="chip-list">${typeChips}</div>
-     <p class="defanged-note">表示上の値は defang 済みです(hxxp / [.])。原値は iocs.json を参照してください。</p>
-     <div id="ioc-area"><div class="more-row"><button class="load-btn" id="ioc-load" type="button">IOC ${num(summary.counts.iocs)} 件を読み込む</button></div></div>`
-  );
+
+  // 非IOC artifact(コマンド、検体内文字列、パス等 — IOCとしては使いづらい痕跡)
+  if (summary.counts.artifacts) {
+    parts.push(section(
+      `非IOC artifact(${num(summary.counts.artifacts)})`,
+      `<p class="small muted">実行コマンド、検体内文字列、ファイル名・パス、レジストリキーなど、単体ではIOCとして使いづらい技術的痕跡です。
+       多くは自動抽出の <code>candidate</code> であり、検知利用の前に出典の文脈確認が必要です。</p>
+       <div id="artifact-area"><div class="more-row"><button class="load-btn" id="artifact-load" type="button">artifact ${num(summary.counts.artifacts)} 件を読み込む</button></div></div>`
+    ));
+  } else {
+    parts.push(section("非IOC artifact", '<p class="muted">このアクターに記録された非IOC artifactはありません。</p>'));
+  }
+
+  return parts.join("");
+}
+
+async function loadArtifacts(slug, summary) {
+  const area = document.getElementById("artifact-area");
+  area.innerHTML = '<div class="loading">artifactを読み込み中…</div>';
+  let rows0;
+  try {
+    if (state.artifactCache.has(slug)) {
+      rows0 = state.artifactCache.get(slug);
+    } else {
+      const text = await fetchText(`${PROFILES_BASE}/${encodeURIComponent(slug)}/artifacts.csv`);
+      rows0 = parseCsv(text);
+      state.artifactCache.set(slug, rows0);
+    }
+  } catch (err) {
+    area.innerHTML = `<div class="error-box">${esc(err.message)}</div>`;
+    return;
+  }
+
+  const typeCounts = new Map();
+  for (const r of rows0) {
+    const t = r.artifact_type || "other";
+    typeCounts.set(t, (typeCounts.get(t) || 0) + 1);
+  }
+  const types = [...typeCounts.keys()].sort();
+  const view = { q: "", type: "", limit: IOC_PAGE };
+
+  const render = () => {
+    const q = view.q.trim().toLowerCase();
+    const rows = rows0.filter((r) =>
+      (!view.type || r.artifact_type === view.type) &&
+      (!q || String(r.value || "").toLowerCase().includes(q)));
+    const shown = rows.slice(0, view.limit);
+    area.innerHTML = `
+      <div class="ioc-controls">
+        <input type="search" id="artifact-q" placeholder="artifact値で絞り込み…" value="${esc(view.q)}" autocomplete="off">
+        <select id="artifact-type">
+          <option value="">種別: すべて</option>
+          ${types.map((t) => `<option value="${esc(t)}" ${t === view.type ? "selected" : ""}>${esc(t)} (${num(typeCounts.get(t))})</option>`).join("")}
+        </select>
+      </div>
+      ${resultCount(rows.length, shown.length)}
+      ${dataTable(
+        ["種別", "値", "状態", "確度", "観測日", "出典"],
+        shown.map((r) => `<tr>
+          <td class="small">${esc(r.artifact_type)}</td>
+          <td><span class="mono" title="${esc((r.context_excerpt || "").slice(0, 400))}">${esc(String(r.value || "").slice(0, 240))}</span></td>
+          <td class="small">${esc(r.disposition || "")}</td>
+          <td class="small">${esc(r.confidence || "")}</td>
+          <td class="small">${esc(r.observed_at ? String(r.observed_at).slice(0, 10) : "不明")}</td>
+          <td class="small muted">${esc((r.source_path || "").split("/").pop())}</td>
+        </tr>`).join("")
+      )}
+      ${rows.length > shown.length ? '<div class="more-row"><button class="more-btn" id="artifact-more" type="button">さらに表示</button></div>' : ""}
+    `;
+    bindLiveSearch("artifact-q", (value) => { view.q = value; view.limit = IOC_PAGE; render(); });
+    document.getElementById("artifact-type").addEventListener("change", (e) => {
+      view.type = e.target.value; view.limit = IOC_PAGE; render();
+    });
+    bindMoreButton("artifact-more", () => { view.limit += IOC_PAGE * 2; render(); });
+  };
+  render();
 }
 
 async function loadIocs(slug, summary) {
@@ -498,13 +578,16 @@ export async function renderActor(slug, initialTab) {
     { id: "capabilities", label: `Capabilities (${capCount})`, build: () => buildCapabilitiesTab(profile), empty: !capCount },
     { id: "ttps", label: `TTP (${(profile.ttps || []).length})`, build: () => buildTtpsTab(profile.ttps), empty: !(profile.ttps || []).length },
     { id: "activities", label: `Activities (${(profile.activities || []).length})`, build: () => buildActivitiesTab(profile), empty: !(profile.activities || []).length, bind: () => bindActivities(profile) },
-    { id: "iocs", label: `IOC (${num(summary.counts.iocs)})`, build: () => buildIocsTab(summary), bind: () => {
-        const btn = document.getElementById("ioc-load");
-        if (btn) btn.addEventListener("click", () => loadIocs(slug, summary));
+    { id: "artifacts", label: `Technical Artifacts (${num(summary.counts.iocs + summary.counts.artifacts)})`, build: () => buildArtifactsTab(summary), bind: () => {
+        const iocBtn = document.getElementById("ioc-load");
+        if (iocBtn) iocBtn.addEventListener("click", () => loadIocs(slug, summary));
+        const artifactBtn = document.getElementById("artifact-load");
+        if (artifactBtn) artifactBtn.addEventListener("click", () => loadArtifacts(slug, summary));
       } },
     { id: "sources", label: `出典 (${(profile.sources || []).length})`, build: () => buildSourcesTab(profile, slug) },
   ].filter((t) => !t.empty);
 
+  if (initialTab === "iocs") initialTab = "artifacts"; // 旧URL互換
   const validIds = new Set(tabs.map((t) => t.id));
   let current = validIds.has(initialTab) ? initialTab : "overview";
 

@@ -15,6 +15,7 @@ export const state = {
   listScroll: 0,
   profileCache: new Map(),
   iocCache: new Map(),
+  artifactCache: new Map(),
 };
 
 export function resetFilters() {
