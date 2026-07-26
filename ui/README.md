@@ -20,7 +20,11 @@ ui/
 │   └── style.css       # ダークテーマのスタイル
 ├── data/
 │   └── actors.json     # 検索・フィルタ用の軽量索引(build_data.pyで生成)
-└── build_data.py       # 索引の生成スクリプト
+├── api/v1/             # ポータル連携用の静的インデックス(build_portal_index.pyで生成)
+│   ├── meta.json           # 自己紹介(ポータルが最初に読む)
+│   └── search.json         # 横断検索用エンティティ集合
+├── build_data.py       # UI用索引の生成スクリプト
+└── build_portal_index.py   # ポータル用インデックスの生成スクリプト
 ```
 
 - **一覧ページ**: 全アクターの統計、名前・alias・slug検索、帰属国 / 支援形態 /
@@ -71,6 +75,33 @@ python3 ui/build_data.py
 slug解決済みのアクター間関係)を出力します。
 `generated_at`には全プロファイル中の最新`updated_at`を使用するため、入力が同じなら
 再実行しても索引ファイルは変化しません。
+
+## ポータル連携用インデックス (spec v1)
+
+別リポジトリのポータル(`proshiba/research_bench`)は、各アプリが GitHub Pages に置いた
+静的 JSON を `fetch()` して手元で索引し、**同じ値が複数ソースに現れたこと**を検出して
+横串を作ります。そのための索引を `ui/api/v1/` に公開しています。
+
+| パス | 内容 |
+| --- | --- |
+| `ui/api/v1/meta.json` | 自己紹介(アプリ名、`site_url`、`deep_links`、`embed_css`、件数) |
+| `ui/api/v1/search.json` | 索引本体。全アクター横断で集約したエンティティ集合 |
+
+収録するエンティティは `actor` / `malware` / `tool` / `cve` / `ttp` / `campaign` / `ioc.*` です。
+マルウェア名・IOC・CVE が他アプリとの結合キーになるため、**同じ値は 1 エンティティに畳み、
+観測元アクター全部を `refs` に並べます**。IOC の値は難読化(defang)を解除して格納します。
+
+`artifacts.csv` の非IOCアーティファクトは、誤結合を招きやすく横串の価値が薄いため
+索引に入れていません。
+
+```bash
+python3 ui/build_portal_index.py
+```
+
+デプロイ時に自動再生成されます。`build_data.py` と同じく、`generated_at` には
+全プロファイル中の最新 `updated_at` を使うため、入力が同じなら出力は変化しません。
+
+`ui/data/actors.json` は UI が依存しているため、この対応では一切変更していません。
 
 ## ローカルでの確認
 
