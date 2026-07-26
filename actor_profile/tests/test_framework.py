@@ -12,20 +12,22 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from common import normalize_observable, normalize_time  # noqa: E402
+from common import normalize_observable, normalize_time, refang  # noqa: E402
 from ingest_observables import extract_artifacts, extract_iocs  # noqa: E402
 
 
 class ObservableBoundaryTests(unittest.TestCase):
     def test_ioc_types_are_kept_out_of_artifacts(self) -> None:
+        # 192.0.2.0/24 などのドキュメント用レンジは伏字であって指標ではないため、
+        # ここでは実際に到達し得るアドレスを使う。
         text = (
-            "IOC: hxxps://c2[.]example/path, 192.0.2.10, "
+            "IOC: hxxps://c2[.]example/path, 45.61.136.56, "
             "44d88612fea8a8f36de82e1278abb02f"
         )
         iocs = extract_iocs(
             text, allow_plain_domains=True, explicit_structured=False
         )
-        self.assertIn(("ipv4", "192.0.2.10", "confirmed"), iocs)
+        self.assertIn(("ipv4", "45.61.136.56", "confirmed"), iocs)
         self.assertTrue(any(kind == "url" for kind, _, _ in iocs))
         self.assertTrue(any(kind == "md5" for kind, _, _ in iocs))
         self.assertFalse(extract_artifacts(text, explicit_structured=False))
@@ -50,6 +52,116 @@ class ObservableBoundaryTests(unittest.TestCase):
         )
         domains = {normalize_observable(kind, value) for kind, value, _ in values}
         self.assertEqual(domains, {"c2.example.org"})
+
+    def test_non_tld_file_names_are_not_domains(self) -> None:
+        """readme.md 形式の誤抽出は横串検索で誤結合するため domain にしない。"""
+        values = extract_iocs(
+            "IOC: files readme.txt config.json index.html plus c2.example.org",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        domains = {value for kind, value, _ in values if kind == "domain"}
+        self.assertEqual(domains, {"c2.example.org"})
+
+
+class ReferenceHostTests(unittest.TestCase):
+    """出典レポート自身の参考リンクを IOC として取り込まないこと。"""
+
+    def test_citation_urls_are_not_iocs(self) -> None:
+        text = (
+            "IOC report. See https://securelist.com/some-analysis/12345/ and "
+            "https://www.microsoft.com/security/blog/post for background. "
+            "The C2 was https://evil-c2.example/gate.php"
+        )
+        urls = {
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "url"
+        }
+        self.assertEqual(urls, {"https://evil-c2.example/gate.php"})
+
+    def test_citation_subdomains_are_not_iocs(self) -> None:
+        text = "IOC: https://blog.securelist.com/x and https://unit42.paloaltonetworks.com/y"
+        urls = [
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "url"
+        ]
+        self.assertEqual(urls, [])
+
+    def test_bare_reference_domains_are_not_iocs(self) -> None:
+        text = "IOC list: securelist.com attack.mitre.org bad-domain.example"
+        domains = {
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "domain"
+        }
+        self.assertEqual(domains, {"bad-domain.example"})
+
+    def test_defanged_reference_host_is_kept(self) -> None:
+        """難読化はアナリストが悪性と判断した印なので、参考ホストでも残す。"""
+        text = "IOC: attacker abused hxxps://github[.]com/evil/repo for payload delivery"
+        urls = [
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "url"
+        ]
+        self.assertEqual(len(urls), 1)
+        self.assertEqual(refang(urls[0]), "https://github.com/evil/repo")
+
+    def test_vendor_contact_emails_are_not_iocs(self) -> None:
+        text = "IOC: contact ti_support@qianxin.com or phish@bad-domain.example"
+        emails = {
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "email"
+        }
+        self.assertEqual(emails, {"phish@bad-domain.example"})
+
+    def test_bare_public_suffix_is_not_a_domain(self) -> None:
+        """co.kr や ddns.net 単体は指標にならないが、サブドメインは残す。"""
+        text = "IOC list: co.kr ddns.net mfahost.ddns.net"
+        domains = {
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "domain"
+        }
+        self.assertEqual(domains, {"mfahost.ddns.net"})
+
+    def test_non_routable_and_resolver_ips_are_not_iocs(self) -> None:
+        text = "IOC: 127.0.0.1 10.1.2.3 192.168.1.1 8.8.8.8 203.0.113.10 45.61.136.56"
+        ips = {
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
+            if kind == "ipv4"
+        }
+        self.assertEqual(ips, {"45.61.136.56"})
+
+    def test_structured_source_reference_host_is_kept(self) -> None:
+        """構造化IOC表からの取り込みはアナリストが指標として並べたものとみなす。"""
+        text = "https://github.com/evil/repo"
+        urls = [
+            value for kind, value, _ in
+            extract_iocs(text, allow_plain_domains=False, explicit_structured=True)
+            if kind == "url"
+        ]
+        self.assertEqual(urls, ["https://github.com/evil/repo"])
+
+
+class RefangTests(unittest.TestCase):
+    def test_bracketed_scheme_leaves_no_residue(self) -> None:
+        """[:] を先に解決しないと hxxp が残る(旧実装の不具合)。"""
+        self.assertEqual(refang("hxxps[:]//evil.example/a"), "https://evil.example/a")
+        self.assertEqual(refang("hxxp[:]//evil.example"), "http://evil.example")
+
+    def test_scheme_is_case_insensitive(self) -> None:
+        self.assertEqual(refang("HXXPS://Evil.example"), "https://Evil.example")
+        self.assertEqual(refang("hXXps://Evil.example"), "https://Evil.example")
+
+    def test_bracketed_at_and_dot_words(self) -> None:
+        self.assertEqual(refang("user[@]evil.example"), "user@evil.example")
+        self.assertEqual(refang("evil[dot]example"), "evil.example")
+        self.assertEqual(refang("user[at]evil[dot]example"), "user@evil.example")
 
 
 class TimeTests(unittest.TestCase):

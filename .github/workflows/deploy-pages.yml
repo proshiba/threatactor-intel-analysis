@@ -24,10 +24,15 @@ jobs:
       - name: Rebuild actor index
         run: python3 ui/build_data.py
 
+      - name: Rebuild portal cross-search index
+        run: python3 ui/build_portal_index.py
+
       - name: Assemble site
         run: |
           mkdir -p _site
           cp -r ui _site/ui
+          test -f _site/ui/api/v1/meta.json
+          test -f _site/ui/api/v1/search.json
           cp -r profiles _site/profiles
           touch _site/.nojekyll
           cat > _site/index.html <<'HTML'

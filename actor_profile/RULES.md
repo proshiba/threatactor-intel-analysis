@@ -142,6 +142,26 @@ IOC値と観測イベントを分離する。IOCとして扱うのは、原則�
 
 実行コマンド、ファイルパス、検体内文字列等はIOCへ混在させず、`artifacts.csv`へ保存する。
 
+次の値は、形式が上記に当てはまってもIOCとして取り込まない。いずれも脅威と無関係な値であり、
+横断検索で無関係な資料同士を誤って結び付けるためである。判定用の一覧は
+[reference-hosts.json](reference/reference-hosts.json)に置き、
+`scripts/ingest_observables.py`と`../ui/build_portal_index.py`が共有する。
+
+- 出典レポート自身の参考リンク。ベンダーブログ、CERT、報道、リファレンスサイトのURL・
+  ドメイン・問い合わせ窓口メールアドレス。`securelist.com`、`attack.mitre.org`、
+  `www.microsoft.com`など。
+- 公開サフィックス単体。`co.kr`、`ddns.net`など。サブドメイン（`mfahost.ddns.net`）は
+  実際の指標なので残す。
+- 到達不能・予約済みアドレス。ループバック、RFC1918、ドキュメント用レンジ
+  （`192.0.2.0/24`等の伏字）、マルチキャスト、および公開DNSリゾルバ。
+- 拡張子がTLDとして存在しないファイル名。`readme.txt`、`index.html`など。
+  `.md`（モルドバ）、`.py`（パラグアイ）のようにTLDでもある拡張子は除外しない。
+
+ただし出典側で難読化されている値（`hxxps://github[.]com/...`）と、構造化IOC表から
+取り込んだ値は、アナリストが指標として明示したものとみなし上記に関わらず残す。
+`t.me`、`bit.ly`、`telegra.ph`、`webhook.site`のように攻撃者の実利用が多いサービスは、
+参考リンクとしての出現があっても一覧に入れない。
+
 ### 8.1 Indicator
 
 同じ正規化値は1件に集約する。
