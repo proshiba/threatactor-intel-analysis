@@ -1,0 +1,60 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rebuild actor index
+        run: python3 ui/build_data.py
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r ui _site/ui
+          cp -r profiles _site/profiles
+          touch _site/.nojekyll
+          cat > _site/index.html <<'HTML'
+          <!DOCTYPE html>
+          <html lang="ja">
+          <head>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=./ui/">
+          <link rel="canonical" href="./ui/">
+          <title>Threat Actor Intelligence Profiles</title>
+          </head>
+          <body><a href="./ui/">Threat Actor Intelligence Profiles UI へ移動</a></body>
+          </html>
+          HTML
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

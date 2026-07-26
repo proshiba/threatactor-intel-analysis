@@ -32,21 +32,21 @@ ui/
 
 ## GitHub Pages での公開
 
-リポジトリの **Settings → Pages** で以下を設定してください。
+**Settings → Pages** の Source を `GitHub Actions` に設定してください。
+`main` へのプッシュごとに [.github/workflows/deploy-pages.yml](../.github/workflows/deploy-pages.yml)
+が実行され、以下を行います(手動実行は Actions タブの `workflow_dispatch` から)。
 
-- Source: `Deploy from a branch`
-- Branch: 公開したいブランチ / フォルダ `/ (root)`
+1. `python3 ui/build_data.py` で索引 `ui/data/actors.json` を再生成
+   (このためプロファイル更新時に手元で再生成し忘れても、公開サイトは常に最新です)
+2. `ui/` と `profiles/` をサイトとして組み立て(ルートには `/ui/` へのリダイレクトを配置)
+3. Pages へデプロイ
 
-UIはリポジトリルートから相対パスで `profiles/` を読むため、フォルダは
-`/ (root)` を指定する必要があります(`/docs` ではなく)。公開URLは
-`https://<user>.github.io/<repo>/ui/` になります。
+UIは `profiles/` 配下のJSONを相対パスで読むため、`profiles/` も一緒に配信されます。
+公開URLは `https://<user>.github.io/<repo>/ui/`(ルートアクセスは自動で `/ui/` へ)。
 
-ルートに `.nojekyll` を置いてあるため、Jekyllビルドはスキップされます
-(大量のMarkdown/JSONを含むリポジトリのため必須です)。
+## 索引の再生成(ローカル確認用)
 
-## 索引の再生成
-
-プロファイルを追加・更新した後は索引を再生成してコミットしてください。
+デプロイ時に自動再生成されますが、ローカルで動作確認する場合は手動で実行できます。
 
 ```bash
 python3 ui/build_data.py
