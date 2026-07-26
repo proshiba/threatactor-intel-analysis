@@ -69,6 +69,51 @@ export async function fetchJson(url) {
   return res.json();
 }
 
+export async function fetchText(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`${url} の取得に失敗しました (HTTP ${res.status})`);
+  return res.text();
+}
+
+// RFC 4180準拠の簡易CSVパーサ(引用符内のカンマ・改行・二重引用符に対応)。
+// 1行目をヘッダとしてオブジェクト配列を返す。
+export function parseCsv(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else {
+        field += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ",") {
+      row.push(field); field = "";
+    } else if (ch === "\n" || ch === "\r") {
+      if (ch === "\r" && text[i + 1] === "\n") i++;
+      row.push(field); field = "";
+      if (row.length > 1 || row[0] !== "") rows.push(row);
+      row = [];
+    } else {
+      field += ch;
+    }
+  }
+  if (field !== "" || row.length) { row.push(field); rows.push(row); }
+  if (!rows.length) return [];
+  const header = rows[0];
+  return rows.slice(1).map((r) => {
+    const obj = {};
+    header.forEach((h, i) => { obj[h] = r[i] ?? ""; });
+    return obj;
+  });
+}
+
 export function renderError(message) {
   app.innerHTML = `<div class="error-box"><strong>エラー:</strong> ${esc(message)}<br>
     <a href="#/">一覧へ戻る</a></div>`;
