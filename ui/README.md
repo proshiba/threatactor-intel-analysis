@@ -7,9 +7,16 @@
 
 ```text
 ui/
-├── index.html          # エントリポイント(一覧・詳細を1ページで切替)
+├── index.html          # エントリポイント(一覧・詳細・グラフを1ページで切替)
 ├── assets/
-│   ├── app.js          # SPA本体(検索・フィルタ・詳細描画・IOC遅延読込)
+│   ├── js/             # ESモジュール構成のSPA本体
+│   │   ├── main.js         # 起動とハッシュルーティング
+│   │   ├── config.js       # 定数(パス、ページサイズ、配色、ATT&CK戦術順)
+│   │   ├── util.js         # 整形ヘルパーと共有UI部品(テーブル、検索、ページング)
+│   │   ├── data.js         # アプリ状態、索引読込、関係グラフデータ構築
+│   │   ├── view-list.js    # 一覧ビュー(統計・検索・フィルタ・ソート)
+│   │   ├── view-actor.js   # 詳細ビュー(セクションビルダー群+IOC遅延読込)
+│   │   └── view-graph.js   # 関係グラフビュー(Canvas力学レイアウト)
 │   └── style.css       # ダークテーマのスタイル
 ├── data/
 │   └── actors.json     # 検索・フィルタ用の軽量索引(build_data.pyで生成)
@@ -32,21 +39,21 @@ ui/
 
 ## GitHub Pages での公開
 
-リポジトリの **Settings → Pages** で以下を設定してください。
+**Settings → Pages** の Source を `GitHub Actions` に設定してください。
+`main` へのプッシュごとに [.github/workflows/deploy-pages.yml](../.github/workflows/deploy-pages.yml)
+が実行され、以下を行います(手動実行は Actions タブの `workflow_dispatch` から)。
 
-- Source: `Deploy from a branch`
-- Branch: 公開したいブランチ / フォルダ `/ (root)`
+1. `python3 ui/build_data.py` で索引 `ui/data/actors.json` を再生成
+   (このためプロファイル更新時に手元で再生成し忘れても、公開サイトは常に最新です)
+2. `ui/` と `profiles/` をサイトとして組み立て(ルートには `/ui/` へのリダイレクトを配置)
+3. Pages へデプロイ
 
-UIはリポジトリルートから相対パスで `profiles/` を読むため、フォルダは
-`/ (root)` を指定する必要があります(`/docs` ではなく)。公開URLは
-`https://<user>.github.io/<repo>/ui/` になります。
+UIは `profiles/` 配下のJSONを相対パスで読むため、`profiles/` も一緒に配信されます。
+公開URLは `https://<user>.github.io/<repo>/ui/`(ルートアクセスは自動で `/ui/` へ)。
 
-ルートに `.nojekyll` を置いてあるため、Jekyllビルドはスキップされます
-(大量のMarkdown/JSONを含むリポジトリのため必須です)。
+## 索引の再生成(ローカル確認用)
 
-## 索引の再生成
-
-プロファイルを追加・更新した後は索引を再生成してコミットしてください。
+デプロイ時に自動再生成されますが、ローカルで動作確認する場合は手動で実行できます。
 
 ```bash
 python3 ui/build_data.py
