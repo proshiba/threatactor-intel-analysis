@@ -4,7 +4,7 @@
   "name": "Kimsuky",
   "status": "review",
   "created_at": "2026-07-25T00:00:00Z",
-  "updated_at": "2026-07-26T05:28:44Z",
+  "updated_at": "2026-07-26T06:00:43Z",
   "languages": [
     "ja"
   ],
@@ -382,50 +382,24 @@
         "types": [
           "backdoor"
         ],
-        "description": "tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。",
+        "description": "Kimsukyとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
         "first_observed": {
-          "value": "2026-05-27T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-ioc-date"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "last_observed": {
-          "value": "2026-05-27T00:00:00Z",
-          "precision": "day",
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
           "status": "known",
-          "basis": "daily-ioc-date"
+          "basis": "Enki報告: 2026年4月まで"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-f05f4888998c8f53f5ca"
         ],
-        "analyst_notes": "日次収集レコード daily-record--3c88e3a6b24dc699323c232c から追加。"
-      },
-      {
-        "id": "malware--daily-c07f6d43656cbaec556c",
-        "name": "PowerShell RAT",
-        "aliases": [],
-        "types": [
-          "RAT"
-        ],
-        "description": "tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。",
-        "first_observed": {
-          "value": "2026-05-15T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-ioc-date"
-        },
-        "last_observed": {
-          "value": "2026-05-15T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "daily-ioc-date"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-f3e6fda98089cb5da96d"
-        ],
-        "analyst_notes": "日次収集レコード daily-record--409ee41ac6701a1d37b766b1 から追加。"
+        "analyst_notes": "最終payloadとして直接解析されている。"
       },
       {
         "id": "malware--fastviewer",
@@ -762,6 +736,60 @@
   },
   "activities": [
     {
+      "activity_id": "activity--daily-9a84486a6c98d6fea40f",
+      "name": "2026年第1四半期 DPRK Operation Kimsuky 分析",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "description": "Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f3e6fda98089cb5da96d"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--9a84486a6c98d6fea40f59ea から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: LogpressoがKimsukyの4キャンペーンとして分析。PowerShell RATは固有ファミリー名ではないためCapability名としては採用しない。"
+    },
+    {
+      "activity_id": "activity--daily-ca0d00789c7bb400d0f4",
+      "name": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "Enki報告: 2026年4月まで"
+      },
+      "description": "ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-1432659072aa52651920"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f05f4888998c8f53f5ca"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--ca0d00789c7bb400d0f485a1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: Enkiはインフラ、コード、暗号鍵の再利用を根拠にKimsukyへ帰属している。"
+    },
+    {
       "activity_id": "activity--smoke-screen",
       "name": "Smoke Screen / Stealth Power",
       "activity_type": "campaign",
@@ -917,62 +945,6 @@
         "source--fbi-kimsuky-quishing-2026"
       ],
       "analyst_notes": ""
-    },
-    {
-      "activity_id": "activity--daily-b77e5af306b5fa121e1a",
-      "name": "2026年第1四半期 DPRK Operation Kimsuky 分析",
-      "activity_type": "reported-activity",
-      "first_observed": {
-        "value": "2026-05-15T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-ioc-date"
-      },
-      "last_observed": {
-        "value": "2026-05-15T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-ioc-date"
-      },
-      "description": "Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。",
-      "target_refs": [],
-      "malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-f3e6fda98089cb5da96d"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--409ee41ac6701a1d37b766b1 から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
-    },
-    {
-      "activity_id": "activity--daily-380e60d78e8b9558d568",
-      "name": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種",
-      "activity_type": "reported-activity",
-      "first_observed": {
-        "value": "2026-05-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-ioc-date"
-      },
-      "last_observed": {
-        "value": "2026-05-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-ioc-date"
-      },
-      "description": "ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。",
-      "target_refs": [],
-      "malware_refs": [
-        "malware--daily-1432659072aa52651920"
-      ],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-f05f4888998c8f53f5ca"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--3c88e3a6b24dc699323c232c から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
     }
   ],
   "targets": {
@@ -1613,7 +1585,7 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260530.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260530.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-f3e6fda98089cb5da96d",
@@ -1631,7 +1603,7 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260520.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260520.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--darkhorse-2023",

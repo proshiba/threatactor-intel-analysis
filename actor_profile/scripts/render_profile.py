@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from common import load_json, stable_digest, utc_now, write_json_atomic
+from common import load_json, stable_digest, write_json_atomic
 
 
 TLP_CLEAR = "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
@@ -76,10 +76,10 @@ def render_markdown(
     lines = [
         f"# {profile['name']} 脅威アクタープロファイル",
         "",
-        f"プロファイルID: `{profile['profile_id']}`  ",
-        f"状態: {profile['status']}  ",
-        f"更新日時: {profile['updated_at']}  ",
-        f"構造バージョン: {profile['schema_version']}",
+        f"- プロファイルID: `{profile['profile_id']}`",
+        f"- 状態: {profile['status']}",
+        f"- 更新日時: {profile['updated_at']}",
+        f"- 構造バージョン: {profile['schema_version']}",
         "",
         "## エグゼクティブサマリー",
         "",
@@ -500,8 +500,14 @@ def render_stix(
     iocs: dict[str, Any] | None,
     artifacts_path: Path | None,
     crosscheck: dict[str, Any] | None = None,
+    previous_bundle: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    now = utc_now()
+    # Use the canonical profile timestamp so repeated rendering is byte-stable.
+    now = profile["updated_at"]
+    previous_by_id = {
+        item["id"]: item
+        for item in (previous_bundle or {}).get("objects", [])
+    }
     objects: list[dict[str, Any]] = []
     source_by_id = {item["source_id"]: item for item in profile["sources"]}
     actor = profile["actor"]
@@ -709,6 +715,13 @@ def render_stix(
 
     if iocs:
         for indicator in iocs.get("indicators", []):
+            indicator_stix_id = stix_id("indicator", indicator["indicator_id"])
+            previous_indicator = previous_by_id.get(indicator_stix_id, {})
+            valid_from = (
+                indicator["first_observed"].get("value")
+                or previous_indicator.get("valid_from")
+                or profile["created_at"]
+            )
             obj = stix_base(
                 "indicator",
                 indicator["indicator_id"],
@@ -718,7 +731,7 @@ def render_stix(
                     "pattern": indicator["stix_pattern"],
                     "pattern_type": "stix",
                     "pattern_version": "2.1",
-                    "valid_from": indicator["first_observed"].get("value") or now,
+                    "valid_from": valid_from,
                     "indicator_types": ["malicious-activity"],
                     "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
                     "x_disposition": indicator["disposition"],
@@ -780,6 +793,24 @@ def render_stix(
             },
         )
     )
+    if previous_bundle:
+        for item in objects:
+            previous = previous_by_id.get(item["id"])
+            if not previous:
+                continue
+            item["created"] = previous.get("created", item["created"])
+            current_semantic = {
+                key: value
+                for key, value in item.items()
+                if key not in {"created", "modified"}
+            }
+            previous_semantic = {
+                key: value
+                for key, value in previous.items()
+                if key not in {"created", "modified"}
+            }
+            if current_semantic == previous_semantic:
+                item["modified"] = previous.get("modified", item["modified"])
     return {
         "type": "bundle",
         "id": stix_id("bundle", profile["profile_id"]),
@@ -809,12 +840,20 @@ def main() -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
     markdown_path = output_dir / "profile-ja.md"
     stix_path = output_dir / "profile.stix2.json"
+    previous_bundle = load_json(stix_path) if stix_path.exists() else None
     markdown_path.write_text(
         render_markdown(profile, iocs, artifacts_path, crosscheck),
         encoding="utf-8",
     )
     write_json_atomic(
-        stix_path, render_stix(profile, iocs, artifacts_path, crosscheck)
+        stix_path,
+        render_stix(
+            profile,
+            iocs,
+            artifacts_path,
+            crosscheck,
+            previous_bundle=previous_bundle,
+        ),
     )
     print(
         json.dumps(

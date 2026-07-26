@@ -12,7 +12,6 @@ import csv
 import json
 import re
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -121,6 +120,7 @@ def build_record(slug: str, profile_dir: Path) -> tuple[dict, list] | None:
         },
         "ioc_types": ioc_types,
         "updated_at": (profile.get("updated_at") or "")[:10] or None,
+        "_updated_at_full": profile.get("updated_at") or "",
     }
     raw_relationships = [
         {
@@ -185,16 +185,20 @@ def main() -> int:
         "artifacts": sum(r["counts"]["artifacts"] for r in records),
         "sources": sum(r["counts"]["sources"] for r in records),
     }
+    generated_at = max(
+        (record.pop("_updated_at_full") for record in records),
+        default="",
+    )
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_at": generated_at or None,
         "stats": stats,
         "actors": records,
     }
-    with OUT_PATH.open("w", encoding="utf-8") as fh:
-        json.dump(payload, fh, ensure_ascii=False, separators=(",", ":"))
-        fh.write("\n")
+    content = json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n"
+    if not OUT_PATH.exists() or OUT_PATH.read_text(encoding="utf-8") != content:
+        OUT_PATH.write_text(content, encoding="utf-8")
 
     size_kb = OUT_PATH.stat().st_size / 1024
     print(f"wrote {OUT_PATH} ({len(records)} actors, {size_kb:.0f} KiB)")

@@ -1,9 +1,9 @@
 # Gamaredon 脅威アクタープロファイル
 
-プロファイルID: `actor--gamaredon`  
-状態: draft  
-更新日時: 2026-07-26T05:28:43Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--gamaredon`
+- 状態: draft
+- 更新日時: 2026-07-26T06:00:42Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -92,8 +92,8 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--daily-d2f92cab7d572d733a5d | GammaWorm | tech-memo日次IOCでGamaredonによる使用が報告されたマルウェア。 | 2026-06-03 | 2026-06-03 | 中 | `source--daily-f9666a37c61d10f83b24` |
-| malware--daily-dee986e090a2e04cffbb | GammaPhish | tech-memo日次IOCでGamaredonによる使用が報告されたマルウェア。 | 2026-06-03 | 2026-06-03 | 中 | `source--daily-f9666a37c61d10f83b24` |
+| malware--daily-d2f92cab7d572d733a5d | GammaWorm | Gamaredonとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-f9666a37c61d10f83b24` |
+| malware--daily-dee986e090a2e04cffbb | GammaPhish | Gamaredonとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-f9666a37c61d10f83b24` |
 | malware--powerpunch | PowerPunch | [PowerPunch](https://attack.mitre.org/software/S0685) is a lightweight downloader that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--pteranodon | Pteranodon | [Pteranodon](https://attack.mitre.org/software/S0147) is a custom backdoor used by [Gamaredon Group](https://attack.mitre.org/groups/G0047). (Citation: Palo Alto Gamaredon Feb 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--quietsieve | QuietSieve | [QuietSieve](https://attack.mitre.org/software/S0686) is an information stealer that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -126,7 +126,7 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | reported-activity | 2026-06-03 | 2026-06-03 | Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。 | 中 | `source--daily-f9666a37c61d10f83b24` |
+| FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | reported-activity | 不明 | 不明 | Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。 | 中 | `source--daily-f9666a37c61d10f83b24` |
 
 
 

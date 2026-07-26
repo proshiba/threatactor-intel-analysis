@@ -1,9 +1,9 @@
 # MuddyWater 脅威アクタープロファイル
 
-プロファイルID: `actor--muddywater`  
-状態: draft  
-更新日時: 2026-07-26T05:28:44Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--muddywater`
+- 状態: draft
+- 更新日時: 2026-07-26T06:00:44Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -94,7 +94,6 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--covicli | Covicli | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--daily-7a85303a3ef2c980b2c4 | Chaos | tech-memo日次IOCでMuddyWaterによる使用が報告されたマルウェア。 | 2026-05-07 | 2026-05-07 | 中 | `source--daily-f760c7a2efdf8be3ce1f` |
 | malware--fooder | Fooder | [Fooder](https://attack.mitre.org/software/S9033) is a custom 64-bit C/C++ loader used by [MuddyWater](https://attack.mitre.org/groups/G0069) that can decrypt and reflectively load embedded payloads such as a go-socks5 proxy utility, the open-source HackBrowserData infostealer, or the [MuddyViper](https://attack.mitre.org/software/S9032) backdoor. [Fooder](https://attack.mitre.org/software/S9033) has frequently masqueraded as an entertainment executable, such as the Snake game (e.g., `Snake_Game.exe`).(Citation: ESET_MuddyWater_Dec2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--lp-notes | LP-Notes | [LP-Notes](https://attack.mitre.org/software/S9036) is a C/C++ Windows credential stealer used by [MuddyWater](https://attack.mitre.org/groups/G0069). [LP-Notes](https://attack.mitre.org/software/S9036) was named after the `lp-notes.txt` file that is used to store stolen credentials.(Citation: ESET_MuddyWater_Dec2025)   | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--mori | Mori | [Mori](https://attack.mitre.org/software/S1047) is a backdoor that has been used by [MuddyWater](https://attack.mitre.org/groups/G0069) since at least January 2022.(Citation: DHS CISA AA22-055A MuddyWater February 2022)(Citation: CYBERCOM Iranian Intel Cyber January 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -148,9 +147,9 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | BlackWater | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | reported-activity | 不明 | 不明 | イラン系MuddyWaterは、Microsoft Teamsのソーシャルエンジニアリングで侵入し、Chaosランサムウェア攻撃を装った。 攻撃では認証情報窃取、永続化、リモートアクセス、データ流出、恐喝メール、Chaosリークサイト掲載が行われた。 Rapid7は、ランサムウェア要素は諜報活動の隠蔽と帰属妨害のために使われた可能性が高いと評価した。 攻撃者はQuick Assist風フィッシングやローカルテキスト入力で認証情報を奪い、RDP、DWAgent、AnyDeskで永続化した。 ms_upd.exeがMicrosoft WebView2アプリを装うGame.exeバックドアを投下し、コマンド実行やファイル操作などを可能にした。 | 中 | `source--daily-f760c7a2efdf8be3ce1f` |
 | Operation Quicksand | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| イラン系ハッカー、大手韓国電子メーカーを標的に | reported-activity | 2026-02-20 | 2026-05-29 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 中 | `source--daily-ad0ed26155c84becbe19` |
-| MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | reported-activity | 2026-05-07 | 2026-05-07 | イラン系MuddyWaterは、Microsoft Teamsのソーシャルエンジニアリングで侵入し、Chaosランサムウェア攻撃を装った。 攻撃では認証情報窃取、永続化、リモートアクセス、データ流出、恐喝メール、Chaosリークサイト掲載が行われた。 Rapid7は、ランサムウェア要素は諜報活動の隠蔽と帰属妨害のために使われた可能性が高いと評価した。 攻撃者はQuick Assist風フィッシングやローカルテキスト入力で認証情報を奪い、RDP、DWAgent、AnyDeskで永続化した。 ms_upd.exeがMicrosoft WebView2アプリを装うGame.exeバックドアを投下し、コマンド実行やファイル操作などを可能にした。 | 中 | `source--daily-f760c7a2efdf8be3ce1f` |
+| イラン系ハッカー、大手韓国電子メーカーを標的に | reported-activity | 2026-02 | 2026-02 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 高 | `source--daily-ad0ed26155c84becbe19` |
 
 BlackWater; Operation Quicksand
 
