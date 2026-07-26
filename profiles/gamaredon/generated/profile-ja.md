@@ -2,7 +2,7 @@
 
 プロファイルID: `actor--gamaredon`  
 状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
+更新日時: 2026-07-26T05:28:43Z  
 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -92,9 +92,11 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--quietsieve | QuietSieve | [QuietSieve](https://attack.mitre.org/software/S0686) is an information stealer that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--pteranodon | Pteranodon | [Pteranodon](https://attack.mitre.org/software/S0147) is a custom backdoor used by [Gamaredon Group](https://attack.mitre.org/groups/G0047). (Citation: Palo Alto Gamaredon Feb 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--daily-d2f92cab7d572d733a5d | GammaWorm | tech-memo日次IOCでGamaredonによる使用が報告されたマルウェア。 | 2026-06-03 | 2026-06-03 | 中 | `source--daily-f9666a37c61d10f83b24` |
+| malware--daily-dee986e090a2e04cffbb | GammaPhish | tech-memo日次IOCでGamaredonによる使用が報告されたマルウェア。 | 2026-06-03 | 2026-06-03 | 中 | `source--daily-f9666a37c61d10f83b24` |
 | malware--powerpunch | PowerPunch | [PowerPunch](https://attack.mitre.org/software/S0685) is a lightweight downloader that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--pteranodon | Pteranodon | [Pteranodon](https://attack.mitre.org/software/S0147) is a custom backdoor used by [Gamaredon Group](https://attack.mitre.org/groups/G0047). (Citation: Palo Alto Gamaredon Feb 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--quietsieve | QuietSieve | [QuietSieve](https://attack.mitre.org/software/S0686) is an information stealer that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -122,7 +124,9 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | reported-activity | 2026-06-03 | 2026-06-03 | Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。 | 中 | `source--daily-f9666a37c61d10f83b24` |
 
 
 
@@ -263,8 +267,8 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 ## IOC／artifact概要
 
-- IOC値: 1674件
-- IOC観測: 1737件
+- IOC値: 1688件
+- IOC観測: 1751件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 53件
 - 非IOC artifact観測: 532件（`artifacts.csv`）
@@ -286,23 +290,24 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--gamaredon--a0d52e16421d8b11 | Beyond Bullets and Bombs An Examination of Armageddon Groups Cyber |  | 不明 | Gamaredon/Beyond_Bullets_and_Bombs_An_Examination_of_Armageddon_Groups_Cyber.pdf | report | TLP:CLEAR | 中 |
-| source--gamaredon--56ce9c37d34fb725 | BlueAlpha Abuses Cloudflare Tunneling Service for GammaDrop Staging Infrastructure |  | 不明 | Gamaredon/BlueAlpha Abuses Cloudflare Tunneling Service for GammaDrop Staging Infrastructure.pdf | report | TLP:CLEAR | 中 |
-| source--gamaredon--43ece8b760fd4f72 | Cybergun Technical Analysis of the Armageddons Infostealer |  | 不明 | Gamaredon/Cybergun_Technical_Analysis_of_the_Armageddons_Infostealer.pdf | report | TLP:CLEAR | 中 |
-| source--gamaredon--68bb036eb943d265 | Gamaredon202102 ioc1000+ |  | 2021-02 | Gamaredon/Gamaredon202102_ioc1000+.csv | structured-data | TLP:CLEAR | 中 |
-| source--gamaredon--b32b75e3cedfdb37 | Platinum feature article   Targeted attacks in South and Southeast Asia April 2016 |  | 2016 | Gamaredon/Platinum feature article - Targeted attacks in South and Southeast Asia April 2016.pdf | report | TLP:CLEAR | 中 |
-| source--gamaredon--24d0ac8621d42b62 | README |  | 不明 | Gamaredon/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--gamaredon--9d4f2351eb5fd5c0 | Technical report Armagedon |  | 不明 | Gamaredon/Technical report Armagedon.pdf | report | TLP:CLEAR | 中 |
+| source--daily-f9666a37c61d10f83b24 | FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | blog.sekoia.io | 2026-06-03 | https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/ | osint-report | TLP:CLEAR | 中 |
 | source--gamaredon--0512c893b55f399d | cyberespionage gamaredon way |  | 不明 | Gamaredon/cyberespionage-gamaredon-way.pdf | report | TLP:CLEAR | 中 |
+| source--gamaredon--24d0ac8621d42b62 | README |  | 不明 | Gamaredon/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--gamaredon--43ece8b760fd4f72 | Cybergun Technical Analysis of the Armageddons Infostealer |  | 不明 | Gamaredon/Cybergun_Technical_Analysis_of_the_Armageddons_Infostealer.pdf | report | TLP:CLEAR | 中 |
+| source--gamaredon--56ce9c37d34fb725 | BlueAlpha Abuses Cloudflare Tunneling Service for GammaDrop Staging Infrastructure |  | 不明 | Gamaredon/BlueAlpha Abuses Cloudflare Tunneling Service for GammaDrop Staging Infrastructure.pdf | report | TLP:CLEAR | 中 |
+| source--gamaredon--68bb036eb943d265 | Gamaredon202102 ioc1000+ |  | 2021-02 | Gamaredon/Gamaredon202102_ioc1000+.csv | structured-data | TLP:CLEAR | 中 |
+| source--gamaredon--9d4f2351eb5fd5c0 | Technical report Armagedon |  | 不明 | Gamaredon/Technical report Armagedon.pdf | report | TLP:CLEAR | 中 |
+| source--gamaredon--a0d52e16421d8b11 | Beyond Bullets and Bombs An Examination of Armageddon Groups Cyber |  | 不明 | Gamaredon/Beyond_Bullets_and_Bombs_An_Examination_of_Armageddon_Groups_Cyber.pdf | report | TLP:CLEAR | 中 |
+| source--gamaredon--b32b75e3cedfdb37 | Platinum feature article   Targeted attacks in South and Southeast Asia April 2016 |  | 2016 | Gamaredon/Platinum feature article - Targeted attacks in South and Southeast Asia April 2016.pdf | report | TLP:CLEAR | 中 |
 | source--gamaredon--daa9dc266e370995 | gamaredon in 2025 |  | 2025 | Gamaredon/gamaredon-in-2025.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

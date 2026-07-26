@@ -2,7 +2,7 @@
 
 プロファイルID: `actor--kimsuky`  
 状態: review  
-更新日時: 2026-07-25T14:07:08Z  
+更新日時: 2026-07-26T05:28:44Z  
 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -105,11 +105,13 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--appleseed | AppleSeed | コマンド実行、収集、キー入力・画面取得、ファイル転送を行う独自バックドア。 | 2019-05-06 | 2024 | 高 | `source--operation-newton`, `source--rapid7-2024` |
 | malware--alphaseed | AlphaSeed | Go製。NaverメールとChrome DevTools ProtocolをC2に利用するAppleSeed系能力。 | 2023-06 | 2024 | 高 | `source--rapid7-2024` |
+| malware--appleseed | AppleSeed | コマンド実行、収集、キー入力・画面取得、ファイル転送を行う独自バックドア。 | 2019-05-06 | 2024 | 高 | `source--operation-newton`, `source--rapid7-2024` |
 | malware--babyshark | BabyShark | VBScriptを中心とする初期活動・情報収集マルウェア。 | 2018 | 2024 | 高 | `source--joint-csa-2023`, `source--rapid7-2024` |
-| malware--kgh | KGH Spyware | ブラウザ、メールクライアント、資格情報等を収集し、FTP C2と遠隔コマンドを利用する。 | 2020 | 2021-07 | 高 | `source--kgh-2021` |
+| malware--daily-1432659072aa52651920 | HttpSpy | tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。 | 2026-05-27 | 2026-05-27 | 中 | `source--daily-f05f4888998c8f53f5ca` |
+| malware--daily-c07f6d43656cbaec556c | PowerShell RAT | tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。 | 2026-05-15 | 2026-05-15 | 中 | `source--daily-f3e6fda98089cb5da96d` |
 | malware--fastviewer | FastViewer Android Malware | Google Play同期・開発者機能の悪用で配布されたAndroidマルウェア群。 | 2022 | 2023-03-20 | 高 | `source--browser-advisory-2023` |
+| malware--kgh | KGH Spyware | ブラウザ、メールクライアント、資格情報等を収集し、FTP C2と遠隔コマンドを利用する。 | 2020 | 2021-07 | 高 | `source--kgh-2021` |
 
 ### ツール
 
@@ -151,9 +153,11 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 |---|---|---|---|---|---|---|
 | Smoke Screen / Stealth Power | campaign | 2019-03 | 2019-05 | DPRK関連のHWP/DOCフィッシング、HTA、PowerShellキーロガーを伴う活動。 | 高 | `source--smoke-screen` |
 | Operation Newton | campaign | 2020 | 2021-10 | 工学研究者への資格情報フィッシングからAppleSeed、Webシェル、サーバ横展開へ進む活動。 | 高 | `source--operation-newton` |
-| Operation DarkHorse | campaign | 2022-02 | 2023-10-16 | VBSからJSEへ変化したCHM活動。暗号資産、金融、保険等の誘引を利用。 | 中 | `source--darkhorse-2023` |
 | Browser Extension and Google Play Abuse | campaign | 2022 | 2023-03-20 | Chromium拡張でGmailを窃取し、Google Play同期機能でAndroidマルウェアを配布。 | 高 | `source--browser-advisory-2023` |
+| Operation DarkHorse | campaign | 2022-02 | 2023-10-16 | VBSからJSEへ変化したCHM活動。暗号資産、金融、保険等の誘引を利用。 | 中 | `source--darkhorse-2023` |
 | Kimsuky QR-code Spearphishing Campaign | campaign | 2025-05 | 2025-06 | Kimsuky impersonated foreign advisers, embassy and think-tank personnel, and conference organizers. QR codes led think-tank and strategic-advisory targets to credential-harvesting infrastructure. | 高 | `source--fbi-kimsuky-quishing-2026` |
+| 2026年第1四半期 DPRK Operation Kimsuky 分析 | reported-activity | 2026-05-15 | 2026-05-15 | Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。 | 中 | `source--daily-f3e6fda98089cb5da96d` |
+| Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 | reported-activity | 2026-05-27 | 2026-05-27 | ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。 | 中 | `source--daily-f05f4888998c8f53f5ca` |
 
 少なくとも2012年から活動。2019年のSmoke ScreenとAppleSeed、2020-2021年のOperation Newton、2022-2023年のDarkHorseとCovert Stalker、2023年のブラウザ拡張・Google Play悪用、2024年のDMARC悪用へと配送・収集能力を更新している。
 
@@ -192,11 +196,11 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 ## IOC／artifact概要
 
-- IOC値: 1235件
-- IOC観測: 1527件
+- IOC値: 1307件
+- IOC観測: 1599件
 - 複数攻撃で観測: 1件
 - 要レビュー候補: 367件
-- 非IOC artifact観測: 869件（`artifacts.csv`）
+- 非IOC artifact観測: 871件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -222,26 +226,28 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--joint-csa-2023 | North Korea Using Social Engineering to Enable Hacking of Think Tanks, Academia, and Media | FBI, DOS, NSA, NIS, NPA, MOFA | 2023-06-01 | kimsuky/Joint_CSA_NK_Using_Social_Engineering_20230531.pdf | government-advisory | TLP:CLEAR | 高 |
-| source--dmarc-2024 | North Korean Actors Exploit Weak DMARC Security Policies | FBI, DOS, NSA | 2024-05-02 | kimsuky/Exploit Weak DMARC.pdf | government-advisory | TLP:CLEAR | 高 |
-| source--rapid7-2024 | Kimsuky's Phishing and Payload Tactics | Rapid7 | 2024 | kimsuky/rapid7-Kimsukys-Phishing-and-Payload-Tactics_wp.pdf | vendor-report | TLP:CLEAR | 高 |
-| source--operation-newton | Operation Newton: Hi Kimsuky? | Virus Bulletin | 2021-10 | kimsuky/Operation_Newton_Kimsuky-APPLE(SEED).pdf | technical-report | TLP:CLEAR | 高 |
-| source--covert-stalker | Operation Covert Stalker | AhnLab | 2023-11-01 | kimsuky/20231101_Kimsuky_OP.-Covert-Stalker-EN.pdf | vendor-report | TLP:CLEAR | 高 |
-| source--darkhorse-2023 | Operation DarkHorse CHM Attack Analysis | Genians | 2023-10-16 | kimsuky/20231016_threat_inteligence_report_DarkHorse.pdf | vendor-report | TLP:CLEAR | 中 |
-| source--browser-advisory-2023 | Warning on KIMSUKY Cyber Actor's Recent Campaigns against Google's Browser and App Store Services | BfV and NIS | 2023-03-20 | kimsuky/kimsuky-2023-03-20-joint-cyber-security-advisory.pdf | government-advisory | TLP:CLEAR | 高 |
-| source--kgh-2021 | Kimsuky New KGH Spyware Component Analysis | ThreatBook Labs | 2021-07 | kimsuky/Kimsuky-KGH.pdf | vendor-report | TLP:CLEAR | 中 |
-| source--smoke-screen | Analysis of the APT Campaign Smoke Screen | ESRC | 2019-04-17 | kimsuky/Smoke Screen.pdf | vendor-report | TLP:CLEAR | 高 |
-| source--microsoft-actor-list | Microsoft Threat Actor List | Microsoft-derived repository data | 不明 | microsoft-threat-actor-list.xlsx | reference-table | TLP:CLEAR | 中 |
-| source--qax-2024 | Cybersecurity Threats 2024 Annual Report | QAX | 2025 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | annual-report | TLP:CLEAR | 中 |
 | source--blurred-attribution | Blurred Lines of Cyber Threat Attribution | Repository source | 2025 | International Strategic/Korea/ Blurred-Lines-of-Cyber-Threat-Attribution.pdf | conference-report | TLP:CLEAR | 中 |
+| source--browser-advisory-2023 | Warning on KIMSUKY Cyber Actor's Recent Campaigns against Google's Browser and App Store Services | BfV and NIS | 2023-03-20 | kimsuky/kimsuky-2023-03-20-joint-cyber-security-advisory.pdf | government-advisory | TLP:CLEAR | 高 |
+| source--covert-stalker | Operation Covert Stalker | AhnLab | 2023-11-01 | kimsuky/20231101_Kimsuky_OP.-Covert-Stalker-EN.pdf | vendor-report | TLP:CLEAR | 高 |
+| source--daily-f05f4888998c8f53f5ca | Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 | enki.co.kr | 2026-05-30 | https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant | osint-report | TLP:CLEAR | 中 |
+| source--daily-f3e6fda98089cb5da96d | 2026年第1四半期 DPRK Operation Kimsuky 分析 | logpresso.com | 2026-05-20 | https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report | osint-report | TLP:CLEAR | 中 |
+| source--darkhorse-2023 | Operation DarkHorse CHM Attack Analysis | Genians | 2023-10-16 | kimsuky/20231016_threat_inteligence_report_DarkHorse.pdf | vendor-report | TLP:CLEAR | 中 |
+| source--dmarc-2024 | North Korean Actors Exploit Weak DMARC Security Policies | FBI, DOS, NSA | 2024-05-02 | kimsuky/Exploit Weak DMARC.pdf | government-advisory | TLP:CLEAR | 高 |
 | source--fbi-kimsuky-quishing-2026 | North Korean Kimsuky Actors Use Malicious QR Codes to Target Organizations | Federal Bureau of Investigation / IC3 | 2026-01-08 | https://www.ic3.gov/CSA/2026/260108.pdf | government-flash | TLP:CLEAR | 高 |
-| source--mitre-live-kimsuky-2026 | Kimsuky, Group G0094 | MITRE ATT&CK | 2026-04-23 | https://attack.mitre.org/groups/G0094/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--joint-csa-2023 | North Korea Using Social Engineering to Enable Hacking of Think Tanks, Academia, and Media | FBI, DOS, NSA, NIS, NPA, MOFA | 2023-06-01 | kimsuky/Joint_CSA_NK_Using_Social_Engineering_20230531.pdf | government-advisory | TLP:CLEAR | 高 |
+| source--kgh-2021 | Kimsuky New KGH Spyware Component Analysis | ThreatBook Labs | 2021-07 | kimsuky/Kimsuky-KGH.pdf | vendor-report | TLP:CLEAR | 中 |
 | source--mandiant-apt43-2023 | APT43: North Korean Group Uses Cybercrime to Fund Espionage Operations | Mandiant | 2023-03-28 | https://cloud.google.com/blog/topics/threat-intelligence/apt43-north-korea-cybercrime-espionage/ | vendor-research | TLP:CLEAR | 高 |
+| source--microsoft-actor-list | Microsoft Threat Actor List | Microsoft-derived repository data | 不明 | microsoft-threat-actor-list.xlsx | reference-table | TLP:CLEAR | 中 |
+| source--mitre-live-kimsuky-2026 | Kimsuky, Group G0094 | MITRE ATT&CK | 2026-04-23 | https://attack.mitre.org/groups/G0094/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--operation-newton | Operation Newton: Hi Kimsuky? | Virus Bulletin | 2021-10 | kimsuky/Operation_Newton_Kimsuky-APPLE(SEED).pdf | technical-report | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--qax-2024 | Cybersecurity Threats 2024 Annual Report | QAX | 2025 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | annual-report | TLP:CLEAR | 中 |
+| source--rapid7-2024 | Kimsuky's Phishing and Payload Tactics | Rapid7 | 2024 | kimsuky/rapid7-Kimsukys-Phishing-and-Payload-Tactics_wp.pdf | vendor-report | TLP:CLEAR | 高 |
+| source--smoke-screen | Analysis of the APT Campaign Smoke Screen | ESRC | 2019-04-17 | kimsuky/Smoke Screen.pdf | vendor-report | TLP:CLEAR | 高 |
 
 ## 自由記述
 

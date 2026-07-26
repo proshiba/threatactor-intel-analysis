@@ -6,8 +6,8 @@
       "type": "intrusion-set",
       "spec_version": "2.1",
       "id": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
-      "created": "2026-07-25T15:23:08Z",
-      "modified": "2026-07-25T15:23:08Z",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -91,11 +91,815 @@
       }
     },
     {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--ab8b05df-f2b1-4d53-b98f-8da91fa60f6d",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Silent Ransom Group、偽のITサポート電話で法律事務所を標的に",
+      "description": "Silent Ransom Groupは、米国の法律事務所や専門サービス組織を偽ITサポート通話で積極的に狙っている。 Mandiantによると、UNC3753/Luna Moth/Chatty Spiderは2026年1月から5月に数十組織を標的にした。 攻撃は請求書風の無害なメールから始まり、その後の電話でIT担当者を装い遠隔サポート参加を促す。 攻撃者はAnyDesk、Zoho Assist、Bomgar、SuperOpsなどを導入させ、文書管理やクラウド保存先からデータを盗む。 盗難後は30分以内に恐喝要求が届くこともあり、未対応なら従業員や外部顧客へ連絡すると脅す。",
+      "first_seen": "2026-06-08T00:00:00Z",
+      "last_seen": "2026-06-08T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "cloud.google.com",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms",
+          "external_id": "source--daily-11c1de526630b46d3629"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-c16113c3c5507c18cfeb",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--7f10f1a32d3a78a0449f288d から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--622a6b6b-9ced-4ce5-be08-61f208a77abf",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--ab8b05df-f2b1-4d53-b98f-8da91fa60f6d",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Silent Ransom Group、偽のITサポート電話で法律事務所を標的に is attributed or linked to UNC3753.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--37314103-0840-4e66-b209-f51ff8466b53",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: business-data-leaks.com",
+      "pattern": "[domain-name:value = 'business-data-leaks.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:adf9aa95dac4cb2e350fb3deb9ace27555b2a3d20a55cf80699b5713c394e138",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 28
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "business-data-leaks.com",
+          "context_excerpt": "AI generated. Data leak site operated by Silent Ransom Group (UNC3753) for extortion against law firm victims.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8c29a277-f30e-4156-a657-a30fa0b3fa9e",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--37314103-0840-4e66-b209-f51ff8466b53",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--76ebda0d-26c7-44f6-be30-600b26e8d775",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: privnote.com",
+      "pattern": "[domain-name:value = 'privnote.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a1e345cb4a49e0ce5da3b11380c54e3f50c802113727e0ec35ec96d7d647d2e3",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 27
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "privnote.com",
+          "context_excerpt": "AI generated. Self-destructing text service abused by UNC3753 to deliver RMM tool links and commands during vishing attacks.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--67890be5-af22-4b96-b848-870cfa4560dd",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--76ebda0d-26c7-44f6-be30-600b26e8d775",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8af203ae-844e-4e13-9d9b-f89ebbfc430e",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 174.169.162.62",
+      "pattern": "[ipv4-addr:value = '174.169.162.62']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0eec256679334dd392999b6eaf84070a7d9feee8d91279f1c8deb710b1db5711",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 25
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "174.169.162.62",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--157eba1a-6c48-4b0c-8ea4-fe4ef832deb2",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8af203ae-844e-4e13-9d9b-f89ebbfc430e",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5c4cd0a2-a43c-45c7-b587-66d8fb792a4a",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 192.236.146.173",
+      "pattern": "[ipv4-addr:value = '192.236.146.173']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f7f394ad2b54f44511196e95f62b36cc1f25e8b27177751f5457831e8252eef1",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 24
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "192.236.146.173",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fbe7b195-cde3-499a-a695-3ebe4737c5c6",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5c4cd0a2-a43c-45c7-b587-66d8fb792a4a",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5ff85483-8f5f-4bb7-9da8-fd45952b2f6a",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 192.236.147.131",
+      "pattern": "[ipv4-addr:value = '192.236.147.131']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5651cb9912c6aeb277da31510915e992dad1d061cbe5750dfebe7cab69d9b4df",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 20
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "192.236.147.131",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b7a12c30-d320-4ffa-86d6-cef835a43ffd",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5ff85483-8f5f-4bb7-9da8-fd45952b2f6a",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7506cdde-71ab-405e-834a-32a073975136",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 192.236.147.138",
+      "pattern": "[ipv4-addr:value = '192.236.147.138']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:bcbb8d01a8aab7560549dc0c820eca33fe8cadef366114532b7d18eaa5fa0ef8",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 21
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "192.236.147.138",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c6627333-d45f-4b3f-adc9-5ad78966b467",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7506cdde-71ab-405e-834a-32a073975136",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9845e6d6-4ba5-4bf7-a989-ab99e086e530",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 192.236.154.158",
+      "pattern": "[ipv4-addr:value = '192.236.154.158']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a246a41097fd61d7099e70459bc77ad59a7e7f3ad1a6ca86addc508d13d8d88b",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 23
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "192.236.154.158",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--472b5476-dcdf-419e-a476-67f1d8f51580",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9845e6d6-4ba5-4bf7-a989-ab99e086e530",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2bf80329-a5d6-452c-a61e-e090119a9b4c",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 193.141.60.212",
+      "pattern": "[ipv4-addr:value = '193.141.60.212']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f5b6c3cd24218e9e708ccb57b47033363d37b2b440fe19e0943d44fb3d63b536",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 22
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "193.141.60.212",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--af19feb0-e897-4755-a3ba-5da6999cafe5",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2bf80329-a5d6-452c-a61e-e090119a9b4c",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ce1412a6-15fd-42f7-9ca3-a8816dafb396",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 64.94.84.97",
+      "pattern": "[ipv4-addr:value = '64.94.84.97']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-08T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-c16113c3c5507c18cfeb"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ddc023d976146112c011daa519661485fac80054b7dcd453d53ba62dbf51f6c7",
+          "observed_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-11c1de526630b46d3629",
+          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260608.md",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
+            "path": "daily-news/iocs/2026_04-06/20260608.csv",
+            "row": 26
+          },
+          "campaign_refs": [
+            "activity--daily-c16113c3c5507c18cfeb"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "64.94.84.97",
+          "context_excerpt": "AI generated. UNC3753 (Silent Ransom Group) infrastructure IP used in targeted campaign against US law firms.",
+          "analyst_notes": "actor field: UNC3753; actor_attribute: cybercrime; reference: https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea4e27a8-cd57-48e8-8307-6b0c7324b8fb",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ce1412a6-15fd-42f7-9ca3-a8816dafb396",
+      "target_ref": "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--47bafe25-810f-4cb9-a6a5-359a7d950f56",
-      "created": "2026-07-25T15:23:08Z",
-      "modified": "2026-07-25T15:23:08Z",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -111,8 +915,8 @@
       "type": "report",
       "spec_version": "2.1",
       "id": "report--983be1d3-4e28-435f-a3cd-accdbe4d2352",
-      "created": "2026-07-25T15:23:08Z",
-      "modified": "2026-07-25T15:23:08Z",
+      "created": "2026-07-26T05:28:45Z",
+      "modified": "2026-07-26T05:28:45Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -121,9 +925,19 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T15:23:08Z",
+      "published": "2026-07-26T05:28:45Z",
       "object_refs": [
-        "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c"
+        "intrusion-set--89ff5156-da51-4772-aa3c-4c145545345c",
+        "campaign--ab8b05df-f2b1-4d53-b98f-8da91fa60f6d",
+        "indicator--37314103-0840-4e66-b209-f51ff8466b53",
+        "indicator--76ebda0d-26c7-44f6-be30-600b26e8d775",
+        "indicator--8af203ae-844e-4e13-9d9b-f89ebbfc430e",
+        "indicator--5c4cd0a2-a43c-45c7-b587-66d8fb792a4a",
+        "indicator--5ff85483-8f5f-4bb7-9da8-fd45952b2f6a",
+        "indicator--7506cdde-71ab-405e-834a-32a073975136",
+        "indicator--9845e6d6-4ba5-4bf7-a989-ab99e086e530",
+        "indicator--2bf80329-a5d6-452c-a61e-e090119a9b4c",
+        "indicator--ce1412a6-15fd-42f7-9ca3-a8816dafb396"
       ],
       "x_schema_version": "1.0.0"
     }

@@ -2,7 +2,7 @@
 
 プロファイルID: `actor--volt-typhoon`  
 状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
+更新日時: 2026-07-26T05:28:45Z  
 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -88,6 +88,7 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--daily-bf92508e454fbfbf0fdc | JDY | tech-memo日次IOCでVolt Typhoonによる使用が報告されたマルウェア。 | 2026-06-11 | 2026-06-11 | 中 | `source--daily-0c44ac5482af2d245bb8` |
 | malware--versamem | VersaMem | [VersaMem](https://attack.mitre.org/software/S1154) is a web shell designed for deployment to Versa Director servers following exploitation. Discovered in August 2024, [VersaMem](https://attack.mitre.org/software/S1154) was used during [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) by [Volt Typhoon](https://attack.mitre.org/groups/G1017) to target ISPs and MSPs.  [VersaMem](https://attack.mitre.org/software/S1154) is deployed as a Java Archive (JAR) and allows for credential capture for Versa Director logon activity as well as follow-on execution of arbitrary Java payloads.(Citation: Lumen Versa 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
@@ -133,6 +134,7 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 |---|---|---|---|---|---|---|
 | KV Botnet Activity | campaign | 2022-10-01T04:00:00.000Z | 2024-01-01T05:00:00.000Z | [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) consisted of exploitation of primarily “end-of-life” small office-home office (SOHO) equipment from manufacturers such as Cisco, NETGEAR, and DrayTek. [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) was used by [Volt Typhoon](https://attack.mitre.org/groups/G1017) to obfuscate connectivity to victims in multiple critical infrastructure segments, including energy and telecommunication companies and entities based on the US territory of Guam. While the KV Botnet is the most prominent element of this campaign, it overlaps with another botnet cluster referred to as the JDY cluster.(Citation: Lumen KVBotnet 2023) This botnet was disrupted by US law enforcement entities in early 2024 after periods of activity from October 2022 through January 2024.(Citation: DOJ KVBotnet 2024) | 高 | `source--mitre-attack-19-1` |
 | Versa Director Zero Day Exploitation | campaign | 2024-06-01T06:00:00.000Z | 2024-08-01T06:00:00.000Z | [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) was conducted by [Volt Typhoon](https://attack.mitre.org/groups/G1017) from early June through August 2024 as zero-day exploitation of Versa Director servers controlling software-defined wide area network (SD-WAN) applications. Since tracked as CVE-2024-39717, exploitation focused on credential capture from compromised Versa Director servers at managed service providers (MSPs) and internet service providers (ISPs) to enable follow-on access to service provider clients. [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) was followed by the delivery of the [VersaMem](https://attack.mitre.org/software/S1154) web shell for both credential theft and follow-on code execution.(Citation: Lumen Versa 2024) | 高 | `source--mitre-attack-19-1` |
+| 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | reported-activity | 2026-06-11 | 2026-06-11 | JDYボットネットは、Volt Typhoonなど中国系脅威アクターと関連付けられているマルウェアネットワーク。 Black Lotus Labsによると、JDYは米国に強く集中し、米軍および関連ネットワークを重点的に標的化している。 JDYは2024年1月の約650台から、現在は1,500台超の侵害済みSOHO・IoT機器へ拡大した。 ボットネットはサービス探索、バナー取得、TLS証明書収集、プロトコル識別、脆弱性重視の偵察を行う。 FortinetのCVE-2026-35616公開直後にJDYのスキャンが観測され、新規公開脆弱性を素早く標的化している。 | 中 | `source--daily-0c44ac5482af2d245bb8` |
 
 
 
@@ -230,8 +232,8 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## IOC／artifact概要
 
-- IOC値: 11件
-- IOC観測: 13件
+- IOC値: 12件
+- IOC観測: 14件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 5件
 - 非IOC artifact観測: 80件（`artifacts.csv`）
@@ -253,44 +255,45 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--volt-typhoon--56e3fa574794ffdd | volt typhoon |  | 不明 | actor_profile/evidence/volt-typhoon.csv | structured-data | TLP:CLEAR | 中 |
-| source--volt-typhoon--59fa3ee8db5c7f4e | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--a3838621e0b07951 | CSA Living off the Land |  | 不明 | International Strategic/China/CSA_Living_off_the_Land.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--59dfe30ef4fe991c | Charting China’s Climb as a Leading Global Cyber Power |  | 不明 | International Strategic/China/Charting China’s Climb as a Leading Global Cyber Power.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--2ce5a282de68b03d | CGCYBER 2024 CTIME |  | 2024 | International Strategic/USA/2025/CGCYBER 2024 CTIME.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--73e0e1fdf2f4e350 | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--0e915940ef304028 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--7823a29c88003444 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--a685114567702a50 | 2023 Adversary Infrastructure Report |  | 2023 | summary/2024/2023 Adversary Infrastructure Report .pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--3ac7cc045079553b | 2024 dbir data breach investigations report |  | 2024 | summary/2024/2024-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--fd75b99077ebc2cf | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--befc9a6b05f05ac4 | CERTFR 2024 CTI 002 |  | 2024 | summary/2024/CERTFR-2024-CTI-002.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--d1bc3c7f4761742d | Norma+Cyber+Annual+Threat+Assessment+ +Spreads |  | 不明 | summary/2024/Norma+Cyber+Annual+Threat+Assessment+-+Spreads.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--ae6d57075d60814b | Public Report 2023 eng DIGITAL |  | 2023 | summary/2024/Public_Report_2023-eng-DIGITAL.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--af3206d4d1c14293 | The State of OT:IoT Routers in the Software Supply Chain |  | 不明 | summary/2024/The State of OT:IoT Routers in the Software Supply Chain.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--c0a707793ca473f7 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--639626e2cdf215ed | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--volt-typhoon--512bc18615b4d128 | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--1ea5d300f042563c | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--677536dbbce81ad6 | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--3b269e4fc34ca180 | Dragos 2025 OT Cybersecurity Report A Year in Review |  | 2025 | summary/2025/Dragos-2025-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--3b99ebc623e3cee4 | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--177c12b722988dff | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--4eef863a0a32d881 | TLP CLEAR CERT EU TLR 2024 v1 |  | 2024 | summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--002b0193611949f5 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--553a0e65fcf1c595 | threat landscape report 2025 |  | 2025 | summary/2025/threat-landscape-report-2025.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--c8d08d1acb7b1636 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--a5dabf6a0ec4bf1e | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--ec6d7ba098071619 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--b92aebc8c88dfe9d | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
-| source--volt-typhoon--6d150921371a340a | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
+| source--daily-0c44ac5482af2d245bb8 | 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | lumen.com | 2026-06-11 | https://www.lumen.com/blog/en-us/expanded-jdy-iot-and-soho-botnet-enables-rapid-vulnerability-exploitation | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--volt-typhoon--002b0193611949f5 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--0e915940ef304028 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--177c12b722988dff | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--1ea5d300f042563c | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--2ce5a282de68b03d | CGCYBER 2024 CTIME |  | 2024 | International Strategic/USA/2025/CGCYBER 2024 CTIME.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--3ac7cc045079553b | 2024 dbir data breach investigations report |  | 2024 | summary/2024/2024-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--3b269e4fc34ca180 | Dragos 2025 OT Cybersecurity Report A Year in Review |  | 2025 | summary/2025/Dragos-2025-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--3b99ebc623e3cee4 | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--4eef863a0a32d881 | TLP CLEAR CERT EU TLR 2024 v1 |  | 2024 | summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--512bc18615b4d128 | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--553a0e65fcf1c595 | threat landscape report 2025 |  | 2025 | summary/2025/threat-landscape-report-2025.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--56e3fa574794ffdd | volt typhoon |  | 不明 | actor_profile/evidence/volt-typhoon.csv | structured-data | TLP:CLEAR | 中 |
+| source--volt-typhoon--59dfe30ef4fe991c | Charting China’s Climb as a Leading Global Cyber Power |  | 不明 | International Strategic/China/Charting China’s Climb as a Leading Global Cyber Power.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--59fa3ee8db5c7f4e | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--639626e2cdf215ed | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--volt-typhoon--677536dbbce81ad6 | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--6d150921371a340a | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--73e0e1fdf2f4e350 | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--7823a29c88003444 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--a3838621e0b07951 | CSA Living off the Land |  | 不明 | International Strategic/China/CSA_Living_off_the_Land.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--a5dabf6a0ec4bf1e | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--a685114567702a50 | 2023 Adversary Infrastructure Report |  | 2023 | summary/2024/2023 Adversary Infrastructure Report .pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--ae6d57075d60814b | Public Report 2023 eng DIGITAL |  | 2023 | summary/2024/Public_Report_2023-eng-DIGITAL.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--af3206d4d1c14293 | The State of OT:IoT Routers in the Software Supply Chain |  | 不明 | summary/2024/The State of OT:IoT Routers in the Software Supply Chain.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--b92aebc8c88dfe9d | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--befc9a6b05f05ac4 | CERTFR 2024 CTI 002 |  | 2024 | summary/2024/CERTFR-2024-CTI-002.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--c0a707793ca473f7 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--c8d08d1acb7b1636 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--d1bc3c7f4761742d | Norma+Cyber+Annual+Threat+Assessment+ +Spreads |  | 不明 | summary/2024/Norma+Cyber+Annual+Threat+Assessment+-+Spreads.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--ec6d7ba098071619 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
+| source--volt-typhoon--fd75b99077ebc2cf | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

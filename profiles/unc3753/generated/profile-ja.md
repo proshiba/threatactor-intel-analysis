@@ -2,7 +2,7 @@
 
 プロファイルID: `actor--unc3753`  
 状態: draft  
-更新日時: 2026-07-25T11:07:07Z  
+更新日時: 2026-07-26T05:28:45Z  
 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| Silent Ransom Group、偽のITサポート電話で法律事務所を標的に | reported-activity | 2026-06-08 | 2026-06-08 | Silent Ransom Groupは、米国の法律事務所や専門サービス組織を偽ITサポート通話で積極的に狙っている。 Mandiantによると、UNC3753/Luna Moth/Chatty Spiderは2026年1月から5月に数十組織を標的にした。 攻撃は請求書風の無害なメールから始まり、その後の電話でIT担当者を装い遠隔サポート参加を促す。 攻撃者はAnyDesk、Zoho Assist、Bomgar、SuperOpsなどを導入させ、文書管理やクラウド保存先からデータを盗む。 盗難後は30分以内に恐喝要求が届くこともあり、未対応なら従業員や外部顧客へ連絡すると脅す。 | 中 | `source--daily-11c1de526630b46d3629` |
 
 
 
@@ -118,8 +120,8 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 9件
+- IOC観測: 9件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
@@ -141,10 +143,11 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc3753--78fdac1aeb9a05cf | unc3753 |  | 不明 | actor_profile/evidence/unc3753.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-11c1de526630b46d3629 | Silent Ransom Group、偽のITサポート電話で法律事務所を標的に | cloud.google.com | 2026-06-08 | https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--unc3753--30249e36868ef344 | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
+| source--unc3753--78fdac1aeb9a05cf | unc3753 |  | 不明 | actor_profile/evidence/unc3753.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

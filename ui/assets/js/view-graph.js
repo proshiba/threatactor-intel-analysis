@@ -12,6 +12,7 @@ import {
 } from "./config.js";
 import { state, getGraph } from "./data.js";
 import { app, esc, num } from "./util.js";
+import { ja } from "./locale-ja.js";
 
 function countryColors(nodeArr) {
   const countries = [...new Set(nodeArr.map((n) => n.country))]
@@ -42,10 +43,10 @@ function buildPageHtml(nodeArr, edges, countries, colorOf) {
         <div class="graph-tip" id="g-tip"></div>
       </div>
       <div class="graph-legend">
-        ${typesPresent.map((t) => `<span class="lg"><span class="sw-line ${t === "distinct-from" ? "dashed" : ""}" style="border-color:${EDGE_COLORS[t] || EDGE_FALLBACK_COLOR}"></span>${esc(t)}</span>`).join("")}
+        ${typesPresent.map((t) => `<span class="lg"><span class="sw-line ${t === "distinct-from" ? "dashed" : ""}" style="border-color:${EDGE_COLORS[t] || EDGE_FALLBACK_COLOR}"></span>${esc(ja(t, "relationship"))}</span>`).join("")}
       </div>
       <div class="graph-legend">
-        ${countries.map((c) => `<span class="lg"><span class="sw-dot" style="background:${colorOf[c]}"></span>${esc(c)}</span>`).join("")}
+        ${countries.map((c) => `<span class="lg"><span class="sw-dot" style="background:${colorOf[c]}"></span>${esc(ja(c, "country"))}</span>`).join("")}
       </div>
     </section>`;
 }
@@ -271,7 +272,7 @@ export function renderGraph(initialFocus) {
       tip.style.left = Math.min(mx + 14, W - 290) + "px";
       tip.style.top = (my + 14) + "px";
       tip.innerHTML = `<div class="t-name">${esc(hoverNode.name)}</div>
-        <div>${esc(hoverNode.country)} / 関係 ${hoverNode.deg} 本</div>
+        <div>${esc(ja(hoverNode.country, "country"))} / 関係 ${hoverNode.deg} 本</div>
         ${a && a.aliases.length ? `<div class="muted">別名: ${esc(a.aliases.slice(0, 3).join(", "))}</div>` : ""}
         <div class="muted">クリックで詳細ページへ</div>`;
     } else {

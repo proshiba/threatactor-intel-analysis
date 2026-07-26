@@ -94,7 +94,12 @@ def build_record(slug: str, profile_dir: Path) -> tuple[dict, list] | None:
         "active": actor.get("active", "unknown"),
         "first_seen": date_value(actor.get("first_seen")),
         "last_seen": date_value(actor.get("last_seen")),
-        "description": plain_snippet(actor.get("description")),
+        # 一覧カードは全プロファイルに存在する日本語要約を優先する。
+        # actor.descriptionはMITRE等の英語原文であることが多い。
+        "description": plain_snippet(
+            profile.get("free_text", {}).get("executive_summary")
+            or actor.get("description")
+        ),
         "attribution": {
             "countries": attribution.get("countries", []),
             "sponsor_type": attribution.get("sponsor_type", "unknown"),

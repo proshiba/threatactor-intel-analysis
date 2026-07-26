@@ -3,6 +3,7 @@
 import { LIST_PAGE } from "./config.js";
 import { state, resetFilters } from "./data.js";
 import { app, esc, num, bindLiveSearch, bindMoreButton, resultCount } from "./util.js";
+import { ja } from "./locale-ja.js";
 
 const SORTERS = {
   name: (a, b) => a.name.localeCompare(b.name, "en"),
@@ -46,10 +47,10 @@ function applyFilters() {
 function actorCard(a) {
   const attribution = a.attribution;
   const badges = [];
-  for (const c of attribution.countries) badges.push(`<span class="badge country">${esc(c)}</span>`);
+  for (const c of attribution.countries) badges.push(`<span class="badge country">${esc(ja(c, "country"))}</span>`);
   if (attribution.sponsor_type === "state") badges.push('<span class="badge state">国家支援</span>');
-  for (const t of a.actor_types.slice(0, 2)) badges.push(`<span class="badge type">${esc(t)}</span>`);
-  for (const m of a.motivations.slice(0, 2)) badges.push(`<span class="badge">${esc(m)}</span>`);
+  for (const t of a.actor_types.slice(0, 2)) badges.push(`<span class="badge type">${esc(ja(t, "actorType"))}</span>`);
+  for (const m of a.motivations.slice(0, 2)) badges.push(`<span class="badge">${esc(ja(m, "motivation"))}</span>`);
 
   const aliases = a.aliases.length
     ? `<div class="card-aliases">別名: ${esc(a.aliases.slice(0, 4).join(", "))}${a.aliases.length > 4 ? ` 他${a.aliases.length - 4}件` : ""}</div>`
@@ -72,22 +73,22 @@ function actorCard(a) {
 function statsGrid(stats) {
   const cards = [
     [stats.actors, "アクター / クラスター"],
-    [stats.aliases, "Alias"],
+    [stats.aliases, "別名"],
     [stats.malware_tools, "マルウェア / ツール"],
     [stats.ttps, "TTP"],
     [stats.iocs, "IOC"],
-    [stats.artifacts, "非IOC artifact"],
+    [stats.artifacts, "非IOCアーティファクト"],
   ];
   return `<div class="stats-grid">${cards.map(([v, label]) =>
     `<div class="stat-card"><div class="stat-value">${num(v)}</div><div class="stat-label">${esc(label)}</div></div>`
   ).join("")}</div>`;
 }
 
-function selectHtml(id, label, entries, current) {
+function selectHtml(id, label, entries, current, category) {
   return `
     <select id="${id}" title="${esc(label)}">
       <option value="">${esc(label)}: すべて</option>
-      ${entries.map(([v, n]) => `<option value="${esc(v)}" ${v === current ? "selected" : ""}>${esc(v)} (${n})</option>`).join("")}
+      ${entries.map(([v, n]) => `<option value="${esc(v)}" ${v === current ? "selected" : ""}>${esc(ja(v, category))} (${n})</option>`).join("")}
     </select>`;
 }
 
@@ -100,12 +101,12 @@ export function renderList() {
   app.innerHTML = `
     ${statsGrid(state.index.stats)}
     <div class="toolbar">
-      <input type="search" id="f-q" placeholder="アクター名・alias・slug で検索…" value="${esc(f.q)}" autocomplete="off">
-      ${selectHtml("f-country", "帰属国", facetValues((a) => a.attribution.countries), f.country)}
-      ${selectHtml("f-sponsor", "支援形態", facetValues((a) => [a.attribution.sponsor_type]), f.sponsor)}
-      ${selectHtml("f-type", "アクター種別", facetValues((a) => a.actor_types), f.type)}
-      ${selectHtml("f-motivation", "動機", facetValues((a) => a.motivations), f.motivation)}
-      ${selectHtml("f-sector", "標的産業", facetValues((a) => a.target_sectors), f.sector)}
+      <input type="search" id="f-q" placeholder="アクター名・別名・slugで検索…" value="${esc(f.q)}" autocomplete="off">
+      ${selectHtml("f-country", "帰属国", facetValues((a) => a.attribution.countries), f.country, "country")}
+      ${selectHtml("f-sponsor", "支援形態", facetValues((a) => [a.attribution.sponsor_type]), f.sponsor, "sponsor")}
+      ${selectHtml("f-type", "アクター種別", facetValues((a) => a.actor_types), f.type, "actorType")}
+      ${selectHtml("f-motivation", "動機", facetValues((a) => a.motivations), f.motivation, "motivation")}
+      ${selectHtml("f-sector", "標的産業", facetValues((a) => a.target_sectors), f.sector, "sector")}
       <select id="f-sort" title="並び順">
         ${Object.entries(SORT_LABELS).map(([v, label]) =>
           `<option value="${v}" ${f.sort === v ? "selected" : ""}>${label}</option>`).join("")}

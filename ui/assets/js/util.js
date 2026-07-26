@@ -1,5 +1,7 @@
 /* DOM非依存の整形ヘルパーと、複数ビューで共有する小さなUI部品 */
 
+import { ja } from "./locale-ja.js";
+
 export const app = document.getElementById("app");
 
 export function esc(value) {
@@ -28,7 +30,7 @@ export function fmtDate(field) {
 export function confBadge(confidence) {
   const c = (confidence || "unknown").toLowerCase();
   const label = { high: "high", medium: "medium", low: "low" }[c] || "unknown";
-  return `<span class="badge conf-${esc(label)}">確度: ${esc(confidence || "unknown")}</span>`;
+  return `<span class="badge conf-${esc(label)}">確度: ${esc(ja(confidence || "unknown", "confidence"))}</span>`;
 }
 
 export function defang(value, type) {

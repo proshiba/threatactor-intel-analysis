@@ -1,12 +1,12 @@
 /* アクター詳細ビュー(タブ構成)
  *
  * タブ:
- *   overview     … 説明、Alias、主要判断、帰属・動機、ダイヤモンドモデル、標的
+ *   overview     … 説明、別名、主要判断、帰属・動機、ダイヤモンドモデル、標的
  *   relations    … 他アクターとの関係(発信+被参照)とグラフへのリンク
  *   capabilities … マルウェア、ツール、インフラ・サービス
  *   ttps         … ATT&CK マトリックス表示
  *   activities   … 活動履歴のタイムライン(期間フィルタ付き)
- *   iocs         … IOC(遅延読み込み)
+ *   artifacts    … IOCと非IOCアーティファクト(遅延読み込み)
  *   sources      … 出典とデータダウンロード
  */
 
@@ -17,6 +17,7 @@ import {
   fmtDate, confBadge, defang, fetchJson, fetchText, parseCsv, renderError,
   bindLiveSearch, bindMoreButton,
 } from "./util.js";
+import { ja, jaTactic, jaNarrative } from "./locale-ja.js";
 
 /* ---------- 小さなリンク・部品 ---------- */
 
@@ -65,7 +66,7 @@ function softwareTable(items) {
     items.map((m) => `<tr>
       <td><strong>${esc(m.name || m.id || "?")}</strong></td>
       <td class="small">${esc((m.aliases || []).filter((x) => x !== m.name).join(", "))}</td>
-      <td class="small">${esc((m.types || []).join(", "))}</td>
+      <td class="small">${esc((m.types || []).map((t) => ja(t, "softwareType")).join(", "))}</td>
       <td class="small muted">${md((m.description || "").slice(0, 300))}</td>
     </tr>`).join("")
   );
@@ -77,9 +78,9 @@ function buildHeader(profile, summary, slug) {
   const actor = profile.actor || {};
   const attribution = profile.attribution || {};
   const badges = [];
-  for (const c of attribution.countries || []) badges.push(`<span class="badge country">帰属: ${esc(c)}</span>`);
-  if (attribution.sponsor_type && attribution.sponsor_type !== "unknown") badges.push(`<span class="badge state">${esc(attribution.sponsor_type)}</span>`);
-  for (const t of actor.actor_types || []) badges.push(`<span class="badge type">${esc(t)}</span>`);
+  for (const c of attribution.countries || []) badges.push(`<span class="badge country">帰属: ${esc(ja(c, "country"))}</span>`);
+  if (attribution.sponsor_type && attribution.sponsor_type !== "unknown") badges.push(`<span class="badge state">${esc(ja(attribution.sponsor_type, "sponsor"))}</span>`);
+  for (const t of actor.actor_types || []) badges.push(`<span class="badge type">${esc(ja(t, "actorType"))}</span>`);
   badges.push(confBadge(attribution.confidence));
 
   return `<a class="back-link" href="#/">← アクター一覧へ戻る</a>
@@ -100,29 +101,28 @@ function buildOverviewTab(profile, summary) {
   const dm = profile.diamond_model || {};
 
   const overview = `
-    ${actor.description ? `<p>${md(actor.description)}</p>` : ""}
-    ${freeText.executive_summary ? `<p class="muted small">${md(freeText.executive_summary)}</p>` : ""}
+    ${freeText.executive_summary ? `<p>${md(freeText.executive_summary)}</p>` : actor.description ? `<p>${md(actor.description)}</p>` : ""}
     <div class="kv-grid">
       <div class="kv"><div class="k">初観測</div><div class="v">${esc(fmtDate(actor.first_seen))}</div></div>
       <div class="kv"><div class="k">最終観測</div><div class="v">${esc(fmtDate(actor.last_seen))}</div></div>
-      <div class="kv"><div class="k">活動状態</div><div class="v">${esc(actor.active || "unknown")}</div></div>
+      <div class="kv"><div class="k">活動状態</div><div class="v">${esc(ja(actor.active || "unknown", "active"))}</div></div>
       <div class="kv"><div class="k">プロファイル更新</div><div class="v">${esc(summary.updated_at || "不明")}</div></div>
     </div>
     ${freeTextBlocks(freeText, ["history", "targeting_details", "additional_notes"])}
   `;
 
   const judgmentsHtml = judgments
-    .map((j) => `<div class="judgment">${md(j.statement)}${confBadge(j.confidence)}</div>`)
+    .map((j) => `<div class="judgment">${md(jaNarrative(j.statement))}${confBadge(j.confidence)}</div>`)
     .join("");
 
   const attributionHtml = `
     <div class="kv-grid">
-      <div class="kv"><div class="k">帰属国</div><div class="v">${esc((attribution.countries || []).join(", ") || "不明")}</div></div>
-      <div class="kv"><div class="k">支援形態</div><div class="v">${esc(attribution.sponsor_type || "unknown")}</div></div>
-      <div class="kv"><div class="k">確度</div><div class="v">${esc(attribution.confidence || "unknown")}</div></div>
+      <div class="kv"><div class="k">帰属国</div><div class="v">${esc((attribution.countries || []).map((c) => ja(c, "country")).join(", ") || "不明")}</div></div>
+      <div class="kv"><div class="k">支援形態</div><div class="v">${esc(ja(attribution.sponsor_type || "unknown", "sponsor"))}</div></div>
+      <div class="kv"><div class="k">確度</div><div class="v">${esc(ja(attribution.confidence || "unknown", "confidence"))}</div></div>
     </div>
-    ${attribution.assessment ? `<p class="small muted">${md(attribution.assessment)}</p>` : ""}
-    ${(profile.motivations || []).length ? `<h3>動機</h3>${chips(profile.motivations.map((m) => m.type))}` : ""}
+    ${attribution.assessment ? `<p class="small muted">${md(jaNarrative(attribution.assessment))}</p>` : ""}
+    ${(profile.motivations || []).length ? `<h3>動機</h3>${chips(profile.motivations.map((m) => ja(m.type, "motivation")))}` : ""}
   `;
 
   let diamondHtml = "";
@@ -136,26 +136,26 @@ function buildOverviewTab(profile, summary) {
           <path d="M50 3 L97 50 L50 97 L3 50 Z" fill="none" stroke="currentColor" stroke-width="0.5"/>
           <path d="M50 3 L50 97 M3 50 L97 50" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 2"/>
         </svg>
-        ${dmNode("adversary", "Adversary(攻撃者)", dm.adversary)}
-        ${dmNode("infrastructure", "Infrastructure(インフラ)", dm.infrastructure)}
-        ${dmNode("capability", "Capability(能力)", dm.capability)}
-        ${dmNode("victim", "Victim(被害者)", dm.victim)}
-        <div class="dm-center">Diamond<br>Model</div>
+        ${dmNode("adversary", "攻撃者 (Adversary)", dm.adversary)}
+        ${dmNode("infrastructure", "インフラ (Infrastructure)", dm.infrastructure)}
+        ${dmNode("capability", "能力 (Capability)", dm.capability)}
+        ${dmNode("victim", "被害者 (Victim)", dm.victim)}
+        <div class="dm-center">ダイヤモンド<br>モデル</div>
       </div>
       ${dm.socio_political ? `<p class="small muted">社会・政治的背景: ${md(dm.socio_political)}</p>` : ""}`;
   }
 
   const targetsHtml = `
     <h3>標的国・地域(${(targets.countries || []).length})</h3>
-    ${chips((targets.countries || []).map((t) => t.name), "country")}
+    ${chips((targets.countries || []).map((t) => ja(t.name, "country")), "country")}
     <h3>標的産業(${(targets.sectors || []).length})</h3>
-    ${chips((targets.sectors || []).map((t) => t.name), "type")}
+    ${chips((targets.sectors || []).map((t) => ja(t.name, "sector")), "type")}
     ${targets.selection_logic ? `<p class="small muted">選定ロジック: ${md(targets.selection_logic)}</p>` : ""}
   `;
 
   const parts = [section("概要", overview)];
-  if ((actor.aliases || []).length) parts.push(section(`Alias(${actor.aliases.length})`, chips(actor.aliases.map((a) => a.name || a))));
-  if (judgmentsHtml) parts.push(section("主要判断(Key Judgments)", judgmentsHtml));
+  if ((actor.aliases || []).length) parts.push(section(`別名(${actor.aliases.length})`, chips(actor.aliases.map((a) => a.name || a))));
+  if (judgmentsHtml) parts.push(section("主要判断", judgmentsHtml));
   parts.push(section("帰属・動機", attributionHtml));
   if (diamondHtml) parts.push(section("ダイヤモンドモデル", diamondHtml));
   parts.push(section("標的", targetsHtml));
@@ -175,9 +175,9 @@ function buildRelationsTab(profile, slug, incoming) {
       ["相手アクター", "関係", "説明", "確度"],
       outgoing.map((r) => `<tr>
         <td>${actorLink(r.target_actor)}</td>
-        <td class="small">${esc(r.relationship_type || "")}</td>
+        <td class="small">${esc(ja(r.relationship_type || "", "relationship"))}</td>
         <td class="small muted">${md(r.description || "")}</td>
-        <td class="small">${esc(r.confidence || "")}</td>
+        <td class="small">${esc(ja(r.confidence || "", "confidence"))}</td>
       </tr>`).join("")
     ));
   }
@@ -186,8 +186,8 @@ function buildRelationsTab(profile, slug, incoming) {
       ["参照元アクター", "関係", "確度"],
       incoming.map((r) => `<tr>
         <td><a href="#/actor/${encodeURIComponent(r.from.slug)}">${esc(r.from.name)}</a></td>
-        <td class="small">${esc(r.type || "")}</td>
-        <td class="small">${esc(r.confidence || "")}</td>
+        <td class="small">${esc(ja(r.type || "", "relationship"))}</td>
+        <td class="small">${esc(ja(r.confidence || "", "confidence"))}</td>
       </tr>`).join("")
     ));
   }
@@ -211,7 +211,7 @@ function buildCapabilitiesTab(profile) {
   if ((c.operational_capabilities || []).length) parts.push(section(`作戦能力(${c.operational_capabilities.length})`, genericItems(c.operational_capabilities)));
   const folds = freeTextBlocks(freeText, ["capability_details", "infrastructure_details"]);
   if (folds) parts.push(section("詳細メモ", folds));
-  if (!parts.length) parts.push(section("Capabilities", '<p class="muted">記録された能力情報はありません。</p>'));
+  if (!parts.length) parts.push(section("能力", '<p class="muted">記録された能力情報はありません。</p>'));
   return parts.join("");
 }
 
@@ -224,7 +224,7 @@ function groupTtpsByTactic(ttps) {
     const tactics = String(t.tactic || "その他").split(",").map((s) => s.trim()).filter(Boolean);
     for (const tactic of tactics.length ? tactics : ["その他"]) {
       const key = tactic.toLowerCase();
-      if (!groups.has(key)) groups.set(key, { label: tactic, items: [] });
+      if (!groups.has(key)) groups.set(key, { label: jaTactic(tactic), items: [] });
       groups.get(key).items.push(t);
     }
   }
@@ -263,7 +263,7 @@ function buildTtpsTab(ttps) {
   }).join("");
   return section(
     "MITRE ATT&CK マトリックス",
-    `<p class="small muted">戦術(Tactic)ごとの観測Technique一覧です。セルにカーソルを乗せると観測内容、クリックでMITRE ATT&CKの解説を表示します。</p>
+    `<p class="small muted">戦術ごとの観測Technique一覧です。セルにカーソルを乗せると観測内容、クリックでMITRE ATT&CKの解説を表示します。</p>
      <div class="ttp-matrix">${columns}</div>`
   );
 }
@@ -299,7 +299,7 @@ function timelineHtml(dated) {
   return `<div class="timeline">${dated.map((a) => `
     <div class="tl-item">
       <div class="tl-date">${esc(activityPeriod(a))}</div>
-      <div class="tl-title">${esc(a.name || "")}${a.activity_type ? ` <span class="badge type">${esc(a.activity_type)}</span>` : ""}</div>
+      <div class="tl-title">${esc(a.name || "")}${a.activity_type ? ` <span class="badge type">${esc(ja(a.activity_type, "activityType"))}</span>` : ""}</div>
       ${a.description ? `<div class="small muted">${md(a.description)}</div>` : ""}
     </div>`).join("")}</div>`;
 }
@@ -342,7 +342,7 @@ function bindActivities(profile) {
           ["名称", "種別", "説明"],
           undated.map((a) => `<tr>
             <td><strong>${esc(a.name || "")}</strong></td>
-            <td class="small">${esc(a.activity_type || "")}</td>
+            <td class="small">${esc(ja(a.activity_type || "", "activityType"))}</td>
             <td class="small muted">${md(a.description || "")}</td>
           </tr>`).join("")
         )}</div></details>` : ""}
@@ -359,7 +359,7 @@ function bindActivities(profile) {
   render(0);
 }
 
-/* ---------- Technical Artifacts タブ(IOC+非IOC artifact) ---------- */
+/* ---------- 技術的アーティファクト タブ(IOC+非IOCアーティファクト) ---------- */
 
 function buildArtifactsTab(summary) {
   const parts = [];
@@ -368,7 +368,7 @@ function buildArtifactsTab(summary) {
   if (summary.counts.iocs) {
     const typeChips = Object.entries(summary.ioc_types)
       .sort((a, b) => b[1] - a[1])
-      .map(([t, n]) => `<span class="badge">${esc(t)}: ${num(n)}</span>`)
+      .map(([t, n]) => `<span class="badge">${esc(ja(t, "iocType"))}: ${num(n)}</span>`)
       .join("");
     parts.push(section(
       `IOC(${num(summary.counts.iocs)})`,
@@ -380,16 +380,16 @@ function buildArtifactsTab(summary) {
     parts.push(section("IOC", '<p class="muted">このアクターに正規化済みIOCはありません。</p>'));
   }
 
-  // 非IOC artifact(コマンド、検体内文字列、パス等 — IOCとしては使いづらい痕跡)
+  // 非IOCアーティファクト(コマンド、検体内文字列、パス等 — IOCとしては使いづらい痕跡)
   if (summary.counts.artifacts) {
     parts.push(section(
-      `非IOC artifact(${num(summary.counts.artifacts)})`,
+      `非IOCアーティファクト(${num(summary.counts.artifacts)})`,
       `<p class="small muted">実行コマンド、検体内文字列、ファイル名・パス、レジストリキーなど、単体ではIOCとして使いづらい技術的痕跡です。
-       多くは自動抽出の <code>candidate</code> であり、検知利用の前に出典の文脈確認が必要です。</p>
-       <div id="artifact-area"><div class="more-row"><button class="load-btn" id="artifact-load" type="button">artifact ${num(summary.counts.artifacts)} 件を読み込む</button></div></div>`
+       多くは自動抽出された候補であり、検知利用の前に出典の文脈確認が必要です。</p>
+       <div id="artifact-area"><div class="more-row"><button class="load-btn" id="artifact-load" type="button">アーティファクト ${num(summary.counts.artifacts)} 件を読み込む</button></div></div>`
     ));
   } else {
-    parts.push(section("非IOC artifact", '<p class="muted">このアクターに記録された非IOC artifactはありません。</p>'));
+    parts.push(section("非IOCアーティファクト", '<p class="muted">このアクターに記録された非IOCアーティファクトはありません。</p>'));
   }
 
   return parts.join("");
@@ -397,7 +397,7 @@ function buildArtifactsTab(summary) {
 
 async function loadArtifacts(slug, summary) {
   const area = document.getElementById("artifact-area");
-  area.innerHTML = '<div class="loading">artifactを読み込み中…</div>';
+  area.innerHTML = '<div class="loading">アーティファクトを読み込み中…</div>';
   let rows0;
   try {
     if (state.artifactCache.has(slug)) {
@@ -428,20 +428,20 @@ async function loadArtifacts(slug, summary) {
     const shown = rows.slice(0, view.limit);
     area.innerHTML = `
       <div class="ioc-controls">
-        <input type="search" id="artifact-q" placeholder="artifact値で絞り込み…" value="${esc(view.q)}" autocomplete="off">
+        <input type="search" id="artifact-q" placeholder="アーティファクト値で絞り込み…" value="${esc(view.q)}" autocomplete="off">
         <select id="artifact-type">
           <option value="">種別: すべて</option>
-          ${types.map((t) => `<option value="${esc(t)}" ${t === view.type ? "selected" : ""}>${esc(t)} (${num(typeCounts.get(t))})</option>`).join("")}
+          ${types.map((t) => `<option value="${esc(t)}" ${t === view.type ? "selected" : ""}>${esc(ja(t, "artifactType"))} (${num(typeCounts.get(t))})</option>`).join("")}
         </select>
       </div>
       ${resultCount(rows.length, shown.length)}
       ${dataTable(
         ["種別", "値", "状態", "確度", "観測日", "出典"],
         shown.map((r) => `<tr>
-          <td class="small">${esc(r.artifact_type)}</td>
+          <td class="small">${esc(ja(r.artifact_type, "artifactType"))}</td>
           <td><span class="mono" title="${esc((r.context_excerpt || "").slice(0, 400))}">${esc(String(r.value || "").slice(0, 240))}</span></td>
-          <td class="small">${esc(r.disposition || "")}</td>
-          <td class="small">${esc(r.confidence || "")}</td>
+          <td class="small">${esc(ja(r.disposition || "", "disposition"))}</td>
+          <td class="small">${esc(ja(r.confidence || "", "confidence"))}</td>
           <td class="small">${esc(r.observed_at ? String(r.observed_at).slice(0, 10) : "不明")}</td>
           <td class="small muted">${esc((r.source_path || "").split("/").pop())}</td>
         </tr>`).join("")
@@ -488,16 +488,16 @@ async function loadIocs(slug, summary) {
         <input type="search" id="ioc-q" placeholder="IOC値で絞り込み…" value="${esc(view.q)}" autocomplete="off">
         <select id="ioc-type">
           <option value="">種別: すべて</option>
-          ${types.map((t) => `<option value="${esc(t)}" ${t === view.type ? "selected" : ""}>${esc(t)} (${num(summary.ioc_types[t])})</option>`).join("")}
+          ${types.map((t) => `<option value="${esc(t)}" ${t === view.type ? "selected" : ""}>${esc(ja(t, "iocType"))} (${num(summary.ioc_types[t])})</option>`).join("")}
         </select>
       </div>
       ${resultCount(rows.length, shown.length)}
       ${dataTable(
         ["種別", "値(defang済)", "状態", "観測数", "初観測", "最終観測"],
         shown.map((ind) => `<tr>
-          <td class="small">${esc(ind.type)}</td>
+          <td class="small">${esc(ja(ind.type, "iocType"))}</td>
           <td><span class="mono">${esc(defang(ind.value, ind.type))}</span></td>
-          <td class="small">${esc(ind.disposition || "")}</td>
+          <td class="small">${esc(ja(ind.disposition || "", "disposition"))}</td>
           <td class="num small">${num(ind.observation_count)}</td>
           <td class="small">${esc(fmtDate(ind.first_observed))}</td>
           <td class="small">${esc(fmtDate(ind.last_observed))}</td>
@@ -526,7 +526,7 @@ function buildSourcesTab(profile, slug) {
         <td class="small">${esc(s.title || s.source_id || "")}</td>
         <td class="small">${esc(s.publisher || "")}</td>
         <td class="small">${esc(fmtDate(s.published_at))}</td>
-        <td class="small">${esc(s.source_type || "")}</td>
+        <td class="small">${esc(ja(s.source_type || "", "sourceType"))}</td>
       </tr>`).join("")
     )));
   }
@@ -575,10 +575,10 @@ export async function renderActor(slug, initialTab) {
   const tabs = [
     { id: "overview", label: "概要", build: () => buildOverviewTab(profile, summary) },
     { id: "relations", label: `関係 (${relCount})`, build: () => buildRelationsTab(profile, slug, incoming), empty: !relCount },
-    { id: "capabilities", label: `Capabilities (${capCount})`, build: () => buildCapabilitiesTab(profile), empty: !capCount },
+    { id: "capabilities", label: `能力 (${capCount})`, build: () => buildCapabilitiesTab(profile), empty: !capCount },
     { id: "ttps", label: `TTP (${(profile.ttps || []).length})`, build: () => buildTtpsTab(profile.ttps), empty: !(profile.ttps || []).length },
-    { id: "activities", label: `Activities (${(profile.activities || []).length})`, build: () => buildActivitiesTab(profile), empty: !(profile.activities || []).length, bind: () => bindActivities(profile) },
-    { id: "artifacts", label: `Technical Artifacts (${num(summary.counts.iocs + summary.counts.artifacts)})`, build: () => buildArtifactsTab(summary), bind: () => {
+    { id: "activities", label: `活動 (${(profile.activities || []).length})`, build: () => buildActivitiesTab(profile), empty: !(profile.activities || []).length, bind: () => bindActivities(profile) },
+    { id: "artifacts", label: `技術的アーティファクト (${num(summary.counts.iocs + summary.counts.artifacts)})`, build: () => buildArtifactsTab(summary), bind: () => {
         const iocBtn = document.getElementById("ioc-load");
         if (iocBtn) iocBtn.addEventListener("click", () => loadIocs(slug, summary));
         const artifactBtn = document.getElementById("artifact-load");

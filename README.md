@@ -15,12 +15,12 @@
 |---|---:|
 | アクター／脅威クラスター | 673 |
 | 処理資料 | 925 |
-| Alias | 922 |
+| 別名 | 922 |
 | マルウェア／ツール | 1,820 |
 | TTP | 5,327 |
 | IOC | 17,278 |
 | IOC観測イベント | 20,656 |
-| 非IOC artifact観測 | 17,394 |
+| 非IOCアーティファクト観測 | 17,394 |
 | 検証エラー | 0 |
 
 全アクターの一覧とアクター別件数は
@@ -85,6 +85,8 @@ IOCはファイルハッシュ、IPアドレス、ドメイン、URLなどです
 - [フレームワークの利用方法](actor_profile/README.md)
 - [データ作成・品質管理ルール](actor_profile/RULES.md)
 - [OSINT調査ルール](actor_profile/OSINT_RULES.md)
+- [日次ニュース取込](parse-daily/README.md)
+- [日次取込エージェント規則](parse-daily/AGENT.md)
 - [JSON Schema](actor_profile/schemas/actor-profile.schema.json)
 - [処理結果集計](profiles/processing-summary.json)
 
@@ -104,10 +106,14 @@ python3 -m unittest discover -s actor_profile/tests -v
 新規プロファイルの作成、IOC/artifact取込、個別検証などの詳細は
 [Actor Profile Framework](actor_profile/README.md)を参照してください。
 
+`proshiba/tech-memo`の日次ニュースとIOCを更新する場合は、取得、アクター候補照合、
+レビュー、冪等反映を行う`parse-daily/`のスクリプトを使用します。ニュース本文の
+単純な名前一致や低信頼の帰属は自動反映せず、レビューキューへ保留します。
+
 ## 利用上の注意
 
 - 本データは公開情報を基にした脅威インテリジェンスであり、誤検知や情報の陳腐化を含み得ます。
-- `candidate`、`unknown`、低信頼度の値を、追加確認なしにブロックや帰属判断へ利用しないでください。
+- 候補、情報不明、低信頼度の値を、追加確認なしにブロックや帰属判断へ利用しないでください。
 - アクター名の共有やaliasの重複は、必ずしも同一組織を意味しません。
 - IOCは時間経過で再割り当てされる可能性があります。観測日と文脈を併せて評価してください。
 - STIX出力は交換用の派生物です。修正時は`actor-profile.json`を正規データとして扱ってください。
