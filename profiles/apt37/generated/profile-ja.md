@@ -2,7 +2,7 @@
 
 プロファイルID: `actor--apt37`  
 状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
+更新日時: 2026-07-26T05:28:43Z  
 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -101,30 +101,32 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--babyshark | BabyShark | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--bluelight | BLUELIGHT | [BLUELIGHT](https://attack.mitre.org/software/S0657) is a remote access Trojan used by [APT37](https://attack.mitre.org/groups/G0067) that was first observed in early 2021.(Citation: Volexity InkySquid BLUELIGHT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--coraldeck | CORALDECK | [CORALDECK](https://attack.mitre.org/software/S0212) is an exfiltration tool used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--daily-397062646adc91061d4a | BirdCall | tech-memo日次IOCでAPT37による使用が報告されたマルウェア。 | 2026-05-05 | 2026-05-05 | 中 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
+| malware--daily-c07163c7c1b6cc1b80eb | NarwhalRAT | tech-memo日次IOCでAPT37による使用が報告されたマルウェア。 | 2026-06-16 | 2026-06-16 | 中 | `source--daily-82bdd80456957234d81b` |
 | malware--dogcall | DOGCALL | [DOGCALL](https://attack.mitre.org/software/S0213) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) that has been used to target South Korean government and military organizations in 2017. It is typically dropped using a Hangul Word Processor (HWP) exploit. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--final1stspy | Final1stspy | [Final1stspy](https://attack.mitre.org/software/S0355) is a dropper family that has been used to deliver [DOGCALL](https://attack.mitre.org/software/S0213).(Citation: Unit 42 Nokki Oct 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--flash-exploit-cve-2016-4117 | Flash Exploit CVE-2016-4117 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--gelcapsule | GELCAPSULE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--goldbackdoor | GOLDBACKDOOR | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--happywork | HAPPYWORK | [HAPPYWORK](https://attack.mitre.org/software/S0214) is a downloader used by [APT37](https://attack.mitre.org/groups/G0067) to target South Korean government and financial victims in November 2016. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--karae | KARAE | [KARAE](https://attack.mitre.org/software/S0215) is a backdoor typically used by [APT37](https://attack.mitre.org/groups/G0067) as first-stage malware. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--slowdrift | SLOWDRIFT | [SLOWDRIFT](https://attack.mitre.org/software/S0218) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) against academic and strategic victims in South Korea. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--shutterspeed | SHUTTERSPEED | [SHUTTERSPEED](https://attack.mitre.org/software/S0217) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--winerack | WINERACK | [WINERACK](https://attack.mitre.org/software/S0219) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--kevdroid | KEVDROID | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--kimjongrat | KimJongRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--milkdrop | MILKDROP | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--navrat | NavRAT | [NavRAT](https://attack.mitre.org/software/S0247) is a remote access tool designed to upload, download, and execute files. It has been observed in attacks targeting South Korea. (Citation: Talos NavRAT May 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--pooraim | POORAIM | [POORAIM](https://attack.mitre.org/software/S0216) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) in campaigns since at least 2014. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--rokrat | ROKRAT | [ROKRAT](https://attack.mitre.org/software/S0240) is a cloud-based remote access tool (RAT) used by [APT37](https://attack.mitre.org/groups/G0067) to target victims in South Korea. [APT37](https://attack.mitre.org/groups/G0067) has used ROKRAT during several campaigns from 2016 through 2021.(Citation: Talos ROKRAT)(Citation: Talos Group123)(Citation: Volexity InkySquid RokRAT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--coraldeck | CORALDECK | [CORALDECK](https://attack.mitre.org/software/S0212) is an exfiltration tool used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--bluelight | BLUELIGHT | [BLUELIGHT](https://attack.mitre.org/software/S0657) is a remote access Trojan used by [APT37](https://attack.mitre.org/groups/G0067) that was first observed in early 2021.(Citation: Volexity InkySquid BLUELIGHT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--final1stspy | Final1stspy | [Final1stspy](https://attack.mitre.org/software/S0355) is a dropper family that has been used to deliver [DOGCALL](https://attack.mitre.org/software/S0213).(Citation: Unit 42 Nokki Oct 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--soundwave | SOUNDWAVE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--zumkong | ZUMKONG | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--ricecurry | RICECURRY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--milkdrop | MILKDROP | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--gelcapsule | GELCAPSULE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--rokrat | ROKRAT | [ROKRAT](https://attack.mitre.org/software/S0240) is a cloud-based remote access tool (RAT) used by [APT37](https://attack.mitre.org/groups/G0067) to target victims in South Korea. [APT37](https://attack.mitre.org/groups/G0067) has used ROKRAT during several campaigns from 2016 through 2021.(Citation: Talos ROKRAT)(Citation: Talos Group123)(Citation: Volexity InkySquid RokRAT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--ruhappy | RUHAPPY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--flash-exploit-cve-2016-4117 | Flash Exploit CVE-2016-4117 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--kevdroid | KEVDROID | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--babyshark | BabyShark | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--kimjongrat | KimJongRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--goldbackdoor | GOLDBACKDOOR | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--shutterspeed | SHUTTERSPEED | [SHUTTERSPEED](https://attack.mitre.org/software/S0217) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--slowdrift | SLOWDRIFT | [SLOWDRIFT](https://attack.mitre.org/software/S0218) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) against academic and strategic victims in South Korea. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--soundwave | SOUNDWAVE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--winerack | WINERACK | [WINERACK](https://attack.mitre.org/software/S0219) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--zumkong | ZUMKONG | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -150,14 +152,18 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| Erebus | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Golden Time | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Evil New Year | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Are you Happy? | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| FreeMilk | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| North Korean Human Rights | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Erebus | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Evil New Year | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Evil New Year 2018 | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| FreeMilk | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Golden Time | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| North Korean Human Rights | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Operation Earth Kitsune | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | reported-activity | 2026-05-05 | 2026-05-05 | 北朝鮮系APT37/ScarCruftは、ビデオゲーム基盤を侵害し、Android版BirdCallバックドアを配布した。 ESETによると、攻撃はYanbian地域の朝鮮民族コミュニティや北朝鮮脱北者を狙ったものとみられる。 sqgame系サイト上のAndroidゲームAPKがトロイの木馬化され、Windows更新経路ではRokRAT経由でBirdCallが展開された。 Android版BirdCallは連絡先、通話履歴、SMS、端末情報、文書、画像、秘密鍵を収集し、スクリーンショットや録音も行う。 Android版は2024年10月ごろ作成され、少なくとも7バージョンが確認され、2024年末ごろから攻撃が継続していた可能性がある。 | 中 | `source--daily-4961e6946e3ccac84312` |
+| APT37の日次IOC観測 | reported-activity | 2026-05-05 | 2026-05-05 | AI generated. MD5 of ScarCruft/BirdCall malware sample from ESET malware-ioc repository. | 中 | `source--daily-68fe928d58956df4f752` |
+| APT37の日次IOC観測 | reported-activity | 2026-05-05 | 2026-05-05 | AI generated. SHA256 of ScarCruft/BirdCall malware sample from ESET malware-ioc repository. | 中 | `source--daily-b232a8993d5d82211f66` |
+| Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | reported-activity | 2026-06-16 | 2026-06-16 | Geniansは、Microsoftアカウントチームを装うスピアフィッシングで配布されるPythonベースのNarwhalRATを分析した。 攻撃はZIP内の悪性LNKから始まり、PowerShell、BAT、curl、公式Python埋め込み版を悪用して多段階感染を行う。 NarwhalRATはキーロギング、画面キャプチャ、USBデータ収集、マイク録音、ファイル操作、リモートコマンド実行機能を持つ。 C2は韓国の中継サーバーとpCloud APIを組み合わせた二重構造で、デッドドロップResolverとして正規クラウドを利用する。 TTP、韓国ユーザー向けの偽装、pCloud利用、過去事例との類似性から、APT37関連活動との関連が示唆されている。 | 中 | `source--daily-82bdd80456957234d81b` |
 
 Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human Rights; Evil New Year 2018; Operation Earth Kitsune
 
@@ -255,11 +261,11 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 
 ## IOC／artifact概要
 
-- IOC値: 360件
-- IOC観測: 492件
+- IOC値: 443件
+- IOC観測: 575件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 85件
-- 非IOC artifact観測: 362件（`artifacts.csv`）
+- 非IOC artifact観測: 363件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -278,29 +284,33 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--apt37--f532fa1ec3d0ac93 | (전체본)공개보고서 OperationCodeonToast |  | 不明 | group123/(전체본)공개보고서-OperationCodeonToast.pdf | report | TLP:CLEAR | 中 |
-| source--apt37--f8dde9641e96c02a | 20230620 threat inteligence report apt37 macos |  | 2023-06-20 | group123/20230620_threat_inteligence_report_apt37_macos.pdf | report | TLP:CLEAR | 中 |
-| source--apt37--4b34b22806460897 | 20231229 threat inteligence report market |  | 2023-12-29 | group123/20231229_threat_inteligence_report_market.pdf | report | TLP:CLEAR | 中 |
-| source--apt37--649e5a3ce38b5fef | 2023 Group123 threat inteligence report BitB |  | 2023 | group123/2023_Group123_threat_inteligence_report_BitB.pdf | report | TLP:CLEAR | 中 |
+| source--apt37--1d95f4aeb39f3651 | Stairwell threat report The ink stained trail of GOLDBACKDOOR |  | 不明 | group123/Stairwell-threat-report-The-ink-stained-trail-of-GOLDBACKDOOR.pdf | report | TLP:CLEAR | 中 |
 | source--apt37--32d6af5670be4ea3 | Chinotto Backdoor Technical Analysis of the APT Reapers Powerful |  | 不明 | group123/Chinotto_Backdoor_Technical_Analysis_of_the_APT_Reapers_Powerful.pdf | report | TLP:CLEAR | 中 |
 | source--apt37--3960850deb0fd588 | Dragon Messenger APT Group123 |  | 不明 | group123/Dragon Messenger_APT_Group123.pdf | report | TLP:CLEAR | 中 |
+| source--apt37--46d1184d8464a1e7 | special ioc |  | 不明 | group123/special-ioc.txt | text-data | TLP:CLEAR | 中 |
+| source--apt37--4b34b22806460897 | 20231229 threat inteligence report market |  | 2023-12-29 | group123/20231229_threat_inteligence_report_market.pdf | report | TLP:CLEAR | 中 |
+| source--apt37--55e1e08f054cc33d | README |  | 不明 | group123/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--apt37--649e5a3ce38b5fef | 2023 Group123 threat inteligence report BitB |  | 2023 | group123/2023_Group123_threat_inteligence_report_BitB.pdf | report | TLP:CLEAR | 中 |
+| source--apt37--8c7b4ab3309be364 | ScarCruft’s New Language Whispering in PubNub, Crafting Backdoor in Rust, Striking with Ransomware |  | 不明 | group123/ScarCruft’s New Language_Whispering in PubNub, Crafting Backdoor in Rust, Striking with Ransomware.pdf | report | TLP:CLEAR | 中 |
+| source--apt37--9e553e6cdd33b310 | ScarCruft (APT37) active in South Korea |  | 不明 | group123/ScarCruft (APT37) active in South Korea.pdf | report | TLP:CLEAR | 中 |
 | source--apt37--b2b14c4d8c08d493 | ESRC 1808 TLP White IR002 RocketMan English |  | 不明 | group123/ESRC-1808-TLP-White-IR002_RocketMan_English.pdf | report | TLP:CLEAR | 中 |
 | source--apt37--d92d0649e1fbc17f | README |  | 不明 | group123/IEexploit202212sample/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--apt37--55e1e08f054cc33d | README |  | 不明 | group123/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--apt37--9e553e6cdd33b310 | ScarCruft (APT37) active in South Korea |  | 不明 | group123/ScarCruft (APT37) active in South Korea.pdf | report | TLP:CLEAR | 中 |
-| source--apt37--8c7b4ab3309be364 | ScarCruft’s New Language Whispering in PubNub, Crafting Backdoor in Rust, Striking with Ransomware |  | 不明 | group123/ScarCruft’s New Language_Whispering in PubNub, Crafting Backdoor in Rust, Striking with Ransomware.pdf | report | TLP:CLEAR | 中 |
-| source--apt37--1d95f4aeb39f3651 | Stairwell threat report The ink stained trail of GOLDBACKDOOR |  | 不明 | group123/Stairwell-threat-report-The-ink-stained-trail-of-GOLDBACKDOOR.pdf | report | TLP:CLEAR | 中 |
 | source--apt37--e0b524fc6f94c455 | apt37newyear |  | 不明 | group123/apt37newyear.pdf | report | TLP:CLEAR | 中 |
-| source--apt37--46d1184d8464a1e7 | special ioc |  | 不明 | group123/special-ioc.txt | text-data | TLP:CLEAR | 中 |
+| source--apt37--f532fa1ec3d0ac93 | (전체본)공개보고서 OperationCodeonToast |  | 不明 | group123/(전체본)공개보고서-OperationCodeonToast.pdf | report | TLP:CLEAR | 中 |
+| source--apt37--f8dde9641e96c02a | 20230620 threat inteligence report apt37 macos |  | 2023-06-20 | group123/20230620_threat_inteligence_report_apt37_macos.pdf | report | TLP:CLEAR | 中 |
+| source--daily-4961e6946e3ccac84312 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | welivesecurity.com | 2026-05-06 | https://www.welivesecurity.com/en/eset-research/rigged-game-scarcruft-compromises-gaming-platform-supply-chain-attack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-68fe928d58956df4f752 | APT37の日次IOC観測 | raw.githubusercontent.com | 2026-05-06 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.md5 | osint-report | TLP:CLEAR | 中 |
+| source--daily-82bdd80456957234d81b | Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | genians.co.kr | 2026-06-16 | https://www.genians.co.kr/en/blog/threat_intelligence/narwhalrat | osint-report | TLP:CLEAR | 中 |
+| source--daily-b232a8993d5d82211f66 | APT37の日次IOC観測 | raw.githubusercontent.com | 2026-05-06 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.sha256 | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

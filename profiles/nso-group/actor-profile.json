@@ -4,7 +4,7 @@
   "name": "NSO Group",
   "status": "draft",
   "created_at": "2026-07-25T09:00:38Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-26T05:28:45Z",
   "languages": [
     "ja"
   ],
@@ -60,7 +60,34 @@
     "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
   },
   "capabilities": {
-    "malware": [],
+    "malware": [
+      {
+        "id": "malware--daily-2023bb247b5e7154a872",
+        "name": "Pegasus",
+        "aliases": [],
+        "types": [
+          "spyware"
+        ],
+        "description": "tech-memo日次IOCでNSO Groupによる使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-06-09T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-06-09T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-e8f4b9d0a614c1696cf5"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--ecf428a57f76297a819aae8b から追加。"
+      }
+    ],
     "tools": [],
     "infrastructure": [],
     "delivery_formats": [],
@@ -68,7 +95,36 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-1276057de2aa3a5b8936",
+      "name": "WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": "2026-06-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "last_observed": {
+        "value": "2026-06-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "description": "WhatsAppは、ユーザーから報告されたソーシャルエンジニアリング攻撃を調査し、NSO関連の攻撃を阻止した。 攻撃者は標的に悪性リンクをクリックさせ、WhatsApp外部のWebサイトへ誘導しようとしていた。 Metaは、攻撃者がWhatsApp上でテスト用アカウントやグループを作成していたことも確認し、削除した。 NSO Groupはイスラエルの商用スパイウェア企業で、Pegasusを政治家、活動家、記者らに使ってきたことで知られる。 Metaは、今回の活動が2025年の恒久的差止命令に違反すると主張している。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-2023bb247b5e7154a872"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-e8f4b9d0a614c1696cf5"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--ecf428a57f76297a819aae8b から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -79,24 +135,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -116,40 +154,40 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--nso-group--9fef2836510723a4",
-      "path": "NSOGroup/Asia-24-Frielingsdorf-YouShallNotPassAnalysing.pdf",
-      "title": "Asia 24 Frielingsdorf YouShallNotPassAnalysing",
-      "publisher": "",
+      "source_id": "source--daily-e8f4b9d0a614c1696cf5",
+      "path": "https://about.fb.com/news/2026/06/fighting-spyware-an-update-from-whatsapp/",
+      "title": "WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表",
+      "publisher": "about.fb.com",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-06-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260609.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 参照記事: https://www.bleepingcomputer.com/news/security/whatsapp-says-it-disrupted-new-nso-spyware-phishing-attacks/"
     },
     {
-      "source_id": "source--nso-group--bfa99cbc899e9b3a",
-      "path": "NSOGroup/Memo-Citizen-Lab-Raymundo-Ramos-230304.pdf",
-      "title": "Memo Citizen Lab Raymundo Ramos 230304",
-      "publisher": "",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
       },
-      "language": "unknown",
-      "source_type": "report",
+      "language": "en",
+      "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
+      "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--nso-group--25c12a20509800b5",
@@ -188,9 +226,27 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--nso-group--b87edb53311bf320",
-      "path": "NSOGroup/Morocco/article_3.pdf",
-      "title": "article 3",
+      "source_id": "source--nso-group--63bc982219df0301",
+      "path": "NSOGroup/VB2022-Exploit-archaeology-a-forensic-history-of-in-the-wild-NSO-Group-exploits.pdf",
+      "title": "VB2022 Exploit archaeology a forensic history of in the wild NSO Group exploits",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--nso-group--70e88ee0cb1df29d",
+      "path": "NSOGroup/Six Palestinian human rights defenders hacked with.pdf",
+      "title": "Six Palestinian human rights defenders hacked with",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -224,9 +280,9 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--nso-group--70e88ee0cb1df29d",
-      "path": "NSOGroup/Six Palestinian human rights defenders hacked with.pdf",
-      "title": "Six Palestinian human rights defenders hacked with",
+      "source_id": "source--nso-group--9fef2836510723a4",
+      "path": "NSOGroup/Asia-24-Frielingsdorf-YouShallNotPassAnalysing.pdf",
+      "title": "Asia 24 Frielingsdorf YouShallNotPassAnalysing",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -242,15 +298,33 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--nso-group--63bc982219df0301",
-      "path": "NSOGroup/VB2022-Exploit-archaeology-a-forensic-history-of-in-the-wild-NSO-Group-exploits.pdf",
-      "title": "VB2022 Exploit archaeology a forensic history of in the wild NSO Group exploits",
+      "source_id": "source--nso-group--b87edb53311bf320",
+      "path": "NSOGroup/Morocco/article_3.pdf",
+      "title": "article 3",
       "publisher": "",
       "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--nso-group--bfa99cbc899e9b3a",
+      "path": "NSOGroup/Memo-Citizen-Lab-Raymundo-Ramos-230304.pdf",
+      "title": "Memo Citizen Lab Raymundo Ramos 230304",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "language": "unknown",
       "source_type": "report",

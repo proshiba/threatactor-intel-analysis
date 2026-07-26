@@ -4,7 +4,7 @@
   "name": "Gamaredon",
   "status": "draft",
   "created_at": "2026-07-25T09:00:34Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-26T05:28:43Z",
   "languages": [
     "ja"
   ],
@@ -153,15 +153,67 @@
   "capabilities": {
     "malware": [
       {
-        "id": "malware--quietsieve",
-        "name": "QuietSieve",
+        "id": "malware--daily-d2f92cab7d572d733a5d",
+        "name": "GammaWorm",
+        "aliases": [],
+        "types": [
+          "worm"
+        ],
+        "description": "tech-memo日次IOCでGamaredonによる使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-06-03T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-06-03T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f9666a37c61d10f83b24"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--bed4b374e66f8b3e2fdf47e0 から追加。"
+      },
+      {
+        "id": "malware--daily-dee986e090a2e04cffbb",
+        "name": "GammaPhish",
+        "aliases": [],
+        "types": [
+          "dropper"
+        ],
+        "description": "tech-memo日次IOCでGamaredonによる使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-06-03T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-06-03T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f9666a37c61d10f83b24"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--bed4b374e66f8b3e2fdf47e0 から追加。"
+      },
+      {
+        "id": "malware--powerpunch",
+        "name": "PowerPunch",
         "aliases": [
-          "QuietSieve"
+          "PowerPunch"
         ],
         "types": [
           "Windows"
         ],
-        "description": "[QuietSieve](https://attack.mitre.org/software/S0686) is an information stealer that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022)",
+        "description": "[PowerPunch](https://attack.mitre.org/software/S0685) is a lightweight downloader that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022)",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -210,15 +262,15 @@
         "analyst_notes": ""
       },
       {
-        "id": "malware--powerpunch",
-        "name": "PowerPunch",
+        "id": "malware--quietsieve",
+        "name": "QuietSieve",
         "aliases": [
-          "PowerPunch"
+          "QuietSieve"
         ],
         "types": [
           "Windows"
         ],
-        "description": "[PowerPunch](https://attack.mitre.org/software/S0685) is a lightweight downloader that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022)",
+        "description": "[QuietSieve](https://attack.mitre.org/software/S0686) is an information stealer that has been used by [Gamaredon Group](https://attack.mitre.org/groups/G0047) since at least 2021.(Citation: Microsoft Actinium February 2022)",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -329,7 +381,37 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-9698d98e1d4148553041",
+      "name": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "last_observed": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "description": "Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-d2f92cab7d572d733a5d",
+        "malware--daily-dee986e090a2e04cffbb"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f9666a37c61d10f83b24"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--bed4b374e66f8b3e2fdf47e0 から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -3817,24 +3899,6 @@
   ],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -3853,9 +3917,63 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--gamaredon--a0d52e16421d8b11",
-      "path": "Gamaredon/Beyond_Bullets_and_Bombs_An_Examination_of_Armageddon_Groups_Cyber.pdf",
-      "title": "Beyond Bullets and Bombs An Examination of Armageddon Groups Cyber",
+      "source_id": "source--daily-f9666a37c61d10f83b24",
+      "path": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+      "title": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "publisher": "blog.sekoia.io",
+      "published_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260603.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e"
+    },
+    {
+      "source_id": "source--gamaredon--0512c893b55f399d",
+      "path": "Gamaredon/cyberespionage-gamaredon-way.pdf",
+      "title": "cyberespionage gamaredon way",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--gamaredon--24d0ac8621d42b62",
+      "path": "Gamaredon/README.MD",
+      "title": "README",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "repository-notes",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--gamaredon--43ece8b760fd4f72",
+      "path": "Gamaredon/Cybergun_Technical_Analysis_of_the_Armageddons_Infostealer.pdf",
+      "title": "Cybergun Technical Analysis of the Armageddons Infostealer",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -3889,24 +4007,6 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--gamaredon--43ece8b760fd4f72",
-      "path": "Gamaredon/Cybergun_Technical_Analysis_of_the_Armageddons_Infostealer.pdf",
-      "title": "Cybergun Technical Analysis of the Armageddons Infostealer",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
       "source_id": "source--gamaredon--68bb036eb943d265",
       "path": "Gamaredon/Gamaredon202102_ioc1000+.csv",
       "title": "Gamaredon202102 ioc1000+",
@@ -3919,42 +4019,6 @@
       },
       "language": "unknown",
       "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--gamaredon--b32b75e3cedfdb37",
-      "path": "Gamaredon/Platinum feature article - Targeted attacks in South and Southeast Asia April 2016.pdf",
-      "title": "Platinum feature article   Targeted attacks in South and Southeast Asia April 2016",
-      "publisher": "",
-      "published_at": {
-        "value": "2016-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--gamaredon--24d0ac8621d42b62",
-      "path": "Gamaredon/README.MD",
-      "title": "README",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "repository-notes",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
@@ -3979,15 +4043,33 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--gamaredon--0512c893b55f399d",
-      "path": "Gamaredon/cyberespionage-gamaredon-way.pdf",
-      "title": "cyberespionage gamaredon way",
+      "source_id": "source--gamaredon--a0d52e16421d8b11",
+      "path": "Gamaredon/Beyond_Bullets_and_Bombs_An_Examination_of_Armageddon_Groups_Cyber.pdf",
+      "title": "Beyond Bullets and Bombs An Examination of Armageddon Groups Cyber",
       "publisher": "",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--gamaredon--b32b75e3cedfdb37",
+      "path": "Gamaredon/Platinum feature article - Targeted attacks in South and Southeast Asia April 2016.pdf",
+      "title": "Platinum feature article   Targeted attacks in South and Southeast Asia April 2016",
+      "publisher": "",
+      "published_at": {
+        "value": "2016-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
       },
       "language": "unknown",
       "source_type": "report",
@@ -4013,6 +4095,76 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:43:09Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
     },
     {
       "source_id": "source--osint-misp-microsoft-activity-group",
@@ -4117,58 +4269,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-microsoft-threat-actor-mapping",
-      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
-      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
-      "title": "Microsoft Threat Actor Naming Mapping",
-      "publisher": "Microsoft",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:43:09Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
-    },
-    {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     }
   ],
   "assessment": {

@@ -1,0 +1,248 @@
+#!/usr/bin/env python3
+"""Parse tech-memo daily news/IOCs and build an actor-linked review queue."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+from collections import Counter
+from pathlib import Path
+from typing import Any
+
+from daily_common import (
+    ActorRegistry,
+    date_from_path,
+    extract_artifacts,
+    is_safe_structured_match,
+    load_json,
+    parse_news_file,
+    qualifier_confidence,
+    read_ioc_csv,
+    stable_digest,
+    utc_now,
+    write_json_atomic,
+)
+
+
+HERE = Path(__file__).resolve().parent
+REPO_ROOT = HERE.parent
+
+
+def git_commit(source_root: Path) -> str:
+    result = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=source_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return result.stdout.strip() if result.returncode == 0 else "unknown"
+
+
+def in_range(value: str | None, since: str | None, until: str | None) -> bool:
+    if not value:
+        return not since and not until
+    return (not since or value >= since) and (not until or value <= until)
+
+
+def article_lookup(articles: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
+    for article in articles:
+        for value in (article["url"], article["primary_url"]):
+            result.setdefault(value.rstrip("/"), article)
+    return result
+
+
+def record_id(slug: str, reference: str, news_path: str) -> str:
+    return f"daily-record--{stable_digest(slug, reference, news_path)[:24]}"
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--config", type=Path, default=HERE / "config.json")
+    parser.add_argument("--source-root", type=Path, default=HERE / ".cache" / "tech-memo")
+    parser.add_argument("--profiles-root", type=Path, default=REPO_ROOT / "profiles")
+    parser.add_argument("--output", type=Path, default=HERE / "output" / "review-queue.json")
+    parser.add_argument("--since", help="include dates on/after YYYY-MM-DD")
+    parser.add_argument("--until", help="include dates on/before YYYY-MM-DD")
+    parser.add_argument(
+        "--approve-structured",
+        action="store_true",
+        help="approve only unique exact actor matches from structured IOC actor fields",
+    )
+    args = parser.parse_args()
+
+    config = load_json(args.config)
+    source_root = args.source_root.resolve()
+    profiles_root = args.profiles_root.resolve()
+    news_root = source_root / config["source"]["news_path"]
+    iocs_root = source_root / config["source"]["iocs_path"]
+    if not news_root.is_dir() or not iocs_root.is_dir():
+        raise SystemExit("Source data is missing. Run sync_daily.py or pass --source-root.")
+
+    registry = ActorRegistry(profiles_root, config)
+    articles: list[dict[str, Any]] = []
+    parse_errors: list[dict[str, str]] = []
+    for path in sorted(news_root.rglob("*.md")):
+        date = date_from_path(path)
+        if not in_range(date, args.since, args.until):
+            continue
+        relative = path.relative_to(source_root).as_posix()
+        try:
+            articles.extend(parse_news_file(path, relative))
+        except Exception as exc:
+            parse_errors.append({"path": relative, "error": f"{type(exc).__name__}: {exc}"})
+    by_url = article_lookup(articles)
+
+    records: dict[tuple[str, str, str], dict[str, Any]] = {}
+    unmatched_actor_values: Counter[str] = Counter()
+    ignored = {
+        value.casefold() for value in config["matching"].get("ignored_actor_values", [])
+    }
+
+    for path in sorted(iocs_root.rglob("*.csv")):
+        file_date = date_from_path(path)
+        if not in_range(file_date, args.since, args.until):
+            continue
+        relative = path.relative_to(source_root).as_posix()
+        try:
+            rows = read_ioc_csv(path, config)
+        except Exception as exc:
+            parse_errors.append({"path": relative, "error": f"{type(exc).__name__}: {exc}"})
+            continue
+        for row in rows:
+            if not row["type"] or not row["value"]:
+                parse_errors.append(
+                    {"path": relative, "error": f"row {row['row']}: unsupported/empty IOC"}
+                )
+                continue
+            matches = registry.exact(row["actor"], "ioc-actor-field")
+            if not matches:
+                if row["actor"].casefold() not in ignored:
+                    unmatched_actor_values[row["actor"]] += 1
+                continue
+            match = matches[0]
+            reference = row["reference"] or f"tech-memo:{relative}"
+            article = by_url.get(reference.rstrip("/"))
+            news_path = article["news_path"] if article else relative
+            key = (match.slug, reference, news_path)
+            if key not in records:
+                safe = is_safe_structured_match(row["actor"], match)
+                records[key] = {
+                    "record_id": record_id(*key),
+                    "review_status": "approved" if args.approve_structured and safe else "pending",
+                    "suggested_action": "approve" if safe else "review",
+                    "actor": {
+                        "slug": match.slug,
+                        "canonical_name": match.name,
+                        "matched_term": match.term,
+                        "scope": match.scope,
+                        "match_confidence": match.confidence,
+                        "reason": match.reason,
+                        "raw_value": row["actor"],
+                    },
+                    "activity": {
+                        "title": article["title"] if article else f"{match.name}の日次IOC観測",
+                        "summary": article["summary"] if article else row["description"],
+                        "news_date": article["news_date"] if article else file_date,
+                        "news_url": article["url"] if article else "",
+                        "primary_url": reference,
+                        "news_path": news_path,
+                    },
+                    "confidence": qualifier_confidence(row["actor"], row["confidence"]),
+                    "iocs": [],
+                    "artifacts": extract_artifacts(article["body"]) if article else [],
+                    "review_notes": "",
+                }
+            item = dict(row)
+            item["source_path"] = relative
+            item["malware_refs"] = registry.malware_refs(match.slug, [row["malware"]])
+            records[key]["iocs"].append(item)
+
+    structured_keys = {
+        (record["actor"]["slug"], record["activity"]["primary_url"].rstrip("/"))
+        for record in records.values()
+    }
+    for article in articles:
+        for match in registry.mentions(article["title"], article["body"]):
+            primary = article["primary_url"]
+            if (match.slug, primary.rstrip("/")) in structured_keys:
+                continue
+            key = (match.slug, primary, article["news_path"])
+            if key in records:
+                continue
+            records[key] = {
+                "record_id": record_id(*key),
+                "review_status": "pending",
+                "suggested_action": "review",
+                "actor": {
+                    "slug": match.slug,
+                    "canonical_name": match.name,
+                    "matched_term": match.term,
+                    "scope": match.scope,
+                    "match_confidence": match.confidence,
+                    "reason": match.reason,
+                    "raw_value": match.term,
+                },
+                "activity": {
+                    "title": article["title"],
+                    "summary": article["summary"],
+                    "news_date": article["news_date"],
+                    "news_url": article["url"],
+                    "primary_url": primary,
+                    "news_path": article["news_path"],
+                },
+                "confidence": "medium" if match.reason == "news-title" else "low",
+                "iocs": [],
+                "artifacts": extract_artifacts(article["body"]),
+                "review_notes": "",
+            }
+
+    ordered = sorted(
+        records.values(),
+        key=lambda item: (
+            item["activity"].get("news_date") or "",
+            item["actor"]["slug"],
+            item["record_id"],
+        ),
+    )
+    status_counts = Counter(item["review_status"] for item in ordered)
+    queue = {
+        "schema_version": "1.0.0",
+        "generated_at": utc_now(),
+        "source": {
+            "repository": config["source"]["repository_full_name"],
+            "branch": config["source"]["branch"],
+            "commit": git_commit(source_root),
+            "root": str(source_root),
+            "since": args.since,
+            "until": args.until,
+        },
+        "statistics": {
+            "news_files": len(
+                [p for p in news_root.rglob("*.md") if in_range(date_from_path(p), args.since, args.until)]
+            ),
+            "articles": len(articles),
+            "records": len(ordered),
+            "approved": status_counts["approved"],
+            "pending": status_counts["pending"],
+            "ioc_observations": sum(len(item["iocs"]) for item in ordered),
+            "artifact_candidates": sum(len(item["artifacts"]) for item in ordered),
+            "unmatched_actor_values": sum(unmatched_actor_values.values()),
+            "parse_errors": len(parse_errors),
+        },
+        "unmatched_actor_values": [
+            {"value": value, "observations": count}
+            for value, count in unmatched_actor_values.most_common()
+        ],
+        "parse_errors": parse_errors,
+        "records": ordered,
+    }
+    write_json_atomic(args.output, queue)
+    print(json.dumps(queue["statistics"], ensure_ascii=False, indent=2))
+    return 1 if parse_errors else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

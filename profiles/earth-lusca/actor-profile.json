@@ -4,7 +4,7 @@
   "name": "Earth Lusca",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-26T05:28:43Z",
   "languages": [
     "ja"
   ],
@@ -151,34 +151,6 @@
   "capabilities": {
     "malware": [
       {
-        "id": "malware--winnti-for-linux",
-        "name": "Winnti for Linux",
-        "aliases": [
-          "Winnti for Linux"
-        ],
-        "types": [
-          "Linux"
-        ],
-        "description": "[Winnti for Linux](https://attack.mitre.org/software/S0430) is a trojan, seen since at least 2015, designed specifically for targeting Linux systems. Reporting indicates the winnti malware family is shared across a number of actors including [Winnti Group](https://attack.mitre.org/groups/G0044). The Windows variant is tracked separately under [Winnti for Windows](https://attack.mitre.org/software/S0141).(Citation: Chronicle Winnti for Linux May 2019)",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
-      {
         "id": "malware--cobalt-strike",
         "name": "Cobalt Strike",
         "aliases": [
@@ -209,6 +181,32 @@
         "analyst_notes": ""
       },
       {
+        "id": "malware--daily-f196d446e69f62aacb40",
+        "name": "SprySOCKS",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "tech-memo日次IOCでEarth Luscaによる使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ff80b256acceafc23ada"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--55a808dcd55172454b1cbdd2 から追加。"
+      },
+      {
         "id": "malware--shadowpad",
         "name": "ShadowPad",
         "aliases": [
@@ -219,6 +217,34 @@
           "Windows"
         ],
         "description": "[ShadowPad](https://attack.mitre.org/software/S0596) is a modular backdoor that was first identified in a supply chain compromise of the NetSarang software in mid-July 2017. The malware was originally thought to be exclusively used by [APT41](https://attack.mitre.org/groups/G0096), but has since been observed to be used by various Chinese threat activity groups. (Citation: Recorded Future RedEcho Feb 2021)(Citation: Securelist ShadowPad Aug 2017)(Citation: Kaspersky ShadowPad Aug 2017) ",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--winnti-for-linux",
+        "name": "Winnti for Linux",
+        "aliases": [
+          "Winnti for Linux"
+        ],
+        "types": [
+          "Linux"
+        ],
+        "description": "[Winnti for Linux](https://attack.mitre.org/software/S0430) is a trojan, seen since at least 2015, designed specifically for targeting Linux systems. Reporting indicates the winnti malware family is shared across a number of actors including [Winnti Group](https://attack.mitre.org/groups/G0044). The Windows variant is tracked separately under [Winnti for Windows](https://attack.mitre.org/software/S0141).(Citation: Chronicle Winnti for Linux May 2019)",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -415,7 +441,36 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-6cf080a300ba43942b85",
+      "name": "SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "description": "ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-f196d446e69f62aacb40"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ff80b256acceafc23ada"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--55a808dcd55172454b1cbdd2 から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -1672,24 +1727,6 @@
   ],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -1708,51 +1745,51 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--earth-lusca--98b7035a52ea7c69",
-      "path": "actor_profile/evidence/earth-lusca.csv",
-      "title": "earth lusca",
-      "publisher": "",
+      "source_id": "source--daily-ff80b256acceafc23ada",
+      "path": "https://www.welivesecurity.com/en/eset-research/fishmongers-arsenal-upgraded-sprysocks-windows/",
+      "title": "SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用",
+      "publisher": "welivesecurity.com",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "structured-data",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260617.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 参照記事: https://www.bleepingcomputer.com/news/security/windows-version-of-sprysocks-linux-malware-used-to-attack-govt-orgs/"
     },
     {
-      "source_id": "source--earth-lusca--2b747471cb1a7c41",
-      "path": "0day _In the Wild_.xlsx",
-      "title": "0day  In the Wild",
+      "source_id": "source--earth-lusca--032dd9b35df3a5f5",
+      "path": "summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf",
+      "title": "Bridewell 2026 Cyber Threat Intelligence Report",
       "publisher": "",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
       },
       "language": "unknown",
-      "source_type": "spreadsheet",
+      "source_type": "report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--cbe51c6e3dc9357a",
-      "path": "Anonymous/RussiaUkrainewar/Report_Notes_of_Cyber_inspector_.pdf",
-      "title": "Report Notes of Cyber inspector",
+      "source_id": "source--earth-lusca--199829ebd56f38eb",
+      "path": "summary/2023/RedReport2023-Picus.pdf",
+      "title": "RedReport2023 Picus",
       "publisher": "",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
       },
       "language": "unknown",
       "source_type": "report",
@@ -1780,6 +1817,24 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
+      "source_id": "source--earth-lusca--1a9368088602e490",
+      "path": "summary/2024/threat actor list from cs.csv",
+      "title": "threat actor list from cs",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
       "source_id": "source--earth-lusca--1e640b2aea499dd6",
       "path": "Gamaredon/cyberespionage-gamaredon-way.pdf",
       "title": "cyberespionage gamaredon way",
@@ -1798,12 +1853,12 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--7a688810045b62fc",
-      "path": "Gamaredon/gamaredon-in-2025.pdf",
-      "title": "gamaredon in 2025",
+      "source_id": "source--earth-lusca--23943fb3d1d136c3",
+      "path": "summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf",
+      "title": "2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report",
       "publisher": "",
       "published_at": {
-        "value": "2025-01-01T00:00:00Z",
+        "value": "2024-01-01T00:00:00Z",
         "precision": "year",
         "status": "known",
         "basis": "filename"
@@ -1816,9 +1871,45 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--75e8559c85eac27e",
-      "path": "International Strategic/China/Charting China’s Climb as a Leading Global Cyber Power.pdf",
-      "title": "Charting China’s Climb as a Leading Global Cyber Power",
+      "source_id": "source--earth-lusca--2b747471cb1a7c41",
+      "path": "0day _In the Wild_.xlsx",
+      "title": "0day  In the Wild",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "spreadsheet",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--2bb88150059ba49f",
+      "path": "microsoft-threat-actor-list.xlsx",
+      "title": "microsoft threat actor list",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "spreadsheet",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--33d4c1d6ac8ff0d7",
+      "path": "lazarus/Operation-Marstech-Mayhem-Report_021025_03.pdf",
+      "title": "Operation Marstech Mayhem Report 021025 03",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -1834,9 +1925,45 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--ab5b3680b8da3e28",
-      "path": "International Strategic/New Zealand/cert-nz-cyber-change-behavioural-insights-2022-online-version.pdf",
-      "title": "cert nz cyber change behavioural insights 2022 online version",
+      "source_id": "source--earth-lusca--3ac6ac9c5fe64a5e",
+      "path": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf",
+      "title": "Cybersecurity Threats 2024 Annual Report QAX",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--433072d91d3dd87a",
+      "path": "summary/2021/2021(APT) Microsoft Digital Defense Report.pdf",
+      "title": "2021(APT) Microsoft Digital Defense Report",
+      "publisher": "",
+      "published_at": {
+        "value": "2021-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--573b1b4eac57b638",
+      "path": "summary/2023/2022-year-in-retrospect-report.pdf",
+      "title": "2022 year in retrospect report",
       "publisher": "",
       "published_at": {
         "value": "2022-01-01T00:00:00Z",
@@ -1870,45 +1997,297 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
+      "source_id": "source--earth-lusca--5c1d54aaa37e8e0e",
+      "path": "cybercrime/2026/Microsoft_Edge_Security_StegoAd.pdf",
+      "title": "Microsoft Edge Security StegoAd",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--6023615a8b04e193",
+      "path": "summary/2024/elastic-global-threat-report-2024.pdf",
+      "title": "elastic global threat report 2024",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--6a018d06363e5e6c",
+      "path": "summary/2023/2022cyberComprehensiveSituationObservationManual.pdf",
+      "title": "2022cyberComprehensiveSituationObservationManual",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--703cd54add1a3959",
+      "path": "information_operations/Meta’s threat disruptions/202512.pdf",
+      "title": "202512",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--75e8559c85eac27e",
+      "path": "International Strategic/China/Charting China’s Climb as a Leading Global Cyber Power.pdf",
+      "title": "Charting China’s Climb as a Leading Global Cyber Power",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--760426aa8af40469",
+      "path": "summary/2025/elastic-global-threat-report-2025.pdf",
+      "title": "elastic global threat report 2025",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--78e9a028e57eb891",
+      "path": "summary/2024/Qianxin 2023 APT Report.pdf",
+      "title": "Qianxin 2023 APT Report",
+      "publisher": "",
+      "published_at": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--7a688810045b62fc",
+      "path": "Gamaredon/gamaredon-in-2025.pdf",
+      "title": "gamaredon in 2025",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--7d65222e8beaf156",
+      "path": "UNC****/NoName/study_of_a_targeted_attack_on_a_russian_enterprise_in_the_mechanical_engineering_sector_en.pdf",
+      "title": "study of a targeted attack on a russian enterprise in the mechanical engineering sector en",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--81606f683c2b5776",
+      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
+      "title": "APT group Intelligence Research handbook 2022",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--840f146d8b7530f7",
+      "path": "summary/2020/ESET_Threat_Report_Q22020.pdf",
+      "title": "ESET Threat Report Q22020",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--87269f0b852c709d",
+      "path": "summary/2026/CERTFR-2026-CTI-003.pdf",
+      "title": "CERTFR 2026 CTI 003",
+      "publisher": "",
+      "published_at": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--88e015a851a0644b",
+      "path": "summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf",
+      "title": "group ib hi tech crime trends 2022 2023 ru",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "invalid-calendar-date:filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--931a2201b0913fe0",
+      "path": "summary/2022/2021 Advanced Threat Trends Research Report-dbappsecurity.pdf",
+      "title": "2021 Advanced Threat Trends Research Report dbappsecurity",
+      "publisher": "",
+      "published_at": {
+        "value": "2021-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--96794c55f6a5ee34",
+      "path": "summary/2024/2023 Network Vulnerability Situation Research Report.pdf",
+      "title": "2023 Network Vulnerability Situation Research Report",
+      "publisher": "",
+      "published_at": {
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--98b7035a52ea7c69",
+      "path": "actor_profile/evidence/earth-lusca.csv",
+      "title": "earth lusca",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
       "source_id": "source--earth-lusca--9b0e27675a9c4c0a",
       "path": "Oceanlotus/OceanLotus' Attacks to Indochinese Peninsula Evolution of Targets, Techniques and Procedure.pdf",
       "title": "OceanLotus' Attacks to Indochinese Peninsula Evolution of Targets, Techniques and Procedure",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--c7eda091c53f3701",
-      "path": "Sandworm/NCSC-MAR-Infamous-Chisel.pdf",
-      "title": "NCSC MAR Infamous Chisel",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--cdc3a8201297cd1a",
-      "path": "SideCopy/SideCopy.pdf",
-      "title": "SideCopy",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -1942,9 +2321,171 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--7d65222e8beaf156",
-      "path": "UNC****/NoName/study_of_a_targeted_attack_on_a_russian_enterprise_in_the_mechanical_engineering_sector_en.pdf",
-      "title": "study of a targeted attack on a russian enterprise in the mechanical engineering sector en",
+      "source_id": "source--earth-lusca--a7937abb956e7d73",
+      "path": "lazarus/fudmodule/readme.md",
+      "title": "readme",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "repository-notes",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--ab5b3680b8da3e28",
+      "path": "International Strategic/New Zealand/cert-nz-cyber-change-behavioural-insights-2022-online-version.pdf",
+      "title": "cert nz cyber change behavioural insights 2022 online version",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--b2a90d80928fd56d",
+      "path": "summary/2024/Hurdling Over Hazards- Multifaceted Threats to the Paris Olympics.pdf",
+      "title": "Hurdling Over Hazards  Multifaceted Threats to the Paris Olympics",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--b6235c7794cb0e32",
+      "path": "summary/2025/Cyber Threat Intelligence Report 2025 2.pdf",
+      "title": "Cyber Threat Intelligence Report 2025 2",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--bc23ccefae2a2a61",
+      "path": "summary/UNREDACTEDMagazine/003.pdf",
+      "title": "003",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--bd4f9dd295314458",
+      "path": "summary/2025/eset-apt-activity-report-q4-2024-q1-2025.pdf",
+      "title": "eset apt activity report q4 2024 q1 2025",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--c0053c5d733a7845",
+      "path": "kimsuky/kimsuky-2023-03-20-joint-cyber-security-advisory.pdf",
+      "title": "kimsuky 2023 03 20 joint cyber security advisory",
+      "publisher": "",
+      "published_at": {
+        "value": "2023-03-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--c7eda091c53f3701",
+      "path": "Sandworm/NCSC-MAR-Infamous-Chisel.pdf",
+      "title": "NCSC MAR Infamous Chisel",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--cbe51c6e3dc9357a",
+      "path": "Anonymous/RussiaUkrainewar/Report_Notes_of_Cyber_inspector_.pdf",
+      "title": "Report Notes of Cyber inspector",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--earth-lusca--cdc3a8201297cd1a",
+      "path": "SideCopy/SideCopy.pdf",
+      "title": "SideCopy",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -1978,31 +2519,13 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--5c1d54aaa37e8e0e",
-      "path": "cybercrime/2026/Microsoft_Edge_Security_StegoAd.pdf",
-      "title": "Microsoft Edge Security StegoAd",
+      "source_id": "source--earth-lusca--df02256dee31c1b3",
+      "path": "summary/2024/Browser-Security-Annual-Report-2024.pdf",
+      "title": "Browser Security Annual Report 2024",
       "publisher": "",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--703cd54add1a3959",
-      "path": "information_operations/Meta’s threat disruptions/202512.pdf",
-      "title": "202512",
-      "publisher": "",
-      "published_at": {
-        "value": "2025-12-01T00:00:00Z",
-        "precision": "month",
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
         "status": "known",
         "basis": "filename"
       },
@@ -2014,13 +2537,13 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--c0053c5d733a7845",
-      "path": "kimsuky/kimsuky-2023-03-20-joint-cyber-security-advisory.pdf",
-      "title": "kimsuky 2023 03 20 joint cyber security advisory",
+      "source_id": "source--earth-lusca--df5aaa905a981b9e",
+      "path": "summary/2024/MacMalware_2023.pdf",
+      "title": "MacMalware 2023",
       "publisher": "",
       "published_at": {
-        "value": "2023-03-20T00:00:00Z",
-        "precision": "day",
+        "value": "2023-01-01T00:00:00Z",
+        "precision": "year",
         "status": "known",
         "basis": "filename"
       },
@@ -2050,354 +2573,12 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--33d4c1d6ac8ff0d7",
-      "path": "lazarus/Operation-Marstech-Mayhem-Report_021025_03.pdf",
-      "title": "Operation Marstech Mayhem Report 021025 03",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--a7937abb956e7d73",
-      "path": "lazarus/fudmodule/readme.md",
-      "title": "readme",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "repository-notes",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--2bb88150059ba49f",
-      "path": "microsoft-threat-actor-list.xlsx",
-      "title": "microsoft threat actor list",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "spreadsheet",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--840f146d8b7530f7",
-      "path": "summary/2020/ESET_Threat_Report_Q22020.pdf",
-      "title": "ESET Threat Report Q22020",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--433072d91d3dd87a",
-      "path": "summary/2021/2021(APT) Microsoft Digital Defense Report.pdf",
-      "title": "2021(APT) Microsoft Digital Defense Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2021-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--931a2201b0913fe0",
-      "path": "summary/2022/2021 Advanced Threat Trends Research Report-dbappsecurity.pdf",
-      "title": "2021 Advanced Threat Trends Research Report dbappsecurity",
-      "publisher": "",
-      "published_at": {
-        "value": "2021-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--81606f683c2b5776",
-      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
-      "title": "APT group Intelligence Research handbook 2022",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--573b1b4eac57b638",
-      "path": "summary/2023/2022-year-in-retrospect-report.pdf",
-      "title": "2022 year in retrospect report",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--6a018d06363e5e6c",
-      "path": "summary/2023/2022cyberComprehensiveSituationObservationManual.pdf",
-      "title": "2022cyberComprehensiveSituationObservationManual",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--199829ebd56f38eb",
-      "path": "summary/2023/RedReport2023-Picus.pdf",
-      "title": "RedReport2023 Picus",
-      "publisher": "",
-      "published_at": {
-        "value": "2023-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
       "source_id": "source--earth-lusca--f29d03d993f1f420",
       "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
       "title": "Secureworks NC3 2022StateoftheThreat",
       "publisher": "",
       "published_at": {
         "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--88e015a851a0644b",
-      "path": "summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf",
-      "title": "group ib hi tech crime trends 2022 2023 ru",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "invalid-calendar-date:filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--96794c55f6a5ee34",
-      "path": "summary/2024/2023 Network Vulnerability Situation Research Report.pdf",
-      "title": "2023 Network Vulnerability Situation Research Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2023-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--df02256dee31c1b3",
-      "path": "summary/2024/Browser-Security-Annual-Report-2024.pdf",
-      "title": "Browser Security Annual Report 2024",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--b2a90d80928fd56d",
-      "path": "summary/2024/Hurdling Over Hazards- Multifaceted Threats to the Paris Olympics.pdf",
-      "title": "Hurdling Over Hazards  Multifaceted Threats to the Paris Olympics",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--df5aaa905a981b9e",
-      "path": "summary/2024/MacMalware_2023.pdf",
-      "title": "MacMalware 2023",
-      "publisher": "",
-      "published_at": {
-        "value": "2023-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--78e9a028e57eb891",
-      "path": "summary/2024/Qianxin 2023 APT Report.pdf",
-      "title": "Qianxin 2023 APT Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2023-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--6023615a8b04e193",
-      "path": "summary/2024/elastic-global-threat-report-2024.pdf",
-      "title": "elastic global threat report 2024",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--1a9368088602e490",
-      "path": "summary/2024/threat actor list from cs.csv",
-      "title": "threat actor list from cs",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--23943fb3d1d136c3",
-      "path": "summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf",
-      "title": "2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
         "precision": "year",
         "status": "known",
         "basis": "filename"
@@ -2428,130 +2609,74 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--earth-lusca--b6235c7794cb0e32",
-      "path": "summary/2025/Cyber Threat Intelligence Report 2025 2.pdf",
-      "title": "Cyber Threat Intelligence Report 2025 2",
-      "publisher": "",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
       "published_at": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "upstream-release"
       },
-      "language": "unknown",
-      "source_type": "report",
+      "language": "en",
+      "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
+      "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
-      "source_id": "source--earth-lusca--3ac6ac9c5fe64a5e",
-      "path": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf",
-      "title": "Cybersecurity Threats 2024 Annual Report QAX",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--760426aa8af40469",
-      "path": "summary/2025/elastic-global-threat-report-2025.pdf",
-      "title": "elastic global threat report 2025",
-      "publisher": "",
-      "published_at": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--bd4f9dd295314458",
-      "path": "summary/2025/eset-apt-activity-report-q4-2024-q1-2025.pdf",
-      "title": "eset apt activity report q4 2024 q1 2025",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--032dd9b35df3a5f5",
-      "path": "summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf",
-      "title": "Bridewell 2026 Cyber Threat Intelligence Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--87269f0b852c709d",
-      "path": "summary/2026/CERTFR-2026-CTI-003.pdf",
-      "title": "CERTFR 2026 CTI 003",
-      "publisher": "",
-      "published_at": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--earth-lusca--bc23ccefae2a2a61",
-      "path": "summary/UNREDACTEDMagazine/003.pdf",
-      "title": "003",
-      "publisher": "",
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "language": "unknown",
-      "source_type": "report",
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:43:09Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
     },
     {
       "source_id": "source--osint-misp-microsoft-activity-group",
@@ -2630,58 +2755,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-microsoft-threat-actor-mapping",
-      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
-      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
-      "title": "Microsoft Threat Actor Naming Mapping",
-      "publisher": "Microsoft",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:43:09Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
-    },
-    {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     }
   ],
   "assessment": {

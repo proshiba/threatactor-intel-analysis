@@ -2,7 +2,7 @@
 
 プロファイルID: `actor--nso-group`  
 状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
+更新日時: 2026-07-26T05:28:45Z  
 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -80,7 +80,9 @@ Aliasなし
 
 ### マルウェア
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--daily-2023bb247b5e7154a872 | Pegasus | tech-memo日次IOCでNSO Groupによる使用が報告されたマルウェア。 | 2026-06-09 | 2026-06-09 | 中 | `source--daily-e8f4b9d0a614c1696cf5` |
 
 ### ツール
 
@@ -104,7 +106,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表 | reported-activity | 2026-06-09 | 2026-06-09 | WhatsAppは、ユーザーから報告されたソーシャルエンジニアリング攻撃を調査し、NSO関連の攻撃を阻止した。 攻撃者は標的に悪性リンクをクリックさせ、WhatsApp外部のWebサイトへ誘導しようとしていた。 Metaは、攻撃者がWhatsApp上でテスト用アカウントやグループを作成していたことも確認し、削除した。 NSO Groupはイスラエルの商用スパイウェア企業で、Pegasusを政治家、活動家、記者らに使ってきたことで知られる。 Metaは、今回の活動が2025年の恒久的差止命令に違反すると主張している。 | 中 | `source--daily-e8f4b9d0a614c1696cf5` |
 
 
 
@@ -120,8 +124,8 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 158件
-- IOC観測: 214件
+- IOC値: 161件
+- IOC観測: 217件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 54件
 - 非IOC artifact観測: 31件（`artifacts.csv`）
@@ -143,16 +147,17 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--nso-group--9fef2836510723a4 | Asia 24 Frielingsdorf YouShallNotPassAnalysing |  | 不明 | NSOGroup/Asia-24-Frielingsdorf-YouShallNotPassAnalysing.pdf | report | TLP:CLEAR | 中 |
-| source--nso-group--bfa99cbc899e9b3a | Memo Citizen Lab Raymundo Ramos 230304 |  | 不明 | NSOGroup/Memo-Citizen-Lab-Raymundo-Ramos-230304.pdf | report | TLP:CLEAR | 中 |
+| source--daily-e8f4b9d0a614c1696cf5 | WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表 | about.fb.com | 2026-06-09 | https://about.fb.com/news/2026/06/fighting-spyware-an-update-from-whatsapp/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--nso-group--25c12a20509800b5 | ExoneratingMorocco DisprovingTheSpyware |  | 不明 | NSOGroup/Morocco/ExoneratingMorocco-DisprovingTheSpyware.pdf | report | TLP:CLEAR | 中 |
 | source--nso-group--2f4d62bc993498f9 | README |  | 不明 | NSOGroup/Morocco/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--nso-group--b87edb53311bf320 | article 3 |  | 不明 | NSOGroup/Morocco/article_3.pdf | report | TLP:CLEAR | 中 |
-| source--nso-group--769597e33c7ccdd4 | README |  | 不明 | NSOGroup/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--nso-group--70e88ee0cb1df29d | Six Palestinian human rights defenders hacked with |  | 不明 | NSOGroup/Six Palestinian human rights defenders hacked with.pdf | report | TLP:CLEAR | 中 |
 | source--nso-group--63bc982219df0301 | VB2022 Exploit archaeology a forensic history of in the wild NSO Group exploits |  | 2022 | NSOGroup/VB2022-Exploit-archaeology-a-forensic-history-of-in-the-wild-NSO-Group-exploits.pdf | report | TLP:CLEAR | 中 |
+| source--nso-group--70e88ee0cb1df29d | Six Palestinian human rights defenders hacked with |  | 不明 | NSOGroup/Six Palestinian human rights defenders hacked with.pdf | report | TLP:CLEAR | 中 |
+| source--nso-group--769597e33c7ccdd4 | README |  | 不明 | NSOGroup/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--nso-group--9fef2836510723a4 | Asia 24 Frielingsdorf YouShallNotPassAnalysing |  | 不明 | NSOGroup/Asia-24-Frielingsdorf-YouShallNotPassAnalysing.pdf | report | TLP:CLEAR | 中 |
+| source--nso-group--b87edb53311bf320 | article 3 |  | 不明 | NSOGroup/Morocco/article_3.pdf | report | TLP:CLEAR | 中 |
+| source--nso-group--bfa99cbc899e9b3a | Memo Citizen Lab Raymundo Ramos 230304 |  | 不明 | NSOGroup/Memo-Citizen-Lab-Raymundo-Ramos-230304.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述

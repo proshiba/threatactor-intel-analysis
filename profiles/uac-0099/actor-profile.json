@@ -4,7 +4,7 @@
   "name": "UAC-0099",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-26T05:28:45Z",
   "languages": [
     "ja"
   ],
@@ -50,7 +50,86 @@
     "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
   },
   "capabilities": {
-    "malware": [],
+    "malware": [
+      {
+        "id": "malware--daily-0067ca7bc8c9a3dd3e9d",
+        "name": "BURNYBEAR",
+        "aliases": [],
+        "types": [
+          "loader"
+        ],
+        "description": "tech-memo日次IOCでUAC-0099による使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-07-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-07-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-b6ba84745cdc81a329c5"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--6e0aa39a0bc9c40989ea2d32 から追加。"
+      },
+      {
+        "id": "malware--daily-75ab18d562d78bfce191",
+        "name": "LUNCHPOKE",
+        "aliases": [],
+        "types": [
+          "loader"
+        ],
+        "description": "tech-memo日次IOCでUAC-0099による使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-07-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-07-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-b6ba84745cdc81a329c5"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--6e0aa39a0bc9c40989ea2d32 から追加。"
+      },
+      {
+        "id": "malware--daily-8759c33e657f191deae0",
+        "name": "MATCHBOIL.V2",
+        "aliases": [],
+        "types": [
+          "loader"
+        ],
+        "description": "tech-memo日次IOCでUAC-0099による使用が報告されたマルウェア。",
+        "first_observed": {
+          "value": "2026-07-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "last_observed": {
+          "value": "2026-07-21T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "daily-ioc-date"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-b6ba84745cdc81a329c5"
+        ],
+        "analyst_notes": "日次収集レコード daily-record--6e0aa39a0bc9c40989ea2d32 から追加。"
+      }
+    ],
     "tools": [],
     "infrastructure": [],
     "delivery_formats": [],
@@ -58,7 +137,38 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-335624e877d2693bec53",
+      "name": "ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": "2026-07-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "last_observed": {
+        "value": "2026-07-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-ioc-date"
+      },
+      "description": "ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-0067ca7bc8c9a3dd3e9d",
+        "malware--daily-75ab18d562d78bfce191",
+        "malware--daily-8759c33e657f191deae0"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b6ba84745cdc81a329c5"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--6e0aa39a0bc9c40989ea2d32 から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +179,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,9 +198,97 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--uac-0099--d1390da5cc0a8ca5",
-      "path": "actor_profile/evidence/uac-0099.csv",
-      "title": "uac 0099",
+      "source_id": "source--daily-b6ba84745cdc81a329c5",
+      "path": "https://cert.gov.ua/article/6318634",
+      "title": "ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール",
+      "publisher": "cert.gov.ua",
+      "published_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260724.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 参照記事: https://www.bleepingcomputer.com/news/security/hackers-abuse-notepad-plus-plus-plugins-to-stealthily-install-malware/"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-cert-ua-uac-index",
+      "path": "actor_profile/reference/osint/cert-ua-uac-index.json",
+      "url": "https://cert.gov.ua/articles",
+      "title": "CERT-UA UAC Article Index",
+      "publisher": "CERT-UA",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:48:37Z",
+      "language": "en",
+      "source_type": "government-cert-article-index",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "82ca02b547093b2a0f60b1c62ed7fb8f6b6c9d0de6b0e4c2936ae64a1dcbc162",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-25T13:48:37Z. This index is derived from CERT-UA's official article titles and summaries; open the linked article before extending the claim beyond the indexed text."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--uac-0099--196d7c629d73d165",
+      "path": "summary/2024/RussianCyber.pdf",
+      "title": "RussianCyber",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -117,11 +297,11 @@
         "basis": "not-stated"
       },
       "language": "unknown",
-      "source_type": "structured-data",
+      "source_type": "report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
       "source_id": "source--uac-0099--1bbf512130c53602",
@@ -160,9 +340,9 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--uac-0099--196d7c629d73d165",
-      "path": "summary/2024/RussianCyber.pdf",
-      "title": "RussianCyber",
+      "source_id": "source--uac-0099--d1390da5cc0a8ca5",
+      "path": "actor_profile/evidence/uac-0099.csv",
+      "title": "uac 0099",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -171,11 +351,11 @@
         "basis": "not-stated"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "structured-data",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
       "source_id": "source--uac-0099--da9ce7085469e683",
@@ -194,58 +374,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-cert-ua-uac-index",
-      "path": "actor_profile/reference/osint/cert-ua-uac-index.json",
-      "url": "https://cert.gov.ua/articles",
-      "title": "CERT-UA UAC Article Index",
-      "publisher": "CERT-UA",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:48:37Z",
-      "language": "en",
-      "source_type": "government-cert-article-index",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "82ca02b547093b2a0f60b1c62ed7fb8f6b6c9d0de6b0e4c2936ae64a1dcbc162",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2026-07-25T13:48:37Z. This index is derived from CERT-UA's official article titles and summaries; open the linked article before extending the claim beyond the indexed text."
     }
   ],
   "assessment": {
