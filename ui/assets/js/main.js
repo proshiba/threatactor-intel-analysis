@@ -14,9 +14,9 @@ import { renderGraph } from "./view-graph.js";
 
 const ROUTES = [
   {
-    pattern: /^#\/actor\/([A-Za-z0-9._-]+)/,
+    pattern: /^#\/actor\/([A-Za-z0-9._-]+)(?:\/([a-z]+))?/,
     view: "actor",
-    render: (m) => renderActor(decodeURIComponent(m[1])),
+    render: (m) => renderActor(decodeURIComponent(m[1]), m[2] || "overview"),
   },
   {
     pattern: /^#\/relations(?:\/([A-Za-z0-9._-]+))?/,
