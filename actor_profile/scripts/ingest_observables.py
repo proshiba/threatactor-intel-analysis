@@ -71,7 +71,47 @@ FILE_EXTENSIONS = {
     "ini", "js", "jse", "jsp", "lnk", "msc", "pdb", "pdf", "php",
     "pif", "ppt", "pptm", "pptx", "ps1", "rar", "rtf", "scr", "sys",
     "tmp", "vbe", "vbs", "xls", "xlsm", "xlsx", "zip",
+    # Below are extensions that are not delegated TLDs, so treating them as a
+    # filename can never shadow a real domain. Entries such as .md (Moldova),
+    # .py (Paraguay), .sh, .io, .zip and .mov are deliberately left out above
+    # because they are both file extensions and valid TLDs.
+    "asp", "bin", "bmp", "class", "crt", "css", "csv", "db", "drv", "gz",
+    "htm", "html", "ico", "img", "inf", "iso", "jar", "json", "jpeg", "jpg",
+    "log", "msi", "ocx", "pem", "png", "pyc", "pyd", "reg", "sql", "sqlite",
+    "svg", "tgz", "txt", "war", "xml", "yaml", "yml",
 }
+
+# 出典レポート自身の参考リンク(ベンダーブログ、CERT、報道、リファレンス)は
+# IOCではない。ポータルの横串検索で誤結合を招くため取り込まない。
+REFERENCE_HOSTS_PATH = (
+    Path(__file__).resolve().parents[1] / "reference" / "reference-hosts.json"
+)
+
+
+def _load_reference_data(key: str) -> frozenset[str]:
+    try:
+        with REFERENCE_HOSTS_PATH.open(encoding="utf-8") as handle:
+            return frozenset(
+                entry.strip().lower()
+                for entry in json.load(handle).get(key, [])
+                if entry.strip()
+            )
+    except (OSError, ValueError):
+        return frozenset()
+
+
+REFERENCE_HOSTS = _load_reference_data("hosts")
+# co.kr や ddns.net のような公開サフィックスは、それ単体では指標にならない。
+# サブドメイン (mfahost.ddns.net) は実際のIOCなので完全一致のときだけ弾く。
+PUBLIC_SUFFIXES = _load_reference_data("public_suffixes")
+# 公開DNSリゾルバ。技術的には到達可能だが指標にはならない。
+PUBLIC_RESOLVERS = frozenset({
+    "8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1", "9.9.9.9", "149.112.112.112",
+    "208.67.222.222", "208.67.220.220", "4.2.2.1", "4.2.2.2", "114.114.114.114",
+    "223.5.5.5", "180.76.76.76", "77.88.8.8",
+})
+DEFANG_MARKER_RE = re.compile(r"\[\s*[.@:/]\s*\]|\(\s*[.@]\s*\)|\{\s*\.\s*\}|hxxp", re.IGNORECASE)
+URL_HOST_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*://([^/?#:]+)")
 
 REGISTRY_RE = re.compile(
     r"\b(?:HKEY_[A-Z_]+|HKLM|HKCU|HKCR|HKU|HKCC)\\[^\r\n\t,;\"']+",
@@ -282,11 +322,65 @@ def classify_hash(raw: str) -> tuple[str, str] | None:
     return (kind, compact) if kind else None
 
 
+def analyst_marked(raw: str, explicit_structured: bool) -> bool:
+    """出典側が指標として明示したか。
+
+    難読化(``hxxp``、``[.]``)はアナリストが悪性だと判断した印であり、構造化IOC表
+    からの取り込みも同様。どちらかに当てはまるなら参考ホスト判定より優先する。
+    """
+    return explicit_structured or bool(DEFANG_MARKER_RE.search(raw))
+
+
+def routable_address(address: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    """指標になり得るアドレスかどうか。
+
+    ループバック、RFC1918、ドキュメント用、マルチキャスト等は誰の環境にも現れるため
+    指標にならない。公開DNSリゾルバも同様に横串で誤結合するだけなので除外する。
+    """
+    if (
+        address.is_private
+        or address.is_loopback
+        or address.is_reserved
+        or address.is_multicast
+        or address.is_unspecified
+        or address.is_link_local
+    ):
+        return False
+    return str(address) not in PUBLIC_RESOLVERS
+
+
+def host_of(raw: str) -> str:
+    """URL・ドメイン・メールアドレスからホスト部分を取り出す。"""
+    value = refang(raw).strip().strip("<>\"'`")
+    match = URL_HOST_RE.match(value)
+    host = (match.group(1) if match else value).lower().rstrip(".")
+    if "@" in host:
+        host = host.rsplit("@", 1)[-1]
+    return host[4:] if host.startswith("www.") else host
+
+
+def reference_host(raw: str) -> bool:
+    """値のホストが出典レポートの参考リンク側かどうか。"""
+    if not REFERENCE_HOSTS:
+        return False
+    host = host_of(raw)
+    if host in REFERENCE_HOSTS:
+        return True
+    # ドット区切りのサフィックス一致(blog.securelist.com -> securelist.com)
+    labels = host.split(".")
+    return any(
+        ".".join(labels[i:]) in REFERENCE_HOSTS for i in range(1, len(labels) - 1)
+    )
+
+
 def plausible_domain(raw: str) -> bool:
     """Reject common filename/OCR shapes before treating text as a domain."""
     value = refang(raw).strip().strip(".").lower()
     labels = value.split(".")
     if len(labels) < 2 or labels[-1] in FILE_EXTENSIONS:
+        return False
+    # co.kr や ddns.net といった公開サフィックスそのものは指標にならない。
+    if value in PUBLIC_SUFFIXES:
         return False
     # Masked IPs such as 192.0.2.xxx are artifacts, not valid domain IOCs.
     if len(labels) == 4 and all(label.isdigit() for label in labels[:3]):
@@ -312,26 +406,36 @@ def extract_iocs(
             occupied.append(match.span())
 
     for match in URL_RE.finditer(text):
-        results.append(("url", match.group(), disposition))
+        raw = match.group()
         occupied.append(match.span())
+        if not analyst_marked(raw, explicit_structured) and reference_host(raw):
+            continue  # 出典レポートの参考リンク
+        results.append(("url", raw, disposition))
     for match in EMAIL_RE.finditer(text):
-        results.append(("email", match.group(), disposition))
+        raw = match.group()
         occupied.append(match.span())
+        if not analyst_marked(raw, explicit_structured) and reference_host(raw):
+            continue  # ベンダーの問い合わせ窓口など、出典側の連絡先
+        results.append(("email", raw, disposition))
     for match in IPV4_RE.finditer(text):
         raw = refang(match.group())
         try:
-            ipaddress.IPv4Address(raw)
+            address = ipaddress.IPv4Address(raw)
         except ipaddress.AddressValueError:
+            continue
+        occupied.append(match.span())
+        if not routable_address(address):
             continue
         results.append(("ipv4", match.group(), disposition))
-        occupied.append(match.span())
     for match in IPV6_RE.finditer(text):
         try:
-            ipaddress.IPv6Address(match.group())
+            address = ipaddress.IPv6Address(match.group())
         except ipaddress.AddressValueError:
             continue
-        results.append(("ipv6", match.group(), disposition))
         occupied.append(match.span())
+        if not routable_address(address):
+            continue
+        results.append(("ipv6", match.group(), disposition))
     for match in DEFANGED_DOMAIN_RE.finditer(text):
         if plausible_domain(match.group()):
             results.append(("domain", match.group(), disposition))
@@ -340,8 +444,12 @@ def extract_iocs(
         for match in PLAIN_DOMAIN_RE.finditer(text):
             if any(start <= match.start() < end for start, end in occupied):
                 continue
-            if plausible_domain(match.group()):
-                results.append(("domain", match.group(), disposition))
+            raw = match.group()
+            if not plausible_domain(raw):
+                continue
+            if not analyst_marked(raw, explicit_structured) and reference_host(raw):
+                continue  # 出典レポートの参考リンク
+            results.append(("domain", raw, disposition))
     return results
 
 

@@ -17,6 +17,7 @@ ui/data/actors.json は UI が依存しているため一切変更しない。
 from __future__ import annotations
 
 import hashlib
+import ipaddress
 import json
 import re
 import sys
@@ -25,6 +26,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROFILES_DIR = REPO_ROOT / "profiles"
+REFERENCE_HOSTS_PATH = REPO_ROOT / "actor_profile" / "reference" / "reference-hosts.json"
 OUT_DIR = Path(__file__).resolve().parent / "api" / "v1"
 
 SPEC_VERSION = "1.0"
@@ -98,6 +100,68 @@ NON_TLD_EXTENSIONS = {
 def load_json(path: Path):
     with path.open(encoding="utf-8") as fh:
         return json.load(fh)
+
+
+def _load_reference_data(key: str) -> frozenset[str]:
+    try:
+        return frozenset(
+            entry.strip().lower()
+            for entry in load_json(REFERENCE_HOSTS_PATH).get(key, [])
+            if entry.strip()
+        )
+    except (OSError, ValueError):
+        return frozenset()
+
+
+REFERENCE_HOSTS = _load_reference_data("hosts")
+PUBLIC_SUFFIXES = _load_reference_data("public_suffixes")
+PUBLIC_RESOLVERS = frozenset({
+    "8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1", "9.9.9.9", "149.112.112.112",
+    "208.67.222.222", "208.67.220.220", "4.2.2.1", "4.2.2.2", "114.114.114.114",
+    "223.5.5.5", "180.76.76.76", "77.88.8.8",
+})
+URL_HOST_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*://([^/?#:]+)")
+
+
+def is_non_indicator(spec_type: str, value: str) -> bool:
+    """指標として扱えない値かどうか。
+
+    出典レポートの参考リンク、公開サフィックス単体、到達不能・予約済みアドレスを
+    判定する。取り込み時(actor_profile/scripts/ingest_observables.py)と同じ一覧を
+    共有する。原典レポートはリポジトリに含まれず再取り込みができないため、既に
+    profiles/ に入っている分はここで落とす。取り込み側と違い、出典で難読化されて
+    いたかどうかは正規化済みの値から復元できないので例外は設けない。
+    """
+    if spec_type in ("ioc.ipv4", "ioc.ipv6"):
+        try:
+            address = ipaddress.ip_address(value)
+        except ValueError:
+            return True
+        return (
+            address.is_private
+            or address.is_loopback
+            or address.is_reserved
+            or address.is_multicast
+            or address.is_unspecified
+            or address.is_link_local
+            or value in PUBLIC_RESOLVERS
+        )
+    if spec_type not in ("ioc.url", "ioc.domain", "ioc.email"):
+        return False
+    match = URL_HOST_RE.match(value)
+    host = (match.group(1) if match else value).lower().rstrip(".")
+    if "@" in host:
+        host = host.rsplit("@", 1)[-1]
+    if host.startswith("www."):
+        host = host[4:]
+    if spec_type == "ioc.domain" and host in PUBLIC_SUFFIXES:
+        return True
+    if host in REFERENCE_HOSTS:
+        return True
+    labels = host.split(".")
+    return any(
+        ".".join(labels[i:]) in REFERENCE_HOSTS for i in range(1, len(labels) - 1)
+    )
 
 
 def refang(value: str) -> str:
@@ -247,6 +311,8 @@ def read_profile(slug: str) -> dict | None:
             value = normalize_ioc(spec_type, ind.get("normalized_value") or ind.get("value") or "")
             if not value:
                 continue
+            if is_non_indicator(spec_type, value):
+                continue  # 出典レポートの参考リンク / 公開サフィックス単体
             iocs.append({
                 "type": spec_type,
                 "value": value,

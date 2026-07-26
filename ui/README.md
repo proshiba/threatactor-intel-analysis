@@ -94,6 +94,13 @@ slug解決済みのアクター間関係)を出力します。
 `artifacts.csv` の非IOCアーティファクトは、誤結合を招きやすく横串の価値が薄いため
 索引に入れていません。
 
+出典レポート自身の参考リンク（ベンダーブログ、CERT、報道サイトのURL）、公開サフィックス単体、
+到達不能・予約済みアドレスもIOCではないため除外します。判定は取り込み側と同じ
+[reference-hosts.json](../actor_profile/reference/reference-hosts.json)を共有し、
+規約は[RULES.md の 8. IOCモデル](../actor_profile/RULES.md)にあります。
+原典レポートはリポジトリに含まれず再取り込みができないため、既に `profiles/` に入っている
+分については索引生成時に同じルールで落としています。
+
 ```bash
 python3 ui/build_portal_index.py
 ```

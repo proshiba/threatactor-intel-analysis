@@ -163,18 +163,31 @@ def merge_metadata(*items: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+_DEFANG_BRACKETS = (
+    (re.compile(r"\[\s*\.\s*\]"), "."),
+    (re.compile(r"\(\s*\.\s*\)"), "."),
+    (re.compile(r"\{\s*\.\s*\}"), "."),
+    (re.compile(r"\[\s*dot\s*\]", re.IGNORECASE), "."),
+    (re.compile(r"\[\s*:\s*\]"), ":"),
+    (re.compile(r"\[\s*/\s*\]"), "/"),
+    (re.compile(r"\[\s*@\s*\]"), "@"),
+    (re.compile(r"\(\s*@\s*\)"), "@"),
+    (re.compile(r"\[\s*at\s*\]", re.IGNORECASE), "@"),
+)
+_DEFANG_SCHEME = re.compile(r"h\s*x\s*x\s*p(s?)", re.IGNORECASE)
+
+
 def refang(value: str) -> str:
-    return (
-        value.strip()
-        .replace("hxxps://", "https://")
-        .replace("hxxp://", "http://")
-        .replace("HXXPS://", "https://")
-        .replace("HXXP://", "http://")
-        .replace("[.]", ".")
-        .replace("(.)", ".")
-        .replace("{.}", ".")
-        .replace("[:]", ":")
-    )
+    """Restore defanged notation.
+
+    Brackets are resolved before the scheme so that mixed forms such as
+    ``hxxps[:]//example.com`` do not leave an ``hxxp`` behind, and the scheme is
+    matched case-insensitively so ``HXXPS://`` and ``hXXps://`` are covered too.
+    """
+    value = value.strip()
+    for pattern, replacement in _DEFANG_BRACKETS:
+        value = pattern.sub(replacement, value)
+    return _DEFANG_SCHEME.sub(lambda m: "http" + m.group(1).lower(), value)
 
 
 def normalize_observable(kind: str, value: str) -> str:
