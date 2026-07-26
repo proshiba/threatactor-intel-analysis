@@ -1,9 +1,9 @@
 # Kimsuky 脅威アクタープロファイル
 
-プロファイルID: `actor--kimsuky`  
-状態: review  
-更新日時: 2026-07-26T05:28:44Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--kimsuky`
+- 状態: review
+- 更新日時: 2026-07-26T06:00:43Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -108,8 +108,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | malware--alphaseed | AlphaSeed | Go製。NaverメールとChrome DevTools ProtocolをC2に利用するAppleSeed系能力。 | 2023-06 | 2024 | 高 | `source--rapid7-2024` |
 | malware--appleseed | AppleSeed | コマンド実行、収集、キー入力・画面取得、ファイル転送を行う独自バックドア。 | 2019-05-06 | 2024 | 高 | `source--operation-newton`, `source--rapid7-2024` |
 | malware--babyshark | BabyShark | VBScriptを中心とする初期活動・情報収集マルウェア。 | 2018 | 2024 | 高 | `source--joint-csa-2023`, `source--rapid7-2024` |
-| malware--daily-1432659072aa52651920 | HttpSpy | tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。 | 2026-05-27 | 2026-05-27 | 中 | `source--daily-f05f4888998c8f53f5ca` |
-| malware--daily-c07f6d43656cbaec556c | PowerShell RAT | tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。 | 2026-05-15 | 2026-05-15 | 中 | `source--daily-f3e6fda98089cb5da96d` |
+| malware--daily-1432659072aa52651920 | HttpSpy | Kimsukyとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 2026-04 | 中 | `source--daily-f05f4888998c8f53f5ca` |
 | malware--fastviewer | FastViewer Android Malware | Google Play同期・開発者機能の悪用で配布されたAndroidマルウェア群。 | 2022 | 2023-03-20 | 高 | `source--browser-advisory-2023` |
 | malware--kgh | KGH Spyware | ブラウザ、メールクライアント、資格情報等を収集し、FTP C2と遠隔コマンドを利用する。 | 2020 | 2021-07 | 高 | `source--kgh-2021` |
 
@@ -151,13 +150,13 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| 2026年第1四半期 DPRK Operation Kimsuky 分析 | reported-activity | 不明 | 不明 | Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。 | 中 | `source--daily-f3e6fda98089cb5da96d` |
+| Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 | reported-activity | 不明 | 2026-04 | ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。 | 中 | `source--daily-f05f4888998c8f53f5ca` |
 | Smoke Screen / Stealth Power | campaign | 2019-03 | 2019-05 | DPRK関連のHWP/DOCフィッシング、HTA、PowerShellキーロガーを伴う活動。 | 高 | `source--smoke-screen` |
 | Operation Newton | campaign | 2020 | 2021-10 | 工学研究者への資格情報フィッシングからAppleSeed、Webシェル、サーバ横展開へ進む活動。 | 高 | `source--operation-newton` |
 | Browser Extension and Google Play Abuse | campaign | 2022 | 2023-03-20 | Chromium拡張でGmailを窃取し、Google Play同期機能でAndroidマルウェアを配布。 | 高 | `source--browser-advisory-2023` |
 | Operation DarkHorse | campaign | 2022-02 | 2023-10-16 | VBSからJSEへ変化したCHM活動。暗号資産、金融、保険等の誘引を利用。 | 中 | `source--darkhorse-2023` |
 | Kimsuky QR-code Spearphishing Campaign | campaign | 2025-05 | 2025-06 | Kimsuky impersonated foreign advisers, embassy and think-tank personnel, and conference organizers. QR codes led think-tank and strategic-advisory targets to credential-harvesting infrastructure. | 高 | `source--fbi-kimsuky-quishing-2026` |
-| 2026年第1四半期 DPRK Operation Kimsuky 分析 | reported-activity | 2026-05-15 | 2026-05-15 | Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。 | 中 | `source--daily-f3e6fda98089cb5da96d` |
-| Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 | reported-activity | 2026-05-27 | 2026-05-27 | ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。 | 中 | `source--daily-f05f4888998c8f53f5ca` |
 
 少なくとも2012年から活動。2019年のSmoke ScreenとAppleSeed、2020-2021年のOperation Newton、2022-2023年のDarkHorseとCovert Stalker、2023年のブラウザ拡張・Google Play悪用、2024年のDMARC悪用へと配送・収集能力を更新している。
 

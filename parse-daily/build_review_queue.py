@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 from collections import Counter
 from pathlib import Path
@@ -14,6 +15,7 @@ from daily_common import (
     ActorRegistry,
     date_from_path,
     extract_artifacts,
+    is_file_like,
     is_safe_structured_match,
     load_json,
     parse_news_file,
@@ -40,6 +42,19 @@ def git_commit(source_root: Path) -> str:
     return result.stdout.strip() if result.returncode == 0 else "unknown"
 
 
+def git_commit_timestamp(source_root: Path) -> str | None:
+    result = subprocess.run(
+        ["git", "show", "-s", "--format=%cI", "HEAD"],
+        cwd=source_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode:
+        return None
+    return result.stdout.strip().replace("+00:00", "Z") or None
+
+
 def in_range(value: str | None, since: str | None, until: str | None) -> bool:
     if not value:
         return not since and not until
@@ -54,8 +69,109 @@ def article_lookup(articles: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return result
 
 
-def record_id(slug: str, reference: str, news_path: str) -> str:
-    return f"daily-record--{stable_digest(slug, reference, news_path)[:24]}"
+def record_id(slug: str, activity_reference: str) -> str:
+    return f"daily-record--{stable_digest(slug, activity_reference)[:24]}"
+
+
+def source_entry(url: str, source_path: str, source_type: str) -> dict[str, str]:
+    return {
+        "url": url,
+        "source_path": source_path,
+        "source_type": source_type,
+    }
+
+
+def add_unique_source(record: dict[str, Any], source: dict[str, str]) -> None:
+    existing = {
+        item["url"] for item in record.setdefault("sources", [])
+    }
+    if source["url"] not in existing:
+        record["sources"].append(source)
+
+
+def add_capability_candidate(record: dict[str, Any], raw_value: str) -> None:
+    existing = {
+        item["name"].casefold() for item in record.setdefault("capability_decisions", [])
+    }
+    for name in re.split(r"[,;|]", raw_value):
+        name = name.strip()
+        key = name.casefold()
+        if key in {"", "unknown", "n/a", "na", "none", "知られていない"}:
+            continue
+        file_match = re.search(
+            r"([^/\\\s]+\.(?:exe|dll|sys|ps1|bat|cmd|js|jse|vbs|hta|lnk|"
+            r"docm?|xlsm?|pptm?|pdf|zip|rar|7z|apk|dmg|pkg|sh|py))$",
+            name,
+            flags=re.IGNORECASE,
+        )
+        if is_file_like(name) or file_match:
+            file_name = file_match.group(1) if file_match else name
+            artifact_key = ("file-name", file_name)
+            artifact_existing = {
+                (item["artifact_type"], item["value"])
+                for item in record.setdefault("artifacts", [])
+            }
+            if artifact_key not in artifact_existing:
+                record["artifacts"].append(
+                    {
+                        "artifact_type": "file-name",
+                        "value": file_name,
+                        "context": f"malware列: {raw_value}",
+                        "review_status": "pending",
+                    }
+                )
+            continue
+        if key not in existing:
+            record["capability_decisions"].append(
+                {
+                    "name": name,
+                    "status": "pending",
+                    "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
+                }
+            )
+            existing.add(key)
+
+
+def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
+    key = f"{record['actor']['slug']}|{record['activity']['activity_reference']}"
+    decision = decisions.get(key)
+    if not decision:
+        return
+    for field in ("review_status", "confidence", "review_notes"):
+        if field in decision:
+            record[field] = decision[field]
+    if "activity_period" in decision:
+        record["activity_period"] = decision["activity_period"]
+    capability_overrides = {
+        item["name"].casefold(): item
+        for item in decision.get("capability_decisions", [])
+    }
+    matched_capabilities: set[str] = set()
+    for item in record.get("capability_decisions", []):
+        override = capability_overrides.get(item["name"].casefold())
+        if override:
+            item.update(override)
+            matched_capabilities.add(item["name"].casefold())
+    for name in sorted(capability_overrides.keys() - matched_capabilities):
+        record.setdefault("decision_issues", []).append(
+            f"Capability判断の対象が入力に存在しない: {name}"
+        )
+    approved_artifacts = {
+        (item["artifact_type"], item["value"])
+        for item in decision.get("approved_artifacts", [])
+    }
+    matched_artifacts: set[tuple[str, str]] = set()
+    for item in record.get("artifacts", []):
+        artifact_key = (item["artifact_type"], item["value"])
+        if artifact_key in approved_artifacts:
+            item["review_status"] = "approved"
+            matched_artifacts.add(artifact_key)
+        else:
+            item["review_status"] = item.get("review_status", "pending")
+    for artifact_type, value in sorted(approved_artifacts - matched_artifacts):
+        record.setdefault("decision_issues", []).append(
+            f"artifact判断の対象が入力に存在しない: {artifact_type}={value}"
+        )
 
 
 def main() -> int:
@@ -67,6 +183,12 @@ def main() -> int:
     parser.add_argument("--since", help="include dates on/after YYYY-MM-DD")
     parser.add_argument("--until", help="include dates on/before YYYY-MM-DD")
     parser.add_argument(
+        "--decisions",
+        type=Path,
+        default=HERE / "review-decisions.json",
+        help="curated review decisions keyed by actor slug and activity reference",
+    )
+    parser.add_argument(
         "--approve-structured",
         action="store_true",
         help="approve only unique exact actor matches from structured IOC actor fields",
@@ -74,6 +196,8 @@ def main() -> int:
     args = parser.parse_args()
 
     config = load_json(args.config)
+    decisions = load_json(args.decisions) if args.decisions.exists() else {}
+    reference_aliases = config.get("activity_reference_aliases", {})
     source_root = args.source_root.resolve()
     profiles_root = args.profiles_root.resolve()
     news_root = source_root / config["source"]["news_path"]
@@ -95,7 +219,7 @@ def main() -> int:
             parse_errors.append({"path": relative, "error": f"{type(exc).__name__}: {exc}"})
     by_url = article_lookup(articles)
 
-    records: dict[tuple[str, str, str], dict[str, Any]] = {}
+    records: dict[tuple[str, str], dict[str, Any]] = {}
     unmatched_actor_values: Counter[str] = Counter()
     ignored = {
         value.casefold() for value in config["matching"].get("ignored_actor_values", [])
@@ -124,9 +248,10 @@ def main() -> int:
                 continue
             match = matches[0]
             reference = row["reference"] or f"tech-memo:{relative}"
-            article = by_url.get(reference.rstrip("/"))
+            activity_reference = reference_aliases.get(reference, reference)
+            article = by_url.get(activity_reference.rstrip("/"))
             news_path = article["news_path"] if article else relative
-            key = (match.slug, reference, news_path)
+            key = (match.slug, activity_reference)
             if key not in records:
                 safe = is_safe_structured_match(row["actor"], match)
                 records[key] = {
@@ -147,29 +272,45 @@ def main() -> int:
                         "summary": article["summary"] if article else row["description"],
                         "news_date": article["news_date"] if article else file_date,
                         "news_url": article["url"] if article else "",
-                        "primary_url": reference,
+                        "primary_url": activity_reference,
+                        "activity_reference": activity_reference,
                         "news_path": news_path,
                     },
                     "confidence": qualifier_confidence(row["actor"], row["confidence"]),
                     "iocs": [],
                     "artifacts": extract_artifacts(article["body"]) if article else [],
+                    "sources": [],
+                    "capability_decisions": [],
                     "review_notes": "",
                 }
+                add_unique_source(
+                    records[key],
+                    source_entry(
+                        activity_reference,
+                        news_path,
+                        "primary-report" if article else "ioc-reference",
+                    ),
+                )
+            add_unique_source(
+                records[key],
+                source_entry(reference, relative, "ioc-reference"),
+            )
             item = dict(row)
             item["source_path"] = relative
             item["malware_refs"] = registry.malware_refs(match.slug, [row["malware"]])
             records[key]["iocs"].append(item)
+            add_capability_candidate(records[key], row["malware"])
 
     structured_keys = {
-        (record["actor"]["slug"], record["activity"]["primary_url"].rstrip("/"))
+        (record["actor"]["slug"], record["activity"]["activity_reference"].rstrip("/"))
         for record in records.values()
     }
     for article in articles:
         for match in registry.mentions(article["title"], article["body"]):
-            primary = article["primary_url"]
+            primary = reference_aliases.get(article["primary_url"], article["primary_url"])
             if (match.slug, primary.rstrip("/")) in structured_keys:
                 continue
-            key = (match.slug, primary, article["news_path"])
+            key = (match.slug, primary)
             if key in records:
                 continue
             records[key] = {
@@ -191,13 +332,35 @@ def main() -> int:
                     "news_date": article["news_date"],
                     "news_url": article["url"],
                     "primary_url": primary,
+                    "activity_reference": primary,
                     "news_path": article["news_path"],
                 },
                 "confidence": "medium" if match.reason == "news-title" else "low",
                 "iocs": [],
                 "artifacts": extract_artifacts(article["body"]),
+                "sources": [
+                    source_entry(primary, article["news_path"], "primary-report")
+                ],
+                "capability_decisions": [],
                 "review_notes": "",
             }
+
+    for record in records.values():
+        apply_decision(record, decisions)
+        record["sources"].sort(key=lambda item: (item["url"], item["source_path"]))
+        record["capability_decisions"].sort(key=lambda item: item["name"].casefold())
+    record_decision_keys = {
+        f"{record['actor']['slug']}|{record['activity']['activity_reference']}"
+        for record in records.values()
+    }
+    decision_issues = (
+        [
+            f"入力に対応する活動がないreview decision: {key}"
+            for key in sorted(set(decisions) - record_decision_keys)
+        ]
+        if not args.since and not args.until
+        else []
+    )
 
     ordered = sorted(
         records.values(),
@@ -208,9 +371,12 @@ def main() -> int:
         ),
     )
     status_counts = Counter(item["review_status"] for item in ordered)
+    decision_issue_count = len(decision_issues) + sum(
+        len(item.get("decision_issues", [])) for item in ordered
+    )
     queue = {
-        "schema_version": "1.0.0",
-        "generated_at": utc_now(),
+        "schema_version": "2.0.0",
+        "generated_at": git_commit_timestamp(source_root) or utc_now(),
         "source": {
             "repository": config["source"]["repository_full_name"],
             "branch": config["source"]["branch"],
@@ -221,7 +387,11 @@ def main() -> int:
         },
         "statistics": {
             "news_files": len(
-                [p for p in news_root.rglob("*.md") if in_range(date_from_path(p), args.since, args.until)]
+                [
+                    path
+                    for path in news_root.rglob("*.md")
+                    if in_range(date_from_path(path), args.since, args.until)
+                ]
             ),
             "articles": len(articles),
             "records": len(ordered),
@@ -231,17 +401,19 @@ def main() -> int:
             "artifact_candidates": sum(len(item["artifacts"]) for item in ordered),
             "unmatched_actor_values": sum(unmatched_actor_values.values()),
             "parse_errors": len(parse_errors),
+            "decision_issues": decision_issue_count,
         },
         "unmatched_actor_values": [
             {"value": value, "observations": count}
             for value, count in unmatched_actor_values.most_common()
         ],
         "parse_errors": parse_errors,
+        "decision_issues": decision_issues,
         "records": ordered,
     }
     write_json_atomic(args.output, queue)
     print(json.dumps(queue["statistics"], ensure_ascii=False, indent=2))
-    return 1 if parse_errors else 0
+    return 1 if parse_errors or decision_issue_count else 0
 
 
 if __name__ == "__main__":

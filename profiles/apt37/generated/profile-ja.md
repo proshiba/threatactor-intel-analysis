@@ -1,9 +1,9 @@
 # APT37 脅威アクタープロファイル
 
-プロファイルID: `actor--apt37`  
-状態: draft  
-更新日時: 2026-07-26T05:28:43Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--apt37`
+- 状態: draft
+- 更新日時: 2026-07-26T06:00:42Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -105,8 +105,8 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | malware--bluelight | BLUELIGHT | [BLUELIGHT](https://attack.mitre.org/software/S0657) is a remote access Trojan used by [APT37](https://attack.mitre.org/groups/G0067) that was first observed in early 2021.(Citation: Volexity InkySquid BLUELIGHT August 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--coraldeck | CORALDECK | [CORALDECK](https://attack.mitre.org/software/S0212) is an exfiltration tool used by [APT37](https://attack.mitre.org/groups/G0067). (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--daily-397062646adc91061d4a | BirdCall | tech-memo日次IOCでAPT37による使用が報告されたマルウェア。 | 2026-05-05 | 2026-05-05 | 中 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
-| malware--daily-c07163c7c1b6cc1b80eb | NarwhalRAT | tech-memo日次IOCでAPT37による使用が報告されたマルウェア。 | 2026-06-16 | 2026-06-16 | 中 | `source--daily-82bdd80456957234d81b` |
+| malware--daily-397062646adc91061d4a | BirdCall | APT37との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2024 | 2026-05-05 | 高 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
+| malware--daily-c07163c7c1b6cc1b80eb | NarwhalRAT | APT37との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-82bdd80456957234d81b` |
 | malware--dogcall | DOGCALL | [DOGCALL](https://attack.mitre.org/software/S0213) is a backdoor used by [APT37](https://attack.mitre.org/groups/G0067) that has been used to target South Korean government and military organizations in 2017. It is typically dropped using a Hangul Word Processor (HWP) exploit. (Citation: FireEye APT37 Feb 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--final1stspy | Final1stspy | [Final1stspy](https://attack.mitre.org/software/S0355) is a dropper family that has been used to deliver [DOGCALL](https://attack.mitre.org/software/S0213).(Citation: Unit 42 Nokki Oct 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--flash-exploit-cve-2016-4117 | Flash Exploit CVE-2016-4117 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -153,6 +153,7 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | Are you Happy? | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | reported-activity | 不明 | 不明 | Geniansは、Microsoftアカウントチームを装うスピアフィッシングで配布されるPythonベースのNarwhalRATを分析した。 攻撃はZIP内の悪性LNKから始まり、PowerShell、BAT、curl、公式Python埋め込み版を悪用して多段階感染を行う。 NarwhalRATはキーロギング、画面キャプチャ、USBデータ収集、マイク録音、ファイル操作、リモートコマンド実行機能を持つ。 C2は韓国の中継サーバーとpCloud APIを組み合わせた二重構造で、デッドドロップResolverとして正規クラウドを利用する。 TTP、韓国ユーザー向けの偽装、pCloud利用、過去事例との類似性から、APT37関連活動との関連が示唆されている。 | 中 | `source--daily-82bdd80456957234d81b` |
 | Erebus | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Evil New Year | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Evil New Year 2018 | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
@@ -160,10 +161,7 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | Golden Time | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | North Korean Human Rights | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Operation Earth Kitsune | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | reported-activity | 2026-05-05 | 2026-05-05 | 北朝鮮系APT37/ScarCruftは、ビデオゲーム基盤を侵害し、Android版BirdCallバックドアを配布した。 ESETによると、攻撃はYanbian地域の朝鮮民族コミュニティや北朝鮮脱北者を狙ったものとみられる。 sqgame系サイト上のAndroidゲームAPKがトロイの木馬化され、Windows更新経路ではRokRAT経由でBirdCallが展開された。 Android版BirdCallは連絡先、通話履歴、SMS、端末情報、文書、画像、秘密鍵を収集し、スクリーンショットや録音も行う。 Android版は2024年10月ごろ作成され、少なくとも7バージョンが確認され、2024年末ごろから攻撃が継続していた可能性がある。 | 中 | `source--daily-4961e6946e3ccac84312` |
-| APT37の日次IOC観測 | reported-activity | 2026-05-05 | 2026-05-05 | AI generated. MD5 of ScarCruft/BirdCall malware sample from ESET malware-ioc repository. | 中 | `source--daily-68fe928d58956df4f752` |
-| APT37の日次IOC観測 | reported-activity | 2026-05-05 | 2026-05-05 | AI generated. SHA256 of ScarCruft/BirdCall malware sample from ESET malware-ioc repository. | 中 | `source--daily-b232a8993d5d82211f66` |
-| Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | reported-activity | 2026-06-16 | 2026-06-16 | Geniansは、Microsoftアカウントチームを装うスピアフィッシングで配布されるPythonベースのNarwhalRATを分析した。 攻撃はZIP内の悪性LNKから始まり、PowerShell、BAT、curl、公式Python埋め込み版を悪用して多段階感染を行う。 NarwhalRATはキーロギング、画面キャプチャ、USBデータ収集、マイク録音、ファイル操作、リモートコマンド実行機能を持つ。 C2は韓国の中継サーバーとpCloud APIを組み合わせた二重構造で、デッドドロップResolverとして正規クラウドを利用する。 TTP、韓国ユーザー向けの偽装、pCloud利用、過去事例との類似性から、APT37関連活動との関連が示唆されている。 | 中 | `source--daily-82bdd80456957234d81b` |
+| ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | reported-activity | 2024 | 2026-05-05 | 北朝鮮系APT37/ScarCruftは、ビデオゲーム基盤を侵害し、Android版BirdCallバックドアを配布した。 ESETによると、攻撃はYanbian地域の朝鮮民族コミュニティや北朝鮮脱北者を狙ったものとみられる。 sqgame系サイト上のAndroidゲームAPKがトロイの木馬化され、Windows更新経路ではRokRAT経由でBirdCallが展開された。 Android版BirdCallは連絡先、通話履歴、SMS、端末情報、文書、画像、秘密鍵を収集し、スクリーンショットや録音も行う。 Android版は2024年10月ごろ作成され、少なくとも7バージョンが確認され、2024年末ごろから攻撃が継続していた可能性がある。 | 高 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
 
 Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human Rights; Evil New Year 2018; Operation Earth Kitsune
 
@@ -300,9 +298,9 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 | source--apt37--f532fa1ec3d0ac93 | (전체본)공개보고서 OperationCodeonToast |  | 不明 | group123/(전체본)공개보고서-OperationCodeonToast.pdf | report | TLP:CLEAR | 中 |
 | source--apt37--f8dde9641e96c02a | 20230620 threat inteligence report apt37 macos |  | 2023-06-20 | group123/20230620_threat_inteligence_report_apt37_macos.pdf | report | TLP:CLEAR | 中 |
 | source--daily-4961e6946e3ccac84312 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | welivesecurity.com | 2026-05-06 | https://www.welivesecurity.com/en/eset-research/rigged-game-scarcruft-compromises-gaming-platform-supply-chain-attack/ | osint-report | TLP:CLEAR | 中 |
-| source--daily-68fe928d58956df4f752 | APT37の日次IOC観測 | raw.githubusercontent.com | 2026-05-06 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.md5 | osint-report | TLP:CLEAR | 中 |
+| source--daily-68fe928d58956df4f752 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 — IOC補助資料 | raw.githubusercontent.com | 不明 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.md5 | osint-report | TLP:CLEAR | 中 |
 | source--daily-82bdd80456957234d81b | Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | genians.co.kr | 2026-06-16 | https://www.genians.co.kr/en/blog/threat_intelligence/narwhalrat | osint-report | TLP:CLEAR | 中 |
-| source--daily-b232a8993d5d82211f66 | APT37の日次IOC観測 | raw.githubusercontent.com | 2026-05-06 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.sha256 | osint-report | TLP:CLEAR | 中 |
+| source--daily-b232a8993d5d82211f66 | ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 — IOC補助資料 | raw.githubusercontent.com | 不明 | https://raw.githubusercontent.com/eset/malware-ioc/master/scarcruft/samples.sha256 | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |

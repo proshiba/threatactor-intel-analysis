@@ -1,9 +1,9 @@
 # Volt Typhoon 脅威アクタープロファイル
 
-プロファイルID: `actor--volt-typhoon`  
-状態: draft  
-更新日時: 2026-07-26T05:28:45Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--volt-typhoon`
+- 状態: draft
+- 更新日時: 2026-07-26T06:00:44Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -88,7 +88,6 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--daily-bf92508e454fbfbf0fdc | JDY | tech-memo日次IOCでVolt Typhoonによる使用が報告されたマルウェア。 | 2026-06-11 | 2026-06-11 | 中 | `source--daily-0c44ac5482af2d245bb8` |
 | malware--versamem | VersaMem | [VersaMem](https://attack.mitre.org/software/S1154) is a web shell designed for deployment to Versa Director servers following exploitation. Discovered in August 2024, [VersaMem](https://attack.mitre.org/software/S1154) was used during [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) by [Volt Typhoon](https://attack.mitre.org/groups/G1017) to target ISPs and MSPs.  [VersaMem](https://attack.mitre.org/software/S1154) is deployed as a Java Archive (JAR) and allows for credential capture for Versa Director logon activity as well as follow-on execution of arbitrary Java payloads.(Citation: Lumen Versa 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
@@ -132,9 +131,9 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | reported-activity | 2022 | 不明 | JDYボットネットは、Volt Typhoonなど中国系脅威アクターと関連付けられているマルウェアネットワーク。 Black Lotus Labsによると、JDYは米国に強く集中し、米軍および関連ネットワークを重点的に標的化している。 JDYは2024年1月の約650台から、現在は1,500台超の侵害済みSOHO・IoT機器へ拡大した。 ボットネットはサービス探索、バナー取得、TLS証明書収集、プロトコル識別、脆弱性重視の偵察を行う。 FortinetのCVE-2026-35616公開直後にJDYのスキャンが観測され、新規公開脆弱性を素早く標的化している。 | 低 | `source--daily-0c44ac5482af2d245bb8` |
 | KV Botnet Activity | campaign | 2022-10-01T04:00:00.000Z | 2024-01-01T05:00:00.000Z | [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) consisted of exploitation of primarily “end-of-life” small office-home office (SOHO) equipment from manufacturers such as Cisco, NETGEAR, and DrayTek. [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035) was used by [Volt Typhoon](https://attack.mitre.org/groups/G1017) to obfuscate connectivity to victims in multiple critical infrastructure segments, including energy and telecommunication companies and entities based on the US territory of Guam. While the KV Botnet is the most prominent element of this campaign, it overlaps with another botnet cluster referred to as the JDY cluster.(Citation: Lumen KVBotnet 2023) This botnet was disrupted by US law enforcement entities in early 2024 after periods of activity from October 2022 through January 2024.(Citation: DOJ KVBotnet 2024) | 高 | `source--mitre-attack-19-1` |
 | Versa Director Zero Day Exploitation | campaign | 2024-06-01T06:00:00.000Z | 2024-08-01T06:00:00.000Z | [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) was conducted by [Volt Typhoon](https://attack.mitre.org/groups/G1017) from early June through August 2024 as zero-day exploitation of Versa Director servers controlling software-defined wide area network (SD-WAN) applications. Since tracked as CVE-2024-39717, exploitation focused on credential capture from compromised Versa Director servers at managed service providers (MSPs) and internet service providers (ISPs) to enable follow-on access to service provider clients. [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039) was followed by the delivery of the [VersaMem](https://attack.mitre.org/software/S1154) web shell for both credential theft and follow-on code execution.(Citation: Lumen Versa 2024) | 高 | `source--mitre-attack-19-1` |
-| 中国関連JDYボットネット、米軍ネットワークへの標的化を拡大 | reported-activity | 2026-06-11 | 2026-06-11 | JDYボットネットは、Volt Typhoonなど中国系脅威アクターと関連付けられているマルウェアネットワーク。 Black Lotus Labsによると、JDYは米国に強く集中し、米軍および関連ネットワークを重点的に標的化している。 JDYは2024年1月の約650台から、現在は1,500台超の侵害済みSOHO・IoT機器へ拡大した。 ボットネットはサービス探索、バナー取得、TLS証明書収集、プロトコル識別、脆弱性重視の偵察を行う。 FortinetのCVE-2026-35616公開直後にJDYのスキャンが観測され、新規公開脆弱性を素早く標的化している。 | 中 | `source--daily-0c44ac5482af2d245bb8` |
 
 
 

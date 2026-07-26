@@ -1,9 +1,9 @@
 # Earth Lusca 脅威アクタープロファイル
 
-プロファイルID: `actor--earth-lusca`  
-状態: draft  
-更新日時: 2026-07-26T05:28:43Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--earth-lusca`
+- 状態: draft
+- 更新日時: 2026-07-26T06:00:42Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -92,7 +92,7 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--daily-f196d446e69f62aacb40 | SprySOCKS | tech-memo日次IOCでEarth Luscaによる使用が報告されたマルウェア。 | 2026-06-17 | 2026-06-17 | 中 | `source--daily-ff80b256acceafc23ada` |
+| malware--daily-f196d446e69f62aacb40 | SprySOCKS | Earth Luscaとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2023 | 2024 | 高 | `source--daily-ff80b256acceafc23ada` |
 | malware--shadowpad | ShadowPad | [ShadowPad](https://attack.mitre.org/software/S0596) is a modular backdoor that was first identified in a supply chain compromise of the NetSarang software in mid-July 2017. The malware was originally thought to be exclusively used by [APT41](https://attack.mitre.org/groups/G0096), but has since been observed to be used by various Chinese threat activity groups. (Citation: Recorded Future RedEcho Feb 2021)(Citation: Securelist ShadowPad Aug 2017)(Citation: Kaspersky ShadowPad Aug 2017)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--winnti-for-linux | Winnti for Linux | [Winnti for Linux](https://attack.mitre.org/software/S0430) is a trojan, seen since at least 2015, designed specifically for targeting Linux systems. Reporting indicates the winnti malware family is shared across a number of actors including [Winnti Group](https://attack.mitre.org/groups/G0044). The Windows variant is tracked separately under [Winnti for Windows](https://attack.mitre.org/software/S0141).(Citation: Chronicle Winnti for Linux May 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
@@ -127,7 +127,7 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | reported-activity | 2026-06-17 | 2026-06-17 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 中 | `source--daily-ff80b256acceafc23ada` |
+| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | reported-activity | 2023 | 2024 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
 
 
 

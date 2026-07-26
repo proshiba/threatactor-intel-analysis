@@ -1742,12 +1742,12 @@
       "spec_version": "2.1",
       "id": "malware--073c46c0-2e2b-46bb-a0eb-03ed28c41ed7",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "HttpSpy",
-      "description": "tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。",
+      "description": "Kimsukyとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
       "external_references": [
         {
           "source_name": "enki.co.kr",
@@ -1757,37 +1757,10 @@
       ],
       "x_profile_object_id": "malware--daily-1432659072aa52651920",
       "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--3c88e3a6b24dc699323c232c から追加。",
+      "x_analyst_notes": "最終payloadとして直接解析されている。",
       "is_family": true,
       "malware_types": [
         "backdoor"
-      ],
-      "aliases": []
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
-      "id": "malware--9f105cae-c2b2-410f-b75d-92c19e981ae3",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "PowerShell RAT",
-      "description": "tech-memo日次IOCでKimsukyによる使用が報告されたマルウェア。",
-      "external_references": [
-        {
-          "source_name": "logpresso.com",
-          "description": "Local source: https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
-          "external_id": "source--daily-f3e6fda98089cb5da96d"
-        }
-      ],
-      "x_profile_object_id": "malware--daily-c07f6d43656cbaec556c",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--409ee41ac6701a1d37b766b1 から追加。",
-      "is_family": true,
-      "malware_types": [
-        "RAT"
       ],
       "aliases": []
     },
@@ -2046,6 +2019,51 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--68a2138f-3b1a-4f8f-818e-54f129d06b4e",
+      "created": "2026-07-26T06:00:43Z",
+      "modified": "2026-07-26T06:00:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "2026年第1四半期 DPRK Operation Kimsuky 分析",
+      "description": "Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。",
+      "external_references": [
+        {
+          "source_name": "logpresso.com",
+          "description": "Local source: https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
+          "external_id": "source--daily-f3e6fda98089cb5da96d"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-9a84486a6c98d6fea40f",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--9a84486a6c98d6fea40f59ea から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: LogpressoがKimsukyの4キャンペーンとして分析。PowerShell RATは固有ファミリー名ではないためCapability名としては採用しない。"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--e5fe3e5e-fb77-4bd9-a09b-7580bf9148d5",
+      "created": "2026-07-26T06:00:43Z",
+      "modified": "2026-07-26T06:00:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種",
+      "description": "ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。",
+      "last_seen": "2026-04-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
+          "external_id": "source--daily-f05f4888998c8f53f5ca"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-ca0d00789c7bb400d0f4",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--ca0d00789c7bb400d0f485a1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: Enkiはインフラ、コード、暗号鍵の再利用を根拠にKimsukyへ帰属している。"
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--99354012-a9c7-4254-8096-caca2f1d4ef6",
       "created": "2026-07-26T05:28:44Z",
       "modified": "2026-07-26T05:28:44Z",
@@ -2162,54 +2180,6 @@
       "x_profile_object_id": "activity--kimsuky-quishing-2025",
       "x_confidence": "high",
       "x_analyst_notes": ""
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--99e19660-4b3c-4765-87a4-aba76ec530dc",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "2026年第1四半期 DPRK Operation Kimsuky 分析",
-      "description": "Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。",
-      "first_seen": "2026-05-15T00:00:00Z",
-      "last_seen": "2026-05-15T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "logpresso.com",
-          "description": "Local source: https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
-          "external_id": "source--daily-f3e6fda98089cb5da96d"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-b77e5af306b5fa121e1a",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--409ee41ac6701a1d37b766b1 から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--2afe4748-935f-4bf8-b53e-84745a7af7da",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種",
-      "description": "ENKIは2026年4月までに、Kimsukyが韓国の軍・企業を狙いマルウェアを展開した複数事例を確認した。 攻撃では、韓国B2Bメッセージングサービスのセキュリティソフト導入ページやWebex会議ページを偽装した。 偽ページはJSONPで感染端末上のローカルサーバーへ問い合わせ、マルウェア実行有無を確認するJSONPingという新たな手法を使う。 Webex偽装事例では、実在の会議予定を悪用し、jseドロッパー経由で新たな3段階構成のHttpSpy亜種を導入した。これは事前に参加者のアカウントやデバイスを侵害し、スケジュールを入手していた可能性を示唆している。 インフラ、コード類似性、RC4鍵再利用、証明書など複数の指標から、これらの活動をKimsukyに関連付けている。",
-      "first_seen": "2026-05-27T00:00:00Z",
-      "last_seen": "2026-05-27T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "enki.co.kr",
-          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
-          "external_id": "source--daily-f05f4888998c8f53f5ca"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-380e60d78e8b9558d568",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--3c88e3a6b24dc699323c232c から取込。日付はIOC観測日がある場合のみ活動の観測期間として使用し、ニュースファイルの日付とは分離した。"
     },
     {
       "type": "identity",
@@ -3092,21 +3062,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--e76242f9-0c7a-45de-92c7-700a6ca1c605",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
-      "target_ref": "malware--9f105cae-c2b2-410f-b75d-92c19e981ae3",
-      "description": "Kimsuky uses PowerShell RAT.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--b2c5659b-6a09-4c31-89c4-6b47baa6fa77",
       "created": "2026-07-26T05:28:44Z",
       "modified": "2026-07-26T05:28:44Z",
@@ -3223,6 +3178,51 @@
       "target_ref": "infrastructure--797b939c-0f58-4db2-a48b-fde02ce7fc2b",
       "description": "Kimsuky uses QR-code Credential Phishing Infrastructure.",
       "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f56fdf89-594d-4e22-9a61-c094aebe228d",
+      "created": "2026-07-26T06:00:43Z",
+      "modified": "2026-07-26T06:00:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--68a2138f-3b1a-4f8f-818e-54f129d06b4e",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "2026年第1四半期 DPRK Operation Kimsuky 分析 is attributed or linked to Kimsuky.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--002208cc-915a-4eca-baca-c462b6a9dd6c",
+      "created": "2026-07-26T06:00:43Z",
+      "modified": "2026-07-26T06:00:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--e5fe3e5e-fb77-4bd9-a09b-7580bf9148d5",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 is attributed or linked to Kimsuky.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e050076e-46ea-444f-9e41-95d7111c842b",
+      "created": "2026-07-26T06:00:43Z",
+      "modified": "2026-07-26T06:00:43Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e5fe3e5e-fb77-4bd9-a09b-7580bf9148d5",
+      "target_ref": "malware--073c46c0-2e2b-46bb-a0eb-03ed28c41ed7",
+      "description": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 uses malware--daily-1432659072aa52651920.",
+      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -3523,66 +3523,6 @@
       "target_ref": "identity--180810fd-efcf-40de-aa53-02d0087e71ef",
       "description": "Kimsuky QR-code Spearphishing Campaign targets target--journalists-policy-experts.",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--08e02388-d93d-4643-8075-ecd69cf2067a",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--99e19660-4b3c-4765-87a4-aba76ec530dc",
-      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
-      "description": "2026年第1四半期 DPRK Operation Kimsuky 分析 is attributed or linked to Kimsuky.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5bc9c6f2-3a49-482a-88f8-1c941ac90182",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--99e19660-4b3c-4765-87a4-aba76ec530dc",
-      "target_ref": "malware--9f105cae-c2b2-410f-b75d-92c19e981ae3",
-      "description": "2026年第1四半期 DPRK Operation Kimsuky 分析 uses malware--daily-c07f6d43656cbaec556c.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6ccdd648-dffb-4218-9ccf-df689c7a30b2",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--2afe4748-935f-4bf8-b53e-84745a7af7da",
-      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
-      "description": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 is attributed or linked to Kimsuky.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--00962cac-98d1-4859-b4d0-a5493641fc6d",
-      "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--2afe4748-935f-4bf8-b53e-84745a7af7da",
-      "target_ref": "malware--073c46c0-2e2b-46bb-a0eb-03ed28c41ed7",
-      "description": "Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 uses malware--daily-1432659072aa52651920.",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -7692,7 +7632,7 @@
       "spec_version": "2.1",
       "id": "indicator--c977df8e-d59d-418e-8e9c-0c64d9658428",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7710,7 +7650,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -7719,7 +7659,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:2805284cd197d181ac15a77d429cfe011416fae366cffbb12e264e7b8ce0d04f",
+          "observation_id": "observation--sha256:e88825bf4e78c4a4dd723b5558ccc58b3384d1486c36cf95e55f491266fda62a",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -7733,7 +7673,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -7741,7 +7681,7 @@
             "row": 39
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -8535,7 +8475,7 @@
       "spec_version": "2.1",
       "id": "indicator--07a4abd7-67a2-4c76-b83a-dfd96f545fd4",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8553,7 +8493,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -8562,7 +8502,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:41a77e1e8eeaefa065084501ff23701bcdebbefc38ca1eecf252a8476964dc61",
+          "observation_id": "observation--sha256:2289673f8373eb1a5ef60ded03cb7e39b51b9614c98b4f67b6005f797a00a4a4",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -8576,7 +8516,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -8584,7 +8524,7 @@
             "row": 41
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -8620,7 +8560,7 @@
       "spec_version": "2.1",
       "id": "indicator--cb11ed53-4b9e-4612-8024-7a799c227d3f",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8638,7 +8578,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -8647,7 +8587,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:92d3c8d318f88848a2bd56bc9b4e474267b86a21d62abe572070a14814864c39",
+          "observation_id": "observation--sha256:3e75be1eea797549c5dcc30790477107312f4dc07a2a7e68de1f02545268190a",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -8661,7 +8601,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -8669,7 +8609,7 @@
             "row": 43
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -11201,7 +11141,7 @@
       "spec_version": "2.1",
       "id": "indicator--b07bb683-b890-4bad-a193-e7e35d174b0f",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11219,7 +11159,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -11228,7 +11168,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:398629dc393bdcc57db5d4bda365cd32b80fef1defcde901c31fed3073d49047",
+          "observation_id": "observation--sha256:038b0195a3d1d70f59ee8590c92762b9e8bdfae550ef11002ca3347d41a1e705",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -11242,7 +11182,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -11250,7 +11190,7 @@
             "row": 28
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -13841,7 +13781,7 @@
       "spec_version": "2.1",
       "id": "indicator--d70009ad-6c13-4619-a8a8-c6b7f57aef80",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13859,7 +13799,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -13868,7 +13808,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:461f8aa216a7037c8c9272b1f2c35cf6db986136082e085a39ab3318ac86b758",
+          "observation_id": "observation--sha256:42ae44551b9f1143b798571e163cfb93eb6e75583ddebd32947490c851bba713",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -13882,7 +13822,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -13890,7 +13830,7 @@
             "row": 31
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -16921,7 +16861,7 @@
       "spec_version": "2.1",
       "id": "indicator--36a7893d-8338-4714-a254-a2b3faa8c560",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -16939,7 +16879,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [
         "malware--daily-1432659072aa52651920"
@@ -16950,7 +16890,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:3bcad514bc56db32cb0dc67357c569c41a462a5c95182359363f6cba33f157d9",
+          "observation_id": "observation--sha256:3d6f94fe177909fc6a19363b8859d7bbc9a771d154475dc88b847779e786aba9",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -16964,7 +16904,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -16972,7 +16912,7 @@
             "row": 33
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [
             "malware--daily-1432659072aa52651920"
@@ -17930,7 +17870,7 @@
       "spec_version": "2.1",
       "id": "indicator--1e63204e-073d-408a-93c6-84e4df64c577",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17948,7 +17888,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -17957,7 +17897,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:3e65c8476a0e15788ab94b265bf81f6427ee06fdb4dfa44550ea711496d38c06",
+          "observation_id": "observation--sha256:a74b1a8e741f2e81bfe9009e19bd8e26ed654f10afde85eaabccff9d0592759d",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -17971,7 +17911,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -17979,7 +17919,7 @@
             "row": 19
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -21554,7 +21494,7 @@
       "spec_version": "2.1",
       "id": "indicator--63678170-cae6-4172-aaff-db6400517185",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21572,7 +21512,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -21581,7 +21521,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:d5a07dc3461e6e4ffbef30038fe3fdb1e3456b177fd3554b3268d42c51eedefe",
+          "observation_id": "observation--sha256:66a8abead931ca297942cae929f4f1720ebdd9709c303efd1202d0f8732c0cf7",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -21595,7 +21535,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -21603,7 +21543,7 @@
             "row": 26
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -21639,7 +21579,7 @@
       "spec_version": "2.1",
       "id": "indicator--b473e9f0-100b-45f9-9328-8fe5d56306b9",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21657,7 +21597,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -21666,7 +21606,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:a06db6ab456b4fed4202182a2f0d6812b8ac9b43408684989edde80a74465efc",
+          "observation_id": "observation--sha256:6736eac876b5442b7a0f3ec1ce1378a192874a9bd1448768870d8690979051f4",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -21680,7 +21620,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -21688,7 +21628,7 @@
             "row": 24
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -27931,7 +27871,7 @@
       "spec_version": "2.1",
       "id": "indicator--ca139f9c-98c3-48a1-8270-3d2ac6221a0b",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -27949,18 +27889,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b552909255b5abc5c8736afb0f2bad2d4f78dffb72226273503436191bf527d4",
+          "observation_id": "observation--sha256:9f4a07dde7edf6e2a1ba037bf036ce48e4c73f242955fb0a61745b73c220232a",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -27974,7 +27912,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -27982,11 +27920,9 @@
             "row": 18
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -31865,7 +31801,7 @@
       "spec_version": "2.1",
       "id": "indicator--f75f065f-c9f9-4058-a5cc-5fc527a7fb35",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -31883,7 +31819,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -31892,7 +31828,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:18735884c573cc891e092a5c1bf0c186f09903c4acf1c4f21db07855613db629",
+          "observation_id": "observation--sha256:d18c2b1a9889d25bf31deed7554e702cf486bfa59fb34a93523969ec2b4180b9",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -31906,7 +31842,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -31914,7 +31850,7 @@
             "row": 38
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -33040,7 +32976,7 @@
       "spec_version": "2.1",
       "id": "indicator--5aa58b22-5929-4d1c-a558-155fc322f4c4",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -33058,7 +32994,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -33067,7 +33003,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:039ce01638a2ef437b415dc8abdac7d9d1e3814e80049ed304c2f446ad75ead4",
+          "observation_id": "observation--sha256:77733544795371ff3192d760f89d5345c80fef0a3c7b2ff601ade989a9223db6",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -33081,7 +33017,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -33089,7 +33025,7 @@
             "row": 51
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -42806,7 +42742,7 @@
       "spec_version": "2.1",
       "id": "indicator--1c63aefb-c326-44aa-9ea2-cbd16c8e8e34",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -42824,7 +42760,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -42833,7 +42769,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:9c6125856e536b85fc6577c647652b51ade97a353a4a500e2b5020f94b2848e5",
+          "observation_id": "observation--sha256:04886aff57616835ab8467c3af0b2a46afe8599f422ff317b54a51a3ee6715eb",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -42847,7 +42783,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -42855,7 +42791,7 @@
             "row": 18
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -45922,7 +45858,7 @@
       "spec_version": "2.1",
       "id": "indicator--3dd2f169-7461-4f71-9c42-c154337da960",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -45940,7 +45876,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -45949,7 +45885,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e910ee2f13b419b29f5d4b0a7506fbcf154adde8de83c02b78e3561d679cb7f2",
+          "observation_id": "observation--sha256:16b50a52ce5906f2d507cbd6e1ce24bd73e5eeccbf93fe94c9642c462b5eb835",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -45963,7 +45899,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -45971,7 +45907,7 @@
             "row": 50
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -49597,7 +49533,7 @@
       "spec_version": "2.1",
       "id": "indicator--f30a14db-6502-4917-b990-1017d9dd837d",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -49615,7 +49551,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -49624,7 +49560,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:10573f58098a0b8487235a9553c33b020e335f5f7e71dfc90f491ee3cdf036ad",
+          "observation_id": "observation--sha256:3fa4f8763c0aae57e67c5b29425387a05908dccc1ad1e8829753f9de514670df",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -49638,7 +49574,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -49646,7 +49582,7 @@
             "row": 44
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -51899,7 +51835,7 @@
       "spec_version": "2.1",
       "id": "indicator--d3474b05-dd35-417f-85ce-f4699e9fc098",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -51917,7 +51853,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -51926,7 +51862,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:7a00330517e0a57c1ed3a4e692bf71fb89fc88cba6d6abe21f3a6bf7a37169be",
+          "observation_id": "observation--sha256:dd4562e1fdb298ff835d664c3bdec97c7ed50bf3870e7a4a214da9c1f01e6c50",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -51940,7 +51876,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -51948,7 +51884,7 @@
             "row": 16
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -52088,7 +52024,7 @@
       "spec_version": "2.1",
       "id": "indicator--88848163-007d-4b96-9525-b3930f04793f",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -52106,7 +52042,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -52115,7 +52051,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:dfd3f29248bc931c337d16b79ad5517d685d69f0765fd7a0d24d4b3f959440dd",
+          "observation_id": "observation--sha256:c15ded50dc6e5f21300f3c9ee2e642988b625bd8f4b08126bceda7fef403b028",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -52129,7 +52065,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -52137,7 +52073,7 @@
             "row": 14
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -52173,7 +52109,7 @@
       "spec_version": "2.1",
       "id": "indicator--f4901dd2-300b-46ca-b3cf-259247a7d6a8",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -52191,7 +52127,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -52200,7 +52136,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:d8c8964d49a40856a92c5a1a3b17fe93679e5cc4a34f1599ed051470292aaf99",
+          "observation_id": "observation--sha256:3e38a695f4d8fd17565ebbb0f2448d5c92e389731fea941bf95c0a20732c39c3",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -52214,7 +52150,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -52222,7 +52158,7 @@
             "row": 13
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -56195,7 +56131,7 @@
       "spec_version": "2.1",
       "id": "indicator--3d73f21c-4581-4721-b579-db38ac01b331",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -56213,7 +56149,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -56222,7 +56158,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:d3a0dcdba6dc5e582aecfcc3d7344b8ef0ae8d91900ed0d31f23367ac8b63adc",
+          "observation_id": "observation--sha256:9caae8dc05d5d0e712568cfa8010baf59729257f8b65f1d316e4df651cc69c09",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -56236,7 +56172,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -56244,7 +56180,7 @@
             "row": 15
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -59764,7 +59700,7 @@
       "spec_version": "2.1",
       "id": "indicator--cd094783-a194-432b-9528-a4604627461b",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -59782,18 +59718,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1958c7c12aa3cb82265897f3c29d4c0cc1d975c7c3317528a367ba0e8a11aabf",
+          "observation_id": "observation--sha256:f96b720bd93bb9da1a40511dab2395807b90123c5229f663ddd4101795452be7",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -59807,7 +59741,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -59815,11 +59749,9 @@
             "row": 27
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -60173,7 +60105,7 @@
       "spec_version": "2.1",
       "id": "indicator--d5f5bdc5-9591-4793-9d23-9b5e3e507dca",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -60191,7 +60123,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -60200,7 +60132,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e311b57b4b8f2c4f43930cb24298d404ab6b979a3185c74c1d62ea2d322013b7",
+          "observation_id": "observation--sha256:293d7d9d200a2289e25d428545d30fe1c43167e301d883b81610502c96db69fa",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -60214,7 +60146,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -60222,7 +60154,7 @@
             "row": 58
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -60549,7 +60481,7 @@
       "spec_version": "2.1",
       "id": "indicator--c090f755-67a0-48ee-9542-0f385e2ec0c9",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -60567,7 +60499,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -60576,7 +60508,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:ae1b9957f2d711f1407ade5c11bcbd51041003268d6dcd703ffa4c9c744c4c30",
+          "observation_id": "observation--sha256:f18671e9587831acc6c0f8a8f67bfea0fa45848752ee303574a3cbba36205a9b",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -60590,7 +60522,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -60598,7 +60530,7 @@
             "row": 48
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -61815,7 +61747,7 @@
       "spec_version": "2.1",
       "id": "indicator--35f7aada-3a87-4947-bf56-141addd00e2e",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -61833,18 +61765,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:ad84e71d70ae3cdad3f9aafb7c594e2383fc5bb625c0078a23ca399015e25ebd",
+          "observation_id": "observation--sha256:e9841eda366a057049f9b6ddc877dbc4b0ea6b44cc82a9dbe6512fad20eb3a7b",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -61858,7 +61788,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -61866,11 +61796,9 @@
             "row": 30
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -63533,7 +63461,7 @@
       "spec_version": "2.1",
       "id": "indicator--58a46754-3aaf-468a-9ae2-20084dae563b",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -63551,7 +63479,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -63560,7 +63488,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e6f988533b412d6c12618162997c6e34c2b62f472f77028a01210b7d47a6985a",
+          "observation_id": "observation--sha256:48b7fd2528dfbd58415adf3bf09b397445d39009ed802b92032d892277e09eff",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -63574,7 +63502,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -63582,7 +63510,7 @@
             "row": 42
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -64049,7 +63977,7 @@
       "spec_version": "2.1",
       "id": "indicator--181e5998-32d7-4c35-acaf-044263048cdb",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -64067,7 +63995,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -64076,7 +64004,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:3f7a588646214f97813ee987407a3e97865c23473d5c9496ce7be3a909d0a7e0",
+          "observation_id": "observation--sha256:77b987d1a91cc7d0f77412a3bfbbb88db7a72ac7a44691220408d22f8ccfd5e5",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -64090,7 +64018,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -64098,7 +64026,7 @@
             "row": 39
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -64891,7 +64819,7 @@
       "spec_version": "2.1",
       "id": "indicator--e19a3d7e-1ef6-44d6-8206-09f11475c893",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -64909,7 +64837,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -64918,7 +64846,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:6376c992070acd12d7dc7e90deecfc27459b9974b9c3ecef2a54b49ca8e1d294",
+          "observation_id": "observation--sha256:10d2988b716a425fada40c54f2f9872ea232dc9b20f6b6bc63edf756d30c820d",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -64932,7 +64860,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -64940,7 +64868,7 @@
             "row": 56
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -64976,7 +64904,7 @@
       "spec_version": "2.1",
       "id": "indicator--cba425a3-dbb3-491f-b140-368b6233eec4",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -64994,18 +64922,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:4104c7c3503e2b7d6d93ca828804ef6d64418815a4ac35a4cffb7b3b52ba50af",
+          "observation_id": "observation--sha256:8ce33e562f2e9718e26d09cf5dfd7ef847268ce5741b5e48ba587d0df9188b4b",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -65019,7 +64945,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -65027,11 +64953,9 @@
             "row": 31
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -65788,7 +65712,7 @@
       "spec_version": "2.1",
       "id": "indicator--3d93ef09-e50d-4236-a6ec-eed3b8cde926",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -65806,7 +65730,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -65815,7 +65739,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e3f67757b834fdc22632e8e75513ff9282a9f0480f8ba4aecbe84fe6489845f2",
+          "observation_id": "observation--sha256:a4acc0f788a00d7aa509323acb228c140a1c54592ec820e60b31e3fbd06e09f9",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -65829,7 +65753,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -65837,7 +65761,7 @@
             "row": 36
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -66510,7 +66434,7 @@
       "spec_version": "2.1",
       "id": "indicator--a1750831-d418-4e04-9639-ff39e17c5b8a",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -66528,7 +66452,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -66537,7 +66461,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:dacd90b199e0251a07799e309b22252320cfb6ec3448a9317d23a6773e3fb1b1",
+          "observation_id": "observation--sha256:2bda9b4329562a14c780d411bb6664d0f8479195301c78427a9c460beaf6e1b9",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -66551,7 +66475,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -66559,7 +66483,7 @@
             "row": 37
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -68069,7 +67993,7 @@
       "spec_version": "2.1",
       "id": "indicator--509de3c3-94f8-4d00-895a-d37327a8ff8c",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -68087,18 +68011,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:36aa9398ea05c0c03b5dcba3268db0cd58869a01bf3b167554313d37d0d3e010",
+          "observation_id": "observation--sha256:7e76339d5acecd49b296b319ee44497dc2352c993feba45136dab7fa8cce0bb5",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -68112,7 +68034,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -68120,11 +68042,9 @@
             "row": 25
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -68158,7 +68078,7 @@
       "spec_version": "2.1",
       "id": "indicator--6a0a8005-ab4d-4566-b12c-569d9895f3e9",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -68176,18 +68096,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:dcc887f2c8901497e00e14998130c36afb979dbcd47b9b6aa56e2918d2bac94e",
+          "observation_id": "observation--sha256:55c0c3ae32910b65f93a225058719c768ceead795a556dcbab18eddfa63c89b4",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -68201,7 +68119,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -68209,11 +68127,9 @@
             "row": 28
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -68389,7 +68305,7 @@
       "spec_version": "2.1",
       "id": "indicator--aa47f1f8-0c3a-4408-9522-d57aad0b27fb",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -68407,7 +68323,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -68416,7 +68332,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e6306238a489588f4fa56aa37d7aa7b801bbb9b7cf079b86303c3934aa8c1850",
+          "observation_id": "observation--sha256:69149ef6aa9a5286bab32644214055527b9037b17d075d7b813cc12589d5a306",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -68430,7 +68346,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -68438,7 +68354,7 @@
             "row": 40
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -68474,7 +68390,7 @@
       "spec_version": "2.1",
       "id": "indicator--010a1819-a672-4d41-a046-3954fa1cdc8d",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -68492,7 +68408,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -68501,7 +68417,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:ba7fbe933b92b4ebacada367988e884e64e6db2fda2c1b94b225ed476ab20c3b",
+          "observation_id": "observation--sha256:9895fe4e15684354b45a7e764096adc8de734b2bf56b94154cd4db62c8e2a7dc",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -68515,7 +68431,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -68523,7 +68439,7 @@
             "row": 43
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -69866,7 +69782,7 @@
       "spec_version": "2.1",
       "id": "indicator--d64ec8a1-767a-4ab3-b03a-aa55c295d71a",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -69884,7 +69800,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -69893,7 +69809,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:42481b7afe5b0f2d0bc689c632c65e1cc73ef77739b21d796c74859bec1b8226",
+          "observation_id": "observation--sha256:051e8a9b211a2c27c294557dd47cce767cedc269266e7265d9a3eb9941d13c1a",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -69907,7 +69823,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -69915,7 +69831,7 @@
             "row": 55
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -70069,7 +69985,7 @@
       "spec_version": "2.1",
       "id": "indicator--62ccad81-5133-4873-93ed-300cfad25364",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -70087,7 +70003,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -70096,7 +70012,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:56582a8bb4ca10e33a1a891ca69eb32cff60d0393367d9eec28fcdb3b2e77772",
+          "observation_id": "observation--sha256:0956711d4ac315d3d3692733518a3ec38fc17d609730114c8120841443ec0611",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -70110,7 +70026,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -70118,7 +70034,7 @@
             "row": 38
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -70777,7 +70693,7 @@
       "spec_version": "2.1",
       "id": "indicator--9d41ae70-c5b4-425b-a40a-15cce216f054",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -70795,7 +70711,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -70804,7 +70720,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:f202331c2671df08328684666d06c4013782c493f168d1fb2efa9fcc349f1e1d",
+          "observation_id": "observation--sha256:034ea605f8eab4e651daed98b3e18cc0c6b2ad3d1a28e1cc47ba55ddb30b1627",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -70818,7 +70734,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -70826,7 +70742,7 @@
             "row": 35
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -71182,7 +71098,7 @@
       "spec_version": "2.1",
       "id": "indicator--7c604c48-140c-4f75-85ce-180ad7f8c152",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -71200,7 +71116,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -71209,7 +71125,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:92b72d28801b5eae9c09e9b14dab67f86cc0a521ff6c9e2da738caa1baa48fda",
+          "observation_id": "observation--sha256:7836d54beec38d9a475a3afab2a9185954858f57cf6a79bfcd3a40dc4b81ad8a",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -71223,7 +71139,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -71231,7 +71147,7 @@
             "row": 41
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -71540,7 +71456,7 @@
       "spec_version": "2.1",
       "id": "indicator--b161ecee-6fcd-4262-9c05-77c086af472c",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -71558,7 +71474,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -71567,7 +71483,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1befe44295fd006e8aa28586072ea957377bd3d8dc6169aefb91720a7b24c8bf",
+          "observation_id": "observation--sha256:3a82757e5d858dbbfef1e02165f08f4a4e8429246d3be7f4299f29777447828a",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -71581,7 +71497,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -71589,7 +71505,7 @@
             "row": 47
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -71848,7 +71764,7 @@
       "spec_version": "2.1",
       "id": "indicator--08549c02-b17b-46fd-b6a5-2f338b881c73",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -71866,7 +71782,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -71875,7 +71791,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:91dc7e07942eae1787d653e7fc3974d57aff448a45b65e1ba81b11fca4dc8113",
+          "observation_id": "observation--sha256:64b6928eafdcfced3b46ee64919f71f224de0b70cba3276b0899c05521656355",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -71889,7 +71805,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -71897,7 +71813,7 @@
             "row": 54
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -71933,7 +71849,7 @@
       "spec_version": "2.1",
       "id": "indicator--8ffa4ad5-9202-486c-b093-40f5c140f685",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -71951,7 +71867,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -71960,7 +71876,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:02cd07aba125b0b006012329124626e7a995ffaae3f63dd3f00b71c42baf5e2d",
+          "observation_id": "observation--sha256:b46699b8316f9789784911097a32d01e80be9779f5d0a20f449991fced1558ff",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -71974,7 +71890,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -71982,7 +71898,7 @@
             "row": 57
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -72529,7 +72445,7 @@
       "spec_version": "2.1",
       "id": "indicator--a728d3af-4ba3-41d6-9aba-1db218ec9df8",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -72547,18 +72463,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:d4eed99689d01fd4ddb83e667beb6a033b61af2134ec4de4e81bfa7b48c6b46e",
+          "observation_id": "observation--sha256:78f4c95ea13e762e3eb25484df3e73a520025f6f5c012045a67c100f654697b2",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -72572,7 +72486,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -72580,11 +72494,9 @@
             "row": 26
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -72692,7 +72604,7 @@
       "spec_version": "2.1",
       "id": "indicator--1a43e61a-14a4-430f-b7cd-26992964448e",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -72710,18 +72622,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "payload"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:7a79928da34defff154abc34efd4d9e495390014412d1a459c288c3ae94c90d5",
+          "observation_id": "observation--sha256:a363ba6a82c1e8e90407272bccf151196b7820aa9f5c57c96936dbb8e92807c6",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -72735,7 +72645,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -72743,11 +72653,9 @@
             "row": 29
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "payload"
@@ -73111,7 +73019,7 @@
       "spec_version": "2.1",
       "id": "indicator--aeeaa7e8-7583-47e6-ab64-e596e562b51e",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -73129,7 +73037,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -73138,7 +73046,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:a47eb2243ac9c64b0e311a85991d1207bdb663e0e16196b3882fd634f6306b0f",
+          "observation_id": "observation--sha256:f6d03d94772e7202affd51ac01f257ef18d7fcf3114a714f0b913af2a0a8be0b",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -73152,7 +73060,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -73160,7 +73068,7 @@
             "row": 49
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -81584,7 +81492,7 @@
       "spec_version": "2.1",
       "id": "indicator--e2487009-be29-4e41-86f8-1baf32d413bd",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -81602,7 +81510,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -81611,7 +81519,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b6d29194bd32bbdf2ce57fa8b488c6a0135fb90ecaff796d139b400294a77bd1",
+          "observation_id": "observation--sha256:16c34170354bc490079588d0c56e7fc5f68ba631202d73acfb321e1965a94137",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -81625,7 +81533,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -81633,7 +81541,7 @@
             "row": 45
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -81669,7 +81577,7 @@
       "spec_version": "2.1",
       "id": "indicator--c8331666-d9de-4144-a4a0-3b55a546ab5b",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -81687,7 +81595,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -81696,7 +81604,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b26170655f5f51901158d7862c5b4940ad46555111199b67b09f9bfc01bc320d",
+          "observation_id": "observation--sha256:9e5170626b3740d022076b4b54f71c17d07a6cc2d434bc753399d6d0b5c266c9",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -81710,7 +81618,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -81718,7 +81626,7 @@
             "row": 46
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -85920,7 +85828,7 @@
       "spec_version": "2.1",
       "id": "indicator--aa25ac68-abb8-4b28-a83c-27360d822fc0",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -85938,7 +85846,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [
         "malware--daily-1432659072aa52651920"
@@ -85949,7 +85857,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:dc644c0cef798e3993d3b2ed7455fb66da7d8fd1339b9826db4d94cda43b5d56",
+          "observation_id": "observation--sha256:8538a654b6251662f4d0f6cce1f3310eaf0bd9261b7b8e55fe212f3f796f8406",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -85963,7 +85871,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -85971,7 +85879,7 @@
             "row": 32
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [
             "malware--daily-1432659072aa52651920"
@@ -93852,7 +93760,7 @@
       "spec_version": "2.1",
       "id": "indicator--04bc55b5-a3d4-4b70-b449-cf2b481ced29",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -93870,7 +93778,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -93879,7 +93787,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:4e5c838d2a1e336baec506d9bc1d20cb08161f4619651d6ba9d1b89ea15861e9",
+          "observation_id": "observation--sha256:27c757516ce5140b16cb8e9d8ba3420b411e70f13b731ce43b6b606d9b92b8f9",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -93893,7 +93801,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -93901,7 +93809,7 @@
             "row": 40
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -93937,7 +93845,7 @@
       "spec_version": "2.1",
       "id": "indicator--aa888d07-36fe-4242-9a42-d9210d208bc9",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -93955,7 +93863,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -93964,7 +93872,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:2e0f7623d009354492470d8e58aad4e97f06444658340f77f3e13a280960d6bb",
+          "observation_id": "observation--sha256:9aab16d5624196c8bc2941a2e827ef65729dbd92878ea6b8c522284ef89b770f",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -93978,7 +93886,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -93986,7 +93894,7 @@
             "row": 42
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -95851,7 +95759,7 @@
       "spec_version": "2.1",
       "id": "indicator--9abdc6e2-3244-484a-88d6-1d70032bd8b1",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -95869,7 +95777,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -95878,7 +95786,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:f2e998750058232eb3e0168d5350d8d9e355ecfd71061ba6d028a33c61282ebf",
+          "observation_id": "observation--sha256:c3efbc852a28cb47f18dc1b181d20fd973540aa2dc80a438d86d1e581ff42121",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -95892,7 +95800,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -95900,7 +95808,7 @@
             "row": 27
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -96491,7 +96399,7 @@
       "spec_version": "2.1",
       "id": "indicator--a6c7c9ed-39cc-4544-b823-46442ee16c1d",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -96509,7 +96417,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -96518,7 +96426,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:40a25cebc1fd4356b3bc1cb381c43ba8767ba7914209930aca6146ff5d49a0c5",
+          "observation_id": "observation--sha256:a908c02894bb74609c21990392090562fb5e051cf3b51000010eeec37754e514",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -96532,7 +96440,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -96540,7 +96448,7 @@
             "row": 30
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -96576,7 +96484,7 @@
       "spec_version": "2.1",
       "id": "indicator--31049726-e232-4a4b-a871-8a50f1f4d66b",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -96594,7 +96502,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -96603,7 +96511,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:ab7bee7861b3d505a1bec39236125c969a5917391f22fecbbc74a30519af76db",
+          "observation_id": "observation--sha256:fed7c82f23188a0df6ace1f5ee2cfd2087f4cf1fb1c15cc458e81d49bbb42463",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -96617,7 +96525,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -96625,7 +96533,7 @@
             "row": 29
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -99934,7 +99842,7 @@
       "spec_version": "2.1",
       "id": "indicator--b902e88b-d611-45c8-ae80-193f07ef5d10",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -99952,7 +99860,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -99961,7 +99869,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1aee8b4217cf90f4488726d9c81d43118fd3fd5b12645064b7ef8f03f154923b",
+          "observation_id": "observation--sha256:061bb0254d97a61ab470124c497393cf58329f0e7543ea7f9a6f07d27e7c864f",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -99975,7 +99883,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -99983,7 +99891,7 @@
             "row": 25
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -100019,7 +99927,7 @@
       "spec_version": "2.1",
       "id": "indicator--d0ecfbbd-70d1-45e0-ab3d-8a1185b8b93c",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -100037,7 +99945,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -100046,7 +99954,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:348bb7c5f0de6615c2ce3aa8324e3cb580b6616b5dbca7f34cc1fac942a36e0b",
+          "observation_id": "observation--sha256:ad1773322f480a569962048596de3474cb0f1db1fa0915100629d14c7cf08d60",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -100060,7 +99968,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -100068,7 +99976,7 @@
             "row": 23
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -101888,7 +101796,7 @@
       "spec_version": "2.1",
       "id": "indicator--25da793b-9c80-4270-9c03-0d4668eddfe9",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -101906,18 +101814,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e8f8795db160ff028a95d6de6b81c229e000cb5bba0871749575c4869938403b",
+          "observation_id": "observation--sha256:a009af71d262948d8cd9744382528c09fbf6d78bdf0acc998701d285802c601f",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -101931,7 +101837,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -101939,11 +101845,9 @@
             "row": 19
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -101977,7 +101881,7 @@
       "spec_version": "2.1",
       "id": "indicator--6601c306-071d-4774-990b-f7b5140ceb9e",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -101995,18 +101899,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:503eb800a6628dc2db56555f565fffdf37204a81b6a68e05c36ef48b9649fc88",
+          "observation_id": "observation--sha256:c09fd9d20aaf8c6eb0781b515ad2c04a9c999aefc77070e208fb29a1b4957890",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -102020,7 +101922,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -102028,11 +101930,9 @@
             "row": 21
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -102066,7 +101966,7 @@
       "spec_version": "2.1",
       "id": "indicator--707d9c5a-b74b-4266-a2f2-4ec255310ada",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -102084,18 +101984,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:702fc62560d8f9c3ebca4f56dc8eec327ea1d510a6ec1a003ae0020c9c5ba453",
+          "observation_id": "observation--sha256:3bcf08bd1d317d676e56ce2e9f7bac16bfbb7d9b720c8c69429eca25e29eec58",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -102109,7 +102007,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -102117,11 +102015,9 @@
             "row": 22
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -102155,7 +102051,7 @@
       "spec_version": "2.1",
       "id": "indicator--78344150-634b-4723-88a6-33619a24ff06",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -102173,18 +102069,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:48d969ecc3fbb917822d1f0436920589b14bb45fbd26da6ccc8863fa413d2129",
+          "observation_id": "observation--sha256:16342733c9ab937f86fff5084f353257701c39d5a91a3966935570733c5356eb",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -102198,7 +102092,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -102206,11 +102100,9 @@
             "row": 24
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -102244,7 +102136,7 @@
       "spec_version": "2.1",
       "id": "indicator--79e31c17-a4a0-4372-a8b4-b45b6dcaac7e",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -102262,18 +102154,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:66fe1d16ae5b0c57b4b347ada94f453c8ae5ffb7d0c1fbdbcc26b3adcc1b6a9e",
+          "observation_id": "observation--sha256:a337f7f0611a35d355f4f513e6ce4c875a17882e5025ab007db9f2a7abfbd248",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -102287,7 +102177,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -102295,11 +102185,9 @@
             "row": 20
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -102333,7 +102221,7 @@
       "spec_version": "2.1",
       "id": "indicator--d0589291-f4d0-4df9-92ce-31881a34f53f",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -102351,18 +102239,16 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
-      "x_malware_refs": [
-        "malware--daily-c07f6d43656cbaec556c"
-      ],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
       "x_roles": [
         "c2"
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:3ff1e30d135fbdf55ef7b2b076c7a06adef2d9525a05351733d73acfcf5172d5",
+          "observation_id": "observation--sha256:87159785181fde2c7177fcf9825b1ef30e3c06d0933a0ae64aea5587f5c5eeb4",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -102376,7 +102262,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -102384,11 +102270,9 @@
             "row": 23
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
-          "malware_refs": [
-            "malware--daily-c07f6d43656cbaec556c"
-          ],
+          "malware_refs": [],
           "infrastructure_refs": [],
           "roles": [
             "c2"
@@ -103442,7 +103326,7 @@
       "spec_version": "2.1",
       "id": "indicator--0d5aec94-a325-4d25-b5ed-6f6cd96e8720",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -103460,7 +103344,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -103469,7 +103353,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:d44b79cca9fd61e6db7719ebb7838458b782b653b7b496820e33abd44ea4ffbf",
+          "observation_id": "observation--sha256:0b924e28214a211bc78396fd6eb8bd0df0fa659d930384fcdfd4918b72df0a8c",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -103483,7 +103367,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -103491,7 +103375,7 @@
             "row": 35
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -103527,7 +103411,7 @@
       "spec_version": "2.1",
       "id": "indicator--8f55cd6a-e129-4d02-b293-7acc9122609a",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -103545,7 +103429,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -103554,7 +103438,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:5e9fcabd52afb02e7a7a2df89c2f1f0b433d704c5a45df25c9569b1e7ea67b2e",
+          "observation_id": "observation--sha256:a585cfaf1c0882781e0d29a15a7377f70d2d0f899a48c93a0a154662a46affdd",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -103568,7 +103452,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -103576,7 +103460,7 @@
             "row": 34
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -103612,7 +103496,7 @@
       "spec_version": "2.1",
       "id": "indicator--46d19d24-43d4-42a2-96ec-ed54643de03d",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -103630,7 +103514,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -103639,7 +103523,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:adb7d863db54f7fef7969d87468a7521a0ec5327f02028509399d6fb6794adf2",
+          "observation_id": "observation--sha256:e20a0b5ab90d2ddc99c00a0fec4e75139690fbb65474145e3116eff86f3908ee",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -103653,7 +103537,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -103661,7 +103545,7 @@
             "row": 37
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -103697,7 +103581,7 @@
       "spec_version": "2.1",
       "id": "indicator--4483bf6e-a4b9-4e68-a594-52c14016ee6b",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -103715,7 +103599,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -103724,7 +103608,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:651597d2be962ff84d2e0fccebb498111913020cae314a1d08f9fbc1adb4d9a1",
+          "observation_id": "observation--sha256:c8e927af4ef926f2972b491e5b5e6c160f55b506860da2dde79e0a56426c4248",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -103738,7 +103622,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -103746,7 +103630,7 @@
             "row": 36
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -103856,7 +103740,7 @@
       "spec_version": "2.1",
       "id": "indicator--44cedc3c-03c8-4fdf-b27b-6131b99b7da5",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -103874,7 +103758,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -103883,7 +103767,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1abac094105acb466506a565156f24d2d94b6aea7813cd701fc1da65df0acd7f",
+          "observation_id": "observation--sha256:4fc7bc3f1edd7dbed66e1f55a725b992c805ca4a3c9e19b40120e7d3a0694b12",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -103897,7 +103781,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -103905,7 +103789,7 @@
             "row": 32
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -103941,7 +103825,7 @@
       "spec_version": "2.1",
       "id": "indicator--a6fd437c-582e-4c13-b0ab-f18d5cd470b5",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -103959,7 +103843,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -103968,7 +103852,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:9fd690cf6a84595035309d265494cb66f31486160ec4b2023b943a91c05e44a7",
+          "observation_id": "observation--sha256:d448f0d3e023298924ffa1f2e10a99818eaa82bb72d17a721d37c54c6bd1ac7e",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -103982,7 +103866,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -103990,7 +103874,7 @@
             "row": 33
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -104026,7 +103910,7 @@
       "spec_version": "2.1",
       "id": "indicator--95f01baa-257d-455c-9bcf-2bf55249cf98",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -104044,7 +103928,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -104053,7 +103937,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:8b2424c42906ce67cbeb067cbb0135ace9a4da266f777c33afe451767138dd02",
+          "observation_id": "observation--sha256:8c1582825104dad2ebcd639a015c49ff5ae492dc2680ff47f9ee6a8079d570b4",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -104067,7 +103951,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -104075,7 +103959,7 @@
             "row": 34
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -108253,7 +108137,7 @@
       "spec_version": "2.1",
       "id": "indicator--efdfbd17-8efa-44c9-b3cc-9cfc693f9721",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -108271,7 +108155,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -108280,7 +108164,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:764fc87af755cbd8f1b4fcafff34f3ab58c4e55b1a16e73d9435827114fe86c0",
+          "observation_id": "observation--sha256:4c55b6dd776b58b2fafe34e3c3f7469ca97a82d0c0999b45dc24fde9635ba1dd",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -108294,7 +108178,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -108302,7 +108186,7 @@
             "row": 20
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -108338,7 +108222,7 @@
       "spec_version": "2.1",
       "id": "indicator--88dfd986-542e-4a3f-ac80-d9faa1e91d23",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -108356,7 +108240,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -108365,7 +108249,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:955d1891bacac02d16f213edbf24774bb5691a5d858a31fff15ee82980750765",
+          "observation_id": "observation--sha256:afaa1376b3f1fb79762006fb666d83bcef60da69864c87b17e37b1b2563e2a29",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -108379,7 +108263,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -108387,7 +108271,7 @@
             "row": 21
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -108423,7 +108307,7 @@
       "spec_version": "2.1",
       "id": "indicator--ec91b94b-6365-4741-a0f0-c0edce1d2db0",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -108441,7 +108325,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -108450,7 +108334,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:7d8ad1df4e7606191501975427d16eb130d2db2efba3785118e3f72b0fc13d3d",
+          "observation_id": "observation--sha256:2e7f3c0c4e53f2db149dc38c2086f3b07d4e67ee71d0882cbd6b9a56868e5036",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -108464,7 +108348,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -108472,7 +108356,7 @@
             "row": 22
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -108508,7 +108392,7 @@
       "spec_version": "2.1",
       "id": "indicator--d1170e0a-1c85-4fdb-b78a-b33aa16aa2b3",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -108526,7 +108410,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-380e60d78e8b9558d568"
+        "activity--daily-ca0d00789c7bb400d0f4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -108535,7 +108419,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b11827cc74ed24328d3610c02350c67daabfe8ed44f6390512c0fc4ba7b05db1",
+          "observation_id": "observation--sha256:aac31df1d63280b8ba4ecca6b707bba5ac3516fb0e37ee91e99dd507ae0614d0",
           "observed_at": {
             "value": "2026-05-27T00:00:00Z",
             "precision": "day",
@@ -108549,7 +108433,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f05f4888998c8f53f5ca",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260530.md",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -108557,7 +108441,7 @@
             "row": 17
           },
           "campaign_refs": [
-            "activity--daily-380e60d78e8b9558d568"
+            "activity--daily-ca0d00789c7bb400d0f4"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -109739,7 +109623,7 @@
       "spec_version": "2.1",
       "id": "indicator--d14875a6-9552-49e4-a997-e6c7879a34d4",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -109757,7 +109641,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -109766,7 +109650,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:af85076f7fda1ea380245711e94b3feeac6090f3c454336ae221f3a8a9e68706",
+          "observation_id": "observation--sha256:5c9b9eca8a49b4b9c35863c43533fee1c9188f8c25c3be554da809c344c64969",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -109780,7 +109664,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -109788,7 +109672,7 @@
             "row": 53
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -110793,7 +110677,7 @@
       "spec_version": "2.1",
       "id": "indicator--93b35edb-b67d-4c4c-a0b2-dc6b5de82df6",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -110811,7 +110695,7 @@
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
-        "activity--daily-b77e5af306b5fa121e1a"
+        "activity--daily-9a84486a6c98d6fea40f"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -110820,7 +110704,7 @@
       ],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:89b59b070d9b1a6105c6aa411db69fcd66d76fcc8984f93ce7561b0fb932f014",
+          "observation_id": "observation--sha256:10514d71c47bc311f34816ab5fbadee42a3c5fd811e0726c310245d879885bb7",
           "observed_at": {
             "value": "2026-05-15T00:00:00Z",
             "precision": "day",
@@ -110834,7 +110718,7 @@
             "basis": "daily-news-file-date"
           },
           "source_id": "source--daily-f3e6fda98089cb5da96d",
-          "source_path": "https://github.com/proshiba/tech-memo/blob/429ef539242eb4b372f95697a12590096bc07c3e/daily-news/news/2026_04-06/20260520.md",
+          "source_path": "https://logpresso.com/ko/blog/2026-05-15-1Q-Kimsuky-report",
           "source_location": {
             "repository": "proshiba/tech-memo",
             "commit": "429ef539242eb4b372f95697a12590096bc07c3e",
@@ -110842,7 +110726,7 @@
             "row": 52
           },
           "campaign_refs": [
-            "activity--daily-b77e5af306b5fa121e1a"
+            "activity--daily-9a84486a6c98d6fea40f"
           ],
           "malware_refs": [],
           "infrastructure_refs": [],
@@ -111762,7 +111646,7 @@
       "spec_version": "2.1",
       "id": "report--ea182dd8-320c-4b91-9e51-fd5af5e3ea5a",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-26T05:28:44Z",
+      "modified": "2026-07-26T06:00:43Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -111771,14 +111655,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-26T05:28:44Z",
+      "published": "2026-07-26T06:00:43Z",
       "object_refs": [
         "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
         "malware--94c3f7a5-7318-42e8-a08f-7ad133376cc4",
         "malware--31c8c7f6-d769-436e-a9a3-6524f272a9f8",
         "malware--e8ec0ab9-aae2-416a-a739-0a7452541018",
         "malware--073c46c0-2e2b-46bb-a0eb-03ed28c41ed7",
-        "malware--9f105cae-c2b2-410f-b75d-92c19e981ae3",
         "malware--9ae98b17-2658-4a3c-9a6e-7493c6d194fe",
         "malware--e4a2221e-a318-402d-bab1-bba59bc7bbd2",
         "tool--99f88693-61aa-4e48-88f1-ca1082e71831",
@@ -111787,13 +111670,13 @@
         "infrastructure--9505837a-679d-4d21-99dd-d57213842d77",
         "infrastructure--b8554336-8ce7-44aa-8b8c-1e1e3aecb414",
         "infrastructure--797b939c-0f58-4db2-a48b-fde02ce7fc2b",
+        "campaign--68a2138f-3b1a-4f8f-818e-54f129d06b4e",
+        "campaign--e5fe3e5e-fb77-4bd9-a09b-7580bf9148d5",
         "campaign--99354012-a9c7-4254-8096-caca2f1d4ef6",
         "campaign--606510bc-84a8-4587-8a5a-dd12b1c9af1c",
         "campaign--4ac07ba1-06ff-41de-b70a-6e630cd88606",
         "campaign--9061b18c-4cc5-479b-8ba6-9b951a8e06fe",
         "campaign--80f8ccfe-09af-4209-9de5-b0847ad3b551",
-        "campaign--99e19660-4b3c-4765-87a4-aba76ec530dc",
-        "campaign--2afe4748-935f-4bf8-b53e-84745a7af7da",
         "identity--e30f416b-9f3d-4f61-b1ae-254dda3c363f",
         "identity--9df3cacd-5336-403a-9edb-c5ec8f5086ee",
         "identity--cf08b0a0-e25f-4b60-a039-445d0b5b58b4",

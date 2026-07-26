@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "actor_ref": "actor--muddywater",
-  "updated_at": "2026-07-26T05:28:44Z",
+  "updated_at": "2026-07-26T06:00:44Z",
   "records": [
     {
-      "record_id": "daily-record--71413e9af8d20694d02db788",
+      "record_id": "daily-record--abe700df277423f5f2d24ca4",
       "review_status": "approved",
       "suggested_action": "approve",
       "actor": {
@@ -22,6 +22,7 @@
         "news_date": "2026-05-07",
         "news_url": "https://www.bleepingcomputer.com/news/security/muddywater-hackers-use-chaos-ransomware-as-a-decoy-in-attacks/",
         "primary_url": "https://www.rapid7.com/blog/post/tr-muddying-tracks-state-sponsored-shadow-behind-chaos-ransomware/",
+        "activity_reference": "https://www.rapid7.com/blog/post/tr-muddying-tracks-state-sponsored-shadow-behind-chaos-ransomware/",
         "news_path": "daily-news/news/2026_04-06/20260507.md"
       },
       "confidence": "medium",
@@ -124,9 +125,7 @@
           "description": "AI generated. Chaos ransomware data leak site on Tor used as decoy by MuddyWater.",
           "confidence": "medium",
           "source_path": "daily-news/iocs/2026_04-06/20260507.csv",
-          "malware_refs": [
-            "malware--daily-7a85303a3ef2c980b2c4"
-          ]
+          "malware_refs": []
         },
         {
           "row": 7,
@@ -433,34 +432,47 @@
         {
           "artifact_type": "file-name",
           "value": "Game.exe",
-          "context": "daily IOC malware field: Game.exe",
+          "context": "malware列: Game.exe",
           "review_status": "approved"
         },
         {
           "artifact_type": "file-name",
           "value": "ms_upd.exe",
-          "context": "daily IOC malware field: ms_upd.exe",
+          "context": "malware列: ms_upd.exe",
           "review_status": "approved"
         },
         {
           "artifact_type": "file-name",
           "value": "DIDS.exe",
-          "context": "daily IOC malware field: DIDS.exe",
+          "context": "malware列: DIDS.exe",
           "review_status": "approved"
         },
         {
           "artifact_type": "file-name",
           "value": "WebView2.exe",
-          "context": "daily IOC malware field: WebView2.exe",
+          "context": "malware列: WebView2.exe",
           "review_status": "approved"
         }
       ],
-      "review_notes": "",
-      "applied_at": "2026-07-26T05:22:08Z",
+      "sources": [
+        {
+          "url": "https://www.rapid7.com/blog/post/tr-muddying-tracks-state-sponsored-shadow-behind-chaos-ransomware/",
+          "source_path": "daily-news/news/2026_04-06/20260507.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [
+        {
+          "name": "Chaos",
+          "status": "rejected",
+          "reason": "報告はChaosを装った活動と評価し、暗号化も観測していない。"
+        }
+      ],
+      "review_notes": "Rapid7はMuddyWaterとの関連を中程度の確度で評価。Chaosは偽旗・ブランド偽装であり、MuddyWaterがChaosランサムウェアを利用したとは記録しない。",
       "source_commit": "429ef539242eb4b372f95697a12590096bc07c3e"
     },
     {
-      "record_id": "daily-record--e26ef87c7a3c5e68c2715642",
+      "record_id": "daily-record--c095462a559b1a9c64361757",
       "review_status": "approved",
       "suggested_action": "approve",
       "actor": {
@@ -478,9 +490,10 @@
         "news_date": "2026-05-15",
         "news_url": "https://www.bleepingcomputer.com/news/security/iranian-hackers-targeted-major-south-korean-electronics-maker/",
         "primary_url": "https://www.security.com/threat-intelligence/iran-seedworm-electronics",
+        "activity_reference": "https://www.security.com/threat-intelligence/iran-seedworm-electronics",
         "news_path": "daily-news/news/2026_04-06/20260515.md"
       },
-      "confidence": "medium",
+      "confidence": "high",
       "iocs": [
         {
           "row": 13,
@@ -1344,8 +1357,29 @@
         }
       ],
       "artifacts": [],
-      "review_notes": "",
-      "applied_at": "2026-07-26T05:22:08Z",
+      "sources": [
+        {
+          "url": "https://www.security.com/threat-intelligence/iran-seedworm-electronics",
+          "source_path": "daily-news/news/2026_04-06/20260515.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "Symantecは当該攻撃をSeedworm（MuddyWater）によるものと明示し、標的と観測内容を記載している。",
+      "activity_period": {
+        "first_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "Symantec telemetry"
+        },
+        "last_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "Symantec telemetry"
+        }
+      },
       "source_commit": "429ef539242eb4b372f95697a12590096bc07c3e"
     }
   ]

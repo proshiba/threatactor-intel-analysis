@@ -69,6 +69,8 @@ python3 ui/build_data.py
 `profiles/*/actor-profile.json`・`iocs.json`・`artifacts.csv` を読み、
 `ui/data/actors.json`(名称、alias、帰属、動機、標的、各種件数、IOC種別内訳、
 slug解決済みのアクター間関係)を出力します。
+`generated_at`には全プロファイル中の最新`updated_at`を使用するため、入力が同じなら
+再実行しても索引ファイルは変化しません。
 
 ## ローカルでの確認
 

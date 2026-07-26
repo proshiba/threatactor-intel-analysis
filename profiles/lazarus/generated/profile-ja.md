@@ -1,9 +1,9 @@
 # Lazarus Group 脅威アクタープロファイル
 
-プロファイルID: `actor--lazarus`  
-状態: draft  
-更新日時: 2026-07-26T05:28:44Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--lazarus`
+- 状態: draft
+- 更新日時: 2026-07-26T06:00:43Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -123,8 +123,8 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | malware--blindingcan | BLINDINGCAN | [BLINDINGCAN](https://attack.mitre.org/software/S0520) is a remote access Trojan that has been used by the North Korean government since at least early 2020 in cyber operations against defense, engineering, and government organizations in Western Europe and the US.(Citation: US-CERT BLINDINGCAN Aug 2020)(Citation: NHS UK BLINDINGCAN Aug 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cryptoistic | Cryptoistic | [Cryptoistic](https://attack.mitre.org/software/S0498) is a backdoor, written in Swift, that has been used by [Lazarus Group](https://attack.mitre.org/groups/G0032).(Citation: SentinelOne Lazarus macOS July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--dacls | Dacls | [Dacls](https://attack.mitre.org/software/S0497) is a multi-platform remote access tool used by [Lazarus Group](https://attack.mitre.org/groups/G0032) since at least December 2019.(Citation: TrendMicro macOS Dacls May 2020)(Citation: SentinelOne Lazarus macOS July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--daily-841eaf454386945cebf3 | InvisibleFerret | tech-memo日次IOCでLazarus Groupによる使用が報告されたマルウェア。 | 2026-05-13 | 2026-05-13 | 中 | `source--daily-e91cff6491073bc4c828` |
-| malware--daily-cb8206bbfbe60297e4ec | BeaverTail | tech-memo日次IOCでLazarus Groupによる使用が報告されたマルウェア。 | 2026-05-13 | 2026-05-13 | 中 | `source--daily-e91cff6491073bc4c828` |
+| malware--daily-841eaf454386945cebf3 | InvisibleFerret | Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2026-05-06 | 不明 | 中 | `source--daily-e91cff6491073bc4c828` |
+| malware--daily-cb8206bbfbe60297e4ec | BeaverTail | Lazarus Groupとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2026-05-06 | 不明 | 中 | `source--daily-e91cff6491073bc4c828` |
 | malware--destover | Destover | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--dtrack | Dtrack | [Dtrack](https://attack.mitre.org/software/S0567) is spyware that was discovered in 2019 and has been used against Indian financial institutions, research facilities, and the Kudankulam Nuclear Power Plant. [Dtrack](https://attack.mitre.org/software/S0567) shares similarities with the DarkSeoul campaign, which was attributed to [Lazarus Group](https://attack.mitre.org/groups/G0032). (Citation: Kaspersky Dtrack)(Citation: Securelist Dtrack)(Citation: Dragos WASSONITE)(Citation: CyberBit Dtrack)(Citation: ZDNet Dtrack) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--eccentricbandwagon | ECCENTRICBANDWAGON | [ECCENTRICBANDWAGON](https://attack.mitre.org/software/S0593) is a remote access Trojan (RAT) used by North Korean cyber actors that was first identified in August 2020. It is a reconnaissance tool--with keylogging and screen capture functionality--used for information gathering on compromised systems.(Citation: CISA EB Aug 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -189,7 +189,7 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | NorthStar | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | ThreatNeedle | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Operation Dream Job | campaign | 2019-09-01T04:00:00.000Z | 2020-08-01T04:00:00.000Z | [Operation Dream Job](https://attack.mitre.org/campaigns/C0022) was a cyber espionage operation likely conducted by [Lazarus Group](https://attack.mitre.org/groups/G0032) that targeted the defense, aerospace, government, and other sectors in the United States, Israel, Australia, Russia, and India. In at least one case, the cyber actors tried to monetize their network access to conduct a business email compromise (BEC) operation. In 2020, security researchers noted overlapping TTPs, to include fake job lures and code similarities, between [Operation Dream Job](https://attack.mitre.org/campaigns/C0022), Operation North Star, and Operation Interception; by 2022 security researchers described [Operation Dream Job](https://attack.mitre.org/campaigns/C0022) as an umbrella term covering both Operation Interception and Operation North Star.(Citation: ClearSky Lazarus Aug 2020)(Citation: McAfee Lazarus Jul 2020)(Citation: ESET Lazarus Jun 2020)(Citation: The Hacker News Lazarus Aug 2022) | 高 | `source--mitre-attack-19-1` |
-| Lazarus GroupがGit Hooksを使ってマルウェアを隠蔽 | reported-activity | 2026-05-13 | 2026-05-13 | OpenSourceMalwareは、DPRKのContagious Interview / TaskJackerキャンペーンの新手口を報告した。 攻撃者は従来の.vscode/tasks.jsonやpackage.json postinstallではなく、Git hooks内にStage-2ローダーを隠している。 悪性の.githooks/pre-commitはOSを判定し、precommit.vercel.appから環境別ペイロードを取得して実行する。 macOS/Linuxではシェルスクリプト、WindowsのGit Bash/MSYS/Cygwinではcmd.exe対応ペイロードが配信される。 最終的にInvisibleFerretやBeaverTail系のインプラントで暗号資産ウォレットや認証情報を窃取する。 | 中 | `source--daily-e91cff6491073bc4c828` |
+| Lazarus GroupがGit Hooksを使ってマルウェアを隠蔽 | reported-activity | 2026-05-06 | 不明 | OpenSourceMalwareは、DPRKのContagious Interview / TaskJackerキャンペーンの新手口を報告した。 攻撃者は従来の.vscode/tasks.jsonやpackage.json postinstallではなく、Git hooks内にStage-2ローダーを隠している。 悪性の.githooks/pre-commitはOSを判定し、precommit.vercel.appから環境別ペイロードを取得して実行する。 macOS/Linuxではシェルスクリプト、WindowsのGit Bash/MSYS/Cygwinではcmd.exe対応ペイロードが配信される。 最終的にInvisibleFerretやBeaverTail系のインプラントで暗号資産ウォレットや認証情報を窃取する。 | 中 | `source--daily-e91cff6491073bc4c828` |
 
 Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack; ThreatNeedle
 

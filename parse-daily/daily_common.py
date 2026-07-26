@@ -20,6 +20,11 @@ IOC_COLUMNS = [
     "malware", "malware_type", "reference", "description", "author", "confidence",
 ]
 VALID_CONFIDENCE = {"high", "medium", "low", "unknown"}
+FILE_LIKE_RE = re.compile(
+    r"^[^/\\\s]+\.(?:exe|dll|sys|ps1|bat|cmd|js|jse|vbs|hta|lnk|"
+    r"docm?|xlsm?|pptm?|pdf|zip|rar|7z|apk|dmg|pkg|sh|py)$",
+    re.IGNORECASE,
+)
 LOW_QUALIFIERS = ("low confidence", "suspected", "possible", "疑い", "低信頼")
 HIGH_QUALIFIERS = ("high confidence", "高信頼")
 UNKNOWN_TIME = {
@@ -39,8 +44,12 @@ def stable_digest(*parts: str) -> str:
 
 
 def write_json_atomic(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
     content = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+    write_text_atomic(path, content)
+
+
+def write_text_atomic(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(
         "w", encoding="utf-8", dir=path.parent, delete=False
     ) as stream:
@@ -48,6 +57,15 @@ def write_json_atomic(path: Path, value: Any) -> None:
         temporary = Path(stream.name)
     temporary.chmod(0o644)
     temporary.replace(path)
+
+
+def write_json_if_changed(path: Path, value: Any) -> bool:
+    """Write JSON only when its canonical serialized form changed."""
+    content = json.dumps(value, ensure_ascii=False, indent=2) + "\n"
+    if path.exists() and path.read_text(encoding="utf-8") == content:
+        return False
+    write_json_atomic(path, value)
+    return True
 
 
 def load_json(path: Path) -> Any:
@@ -105,6 +123,17 @@ def source_publisher(url: str) -> str:
     return (urlparse(url).hostname or "proshiba/tech-memo").removeprefix("www.")
 
 
+def source_reliability(url: str) -> str:
+    """Assess source quality independently from actor-attribution confidence."""
+    if not url.startswith(("http://", "https://")):
+        return "low"
+    return "medium"
+
+
+def is_file_like(value: str) -> bool:
+    return bool(FILE_LIKE_RE.fullmatch(value.strip()))
+
+
 @dataclass(frozen=True)
 class ActorMatch:
     slug: str
@@ -144,10 +173,9 @@ class ActorRegistry:
                 )
         self.terms = candidates
         safe_terms = {
-            values[0].term.casefold().strip()
+            resolved.term.casefold().strip()
             for values in candidates.values()
-            if self._resolve(values)
-            and values[0].term.strip()
+            if (resolved := self._resolve(values)) and resolved.term.strip()
         }
         alternatives = "|".join(
             re.escape(term) for term in sorted(safe_terms, key=len, reverse=True)
@@ -190,17 +218,29 @@ class ActorRegistry:
 
     def mentions(self, title: str, body: str) -> list[ActorMatch]:
         found: dict[str, ActorMatch] = {}
+        def match_rank(value: ActorMatch) -> tuple[Any, ...]:
+            return (
+                value.reason != "news-title",
+                value.scope != "exact",
+                value.confidence not in {"high", "medium"},
+                -len(value.term),
+                value.term.casefold(),
+            )
+
         title_terms = {normalized_name(match.group()) for match in self.mention_pattern.finditer(title)}
         body_terms = {normalized_name(match.group()) for match in self.mention_pattern.finditer(body)}
-        for key in title_terms | body_terms:
+        for key in sorted(title_terms | body_terms):
             values = self.terms.get(key, [])
             item = self._resolve(values)
             if not item:
                 continue
             reason = "news-title" if key in title_terms else "news-body"
-            found[item.slug] = ActorMatch(
+            candidate = ActorMatch(
                 item.slug, item.name, item.term, item.scope, item.confidence, reason
             )
+            current = found.get(item.slug)
+            if current is None or match_rank(candidate) < match_rank(current):
+                found[item.slug] = candidate
         return sorted(found.values(), key=lambda item: item.slug)
 
     def malware_refs(self, slug: str, values: Iterable[str]) -> list[str]:

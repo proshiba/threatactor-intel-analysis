@@ -21,14 +21,17 @@
    初回の履歴走査だけは`--since`を省略できる。
 4. `parse-daily/output/review-queue.json`の`pending`を主張単位で確認する。
 5. 採用するレコードだけ`review_status: approved`へ変更し、判断理由を
-   `review_notes`へ日本語で記載する。不採用は`rejected`と理由を残す。
-6. artifact候補はレコード承認と別に確認し、値そのものが原文で確認できた項目だけ
+   `review_notes`へ日本語で記載する。不採用は`rejected`と理由を残す。継続利用する
+   判断は`review-decisions.json`にも保存し、再生成可能にする。
+6. `capability_decisions`は候補ごとに`approved`、`rejected`、
+   `related-only`を判断する。`pending`を残したレコードは承認済みにできない。
+7. artifact候補はレコード承認と別に確認し、値そのものが原文で確認できた項目だけ
    artifact側へ`review_status: approved`を付ける。
-7. `validate_daily.py`、`apply_review_queue.py`のdry-run、`--apply`の順に実行する。
-8. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
-9. UIへ公開する場合は`python3 ui/build_data.py`を実行し、画面を確認する。
-10. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
-11. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
+8. `validate_daily.py`、`apply_review_queue.py`のdry-run、`--apply`の順に実行する。
+9. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
+10. UIへ公開する場合は`python3 ui/build_data.py`を実行し、画面を確認する。
+11. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
+12. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
     `last_scanned_date`より先へ進めない。
 
 ## アクター照合
@@ -44,6 +47,8 @@
 - アクター間関係は、同じ記事への登場やIOC共有だけで追加しない。一次資料が
   組織関係・協力・部分重複・ツール共有を明示した場合に、関係種別とスコープを
   分離して追加する。
+- Sourceの`reliability`は資料そのものの信頼性、レコードの`confidence`は活動と
+  アクターの関連確度として分離する。一方の値をもう一方へコピーしない。
 
 ## OSINTと反証確認
 
@@ -65,6 +70,8 @@
 - IOC観測には、観測日、source commit、元ファイルと行番号、一次ソースURL、
   activity、malware、role、confidence、説明を保存する。
 - 同じIOCを値だけで捨てず、資料・行・日付が異なる観測は別Observationとして残す。
+- 同一活動の記事、IOC一覧、hash一覧は1活動へまとめるが、各Observationの
+  `source_id`は実際にそのIOCを掲載したURLごとに保持する。
 - 一般サービス、被害組織の正規URL、PoC内のprivate IP、サンプル値は攻撃者IOCとして
   採用しない。判断がつかない値はcandidateとして保留する。
 - レコードの承認はartifactの自動承認を意味しない。artifactは値と文脈を個別確認する。
@@ -79,6 +86,12 @@
   既存IOCを上書きしてはならない。
 - 再実行は同一IDを重複追加しない。過去レコードの修正・撤回は台帳から黙って削除せず、
   変更理由を残してから対象データを更新する。
+- 公開日やIOC CSVの収集日を活動期間へ自動転用しない。活動期間は
+  `activity_period`として一次資料確認後に保存する。
+- `--rebuild-daily`は日次生成部分だけをレビュー判断から再構築する保守操作である。
+  `--since`/`--until`なしの全履歴queueでのみ実行し、通常取込には使わない。
+  `--no-render`使用時は派生Markdown/STIXが古くなるため、
+  同一作業内で必ず再生成する。
 
 ## レビュー完了条件
 

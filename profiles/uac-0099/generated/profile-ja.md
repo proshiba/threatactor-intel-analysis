@@ -1,9 +1,9 @@
 # UAC-0099 脅威アクタープロファイル
 
-プロファイルID: `actor--uac-0099`  
-状態: draft  
-更新日時: 2026-07-26T05:28:45Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--uac-0099`
+- 状態: draft
+- 更新日時: 2026-07-26T06:13:31Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -80,9 +80,9 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--daily-0067ca7bc8c9a3dd3e9d | BURNYBEAR | tech-memo日次IOCでUAC-0099による使用が報告されたマルウェア。 | 2026-07-21 | 2026-07-21 | 中 | `source--daily-b6ba84745cdc81a329c5` |
-| malware--daily-75ab18d562d78bfce191 | LUNCHPOKE | tech-memo日次IOCでUAC-0099による使用が報告されたマルウェア。 | 2026-07-21 | 2026-07-21 | 中 | `source--daily-b6ba84745cdc81a329c5` |
-| malware--daily-8759c33e657f191deae0 | MATCHBOIL.V2 | tech-memo日次IOCでUAC-0099による使用が報告されたマルウェア。 | 2026-07-21 | 2026-07-21 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| malware--daily-0067ca7bc8c9a3dd3e9d | BURNYBEAR | UAC-0099との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| malware--daily-75ab18d562d78bfce191 | LUNCHPOKE | UAC-0099との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| malware--daily-8759c33e657f191deae0 | MATCHBOIL.V2 | UAC-0099との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-b6ba84745cdc81a329c5` |
 
 ### ツール
 
@@ -108,7 +108,7 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | reported-activity | 2026-07-21 | 2026-07-21 | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | reported-activity | 不明 | 不明 | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
 
 
 
