@@ -1,9 +1,9 @@
 # Andariel 脅威アクタープロファイル
 
-プロファイルID: `actor--andariel`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--andariel`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:21Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -94,9 +94,9 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--rifdoor | Rifdoor | [Rifdoor](https://attack.mitre.org/software/S0433) is a remote access trojan (RAT) that shares numerous code similarities with [HotCroissant](https://attack.mitre.org/software/S0431).(Citation: Carbon Black HotCroissant April 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--phandoor | Phandoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--rifdoor | Rifdoor | [Rifdoor](https://attack.mitre.org/software/S0433) is a remote access trojan (RAT) that shares numerous code similarities with [HotCroissant](https://attack.mitre.org/software/S0431).(Citation: Carbon Black HotCroissant April 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -120,14 +120,20 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| DesertWolf | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Vanxatm | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Mayday | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| INITROY | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| XEDA | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Sony | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | malware-campaign | 不明 | 不明 | 2024-06-04 | 北朝鮮関連のアクターAndarielが新しいGo言語ベースのDora RATマルウェアを使用。 韓国の教育機関、製造業、建設業をターゲットにした攻撃で利用された。 この攻撃は、脆弱なApache Tomcatサーバーを攻撃してマルウェアを配布。 Dora RATはリバースシェルやファイルダウンロード/アップロードが可能な単純なマルウェアの一種。 有効な証明書で署名されたDora RATが確認された。英国のソフトウェア開発者からの有効な証明書で署名されていた。 | 高 | `source--daily-cecaacd0e1f99bf64539` |
+| Andarielハッカーグループ、米国組織への金融攻撃に注力 | ransomware-extortion | 不明 | 不明 | 2024-10-03 | 北朝鮮のAndarielグループが米国の組織に対して金融目的の攻撃を開始。 DtrackやNukebotなどのバックドアツールを使用し、攻撃を試みたが、ランサムウェアの展開は失敗。 攻撃は金銭的な目的である可能性が高い。 Symantecによると、このグループは米国で組織に対する恐喝攻撃を仕掛けることを続けている可能性が高い。 AndarielはLazarusグループの一部とされ、2019年以降、主にスパイ活動を行っていた。比較的最近の動向として金銭目的の攻撃も行っている。 | 高 | `source--daily-d2af83b6cab76368c85d` |
+| 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連 | ransomware-extortion | 不明 | 不明 | 2024-10-31 | 北朝鮮のハッカーグループAndarielがPlayランサムウェア攻撃に関与 複数のネットワークを侵害し、MimikatzやSliverなどのツールや、Andariel独自の情報窃取マルウェアであるDTrackを利用 2024年9月のインシデントで証拠が発見され、アフィリエイトかIABとしての関係が疑われる 侵入後、Playランサムウェアの展開が3ヶ月だった。 攻撃目的はサイバースパイ活動および資金調達などの可能性がある。 RaaSを利用し、制裁逃れを図っている可能性が示唆される | 中 | `source--daily-1147479b46313418b844` |
+| 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | malware-campaign | 不明 | 不明 | 2024-04-24 | 北朝鮮のハッキンググループが韓国の防衛産業を標的に 韓国警察の報告書では、Lazarus, Andariel, Kimsukyが関与している3つのインシデントを記載 ターゲットまたはその下請け組織のネットワークの脆弱性を利用しマルウェアを植え付ける インシデントの1つでは、データの抜き取りとクラウドサーバへの転送が行われた 韓国警察は、多要素認証の導入・外国からのIPアクセスのブロックなどのセキュリティ強化を勧めている | 中 | `source--daily-b9be11e58ab6c82617ab` |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
+| ハッカー、WindowsのRIDハイジャックを利用して隠れた管理者アカウントを作成 | malware-campaign | 不明 | 不明 | 2025-01-26 | 北朝鮮のハッカーグループAndarielが、WindowsのRIDハイジャック技術を使用し、低権限のアカウントを管理者権限に昇格させる攻撃を実施。 RIDハイジャックでは、低権限アカウントのRIDを管理者アカウントのRID（通常は500）に変更し、Windowsに管理者として認識させる。 この攻撃を行うには、最初にシステムへの侵入とSYSTEM権限の取得が必要。 攻撃者は、カスタムマルウェアやオープンソースツールを使用して、この攻撃を実行。 AhnLabの研究者は、この攻撃を北朝鮮のLazarusグループに関連するAndarielグループによるものと特定。 RIDハイジャッキングは、少なくとも2018年から知られており、以前から持続的な攻撃手法として認識されている。 | 中 | `source--daily-a36638e8716771007cc7` |
+| DesertWolf | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| INITROY | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Mayday | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Sony | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Vanxatm | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| XEDA | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 
@@ -183,68 +189,74 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--andariel--d8b5468150bbcc71 | andariel |  | 不明 | actor_profile/evidence/andariel.csv | structured-data | TLP:CLEAR | 中 |
-| source--andariel--25068ad538a6f882 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--613d127a6cc5ed3e | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--cb1568c0bd15be5c | DeceptiveDevelopment and North Korean IT workers from primitive crypto theft to sophisticated AI based deception |  | 不明 | CyberMerceNary/ITWorker/DeceptiveDevelopment-and-North-Korean-IT-workers-from-primitive-crypto-theft-to-sophisticated-AI-based-deception.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--ca8fb65c8226c803 | Blurred Lines of Cyber Threat Attribution |  | 不明 | International Strategic/Korea/ Blurred-Lines-of-Cyber-Threat-Attribution.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--5005c5040b8c0231 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--5dd536201314dc3a | North Korea’s Cyber Strategy |  | 不明 | International Strategic/Korea/North Korea’s Cyber Strategy.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--a5ac56ffc0cff043 | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--84506015726833ce | 2025 dia statement for the record |  | 2025 | International Strategic/USA/2025/2025_dia_statement_for_the_record.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--2e330fbe37e80bdf | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--554a96ad68fe3664 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--c3bebd29c1e66aa8 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--c8e97d02b2bb5252 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--5f7cd2fb92322a87 | 20231013 Lazarus OP.Dream Magic |  | 2023-10-13 | lazarus/20231013_Lazarus_OP.Dream_Magic.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--f5a88429d0aa6ff9 | WithSecure Andariel 2025 |  | 2025 | lazarus/Andariel/WithSecure_Andariel_2025.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--003e6e7235dd0b18 | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--andariel--01baffee65b61160 | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--06befef99b97990e | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--0ab64c32fed0c1e2 | The Lazarus Constellation |  | 不明 | lazarus/The_Lazarus_Constellation.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--ae884a91170d58f1 | WithSecure Lazarus No Pineapple Threat Intelligence Report 2023 |  | 2023 | lazarus/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--80cb29d55d4e4f50 | PWC cyber threats 2019 retrospect |  | 2019 | summary/2020/PWC-cyber-threats-2019-retrospect.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--7aa0c7490c79b91a | Global APT Research Report for the first half of 2021 360 |  | 2021 | summary/2021/Global APT Research Report for the first half of 2021-360.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--64dd6ad3eaeb24bc | The CrowdStrike 2021 Global Threat Report |  | 2021 | summary/2021/The CrowdStrike 2021 Global Threat Report.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--43edff068441d484 | Global APT Mid 2022 Report qianxin |  | 2022 | summary/2022/Global APT Mid-2022 Report-qianxin.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--f267789fed1a6863 | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--6297cb4399689e5a | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--17c66e445bbff587 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--25068ad538a6f882 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--2898f01b59b0d0f9 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--58def7c5728472a3 | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--29f1ac892500da4d | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--8a762d3c860f5b06 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--59cd94daefd3a78a | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--d8080195ad4d0b47 | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--andariel--a4be2e796f8b317c | eset apt activity report q42022 q12023 |  | 不明 | summary/2023/eset_apt_activity_report_q42022_q12023.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--28bf9e8edbad5ea2 | eset apt activity report t32022 |  | 不明 | summary/2023/eset_apt_activity_report_t32022.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--5751a4b2400edf27 | kaspersky ics cert apt attacks on industrial organizations in h2 2022 en |  | 2022 | summary/2023/kaspersky-ics-cert-apt-attacks-on-industrial-organizations-in-h2-2022-en.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--a46a50622040e7c1 | 2023 Network Vulnerability Situation Research Report |  | 2023 | summary/2024/2023 Network Vulnerability Situation Research Report.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--29893e0bc8aee5ff | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--29f1ac892500da4d | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--2e330fbe37e80bdf | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--308c1cede67db8ba | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--43edff068441d484 | Global APT Mid 2022 Report qianxin |  | 2022 | summary/2022/Global APT Mid-2022 Report-qianxin.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--5005c5040b8c0231 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--554a96ad68fe3664 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--5722978c97c5b2c3 | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--780281b12cecb8f4 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--5751a4b2400edf27 | kaspersky ics cert apt attacks on industrial organizations in h2 2022 en |  | 2022 | summary/2023/kaspersky-ics-cert-apt-attacks-on-industrial-organizations-in-h2-2022-en.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--58def7c5728472a3 | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--59cd94daefd3a78a | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--59fa299f5c811fbf | eset apt activity report q4 2024 q1 2025 |  | 2024 | summary/2025/eset-apt-activity-report-q4-2024-q1-2025.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--5dd536201314dc3a | North Korea’s Cyber Strategy |  | 不明 | International Strategic/Korea/North Korea’s Cyber Strategy.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--5f7cd2fb92322a87 | 20231013 Lazarus OP.Dream Magic |  | 2023-10-13 | lazarus/20231013_Lazarus_OP.Dream_Magic.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--613d127a6cc5ed3e | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--6297cb4399689e5a | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--64dd6ad3eaeb24bc | The CrowdStrike 2021 Global Threat Report |  | 2021 | summary/2021/The CrowdStrike 2021 Global Threat Report.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--6914f46b1320f4d5 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--6cd27f0ea4c9c4bb | eset apt activity report q4 2023 q1 2024 |  | 2023 | summary/2024/eset-apt-activity-report-q4-2023-q1-2024.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--17c66e445bbff587 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--003e6e7235dd0b18 | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--andariel--d2aa525a6225f1b3 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--andariel--01baffee65b61160 | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--29893e0bc8aee5ff | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--ed26b01dcad72357 | CrowdStrikeGlobalThreatReport2025 |  | 2025 | summary/2025/CrowdStrikeGlobalThreatReport2025.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--780281b12cecb8f4 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--7aa0c7490c79b91a | Global APT Research Report for the first half of 2021 360 |  | 2021 | summary/2021/Global APT Research Report for the first half of 2021-360.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--80cb29d55d4e4f50 | PWC cyber threats 2019 retrospect |  | 2019 | summary/2020/PWC-cyber-threats-2019-retrospect.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--84506015726833ce | 2025 dia statement for the record |  | 2025 | International Strategic/USA/2025/2025_dia_statement_for_the_record.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--8a762d3c860f5b06 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--8a939799db78807f | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--d0c01d59e1e94686 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--9ec7ebfb86c2b419 | SixMap Research Energy Sector Exposure Assessment |  | 不明 | summary/2025/SixMap-Research_Energy-Sector-Exposure-Assessment.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--d49bc49296900911 | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--a11a2cf94b820fe2 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--59fa299f5c811fbf | eset apt activity report q4 2024 q1 2025 |  | 2024 | summary/2025/eset-apt-activity-report-q4-2024-q1-2025.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--06befef99b97990e | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--9a562d1daa757028 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
 | source--andariel--931b4a8425a5c143 | HJS Crypto Currency Report web final |  | 不明 | summary/2026/HJS-Crypto-Currency-Report-web-final.pdf | report | TLP:CLEAR | 中 |
-| source--andariel--308c1cede67db8ba | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--9a562d1daa757028 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--9ec7ebfb86c2b419 | SixMap Research Energy Sector Exposure Assessment |  | 不明 | summary/2025/SixMap-Research_Energy-Sector-Exposure-Assessment.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--a11a2cf94b820fe2 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--a46a50622040e7c1 | 2023 Network Vulnerability Situation Research Report |  | 2023 | summary/2024/2023 Network Vulnerability Situation Research Report.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--a4be2e796f8b317c | eset apt activity report q42022 q12023 |  | 不明 | summary/2023/eset_apt_activity_report_q42022_q12023.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--a5ac56ffc0cff043 | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--ae884a91170d58f1 | WithSecure Lazarus No Pineapple Threat Intelligence Report 2023 |  | 2023 | lazarus/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--c3bebd29c1e66aa8 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--c8e97d02b2bb5252 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--ca8fb65c8226c803 | Blurred Lines of Cyber Threat Attribution |  | 不明 | International Strategic/Korea/ Blurred-Lines-of-Cyber-Threat-Attribution.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--cb1568c0bd15be5c | DeceptiveDevelopment and North Korean IT workers from primitive crypto theft to sophisticated AI based deception |  | 不明 | CyberMerceNary/ITWorker/DeceptiveDevelopment-and-North-Korean-IT-workers-from-primitive-crypto-theft-to-sophisticated-AI-based-deception.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--d0c01d59e1e94686 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--d2aa525a6225f1b3 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--andariel--d49bc49296900911 | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--d8080195ad4d0b47 | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--andariel--d8b5468150bbcc71 | andariel |  | 不明 | actor_profile/evidence/andariel.csv | structured-data | TLP:CLEAR | 中 |
+| source--andariel--ed26b01dcad72357 | CrowdStrikeGlobalThreatReport2025 |  | 2025 | summary/2025/CrowdStrikeGlobalThreatReport2025.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--f267789fed1a6863 | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
+| source--andariel--f5a88429d0aa6ff9 | WithSecure Andariel 2025 |  | 2025 | lazarus/Andariel/WithSecure_Andariel_2025.pdf | report | TLP:CLEAR | 中 |
+| source--daily-1147479b46313418b844 | 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連 | bleepingcomputer.com | 2024-10-31 | https://www.bleepingcomputer.com/news/security/north-korean-govt-hackers-linked-to-play-ransomware-attack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-444c87a0051642065f55 | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | bleepingcomputer.com | 2024-08-06 | https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-a36638e8716771007cc7 | ハッカー、WindowsのRIDハイジャックを利用して隠れた管理者アカウントを作成 | bleepingcomputer.com | 2025-01-26 | https://www.bleepingcomputer.com/news/security/hackers-use-windows-rid-hijacking-to-create-hidden-admin-account/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-b9be11e58ab6c82617ab | 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | bleepingcomputer.com | 2024-04-24 | https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-cecaacd0e1f99bf64539 | Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | thehackernews.com | 2024-06-04 | https://thehackernews.com/2024/06/andariel-hackers-target-south-korean.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-d2af83b6cab76368c85d | Andarielハッカーグループ、米国組織への金融攻撃に注力 | thehackernews.com | 2024-10-03 | https://thehackernews.com/2024/10/andariel-hacker-group-shifts-focus-to.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-live-andariel-2024 | Andariel, Group G0138 | MITRE ATT&CK | 2024-09-12 | https://attack.mitre.org/groups/G0138/ | structured-knowledge-base | TLP:CLEAR | 高 |
-| source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

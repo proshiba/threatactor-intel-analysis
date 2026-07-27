@@ -4,7 +4,7 @@
   "name": "UAC-0010",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-61488be870c7cc7ffab6",
+      "name": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f9666a37c61d10f83b24"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--61488be870c7cc7ffab6691f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はGamaredon（ACTINUM、Armageddon、UAC-0010、BlueAlpha）で、ロシアFSBに関連し、目的はウクライナ標的のサイバースパイ活動。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +102,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,174 +121,40 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--uac-0010--b45fb340c5aab58c",
-      "path": "actor_profile/evidence/uac-0010.csv",
-      "title": "uac 0010",
-      "publisher": "",
+      "source_id": "source--daily-f9666a37c61d10f83b24",
+      "path": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
+      "title": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
+      "publisher": "blog.sekoia.io",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--uac-0010--2ffd50a1c7118090",
-      "path": "International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf",
-      "title": "Cyber operations by russia new goals, tools and groups",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--uac-0010--a76dad0c653387b5",
-      "path": "International Strategic/Russia/Russia’s Cyber Tactics Lessons Learned 2022.pdf",
-      "title": "Russia’s Cyber Tactics Lessons Learned 2022",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260603.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
-      "source_id": "source--uac-0010--7796988d52bfe416",
-      "path": "summary/2023/2022cyberComprehensiveSituationObservationManual.pdf",
-      "title": "2022cyberComprehensiveSituationObservationManual",
-      "publisher": "",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
       "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "upstream-release"
       },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--uac-0010--468ae9d2482ad88e",
-      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
-      "title": "Secureworks NC3 2022StateoftheThreat",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--uac-0010--fe514e7b8f9ef46b",
-      "path": "summary/2024/RussianCyber.pdf",
-      "title": "RussianCyber",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--uac-0010--0ba16103b9604a22",
-      "path": "summary/2024/threat actor list from cs.csv",
-      "title": "threat actor list from cs",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--uac-0010--d67ea89733ee989d",
-      "path": "summary/2026/Cloudflare-2026-threat-report.pdf",
-      "title": "Cloudflare 2026 threat report",
-      "publisher": "",
-      "published_at": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
       "language": "en",
-      "source_type": "structured-osint-aggregation",
+      "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-cert-ua-uac-index",
@@ -326,6 +207,176 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--uac-0010--0ba16103b9604a22",
+      "path": "summary/2024/threat actor list from cs.csv",
+      "title": "threat actor list from cs",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0010--2ffd50a1c7118090",
+      "path": "International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf",
+      "title": "Cyber operations by russia new goals, tools and groups",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0010--468ae9d2482ad88e",
+      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
+      "title": "Secureworks NC3 2022StateoftheThreat",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0010--7796988d52bfe416",
+      "path": "summary/2023/2022cyberComprehensiveSituationObservationManual.pdf",
+      "title": "2022cyberComprehensiveSituationObservationManual",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0010--a76dad0c653387b5",
+      "path": "International Strategic/Russia/Russia’s Cyber Tactics Lessons Learned 2022.pdf",
+      "title": "Russia’s Cyber Tactics Lessons Learned 2022",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0010--b45fb340c5aab58c",
+      "path": "actor_profile/evidence/uac-0010.csv",
+      "title": "uac 0010",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--uac-0010--d67ea89733ee989d",
+      "path": "summary/2026/Cloudflare-2026-threat-report.pdf",
+      "title": "Cloudflare 2026 threat report",
+      "publisher": "",
+      "published_at": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0010--fe514e7b8f9ef46b",
+      "path": "summary/2024/RussianCyber.pdf",
+      "title": "RussianCyber",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     }
   ],
   "assessment": {

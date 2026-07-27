@@ -1,9 +1,9 @@
 # UNC6040 脅威アクタープロファイル
 
-プロファイルID: `actor--unc6040`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc6040`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:27Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,12 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | ransomware-extortion | 不明 | 不明 | 2025-08-26 | サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 侵害は2025年5月29日発生、翌30日に検知・封じ込めを実施と説明。 氏名・住所・生年月日・運転免許番号・SSN下4桁などが流出。 8月22日から影響者へ通知、メイン州AGに通知サンプル提出。 攻撃はSalesforce悪用で、vishingと悪性OAuth連携→データ窃取・恐喝。 | 中 | `source--daily-8012423fa9a259605e9c` |
+| Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | ransomware-extortion | 不明 | 不明 | 2025-06-05 | GoogleのThreat Intelligence Group（GTIG）は、UNC6040と追跡される脅威グループが、SalesforceのData Loaderアプリケーションを悪用したソーシャルエンジニアリング攻撃を展開していると報告。 攻撃者は、ITサポートを装って従業員に電話をかけ、改ざんされたData LoaderアプリケーションをSalesforce環境に接続させるよう誘導。 この手法により、攻撃者は機密情報へのアクセスを獲得し、他のクラウドサービスや内部ネットワークへの侵入も可能となる。 約20の組織が影響を受け、一部ではデータの窃取が成功している。 攻撃者は、被害者に恐喝を行うが、ShinyHuntersとの連携を主張し圧力を高める事例も観測されている。 | 中 | `source--daily-80e44f9cbc707f36952a` |
+| FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | ransomware-extortion | 不明 | 不明 | 2025-09-15 | FBIはUNC6040/UNC6395がSalesforce環境を侵害しデータ窃取・恐喝を行うとしてFLASHを公開、IOCの提供で防御強化を促した。 UNC6040は2024年末以降、偽IT支援やvishingで従業員を欺き、悪性Salesforce Data Loader OAuthアプリ（My Ticket Portal等）を接続させた。 接続後にAccounts/Contactsなどを大量流出させ、ShinyHuntersが恐喝に悪用。GoogleやAdidasなどの大手にも影響が及んだとされる。 UNC6395はSalesloft DriftのOAuth/リフレッシュトークンを悪用（8/8〜18頃）し、Salesforceのサポートケース情報を狙って侵害した。 流出データからAWS鍵やパスワード、Snowflakeトークン等を抽出し横展開。Salesloftはトークン失効と再認証を実施、被害は多数に及んだ。 | 高 | `source--daily-d18643e84905959f1988` |
+| ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | phishing-campaign | 不明 | 不明 | 2025-07-31 | ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中 | 中 | `source--daily-636d2791761dd2b53914` |
 
 
 
@@ -141,12 +146,16 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-636d2791761dd2b53914 | ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | bleepingcomputer.com | 2025-07-31 | https://www.bleepingcomputer.com/news/security/shinyhunters-behind-salesforce-data-theft-attacks-at-qantas-allianz-life-and-lvmh/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-8012423fa9a259605e9c | Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | bleepingcomputer.com | 2025-08-26 | https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-80e44f9cbc707f36952a | Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | bleepingcomputer.com | 2025-06-05 | https://www.bleepingcomputer.com/news/security/google-hackers-target-salesforce-accounts-in-data-extortion-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-d18643e84905959f1988 | FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | bleepingcomputer.com | 2025-09-15 | https://www.bleepingcomputer.com/news/security/fbi-warns-of-unc6040-unc6395-hackers-stealing-salesforce-data/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unc6040--b0855250f118458d | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
 | source--unc6040--ba9208b874d30aa1 | unc6040 |  | 不明 | actor_profile/evidence/unc6040.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc6040--fa88612d0bc5ab99 | 2025 IC3Report |  | 2025 | cybercrime/2026/2025_IC3Report.pdf | report | TLP:CLEAR | 中 |
-| source--unc6040--b0855250f118458d | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

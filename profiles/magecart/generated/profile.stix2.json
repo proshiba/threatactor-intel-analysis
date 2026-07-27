@@ -119,6 +119,49 @@
       }
     },
     {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+      "created": "2026-07-27T11:04:33Z",
+      "modified": "2026-07-27T11:04:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "description": "新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。",
+      "external_references": [
+        {
+          "source_name": "sansec.io",
+          "description": "Local source: https://sansec.io/research/stripe-api-skimmer-infrastructure",
+          "external_id": "source--daily-5b3e49d018b8dff5644f"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-bcf2e1dd42b8e1d500d6",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--bcf2e1dd42b8e1d500d6f319 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。",
+      "x_reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--59027cef-4223-461c-a69c-e0e08c867b7f",
+      "created": "2026-07-27T11:04:33Z",
+      "modified": "2026-07-27T11:04:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
+      "target_ref": "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
+      "description": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 is attributed or linked to Magecart.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--8d13e9a8-67f7-431e-acab-c7e8c8a94d95",
@@ -1528,7 +1571,7 @@
       "spec_version": "2.1",
       "id": "report--a8f53712-9d8a-4d1d-80fd-650a7538de49",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-07-27T11:04:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1537,9 +1580,10 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T15:22:59Z",
+      "published": "2026-07-27T11:04:33Z",
       "object_refs": [
         "intrusion-set--646766e6-26eb-40f5-9969-8aa2fb53c958",
+        "campaign--13c2c1a5-574a-4b25-a388-ee5cedbcc941",
         "indicator--8d13e9a8-67f7-431e-acab-c7e8c8a94d95",
         "indicator--6542e86f-0046-407f-aa75-458e48366b4d",
         "indicator--80d852a0-7620-44f0-b626-d01c9d813e9f",

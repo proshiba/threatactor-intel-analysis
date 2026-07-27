@@ -1,9 +1,9 @@
 # LAPSUS$ 脅威アクタープロファイル
 
-プロファイルID: `actor--lapsus`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--lapsus`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:24Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -107,7 +107,16 @@ LAPSUS$の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | ransomware-extortion | 不明 | 不明 | 2025-05-06 | M&S、Co-op、Harrodsがサイバー攻撃を受け、NCSCが全企業に対策強化を呼びかけ。 攻撃者は従業員になりすまし、ITヘルプデスクを騙して認証情報を取得。 M&Sではランサムウェアが展開され、Co-opは暗号化前に攻撃を阻止。 Harrodsは侵入の試みを確認し、アクティブな対応としてインターネットアクセスを制限。結果、侵入は確認されず。 攻撃はDragonForce作戦により行われ、Scattered SpiderやLapsus$の戦術が使用された。 NCSCは、犠牲者や法執行機関と協力して犯人を特定しようとしており、現時点では攻撃が関連しているか、単一のアクターによる組織的なキャンペーンかについては推測を避けている。 | 中 | `source--daily-4cd1fe293925310c02b7` |
+| ハッカーがサポートチケットを盗み、Discordがデータ侵害を公表 | ransomware-extortion | 不明 | 不明 | 2025-10-06 | Discordはサードパーティのサポート業者が侵害され、サポート由来の利用者データ流出を10月4日に公表。 攻撃は9月20日に発生し、サポート/Trust & Safetyとやり取りした一部ユーザーが影響。 流出は氏名/ユーザー名/メール/連絡先、IP、サポート宛のメッセージ/添付、政府ID画像、支払いの一部情報等。 犯人は漏えいデータの公開と引き換えに身代金を要求し、金銭目的の恐喝とみられる。 Scattered Lapsus$ HuntersがZendesk侵害を主張、Discordはアクセス遮断・調査・法執行機関連携を実施。 | 中 | `source--daily-9af96d00623df591e4cf` |
+| ジャガー・ランドローバー、サイバー攻撃で操業停止をさらに1週間延長 | ransomware-extortion | 不明 | 不明 | 2025-09-17 | ジャガー・ランドローバーは8月末に発生したサイバー攻撃の影響で、操業停止をさらに1週間延長すると発表。 同社は9月2日に大規模障害を公表し、先週は「一部データの窃取」を認め、従業員へ出勤停止を指示。 9月16日の更新で、生産再開は少なくとも9月24日（水）まで延期し、段階的な安全再起動を進めると説明。 犯行声明はScattered Lapsus$ HuntersがTelegram上で行い、内部SAP画面やランサム展開の主張を掲示。 ただしJLRは攻撃者の特定やランサムグループの関与について声明を出していない。 | 中 | `source--daily-96306c5877ca4244921e` |
+| 英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施 | ransomware-extortion | 不明 | 不明 | 2025-09-30 | 大規模サイバー攻撃で生産停止に陥ったJLR支援のため、英国政府が15億ポンドのローン保証を決定。 保証はUK Export FinanceのEDG枠で実施、直接融資ではなく民間融資を政府が保証、返済期間は5年。 攻撃は今月公表され、ITと製造に深刻な障害を引き起こし、複数工場の停止とデータ窃取をJLRが確認。 「Scattered Lapsus$ Hunters」が犯行を主張し、SAPのHOSTSファイル画像を掲示、ランサム展開を示唆。 JLRは段階的再開を近日開始予定で、NCSCや法執行・専門家と連携。保険未締結の報道もあり。 | 中 | `source--daily-04302db7cea311067bd3` |
+| ジャガー・ランドローバー、最近のサイバー攻撃でデータ窃取を確認 | ransomware-extortion | 不明 | 不明 | 2025-09-11 | JLRは最近の攻撃で「一部のデータ」流出を確認し、規制当局へ通知。 9月2日に攻撃を公表、生産は深刻に混乱。NCSCと復旧・調査継続。 影響者には適宜連絡と説明。顧客影響など詳細は未回答。 犯行主体は未特定。既知ランサム勢力の犯行声明はなし。 Telegramの“Scattered Lapsus$ Hunters”が関与・ランサム展開を主張しSAP画面を提示。 | 中 | `source--daily-fb784abeaacd66b357b3` |
+| Salesforce、広範なデータ窃取攻撃に対する身代金支払いを拒否 | ransomware-extortion | 不明 | 不明 | 2025-10-09 | Salesforceは2025年の顧客向け大規模データ窃取に関し、脅威者への交渉・支払いを行わないと通知し、漏えい予告の脅威情報も共有。 「Scattered Lapsus$ Hunters」がbreachforums[.]hnで39社を恐喝、最大約10億件のデータ公開を示唆しSalesforceに一括支払いも要求。 攻撃は二段階で、①ITサポート偽装で悪性OAuthアプリ連携→DB窃取、②8月にSalesloft/DriftのOAuthトークン悪用→CRMから流出。 資格情報やAPIトークン等が狙われ、数百社が影響とされる一方、Salesforceは支払い拒否を明言し脅迫は継続中。 リークサイトは現在停止し押収の可能性が示唆、10月10日以降はSalesloft関連被害企業への公開恐喝開始を予告。 | 中 | `source--daily-5ba304eec88672244aca` |
+| ハッカーがResecurityの侵害を主張、同社は「ハニーポットだった」と反論 | intrusion | 不明 | 不明 | 2026-01-05 | SLH（Scattered Lapsus$ Hunters）を名乗る攻撃者が、Resecurity侵害と社内データ窃取をTelegramで主張した。 証拠として、Mattermost上の会話やPastebin担当者との連絡に見えるスクリーンショットを公開したとされる。 攻撃者は、Resecurityが流出DBと称した売買で買い手を装うソーシャルエンジニアリングを仕掛けたことへの「報復」だと説明している。 Resecurityは、本番ではなく監視用に用意した偽データ入り環境（ハニーポット）へ誘導して観測していたと反論した。 2025年11月21日に探索を検知し、12月12〜24日に18.8万回超のリクエストを観測、得た情報は法執行機関へ共有したという。 | 中 | `source--daily-b582c9da4145059382ff` |
+| Scattered Lapsus$ HuntersがZendeskユーザー標的化に関与か | phishing-campaign | 不明 | 不明 | 2025-12-02 | ReliaQuestは過去6か月で出現したZendesk偽装ドメイン40超を発見し、偽SSOで資格情報を窃取すると報告。 例としてznedesk[.]comやvpn-zendesk[.]comが挙げられ、正規に酷似のフィッシングページへ誘導する。 研究者は本件を西側の若年層中心集団SLSHに帰属し、ヘルプデスク偽装やMFA回避に長けると分析。 関連のSalesforce事案では盗難トークン悪用で760社＋約300社のデータ窃取が示され、手口の連続性が指摘。 近月もCRM/サポート系を狙う攻撃が継続すると警戒を促し、波及に注意が必要と結論。 | 高 | `source--daily-4f7f6beeec2ea0a99a71` |
 
 
 
@@ -190,38 +199,46 @@ LAPSUS$の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--lapsus--dfe27bb0366a43f9 | lapsus |  | 不明 | actor_profile/evidence/lapsus.csv | structured-data | TLP:CLEAR | 中 |
-| source--lapsus--81646e8a4d8e8205 | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--180da395433c5bf8 | KELA Telegram CEBIN |  | 不明 | cybercrime/KELA_Telegram_CEBIN.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--e0ea84159fad8d18 | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--595579969b605ff6 | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
-| source--lapsus--1a228d9b694b7069 | 2022 unit42 incident response report final |  | 2022 | summary/2022/2022-unit42-incident-response-report-final.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--bf186e1922acf805 | 2022 APT Activity Analysis Report threatbook |  | 2022 | summary/2023/2022 APT Activity Analysis Report threatbook.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--3ebf284d4a96dc59 | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--f27729bc4399695a | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--c072d7baf55688e2 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--807954360924339d | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--3f66ee42b1f41ff9 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
+| source--daily-04302db7cea311067bd3 | 英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施 | bleepingcomputer.com | 2025-09-30 | https://www.bleepingcomputer.com/news/security/uk-govt-backs-jlr-with-15-billion-loan-guarantee-after-cyberattack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-4cd1fe293925310c02b7 | 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | bleepingcomputer.com | 2025-05-06 | https://www.bleepingcomputer.com/news/security/uk-shares-security-tips-after-major-retail-cyberattacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-4f7f6beeec2ea0a99a71 | Scattered Lapsus$ HuntersがZendeskユーザー標的化に関与か | databreachtoday.com | 2025-12-02 | https://www.databreachtoday.com/scattered-lapsus-hunters-tied-to-targeting-zendesk-users-a-30166 | osint-report | TLP:CLEAR | 中 |
+| source--daily-5ba304eec88672244aca | Salesforce、広範なデータ窃取攻撃に対する身代金支払いを拒否 | bleepingcomputer.com | 2025-10-09 | https://www.bleepingcomputer.com/news/security/salesforce-refuses-to-pay-ransom-over-widespread-data-theft-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-96306c5877ca4244921e | ジャガー・ランドローバー、サイバー攻撃で操業停止をさらに1週間延長 | bleepingcomputer.com | 2025-09-17 | https://www.bleepingcomputer.com/news/security/jaguar-land-rover-extends-shutdown-after-cyberattack-by-another-week/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-9af96d00623df591e4cf | ハッカーがサポートチケットを盗み、Discordがデータ侵害を公表 | bleepingcomputer.com | 2025-10-06 | https://www.bleepingcomputer.com/news/security/discord-discloses-data-breach-after-hackers-steal-support-tickets/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-b582c9da4145059382ff | ハッカーがResecurityの侵害を主張、同社は「ハニーポットだった」と反論 | bleepingcomputer.com | 2026-01-05 | https://www.bleepingcomputer.com/news/security/hackers-claim-resecurity-hack-firm-says-it-was-a-honeypot/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-fb784abeaacd66b357b3 | ジャガー・ランドローバー、最近のサイバー攻撃でデータ窃取を確認 | bleepingcomputer.com | 2025-09-11 | https://www.bleepingcomputer.com/news/security/jaguar-land-rover-jlr-confirms-data-theft-after-recent-cyberattack/ | osint-report | TLP:CLEAR | 中 |
 | source--lapsus--068222d971e2c65e | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
 | source--lapsus--09ea6072528d92c1 | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
 | source--lapsus--0a2fa8bd4a966156 | GRIT Ransomware Annual Report 2023 |  | 2023 | summary/2024/GRIT_Ransomware_Annual_Report_2023.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--9fe3d99101c34c6b | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
 | source--lapsus--0d0994b317b0bea6 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--lapsus--1135814e8556f75d | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--54549f3625618ae2 | eset threat report h22025 |  | 不明 | summary/2025/eset-threat-report-h22025.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--d4c0fdb6d23a2bf1 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--d1e9ca670a380f3f | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--8ee834f5bdb362bb | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
-| source--lapsus--8c498f41357ca82b | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--180da395433c5bf8 | KELA Telegram CEBIN |  | 不明 | cybercrime/KELA_Telegram_CEBIN.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--1a228d9b694b7069 | 2022 unit42 incident response report final |  | 2022 | summary/2022/2022-unit42-incident-response-report-final.pdf | report | TLP:CLEAR | 中 |
 | source--lapsus--32b5950c30f1cf13 | Flashpoint 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/Flashpoint_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--3ebf284d4a96dc59 | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--3f66ee42b1f41ff9 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--54549f3625618ae2 | eset threat report h22025 |  | 不明 | summary/2025/eset-threat-report-h22025.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--595579969b605ff6 | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--lapsus--807954360924339d | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--81646e8a4d8e8205 | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--8c498f41357ca82b | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--8ee834f5bdb362bb | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--9fe3d99101c34c6b | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--bf186e1922acf805 | 2022 APT Activity Analysis Report threatbook |  | 2022 | summary/2023/2022 APT Activity Analysis Report threatbook.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--c072d7baf55688e2 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--d1e9ca670a380f3f | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--d4c0fdb6d23a2bf1 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--dfe27bb0366a43f9 | lapsus |  | 不明 | actor_profile/evidence/lapsus.csv | structured-data | TLP:CLEAR | 中 |
+| source--lapsus--e0ea84159fad8d18 | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
 | source--lapsus--e91204ee5feb4994 | 005 |  | 不明 | summary/UNREDACTEDMagazine/005.pdf | report | TLP:CLEAR | 中 |
+| source--lapsus--f27729bc4399695a | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,9 +1,9 @@
 # BlackTech 脅威アクタープロファイル
 
-プロファイルID: `actor--blacktech`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--blacktech`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:30Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -86,12 +86,12 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--bendybear | BendyBear | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--flagpro | Flagpro | [Flagpro](https://attack.mitre.org/software/S0696) is a Windows-based, first-stage downloader that has been used by [BlackTech](https://attack.mitre.org/groups/G0098) since at least October 2020. It has primarily been used against defense, media, and communications companies in Japan.(Citation: NTT Security Flagpro new December 2021)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--tscookie | TSCookie | [TSCookie](https://attack.mitre.org/software/S0436) is a remote access tool (RAT) that has been used by [BlackTech](https://attack.mitre.org/groups/G0098) in campaigns against Japanese targets.(Citation: JPCert TSCookie March 2018)(Citation: JPCert BlackTech Malware September 2019). [TSCookie](https://attack.mitre.org/software/S0436) has been referred to as [PLEAD](https://attack.mitre.org/software/S0435) though more recent reporting indicates a separation between the two.(Citation: JPCert PLEAD Downloader June 2018)(Citation: JPCert BlackTech Malware September 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--kivars | Kivars | [Kivars](https://attack.mitre.org/software/S0437) is a modular remote access tool (RAT), derived from the Bifrost RAT, that was used by [BlackTech](https://attack.mitre.org/groups/G0098) in a 2010 campaign.(Citation: TrendMicro BlackTech June 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--plead | PLEAD | [PLEAD](https://attack.mitre.org/software/S0435) is a remote access tool (RAT) and downloader used by [BlackTech](https://attack.mitre.org/groups/G0098) in targeted attacks in East Asia including Taiwan, Japan, and Hong Kong.(Citation: TrendMicro BlackTech June 2017)(Citation: JPCert PLEAD Downloader June 2018) [PLEAD](https://attack.mitre.org/software/S0435) has also been referred to as [TSCookie](https://attack.mitre.org/software/S0436), though more recent reporting indicates likely separation between the two. [PLEAD](https://attack.mitre.org/software/S0435) was observed in use as early as March 2017.(Citation: JPCert TSCookie March 2018)(Citation: JPCert PLEAD Downloader June 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--tscookie | TSCookie | [TSCookie](https://attack.mitre.org/software/S0436) is a remote access tool (RAT) that has been used by [BlackTech](https://attack.mitre.org/groups/G0098) in campaigns against Japanese targets.(Citation: JPCert TSCookie March 2018)(Citation: JPCert BlackTech Malware September 2019). [TSCookie](https://attack.mitre.org/software/S0436) has been referred to as [PLEAD](https://attack.mitre.org/software/S0435) though more recent reporting indicates a separation between the two.(Citation: JPCert PLEAD Downloader June 2018)(Citation: JPCert BlackTech Malware September 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--waterbear | Waterbear | [Waterbear](https://attack.mitre.org/software/S0579) is modular malware attributed to [BlackTech](https://attack.mitre.org/groups/G0098) that has been used primarily for lateral movement, decrypting, and triggering payloads and is capable of hiding network behaviors.(Citation: Trend Micro Waterbear December 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--bendybear | BendyBear | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -117,11 +117,13 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| PLEAD | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Shrouded Crossbow | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Waterbear | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
+| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
+| PLEAD | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Shrouded Crossbow | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Waterbear | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 PLEAD; Shrouded Crossbow; Waterbear
 
@@ -196,15 +198,17 @@ PLEAD; Shrouded Crossbow; Waterbear
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--blacktech--24eb19b60ca5a2a3 | CSA BLACKTECH HIDE IN ROUTERS TLP CLEAR |  | 不明 | Blacktech/CSA_BLACKTECH_HIDE_IN_ROUTERS_TLP-CLEAR.PDF | report | TLP:CLEAR | 中 |
 | source--blacktech--8f7bfc2a1d9c653a | README |  | 不明 | Blacktech/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--daily-1dfee7d2a70ba1432540 | BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | thehackernews.com | 2024-04-20 | https://thehackernews.com/2024/04/blacktech-targets-tech-research-and-gov.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-718b90e4e11c27f888d6 | 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | thehackernews.com | 2024-05-18 | https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

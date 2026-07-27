@@ -1,9 +1,9 @@
 # UAC-0001 脅威アクタープロファイル
 
-プロファイルID: `actor--uac-0001`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--uac-0001`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:36Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認 | cyber-espionage | 不明 | 不明 | 2026-04-22 | ロシア背景のPawn Stormは、PRISMEXと総称される連携型マルウェア群を用い、ウクライナやNATO加盟国の防衛サプライチェーンを標的にした。 攻撃ではステガノグラフィ、COMハイジャック、正規クラウドサービス悪用を組み合わせ、EDR回避とC&C通信を実現していた。 2026年1月下旬のキャンペーンではCVE-2026-21509が悪用され、関連検体ではCVE-2026-21513のゼロデイ悪用も確認された。 PRISMEXはPrismexSheet、PrismexDrop、PrismexLoader、PrismexStagerで構成され、Filen系サブドメインを使ってCovenant経由の通信を行う。 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。 | 中 | `source--daily-183d3d6935d0c269b0c9` |
 
 
 
@@ -141,16 +143,17 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--uac-0001--5e59f4c3e1675fd5 | uac 0001 |  | 不明 | actor_profile/evidence/uac-0001.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-183d3d6935d0c269b0c9 | APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認 | trendmicro.com | 2026-04-22 | https://www.trendmicro.com/ja_jp/research/26/d/pawn-storm-targets-govt-infra.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--uac-0001--26bdbcc83365e3fe | CERTFR 2025 CTI 007 |  | 2025 | APT28/CERTFR-2025-CTI-007.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0001--50f4adb1177b4d95 | Cyber operations by russia new goals, tools and groups |  | 不明 | International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf | report | TLP:CLEAR | 中 |
-| source--uac-0001--e9aee5c565abec18 | Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics |  | 不明 | International Strategic/Russia/Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics.pdf | report | TLP:CLEAR | 中 |
+| source--uac-0001--5e59f4c3e1675fd5 | uac 0001 |  | 不明 | actor_profile/evidence/uac-0001.csv | structured-data | TLP:CLEAR | 中 |
 | source--uac-0001--b6eaa0164d8e8fa5 | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0001--c7a54bcc2d7d227d | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
+| source--uac-0001--e9aee5c565abec18 | Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics |  | 不明 | International Strategic/Russia/Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

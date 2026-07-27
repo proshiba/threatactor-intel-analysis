@@ -295,6 +295,7 @@ def render_markdown(
             item["activity_type"],
             time_label(item["first_observed"]),
             time_label(item["last_observed"]),
+            time_label(item["reported_at"]),
             item["description"],
             confidence_label(item["confidence"]),
             refs_label(item["evidence_refs"], sources),
@@ -304,7 +305,7 @@ def render_markdown(
     lines.extend(
         [
             table(
-                ["活動", "種別", "初回", "最終", "説明", "確度", "証拠"],
+                ["活動", "種別", "初回", "最終", "報告日", "説明", "確度", "証拠"],
                 activity_rows,
             )
             if activity_rows
@@ -586,6 +587,7 @@ def render_stix(
                 "x_profile_object_id": activity["activity_id"],
                 "x_confidence": activity["confidence"],
                 "x_analyst_notes": activity.get("analyst_notes", ""),
+                "x_reported_at": activity["reported_at"],
             },
         )
         for key in ("first_seen", "last_seen"):

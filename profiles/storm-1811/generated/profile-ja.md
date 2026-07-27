@@ -1,9 +1,9 @@
 # Storm-1811 脅威アクタープロファイル
 
-プロファイルID: `actor--storm-1811`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--storm-1811`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:35Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -111,7 +111,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | ransomware-extortion | 不明 | 不明 | 2024-05-16 | Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ | 中 | `source--daily-1ba1d9f38d8366b3c0a3` |
 
 
 
@@ -182,16 +184,17 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--storm-1811--b047318da9540fcf | storm 1811 |  | 不明 | actor_profile/evidence/storm-1811.csv | structured-data | TLP:CLEAR | 中 |
-| source--storm-1811--f48ceffd73aa076f | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
-| source--storm-1811--6364d1bf145e58a6 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--storm-1811--7187587b3cf12824 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--daily-1ba1d9f38d8366b3c0a3 | Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | bleepingcomputer.com | 2024-05-16 | https://www.bleepingcomputer.com/news/security/windows-quick-assist-abused-in-black-basta-ransomware-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--storm-1811--6364d1bf145e58a6 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--storm-1811--7187587b3cf12824 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--storm-1811--b047318da9540fcf | storm 1811 |  | 不明 | actor_profile/evidence/storm-1811.csv | structured-data | TLP:CLEAR | 中 |
+| source--storm-1811--f48ceffd73aa076f | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

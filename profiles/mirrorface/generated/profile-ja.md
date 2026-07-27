@@ -1,9 +1,9 @@
 # MirrorFace 脅威アクタープロファイル
 
-プロファイルID: `actor--mirrorface`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--mirrorface`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:33Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -85,13 +85,13 @@ MirrorFaceの標準化プロファイル。リポジトリ内の専用資料1件
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--roaminghouse | ROAMINGHOUSE | [ROAMINGHOUSE](https://attack.mitre.org/software/S9026) is a dropper malware used by [MirrorFace](https://attack.mitre.org/groups/G1054) to extract and execute embedded payloads including [UPPERCUT](https://attack.mitre.org/software/S0275) components.(Citation: Trend Micro Earth Kasha Updates APR 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--mirrorstealer | MirrorStealer | [MirrorStealer](https://attack.mitre.org/software/S9022) is a credential stealer that has been used by [MirrorFace](https://attack.mitre.org/groups/G1054) since at least 2022 to steal credentials from various applications, including browsers and email clients. [MirrorStealer](https://attack.mitre.org/software/S9022) has been delivered directly into system memory via commands issued by [LODEINFO](https://attack.mitre.org/software/S9020).(Citation: ESET MirrorFace DEC 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--noopldr | NOOPLDR | [NOOPLDR](https://attack.mitre.org/software/S9025) is a shellcode loader with XML/C# and DLL versions that has been used by [MirrorFace](https://attack.mitre.org/groups/G1054) to load [HiddenFace](https://attack.mitre.org/software/S9023).(Citation: Trend Micro Earth Kasha NOV 2024)<br> | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--lodeinfo | LODEINFO | [LODEINFO](https://attack.mitre.org/software/S9020) is a fileless backdoor malware first identified in 2020 that has been used by actors including [MirrorFace](https://attack.mitre.org/groups/G1054), primarily against media, diplomatic, governmental, and public sector organizations in Japan.(Citation: Kaspersky LODEINFO OCT 2022)(Citation: ITOCHU LODEINFO JAN 2024)(Citation: ESET MirrorFace DEC 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--hiddenface | HiddenFace | [HiddenFace](https://attack.mitre.org/software/S9023) is a modular backdoor developed and used exclusively by [MirrorFace](https://attack.mitre.org/groups/G1054) since at least 2021. [HiddenFace](https://attack.mitre.org/software/S9023) can communicate both actively and passively and has been used against political and academic targets.(Citation: JPCERT MirrorFace JUL 2024)(Citation: Trend Micro Earth Kasha NOV 2024)(Citation: Trend Micro Earth Kasha Updates APR 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--downiissa | DOWNIISSA | [DOWNIISSA](https://attack.mitre.org/software/S9021) is a shellcode downloader that has been used by [MirrorFace](https://attack.mitre.org/groups/G1054) since at least 2022 to deploy payloads, including the [LODEINFO](https://attack.mitre.org/software/S9020) backdoor.(Citation: Kaspersky LODEINFO OCT 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--hiddenface | HiddenFace | [HiddenFace](https://attack.mitre.org/software/S9023) is a modular backdoor developed and used exclusively by [MirrorFace](https://attack.mitre.org/groups/G1054) since at least 2021. [HiddenFace](https://attack.mitre.org/software/S9023) can communicate both actively and passively and has been used against political and academic targets.(Citation: JPCERT MirrorFace JUL 2024)(Citation: Trend Micro Earth Kasha NOV 2024)(Citation: Trend Micro Earth Kasha Updates APR 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--lodeinfo | LODEINFO | [LODEINFO](https://attack.mitre.org/software/S9020) is a fileless backdoor malware first identified in 2020 that has been used by actors including [MirrorFace](https://attack.mitre.org/groups/G1054), primarily against media, diplomatic, governmental, and public sector organizations in Japan.(Citation: Kaspersky LODEINFO OCT 2022)(Citation: ITOCHU LODEINFO JAN 2024)(Citation: ESET MirrorFace DEC 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--mirrorstealer | MirrorStealer | [MirrorStealer](https://attack.mitre.org/software/S9022) is a credential stealer that has been used by [MirrorFace](https://attack.mitre.org/groups/G1054) since at least 2022 to steal credentials from various applications, including browsers and email clients. [MirrorStealer](https://attack.mitre.org/software/S9022) has been delivered directly into system memory via commands issued by [LODEINFO](https://attack.mitre.org/software/S9020).(Citation: ESET MirrorFace DEC 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--noopldr | NOOPLDR | [NOOPLDR](https://attack.mitre.org/software/S9025) is a shellcode loader with XML/C# and DLL versions that has been used by [MirrorFace](https://attack.mitre.org/groups/G1054) to load [HiddenFace](https://attack.mitre.org/software/S9023).(Citation: Trend Micro Earth Kasha NOV 2024)<br> | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--roaminghouse | ROAMINGHOUSE | [ROAMINGHOUSE](https://attack.mitre.org/software/S9026) is a dropper malware used by [MirrorFace](https://attack.mitre.org/groups/G1054) to extract and execute embedded payloads including [UPPERCUT](https://attack.mitre.org/software/S0275) components.(Citation: Trend Micro Earth Kasha Updates APR 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--uppercut | UPPERCUT | [UPPERCUT](https://attack.mitre.org/software/S0275) is a 32-bit HTTP-based backdoor that has been used by [menuPass](https://attack.mitre.org/groups/G0045) since at least 2017.(Citation: FireEye APT10 Sept 2018) Once thought to be exclusive to [menuPass](https://attack.mitre.org/groups/G0045), [UPPERCUT](https://attack.mitre.org/software/S0275) was also observed being used by [menuPass](https://attack.mitre.org/groups/G0045)-associated [MirrorFace](https://attack.mitre.org/groups/G1054) during [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060).(Citation: Trend Micro Earth Kasha Anel NOV 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
@@ -125,9 +125,11 @@ MirrorFaceの標準化プロファイル。リポジトリ内の専用資料1件
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Operation AkaiRyū | campaign | 2004-06-01T04:00:00.000Z | 2004-09-01T04:00:00.000Z | [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) (Japanese for RedDragon) was a cyberespionage spearphishing campaign conducted by [MirrorFace](https://attack.mitre.org/groups/G1054) between June and September 2024 against entities in Japan and Central Europe. [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) notably included the first reported targeting of a European entity by [MirrorFace](https://attack.mitre.org/groups/G1054), as well as their use of [UPPERCUT](https://attack.mitre.org/software/S0275), which was thought to be exclusive to [menuPass](https://attack.mitre.org/groups/G0045).(Citation: ESET MirrorFace 2025)(Citation: Trend Micro Earth Kasha Anel NOV 2024) | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| MirrorFaceハッカー、日本政府や政治家を2019年から標的に | phishing-campaign | 不明 | 不明 | 2025-01-10 | 日本の国家警察庁（NPA）と内閣サイバーセキュリティセンターは、中国政府支援のハッカー集団「MirrorFace」が2019年から日本の政府機関や政治家を標的にしていると発表。 MirrorFaceは、ネットワーク機器の脆弱性を悪用し、LODEINFOやANELなどのマルウェアを使用して情報を窃取。 攻撃の目的は、日本の先端技術や国家安全保障に関する情報の収集とされる。 同グループは、フィッシングメールを用いてマルウェアを配布し、選挙前には特に政治家を狙った攻撃を実施。 NPAは、MirrorFaceのハッカーによる3つの異なるキャンペーンを特定。 キャンペーンA（2019年～2023年）: シンクタンク、政府機関、政治家、メディアを標的に、マルウェアを含む電子メールを送信して情報を盗み出した。 | 高 | `source--daily-7947b8d03c9ba0e3f2c3` |
+| 中国関連のMirrorFace、ANELおよびAsyncRATを展開し新たなサイバースパイ活動を実施 | phishing-campaign | 不明 | 不明 | 2025-03-19 | 中国と関連するサイバー攻撃グループMirrorFaceが、中央ヨーロッパの外交組織を標的に、新たなサイバースパイ活動「Operation AkaiRyū」を展開。 この攻撃では、カスタマイズされたAsyncRATの亜種と、以前APT10が使用していたバックドア「ANEL」を使用。 ANELの使用は、MirrorFaceが以前使用していたLODEINFOから切り替えた可能性を示すだけでなく、2018年後半または2019年頃に一度使用が中止されたANELが再び使用されたという点で重要。 攻撃手法として、スピアフィッシングメールを用いて、悪意のあるドキュメントやリンクを開かせ、マルウェアを展開。 攻撃者は、Visual Studio Codeのリモートトンネル機能を利用し、侵入したシステムへのステルスなアクセスを確立。 MirrorFaceは、以前は日本の組織を主な標的としていたが、今回の攻撃はその活動範囲の拡大を示唆。 | 高 | `source--daily-5e94939f6aa20488691a` |
+| Operation AkaiRyū | campaign | 2004-06-01T04:00:00.000Z | 2004-09-01T04:00:00.000Z | 2026-05-12 | [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) (Japanese for RedDragon) was a cyberespionage spearphishing campaign conducted by [MirrorFace](https://attack.mitre.org/groups/G1054) between June and September 2024 against entities in Japan and Central Europe. [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) notably included the first reported targeting of a European entity by [MirrorFace](https://attack.mitre.org/groups/G1054), as well as their use of [UPPERCUT](https://attack.mitre.org/software/S0275), which was thought to be exclusive to [menuPass](https://attack.mitre.org/groups/G0045).(Citation: ESET MirrorFace 2025)(Citation: Trend Micro Earth Kasha Anel NOV 2024) | 高 | `source--mitre-attack-19-1` |
 
 
 
@@ -213,17 +215,19 @@ MirrorFaceの標準化プロファイル。リポジトリ内の専用資料1件
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--mirrorface--b9e4ffba14793168 | mirrorface |  | 不明 | actor_profile/evidence/mirrorface.csv | structured-data | TLP:CLEAR | 中 |
-| source--mirrorface--9e0b11aef7c89e7c | eset apt activity report q42022 q12023 |  | 不明 | summary/2023/eset_apt_activity_report_q42022_q12023.pdf | report | TLP:CLEAR | 中 |
-| source--mirrorface--cb1d03e29a3ab476 | eset apt activity report t32022 |  | 不明 | summary/2023/eset_apt_activity_report_t32022.pdf | report | TLP:CLEAR | 中 |
+| source--daily-5e94939f6aa20488691a | 中国関連のMirrorFace、ANELおよびAsyncRATを展開し新たなサイバースパイ活動を実施 | thehackernews.com | 2025-03-19 | https://thehackernews.com/2025/03/china-linked-mirrorface-deploys-anel.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-7947b8d03c9ba0e3f2c3 | MirrorFaceハッカー、日本政府や政治家を2019年から標的に | bleepingcomputer.com | 2025-01-10 | https://www.bleepingcomputer.com/news/security/mirrorface-hackers-targeting-japanese-govt-politicians-since-2019/ | osint-report | TLP:CLEAR | 中 |
+| source--mirrorface--53e785c48f775c1e | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
 | source--mirrorface--544767cd28a98390 | eset apt activity report q4 2023 q1 2024 |  | 2023 | summary/2024/eset-apt-activity-report-q4-2023-q1-2024.pdf | report | TLP:CLEAR | 中 |
 | source--mirrorface--5774303f03d7d653 | eset threat report h12025 |  | 不明 | summary/2025/eset-threat-report-h12025.pdf | report | TLP:CLEAR | 中 |
-| source--mirrorface--53e785c48f775c1e | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
+| source--mirrorface--9e0b11aef7c89e7c | eset apt activity report q42022 q12023 |  | 不明 | summary/2023/eset_apt_activity_report_q42022_q12023.pdf | report | TLP:CLEAR | 中 |
+| source--mirrorface--b9e4ffba14793168 | mirrorface |  | 不明 | actor_profile/evidence/mirrorface.csv | structured-data | TLP:CLEAR | 中 |
+| source--mirrorface--cb1d03e29a3ab476 | eset apt activity report t32022 |  | 不明 | summary/2023/eset_apt_activity_report_t32022.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

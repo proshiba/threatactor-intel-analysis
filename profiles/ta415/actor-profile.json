@@ -4,7 +4,7 @@
   "name": "TA415",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:04:35Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-1a4f1dee2ecbdaa47b9d",
+      "name": "中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "中国関与とされるTA415が、米政府・シンクタンク・大学の経済政策専門家を狙い、米中テーマで誘導して標的型攻撃を展開。 下院対中特別委員会委員長やU.S.-China Business Councilを装い、送信元にuschina@zohomail[.]comを用いたフィッシングを実施。 送付アーカイブのLNKがバッチを起動し、難読化Pythonローダー「WhirlCoil」を実行、PDFを囮に2時間毎の常駐タスクを設定。 ローダーはVS Code Remote Tunnelsで持続的アクセスを確立し、収集情報をrequestrepo[.]comへHTTP POST（Base64）で送信。 活動は2025年7～8月に観測。APT41／Brass Typhoonとの重複が指摘され、米中通商交渉下での諜報収集が目的と分析。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-5771658f42dfbb4596d9"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--1a4f1dee2ecbdaa47b9dc9d7 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,6 +102,42 @@
   },
   "ttps": [],
   "sources": [
+    {
+      "source_id": "source--actor-mapping-workbook",
+      "path": "APT Groups and Operations.xlsx",
+      "title": "APT Groups and Operations",
+      "publisher": "Florian Roth and community contributors",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "community-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+    },
+    {
+      "source_id": "source--daily-5771658f42dfbb4596d9",
+      "path": "https://thehackernews.com/2025/09/chinese-ta415-uses-vs-code-remote.html",
+      "title": "中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": "2025-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250918.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
     {
       "source_id": "source--mitre-attack-19-1",
       "path": "actor_profile/reference/attack-index.json",
@@ -88,22 +157,56 @@
       "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
-      "source_id": "source--actor-mapping-workbook",
-      "path": "APT Groups and Operations.xlsx",
-      "title": "APT Groups and Operations",
-      "publisher": "Florian Roth and community contributors",
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
+      "accessed_at": "2026-07-25T13:52:47Z",
       "language": "en",
-      "source_type": "community-actor-mapping",
+      "source_type": "government-threat-actor-encyclopedia",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
       "source_id": "source--ta415--26523ec4fbe0b554",
@@ -140,58 +243,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     }
   ],
   "assessment": {

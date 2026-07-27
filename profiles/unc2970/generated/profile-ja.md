@@ -1,9 +1,9 @@
 # UNC2970 脅威アクタープロファイル
 
-プロファイルID: `actor--unc2970`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc2970`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:37Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | phishing-campaign | 不明 | 不明 | 2024-09-19 | UNC2970と呼ばれる北朝鮮のグループがエネルギーと航空宇宙企業を標的にスピアフィッシングを実施。 新たなMISTPENマルウェアを使用し、感染を広げた。 この攻撃は「Operation Dream Job」としても知られており、標的となる人物のプロフィールに合わせて修正された求人情報を装った悪意のあるZIPアーカイブファイルを送りつけるもの。 正規のPDFリーダーアプリケーションであるSumatra PDFのトロイの木馬化されたバージョンが含まれており、BURNBOOKと呼ばれるランチャーによってMISTPENが配信。 攻撃は米国、英国、ドイツなどの国で確認されている。 C2通信にMicrosoft Graphを利用。 | 中 | `source--daily-820c8bb063e8728fd388` |
+| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
 
 
 
@@ -141,16 +144,18 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc2970--93dba0b4b3b578aa | unc2970 |  | 不明 | actor_profile/evidence/unc2970.csv | structured-data | TLP:CLEAR | 中 |
-| source--unc2970--b1174d542af4c564 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--unc2970--a7d42cd6f9de24e8 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--unc2970--80013422ca71c1b1 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--unc2970--36273ba018b91373 | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
-| source--unc2970--d6da360d6fdbce01 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--daily-2cce580b31452f445118 | Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | bleepingcomputer.com | 2026-02-13 | https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-820c8bb063e8728fd388 | 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | thehackernews.com | 2024-09-19 | https://thehackernews.com/2024/09/north-korean-hackers-target-energy-and.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unc2970--36273ba018b91373 | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
+| source--unc2970--80013422ca71c1b1 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--unc2970--93dba0b4b3b578aa | unc2970 |  | 不明 | actor_profile/evidence/unc2970.csv | structured-data | TLP:CLEAR | 中 |
+| source--unc2970--a7d42cd6f9de24e8 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--unc2970--b1174d542af4c564 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--unc2970--d6da360d6fdbce01 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

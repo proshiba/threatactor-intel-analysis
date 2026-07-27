@@ -1,9 +1,9 @@
 # RedCurl 脅威アクタープロファイル
 
-プロファイルID: `actor--redcurl`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--redcurl`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:34Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -106,7 +106,11 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| RedCurlサイバー犯罪グループがWindows PCAツールを悪用して企業スパイ活動を行う | phishing-campaign | 不明 | 不明 | 2024-03-15 | RedCurlは正規のMicrosoft WindowsコンポーネントであるPCAを悪用 PCAを使って悪意のあるコマンドを実行し、セキュリティ制約を回避 攻撃チェーンにはフィッシングメールと偽の添付ファイルが含まれる Trend Microが詳細な攻撃手法を分析し、報告 RedCurlは複数国の企業を対象にスパイ活動を行っている | 高 | `source--daily-970254fe18c304ec58c0` |
+| サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | cyber-espionage | 不明 | 不明 | 2024-04-03 | サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | 高 | `source--daily-a7ead7d250e5387d2fd8` |
+| RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | ransomware-extortion | 不明 | 不明 | 2025-03-27 | RedCurlは2018年から企業スパイ活動を行っている脅威アクターで、最近Hyper-V仮想マシンを標的とするランサムウェア「QWCrypt」を使用開始。 攻撃は、履歴書に見せかけた.IMGファイルを含むフィッシングメールから始まり、Windowsが自動的にマウントする。 マウントされたドライブ内のLNKファイルを実行すると、PowerShellスクリプトが起動し、Cobalt Strikeビーコンをダウンロードして攻撃者にリモートアクセスを提供。 攻撃者はネットワーク内を横展開し、最終的にQWCryptランサムウェアを展開してHyper-V仮想マシンを暗号化。 RedCurlは以前はデータ窃取に焦点を当てていたが、今回初めてランサムウェアを使用した。 二重脅迫のための専用リークサイトがないことから、RedCurlがランサムウェアを偽旗として使用しているのか、真の金銭目的の攻撃なのか疑問が提起されている。 | 高 | `source--daily-7ebbf6fb62e219c36773` |
 
 
 
@@ -196,12 +200,15 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--redcurl--78aa91b6349af791 | redcurl |  | 不明 | actor_profile/evidence/redcurl.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-7ebbf6fb62e219c36773 | RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | bleepingcomputer.com | 2025-03-27 | https://www.bleepingcomputer.com/news/security/redcurl-cyberspies-create-ransomware-to-encrypt-hyper-v-servers/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-970254fe18c304ec58c0 | RedCurlサイバー犯罪グループがWindows PCAツールを悪用して企業スパイ活動を行う | thehackernews.com | 2024-03-15 | https://thehackernews.com/2024/03/redcurl-cybercrime-group-abuses-windows.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-a7ead7d250e5387d2fd8 | サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | trendmicro.com | 2024-04-03 | https://www.trendmicro.com/ja_jp/research/24/d/unveiling-earth-kapre-aka-redcurls-cyberespionage-tactics-with-t.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--redcurl--78aa91b6349af791 | redcurl |  | 不明 | actor_profile/evidence/redcurl.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,9 +1,9 @@
 # Storm-2077 脅威アクタープロファイル
 
-プロファイルID: `actor--storm-2077`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--storm-2077`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:25Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | infrastructure-operation | 不明 | 不明 | 2025-09-25 | Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。中国国家支援と評価。 2024年6月〜2025年7月にエッジデバイスを狙い侵入、Go製PanteganaやCobalt Strike、Spark RATを用いたと報告。 既知脆弱性を武器化しCheck Point/Cisco/Citrix/F5/Fortinet/Ivanti/PA/SonicWall製品から初期侵入。 ExpressVPNやWarp VPNでインフラを管理、LESLIELOADER変種でBeacon/RAT起動。政府・防衛・法律分野に拡大。 中米・米国・台湾・韓国などで活動。中国訪問前の南米政府のOWA狙いなど地政学的意図が示唆。 | 中 | `source--daily-86f6aba61d69ac9dcac7` |
 
 
 
@@ -141,14 +143,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--storm-2077--3c1f7280b743db2f | storm 2077 |  | 2077 | actor_profile/evidence/storm-2077.csv | structured-data | TLP:CLEAR | 中 |
-| source--storm-2077--d21cbb08b26de78d | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
+| source--daily-86f6aba61d69ac9dcac7 | 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | thehackernews.com | 2025-09-25 | https://thehackernews.com/2025/09/chinese-hackers-rednovember-target.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--storm-2077--3c1f7280b743db2f | storm 2077 |  | 2077 | actor_profile/evidence/storm-2077.csv | structured-data | TLP:CLEAR | 中 |
+| source--storm-2077--d21cbb08b26de78d | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

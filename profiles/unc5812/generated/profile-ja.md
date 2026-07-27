@@ -1,9 +1,9 @@
 # UNC5812 脅威アクタープロファイル
 
-プロファイルID: `actor--unc5812`  
-状態: draft  
-更新日時: 2026-07-25T11:07:07Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc5812`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:38Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃 | cyber-espionage | 不明 | 不明 | 2024-10-29 | ロシアのUNC5812グループが、ウクライナ徴兵者を標的にしたスパイ活動/世論操作キャンペーンを実施。 偽の「民間防衛」アプリが情報窃取や位置追跡用のマルウェアを配布。 Windowsでは情報スティーラ「PureStealer」、Androidでは「CraxsRAT」を使用。 アプリがGoogle Play Protectを無効化させ、スパイ活動を許可します。 Googleは検出対策を強化し、Safe Browsingリストを更新。 | 中 | `source--daily-1c77a9c15728423b9d08` |
 
 
 
@@ -141,8 +143,9 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-1c77a9c15728423b9d08 | ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃 | bleepingcomputer.com | 2024-10-29 | https://www.bleepingcomputer.com/news/security/russia-targets-ukrainian-conscripts-with-windows-android-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--unc5812--c3628b0d6f615912 | unc5812 |  | 不明 | actor_profile/evidence/unc5812.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc5812--c96bc154a5c14896 | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
 

@@ -4,7 +4,7 @@
   "name": "UNC4536",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-9dc454dba27d3591b037",
+      "name": "人気のソフトウェア検索を悪用するサイバー犯罪者",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "サイバー犯罪者が、不正広告キャンペーンを通じて、FakeBatと呼ばれるローダーを拡散 感染には、トロイの木馬化されたMSIXインストーラーが使用される。このインストーラは、PowerShellスクリプトを実行してペイロードをダウンロード 被害者はBraveやKeePassなどになりすましたインストーラーを使って感染させる。 FakeBatはEugenfestという脅威アクターに関連付けられる。また、このマルウェアはMaaSで提供されており、このMaaSの提供元をUNC4536として追跡。 FakeBatは、IcedID、RedLine Stealer、Lumma Stealer、SectopRAT、Carbanakなどの他マルウェアの配信に使用。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b4aa05b2cb79bd0a59d6"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--9dc454dba27d3591b0371fe1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: また、このマルウェアはMaaSで提供されており、このMaaSの提供元をUNC4536として追跡。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,6 +102,42 @@
   },
   "ttps": [],
   "sources": [
+    {
+      "source_id": "source--actor-mapping-workbook",
+      "path": "APT Groups and Operations.xlsx",
+      "title": "APT Groups and Operations",
+      "publisher": "Florian Roth and community contributors",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "community-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+    },
+    {
+      "source_id": "source--daily-b4aa05b2cb79bd0a59d6",
+      "path": "https://thehackernews.com/2024/08/cybercriminals-exploit-popular-software.html",
+      "title": "人気のソフトウェア検索を悪用するサイバー犯罪者",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": "2024-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_07-09/20240820.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
     {
       "source_id": "source--mitre-attack-19-1",
       "path": "actor_profile/reference/attack-index.json",
@@ -88,22 +157,30 @@
       "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
-      "source_id": "source--actor-mapping-workbook",
-      "path": "APT Groups and Operations.xlsx",
-      "title": "APT Groups and Operations",
-      "publisher": "Florian Roth and community contributors",
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
+      "accessed_at": "2026-07-25T13:35:12Z",
       "language": "en",
-      "source_type": "community-actor-mapping",
+      "source_type": "structured-osint-aggregation",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
       "source_id": "source--unc4536--1a9cdc39c7ff3468",
@@ -140,32 +217,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {

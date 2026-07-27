@@ -1,9 +1,9 @@
 # Golden Chickens 脅威アクタープロファイル
 
-プロファイルID: `actor--golden-chickens`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--golden-chickens`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:23Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -106,7 +106,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| More_eggsマルウェアが履歴書を装いリクルーターを狙うフィッシング攻撃 | phishing-campaign | 不明 | 不明 | 2024-06-11 | More_eggsマルウェアが履歴書を装い、リクルーターをターゲットにフィッシング攻撃を実施 攻撃はLinkedIn経由で行われ、偽の履歴書ダウンロードサイトに誘導 マルウェアはLNKファイルを利用して悪意のあるDLLを取得し、regsvr32.exeで動かす。システムへの持続性を確保 More_eggsは、Golden Chickens（別名Venom Spider）とされるグループによるMaaSとして他のサイバー犯罪者に提供 | 中 | `source--daily-0e3e2f14439a2e9f9ca0` |
 
 
 
@@ -145,14 +147,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--golden-chickens--de4e5cbc16bb4188 | golden chickens |  | 不明 | actor_profile/evidence/golden-chickens.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-0e3e2f14439a2e9f9ca0 | More_eggsマルウェアが履歴書を装いリクルーターを狙うフィッシング攻撃 | thehackernews.com | 2024-06-11 | https://thehackernews.com/2024/06/moreeggs-malware-disguised-as-resumes.html | osint-report | TLP:CLEAR | 中 |
+| source--golden-chickens--464f2da935c3e3bd | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--golden-chickens--6d0e5225b513bcbb | Unmasking VenomSpider Report Final |  | 不明 | International Strategic/Russia/GoldenChickens/Unmasking_VenomSpider_Report-Final.pdf | report | TLP:CLEAR | 中 |
 | source--golden-chickens--7b514ff30a32bf4a | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--golden-chickens--464f2da935c3e3bd | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--golden-chickens--de4e5cbc16bb4188 | golden chickens |  | 不明 | actor_profile/evidence/golden-chickens.csv | structured-data | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

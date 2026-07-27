@@ -1,9 +1,9 @@
 # Moonstone Sleet 脅威アクタープロファイル
 
-プロファイルID: `actor--moonstone-sleet`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--moonstone-sleet`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:33Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -112,7 +112,11 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大 | reported-activity | 不明 | 不明 | 2024-06-14 | 北朝鮮のMoonstone Sleetが悪意あるnpmコードを配布。 公開レジストリでコードを拡散し、攻撃対象を拡大。 航空宇宙、教育、ソフトウェア分野を標的に。 前に観測された攻撃ではWindowsのみだったが、新たに発見されたものではLinuxシステムを攻撃するための機能が追加。 オープンソースのエコシステムに大きな脅威。 | 高 | `source--daily-9b109b5f0fe055ebeba0` |
+| マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 | ransomware-extortion | 不明 | 不明 | 2025-03-08 | マイクロソフトは、北朝鮮のハッカー集団「Moonstone Sleet」が、最近の限定的な攻撃でQilinランサムウェアを展開していると報告。 Moonstone Sleetは以前は独自のカスタムランサムウェアを使用していたが、今回初めてRaaSオペレーターが開発したランサムウェアを使用。 同グループは、トロイの木馬化されたソフトウェアや偽のソフトウェア開発会社を利用し、LinkedInやフリーランスネットワーク、Telegram、メールを通じて被害者と接触。 Qilinランサムウェアは2022年8月に「Agenda」として登場し、これまでに300以上の被害者を主張。 Qilinｈ2023年12月には攻撃が活発化し、VMware ESXi仮想マシンを標的とする高度なLinuxエンクリプターも使用するようになった。 | 中 | `source--daily-79065a5586e0fb17d444` |
+| マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | ransomware-extortion | 不明 | 不明 | 2024-05-29 | マイクロソフトがMoonstone Sleet(以前はStorm-17)という北朝鮮のハッカーグループをFakePennyランサムウェア攻撃に関連付けた Moonstone Sleetは財政およびサイバー諜報を目的に活動している 当初はDiamond Sleetと多くの重複があったが、その後グループは独自のインフラとツールを使用するようになった 偽のソフトウェア企業を通じて攻撃を行うことが多い 攻撃の動機は金銭的利益と見られる。ただし、このグループが以前にサイバースパイ攻撃に関与していたことから情報収集にも重点をおいていることが示唆される | 高 | `source--daily-3361ec1dff6e8d1d939e` |
 
 
 
@@ -182,28 +186,31 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-3361ec1dff6e8d1d939e | マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | bleepingcomputer.com | 2024-05-29 | https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-79065a5586e0fb17d444 | マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 | bleepingcomputer.com | 2025-03-08 | https://www.bleepingcomputer.com/news/security/microsoft-north-korean-hackers-now-deploying-qilin-ransomware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-9b109b5f0fe055ebeba0 | 北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大 | darkreading.com | 2024-06-14 | https://www.darkreading.com/cyberattacks-data-breaches/north-koreas-moonstone-sleet-widens-distribution-of-malicious-code-packages | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--moonstone-sleet--057dc52f1759be32 | moonstone sleet |  | 不明 | actor_profile/evidence/moonstone-sleet.csv | structured-data | TLP:CLEAR | 中 |
-| source--moonstone-sleet--0d31bb8755ee8e38 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--bc0d35bbdaf1db31 | Blurred Lines of Cyber Threat Attribution |  | 不明 | International Strategic/Korea/ Blurred-Lines-of-Cyber-Threat-Attribution.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--b7af744c9cf11a1a | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--moonstone-sleet--0a5c0da2f99d1612 | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--63b1af4df502c7bd | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--c1ba57476571c6de | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--a6aabc99254f6193 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--58b10f25387bdb3e | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--moonstone-sleet--fe9810e624ede013 | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--7cc947ab20057181 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--d8ef2d8ed48a471e | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--5e75b17840f0ebd2 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
-| source--moonstone-sleet--2c8108aa76041772 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--0d31bb8755ee8e38 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--moonstone-sleet--2783500b7b780791 | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--2c8108aa76041772 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--58b10f25387bdb3e | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--moonstone-sleet--5e75b17840f0ebd2 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--63b1af4df502c7bd | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--7cc947ab20057181 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--a6aabc99254f6193 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--b7af744c9cf11a1a | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--bc0d35bbdaf1db31 | Blurred Lines of Cyber Threat Attribution |  | 不明 | International Strategic/Korea/ Blurred-Lines-of-Cyber-Threat-Attribution.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--c1ba57476571c6de | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--d8ef2d8ed48a471e | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
+| source--moonstone-sleet--fe9810e624ede013 | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

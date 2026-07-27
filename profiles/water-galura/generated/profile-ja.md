@@ -1,9 +1,9 @@
 # Water Galura 脅威アクタープロファイル
 
-プロファイルID: `actor--water-galura`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--water-galura`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:27Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -108,7 +108,9 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | ransomware-extortion | 不明 | 不明 | 2025-06-21 | QilinランサムウェアRaaSがアフィリエイト向けパネルに「弁護士呼び出し」機能を追加し、被害者に支払い圧力を強化。 Qilinは、2025年4月に72件の被害、5月に55件を確認、通年でCl0p・Akiraに次ぐ304件を記録。 アフィリエイトにはRust/C製ペイロード、ネットワーク拡散、ログクリーン、交渉自動化など高度な攻撃ツールを提供。 法的支援、スパムサービス、PB規模のデータストレージ、DDoSツールなどを備えたフルサービスのサイバー犯罪プラットフォームに進化。 RansomHubのアフィリエイトがQilinに移行し、ここ数か月のQilinランサムウェア活動の急増に寄与 | 中 | `source--daily-3c55cd8958f6103f4eaf` |
 
 
 
@@ -151,11 +153,12 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--water-galura--83ea455fedc5476b | water galura |  | 不明 | actor_profile/evidence/water-galura.csv | structured-data | TLP:CLEAR | 中 |
-| source--water-galura--280658d2598270cb | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--daily-3c55cd8958f6103f4eaf | Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | thehackernews.com | 2025-06-21 | https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--water-galura--280658d2598270cb | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--water-galura--83ea455fedc5476b | water galura |  | 不明 | actor_profile/evidence/water-galura.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

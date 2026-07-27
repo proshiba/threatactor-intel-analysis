@@ -1,9 +1,9 @@
 # Sea Turtle 脅威アクタープロファイル
 
-プロファイルID: `actor--sea-turtle`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--sea-turtle`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:34Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -87,16 +87,16 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--snappytcp | SnappyTCP | [SnappyTCP](https://attack.mitre.org/software/S1163) is a web shell used by [Sea Turtle](https://attack.mitre.org/groups/G1041) between 2021 and 2023 against multiple victims. [SnappyTCP](https://attack.mitre.org/software/S1163) appears to be based on a public GitHub project that has since been removed from the code-sharing site. [SnappyTCP](https://attack.mitre.org/software/S1163) includes a simple reverse TCP shell for Linux and Unix environments with basic command and control capabilities.(Citation: PWC Sea Turtle 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--dns-hijacking | DNS hijacking | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2009-1151 | CVE-2009-1151 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2014-6271 | CVE-2014-6271 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--cve-2017-12617 | CVE-2017-12617 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2017-3881 | CVE-2017-3881 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2017-6736 | CVE-2017-6736 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-12617 | CVE-2017-12617 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2018-0296 | CVE-2018-0296 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2018-7600 | CVE-2018-7600 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--dns-hijacking | DNS hijacking | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--drupalgeddon | Drupalgeddon | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--snappytcp | SnappyTCP | [SnappyTCP](https://attack.mitre.org/software/S1163) is a web shell used by [Sea Turtle](https://attack.mitre.org/groups/G1041) between 2021 and 2023 against multiple victims. [SnappyTCP](https://attack.mitre.org/software/S1163) appears to be based on a public GitHub project that has since been removed from the code-sharing site. [SnappyTCP](https://attack.mitre.org/software/S1163) includes a simple reverse TCP shell for Linux and Unix environments with basic command and control capabilities.(Citation: PWC Sea Turtle 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -120,9 +120,10 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Sea Turtle | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | phishing-campaign | 不明 | 不明 | 2025-05-13 | トルコ支援のサイバースパイグループMarbled Dustが、Output Messengerのゼロデイ脆弱性（CVE-2025-27920）を悪用。 この脆弱性はディレクトリトラバーサルにより、認証済み攻撃者が機密ファイルにアクセス可能。 攻撃者は未更新のOutput Messenger Server Managerを標的にマルウェアを展開。 感染後、通信の傍受、ユーザーのなりすまし、内部システムへのアクセスが可能となる。 脆弱性は2024年12月に修正済みだが、未更新のシステムが依然としてリスクに晒されている。 | 中 | `source--daily-cca0fa46e5e1b4b6bc18` |
+| Sea Turtle | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 Sea Turtle
 
@@ -202,14 +203,15 @@ Sea Turtle
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--sea-turtle--4e9bc8701f782970 | readme |  | 不明 | Seaturtle/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--daily-cca0fa46e5e1b4b6bc18 | Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | bleepingcomputer.com | 2025-05-13 | https://www.bleepingcomputer.com/news/security/output-messenger-flaw-exploited-as-zero-day-in-espionage-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--sea-turtle--4e9bc8701f782970 | readme |  | 不明 | Seaturtle/readme.md | repository-notes | TLP:CLEAR | 中 |
 
 ## 自由記述
 

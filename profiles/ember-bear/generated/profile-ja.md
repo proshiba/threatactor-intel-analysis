@@ -1,9 +1,9 @@
 # Ember Bear 脅威アクタープロファイル
 
-プロファイルID: `actor--ember-bear`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ember-bear`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:31Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -97,12 +97,12 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--regeorg | reGeorg | [reGeorg](https://attack.mitre.org/software/S1187) is an open-source web shell written in Python that can be used as a proxy to bypass firewall rules and tunnel data in and out of targeted networks.(Citation: Fortinet reGeorg MAR 2019)(Citation: GitHub reGeorg 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--p-a-s-webshell | P.A.S. Webshell | [P.A.S. Webshell](https://attack.mitre.org/software/S0598) is a publicly available multifunctional PHP webshell in use since at least 2016 that provides remote access and execution on target web servers.(Citation: ANSSI Sandworm January 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--whispergate | WhisperGate | [WhisperGate](https://attack.mitre.org/software/S0689) is a multi-stage wiper designed to look like ransomware that has been used against multiple government, non-profit, and information technology organizations in Ukraine since at least January 2022.(Citation: Cybereason WhisperGate February 2022)(Citation: Unit 42 WhisperGate January 2022)(Citation: Microsoft WhisperGate January 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--saint-bot | Saint Bot | [Saint Bot](https://attack.mitre.org/software/S1018) is a .NET downloader that has been used by [Saint Bear](https://attack.mitre.org/groups/G1031) since at least March 2021.(Citation: Malwarebytes Saint Bot April 2021)(Citation: Palo Alto Unit 42 OutSteel SaintBot February 2022 ) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--whispergate-wiper | WhisperGate wiper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--elephant-framework | Elephant Framework | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--p-a-s-webshell | P.A.S. Webshell | [P.A.S. Webshell](https://attack.mitre.org/software/S0598) is a publicly available multifunctional PHP webshell in use since at least 2016 that provides remote access and execution on target web servers.(Citation: ANSSI Sandworm January 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--regeorg | reGeorg | [reGeorg](https://attack.mitre.org/software/S1187) is an open-source web shell written in Python that can be used as a proxy to bypass firewall rules and tunnel data in and out of targeted networks.(Citation: Fortinet reGeorg MAR 2019)(Citation: GitHub reGeorg 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--saint-bot | Saint Bot | [Saint Bot](https://attack.mitre.org/software/S1018) is a .NET downloader that has been used by [Saint Bear](https://attack.mitre.org/groups/G1031) since at least March 2021.(Citation: Malwarebytes Saint Bot April 2021)(Citation: Palo Alto Unit 42 OutSteel SaintBot February 2022 ) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--whispergate | WhisperGate | [WhisperGate](https://attack.mitre.org/software/S0689) is a multi-stage wiper designed to look like ransomware that has been used against multiple government, non-profit, and information technology organizations in Ukraine since at least January 2022.(Citation: Cybereason WhisperGate February 2022)(Citation: Unit 42 WhisperGate January 2022)(Citation: Microsoft WhisperGate January 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--whispergate-wiper | WhisperGate wiper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -134,7 +134,9 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | cyber-espionage | 不明 | 不明 | 2024-09-06 | 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。 | 中 | `source--daily-f1baa9d2403423a63284` |
 
 
 
@@ -225,44 +227,45 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--ember-bear--3691f89917b6856e | ember bear |  | 不明 | actor_profile/evidence/ember-bear.csv | structured-data | TLP:CLEAR | 中 |
-| source--ember-bear--5774423bdf399ec6 | A year of Russian hybrid warfare in Ukraine MS Threat Intelligence |  | 不明 | International Strategic/Russia/A_year_of_Russian_hybrid_warfare_in_Ukraine_MS_Threat_Intelligence.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--b18ff9714d5d6c97 | Russia’s Cyber Tactics Lessons Learned 2022 |  | 2022 | International Strategic/Russia/Russia’s Cyber Tactics Lessons Learned 2022.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--93e4d311c137b9f5 | aa24 249a russian military cyber actors target us and global critical infrastructure |  | 不明 | International Strategic/Russia/WhisperGate/aa24-249a-russian-military-cyber-actors-target-us-and-global-critical-infrastructure.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--31ce7194f93c4fb7 | google fog of war research report |  | 不明 | International Strategic/Russia/google_fog_of_war_research_report.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--6db5c42dd8d25689 | Ukraine Report Q1 2023 |  | 2023 | International Strategic/Ukraine/Ukraine-Report-Q1_2023.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--4eba0d82db68ec59 | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--daily-f1baa9d2403423a63284 | 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | bleepingcomputer.com | 2024-09-06 | https://www.bleepingcomputer.com/news/security/us-and-allies-link-russian-military-hackers-behind-critical-infrastructure-attacks-to-gru-unit-29155/ | osint-report | TLP:CLEAR | 中 |
 | source--ember-bear--0dd06d31baf6e8d5 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--fb2b6abe0b1e399f | Global APT Mid 2022 Report qianxin |  | 2022 | summary/2022/Global APT Mid-2022 Report-qianxin.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--9311ce891bbf4f7b | MS UkraineSpecialReport |  | 不明 | summary/2022/MS_UkraineSpecialReport.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--63207b705d433568 | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--7ed7b515afb715f1 | Microsoft Defending Ukraine Early Lessons from the Cyber War |  | 不明 | summary/2022/Microsoft_Defending Ukraine_Early Lessons from the Cyber War.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--1a876ab78f9cbe10 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--ember-bear--222b5728dc2fd56f | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--c32aaa3b89c9005a | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--bcac037bed3fa1b4 | CrowdStrike2023GlobalThreatReport |  | 2023 | summary/2023/CrowdStrike2023GlobalThreatReport.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--2e0d6b860eba4628 | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--ember-bear--31ce7194f93c4fb7 | google fog of war research report |  | 不明 | International Strategic/Russia/google_fog_of_war_research_report.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--3691f89917b6856e | ember bear |  | 不明 | actor_profile/evidence/ember-bear.csv | structured-data | TLP:CLEAR | 中 |
+| source--ember-bear--40cba50ffc964066 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--4eba0d82db68ec59 | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--ember-bear--5774423bdf399ec6 | A year of Russian hybrid warfare in Ukraine MS Threat Intelligence |  | 不明 | International Strategic/Russia/A_year_of_Russian_hybrid_warfare_in_Ukraine_MS_Threat_Intelligence.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--63207b705d433568 | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--65cfb261598b6c87 | RussianCyber |  | 不明 | summary/2024/RussianCyber.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--6db5c42dd8d25689 | Ukraine Report Q1 2023 |  | 2023 | International Strategic/Ukraine/Ukraine-Report-Q1_2023.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--6f094699f88b54ad | Report on the state of cyberspace security Poland 2022 |  | 2022 | summary/2023/Report_on_the_state_of_cyberspace_security_Poland_2022.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--7561a682509eaecb | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
 | source--ember-bear--788856179c873745 | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
 | source--ember-bear--7d4b7b83976afa45 | Global APT 2023 Mid Year Report QIANXIN |  | 2023 | summary/2023/Global APT 2023 Mid-Year Report-QIANXIN.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--7561a682509eaecb | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--fceef9bf8018bac4 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--2e0d6b860eba4628 | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--ember-bear--7ed7b515afb715f1 | Microsoft Defending Ukraine Early Lessons from the Cyber War |  | 不明 | summary/2022/Microsoft_Defending Ukraine_Early Lessons from the Cyber War.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--859ed4ead4610010 | CrowdStrike 2025 Threat Hunting Report |  | 2025 | summary/2025/CrowdStrike 2025 Threat Hunting Report.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--9311ce891bbf4f7b | MS UkraineSpecialReport |  | 不明 | summary/2022/MS_UkraineSpecialReport.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--93e4d311c137b9f5 | aa24 249a russian military cyber actors target us and global critical infrastructure |  | 不明 | International Strategic/Russia/WhisperGate/aa24-249a-russian-military-cyber-actors-target-us-and-global-critical-infrastructure.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--b18ff9714d5d6c97 | Russia’s Cyber Tactics Lessons Learned 2022 |  | 2022 | International Strategic/Russia/Russia’s Cyber Tactics Lessons Learned 2022.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--b23f959b0c74dd5f | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--b62f11560f2fb26b | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--bcac037bed3fa1b4 | CrowdStrike2023GlobalThreatReport |  | 2023 | summary/2023/CrowdStrike2023GlobalThreatReport.pdf | report | TLP:CLEAR | 中 |
 | source--ember-bear--c2415f782b0efd53 | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--6f094699f88b54ad | Report on the state of cyberspace security Poland 2022 |  | 2022 | summary/2023/Report_on_the_state_of_cyberspace_security_Poland_2022.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--c32aaa3b89c9005a | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
 | source--ember-bear--c74d3463554db297 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
 | source--ember-bear--ef9d2c4332817f7c | 2023 Network Vulnerability Situation Research Report |  | 2023 | summary/2024/2023 Network Vulnerability Situation Research Report.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--b23f959b0c74dd5f | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--65cfb261598b6c87 | RussianCyber |  | 不明 | summary/2024/RussianCyber.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--1a876ab78f9cbe10 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--ember-bear--40cba50ffc964066 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--859ed4ead4610010 | CrowdStrike 2025 Threat Hunting Report |  | 2025 | summary/2025/CrowdStrike 2025 Threat Hunting Report.pdf | report | TLP:CLEAR | 中 |
-| source--ember-bear--b62f11560f2fb26b | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--fb2b6abe0b1e399f | Global APT Mid 2022 Report qianxin |  | 2022 | summary/2022/Global APT Mid-2022 Report-qianxin.pdf | report | TLP:CLEAR | 中 |
+| source--ember-bear--fceef9bf8018bac4 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

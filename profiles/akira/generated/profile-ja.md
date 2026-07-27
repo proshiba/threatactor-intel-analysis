@@ -1,9 +1,9 @@
 # Akira 脅威アクタープロファイル
 
-プロファイルID: `actor--akira`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--akira`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:21Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -84,9 +84,9 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--megazord | Megazord | [Megazord](https://attack.mitre.org/software/S1191) is a Rust-based variant of [Akira](https://attack.mitre.org/software/S1129) ransomware that has been in use since at least August 2023 to target Windows environments. [Megazord](https://attack.mitre.org/software/S1191) has been attributed to the [Akira](https://attack.mitre.org/groups/G1024) group based on overlapping infrastructure though is possibly not exclusive to the group.(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)(Citation: Palo Alto Howling Scorpius DEC 2024)<br><br> | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--akira | Akira | [Akira](https://attack.mitre.org/software/S1129) ransomware, written in C++, is most prominently (but not exclusively) associated with the ransomware-as-a-service entity [Akira](https://attack.mitre.org/groups/G1024). [Akira](https://attack.mitre.org/software/S1129) ransomware has been used in attacks across North America, Europe, and Australia, with a focus on critical infrastructure sectors including manufacturing, education, and IT services. [Akira](https://attack.mitre.org/software/S1129) ransomware employs hybrid encryption and threading to increase the speed and efficiency of encryption and runtime arguments for tailored attacks. Notable variants include Rust-based [Megazord](https://attack.mitre.org/software/S1191) for targeting Windows and [Akira _v2](https://attack.mitre.org/software/S1194) for targeting VMware ESXi servers.(Citation: Kersten Akira 2023)(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--akira-v2 | Akira _v2 | [Akira _v2](https://attack.mitre.org/software/S1194) is a Rust-based variant of [Akira](https://attack.mitre.org/software/S1129) ransomware that has been in use since at least 2024. [Akira _v2](https://attack.mitre.org/software/S1194) is designed to target VMware ESXi servers and includes a new command-line argument set and other expanded capabilities.(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)(Citation: Palo Alto Howling Scorpius DEC 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--megazord | Megazord | [Megazord](https://attack.mitre.org/software/S1191) is a Rust-based variant of [Akira](https://attack.mitre.org/software/S1129) ransomware that has been in use since at least August 2023 to target Windows environments. [Megazord](https://attack.mitre.org/software/S1191) has been attributed to the [Akira](https://attack.mitre.org/groups/G1024) group based on overlapping infrastructure though is possibly not exclusive to the group.(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)(Citation: Palo Alto Howling Scorpius DEC 2024)<br><br> | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -116,7 +116,24 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 | ransomware-extortion | 不明 | 不明 | 2024-10-28 | FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。 攻撃はCVE-2024-40766をエクスプロイトして行い、ランサムウェアで攻撃する事例が少なくとも30件発生。 侵入後約10時間で暗号化が進むが、最速で1.5～2時間で完了。 VPNアクセスは既知のログインメッセージIDで監視可能。 一部の攻撃でデータ窃取も行われたが、古いファイルは対象外。 | 中 | `source--daily-3c12eda093e5c59e0ee6` |
+| 重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される | ransomware-extortion | 不明 | 不明 | 2024-09-11 | SonicWallのSSLVPN脆弱性（CVE-2024-40766）がランサムウェア攻撃に利用。 Akiraランサムウェアのアフィリエイトがこの脆弱性を悪用。 SonicWallは、この脆弱性は、ファイアウォールの管理アクセスインターフェースのみに影響すると伝えていたが、後にSSLVPN機能にも影響し、攻撃に悪用されていることを明らかにした。 SonicWallはパッチを8月22日に公開し、顧客に迅速な対応を促している。 CISAは連邦機関に9月30日までのパッチ適用を命じた。 | 中 | `source--daily-0662aaff581d0ab45bce` |
+| Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化 | ransomware-extortion | 不明 | 不明 | 2025-04-29 | 日立の子会社である、Hitachi VantaraがAkiraランサムウェア攻撃を受け、一部システムが停止。 外部の専門家を雇い、影響範囲の調査と復旧作業を実施中。 攻撃でファイルが盗まれ、ランサムノートが設置されたことが判明。 クラウドサービスは影響を受けていなかったが、封じ込めの一環としてHitachi Vantaraのシステムおよび製造部門は中断された。 攻撃は政府関連プロジェクトにも影響を与えた可能性がある。 | 高 | `source--daily-7fac464b25387fdb006e` |
+| Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用 | ransomware-extortion | 不明 | 不明 | 2025-09-12 | AkiraがCVE-2024-40766を再悪用し、未更新のSonicWall SSLVPN経由で侵入。 SonicWallは2024年8月に修正公開、更新時はローカルSSLVPNアカウントのPW更新推奨。 ACSCとRapid7が最近の悪用増加を警告、不完全な修復が原因である可能性。 SonicWallはゼロデイ関与を否定、同CVEとの相関が高いと説明。 影響はGen5〜7の特定版。7.3.0以降へのアップデートやMFAの強制・権限見直し等を推奨。 | 高 | `source--daily-c6a57e3d4fd20c381ed8` |
+| Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論 | ransomware-extortion | 不明 | 不明 | 2025-11-06 | Akiraランサムウェアが10月30日、Apache OpenOfficeへの侵入と23GBの機密窃取を主張し、流出予告を掲載。 これに対しApache Software Foundationは、主張内容のような従業員・財務データ自体を保有せず、現時点で証拠なしと反論。 同財団は調査中としつつ、OpenOffice/ASFシステムの侵害痕跡は見つからず、身代金要求の受領も確認していないと説明。 OpenOfficeはOSSで有償雇用の開発者はおらず、課題は公開MLで扱われるため、主張内容と整合しないと強調。 記事時点でAkira側は窃取とするデータを未公開で、ASFは法執行機関や外部専門家への連絡も行っていない。 | 中 | `source--daily-efcfda27f495de5d5c60` |
+| トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 | ransomware-extortion | 不明 | 不明 | 2025-03-06 | カナダ最大の動物園であるトロント動物園は、2024年1月に発生したランサムウェア攻撃によるデータ侵害について詳細を公表 侵害された情報には、従業員、元従業員、ボランティア、寄付者の個人情報や財務情報が含まれる 2022年1月から2023年4月の間にクレジットカード取引を行ったゲストや会員の名前、住所、電話番号、メールアドレス、クレジットカードの下4桁および有効期限が漏洩 2000年から2023年4月までの一般入場券や会員購入に関する取引データも含まれる トロント動物園は、オンタリオ州情報プライバシーコミッショナー事務局にデータ侵害を報告し、影響を受けた人々に対し、金融口座の明細を監視するよう助言 トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張 | 中 | `source--daily-73166036d74c23fae026` |
+| AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 | ransomware-extortion | 不明 | 不明 | 2025-08-07 | Intel製CPUチューニングドライバーrwdrv.sysを悪用し、カーネル権限でDefenderを停止 2つ目の悪意ドライバーhlpdrv.sysがDefenderのDisableAntiSpywareレジストリを変更 BYOVD戦術は2025年7月15日以降のAkira攻撃で繰り返し観測 SonicWall SSLVPNを狙う活動やBumblebee/AdaptixC2経路も報告 Bumblebeeマルウェアを使う事例では、ManageEngine OpManagerのSEOポイズニングから感染させる事例もあった GuidePointがYARA・IOC公開、管理者は監視とブロックを推奨 | 高 | `source--daily-4e4cc7628ff86fb403b4` |
+| AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | ransomware-extortion | 不明 | 不明 | 2024-10-14 | AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。 | 高 | `source--daily-29f74832270318181f72` |
+| GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開 | ransomware-extortion | 不明 | 不明 | 2025-03-17 | セキュリティ研究者のYohanes Nugroho氏が、Linux版Akiraランサムウェアの復号ツールを公開 Akiraの暗号鍵生成にタイムスタンプが使用されることを利用し、GPUの計算能力で鍵を特定 復号ツールはGitHubで入手可能。ファイル復元の手順も提供している。 Nugroho氏は復号に約3週間と1,200ドルのGPUリソースを費やした 復号プロセスは各ファイルの暗号鍵をブルートフォース攻撃で特定する手法 | 高 | `source--daily-f08faf92c2b925e530ef` |
+| 被害者が支払いをやめたことで、ランサムウェアの利益が減少 | ransomware-extortion | 不明 | 不明 | 2025-10-28 | Covewareの最新分析で、身代金を支払った被害組織の割合は2025年Q3に23%まで低下し、観測史上の最低を更新。 平均/中央値の支払い額も前期比で減少し、平均37.7万ドル・中央値14万ドルに下落、支払い忌避の流れが強まる。 攻撃は暗号化＋窃取の二重恐喝が主流で、Q3の76%でデータ流出。窃取のみの攻撃に限ると支払い率は19%。 AkiraやQilinが44%を占め、中堅企業への集中や、リモートアクセス侵害・ソフト脆弱性悪用の増加が顕著。 利益縮小で攻撃は精緻化し、今後は大企業狙いも強まる見通し。ソーシャルエンジニアリングや内通者勧誘の活用が進む。 | 中 | `source--daily-a0023564f914d51f566d` |
+| SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 | ransomware-extortion | 不明 | 不明 | 2025-08-08 | SonicWallはGen 7ファイアウォールのSSLVPN経由Akira攻撃がCVE-2024-40766悪用であると結論。 CVE-2024-40766は2024年8月修正済みの重大アクセス制御欠陥で未更新機器が標的。 移行時に旧パスワードをリセットせず持ち越したケースが多く関連。 推奨はFWをv7.3.0以降へ更新し全ローカルユーザーPWをリセット、特にSSLVPN用。 Reddit等ではベンダー見解に対する疑念もあり、迅速な対策適用が重要とされる。 | 高 | `source--daily-4ccacc67cc78bb4bfd28` |
+| Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害 | ransomware-extortion | 不明 | 不明 | 2025-09-29 | 現在進行中のAkiraがSonicWall SSL VPNを標的にし、OTPを用いたMFAが有効でも認証成功する事例が報告された。 研究者は過去侵入で窃取されたOTPシードの再利用を疑うが、具体的手法は未確定。複数回のOTP挑戦後に成功が観測。 2024年公開の不適切なアクセス制御（CVE-2024-40766）で収集された認証情報が、パッチ適用後も悪用され続けている。 侵入後は数分で内部スキャンを開始し、ImpacketやBloodHound等で横展開、Veeamから資格情報を抽出する手口が確認。 BYOVDでconsent.exeからDLLサイドロードし脆弱ドライバ（rwdrv.sys等）を読み込み、EDRを無効化して暗号化を実行。 | 高 | `source--daily-251d2ee4d8e5443dd89d` |
+| CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告 | ransomware-extortion | 不明 | 不明 | 2025-11-15 | 米政府機関（CISA・FBI・DC3・HHS等）は、AkiraがNutanix AHVの仮想ディスクを暗号化する事例を確認し、共同勧告を更新。 2025年6月の初確認では、SonicWallのCVE-2024-40766悪用を足掛かりにAHV環境の.qcow2ディスクを暗号化したと報告。 AkiraのLinux版はESXiではesxcli等でVM停止後に暗号化、AHVではacli/ncliを使わず.qcow2を直接暗号化すると分析。 侵入後は窃取された/総当たりされたアカウントでVPN・SSHでアクセスやSonicWallの脆弱性を悪用するなどして侵入。 AnyDesk/Impacket等で偵察や横展開をし、VeeamのCVE-2023-27532・CVE-2024-40711悪用してバックアップにアクセスし削除。 勧告はオフラインバックアップ整備、MFA強制、既知悪用脆弱性への迅速パッチ適用などの緩和策実施を要請。 | 高 | `source--daily-48e314e2ec6d02091f74` |
+| Akiraランサムウェア：支払いだけでは匿名性を保てない | ransomware-extortion | 不明 | 不明 | 2025-06-01 | ニュージャージー州の企業がAkiraランサムウェアの被害を受け、60万ドルの要求を20万ドルに交渉し支払った。 攻撃者は「List.7z」アーカイブで被害者のファイル構造を示し、データ所有の証拠として提示。 支払い後、「Deletion.7z」アーカイブでデータ削除の証拠を提供したが、実際の削除は確認できない。 被害者とのチャットログやファイル構造が公開され、匿名性が保たれなかった。 攻撃者はネットワークアクセスをダークウェブで購入し、Kerberoastingでドメイン管理者の資格情報を取得したと主張。 | 高 | `source--daily-08853165537986c77f7f` |
+| Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に | ransomware-extortion | 不明 | 不明 | 2025-08-02 | 7月中旬以降、AkiraランサムウェアがSonicWall SSL VPNを経由し侵入急増。 Arctic Wolfは未知のゼロデイ利用の可能性を示唆、資格情報攻撃も否定せず。 侵入後すぐ暗号化へ移行する傾向が2024年10月から継続確認。 管理者にはSSL VPN一時停止とホスティング系IPからのVPN認証遮断を推奨。 SMA 100のRCE脆弱性CVE-2025-40599も要パッチ、ログ確認でIoC調査を勧告。 | 高 | `source--daily-339537ab2997fa08795e` |
+| FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | ransomware-extortion | 不明 | 不明 | 2024-04-19 | Akiraランサムウェアが250以上の組織を標的に4200万ドルを詐取 2023年3月に出現し、幅広い業界を標的に急速に展開 北米、欧州、豪州で、幅広いビジネスと基盤インフラへ影響 FBIとCISAは組織の脆弱性対策と多要素認証の重要性を強調 攻撃の被害を減少させるための具体的な対策とガイドライン提供 | 高 | `source--daily-89a8fc15ce47bbec4793` |
 
 
 
@@ -176,73 +193,89 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--akira--612fd3b82de9660d | akira |  | 不明 | actor_profile/evidence/akira.csv | structured-data | TLP:CLEAR | 中 |
-| source--akira--bc3cd96a6cfcf450 | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
-| source--akira--538a279c502cbba5 | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
-| source--akira--c28cea4a3fa56026 | CGCYBER 2024 CTIME |  | 2024 | International Strategic/USA/2025/CGCYBER 2024 CTIME.pdf | report | TLP:CLEAR | 中 |
 | source--akira--0010e345a890397c | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
-| source--akira--27cb51a35b3bec43 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
-| source--akira--f03089def290732f | 2025 IC3Report |  | 2025 | cybercrime/2026/2025_IC3Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--32f65c0bc7e8a84e | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--akira--51a9a80a40e5b38a | 2023 Network Vulnerability Situation Research Report |  | 2023 | summary/2024/2023 Network Vulnerability Situation Research Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--568c9a2b36c97964 | 2024 H1 Threat Intel Report Final |  | 2024 | summary/2024/2024-H1-Threat-Intel-Report-Final.pdf | report | TLP:CLEAR | 中 |
-| source--akira--a6c9c0cc8f76eac6 | 2024 dbir data breach investigations report |  | 2024 | summary/2024/2024-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--e3e88d8bbef48ddb | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--cdc1a83bea8ca73e | 2024 Cyber Threat Report Huntress FINAL |  | 2024 | summary/2024/2024_Cyber_Threat_Report_Huntress_FINAL.pdf | report | TLP:CLEAR | 中 |
-| source--akira--a07afbfda4fd57e6 | CERTFR 2024 CTI 002 |  | 2024 | summary/2024/CERTFR-2024-CTI-002.pdf | report | TLP:CLEAR | 中 |
-| source--akira--3088fb60e523da28 | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--9bf876aff17c344e | First 6 Half Year Threat Report 2024 |  | 2024 | summary/2024/First 6 Half-Year Threat Report 2024.pdf | report | TLP:CLEAR | 中 |
-| source--akira--6096ad9b7f2a058f | GRIT Ransomware Annual Report 2023 |  | 2023 | summary/2024/GRIT_Ransomware_Annual_Report_2023.pdf | report | TLP:CLEAR | 中 |
-| source--akira--2b6e6ecd4990de2f | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
-| source--akira--dc63de875955899e | Norma+Cyber+Annual+Threat+Assessment+ +Spreads |  | 不明 | summary/2024/Norma+Cyber+Annual+Threat+Assessment+-+Spreads.pdf | report | TLP:CLEAR | 中 |
+| source--akira--006cc4612e03b47f | 2024 IC3Report |  | 2024 | summary/2025/2024_IC3Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--0628019fb204df48 | annual threat report 2024 |  | 2024 | summary/2025/annual-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--akira--07db6468fd9302b3 | eSentire TRU Report The Industrialization of Cybercrime Identities are Under Attack 2026 |  | 2026 | summary/2026/eSentire_TRU_Report_The-Industrialization-of-Cybercrime-Identities-are-Under-Attack_2026.pdf | report | TLP:CLEAR | 中 |
+| source--akira--0e6eb89129aff162 | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--akira--0fe45032204f859a | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
+| source--akira--15c750a04fa45c17 | Flashpoint 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/Flashpoint_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--1a1b03f754d2172b | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
+| source--akira--1cb9d528e50b35ee | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
 | source--akira--27adfa5cb6515962 | Recordedfuture 2023 Annual Report ta 2024 0321 |  | 2023 | summary/2024/Recordedfuture 2023 Annual Report ta-2024-0321.pdf | report | TLP:CLEAR | 中 |
-| source--akira--bb1f08473f70c0dc | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
+| source--akira--27cb51a35b3bec43 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
+| source--akira--2b6e6ecd4990de2f | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--akira--3088fb60e523da28 | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--32f65c0bc7e8a84e | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--akira--3325725201dc8c60 | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
+| source--akira--36aae6f00db529c3 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--36d007865f615629 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--38a4f397d065ae6d | UK NCC Group Cyber Threat Intelligence Report September 2025 |  | 2025 | summary/2025/UK_NCC_Group_Cyber_Threat_Intelligence_Report_September_2025_.pdf | report | TLP:CLEAR | 中 |
+| source--akira--418d2fa4261239e2 | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
+| source--akira--42aad3201fefdae0 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--49a673a991a5f187 | 2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report |  | 2024 | summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf | report | TLP:CLEAR | 中 |
 | source--akira--4ad0a6f48bf19b50 | Worldwide Ransomware Attacks as of June 2024 Consistent With Previous Year Sep2024 |  | 2024 | summary/2024/Worldwide_Ransomware_Attacks_as_of_June_2024_Consistent_With_Previous_Year_Sep2024.pdf | report | TLP:CLEAR | 中 |
-| source--akira--5d4c851281b38587 | Year in Review of ZeroDays |  | 不明 | summary/2024/Year_in_Review_of_ZeroDays.pdf | report | TLP:CLEAR | 中 |
-| source--akira--9e51602583523baa | crowdstrike 2024 threat hunting report |  | 2024 | summary/2024/crowdstrike-2024-threat-hunting-report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--b9d00c6466436cc2 | rapid7 2024 attack intelligence report |  | 2024 | summary/2024/rapid7_2024_attack_intelligence_report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--4b736d62db13a141 | eset threat report h22025 |  | 不明 | summary/2025/eset-threat-report-h22025.pdf | report | TLP:CLEAR | 中 |
+| source--akira--514fbc646fc97e62 | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
+| source--akira--51a9a80a40e5b38a | 2023 Network Vulnerability Situation Research Report |  | 2023 | summary/2024/2023 Network Vulnerability Situation Research Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--538a279c502cbba5 | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
+| source--akira--542d7483eae9b641 | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
+| source--akira--568c9a2b36c97964 | 2024 H1 Threat Intel Report Final |  | 2024 | summary/2024/2024-H1-Threat-Intel-Report-Final.pdf | report | TLP:CLEAR | 中 |
+| source--akira--58d86e7435abe035 | PL Report CP 2024 |  | 2024 | summary/2025/PL_Report_CP_2024.pdf | report | TLP:CLEAR | 中 |
 | source--akira--5b258aa6b988bcdb | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--akira--aabc4ebaab98ede0 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--akira--5d4c851281b38587 | Year in Review of ZeroDays |  | 不明 | summary/2024/Year_in_Review_of_ZeroDays.pdf | report | TLP:CLEAR | 中 |
+| source--akira--5dd0bf7509af3590 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--akira--6096ad9b7f2a058f | GRIT Ransomware Annual Report 2023 |  | 2023 | summary/2024/GRIT_Ransomware_Annual_Report_2023.pdf | report | TLP:CLEAR | 中 |
+| source--akira--612fd3b82de9660d | akira |  | 不明 | actor_profile/evidence/akira.csv | structured-data | TLP:CLEAR | 中 |
+| source--akira--6ec6b80b4002a792 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--akira--75463246cf0fe661 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
 | source--akira--7d5812830952d88f | 2024 Threat Intelligence Annual Report |  | 2024 | summary/2025/2024 Threat Intelligence Annual Report.pdf | report | TLP:CLEAR | 中 |
 | source--akira--800af134a98235e6 | 2024YiR report |  | 2024 | summary/2025/2024YiR-report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--49a673a991a5f187 | 2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report |  | 2024 | summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--006cc4612e03b47f | 2024 IC3Report |  | 2024 | summary/2025/2024_IC3Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--1cb9d528e50b35ee | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--akira--b3310bf3e8552cd3 | 2025 Global Threat Intelligence Report |  | 2025 | summary/2025/2025 Global Threat Intelligence Report .pdf | report | TLP:CLEAR | 中 |
-| source--akira--75463246cf0fe661 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
-| source--akira--36aae6f00db529c3 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--418d2fa4261239e2 | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
-| source--akira--f3b1d62374240b5f | CrowdStrike 2025 Threat Hunting Report |  | 2025 | summary/2025/CrowdStrike 2025 Threat Hunting Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--514fbc646fc97e62 | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
-| source--akira--d9cd91cce3cfee50 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--akira--fb2302896ed07e4f | Dragos 2025 OT Cybersecurity Report A Year in Review |  | 2025 | summary/2025/Dragos-2025-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
-| source--akira--1a1b03f754d2172b | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
-| source--akira--a07a0174189cad73 | Microsoft Digital Defense Report 2025 |  | 2025 | summary/2025/Microsoft-Digital-Defense-Report-2025.pdf | report | TLP:CLEAR | 中 |
-| source--akira--58d86e7435abe035 | PL Report CP 2024 |  | 2024 | summary/2025/PL_Report_CP_2024.pdf | report | TLP:CLEAR | 中 |
-| source--akira--d19e3d462720711d | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
-| source--akira--38a4f397d065ae6d | UK NCC Group Cyber Threat Intelligence Report September 2025 |  | 2025 | summary/2025/UK_NCC_Group_Cyber_Threat_Intelligence_Report_September_2025_.pdf | report | TLP:CLEAR | 中 |
-| source--akira--0628019fb204df48 | annual threat report 2024 |  | 2024 | summary/2025/annual-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
-| source--akira--0e6eb89129aff162 | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
-| source--akira--98c32bb9a3977abf | eset threat report h12025 |  | 不明 | summary/2025/eset-threat-report-h12025.pdf | report | TLP:CLEAR | 中 |
-| source--akira--4b736d62db13a141 | eset threat report h22025 |  | 不明 | summary/2025/eset-threat-report-h22025.pdf | report | TLP:CLEAR | 中 |
-| source--akira--5dd0bf7509af3590 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
-| source--akira--6ec6b80b4002a792 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--akira--8bae969e58325726 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--3325725201dc8c60 | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
-| source--akira--42aad3201fefdae0 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--a4c2c4f38548d338 | CrowdStrike 2026 Global Threat Report |  | 2026 | summary/2026/CrowdStrike-2026-Global-Threat-Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--36d007865f615629 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--15c750a04fa45c17 | Flashpoint 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/Flashpoint_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
-| source--akira--542d7483eae9b641 | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
-| source--akira--0fe45032204f859a | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
-| source--akira--07db6468fd9302b3 | eSentire TRU Report The Industrialization of Cybercrime Identities are Under Attack 2026 |  | 2026 | summary/2026/eSentire_TRU_Report_The-Industrialization-of-Cybercrime-Identities-are-Under-Attack_2026.pdf | report | TLP:CLEAR | 中 |
 | source--akira--82ed2309ea8b2680 | managed xdr global threat report |  | 不明 | summary/2026/managed-xdr-global-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--8bae969e58325726 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--98c32bb9a3977abf | eset threat report h12025 |  | 不明 | summary/2025/eset-threat-report-h12025.pdf | report | TLP:CLEAR | 中 |
+| source--akira--9bf876aff17c344e | First 6 Half Year Threat Report 2024 |  | 2024 | summary/2024/First 6 Half-Year Threat Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--akira--9e51602583523baa | crowdstrike 2024 threat hunting report |  | 2024 | summary/2024/crowdstrike-2024-threat-hunting-report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--a07a0174189cad73 | Microsoft Digital Defense Report 2025 |  | 2025 | summary/2025/Microsoft-Digital-Defense-Report-2025.pdf | report | TLP:CLEAR | 中 |
+| source--akira--a07afbfda4fd57e6 | CERTFR 2024 CTI 002 |  | 2024 | summary/2024/CERTFR-2024-CTI-002.pdf | report | TLP:CLEAR | 中 |
+| source--akira--a4c2c4f38548d338 | CrowdStrike 2026 Global Threat Report |  | 2026 | summary/2026/CrowdStrike-2026-Global-Threat-Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--a6c9c0cc8f76eac6 | 2024 dbir data breach investigations report |  | 2024 | summary/2024/2024-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--aabc4ebaab98ede0 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--akira--b3310bf3e8552cd3 | 2025 Global Threat Intelligence Report |  | 2025 | summary/2025/2025 Global Threat Intelligence Report .pdf | report | TLP:CLEAR | 中 |
+| source--akira--b9d00c6466436cc2 | rapid7 2024 attack intelligence report |  | 2024 | summary/2024/rapid7_2024_attack_intelligence_report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--bb1f08473f70c0dc | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
+| source--akira--bc3cd96a6cfcf450 | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
+| source--akira--c28cea4a3fa56026 | CGCYBER 2024 CTIME |  | 2024 | International Strategic/USA/2025/CGCYBER 2024 CTIME.pdf | report | TLP:CLEAR | 中 |
+| source--akira--cdc1a83bea8ca73e | 2024 Cyber Threat Report Huntress FINAL |  | 2024 | summary/2024/2024_Cyber_Threat_Report_Huntress_FINAL.pdf | report | TLP:CLEAR | 中 |
+| source--akira--d19e3d462720711d | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
+| source--akira--d9cd91cce3cfee50 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--akira--dc63de875955899e | Norma+Cyber+Annual+Threat+Assessment+ +Spreads |  | 不明 | summary/2024/Norma+Cyber+Annual+Threat+Assessment+-+Spreads.pdf | report | TLP:CLEAR | 中 |
+| source--akira--e3e88d8bbef48ddb | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--f03089def290732f | 2025 IC3Report |  | 2025 | cybercrime/2026/2025_IC3Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--f3b1d62374240b5f | CrowdStrike 2025 Threat Hunting Report |  | 2025 | summary/2025/CrowdStrike 2025 Threat Hunting Report.pdf | report | TLP:CLEAR | 中 |
+| source--akira--fb2302896ed07e4f | Dragos 2025 OT Cybersecurity Report A Year in Review |  | 2025 | summary/2025/Dragos-2025-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
+| source--daily-0662aaff581d0ab45bce | 重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される | bleepingcomputer.com | 2024-09-11 | https://www.bleepingcomputer.com/news/security/critical-sonicwall-sslvpn-bug-exploited-in-ransomware-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-08853165537986c77f7f | Akiraランサムウェア：支払いだけでは匿名性を保てない | suspectfile.com | 2025-06-01 | https://www.suspectfile.com/akira-ransomware-when-paying-isnt-enough-to-stay-anonymous/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-251d2ee4d8e5443dd89d | Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害 | bleepingcomputer.com | 2025-09-29 | https://www.bleepingcomputer.com/news/security/akira-ransomware-breaching-mfa-protected-sonicwall-vpn-accounts/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-29f74832270318181f72 | AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | bleepingcomputer.com | 2024-10-14 | https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-339537ab2997fa08795e | Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に | bleepingcomputer.com | 2025-08-02 | https://www.bleepingcomputer.com/news/security/surge-of-akira-ransomware-attacks-hits-sonicwall-firewall-devices/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-3c12eda093e5c59e0ee6 | FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 | bleepingcomputer.com | 2024-10-28 | https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-48e314e2ec6d02091f74 | CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告 | bleepingcomputer.com | 2025-11-15 | https://www.bleepingcomputer.com/news/security/cisa-warns-of-akira-ransomware-linux-encryptor-targeting-nutanix-vms/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-4ccacc67cc78bb4bfd28 | SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 | bleepingcomputer.com | 2025-08-08 | https://www.bleepingcomputer.com/news/security/sonicwall-finds-no-sslvpn-zero-day-links-ransomware-attacks-to-2024-flaw/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-4e4cc7628ff86fb403b4 | AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 | bleepingcomputer.com | 2025-08-07 | https://www.bleepingcomputer.com/news/security/akira-ransomware-abuses-cpu-tuning-tool-to-disable-microsoft-defender/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-73166036d74c23fae026 | トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 | bleepingcomputer.com | 2025-03-06 | https://www.bleepingcomputer.com/news/security/toronto-zoo-shares-update-on-last-years-ransomware-attack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-7fac464b25387fdb006e | Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化 | bleepingcomputer.com | 2025-04-29 | https://www.bleepingcomputer.com/news/security/hitachi-vantara-takes-servers-offline-after-akira-ransomware-attack/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-89a8fc15ce47bbec4793 | FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | bleepingcomputer.com | 2024-04-19 | https://www.bleepingcomputer.com/news/security/fbi-akira-ransomware-raked-in-42-million-from-250-plus-victims/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-a0023564f914d51f566d | 被害者が支払いをやめたことで、ランサムウェアの利益が減少 | bleepingcomputer.com | 2025-10-28 | https://www.bleepingcomputer.com/news/security/ransomware-profits-drop-as-victims-stop-paying-hackers/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-c6a57e3d4fd20c381ed8 | Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用 | bleepingcomputer.com | 2025-09-12 | https://www.bleepingcomputer.com/news/security/akira-ransomware-exploiting-critical-sonicwall-sslvpn-bug-again/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-efcfda27f495de5d5c60 | Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論 | bleepingcomputer.com | 2025-11-06 | https://www.bleepingcomputer.com/news/security/apache-openoffice-disputes-data-breach-claims-by-ransomware-gang/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-f08faf92c2b925e530ef | GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開 | bleepingcomputer.com | 2025-03-17 | https://www.bleepingcomputer.com/news/security/gpu-powered-akira-ransomware-decryptor-released-on-github/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

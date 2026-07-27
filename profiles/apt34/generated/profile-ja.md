@@ -1,9 +1,9 @@
 # APT34 脅威アクタープロファイル
 
-プロファイルID: `actor--apt34`  
-状態: review  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--apt34`
+- 状態: review
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -185,11 +185,11 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Juicy Mix | campaign | 2022-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | [Juicy Mix](https://attack.mitre.org/campaigns/C0044) was a campaign conducted by [OilRig](https://attack.mitre.org/groups/G0049) throughout 2022 that targeted Israeli organizations with the [Mango](https://attack.mitre.org/software/S1169) backdoor.(Citation: ESET OilRig Campaigns Sep 2023) | 高 | `source--mitre-attack-19-1` |
-| Outer Space | campaign | 2021-01-01T05:00:00.000Z | 2021-12-01T05:00:00.000Z | [Outer Space](https://attack.mitre.org/campaigns/C0042) was a campaign conducted by [OilRig](https://attack.mitre.org/groups/G0049) throughout 2021 that used the [SampleCheck5000](https://attack.mitre.org/software/S1168) downloader and [Solar](https://attack.mitre.org/software/S1166) backdoor to target Israeli organizations.(Citation: ESET OilRig Campaigns Sep 2023) | 高 | `source--mitre-attack-19-1` |
-| APT34 Destructive Wiper Operations (2016-2019) | historical-activity-cluster | 2016 | 2019 | Unit 42 retrospectively places APT34/Evasive Serpens among Iranian groups conducting visible disk-wiping operations against IT infrastructure in this period. | 高 | `source--unit42-iran-threat-evolution-2026` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Juicy Mix | campaign | 2022-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 2026-05-12 | [Juicy Mix](https://attack.mitre.org/campaigns/C0044) was a campaign conducted by [OilRig](https://attack.mitre.org/groups/G0049) throughout 2022 that targeted Israeli organizations with the [Mango](https://attack.mitre.org/software/S1169) backdoor.(Citation: ESET OilRig Campaigns Sep 2023) | 高 | `source--mitre-attack-19-1` |
+| Outer Space | campaign | 2021-01-01T05:00:00.000Z | 2021-12-01T05:00:00.000Z | 2026-05-12 | [Outer Space](https://attack.mitre.org/campaigns/C0042) was a campaign conducted by [OilRig](https://attack.mitre.org/groups/G0049) throughout 2021 that used the [SampleCheck5000](https://attack.mitre.org/software/S1168) downloader and [Solar](https://attack.mitre.org/software/S1166) backdoor to target Israeli organizations.(Citation: ESET OilRig Campaigns Sep 2023) | 高 | `source--mitre-attack-19-1` |
+| APT34 Destructive Wiper Operations (2016-2019) | historical-activity-cluster | 2016 | 2019 | 2026 | Unit 42 retrospectively places APT34/Evasive Serpens among Iranian groups conducting visible disk-wiping operations against IT infrastructure in this period. | 高 | `source--unit42-iran-threat-evolution-2026` |
 
 Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016～2019年にITインフラへ高可視性のディスク破壊攻撃を行ったイラン系グループの一つとして位置付けた。周辺記述は複数グループを扱うため、個別マルウェアの帰属は限定して記録した。
 

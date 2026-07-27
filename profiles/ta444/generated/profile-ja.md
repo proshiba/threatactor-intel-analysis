@@ -1,9 +1,9 @@
 # TA444 脅威アクタープロファイル
 
-プロファイルID: `actor--ta444`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ta444`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:36Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮ハッカー集団がZoom通話で重役をディープフェイクし、Macマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2025-06-19 | 北朝鮮のAPT集団BlueNoroffがZoom会議にディープフェイクを巧妙に埋め込んだ攻撃を実行 2025年6月11日にHuntressが調査した企業ネットワーク侵害で発見 Telegram経由の招待リンクは偽Zoomドメインへ誘導。被害者が参加すると企業の幹部や外部参加者のディープフェイク動画が流れる 会議中に被害者のマイクが機能しないという問題が発生したように見せかけ、問題を修正するためとして、Zoomの拡張機能と称するダウンロードを指示し、AppleScriptをダウンロードさせる マルウェアはRosetta 2のインストール有無を判定し、インストールされていなければインストールしてペイロードを/tmp/icloud_helperから実行 Telegram型持続インプラントやバックドアなど8種のMacマルウェアが確認 | 中 | `source--daily-a449b8d5424ffffad583` |
 
 
 
@@ -141,16 +143,17 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-a449b8d5424ffffad583 | 北朝鮮ハッカー集団がZoom通話で重役をディープフェイクし、Macマルウェアを拡散 | bleepingcomputer.com | 2025-06-19 | https://www.bleepingcomputer.com/news/security/north-korean-hackers-deepfake-execs-in-zoom-call-to-spread-mac-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--ta444--01f6dbb3cdcf5f99 | ta444 |  | 不明 | actor_profile/evidence/ta444.csv | structured-data | TLP:CLEAR | 中 |
+| source--ta444--153a3a81efbff396 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
+| source--ta444--3626abb1436b84a4 | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
+| source--ta444--9d95eacf9707f985 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--ta444--b46c1dc9431c015c | North Korea’s Cyber Strategy |  | 不明 | International Strategic/Korea/North Korea’s Cyber Strategy.pdf | report | TLP:CLEAR | 中 |
 | source--ta444--b4f4dd45ea4593ef | Global APT 2023 Mid Year Report QIANXIN |  | 2023 | summary/2023/Global APT 2023 Mid-Year Report-QIANXIN.pdf | report | TLP:CLEAR | 中 |
-| source--ta444--153a3a81efbff396 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
-| source--ta444--9d95eacf9707f985 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--ta444--3626abb1436b84a4 | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

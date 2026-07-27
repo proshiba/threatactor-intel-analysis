@@ -1,9 +1,9 @@
 # Lunar Spider 脅威アクタープロファイル
 
-プロファイルID: `actor--lunar-spider`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--lunar-spider`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:33Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -104,7 +104,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | intrusion | 不明 | 不明 | 2025-09-30 | From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | 高 | `source--daily-36945315bd0d7f2ed55e` |
 
 
 
@@ -145,18 +147,19 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--lunar-spider--e1b8016de7de9455 | lunar spider |  | 不明 | actor_profile/evidence/lunar-spider.csv | structured-data | TLP:CLEAR | 中 |
-| source--lunar-spider--b49136c356271e5c | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
+| source--daily-36945315bd0d7f2ed55e | From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | thedfirreport.com | 2025-09-30 | https://thedfirreport.com/2025/09/29/from-a-single-click-how-lunar-spider-enabled-a-near-two-month-intrusion/ | osint-report | TLP:CLEAR | 中 |
 | source--lunar-spider--20515a39998cce50 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
 | source--lunar-spider--233925f8f90d7d70 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--lunar-spider--b00bdf2052bfa06e | The CrowdStrike 2021 Global Threat Report |  | 2021 | summary/2021/The CrowdStrike 2021 Global Threat Report.pdf | report | TLP:CLEAR | 中 |
 | source--lunar-spider--93573b7628e57b32 | Raport analize PROFILI I GRUPEVE TE HAKERAVE IRANIANE |  | 不明 | summary/2024/Raport-analize-PROFILI-I-GRUPEVE-TE-HAKERAVE-IRANIANE.pdf | report | TLP:CLEAR | 中 |
-| source--lunar-spider--c56d4edb1ed89e69 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
+| source--lunar-spider--b00bdf2052bfa06e | The CrowdStrike 2021 Global Threat Report |  | 2021 | summary/2021/The CrowdStrike 2021 Global Threat Report.pdf | report | TLP:CLEAR | 中 |
+| source--lunar-spider--b49136c356271e5c | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
 | source--lunar-spider--c49a90a256a83118 | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--lunar-spider--c56d4edb1ed89e69 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
+| source--lunar-spider--e1b8016de7de9455 | lunar spider |  | 不明 | actor_profile/evidence/lunar-spider.csv | structured-data | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

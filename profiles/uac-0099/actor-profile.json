@@ -4,7 +4,7 @@
   "name": "UAC-0099",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-26T06:13:31Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "languages": [
     "ja"
   ],
@@ -141,7 +141,7 @@
     {
       "activity_id": "activity--daily-72da5dad97e2e21f550f",
       "name": "ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール",
-      "activity_type": "reported-activity",
+      "activity_type": "malware-campaign",
       "first_observed": {
         "value": null,
         "precision": "unknown",
@@ -153,6 +153,12 @@
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       },
       "description": "ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。",
       "target_refs": [],
@@ -166,7 +172,39 @@
       "evidence_refs": [
         "source--daily-b6ba84745cdc81a329c5"
       ],
-      "analyst_notes": "日次収集レコード daily-record--72da5dad97e2e21f550fdfbc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: CERT-UAのインシデント報告URLとtech-memo上の構造化IOCに基づく。監査時に本文を再取得できなかったため高確度へ引き上げず、元URLと取得制約を台帳に保持する。"
+      "analyst_notes": "日次収集レコード daily-record--72da5dad97e2e21f550fdfbc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: CERT-UAのインシデント報告URLとtech-memo上の構造化IOCに基づく。監査時に本文を再取得できなかったため高確度へ引き上げず、元URLと取得制約を台帳に保持する。"
+    },
+    {
+      "activity_id": "activity--daily-e526344e9500f358b6b5",
+      "name": "Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害",
+      "activity_type": "disruptive-activity",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-11-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-acae91555bc1bc0a4220"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--e526344e9500f358b6b500a3 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。"
     }
   ],
   "targets": {
@@ -198,6 +236,24 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--daily-acae91555bc1bc0a4220",
+      "path": "https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
+      "title": "Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2025-11-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251107.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-b6ba84745cdc81a329c5",
       "path": "https://cert.gov.ua/article/6318634",
       "title": "ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール",
@@ -213,7 +269,7 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260724.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260724.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--mitre-attack-19-1",

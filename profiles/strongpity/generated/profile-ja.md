@@ -1,9 +1,9 @@
 # StrongPity 脅威アクタープロファイル
 
-プロファイルID: `actor--strongpity`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--strongpity`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -115,9 +115,9 @@ StrongPityの標準化プロファイル。リポジトリ内の専用資料1件
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| C0033 | campaign | 2016-05-01T07:00:00.000Z | 2023-01-01T08:00:00.000Z | [C0033](https://attack.mitre.org/campaigns/C0033) was a [PROMETHIUM](https://attack.mitre.org/groups/G0056) campaign during which they used [StrongPity](https://attack.mitre.org/software/S0491) to target Android users. [C0033](https://attack.mitre.org/campaigns/C0033) was the first publicly documented mobile campaign for [PROMETHIUM](https://attack.mitre.org/groups/G0056), who previously used Windows-based techniques.(Citation: welivesec_strongpity) | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| C0033 | campaign | 2016-05-01T07:00:00.000Z | 2023-01-01T08:00:00.000Z | 2026-05-12 | [C0033](https://attack.mitre.org/campaigns/C0033) was a [PROMETHIUM](https://attack.mitre.org/groups/G0056) campaign during which they used [StrongPity](https://attack.mitre.org/software/S0491) to target Android users. [C0033](https://attack.mitre.org/campaigns/C0033) was the first publicly documented mobile campaign for [PROMETHIUM](https://attack.mitre.org/groups/G0056), who previously used Windows-based techniques.(Citation: welivesec_strongpity) | 高 | `source--mitre-attack-19-1` |
 
 
 

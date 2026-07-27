@@ -4,7 +4,7 @@
   "name": "UAC-0200",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-5c6b7753b031e9d75cc5",
+      "name": "ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-03-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ウクライナのコンピュータ緊急対応チーム（CERT-UA）は、防衛産業企業の従業員や軍関係者を狙ったSignalアカウントを悪用したマルウェア攻撃を警告。 攻撃者は、会議報告書を装ったアーカイブをSignalメッセージで送信し、既存の連絡先からのメッセージとして信頼性を高めている。 アーカイブ内にはPDFと実行ファイルが含まれ、PDFを開くと実行ファイルを起動するように促される。この実行ファイルからDarkTortillaと呼ばれるマルウェアが展開される。 DarkTortillaは、リモートアクセス型トロイの木馬（RAT）であるDark Crystal RAT（DCRAT）を復号・実行する。 この攻撃活動は、2024年6月以降「UAC-0200」として追跡されており、2025年2月以降、無人航空機（UAV）や電子戦システムなどの軍事技術に関するテーマを餌にしている。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-1b5373977ade6efec051"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--5c6b7753b031e9d75cc5220e から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃活動は、2024年6月以降「UAC-0200」として追跡されており、2025年2月以降、無人航空機（UAV）や電子戦システムなどの軍事技術に関するテーマを餌にしている。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +102,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,58 +121,40 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--uac-0200--850858c536601d79",
-      "path": "actor_profile/evidence/uac-0200.csv",
-      "title": "uac 0200",
-      "publisher": "",
+      "source_id": "source--daily-1b5373977ade6efec051",
+      "path": "https://www.bleepingcomputer.com/news/security/ukrainian-military-targeted-in-new-signal-spear-phishing-attacks/",
+      "title": "ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に",
+      "publisher": "bleepingcomputer.com",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--uac-0200--80b75f730585a4a0",
-      "path": "International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf",
-      "title": "Cyber operations by russia new goals, tools and groups",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--uac-0200--7e3a4b353fb977dd",
-      "path": "summary/2025/CERTFR-2025-CTI-004.pdf",
-      "title": "CERTFR 2025 CTI 004",
-      "publisher": "",
-      "published_at": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2025-03-20T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250320.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-cert-ua-uac-index",
@@ -184,6 +181,60 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2026-07-25T13:48:37Z. This index is derived from CERT-UA's official article titles and summaries; open the linked article before extending the claim beyond the indexed text."
+    },
+    {
+      "source_id": "source--uac-0200--7e3a4b353fb977dd",
+      "path": "summary/2025/CERTFR-2025-CTI-004.pdf",
+      "title": "CERTFR 2025 CTI 004",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0200--80b75f730585a4a0",
+      "path": "International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf",
+      "title": "Cyber operations by russia new goals, tools and groups",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--uac-0200--850858c536601d79",
+      "path": "actor_profile/evidence/uac-0200.csv",
+      "title": "uac 0200",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
     }
   ],
   "assessment": {

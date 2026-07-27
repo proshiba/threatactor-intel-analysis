@@ -1,9 +1,9 @@
 # APT43 脅威アクタープロファイル
 
-プロファイルID: `actor--apt43`  
-状態: review  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--apt43`
+- 状態: review
+- 更新日時: 2026-07-27T11:17:22Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -101,15 +101,15 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--kportscan | KPortScan | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--psexec | PsExec | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--procdump | Procdump | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--mimikatz | Mimikatz | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--eternal-suite-of-exploits | Eternal suite of exploits | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--nirsoft-mailpassview-network-password-recovery-remote-desktop-passview-sniffpass-webbrowserpassview | NirSoft MailPassView/Network Password Recovery/Remote Desktop PassView/SniffPass/WebBrowserPassView | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--mechanical | Mechanical | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--grease | Grease | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--kgh-spy | KGH_SPY | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--kportscan | KPortScan | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--mechanical | Mechanical | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--mimikatz | Mimikatz | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--nirsoft-mailpassview-network-password-recovery-remote-desktop-passview-sniffpass-webbrowserpassview | NirSoft MailPassView/Network Password Recovery/Remote Desktop PassView/SniffPass/WebBrowserPassView | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--procdump | Procdump | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--psexec | PsExec | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -135,7 +135,12 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | phishing-campaign | 不明 | 不明 | 2026-01-10 | FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。 | 中 | `source--daily-4c3098e731ae81f16008` |
+| 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | phishing-campaign | 不明 | 不明 | 2024-05-04 | NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。 弱いDMARCポリシーが設定されているドメインから偽のメールを送信することで、攻撃者は偽のメールを信頼できるソースから送信されたように見せかける。 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 攻撃は日本、韓国、米国、その他の国々のシンクタンクや研究センター、報道機関を標的としている。 「v=DMARC1; p=reject;」または「v=DMARC1; p=quarantine;」などのDMARCポリシーで、なりすましメールの送信に悪用されるのを防止することが推奨されている。 | 中 | `source--daily-251ff3261ef519dfe8d5` |
+| 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
 
 2025年1月、GTIGはAPT43関係者が複数の公開LLMツールへアクセスしていた証拠を報告した。ただし目的は不明であり、特定の攻撃工程での利用を示す情報ではない。
 
@@ -260,18 +265,22 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--apt43--d022e60103e01413 | APT43 Report |  | 不明 | APT43/APT43 Report.pdf | report | TLP:CLEAR | 中 |
 | source--apt43--93a774e52c160a9a | README |  | 不明 | APT43/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--apt43--d022e60103e01413 | APT43 Report |  | 不明 | APT43/APT43 Report.pdf | report | TLP:CLEAR | 中 |
+| source--daily-251ff3261ef519dfe8d5 | 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | bleepingcomputer.com | 2024-05-04 | https://www.bleepingcomputer.com/news/security/nsa-warns-of-north-korean-hackers-exploiting-weak-dmarc-email-policies/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-444c87a0051642065f55 | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | bleepingcomputer.com | 2024-08-06 | https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-4c3098e731ae81f16008 | FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | bleepingcomputer.com | 2026-01-10 | https://www.bleepingcomputer.com/news/security/fbi-warns-about-kimsuky-hackers-using-qr-codes-to-phish-us-orgs/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-dddef70e68c0dc59a5d3 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | thehackernews.com | 2025-09-22 | https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html | osint-report | TLP:CLEAR | 中 |
 | source--gtig-apt43-llm-access-2025 | Adversarial Misuse of Generative AI | Google Threat Intelligence Group | 2025-01-29 | https://cloud.google.com/blog/topics/threat-intelligence/adversarial-misuse-generative-ai | vendor-research | TLP:CLEAR | 高 |
-| source--mitre-live-kimsuky-2026 | Kimsuky, Group G0094 | MITRE ATT&CK | 2026-04-23 | https://attack.mitre.org/groups/G0094/ | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mandiant-apt43-2023 | APT43: North Korean Group Uses Cybercrime to Fund Espionage Operations | Mandiant | 2023-03-28 | https://cloud.google.com/blog/topics/threat-intelligence/apt43-north-korea-cybercrime-espionage/ | vendor-research | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-live-kimsuky-2026 | Kimsuky, Group G0094 | MITRE ATT&CK | 2026-04-23 | https://attack.mitre.org/groups/G0094/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

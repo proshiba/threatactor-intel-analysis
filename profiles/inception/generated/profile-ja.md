@@ -1,9 +1,9 @@
 # Inception 脅威アクタープロファイル
 
-プロファイルID: `actor--inception`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--inception`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -114,10 +114,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Red October | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Cloud Atlas | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Red October | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Cloud Atlas | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 Red October; Cloud Atlas
 

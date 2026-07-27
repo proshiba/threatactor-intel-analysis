@@ -4,7 +4,7 @@
   "name": "Magecart",
   "status": "draft",
   "created_at": "2026-07-25T09:00:38Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:04:33Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-bcf2e1dd42b8e1d500d6",
+      "name": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "activity_type": "campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-5b3e49d018b8dff5644f"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--bcf2e1dd42b8e1d500d6f319 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +102,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,6 +121,24 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--daily-5b3e49d018b8dff5644f",
+      "path": "https://sansec.io/research/stripe-api-skimmer-infrastructure",
+      "title": "クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用",
+      "publisher": "sansec.io",
+      "published_at": {
+        "value": "2026-06-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260606.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--magecart--15766072d35a10d4",
       "path": "Magecart/README.MD",
       "title": "README",
@@ -122,6 +155,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-threat-actor",

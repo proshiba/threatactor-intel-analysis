@@ -1,9 +1,9 @@
 # Transparent Tribe 脅威アクタープロファイル
 
-プロファイルID: `actor--transparent-tribe`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--transparent-tribe`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:36Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -92,12 +92,12 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--crimson | Crimson | [Crimson](https://attack.mitre.org/software/S0115) is a remote access Trojan that has been used by [Transparent Tribe](https://attack.mitre.org/groups/G0134) since at least 2016.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--crimson-rat | Crimson RAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--darkcomet | DarkComet | [DarkComet](https://attack.mitre.org/software/S0334) is a Windows remote administration tool and backdoor.(Citation: TrendMicro DarkComet Sept 2014)(Citation: Malwarebytes DarkComet March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--limepad | Limepad | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--njrat | njRAT | [njRAT](https://attack.mitre.org/software/S0385) is a remote access tool (RAT) that was first observed in 2012. It has been used by threat actors in the Middle East.(Citation: Fidelis njRAT June 2013) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--obliquerat | ObliqueRAT | [ObliqueRAT](https://attack.mitre.org/software/S0644) is a remote access trojan, similar to [Crimson](https://attack.mitre.org/software/S0115), that has been in use by [Transparent Tribe](https://attack.mitre.org/groups/G0134) since at least 2020.(Citation: Talos Oblique RAT March 2021)(Citation: Talos Transparent Tribe May 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--peppy | Peppy | [Peppy](https://attack.mitre.org/software/S0643) is a Python-based remote access Trojan, active since at least 2012, with similarities to [Crimson](https://attack.mitre.org/software/S0115).(Citation: Proofpoint Operation Transparent Tribe March 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--njrat | njRAT | [njRAT](https://attack.mitre.org/software/S0385) is a remote access tool (RAT) that was first observed in 2012. It has been used by threat actors in the Middle East.(Citation: Fidelis njRAT June 2013) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--crimson-rat | Crimson RAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--limepad | Limepad | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -121,10 +121,11 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Operation C-Major | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| C0011 | campaign | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | [C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)  | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | malware-campaign | 不明 | 不明 | 2025-05-13 | ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
+| Operation C-Major | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| C0011 | campaign | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 2026-05-12 | [C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)  | 高 | `source--mitre-attack-19-1` |
 
 Operation C-Major
 
@@ -210,18 +211,19 @@ Operation C-Major
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--transparent-tribe--0f08047cfac5b7bb | README |  | 不明 | APT36/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--transparent-tribe--8c7cc7c46f9a6fd9 | transparent tribe apt36 cc network tradecraft report |  | 不明 | APT36/transparent-tribe-apt36-cc-network-tradecraft-report.pdf | report | TLP:CLEAR | 中 |
-| source--transparent-tribe--be73ac7ec108bc35 | README |  | 不明 | TransparentTribe/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--transparent-tribe--3fb4d998121e8765 | transparent tribe threat insight en2020 |  | 2020 | TransparentTribe/transparent-tribe-threat-insight-en2020.pdf | report | TLP:CLEAR | 中 |
+| source--daily-b5bf76c5ef95da099eb5 | ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | bleepingcomputer.com | 2025-05-13 | https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--transparent-tribe--0f08047cfac5b7bb | README |  | 不明 | APT36/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--transparent-tribe--3fb4d998121e8765 | transparent tribe threat insight en2020 |  | 2020 | TransparentTribe/transparent-tribe-threat-insight-en2020.pdf | report | TLP:CLEAR | 中 |
+| source--transparent-tribe--8c7cc7c46f9a6fd9 | transparent tribe apt36 cc network tradecraft report |  | 不明 | APT36/transparent-tribe-apt36-cc-network-tradecraft-report.pdf | report | TLP:CLEAR | 中 |
+| source--transparent-tribe--be73ac7ec108bc35 | README |  | 不明 | TransparentTribe/README.MD | repository-notes | TLP:CLEAR | 中 |
 
 ## 自由記述
 

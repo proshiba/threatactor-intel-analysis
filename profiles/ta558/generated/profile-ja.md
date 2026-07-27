@@ -1,9 +1,9 @@
 # TA558 脅威アクタープロファイル
 
-プロファイルID: `actor--ta558`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ta558`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:25Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| SteganoAmor攻撃が全世界の320の組織を標的に | malware-campaign | 不明 | 不明 | 2024-04-16 | SteganoAmorは画像内に隠された悪意あるコードを利用 TA558グループによる攻撃。様々な分野や国に影響を与えた320以上の攻撃が行われた TA558は、2018年から活動しており、標的は主にラテンアメリカのホスピタリティ関連組織 Microsoft Officeの脆弱性CVE-2017-11882を悪用 様々なマルウェアが配布される、AgentTeslaやFormBookなど | 中 | `source--daily-09539f0db091b1cf7875` |
+| TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開 | phishing-campaign | 不明 | 不明 | 2025-09-18 | 脅威グループTA558（KasperskyはRevengeHotelsとして追跡）が、ブラジルやスペイン語圏のホテルを狙いRATを配布。 2025年夏に観測。請求書や予約・採用通知を装うフィッシングで、ポルトガル語／スペイン語メールから感染を誘導。 LLM生成と推測されるコメント多めのJSローダーとPowerShellダウンローダーで最終的にVenom RATを展開。 Venom RATは窃取・リバースプロキシ・アンチキル・永続化を備え、特権化やDefender停止、USB経由拡散にも対応。 目的はホテルシステムやオンライン旅行代理店(OTA)（例: Booking[.]com）に保管された宿泊客のクレジットカード情報の窃取。 | 高 | `source--daily-f057489c6a517d53de51` |
 
 
 
@@ -141,13 +144,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--ta558--c50b7358c4f07d6d | ta558 |  | 不明 | actor_profile/evidence/ta558.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-09539f0db091b1cf7875 | SteganoAmor攻撃が全世界の320の組織を標的に | bleepingcomputer.com | 2024-04-16 | https://www.bleepingcomputer.com/news/security/new-steganoamor-attacks-use-steganography-to-target-320-orgs-globally/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-f057489c6a517d53de51 | TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開 | thehackernews.com | 2025-09-18 | https://thehackernews.com/2025/09/ta558-uses-ai-generated-scripts-to.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--ta558--4fa855b571aca4ba | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
 | source--ta558--748588cb3831785d | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--ta558--c50b7358c4f07d6d | ta558 |  | 不明 | actor_profile/evidence/ta558.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -13,6 +13,7 @@ from typing import Any
 
 from daily_common import (
     ActorRegistry,
+    assess_activity_claim,
     date_from_path,
     extract_artifacts,
     is_file_like,
@@ -282,6 +283,18 @@ def main() -> int:
                     "sources": [],
                     "capability_decisions": [],
                     "review_notes": "",
+                    "activity_claim": {
+                        "assessment": "structured-actor-field",
+                        "actor_role": "operator",
+                        "match_location": "ioc-actor-field",
+                        "evidence_text": row["actor"],
+                        "reasons": [
+                            "tech-memo IOC CSVの構造化actor列に記載されている"
+                        ],
+                        "suggested_confidence": qualifier_confidence(
+                            row["actor"], row["confidence"]
+                        ),
+                    },
                 }
                 add_unique_source(
                     records[key],
@@ -343,6 +356,12 @@ def main() -> int:
                 ],
                 "capability_decisions": [],
                 "review_notes": "",
+                "activity_claim": assess_activity_claim(
+                    match,
+                    article["title"],
+                    article["body"],
+                    config,
+                ),
             }
 
     for record in records.values():

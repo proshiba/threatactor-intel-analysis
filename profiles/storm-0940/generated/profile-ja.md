@@ -1,9 +1,9 @@
 # Storm-0940 脅威アクタープロファイル
 
-プロファイルID: `actor--storm-0940`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--storm-0940`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:35Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | cyber-espionage | 不明 | 不明 | 2024-11-01 | 中国のハッカーがSOHOルーターなどを乗っ取って構築したQuad7ボットネットを使用し、認証情報を窃取。 パスワードスプレー攻撃で認証情報を収集し、複数の中国のハッカー集団によって使用。特に「Storm-0940」と呼ばれる攻撃者がQuad7から認証情報を使用して攻撃しているのが確認された。 攻撃者は侵害したSOHOルーターなどに対して、telnetとSOCKS5プロキシサーバーを設置。 パスワードスプレーで得た認証情報で組織内に侵入し、さらにネットワーク内で権限を拡大しデータを抽出。 SOHOルーターなどをどうやって侵害しているかは不明。Sekoiaのハニーポットへの侵入では、未公開の脆弱性を利用していた。 攻撃の最終的な目標は、標的のネットワークからデータを抜き取ること。これは、サイバースパイ活動が目的である可能性が高い。 | 中 | `source--daily-1cd41f481ad33e011f4b` |
 
 
 
@@ -141,13 +143,14 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--storm-0940--f06157dd3a046482 | storm 0940 |  | 不明 | actor_profile/evidence/storm-0940.csv | structured-data | TLP:CLEAR | 中 |
-| source--storm-0940--ab00c400f6ad95c2 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--daily-1cd41f481ad33e011f4b | マイクロソフト：中国のハッカーがQuad7ボットネットを使用し認証情報を窃取 | bleepingcomputer.com | 2024-11-01 | https://www.bleepingcomputer.com/news/security/microsoft-chinese-hackers-use-quad7-botnet-to-steal-credentials/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--storm-0940--ab00c400f6ad95c2 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0940--f06157dd3a046482 | storm 0940 |  | 不明 | actor_profile/evidence/storm-0940.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

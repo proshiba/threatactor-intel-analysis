@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--nso-group`
 - 状態: draft
-- 更新日時: 2026-07-26T06:00:44Z
+- 更新日時: 2026-07-27T11:17:24Z
 - 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -104,9 +104,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表 | reported-activity | 不明 | 不明 | WhatsAppは、ユーザーから報告されたソーシャルエンジニアリング攻撃を調査し、NSO関連の攻撃を阻止した。 攻撃者は標的に悪性リンクをクリックさせ、WhatsApp外部のWebサイトへ誘導しようとしていた。 Metaは、攻撃者がWhatsApp上でテスト用アカウントやグループを作成していたことも確認し、削除した。 NSO Groupはイスラエルの商用スパイウェア企業で、Pegasusを政治家、活動家、記者らに使ってきたことで知られる。 Metaは、今回の活動が2025年の恒久的差止命令に違反すると主張している。 | 高 | `source--daily-e8f4b9d0a614c1696cf5` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| NSOグループ、1,400人のWhatsAppユーザーへのスパイウェア攻撃で1億6,700万ドルの罰金 | cyber-espionage | 不明 | 不明 | 2025-05-08 | 米連邦陪審は、イスラエルのスパイウェア企業NSOグループに対し、WhatsAppユーザー1,400人への攻撃に関して1億6,700万ドルの罰金を命じた。 攻撃は2019年5月、WhatsAppの当時ゼロデイであった脆弱性（CVE-2019-3568）を悪用し、Pegasusスパイウェアをユーザーのデバイスに感染させた。 この判決は、スパイウェア開発企業が違法な監視行為で初めて法的責任を問われた画期的な事例となった。 Meta（旧Facebook）は、この判決をデジタルプライバシーとセキュリティの重要な勝利と位置づけている。 裁判では、NSO Groupが感染操作に直接関与しており、直接的な責任があることが明らかになった。 | 中 | `source--daily-a62bcc3c33756a92b707` |
+| WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表 | phishing-campaign | 不明 | 不明 | 2026-06-09 | WhatsAppは、ユーザーから報告されたソーシャルエンジニアリング攻撃を調査し、NSO関連の攻撃を阻止した。 攻撃者は標的に悪性リンクをクリックさせ、WhatsApp外部のWebサイトへ誘導しようとしていた。 Metaは、攻撃者がWhatsApp上でテスト用アカウントやグループを作成していたことも確認し、削除した。 NSO Groupはイスラエルの商用スパイウェア企業で、Pegasusを政治家、活動家、記者らに使ってきたことで知られる。 Metaは、今回の活動が2025年の恒久的差止命令に違反すると主張している。 | 高 | `source--daily-e8f4b9d0a614c1696cf5` |
 
 
 
@@ -146,6 +147,7 @@ TTPなし
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-a62bcc3c33756a92b707 | NSOグループ、1,400人のWhatsAppユーザーへのスパイウェア攻撃で1億6,700万ドルの罰金 | bleepingcomputer.com | 2025-05-08 | https://www.bleepingcomputer.com/news/legal/nso-group-fined-167m-for-spyware-attacks-on-1-400-whatsapp-users/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-e8f4b9d0a614c1696cf5 | WhatsApp、NSOの新たなスパイウェア・フィッシング攻撃を阻止したと発表 | about.fb.com | 2026-06-09 | https://about.fb.com/news/2026/06/fighting-spyware-an-update-from-whatsapp/ | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--nso-group--25c12a20509800b5 | ExoneratingMorocco DisprovingTheSpyware |  | 不明 | NSOGroup/Morocco/ExoneratingMorocco-DisprovingTheSpyware.pdf | report | TLP:CLEAR | 中 |

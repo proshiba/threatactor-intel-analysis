@@ -190,7 +190,7 @@ def write_csv_summary(path: Path, results: list[dict[str, Any]]) -> None:
         "ingest_seconds", "render_seconds", "validate_seconds",
     ]
     with path.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=columns)
+        writer = csv.DictWriter(stream, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         for result in results:
             ingest = result.get("steps", {}).get("ingest", {})

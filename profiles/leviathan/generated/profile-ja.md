@@ -1,9 +1,9 @@
 # Leviathan 脅威アクタープロファイル
 
-プロファイルID: `actor--leviathan`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--leviathan`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -144,9 +144,9 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Leviathan Australian Intrusions | campaign | 2022-04-01T06:00:00.000Z | 2022-09-01T06:00:00.000Z | [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049) consisted of at least two long-term intrusions against victims in Australia by [Leviathan](https://attack.mitre.org/groups/G0065), relying on similar tradecraft such as external service exploitation followed by extensive credential capture and re-use to enable privilege escalation and lateral movement. [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049) were focused on exfiltrating sensitive data including valid credentials for the victim organizations.(Citation: CISA Leviathan 2024) | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Leviathan Australian Intrusions | campaign | 2022-04-01T06:00:00.000Z | 2022-09-01T06:00:00.000Z | 2026-05-12 | [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049) consisted of at least two long-term intrusions against victims in Australia by [Leviathan](https://attack.mitre.org/groups/G0065), relying on similar tradecraft such as external service exploitation followed by extensive credential capture and re-use to enable privilege escalation and lateral movement. [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049) were focused on exfiltrating sensitive data including valid credentials for the victim organizations.(Citation: CISA Leviathan 2024) | 高 | `source--mitre-attack-19-1` |
 
 
 

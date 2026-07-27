@@ -1,9 +1,9 @@
 # TA455 脅威アクタープロファイル
 
-プロファイルID: `actor--ta455`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ta455`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:36Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| イランのハッカーが「夢の仕事」誘導でSnailResinマルウェアを展開し航空宇宙業界を攻撃 | infrastructure-operation | 不明 | 不明 | 2024-11-14 | イランのTA455ハッカーが「夢の仕事」詐欺を用いてSnailResinマルウェアを配信し、航空宇宙分野を狙っています。 偽の採用サイトとLinkedInを通じ、悪意のあるファイルが含まれたZIPを被害者に配布します。 SnailResinが感染するとSlugResinバックドアが起動し、情報窃取や権限昇格が可能となります。 GitHubを使用し、C2通信を隠蔽しながら、さらに感染を広げる手法が使われています。 TA455は、北朝鮮のLazarusが使っている手法を模倣し、帰属を誤らせる効果を狙っている可能性があります。 | 中 | `source--daily-27498943ada7ba352f55` |
 
 
 
@@ -141,15 +143,16 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--ta455--e5e440e4b2c64992 | ta455 |  | 不明 | actor_profile/evidence/ta455.csv | structured-data | TLP:CLEAR | 中 |
-| source--ta455--4346f79647b4845b | Iranian Dream Job ver1 |  | 不明 | Charming Kitten/Iranian-Dream-Job-ver1.pdf | report | TLP:CLEAR | 中 |
-| source--ta455--ed8c558f3cb1c624 | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
-| source--ta455--ecceb7706fc8f8b1 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
-| source--ta455--70894526c761d571 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--daily-27498943ada7ba352f55 | イランのハッカーが「夢の仕事」誘導でSnailResinマルウェアを展開し航空宇宙業界を攻撃 | thehackernews.com | 2024-11-14 | https://thehackernews.com/2024/11/iranian-hackers-use-dream-job-lures-to.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--ta455--4346f79647b4845b | Iranian Dream Job ver1 |  | 不明 | Charming Kitten/Iranian-Dream-Job-ver1.pdf | report | TLP:CLEAR | 中 |
+| source--ta455--70894526c761d571 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--ta455--e5e440e4b2c64992 | ta455 |  | 不明 | actor_profile/evidence/ta455.csv | structured-data | TLP:CLEAR | 中 |
+| source--ta455--ecceb7706fc8f8b1 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
+| source--ta455--ed8c558f3cb1c624 | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -20,6 +20,10 @@
    `python3 parse-daily/build_review_queue.py --since YYYY-MM-DD`を実行する。
    初回の履歴走査だけは`--since`を省略できる。
 4. `parse-daily/output/review-queue.json`の`pending`を主張単位で確認する。
+   `activity_claim.assessment`が`strong-subject`または`attributed-subject`でも
+   自動承認の確定ではない。
+   `evidence_text`がアクターを実行主体としていること、同名製品・別クラスタ・
+   法執行・過去事例でないことを確認する。
 5. 採用するレコードだけ`review_status: approved`へ変更し、判断理由を
    `review_notes`へ日本語で記載する。不採用は`rejected`と理由を残す。継続利用する
    判断は`review-decisions.json`にも保存し、再生成可能にする。
@@ -42,6 +46,12 @@
 - `low confidence`、`suspected`、`possible`、複合名、`unknown`は自動承認しない。
 - ニュース本文の名前一致は発見用途に限り、自動承認しない。同名マルウェア、製品名、
   被害組織名、過去事例への言及でないか原文を確認する。
+- `activity_claim`は名前一致より厳しいレビュー補助である。`strong-subject`はexact名、
+  攻撃活動を主題とするタイトル、同一文の実行主体表現を満たす候補を表す。
+  `attributed-subject`は当該の攻撃・侵害・キャンペーンへの明示的な帰属が同一文に
+  ある候補を表す。どちらも帰属確定を意味せず、類似・重複・後継・一般的な関連は
+  含めない。`scope-review-required`、`name-collision`、`attribution-uncertain`、
+  `historical-reference`、`non-operational`は一括承認しない。
 - 既存プロファイルにない名前は無理に近いアクターへ寄せず、
   `unmatched_actor_values`へ残す。新規プロファイル作成は別のレビュー対象とする。
 - アクター間関係は、同じ記事への登場やIOC共有だけで追加しない。一次資料が
@@ -57,6 +67,8 @@
 - 政府・CERT・法執行機関、直接観測したベンダー、公式ATT&CKを優先する。
 - 公開日を攻撃観測日に流用しない。活動の`first_observed`と`last_observed`は、
   IOC CSVの観測日または一次資料が明示した日だけを使う。
+- 攻撃期間が不明でもActivityは作成できる。その場合は期間をunknownとし、資料発行日
+  またはtech-memo日次ファイルの日付を`reported_at`へ分離して保存する。
 - 既存帰属や関係と競合する情報は上書きしない。`claim-audit.json`の
   `contradicted`、`partially-supported`、`unresolved`等で両論とスコープを残す。
 - 「反証が見つからなかった」を「反証なし」と断定しない。検索範囲と未解決点を残す。

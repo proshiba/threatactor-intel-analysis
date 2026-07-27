@@ -1,9 +1,9 @@
 # Daggerfly 脅威アクタープロファイル
 
-プロファイルID: `actor--daggerfly`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--daggerfly`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:23Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -84,10 +84,10 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--macma | MacMa | [MacMa](https://attack.mitre.org/software/S1016) is a macOS-based backdoor with a large set of functionalities to control and exfiltrate files from a compromised computer. [MacMa](https://attack.mitre.org/software/S1016) has been observed in the wild since November 2021.(Citation: ESET DazzleSpy Jan 2022) [MacMa](https://attack.mitre.org/software/S1016) shares command and control and unique libraries with [MgBot](https://attack.mitre.org/software/S1146) and [Nightdoor](https://attack.mitre.org/software/S1147), indicating a relationship with the [Daggerfly](https://attack.mitre.org/groups/G1034) threat actor.(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--mgbot | MgBot | [MgBot](https://attack.mitre.org/software/S1146) is a modular malware framework exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations since at least 2012. [MgBot](https://attack.mitre.org/software/S1146) was developed in C++ and features a module design with multiple available plugins that have been under active development through 2024.(Citation: Szappanos MgBot 2014)(Citation: ESET EvasivePanda 2023)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--nightdoor | Nightdoor | [Nightdoor](https://attack.mitre.org/software/S1147) is a backdoor exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations. [Nightdoor](https://attack.mitre.org/software/S1147) uses common libraries with [MgBot](https://attack.mitre.org/software/S1146) and [MacMa](https://attack.mitre.org/software/S1016), linking these malware families together.(Citation: ESET EvasivePanda 2024)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--mgbot | MgBot | [MgBot](https://attack.mitre.org/software/S1146) is a modular malware framework exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations since at least 2012. [MgBot](https://attack.mitre.org/software/S1146) was developed in C++ and features a module design with multiple available plugins that have been under active development through 2024.(Citation: Szappanos MgBot 2014)(Citation: ESET EvasivePanda 2023)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--macma | MacMa | [MacMa](https://attack.mitre.org/software/S1016) is a macOS-based backdoor with a large set of functionalities to control and exfiltrate files from a compromised computer. [MacMa](https://attack.mitre.org/software/S1016) has been observed in the wild since November 2021.(Citation: ESET DazzleSpy Jan 2022) [MacMa](https://attack.mitre.org/software/S1016) shares command and control and unique libraries with [MgBot](https://attack.mitre.org/software/S1146) and [Nightdoor](https://attack.mitre.org/software/S1147), indicating a relationship with the [Daggerfly](https://attack.mitre.org/groups/G1034) threat actor.(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -114,7 +114,9 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | cyber-espionage | 不明 | 不明 | 2025-02-05 | 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。 この攻撃スイートは「ELF/Sshdinjector.A!tr」と名付けられ、SSHデーモンに注入されたマルウェアの集合体であり、システム偵察、資格情報の窃取、プロセス監視、リモートコマンド実行、ファイル操作などの幅広い機能を持つ。 攻撃者は、デバイスが既に感染しているか、root権限で実行されているかを確認し、条件が満たされると、SSHライブラリ（libssdh.so）などの複数のバイナリをターゲットマシンにドロップする。 このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。 | 中 | `source--daily-3416f994a1eefc895ed4` |
 
 
 
@@ -171,15 +173,16 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--daggerfly--e6cfc1fd35dfef7b | daggerfly |  | 不明 | actor_profile/evidence/daggerfly.csv | structured-data | TLP:CLEAR | 中 |
-| source--daggerfly--8a2cb6114c21a01c | eset threat report h12024 |  | 不明 | summary/2024/eset-threat-report-h12024.pdf | report | TLP:CLEAR | 中 |
 | source--daggerfly--3e11c5dcad68c6cb | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
 | source--daggerfly--70cd7602a74f3aa5 | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
+| source--daggerfly--8a2cb6114c21a01c | eset threat report h12024 |  | 不明 | summary/2024/eset-threat-report-h12024.pdf | report | TLP:CLEAR | 中 |
+| source--daggerfly--e6cfc1fd35dfef7b | daggerfly |  | 不明 | actor_profile/evidence/daggerfly.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-3416f994a1eefc895ed4 | 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | bleepingcomputer.com | 2025-02-05 | https://www.bleepingcomputer.com/news/security/chinese-cyberspies-use-new-ssh-backdoor-in-network-device-hacks/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,9 +1,9 @@
 # TEMP.Veles 脅威アクタープロファイル
 
-プロファイルID: `actor--temp-veles`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--temp-veles`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -113,10 +113,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Triton Safety Instrumented System Attack | campaign | 2017-06-01T04:00:00.000Z | 2017-08-01T04:00:00.000Z | [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030) was a campaign employed by [TEMP.Veles](https://attack.mitre.org/groups/G0088) which leveraged the [Triton](https://attack.mitre.org/software/S1009) malware framework against a petrochemical organization.(Citation: Triton-EENews-2017) The malware and techniques used within this campaign targeted specific Triconex [Safety Controller](https://attack.mitre.org/assets/A0010)s within the environment.(Citation: FireEye TRITON 2018) The incident was eventually discovered due to a safety trip that occurred as a result of an issue in the malware.(Citation: FireEye TRITON 2017)<br> | 高 | `source--mitre-attack-19-1` |
-| C0032 | campaign | 2014-10-01T04:00:00.000Z | 2017-01-01T05:00:00.000Z | [C0032](https://attack.mitre.org/campaigns/C0032) was an extended campaign suspected to involve the [Triton](https://attack.mitre.org/software/S1009) adversaries with related capabilities and techniques focused on gaining a foothold within IT environments. This campaign occurred in 2019 and was distinctly different from the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030).(Citation: FireEye TRITON 2019) | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Triton Safety Instrumented System Attack | campaign | 2017-06-01T04:00:00.000Z | 2017-08-01T04:00:00.000Z | 2026-05-12 | [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030) was a campaign employed by [TEMP.Veles](https://attack.mitre.org/groups/G0088) which leveraged the [Triton](https://attack.mitre.org/software/S1009) malware framework against a petrochemical organization.(Citation: Triton-EENews-2017) The malware and techniques used within this campaign targeted specific Triconex [Safety Controller](https://attack.mitre.org/assets/A0010)s within the environment.(Citation: FireEye TRITON 2018) The incident was eventually discovered due to a safety trip that occurred as a result of an issue in the malware.(Citation: FireEye TRITON 2017)<br> | 高 | `source--mitre-attack-19-1` |
+| C0032 | campaign | 2014-10-01T04:00:00.000Z | 2017-01-01T05:00:00.000Z | 2026-05-12 | [C0032](https://attack.mitre.org/campaigns/C0032) was an extended campaign suspected to involve the [Triton](https://attack.mitre.org/software/S1009) adversaries with related capabilities and techniques focused on gaining a foothold within IT environments. This campaign occurred in 2019 and was distinctly different from the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030).(Citation: FireEye TRITON 2019) | 高 | `source--mitre-attack-19-1` |
 
 
 

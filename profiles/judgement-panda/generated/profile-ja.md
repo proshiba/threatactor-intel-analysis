@@ -1,9 +1,9 @@
 # Judgement Panda 脅威アクタープロファイル
 
-プロファイルID: `actor--judgement-panda`  
-状態: draft  
-更新日時: 2026-07-25T11:07:06Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--judgement-panda`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:32Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -107,7 +107,9 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | phishing-campaign | 不明 | 不明 | 2025-11-24 | 中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。 Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。 週末・祝日に活動を集中し、SNS上に暗号化コマンドを置く手口で秘匿性を強化。2022年末侵入例も言及。 フィッシングでLNKを起点にCloudyLoaderをDLLサイドロードし、Cobalt Strike展開が確認された。 SharpChromeやOwawa、LocalPlugX、CloudSorcerer等の多様なツールを使用し、タスク登録で永続化を確立。 | 中 | `source--daily-627b32691a33594d7d9a` |
 
 
 
@@ -146,12 +148,13 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--judgement-panda--7c93e10e9598ec8f | judgement panda |  | 不明 | actor_profile/evidence/judgement-panda.csv | structured-data | TLP:CLEAR | 中 |
-| source--judgement-panda--3a89cb3eeeccfe09 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
-| source--judgement-panda--9078c3fb5e5f9811 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--daily-627b32691a33594d7d9a | 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | thehackernews.com | 2025-11-24 | https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html | osint-report | TLP:CLEAR | 中 |
 | source--judgement-panda--2211e44ffd090f37 | Hurdling Over Hazards  Multifaceted Threats to the Paris Olympics |  | 不明 | summary/2024/Hurdling Over Hazards- Multifaceted Threats to the Paris Olympics.pdf | report | TLP:CLEAR | 中 |
+| source--judgement-panda--3a89cb3eeeccfe09 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
+| source--judgement-panda--7c93e10e9598ec8f | judgement panda |  | 不明 | actor_profile/evidence/judgement-panda.csv | structured-data | TLP:CLEAR | 中 |
+| source--judgement-panda--9078c3fb5e5f9811 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

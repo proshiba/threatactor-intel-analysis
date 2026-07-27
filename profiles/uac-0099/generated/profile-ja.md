@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0099`
 - 状態: draft
-- 更新日時: 2026-07-26T06:13:31Z
+- 更新日時: 2026-07-27T11:17:26Z
 - 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -106,9 +106,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | reported-activity | 不明 | 不明 | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | malware-campaign | 不明 | 不明 | 2026-07-24 | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | disruptive-activity | 不明 | 不明 | 2025-11-07 | ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。 | 中 | `source--daily-acae91555bc1bc0a4220` |
 
 
 
@@ -148,6 +149,7 @@ TTPなし
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-acae91555bc1bc0a4220 | Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | bleepingcomputer.com | 2025-11-07 | https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-b6ba84745cdc81a329c5 | ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | cert.gov.ua | 2026-07-24 | https://cert.gov.ua/article/6318634 | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |

@@ -1,9 +1,9 @@
 # Velvet Tempest 脅威アクタープロファイル
 
-プロファイルID: `actor--velvet-tempest`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--velvet-tempest`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:39Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -104,7 +104,9 @@ Velvet Tempestの標準化プロファイル。リポジトリ内の専用資料
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | ransomware-extortion | 不明 | 不明 | 2026-03-09 | MalBeaconは、Velvet TempestがClickFixと正規のWindowsユーティリティを使い、DonutLoaderとCastleRATを展開する一連の侵害活動を観測した。 観測は2026年2月3日から16日にかけて、米国の非営利組織を模した3,000超の端末と2,500超の利用者を持つ観測環境で12日間実施された。 初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 最終的にDonutLoaderとCastleRATが展開されたが、今回MalBeaconが観測した侵害ではTermiteランサムウェア本体が実行された形跡はなかった。 | 中 | `source--daily-ebcbecadd73228eda327` |
 
 
 
@@ -143,14 +145,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--velvet-tempest--cd5814175ad93cad | velvet tempest |  | 不明 | actor_profile/evidence/velvet-tempest.csv | structured-data | TLP:CLEAR | 中 |
-| source--velvet-tempest--2e7a5b64f876a17e | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
-| source--velvet-tempest--31feb678dc5d0564 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
+| source--daily-ebcbecadd73228eda327 | ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | bleepingcomputer.com | 2026-03-09 | https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--velvet-tempest--2e7a5b64f876a17e | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--velvet-tempest--31feb678dc5d0564 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
+| source--velvet-tempest--cd5814175ad93cad | velvet tempest |  | 不明 | actor_profile/evidence/velvet-tempest.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

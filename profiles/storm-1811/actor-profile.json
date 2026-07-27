@@ -4,7 +4,7 @@
   "name": "Storm-1811",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:04:35Z",
   "languages": [
     "ja"
   ],
@@ -265,7 +265,42 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-34b52b95ce7e51038b32",
+      "name": "Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--black-basta"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-1ba1d9f38d8366b3c0a3"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--34b52b95ce7e51038b32d6a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -1115,24 +1150,6 @@
   ],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -1151,76 +1168,66 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--storm-1811--b047318da9540fcf",
-      "path": "actor_profile/evidence/storm-1811.csv",
-      "title": "storm 1811",
-      "publisher": "",
+      "source_id": "source--daily-1ba1d9f38d8366b3c0a3",
+      "path": "https://www.bleepingcomputer.com/news/security/windows-quick-assist-abused-in-black-basta-ransomware-attacks/",
+      "title": "Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2024-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240516.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "language": "unknown",
-      "source_type": "structured-data",
+      "accessed_at": "2026-07-25T13:43:09Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--storm-1811--f48ceffd73aa076f",
-      "path": "summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf",
-      "title": "Cybersecurity Threats 2024 Mid Year Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--storm-1811--6364d1bf145e58a6",
-      "path": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf",
-      "title": "Cybersecurity Threats 2024 Annual Report QAX",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--storm-1811--7187587b3cf12824",
-      "path": "summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf",
-      "title": "Bridewell 2026 Cyber Threat Intelligence Report",
-      "publisher": "",
-      "published_at": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "reliability": "high",
+      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
     },
     {
       "source_id": "source--osint-misp-microsoft-activity-group",
@@ -1301,30 +1308,76 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
-      "source_id": "source--osint-microsoft-threat-actor-mapping",
-      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
-      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
-      "title": "Microsoft Threat Actor Naming Mapping",
-      "publisher": "Microsoft",
+      "source_id": "source--storm-1811--6364d1bf145e58a6",
+      "path": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf",
+      "title": "Cybersecurity Threats 2024 Annual Report QAX",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--storm-1811--7187587b3cf12824",
+      "path": "summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf",
+      "title": "Bridewell 2026 Cyber Threat Intelligence Report",
+      "publisher": "",
+      "published_at": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--storm-1811--b047318da9540fcf",
+      "path": "actor_profile/evidence/storm-1811.csv",
+      "title": "storm 1811",
+      "publisher": "",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "accessed_at": "2026-07-25T13:43:09Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
+      "language": "unknown",
+      "source_type": "structured-data",
       "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--storm-1811--f48ceffd73aa076f",
+      "path": "summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf",
+      "title": "Cybersecurity Threats 2024 Mid Year Report",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     }
   ],
   "assessment": {

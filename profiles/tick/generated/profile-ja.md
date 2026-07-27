@@ -1,9 +1,9 @@
 # BRONZE BUTLER 脅威アクタープロファイル
 
-プロファイルID: `actor--tick`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--tick`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:25Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -85,23 +85,23 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--avenger | Avenger | [Avenger](https://attack.mitre.org/software/S0473) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--down-new | down_new |  [down_new](https://attack.mitre.org/software/S0472) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--abk | ABK | [ABK](https://attack.mitre.org/software/S0469) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--daserf | Daserf | [Daserf](https://attack.mitre.org/software/S0187) is a backdoor that has been used to spy on and steal from Japanese, South Korean, Russian, Singaporean, and Chinese victims. Researchers have identified versions written in both Visual C and Delphi. (Citation: Trend Micro Daserf Nov 2017) (Citation: Secureworks BRONZE BUTLER Oct 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--build-downer | build_downer | [build_downer](https://attack.mitre.org/software/S0471) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--shadowpad | ShadowPad | [ShadowPad](https://attack.mitre.org/software/S0596) is a modular backdoor that was first identified in a supply chain compromise of the NetSarang software in mid-July 2017. The malware was originally thought to be exclusively used by [APT41](https://attack.mitre.org/groups/G0096), but has since been observed to be used by various Chinese threat activity groups. (Citation: Recorded Future RedEcho Feb 2021)(Citation: Securelist ShadowPad Aug 2017)(Citation: Kaspersky ShadowPad Aug 2017)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--abk-downloader | ABK Downloader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--avenger | Avenger | [Avenger](https://attack.mitre.org/software/S0473) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--avirra-downloader | avirra Downloader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--bbk | BBK | [BBK](https://attack.mitre.org/software/S0470) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--whoami | whoami | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--build-downer | build_downer | [build_downer](https://attack.mitre.org/software/S0471) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--daserf | Daserf | [Daserf](https://attack.mitre.org/software/S0187) is a backdoor that has been used to spy on and steal from Japanese, South Korean, Russian, Singaporean, and Chinese victims. Researchers have identified versions written in both Visual C and Delphi. (Citation: Trend Micro Daserf Nov 2017) (Citation: Secureworks BRONZE BUTLER Oct 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--datper | Datper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--down-new | down_new |  [down_new](https://attack.mitre.org/software/S0472) is a downloader that has been used by [BRONZE BUTLER](https://attack.mitre.org/groups/G0060) since at least 2019.(Citation: Trend Micro Tick November 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--gofarer | Gofarer | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--procdump | procdump | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--psexec | PsExec | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--royalroad-rtf-weaponizer | RoyalRoad RTF Weaponizer | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--shadowpad | ShadowPad | [ShadowPad](https://attack.mitre.org/software/S0596) is a modular backdoor that was first identified in a supply chain compromise of the NetSarang software in mid-July 2017. The malware was originally thought to be exclusively used by [APT41](https://attack.mitre.org/groups/G0096), but has since been observed to be used by various Chinese threat activity groups. (Citation: Recorded Future RedEcho Feb 2021)(Citation: Securelist ShadowPad Aug 2017)(Citation: Kaspersky ShadowPad Aug 2017)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--vbs | VBS | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--wce | WCE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--psexec | PsExec | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--gofarer | Gofarer | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--datper | Datper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--abk-downloader | ABK Downloader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--avirra-downloader | avirra Downloader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--royalroad-rtf-weaponizer | RoyalRoad RTF Weaponizer | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--whoami | whoami | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -133,7 +133,9 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国関与のハッカー、Lanscopeの脆弱性をゼロデイで悪用して攻撃 | cyber-espionage | 不明 | 不明 | 2025-11-03 | 中国関与の諜報系グループ「Bronze Butler（Tick）」が、Motex Lanscope Endpoint ManagerのCVE-2025-61932をゼロデイで悪用して情報窃取を実施。 Sophosは2025年中頃からの悪用を観測、ベンダは10月20日に修正を公開し、CISAはKEVに追加して11月12日までのパッチ適用を要請。 欠陥は要求元検証の不備により未認証でSYSTEM権限の任意コード実行が可能となるもので、9.4.7.2以前のクライアントに影響。 攻撃では更新版Gokcpdoorを投下しKCPサポートを廃止、C2多重化通信を実装。OAED Loader経由のDLLサイドローディングやHavocも併用。 侵害後はgoddiやRDP、7-Zipを使い、クラウドストレージ（io、LimeWire、Piping Server等）を流出先として用いた可能性が示唆。 | 中 | `source--daily-a25c503fb0bab44c84b0` |
 
 
 
@@ -213,17 +215,18 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--tick--2314f8608742ea50 | D1 COMMSEC   Tick Group   Activities Of The Tick Cyber Espionage Group In East Asia Over The Last 10 Years   Cha Minseok |  | 不明 | tick/D1 COMMSEC - Tick Group - Activities Of The Tick Cyber Espionage Group In East Asia Over The Last 10 Years - Cha Minseok.pdf | report | TLP:CLEAR | 中 |
-| source--tick--4f9a9ec6cf4c57e1 | [Analysis Report]Tick Threat Group |  | 不明 | tick/[Analysis_Report]Tick_Threat_Group.pdf | report | TLP:CLEAR | 中 |
-| source--tick--76f986f95686e899 | special ioc |  | 不明 | tick/special-ioc.txt | text-data | TLP:CLEAR | 中 |
+| source--daily-a25c503fb0bab44c84b0 | 中国関与のハッカー、Lanscopeの脆弱性をゼロデイで悪用して攻撃 | bleepingcomputer.com | 2025-11-03 | https://www.bleepingcomputer.com/news/security/china-linked-hackers-exploited-lanscope-flaw-as-a-zero-day-in-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--tick--2314f8608742ea50 | D1 COMMSEC   Tick Group   Activities Of The Tick Cyber Espionage Group In East Asia Over The Last 10 Years   Cha Minseok |  | 不明 | tick/D1 COMMSEC - Tick Group - Activities Of The Tick Cyber Espionage Group In East Asia Over The Last 10 Years - Cha Minseok.pdf | report | TLP:CLEAR | 中 |
+| source--tick--4f9a9ec6cf4c57e1 | [Analysis Report]Tick Threat Group |  | 不明 | tick/[Analysis_Report]Tick_Threat_Group.pdf | report | TLP:CLEAR | 中 |
+| source--tick--76f986f95686e899 | special ioc |  | 不明 | tick/special-ioc.txt | text-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

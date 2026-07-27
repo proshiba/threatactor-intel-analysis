@@ -4,7 +4,7 @@
   "name": "Water Galura",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:27Z",
   "languages": [
     "ja"
   ],
@@ -132,7 +132,42 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-e30bc3c3abfd77cddd94",
+      "name": "Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-06-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "QilinランサムウェアRaaSがアフィリエイト向けパネルに「弁護士呼び出し」機能を追加し、被害者に支払い圧力を強化。 Qilinは、2025年4月に72件の被害、5月に55件を確認、通年でCl0p・Akiraに次ぐ304件を記録。 アフィリエイトにはRust/C製ペイロード、ネットワーク拡散、ログクリーン、交渉自動化など高度な攻撃ツールを提供。 法的支援、スパムサービス、PB規模のデータストレージ、DDoSツールなどを備えたフルサービスのサイバー犯罪プラットフォームに進化。 RansomHubのアフィリエイトがQilinに移行し、ここ数か月のQilinランサムウェア活動の急増に寄与",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--qilin"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3c55cd8958f6103f4eaf"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--e30bc3c3abfd77cddd949226 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は「Qilin」ランサムウェアグループ（別名Gold Feather、Water Galura）で、2022年10月以降RaaSとして活動中"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -226,24 +261,6 @@
   ],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -262,40 +279,40 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--water-galura--83ea455fedc5476b",
-      "path": "actor_profile/evidence/water-galura.csv",
-      "title": "water galura",
-      "publisher": "",
+      "source_id": "source--daily-3c55cd8958f6103f4eaf",
+      "path": "https://thehackernews.com/2025/06/qilin-ransomware-adds-call-lawyer.html",
+      "title": "Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加",
+      "publisher": "thehackernews.com",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-06-21T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "structured-data",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250621.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
-      "source_id": "source--water-galura--280658d2598270cb",
-      "path": "summary/2024/state-of-the-threat-report-2024.pdf",
-      "title": "state of the threat report 2024",
-      "publisher": "",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
       "published_at": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "upstream-release"
       },
-      "language": "unknown",
-      "source_type": "report",
+      "language": "en",
+      "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
+      "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-mitre-intrusion-set",
@@ -322,6 +339,42 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--water-galura--280658d2598270cb",
+      "path": "summary/2024/state-of-the-threat-report-2024.pdf",
+      "title": "state of the threat report 2024",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--water-galura--83ea455fedc5476b",
+      "path": "actor_profile/evidence/water-galura.csv",
+      "title": "water galura",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
     }
   ],
   "assessment": {

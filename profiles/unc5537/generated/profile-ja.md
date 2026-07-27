@@ -1,9 +1,9 @@
 # UNC5537 脅威アクタープロファイル
 
-プロファイルID: `actor--unc5537`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc5537`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:27Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | ransomware-extortion | 不明 | 不明 | 2025-06-11 | 2024年のSnowflake攻撃で流出したTicketmasterの569GB分の顧客データが、Arkana Securityという恐喝グループによって再販リストに一時掲載。 掲載されたデータは以前に盗まれたもので、新たな侵害ではなく再流通である。 データには“RapeFlake”という窃取ツールの痕跡も含まれていた。 当該販売リストは数日で削除され、現在は閲覧不可となっている。 この攻撃にはShinyHuntersやUNC5537（Scattered Spider）などのAPTグループが関与していた。 Arkanaがこのデータを以前購入したのか、以前データを持っていた脅威アクターで構成されているのか、あるいはShinyHuntersと協力して販売しているのかは不明。 | 中 | `source--daily-50b897d744561404ee8d` |
+| Pure Storage、Snowflakeアカウントのハッキング後にデータ侵害を確認 | malware-campaign | 不明 | 不明 | 2024-06-12 | Pure StorageのSnowflakeワークスペースが侵害され、顧客名、ユーザー名、メールアドレスなどの情報が侵害された アレイアクセスの資格情報や顧客システムに保存されているその他のデータは侵害されていない 同社は即座に対応し、さらなる不正アクセスを防止 進行中の攻撃の影響を受ける可能性のある約165の組織に通知済み さらにSnowflakeの顧客に対して、情報窃取型マルウェアで窃取した資格情報を使った攻撃も進行している | 中 | `source--daily-e8268dd0f05d0e93b4d0` |
 
 
 
@@ -141,14 +144,16 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc5537--9285511fa67f7da4 | unc5537 |  | 不明 | actor_profile/evidence/unc5537.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-50b897d744561404ee8d | Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | bleepingcomputer.com | 2025-06-11 | https://www.bleepingcomputer.com/news/security/stolen-ticketmaster-data-from-snowflake-attacks-briefly-for-sale-again/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-e8268dd0f05d0e93b4d0 | Pure Storage、Snowflakeアカウントのハッキング後にデータ侵害を確認 | bleepingcomputer.com | 2024-06-12 | https://www.bleepingcomputer.com/news/security/pure-storage-confirms-data-breach-after-snowflake-account-hack/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc5537--77fef4fffc5f5760 | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
 | source--unc5537--7defd99777db344a | 2024 H1 Threat Intel Report Final |  | 2024 | summary/2024/2024-H1-Threat-Intel-Report-Final.pdf | report | TLP:CLEAR | 中 |
+| source--unc5537--9285511fa67f7da4 | unc5537 |  | 不明 | actor_profile/evidence/unc5537.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc5537--d2cb397f64bd5f8f | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

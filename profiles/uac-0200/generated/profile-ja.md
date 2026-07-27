@@ -1,9 +1,9 @@
 # UAC-0200 脅威アクタープロファイル
 
-プロファイルID: `actor--uac-0200`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--uac-0200`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:26Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に | phishing-campaign | 不明 | 不明 | 2025-03-20 | ウクライナのコンピュータ緊急対応チーム（CERT-UA）は、防衛産業企業の従業員や軍関係者を狙ったSignalアカウントを悪用したマルウェア攻撃を警告。 攻撃者は、会議報告書を装ったアーカイブをSignalメッセージで送信し、既存の連絡先からのメッセージとして信頼性を高めている。 アーカイブ内にはPDFと実行ファイルが含まれ、PDFを開くと実行ファイルを起動するように促される。この実行ファイルからDarkTortillaと呼ばれるマルウェアが展開される。 DarkTortillaは、リモートアクセス型トロイの木馬（RAT）であるDark Crystal RAT（DCRAT）を復号・実行する。 この攻撃活動は、2024年6月以降「UAC-0200」として追跡されており、2025年2月以降、無人航空機（UAV）や電子戦システムなどの軍事技術に関するテーマを餌にしている。 | 中 | `source--daily-1b5373977ade6efec051` |
 
 
 
@@ -141,12 +143,13 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--uac-0200--850858c536601d79 | uac 0200 |  | 不明 | actor_profile/evidence/uac-0200.csv | structured-data | TLP:CLEAR | 中 |
-| source--uac-0200--80b75f730585a4a0 | Cyber operations by russia new goals, tools and groups |  | 不明 | International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf | report | TLP:CLEAR | 中 |
-| source--uac-0200--7e3a4b353fb977dd | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
+| source--daily-1b5373977ade6efec051 | ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に | bleepingcomputer.com | 2025-03-20 | https://www.bleepingcomputer.com/news/security/ukrainian-military-targeted-in-new-signal-spear-phishing-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
+| source--uac-0200--7e3a4b353fb977dd | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
+| source--uac-0200--80b75f730585a4a0 | Cyber operations by russia new goals, tools and groups |  | 不明 | International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf | report | TLP:CLEAR | 中 |
+| source--uac-0200--850858c536601d79 | uac 0200 |  | 不明 | actor_profile/evidence/uac-0200.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,9 +1,9 @@
 # Sandworm Team 脅威アクタープロファイル
 
-プロファイルID: `actor--sandworm`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--sandworm`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -152,11 +152,11 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| 2015 Ukraine Electric Power Attack | campaign | 2015-12-01T05:00:00.000Z | 2016-01-01T05:00:00.000Z | [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign during which they used [BlackEnergy](https://attack.mitre.org/software/S0089) (specifically BlackEnergy3) and [KillDisk](https://attack.mitre.org/software/S0607) to target and disrupt transmission and distribution substations within the Ukrainian power grid. This campaign was the first major public attack conducted against the Ukrainian power grid by Sandworm Team. | 高 | `source--mitre-attack-19-1` |
-| 2016 Ukraine Electric Power Attack | campaign | 2016-12-01T05:00:00.000Z | 2016-12-01T05:00:00.000Z | [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign during which they used [Industroyer](https://attack.mitre.org/software/S0604) malware to target and disrupt distribution substations within the Ukrainian power grid. This campaign was the second major public attack conducted against Ukraine by [Sandworm Team](https://attack.mitre.org/groups/G0034).(Citation: ESET Industroyer)(Citation: Dragos Crashoverride 2018) | 高 | `source--mitre-attack-19-1` |
-| 2022 Ukraine Electric Power Attack | campaign | 2022-06-01T04:00:00.000Z | 2022-10-01T04:00:00.000Z | The [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign that used a combination of GOGETTER, Neo-REGEORG, [CaddyWiper](https://attack.mitre.org/software/S0693), and living of the land (LotL) techniques to gain access to a Ukrainian electric utility to send unauthorized commands from their SCADA system.(Citation: Mandiant-Sandworm-Ukraine-2022)(Citation: Dragos-Sandworm-Ukraine-2022)  | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 2015 Ukraine Electric Power Attack | campaign | 2015-12-01T05:00:00.000Z | 2016-01-01T05:00:00.000Z | 2026-05-12 | [2015 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0028) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign during which they used [BlackEnergy](https://attack.mitre.org/software/S0089) (specifically BlackEnergy3) and [KillDisk](https://attack.mitre.org/software/S0607) to target and disrupt transmission and distribution substations within the Ukrainian power grid. This campaign was the first major public attack conducted against the Ukrainian power grid by Sandworm Team. | 高 | `source--mitre-attack-19-1` |
+| 2016 Ukraine Electric Power Attack | campaign | 2016-12-01T05:00:00.000Z | 2016-12-01T05:00:00.000Z | 2026-05-12 | [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign during which they used [Industroyer](https://attack.mitre.org/software/S0604) malware to target and disrupt distribution substations within the Ukrainian power grid. This campaign was the second major public attack conducted against Ukraine by [Sandworm Team](https://attack.mitre.org/groups/G0034).(Citation: ESET Industroyer)(Citation: Dragos Crashoverride 2018) | 高 | `source--mitre-attack-19-1` |
+| 2022 Ukraine Electric Power Attack | campaign | 2022-06-01T04:00:00.000Z | 2022-10-01T04:00:00.000Z | 2026-05-12 | The [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034) was a [Sandworm Team](https://attack.mitre.org/groups/G0034) campaign that used a combination of GOGETTER, Neo-REGEORG, [CaddyWiper](https://attack.mitre.org/software/S0693), and living of the land (LotL) techniques to gain access to a Ukrainian electric utility to send unauthorized commands from their SCADA system.(Citation: Mandiant-Sandworm-Ukraine-2022)(Citation: Dragos-Sandworm-Ukraine-2022)  | 高 | `source--mitre-attack-19-1` |
 
 
 

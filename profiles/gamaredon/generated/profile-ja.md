@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gamaredon`
 - 状態: draft
-- 更新日時: 2026-07-26T06:00:42Z
+- 更新日時: 2026-07-27T11:04:31Z
 - 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -124,9 +124,10 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | reported-activity | 不明 | 不明 | Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。 | 中 | `source--daily-f9666a37c61d10f83b24` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | phishing-campaign | 不明 | 不明 | 2026-06-03 | Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。 | 中 | `source--daily-f9666a37c61d10f83b24` |
+| ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 | malware-campaign | 不明 | 不明 | 2025-04-11 | ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 攻撃は2025年2月から3月にかけて行われ、更新版のGammaSteel情報窃取マルウェアが使用された。 感染経路は、悪意のある.LNKファイルを含むリムーバブルドライブと推測される。 VBSスクリプトからPowerShellベースのツールへの移行や、正規サービスの悪用が確認された。 マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。 | 中 | `source--daily-ae1b297bcc282623fbff` |
 
 
 
@@ -291,6 +292,7 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-ae1b297bcc282623fbff | ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 | bleepingcomputer.com | 2025-04-11 | https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-f9666a37c61d10f83b24 | FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | blog.sekoia.io | 2026-06-03 | https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/ | osint-report | TLP:CLEAR | 中 |
 | source--gamaredon--0512c893b55f399d | cyberespionage gamaredon way |  | 不明 | Gamaredon/cyberespionage-gamaredon-way.pdf | report | TLP:CLEAR | 中 |
 | source--gamaredon--24d0ac8621d42b62 | README |  | 不明 | Gamaredon/README.MD | repository-notes | TLP:CLEAR | 中 |

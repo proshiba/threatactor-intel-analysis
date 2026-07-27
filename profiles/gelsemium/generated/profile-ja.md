@@ -1,9 +1,9 @@
 # Gelsemium 脅威アクタープロファイル
 
-プロファイルID: `actor--gelsemium`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--gelsemium`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:32Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -111,7 +111,9 @@ Gelsemiumの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用 | malware-campaign | 不明 | 不明 | 2024-11-22 | 中国のサイバー攻撃グループGelsemiumが、新たなLinuxバックドア「WolfsBane」を使用。 WolfsBaneは、ドロッパー、ランチャー、バックドアから成る完全なマルウェアツール。 改変されたオープンソースのルートキットを用いて検出を回避。 マルウェアは、「.config/autostart/」に自動起動ファイル（gnome-control.desktop）を作成することで、ホストへの永続性を設定。 Windows向けマルウェア「Project Wood」と関連するLinuxマルウェア「FireWood」も発見。 APTグループがLinuxプラットフォームへの攻撃を強化する傾向が増加。 | 高 | `source--daily-c14d3c6623afcdc68bdf` |
 
 
 
@@ -152,18 +154,19 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-c14d3c6623afcdc68bdf | 中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用 | bleepingcomputer.com | 2024-11-22 | https://www.bleepingcomputer.com/news/security/chinese-gelsemium-hackers-use-new-wolfsbane-linux-malware/ | osint-report | TLP:CLEAR | 中 |
 | source--gelsemium--0c692ac1ecc96ddf | gelsemium |  | 不明 | actor_profile/evidence/gelsemium.csv | structured-data | TLP:CLEAR | 中 |
-| source--gelsemium--f0b7738950da3acb | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--gelsemium--1d6473610154e76d | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--gelsemium--6296bb3203efe3c9 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
+| source--gelsemium--acdf8b3cf5b320da | TLP CLEAR CERT EU TLR 2024 v1 |  | 2024 | summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf | report | TLP:CLEAR | 中 |
 | source--gelsemium--bf1cde8e50ddfbef | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
 | source--gelsemium--e7fd88916ed46e9b | eset apt activity report q4 2023 q1 2024 |  | 2023 | summary/2024/eset-apt-activity-report-q4-2023-q1-2024.pdf | report | TLP:CLEAR | 中 |
-| source--gelsemium--6296bb3203efe3c9 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
-| source--gelsemium--1d6473610154e76d | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--gelsemium--acdf8b3cf5b320da | TLP CLEAR CERT EU TLR 2024 v1 |  | 2024 | summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf | report | TLP:CLEAR | 中 |
+| source--gelsemium--f0b7738950da3acb | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

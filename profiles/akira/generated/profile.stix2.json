@@ -388,35 +388,6 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--632d09d9-346c-4c95-b7a5-9e5a6fc190d5",
-      "created": "2026-07-25T15:22:53Z",
-      "modified": "2026-07-25T15:22:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Megazord",
-      "description": "[Megazord](https://attack.mitre.org/software/S1191) is a Rust-based variant of [Akira](https://attack.mitre.org/software/S1129) ransomware that has been in use since at least August 2023 to target Windows environments. [Megazord](https://attack.mitre.org/software/S1191) has been attributed to the [Akira](https://attack.mitre.org/groups/G1024) group based on overlapping infrastructure though is possibly not exclusive to the group.(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)(Citation: Palo Alto Howling Scorpius DEC 2024)\n\n",
-      "external_references": [
-        {
-          "source_name": "MITRE",
-          "description": "Local source: actor_profile/reference/attack-index.json",
-          "external_id": "source--mitre-attack-19-1"
-        }
-      ],
-      "x_profile_object_id": "malware--megazord",
-      "x_confidence": "high",
-      "x_analyst_notes": "",
-      "is_family": true,
-      "malware_types": [
-        "Windows"
-      ],
-      "aliases": [
-        "Megazord"
-      ]
-    },
-    {
-      "type": "malware",
-      "spec_version": "2.1",
       "id": "malware--a695430a-38fc-4086-8e38-d3932887e325",
       "created": "2026-07-25T15:22:53Z",
       "modified": "2026-07-25T15:22:53Z",
@@ -470,6 +441,35 @@
       ],
       "aliases": [
         "Akira _v2"
+      ]
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--632d09d9-346c-4c95-b7a5-9e5a6fc190d5",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-07-25T15:22:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Megazord",
+      "description": "[Megazord](https://attack.mitre.org/software/S1191) is a Rust-based variant of [Akira](https://attack.mitre.org/software/S1129) ransomware that has been in use since at least August 2023 to target Windows environments. [Megazord](https://attack.mitre.org/software/S1191) has been attributed to the [Akira](https://attack.mitre.org/groups/G1024) group based on overlapping infrastructure though is possibly not exclusive to the group.(Citation: CISA Akira Ransomware APR 2024)(Citation: Cisco Akira Ransomware OCT 2024)(Citation: Palo Alto Howling Scorpius DEC 2024)\n\n",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_profile_object_id": "malware--megazord",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": [
+        "Megazord"
       ]
     },
     {
@@ -600,6 +600,454 @@
       "tool_types": [
         "Windows"
       ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入",
+      "description": "FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。 攻撃はCVE-2024-40766をエクスプロイトして行い、ランサムウェアで攻撃する事例が少なくとも30件発生。 侵入後約10時間で暗号化が進むが、最速で1.5～2時間で完了。 VPNアクセスは既知のログインメッセージIDで監視可能。 一部の攻撃でデータ窃取も行われたが、古いファイルは対象外。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fog-ransomware-targets-sonicwall-vpns-to-breach-corporate-networks/",
+          "external_id": "source--daily-3c12eda093e5c59e0ee6"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-168bcc08caaa00d067b7",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--168bcc08caaa00d067b78e22 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FogとAkiraランサムウェアがSonicWall VPN脆弱性を悪用してネットワークに侵入。",
+      "x_reported_at": {
+        "value": "2024-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--0adcc045-c7e5-46d8-9e09-814748934b81",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される",
+      "description": "SonicWallのSSLVPN脆弱性（CVE-2024-40766）がランサムウェア攻撃に利用。 Akiraランサムウェアのアフィリエイトがこの脆弱性を悪用。 SonicWallは、この脆弱性は、ファイアウォールの管理アクセスインターフェースのみに影響すると伝えていたが、後にSSLVPN機能にも影響し、攻撃に悪用されていることを明らかにした。 SonicWallはパッチを8月22日に公開し、顧客に迅速な対応を促している。 CISAは連邦機関に9月30日までのパッチ適用を命じた。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/critical-sonicwall-sslvpn-bug-exploited-in-ransomware-attacks/",
+          "external_id": "source--daily-0662aaff581d0ab45bce"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-18024c75810d0541507f",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--18024c75810d0541507f868a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Akiraランサムウェアのアフィリエイトがこの脆弱性を悪用。",
+      "x_reported_at": {
+        "value": "2024-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--1f804ed5-e1a9-43ab-90f5-ee881785dc88",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化",
+      "description": "日立の子会社である、Hitachi VantaraがAkiraランサムウェア攻撃を受け、一部システムが停止。 外部の専門家を雇い、影響範囲の調査と復旧作業を実施中。 攻撃でファイルが盗まれ、ランサムノートが設置されたことが判明。 クラウドサービスは影響を受けていなかったが、封じ込めの一環としてHitachi Vantaraのシステムおよび製造部門は中断された。 攻撃は政府関連プロジェクトにも影響を与えた可能性がある。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/hitachi-vantara-takes-servers-offline-after-akira-ransomware-attack/",
+          "external_id": "source--daily-7fac464b25387fdb006e"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-2781476b874d2025b171",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--2781476b874d2025b171c181 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化",
+      "x_reported_at": {
+        "value": "2025-04-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--43ea8895-2c9b-4543-8649-a0818c8cf298",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用",
+      "description": "AkiraがCVE-2024-40766を再悪用し、未更新のSonicWall SSLVPN経由で侵入。 SonicWallは2024年8月に修正公開、更新時はローカルSSLVPNアカウントのPW更新推奨。 ACSCとRapid7が最近の悪用増加を警告、不完全な修復が原因である可能性。 SonicWallはゼロデイ関与を否定、同CVEとの相関が高いと説明。 影響はGen5〜7の特定版。7.3.0以降へのアップデートやMFAの強制・権限見直し等を推奨。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-ransomware-exploiting-critical-sonicwall-sslvpn-bug-again/",
+          "external_id": "source--daily-c6a57e3d4fd20c381ed8"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-2e52ef1ae82d2bb0b0a3",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--2e52ef1ae82d2bb0b0a3925e から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用",
+      "x_reported_at": {
+        "value": "2025-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--21a629f4-09d8-4a5d-b5e9-e59869689dbc",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論",
+      "description": "Akiraランサムウェアが10月30日、Apache OpenOfficeへの侵入と23GBの機密窃取を主張し、流出予告を掲載。 これに対しApache Software Foundationは、主張内容のような従業員・財務データ自体を保有せず、現時点で証拠なしと反論。 同財団は調査中としつつ、OpenOffice/ASFシステムの侵害痕跡は見つからず、身代金要求の受領も確認していないと説明。 OpenOfficeはOSSで有償雇用の開発者はおらず、課題は公開MLで扱われるため、主張内容と整合しないと強調。 記事時点でAkira側は窃取とするデータを未公開で、ASFは法執行機関や外部専門家への連絡も行っていない。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/apache-openoffice-disputes-data-breach-claims-by-ransomware-gang/",
+          "external_id": "source--daily-efcfda27f495de5d5c60"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-363675cf164deead5355",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--363675cf164deead535529e8 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Akiraランサムウェアが10月30日、Apache OpenOfficeへの侵入と23GBの機密窃取を主張し、流出予告を掲載。",
+      "x_reported_at": {
+        "value": "2025-11-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有",
+      "description": "カナダ最大の動物園であるトロント動物園は、2024年1月に発生したランサムウェア攻撃によるデータ侵害について詳細を公表 侵害された情報には、従業員、元従業員、ボランティア、寄付者の個人情報や財務情報が含まれる 2022年1月から2023年4月の間にクレジットカード取引を行ったゲストや会員の名前、住所、電話番号、メールアドレス、クレジットカードの下4桁および有効期限が漏洩 2000年から2023年4月までの一般入場券や会員購入に関する取引データも含まれる トロント動物園は、オンタリオ州情報プライバシーコミッショナー事務局にデータ侵害を報告し、影響を受けた人々に対し、金融口座の明細を監視するよう助言 トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/toronto-zoo-shares-update-on-last-years-ransomware-attack/",
+          "external_id": "source--daily-73166036d74c23fae026"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-72021ece0456478ddc56",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--72021ece0456478ddc568d32 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張",
+      "x_reported_at": {
+        "value": "2025-03-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化",
+      "description": "Intel製CPUチューニングドライバーrwdrv.sysを悪用し、カーネル権限でDefenderを停止 2つ目の悪意ドライバーhlpdrv.sysがDefenderのDisableAntiSpywareレジストリを変更 BYOVD戦術は2025年7月15日以降のAkira攻撃で繰り返し観測 SonicWall SSLVPNを狙う活動やBumblebee/AdaptixC2経路も報告 Bumblebeeマルウェアを使う事例では、ManageEngine OpManagerのSEOポイズニングから感染させる事例もあった GuidePointがYARA・IOC公開、管理者は監視とブロックを推奨",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-ransomware-abuses-cpu-tuning-tool-to-disable-microsoft-defender/",
+          "external_id": "source--daily-4e4cc7628ff86fb403b4"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-76bd6acc119feb91761a",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--76bd6acc119feb91761acc18 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化",
+      "x_reported_at": {
+        "value": "2025-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "description": "AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-845d100400e42d2f3ff6",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--845d100400e42d2f3ff65b7c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--858f37ff-2918-41a2-a324-52700c7f3e50",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開",
+      "description": "セキュリティ研究者のYohanes Nugroho氏が、Linux版Akiraランサムウェアの復号ツールを公開 Akiraの暗号鍵生成にタイムスタンプが使用されることを利用し、GPUの計算能力で鍵を特定 復号ツールはGitHubで入手可能。ファイル復元の手順も提供している。 Nugroho氏は復号に約3週間と1,200ドルのGPUリソースを費やした 復号プロセスは各ファイルの暗号鍵をブルートフォース攻撃で特定する手法",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/gpu-powered-akira-ransomware-decryptor-released-on-github/",
+          "external_id": "source--daily-f08faf92c2b925e530ef"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-896d13b0145ab1797a62",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--896d13b0145ab1797a62f1b9 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開",
+      "x_reported_at": {
+        "value": "2025-03-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--34d92e38-3e2f-4375-94c8-7d7782fad4bf",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害者が支払いをやめたことで、ランサムウェアの利益が減少",
+      "description": "Covewareの最新分析で、身代金を支払った被害組織の割合は2025年Q3に23%まで低下し、観測史上の最低を更新。 平均/中央値の支払い額も前期比で減少し、平均37.7万ドル・中央値14万ドルに下落、支払い忌避の流れが強まる。 攻撃は暗号化＋窃取の二重恐喝が主流で、Q3の76%でデータ流出。窃取のみの攻撃に限ると支払い率は19%。 AkiraやQilinが44%を占め、中堅企業への集中や、リモートアクセス侵害・ソフト脆弱性悪用の増加が顕著。 利益縮小で攻撃は精緻化し、今後は大企業狙いも強まる見通し。ソーシャルエンジニアリングや内通者勧誘の活用が進む。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-profits-drop-as-victims-stop-paying-hackers/",
+          "external_id": "source--daily-a0023564f914d51f566d"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-cdb49f371c54f6a0d099",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--cdb49f371c54f6a0d0992c6c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - AkiraやQilinが44%を占め、中堅企業への集中や、リモートアクセス侵害・ソフト脆弱性悪用の増加が顕著。",
+      "x_reported_at": {
+        "value": "2025-10-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--93dd2632-c0fe-4bd4-980d-b5baaf8de943",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認",
+      "description": "SonicWallはGen 7ファイアウォールのSSLVPN経由Akira攻撃がCVE-2024-40766悪用であると結論。 CVE-2024-40766は2024年8月修正済みの重大アクセス制御欠陥で未更新機器が標的。 移行時に旧パスワードをリセットせず持ち越したケースが多く関連。 推奨はFWをv7.3.0以降へ更新し全ローカルユーザーPWをリセット、特にSSLVPN用。 Reddit等ではベンダー見解に対する疑念もあり、迅速な対策適用が重要とされる。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/sonicwall-finds-no-sslvpn-zero-day-links-ransomware-attacks-to-2024-flaw/",
+          "external_id": "source--daily-4ccacc67cc78bb4bfd28"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-cdbff9d44dafa3db675f",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--cdbff9d44dafa3db675f3256 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認",
+      "x_reported_at": {
+        "value": "2025-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--918f9f2b-9e9d-46a9-8738-e62f2eba7ec9",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害",
+      "description": "現在進行中のAkiraがSonicWall SSL VPNを標的にし、OTPを用いたMFAが有効でも認証成功する事例が報告された。 研究者は過去侵入で窃取されたOTPシードの再利用を疑うが、具体的手法は未確定。複数回のOTP挑戦後に成功が観測。 2024年公開の不適切なアクセス制御（CVE-2024-40766）で収集された認証情報が、パッチ適用後も悪用され続けている。 侵入後は数分で内部スキャンを開始し、ImpacketやBloodHound等で横展開、Veeamから資格情報を抽出する手口が確認。 BYOVDでconsent.exeからDLLサイドロードし脆弱ドライバ（rwdrv.sys等）を読み込み、EDRを無効化して暗号化を実行。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-ransomware-breaching-mfa-protected-sonicwall-vpn-accounts/",
+          "external_id": "source--daily-251d2ee4d8e5443dd89d"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-d186ac7c962a1cd65b32",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--d186ac7c962a1cd65b32f772 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害",
+      "x_reported_at": {
+        "value": "2025-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--f0413788-2ac8-4460-89cb-0535ba79f2f5",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告",
+      "description": "米政府機関（CISA・FBI・DC3・HHS等）は、AkiraがNutanix AHVの仮想ディスクを暗号化する事例を確認し、共同勧告を更新。 2025年6月の初確認では、SonicWallのCVE-2024-40766悪用を足掛かりにAHV環境の.qcow2ディスクを暗号化したと報告。 AkiraのLinux版はESXiではesxcli等でVM停止後に暗号化、AHVではacli/ncliを使わず.qcow2を直接暗号化すると分析。 侵入後は窃取された/総当たりされたアカウントでVPN・SSHでアクセスやSonicWallの脆弱性を悪用するなどして侵入。 AnyDesk/Impacket等で偵察や横展開をし、VeeamのCVE-2023-27532・CVE-2024-40711悪用してバックアップにアクセスし削除。 勧告はオフラインバックアップ整備、MFA強制、既知悪用脆弱性への迅速パッチ適用などの緩和策実施を要請。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/cisa-warns-of-akira-ransomware-linux-encryptor-targeting-nutanix-vms/",
+          "external_id": "source--daily-48e314e2ec6d02091f74"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-df141a5fa2743d0b0e36",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--df141a5fa2743d0b0e3693a9 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告",
+      "x_reported_at": {
+        "value": "2025-11-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--e0701699-3355-40e8-bf0c-1a2d17d521a1",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akiraランサムウェア：支払いだけでは匿名性を保てない",
+      "description": "ニュージャージー州の企業がAkiraランサムウェアの被害を受け、60万ドルの要求を20万ドルに交渉し支払った。 攻撃者は「List.7z」アーカイブで被害者のファイル構造を示し、データ所有の証拠として提示。 支払い後、「Deletion.7z」アーカイブでデータ削除の証拠を提供したが、実際の削除は確認できない。 被害者とのチャットログやファイル構造が公開され、匿名性が保たれなかった。 攻撃者はネットワークアクセスをダークウェブで購入し、Kerberoastingでドメイン管理者の資格情報を取得したと主張。",
+      "external_references": [
+        {
+          "source_name": "suspectfile.com",
+          "description": "Local source: https://www.suspectfile.com/akira-ransomware-when-paying-isnt-enough-to-stay-anonymous/",
+          "external_id": "source--daily-08853165537986c77f7f"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-dfd75e06c790813a28cd",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--dfd75e06c790813a28cd92e5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Akiraランサムウェア：支払いだけでは匿名性を保てない",
+      "x_reported_at": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--67798fe7-89eb-4658-bb24-2894071f0203",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に",
+      "description": "7月中旬以降、AkiraランサムウェアがSonicWall SSL VPNを経由し侵入急増。 Arctic Wolfは未知のゼロデイ利用の可能性を示唆、資格情報攻撃も否定せず。 侵入後すぐ暗号化へ移行する傾向が2024年10月から継続確認。 管理者にはSSL VPN一時停止とホスティング系IPからのVPN認証遮断を推奨。 SMA 100のRCE脆弱性CVE-2025-40599も要パッチ、ログ確認でIoC調査を勧告。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/surge-of-akira-ransomware-attacks-hits-sonicwall-firewall-devices/",
+          "external_id": "source--daily-339537ab2997fa08795e"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-eda2e5f02bdb418e353d",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--eda2e5f02bdb418e353d087f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に",
+      "x_reported_at": {
+        "value": "2025-08-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取",
+      "description": "Akiraランサムウェアが250以上の組織を標的に4200万ドルを詐取 2023年3月に出現し、幅広い業界を標的に急速に展開 北米、欧州、豪州で、幅広いビジネスと基盤インフラへ影響 FBIとCISAは組織の脆弱性対策と多要素認証の重要性を強調 攻撃の被害を減少させるための具体的な対策とガイドライン提供",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/fbi-akira-ransomware-raked-in-42-million-from-250-plus-victims/",
+          "external_id": "source--daily-89a8fc15ce47bbec4793"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-ff6d07e1669bc5a6fa32",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--ff6d07e1669bc5a6fa32b1fd から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取",
+      "x_reported_at": {
+        "value": "2024-04-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
     },
     {
       "type": "attack-pattern",
@@ -1474,21 +1922,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--a1d1c115-b7fd-418d-a26e-4a5e96d859a9",
-      "created": "2026-07-25T15:22:53Z",
-      "modified": "2026-07-25T15:22:53Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
-      "target_ref": "malware--632d09d9-346c-4c95-b7a5-9e5a6fc190d5",
-      "description": "Akira uses Megazord.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--2b835784-f1fe-4b6a-b01e-0c5c97d42763",
       "created": "2026-07-25T15:22:53Z",
       "modified": "2026-07-25T15:22:53Z",
@@ -1514,6 +1947,21 @@
       "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
       "target_ref": "malware--be79722a-71ae-477b-8261-b4ffbff8a1da",
       "description": "Akira uses Akira _v2.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a1d1c115-b7fd-418d-a26e-4a5e96d859a9",
+      "created": "2026-07-25T15:22:53Z",
+      "modified": "2026-07-25T15:22:53Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "target_ref": "malware--632d09d9-346c-4c95-b7a5-9e5a6fc190d5",
+      "description": "Akira uses Megazord.",
       "x_confidence": "high"
     },
     {
@@ -1589,6 +2037,486 @@
       "source_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
       "target_ref": "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
       "description": "Akira uses PsExec.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c57b7009-7536-4545-a6de-12d5f36d9b82",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 is attributed or linked to Akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7b5be7f0-fba3-4468-89d6-49adf60bd630",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 uses malware--akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--91ada971-01ed-4045-9f50-02252e693d88",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--0adcc045-c7e5-46d8-9e09-814748934b81",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される is attributed or linked to Akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--af8a9c54-a7df-4cdc-aa07-1a026ac1049f",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--0adcc045-c7e5-46d8-9e09-814748934b81",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される uses malware--akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7773e6cd-4dd8-48e9-b5bb-5c45b29431e2",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--1f804ed5-e1a9-43ab-90f5-ee881785dc88",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--95c7d861-a373-4c8c-885e-60a43088db0b",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1f804ed5-e1a9-43ab-90f5-ee881785dc88",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a7894db0-a8b7-44a4-ba03-00a5a07a4b75",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--43ea8895-2c9b-4543-8649-a0818c8cf298",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4ef53ea3-7f2e-44c9-ba0f-5b6ee5dc00ba",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--43ea8895-2c9b-4543-8649-a0818c8cf298",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--486beb2a-31c2-4089-97be-c103ecb3b05a",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--21a629f4-09d8-4a5d-b5e9-e59869689dbc",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論 is attributed or linked to Akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d6e7f1c-4b85-4561-bc86-80be607c5e07",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--21a629f4-09d8-4a5d-b5e9-e59869689dbc",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論 uses malware--akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d2627ff-92b9-49a1-a543-7daeb02a6e0f",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 is attributed or linked to Akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--71e24562-6bb7-4c56-a7b9-8308d927d5d5",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 uses malware--akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e4301194-a06e-4fa0-9ed9-5f2a9765f265",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea8b6a8f-f33a-4456-b103-35f5a968016e",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7d2a1909-2f7d-4d91-9be4-b72c6f780c57",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ec200461-733f-4cfa-bd33-30f9721ee5af",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9fc06d64-89da-43c4-b3b9-91601473a3b1",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--858f37ff-2918-41a2-a324-52700c7f3e50",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e8dda6ec-95ae-47c4-a28f-d9134d37c703",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--858f37ff-2918-41a2-a324-52700c7f3e50",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--680ff4bd-6def-42ea-913b-b09edb90b74d",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--34d92e38-3e2f-4375-94c8-7d7782fad4bf",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "被害者が支払いをやめたことで、ランサムウェアの利益が減少 is attributed or linked to Akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e69011cb-8c5e-4a22-8ee2-dabb5663ef35",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--34d92e38-3e2f-4375-94c8-7d7782fad4bf",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "被害者が支払いをやめたことで、ランサムウェアの利益が減少 uses malware--akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8ee3a95f-1c16-42ea-b18d-eb8735ea49b2",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--93dd2632-c0fe-4bd4-980d-b5baaf8de943",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ba942d42-d302-4474-b854-ef2de675f4dc",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--93dd2632-c0fe-4bd4-980d-b5baaf8de943",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1d687f29-3cc9-42b9-9bce-d93ec85032ed",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--918f9f2b-9e9d-46a9-8738-e62f2eba7ec9",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c2bc6f76-4a14-4931-89a0-1dc7a1bd5e96",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--918f9f2b-9e9d-46a9-8738-e62f2eba7ec9",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1a3b80d8-15f5-4e67-b1ab-ef250a249802",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--f0413788-2ac8-4460-89cb-0535ba79f2f5",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--04ad01ac-536e-4dbe-98dc-fdd92a22d147",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f0413788-2ac8-4460-89cb-0535ba79f2f5",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7a0544c2-e577-4de3-9dbd-13bd932620e5",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--e0701699-3355-40e8-bf0c-1a2d17d521a1",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Akiraランサムウェア：支払いだけでは匿名性を保てない is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b268055f-113c-4adc-9176-3289b58bf154",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--e0701699-3355-40e8-bf0c-1a2d17d521a1",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akiraランサムウェア：支払いだけでは匿名性を保てない uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5263b524-cd68-4e89-a1d9-7facd0714c8b",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--67798fe7-89eb-4658-bb24-2894071f0203",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99ebc602-ca2e-4043-8c83-e6a6e5f5eeec",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--67798fe7-89eb-4658-bb24-2894071f0203",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--de7d92ad-a03e-40d9-b4cc-5f44e61b5249",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6d2b97fc-7d10-410f-9219-9c68ab28a0ca",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 uses malware--akira.",
       "x_confidence": "high"
     },
     {
@@ -3770,7 +4698,7 @@
       "spec_version": "2.1",
       "id": "report--9f683577-7cd6-49d1-9713-6590927b03a8",
       "created": "2026-07-25T15:22:53Z",
-      "modified": "2026-07-25T15:22:53Z",
+      "modified": "2026-07-27T11:17:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3779,17 +4707,33 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T15:22:53Z",
+      "published": "2026-07-27T11:17:21Z",
       "object_refs": [
         "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
-        "malware--632d09d9-346c-4c95-b7a5-9e5a6fc190d5",
         "malware--a695430a-38fc-4086-8e38-d3932887e325",
         "malware--be79722a-71ae-477b-8261-b4ffbff8a1da",
+        "malware--632d09d9-346c-4c95-b7a5-9e5a6fc190d5",
         "tool--d1a60388-2006-4100-ab7a-bfca941b849a",
         "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
         "tool--dabcf744-03eb-4e19-a2e0-4fafde9d8641",
         "tool--58d2326a-96f0-4550-ba42-9681e849143c",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+        "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
+        "campaign--0adcc045-c7e5-46d8-9e09-814748934b81",
+        "campaign--1f804ed5-e1a9-43ab-90f5-ee881785dc88",
+        "campaign--43ea8895-2c9b-4543-8649-a0818c8cf298",
+        "campaign--21a629f4-09d8-4a5d-b5e9-e59869689dbc",
+        "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+        "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+        "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+        "campaign--858f37ff-2918-41a2-a324-52700c7f3e50",
+        "campaign--34d92e38-3e2f-4375-94c8-7d7782fad4bf",
+        "campaign--93dd2632-c0fe-4bd4-980d-b5baaf8de943",
+        "campaign--918f9f2b-9e9d-46a9-8738-e62f2eba7ec9",
+        "campaign--f0413788-2ac8-4460-89cb-0535ba79f2f5",
+        "campaign--e0701699-3355-40e8-bf0c-1a2d17d521a1",
+        "campaign--67798fe7-89eb-4658-bb24-2894071f0203",
+        "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
         "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
         "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
         "attack-pattern--ef31f401-022d-4236-afc4-ccfb5d80d96e",

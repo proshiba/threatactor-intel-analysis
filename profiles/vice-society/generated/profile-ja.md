@@ -1,9 +1,9 @@
 # Vice Society 脅威アクタープロファイル
 
-プロファイルID: `actor--vice-society`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--vice-society`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:39Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -82,8 +82,8 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--printnightmare | PrintNightmare | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--hellokitty-and-zeppelin-ransomware | HelloKitty and Zeppelin ransomware | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--printnightmare | PrintNightmare | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -107,7 +107,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | ransomware-extortion | 不明 | 不明 | 2024-09-19 | Vanilla Tempest(別名:DEV-0832、Vice Society)は米国の医療機関にINCランサムウェアを使用した攻撃を実施。 攻撃の一環として、Gootloader経由でネットワーク侵入し、SupperマルウェアやAnyDeskを使用した。 攻撃により患者データベースのアクセスが失われ、予定の変更を余儀なくされた。 Vanilla Tempestはランサムウェアのアフィリエイトであり、BlackCat、Quantum Locker、Zeppelin、Rhysidaなどのさまざまなランサムウェアを使用。 Vanilla Tempestは他にも教育、製造業、IT分野を標的にしている。 | 中 | `source--daily-c1b12b52abae4635e5ea` |
+| Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | ransomware-extortion | 不明 | 不明 | 2025-10-17 | Microsoftは10月上旬のRhysida連携攻撃を妨害し、偽Teamsインストーラ署名に使われた200超の証明書を失効させた。 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.]top等の偽サイトでOysterバックドアを配布した。 配布は9月下旬のマルバタイジングやSEOポイズニングで行われ、正規と同名MSTeamsSetup[.]exeで利用者を欺いた。 悪性インストーラは署名済みOysterを展開し、遠隔操作・情報窃取・追加ペイロード投下を可能にする。 同集団は金銭目的で教育・医療・IT・製造を頻繁に標的化し、近年は主にRhysidaを展開している。 | 中 | `source--daily-5287a969660d1bb7e309` |
 
 
 
@@ -149,25 +152,27 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--vice-society--cbb2021149e25c3a | vice society |  | 不明 | actor_profile/evidence/vice-society.csv | structured-data | TLP:CLEAR | 中 |
-| source--vice-society--77ff6bce69a046a1 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--78abb303ef02d1f9 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--c6993c45964e8808 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--640b74e7279a78c6 | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--000985ff0c99e8d0 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--6ec9e1c9c889aebe | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--e007f780b44a14fb | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--096e6a5ab122cf81 | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--378bd77c1a55d9ff | 2024 Trustwave Public Sector Threat Landscape |  | 2024 | summary/2024/2024_Trustwave_Public_Sector_Threat_Landscape.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--a6e96b7f3b48daa9 | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--442c439e9d287b2f | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
-| source--vice-society--e2e1bc5b0435feaa | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--vice-society--4f2821a5f3b2de05 | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
+| source--daily-5287a969660d1bb7e309 | Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | bleepingcomputer.com | 2025-10-17 | https://www.bleepingcomputer.com/news/microsoft/microsoft-disrupts-ransomware-attacks-targeting-teams-users/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-c1b12b52abae4635e5ea | Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | bleepingcomputer.com | 2024-09-19 | https://www.bleepingcomputer.com/news/microsoft/microsoft-vanilla-tempest-hit-healthcare-with-inc-ransomware/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--vice-society--000985ff0c99e8d0 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--096e6a5ab122cf81 | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--378bd77c1a55d9ff | 2024 Trustwave Public Sector Threat Landscape |  | 2024 | summary/2024/2024_Trustwave_Public_Sector_Threat_Landscape.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--442c439e9d287b2f | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--4f2821a5f3b2de05 | Global Threat Report 2025 |  | 2025 | summary/2025/Global Threat Report 2025.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--640b74e7279a78c6 | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--6ec9e1c9c889aebe | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--77ff6bce69a046a1 | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--78abb303ef02d1f9 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--a6e96b7f3b48daa9 | Symantec Ransomware Threat Landscape 2024 |  | 2024 | summary/2024/Symantec_Ransomware_Threat_Landscape_2024.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--c6993c45964e8808 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--cbb2021149e25c3a | vice society |  | 不明 | actor_profile/evidence/vice-society.csv | structured-data | TLP:CLEAR | 中 |
+| source--vice-society--e007f780b44a14fb | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
+| source--vice-society--e2e1bc5b0435feaa | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

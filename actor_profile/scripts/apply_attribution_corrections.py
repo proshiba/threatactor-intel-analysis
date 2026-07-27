@@ -159,6 +159,7 @@ def meta_activity(actor_name: str, description: str, target_refs: list[str]) -> 
         "activity_type": "cyber-espionage",
         "first_observed": normalize_time("2021-10", basis="source-stated"),
         "last_observed": normalize_time("2021-10", basis="source-stated"),
+        "reported_at": normalize_time("2021-11-16", basis="document"),
         "description": f"{actor_name}: {description}",
         "target_refs": target_refs,
         "malware_refs": [],

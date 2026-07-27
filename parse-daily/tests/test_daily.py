@@ -12,7 +12,9 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
 from daily_common import (  # noqa: E402
+    ActorMatch,
     ActorRegistry,
+    assess_activity_claim,
     date_from_path,
     is_safe_structured_match,
     parse_news_file,
@@ -21,6 +23,7 @@ from daily_common import (  # noqa: E402
 )
 from daily_materializer import (  # noqa: E402
     activity_bounds,
+    activity_entry,
     activity_id_for,
     build_ledger,
     ensure_malware_capabilities,
@@ -189,6 +192,128 @@ class DailyCommonTests(unittest.TestCase):
         first, last = activity_bounds(record)
         self.assertEqual(first["status"], "unknown")
         self.assertEqual(last["status"], "unknown")
+
+    def test_explicit_activity_claim_is_separate_from_name_discovery(self) -> None:
+        match = ActorMatch(
+            "kimsuky",
+            "Kimsuky",
+            "Kimsuky",
+            "exact",
+            "high",
+            "news-body",
+        )
+        claim = assess_activity_claim(
+            match,
+            "北朝鮮のハッカーが開発者を標的に攻撃",
+            "- Kimsukyグループがマルウェアを配布して攻撃を実施。",
+            CONFIG,
+        )
+        self.assertEqual(claim["assessment"], "strong-subject")
+        self.assertEqual(claim["actor_role"], "operator")
+
+        adopted = assess_activity_claim(
+            ActorMatch(
+                "muddywater",
+                "MuddyWater",
+                "MuddyWater",
+                "exact",
+                "high",
+                "news-title",
+            ),
+            "MuddyWater、新しいC2ツールを採用",
+            "",
+            CONFIG,
+        )
+        self.assertEqual(adopted["assessment"], "strong-subject")
+
+        attributed = assess_activity_claim(
+            match,
+            "新たなマルウェアキャンペーンを確認",
+            "- このキャンペーンはKimsukyと関連があると報告された。",
+            CONFIG,
+        )
+        self.assertEqual(attributed["assessment"], "attributed-subject")
+        self.assertEqual(attributed["actor_role"], "attributed-operator")
+
+        uncertain = assess_activity_claim(
+            match,
+            "新たなマルウェアキャンペーンを確認",
+            "- このキャンペーンはKimsukyと類似するが、確固たる証拠はない。",
+            CONFIG,
+        )
+        self.assertEqual(uncertain["assessment"], "attribution-uncertain")
+
+        legal = assess_activity_claim(
+            ActorMatch(
+                "revil", "REvil", "REvil", "exact", "high", "news-title"
+            ),
+            "REvilメンバーをランサムウェア攻撃の罪で逮捕",
+            "",
+            CONFIG,
+        )
+        self.assertEqual(legal["assessment"], "non-operational")
+
+        collision = assess_activity_claim(
+            ActorMatch(
+                "sea-turtle",
+                "Sea Turtle",
+                "SILICON",
+                "overlapping",
+                "high",
+                "news-title",
+            ),
+            "Apple Silicon CPUに対する攻撃",
+            "",
+            CONFIG,
+        )
+        self.assertEqual(collision["assessment"], "name-collision")
+
+    def test_activity_keeps_unknown_period_and_separate_report_date(self) -> None:
+        record = {
+            "record_id": "daily-record--example",
+            "actor": {"slug": "kimsuky"},
+            "activity": {
+                "title": "KimsukyがExampleRATを配布",
+                "summary": "KimsukyがExampleRATを用いた攻撃を実施。",
+                "news_date": "2026-07-25",
+                "activity_reference": "https://example.test/report",
+                "primary_url": "https://example.test/report",
+                "news_path": "daily-news/news/20260725.md",
+            },
+            "confidence": "high",
+            "iocs": [],
+            "activity_claim": {"assessment": "strong-subject"},
+        }
+        profile_data = {
+            "capabilities": {
+                "malware": [
+                    {
+                        "id": "malware--example-rat",
+                        "name": "ExampleRAT",
+                        "aliases": [],
+                    }
+                ],
+                "infrastructure": [],
+            },
+            "targets": {
+                "countries": [],
+                "regions": [],
+                "sectors": [],
+                "roles": [],
+            },
+        }
+        activity = activity_entry(
+            record,
+            ["source--daily-example"],
+            profile_data,
+        )
+        self.assertEqual(activity["first_observed"]["status"], "unknown")
+        self.assertEqual(activity["last_observed"]["status"], "unknown")
+        self.assertEqual(
+            activity["reported_at"]["value"],
+            "2026-07-25T00:00:00Z",
+        )
+        self.assertEqual(activity["malware_refs"], ["malware--example-rat"])
 
     def test_only_approved_capability_is_materialized(self) -> None:
         profile_data = {

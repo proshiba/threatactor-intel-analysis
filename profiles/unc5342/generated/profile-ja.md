@@ -1,9 +1,9 @@
 # UNC5342 脅威アクタープロファイル
 
-プロファイルID: `actor--unc5342`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc5342`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:27Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2025-04-26 | 北朝鮮支援のグループが偽の仮想通貨企業を設立し、就職面接を装いマルウェアを拡散。 BlockNovas、Angeloper、SoftGlideの3社を使い、BeaverTailなど複数マルウェアを配布。 マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 ロシアのIPレンジを使い活動を匿名化し、米FBIはBlockNovasドメインを押収。 活動の背後にはAIツールを利用した偽プロファイル作成も含まれる。 | 中 | `source--daily-cf8c33fcf3e4b3907567` |
+| 北朝鮮ハッカーが「EtherHiding」でブロックチェーン上にマルウェアを隠蔽 | malware-campaign | 不明 | 不明 | 2025-10-17 | Google TIGはDPRKのUNC5342が2025年2月からEtherHidingを採用し、スマートコントラクトで悪性ペイロードを配布と報告。 偽の採用面接で開発者にコード実行を促し、技術課題に見せかけてJavaScriptダウンローダを走らせる手口が用いられる。 スマートコントラクトにはJADESNOWを格納し、EthereumやBNB上からInvisibleFerretの第3段階を取得してメモリで実行。 読み取り専用コールで履歴が残りにくく、契約は4か月で20回超更新・平均$1.37の低コストで構成変更が容易と分析。 窃取機能はブラウザ保存のパスワード/クレカ/暗号資産ウォレットを狙う。管理者にダウンロード制限や厳格なブラウザ制御を推奨。 | 中 | `source--daily-658542b50150556febcb` |
 
 
 
@@ -141,13 +144,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc5342--9aa2898da735df6f | unc5342 |  | 不明 | actor_profile/evidence/unc5342.csv | structured-data | TLP:CLEAR | 中 |
-| source--unc5342--f8089569ef10b4c8 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--daily-658542b50150556febcb | 北朝鮮ハッカーが「EtherHiding」でブロックチェーン上にマルウェアを隠蔽 | bleepingcomputer.com | 2025-10-17 | https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-etherhiding-to-hide-malware-on-the-blockchain/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-cf8c33fcf3e4b3907567 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | thehackernews.com | 2025-04-26 | https://thehackernews.com/2025/04/north-korean-hackers-spread-malware-via.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc5342--0cb1ed52898214d0 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--unc5342--6b4b85e4f862ca27 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unc5342--9aa2898da735df6f | unc5342 |  | 不明 | actor_profile/evidence/unc5342.csv | structured-data | TLP:CLEAR | 中 |
+| source--unc5342--f8089569ef10b4c8 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

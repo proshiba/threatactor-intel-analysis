@@ -220,7 +220,7 @@ def main() -> int:
                     profile["sources"].append(modeled)
                     source_indexes[modeled["source_id"]] = len(profile["sources"]) - 1
             ensure_malware_capabilities(profile, record, evidence_refs)
-            activity = activity_entry(record, evidence_refs)
+            activity = activity_entry(record, evidence_refs, profile)
             activities = {
                 item["activity_id"]: index
                 for index, item in enumerate(profile["activities"])
