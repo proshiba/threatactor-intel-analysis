@@ -1,0 +1,172 @@
+name: Daily actor check
+
+# 脅威アクタープロファイルの日次更新チェック。
+#
+# 全673アクターを毎日見るのは現実的でないため、次の2観点に絞る。
+#   1. 直近に活動があったアクター（過去365日、約75件）に新しい報告がないか
+#   2. tech-memo の daily-news で言及されたアクターの活動記載
+#
+# 2段構成にしている。
+#   check ジョブ … parse-daily/daily_check.py による決定的な検知（APIコストなし）
+#   review ジョブ … Claude による一次情報源の確認とレビュー、Issue 作成
+#
+# 検知・調査・報告までを担当し、プロファイルの変更、レビューキューの承認、
+# state.json の更新、commit / push は行わない（parse-daily/AGENT.md）。
+#
+# 必要なシークレット（どちらか一方）:
+#   ANTHROPIC_API_KEY        … Anthropic API キー
+#   CLAUDE_CODE_OAUTH_TOKEN  … Claude Code OAuth トークン
+# 未設定の場合、review ジョブはスキップされ、決定的な検知結果だけが残る。
+
+on:
+  schedule:
+    - cron: "17 0 * * *"  # 09:17 JST
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "直近活動とみなす日数"
+        required: false
+        default: "365"
+      since:
+        description: "走査開始日 YYYY-MM-DD（既定は state.json の last_scanned_date）"
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: daily-actor-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      records: ${{ steps.check.outputs.records }}
+      mentioned: ${{ steps.check.outputs.mentioned }}
+      recent_hits: ${{ steps.check.outputs.recent_hits }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run daily check
+        id: check
+        run: |
+          set -o pipefail
+          args=(--run-scan --days "${{ inputs.days || '365' }}" --top 30)
+          if [ -n "${{ inputs.since }}" ]; then
+            args+=(--since "${{ inputs.since }}")
+          fi
+          python3 parse-daily/daily_check.py "${args[@]}" | tee digest.md
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          stats = json.load(open("parse-daily/output/daily-check.json", encoding="utf-8"))["statistics"]
+          print(f"records={stats.get('records', 0)}")
+          print(f"mentioned={stats.get('mentioned_actors', 0)}")
+          print(f"recent_hits={stats.get('mentioned_recent_actors', 0)}")
+          PY
+
+      - name: Publish digest to job summary
+        if: always()
+        run: cat digest.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload digest
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-check
+          path: |
+            digest.md
+            parse-daily/output/daily-check.json
+          retention-days: 30
+
+  review:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for credentials
+        id: creds
+        env:
+          API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          if [ -n "$API_KEY" ] || [ -n "$OAUTH" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::ANTHROPIC_API_KEY / CLAUDE_CODE_OAUTH_TOKEN が未設定のため、Claudeによるレビューをスキップします。"
+          fi
+
+      - name: Checkout
+        if: steps.creds.outputs.available == 'true'
+        uses: actions/checkout@v4
+
+      - name: Download digest
+        if: steps.creds.outputs.available == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: daily-check
+
+      - name: Claude review
+        if: steps.creds.outputs.available == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          claude_args: '--allowedTools "Bash,Read,Glob,Grep,WebFetch,WebSearch"'
+          prompt: |
+            脅威アクタープロファイルの日次更新チェックです。検知結果は `digest.md` に
+            あります（決定的な検知は実行済み。再実行は不要です）。
+
+            検知の統計: 要レビューレコード ${{ needs.check.outputs.records }} 件 /
+            言及アクター ${{ needs.check.outputs.mentioned }} 件 /
+            うち直近活動あり ${{ needs.check.outputs.recent_hits }} 件
+
+            ## 1. digest.md の確認
+
+            「観点1・2の交差」に挙がったアクターが最優先の確認対象です。
+            全673アクターを見る必要はありません。
+
+            ## 2. 一次情報源の確認
+
+            tech-memo に載っていない新規公開がないか、次の公開一覧を確認してください。
+            直近に活動があったアクターに関する新しい一次情報を優先します。
+
+            - Microsoft Security Blog https://www.microsoft.com/en-us/security/blog/
+            - Google Threat Intelligence https://cloud.google.com/blog/topics/threat-intelligence
+            - Palo Alto Networks Unit 42 https://unit42.paloaltonetworks.com/
+            - Cisco Talos https://blog.talosintelligence.com/
+            - ESET Research https://www.welivesecurity.com/en/eset-research/
+            - SentinelLabs https://www.sentinelone.com/labs/
+            - Kaspersky Securelist https://securelist.com/
+
+            検索結果のスニペットだけを根拠にせず、公開一覧と原文を確認してください
+            （actor_profile/OSINT_RULES.md）。
+
+            ## 3. レビュー
+
+            レコードがあれば `parse-daily/output/review-queue.json` の `pending` を
+            主張単位で確認します。判断規則は `parse-daily/AGENT.md` に従います。
+            `activity_claim.assessment` が `strong-subject` / `attributed-subject` でも
+            自動承認の確定ではありません。同名製品・別クラスタ・法執行記事・
+            過去言及でないか原文を確認してください。
+
+            ## 4. 報告
+
+            確認すべき事項があれば `gh issue create` で Issue を作成してください。
+            タイトルは「アクター更新チェック <YYYY-MM-DD>」とし、本文には
+            アクター名・記事・判定理由・採用可否の推奨を日本語で記載します。
+            既存プロファイルに一致しない名前は新規プロファイル候補として挙げてください。
+
+            新しい情報が何もなければ Issue は作成せず、その旨を出力するだけにしてください。
+
+            ## 禁止事項
+
+            このジョブは検知・調査・報告までです。次は行わないでください。
+
+            - profiles/ 配下の変更、レビューキューの承認、apply_review_queue.py の --apply
+            - parse-daily/state.json の更新
+            - git commit / git push / PR作成
+
+            反映が必要と判断した場合は Issue 内での提案に留めてください。
