@@ -164,6 +164,13 @@ const MAPS = {
     "cyber-espionage": "サイバー諜報",
     "infrastructure-campaign": "インフラキャンペーン",
     "historical-activity-cluster": "過去の活動クラスター",
+    "reported-activity": "報告された活動",
+    "ransomware-extortion": "ランサムウェア・恐喝",
+    "phishing-campaign": "フィッシングキャンペーン",
+    "disruptive-activity": "破壊・妨害活動",
+    "infrastructure-operation": "インフラ運用",
+    "malware-campaign": "マルウェアキャンペーン",
+    intrusion: "侵入活動",
   },
   tactic: {
     Reconnaissance: "偵察",

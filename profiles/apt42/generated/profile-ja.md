@@ -1,9 +1,9 @@
 # APT42 脅威アクタープロファイル
 
-プロファイルID: `actor--apt42`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--apt42`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:22Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -112,7 +112,11 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
+| Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 | phishing-campaign | 不明 | 不明 | 2025-01-31 | Googleの報告によれば、中国、イラン、北朝鮮、ロシアに関連する57以上の脅威アクターが、AI技術をサイバーおよび情報作戦に利用しています。 これらの脅威アクターは、AIを用いて主にリサーチ、コードのトラブルシューティング、コンテンツの作成やローカライズを行っています。 イランのAPTアクターがGeminiの最も頻繁な利用者であり、APT42というハッキンググループは、この国のハッカーによるGemini利用の30%以上を占めています。 各アクターの利用状況 イランのAPT42は、フィッシングキャンペーンの作成、防衛専門家や組織の偵察、サイバーセキュリティ関連のコンテンツ生成にAIを活用しています。 中国のAPTグループは、偵察、コードのトラブルシューティング、ネットワーク内での横移動や権限昇格、データの抽出、検知回避の手法をAIで研究しています。 | 中 | `source--daily-e07d98b8e6a40e245f21` |
+| イランのハッカーがジャーナリストになりすまし、バックドアマルウェアを配布 | phishing-campaign | 不明 | 不明 | 2024-05-06 | イランのAPT42、ジャーナリストになりすましマルウェアを配布。 メディア組織を偽装し、信頼を築いてから悪意あるリンクを送信。 被害者は文書をクリックすると偽のログインページに誘導される。 認証情報とMFAトークンが盗まれ、企業ネットワークに侵入される。 APT42はクラウドツールのビルトイン機能を利用して行動を隠蔽。 | 中 | `source--daily-0917cfe45c04f45174f4` |
 
 
 
@@ -189,34 +193,37 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--apt42--ecc18e15a462bb18 | apt42 |  | 不明 | actor_profile/evidence/apt42.csv | structured-data | TLP:CLEAR | 中 |
-| source--apt42--a232571b2948f15f | advances in threat actor usage of ai tools en |  | 不明 | AISecurity/2025/advances-in-threat-actor-usage-of-ai-tools-en.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--8472b6c5ed1c9838 | Automating APT Campaign and Group Attribution |  | 不明 | APT-hunting/Automating APT Campaign and Group Attribution.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--a4a6e63e2bb65225 | 2023 08 10 cyber brief no 01 2023 |  | 2023-08-10 | Charming Kitten/2023-08-10-cyber-brief-no-01-2023.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--ad9096318467e19f | README |  | 不明 | Charming Kitten/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--apt42--eaa58a8e923ef829 | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--2078dca3cd426c7e | 2024 Threat Intelligence Annual Report |  | 2024 | summary/2025/2024 Threat Intelligence Annual Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--33ba52f45c44e462 | Hurdling Over Hazards  Multifaceted Threats to the Paris Olympics |  | 不明 | summary/2024/Hurdling Over Hazards- Multifaceted Threats to the Paris Olympics.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--440a66631095dbd9 | 2024 Malicious Infrastructure Report |  | 2024 | summary/2025/2024 Malicious Infrastructure Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--4bffb0efe850e284 | tool of first resort israel hamas war cyber |  | 不明 | summary/2024/tool-of-first-resort-israel-hamas-war-cyber.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--56e8403dbc9b7d0f | Raport analize PROFILI I GRUPEVE TE HAKERAVE IRANIANE |  | 不明 | summary/2024/Raport-analize-PROFILI-I-GRUPEVE-TE-HAKERAVE-IRANIANE.pdf | report | TLP:CLEAR | 中 |
 | source--apt42--6ea6e14a0e0f30bd | APT42 Crooked Charms Cons and Compromises |  | 不明 | International Strategic/Iran/APT42_Crooked_Charms_Cons_and_Compromises.pdf | report | TLP:CLEAR | 中 |
 | source--apt42--814428b19142a33f | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--a643f50007e75c47 | 2022 APT TRENDS INSIGHT REPORT |  | 2022 | summary/2023/2022_APT_TRENDS_INSIGHT_REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--8f20da920924c83f | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--adb6e441076585e5 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--acbc1743b53b9755 | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--apt42--33ba52f45c44e462 | Hurdling Over Hazards  Multifaceted Threats to the Paris Olympics |  | 不明 | summary/2024/Hurdling Over Hazards- Multifaceted Threats to the Paris Olympics.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--cc95678909a4127c | MacMalware 2023 |  | 2023 | summary/2024/MacMalware_2023.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--8472b6c5ed1c9838 | Automating APT Campaign and Group Attribution |  | 不明 | APT-hunting/Automating APT Campaign and Group Attribution.pdf | report | TLP:CLEAR | 中 |
 | source--apt42--87fb5f1954a13770 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--56e8403dbc9b7d0f | Raport analize PROFILI I GRUPEVE TE HAKERAVE IRANIANE |  | 不明 | summary/2024/Raport-analize-PROFILI-I-GRUPEVE-TE-HAKERAVE-IRANIANE.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--8f20da920924c83f | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
 | source--apt42--9b1a00940e03a197 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--apt42--4bffb0efe850e284 | tool of first resort israel hamas war cyber |  | 不明 | summary/2024/tool-of-first-resort-israel-hamas-war-cyber.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--440a66631095dbd9 | 2024 Malicious Infrastructure Report |  | 2024 | summary/2025/2024 Malicious Infrastructure Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--2078dca3cd426c7e | 2024 Threat Intelligence Annual Report |  | 2024 | summary/2025/2024 Threat Intelligence Annual Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--d2db0dd0581a14eb | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
-| source--apt42--fc48efe82bca8147 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--a232571b2948f15f | advances in threat actor usage of ai tools en |  | 不明 | AISecurity/2025/advances-in-threat-actor-usage-of-ai-tools-en.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--a4a6e63e2bb65225 | 2023 08 10 cyber brief no 01 2023 |  | 2023-08-10 | Charming Kitten/2023-08-10-cyber-brief-no-01-2023.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--a643f50007e75c47 | 2022 APT TRENDS INSIGHT REPORT |  | 2022 | summary/2023/2022_APT_TRENDS_INSIGHT_REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--acbc1743b53b9755 | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--apt42--ad9096318467e19f | README |  | 不明 | Charming Kitten/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--apt42--adb6e441076585e5 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
 | source--apt42--c697e07bc1679075 | 2025 Year in Review  Malicious Infrastructure |  | 2025 | summary/2026/2025 Year in Review- Malicious Infrastructure.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--cc95678909a4127c | MacMalware 2023 |  | 2023 | summary/2024/MacMalware_2023.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--d2db0dd0581a14eb | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--eaa58a8e923ef829 | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
+| source--apt42--ecc18e15a462bb18 | apt42 |  | 不明 | actor_profile/evidence/apt42.csv | structured-data | TLP:CLEAR | 中 |
+| source--apt42--fc48efe82bca8147 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--daily-0917cfe45c04f45174f4 | イランのハッカーがジャーナリストになりすまし、バックドアマルウェアを配布 | bleepingcomputer.com | 2024-05-06 | https://www.bleepingcomputer.com/news/security/iranian-hackers-pose-as-journalists-to-push-backdoor-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-2cce580b31452f445118 | Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | bleepingcomputer.com | 2026-02-13 | https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-e07d98b8e6a40e245f21 | Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 | thehackernews.com | 2025-01-31 | https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

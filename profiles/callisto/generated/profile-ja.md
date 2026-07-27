@@ -1,9 +1,9 @@
 # Callisto Group 脅威アクタープロファイル
 
-プロファイルID: `actor--callisto`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--callisto`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:22Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -113,7 +113,9 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 
 
@@ -175,17 +177,18 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--callisto--f45614e65d3b5aba | BlueCharlie Continues to Deploy New Infrastructure in 2023 |  | 2023 | Calisto/BlueCharlie_Continues_to_Deploy_New_Infrastructure_in_2023.pdf | report | TLP:CLEAR | 中 |
-| source--callisto--9ec82e2a9bfd4c83 | Nisos Research Coldriver Group |  | 不明 | Calisto/Nisos-Research-Coldriver-Group.pdf | report | TLP:CLEAR | 中 |
 | source--callisto--2465541c9b4c01dd | Spearphishing cases in Eastern Europe 2022 2024 technical brief |  | 不明 | Calisto/Spearphishing-cases-in-Eastern-Europe-2022-2024-technical-brief.pdf | report | TLP:CLEAR | 中 |
 | source--callisto--7766956c75cbb2fc | readme |  | 不明 | Calisto/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--callisto--9ec82e2a9bfd4c83 | Nisos Research Coldriver Group |  | 不明 | Calisto/Nisos-Research-Coldriver-Group.pdf | report | TLP:CLEAR | 中 |
+| source--callisto--f45614e65d3b5aba | BlueCharlie Continues to Deploy New Infrastructure in 2023 |  | 2023 | Calisto/BlueCharlie_Continues_to_Deploy_New_Infrastructure_in_2023.pdf | report | TLP:CLEAR | 中 |
+| source--daily-000ea03bc7f9b3f702ec | Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | bleepingcomputer.com | 2025-05-09 | https://www.bleepingcomputer.com/news/security/google-links-new-lostkeys-data-theft-malware-to-russian-cyberspies/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

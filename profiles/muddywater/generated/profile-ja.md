@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--muddywater`
 - 状態: draft
-- 更新日時: 2026-07-26T06:00:44Z
+- 更新日時: 2026-07-27T11:17:24Z
 - 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -144,12 +144,17 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| BlackWater | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | reported-activity | 不明 | 不明 | イラン系MuddyWaterは、Microsoft Teamsのソーシャルエンジニアリングで侵入し、Chaosランサムウェア攻撃を装った。 攻撃では認証情報窃取、永続化、リモートアクセス、データ流出、恐喝メール、Chaosリークサイト掲載が行われた。 Rapid7は、ランサムウェア要素は諜報活動の隠蔽と帰属妨害のために使われた可能性が高いと評価した。 攻撃者はQuick Assist風フィッシングやローカルテキスト入力で認証情報を奪い、RDP、DWAgent、AnyDeskで永続化した。 ms_upd.exeがMicrosoft WebView2アプリを装うGame.exeバックドアを投下し、コマンド実行やファイル操作などを可能にした。 | 中 | `source--daily-f760c7a2efdf8be3ce1f` |
-| Operation Quicksand | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| イラン系ハッカー、大手韓国電子メーカーを標的に | reported-activity | 2026-02 | 2026-02 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 高 | `source--daily-ad0ed26155c84becbe19` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| BlackWater | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | phishing-campaign | 不明 | 不明 | 2025-04-18 | 中国・イラン・ロシア・北朝鮮支援のAPTがClickFixを用いたフィッシング攻撃を展開。 TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 TA450 (MuddyWater): イランに関連するこのグループは、持続的なアクセスを維持するために、Levelなどの正当なリモート監視および管理 (RMM) ソフトウェアを悪用するためにClickFixを利用 UNK_RemoteRogue: 2024年末に確認されたこのロシアの可能性のあるグループは、侵害された可能性のあるZimbraサーバーから送信された、Microsoft Officeドキュメントへのリンクを含むおとりメールを使用してClickFixを使用 PowerShellコマンドを利用しQuasar RATやRMMソフトを導入。 日本大使館を装った誘導や、YouTube動画を含む偽ページなどを利用。 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | ransomware-extortion | 不明 | 不明 | 2025-08-12 | ProferoがDarkBitの暗号化を解読し、2023年の被害企業で無償復旧に成功。 攻撃はVMware ESXiを暗号化。加害者は親イラン系を装い80BTC要求、交渉拒否し影響工作。 イスラエル当局はDarkBitをイラン支援APT「MuddyWater」と関連付け。 鍵生成のエントロピーが低く、タイムスタンプ併用で鍵空間を数十億通りに縮小。 VMDKヘッダと疎な構造を活用し多数のデータを復元。公開デクリプタは未提供。 | 高 | `source--daily-949ebd7fa1bed210b3ea` |
+| MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | ransomware-extortion | 不明 | 不明 | 2026-05-07 | イラン系MuddyWaterは、Microsoft Teamsのソーシャルエンジニアリングで侵入し、Chaosランサムウェア攻撃を装った。 攻撃では認証情報窃取、永続化、リモートアクセス、データ流出、恐喝メール、Chaosリークサイト掲載が行われた。 Rapid7は、ランサムウェア要素は諜報活動の隠蔽と帰属妨害のために使われた可能性が高いと評価した。 攻撃者はQuick Assist風フィッシングやローカルテキスト入力で認証情報を奪い、RDP、DWAgent、AnyDeskで永続化した。 ms_upd.exeがMicrosoft WebView2アプリを装うGame.exeバックドアを投下し、コマンド実行やファイル操作などを可能にした。 | 中 | `source--daily-f760c7a2efdf8be3ce1f` |
+| 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | phishing-campaign | 不明 | 不明 | 2024-07-16 | MuddyWaterハッキンググループが新しいBugSleepマルウェアを使用。 マルウェアはフィッシングメールを通じて配布。 イスラエル他様々な国で、政府機関、航空会社、メディアなどを標的としている。 Egnyteのファイル共有プラットフォームを利用。 Microsoft EdgeやGoogle Chromeなどのプロセスにインジェクトされる。 | 高 | `source--daily-b7b35ebe9f7da71be64d` |
+| イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | phishing-campaign | 不明 | 不明 | 2025-10-24 | Group-IBは国家支援のイラン系MuddyWaterがPhoenix v4を用い、100超の政府機関を標的にしたと報告。 8月19日からNordVPN経由の侵害アカウントでフィッシングを展開、中東および北アフリカの政府・国際機関へ送信、24日にC2停止。 添付WordのVBAがFakeUpdateローダーを書き込み、C:\ProgramData\sysprocupdate.exe生成とレジストリ変更で持続化。 Phoenix v4はCOM永続化を追加しWinHTTPでC2通信、スリープ/アップロード/ダウンロード/シェル等のコマンドを実装。 攻撃基盤ではPDQやAction1 RMMも確認。Chrome等のブラウザ資格情報窃取ツールで情報収集を実施。 | 中 | `source--daily-d22b60937b867ca96947` |
+| イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | phishing-campaign | 不明 | 不明 | 2024-04-13 | MuddyWaterが新C2ツール「DarkBeatC2」を採用 主にイスラエルの機関を対象に攻撃 攻撃はスピアフィッシングメールから開始 DarkBeatC2を介して追加ペイロードと通信 脅威活動は少なくとも2017年から活動中 | 高 | `source--daily-deef5a66e14d100f87cf` |
+| Operation Quicksand | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| イラン系ハッカー、大手韓国電子メーカーを標的に | cyber-espionage | 2026-02 | 2026-02 | 2026-05-15 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 高 | `source--daily-ad0ed26155c84becbe19` |
 
 BlackWater; Operation Quicksand
 
@@ -261,7 +266,12 @@ BlackWater; Operation Quicksand
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-07ef6046e1668f840b3a | 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | thehackernews.com | 2025-04-18 | https://thehackernews.com/2025/04/state-sponsored-hackers-weaponize.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-949ebd7fa1bed210b3ea | MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | bleepingcomputer.com | 2025-08-12 | https://www.bleepingcomputer.com/news/security/muddywaters-darkbit-ransomware-cracked-for-free-data-recovery/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-ad0ed26155c84becbe19 | イラン系ハッカー、大手韓国電子メーカーを標的に | security.com | 2026-05-15 | https://www.security.com/threat-intelligence/iran-seedworm-electronics | osint-report | TLP:CLEAR | 中 |
+| source--daily-b7b35ebe9f7da71be64d | 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | bleepingcomputer.com | 2024-07-16 | https://www.bleepingcomputer.com/news/security/new-bugsleep-malware-implant-deployed-in-muddywater-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-d22b60937b867ca96947 | イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | bleepingcomputer.com | 2025-10-24 | https://www.bleepingcomputer.com/news/security/iranian-hackers-targeted-over-100-govt-orgs-with-phoenix-backdoor/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-deef5a66e14d100f87cf | イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | thehackernews.com | 2024-04-13 | https://thehackernews.com/2024/04/iranian-muddywater-hackers-adopt-new-c2.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-f760c7a2efdf8be3ce1f | MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | rapid7.com | 2026-05-07 | https://www.rapid7.com/blog/post/tr-muddying-tracks-state-sponsored-shadow-behind-chaos-ransomware/ | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--muddywater--2e79f520fa3d06d8 | Iranian intel cyber suite of malware uses open source tools |  | 不明 | muddywater/Iranian intel cyber suite of malware uses open source tools.pdf | report | TLP:CLEAR | 中 |

@@ -1,9 +1,9 @@
 # APT-C-27 脅威アクタープロファイル
 
-プロファイルID: `actor--apt-c-27`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--apt-c-27`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -118,9 +118,9 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Meta Syrian network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | APT-C-27: Meta disrupted SEA/APT-C-27 accounts and infrastructure linked to Syrian Air Force Intelligence. The actor used credential phishing and trojanized Android applications. | 高 | `source--meta-syria-hackers-2021` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Meta Syrian network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | 2021-11-16 | APT-C-27: Meta disrupted SEA/APT-C-27 accounts and infrastructure linked to Syrian Air Force Intelligence. The actor used credential phishing and trojanized Android applications. | 高 | `source--meta-syria-hackers-2021` |
 
 
 

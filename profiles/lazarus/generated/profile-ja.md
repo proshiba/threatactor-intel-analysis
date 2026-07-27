@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lazarus`
 - 状態: draft
-- 更新日時: 2026-07-26T06:00:43Z
+- 更新日時: 2026-07-27T11:04:33Z
 - 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -178,18 +178,23 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Applejeus | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Blockbuster | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Dark Seoul | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Dream Job | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Inception | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| KuCoin Hack | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| NorthStar | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| ThreatNeedle | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Operation Dream Job | campaign | 2019-09-01T04:00:00.000Z | 2020-08-01T04:00:00.000Z | [Operation Dream Job](https://attack.mitre.org/campaigns/C0022) was a cyber espionage operation likely conducted by [Lazarus Group](https://attack.mitre.org/groups/G0032) that targeted the defense, aerospace, government, and other sectors in the United States, Israel, Australia, Russia, and India. In at least one case, the cyber actors tried to monetize their network access to conduct a business email compromise (BEC) operation. In 2020, security researchers noted overlapping TTPs, to include fake job lures and code similarities, between [Operation Dream Job](https://attack.mitre.org/campaigns/C0022), Operation North Star, and Operation Interception; by 2022 security researchers described [Operation Dream Job](https://attack.mitre.org/campaigns/C0022) as an umbrella term covering both Operation Interception and Operation North Star.(Citation: ClearSky Lazarus Aug 2020)(Citation: McAfee Lazarus Jul 2020)(Citation: ESET Lazarus Jun 2020)(Citation: The Hacker News Lazarus Aug 2022) | 高 | `source--mitre-attack-19-1` |
-| Lazarus GroupがGit Hooksを使ってマルウェアを隠蔽 | reported-activity | 2026-05-06 | 不明 | OpenSourceMalwareは、DPRKのContagious Interview / TaskJackerキャンペーンの新手口を報告した。 攻撃者は従来の.vscode/tasks.jsonやpackage.json postinstallではなく、Git hooks内にStage-2ローダーを隠している。 悪性の.githooks/pre-commitはOSを判定し、precommit.vercel.appから環境別ペイロードを取得して実行する。 macOS/Linuxではシェルスクリプト、WindowsのGit Bash/MSYS/Cygwinではcmd.exe対応ペイロードが配信される。 最終的にInvisibleFerretやBeaverTail系のインプラントで暗号資産ウォレットや認証情報を窃取する。 | 中 | `source--daily-e91cff6491073bc4c828` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Applejeus | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Blockbuster | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 北朝鮮ハッカーのLazarus Group、3億500万ドルのDMMビットコイン攻撃の背後にいる可能性 | reported-activity | 不明 | 不明 | 2024-07-18 | 北朝鮮のLazarus Groupが、日本のDMMビットコイン取引所への攻撃で3億500万ドルを盗んだ可能性が指摘されている。 研究者ZachXBTによれば、盗まれたビットコインはミキサー経由で洗浄され、その後様々なブリッジを通じてEthereumやAvalancheに変換され、最終的にHuione Guaranteeに送金された。 ミキサーに送金 > ミキサーからBTCで出金 > THORChain、Threshold、Avalancheブリッジを利用 > EthereumやAvalancheにブリッジ > USDTに交換 > SWFT経由でTronにブリッジ > USDTをHuioneに送金 Huione GuaranteeはカンボジアのHunファミリーと関係があり、違法資金の洗浄に使用されている。 | 高 | `source--daily-a1586f5913a0f7b699d4` |
+| Lazarusグループ、偽のLinkedInプロフィールでWeb3開発者を標的に | malware-campaign | 不明 | 不明 | 2025-01-16 | 北朝鮮系ハッカー集団Lazarusグループが「Operation 99」と称する新たなサイバー攻撃キャンペーンを展開 偽のLinkedInプロフィールを用いてWeb3や暗号通貨分野の開発者をリクルートし、悪意のあるGitLabリポジトリをクローンさせる手口 このリポジトリは一見無害に見えますが、マルウェアが仕込まれており、被害者の環境にマルウェアを埋め込む Lazarus Groupの攻撃の最終的な目標は、開発環境からソースコード、機密情報、暗号通貨ウォレットのキー、その他の機密データを盗み出すデータ窃取インプラントを展開すること マルウェアのアーキテクチャはモジュール設計を採用しており、柔軟性があり、Windows、macOS、Linuxオペレーティングシステムで動作できる Web3と暗号通貨業界がブームを迎えているため、Operation 99はこれらの高成長セクターに狙いを定めている | 中 | `source--daily-d283ed55a07cbcd2e6dd` |
+| 新しいPondRATマルウェアがPythonパッケージに隠れてソフトウェア開発者を標的に | malware-campaign | 不明 | 不明 | 2024-09-24 | PondRATマルウェアが含まれたPythonパッケージがPyPIにアップロードされ、開発者を標的としていた。 PondRATは、POOLRATの軽量バージョンで、ファイルのアップロード、ダウンロード、任意のコマンド実行が可能。 悪性のパッケージは以下であり、既に削除された。 real-ids、coloredtxt、beautifultext、minisound 北朝鮮のAPTグループ「Lazarus Group」が関与しており、サプライチェーン攻撃を狙っている。 「Operation Dream Job」と呼ばれる継続的なサイバー攻撃キャンペーンの一部。 | 中 | `source--daily-c3c1bed9ae86f29d432f` |
+| Lazarus Group、Marstech1 JavaScriptインプラントを用いた開発者への標的型攻撃を展開 | malware-campaign | 不明 | 不明 | 2025-02-16 | 北朝鮮の脅威アクターであるLazarus Groupが、Marstech1と呼ばれる新たなJavaScriptインプラントを使用し、開発者を対象とした限定的な標的型攻撃を実施。 この攻撃は「Marstech Mayhem」と名付けられ、GitHub上の「SuccessFriend」というプロファイルがホストするオープンソースリポジトリを通じてマルウェアが配布された。 Marstech1はシステム情報を収集し、ウェブサイトやNPMパッケージに埋め込まれることでサプライチェーンリスクを引き起こす可能性がある。 2024年12月下旬に初めて確認され、米国、ヨーロッパ、アジアで233人の被害者が確認されている。 このマルウェアは、Chromiumベースのブラウザディレクトリを検索し、特にMetaMaskなどの暗号通貨ウォレットに関連する拡張機能の設定を変更する機能を持つ。 | 高 | `source--daily-3dc1e11040f649fe0198` |
+| Lazarus Group、PondRAT・ThemeForestRAT・RemotePEでマルウェア兵器庫を拡張 | phishing-campaign | 不明 | 不明 | 2025-09-03 | 北朝鮮系LazarusがPondRAT・ThemeForestRAT・RemotePEを用いる新手口。 2024年、Telegramで既存のトレーディング会社の従業員になりすまし、Calendly/Picktimeを装ったサイトで被害者と会議をスケジュールすることで開始。 PerfhLoaderでPondRAT展開、Chromeの当時の0-day悪用の可能性も示唆。その後、ThemeForestRATも併用。 PondRATは、POOLRAT（別名SIMPLESEA）の簡略化された亜種であり、ファイルの読み書き、プロセスの開始、シェルコードの実行ができる単純なRAT。少なくとも2021年から存在が確認。 ThemeForestRATは、最大20のコマンドがあり、PondRATよりも多機能。RomeoGolfというマルウェアと類似。 両RATはHTTP(S)でC2通信し、RDP監視や多数のコマンド実行に対応。 | 高 | `source--daily-aa9d8552eba8380409c7` |
+| Dark Seoul | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Dream Job | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Inception | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| KuCoin Hack | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| NorthStar | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| ThreatNeedle | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Operation Dream Job | campaign | 2019-09-01T04:00:00.000Z | 2020-08-01T04:00:00.000Z | 2026-05-12 | [Operation Dream Job](https://attack.mitre.org/campaigns/C0022) was a cyber espionage operation likely conducted by [Lazarus Group](https://attack.mitre.org/groups/G0032) that targeted the defense, aerospace, government, and other sectors in the United States, Israel, Australia, Russia, and India. In at least one case, the cyber actors tried to monetize their network access to conduct a business email compromise (BEC) operation. In 2020, security researchers noted overlapping TTPs, to include fake job lures and code similarities, between [Operation Dream Job](https://attack.mitre.org/campaigns/C0022), Operation North Star, and Operation Interception; by 2022 security researchers described [Operation Dream Job](https://attack.mitre.org/campaigns/C0022) as an umbrella term covering both Operation Interception and Operation North Star.(Citation: ClearSky Lazarus Aug 2020)(Citation: McAfee Lazarus Jul 2020)(Citation: ESET Lazarus Jun 2020)(Citation: The Hacker News Lazarus Aug 2022) | 高 | `source--mitre-attack-19-1` |
+| Lazarus GroupがGit Hooksを使ってマルウェアを隠蔽 | malware-campaign | 2026-05-06 | 不明 | 2026-05-13 | OpenSourceMalwareは、DPRKのContagious Interview / TaskJackerキャンペーンの新手口を報告した。 攻撃者は従来の.vscode/tasks.jsonやpackage.json postinstallではなく、Git hooks内にStage-2ローダーを隠している。 悪性の.githooks/pre-commitはOSを判定し、precommit.vercel.appから環境別ペイロードを取得して実行する。 macOS/Linuxではシェルスクリプト、WindowsのGit Bash/MSYS/Cygwinではcmd.exe対応ペイロードが配信される。 最終的にInvisibleFerretやBeaverTail系のインプラントで暗号資産ウォレットや認証情報を窃取する。 | 中 | `source--daily-e91cff6491073bc4c828` |
 
 Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack; ThreatNeedle
 
@@ -380,6 +385,11 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-3dc1e11040f649fe0198 | Lazarus Group、Marstech1 JavaScriptインプラントを用いた開発者への標的型攻撃を展開 | thehackernews.com | 2025-02-16 | https://thehackernews.com/2025/02/lazarus-group-deploys-marstech1.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-a1586f5913a0f7b699d4 | 北朝鮮ハッカーのLazarus Group、3億500万ドルのDMMビットコイン攻撃の背後にいる可能性 | dailyhodl.com | 2024-07-18 | https://dailyhodl.com/2024/07/16/north-korean-hackers-lazarus-group-may-be-behind-305000000-dmm-bitcoin-attack-says-on-chain-researcher/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-aa9d8552eba8380409c7 | Lazarus Group、PondRAT・ThemeForestRAT・RemotePEでマルウェア兵器庫を拡張 | thehackernews.com | 2025-09-03 | https://thehackernews.com/2025/09/lazarus-group-expands-malware-arsenal.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-c3c1bed9ae86f29d432f | 新しいPondRATマルウェアがPythonパッケージに隠れてソフトウェア開発者を標的に | thehackernews.com | 2024-09-24 | https://thehackernews.com/2024/09/new-pondrat-malware-hidden-in-python.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-d283ed55a07cbcd2e6dd | Lazarusグループ、偽のLinkedInプロフィールでWeb3開発者を標的に | thehackernews.com | 2025-01-16 | https://thehackernews.com/2025/01/lazarus-group-targets-web3-developers.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-e91cff6491073bc4c828 | Lazarus GroupがGit Hooksを使ってマルウェアを隠蔽 | opensourcemalware.com | 2026-05-13 | https://opensourcemalware.com/blog/dprk-git-hooks-malware | osint-report | TLP:CLEAR | 中 |
 | source--doj-dprk-conspiracy-2021 | Three North Korean Military Hackers Indicted in Wide-Ranging Scheme | U.S. Department of Justice | 2021-02-17 | https://www.justice.gov/archives/opa/pr/three-north-korean-military-hackers-indicted-wide-ranging-scheme-commit-cyberattacks-and | government-legal-announcement | TLP:CLEAR | 高 |
 | source--lazarus--09f2fa073008f6e1 | Lazarus Group Recruitment  Threat Hunters vs Head Hunters |  | 不明 | lazarus/Lazarus Group Recruitment_ Threat Hunters vs Head Hunters.pdf | report | TLP:CLEAR | 中 |

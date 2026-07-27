@@ -1189,6 +1189,34 @@
       "aliases": []
     },
     {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--c2abba31-da85-4d20-9045-77a9bc810def",
+      "created": "2026-07-27T11:17:24Z",
+      "modified": "2026-07-27T11:17:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り",
+      "description": "金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/04/fin7-deploys-anubis-backdoor-to-hijack.html",
+          "external_id": "source--daily-aa4ff1b6006e51c3ed82"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-f4ad872d6b6c19798c2a",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--f4ad872d6b6c19798c2a7a69 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FIN7は、Carbon Spider、ELBRUS、Gold Niagara、Sangria Tempest、Savage Ladybugとも呼ばれるロシアのサイバー犯罪グループで、近年はランサムウェアのアフィリエイトとして活動している。",
+      "x_reported_at": {
+        "value": "2025-04-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      }
+    },
+    {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
@@ -1266,6 +1294,21 @@
       "source_ref": "intrusion-set--d4721267-182c-48cb-aa75-b70d37cd1742",
       "target_ref": "malware--a2e44145-96d3-4c1e-8b25-b9348ed47828",
       "description": "Sangria Tempest uses PowerSource.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--56d55dd1-529e-483c-8d80-c17baa9c89cb",
+      "created": "2026-07-27T11:17:24Z",
+      "modified": "2026-07-27T11:17:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--c2abba31-da85-4d20-9045-77a9bc810def",
+      "target_ref": "intrusion-set--d4721267-182c-48cb-aa75-b70d37cd1742",
+      "description": "FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り is attributed or linked to Sangria Tempest.",
       "x_confidence": "medium"
     },
     {
@@ -3141,7 +3184,7 @@
       "spec_version": "2.1",
       "id": "report--9b9972c6-b343-4d7c-99d6-d70c3f12e6d1",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-25T15:23:01Z",
+      "modified": "2026-07-27T11:17:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3150,10 +3193,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T15:23:01Z",
+      "published": "2026-07-27T11:17:24Z",
       "object_refs": [
         "intrusion-set--d4721267-182c-48cb-aa75-b70d37cd1742",
         "malware--a2e44145-96d3-4c1e-8b25-b9348ed47828",
+        "campaign--c2abba31-da85-4d20-9045-77a9bc810def",
         "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
         "attack-pattern--2973e062-0b81-43f4-a3bf-2bbcdf371bda",
         "indicator--7c7b37ce-2b1c-4046-b5f1-7acec381c448",

@@ -1,9 +1,9 @@
 # Confucius 脅威アクタープロファイル
 
-プロファイルID: `actor--confucius`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--confucius`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:31Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -108,7 +108,9 @@ Confuciusの標準化プロファイル。リポジトリ内の専用資料2件�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 | phishing-campaign | 不明 | 不明 | 2025-10-03 | スパイ集団Confuciusがフィッシングでパキスタンを標的化し、WooperStealerとAnondoorを投入。2013年以降活動。 2024年12月は.PPSXを開かせDLLサイドロードでWooperStealerを実行、感染を広げたとFortinetが報告。 2025年3月以降は.LNKを用いて悪性DLLを起動し情報窃取、8月の.LNKではAnondoor展開に切り替え。 Anondoorは外部C2へ端末情報を送信し、コマンド実行や画面取得、Chromeパスワード窃取などを実施。 KnownSecが2025年7月にAnondoor使用を観測。難読化とDLLサイドロードで検知回避する適応力が指摘。 | 高 | `source--daily-1020ead2bd9b87a29746` |
 
 
 
@@ -167,12 +169,13 @@ Confuciusの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--confucius--a8091dfddcd96a77 | OperationTibbar A retaliatory targeted attack from SouthAsian APT Group Confucius |  | 不明 | Confucius/OperationTibbar-A-retaliatory-targeted-attack-from-SouthAsian-APT-Group-Confucius.pdf | report | TLP:CLEAR | 中 |
 | source--confucius--fd2f4344e5283c41 | README |  | 不明 | Confucius/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--daily-1020ead2bd9b87a29746 | Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 | thehackernews.com | 2025-10-03 | https://thehackernews.com/2025/10/confucius-hackers-hit-pakistan-with-new.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

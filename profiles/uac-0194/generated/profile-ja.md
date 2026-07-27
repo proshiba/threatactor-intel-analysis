@@ -1,9 +1,9 @@
 # UAC-0194 脅威アクタープロファイル
 
-プロファイルID: `actor--uac-0194`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--uac-0194`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:37Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 | phishing-campaign | 不明 | 不明 | 2024-11-14 | Microsoftは、ウクライナへのサイバー攻撃で悪用されていたWindowsのゼロデイ脆弱性を修正しました。 脆弱性CVE-2024-43451は、NTLMハッシュを不正に取得するため、攻撃者が準備したリモートサーバに接続を誘導する可能性があります。 この攻撃は、フィッシングメールのリンクを介して教育省サーバーから拡散されていました。 リンクは、この攻撃以前に侵害していたサーバー（osvita-kp.gov[.]ua）を悪用していました。 SparkRATを利用し、被害者のシステム制御を試みるリモートアクセスが確認されています。 Microsoftは11月のパッチで修正し、CISAは12月3日までの対応を勧告しました。 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
 
 
 
@@ -141,12 +143,13 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--uac-0194--f5f31433703dd34f | uac 0194 |  | 不明 | actor_profile/evidence/uac-0194.csv | structured-data | TLP:CLEAR | 中 |
-| source--uac-0194--d9b7cb891c070366 | Zero day cve 2024 4351 report |  | 不明 | Exploit/Zero-day-cve-2024-4351-report.pdf | report | TLP:CLEAR | 中 |
-| source--uac-0194--401dc8fe4c0241c8 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--daily-f0e69b17ee92aa7c00c6 | Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 | bleepingcomputer.com | 2024-11-14 | https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--uac-0194--401dc8fe4c0241c8 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--uac-0194--d9b7cb891c070366 | Zero day cve 2024 4351 report |  | 不明 | Exploit/Zero-day-cve-2024-4351-report.pdf | report | TLP:CLEAR | 中 |
+| source--uac-0194--f5f31433703dd34f | uac 0194 |  | 不明 | actor_profile/evidence/uac-0194.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

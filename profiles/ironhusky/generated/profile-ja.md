@@ -1,9 +1,9 @@
 # IronHusky 脅威アクタープロファイル
 
-プロファイルID: `actor--ironhusky`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ironhusky`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:32Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -86,8 +86,8 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--mysterysnail | MysterySnail | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2021-40449 | CVE-2021-40449 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--mysterysnail | MysterySnail | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -111,7 +111,9 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | malware-campaign | 不明 | 不明 | 2025-04-20 | 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 新たなバージョン「MysteryMonoSnail」は、単一コンポーネントで構成され、軽量化されている。 このマルウェアは、サービスの管理、シェルコマンドの実行、プロセスの生成・終了、ファイルの操作など、数十のコマンドをサポートする。 過去の攻撃では、CVE-2021-40449やCVE-2017-11882などのゼロデイ脆弱性が悪用されていた。 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
 
 
@@ -152,15 +154,16 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--ironhusky--17a5734d667d6538 | ironhusky |  | 不明 | actor_profile/evidence/ironhusky.csv | structured-data | TLP:CLEAR | 中 |
-| source--ironhusky--680537e8bf8b4058 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--ironhusky--37b1eb7ac640a809 | 2021 Advanced Threat Trends Research Report dbappsecurity |  | 2021 | summary/2022/2021 Advanced Threat Trends Research Report-dbappsecurity.pdf | report | TLP:CLEAR | 中 |
+| source--daily-4fa6e9612d1bc97443df | 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | bleepingcomputer.com | 2025-04-20 | https://www.bleepingcomputer.com/news/security/chinese-hackers-target-russian-govt-with-upgraded-rat-malware/ | osint-report | TLP:CLEAR | 中 |
 | source--ironhusky--05274cec15ba464e | Modern Asian APT groups TTPs report eng |  | 不明 | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf | report | TLP:CLEAR | 中 |
+| source--ironhusky--17a5734d667d6538 | ironhusky |  | 不明 | actor_profile/evidence/ironhusky.csv | structured-data | TLP:CLEAR | 中 |
+| source--ironhusky--37b1eb7ac640a809 | 2021 Advanced Threat Trends Research Report dbappsecurity |  | 2021 | summary/2022/2021 Advanced Threat Trends Research Report-dbappsecurity.pdf | report | TLP:CLEAR | 中 |
+| source--ironhusky--680537e8bf8b4058 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--ironhusky--a5bfad247a36ff1c | kaspersky ics cert apt attacks on industrial organizations in h2 2022 en |  | 2022 | summary/2023/kaspersky-ics-cert-apt-attacks-on-industrial-organizations-in-h2-2022-en.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

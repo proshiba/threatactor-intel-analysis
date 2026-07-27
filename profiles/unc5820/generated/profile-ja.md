@@ -1,9 +1,9 @@
 # UNC5820 脅威アクタープロファイル
 
-プロファイルID: `actor--unc5820`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc5820`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:38Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | intrusion | 不明 | 不明 | 2024-10-25 | Mandiantは、Fortinet FortiManagerの脆弱性（CVE-2024-47575）が6月以降に50台以上のサーバーで悪用されていると報告。 Mandiantは、「UNC5820」と呼ばれる脅威アクターが、2024年6月27日からFortiManagerデバイスを悪用していることを発見。 攻撃者は未認証のAPIコマンドを利用し、FortiGateデバイスの構成情報を盗み出す。 侵害されたデバイスのメモリを分析したが、悪意のあるペイロードやシステムファイルの改ざんの兆候は見つからなかった。 攻撃者はデバイスからデータを抜き取ったが、このデバイスを使って、横方向に拡散したり、ネットワークに侵入したりした兆候はない。 Fortinetは既に修正パッチと緩和策を公開。 | 中 | `source--daily-ed6655e2b5b3dfb73449` |
 
 
 
@@ -141,14 +143,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc5820--1f21514fedcc496c | unc5820 |  | 不明 | actor_profile/evidence/unc5820.csv | structured-data | TLP:CLEAR | 中 |
-| source--unc5820--ddd57eb55f808376 | 2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report |  | 2024 | summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf | report | TLP:CLEAR | 中 |
-| source--unc5820--dbe57843e4e901ef | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--unc5820--9a1030814ebda99e | PL Report CP 2024 |  | 2024 | summary/2025/PL_Report_CP_2024.pdf | report | TLP:CLEAR | 中 |
-| source--unc5820--4d02ae697eca83ac | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--daily-ed6655e2b5b3dfb73449 | Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告 | bleepingcomputer.com | 2024-10-25 | https://www.bleepingcomputer.com/news/security/mandiant-says-new-fortinet-fortimanager-flaw-has-been-exploited-since-june/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unc5820--1f21514fedcc496c | unc5820 |  | 不明 | actor_profile/evidence/unc5820.csv | structured-data | TLP:CLEAR | 中 |
+| source--unc5820--4d02ae697eca83ac | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--unc5820--9a1030814ebda99e | PL Report CP 2024 |  | 2024 | summary/2025/PL_Report_CP_2024.pdf | report | TLP:CLEAR | 中 |
+| source--unc5820--dbe57843e4e901ef | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--unc5820--ddd57eb55f808376 | 2024 Annual Cybersecurity Vulnerability Threat Landscape Research Report |  | 2024 | summary/2025/2024_Annual_Cybersecurity_Vulnerability_Threat_Landscape_Research_Report.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

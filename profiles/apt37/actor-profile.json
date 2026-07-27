@@ -4,7 +4,7 @@
   "name": "APT37",
   "status": "draft",
   "created_at": "2026-07-25T09:00:51Z",
-  "updated_at": "2026-07-26T06:00:42Z",
+  "updated_at": "2026-07-27T11:17:22Z",
   "languages": [
     "ja"
   ],
@@ -901,11 +901,85 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
+    },
+    {
+      "activity_id": "activity--daily-04c3bda3362bec6cbbe7",
+      "name": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮APT37が主に韓国を標的としたキャンペーンで、JPEGに隠したRoKRAT新亜種でWindowsを侵害する攻撃を展開。 ZIP内LNKがバッチでPowerShell起動→XOR復号→シェルコード実行の多段手口。 mspaint.exe/notepad.exeへコード注入し、ファイルレス化で検知を回避。 Dropbox/Yandex等クラウドAPIを悪用し、配布・C2・窃取データ送信を隠蔽。 対策はEDR、ユーザー訓練・端末管理、クラウド通信の能動監視。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--rokrat"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-468e8f8090fe0064b1c4"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--04c3bda3362bec6cbbe7eb26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入"
     },
     {
       "activity_id": "activity--daily-3678a940d72c4fad1a5d",
       "name": "Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Geniansは、Microsoftアカウントチームを装うスピアフィッシングで配布されるPythonベースのNarwhalRATを分析した。 攻撃はZIP内の悪性LNKから始まり、PowerShell、BAT、curl、公式Python埋め込み版を悪用して多段階感染を行う。 NarwhalRATはキーロギング、画面キャプチャ、USBデータ収集、マイク録音、ファイル操作、リモートコマンド実行機能を持つ。 C2は韓国の中継サーバーとpCloud APIを組み合わせた二重構造で、デッドドロップResolverとして正規クラウドを利用する。 TTP、韓国ユーザー向けの偽装、pCloud利用、過去事例との類似性から、APT37関連活動との関連が示唆されている。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-c07163c7c1b6cc1b80eb"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-82bdd80456957234d81b"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--3678a940d72c4fad1a5d7254 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Geniansは既知APT37活動との構造・運用上の高い類似性を示すが、帰属表現には不確実性が残るため中確度。"
+    },
+    {
+      "activity_id": "activity--daily-471d45ca3851dc5b1143",
+      "name": "Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」",
       "activity_type": "reported-activity",
       "first_observed": {
         "value": null,
@@ -919,17 +993,151 @@
         "status": "unknown",
         "basis": "not-stated"
       },
-      "description": "Geniansは、Microsoftアカウントチームを装うスピアフィッシングで配布されるPythonベースのNarwhalRATを分析した。 攻撃はZIP内の悪性LNKから始まり、PowerShell、BAT、curl、公式Python埋め込み版を悪用して多段階感染を行う。 NarwhalRATはキーロギング、画面キャプチャ、USBデータ収集、マイク録音、ファイル操作、リモートコマンド実行機能を持つ。 C2は韓国の中継サーバーとpCloud APIを組み合わせた二重構造で、デッドドロップResolverとして正規クラウドを利用する。 TTP、韓国ユーザー向けの偽装、pCloud利用、過去事例との類似性から、APT37関連活動との関連が示唆されている。",
+      "reported_at": {
+        "value": "2025-12-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Microsoftは、国家支援/犯罪集団が悪用するWindows LNKのゼロデイ(CVE-2025-9491)に対し静かに「緩和」を実施。 脆弱性はLNKのTarget欄に空白を詰め引数を隠し実行させる手口で、利用者がLNKを開く操作を誘導されると成立。 攻撃者はメールで遮断される.LNKをZIP等に同梱して配布し、Ursnif・Gh0st RAT・TrickBot・PlugXなどを投下。 Trend Microは少なくとも11の国家系/犯罪集団（Mustang PandaやAPT37等）が悪用と報告、欧州外交官標的の事例も。 11月更新でTarget全表示に変更されたが完全修正ではなく、0patchが長文Target検知・警告の非公式修正を提供。",
       "target_refs": [],
-      "malware_refs": [
-        "malware--daily-c07163c7c1b6cc1b80eb"
-      ],
+      "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
-        "source--daily-82bdd80456957234d81b"
+        "source--daily-79fb3689c96eb2761182"
       ],
-      "analyst_notes": "日次収集レコード daily-record--3678a940d72c4fad1a5d7254 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: Geniansは既知APT37活動との構造・運用上の高い類似性を示すが、帰属表現には不確実性が残るため中確度。"
+      "analyst_notes": "日次収集レコード daily-record--471d45ca3851dc5b1143b13b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Trend Microは少なくとも11の国家系/犯罪集団（Mustang PandaやAPT37等）が悪用と報告、欧州外交官標的の事例も。"
+    },
+    {
+      "activity_id": "activity--daily-99c12226cea0199fb84b",
+      "name": "北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-10-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮のAPT37ハッカーグループが新たなバックドア「VeilShell」を使用し、カンボジアなど東南アジア諸国を標的にした。 VeilShellは、データ窃取や遠隔操作を可能にするPowerShellベースのマルウェア。 複数のステルス技術を使用し、持続的な攻撃を実行。 この活動はSHROUDED#SLEEPと名付けられており、Securonixは、InkySquid、Reaper、RedEyes、Ricochet Chollima、Ruby Sleet、ScarCruftとしても知られるAPT37の仕業であると考えている。 攻撃チェーンは、フィッシングメールで開始し、AppDomainManagerインジェクションと呼ばれる攻撃手法が用いられた。流れは以下。 lnk > powershell > d.exe+dll(load by AppDomainManager) > js > powershell(veilshell)",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f00592605535c739c5c3"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--99c12226cea0199fb84b8b52 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮のAPT37ハッカーグループが新たなバックドア「VeilShell」を使用し、カンボジアなど東南アジア諸国を標的にした。"
+    },
+    {
+      "activity_id": "activity--daily-c093c6edea29f9fcc0ac",
+      "name": "北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-02-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮の脅威アクターが、偽の求人面接を装い、macOS向けのFERRETマルウェアを配布。 被害者は、仮想会議用ソフトウェアのインストールや更新を要求するエラーが表示。これに促され、悪意のあるソフトウェアをダウンロード。 この攻撃は、JavaScriptベースのBeaverTailマルウェアをドロップし、さらにPython製のバックドアであるInvisibleFerretを展開。 攻撃者は、LinkedIn上でリクルーターを装い、ターゲットにビデオ評価を完了するよう促す。 最終的に、Golangベースのバックドアと情報窃取ツールをドロップし、MetaMaskウォレットから資金を盗むことを目的としている。 BeaverTailマルウェアを含む悪意のあるnpmパッケージ（postcss-optimizer）も確認されている。このパッケージは、Windows、macOS、Linuxシステムを感染させることができ、非常に人気なpostcssライブラリを模倣",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-5be59ed011b127efaaf3"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--c093c6edea29f9fcc0ac9209 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮と関連のあるAPT37（別名ScarCruft）と呼ばれる脅威アクターは、スピアフィッシングキャンペーンを通じてRokRATマルウェアを配布し、グループチャットで他のターゲットにも拡散させる活動も確認されている。"
+    },
+    {
+      "activity_id": "activity--daily-d79ea67a0f7083db4a1c",
+      "name": "APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-11-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮系がGoogleのFind Hubを悪用し、標的のAndroid端末の位置把握とリモート初期化で痕跡消去を行う。 攻撃は主に韓国人を狙い、KakaoTalkで接触後、国税庁や警察を装うフィッシングと署名MSIでPCにRATを導入。 AutoIT経由で持続化とC2通信を設定し、Remcos/Quasar/RftRATでGoogleやNaver資格情報を奪取して設定変更。 奪取したGoogleアカウントでFind Hubにログインし、GPSを確認した上で端末を複数回ワイプし、回復や警告を妨害。 被害者のKakaoTalk PCセッションを乗っ取り、連絡先へ拡散。対策は2段階認証/パスキーや送信者の電話確認等。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-24c4e22a7b0cd08d6063"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--d79ea67a0f7083db4a1c1676 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃"
+    },
+    {
+      "activity_id": "activity--daily-f8883afbd5cee316c481",
+      "name": "APT37のハッカーが新たなマルウェアでエアギャップネットワークに侵入",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-02-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮系APT37（ScarCruft等）が「Ruby Jumper」作戦で、新ツールにより隔離環境と接続環境間のデータ移送を実現 侵入は悪意あるWindowsショートカット（LNK）を起点にPowerShellを実行し、デコイ文書で注意をそらしつつペイロードを展開 RESTLEAFがZoho WorkDriveを使うC2でシェルコードを取得し、次段のRubyローダーSNAKEDROPPERをダウンロードさせる Ruby 3.3.0環境をUSB関連ユーティリティを偽装したusbspeed.exeとしてインストールし、正規のoperating_system.rbを改ざんしてタスクrubyupdatecheckで自動実行させる THUMBSBDがUSBに隠し領域を作って双方向の中継点化、VIRUSTASKがLNK置換で拡散し、FOOTWINE/BLUELIGHTで監視・窃取を行う",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--bluelight"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-98a40a134fc3127db612"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--f8883afbd5cee316c481b567 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT37のハッカーが新たなマルウェアでエアギャップネットワークに侵入"
     },
     {
       "activity_id": "activity--erebus",
@@ -955,7 +1163,13 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--evil-new-year",
@@ -981,7 +1195,13 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--evil-new-year-2018",
@@ -1007,7 +1227,13 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--freemilk",
@@ -1033,7 +1259,13 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--golden-time",
@@ -1059,7 +1291,13 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--north-korean-human-rights",
@@ -1085,7 +1323,13 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--operation-earth-kitsune",
@@ -1111,12 +1355,18 @@
       "evidence_refs": [
         "source--actor-mapping-workbook"
       ],
-      "analyst_notes": "Operation-to-actor mapping requires source-level review."
+      "analyst_notes": "Operation-to-actor mapping requires source-level review.",
+      "reported_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      }
     },
     {
       "activity_id": "activity--daily-86f07cfb447377d7a95b",
       "name": "ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布",
-      "activity_type": "reported-activity",
+      "activity_type": "malware-campaign",
       "first_observed": {
         "value": "2024-01-01T00:00:00Z",
         "precision": "year",
@@ -1129,10 +1379,17 @@
         "status": "known",
         "basis": "ESET報告公開時点で継続"
       },
+      "reported_at": {
+        "value": "2026-05-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
       "description": "北朝鮮系APT37/ScarCruftは、ビデオゲーム基盤を侵害し、Android版BirdCallバックドアを配布した。 ESETによると、攻撃はYanbian地域の朝鮮民族コミュニティや北朝鮮脱北者を狙ったものとみられる。 sqgame系サイト上のAndroidゲームAPKがトロイの木馬化され、Windows更新経路ではRokRAT経由でBirdCallが展開された。 Android版BirdCallは連絡先、通話履歴、SMS、端末情報、文書、画像、秘密鍵を収集し、スクリーンショットや録音も行う。 Android版は2024年10月ごろ作成され、少なくとも7バージョンが確認され、2024年末ごろから攻撃が継続していた可能性がある。",
       "target_refs": [],
       "malware_refs": [
-        "malware--daily-397062646adc91061d4a"
+        "malware--daily-397062646adc91061d4a",
+        "malware--rokrat"
       ],
       "infrastructure_refs": [],
       "confidence": "high",
@@ -1141,7 +1398,7 @@
         "source--daily-68fe928d58956df4f752",
         "source--daily-b232a8993d5d82211f66"
       ],
-      "analyst_notes": "日次収集レコード daily-record--86f07cfb447377d7a95b7087 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: ESETの一次分析でScarCruft（APT37/Reaper）の活動として明示。IOC配布用MD5/SHA256ファイルは同一活動の補助資料として統合する。"
+      "analyst_notes": "日次収集レコード daily-record--86f07cfb447377d7a95b7087 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: ESETの一次分析でScarCruft（APT37/Reaper）の活動として明示。IOC配布用MD5/SHA256ファイルは同一活動の補助資料として統合する。"
     }
   ],
   "targets": {
@@ -3583,6 +3840,42 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
+      "source_id": "source--daily-24c4e22a7b0cd08d6063",
+      "path": "https://www.bleepingcomputer.com/news/security/apt37-hackers-abuse-google-find-hub-in-android-data-wiping-attacks/",
+      "title": "APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2025-11-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251112.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-468e8f8090fe0064b1c4",
+      "path": "https://iototsecnews.jp/2025/08/04/apt37-hackers-weaponizes-jpeg-files-to-attack-windows-systems-leveraging-mspaint-exe/",
+      "title": "JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入",
+      "publisher": "iototsecnews.jp",
+      "published_at": {
+        "value": "2025-08-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250816.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-4961e6946e3ccac84312",
       "path": "https://www.welivesecurity.com/en/eset-research/rigged-game-scarcruft-compromises-gaming-platform-supply-chain-attack/",
       "title": "ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布",
@@ -3598,7 +3891,25 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260506.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260506.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-5be59ed011b127efaaf3",
+      "path": "https://thehackernews.com/2025/02/north-korean-hackers-deploy-ferret.html",
+      "title": "北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": "2025-02-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250205.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-68fe928d58956df4f752",
@@ -3616,7 +3927,25 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260506.csv; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260506.csv; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-79fb3689c96eb2761182",
+      "path": "https://www.bleepingcomputer.com/news/microsoft/microsoft-mitigates-windows-lnk-flaw-exploited-as-zero-day/",
+      "title": "Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2025-12-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-82bdd80456957234d81b",
@@ -3634,7 +3963,25 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260616.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260616.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-98a40a134fc3127db612",
+      "path": "https://www.bleepingcomputer.com/news/security/apt37-hackers-use-new-malware-to-breach-air-gapped-networks/",
+      "title": "APT37のハッカーが新たなマルウェアでエアギャップネットワークに侵入",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2026-02-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260228.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-b232a8993d5d82211f66",
@@ -3652,7 +3999,25 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260506.csv; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260506.csv; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-f00592605535c739c5c3",
+      "path": "https://thehackernews.com/2024/10/north-korean-hackers-using-new.html",
+      "title": "北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": "2024-10-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241004.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--mitre-attack-19-1",

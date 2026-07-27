@@ -283,13 +283,16 @@ function knownDate(field) {
 }
 
 function activityDate(a) {
-  return knownDate(a.last_observed) || knownDate(a.first_observed);
+  return knownDate(a.last_observed) || knownDate(a.first_observed) || knownDate(a.reported_at);
 }
 
 function activityPeriod(a) {
   const f = fmtDate(a.first_observed);
   const l = fmtDate(a.last_observed);
-  if (f === "不明" && l === "不明") return "時期不明";
+  const reported = fmtDate(a.reported_at);
+  if (f === "不明" && l === "不明") {
+    return reported === "不明" ? "時期不明" : `活動時期不明（報告: ${reported}）`;
+  }
   if (f === l) return f;
   return `${f} 〜 ${l}`;
 }
@@ -335,7 +338,7 @@ function bindActivities(profile) {
       rows = dated.filter((x) => x.d >= cutoff);
     }
     area.innerHTML = `
-      <p class="small muted">日付付き ${num(rows.length)} 件${years ? `(過去${years}年)` : ""} / 日付不明 ${num(undated.length)} 件</p>
+      <p class="small muted">活動日または報告日付き ${num(rows.length)} 件${years ? `(過去${years}年)` : ""} / 日付不明 ${num(undated.length)} 件</p>
       ${timelineHtml(rows.map((x) => x.a))}
       ${undated.length ? `<details class="fold"><summary>日付情報のない活動(${undated.length})</summary>
         <div class="fold-body">${dataTable(

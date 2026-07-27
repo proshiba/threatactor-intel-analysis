@@ -1,9 +1,9 @@
 # TA415 脅威アクタープロファイル
 
-プロファイルID: `actor--ta415`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ta415`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:35Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -104,7 +104,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | phishing-campaign | 不明 | 不明 | 2025-09-18 | 中国関与とされるTA415が、米政府・シンクタンク・大学の経済政策専門家を狙い、米中テーマで誘導して標的型攻撃を展開。 下院対中特別委員会委員長やU.S.-China Business Councilを装い、送信元にuschina@zohomail[.]comを用いたフィッシングを実施。 送付アーカイブのLNKがバッチを起動し、難読化Pythonローダー「WhirlCoil」を実行、PDFを囮に2時間毎の常駐タスクを設定。 ローダーはVS Code Remote Tunnelsで持続的アクセスを確立し、収集情報をrequestrepo[.]comへHTTP POST（Base64）で送信。 活動は2025年7～8月に観測。APT41／Brass Typhoonとの重複が指摘され、米中通商交渉下での諜報収集が目的と分析。 | 高 | `source--daily-5771658f42dfbb4596d9` |
 
 
 
@@ -143,12 +145,13 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-5771658f42dfbb4596d9 | 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | thehackernews.com | 2025-09-18 | https://thehackernews.com/2025/09/chinese-ta415-uses-vs-code-remote.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--ta415--26523ec4fbe0b554 | ta415 |  | 不明 | actor_profile/evidence/ta415.csv | structured-data | TLP:CLEAR | 中 |
 | source--ta415--b1de570378ddc906 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -1,9 +1,9 @@
 # UNC3569 脅威アクタープロファイル
 
-プロファイルID: `actor--unc3569`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc3569`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:26Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | infrastructure-operation | 不明 | 不明 | 2026-01-28 | Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。 | 中 | `source--daily-c20a23c702af45ff32d4` |
 
 
 
@@ -141,11 +143,12 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc3569--b980f226588807bc | unc3569 |  | 不明 | actor_profile/evidence/unc3569.csv | structured-data | TLP:CLEAR | 中 |
-| source--unc3569--295e739f4cdcf299 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--daily-c20a23c702af45ff32d4 | 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | thehackernews.com | 2026-01-28 | https://thehackernews.com/2026/01/china-linked-hackers-have-used.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unc3569--295e739f4cdcf299 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--unc3569--b980f226588807bc | unc3569 |  | 不明 | actor_profile/evidence/unc3569.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

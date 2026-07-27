@@ -1,9 +1,9 @@
 # UNC4393 脅威アクタープロファイル
 
-プロファイルID: `actor--unc4393`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--unc4393`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:26Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Black Bastaランサムウェアグループ、戦略的攻撃のために再編成 | ransomware-extortion | 不明 | 不明 | 2024-11-26 | Black Bastaは、2022年に出現したランサムウェアグループで、企業を標的にしている。 同グループは、攻撃手法を進化させ、より戦略的な攻撃を展開している。 ボットネット主導のマルウェア配信に焦点を当てることから、綿密に計画されたソーシャルエンジニアリングキャンペーンを通じて標的を欺くことに焦点を移している。 Black Basta の最近の技術には、「大量のスパムメールを送信するために使用される戦術であるメール爆撃」が含まれる。メール爆撃後、Microsoft Teams を介したソーシャルエンジニアリングを行い、被害者のエンドユーザーを騙してリモート監視および管理ツールを介して初期アクセスを提供 悪意のある QR コードが組み込まれた Microsoft Teams の外部チャットメッセージに標的を追加することで、誘導。 彼らは、被害者のデータを暗号化し、身代金を要求する手口を用いている。 | 中 | `source--daily-3db6fd943f36fd38310f` |
 
 
 
@@ -141,15 +143,16 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--unc4393--aeaa347def06fd80 | unc4393 |  | 不明 | actor_profile/evidence/unc4393.csv | structured-data | TLP:CLEAR | 中 |
-| source--unc4393--428e38eab46ab340 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--unc4393--ad9e94092476adad | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
-| source--unc4393--22fd96d7cd5b64f2 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--unc4393--013f6813261c3d9e | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--unc4393--55005dc77614bc9e | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--daily-3db6fd943f36fd38310f | Black Bastaランサムウェアグループ、戦略的攻撃のために再編成 | databreachtoday.com | 2024-11-26 | https://www.databreachtoday.com/black-basta-ransomware-group-retools-for-strategic-attacks-a-26898 | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--unc4393--013f6813261c3d9e | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--unc4393--22fd96d7cd5b64f2 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--unc4393--428e38eab46ab340 | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--unc4393--55005dc77614bc9e | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--unc4393--ad9e94092476adad | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
+| source--unc4393--aeaa347def06fd80 | unc4393 |  | 不明 | actor_profile/evidence/unc4393.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -4,7 +4,7 @@
   "name": "UAC-0001",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:04:36Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-00e51d0ed75215a24fee",
+      "name": "APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-04-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ロシア背景のPawn Stormは、PRISMEXと総称される連携型マルウェア群を用い、ウクライナやNATO加盟国の防衛サプライチェーンを標的にした。 攻撃ではステガノグラフィ、COMハイジャック、正規クラウドサービス悪用を組み合わせ、EDR回避とC&C通信を実現していた。 2026年1月下旬のキャンペーンではCVE-2026-21509が悪用され、関連検体ではCVE-2026-21513のゼロデイ悪用も確認された。 PRISMEXはPrismexSheet、PrismexDrop、PrismexLoader、PrismexStagerで構成され、Filen系サブドメインを使ってCovenant経由の通信を行う。 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-183d3d6935d0c269b0c9"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--00e51d0ed75215a24fee3522 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア背景のPawn Stormで、APT28、Fancy Bear、UAC-0001、Forest Blizzardとしても知られ、主に諜報活動と支援妨害、潜在的破壊工作が示唆される。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +102,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,22 +121,92 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--uac-0001--5e59f4c3e1675fd5",
-      "path": "actor_profile/evidence/uac-0001.csv",
-      "title": "uac 0001",
-      "publisher": "",
+      "source_id": "source--daily-183d3d6935d0c269b0c9",
+      "path": "https://www.trendmicro.com/ja_jp/research/26/d/pawn-storm-targets-govt-infra.html",
+      "title": "APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認",
+      "publisher": "trendmicro.com",
+      "published_at": {
+        "value": "2026-04-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260422.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-cert-ua-uac-index",
+      "path": "actor_profile/reference/osint/cert-ua-uac-index.json",
+      "url": "https://cert.gov.ua/articles",
+      "title": "CERT-UA UAC Article Index",
+      "publisher": "CERT-UA",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "language": "unknown",
-      "source_type": "structured-data",
+      "accessed_at": "2026-07-25T13:48:37Z",
+      "language": "en",
+      "source_type": "government-cert-article-index",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "82ca02b547093b2a0f60b1c62ed7fb8f6b6c9d0de6b0e4c2936ae64a1dcbc162",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-25T13:48:37Z. This index is derived from CERT-UA's official article titles and summaries; open the linked article before extending the claim beyond the indexed text."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
       "source_id": "source--uac-0001--26bdbcc83365e3fe",
@@ -160,9 +245,9 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--uac-0001--e9aee5c565abec18",
-      "path": "International Strategic/Russia/Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics.pdf",
-      "title": "Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics",
+      "source_id": "source--uac-0001--5e59f4c3e1675fd5",
+      "path": "actor_profile/evidence/uac-0001.csv",
+      "title": "uac 0001",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -171,11 +256,11 @@
         "basis": "not-stated"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "structured-data",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
       "source_id": "source--uac-0001--b6eaa0164d8e8fa5",
@@ -214,56 +299,22 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
+      "source_id": "source--uac-0001--e9aee5c565abec18",
+      "path": "International Strategic/Russia/Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics.pdf",
+      "title": "Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics",
+      "publisher": "",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
+      "language": "unknown",
+      "source_type": "report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-cert-ua-uac-index",
-      "path": "actor_profile/reference/osint/cert-ua-uac-index.json",
-      "url": "https://cert.gov.ua/articles",
-      "title": "CERT-UA UAC Article Index",
-      "publisher": "CERT-UA",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:48:37Z",
-      "language": "en",
-      "source_type": "government-cert-article-index",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "82ca02b547093b2a0f60b1c62ed7fb8f6b6c9d0de6b0e4c2936ae64a1dcbc162",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2026-07-25T13:48:37Z. This index is derived from CERT-UA's official article titles and summaries; open the linked article before extending the claim beyond the indexed text."
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     }
   ],
   "assessment": {

@@ -1,9 +1,9 @@
 # Storm-0539 脅威アクタープロファイル
 
-プロファイルID: `actor--storm-0539`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--storm-0539`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:25Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 新しいギフトカード詐欺が小売業者をターゲットにし無限の金を印刷 | phishing-campaign | 不明 | 不明 | 2024-05-24 | モロッコの脅威グループがギフトカード詐欺を強化。 小売業者のポータルをハッキングしギフトカードを発行。 ホリデーシーズンに活動が急増した。 フィッシングで従業員のアカウントを乗っ取る。これを起点として内部ネットワークや様々なクラウドサービスなどへの侵害を行う。 最終的にギフトカード発行システムへ到達。発行上限ぎりぎりの金額でできるだけ多く作成して窃取する。 作成されたギフトカードはマネーミュールで換金やダークウェブで販売するなどによる換金を行う。 | 中 | `source--daily-a32d77507c250a59eb0e` |
 
 
 
@@ -141,13 +143,14 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--storm-0539--4db35370b8ca4076 | storm 0539 |  | 不明 | actor_profile/evidence/storm-0539.csv | structured-data | TLP:CLEAR | 中 |
-| source--storm-0539--cc5c502b8454bfb2 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--daily-a32d77507c250a59eb0e | 新しいギフトカード詐欺が小売業者をターゲットにし無限の金を印刷 | darkreading.com | 2024-05-24 | https://www.darkreading.com/threat-intelligence/new-gift-card-scam-targets-retailers-not-buyers-to-print-endless-money | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--storm-0539--4db35370b8ca4076 | storm 0539 |  | 不明 | actor_profile/evidence/storm-0539.csv | structured-data | TLP:CLEAR | 中 |
+| source--storm-0539--cc5c502b8454bfb2 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -158,33 +158,102 @@ def activity_bounds(record: dict[str, Any]) -> tuple[dict[str, Any], dict[str, A
     return dict(UNKNOWN_TIME), dict(UNKNOWN_TIME)
 
 
+def activity_type_for(record: dict[str, Any]) -> str:
+    text = (
+        f"{record['activity'].get('title', '')} "
+        f"{record['activity'].get('summary', '')}"
+    ).casefold()
+    categories = (
+        (("ransom", "ランサム", "extortion", "恐喝"), "ransomware-extortion"),
+        (("phish", "フィッシング", "なりすまし"), "phishing-campaign"),
+        (("espionage", "諜報", "スパイ"), "cyber-espionage"),
+        (("ddos", "ワイパー", "disrupt", "破壊", "妨害"), "disruptive-activity"),
+        (("botnet", "c2", "インフラ"), "infrastructure-operation"),
+        (("malware", "マルウェア", "backdoor", "バックドア"), "malware-campaign"),
+        (("breach", "intrusion", "侵害", "侵入"), "intrusion"),
+        (("campaign", "operation", "キャンペーン", "作戦"), "campaign"),
+    )
+    for terms, category in categories:
+        if any(term in text for term in terms):
+            return category
+    return "reported-activity"
+
+
+def _mentioned_profile_refs(
+    profile: dict[str, Any] | None,
+    category: str,
+    text: str,
+) -> list[str]:
+    if not profile:
+        return []
+    items: list[dict[str, Any]]
+    if category == "targets":
+        items = [
+            item
+            for key in ("countries", "regions", "sectors", "roles")
+            for item in profile.get("targets", {}).get(key, [])
+        ]
+    else:
+        items = profile.get("capabilities", {}).get(category, [])
+    refs: set[str] = set()
+    folded = text.casefold()
+    for item in items:
+        names = [item.get("name", ""), *item.get("aliases", [])]
+        if any(
+            len(name.strip()) >= 4
+            and re.search(
+                rf"(?<![a-z0-9]){re.escape(name.strip().casefold())}(?![a-z0-9])",
+                folded,
+            )
+            for name in names
+            if name.strip()
+        ):
+            refs.add(item["id"])
+    return sorted(refs)
+
+
 def activity_entry(
-    record: dict[str, Any], evidence_refs: list[str]
+    record: dict[str, Any],
+    evidence_refs: list[str],
+    profile: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     first, last = activity_bounds(record)
+    text = (
+        f"{record['activity'].get('title', '')} "
+        f"{record['activity'].get('summary', '')}"
+    )
     malware_refs = sorted(
         {
             ref
             for row in record.get("iocs", [])
             for ref in row.get("malware_refs", [])
         }
+        | set(_mentioned_profile_refs(profile, "malware", text))
     )
     return {
         "activity_id": activity_id_for(record),
         "name": record["activity"]["title"],
-        "activity_type": "reported-activity",
+        "activity_type": activity_type_for(record),
         "first_observed": first,
         "last_observed": last,
+        "reported_at": time_point(
+            record["activity"].get("news_date"),
+            "daily-news-file-date",
+        ),
         "description": record["activity"].get("summary") or "日次OSINTで報告された活動。",
-        "target_refs": [],
+        "target_refs": _mentioned_profile_refs(profile, "targets", text),
         "malware_refs": malware_refs,
-        "infrastructure_refs": [],
+        "infrastructure_refs": _mentioned_profile_refs(
+            profile, "infrastructure", text
+        ),
         "confidence": record.get("confidence", "unknown"),
         "evidence_refs": sorted(evidence_refs),
         "analyst_notes": (
             f"日次収集レコード {record['record_id']} から取込。"
             "活動期間はレビュー済みの一次資料記載がある場合だけ設定し、"
             "ニュース公開日やIOC収集日からは推定しない。"
+            " reported_atは活動期間ではなくtech-memo日次ファイルの日付。"
+            f" 主体判定: {record.get('activity_claim', {}).get('assessment', '未記録')}。"
             f" レビュー: {record.get('review_notes') or '記載なし'}"
         ),
     }

@@ -4,7 +4,7 @@
   "name": "Gamaredon",
   "status": "draft",
   "created_at": "2026-07-25T09:00:34Z",
-  "updated_at": "2026-07-26T06:00:42Z",
+  "updated_at": "2026-07-27T11:04:31Z",
   "languages": [
     "ja"
   ],
@@ -385,7 +385,7 @@
     {
       "activity_id": "activity--daily-8d7b9ece27a018bbb937",
       "name": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
-      "activity_type": "reported-activity",
+      "activity_type": "phishing-campaign",
       "first_observed": {
         "value": null,
         "precision": "unknown",
@@ -398,6 +398,12 @@
         "status": "unknown",
         "basis": "not-stated"
       },
+      "reported_at": {
+        "value": "2026-06-03T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
       "description": "Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。",
       "target_refs": [],
       "malware_refs": [
@@ -409,7 +415,39 @@
       "evidence_refs": [
         "source--daily-f9666a37c61d10f83b24"
       ],
-      "analyst_notes": "日次収集レコード daily-record--8d7b9ece27a018bbb93763c3 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 レビュー: Sekoiaの活動分析に基づく。追跡名称と帰属範囲は他資料との比較時に分離して扱う。"
+      "analyst_notes": "日次収集レコード daily-record--8d7b9ece27a018bbb93763c3 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Sekoiaの活動分析に基づく。追跡名称と帰属範囲は他資料との比較時に分離して扱う。"
+    },
+    {
+      "activity_id": "activity--daily-fe72cea152ac7ff90389",
+      "name": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 攻撃は2025年2月から3月にかけて行われ、更新版のGammaSteel情報窃取マルウェアが使用された。 感染経路は、悪意のある.LNKファイルを含むリムーバブルドライブと推測される。 VBSスクリプトからPowerShellベースのツールへの移行や、正規サービスの悪用が確認された。 マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ae1b297bcc282623fbff"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--fe72cea152ac7ff903896876 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。"
     }
   ],
   "targets": {
@@ -3917,6 +3955,24 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--daily-ae1b297bcc282623fbff",
+      "path": "https://www.bleepingcomputer.com/news/security/russian-hackers-attack-western-military-mission-using-malicious-drive/",
+      "title": "ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2025-04-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250411.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-f9666a37c61d10f83b24",
       "path": "https://blog.sekoia.io/fsbs-matryoshka-1-3-gamaredons-gifts-that-keeps-unpacking-gammaphish-and-gammaworm/",
       "title": "FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm",
@@ -3932,7 +3988,7 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260603.md; source commit: 429ef539242eb4b372f95697a12590096bc07c3e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260603.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--gamaredon--0512c893b55f399d",

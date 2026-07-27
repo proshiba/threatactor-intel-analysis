@@ -71,6 +71,12 @@ IDはアクター内で一意かつ安定させる。
 資料の発行日、ファイル更新時刻、リポジトリ追加日は、IOCの観測日と同一視しない。
 観測時期が「2023年5月」の場合は月初へ正規化し、`precision: "month"`を付ける。
 
+Activityは`first_observed`、`last_observed`に加えて`reported_at`を必ず持つ。
+`reported_at`は活動を報告した資料の発行日または日次収集日であり、攻撃期間ではない。
+攻撃期間が不明でもActivity自体を省略せず、`first_observed`と`last_observed`をunknown、
+`reported_at`を判明範囲で記録する。UIの期間表示・並び替えで`reported_at`を補助的に
+使用しても、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
+
 ## 5. Alias規則
 
 各aliasには以下を持たせる。

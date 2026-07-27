@@ -1,9 +1,9 @@
 # UAC-0188 脅威アクタープロファイル
 
-プロファイルID: `actor--uac-0188`  
-状態: draft  
-更新日時: 2026-07-25T11:07:07Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--uac-0188`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:37Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング | phishing-campaign | 不明 | 不明 | 2024-05-27 | UAC-0188が金融機関を標的にトロイの木馬化されたマインスイーパーのPythonクローンを使用 医療文書を装ったフィッシングメールによりマルウェアを配布。メールにはdropbox上のマルウェアへのリンクが存在 dropboxからSCRファイルをダウンロードし実行すると、MinesweeperのPythonクローンコードと、リモートから取得する悪意のあるPythonコードが含まれる マルウェアはSuperOps RMMをインストールし、リモートアクセスを取得 CERT-UAが複数の侵害を確認 | 中 | `source--daily-d10b7c56549314679c89` |
 
 
 
@@ -141,10 +143,11 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--uac-0188--6a4ac818fc560077 | uac 0188 |  | 不明 | actor_profile/evidence/uac-0188.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-d10b7c56549314679c89 | ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング | bleepingcomputer.com | 2024-05-27 | https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--uac-0188--29933bed2eea8193 | Cyber operations by russia new goals, tools and groups |  | 不明 | International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf | report | TLP:CLEAR | 中 |
+| source--uac-0188--6a4ac818fc560077 | uac 0188 |  | 不明 | actor_profile/evidence/uac-0188.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

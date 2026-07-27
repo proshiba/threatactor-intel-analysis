@@ -1,9 +1,9 @@
 # Sidewinder 脅威アクタープロファイル
 
-プロファイルID: `actor--sidewinder`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--sidewinder`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:35Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -112,7 +112,9 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | phishing-campaign | 不明 | 不明 | 2025-03-12 | SideWinderと呼ばれる高度な持続的脅威（APT）グループが、南アジア、東南アジア、中東、アフリカの海事および物流企業を主な標的にしている。 2024年に観測された攻撃は、バングラデシュ、カンボジア、ジブチ、エジプト、アラブ首長国連邦、ベトナムに及び、原子力発電所や原子力エネルギーインフラ、電気通信、コンサルティング、ITサービス企業、不動産代理店、ホテルも標的となっている。 攻撃手法は、スピアフィッシングメールを介して、Microsoft Officeの既知の脆弱性（CVE-2017-11882）を悪用し、最終的にStealerBotと呼ばれるマルウェアを展開する。 SideWinderは、セキュリティソフトウェアの検出を回避し、感染したシステム上での持続性を延ばすために、ツールセットを継続的に改良している。 同グループは、インドの標的を攻撃しており、以前はインド起源の可能性が指摘されていた。 | 高 | `source--daily-da76d64966b546f28391` |
 
 
 
@@ -226,15 +228,16 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--sidewinder--0ae2943d4dd4a373 | RagaSerpent SideWinder Adjacent Tax Audit Cluster MultiCountry Targeted Chain |  | 不明 | sidewinder/RagaSerpent SideWinder-Adjacent Tax Audit Cluster MultiCountry Targeted Chain.pdf | report | TLP:CLEAR | 中 |
-| source--sidewinder--1d23a413a917d260 | global perspective of the sidewinder apt |  | 不明 | sidewinder/global-perspective-of-the-sidewinder-apt.pdf | report | TLP:CLEAR | 中 |
-| source--sidewinder--64e1d418ba54a0af | readme |  | 不明 | sidewinder/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--daily-da76d64966b546f28391 | SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に | thehackernews.com | 2025-03-12 | https://thehackernews.com/2025/03/sidewinder-apt-targets-maritime-nuclear.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--sidewinder--0ae2943d4dd4a373 | RagaSerpent SideWinder Adjacent Tax Audit Cluster MultiCountry Targeted Chain |  | 不明 | sidewinder/RagaSerpent SideWinder-Adjacent Tax Audit Cluster MultiCountry Targeted Chain.pdf | report | TLP:CLEAR | 中 |
+| source--sidewinder--1d23a413a917d260 | global perspective of the sidewinder apt |  | 不明 | sidewinder/global-perspective-of-the-sidewinder-apt.pdf | report | TLP:CLEAR | 中 |
+| source--sidewinder--64e1d418ba54a0af | readme |  | 不明 | sidewinder/readme.md | repository-notes | TLP:CLEAR | 中 |
 
 ## 自由記述
 

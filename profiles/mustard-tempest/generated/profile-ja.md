@@ -1,9 +1,9 @@
 # Mustard Tempest 脅威アクタープロファイル
 
-プロファイルID: `actor--mustard-tempest`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--mustard-tempest`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:24Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -91,8 +91,8 @@ Mustard Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--socgholish | SocGholish | [SocGholish](https://attack.mitre.org/software/S1124) is a JavaScript-based loader malware that has been used since at least 2017. It has been observed in use against multiple sectors globally for initial access, primarily through drive-by-downloads masquerading as software updates. SocGholish is operated by [Mustard Tempest](https://attack.mitre.org/groups/G1020) and its access has been sold to groups including [Indrik Spider](https://attack.mitre.org/groups/G0119) for downloading secondary RAT and ransomware payloads.(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: SocGholish-update)(Citation: Red Canary SocGholish March 2024)(Citation: Secureworks Gold Prelude Profile)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--socgholish | SocGholish | [SocGholish](https://attack.mitre.org/software/S1124) is a JavaScript-based loader malware that has been used since at least 2017. It has been observed in use against multiple sectors globally for initial access, primarily through drive-by-downloads masquerading as software updates. SocGholish is operated by [Mustard Tempest](https://attack.mitre.org/groups/G1020) and its access has been sold to groups including [Indrik Spider](https://attack.mitre.org/groups/G0119) for downloading secondary RAT and ransomware payloads.(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: SocGholish-update)(Citation: Red Canary SocGholish March 2024)(Citation: Secureworks Gold Prelude Profile)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -116,7 +116,10 @@ Mustard Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供 | malware-campaign | 不明 | 不明 | 2025-08-08 | SocGholishがParrot/KeitaroなどのTDSを悪用し、ユーザーを不正サイトへ誘導。 偽のブラウザ更新を装うJSローダーで、改ざんサイトから配信される。 侵害端末へのアクセスは、Evil CorpやLockBit、Dridex等に販売される。 Raspberry Robin経由の拡散も観測、ChaCha20やCVE-2024-38196の悪用に言及。 Keitaroは正規利用も多く、過剰検知なく全面遮断は困難と指摘。 | 中 | `source--daily-4c5a096408cb1636d9f7` |
+| HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信 | malware-campaign | 不明 | 不明 | 2024-12-04 | HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。 | 中 | `source--daily-766a563d30b306b7681d` |
 
 
 
@@ -168,23 +171,25 @@ Mustard Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-4c5a096408cb1636d9f7 | 広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供 | thehackernews.com | 2025-08-08 | https://thehackernews.com/2025/08/socgholish-malware-spread-via-ad-tools.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-766a563d30b306b7681d | HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信 | thehackernews.com | 2024-12-04 | https://thehackernews.com/2024/12/horns-campaign-delivers-rats-via-fake.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mustard-tempest--0a466fea7e0945f8 | mustard tempest |  | 不明 | actor_profile/evidence/mustard-tempest.csv | structured-data | TLP:CLEAR | 中 |
-| source--mustard-tempest--e76b0a45237b26c8 | infoblox research report registered dgas the prolific new menace no one is talking about |  | 不明 | cybercrime/2024/infoblox-research-report-registered-dgas-the-prolific-new-menace-no-one-is-talking-about.pdf | report | TLP:CLEAR | 中 |
-| source--mustard-tempest--d4cc3e9620c36e0b | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
-| source--mustard-tempest--c47d4f4c6bf80318 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
-| source--mustard-tempest--e3319085a6142472 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
 | source--mustard-tempest--509050c86fcdad1d | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
 | source--mustard-tempest--9dd35f193f60cb8c | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--mustard-tempest--d190c655ff782ecf | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
 | source--mustard-tempest--9de7957331bbb5b7 | threat horizons report h1 2025 |  | 2025 | summary/2025/threat_horizons_report_h1_2025.pdf | report | TLP:CLEAR | 中 |
 | source--mustard-tempest--c4567d5d62fc30b6 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--mustard-tempest--c47d4f4c6bf80318 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--mustard-tempest--d190c655ff782ecf | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--mustard-tempest--d4cc3e9620c36e0b | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--mustard-tempest--e3319085a6142472 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
+| source--mustard-tempest--e76b0a45237b26c8 | infoblox research report registered dgas the prolific new menace no one is talking about |  | 不明 | cybercrime/2024/infoblox-research-report-registered-dgas-the-prolific-new-menace-no-one-is-talking-about.pdf | report | TLP:CLEAR | 中 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

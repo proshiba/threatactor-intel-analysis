@@ -4,7 +4,7 @@
   "name": "UNC3569",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-48716db321e86ff0f407",
+      "name": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-c20a23c702af45ff32d4"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--48716db321e86ff0f40754a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国関与の国家支援系と推定；UNC3569/Earth Baxia/APT41/Earth Luscaなどが関連し、ギャンブル業界やアジア政府機関を狙う。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +102,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,40 +121,40 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--unc3569--b980f226588807bc",
-      "path": "actor_profile/evidence/unc3569.csv",
-      "title": "unc3569",
-      "publisher": "",
+      "source_id": "source--daily-c20a23c702af45ff32d4",
+      "path": "https://thehackernews.com/2026/01/china-linked-hackers-have-used.html",
+      "title": "中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用",
+      "publisher": "thehackernews.com",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "structured-data",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
-      "source_id": "source--unc3569--295e739f4cdcf299",
-      "path": "summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf",
-      "title": "Bridewell 2026 Cyber Threat Intelligence Report",
-      "publisher": "",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
       "published_at": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "upstream-release"
       },
-      "language": "unknown",
-      "source_type": "report",
+      "language": "en",
+      "source_type": "structured-knowledge-base",
       "tlp": "TLP:CLEAR",
-      "reliability": "medium",
+      "reliability": "high",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -166,6 +181,42 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--unc3569--295e739f4cdcf299",
+      "path": "summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf",
+      "title": "Bridewell 2026 Cyber Threat Intelligence Report",
+      "publisher": "",
+      "published_at": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--unc3569--b980f226588807bc",
+      "path": "actor_profile/evidence/unc3569.csv",
+      "title": "unc3569",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
     }
   ],
   "assessment": {

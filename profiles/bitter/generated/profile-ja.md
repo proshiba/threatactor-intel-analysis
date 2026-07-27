@@ -1,9 +1,9 @@
 # BITTER 脅威アクタープロファイル
 
-プロファイルID: `actor--bitter`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--bitter`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:30Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -85,10 +85,10 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--zxxz | ZxxZ | [ZxxZ](https://attack.mitre.org/software/S1013) is a trojan written in Visual C++ that has been used by [BITTER](https://attack.mitre.org/groups/G1002) since at least August 2021, including against Bangladeshi government personnel.(Citation: Cisco Talos Bitter Bangladesh May 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--bitterrat | BitterRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--artradownloader | ArtraDownloader | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--bitterrat | BitterRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--sliderat | SlideRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--zxxz | ZxxZ | [ZxxZ](https://attack.mitre.org/software/S1013) is a trojan written in Visual C++ that has been used by [BITTER](https://attack.mitre.org/groups/G1002) since at least August 2021, including against Bangladeshi government personnel.(Citation: Cisco Talos Bitter Bangladesh May 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -112,7 +112,11 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Bitterハッカーグループ、サイバー作戦を拡大 | phishing-campaign | 不明 | 不明 | 2025-06-06 | Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。 | 高 | `source--daily-d3ece976544c2d6909ce` |
+| 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | phishing-campaign | 不明 | 不明 | 2024-12-19 | サイバースパイ集団「Bitter」が、新たなマルウェア「MiyaRAT」を使用し、トルコの防衛組織を標的に攻撃を行っている。 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 アーカイブ内のLNKファイルを開くと、PowerShellコードが実行され、MiyaRATが展開される。 マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 Bitterは、2013年から活動している南アジアのサイバースパイ集団で、主にアジアの政府や重要組織を標的としている。 | 高 | `source--daily-f0b4d93d130c33f27095` |
+| BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | phishing-campaign | 不明 | 不明 | 2026-04-15 | Lookoutは、Access Nowの調査協力を通じて、中東の市民社会関係者を狙う継続的なスピアフィッシングとAndroidスパイウェア配布を分析し、2022年以降続く諜報活動と評価した。 Android向けProSpyはSignal、ToTok、Botimを装い、連絡先、SMS、端末情報、文書、画像、音声、動画、アーカイブ、バックアップなどを収集してC2へ送信する。 攻撃は偽のSNS・メッセージ相手やApple Supportを装う接触から始まり、iOS利用者にはiCloudやSignal連携のフィッシング、Android利用者には悪性APK配布が使われた。 研究では複数のC2、配布サイト、フィッシング基盤が確認され、被害対象にはエジプトやレバノンの市民社会関係者のほか、政府関係者とみられる標的も含まれる。 Lookoutは、被害者像、インフラ、マルウェアの共通点から、この活動を南アジア系BITTER APTと関係するハック・フォー・ハイヤー作戦の可能性が高いと中程度の確度で評価した。 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
 
 
 
@@ -176,20 +180,23 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--bitter--97af4adeea02b675 | Android Bitter ioc |  | 不明 | bitter/2020/Android-Bitter-ioc.txt | text-data | TLP:CLEAR | 中 |
-| source--bitter--9de41446a9a72262 | Bitdefender PR Whitepaper BitterAPT creat4571 en EN GenericUse |  | 不明 | bitter/2020/Bitdefender-PR-Whitepaper-BitterAPT-creat4571-en-EN-GenericUse.pdf | report | TLP:CLEAR | 中 |
+| source--bitter--2cfec8a10f89e0b3 | Rotten Apple An Invasive Threat Actor Targeting Civil Society in Lebanon |  | 不明 | bitter/2026/Rotten-Apple_-An-Invasive-Threat-Actor-Targeting-Civil-Society-in-Lebanon.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--4b3b9e7d26c1cf64 | Quarterly Adversarial Threat Report Q2 2022 |  | 2022 | bitter/2022/Quarterly-Adversarial-Threat-Report-Q2-2022.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--717acb7afca6cd59 | README |  | 不明 | bitter/2022/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--bitter--d98102cdd748dedd | Espionage for repression forensic analysis of a cross border hack for hire campaign targeting civil society in MENA 2026 |  | 2026 | bitter/2026/Espionage-for-repression-forensic-analysis-of-a-cross-border-hack-for-hire-campaign-targeting-civil-society-in-MENA-2026.pdf | report | TLP:CLEAR | 中 |
-| source--bitter--2cfec8a10f89e0b3 | Rotten Apple An Invasive Threat Actor Targeting Civil Society in Lebanon |  | 不明 | bitter/2026/Rotten-Apple_-An-Invasive-Threat-Actor-Targeting-Civil-Society-in-Lebanon.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--88ab3c36687131db | readme |  | 不明 | bitter/2026/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--bitter--97af4adeea02b675 | Android Bitter ioc |  | 不明 | bitter/2020/Android-Bitter-ioc.txt | text-data | TLP:CLEAR | 中 |
+| source--bitter--9de41446a9a72262 | Bitdefender PR Whitepaper BitterAPT creat4571 en EN GenericUse |  | 不明 | bitter/2020/Bitdefender-PR-Whitepaper-BitterAPT-creat4571-en-EN-GenericUse.pdf | report | TLP:CLEAR | 中 |
+| source--bitter--d98102cdd748dedd | Espionage for repression forensic analysis of a cross border hack for hire campaign targeting civil society in MENA 2026 |  | 2026 | bitter/2026/Espionage-for-repression-forensic-analysis-of-a-cross-border-hack-for-hire-campaign-targeting-civil-society-in-MENA-2026.pdf | report | TLP:CLEAR | 中 |
 | source--bitter--f28edd1d5cabb4e9 | Inf |  | 不明 | bitter/Inf.MD | repository-notes | TLP:CLEAR | 中 |
+| source--daily-1dd0fd6a374bf37bcc74 | BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | lookout.com | 2026-04-15 | https://www.lookout.com/threat-intelligence/article/bitter-hack-for-hire | osint-report | TLP:CLEAR | 中 |
+| source--daily-d3ece976544c2d6909ce | Bitterハッカーグループ、サイバー作戦を拡大 | thehackernews.com | 2025-06-06 | https://thehackernews.com/2025/06/bitter-hacker-group-expands-cyber.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-f0b4d93d130c33f27095 | 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | bleepingcomputer.com | 2024-12-19 | https://www.bleepingcomputer.com/news/security/bitter-cyberspies-target-defense-orgs-with-new-miyarat-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

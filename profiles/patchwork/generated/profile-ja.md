@@ -1,9 +1,9 @@
 # Patchwork 脅威アクタープロファイル
 
-プロファイルID: `actor--patchwork`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--patchwork`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:34Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -101,12 +101,12 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--autoit-backdoor | AutoIt backdoor | [AutoIt backdoor](https://attack.mitre.org/software/S0129) is malware that has been used by the actors responsible for the MONSOON campaign. The actors frequently used it in weaponized .pps files exploiting CVE-2014-6352. (Citation: Forcepoint Monsoon) This malware makes use of the legitimate scripting language for Windows GUI automation with the same name. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--backconfig | BackConfig | [BackConfig](https://attack.mitre.org/software/S0475) is a custom Trojan with a flexible plugin architecture that has been used by [Patchwork](https://attack.mitre.org/groups/G0040).(Citation: Unit 42 BackConfig May 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--badnews | BADNEWS | [BADNEWS](https://attack.mitre.org/software/S0128) is malware that has been used by the actors responsible for the [Patchwork](https://attack.mitre.org/groups/G0040) campaign. Its name was given due to its use of RSS feeds, forums, and blogs for command and control. (Citation: Forcepoint Monsoon) (Citation: TrendMicro Patchwork Dec 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--ndiskmonitor | NDiskMonitor | [NDiskMonitor](https://attack.mitre.org/software/S0272) is a custom backdoor written in .NET that appears to be unique to [Patchwork](https://attack.mitre.org/groups/G0040). (Citation: TrendMicro Patchwork Dec 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--tinytyphon | TINYTYPHON | [TINYTYPHON](https://attack.mitre.org/software/S0131) is a backdoor  that has been used by the actors responsible for the MONSOON campaign. The majority of its code was reportedly taken from the MyDoom worm. (Citation: Forcepoint Monsoon) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--unknown-logger | Unknown Logger | [Unknown Logger](https://attack.mitre.org/software/S0130) is a publicly released, free backdoor. Version 1.5 of the backdoor has been used by the actors responsible for the MONSOON campaign. (Citation: Forcepoint Monsoon) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--backconfig | BackConfig | [BackConfig](https://attack.mitre.org/software/S0475) is a custom Trojan with a flexible plugin architecture that has been used by [Patchwork](https://attack.mitre.org/groups/G0040).(Citation: Unit 42 BackConfig May 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--ndiskmonitor | NDiskMonitor | [NDiskMonitor](https://attack.mitre.org/software/S0272) is a custom backdoor written in .NET that appears to be unique to [Patchwork](https://attack.mitre.org/groups/G0040). (Citation: TrendMicro Patchwork Dec 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--badnews | BADNEWS | [BADNEWS](https://attack.mitre.org/software/S0128) is malware that has been used by the actors responsible for the [Patchwork](https://attack.mitre.org/groups/G0040) campaign. Its name was given due to its use of RSS feeds, forums, and blogs for command and control. (Citation: Forcepoint Monsoon) (Citation: TrendMicro Patchwork Dec 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--autoit-backdoor | AutoIt backdoor | [AutoIt backdoor](https://attack.mitre.org/software/S0129) is malware that has been used by the actors responsible for the MONSOON campaign. The actors frequently used it in weaponized .pps files exploiting CVE-2014-6352. (Citation: Forcepoint Monsoon) This malware makes use of the legitimate scripting language for Windows GUI automation with the same name. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--unknown-logger-public | Unknown Logger Public | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
@@ -134,10 +134,11 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| Hangover | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Monsoon | operation | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に | malware-campaign | 不明 | 不明 | 2024-07-25 | PatchworkハッカーがBrute Ratel C4ツールを使用し、ブータンを標的に ロマンスをテーマにしたおとりを使ってパキスタンとインドの被害者を誘い込み、VajraSpyというマルウェアに感染させる攻撃を実施 攻撃はWindowsショートカット（LNK）ファイルを介して開始 感染により、リモートシェル機能を持つPGoShellバックドアやBrute Ratel C4を配布 攻撃は主に政府機関や人権団体を対象 | 高 | `source--daily-b4dd81678daba2178538` |
+| Hangover | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Monsoon | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 Hangover; Monsoon
 
@@ -218,14 +219,15 @@ Hangover; Monsoon
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--patchwork--a29942955af8ffca | README |  | 不明 | Patchwork/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--daily-b4dd81678daba2178538 | Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に | thehackernews.com | 2024-07-25 | https://thehackernews.com/2024/07/patchwork-hackers-target-bhutan-with.html | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--patchwork--a29942955af8ffca | README |  | 不明 | Patchwork/README.MD | repository-notes | TLP:CLEAR | 中 |
 
 ## 自由記述
 

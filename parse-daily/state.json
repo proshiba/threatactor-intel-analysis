@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "429ef539242eb4b372f95697a12590096bc07c3e",
-  "last_scanned_date": "2026-07-25",
+  "last_scanned_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+  "last_scanned_date": "2026-07-27",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -16,5 +16,117 @@
     "applied_artifacts": 7,
     "unmatched_ioc_actor_observations": 1918
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。pendingは自動反映せず、承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。"
+  "incremental_scans": [
+    {
+      "completed_at": "2026-07-27T04:27:25Z",
+      "window": {
+        "since": "2026-07-26",
+        "until": "2026-07-27"
+      },
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+      "statistics": {
+        "news_files": 1,
+        "articles": 7,
+        "review_records": 0,
+        "approved_records": 0,
+        "applied_records": 0,
+        "unmatched_ioc_actor_observations": 101
+      },
+      "unmatched_entities": [
+        {
+          "value": "SourTrade",
+          "observations": 101,
+          "classification": "unattributed-threat-cluster",
+          "decision": "既存アクターへの帰属根拠がないため未反映。将来の帰属情報に備えて未照合として保持。"
+        }
+      ],
+      "reviewed_non_matches": [
+        {
+          "name": "Steam ClickFix / XMRig campaign",
+          "decision": "実行主体が不明のため、既存アクターへ紐付けない。"
+        },
+        {
+          "name": "ShinyHunters impersonation sextortion",
+          "decision": "ShinyHuntersは関与を否定し、報告も漏えいデータを再利用した別主体と評価しているため、ShinyHuntersの活動として扱わない。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-07-23",
+          "result": "cutoff後のアクター別一次情報なし"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-07-16",
+          "result": "cutoff後のアクター別一次情報なし"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-07-15",
+          "result": "cutoff後のアクター別一次情報なし"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-07-23",
+          "result": "cutoff後のアクター別一次情報なし"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後のアクター別一次情報なし"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-07-22",
+          "result": "cutoff後のアクター別一次情報なし"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-07-21",
+          "result": "cutoff後のアクター別一次情報なし"
+        }
+      ],
+      "analyst_notes": "検索結果スニペットだけでは採用せず、各一次情報サイトの公開一覧と原文を確認。新規プロファイル作成や既存アクターへの推測帰属は行っていない。"
+    }
+  ],
+  "full_history_activity_audit": {
+    "completed_at": "2026-07-27T11:17:50Z",
+    "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d",
+    "news_files": 942,
+    "articles": 5584,
+    "review_records": 1006,
+    "approved_records": 355,
+    "pending_records": 651,
+    "approved_actors": 115,
+    "profile_activity_totals": {
+      "profiles": 673,
+      "profiles_with_activities": 170,
+      "profiles_without_activities": 503,
+      "activities": 499,
+      "daily_activities": 355,
+      "activities_with_report_date": 391,
+      "activities_with_observed_period": 44
+    },
+    "pending_by_assessment": {
+      "attribution-uncertain": 72,
+      "candidate": 141,
+      "context-only": 81,
+      "forecast": 1,
+      "historical-reference": 28,
+      "name-collision": 113,
+      "non-operational": 47,
+      "scope-review-required": 155,
+      "structured-actor-field": 13
+    },
+    "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
+  },
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。"
 }

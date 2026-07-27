@@ -187,6 +187,7 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     for index, activity in enumerate(activities):
         validate_time(activity.get("first_observed"), f"$.activities[{index}].first_observed", issues)
         validate_time(activity.get("last_observed"), f"$.activities[{index}].last_observed", issues)
+        validate_time(activity.get("reported_at"), f"$.activities[{index}].reported_at", issues)
         check_evidence_refs(activity, f"$.activities[{index}]", source_ids, issues)
         for ref in activity.get("target_refs", []):
             if ref not in target_ids:

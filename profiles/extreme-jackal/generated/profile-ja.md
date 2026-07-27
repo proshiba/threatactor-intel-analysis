@@ -1,9 +1,9 @@
 # Extreme Jackal 脅威アクタープロファイル
 
-プロファイルID: `actor--extreme-jackal`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--extreme-jackal`
+- 状態: draft
+- 更新日時: 2026-07-25T14:07:08Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 

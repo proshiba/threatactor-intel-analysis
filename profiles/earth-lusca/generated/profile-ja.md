@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--earth-lusca`
 - 状態: draft
-- 更新日時: 2026-07-26T06:00:42Z
+- 更新日時: 2026-07-27T11:04:31Z
 - 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
@@ -125,9 +125,10 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | reported-activity | 2023 | 2024 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | cyber-espionage | 不明 | 不明 | 2024-03-15 | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 | `source--daily-4c4674e1b8568e329ce6` |
+| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | malware-campaign | 2023 | 2024 | 2026-06-17 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
 
 
 
@@ -214,6 +215,7 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-4c4674e1b8568e329ce6 | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | trendmicro.com | 2024-03-15 | https://www.trendmicro.com/ja_jp/research/24/c/earth-lusca-uses-geopolitical-lure-to-target-taiwan.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-ff80b256acceafc23ada | SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | welivesecurity.com | 2026-06-17 | https://www.welivesecurity.com/en/eset-research/fishmongers-arsenal-upgraded-sprysocks-windows/ | osint-report | TLP:CLEAR | 中 |
 | source--earth-lusca--032dd9b35df3a5f5 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
 | source--earth-lusca--199829ebd56f38eb | RedReport2023 Picus |  | 2023 | summary/2023/RedReport2023-Picus.pdf | report | TLP:CLEAR | 中 |

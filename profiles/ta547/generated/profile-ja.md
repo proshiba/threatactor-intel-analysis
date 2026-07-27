@@ -1,9 +1,9 @@
 # TA547 脅威アクタープロファイル
 
-プロファイルID: `actor--ta547`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--ta547`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:36Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| 悪意あるPowerShellスクリプトがマルウェアを配布、スクリプトがAIによって作成された可能性 | phishing-campaign | 不明 | 不明 | 2024-04-11 | AI技術を使用して作成された可能性がある悪意あるPowerShellスクリプトがRhadamanthys情報窃取マルウェアを配布 スクリプトは2023年3月にドイツの多数の組織を狙ったメールキャンペーンで使用された 攻撃者TA547はMetroキャッシュ＆キャリーブランドになりすましたメールで組織をだましてZIPアーカイブを開かせる PowerShellスクリプトは、メモリ内で直接実行されるようBase64でエンコードされたRhadamanthys実行可能ファイルをデコード AIによるコード生成技術の利用が疑われるが、確証はない | 中 | `source--daily-4e35e5a6c9eb6f31a645` |
 
 
 
@@ -141,14 +143,15 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--ta547--77681344f6deb05c | ta547 |  | 不明 | actor_profile/evidence/ta547.csv | structured-data | TLP:CLEAR | 中 |
-| source--ta547--3a26b7d958dde0c9 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--ta547--dcd9195a4b26e097 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
-| source--ta547--40c697ba6bfa27b6 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
-| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--daily-4e35e5a6c9eb6f31a645 | 悪意あるPowerShellスクリプトがマルウェアを配布、スクリプトがAIによって作成された可能性 | bleepingcomputer.com | 2024-04-11 | https://www.bleepingcomputer.com/news/security/malicious-powershell-script-pushing-malware-looks-ai-written/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--ta547--3a26b7d958dde0c9 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--ta547--40c697ba6bfa27b6 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--ta547--77681344f6deb05c | ta547 |  | 不明 | actor_profile/evidence/ta547.csv | structured-data | TLP:CLEAR | 中 |
+| source--ta547--dcd9195a4b26e097 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

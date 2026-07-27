@@ -1,9 +1,9 @@
 # Magecart 脅威アクタープロファイル
 
-プロファイルID: `actor--magecart`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--magecart`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:33Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 | campaign | 不明 | 不明 | 2026-06-06 | 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。 | 中 | `source--daily-5b3e49d018b8dff5644f` |
 
 
 
@@ -141,9 +143,10 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-5b3e49d018b8dff5644f | クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 | sansec.io | 2026-06-06 | https://sansec.io/research/stripe-api-skimmer-infrastructure | osint-report | TLP:CLEAR | 中 |
 | source--magecart--15766072d35a10d4 | README |  | 不明 | Magecart/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--uac-0099",
-  "updated_at": "2026-07-26T06:13:31Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "records": [
     {
       "record_id": "daily-record--72da5dad97e2e21f550fdfbc",
@@ -1114,7 +1114,63 @@
         }
       ],
       "review_notes": "CERT-UAのインシデント報告URLとtech-memo上の構造化IOCに基づく。監査時に本文を再取得できなかったため高確度へ引き上げず、元URLと取得制約を台帳に保持する。",
-      "source_commit": "429ef539242eb4b372f95697a12590096bc07c3e"
+      "activity_claim": {
+        "assessment": "structured-actor-field",
+        "actor_role": "operator",
+        "match_location": "ioc-actor-field",
+        "evidence_text": "UAC-0099",
+        "reasons": [
+          "tech-memo IOC CSVの構造化actor列に記載されている"
+        ],
+        "suggested_confidence": "medium"
+      },
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--e526344e9500f358b6b500a3",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "uac-0099",
+        "canonical_name": "UAC-0099",
+        "matched_term": "UAC-0099",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "news-body",
+        "raw_value": "UAC-0099"
+      },
+      "activity": {
+        "title": "Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害",
+        "summary": "ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。",
+        "news_date": "2025-11-07",
+        "news_url": "https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
+        "primary_url": "https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
+        "activity_reference": "https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
+        "news_path": "daily-news/news/2025_10-12/20251107.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
+          "source_path": "daily-news/news/2025_10-12/20251107.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。",
+      "activity_claim": {
+        "assessment": "strong-subject",
+        "actor_role": "operator",
+        "match_location": "body",
+        "evidence_text": "Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。",
+        "reasons": [
+          "要約の同一文でアクターが活動の実行主体として明記されている"
+        ],
+        "suggested_confidence": "medium"
+      },
+      "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
     }
   ]
 }

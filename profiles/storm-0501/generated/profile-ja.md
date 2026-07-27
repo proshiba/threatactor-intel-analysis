@@ -1,9 +1,9 @@
 # Storm-0501 脅威アクタープロファイル
 
-プロファイルID: `actor--storm-0501`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--storm-0501`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:35Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -80,8 +80,8 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--embargo | Embargo | [Embargo](https://attack.mitre.org/software/S1247) is a ransomware variant written in Rust that has been active since at least May 2024.(Citation: Cyble Embargo Ransomware May 2024)(Citation: ESET Embargo Ransomware October 2024)  [Embargo](https://attack.mitre.org/software/S1247) ransomware operations are associated with “double extortion” ransomware activity, where data is exfiltrated from victim environments prior to encryption, with threats to publish files if a ransom is not paid.(Citation: Cyble Embargo Ransomware May 2024)(Citation: ESET Embargo Ransomware October 2024)  [Embargo](https://attack.mitre.org/software/S1247) ransomware has been known to be delivered through a loader known as MDeployer which also leverages a malware component known as MS4Killer that facilitates termination of processes operating on the victim hosts.(Citation: ESET Embargo Ransomware October 2024) [Embargo](https://attack.mitre.org/software/S1247) is also reportedly a Ransomware as a Service (RaaS).(Citation: ESET Embargo Ransomware October 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--embargo | Embargo | [Embargo](https://attack.mitre.org/software/S1247) is a ransomware variant written in Rust that has been active since at least May 2024.(Citation: Cyble Embargo Ransomware May 2024)(Citation: ESET Embargo Ransomware October 2024)  [Embargo](https://attack.mitre.org/software/S1247) ransomware operations are associated with “double extortion” ransomware activity, where data is exfiltrated from victim environments prior to encryption, with threats to publish files if a ransom is not paid.(Citation: Cyble Embargo Ransomware May 2024)(Citation: ESET Embargo Ransomware October 2024)  [Embargo](https://attack.mitre.org/software/S1247) ransomware has been known to be delivered through a loader known as MDeployer which also leverages a malware component known as MS4Killer that facilitates termination of processes operating on the victim hosts.(Citation: ESET Embargo Ransomware October 2024) [Embargo](https://attack.mitre.org/software/S1247) is also reportedly a Ransomware as a Service (RaaS).(Citation: ESET Embargo Ransomware October 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
 
@@ -112,7 +112,10 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Embargoランサムウェア、クラウド環境への攻撃を強化 | ransomware-extortion | 不明 | 不明 | 2024-09-29 | Embargoランサムウェアのアフィリエイトである攻撃グループStorm-0501は、ハイブリッドクラウド環境を標的にした新たな戦術を採用。 資格情報の悪用や特権アカウントの利用を通じてクラウド環境へのアクセスを獲得し、データを盗み、ランサムウェアペイロードを実行することを目的としている。 初期アクセスの取得方法は、侵害された、または購入した資格情報を使用、または既知の脆弱性を悪用すること。 アクセスを取得した後、攻撃者は、Microsoft Entraテナント内に新しいフェデレーションドメインを作成することにより、永続的なバックドアを配置。 攻撃者は、被害者のオンプレミスおよびクラウド環境にEmbargoランサムウェアを展開するか、後のためにバックドアアクセスを維持。 | 中 | `source--daily-a7defc5bd3e885aefd88` |
+| Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行 | ransomware-extortion | 不明 | 不明 | 2025-08-29 | MicrosoftはStorm-0501が端末暗号化からクラウド中心の身代金攻撃へ移行と警告。 クラウド機能を悪用し、窃取・バックアップ破壊・新しいKey Vault鍵で暗号化して恐喝。 DefenderのギャップでAD/Entra侵害、DSAを窃取して悪用し、AzureHoundで列挙、MFAがないグローバル管理者アカウント(GA)を奪取。 悪性フェデレーションドメインで永続化し、elevateAccess操作でOwner権限を取得。 スナップショット等を削除後、Teamsで身代金要求。検知・ハンティング情報も提示。 | 高 | `source--daily-3f6df09902adf66bfcb4` |
 
 
 
@@ -194,20 +197,22 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--storm-0501--9dca41b1465ff529 | storm 0501 |  | 不明 | actor_profile/evidence/storm-0501.csv | structured-data | TLP:CLEAR | 中 |
-| source--storm-0501--0d1acae0bd717d55 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
-| source--storm-0501--3ceaa5aa4393c11f | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--storm-0501--b8e6cf9fc5201b4c | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--storm-0501--5e4e96bf9e2532d1 | threat horizons report h1 2025 |  | 2025 | summary/2025/threat_horizons_report_h1_2025.pdf | report | TLP:CLEAR | 中 |
-| source--storm-0501--0a15d9e88139faba | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--storm-0501--c9befc46d5a04a83 | 2026 safebreach state of the breach report final 1 |  | 2026 | summary/2026/2026_safebreach_state_of_the_breach_report_final-1.pdf | report | TLP:CLEAR | 中 |
-| source--storm-0501--d9ec7370b268af85 | Cloud Security Risk Report 2025 |  | 2025 | summary/2026/Cloud_Security_Risk_Report_2025.pdf | report | TLP:CLEAR | 中 |
+| source--daily-3f6df09902adf66bfcb4 | Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行 | bleepingcomputer.com | 2025-08-29 | https://www.bleepingcomputer.com/news/security/storm-0501-hackers-shift-to-ransomware-attacks-in-the-cloud/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-a7defc5bd3e885aefd88 | Embargoランサムウェア、クラウド環境への攻撃を強化 | bleepingcomputer.com | 2024-09-29 | https://www.bleepingcomputer.com/news/security/embargo-ransomware-escalates-attacks-to-cloud-environments/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--storm-0501--0a15d9e88139faba | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0501--0d1acae0bd717d55 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0501--3ceaa5aa4393c11f | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0501--5e4e96bf9e2532d1 | threat horizons report h1 2025 |  | 2025 | summary/2025/threat_horizons_report_h1_2025.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0501--9dca41b1465ff529 | storm 0501 |  | 不明 | actor_profile/evidence/storm-0501.csv | structured-data | TLP:CLEAR | 中 |
+| source--storm-0501--b8e6cf9fc5201b4c | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0501--c9befc46d5a04a83 | 2026 safebreach state of the breach report final 1 |  | 2026 | summary/2026/2026_safebreach_state_of_the_breach_report_final-1.pdf | report | TLP:CLEAR | 中 |
+| source--storm-0501--d9ec7370b268af85 | Cloud Security Risk Report 2025 |  | 2025 | summary/2026/Cloud_Security_Risk_Report_2025.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

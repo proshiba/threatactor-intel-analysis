@@ -4,7 +4,7 @@
   "name": "UNC4393",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:26Z",
   "languages": [
     "ja"
   ],
@@ -58,7 +58,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-c5088b4b4d6ebcbb00bf",
+      "name": "Black Bastaランサムウェアグループ、戦略的攻撃のために再編成",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-11-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Black Bastaは、2022年に出現したランサムウェアグループで、企業を標的にしている。 同グループは、攻撃手法を進化させ、より戦略的な攻撃を展開している。 ボットネット主導のマルウェア配信に焦点を当てることから、綿密に計画されたソーシャルエンジニアリングキャンペーンを通じて標的を欺くことに焦点を移している。 Black Basta の最近の技術には、「大量のスパムメールを送信するために使用される戦術であるメール爆撃」が含まれる。メール爆撃後、Microsoft Teams を介したソーシャルエンジニアリングを行い、被害者のエンドユーザーを騙してリモート監視および管理ツールを介して初期アクセスを提供 悪意のある QR コードが組み込まれた Microsoft Teams の外部チャットメッセージに標的を追加することで、誘導。 彼らは、被害者のデータを暗号化し、身代金を要求する手口を用いている。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3db6fd943f36fd38310f"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--c5088b4b4d6ebcbb00bf192a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Black Bastaは、RaaSとして運用しておらず、Black Basta の背後にいるグループ（UNC4393 として追跡し、金銭的な動機があると説明している）が、唯一の利用者。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -69,24 +102,6 @@
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -106,45 +121,71 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--unc4393--aeaa347def06fd80",
-      "path": "actor_profile/evidence/unc4393.csv",
-      "title": "unc4393",
-      "publisher": "",
+      "source_id": "source--daily-3db6fd943f36fd38310f",
+      "path": "https://www.databreachtoday.com/black-basta-ransomware-group-retools-for-strategic-attacks-a-26898",
+      "title": "Black Bastaランサムウェアグループ、戦略的攻撃のために再編成",
+      "publisher": "databreachtoday.com",
+      "published_at": {
+        "value": "2024-11-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241126.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "language": "unknown",
-      "source_type": "structured-data",
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
-      "source_id": "source--unc4393--428e38eab46ab340",
-      "path": "summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf",
-      "title": "M Trends 2023 Report MANDIANT SPECIAL REPORT",
-      "publisher": "",
-      "published_at": {
-        "value": "2023-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--unc4393--ad9e94092476adad",
-      "path": "summary/2024/m-trends-2024.pdf",
-      "title": "m trends 2024",
+      "source_id": "source--unc4393--013f6813261c3d9e",
+      "path": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf",
+      "title": "Cybersecurity Threats 2024 Annual Report QAX",
       "publisher": "",
       "published_at": {
         "value": "2024-01-01T00:00:00Z",
@@ -178,12 +219,12 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--unc4393--013f6813261c3d9e",
-      "path": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf",
-      "title": "Cybersecurity Threats 2024 Annual Report QAX",
+      "source_id": "source--unc4393--428e38eab46ab340",
+      "path": "summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf",
+      "title": "M Trends 2023 Report MANDIANT SPECIAL REPORT",
       "publisher": "",
       "published_at": {
-        "value": "2024-01-01T00:00:00Z",
+        "value": "2023-01-01T00:00:00Z",
         "precision": "year",
         "status": "known",
         "basis": "filename"
@@ -214,30 +255,40 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--osint-misp-threat-actor",
-      "path": "actor_profile/reference/osint/misp-threat-actor.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
-      "title": "MISP Galaxy Threat Actor",
-      "publisher": "MISP Project",
+      "source_id": "source--unc4393--ad9e94092476adad",
+      "path": "summary/2024/m-trends-2024.pdf",
+      "title": "m trends 2024",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--unc4393--aeaa347def06fd80",
+      "path": "actor_profile/evidence/unc4393.csv",
+      "title": "unc4393",
+      "publisher": "",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "en",
-      "source_type": "structured-osint-aggregation",
+      "language": "unknown",
+      "source_type": "structured-data",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
     }
   ],
   "assessment": {

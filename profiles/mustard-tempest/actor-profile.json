@@ -4,7 +4,7 @@
   "name": "Mustard Tempest",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:17:24Z",
   "languages": [
     "ja"
   ],
@@ -127,35 +127,6 @@
   "capabilities": {
     "malware": [
       {
-        "id": "malware--socgholish",
-        "name": "SocGholish",
-        "aliases": [
-          "FakeUpdates",
-          "SocGholish"
-        ],
-        "types": [
-          "Windows"
-        ],
-        "description": "[SocGholish](https://attack.mitre.org/software/S1124) is a JavaScript-based loader malware that has been used since at least 2017. It has been observed in use against multiple sectors globally for initial access, primarily through drive-by-downloads masquerading as software updates. SocGholish is operated by [Mustard Tempest](https://attack.mitre.org/groups/G1020) and its access has been sold to groups including [Indrik Spider](https://attack.mitre.org/groups/G0119) for downloading secondary RAT and ransomware payloads.(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: SocGholish-update)(Citation: Red Canary SocGholish March 2024)(Citation: Secureworks Gold Prelude Profile) ",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": ""
-      },
-      {
         "id": "malware--cobalt-strike",
         "name": "Cobalt Strike",
         "aliases": [
@@ -184,6 +155,35 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--socgholish",
+        "name": "SocGholish",
+        "aliases": [
+          "FakeUpdates",
+          "SocGholish"
+        ],
+        "types": [
+          "Windows"
+        ],
+        "description": "[SocGholish](https://attack.mitre.org/software/S1124) is a JavaScript-based loader malware that has been used since at least 2017. It has been observed in use against multiple sectors globally for initial access, primarily through drive-by-downloads masquerading as software updates. SocGholish is operated by [Mustard Tempest](https://attack.mitre.org/groups/G1020) and its access has been sold to groups including [Indrik Spider](https://attack.mitre.org/groups/G0119) for downloading secondary RAT and ransomware payloads.(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: SocGholish-update)(Citation: Red Canary SocGholish March 2024)(Citation: Secureworks Gold Prelude Profile) ",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": ""
       }
     ],
     "tools": [],
@@ -193,7 +193,74 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-b70168e5c4e68525d637",
+      "name": "広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "SocGholishがParrot/KeitaroなどのTDSを悪用し、ユーザーを不正サイトへ誘導。 偽のブラウザ更新を装うJSローダーで、改ざんサイトから配信される。 侵害端末へのアクセスは、Evil CorpやLockBit、Dridex等に販売される。 Raspberry Robin経由の拡散も観測、ChaCha20やCVE-2024-38196の悪用に言及。 Keitaroは正規利用も多く、過剰検知なく全面遮断は困難と指摘。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--socgholish"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-4c5a096408cb1636d9f7"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--b70168e5c4e68525d637757f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はTA569（別名Gold Prelude/Mustard Tempest/Purple Vallhund/UNC1543）。"
+    },
+    {
+      "activity_id": "activity--daily-da12b59b38f6c2339626",
+      "name": "HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-12-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-766a563d30b306b7681d"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--da12b59b38f6c23396266b03 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。"
+    }
+  ],
   "targets": {
     "countries": [],
     "regions": [],
@@ -530,24 +597,6 @@
   ],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -566,6 +615,60 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--daily-4c5a096408cb1636d9f7",
+      "path": "https://thehackernews.com/2025/08/socgholish-malware-spread-via-ad-tools.html",
+      "title": "広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": "2025-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250808.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-766a563d30b306b7681d",
+      "path": "https://thehackernews.com/2024/12/horns-campaign-delivers-rats-via-fake.html",
+      "title": "HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": "2024-12-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241204.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
       "source_id": "source--mustard-tempest--0a466fea7e0945f8",
       "path": "actor_profile/evidence/mustard-tempest.csv",
       "title": "mustard tempest",
@@ -582,78 +685,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--mustard-tempest--e76b0a45237b26c8",
-      "path": "cybercrime/2024/infoblox-research-report-registered-dgas-the-prolific-new-menace-no-one-is-talking-about.pdf",
-      "title": "infoblox research report registered dgas the prolific new menace no one is talking about",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--mustard-tempest--d4cc3e9620c36e0b",
-      "path": "microsoft-threat-actor-list.xlsx",
-      "title": "microsoft threat actor list",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "spreadsheet",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--mustard-tempest--c47d4f4c6bf80318",
-      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
-      "title": "APT group Intelligence Research handbook 2022",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--mustard-tempest--e3319085a6142472",
-      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
-      "title": "Secureworks NC3 2022StateoftheThreat",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
       "source_id": "source--mustard-tempest--509050c86fcdad1d",
@@ -677,24 +708,6 @@
       "source_id": "source--mustard-tempest--9dd35f193f60cb8c",
       "path": "summary/2025/2025 Cyber Security Report_Final.pdf",
       "title": "2025 Cyber Security Report Final",
-      "publisher": "",
-      "published_at": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "filename"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--mustard-tempest--d190c655ff782ecf",
-      "path": "summary/2025/m-trends-2025-en.pdf",
-      "title": "m trends 2025 en",
       "publisher": "",
       "published_at": {
         "value": "2025-01-01T00:00:00Z",
@@ -744,6 +757,148 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mustard-tempest--c47d4f4c6bf80318",
+      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
+      "title": "APT group Intelligence Research handbook 2022",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mustard-tempest--d190c655ff782ecf",
+      "path": "summary/2025/m-trends-2025-en.pdf",
+      "title": "m trends 2025 en",
+      "publisher": "",
+      "published_at": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mustard-tempest--d4cc3e9620c36e0b",
+      "path": "microsoft-threat-actor-list.xlsx",
+      "title": "microsoft threat actor list",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "spreadsheet",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mustard-tempest--e3319085a6142472",
+      "path": "summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf",
+      "title": "Secureworks NC3 2022StateoftheThreat",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mustard-tempest--e76b0a45237b26c8",
+      "path": "cybercrime/2024/infoblox-research-report-registered-dgas-the-prolific-new-menace-no-one-is-talking-about.pdf",
+      "title": "infoblox research report registered dgas the prolific new menace no one is talking about",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:43:09Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
     },
     {
       "source_id": "source--osint-misp-microsoft-activity-group",
@@ -822,58 +977,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-microsoft-threat-actor-mapping",
-      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
-      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
-      "title": "Microsoft Threat Actor Naming Mapping",
-      "publisher": "Microsoft",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:43:09Z",
-      "language": "en",
-      "source_type": "official-vendor-actor-mapping",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": "f97bfca3f73dc95d3fd91b9602c4b415eac0b59113163704f335eb212af3bd7d",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=None. This is Microsoft's published mapping; other vendors' collection boundaries may differ."
-    },
-    {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     }
   ],
   "assessment": {

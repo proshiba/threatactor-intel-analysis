@@ -1,9 +1,9 @@
 # GRU GTsST (Main Center for Special Technology) 脅威アクタープロファイル
 
-プロファイルID: `actor--gru-gtsst-main-center-for-special-technology`  
-状態: draft  
-更新日時: 2026-07-25T11:07:06Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--gru-gtsst-main-center-for-special-technology`
+- 状態: draft
+- 更新日時: 2026-07-25T11:07:06Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 

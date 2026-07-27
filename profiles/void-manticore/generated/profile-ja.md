@@ -1,9 +1,9 @@
 # VOID MANTICORE 脅威アクタープロファイル
 
-プロファイルID: `actor--void-manticore`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--void-manticore`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:27Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -114,9 +114,10 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| HomeLand Justice | campaign | 2021-05-01T04:00:00.000Z | 2022-09-01T04:00:00.000Z | [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) was a disruptive cyber campaign conducted by Iranian state-affiliated actors against Albanian government networks in July and September 2022. The activity combined ransomware, wiper malware, and data leak operations. Initial access for [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) was established as early as May 2021, and threat actors moved laterally, exfiltrated sensitive information, and maintained persistence for approximately 14 months prior to the destructive phase of the operation. Responsibility was claimed by the "HomeLand Justice" front, which framed the campaign as retaliation against the Mujahedeen-e Khalq (MEK), an Iranian opposition group with a presence in Albania. Multiple Iran-nexus groups are assessed to have participated in the campaign, including [HEXANE](https://attack.mitre.org/groups/G1001) who probed victim infrastructure.(Citation: Mandiant ROADSWEEP August 2022)(Citation: Microsoft Albanian Government Attacks September 2022)(Citation: CISA Iran Albanian Attacks September 2022) A second wave of attacks was launched in September 2022 using similar tactics following public attribution of the previous activity to Iran and the severing of diplomatic ties between Iran and Albania.(Citation: CISA Iran Albanian Attacks September 2022)<br><br> | 高 | `source--mitre-attack-19-1` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 | disruptive-activity | 不明 | 不明 | 2024-05-21 | 新バージョンのBiBi Wiperがディスクパーティションテーブルを破壊 攻撃はイスラエルとアルバニアで発生 攻撃者はイランのハッカーグループであるVoid Manticore Void Manticoreは多様な破壊ツールを使用 新バージョンはデータ復旧を困難にする | 中 | `source--daily-0d70b2cb1fe1f39ff860` |
+| HomeLand Justice | campaign | 2021-05-01T04:00:00.000Z | 2022-09-01T04:00:00.000Z | 2026-05-12 | [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) was a disruptive cyber campaign conducted by Iranian state-affiliated actors against Albanian government networks in July and September 2022. The activity combined ransomware, wiper malware, and data leak operations. Initial access for [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) was established as early as May 2021, and threat actors moved laterally, exfiltrated sensitive information, and maintained persistence for approximately 14 months prior to the destructive phase of the operation. Responsibility was claimed by the "HomeLand Justice" front, which framed the campaign as retaliation against the Mujahedeen-e Khalq (MEK), an Iranian opposition group with a presence in Albania. Multiple Iran-nexus groups are assessed to have participated in the campaign, including [HEXANE](https://attack.mitre.org/groups/G1001) who probed victim infrastructure.(Citation: Mandiant ROADSWEEP August 2022)(Citation: Microsoft Albanian Government Attacks September 2022)(Citation: CISA Iran Albanian Attacks September 2022) A second wave of attacks was launched in September 2022 using similar tactics following public attribution of the previous activity to Iran and the severing of diplomatic ties between Iran and Albania.(Citation: CISA Iran Albanian Attacks September 2022)<br><br> | 高 | `source--mitre-attack-19-1` |
 
 
 
@@ -219,35 +220,36 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--void-manticore--432520f2738bbc2c | void manticore |  | 不明 | actor_profile/evidence/void-manticore.csv | structured-data | TLP:CLEAR | 中 |
-| source--void-manticore--a3e1662f3971c94c | Claude Mythos Preview System Card |  | 不明 | AISecurity/Claude Mythos Preview System Card.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--6c4456aaa341ac6c | the rise of state sponsored hacktivism |  | 不明 | Anonymous/the-rise-of-state-sponsored-hacktivism.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--c6ce9deb8a7e5fa5 | Public Report EN 2025 DIGITAL |  | 2025 | International Strategic/Canada/Public Report_EN_2025_DIGITAL.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--a1f77e6e9c133da5 | VB2022 Exploit archaeology a forensic history of in the wild NSO Group exploits |  | 2022 | NSOGroup/VB2022-Exploit-archaeology-a-forensic-history-of-in-the-wild-NSO-Group-exploits.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--15b241fd48f227db | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--e61cfd99872b143b | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--7001c6c11351daa6 | mobile APT threat report |  | 不明 | mobile-APT/mobile-APT-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--491ffb169527ff34 | Russian Ransomware C2 Network Discovered in Censys Data |  | 不明 | summary/2022/Russian Ransomware C2 Network Discovered in Censys Data.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--5f00205af443971a | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--b9b346da5842493e | Modern Asian APT groups TTPs report eng |  | 不明 | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--ef9c292f567e0dc2 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--40ac301c05170014 | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--d79d08d6c77f4ed5 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--0ad84d5ffade7472 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--0402ab708c2b3b30 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--void-manticore--eb26cccb5d8b7a99 | tool of first resort israel hamas war cyber |  | 不明 | summary/2024/tool-of-first-resort-israel-hamas-war-cyber.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--ae6876bd7aa0f48a | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--a7dc8c791d13500e | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--caf4bc945a22099d | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--1cf02c350fe8a86e | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--void-manticore--bede1a8da90bf2b0 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--daily-0d70b2cb1fe1f39ff860 | BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 | bleepingcomputer.com | 2024-05-21 | https://www.bleepingcomputer.com/news/security/new-bibi-wiper-version-also-destroys-the-disk-partition-table/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--void-manticore--0402ab708c2b3b30 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--void-manticore--0ad84d5ffade7472 | state of the threat report 2024 |  | 2024 | summary/2024/state-of-the-threat-report-2024.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--15b241fd48f227db | Semiannual+Ransomware+Report+ +H1+2024 |  | 2024 | cybercrime/2024/Semiannual+Ransomware+Report+-+H1+2024.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--1cf02c350fe8a86e | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--40ac301c05170014 | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--432520f2738bbc2c | void manticore |  | 不明 | actor_profile/evidence/void-manticore.csv | structured-data | TLP:CLEAR | 中 |
+| source--void-manticore--491ffb169527ff34 | Russian Ransomware C2 Network Discovered in Censys Data |  | 不明 | summary/2022/Russian Ransomware C2 Network Discovered in Censys Data.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--5f00205af443971a | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--6c4456aaa341ac6c | the rise of state sponsored hacktivism |  | 不明 | Anonymous/the-rise-of-state-sponsored-hacktivism.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--7001c6c11351daa6 | mobile APT threat report |  | 不明 | mobile-APT/mobile-APT-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--a1f77e6e9c133da5 | VB2022 Exploit archaeology a forensic history of in the wild NSO Group exploits |  | 2022 | NSOGroup/VB2022-Exploit-archaeology-a-forensic-history-of-in-the-wild-NSO-Group-exploits.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--a3e1662f3971c94c | Claude Mythos Preview System Card |  | 不明 | AISecurity/Claude Mythos Preview System Card.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--a7dc8c791d13500e | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--ae6876bd7aa0f48a | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--b9b346da5842493e | Modern Asian APT groups TTPs report eng |  | 不明 | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--bede1a8da90bf2b0 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--c6ce9deb8a7e5fa5 | Public Report EN 2025 DIGITAL |  | 2025 | International Strategic/Canada/Public Report_EN_2025_DIGITAL.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--caf4bc945a22099d | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--d79d08d6c77f4ed5 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--e61cfd99872b143b | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--eb26cccb5d8b7a99 | tool of first resort israel hamas war cyber |  | 不明 | summary/2024/tool-of-first-resort-israel-hamas-war-cyber.pdf | report | TLP:CLEAR | 中 |
+| source--void-manticore--ef9c292f567e0dc2 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

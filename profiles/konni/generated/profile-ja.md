@@ -1,9 +1,9 @@
 # Konni 脅威アクタープロファイル
 
-プロファイルID: `actor--konni`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--konni`
+- 状態: draft
+- 更新日時: 2026-07-27T11:17:24Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -104,7 +104,12 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Google広告を悪用しEndRATを配布する新たなスピアフィッシング攻撃 | phishing-campaign | 不明 | 不明 | 2026-01-20 | 韓国組織を狙うKonni APTの作戦「Poseidon」が確認され、Google広告基盤を悪用してEndRATを配布するスピアフィッシングを実施。 メール内の偽装URLはad.doubleclick.net経由の正規広告トラフィックに見せかけ、侵害WordPressへ誘導して不正ZIPを取得させる。 ZIP内のLNKがAutoItスクリプトを起動し、PDF風に偽装してメモリ上にEndRAT系RATをロード、追加操作なしで感染を成立。 不可視テキストのパディングでAI検知を回避し、や1×1ピクセルの透過画像を使って開封を追跡、C2識別子「endServer9688」「endClient9688」など内部アーティファクトも確認。 攻撃者は北朝鮮人権団体や金融機関への成りすましで信用を獲得し、取引確認書や通知文書に偽装した誘導を行う。 | 中 | `source--daily-04ea119cefbe5973a36c` |
+| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | phishing-campaign | 不明 | 不明 | 2025-05-14 | 北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| KonniグループによるスピアフィッシングとKakaoTalk連動型脅威キャンペーンの分析 | phishing-campaign | 不明 | 不明 | 2026-03-17 | Geniansは、北朝鮮人権講師の任命通知を装うスピアフィッシングから始まるKonniグループの多段階攻撃を分析し、初期侵入から二次拡散までの流れを整理した。 受信者が文書に見せかけた悪性LNKを実行すると、PowerShellが埋め込みデータを復号して偽装PDFを展開し、C2から追加ペイロードを取得して永続化する。 C2からはAutoIT3.exeとPDFに偽装したAutoItScriptがダウンロード及び実行される。 解析の結果EndRAT系の挙動が確認され、さらにEndRAT・RftRAT・RemcosRATの複数RATが段階的に展開されていた。 攻撃者は侵害端末上のKakaoTalk PCセッションに不正アクセスし、友だち一覧から選んだ相手へ北朝鮮関連の誘引ファイルを再送して信頼連鎖で拡散した。 記事は、単一IOCの遮断だけでは不十分であり、LNK実行後の異常プロセス、永続化、情報窃取、メッセンジャー悪用をEDRで相関検知すべきだと強調する。 | 高 | `source--daily-22cb41823695505fc8c4` |
+| Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | infrastructure-operation | 不明 | 不明 | 2026-01-26 | 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。 | 高 | `source--daily-96093ec62047a80740ea` |
 
 
 
@@ -175,18 +180,22 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-04ea119cefbe5973a36c | Google広告を悪用しEndRATを配布する新たなスピアフィッシング攻撃 | cybersecuritynews.com | 2026-01-20 | https://cybersecuritynews.com/new-spear-phishing-attack-abusing-google-ads/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-22cb41823695505fc8c4 | KonniグループによるスピアフィッシングとKakaoTalk連動型脅威キャンペーンの分析 | genians.co.kr | 2026-03-17 | https://www.genians.co.kr/en/blog/threat_intelligence/kakaotalk | osint-report | TLP:CLEAR | 中 |
+| source--daily-96093ec62047a80740ea | Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | bleepingcomputer.com | 2026-01-26 | https://www.bleepingcomputer.com/news/security/konni-hackers-target-blockchain-engineers-with-ai-built-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-a70f8f04454a7b9e932e | 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | bleepingcomputer.com | 2025-05-14 | https://www.bleepingcomputer.com/news/security/north-korea-ramps-up-cyberspying-in-ukraine-to-assess-war-risk/ | osint-report | TLP:CLEAR | 中 |
 | source--konni--079e51a056632f53 | 20230727 threat inteligence report Konni |  | 2023-07-27 | konni/20230727_threat_inteligence_report_Konni.pdf | report | TLP:CLEAR | 中 |
+| source--konni--2ab1db8e5d0c048a | konni ioclist 202111 |  | 2021-11 | konni/konni_ioclist_202111.csv | structured-data | TLP:CLEAR | 中 |
+| source--konni--5b6e99ac261cea7a | konni threat insight paper triple threat N Korea aligned TA406 steals scams spies |  | 不明 | konni/konni-threat-insight-paper-triple-threat-N-Korea-aligned-TA406-steals-scams-spies.pdf | report | TLP:CLEAR | 中 |
+| source--konni--8c179de8de042c5a | the konni apt chronicle tracing their intelligence driven attack chain |  | 不明 | konni/the-konni-apt-chronicle-tracing-their-intelligence-driven-attack-chain.pdf | report | TLP:CLEAR | 中 |
 | source--konni--9f9859221e0eb3bc | 20230926 threat inteligence report konniapt |  | 2023-09-26 | konni/20230926_threat_inteligence_report_konniapt.pdf | report | TLP:CLEAR | 中 |
 | source--konni--a7ca5a441a2a4faf | ReadME |  | 不明 | konni/ReadME.md | repository-notes | TLP:CLEAR | 中 |
 | source--konni--e22c456560b2d889 | bluesky |  | 不明 | konni/bluesky.txt | text-data | TLP:CLEAR | 中 |
-| source--konni--5b6e99ac261cea7a | konni threat insight paper triple threat N Korea aligned TA406 steals scams spies |  | 不明 | konni/konni-threat-insight-paper-triple-threat-N-Korea-aligned-TA406-steals-scams-spies.pdf | report | TLP:CLEAR | 中 |
-| source--konni--2ab1db8e5d0c048a | konni ioclist 202111 |  | 2021-11 | konni/konni_ioclist_202111.csv | structured-data | TLP:CLEAR | 中 |
-| source--konni--8c179de8de042c5a | the konni apt chronicle tracing their intelligence driven attack chain |  | 不明 | konni/the-konni-apt-chronicle-tracing-their-intelligence-driven-attack-chain.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

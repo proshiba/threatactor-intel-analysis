@@ -1,9 +1,9 @@
 # APT24 脅威アクタープロファイル
 
-プロファイルID: `actor--apt24`  
-状態: draft  
-更新日時: 2026-07-25T14:07:08Z  
-構造バージョン: 1.0.0
+- プロファイルID: `actor--apt24`
+- 状態: draft
+- 更新日時: 2026-07-27T11:04:28Z
+- 構造バージョン: 1.0.0
 
 ## エグゼクティブサマリー
 
@@ -102,7 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|
+| Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開 | phishing-campaign | 不明 | 不明 | 2025-11-22 | 中国関与とされるAPT24が未公開のBadAudioを用い、近年は手口を高度化しつつ3年規模の諜報活動を展開。 2022年以降、スピアフィッシング・サプライチェーン侵害・ウォータリングホールで配布し、標的は主にWindows。 2024年以降は台湾のJS配布企業を繰り返し侵害し、偽CDN名の登録を通じて千超のドメインに悪性JSを拡散。 BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。 一部でCobalt Strike展開が観測されるも検知率は低く、サンプルの多くが長期にわたり見逃されていた。 | 高 | `source--daily-f3b162a1cedd89627cee` |
 
 
 
@@ -141,13 +143,14 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--apt24--7243367868501855 | apt24 |  | 不明 | actor_profile/evidence/apt24.csv | structured-data | TLP:CLEAR | 中 |
 | source--apt24--e9c314596d846694 | Automating APT Campaign and Group Attribution |  | 不明 | APT-hunting/Automating APT Campaign and Group Attribution.pdf | report | TLP:CLEAR | 中 |
+| source--daily-f3b162a1cedd89627cee | Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開 | bleepingcomputer.com | 2025-11-22 | https://www.bleepingcomputer.com/news/security/google-exposes-badaudio-malware-used-in-apt24-espionage-campaigns/ | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

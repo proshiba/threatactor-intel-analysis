@@ -4,7 +4,7 @@
   "name": "Gelsemium",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-27T11:04:32Z",
   "languages": [
     "ja"
   ],
@@ -143,7 +143,40 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-e937a940e220048d7b4a",
+      "name": "中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "中国のサイバー攻撃グループGelsemiumが、新たなLinuxバックドア「WolfsBane」を使用。 WolfsBaneは、ドロッパー、ランチャー、バックドアから成る完全なマルウェアツール。 改変されたオープンソースのルートキットを用いて検出を回避。 マルウェアは、「.config/autostart/」に自動起動ファイル（gnome-control.desktop）を作成することで、ホストへの永続性を設定。 Windows向けマルウェア「Project Wood」と関連するLinuxマルウェア「FireWood」も発見。 APTグループがLinuxプラットフォームへの攻撃を強化する傾向が増加。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-c14d3c6623afcdc68bdf"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--e937a940e220048d7b4a91c6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用"
+    }
+  ],
   "targets": {
     "countries": [
       {
@@ -178,24 +211,6 @@
   "ttps": [],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -212,6 +227,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+    },
+    {
+      "source_id": "source--daily-c14d3c6623afcdc68bdf",
+      "path": "https://www.bleepingcomputer.com/news/security/chinese-gelsemium-hackers-use-new-wolfsbane-linux-malware/",
+      "title": "中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用",
+      "publisher": "bleepingcomputer.com",
+      "published_at": {
+        "value": "2024-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241122.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--gelsemium--0c692ac1ecc96ddf",
@@ -232,12 +265,48 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--gelsemium--f0b7738950da3acb",
-      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
-      "title": "APT group Intelligence Research handbook 2022",
+      "source_id": "source--gelsemium--1d6473610154e76d",
+      "path": "summary/2024/readme.md",
+      "title": "readme",
       "publisher": "",
       "published_at": {
-        "value": "2022-01-01T00:00:00Z",
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "repository-notes",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--gelsemium--6296bb3203efe3c9",
+      "path": "summary/2024/eset-threat-report-h22024.pdf",
+      "title": "eset threat report h22024",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--gelsemium--acdf8b3cf5b320da",
+      "path": "summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf",
+      "title": "TLP CLEAR CERT EU TLR 2024 v1",
+      "publisher": "",
+      "published_at": {
+        "value": "2024-01-01T00:00:00Z",
         "precision": "year",
         "status": "known",
         "basis": "filename"
@@ -286,48 +355,12 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
-      "source_id": "source--gelsemium--6296bb3203efe3c9",
-      "path": "summary/2024/eset-threat-report-h22024.pdf",
-      "title": "eset threat report h22024",
+      "source_id": "source--gelsemium--f0b7738950da3acb",
+      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
+      "title": "APT group Intelligence Research handbook 2022",
       "publisher": "",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--gelsemium--1d6473610154e76d",
-      "path": "summary/2024/readme.md",
-      "title": "readme",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "repository-notes",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--gelsemium--acdf8b3cf5b320da",
-      "path": "summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf",
-      "title": "TLP CLEAR CERT EU TLR 2024 v1",
-      "publisher": "",
-      "published_at": {
-        "value": "2024-01-01T00:00:00Z",
+        "value": "2022-01-01T00:00:00Z",
         "precision": "year",
         "status": "known",
         "basis": "filename"
@@ -338,6 +371,50 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
     {
       "source_id": "source--osint-misp-mitre-intrusion-set",
@@ -390,32 +467,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     }
   ],
   "assessment": {
