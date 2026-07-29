@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt-c-01`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:09Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -122,14 +122,18 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | China | Primary geographic target in the reviewed public reporting. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
-| sectors | Government | Public reporting identifies Government entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
+| sectors | Aviation | Public reporting identifies Aviation entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Defense | Public reporting identifies Defense entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Education and Research | Public reporting identifies Education and Research entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
-| sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Aviation | Public reporting identifies Aviation entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
+| sectors | Government | Public reporting identifies Government entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
 | sectors | Maritime | Public reporting identifies Maritime entities as targets. | 不明 | 不明 | 中 | `source--cfr-taiwan-offensive-cyber-2022` |
+| sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: Entities holding Chinese government, defense, aviation, maritime, and cross-Strait policy information.
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -164,7 +168,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--apt-c-01--e7134b90ef5bd50d | apt c 01 |  | 不明 | actor_profile/evidence/apt-c-01.csv | structured-data | TLP:CLEAR | 中 |
 | source--apt-c-01--c225ad868f45dc7c | Investigation report on Cyberattacks launched by Taiwan ICEFCOM EN |  | 不明 | International Strategic/China/Investigation_report_on_Cyberattacks_launched_by_Taiwan_ICEFCOM_EN.pdf | report | TLP:CLEAR | 中 |

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--inc-ransom`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:23Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -114,51 +114,68 @@ INC Ransomの標準化プロファイル。リポジトリ内の専用資料1件
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表 | ransomware-extortion | 不明 | 不明 | 2025-06-28 | 2024年11月6日のランサムウェア攻撃で米国システムが侵害され、2,242,521人分の情報が盗まれた。 被害情報には氏名、連絡先、生年月日、政府発行ID、銀行口座、医療・雇用記録などが含まれる。 ランサムウェアグループINC Ransomが攻撃を主張し、4月にダークウェブで資料の一部を流出させた。 同社は顧客支払い・薬局システムへの影響やクレジットカード情報の流出は確認されていないと説明。 現在も調査中で、攻撃グループ名や暗号化の有無は正式には公表されていない。 | 中 | `source--daily-48e62c0cd488e280d1f7` |
-| McLaren病院、ランサムウェア攻撃による混乱が発生 | ransomware-extortion | 不明 | 不明 | 2024-08-08 | McLaren Health CareのITおよび電話システムがランサムウェア攻撃を受けて混乱。 同病院はインシデントの詳細を明らかにしていないが、職員が身代金要求メモを共有。 攻撃者はINC Ransomであり、システムが暗号化されデータが盗まれた。窃取されたデータは身代金を支払わなければ公開すると恐喝。 同病院は患者のデータベースアクセスを失い、一部の予約や手術が延期された。 2023年7月のデータ侵害でも個人情報が漏洩していた。 | 中 | `source--daily-8c1dbec2ef693d083aa2` |
-| INC Ransom、NHSスコットランドから盗まれた3TBのデータを漏洩させると脅迫 | ransomware-extortion | 不明 | 不明 | 2024-03-28 | INC RansomがNHSスコットランドから盗んだ3TBのデータの公開を脅迫 医療情報が含まれる複数の画像を共有し、身代金の支払いがなければ公開すると警告 攻撃はNHSスコットランドを構成する地域保健委員会のうち、NHSダムフリーズ・アンド・ガロウェイに限定され、他に影響なし 政府は警察などと共に影響の評価と、影響を受けた可能性のある個人について調査中 NHSダムフリーズ・アンド・ガロウェイは患者データの一部が漏洩したことを確認 | 高 | `source--daily-bab6b26b5c9d46e2d3fa` |
-| ペンシルベニア州司法長官室、INC Ransom攻撃後のデータ侵害を確認 | ransomware-extortion | 不明 | 不明 | 2025-11-18 | ペンシルベニア州司法長官室は、8月9日のランサム攻撃で個人・医療情報を含むファイルが不正アクセスされたと確認。 当局は身代金支払いを拒否。調査で氏名・社会保障番号・医療情報が含まれ得ると発表。 攻撃当日はウェブサイト、職員メール、固定電話が停止する深刻な影響。侵入経路の詳細は未公表。 専門家は公開Citrix NetScalerの重大欠陥（CVE-2025-5777／Citrix Bleed 2）悪用の可能性を指摘するが確証はない。 INC Ransomが9月20日に犯行声明と5.7TB窃取を主張、FBI内部網へのアクセス示唆もあるが、当局は公式帰属を示さず。 | 高 | `source--daily-3d064f91540dd031b11b` |
-| OnSolveのCodeREDへのサイバー攻撃で全米の緊急警報システムが障害 | ransomware-extortion | 不明 | 不明 | 2025-11-27 | 危機管理企業Crisis24は、OnSolve CodeREDが受けたサイバー攻撃で、全米の自治体・警察・消防の緊急通知に障害が出たと確認。 旧CodeRED環境の廃止を余儀なくされ、緊急・天候アラート等の配信が広範に中断。被害は他システムには拡大していないと説明。 氏名・住所・メール・電話番号・CodeREDプロファイル用パスワードの窃取を確認、ただし現時点で公開流出の証拠はない。 2025年3月31日バックアップから新「CodeRED by Crisis24」へ復旧中で、古いバックアップのため一部アカウント欠落の恐れ。 INC Ransomが犯行声明を出し、11月1日侵入・10日暗号化と主張。平文パスワードの画面を提示し、再利用パスの変更を注意喚起。 | 中 | `source--daily-b7b8f180017c90aab0b8` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表 | ransomware-extortion | 2024-11-06 | 2024-11-06 | 2025-06-28 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--4221b5fbb827488c6eaa, target--mitre-group--country--3adb9fd2fada3c8377c8, target--mitre-group--sector--c9143ce4ef7d98b74fed |  |  | victim--activity-rule--079a25c4747bb14dd680 | 2024年11月6日のランサムウェア攻撃で米国システムが侵害され、2,242,521人分の情報が盗まれた。 被害情報には氏名、連絡先、生年月日、政府発行ID、銀行口座、医療・雇用記録などが含まれる。 ランサムウェアグループINC Ransomが攻撃を主張し、4月にダークウェブで資料の一部を流出させた。 同社は顧客支払い・薬局システムへの影響やクレジットカード情報の流出は確認されていないと説明。 現在も調査中で、攻撃グループ名や暗号化の有無は正式には公表されていない。 | 中 | `source--daily-48e62c0cd488e280d1f7` |
+| McLaren病院、ランサムウェア攻撃による混乱が発生 | ransomware-extortion | 不明 | 不明 | 2024-08-08 |  |  |  | victim--activity-rule--391d6f701e0fd559449c | McLaren Health CareのITおよび電話システムがランサムウェア攻撃を受けて混乱。 同病院はインシデントの詳細を明らかにしていないが、職員が身代金要求メモを共有。 攻撃者はINC Ransomであり、システムが暗号化されデータが盗まれた。窃取されたデータは身代金を支払わなければ公開すると恐喝。 同病院は患者のデータベースアクセスを失い、一部の予約や手術が延期された。 2023年7月のデータ侵害でも個人情報が漏洩していた。 | 中 | `source--daily-8c1dbec2ef693d083aa2` |
+| INC Ransom、NHSスコットランドから盗まれた3TBのデータを漏洩させると脅迫 | ransomware-extortion | 不明 | 不明 | 2024-03-28 |  |  |  | victim--activity-rule--1e8740a7eff1f190fee0 | INC RansomがNHSスコットランドから盗んだ3TBのデータの公開を脅迫 医療情報が含まれる複数の画像を共有し、身代金の支払いがなければ公開すると警告 攻撃はNHSスコットランドを構成する地域保健委員会のうち、NHSダムフリーズ・アンド・ガロウェイに限定され、他に影響なし 政府は警察などと共に影響の評価と、影響を受けた可能性のある個人について調査中 NHSダムフリーズ・アンド・ガロウェイは患者データの一部が漏洩したことを確認 | 高 | `source--daily-bab6b26b5c9d46e2d3fa` |
+| ペンシルベニア州司法長官室、INC Ransom攻撃後のデータ侵害を確認 | ransomware-extortion | 不明 | 不明 | 2025-11-18 | target--mitre-group--sector--c9143ce4ef7d98b74fed |  |  | victim--activity-rule--c04ab78d76cec7fe93fe | ペンシルベニア州司法長官室は、8月9日のランサム攻撃で個人・医療情報を含むファイルが不正アクセスされたと確認。 当局は身代金支払いを拒否。調査で氏名・社会保障番号・医療情報が含まれ得ると発表。 攻撃当日はウェブサイト、職員メール、固定電話が停止する深刻な影響。侵入経路の詳細は未公表。 専門家は公開Citrix NetScalerの重大欠陥（CVE-2025-5777／Citrix Bleed 2）悪用の可能性を指摘するが確証はない。 INC Ransomが9月20日に犯行声明と5.7TB窃取を主張、FBI内部網へのアクセス示唆もあるが、当局は公式帰属を示さず。 | 高 | `source--daily-3d064f91540dd031b11b` |
+| OnSolveのCodeREDへのサイバー攻撃で全米の緊急警報システムが障害 | ransomware-extortion | 不明 | 不明 | 2025-11-27 |  |  |  | victim--activity-rule--832cde08cded15d6c1d3 | 危機管理企業Crisis24は、OnSolve CodeREDが受けたサイバー攻撃で、全米の自治体・警察・消防の緊急通知に障害が出たと確認。 旧CodeRED環境の廃止を余儀なくされ、緊急・天候アラート等の配信が広範に中断。被害は他システムには拡大していないと説明。 氏名・住所・メール・電話番号・CodeREDプロファイル用パスワードの窃取を確認、ただし現時点で公開流出の証拠はない。 2025年3月31日バックアップから新「CodeRED by Crisis24」へ復旧中で、古いバックアップのため一部アカウント欠落の恐れ。 INC Ransomが犯行声明を出し、11月1日侵入・10日暗号化と主張。平文パスワードの画面を提示し、再利用パスの変更を注意喚起。 | 中 | `source--daily-b7b8f180017c90aab0b8` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | 米国 | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 2024-11-06 | 2024-11-06 | 高 | `source--daily-48e62c0cd488e280d1f7`, `source--mitre-attack-19-1` |
+| sectors | 政府・行政 | 活動「小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表」の記述で標的として明示された産業。 | 2024-11-06 | 2024-11-06 | 中 | `source--daily-48e62c0cd488e280d1f7` |
+| sectors | 金融 | 活動「小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表」の記述で標的として明示された産業。 | 2024-11-06 | 2024-11-06 | 中 | `source--daily-48e62c0cd488e280d1f7` |
+| sectors | 教育・研究 | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 医療・ヘルスケア | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 2024-11-06 | 2024-11-06 | 高 | `source--daily-3d064f91540dd031b11b`, `source--daily-48e62c0cd488e280d1f7`, `source--mitre-attack-19-1` |
+| sectors | 製造・産業 | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表 | 小売大手Ahold Delhaize | named | organization | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--4221b5fbb827488c6eaa, target--mitre-group--country--3adb9fd2fada3c8377c8, target--mitre-group--sector--c9143ce4ef7d98b74fed |  |  |  | encryption: 2024年11月6日のランサムウェア攻撃で米国システムが侵害され、2,242,521人分の情報が盗まれた。 | 2024-11-06 | 2024-11-06 | 2025-06-28 | 中 | `source--daily-48e62c0cd488e280d1f7` |
+| 被害事例: INC Ransom、NHSスコットランドから盗まれた3TBのデータを漏洩させると脅迫 | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  |  | 不明 | 不明 | 2024-03-28 | 高 | `source--daily-bab6b26b5c9d46e2d3fa` |
+| 被害事例: McLaren病院、ランサムウェア攻撃による混乱が発生 | 非公開 | anonymous | unknown | reported |  |  |  |  | encryption: McLaren病院、ランサムウェア攻撃による混乱が発生<br>privacy: 2023年7月のデータ侵害でも個人情報が漏洩していた。 | 不明 | 不明 | 2024-08-08 | 中 | `source--daily-8c1dbec2ef693d083aa2` |
+| 被害事例: OnSolveのCodeREDへのサイバー攻撃で全米の緊急警報システムが障害 | 非公開 | aggregate | multiple-organizations | alleged |  |  |  | メール／メールアカウント | data-theft: 氏名・住所・メール・電話番号・CodeREDプロファイル用パスワードの窃取を確認、ただし現時点で公開流出の証拠はない。<br>credential-theft: 氏名・住所・メール・電話番号・CodeREDプロファイル用パスワードの窃取を確認、ただし現時点で公開流出の証拠はない。 | 不明 | 不明 | 2025-11-27 | 中 | `source--daily-b7b8f180017c90aab0b8` |
+| 被害事例: ペンシルベニア州司法長官室、INC Ransom攻撃後のデータ侵害を確認 | ペンシルベニア州司法長官室 | named | organization | alleged | target--mitre-group--sector--c9143ce4ef7d98b74fed |  |  | メール／メールアカウント |  | 不明 | 不明 | 2025-11-18 | 高 | `source--daily-3d064f91540dd031b11b` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1069.002 | Domain Groups | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071 | Application Layer Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074 | Data Staged | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1135 | Network Share Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1219 | Remote Access Tools | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1486 | Data Encrypted for Impact | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1537 | Transfer Data to Cloud Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566 | Phishing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1570 | Lateral Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1657 | Financial Theft | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | <br>[INC Ransom](https://attack.mitre.org/groups/G1032) has used RDP to move laterally.(Citation: Cybereason INC Ransomware November 2023)(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024)(Citation: Huntress INC Ransomware May 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [INC Ransom](https://attack.mitre.org/groups/G1032) has named a [PsExec](https://attack.mitre.org/software/S0029) executable winupd to mimic a legitimate Windows update file.(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [INC Ransom](https://attack.mitre.org/groups/G1032) has used NETSCAN.EXE for internal reconnaissance.(Citation: SOCRadar INC Ransom January 2024)(Citation: SentinelOne INC Ransomware) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [INC Ransom](https://attack.mitre.org/groups/G1032) has used WMIC to deploy ransomware.(Citation: Cybereason INC Ransomware November 2023)(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1049 | System Network Connections Discovery | [INC Ransom](https://attack.mitre.org/groups/G1032) has used RDP to test network connections.(Citation: SOCRadar INC Ransom January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [INC Ransom](https://attack.mitre.org/groups/G1032) has used `cmd.exe` to launch malicious payloads.(Citation: Huntress INC Ransom Group August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1069.002 | Domain Groups | [INC Ransom](https://attack.mitre.org/groups/G1032) has enumerated domain groups on targeted hosts.(Citation: Huntress INC Ransom Group August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1070.004 | File Deletion | <br>[INC Ransom](https://attack.mitre.org/groups/G1032) has uninstalled tools from compromised endpoints after use.(Citation: Huntress INC Ransomware May 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071 | Application Layer Protocol | [INC Ransom](https://attack.mitre.org/groups/G1032) has used valid accounts over RDP to connect to targeted systems.(Citation: Huntress INC Ransom Group August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1074 | Data Staged | [INC Ransom](https://attack.mitre.org/groups/G1032) has staged data on compromised hosts prior to exfiltration.(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | <br>[INC Ransom](https://attack.mitre.org/groups/G1032) has used compromised valid accounts for access to victim environments.(Citation: Cybereason INC Ransomware November 2023)(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024)(Citation: Huntress INC Ransomware May 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.002 | Domain Account | [INC Ransom](https://attack.mitre.org/groups/G1032) has scanned for domain admin accounts in compromised environments.(Citation: SOCRadar INC Ransom January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [INC Ransom](https://attack.mitre.org/groups/G1032) has downloaded tools to compromised servers including Advanced IP Scanner. (Citation: Huntress INC Ransom Group August 2023)(Citation: Huntress INC Ransomware May 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1135 | Network Share Discovery | [INC Ransom](https://attack.mitre.org/groups/G1032) has used Internet Explorer to view folders on other systems.(Citation: Huntress INC Ransom Group August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [INC Ransom](https://attack.mitre.org/groups/G1032) has exploited known vulnerabilities including CVE-2023-3519 in Citrix NetScaler for initial access.(Citation: SOCRadar INC Ransom January 2024)(Citation: SentinelOne INC Ransomware) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1219 | Remote Access Tools | <br>[INC Ransom](https://attack.mitre.org/groups/G1032) has used AnyDesk and PuTTY on compromised systems.(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024)(Citation: Huntress INC Ransomware May 2024)(Citation: SentinelOne INC Ransomware) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1486 | Data Encrypted for Impact | [INC Ransom](https://attack.mitre.org/groups/G1032) has used [INC Ransomware](https://attack.mitre.org/software/S1139) to encrypt victim's data.(Citation: SentinelOne INC Ransomware)(Citation: Huntress INC Ransom Group August 2023)(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Secureworks GOLD IONIC April 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: SOCRadar INC Ransom January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1537 | Transfer Data to Cloud Account | [INC Ransom](https://attack.mitre.org/groups/G1032) has used Megasync to exfiltrate data to the cloud.(Citation: Secureworks GOLD IONIC April 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [INC Ransom](https://attack.mitre.org/groups/G1032) has used 7-Zip and WinRAR to archive collected data prior to exfiltration.(Citation: Huntress INC Ransom Group August 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SOCRadar INC Ransom January 2024)(Citation: Huntress INC Ransomware May 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566 | Phishing | [INC Ransom](https://attack.mitre.org/groups/G1032) has used phishing to gain initial access.(Citation: SOCRadar INC Ransom January 2024)(Citation: SentinelOne INC Ransomware)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1569.002 | Service Execution | [INC Ransom](https://attack.mitre.org/groups/G1032) has run a file encryption executable via `Service Control Manager/7045;winupd,%SystemRoot%\winupd.exe,user mode service,demand start,LocalSystem`.(Citation: Huntress INC Ransom Group August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1570 | Lateral Tool Transfer | <br>[INC Ransom](https://attack.mitre.org/groups/G1032) has used a rapid succession of copy commands to install a file encryption executable across multiple endpoints within compromised infrastructure.(Citation: Huntress INC Ransom Group August 2023)(Citation: Secureworks GOLD IONIC April 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [INC Ransom](https://attack.mitre.org/groups/G1032) has acquired and used several tools including MegaSync, AnyDesk,  [esentutl](https://attack.mitre.org/software/S0404) and [PsExec](https://attack.mitre.org/software/S0029).(Citation: Cybereason INC Ransomware November 2023)(Citation: Huntress INC Ransom Group August 2023)(Citation: SOCRadar INC Ransom January 2024)(Citation: Huntress INC Ransomware May 2024)(Citation: SentinelOne INC Ransomware) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1657 | Financial Theft | [INC Ransom](https://attack.mitre.org/groups/G1032) has stolen and encrypted victim's data in order to extort payment for keeping it private or decrypting it.(Citation: Cybereason INC Ransomware November 2023)(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SOCRadar INC Ransom January 2024)(Citation: SentinelOne INC Ransomware) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [INC Ransom](https://attack.mitre.org/groups/G1032) can use SystemSettingsAdminFlows.exe, a native Windows utility, to disable Windows Defender.(Citation: Huntress INC Ransomware May 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

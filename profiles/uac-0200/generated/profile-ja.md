@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--uac-0200`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:26Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,17 +102,27 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に | phishing-campaign | 不明 | 不明 | 2025-03-20 | ウクライナのコンピュータ緊急対応チーム（CERT-UA）は、防衛産業企業の従業員や軍関係者を狙ったSignalアカウントを悪用したマルウェア攻撃を警告。 攻撃者は、会議報告書を装ったアーカイブをSignalメッセージで送信し、既存の連絡先からのメッセージとして信頼性を高めている。 アーカイブ内にはPDFと実行ファイルが含まれ、PDFを開くと実行ファイルを起動するように促される。この実行ファイルからDarkTortillaと呼ばれるマルウェアが展開される。 DarkTortillaは、リモートアクセス型トロイの木馬（RAT）であるDark Crystal RAT（DCRAT）を復号・実行する。 この攻撃活動は、2024年6月以降「UAC-0200」として追跡されており、2025年2月以降、無人航空機（UAV）や電子戦システムなどの軍事技術に関するテーマを餌にしている。 | 中 | `source--daily-1b5373977ade6efec051` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に | phishing-campaign | 不明 | 不明 | 2025-03-20 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc |  |  | victim--activity-rule--1468171d6b7c63c70c8d | ウクライナのコンピュータ緊急対応チーム（CERT-UA）は、防衛産業企業の従業員や軍関係者を狙ったSignalアカウントを悪用したマルウェア攻撃を警告。 攻撃者は、会議報告書を装ったアーカイブをSignalメッセージで送信し、既存の連絡先からのメッセージとして信頼性を高めている。 アーカイブ内にはPDFと実行ファイルが含まれ、PDFを開くと実行ファイルを起動するように促される。この実行ファイルからDarkTortillaと呼ばれるマルウェアが展開される。 DarkTortillaは、リモートアクセス型トロイの木馬（RAT）であるDark Crystal RAT（DCRAT）を復号・実行する。 この攻撃活動は、2024年6月以降「UAC-0200」として追跡されており、2025年2月以降、無人航空機（UAV）や電子戦システムなどの軍事技術に関するテーマを餌にしている。 | 中 | `source--daily-1b5373977ade6efec051` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | ウクライナ | 活動「ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-1b5373977ade6efec051` |
+| sectors | 防衛・軍事 | 活動「ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1b5373977ade6efec051` |
+| sectors | 製造・産業 | 活動「ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1b5373977ade6efec051` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc |  |  | VPN／リモートアクセス機器 |  | 不明 | 不明 | 2025-03-20 | 中 | `source--daily-1b5373977ade6efec051` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -145,7 +155,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-1b5373977ade6efec051 | ウクライナ軍が新たなSignalスピアフィッシング攻撃の標的に | bleepingcomputer.com | 2025-03-20 | https://www.bleepingcomputer.com/news/security/ukrainian-military-targeted-in-new-signal-spear-phishing-attacks/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
 | source--uac-0200--7e3a4b353fb977dd | CERTFR 2025 CTI 004 |  | 2025 | summary/2025/CERTFR-2025-CTI-004.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0200--80b75f730585a4a0 | Cyber operations by russia new goals, tools and groups |  | 不明 | International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf | report | TLP:CLEAR | 中 |

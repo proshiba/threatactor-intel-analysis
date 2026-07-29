@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--sidewinder",
   "name": "Sidewinder",
   "status": "draft",
   "created_at": "2026-07-25T09:01:00Z",
-  "updated_at": "2026-07-27T11:04:35Z",
+  "updated_at": "2026-07-29T15:36:11Z",
   "languages": [
     "ja"
   ],
@@ -191,18 +191,48 @@
         "basis": "daily-news-file-date"
       },
       "description": "SideWinderと呼ばれる高度な持続的脅威（APT）グループが、南アジア、東南アジア、中東、アフリカの海事および物流企業を主な標的にしている。 2024年に観測された攻撃は、バングラデシュ、カンボジア、ジブチ、エジプト、アラブ首長国連邦、ベトナムに及び、原子力発電所や原子力エネルギーインフラ、電気通信、コンサルティング、ITサービス企業、不動産代理店、ホテルも標的となっている。 攻撃手法は、スピアフィッシングメールを介して、Microsoft Officeの既知の脆弱性（CVE-2017-11882）を悪用し、最終的にStealerBotと呼ばれるマルウェアを展開する。 SideWinderは、セキュリティソフトウェアの検出を回避し、感染したシステム上での持続性を延ばすために、ツールセットを継続的に改良している。 同グループは、インドの標的を攻撃しており、以前はインド起源の可能性が指摘されていた。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
         "source--daily-da76d64966b546f28391"
       ],
-      "analyst_notes": "日次収集レコード daily-record--5a4e9c03699dc4af846f05d1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に"
+      "analyst_notes": "日次収集レコード daily-record--5a4e9c03699dc4af846f05d1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--420c73fd3c412b28226f"
+      ]
     }
   ],
   "targets": {
     "countries": [
+      {
+        "id": "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "name": "インド",
+        "description": "活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-da76d64966b546f28391"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
       {
         "id": "target--country--pakistan",
         "name": "Pakistan",
@@ -221,13 +251,102 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--actor-mapping-workbook",
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
+      },
+      {
+        "id": "target--mitre-group--country--636b020c92d89feaf74f",
+        "name": "中国",
+        "description": "They have been observed targeting government, military, and business entities throughout Asia, primarily focusing on Pakistan, China, Nepal, and Afghanistan.(Citation: ATT Sidewinder January 2021)(Citation: Securelist APT Trends April 2018)(Citation: Cyble Sidewinder September 2020)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
       }
     ],
     "regions": [],
     "sectors": [
+      {
+        "id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "name": "運輸・航空・海運",
+        "description": "活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-da76d64966b546f28391"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "name": "エネルギー",
+        "description": "活動「SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-da76d64966b546f28391"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--mitre-group--sector--433ed9945317627bd770",
+        "name": "政府・行政",
+        "description": "They have been observed targeting government, military, and business entities throughout Asia, primarily focusing on Pakistan, China, Nepal, and Afghanistan.(Citation: ATT Sidewinder January 2021)(Citation: Securelist APT Trends April 2018)(Citation: Cyble Sidewinder September 2020)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
       {
         "id": "target--sector--defense",
         "name": "Defense",
@@ -246,7 +365,8 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--actor-mapping-workbook",
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
       }
@@ -316,7 +436,7 @@
       "tactic": "Discovery",
       "technique_id": "T1016",
       "technique_name": "System Network Configuration Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used malware to collect information on network interfaces, including the MAC address.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -336,14 +456,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1020--general",
       "tactic": "Exfiltration",
       "technique_id": "T1020",
       "technique_name": "Automated Exfiltration",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has configured tools to automatically send collected files to attacker controlled servers.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -364,7 +484,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1025--general",
@@ -452,7 +572,7 @@
       "tactic": "Stealth",
       "technique_id": "T1027.010",
       "technique_name": "Command Obfuscation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used base64 encoding for scripts.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -472,14 +592,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027-013--general",
       "tactic": "Stealth",
       "technique_id": "T1027.013",
       "technique_name": "Encrypted/Encoded File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used base64 encoding and ECDH-P256 encryption for payloads.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -499,14 +619,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1033--general",
       "tactic": "Discovery",
       "technique_id": "T1033",
       "technique_name": "System Owner/User Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used tools to identify the user of a compromised host.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -526,7 +646,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036--general",
@@ -587,7 +707,7 @@
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has named malicious files <code>rekeywiz.exe</code> to match the name of a legitimate Windows executable.(Citation: Rewterz Sidewinder COVID-19 June 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -608,7 +728,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--0ae2943d4dd4a373"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1039--general",
@@ -669,7 +789,7 @@
       "tactic": "Discovery",
       "technique_id": "T1057",
       "technique_name": "Process Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used tools to identify running processes on the victim's machine.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -690,7 +810,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059--general",
@@ -725,7 +845,7 @@
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used PowerShell to drop and execute malware loaders.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -746,14 +866,14 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-005--general",
       "tactic": "Execution",
       "technique_id": "T1059.005",
       "technique_name": "Visual Basic",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used VBScript to drop and execute malware loaders.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -774,14 +894,14 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-007--general",
       "tactic": "Execution",
       "technique_id": "T1059.007",
       "technique_name": "JavaScript",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used JavaScript to drop and execute malware loaders.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder COVID-19 June 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -802,7 +922,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1069--general",
@@ -864,7 +984,7 @@
       "tactic": "Command And Control",
       "technique_id": "T1071.001",
       "technique_name": "Web Protocols",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used HTTP in C2 communications.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)(Citation: Rewterz Sidewinder COVID-19 June 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -885,7 +1005,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--0ae2943d4dd4a373"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1074--general",
@@ -919,7 +1039,7 @@
       "tactic": "Collection",
       "technique_id": "T1074.001",
       "technique_name": "Local Data Staging",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has collected stolen files in a temporary folder in preparation for exfiltration.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -940,7 +1060,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1078--general",
@@ -974,7 +1094,7 @@
       "tactic": "Discovery",
       "technique_id": "T1082",
       "technique_name": "System Information Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used tools to collect the computer name, OS version, installed hotfixes, as well as information regarding the memory and processor on a compromised host.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder COVID-19 June 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -995,14 +1115,14 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1083--general",
       "tactic": "Discovery",
       "technique_id": "T1083",
       "technique_name": "File and Directory Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used malware to collect information on files and directories.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1023,7 +1143,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1087--general",
@@ -1111,7 +1231,7 @@
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used LNK files to download remote files to the victim's network.(Citation: ATT Sidewinder January 2021)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1132,7 +1252,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--0ae2943d4dd4a373"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1106--general",
@@ -1193,7 +1313,7 @@
       "tactic": "Collection",
       "technique_id": "T1119",
       "technique_name": "Automated Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used tools to automatically collect system and network configuration information.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1214,7 +1334,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1120--general",
@@ -1248,7 +1368,7 @@
       "tactic": "Discovery",
       "technique_id": "T1124",
       "technique_name": "System Time Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used tools to obtain the current system time.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1269,7 +1389,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1140--general",
@@ -1303,7 +1423,7 @@
       "tactic": "Execution",
       "technique_id": "T1203",
       "technique_name": "Exploitation for Client Execution",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has exploited vulnerabilities to gain execution including CVE-2017-11882 and CVE-2020-0674.(Citation: ATT Sidewinder January 2021)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1324,7 +1444,7 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204--general",
@@ -1358,7 +1478,7 @@
       "tactic": "Execution",
       "technique_id": "T1204.001",
       "technique_name": "Malicious Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has lured targets to click on malicious links to gain execution in the target environment.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)(Citation: Rewterz Sidewinder COVID-19 June 2020)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1379,14 +1499,14 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has lured targets to click on malicious files to gain execution in the target environment.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)(Citation: Rewterz Sidewinder COVID-19 June 2020)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1408,14 +1528,14 @@
         "source--sidewinder--0ae2943d4dd4a373",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1218-005--general",
       "tactic": "Stealth",
       "technique_id": "T1218.005",
       "technique_name": "Mshta",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used <code>mshta.exe</code> to execute malicious payloads.(Citation: Rewterz Sidewinder APT April 2020)(Citation: Rewterz Sidewinder COVID-19 June 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1435,7 +1555,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1480--general",
@@ -1469,7 +1589,7 @@
       "tactic": "Discovery",
       "technique_id": "T1518",
       "technique_name": "Software Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used tools to enumerate software installed on an infected host.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1490,14 +1610,14 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1518-001--general",
       "tactic": "Discovery",
       "technique_id": "T1518.001",
       "technique_name": "Security Software Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used the Windows service <code>winmgmts:\\\\.\\root\\SecurityCenter2</code> to check installed antivirus products.(Citation: Rewterz Sidewinder APT April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1517,7 +1637,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1543-003--general",
@@ -1578,7 +1698,7 @@
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1547.001",
       "technique_name": "Registry Run Keys / Startup Folder",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has added paths to executables in the Registry to establish persistence.(Citation: Rewterz Sidewinder APT April 2020)(Citation: Rewterz Sidewinder COVID-19 June 2020)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1599,14 +1719,14 @@
         "source--mitre-attack-19-1",
         "source--sidewinder--0ae2943d4dd4a373"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1559-002--general",
       "tactic": "Execution",
       "technique_id": "T1559.002",
       "technique_name": "Dynamic Data Exchange",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used the ActiveXObject utility to create OLE objects to obtain execution through Internet Explorer.(Citation: Rewterz Sidewinder APT April 2020)(Citation: Rewterz Sidewinder COVID-19 June 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1626,7 +1746,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1562-001--general",
@@ -1660,7 +1780,7 @@
       "tactic": "Initial Access",
       "technique_id": "T1566.001",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has sent e-mails with malicious attachments often crafted for specific targets.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1682,14 +1802,14 @@
         "source--sidewinder--0ae2943d4dd4a373",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-002--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.002",
       "technique_name": "Spearphishing Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has sent e-mails with malicious links often crafted for specific targets.(Citation: ATT Sidewinder January 2021)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1711,7 +1831,7 @@
         "source--sidewinder--0ae2943d4dd4a373",
         "source--sidewinder--1d23a413a917d260"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574--general",
@@ -1745,7 +1865,7 @@
       "tactic": "Execution, Stealth",
       "technique_id": "T1574.001",
       "technique_name": "DLL",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has used DLL side-loading to drop and execute malicious payloads including the hijacking of the legitimate Windows application file rekeywiz.exe.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1765,7 +1885,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574-002--general",
@@ -2097,7 +2217,7 @@
       "tactic": "Reconnaissance",
       "technique_id": "T1598.002",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has sent e-mails with malicious attachments that lead victims to credential harvesting websites.(Citation: ATT Sidewinder January 2021)(Citation: Rewterz Sidewinder APT April 2020)(Citation: Cyble Sidewinder September 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -2117,14 +2237,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1598-003--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1598.003",
       "technique_name": "Spearphishing Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Sidewinder](https://attack.mitre.org/groups/G0121) has sent e-mails with malicious links to credential harvesting websites.(Citation: ATT Sidewinder January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -2144,7 +2264,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1602--general",
@@ -2434,5 +2554,53 @@
     "infrastructure_details": "",
     "targeting_details": "Military, Govenment, Pakistan, \"South Asian countries\"",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--420c73fd3c412b28226f",
+      "name": "被害事例: SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "SideWinderと呼ばれる高度な持続的脅威（APT）グループが、南アジア、東南アジア、中東、アフリカの海事および物流企業を主な標的にしている。 2024年に観測された攻撃は、バングラデシュ、カンボジア、ジブチ、エジプト、アラブ首長国連邦、ベトナムに及び、原子力発電所や原子力エネルギーインフラ、電気通信、コンサルティング、ITサービス企業、不動産代理店、ホテルも標的となっている。 攻撃手法は、スピアフィッシングメールを介して、Microsoft Officeの既知の脆弱性（CVE-2017-11882）を悪用し、最終的にStealerBotと呼ばれるマルウェアを展開する。 SideWinderは、セキュリティソフトウェアの検出を回避し、感染したシステム上での持続性を延ばすために、ツールセットを継続的に改良している。 同グループは、インドの標的を攻撃しており、以前はインド起源の可能性が指摘されていた。",
+      "activity_refs": [
+        "activity--daily-5a4e9c03699dc4af846f"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--48cc6b4cc2919459aec9",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-03-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-da76d64966b546f28391"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

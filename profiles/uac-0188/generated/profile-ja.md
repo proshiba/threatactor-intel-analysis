@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--uac-0188`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:37Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,21 +102,32 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング | phishing-campaign | 不明 | 不明 | 2024-05-27 | UAC-0188が金融機関を標的にトロイの木馬化されたマインスイーパーのPythonクローンを使用 医療文書を装ったフィッシングメールによりマルウェアを配布。メールにはdropbox上のマルウェアへのリンクが存在 dropboxからSCRファイルをダウンロードし実行すると、MinesweeperのPythonクローンコードと、リモートから取得する悪意のあるPythonコードが含まれる マルウェアはSuperOps RMMをインストールし、リモートアクセスを取得 CERT-UAが複数の侵害を確認 | 中 | `source--daily-d10b7c56549314679c89` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング | phishing-campaign | 不明 | 不明 | 2024-05-27 | target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--4221b5fbb827488c6eaa |  | ttp--activity-rule--47e67d974c4b21273613 | victim--activity-rule--330b99555e5684be6e6b | UAC-0188が金融機関を標的にトロイの木馬化されたマインスイーパーのPythonクローンを使用 医療文書を装ったフィッシングメールによりマルウェアを配布。メールにはdropbox上のマルウェアへのリンクが存在 dropboxからSCRファイルをダウンロードし実行すると、MinesweeperのPythonクローンコードと、リモートから取得する悪意のあるPythonコードが含まれる マルウェアはSuperOps RMMをインストールし、リモートアクセスを取得 CERT-UAが複数の侵害を確認 | 中 | `source--daily-d10b7c56549314679c89` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 医療・ヘルスケア | 活動「ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-d10b7c56549314679c89` |
+| sectors | 金融 | 活動「ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-d10b7c56549314679c89` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--4221b5fbb827488c6eaa |  | ttp--activity-rule--47e67d974c4b21273613 | メール／メールアカウント, VPN／リモートアクセス機器 |  | 不明 | 不明 | 2024-05-27 | 中 | `source--daily-d10b7c56549314679c89` |
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Execution | T1059.006 | Python | メールにはdropbox上のマルウェアへのリンクが存在 dropboxからSCRファイルをダウンロードし実行すると、MinesweeperのPythonクローンコードと、リモートから取得する悪意のあるPythonコードが含まれる マルウェアはSuperOps RMMをインストールし、リモートアクセスを取得 CERT-UAが複数の侵害を確認 |  | activity--daily-e3f19b42e89889105297 | 不明 | 不明 | 中 | `source--daily-d10b7c56549314679c89` |
 
 ## IOC／artifact概要
 
@@ -145,7 +156,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-d10b7c56549314679c89 | ハッカー、トロイの木馬化されたマインスイーパークローンを使って金融機関をフィッシング | bleepingcomputer.com | 2024-05-27 | https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--uac-0188--29933bed2eea8193 | Cyber operations by russia new goals, tools and groups |  | 不明 | International Strategic/Russia/Cyber operations by russia new goals, tools and groups.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0188--6a4ac818fc560077 | uac 0188 |  | 不明 | actor_profile/evidence/uac-0188.csv | structured-data | TLP:CLEAR | 中 |
 

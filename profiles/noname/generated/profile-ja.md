@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--noname`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:34Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:11Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -106,22 +106,33 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| NoNameランサムウェアグループ、最近の攻撃でRansomHubマルウェアを展開 | ransomware-extortion | 不明 | 不明 | 2024-09-11 | NoName(cosmicbeetle)ランサムウェアグループがRansomHubマルウェアを使用した攻撃を実行。 NoNameは、ScRansomなどの独自ランサムウェアを使用していたが、最近の攻撃でRansomHubを利用したことが観測された。ただし、ScRansomもまだ活発に開発中である。 このグループは、脆弱性攻撃やブルートフォース攻撃で初期アクセスを取得。主に中小企業をターゲットにしている。 最新の攻撃ではEDR（Endpoint Detection and Response）ソフトウェアを無効化する技術も使用。 グループはRansomHubのアフィリエイトとして活動している可能性がある。 | 高 | `source--daily-f4f1d6491185f16c56e8` |
-| スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃 | ransomware-extortion | 不明 | 不明 | 2023-06-13 | スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃を受けていると警告。 攻撃はNoNameというプロロシアのハクティビストグループによるもの。 | 中 | `source--daily-1ac461ba97988d7cde92` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| NoNameランサムウェアグループ、最近の攻撃でRansomHubマルウェアを展開 | ransomware-extortion | 不明 | 不明 | 2024-09-11 |  |  | ttp--activity-rule--45325343e04a1a174aa3 | victim--activity-rule--edf680b19e3e31961ae3 | NoName(cosmicbeetle)ランサムウェアグループがRansomHubマルウェアを使用した攻撃を実行。 NoNameは、ScRansomなどの独自ランサムウェアを使用していたが、最近の攻撃でRansomHubを利用したことが観測された。ただし、ScRansomもまだ活発に開発中である。 このグループは、脆弱性攻撃やブルートフォース攻撃で初期アクセスを取得。主に中小企業をターゲットにしている。 最新の攻撃ではEDR（Endpoint Detection and Response）ソフトウェアを無効化する技術も使用。 グループはRansomHubのアフィリエイトとして活動している可能性がある。 | 高 | `source--daily-f4f1d6491185f16c56e8` |
+| スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃 | ransomware-extortion | 不明 | 不明 | 2023-06-13 | target--activity-rule--country--72caf60a2fbce4a1be7a |  |  | victim--activity-rule--8e2b381dfb5516bf0def | スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃を受けていると警告。 攻撃はNoNameというプロロシアのハクティビストグループによるもの。 | 中 | `source--daily-1ac461ba97988d7cde92` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | ロシア | 活動「スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-1ac461ba97988d7cde92` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃 | スイス政府はITサプライヤーへ | named | organization | reported | target--activity-rule--country--72caf60a2fbce4a1be7a |  |  |  | encryption: スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 | 不明 | 不明 | 2023-06-13 | 中 | `source--daily-1ac461ba97988d7cde92` |
+| 被害事例: NoNameランサムウェアグループ、最近の攻撃でRansomHubマルウェアを展開 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--45325343e04a1a174aa3 | エンドポイント | encryption: NoNameランサムウェアグループ、最近の攻撃でRansomHubマルウェアを展開 | 不明 | 不明 | 2024-09-11 | 高 | `source--daily-f4f1d6491185f16c56e8` |
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Credential Access | T1110 | Brute Force | このグループは、脆弱性攻撃やブルートフォース攻撃で初期アクセスを取得。 |  | activity--daily-1f8fe6a2645a9e1b6a0e | 不明 | 不明 | 中 | `source--daily-f4f1d6491185f16c56e8` |
 
 ## IOC／artifact概要
 
@@ -151,7 +162,6 @@ TTPなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-1ac461ba97988d7cde92 | スイス政府はITサプライヤーへのランサムウェア攻撃がデータに影響を及ぼした可能性があると発表。 攻撃はPlayランサムウェアギャングにより行われ、機密データが盗まれたと主張。 スイス政府は、漏洩したデータが連邦行政のものである可能性が高いと述べている。 さらに、スイス政府のウェブサイトとオンラインサービスがDDoS攻撃 | bleepingcomputer.com | 2023-06-13 | https://www.bleepingcomputer.com/news/security/swiss-government-warns-of-ongoing-ddos-attacks-data-leak/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-f4f1d6491185f16c56e8 | NoNameランサムウェアグループ、最近の攻撃でRansomHubマルウェアを展開 | bleepingcomputer.com | 2024-09-11 | https://www.bleepingcomputer.com/news/security/noname-ransomware-gang-deploying-ransomhub-malware-in-recent-attacks/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--noname--0530cdc6b1a27089 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--noname--84a159674aeaf9b5 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
 | source--noname--dc8dc6b79013e2f1 | noname |  | 不明 | actor_profile/evidence/noname.csv | structured-data | TLP:CLEAR | 中 |

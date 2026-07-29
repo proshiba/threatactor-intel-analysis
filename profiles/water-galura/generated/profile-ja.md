@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--water-galura`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:27Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:29:49Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -108,9 +108,9 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | ransomware-extortion | 不明 | 不明 | 2025-06-21 | QilinランサムウェアRaaSがアフィリエイト向けパネルに「弁護士呼び出し」機能を追加し、被害者に支払い圧力を強化。 Qilinは、2025年4月に72件の被害、5月に55件を確認、通年でCl0p・Akiraに次ぐ304件を記録。 アフィリエイトにはRust/C製ペイロード、ネットワーク拡散、ログクリーン、交渉自動化など高度な攻撃ツールを提供。 法的支援、スパムサービス、PB規模のデータストレージ、DDoSツールなどを備えたフルサービスのサイバー犯罪プラットフォームに進化。 RansomHubのアフィリエイトがQilinに移行し、ここ数か月のQilinランサムウェア活動の急増に寄与 | 中 | `source--daily-3c55cd8958f6103f4eaf` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | ransomware-extortion | 2025-04 | 2025-04 | 2025-06-21 |  | malware--qilin |  | victim--activity-rule--9b7b741f64f7e01f539a | QilinランサムウェアRaaSがアフィリエイト向けパネルに「弁護士呼び出し」機能を追加し、被害者に支払い圧力を強化。 Qilinは、2025年4月に72件の被害、5月に55件を確認、通年でCl0p・Akiraに次ぐ304件を記録。 アフィリエイトにはRust/C製ペイロード、ネットワーク拡散、ログクリーン、交渉自動化など高度な攻撃ツールを提供。 法的支援、スパムサービス、PB規模のデータストレージ、DDoSツールなどを備えたフルサービスのサイバー犯罪プラットフォームに進化。 RansomHubのアフィリエイトがQilinに移行し、ここ数か月のQilinランサムウェア活動の急増に寄与 | 中 | `source--daily-3c55cd8958f6103f4eaf` |
 
 
 
@@ -120,13 +120,19 @@ Water Galuraの標準化プロファイル。リポジトリ内の専用資料1�
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | 非公開 | aggregate | multiple-organizations | reported |  | malware--qilin |  |  | encryption: Qilinランサムウェア、身代金増額を迫る「弁護士呼び出し」機能を追加 | 2025-04 | 2025-04 | 2025-06-21 | 中 | `source--daily-3c55cd8958f6103f4eaf` |
+
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Impact | T1486 | Data Encrypted for Impact | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.001 | Social Media Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1657 | Financial Theft | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1486 | Data Encrypted for Impact | [Water Galura](https://attack.mitre.org/groups/G1050) has encrypted files on victim networks through the generation of [Qilin](https://attack.mitre.org/software/S1242) ransomware payloads.(Citation: BushidoToken Qilin RaaS JUN 2024)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585.001 | Social Media Accounts | [Water Galura](https://attack.mitre.org/groups/G1050) operates a news channel on Telegram to make announcements for the [Qilin](https://attack.mitre.org/software/S1242) RaaS.(Citation: BushidoToken Qilin RaaS JUN 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1657 | Financial Theft |  [Water Galura](https://attack.mitre.org/groups/G1050) has extorted victims for ransomware decryption keys and to prevent publication of data exfiltrated to their [Tor](https://attack.mitre.org/software/S0183) data leak site.(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: HC3 Qilin Threat Profile JUN 2024)<br><br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

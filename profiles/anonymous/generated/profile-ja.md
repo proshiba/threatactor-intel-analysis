@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--anonymous`
 - 状態: draft
-- 更新日時: 2026-07-25T09:00:24Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:09Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -113,6 +113,10 @@ Aliasなし
 ターゲット情報なし
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -318,7 +322,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--anonymous--2321b9ea3150ea7b | Alert OpIsrael Final 3 29 23 |  | 不明 | Anonymous/Alert_OpIsrael_Final_3-29-23.pdf | report | TLP:CLEAR | 中 |
 | source--anonymous--28b34cc72e3280d5 | Anonymous Sudan Report |  | 不明 | Anonymous/Anonymous-Sudan-Report.pdf | report | TLP:CLEAR | 中 |

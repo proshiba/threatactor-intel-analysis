@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--toddycat`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:26Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -113,54 +113,63 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| ロシアのハッカーグループToddyCat、先進的ツールを用いて大規模データ窃盗 | malware-campaign | 不明 | 不明 | 2024-04-23 | ToddyCatがアジア太平洋地域の主に政府機関（一部は防衛関連）を狙う Samraiというバックドアを利用してアクセス維持 データ収集とアップロードの自動化ツールを使用 OneDriveを通じてデータを外部へ転送 防御機能を回避する技術を積極的に使用 | 高 | `source--daily-2abe7ad9ba2e35aecc22` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ロシアのハッカーグループToddyCat、先進的ツールを用いて大規模データ窃盗 | malware-campaign | 不明 | 不明 | 2024-04-23 | target--mitre-group--sector--4b54b35dbf4d37f11090, target--mitre-group--sector--ec7e1256d113b34011d0 |  |  | victim--activity-rule--5c3a350426f23f252837 | ToddyCatがアジア太平洋地域の主に政府機関（一部は防衛関連）を狙う Samraiというバックドアを利用してアクセス維持 データ収集とアップロードの自動化ツールを使用 OneDriveを通じてデータを外部へ転送 防御機能を回避する技術を積極的に使用 | 高 | `source--daily-2abe7ad9ba2e35aecc22` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 政府・行政 | [ToddyCat](https://attack.mitre.org/groups/G1022) is a sophisticated threat group that has been active since at least 2020 using custom loaders and malware in multi-stage infection chains against government and military targets across Europe and Asia.(Citation: Kaspersky ToddyCat June 2022)(Citation: Kaspersky ToddyCat Check Logs October 2023) | 不明 | 不明 | 高 | `source--daily-2abe7ad9ba2e35aecc22`, `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | [ToddyCat](https://attack.mitre.org/groups/G1022) is a sophisticated threat group that has been active since at least 2020 using custom loaders and malware in multi-stage infection chains against government and military targets across Europe and Asia.(Citation: Kaspersky ToddyCat June 2022)(Citation: Kaspersky ToddyCat Check Logs October 2023) | 不明 | 不明 | 高 | `source--daily-2abe7ad9ba2e35aecc22`, `source--mitre-attack-19-1` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ロシアのハッカーグループToddyCat、先進的ツールを用いて大規模データ窃盗 | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--4b54b35dbf4d37f11090, target--mitre-group--sector--ec7e1256d113b34011d0 |  |  |  |  | 不明 | 不明 | 2024-04-23 | 高 | `source--daily-2abe7ad9ba2e35aecc22` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Collection | T1005 | Data from Local System | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1005 | Data from Local System | [ToddyCat](https://attack.mitre.org/groups/G1022) has run scripts to collect documents from targeted hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Discovery | T1016 | System Network Configuration Discovery | tachment (T1566.001) • Command and Scripting Interpreter: Windows Command Shell (T1059.003) • Modify Registry (T1112) • System Network Configuration Discovery (T1016) ToddyCat – относительно новая APT-группировка, ответственная за многочисленные атаки, обнаруженные с декабря 2020 года, на высо - копоставленные организации в Европе и Азии. Затронутые органи- зации, как правительственные, так |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1057 | Process Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--toddycat--d3ad8145a5cd7324` |
-| Discovery | T1069.002 | Domain Groups | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [ToddyCat](https://attack.mitre.org/groups/G1022) has used `ping %REMOTE_HOST%` for post exploit discovery.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [ToddyCat](https://attack.mitre.org/groups/G1022) has used locally mounted network shares for lateral movement through targated environments.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [ToddyCat](https://attack.mitre.org/groups/G1022) has used the name `debug.exe` for malware components.(Citation: Kaspersky ToddyCat June 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [ToddyCat](https://attack.mitre.org/groups/G1022) has used WMI to execute scripts for post exploit document collection.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1049 | System Network Connections Discovery | [ToddyCat](https://attack.mitre.org/groups/G1022) has used `netstat -anop tcp` to discover TCP connections to compromised hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [ToddyCat](https://attack.mitre.org/groups/G1022) has used scheduled tasks to execute discovery commands and scripts for collection.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1057 | Process Discovery | [ToddyCat](https://attack.mitre.org/groups/G1022) has run `cmd /c start /b tasklist` to enumerate processes.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [ToddyCat](https://attack.mitre.org/groups/G1022) has used Powershell scripts to perform post exploit collection.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [ToddyCat](https://attack.mitre.org/groups/G1022) has used .bat scripts and `cmd` for execution on compromised hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--toddycat--d3ad8145a5cd7324` |
+| Discovery | T1069.002 | Domain Groups | [ToddyCat](https://attack.mitre.org/groups/G1022) has executed `net group "domain admins" /dom` for discovery on compromised machines.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Command And Control | T1071.001 | Web Protocols | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf {"page": 52} ToddyCat Protocol: Web Protocols T1071.001 The service process mentioned above connected to 154.202.56[.]211:443 and made a POST request: hxxps:/ /154.202.56[.]211/collector/3.0/. This URL matches the URL path structure used by ToddyCat. Ingress Tool Transfer T1105 Several scripts and executable files were downloaded fro |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
-| Collection | T1074.002 | Remote Data Staging | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1095 | Non-Application Layer Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1074.002 | Remote Data Staging | [ToddyCat](https://attack.mitre.org/groups/G1022) manually transferred collected files to an exfiltration host using xcopy.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [ToddyCat](https://attack.mitre.org/groups/G1022) has used compromised domain admin credentials to mount local network shares.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1083 | File and Directory Discovery | [ToddyCat](https://attack.mitre.org/groups/G1022) has run scripts to enumerate recently modified documents having either a .pdf, .doc, .docx, .xls or .xlsx extension.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.002 | Domain Account | [ToddyCat](https://attack.mitre.org/groups/G1022) has run `net user %USER% /dom` for account discovery.(Citation: Kaspersky ToddyCat Check Logs October 2023)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1095 | Non-Application Layer Protocol | [ToddyCat](https://attack.mitre.org/groups/G1022) has used a passive backdoor that receives commands with UDP packets.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Command And Control | T1105 | Ingress Tool Transfer | 56[.]211:443 and made a POST request: hxxps:/ /154.202.56[.]211/collector/3.0/. This URL matches the URL path structure used by ToddyCat. Ingress Tool Transfer T1105 Several scripts and executable files were downloaded from this C2 server to the target host. Interestingly, PowerShell scripts were downloaded several times but with different MD5 hashes. Th |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
-| Execution | T1106 | Native API | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1106 | Native API | [ToddyCat](https://attack.mitre.org/groups/G1022) has used `WinExec` to execute commands received from C2 on compromised hosts.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Defense Impairment, Persistence | T1112 | Modify Registry | p Folder (T1547.001) • Phishing: Spearphishing Attachment (T1566.001) • Command and Scripting Interpreter: Windows Command Shell (T1059.003) • Modify Registry (T1112) • System Network Configuration Discovery (T1016) ToddyCat – относительно новая APT-группировка, ответственная за многочисленные атаки, обнаруженные с декабря 2020 года, на высо - копоставленные организации в Европе и Азии. Затронутые органи- зации, как правительственные, так |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1518.001 | Security Software Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [ToddyCat](https://attack.mitre.org/groups/G1022) has exploited the ProxyLogon vulnerability (CVE-2021-26855) to compromise Exchange Servers at multiple organizations.(Citation: Kaspersky ToddyCat June 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1518.001 | Security Software Discovery | [ToddyCat](https://attack.mitre.org/groups/G1022) can determine is Kaspersky software is running on an endpoint by running `cmd /c wmic process where name="avp.exe"`.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Persistence, Privilege Escalation | T1543.003 | Windows Service | g to ToddyCat. When investigating the alert, we focused on a suspicious DLL that was run as a Windows service (Create or Modify System Process: Windows Service T1543.003). The ToddyCat alert was triggered by their typical pattern o |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
 | Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | огий. ToddyCat Регион Начало операции TOP Mitre АТР, Европа, Россия и СНГ Декабрь 2020 • Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder (T1547.001) • Phishing: Spearphishing Attachment (T1566.001) • Command an |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1564.003 | Hidden Window | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [ToddyCat](https://attack.mitre.org/groups/G1022) has leveraged  xcopy, 7zip, and RAR to stage and compress collected documents prior to exfiltration.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1564.003 | Hidden Window | [ToddyCat](https://attack.mitre.org/groups/G1022) has hidden malicious scripts using `powershell.exe -windowstyle hidden`. (Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access | T1566.001 | Spearphishing Attachment | ТР, Европа, Россия и СНГ Декабрь 2020 • Boot or Logon Autostart Execution: Registry Run Keys / Startup Folder (T1547.001) • Phishing: Spearphishing Attachment (T1566.001) • Command an |  |  | 不明 | 不明 | 中 | `source--toddycat--d3ad8145a5cd7324` |
-| Initial Access | T1566.003 | Spearphishing via Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1680 | Local Storage Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1686 | Disable or Modify System Firewall | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.003 | Spearphishing via Service | [ToddyCat](https://attack.mitre.org/groups/G1022) has sent loaders configured to run [Ninja](https://attack.mitre.org/software/S1100) as zip archives via Telegram.(Citation: Kaspersky ToddyCat June 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | [ToddyCat](https://attack.mitre.org/groups/G1022) has used a DropBox uploader to exfiltrate stolen files.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1680 | Local Storage Discovery | [ToddyCat](https://attack.mitre.org/groups/G1022) has collected information on bootable drives including model, vendor, and serial numbers.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1686 | Disable or Modify System Firewall | Prior to executing a backdoor [ToddyCat](https://attack.mitre.org/groups/G1022)  has run `cmd /c start /b netsh advfirewall firewall add rule name="SGAccessInboundRule" dir=in protocol=udp action=allow localport=49683` to allow the targeted system to receive UDP packets on port 49683.(Citation: Kaspersky ToddyCat Check Logs October 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

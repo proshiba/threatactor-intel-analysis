@@ -3,7 +3,7 @@
 - プロファイルID: `actor--night-dragon`
 - 状態: draft
 - 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -115,6 +115,10 @@ The repository mapping workbook places this actor in the China worksheet.
 | sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 

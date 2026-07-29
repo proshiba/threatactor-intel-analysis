@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt45`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:30Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:09Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,22 +102,34 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト | ransomware-extortion | 不明 | 不明 | 2024-07-26 | 北朝鮮のAPT45がサイバースパイ活動からランサムウェア攻撃に移行。 APT45はSHATTEREDGLASSやMauiなどのランサムウェアを展開。 主なターゲットは韓国、日本、米国の重要インフラ。 APT45の活動は北朝鮮の資金調達に寄与。 偽の身元を用いた北朝鮮のIT労働者による企業侵入事例も発覚。 | 高 | `source--daily-e35da9939e754bf10218` |
-| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト | ransomware-extortion | 不明 | 不明 | 2024-07-26 |  |  |  | victim--activity-rule--3fc2bc4c3d84f7161583 | 北朝鮮のAPT45がサイバースパイ活動からランサムウェア攻撃に移行。 APT45はSHATTEREDGLASSやMauiなどのランサムウェアを展開。 主なターゲットは韓国、日本、米国の重要インフラ。 APT45の活動は北朝鮮の資金調達に寄与。 偽の身元を用いた北朝鮮のIT労働者による企業侵入事例も発覚。 | 高 | `source--daily-e35da9939e754bf10218` |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--53a28d47982cd79a8719 | victim--activity-rule--c4d401b281a00a4bcbd2 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | 韓国 | 活動「北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
+| sectors | 製造・産業 | 活動「北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  | encryption: 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト<br>espionage: 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト | 不明 | 不明 | 2024-07-26 | 高 | `source--daily-e35da9939e754bf10218` |
+| 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--53a28d47982cd79a8719 | VPN／リモートアクセス機器 |  | 不明 | 不明 | 2024-08-06 | 中 | `source--daily-444c87a0051642065f55` |
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Initial Access | T1190 | Exploit Public-Facing Application | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 |  | activity--daily-a0afddb5a69c4389af0b | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
 
 ## IOC／artifact概要
 
@@ -156,7 +168,6 @@ TTPなし
 | source--apt45--f4eaeeca006b5c39 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--daily-444c87a0051642065f55 | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | bleepingcomputer.com | 2024-08-06 | https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-e35da9939e754bf10218 | 北朝鮮のハッカーAPT45は、サイバースパイ活動からランサムウェア攻撃へシフト | thehackernews.com | 2024-07-26 | https://thehackernews.com/2024/07/north-korean-hackers-shift-from-cyber.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |

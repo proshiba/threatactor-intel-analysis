@@ -32,10 +32,19 @@
 7. artifact候補はレコード承認と別に確認し、値そのものが原文で確認できた項目だけ
    artifact側へ`review_status: approved`を付ける。
 8. `validate_daily.py`、`apply_review_queue.py`のdry-run、`--apply`の順に実行する。
-9. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
-10. UIへ公開する場合は`python3 ui/build_data.py`を実行し、画面を確認する。
-11. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
-12. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
+9. `python3 actor_profile/scripts/migrate_activity_model.py --apply`を実行後、
+   `python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+   --report actor_profile/activity-intelligence-report.json`を実行する。これにより、
+   レビュー済み活動の標的・被害事例・明示TTPと、公式ATT&CKキャンペーンの
+   TTP／マルウェアを活動へ結び付ける。抽出ルール変更時は
+   `actor_profile/activity-observation-rules.json`の差分と誤検出監査を行う。
+10. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
+    TTPの期間集計では`reported_at`を観測日として使用していないこと、活動・TTP・
+    被害事例の双方向参照が切れていないことも確認する。
+11. UIへ公開する場合は`python3 ui/build_data.py`を実行し、TTP Matrixと
+    マルウェア利用履歴のall time／過去3年／過去1年を確認する。
+12. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
+13. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
     `last_scanned_date`より先へ進めない。
 
 ## アクター照合
@@ -67,6 +76,8 @@
 - 政府・CERT・法執行機関、直接観測したベンダー、公式ATT&CKを優先する。
 - 公開日を攻撃観測日に流用しない。活動の`first_observed`と`last_observed`は、
   IOC CSVの観測日または一次資料が明示した日だけを使う。
+- 互換データに`basis: source-publication`、`publication/ongoing`等があっても
+  期間集計へ含めず、一次資料で観測期間を確認できた場合だけ置き換える。
 - 攻撃期間が不明でもActivityは作成できる。その場合は期間をunknownとし、資料発行日
   またはtech-memo日次ファイルの日付を`reported_at`へ分離して保存する。
 - 既存帰属や関係と競合する情報は上書きしない。`claim-audit.json`の
@@ -111,5 +122,7 @@
 - 反映対象のprofile validatorのerrorが0
 - 承認済みrecordが各`daily-observations.json`に存在
 - source、activity、IOC/artifactの参照切れがない
+- activity、TTP、victim caseの双方向参照が一致する
+- 過去1年・3年の集計に`reported_at`だけのレコードが入っていない
 - 新規情報が日本語で記述され、アクター名・malware名・製品名は原表記を維持
 - 未照合、低信頼、競合、取得不能な一次ソースが作業結果に明記されている

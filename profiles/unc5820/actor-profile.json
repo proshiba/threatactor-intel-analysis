@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--unc5820",
   "name": "UNC5820",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:04:38Z",
+  "updated_at": "2026-07-29T15:36:12Z",
   "languages": [
     "ja"
   ],
@@ -89,7 +89,11 @@
       "evidence_refs": [
         "source--daily-ed6655e2b5b3dfb73449"
       ],
-      "analyst_notes": "日次収集レコード daily-record--6531aa0646bd2b399aecfadc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Mandiantは、「UNC5820」と呼ばれる脅威アクターが、2024年6月27日からFortiManagerデバイスを悪用していることを発見。"
+      "analyst_notes": "日次収集レコード daily-record--6531aa0646bd2b399aecfadc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Mandiantは、「UNC5820」と呼ばれる脅威アクターが、2024年6月27日からFortiManagerデバイスを悪用していることを発見。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--41b13ed1fc20995ddb16"
+      ]
     }
   ],
   "targets": {
@@ -137,24 +141,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241025.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -292,5 +278,49 @@
     "infrastructure_details": "",
     "targeting_details": "",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--41b13ed1fc20995ddb16",
+      "name": "被害事例: Mandiant、新たなFortinet FortiManager脆弱性が6月から悪用されていると報告",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Mandiantは、Fortinet FortiManagerの脆弱性（CVE-2024-47575）が6月以降に50台以上のサーバーで悪用されていると報告。 Mandiantは、「UNC5820」と呼ばれる脅威アクターが、2024年6月27日からFortiManagerデバイスを悪用していることを発見。 攻撃者は未認証のAPIコマンドを利用し、FortiGateデバイスの構成情報を盗み出す。 侵害されたデバイスのメモリを分析したが、悪意のあるペイロードやシステムファイルの改ざんの兆候は見つからなかった。 攻撃者はデバイスからデータを抜き取ったが、このデバイスを使って、横方向に拡散したり、ネットワークに侵入したりした兆候はない。 Fortinetは既に修正パッチと緩和策を公開。",
+      "activity_refs": [
+        "activity--daily-6531aa0646bd2b399aec"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "サーバー"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-10-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ed6655e2b5b3dfb73449"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

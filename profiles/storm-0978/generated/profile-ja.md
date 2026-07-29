@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--storm-0978`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:35Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:11Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,9 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| WinRARゼロデイ攻撃の詳細が判明、マルウェアでPCが感染 | malware-campaign | 不明 | 不明 | 2025-08-12 | ESETはWinRARのパストラバーサルCVE-2025-8088のゼロデイ悪用を確認。 攻撃者はロシア系RomCom（別名Storm-0978/Tropical Scorpius）。 ADSの使用によって悪用できる脆弱性。悪性RARはADSでDLL/LNKを隠し、Startup等へ展開し自動実行。 三系統（Mythic Agent／SnipBot／MeltingClaw）への感染手口を解説。 WinRARは7.13で7月30日に修正。自動更新無のため手動更新が必要。 | 中 | `source--daily-93f412408e95ec82039b` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| WinRARゼロデイ攻撃の詳細が判明、マルウェアでPCが感染 | malware-campaign | 不明 | 不明 | 2025-08-12 |  |  |  |  | ESETはWinRARのパストラバーサルCVE-2025-8088のゼロデイ悪用を確認。 攻撃者はロシア系RomCom（別名Storm-0978/Tropical Scorpius）。 ADSの使用によって悪用できる脆弱性。悪性RARはADSでDLL/LNKを隠し、Startup等へ展開し自動実行。 三系統（Mythic Agent／SnipBot／MeltingClaw）への感染手口を解説。 WinRARは7.13で7月30日に修正。自動更新無のため手動更新が必要。 | 中 | `source--daily-93f412408e95ec82039b` |
 
 
 
@@ -113,6 +113,10 @@ Aliasなし
 ターゲット情報なし
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -145,7 +149,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-93f412408e95ec82039b | WinRARゼロデイ攻撃の詳細が判明、マルウェアでPCが感染 | bleepingcomputer.com | 2025-08-12 | https://www.bleepingcomputer.com/news/security/details-emerge-on-winrar-zero-day-attacks-that-infected-pcs-with-malware/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc2970`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:37Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,22 +102,39 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | phishing-campaign | 不明 | 不明 | 2024-09-19 | UNC2970と呼ばれる北朝鮮のグループがエネルギーと航空宇宙企業を標的にスピアフィッシングを実施。 新たなMISTPENマルウェアを使用し、感染を広げた。 この攻撃は「Operation Dream Job」としても知られており、標的となる人物のプロフィールに合わせて修正された求人情報を装った悪意のあるZIPアーカイブファイルを送りつけるもの。 正規のPDFリーダーアプリケーションであるSumatra PDFのトロイの木馬化されたバージョンが含まれており、BURNBOOKと呼ばれるランチャーによってMISTPENが配信。 攻撃は米国、英国、ドイツなどの国で確認されている。 C2通信にMicrosoft Graphを利用。 | 中 | `source--daily-820c8bb063e8728fd388` |
-| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | phishing-campaign | 不明 | 不明 | 2024-09-19 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--de0df51cff4adf4fc20b, target--activity-rule--country--f9601e2d842c9a05202b, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  | ttp--activity-rule--9284011f4cc7699e8394 | victim--activity-rule--b694936d36ac7cdf3979 | UNC2970と呼ばれる北朝鮮のグループがエネルギーと航空宇宙企業を標的にスピアフィッシングを実施。 新たなMISTPENマルウェアを使用し、感染を広げた。 この攻撃は「Operation Dream Job」としても知られており、標的となる人物のプロフィールに合わせて修正された求人情報を装った悪意のあるZIPアーカイブファイルを送りつけるもの。 正規のPDFリーダーアプリケーションであるSumatra PDFのトロイの木馬化されたバージョンが含まれており、BURNBOOKと呼ばれるランチャーによってMISTPENが配信。 攻撃は米国、英国、ドイツなどの国で確認されている。 C2通信にMicrosoft Graphを利用。 | 中 | `source--daily-820c8bb063e8728fd388` |
+| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 |  |  |  | victim--activity-rule--2614e7c2a95f18b40fb4 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | 米国 | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
+| countries | ドイツ | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
+| countries | 英国 | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
+| sectors | 運輸・航空・海運 | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
+| sectors | 防衛・軍事 | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
+| sectors | 製造・産業 | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
+| sectors | エネルギー | 活動「北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | 非公開 | anonymous | unknown | reported |  |  |  |  | data-theft: Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 | 不明 | 不明 | 2026-02-13 | 中 | `source--daily-2cce580b31452f445118` |
+| 被害事例: 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--de0df51cff4adf4fc20b, target--activity-rule--country--f9601e2d842c9a05202b, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  | ttp--activity-rule--9284011f4cc7699e8394 |  |  | 不明 | 不明 | 2024-09-19 | 中 | `source--daily-820c8bb063e8728fd388` |
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Collection | T1560.001 | Archive via Utility | この攻撃は「Operation Dream Job」としても知られており、標的となる人物のプロフィールに合わせて修正された求人情報を装った悪意のあるZIPアーカイブファイルを送りつけるもの。 |  | activity--daily-2f0f09b67d0594d4f548 | 不明 | 不明 | 中 | `source--daily-820c8bb063e8728fd388` |
 
 ## IOC／artifact概要
 
@@ -147,7 +164,6 @@ TTPなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-2cce580b31452f445118 | Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | bleepingcomputer.com | 2026-02-13 | https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-820c8bb063e8728fd388 | 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | thehackernews.com | 2024-09-19 | https://thehackernews.com/2024/09/north-korean-hackers-target-energy-and.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc2970--36273ba018b91373 | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |

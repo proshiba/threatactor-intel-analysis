@@ -246,6 +246,8 @@ def activity_entry(
         "infrastructure_refs": _mentioned_profile_refs(
             profile, "infrastructure", text
         ),
+        "ttp_refs": [],
+        "victim_refs": [],
         "confidence": record.get("confidence", "unknown"),
         "evidence_refs": sorted(evidence_refs),
         "analyst_notes": (
@@ -644,6 +646,11 @@ def remove_daily_materialization(
     dataset: dict[str, Any],
     artifact_rows: list[dict[str, str]],
 ) -> list[dict[str, str]]:
+    daily_activity_refs = {
+        item["activity_id"]
+        for item in profile.get("activities", [])
+        if item["activity_id"].startswith("activity--daily-")
+    }
     profile["sources"] = [
         item
         for item in profile.get("sources", [])
@@ -658,6 +665,19 @@ def remove_daily_materialization(
         item
         for item in profile["capabilities"]["malware"]
         if not item["id"].startswith("malware--daily-")
+    ]
+    profile["ttps"] = [
+        item
+        for item in profile.get("ttps", [])
+        if not (
+            item.get("ttp_id", "").startswith("ttp--activity-rule--")
+            and set(item.get("activity_refs", [])) & daily_activity_refs
+        )
+    ]
+    profile["victim_cases"] = [
+        item
+        for item in profile.get("victim_cases", [])
+        if not (set(item.get("activity_refs", [])) & daily_activity_refs)
     ]
     _remove_daily_refs(profile)
 

@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0.0",
+  "description": "活動のタイトル・要約・説明に明示された行動をATT&CKへ対応付ける高精度ルール。資料発行日は観測日として使用しない。",
+  "ttp_rules": [
+    {
+      "technique_id": "T1059.001",
+      "patterns": ["(?i)\\bpowershell(?:\\.exe)?\\b", "PowerShell\\s*(?:コマンド|スクリプト)"]
+    },
+    {
+      "technique_id": "T1059.003",
+      "patterns": ["(?i)\\bcmd(?:\\.exe)?\\b", "(?i)\\bbatch (?:file|script)s?\\b", "(?:バッチ|BAT)\\s*(?:ファイル|スクリプト)"]
+    },
+    {
+      "technique_id": "T1059.005",
+      "patterns": ["(?i)\\bvbscript\\b", "(?i)\\bvbs (?:file|script)s?\\b", "(?i)\\bvba (?:macro|script)s?\\b", "VBA\\s*マクロ"]
+    },
+    {
+      "technique_id": "T1059.006",
+      "patterns": ["(?i)\\bpython(?:3)?(?:\\.exe)?\\b", "Python\\s*(?:コード|スクリプト|ベース)"]
+    },
+    {
+      "technique_id": "T1059.007",
+      "patterns": ["(?i)\\bjavascript\\b", "(?i)\\bjscript\\b", "(?i)\\bnode\\.js\\b", "JavaScript\\s*(?:コード|マルウェア|スクリプト)"]
+    },
+    {
+      "technique_id": "T1218.005",
+      "patterns": ["(?i)\\bmshta(?:\\.exe)?\\b"]
+    },
+    {
+      "technique_id": "T1218.010",
+      "patterns": ["(?i)\\bregsvr32(?:\\.exe)?\\b"]
+    },
+    {
+      "technique_id": "T1218.011",
+      "patterns": ["(?i)\\brundll32(?:\\.exe)?\\b"]
+    },
+    {
+      "technique_id": "T1053.005",
+      "patterns": ["(?i)\\bscheduled tasks?\\b", "(?i)\\bschtasks(?:\\.exe)?\\b", "タスク\\s*スケジューラ", "スケジュール(?:ド)?タスク", "タスクで.{0,40}(?:実行|起動)"]
+    },
+    {
+      "technique_id": "T1543.003",
+      "patterns": ["(?i)(?:install|create|register)(?:ed|s|ing)? (?:a )?(?:malicious )?windows service", "Windows\\s*サービス(?:として|を).{0,30}(?:登録|作成|インストール)"]
+    },
+    {
+      "technique_id": "T1574.001",
+      "patterns": ["(?i)\\bdll side[- ]loading\\b", "(?i)\\bdll search order hijack", "DLL\\s*(?:サイドローディング|検索順序ハイジャック)"]
+    },
+    {
+      "technique_id": "T1620",
+      "patterns": ["(?i)\\breflective (?:code|dll|assembly) load", "リフレクティブ(?:コード|DLL|アセンブリ)ローディング"]
+    },
+    {
+      "technique_id": "T1055",
+      "patterns": ["(?i)\\bprocess injection\\b", "(?:プロセス|コード)インジェクション"]
+    },
+    {
+      "technique_id": "T1566.001",
+      "patterns": ["(?i)spearphish(?:ing)? (?:email )?(?:attachment|file)", "(?i)phishing (?:email )?(?:attachment|file)", "添付(?:ファイル|文書).{0,30}(?:スピア)?フィッシング", "(?:スピア)?フィッシング(?:メール)?[^。]{0,50}添付"]
+    },
+    {
+      "technique_id": "T1566.002",
+      "patterns": ["(?i)spearphish(?:ing)? (?:email )?(?:link|url)", "(?i)phishing (?:email )?(?:link|url)", "(?:スピア)?フィッシング(?:メール)?[^。]{0,50}(?:リンク|URL|QRコード)", "(?:リンク|URL|QRコード)[^。]{0,40}(?:スピア)?フィッシング"]
+    },
+    {
+      "technique_id": "T1204.002",
+      "patterns": ["(?i)(?:victim|user).{0,40}(?:open|execute|launch)(?:ed|s|ing)? (?:a )?malicious (?:file|attachment|document|lnk)", "(?:利用者|ユーザー|被害者).{0,40}(?:悪性|不正な|偽装した).{0,20}(?:ファイル|文書|LNK).{0,30}(?:開く|実行)"]
+    },
+    {
+      "technique_id": "T1204.004",
+      "patterns": ["(?i)clickfix", "(?i)malicious copy and paste", "コピー(?:・|と)貼り付け.{0,30}(?:コマンド|攻撃|実行)"]
+    },
+    {
+      "technique_id": "T1189",
+      "patterns": ["(?i)\\bdrive[- ]by compromise\\b", "水飲み場攻撃", "ドライブバイ(?:攻撃|ダウンロード)"]
+    },
+    {
+      "technique_id": "T1190",
+      "patterns": ["(?i)(?:exploit|abuse)(?:ed|s|ing)? .{0,70}(?:cve-\\d{4}-\\d+|vulnerabilit|zero[- ]day).{0,70}(?:server|vpn|firewall|router|gateway|web app|internet-facing|public-facing)", "(?:サーバー|VPN|ファイアウォール|ルーター|ゲートウェイ|公開Web|インターネット公開)[^。]{0,80}(?:脆弱性|ゼロデイ|CVE-\\d{4}-\\d+)[^。]{0,40}(?:悪用|攻撃)"]
+    },
+    {
+      "technique_id": "T1078",
+      "patterns": ["(?i)\\b(?:stolen|compromised|valid) (?:cloud |vpn |user |admin )?(?:account|credential)s?\\b", "窃取した(?:認証情報|アカウント)", "侵害された(?:アカウント|認証情報)", "有効なアカウント"]
+    },
+    {
+      "technique_id": "T1110",
+      "patterns": ["(?i)\\bbrute[- ]force\\b", "総当たり攻撃", "ブルートフォース"],
+      "exclude_patterns": ["(?i)decrypt|decryptor|decryption", "復号|復号ツール"]
+    },
+    {
+      "technique_id": "T1110.003",
+      "patterns": ["(?i)\\bpassword spray(?:ing)?\\b", "パスワードスプレー"]
+    },
+    {
+      "technique_id": "T1003",
+      "patterns": ["(?i)\\bcredential dump(?:ing)?\\b", "(?i)\\bmimikatz\\b", "認証情報ダンプ"]
+    },
+    {
+      "technique_id": "T1555.003",
+      "patterns": ["(?i)(?:steal|collect|extract|copy)(?:s|ed|ing)? .{0,50}(?:browser|chrome|edge|firefox).{0,40}(?:credential|password|cookie)", "(?:ブラウザ|Chrome|Edge|Firefox)[^。]{0,50}(?:認証情報|パスワード|Cookie)[^。]{0,30}(?:窃取|収集|コピー)"]
+    },
+    {
+      "technique_id": "T1056.001",
+      "patterns": ["(?i)\\bkeylogg(?:er|ing)\\b", "キーロガー", "キーストローク.{0,20}(?:記録|収集)"]
+    },
+    {
+      "technique_id": "T1113",
+      "patterns": ["(?i)\\b(?:screen|screenshot) capture\\b", "(?i)\\btake screenshots?\\b", "スクリーン(?:ショット|キャプチャ).{0,30}(?:取得|撮影|収集)"]
+    },
+    {
+      "technique_id": "T1560.001",
+      "patterns": ["(?i)(?:archive|compress)(?:s|ed|ing)? .{0,40}(?:7-zip|7z|rar|zip|cab)", "(?:7-Zip|7z|RAR|ZIP|CAB)[^。]{0,30}(?:圧縮|アーカイブ)", "(?:圧縮|アーカイブ)[^。]{0,30}(?:7-Zip|7z|RAR|ZIP|CAB)"]
+    },
+    {
+      "technique_id": "T1071.001",
+      "patterns": ["(?i)(?:using|over|via) https?(?: protocol)? (?:for )?(?:c2|c&c|command and control)", "(?i)(?:c2|c&c|command and control) (?:over|via|using) https?", "(?:HTTP|HTTPS)(?:を|経由|で|上の)[^。]{0,20}(?:C2|C&C|コマンド(?:・|＆|アンド)コントロール|通信)"]
+    },
+    {
+      "technique_id": "T1071.004",
+      "patterns": ["(?i)\\bdns (?:tunneling|tunnel|c2|command and control)\\b", "(?:DNSトンネリング|DNS[^。]{0,20}(?:C2|C&C))"]
+    },
+    {
+      "technique_id": "T1102.003",
+      "patterns": ["(?i)(?:github|dropbox|google drive|google calendar|telegram).{0,50}(?:c2|c&c|command and control)", "(?:GitHub|Dropbox|Google Drive|Googleカレンダー|Telegram)[^。]{0,50}(?:C2|C&C|コマンド(?:・|＆|アンド)コントロール)"]
+    },
+    {
+      "technique_id": "T1090",
+      "patterns": ["(?i)\\b(?:residential|reverse|multi-hop|socks5?) prox(?:y|ies)\\b", "住宅用プロキシ", "リバースプロキシ", "SOCKS5?プロキシ"]
+    },
+    {
+      "technique_id": "T1021.001",
+      "patterns": ["(?i)(?:use|using|via|through|connect over|access via)(?:d|s)? (?:remote desktop|rdp)", "(?:RDP|リモートデスクトップ)(?:を使用|経由|で接続|による遠隔操作)"]
+    },
+    {
+      "technique_id": "T1021.004",
+      "patterns": ["(?i)(?:use|using|via|through|connect over|access via)(?:d|s)? ssh\\b", "SSH(?:を使用|経由|で接続)"]
+    },
+    {
+      "technique_id": "T1021.002",
+      "patterns": ["(?i)(?:use|using|via|through)(?:d|s)? (?:smb|admin shares?)", "(?:SMB|管理共有)(?:を使用|経由|で横展開)"]
+    },
+    {
+      "technique_id": "T1219.002",
+      "patterns": ["(?i)(?:teamviewer|anydesk|screenconnect|rustdesk|splashtop|level\\.io).{0,40}(?:remote|access|c2|control)", "(?:TeamViewer|AnyDesk|ScreenConnect|RustDesk|Splashtop|Level\\.io)[^。]{0,40}(?:遠隔|リモート|C2|操作)"]
+    },
+    {
+      "technique_id": "T1505.003",
+      "patterns": ["(?i)\\bweb ?shells?\\b", "Webシェル", "ウェブシェル"]
+    },
+    {
+      "technique_id": "T1485",
+      "patterns": ["(?i)\\b(?:data|disk|file) (?:wiper|destruction)\\b", "(?:データ|ディスク|ファイル)(?:を|の).{0,30}(?:破壊|消去)", "ワイパー"]
+    },
+    {
+      "technique_id": "T1486",
+      "patterns": ["(?i)(?:ransomware|encryptor).{0,60}(?:encrypt|encrypted|encryption)", "(?:ランサムウェア|暗号化ツール)[^。]{0,50}(?:暗号化|encrypt)"]
+    },
+    {
+      "technique_id": "T1490",
+      "patterns": ["(?i)(?:delete|remove|disable)(?:d|s|ing)? .{0,40}(?:shadow copies|backups?|recovery)", "(?:シャドウコピー|バックアップ|復旧機能)[^。]{0,40}(?:削除|無効化|停止)"]
+    },
+    {
+      "technique_id": "T1176",
+      "patterns": ["(?i)(?:malicious|trojanized) (?:browser|chrome|visual studio code|vs code) extension", "(?:悪性|不正な|トロイ化した)(?:ブラウザ|Chrome|VS Code|Visual Studio Code)(?:拡張機能|エクステンション)"]
+    },
+    {
+      "technique_id": "T1036",
+      "patterns": ["(?i)\\bmasquerad(?:e|ed|ing) as\\b", "(?:文書|PDF|Office|更新プログラム|インストーラー)[^。]{0,30}(?:に偽装|を装う)"]
+    },
+    {
+      "technique_id": "T1027",
+      "patterns": ["(?i)\\bobfuscat(?:e|ed|ion|ing)\\b", "難読化"]
+    },
+    {
+      "technique_id": "T1140",
+      "patterns": ["(?i)\\bdeobfuscat(?:e|ed|ion|ing)\\b", "(?i)\\bdecode(?:d|s|ing)? (?:the )?(?:payload|file|script)", "難読化を解除", "(?:ペイロード|ファイル|スクリプト)をデコード"]
+    },
+    {
+      "technique_id": "T1105",
+      "patterns": ["(?i)(?:powershell|curl|wget|certutil|bitsadmin).{0,70}(?:download|fetch|retrieve)(?:s|ed|ing)? (?:a )?(?:payload|malware|tool|file)", "(?:PowerShell|curl|wget|certutil|bitsadmin)[^。]{0,70}(?:ペイロード|マルウェア|ツール|ファイル)[^。]{0,20}(?:ダウンロード|取得)"]
+    },
+    {
+      "technique_id": "T1082",
+      "patterns": ["(?i)(?:collect|enumerate|query|gather)(?:s|ed|ing)? .{0,30}(?:hostname|system information|os version)", "(?:ホスト名|システム情報|OSバージョン)[^。]{0,30}(?:収集|取得|列挙)"]
+    },
+    {
+      "technique_id": "T1057",
+      "patterns": ["(?i)(?:collect|enumerate|list|query)(?:s|ed|ing)? .{0,30}(?:running )?process(?:es)?", "プロセス[^。]{0,20}(?:収集|取得|列挙)"]
+    },
+    {
+      "technique_id": "T1083",
+      "patterns": ["(?i)(?:collect|enumerate|list|query)(?:s|ed|ing)? .{0,30}(?:files?|directories|folders)", "(?:ファイル|ディレクトリ|フォルダ)[^。]{0,20}(?:収集|取得|列挙)"]
+    },
+    {
+      "technique_id": "T1087",
+      "patterns": ["(?i)(?:collect|enumerate|list|query)(?:s|ed|ing)? .{0,30}(?:users?|accounts?)", "(?:ユーザー|アカウント)[^。]{0,20}(?:収集|取得|列挙)"]
+    }
+  ],
+  "target_context_patterns": [
+    "(?i)(?:target|targeting|attack|attacking|breach|breaching|compromise|compromising|victim|victims)",
+    "(?:標的|攻撃|侵害|被害|窃取|諜報|スパイ)"
+  ],
+  "countries": [
+    {"name": "日本", "patterns": ["Japan(?:ese)?", "日本"]},
+    {"name": "韓国", "patterns": ["South Korea(?:n)?", "Republic of Korea", "韓国"]},
+    {"name": "北朝鮮", "patterns": ["North Korea(?:n)?", "DPRK", "北朝鮮"]},
+    {"name": "米国", "patterns": ["United States", "U\\.S\\.", "US ", "American", "米国", "アメリカ"]},
+    {"name": "英国", "patterns": ["United Kingdom", "U\\.K\\.", "British", "英国", "イギリス"]},
+    {"name": "ウクライナ", "patterns": ["Ukraine|Ukrainian", "ウクライナ"]},
+    {"name": "台湾", "patterns": ["Taiwan(?:ese)?", "台湾"]},
+    {"name": "中国", "patterns": ["(?i)\\bChina\\b(?!\\s+Chopper)|\\bChinese\\b", "中国"]},
+    {"name": "ロシア", "patterns": ["Russia|Russian", "ロシア"]},
+    {"name": "イスラエル", "patterns": ["Israel|Israeli", "イスラエル"]},
+    {"name": "イラン", "patterns": ["Iran|Iranian", "イラン"]},
+    {"name": "インド", "patterns": ["India|Indian", "インド"]},
+    {"name": "パキスタン", "patterns": ["Pakistan|Pakistani", "パキスタン"]},
+    {"name": "フランス", "patterns": ["France|French", "フランス"]},
+    {"name": "ドイツ", "patterns": ["Germany|German", "ドイツ"]},
+    {"name": "イタリア", "patterns": ["Italy|Italian", "イタリア"]},
+    {"name": "オーストラリア", "patterns": ["Australia|Australian", "オーストラリア"]},
+    {"name": "カナダ", "patterns": ["Canada|Canadian", "カナダ"]},
+    {"name": "シンガポール", "patterns": ["Singapore", "シンガポール"]}
+  ],
+  "sectors": [
+    {"name": "政府・行政", "patterns": ["(?i)government|ministr(?:y|ies)|public sector|diplomat|embass(?:y|ies)", "政府|官公庁|省庁|大使館|外交官"]},
+    {"name": "防衛・軍事", "patterns": ["(?i)defen[cs]e|military|armed forces|aerospace", "防衛|軍事|軍隊|国防|航空宇宙"]},
+    {"name": "情報通信", "patterns": ["(?i)telecom|telecommunication|internet service provider|\\bISP\\b", "通信事業|通信会社|電気通信|ISP"]},
+    {"name": "IT・ソフトウェア", "patterns": ["(?i)technology compan|software compan|IT compan|managed service provider|\\bMSP\\b|developer", "IT企業|ソフトウェア企業|テクノロジー企業|開発者|MSP"]},
+    {"name": "金融", "patterns": ["(?i)financial|bank|insurance|payment", "金融|銀行|保険|決済"]},
+    {"name": "暗号資産・Web3", "patterns": ["(?i)cryptocurrency|crypto exchange|blockchain|web3|wallet", "暗号資産|仮想通貨|ブロックチェーン|Web3|ウォレット"]},
+    {"name": "医療・ヘルスケア", "patterns": ["(?i)healthcare|hospital|medical|pharmaceutical|biotech", "医療|病院|ヘルスケア|製薬|バイオ"]},
+    {"name": "教育・研究", "patterns": ["(?i)education|university|academic|research institute|think tank", "教育|大学|学術|研究所|シンクタンク"]},
+    {"name": "エネルギー", "patterns": ["(?i)energy|oil and gas|petroleum|electric utilit|power grid|nuclear", "エネルギー|石油|ガス|電力|原子力"]},
+    {"name": "製造・産業", "patterns": ["(?i)manufactur|industrial|engineering|factory", "製造|産業|工場|エンジニアリング"]},
+    {"name": "運輸・航空・海運", "patterns": ["(?i)transport|aviation|airline|shipping|maritime|railway", "運輸|交通|航空|航空会社|海運|海事|鉄道"]},
+    {"name": "メディア・報道", "patterns": ["(?i)media|journalist|news organi", "メディア|報道|記者|ジャーナリスト"]},
+    {"name": "小売・ホスピタリティ", "patterns": ["(?i)retail|hotel|hospitality|restaurant", "小売|ホテル|ホスピタリティ|飲食"]},
+    {"name": "法律", "patterns": ["(?i)law firm|legal sector|attorney", "法律事務所|法務"]},
+    {"name": "非営利・市民社会", "patterns": ["(?i)nonprofit|ngo|civil society|activist|human rights", "非営利|NGO|市民社会|活動家|人権"]},
+    {"name": "農業・食品", "patterns": ["(?i)agriculture|agricultural|food compan|grain", "農業|食品|穀物"]}
+  ],
+  "assets": [
+    {"name": "メール／メールアカウント", "patterns": ["(?i)e-?mail|mailbox|exchange online|microsoft 365", "メール|電子メール|Microsoft 365"]},
+    {"name": "VPN／リモートアクセス機器", "patterns": ["(?i)\\bVPN\\b|remote access gateway", "VPN|リモートアクセス"]},
+    {"name": "サーバー", "patterns": ["(?i)servers?", "サーバー"]},
+    {"name": "ネットワーク機器", "patterns": ["(?i)routers?|firewalls?|network devices?|switches?", "ルーター|ファイアウォール|ネットワーク機器|スイッチ"]},
+    {"name": "エンドポイント", "patterns": ["(?i)endpoints?|workstations?|laptops?|windows systems?", "端末|エンドポイント|ワークステーション|PC|Windowsシステム"]},
+    {"name": "クラウド／SaaS", "patterns": ["(?i)cloud environment|cloud account|salesforce|google workspace|azure|aws", "クラウド|Salesforce|Google Workspace|Azure|AWS"]},
+    {"name": "モバイル端末", "patterns": ["(?i)android|ios|mobile devices?|smartphones?", "Android|iOS|モバイル端末|スマートフォン"]},
+    {"name": "開発環境／ソースコード", "patterns": ["(?i)developer environment|source code|code repository|github", "開発環境|ソースコード|コードリポジトリ|GitHub"]},
+    {"name": "OT／ICS", "patterns": ["(?i)operational technology|industrial control|\\bICS\\b|\\bSCADA\\b", "OT|制御システム|ICS|SCADA"]}
+  ],
+  "impacts": [
+    {"impact_type": "data-theft", "patterns": ["(?i)(?:steal|exfiltrat)(?:s|ed|ing|ion)? .{0,40}(?:data|files?|documents?|source code)", "(?:データ|ファイル|文書|設計文書|ソースコード)[^。]{0,30}(?:窃取|流出|持ち出し)"]},
+    {"impact_type": "credential-theft", "patterns": ["(?i)(?:steal|harvest|exfiltrat)(?:s|ed|ing|ion)? .{0,40}(?:credential|password|cookie|token)", "(?:認証情報|パスワード|Cookie|トークン)[^。]{0,30}(?:窃取|収集|流出)"]},
+    {"impact_type": "financial-loss", "patterns": ["(?i)(?:stole|stolen|theft|loss).{0,20}(?:\\$|usd|million|billion|cryptocurrency)", "(?:損失|被害|窃取)[^。]{0,20}(?:ドル|円|暗号資産|仮想通貨)"]},
+    {"impact_type": "encryption", "patterns": ["(?i)ransomware|encrypted (?:files?|systems?|servers?)", "ランサムウェア|ファイル暗号化|システムを暗号化"]},
+    {"impact_type": "destruction", "patterns": ["(?i)\\bwiper\\b|data destruction|destroyed (?:data|systems?)", "ワイパー|データ破壊|システム破壊"]},
+    {"impact_type": "disruption", "patterns": ["(?i)(?:service|business|operational) disruption|systems? offline|shut ?down", "サービス停止|業務停止|運用停止|システム停止|オフライン"]},
+    {"impact_type": "espionage", "patterns": ["(?i)cyber ?espionage|intelligence collection|spying", "サイバー諜報|情報収集|スパイ活動"]},
+    {"impact_type": "account-compromise", "patterns": ["(?i)(?:account|mailbox) compromise|compromised accounts?", "アカウント侵害|メールボックス侵害"]},
+    {"impact_type": "privacy", "patterns": ["(?i)personal (?:data|information)|customer records?|privacy", "個人情報|顧客情報|プライバシー"]},
+    {"impact_type": "supply-chain", "patterns": ["(?i)supply[- ]chain (?:attack|compromise)", "サプライチェーン攻撃|供給網攻撃"]}
+  ]
+}

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--careto`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -114,6 +114,10 @@ Caretoの標準化プロファイル。リポジトリ内の専用資料2件とM
 
 選定ロジック: 未評価
 
+## 被害事例
+
+構造化された被害事例なし
+
 ## MITRE ATT&CK Matrixデータ
 
 TTPなし
@@ -143,7 +147,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--careto--912535704d73538c | The Mask has been unmasked again |  | 不明 | Careto/The-Mask-has-been-unmasked-again.pdf | report | TLP:CLEAR | 中 |
 | source--careto--8bdf33b0d51d9513 | readme |  | 不明 | Careto/readme.md | repository-notes | TLP:CLEAR | 中 |

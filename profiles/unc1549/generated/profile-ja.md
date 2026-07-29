@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc1549`
 - 状態: draft
-- 更新日時: 2026-07-29T14:09:02Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:37:04Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -119,10 +119,10 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | cyber-espionage | 不明 | 不明 | 2026-05-25 | Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 中 | `source--daily-96ac11961cae303bc9fd` |
-| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | cyber-espionage | 不明 | 不明 | 2026-07-28 | Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | cyber-espionage | 2026-02 | 2026-04 | 2026-05-25 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--904728608f27c39df0df |  | ttp--activity-rule--58d557d2679ee65b66a5 | victim--activity-rule--071152112a80d6125133 | Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | cyber-espionage | 不明 | 不明 | 2026-07-28 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--country--burkina-faso, target--country--egypt, target--country--ethiopia, target--country--jordan, target--country--pakistan, target--country--tanzania, target--sector--aerospace, target--sector--aviation, target--sector--defense, target--sector--financial-services, target--sector--government, target--sector--telecommunications | malware--nightledger, malware--arcbridge, malware--bridgehead | ttp--activity-rule--543c54c03eee4074488f, ttp--activity-rule--64e01cb31f20cb632f2c, ttp--activity-rule--eee5857560ca39325182, ttp--t1057--nightledger, ttp--t1071-001--mirage-kitten-2026, ttp--t1082--nightledger, ttp--t1090--bridgehead, ttp--t1113--nightledger, ttp--t1566-002--mirage-kitten-2026, ttp--t1574-001--nightledger | victim--activity-rule--15a1bbc4304a95fa57dc | Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | 高 | `source--kaspersky-mirage-kitten-2026` |
 
 2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。
 
@@ -130,34 +130,48 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Egypt | BridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Pakistan | 航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Jordan | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Tanzania | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Ethiopia | 通信分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| countries | 米国 | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| countries | イスラエル | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd` |
 | countries | Burkina Faso | 金融分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| regions | Middle East | 継続的な重点標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
+| countries | Egypt | BridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| countries | Ethiopia | 通信分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| countries | Jordan | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| countries | Pakistan | 航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| countries | Tanzania | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
 | regions | Africa | 2026年報告で活動範囲の拡大が確認された地域。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| regions | Middle East | 継続的な重点標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
+| sectors | 金融 | 活動「Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026` |
 | sectors | Aerospace | 主要な情報収集標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
 | sectors | Aviation | 主要な情報収集標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
 | sectors | Defense | 主要な情報収集標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
-| sectors | Telecommunications | Ethiopiaの被害例を含む標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| sectors | Government | JordanおよびTanzaniaに関する報告で対象組織種別として挙げられた。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
 | sectors | Financial Services | Burkina Fasoの被害例で挙げられた標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| sectors | Government | JordanおよびTanzaniaに関する報告で対象組織種別として挙げられた。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| sectors | Telecommunications | Ethiopiaの被害例を含む標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
 
 選定ロジック: 航空宇宙、航空、防衛、通信など、国家・産業上の情報価値が高い組織を選び、技術職向けの採用・会議テーマを用いて個別に接触する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--904728608f27c39df0df |  | ttp--activity-rule--58d557d2679ee65b66a5 |  | data-theft: RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 2026-02 | 2026-04 | 2026-05-25 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| 被害事例: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--4221b5fbb827488c6eaa, target--country--burkina-faso, target--country--egypt, target--country--ethiopia, target--country--jordan, target--country--pakistan, target--country--tanzania, target--sector--aerospace, target--sector--aviation, target--sector--defense, target--sector--financial-services, target--sector--government, target--sector--telecommunications | malware--arcbridge, malware--bridgehead, malware--nightledger | ttp--activity-rule--543c54c03eee4074488f, ttp--activity-rule--64e01cb31f20cb632f2c, ttp--activity-rule--eee5857560ca39325182, ttp--t1057--nightledger, ttp--t1071-001--mirage-kitten-2026, ttp--t1082--nightledger, ttp--t1090--bridgehead, ttp--t1113--nightledger, ttp--t1566-002--mirage-kitten-2026, ttp--t1574-001--nightledger |  | espionage: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | 不明 | 不明 | 2026-07-28 | 高 | `source--kaspersky-mirage-kitten-2026` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Execution, Stealth | T1574.001 | DLL | 新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | malware--arcbridge, malware--bridgehead, malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026` |
+| Execution, Stealth | T1574.001 | DLL | 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 |  | activity--daily-6b2a23bcddd9757abbb0 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| Discovery | T1057 | Process Discovery | 新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | malware--arcbridge, malware--bridgehead, malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026` |
+| Discovery | T1083 | File and Directory Discovery | 新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | malware--arcbridge, malware--bridgehead, malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026` |
+| Discovery | T1057 | Process Discovery | NightLedgerは実行中プロセスを列挙するコマンドを備える。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | NightLedgerはHTTPS、ArcBridgeとBridgeHeadはWebSocketを用いてC2通信を行った。 | malware--nightledger, malware--arcbridge, malware--bridgehead | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
+| Discovery | T1082 | System Information Discovery | NightLedgerは被害ホストのシステム情報を収集する偵察コマンドを備える。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
+| Command And Control | T1090 | Proxy | BridgeHeadはWebSocket上でSOCKS5通信を中継し、ArcBridgeとともに企業プロキシ経由の接続に対応した。 | malware--arcbridge, malware--bridgehead | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
+| Collection | T1113 | Screen Capture | NightLedgerは画面を取得してC2へ送るコマンドを備える。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
 | Initial Access | T1566.002 | Spearphishing Link | 採用をテーマにした内容とビデオ会議サービスの類似ページを用い、第三者サービス上の悪性アーカイブへ標的を誘導した。 | malware--bridgehead | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
 | Execution, Stealth | T1574.001 | DLL | 正規のAppVShNotify.exeにSspiCli.dllを読み込ませるDLL検索順序ハイジャックでNightLedgerを実行した。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | NightLedgerはHTTPS、ArcBridgeとBridgeHeadはWebSocketを用いてC2通信を行った。 | malware--nightledger, malware--arcbridge, malware--bridgehead | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
-| Command And Control | T1090 | Proxy | BridgeHeadはWebSocket上でSOCKS5通信を中継し、ArcBridgeとともに企業プロキシ経由の接続に対応した。 | malware--arcbridge, malware--bridgehead | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | NightLedgerは被害ホストのシステム情報を収集する偵察コマンドを備える。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
-| Discovery | T1057 | Process Discovery | NightLedgerは実行中プロセスを列挙するコマンドを備える。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
-| Collection | T1113 | Screen Capture | NightLedgerは画面を取得してC2へ送るコマンドを備える。 | malware--nightledger | activity--mirage-kitten-middle-east-africa-2026 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026`, `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
@@ -192,7 +206,6 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | source--kaspersky-mirage-kitten-2026 | Mirage Kitten targets Middle East and Africa region with new malware | Kaspersky GReAT | 2026-07-28 | https://securelist.com/mirage-kitten-new-tools/120811/ | vendor-research | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-96ac11961cae303bc9fd | イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | unit42.paloaltonetworks.com | 2026-05-25 | https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416 | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
@@ -201,6 +214,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | source--unc1549--5ad26a22b1f5c730 | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
 | source--unc1549--9829507d9159174b | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
 | source--unc1549--c47ef662fbdb6d88 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

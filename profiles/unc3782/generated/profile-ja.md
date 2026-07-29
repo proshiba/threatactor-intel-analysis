@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc3782`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:37Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,17 +102,25 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 北朝鮮ハッカー、TRONユーザーから1日で1億3700万ドルを盗むフィッシング攻撃を実行 | phishing-campaign | 不明 | 不明 | 2025-04-24 | 北朝鮮関連のハッカー集団UNC3782が、TRONユーザーを標的にした大規模なフィッシング攻撃を実行。 2023年に、UNC3782はTRONユーザーに対してフィッシングオペレーションを実施し、1日で1億3700万ドル以上の暗号資産を不正に移転。 攻撃は、Web3および暗号通貨分野の開発者を狙ったもので、UNC1069、UNC4899、UNC5342など他の北朝鮮関連の脅威グループも関与。 これらの活動は、北朝鮮の大量破壊兵器（WMD）プログラムやその他の戦略的資産の資金調達を目的としている。 暗号通貨の窃盗は、北朝鮮が国際的な制裁を回避するために追求しているいくつかの手段の一つ。 | 中 | `source--daily-434d874b398754ef9357` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 北朝鮮ハッカー、TRONユーザーから1日で1億3700万ドルを盗むフィッシング攻撃を実行 | phishing-campaign | 不明 | 不明 | 2025-04-24 | target--activity-rule--sector--63c9fa67327d005b07b7 |  |  | victim--activity-rule--9b4239577b21c13ce760 | 北朝鮮関連のハッカー集団UNC3782が、TRONユーザーを標的にした大規模なフィッシング攻撃を実行。 2023年に、UNC3782はTRONユーザーに対してフィッシングオペレーションを実施し、1日で1億3700万ドル以上の暗号資産を不正に移転。 攻撃は、Web3および暗号通貨分野の開発者を狙ったもので、UNC1069、UNC4899、UNC5342など他の北朝鮮関連の脅威グループも関与。 これらの活動は、北朝鮮の大量破壊兵器（WMD）プログラムやその他の戦略的資産の資金調達を目的としている。 暗号通貨の窃盗は、北朝鮮が国際的な制裁を回避するために追求しているいくつかの手段の一つ。 | 中 | `source--daily-434d874b398754ef9357` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 暗号資産・Web3 | 活動「北朝鮮ハッカー、TRONユーザーから1日で1億3700万ドルを盗むフィッシング攻撃を実行」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-434d874b398754ef9357` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 北朝鮮ハッカー、TRONユーザーから1日で1億3700万ドルを盗むフィッシング攻撃を実行 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--63c9fa67327d005b07b7 |  |  |  |  | 不明 | 不明 | 2025-04-24 | 中 | `source--daily-434d874b398754ef9357` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -145,7 +153,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-434d874b398754ef9357 | 北朝鮮ハッカー、TRONユーザーから1日で1億3700万ドルを盗むフィッシング攻撃を実行 | thehackernews.com | 2025-04-24 | https://thehackernews.com/2025/04/dprk-hackers-steal-137m-from-tron-users.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--unc3782--3a57535af07edeed | unc3782 |  | 不明 | actor_profile/evidence/unc3782.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc3782--65994dd78aa33026 | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
 | source--unc3782--8a89d1afe3937c61 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |

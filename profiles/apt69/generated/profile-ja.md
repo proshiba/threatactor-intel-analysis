@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt69`
 - 状態: draft
-- 更新日時: 2026-07-25T11:07:06Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:09Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -112,6 +112,10 @@ Aliasなし
 
 選定ロジック: 未評価
 
+## 被害事例
+
+構造化された被害事例なし
+
 ## MITRE ATT&CK Matrixデータ
 
 TTPなし
@@ -141,7 +145,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--apt69--e1a94ece0acc8ca1 | apt69 |  | 不明 | actor_profile/evidence/apt69.csv | structured-data | TLP:CLEAR | 中 |
 | source--apt69--82566f5d8e149fe3 | Group IB RPRT OPERA1ER EN full |  | 不明 | cybercrime/OPERA1ER/Group-IB_RPRT_OPERA1ER_EN_full.pdf | report | TLP:CLEAR | 中 |

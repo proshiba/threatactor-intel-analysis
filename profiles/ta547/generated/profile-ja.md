@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ta547`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:36Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,9 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 悪意あるPowerShellスクリプトがマルウェアを配布、スクリプトがAIによって作成された可能性 | phishing-campaign | 不明 | 不明 | 2024-04-11 | AI技術を使用して作成された可能性がある悪意あるPowerShellスクリプトがRhadamanthys情報窃取マルウェアを配布 スクリプトは2023年3月にドイツの多数の組織を狙ったメールキャンペーンで使用された 攻撃者TA547はMetroキャッシュ＆キャリーブランドになりすましたメールで組織をだましてZIPアーカイブを開かせる PowerShellスクリプトは、メモリ内で直接実行されるようBase64でエンコードされたRhadamanthys実行可能ファイルをデコード AIによるコード生成技術の利用が疑われるが、確証はない | 中 | `source--daily-4e35e5a6c9eb6f31a645` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 悪意あるPowerShellスクリプトがマルウェアを配布、スクリプトがAIによって作成された可能性 | phishing-campaign | 2023-03 | 2023-03 | 2024-04-11 |  |  | ttp--activity-rule--4dc10c9afacef7260003, ttp--activity-rule--b33ceb1943ccf057e2ec, ttp--activity-rule--ce7d1017411c75b1dc88 |  | AI技術を使用して作成された可能性がある悪意あるPowerShellスクリプトがRhadamanthys情報窃取マルウェアを配布 スクリプトは2023年3月にドイツの多数の組織を狙ったメールキャンペーンで使用された 攻撃者TA547はMetroキャッシュ＆キャリーブランドになりすましたメールで組織をだましてZIPアーカイブを開かせる PowerShellスクリプトは、メモリ内で直接実行されるようBase64でエンコードされたRhadamanthys実行可能ファイルをデコード AIによるコード生成技術の利用が疑われるが、確証はない | 中 | `source--daily-4e35e5a6c9eb6f31a645` |
 
 
 
@@ -114,9 +114,17 @@ Aliasなし
 
 選定ロジック: 未評価
 
+## 被害事例
+
+構造化された被害事例なし
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Execution | T1059.001 | PowerShell | 悪意あるPowerShellスクリプトがマルウェアを配布、スクリプトがAIによって作成された可能性 |  | activity--daily-6d5bdadebf1a9b6fccc5 | 2023-03 | 2023-03 | 中 | `source--daily-4e35e5a6c9eb6f31a645` |
+| Collection | T1560.001 | Archive via Utility | AI技術を使用して作成された可能性がある悪意あるPowerShellスクリプトがRhadamanthys情報窃取マルウェアを配布 スクリプトは2023年3月にドイツの多数の組織を狙ったメールキャンペーンで使用された 攻撃者TA547はMetroキャッシュ＆キャリーブランドになりすましたメールで組織をだましてZIPアーカイブを開かせる PowerShellスクリプトは、メモリ内で直接実行されるようBase64でエンコードされたRhadamanthys実行可能ファイルをデコード AIによるコード生成技術の利用が疑われるが、確証はない |  | activity--daily-6d5bdadebf1a9b6fccc5 | 2023-03 | 2023-03 | 中 | `source--daily-4e35e5a6c9eb6f31a645` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | ys情報窃取マルウェアを配布 スクリプトは2023年3月にドイツの多数の組織を狙ったメールキャンペーンで使用された 攻撃者TA547はMetroキャッシュ＆キャリーブランドになりすましたメールで組織をだましてZIPアーカイブを開かせる PowerShellスクリプトは、メモリ内で直接実行されるようBase64でエンコードされたRhadamanthys実行可能ファイルをデコード AIによるコード生成技術の利用が疑われるが、確証はない |  | activity--daily-6d5bdadebf1a9b6fccc5 | 2023-03 | 2023-03 | 中 | `source--daily-4e35e5a6c9eb6f31a645` |
 
 ## IOC／artifact概要
 
@@ -145,7 +153,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-4e35e5a6c9eb6f31a645 | 悪意あるPowerShellスクリプトがマルウェアを配布、スクリプトがAIによって作成された可能性 | bleepingcomputer.com | 2024-04-11 | https://www.bleepingcomputer.com/news/security/malicious-powershell-script-pushing-malware-looks-ai-written/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--ta547--3a26b7d958dde0c9 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |

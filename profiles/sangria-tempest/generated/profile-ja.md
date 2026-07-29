@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--sangria-tempest`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:24Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:37:04Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -118,9 +118,9 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | malware-campaign | 不明 | 不明 | 2025-04-03 | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | malware-campaign | 不明 | 不明 | 2025-04-03 |  |  | ttp--activity-rule--64ed665cb1f7db9eca79, ttp--activity-rule--8c922b8a2654133dc680, ttp--activity-rule--a1a927be99acfa6a147e, ttp--activity-rule--bf8e55ed5ea1e36409d8 | victim--activity-rule--be5e68d40dea8e62c598 | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
 
 
 
@@ -132,10 +132,20 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--64ed665cb1f7db9eca79, ttp--activity-rule--8c922b8a2654133dc680, ttp--activity-rule--a1a927be99acfa6a147e, ttp--activity-rule--bf8e55ed5ea1e36409d8 | VPN／リモートアクセス機器, サーバー, エンドポイント | credential-theft: 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 不明 | 不明 | 2025-04-03 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Execution | T1059.006 | Python | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Collection | T1113 | Screen Capture | 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Stealth | T1027 | Obfuscated Files or Information | 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Collection | T1560.001 | Archive via Utility | 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
 | Initial Access | T1200 | Hardware Additions | доступ к инфраструктуре жертв через наборы эксплоитов. Например, опера - торы ZLoader использовали Spelevo EK, а с Dridex – набор Rig EK. • Hardware additions T1200 В 2021 году группировка FIN7 продолжила проводить атаки типа BadUSB для заражения компьютеров в корпоративной среде, отправляя посылки через почтовую службу США и логистическую компанию UPS. Отправителями значились Министерство здраво - охранени |  |  | 不明 | 不明 | 中 | `source--sangria-tempest--2880b4cdea94039e` |
 
 ## IOC／artifact概要
@@ -165,7 +175,6 @@ The repository mapping workbook places this actor in the Russia worksheet.
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-aa4ff1b6006e51c3ed82 | FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | thehackernews.com | 2025-04-03 | https://thehackernews.com/2025/04/fin7-deploys-anubis-backdoor-to-hijack.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
@@ -210,6 +219,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | source--sangria-tempest--f4e910b842c9a727 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
 | source--sangria-tempest--fd498c23bc92883d | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--sangria-tempest--fe40b9a2515a1aff | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

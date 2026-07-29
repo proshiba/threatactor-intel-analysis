@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt17`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:28Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:20:21Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -132,9 +132,9 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | malware-campaign | 不明 | 不明 | 2024-07-18 | APT17がイタリア企業や政府機関を9002 RATマルウェアで攻撃。 攻撃は2024年6月24日と7月2日に行われた。 マルウェアはSkype for Businessの偽インストーラーを通じて配布。 VBSとJavaアプリケーションを使用して9002 RATをシェルコードで実行。 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。 | 高 | `source--daily-b39a4a815a12eb24617a` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | malware-campaign | 不明 | 不明 | 2024-07-18 | target--activity-rule--country--64be7cf4bac6c92be378, target--sector--government |  | ttp--activity-rule--1da48b1cbdd35538df04 | victim--activity-rule--0b9807c88c5611b99ba0 | APT17がイタリア企業や政府機関を9002 RATマルウェアで攻撃。 攻撃は2024年6月24日と7月2日に行われた。 マルウェアはSkype for Businessの偽インストーラーを通じて配布。 VBSとJavaアプリケーションを使用して9002 RATをシェルコードで実行。 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。 | 高 | `source--daily-b39a4a815a12eb24617a` |
 
 
 
@@ -142,19 +142,27 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | イタリア | 活動「中国関連APT17、イタリア企業を9002 RATマルウェアで標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b39a4a815a12eb24617a` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-b39a4a815a12eb24617a` |
 | sectors | Manufacturing | Targeting text indicates the Manufacturing sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Nonprofit and Civil Society | Targeting text indicates the Nonprofit and Civil Society sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--64be7cf4bac6c92be378, target--sector--government |  | ttp--activity-rule--1da48b1cbdd35538df04 |  |  | 不明 | 不明 | 2024-07-18 | 高 | `source--daily-b39a4a815a12eb24617a` |
+
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Resource Development | T1583.006 | Web Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585 | Establish Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1113 | Screen Capture | 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。 |  | activity--daily-ff68f3f6443d5bdb594f | 不明 | 不明 | 中 | `source--daily-b39a4a815a12eb24617a` |
+| Resource Development | T1583.006 | Web Services | [APT17](https://attack.mitre.org/groups/G0025) has created profile pages in Microsoft TechNet that were used as C2 infrastructure.(Citation: FireEye APT17) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585 | Establish Accounts | [APT17](https://attack.mitre.org/groups/G0025) has created and cultivated profile pages in Microsoft TechNet. To make profile pages appear more legitimate, [APT17](https://attack.mitre.org/groups/G0025) has created biographical sections and posted in forum threads.(Citation: FireEye APT17) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
