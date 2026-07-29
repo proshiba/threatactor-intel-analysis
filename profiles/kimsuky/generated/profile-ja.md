@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--kimsuky`
 - 状態: review
-- 更新日時: 2026-07-29T15:36:10Z
+- 更新日時: 2026-07-29T23:12:00Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -172,7 +172,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | malware-campaign | 不明 | 不明 | 2024-04-24 | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--85e4128fa590941f9478, target--south-korea |  |  | victim--activity-rule--34a81485acecf6617bee | 北朝鮮のハッキンググループが韓国の防衛産業を標的に 韓国警察の報告書では、Lazarus, Andariel, Kimsukyが関与している3つのインシデントを記載 ターゲットまたはその下請け組織のネットワークの脆弱性を利用しマルウェアを植え付ける インシデントの1つでは、データの抜き取りとクラウドサーバへの転送が行われた 韓国警察は、多要素認証の導入・外国からのIPアクセスのブロックなどのセキュリティ強化を勧めている | 中 | `source--daily-b9be11e58ab6c82617ab` |
 | Pythonベースのバックドアを配布する悪性LNKファイルと配布手法の変化（Kimsukyグループ） | infrastructure-operation | 不明 | 不明 | 2026-04-04 |  |  | ttp--activity-rule--29d8235d14af386ac5ad, ttp--activity-rule--4397bb55001837fdcfcf, ttp--activity-rule--d7ba1acbdbcf8abfbb94, ttp--activity-rule--f3bf1175031240a606d3 |  | ASECは、Kimsukyが用いる悪性LNK配布手法の変化を確認し、最終的にPython製バックドアまたはダウンローダを実行する流れ自体は維持されていると説明した。 従来はLNK→PowerShell→BATの比較的単純な流れだったが、最近はLNK→PowerShell→デコイ/XML/PS1/VBS生成へ変化し、中間段階が多段化した。 新しい手口では隠し属性付きのC:\windirr配下に複数ファイルを生成し、Task Scheduler経由でVBS、PS1、BATを順に実行してZIPを取得・展開する。 pp.ps1はDropboxをC2伝達に使って端末情報を送信し、続くhh.batは分割ZIPからbeauty.pyを展開して別のスケジュールタスクでPythonバックドアを起動する。 バックドアは45[.]95[.]186[.]232:8080と通信し、コマンド実行、ドライブ照会、ファイル送受信・削除、EXE/BAT/VBS実行などを行える。 マルウェアは、HAPPYという文字列を送ってC2サーバに感染を通知している。 | 高 | `source--daily-d289a4c2f4400dbffb6f` |
 | 北朝鮮のハッカー、PowerShellの手法を悪用して新たなサイバー攻撃を実行 | phishing-campaign | 2025-01 | 不明 | 2025-02-13 | target--mitre-group--sector--4eba90b76b16e9d6d89b |  |  | victim--activity-rule--b327511a595ac3276ab1 | 北朝鮮のハッカーグループ「Kimsuky」が、PowerShellを管理者権限で実行させ、悪意のあるコードを実行させる新たな手法を使用しています。 攻撃者は、南韓政府関係者を装い、ターゲットと関係を構築した後、PDF添付のスピアフィッシングメールを送信します。 被害者は、Windowsシステムの登録手順を記載したURLをクリックするよう促され、PowerShellを管理者として実行し、提示されたコードをコピー&ペーストして実行するよう指示されます。 このコードは、リモートサーバーからブラウザベースのリモートデスクトップツールと証明書ファイルをダウンロードし、攻撃者がデバイスにアクセスし、データを抽出できるようにします。 この手法は、2025年1月以降、限定的な攻撃で観測されており、Kimsukyが使う従来の手法から逸脱しています。 | 中 | `source--daily-b859524205edbc7c576c` |
-| 北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行 | infrastructure-operation | 不明 | 不明 | 2024-03-25 |  |  | ttp--activity-rule--aab21b466b971ffe5f9e | victim--activity-rule--e7e9ae319582ebd6f222 | Kimsuky、CHMファイルを利用し機密データを盗む新手法を使用 2012年から活動、主に韓国、北米、アジア、ヨーロッパを標的 攻撃ではISO、LNKファイル、Office文書も利用 CHMファイルはISO、VHD、ZIP、RAR内で配布、JavaScript実行 感染の流れは、CHM file > html file > vbs file(C2と接続) C2と接続後、収集したデータをDATファイルにして窃取 | 高 | `source--daily-0477636fe03aea54224d` |
+| 北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行 | infrastructure-operation | 不明 | 不明 | 2024-03-25 | target--south-korea |  | ttp--activity-rule--aab21b466b971ffe5f9e | victim--activity-rule--e7e9ae319582ebd6f222 | Kimsuky、CHMファイルを利用し機密データを盗む新手法を使用 2012年から活動、主に韓国、北米、アジア、ヨーロッパを標的 攻撃ではISO、LNKファイル、Office文書も利用 CHMファイルはISO、VHD、ZIP、RAR内で配布、JavaScript実行 感染の流れは、CHM file > html file > vbs file(C2と接続) C2と接続後、収集したデータをDATファイルにして窃取 | 高 | `source--daily-0477636fe03aea54224d` |
 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 |  |  | ttp--activity-rule--e28f89337bc79ca60896 |  | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
 | 北朝鮮のハッカー、新しいKLogEXEとFPSpyマルウェアを標的型攻撃に使用 | phishing-campaign | 不明 | 不明 | 2024-09-27 |  |  | ttp--activity-rule--0abff0edccdadf8d2395, ttp--activity-rule--a75091343851bf6ac794 |  | 北朝鮮系ハッカー「Kimsuky」がKLogEXEとFPSpyという2つの新しいマルウェアを展開。 KLogEXEはキーロガーで、実行中のアプリケーションやキーストロークを収集。 FPSpyはシステム情報を収集し、任意のコマンドを実行できるバックドア型マルウェア。 スピアフィッシングで攻撃。信頼できる人物からのメールを装って、被害者を騙してマルウェアをダウンロードさせている。 主に韓国や日本がターゲット。 | 中 | `source--daily-5d4c990e46241ee39e8d` |
 | Operation DarkHorse | campaign | 2022-02 | 不明 | 2023-10-16 | target--finance |  | ttp--t1059-001--powershell, ttp--t1566-001--documents | victim--activity-rule--190f76f226f2f78defa7 | VBSからJSEへ変化したCHM活動。暗号資産、金融、保険等の誘引を利用。 | 中 | `source--darkhorse-2023` |
@@ -188,10 +188,22 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 米国 | 活動「FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-4c3098e731ae81f16008` |
-| countries | 日本 | 活動「日本、北朝鮮のKimsukyハッカーに関連する攻撃を警告」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-00bf22365ce019ee25a6`, `source--daily-d930e3ca01c519bf5740` |
-| countries | Germany | 政策専門家および防衛関連。 | 2021 | 2024 | 高 | `source--browser-advisory-2023`, `source--qax-2024` |
-| countries | South Korea | 最重要の継続的対象。 | 2012 | 2026-04 | 高 | `source--daily-00bf22365ce019ee25a6`, `source--daily-01bbfa4ce1d271e9e220`, `source--daily-444c87a0051642065f55`, `source--daily-a5ca98841868974d600b`, `source--daily-b9be11e58ab6c82617ab`, `source--daily-f05f4888998c8f53f5ca`, `source--joint-csa-2023`, `source--mitre-attack-19-1`, `source--rapid7-2024` |
+| countries | イラン | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 2025-01 | 2025-02 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでKimsukyの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでKimsukyの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 政策専門家および防衛関連。 | 2021 | 2024 | 高 | `source--browser-advisory-2023`, `source--qax-2024`, `source--target-audit-misp-threat-actor` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでKimsukyの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 2025-01 | 2025-02 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| countries | 中国 | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 2025-01 | 2025-02 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| countries | 日本 | 活動「日本、北朝鮮のKimsukyハッカーに関連する攻撃を警告」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-00bf22365ce019ee25a6`, `source--daily-d930e3ca01c519bf5740`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-4c3098e731ae81f16008`, `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 最重要の継続的対象。 | 2012 | 2026-04 | 高 | `source--daily-00bf22365ce019ee25a6`, `source--daily-01bbfa4ce1d271e9e220`, `source--daily-0477636fe03aea54224d`, `source--daily-444c87a0051642065f55`, `source--daily-a5ca98841868974d600b`, `source--daily-b9be11e58ab6c82617ab`, `source--daily-f05f4888998c8f53f5ca`, `source--joint-csa-2023`, `source--mitre-attack-19-1`, `source--rapid7-2024`, `source--target-audit-etda-threat-group-cards` |
+| regions | アジア | 活動「北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-0477636fe03aea54224d` |
+| regions | 北米 | 活動「北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行」の記述で標的地域として北米が明示されている。 | 不明 | 不明 | 中 | `source--daily-0477636fe03aea54224d` |
+| regions | 東アジア | 中国、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-00bf22365ce019ee25a6`, `source--daily-01bbfa4ce1d271e9e220`, `source--daily-0477636fe03aea54224d`, `source--daily-07ef6046e1668f840b3a`, `source--daily-444c87a0051642065f55`, `source--daily-a5ca98841868974d600b`, `source--daily-b9be11e58ab6c82617ab`, `source--daily-d930e3ca01c519bf5740`, `source--daily-f05f4888998c8f53f5ca`, `source--joint-csa-2023`, `source--mitre-attack-19-1`, `source--rapid7-2024`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 活動「北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--browser-advisory-2023`, `source--daily-0477636fe03aea54224d`, `source--qax-2024`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | メディア・報道 | 活動「Kimsukyは寛容なDMARCポリシーを利用してメールを偽装」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-8c76eeb938a1170375af` |
 | sectors | 暗号資産・Web3 | 活動「北朝鮮マルウェアのモジュール化：多様性と機能特化」の記述で標的として明示された産業。 | 2026-01 | 2026-06 | 中 | `source--daily-ec97ed0896afb842c91e`, `source--daily-f3e6fda98089cb5da96d` |
 | sectors | IT・ソフトウェア | 活動「北朝鮮マルウェアのモジュール化：多様性と機能特化」の記述で標的として明示された産業。 | 2026-01 | 2026-06 | 中 | `source--daily-ec97ed0896afb842c91e`, `source--daily-f3e6fda98089cb5da96d` |
@@ -204,7 +216,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | sectors | Think Tanks and Academia | 政策研究、大学、学術、科学・工学研究者。 | 2012 | 2025 | 高 | `source--joint-csa-2023`, `source--rapid7-2024` |
 | roles | Journalists and Policy Experts | DPRK政策に関する非公開見解と信頼ネットワークを持つ個人。 | 2012 | 2025 | 高 | `source--joint-csa-2023`, `source--dmarc-2024` |
 
-選定ロジック: 組織規模より、北朝鮮に関する非公開情報や信頼ネットワークへアクセスできる個人を優先する。
+選定ロジック: 組織規模より、北朝鮮に関する非公開情報や信頼ネットワークへアクセスできる個人を優先する。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -229,7 +241,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | 被害事例: FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 |  | ttp--activity-rule--32b62558046788e695f4 | メール／メールアカウント | credential-theft: QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 | 不明 | 不明 | 2026-01-10 | 高 | `source--daily-4c3098e731ae81f16008` |
 | 被害事例: Kimsukyは寛容なDMARCポリシーを利用してメールを偽装 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--5403aec9c83d6a925f61, target--mitre-group--sector--4eba90b76b16e9d6d89b, target--mitre-group--sector--c5b1f7936acf85af11e4 |  |  | メール／メールアカウント | espionage: Kimsukyは認証に失敗しても何しないとなっているドメインになりすます 攻撃は情報収集を目的としており、標的はシンクタンク、政府、ジャーナリスト 攻撃メールには、ターゲットによる電子メールの開封有無、いつ、どのデバイスで開いたかなどのデータを追跡するために、追跡ピクセルが埋め込まれている | 不明 | 不明 | 2024-04-17 | 高 | `source--daily-8c76eeb938a1170375af` |
 | 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--85e4128fa590941f9478, target--south-korea |  | ttp--activity-rule--866c7fa9fa78e9f314c7 | VPN／リモートアクセス機器 |  | 不明 | 不明 | 2024-08-06 | 中 | `source--daily-444c87a0051642065f55` |
-| 被害事例: 北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--aab21b466b971ffe5f9e |  | data-theft: ファイルを利用し機密データを盗む新手法を使用 2012年から活動、主に韓国、北米、アジア、ヨーロッパを標的 攻撃ではISO、LNKファイル、Office文書も利用 CHMファイルはISO、VHD、ZIP、RAR内で配布、JavaScript実行 感染の流れは、CHM file > html file > vbs file(C2と接続) C2と接続後、収集したデータをDATファイルにして窃取 | 不明 | 不明 | 2024-03-25 | 高 | `source--daily-0477636fe03aea54224d` |
+| 被害事例: 北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行 | 非公開 | anonymous | unknown | reported | target--south-korea |  | ttp--activity-rule--aab21b466b971ffe5f9e |  | data-theft: ファイルを利用し機密データを盗む新手法を使用 2012年から活動、主に韓国、北米、アジア、ヨーロッパを標的 攻撃ではISO、LNKファイル、Office文書も利用 CHMファイルはISO、VHD、ZIP、RAR内で配布、JavaScript実行 感染の流れは、CHM file > html file > vbs file(C2と接続) C2と接続後、収集したデータをDATファイルにして窃取 | 不明 | 不明 | 2024-03-25 | 高 | `source--daily-0477636fe03aea54224d` |
 | 被害事例: 北朝鮮のAPT「Kimsuky」、LNKファイルを使用してブラウザに保存された認証情報を窃取するforceCopyマルウェアを配布 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--9f5f511f9650ee41dace, ttp--activity-rule--e0f37374ccce7abb7368, ttp--activity-rule--f0e72b5798f70a2f9617 | メール／メールアカウント | data-theft: 北朝鮮のAPT「Kimsuky」、LNKファイルを使用してブラウザに保存された認証情報を窃取するforceCopyマルウェアを配布<br>credential-theft: 北朝鮮のAPT「Kimsuky」、LNKファイルを使用してブラウザに保存された認証情報を窃取するforceCopyマルウェアを配布 | 不明 | 不明 | 2025-02-07 | 高 | `source--daily-6f57fcf4dc3991af9b4e` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -355,6 +367,8 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | source--rapid7-2024 | Kimsuky's Phishing and Payload Tactics | Rapid7 | 2024 | kimsuky/rapid7-Kimsukys-Phishing-and-Payload-Tactics_wp.pdf | vendor-report | TLP:CLEAR | 高 |
 | source--smoke-screen | Analysis of the APT Campaign Smoke Screen | ESRC | 2019-04-17 | kimsuky/Smoke Screen.pdf | vendor-report | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

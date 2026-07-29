@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:11Z
+- 更新日時: 2026-07-29T23:13:54Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -184,14 +184,55 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 台湾 | 活動「Mustang Panda、ZOHOMURKとMINIRECONでインドの政府・エネルギー部門を標的化」の記述で標的として明示された国・地域。 | 2026-06-12 | 2026-06-22 | 中 | `source--daily-f24514e21b73cfc154c2` |
-| countries | インド | 活動「同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に」の記述で標的として明示された国・地域。 | 2026-06-12 | 2026-06-22 | 中 | `source--daily-a69a00355bf3c87debe0`, `source--daily-f24514e21b73cfc154c2` |
-| countries | 韓国 | 活動「同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a69a00355bf3c87debe0` |
-| countries | 中国 | 活動「中国のハッカーが政府攻撃で新たなデータ窃盗マルウェアを使用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-6762aff5feb471d8906d` |
-| countries | Mongolia | Targeting text mentions mongolia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | パキスタン | re.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1` |
-| countries | ロシア | g Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1` |
-| countries | 米国 | [Mustang Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--daily-a69a00355bf3c87debe0`, `source--mitre-attack-19-1` |
+| countries | イタリア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 活動「同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に」の記述で標的として明示された国・地域。 | 2026-06-12 | 2026-06-22 | 中 | `source--daily-a69a00355bf3c87debe0`, `source--daily-f24514e21b73cfc154c2`, `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エチオピア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてエチオピアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カンボジア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | キプロス | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてキプロスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ギリシャ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてギリシャが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スウェーデン | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スロバキア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてスロバキアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | セルビア | 活動「欧州の外交官を監視するために悪用されるWindowsゼロデイ（アクティブ攻撃中）」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-0e120eeb7ae8f6ffbb8f` |
+| countries | タイ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ネパール | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ハンガリー | 活動「欧州の外交官を監視するために悪用されるWindowsゼロデイ（アクティブ攻撃中）」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-0e120eeb7ae8f6ffbb8f`, `source--target-audit-etda-threat-group-cards` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | re.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルガリア | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベルギー | 活動「欧州の外交官を監視するために悪用されるWindowsゼロデイ（アクティブ攻撃中）」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-0e120eeb7ae8f6ffbb8f`, `source--target-audit-etda-threat-group-cards` |
+| countries | マレーシア | 活動「中国のMustang Panda、CoolClientバックドアで情報窃取ツールを展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-babfc72d5fb1a4c1aea7`, `source--target-audit-etda-threat-group-cards` |
+| countries | ミャンマー | MITRE ATT&CKのGroup概要でMustang Pandaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--daily-0a1a885ea4fa4a799508`, `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | モンゴル | Targeting text mentions mongolia. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | g Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 活動「中国のハッカーが政府攻撃で新たなデータ窃盗マルウェアを使用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-283dce07d0cab28747ec`, `source--daily-6762aff5feb471d8906d`, `source--target-audit-etda-threat-group-cards` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 南スーダン | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国として南スーダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 活動「Mustang Panda、ZOHOMURKとMINIRECONでインドの政府・エネルギー部門を標的化」の記述で標的として明示された国・地域。 | 2026-06-12 | 2026-06-22 | 中 | `source--daily-f24514e21b73cfc154c2`, `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | [Mustang Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--daily-a69a00355bf3c87debe0`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 活動「同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a69a00355bf3c87debe0`, `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでMustang Pandaの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | NATO加盟国 | 活動「欧州の外交官を監視するために悪用されるWindowsゼロデイ（アクティブ攻撃中）」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-0e120eeb7ae8f6ffbb8f` |
+| regions | アジア | MITRE ATT&CKのGroup概要でMustang Pandaの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | アフリカ | エチオピア、南アフリカ、南スーダンで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | チベット | 構造化OSINTの被害地域フィールドでMustang Pandaの標的範囲としてチベットが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、ネパール、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a69a00355bf3c87debe0`, `source--daily-babfc72d5fb1a4c1aea7`, `source--daily-f24514e21b73cfc154c2`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南欧 | イタリア、キプロス、ギリシャ、スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-0e120eeb7ae8f6ffbb8f`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | レビュー済みアクターマッピングの標的欄に記録された東アジアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-283dce07d0cab28747ec`, `source--daily-6762aff5feb471d8906d`, `source--daily-a69a00355bf3c87debe0`, `source--daily-babfc72d5fb1a4c1aea7`, `source--daily-f24514e21b73cfc154c2`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | 活動「中国のAPTグループ2つ、ASEAN諸国に対するサイバースパイ活動を強化」の記述で標的地域として東南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-0a1a885ea4fa4a799508`, `source--daily-283dce07d0cab28747ec`, `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、スロバキア、チェコ、ハンガリー、ブルガリア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-0e120eeb7ae8f6ffbb8f`, `source--daily-babfc72d5fb1a4c1aea7`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | MITRE ATT&CKのGroup概要でMustang Pandaの標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--daily-0e120eeb7ae8f6ffbb8f`, `source--daily-79fb3689c96eb2761182`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 金融 | 活動「同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a69a00355bf3c87debe0` |
 | sectors | エネルギー | 活動「Mustang Panda、ZOHOMURKとMINIRECONでインドの政府・エネルギー部門を標的化」の記述で標的として明示された産業。 | 2026-06-12 | 2026-06-22 | 中 | `source--daily-f24514e21b73cfc154c2` |
 | sectors | 非営利・市民社会 | ttps://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -199,7 +240,7 @@ The repository mapping workbook places this actor in the China worksheet.
 | sectors | 教育・研究 | [Mustang Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Nonprofit and Civil Society | Targeting text indicates the Nonprofit and Civil Society sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -422,6 +463,8 @@ The repository mapping workbook places this actor in the China worksheet.
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

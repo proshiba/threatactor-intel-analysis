@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1549`
 - 状態: draft
-- 更新日時: 2026-07-29T15:37:04Z
+- 更新日時: 2026-07-29T23:13:55Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -130,16 +130,22 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | アラブ首長国連邦 | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的・被害国として明示されている。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--target-audit-etda-threat-group-cards` |
+| countries | アルバニア | 構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてアルバニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エジプト | BridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
+| countries | エチオピア | 通信分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
+| countries | タンザニア | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | 航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
+| countries | ブルキナファソ | 金融分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
+| countries | ヨルダン | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
 | countries | 米国 | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd` |
-| countries | イスラエル | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd` |
-| countries | Burkina Faso | 金融分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Egypt | BridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Ethiopia | 通信分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Jordan | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Pakistan | 航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| countries | Tanzania | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| regions | Africa | 2026年報告で活動範囲の拡大が確認された地域。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
-| regions | Middle East | 継続的な重点標的地域として報告された。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
+| regions | アフリカ | 2026年報告で活動範囲の拡大が確認された地域。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
+| regions | 中東 | 継続的な重点標的地域として報告された。 | 2026-02 | 2026-04 | 高 | `source--actor-mapping-workbook`, `source--daily-96ac11961cae303bc9fd`, `source--kaspersky-mirage-kitten-2026`, `source--target-audit-etda-threat-group-cards`, `source--unc1549--c47ef662fbdb6d88` |
+| regions | 南アジア | インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | アルバニア、トルコで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 金融 | 活動「Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026` |
 | sectors | Aerospace | 主要な情報収集標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
 | sectors | Aviation | 主要な情報収集標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
@@ -148,7 +154,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | sectors | Government | JordanおよびTanzaniaに関する報告で対象組織種別として挙げられた。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
 | sectors | Telecommunications | Ethiopiaの被害例を含む標的分野。 | 不明 | 不明 | 高 | `source--kaspersky-mirage-kitten-2026` |
 
-選定ロジック: 航空宇宙、航空、防衛、通信など、国家・産業上の情報価値が高い組織を選び、技術職向けの採用・会議テーマを用いて個別に接触する。
+選定ロジック: 航空宇宙、航空、防衛、通信など、国家・産業上の情報価値が高い組織を選び、技術職向けの採用・会議テーマを用いて個別に接触する。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -215,6 +221,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | source--unc1549--9829507d9159174b | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
 | source--unc1549--c47ef662fbdb6d88 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

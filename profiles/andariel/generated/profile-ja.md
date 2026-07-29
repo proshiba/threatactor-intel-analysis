@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--andariel`
 - 状態: draft
-- 更新日時: 2026-07-29T15:20:21Z
+- 更新日時: 2026-07-29T23:11:59Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -122,8 +122,8 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | malware-campaign | 不明 | 不明 | 2024-06-04 |  |  |  |  | 北朝鮮関連のアクターAndarielが新しいGo言語ベースのDora RATマルウェアを使用。 韓国の教育機関、製造業、建設業をターゲットにした攻撃で利用された。 この攻撃は、脆弱なApache Tomcatサーバーを攻撃してマルウェアを配布。 Dora RATはリバースシェルやファイルダウンロード/アップロードが可能な単純なマルウェアの一種。 有効な証明書で署名されたDora RATが確認された。英国のソフトウェア開発者からの有効な証明書で署名されていた。 | 高 | `source--daily-cecaacd0e1f99bf64539` |
-| Andarielハッカーグループ、米国組織への金融攻撃に注力 | ransomware-extortion | 不明 | 不明 | 2024-10-03 |  |  |  | victim--activity-rule--6f9ed551e9c9b1e02090 | 北朝鮮のAndarielグループが米国の組織に対して金融目的の攻撃を開始。 DtrackやNukebotなどのバックドアツールを使用し、攻撃を試みたが、ランサムウェアの展開は失敗。 攻撃は金銭的な目的である可能性が高い。 Symantecによると、このグループは米国で組織に対する恐喝攻撃を仕掛けることを続けている可能性が高い。 AndarielはLazarusグループの一部とされ、2019年以降、主にスパイ活動を行っていた。比較的最近の動向として金銭目的の攻撃も行っている。 | 高 | `source--daily-d2af83b6cab76368c85d` |
+| Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | malware-campaign | 不明 | 不明 | 2024-06-04 | target--activity-rule--country--6cb716c577f256f44a3e |  |  | victim--activity-rule--e2c326b212899123af6a | 北朝鮮関連のアクターAndarielが新しいGo言語ベースのDora RATマルウェアを使用。 韓国の教育機関、製造業、建設業をターゲットにした攻撃で利用された。 この攻撃は、脆弱なApache Tomcatサーバーを攻撃してマルウェアを配布。 Dora RATはリバースシェルやファイルダウンロード/アップロードが可能な単純なマルウェアの一種。 有効な証明書で署名されたDora RATが確認された。英国のソフトウェア開発者からの有効な証明書で署名されていた。 | 高 | `source--daily-cecaacd0e1f99bf64539` |
+| Andarielハッカーグループ、米国組織への金融攻撃に注力 | ransomware-extortion | 不明 | 不明 | 2024-10-03 | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  | victim--activity-rule--6f9ed551e9c9b1e02090 | 北朝鮮のAndarielグループが米国の組織に対して金融目的の攻撃を開始。 DtrackやNukebotなどのバックドアツールを使用し、攻撃を試みたが、ランサムウェアの展開は失敗。 攻撃は金銭的な目的である可能性が高い。 Symantecによると、このグループは米国で組織に対する恐喝攻撃を仕掛けることを続けている可能性が高い。 AndarielはLazarusグループの一部とされ、2019年以降、主にスパイ活動を行っていた。比較的最近の動向として金銭目的の攻撃も行っている。 | 高 | `source--daily-d2af83b6cab76368c85d` |
 | 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連 | ransomware-extortion | 不明 | 不明 | 2024-10-31 |  |  |  | victim--activity-rule--20aa8dc2ff7cf599e40a | 北朝鮮のハッカーグループAndarielがPlayランサムウェア攻撃に関与 複数のネットワークを侵害し、MimikatzやSliverなどのツールや、Andariel独自の情報窃取マルウェアであるDTrackを利用 2024年9月のインシデントで証拠が発見され、アフィリエイトかIABとしての関係が疑われる 侵入後、Playランサムウェアの展開が3ヶ月だった。 攻撃目的はサイバースパイ活動および資金調達などの可能性がある。 RaaSを利用し、制裁逃れを図っている可能性が示唆される | 中 | `source--daily-1147479b46313418b844` |
 | 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | malware-campaign | 不明 | 不明 | 2024-04-24 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc |  |  | victim--activity-rule--e29d913947fb72adf07f | 北朝鮮のハッキンググループが韓国の防衛産業を標的に 韓国警察の報告書では、Lazarus, Andariel, Kimsukyが関与している3つのインシデントを記載 ターゲットまたはその下請け組織のネットワークの脆弱性を利用しマルウェアを植え付ける インシデントの1つでは、データの抜き取りとクラウドサーバへの転送が行われた 韓国警察は、多要素認証の導入・外国からのIPアクセスのブロックなどのセキュリティ強化を勧めている | 中 | `source--daily-b9be11e58ab6c82617ab` |
 | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--46b5013e2c45c111d973 | victim--activity-rule--b31e8bf044395b8b23c6 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
@@ -141,20 +141,40 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 韓国 | 活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55`, `source--daily-b9be11e58ab6c82617ab` |
+| countries | インド | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | グアテマラ | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | フランス | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでAndarielの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでAndarielの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでAndarielの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 活動「Andarielハッカーグループ、米国組織への金融攻撃に注力」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-d2af83b6cab76368c85d`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでAndarielの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 韓国 | 活動「Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55`, `source--daily-b9be11e58ab6c82617ab`, `source--daily-cecaacd0e1f99bf64539`, `source--target-audit-misp-threat-actor` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでAndarielの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中南米 | グアテマラ、ブラジルで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-d2af83b6cab76368c85d`, `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | 中国、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55`, `source--daily-b9be11e58ab6c82617ab`, `source--daily-cecaacd0e1f99bf64539`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | sectors | 防衛・軍事 | 活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-b9be11e58ab6c82617ab` |
 | sectors | 製造・産業 | 活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55`, `source--daily-b9be11e58ab6c82617ab` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連 | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  | encryption: 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連<br>espionage: 攻撃目的はサイバースパイ活動および資金調達などの可能性がある。 | 不明 | 不明 | 2024-10-31 | 中 | `source--daily-1147479b46313418b844` |
-| 被害事例: Andarielハッカーグループ、米国組織への金融攻撃に注力 | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  | encryption: DtrackやNukebotなどのバックドアツールを使用し、攻撃を試みたが、ランサムウェアの展開は失敗。<br>espionage: AndarielはLazarusグループの一部とされ、2019年以降、主にスパイ活動を行っていた。 | 不明 | 不明 | 2024-10-03 | 高 | `source--daily-d2af83b6cab76368c85d` |
+| 被害事例: Andarielハッカーグループ、米国組織への金融攻撃に注力 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  |  | encryption: DtrackやNukebotなどのバックドアツールを使用し、攻撃を試みたが、ランサムウェアの展開は失敗。<br>espionage: AndarielはLazarusグループの一部とされ、2019年以降、主にスパイ活動を行っていた。 | 不明 | 不明 | 2024-10-03 | 高 | `source--daily-d2af83b6cab76368c85d` |
 | 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--46b5013e2c45c111d973 | VPN／リモートアクセス機器 |  | 不明 | 不明 | 2024-08-06 | 中 | `source--daily-444c87a0051642065f55` |
 | 被害事例: 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc |  |  | クラウド／SaaS |  | 不明 | 不明 | 2024-04-24 | 中 | `source--daily-b9be11e58ab6c82617ab` |
+| 被害事例: Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6cb716c577f256f44a3e |  |  | サーバー |  | 不明 | 不明 | 2024-06-04 | 高 | `source--daily-cecaacd0e1f99bf64539` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -271,6 +291,7 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

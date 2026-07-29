@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--zebrocy`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:13Z
+- 更新日時: 2026-07-29T23:13:55Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -112,31 +112,49 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Argentina | Targeting text mentions argentina. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Bangladesh | Targeting text mentions bangladesh. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | China | Targeting text mentions china. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Ecuador | Targeting text mentions ecuador. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | France | Targeting text mentions france. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Germany | Targeting text mentions germany. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Hong Kong | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | India | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Indonesia | Targeting text mentions indonesia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Italy | Targeting text mentions italy. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Japan | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Pakistan | Targeting text mentions pakistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Philippines | Targeting text mentions philippines. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Romania | Targeting text mentions romania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Saudi Arabia | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | South Korea | Targeting text mentions south korea. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Switzerland | Targeting text mentions switzerland. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Taiwan | Targeting text mentions taiwan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Thailand | Targeting text mentions thailand. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Turkey | Targeting text mentions turkey. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Ukraine | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | United States | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | アラブ首長国連邦 | レビュー済みアクターマッピングの標的欄に記録されたアラブ首長国連邦を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | アルゼンチン | Targeting text mentions argentina. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | イタリア | Targeting text mentions italy. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | インド | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | インドネシア | Targeting text mentions indonesia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | エクアドル | Targeting text mentions ecuador. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | カタール | レビュー済みアクターマッピングの標的欄に記録されたカタールを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | サウジアラビア | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | スイス | Targeting text mentions switzerland. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | セネガル | レビュー済みアクターマッピングの標的欄に記録されたセネガルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | セルビア | レビュー済みアクターマッピングの標的欄に記録されたセルビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | タイ | Targeting text mentions thailand. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | トルコ | Targeting text mentions turkey. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ドイツ | Targeting text mentions germany. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | バングラデシュ | Targeting text mentions bangladesh. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | バーレーン | レビュー済みアクターマッピングの標的欄に記録されたバーレーンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | パキスタン | Targeting text mentions pakistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | フィリピン | Targeting text mentions philippines. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | フランス | Targeting text mentions france. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ブルガリア | レビュー済みアクターマッピングの標的欄に記録されたブルガリアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ルーマニア | Targeting text mentions romania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 北マケドニア | レビュー済みアクターマッピングの標的欄に記録された北マケドニアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 南アフリカ | レビュー済みアクターマッピングの標的欄に記録された南アフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 台湾 | Targeting text mentions taiwan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 香港 | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | アフリカ | レビュー済みアクターマッピングの標的欄に記録されたアフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 中南米 | アルゼンチン、エクアドルで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 中東 | アラブ首長国連邦、カタール、サウジアラビア、トルコ、バーレーンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 南アジア | インド、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 南欧 | イタリア、セルビア、北マケドニアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 南米 | アルゼンチン、エクアドルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 東南アジア | インドネシア、タイ、フィリピンで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 東欧 | ウクライナ、ブルガリア、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 欧州 | イタリア、ウクライナ、スイス、セルビア、トルコ、ドイツ、フランス、ブルガリア、ルーマニア、北マケドニアで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

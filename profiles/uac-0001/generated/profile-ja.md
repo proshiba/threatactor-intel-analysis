@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0001`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -112,12 +112,39 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | ウクライナ | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+| countries | アフガニスタン | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | アルメニア | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ウクライナ | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9`, `source--target-audit-misp-threat-actor` |
+| countries | カザフスタン | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ジョージア | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | タジキスタン | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてタジキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ハンガリー | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | フランス | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ベルギー | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | モンゴル | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ヨルダン | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | countries | ロシア | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | NATO加盟国 | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9`, `source--target-audit-misp-threat-actor` |
+| regions | アジア太平洋 | 構造化OSINTの被害地域フィールドでUAC-0001の標的範囲としてアジア太平洋が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | コーカサス | アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中央アジア | カザフスタン、タジキスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中東 | トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | アフガニスタン、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | モンゴル、中国、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | ウクライナ、ハンガリー、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでUAC-0001の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9`, `source--target-audit-misp-threat-actor` |
 | sectors | 政府・行政 | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
 | sectors | 防衛・軍事 | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -166,6 +193,7 @@ Aliasなし
 | source--uac-0001--b6eaa0164d8e8fa5 | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0001--c7a54bcc2d7d227d | CERTFR 2026 CTI 003 |  | 2026 | summary/2026/CERTFR-2026-CTI-003.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0001--e9aee5c565abec18 | Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics |  | 不明 | International Strategic/Russia/Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

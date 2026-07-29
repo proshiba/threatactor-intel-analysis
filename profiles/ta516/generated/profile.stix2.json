@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--ef0d6fc5-e1bd-41ad-bf13-5dad60d01ac7",
       "created": "2026-07-25T15:23:04Z",
-      "modified": "2026-07-25T15:23:04Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -45,7 +45,7 @@
         "history": "",
         "capability_details": "Remocs",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -187,6 +187,28 @@
       "aliases": []
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bd0f559a-5939-4932-95e4-7f3df6896c59",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "全世界",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害地域フィールドでTA516の標的範囲として全世界が記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3534cbdc-d780-4c1b-873f-dfdf54e660fa",
@@ -199,6 +221,21 @@
       "source_ref": "intrusion-set--ef0d6fc5-e1bd-41ad-bf13-5dad60d01ac7",
       "target_ref": "malware--ecc1d800-46cd-4178-994f-42f78ce268e9",
       "description": "TA516 uses Remocs.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43c66eb1-43a8-4464-a85d-55bf431e395f",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--ef0d6fc5-e1bd-41ad-bf13-5dad60d01ac7",
+      "target_ref": "identity--bd0f559a-5939-4932-95e4-7f3df6896c59",
+      "description": "TA516 targets 全世界 (profile target category: regions).",
       "x_confidence": "medium"
     },
     {
@@ -223,7 +260,7 @@
       "spec_version": "2.1",
       "id": "report--a2e3e263-7003-4f0e-83b7-9688e321c57e",
       "created": "2026-07-25T15:23:04Z",
-      "modified": "2026-07-29T15:36:12Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -232,10 +269,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T15:36:12Z",
+      "published": "2026-07-29T23:12:01Z",
       "object_refs": [
         "intrusion-set--ef0d6fc5-e1bd-41ad-bf13-5dad60d01ac7",
-        "malware--ecc1d800-46cd-4178-994f-42f78ce268e9"
+        "malware--ecc1d800-46cd-4178-994f-42f78ce268e9",
+        "identity--bd0f559a-5939-4932-95e4-7f3df6896c59"
       ],
       "x_schema_version": "1.1.0"
     }

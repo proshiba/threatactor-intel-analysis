@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--daggerfly`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:10Z
+- 更新日時: 2026-07-29T23:12:00Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -116,7 +116,7 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | cyber-espionage | 不明 | 不明 | 2025-02-05 |  |  | ttp--activity-rule--05c6be6b3497b5378ff5 |  | 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。 この攻撃スイートは「ELF/Sshdinjector.A!tr」と名付けられ、SSHデーモンに注入されたマルウェアの集合体であり、システム偵察、資格情報の窃取、プロセス監視、リモートコマンド実行、ファイル操作などの幅広い機能を持つ。 攻撃者は、デバイスが既に感染しているか、root権限で実行されているかを確認し、条件が満たされると、SSHライブラリ（libssdh.so）などの複数のバイナリをターゲットマシンにドロップする。 このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。 | 中 | `source--daily-3416f994a1eefc895ed4` |
+| 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | cyber-espionage | 不明 | 不明 | 2025-02-05 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  | ttp--activity-rule--05c6be6b3497b5378ff5 | victim--activity-rule--a4c4ccaf269236ce161c | 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。 この攻撃スイートは「ELF/Sshdinjector.A!tr」と名付けられ、SSHデーモンに注入されたマルウェアの集合体であり、システム偵察、資格情報の窃取、プロセス監視、リモートコマンド実行、ファイル操作などの幅広い機能を持つ。 攻撃者は、デバイスが既に感染しているか、root権限で実行されているかを確認し、条件が満たされると、SSHライブラリ（libssdh.so）などの複数のバイナリをターゲットマシンにドロップする。 このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。 | 中 | `source--daily-3416f994a1eefc895ed4` |
 
 
 
@@ -124,15 +124,31 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | インド | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ナイジェリア | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてナイジェリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | マカオ | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてマカオが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ミャンマー | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 活動「中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-3416f994a1eefc895ed4`, `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでDaggerflyの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | アフリカ | 構造化OSINTの被害地域フィールドでDaggerflyの標的範囲としてアフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | チベット | 構造化OSINTの被害地域フィールドでDaggerflyの標的範囲としてチベットが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | マカオ、中国、台湾、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-3416f994a1eefc895ed4`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | フィリピン、ベトナム、マレーシア、ミャンマーで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 政府・行政 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 非営利・市民社会 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 情報通信 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  | ttp--activity-rule--05c6be6b3497b5378ff5 | サーバー, ネットワーク機器 |  | 不明 | 不明 | 2025-02-05 | 中 | `source--daily-3416f994a1eefc895ed4` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -192,6 +208,8 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

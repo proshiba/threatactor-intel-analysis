@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--applejeus`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:09Z
+- 更新日時: 2026-07-29T23:11:59Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -119,7 +119,7 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 3CX Supply Chain Attack | campaign | 2022-11-01T06:00:00.000Z | 2023-03-01T05:00:00.000Z | 2026-05-12 | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--f85697f31d3eefe544e2 |  | ttp--mitre-campaign--00eebce179e2cc165a78, ttp--mitre-campaign--09b1c7c970cc6f0872ff, ttp--mitre-campaign--10162a98ebfac9199a1f, ttp--mitre-campaign--1eee9d018fec2af13386, ttp--mitre-campaign--213481447859524a9328, ttp--mitre-campaign--271a72b9c2a22725acff, ttp--mitre-campaign--39b87e2e673dd6758c97, ttp--mitre-campaign--464d5726f874a68d2ff3, ttp--mitre-campaign--4fec03052d9bb90bcfcc, ttp--mitre-campaign--53a86942be3f4c2beffa, ttp--mitre-campaign--84a8e41beba9ba2a8ecb, ttp--mitre-campaign--863977544862a6feb9d7, ttp--mitre-campaign--8e86c6b7197ec50ac3de, ttp--mitre-campaign--aab01ff9f91ce4d15c34, ttp--mitre-campaign--adf5756d9d7c4a3ebe51, ttp--mitre-campaign--b5a6e63f8effa5428825, ttp--mitre-campaign--b69f659ac2baa6116cd9, ttp--mitre-campaign--e1007fd2d70a43c93a3c, ttp--mitre-campaign--f06ef908333d43453295, ttp--mitre-campaign--f0c2354d4975290b9f03, ttp--mitre-campaign--f434cc8e6bdd6b0a6530, ttp--mitre-campaign--fe00acecd59b2d85e57e | victim--activity-rule--92a04f97301418051a53 | The [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057) was the first publicly reported case of one supply chain compromise triggering another, leading to a cascading, two-stage intrusion. The initial supply chain attack began when a 3CX employee downloaded and executed a trojanized, end-of-life version of the X_Trader trading software from Trading Technologies. This provided UNC4736, a threat cluster associated with [AppleJeus](https://attack.mitre.org/groups/G1049), access to the 3CX environment. From there UNC4736 compromised the Windows and macOS build environments used to distribute the 3CX desktop application to their customers.(Citation: Mandiant 3cx UNC4736 2023) While 3CX serves more than 600,000 customers and 12 million users, only a subset of systems were affected. Subsequent targeting focused on victims in the defense and cryptocurrency sectors, where attackers deployed secondary payloads such as Gopuram for credential theft and persistence.(Citation: Kaspersky 3CX Gopuram 2023) The campaign began in late 2022 and was disrupted after security vendors publicly reported the compromise in March 2023.(Citation: 3cx official statement 2023)(Citation: Krebs 3cx overview 2023) | 高 | `source--mitre-attack-19-1` |
-| Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | malware-campaign | 不明 | 不明 | 2024-12-10 | target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--83f649cfc55e69ff542f | Radiant Capitalは、10月16日のサイバー攻撃で5,000万ドルの暗号通貨が盗まれたと発表。 サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。 攻撃は、3人の信頼された開発者のデバイスにマルウェアを感染させ、正規の署名を収集して不正な取引を実行する手法で行われた。 ハッカーは、ルーチンのマルチシグネチャプロセスを悪用し、トランザクションエラーを装って有効な署名を収集し、ArbitrumおよびBSC市場から資金を窃取。 米国政府は以前から、北朝鮮のハッカーが暗号通貨企業を標的にして資金を窃取し、国家活動を支援していると警告している。 攻撃は2024年9月11日に始まり、Radiantの開発者が元請負業者を装ったTelegramメッセージを受信し、悪意のあるZIPファイルをダウンロードするように仕向けられた。このZIPファイルには、「InletDrift」という名前のmacOSマルウェアがあった。 | 中 | `source--daily-f645f7df90b96e0f1b18` |
+| Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | malware-campaign | 不明 | 不明 | 2024-12-10 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--83f649cfc55e69ff542f | Radiant Capitalは、10月16日のサイバー攻撃で5,000万ドルの暗号通貨が盗まれたと発表。 サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。 攻撃は、3人の信頼された開発者のデバイスにマルウェアを感染させ、正規の署名を収集して不正な取引を実行する手法で行われた。 ハッカーは、ルーチンのマルチシグネチャプロセスを悪用し、トランザクションエラーを装って有効な署名を収集し、ArbitrumおよびBSC市場から資金を窃取。 米国政府は以前から、北朝鮮のハッカーが暗号通貨企業を標的にして資金を窃取し、国家活動を支援していると警告している。 攻撃は2024年9月11日に始まり、Radiantの開発者が元請負業者を装ったTelegramメッセージを受信し、悪意のあるZIPファイルをダウンロードするように仕向けられた。このZIPファイルには、「InletDrift」という名前のmacOSマルウェアがあった。 | 中 | `source--daily-f645f7df90b96e0f1b18` |
 
 
 
@@ -127,18 +127,54 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | イスラエル | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エクアドル | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてエクアドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | グアテマラ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チリ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベルギー | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-f645f7df90b96e0f1b18`, `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中南米 | エクアドル、グアテマラ、チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | 構造化OSINTの被害地域フィールドでAppleJeusの標的範囲として全世界が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-f645f7df90b96e0f1b18`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南米 | エクアドル、チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | オランダ、ドイツ、フランス、ベルギー、ポーランド、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | IT・ソフトウェア | 活動「Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-f645f7df90b96e0f1b18` |
 | sectors | 防衛・軍事 | 活動「3CX Supply Chain Attack」の記述で標的として明示された産業。 | 2022-11-01T06:00:00.000Z | 2023-03-01T05:00:00.000Z | 中 | `source--mitre-attack-19-1` |
 | sectors | 金融 | From these compromised environments, it selectively deploys additional backdoors to enable extended operations against high-value financial targets.(Citation: Mandiant DPRK Groups 2023)(Citation: JPCert Blog Laz Subgroups 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 暗号資産・Web3 | [AppleJeus](https://attack.mitre.org/groups/G1049) primarily targets the cryptocurrency industry and is most notably responsible for the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057).(Citation: Mandiant 3cx UNC4736 2023) The group traditionally deploys malicious cryptocurrency software in combination with [Phishing](https://attack.mitre.org/techniques/T1566). | 2022-11-01T06:00:00.000Z | 2023-03-01T05:00:00.000Z | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df |  |  |  |  | 不明 | 不明 | 2024-12-10 | 中 | `source--daily-f645f7df90b96e0f1b18` |
+| 被害事例: Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--932f4928d5e1ec28e2df |  |  |  |  | 不明 | 不明 | 2024-12-10 | 中 | `source--daily-f645f7df90b96e0f1b18` |
 | 被害事例: 3CX Supply Chain Attack | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--f85697f31d3eefe544e2 |  | ttp--mitre-campaign--00eebce179e2cc165a78, ttp--mitre-campaign--09b1c7c970cc6f0872ff, ttp--mitre-campaign--10162a98ebfac9199a1f, ttp--mitre-campaign--1eee9d018fec2af13386, ttp--mitre-campaign--213481447859524a9328, ttp--mitre-campaign--271a72b9c2a22725acff, ttp--mitre-campaign--39b87e2e673dd6758c97, ttp--mitre-campaign--464d5726f874a68d2ff3, ttp--mitre-campaign--4fec03052d9bb90bcfcc, ttp--mitre-campaign--53a86942be3f4c2beffa, ttp--mitre-campaign--84a8e41beba9ba2a8ecb, ttp--mitre-campaign--863977544862a6feb9d7, ttp--mitre-campaign--8e86c6b7197ec50ac3de, ttp--mitre-campaign--aab01ff9f91ce4d15c34, ttp--mitre-campaign--adf5756d9d7c4a3ebe51, ttp--mitre-campaign--b5a6e63f8effa5428825, ttp--mitre-campaign--b69f659ac2baa6116cd9, ttp--mitre-campaign--e1007fd2d70a43c93a3c, ttp--mitre-campaign--f06ef908333d43453295, ttp--mitre-campaign--f0c2354d4975290b9f03, ttp--mitre-campaign--f434cc8e6bdd6b0a6530, ttp--mitre-campaign--fe00acecd59b2d85e57e |  | supply-chain: 3CX Supply Chain Attack | 2022-11-01T06:00:00.000Z | 2023-03-01T05:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-1` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -235,6 +271,7 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

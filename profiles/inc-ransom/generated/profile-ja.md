@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--inc-ransom`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:10Z
+- 更新日時: 2026-07-29T23:12:00Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -129,13 +129,15 @@ INC Ransomの標準化プロファイル。リポジトリ内の専用資料1件
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | 米国 | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 2024-11-06 | 2024-11-06 | 高 | `source--daily-48e62c0cd488e280d1f7`, `source--mitre-attack-19-1` |
+| regions | 全世界 | MITRE ATT&CKのGroup概要でINC Ransomの標的範囲として全世界が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 欧州 | MITRE ATT&CKのGroup概要でINC Ransomの標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 政府・行政 | 活動「小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表」の記述で標的として明示された産業。 | 2024-11-06 | 2024-11-06 | 中 | `source--daily-48e62c0cd488e280d1f7` |
 | sectors | 金融 | 活動「小売大手Ahold Delhaize、220万人に影響するデータ侵害を発表」の記述で標的として明示された産業。 | 2024-11-06 | 2024-11-06 | 中 | `source--daily-48e62c0cd488e280d1f7` |
 | sectors | 教育・研究 | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 医療・ヘルスケア | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 2024-11-06 | 2024-11-06 | 高 | `source--daily-3d064f91540dd031b11b`, `source--daily-48e62c0cd488e280d1f7`, `source--mitre-attack-19-1` |
 | sectors | 製造・産業 | [INC Ransom](https://attack.mitre.org/groups/G1032) has targeted organizations worldwide most commonly in the industrial, healthcare, and education sectors in the US and Europe.(Citation: Bleeping Computer INC Ransomware March 2024)(Citation: Cybereason INC Ransomware November 2023)(Citation: Secureworks GOLD IONIC April 2024)(Citation: SentinelOne INC Ransomware) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

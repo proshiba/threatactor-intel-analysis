@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--void-manticore`
 - 状態: draft
-- 更新日時: 2026-07-29T15:38:37Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -134,11 +134,15 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 米国 | uding [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) in operations against Albania, Karma and Karma Below in campaigns targeting Israeli organizations, and Handala Hack, its current primary persona, which has claimed activity against Israeli and U.S. entities, including a March 2026 attack against Stryker Corporation.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: DOJ FBI Handala Hack March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) has been observed collaborat | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| countries | イスラエル | istry of Intelligence and Security (MOIS).(Citation: Check Point VOID MANTICORE Handala Hack March 2026) Active since at least mid-2022, VOID MANTICORE has targeted government entities, critical infrastructure, and private sector organizations across Albania, Israel, and the United States.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: Palo Alto VOID MANTICORE Iran Cyber Threats March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) conducts destructive cyber operations, combining wiper attacks with hack-and-leak campaigns. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | アルバニア | MITRE ATT&CKのGroup概要でVOID MANTICOREの標的国として明示されている。 | 2021-05-01T04:00:00.000Z | 2022-09-01T04:00:00.000Z | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | istry of Intelligence and Security (MOIS).(Citation: Check Point VOID MANTICORE Handala Hack March 2026) Active since at least mid-2022, VOID MANTICORE has targeted government entities, critical infrastructure, and private sector organizations across Albania, Israel, and the United States.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: Palo Alto VOID MANTICORE Iran Cyber Threats March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) conducts destructive cyber operations, combining wiper attacks with hack-and-leak campaigns. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | イラン | 活動「HomeLand Justice」の記述で標的・被害国として明示されている。 | 2021-05-01T04:00:00.000Z | 2022-09-01T04:00:00.000Z | 中 | `source--mitre-attack-19-1` |
+| countries | 米国 | uding [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) in operations against Albania, Karma and Karma Below in campaigns targeting Israeli organizations, and Handala Hack, its current primary persona, which has claimed activity against Israeli and U.S. entities, including a March 2026 attack against Stryker Corporation.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: DOJ FBI Handala Hack March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) has been observed collaborat | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-misp-threat-actor` |
+| regions | 中東 | 構造化OSINTの被害地域フィールドでVOID MANTICOREの標的範囲として中東が記録されている。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでVOID MANTICOREの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | sectors | 政府・行政 | [VOID MANTICORE](https://attack.mitre.org/groups/G1055) is a threat group assessed to operate on behalf of Iran’s Ministry of Intelligence and Security (MOIS).(Citation: Check Point VOID MANTICORE Handala Hack March 2026) Active since at least mid-2022, VOID MANTICORE has targeted government entities, critical infrastructure, and private sector organizations across Albania, Israel, and the United States.(Citation: Check Point VOID MANTICORE Handala Hack March 2026)(Citation: Palo Alto VOID MANTICORE Iran Cyber Threats March 2026) [VOID MANTICORE](https://attack.mitre.org/groups/G1055) conducts | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -296,6 +300,8 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | source--void-manticore--e61cfd99872b143b | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
 | source--void-manticore--eb26cccb5d8b7a99 | tool of first resort israel hamas war cyber |  | 不明 | summary/2024/tool-of-first-resort-israel-hamas-war-cyber.pdf | report | TLP:CLEAR | 中 |
 | source--void-manticore--ef9c292f567e0dc2 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

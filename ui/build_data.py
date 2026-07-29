@@ -110,6 +110,7 @@ def build_record(slug: str, profile_dir: Path) -> tuple[dict, list] | None:
         },
         "motivations": sorted({m.get("type") for m in profile.get("motivations", []) if m.get("type")}),
         "target_countries": [t.get("name") for t in targets.get("countries", []) if t.get("name")],
+        "target_regions": [t.get("name") for t in targets.get("regions", []) if t.get("name")],
         "target_sectors": [t.get("name") for t in targets.get("sectors", []) if t.get("name")],
         "counts": {
             "aliases": len(aliases),

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt-c-37`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:09Z
+- 更新日時: 2026-07-29T23:11:59Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -127,14 +127,18 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Syria | Meta observed targeting of people and organizations in Syria. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでAPT-C-37の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
+| countries | エジプト | 構造化OSINTの被害国フィールドでAPT-C-37の標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シリア | Meta observed targeting of people and organizations in Syria. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021`, `source--target-audit-misp-360net` |
+| countries | パレスチナ | 構造化OSINTの被害国フィールドでAPT-C-37の標的・被害国としてパレスチナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net` |
+| regions | 中東 | イスラエル、シリア、パレスチナで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--meta-syria-hackers-2021`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
 | sectors | Civil Society | Meta's observed victim set included Civil Society targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | sectors | Defense | Meta's observed victim set included Defense targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | sectors | Government | Meta's observed victim set included Government targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | roles | former military personnel | Meta identified former military personnel in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | roles | Free Syrian Army-linked persons | Meta identified Free Syrian Army-linked persons in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 
-選定ロジック: Syrian civil-society, media, humanitarian, opposition, and former military targets holding politically or militarily relevant information.
+選定ロジック: Syrian civil-society, media, humanitarian, opposition, and former military targets holding politically or militarily relevant information. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -181,6 +185,8 @@ TTPなし
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--meta-syria-hackers-2021 | Taking Action Against Hackers in Pakistan and Syria | Meta | 2021-11-16 | https://about.fb.com/news/2021/11/taking-action-against-hackers-in-pakistan-and-syria/ | vendor-research | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

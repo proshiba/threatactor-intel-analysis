@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--menupass`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:11Z
+- 更新日時: 2026-07-29T23:12:00Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -172,7 +172,43 @@ Dust Storm; Cloud Hopper; ChessMaster
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 日本 | [menuPass](https://attack.mitre.org/groups/G0045) has targeted healthcare, defense, aerospace, finance, maritime, biotechnology, energy, and government sectors globally, with an emphasis on Japanese organizations. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | アラブ首長国連邦 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イタリア | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | カナダ | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スイス | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | スウェーデン | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards` |
+| countries | ノルウェー | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フィンランド | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フランス | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ブラジル | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベルギー | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | モンテネグロ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国としてモンテネグロが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 米国 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでmenuPassの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アジア | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-1`, `source--uk-apt10-global-campaign-2018` |
+| regions | 中東 | アラブ首長国連邦、イスラエル、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--doj-apt10-global-campaign-2018`, `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-1`, `source--uk-apt10-global-campaign-2018` |
+| regions | 北米 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--uk-apt10-global-campaign-2018` |
+| regions | 南欧 | イタリア、モンテネグロで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | シンガポール、タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | APT10の標的範囲は日本に限定されない。米司法省はMSP Theft Campaignで少なくとも12か国の被害企業を列挙し、英国政府・NCSCとMITRE ATT&CKはいずれも世界規模の標的活動を記載している。 | 不明 | 不明 | 高 | `source--doj-apt10-global-campaign-2018`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--uk-apt10-global-campaign-2018` |
 | sectors | 製造・産業 | In 2016 and 2017, the group is known to have targeted managed IT service providers (MSPs), manufacturing and mining companies, and a university.(Citation: Palo Alto menuPass Feb 2017)(Citation: Crowdstrike CrowdCast Oct 2013)(Citation: FireEye Poison Ivy)(Citation: PWC Cloud Hopper April 2017)(Citation: FireEye APT10 April 2017)(Citation: DOJ APT10 Dec 2018)( | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 運輸・航空・海運 | [menuPass](https://attack.mitre.org/groups/G0045) has targeted healthcare, defense, aerospace, finance, maritime, biotechnology, energy, and government sectors globally, with an emphasis on Japanese organizations. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 教育・研究 | In 2016 and 2017, the group is known to have targeted managed IT service providers (MSPs), manufacturing and mining companies, and a university.(Citation: Palo Alto menuPass Feb 2017)(Citation: Crowdstrike CrowdCast Oct 2013)(Citation: FireEye Poison Ivy)(Citation: PWC Cloud Hopper April 2017)(Citation: FireEye APT10 April 2017)(Citation: DOJ APT10 Dec 2018)(Citation: District Court of NY APT10 Indic | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -182,7 +218,7 @@ Dust Storm; Cloud Hopper; ChessMaster
 | sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
 | sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -292,6 +328,10 @@ Dust Storm; Cloud Hopper; ChessMaster
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--doj-apt10-global-campaign-2018 | Two Chinese Hackers Associated With the Ministry of State Security Charged with Global Computer Intrusion Campaigns | U.S. Department of Justice | 2018-12-20 | https://www.justice.gov/archives/opa/pr/two-chinese-hackers-associated-ministry-state-security-charged-global-computer-intrusion | government-legal-announcement | TLP:CLEAR | 高 |
+| source--uk-apt10-global-campaign-2018 | UK and allies reveal global scale of Chinese cyber campaign | UK Government / NCSC | 2018-12-20 | https://www.gov.uk/government/news/uk-and-allies-reveal-global-scale-of-chinese-cyber-campaign | government-attribution-statement | TLP:CLEAR | 高 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

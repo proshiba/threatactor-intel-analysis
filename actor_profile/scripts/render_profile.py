@@ -760,6 +760,18 @@ def render_stix(
                 f"{actor['canonical_name']} uses {item['name']}.",
                 item["confidence"],
             )
+    for category in ("countries", "regions", "sectors", "roles"):
+        for target in profile["targets"][category]:
+            add_relationship(
+                intrusion["id"],
+                "targets",
+                object_id_by_profile_id[target["id"]],
+                (
+                    f"{actor['canonical_name']} targets {target['name']} "
+                    f"(profile target category: {category})."
+                ),
+                target["confidence"],
+            )
     for activity in profile["activities"]:
         campaign_id = object_id_by_profile_id[activity["activity_id"]]
         add_relationship(

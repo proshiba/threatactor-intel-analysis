@@ -4,7 +4,7 @@
   "name": "MirrorFace",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-29T15:38:35Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -789,7 +789,9 @@
         "basis": "mitre-attack"
       },
       "description": "[Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) (Japanese for RedDragon) was a cyberespionage spearphishing campaign conducted by [MirrorFace](https://attack.mitre.org/groups/G1054) between June and September 2024 against entities in Japan and Central Europe. [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) notably included the first reported targeting of a European entity by [MirrorFace](https://attack.mitre.org/groups/G1054), as well as their use of [UPPERCUT](https://attack.mitre.org/software/S0275), which was thought to be exclusive to [menuPass](https://attack.mitre.org/groups/G0045).(Citation: ESET MirrorFace 2025)(Citation: Trend Micro Earth Kasha Anel NOV 2024)",
-      "target_refs": [],
+      "target_refs": [
+        "target--mitre-group--country--37778ff5178839a8849f"
+      ],
       "malware_refs": [
         "malware--hiddenface",
         "malware--mitre--s9027",
@@ -836,7 +838,9 @@
         "ttp--mitre-campaign--e7114b46a9b944bc4da4",
         "ttp--mitre-campaign--fef30df7c47664002861"
       ],
-      "victim_refs": []
+      "victim_refs": [
+        "victim--activity-rule--2ce4157a78cf9939a231"
+      ]
     }
   ],
   "targets": {
@@ -845,6 +849,55 @@
         "id": "target--mitre-group--country--37778ff5178839a8849f",
         "name": "日本",
         "description": "[MirrorFace](https://attack.mitre.org/groups/G1054) has been active since at least 2019, at first exclusively targeting Japanese organizations across the media, defense, diplomatic, financial, manufacturing, and academic sectors.",
+        "first_observed": {
+          "value": "2004-06-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "last_observed": {
+          "value": "2004-09-01T04:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-5e94939f6aa20488691a",
+          "source--daily-7947b8d03c9ba0e3f2c3",
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--b1d60b87971200a63d65",
+        "name": "中央欧州",
+        "description": "MITRE ATT&CKのGroup概要でMirrorFaceの標的範囲として中央欧州が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--region--fbc4981fcb09e2c62fbf",
+        "name": "欧州",
+        "description": "MITRE ATT&CKのGroup概要でMirrorFaceの標的範囲として欧州が明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -860,13 +913,11 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-5e94939f6aa20488691a",
-          "source--daily-7947b8d03c9ba0e3f2c3",
           "source--mitre-attack-19-1"
         ],
-        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。"
       }
     ],
-    "regions": [],
     "sectors": [
       {
         "id": "target--mitre-group--sector--0dcd10afc274a4917be0",
@@ -1004,8 +1055,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -3295,6 +3346,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -3314,10 +3390,89 @@
     "history": "",
     "capability_details": "ROAMINGHOUSE, MirrorStealer, NOOPLDR, LODEINFO, HiddenFace, Cobalt Strike, DOWNIISSA, UPPERCUT, Net, ipconfig, Tasklist, BITSAdmin, Nltest, nbtstat, Ping, Wevtutil",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=日本。標的地域=中央欧州、欧州。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--2ce4157a78cf9939a231",
+      "name": "被害事例: Operation AkaiRyū",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "[Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) (Japanese for RedDragon) was a cyberespionage spearphishing campaign conducted by [MirrorFace](https://attack.mitre.org/groups/G1054) between June and September 2024 against entities in Japan and Central Europe. [Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) notably included the first reported targeting of a European entity by [MirrorFace](https://attack.mitre.org/groups/G1054), as well as their use of [UPPERCUT](https://attack.mitre.org/software/S0275), which was thought to be exclusive to [menuPass](https://attack.mitre.org/groups/G0045).(Citation: ESET MirrorFace 2025)(Citation: Trend Micro Earth Kasha Anel NOV 2024)",
+      "activity_refs": [
+        "activity--operation-akairy"
+      ],
+      "target_refs": [
+        "target--mitre-group--country--37778ff5178839a8849f"
+      ],
+      "malware_refs": [
+        "malware--hiddenface",
+        "malware--mitre--s9027",
+        "malware--roaminghouse",
+        "malware--uppercut"
+      ],
+      "ttp_refs": [
+        "ttp--mitre-campaign--0615aac85e80e41144bb",
+        "ttp--mitre-campaign--0a4418db0215ed4ccf84",
+        "ttp--mitre-campaign--0af294a0f653c7a81d52",
+        "ttp--mitre-campaign--0e9804d01deb8bf19360",
+        "ttp--mitre-campaign--3abe8e37a1d2524e7d64",
+        "ttp--mitre-campaign--3b2ff5f9ca53f8ea8ade",
+        "ttp--mitre-campaign--3fd9e61b853f21db61ad",
+        "ttp--mitre-campaign--532713ee28a924f410d8",
+        "ttp--mitre-campaign--63692a71dde473686716",
+        "ttp--mitre-campaign--6a0db95948eb07f9b5f5",
+        "ttp--mitre-campaign--6a328128a4311b902774",
+        "ttp--mitre-campaign--6d894165f79103fb7b13",
+        "ttp--mitre-campaign--75ec9b2edb2a98c362cf",
+        "ttp--mitre-campaign--7e1030935a3d088d3be4",
+        "ttp--mitre-campaign--83534bc4c31d99368763",
+        "ttp--mitre-campaign--91ba7e737caee9bcf0ad",
+        "ttp--mitre-campaign--a5a32c382b0bbc5912cc",
+        "ttp--mitre-campaign--ad818a515a67e865a3d7",
+        "ttp--mitre-campaign--b756e09f45825745c190",
+        "ttp--mitre-campaign--d17e381eae039fc34205",
+        "ttp--mitre-campaign--d24e6a9c75f618111462",
+        "ttp--mitre-campaign--d8e96572f8061584dfb7",
+        "ttp--mitre-campaign--dc824352b526298bc3a0",
+        "ttp--mitre-campaign--dfa3961b1f2192797c7b",
+        "ttp--mitre-campaign--e7114b46a9b944bc4da4",
+        "ttp--mitre-campaign--fef30df7c47664002861"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "[Operation AkaiRyū](https://attack.mitre.org/campaigns/C0060) (Japanese for RedDragon) was a cyberespionage spearphishing campaign conducted by [MirrorFace](https://attack.mitre.org/groups/G1054) between June and September 2024 against entities in Japan and Central Europe."
+        }
+      ],
+      "first_observed": {
+        "value": "2004-06-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "last_observed": {
+        "value": "2004-09-01T04:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--c31b37c188374ef1e875",
       "name": "被害事例: MirrorFaceハッカー、日本政府や政治家を2019年から標的に",

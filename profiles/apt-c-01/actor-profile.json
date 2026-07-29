@@ -4,7 +4,7 @@
   "name": "APT-C-01",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-29T15:36:09Z",
+  "updated_at": "2026-07-29T23:11:59Z",
   "languages": [
     "ja"
   ],
@@ -247,7 +247,7 @@
     "countries": [
       {
         "id": "target--country--china",
-        "name": "China",
+        "name": "中国",
         "description": "Primary geographic target in the reviewed public reporting.",
         "first_observed": {
           "value": null,
@@ -263,9 +263,10 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--cfr-taiwan-offensive-cyber-2022"
+          "source--cfr-taiwan-offensive-cyber-2022",
+          "source--target-audit-misp-360net"
         ],
-        "analyst_notes": ""
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
     "regions": [],
@@ -404,8 +405,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "Entities holding Chinese government, defense, aviation, maritime, and cross-Strait policy information.",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "Entities holding Chinese government, defense, aviation, maritime, and cross-Strait policy information. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [],
   "sources": [
@@ -616,6 +617,31 @@
         "ioc"
       ],
       "analyst_notes": "CFR summarizes public reporting that attributes Green Spot / PoisonVine / APT-C-01 to Taiwan. The underlying attribution originated with Chinese security vendors and therefore remains estimative."
+    },
+    {
+      "source_id": "source--target-audit-misp-360net",
+      "path": "actor_profile/reference/osint/misp-360net.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/360net.json",
+      "title": "MISP 360.net suspected-victim fields",
+      "publisher": "MISP Project / 360.net",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "zh",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Suspected-victim fields are vendor assessments and may reflect geopolitical source bias; entries use medium confidence."
     }
   ],
   "assessment": {
@@ -647,7 +673,7 @@
     "history": "",
     "capability_details": "Poison Ivy, ZxShell, Kanbox RAT, CVE-2012-0158, CVE-2014-6352, CVE-2017-8759",
     "infrastructure_details": "",
-    "targeting_details": "government agencies, military individuals, research institutes, maritime agencies",
+    "targeting_details": "構造化ターゲット監査: 標的国=中国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\ngovernment agencies, military individuals, research institutes, maritime agencies",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": []

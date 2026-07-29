@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt42`
 - 状態: draft
-- 更新日時: 2026-07-29T15:39:41Z
+- 更新日時: 2026-07-29T23:13:54Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -114,7 +114,7 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 |  |  |  | victim--activity-rule--8d9f800c14d1007aa798 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
+| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 | target--activity-rule--country--72caf60a2fbce4a1be7a |  |  | victim--activity-rule--8d9f800c14d1007aa798 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
 | Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 | phishing-campaign | 不明 | 不明 | 2025-01-31 | target--activity-rule--sector--b94dc560a327b601965d |  |  | victim--activity-rule--d615c41a7c601d64d3ee | Googleの報告によれば、中国、イラン、北朝鮮、ロシアに関連する57以上の脅威アクターが、AI技術をサイバーおよび情報作戦に利用しています。 これらの脅威アクターは、AIを用いて主にリサーチ、コードのトラブルシューティング、コンテンツの作成やローカライズを行っています。 イランのAPTアクターがGeminiの最も頻繁な利用者であり、APT42というハッキンググループは、この国のハッカーによるGemini利用の30%以上を占めています。 各アクターの利用状況 イランのAPT42は、フィッシングキャンペーンの作成、防衛専門家や組織の偵察、サイバーセキュリティ関連のコンテンツ生成にAIを活用しています。 中国のAPTグループは、偵察、コードのトラブルシューティング、ネットワーク内での横移動や権限昇格、データの抽出、検知回避の手法をAIで研究しています。 | 中 | `source--daily-e07d98b8e6a40e245f21` |
 | イランのハッカーがジャーナリストになりすまし、バックドアマルウェアを配布 | phishing-campaign | 不明 | 不明 | 2024-05-06 |  |  |  |  | イランのAPT42、ジャーナリストになりすましマルウェアを配布。 メディア組織を偽装し、信頼を築いてから悪意あるリンクを送信。 被害者は文書をクリックすると偽のログインページに誘導される。 認証情報とMFAトークンが盗まれ、企業ネットワークに侵入される。 APT42はクラウドツールのビルトイン機能を利用して行動を隠蔽。 | 中 | `source--daily-0917cfe45c04f45174f4` |
 
@@ -124,18 +124,33 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | イタリア | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イラン | レビュー済みアクターマッピングの標的欄に記録されたイランを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ノルウェー | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルガリア | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでAPT42の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 活動「Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-2cce580b31452f445118` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでAPT42の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでAPT42の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でAPT42の標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | ウクライナ、ブルガリア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-2cce580b31452f445118`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでAPT42の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 防衛・軍事 | 活動「Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-e07d98b8e6a40e245f21` |
 | sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Media | Targeting text indicates the Media sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | 非公開 | anonymous | unknown | reported |  |  |  |  | data-theft: Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 | 不明 | 不明 | 2026-02-13 | 中 | `source--daily-2cce580b31452f445118` |
+| 被害事例: Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--72caf60a2fbce4a1be7a |  |  |  | data-theft: Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 | 不明 | 不明 | 2026-02-13 | 中 | `source--daily-2cce580b31452f445118` |
 | 被害事例: Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b94dc560a327b601965d |  |  |  |  | 不明 | 不明 | 2025-01-31 | 中 | `source--daily-e07d98b8e6a40e245f21` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -232,6 +247,8 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -38,13 +38,18 @@
    レビュー済み活動の標的・被害事例・明示TTPと、公式ATT&CKキャンペーンの
    TTP／マルウェアを活動へ結び付ける。抽出ルール変更時は
    `actor_profile/activity-observation-rules.json`の差分と誤検出監査を行う。
-10. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
+10. 続けて`python3 actor_profile/scripts/enrich_targeting_scope.py --apply`を実行する。
+    活動単位の標的更新後に行うことで、個別国、全世界等の広域表示、複数国から
+    導出するUI用地域を再集約できる。日本は被害が確認できる場合に個別国として残す。
+    `profiles/targeting-audit.json`の未解決値と地理情報なしのアクターを確認し、
+    帰属国やインフラ所在国を標的国へ流用しない。
+11. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
     TTPの期間集計では`reported_at`を観測日として使用していないこと、活動・TTP・
     被害事例の双方向参照が切れていないことも確認する。
-11. UIへ公開する場合は`python3 ui/build_data.py`を実行し、TTP Matrixと
+12. UIへ公開する場合は`python3 ui/build_data.py`を実行し、TTP Matrixと
     マルウェア利用履歴のall time／過去3年／過去1年を確認する。
-12. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
-13. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
+13. 変更差分、採用・保留・不採用件数、検証結果を報告する。pushは明示依頼時のみ行う。
+14. レビューと反映が完了した日まで`state.json`を更新する。未レビューの新規日を
     `last_scanned_date`より先へ進めない。
 
 ## アクター照合
