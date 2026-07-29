@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta558`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -113,10 +113,53 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 米国 | 活動「SteganoAmor攻撃が全世界の320の組織を標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-09539f0db091b1cf7875` |
+| countries | アルジェリア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてアルジェリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アルゼンチン | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてアルゼンチンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウルグアイ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてウルグアイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エクアドル | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてエクアドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | グアテマラ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | コスタリカ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてコスタリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | コロンビア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてコロンビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 活動「TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51`, `source--target-audit-etda-threat-group-cards` |
+| countries | スロベニア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてスロベニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | セルビア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チリ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドミニカ共和国 | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてドミニカ共和国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブラジル | 活動「TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51`, `source--target-audit-etda-threat-group-cards` |
+| countries | ブルガリア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ペルー | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてペルーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ポルトガル | 活動「TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | モロッコ | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてモロッコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルーマニア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | レバノン | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 構造化OSINTの被害国フィールドでTA558の標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 北マケドニア | 構造化OSINTの被害国フィールドでTA558の標的・被害国として北マケドニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「SteganoAmor攻撃が全世界の320の組織を標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-09539f0db091b1cf7875`, `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでTA558の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | アルジェリア、モロッコで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中南米 | アルゼンチン、ウルグアイ、エクアドル、グアテマラ、コスタリカ、コロンビア、チリ、ドミニカ共和国、ブラジル、ペルー、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51`, `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | トルコ、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | 活動「SteganoAmor攻撃が全世界の320の組織を標的に」の記述で標的地域として全世界が明示されている。 | 不明 | 不明 | 中 | `source--daily-09539f0db091b1cf7875` |
+| regions | 北アフリカ | アルジェリア、モロッコで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-09539f0db091b1cf7875`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南欧 | スペイン、スロベニア、セルビア、ポルトガル、北マケドニアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南米 | アルゼンチン、ウルグアイ、エクアドル、コロンビア、チリ、ブラジル、ペルーで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | インドネシア、タイで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | チェコ、ブルガリア、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | スペイン、スロベニア、セルビア、チェコ、トルコ、ドイツ、ブルガリア、ポルトガル、ポーランド、ルーマニア、北マケドニアで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-f057489c6a517d53de51`, `source--target-audit-etda-threat-group-cards` |
 | sectors | 小売・ホスピタリティ | 活動「SteganoAmor攻撃が全世界の320の組織を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-09539f0db091b1cf7875`, `source--daily-f057489c6a517d53de51` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -164,6 +207,7 @@ Aliasなし
 | source--ta558--4fa855b571aca4ba | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
 | source--ta558--748588cb3831785d | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--ta558--c50b7358c4f07d6d | ta558 |  | 不明 | actor_profile/evidence/ta558.csv | structured-data | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

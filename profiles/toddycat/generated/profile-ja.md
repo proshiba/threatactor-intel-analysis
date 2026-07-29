@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--toddycat`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -123,10 +123,32 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | アフガニスタン | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | イラン | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | インド | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | カザフスタン | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | キルギス | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | スロバキア | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてスロバキアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ロシア | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでToddyCatの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | アジア | 活動「ロシアのハッカーグループToddyCat、先進的ツールを用いて大規模データ窃盗」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-2abe7ad9ba2e35aecc22` |
+| regions | アジア太平洋 | 活動「ロシアのハッカーグループToddyCat、先進的ツールを用いて大規模データ窃盗」の記述で標的地域としてアジア太平洋が明示されている。 | 不明 | 不明 | 中 | `source--daily-2abe7ad9ba2e35aecc22` |
+| regions | 中央アジア | ウズベキスタン、カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | インドネシア、タイ、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | スロバキア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | スロバキア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 政府・行政 | [ToddyCat](https://attack.mitre.org/groups/G1022) is a sophisticated threat group that has been active since at least 2020 using custom loaders and malware in multi-stage infection chains against government and military targets across Europe and Asia.(Citation: Kaspersky ToddyCat June 2022)(Citation: Kaspersky ToddyCat Check Logs October 2023) | 不明 | 不明 | 高 | `source--daily-2abe7ad9ba2e35aecc22`, `source--mitre-attack-19-1` |
 | sectors | 防衛・軍事 | [ToddyCat](https://attack.mitre.org/groups/G1022) is a sophisticated threat group that has been active since at least 2020 using custom loaders and malware in multi-stage infection chains against government and military targets across Europe and Asia.(Citation: Kaspersky ToddyCat June 2022)(Citation: Kaspersky ToddyCat Check Logs October 2023) | 不明 | 不明 | 高 | `source--daily-2abe7ad9ba2e35aecc22`, `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -208,6 +230,8 @@ Aliasなし
 | source--toddycat--7a8cb570834e3afd | Modern Asian APT groups TTPs report eng |  | 不明 | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf | report | TLP:CLEAR | 中 |
 | source--toddycat--d3ad8145a5cd7324 | toddycat |  | 不明 | actor_profile/evidence/toddycat.csv | structured-data | TLP:CLEAR | 中 |
 | source--toddycat--f93d8ac1da540be8 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

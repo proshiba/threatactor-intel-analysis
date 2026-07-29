@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt38`
 - 状態: draft
-- 更新日時: 2026-07-29T15:38:34Z
+- 更新日時: 2026-07-29T23:13:53Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -145,11 +145,32 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | インド | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | グアテマラ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | フランス | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでAPT38の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでAPT38の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでAPT38の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでAPT38の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでAPT38の標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中南米 | グアテマラ、ブラジルで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 全世界 | MITRE ATT&CKのGroup概要でAPT38の標的範囲として全世界が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | レビュー済みアクターマッピングの標的欄に記録された東アジアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | sectors | 暗号資産・Web3 | ial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 金融 | [APT38](https://attack.mitre.org/groups/G0082) is a North Korean state-sponsored threat group that specializes in financial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -307,6 +328,8 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

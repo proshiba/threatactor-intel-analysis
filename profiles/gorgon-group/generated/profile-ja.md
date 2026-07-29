@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gorgon-group`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:10Z
+- 更新日時: 2026-07-29T23:13:54Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -124,14 +124,16 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | India | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | Spain | Targeting text mentions spain. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | United Kingdom | Targeting text mentions united kingdom. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | United States | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | インド | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | スイス | 構造化OSINTの被害国フィールドでGorgon Groupの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | Targeting text mentions spain. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | Targeting text mentions united kingdom. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | スイス、スペイン、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
 | sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -194,6 +196,7 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

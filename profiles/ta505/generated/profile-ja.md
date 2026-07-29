@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta505`
 - 状態: draft
-- 更新日時: 2026-07-29T15:20:24Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -159,7 +159,7 @@ TA505の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | ransomware-extortion | 不明 | 不明 | 2025-10-18 |  | malware--clop |  | victim--activity-rule--262c49c45e54ec38c392 | Envoy Air（アメリカン航空子会社）がOracle E-Business Suiteからのデータ流出を確認、Clopがリークサイトに掲載。 Envoyは調査と法執行機関へ通報を実施、顧客や機微データは無影響、業務情報と商用連絡先の一部流出の可能性。 本件はClopの8月の窃取キャンペーンに関連し、9月から恐喝メールを送付、Oracle EBS侵害を主張。 Oracleは後にCVE-2025-61882のゼロデイ悪用を認め、さらにCVE-2025-61884も静かに修正。 Google側は被害が数十社規模と示唆、同キャンペーンでハーバード等も影響、Clopはゼロデイ悪用で悪名高い。 | 中 | `source--daily-7070dbbd163a3e029839` |
+| アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | ransomware-extortion | 不明 | 不明 | 2025-10-18 | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--clop |  | victim--activity-rule--262c49c45e54ec38c392 | Envoy Air（アメリカン航空子会社）がOracle E-Business Suiteからのデータ流出を確認、Clopがリークサイトに掲載。 Envoyは調査と法執行機関へ通報を実施、顧客や機微データは無影響、業務情報と商用連絡先の一部流出の可能性。 本件はClopの8月の窃取キャンペーンに関連し、9月から恐喝メールを送付、Oracle EBS侵害を主張。 Oracleは後にCVE-2025-61882のゼロデイ悪用を認め、さらにCVE-2025-61884も静かに修正。 Google側は被害が数十社規模と示唆、同キャンペーンでハーバード等も影響、Clopはゼロデイ悪用で悪名高い。 | 中 | `source--daily-7070dbbd163a3e029839` |
 
 
 
@@ -167,16 +167,39 @@ TA505の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | インド | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | セルビア | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ハンガリー | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ルーマニア | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでTA505の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 活動「アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7070dbbd163a3e029839`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでTA505の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでTA505の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 全世界 | 構造化OSINTの被害地域フィールドでTA505の標的範囲として全世界が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-7070dbbd163a3e029839`, `source--target-audit-misp-threat-actor` |
+| regions | 南欧 | スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | 日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | シンガポール、タイで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | チェコ、ハンガリー、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | スペイン、セルビア、チェコ、トルコ、ドイツ、ハンガリー、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Retail and Hospitality | Targeting text indicates the Retail and Hospitality sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | アメリカン航空子会社のEnvoy | named | organization | reported |  | malware--clop |  | メール／メールアカウント | data-theft: アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | 不明 | 不明 | 2025-10-18 | 中 | `source--daily-7070dbbd163a3e029839` |
+| 被害事例: アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | アメリカン航空子会社のEnvoy | named | organization | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--clop |  | メール／メールアカウント | data-theft: アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | 不明 | 不明 | 2025-10-18 | 中 | `source--daily-7070dbbd163a3e029839` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -292,6 +315,8 @@ TA505の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--ta505--f51bdb1dce04d96c | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
 | source--ta505--f8a1e91123e4d3c2 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
 | source--ta505--fc6f84249f4aee06 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

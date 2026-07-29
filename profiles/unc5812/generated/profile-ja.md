@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5812`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -104,7 +104,7 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃 | cyber-espionage | 不明 | 不明 | 2024-10-29 | target--activity-rule--country--36f1b9323d5faab92f39 |  |  | victim--activity-rule--0fb5975e7f282c1f913a | ロシアのUNC5812グループが、ウクライナ徴兵者を標的にしたスパイ活動/世論操作キャンペーンを実施。 偽の「民間防衛」アプリが情報窃取や位置追跡用のマルウェアを配布。 Windowsでは情報スティーラ「PureStealer」、Androidでは「CraxsRAT」を使用。 アプリがGoogle Play Protectを無効化させ、スパイ活動を許可します。 Googleは検出対策を強化し、Safe Browsingリストを更新。 | 中 | `source--daily-1c77a9c15728423b9d08` |
+| ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃 | cyber-espionage | 不明 | 不明 | 2024-10-29 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a |  |  | victim--activity-rule--0fb5975e7f282c1f913a | ロシアのUNC5812グループが、ウクライナ徴兵者を標的にしたスパイ活動/世論操作キャンペーンを実施。 偽の「民間防衛」アプリが情報窃取や位置追跡用のマルウェアを配布。 Windowsでは情報スティーラ「PureStealer」、Androidでは「CraxsRAT」を使用。 アプリがGoogle Play Protectを無効化させ、スパイ活動を許可します。 Googleは検出対策を強化し、Safe Browsingリストを更新。 | 中 | `source--daily-1c77a9c15728423b9d08` |
 
 
 
@@ -113,14 +113,16 @@ Aliasなし
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | ウクライナ | 活動「ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-1c77a9c15728423b9d08` |
+| countries | ロシア | 活動「ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-1c77a9c15728423b9d08` |
+| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-1c77a9c15728423b9d08` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39 |  |  | モバイル端末 | espionage: ロシアのUNC5812グループが、ウクライナ徴兵者を標的にしたスパイ活動/世論操作キャンペーンを実施。 | 不明 | 不明 | 2024-10-29 | 中 | `source--daily-1c77a9c15728423b9d08` |
+| 被害事例: ロシア、ウクライナ徴兵対象者にWindowsおよびAndroidマルウェアで攻撃 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a |  |  | モバイル端末 | espionage: ロシアのUNC5812グループが、ウクライナ徴兵者を標的にしたスパイ活動/世論操作キャンペーンを実施。 | 不明 | 不明 | 2024-10-29 | 中 | `source--daily-1c77a9c15728423b9d08` |
 
 ## MITRE ATT&CK Matrixデータ
 

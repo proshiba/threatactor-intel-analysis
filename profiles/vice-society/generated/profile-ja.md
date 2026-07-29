@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--vice-society`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -124,7 +124,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | sectors | 教育・研究 | 活動「Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5287a969660d1bb7e309` |
 | sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

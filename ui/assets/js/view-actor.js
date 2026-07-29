@@ -146,8 +146,10 @@ function buildOverviewTab(profile, summary) {
   }
 
   const targetsHtml = `
-    <h3>標的国・地域(${(targets.countries || []).length})</h3>
+    <h3>標的国(${(targets.countries || []).length})</h3>
     ${chips((targets.countries || []).map((t) => ja(t.name, "country")), "country")}
+    <h3>標的地域(${(targets.regions || []).length})</h3>
+    ${chips((targets.regions || []).map((t) => ja(t.name, "country")), "country")}
     <h3>標的産業(${(targets.sectors || []).length})</h3>
     ${chips((targets.sectors || []).map((t) => ja(t.name, "sector")), "type")}
     ${targets.selection_logic ? `<p class="small muted">選定ロジック: ${md(targets.selection_logic)}</p>` : ""}

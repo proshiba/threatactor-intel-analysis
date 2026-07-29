@@ -620,6 +620,26 @@ def contextual_match(
                 continue
             if explicit_target_context(text, match, country=country):
                 return match
+            # Country lists often place the targeting verb only before the
+            # first country (for example, "targeted ... in the United States,
+            # Israel, Australia, Russia, and India").  Treat every country in
+            # that sentence as a target while retaining the attribution-country
+            # guard above.
+            sentence_start = max(
+                text.rfind(delimiter, 0, match.start())
+                for delimiter in (".", "!", "?", "。", "！", "？", "\n")
+            )
+            sentence_ends = [
+                position
+                for delimiter in (".", "!", "?", "。", "！", "？", "\n")
+                if (position := text.find(delimiter, match.end())) >= 0
+            ]
+            sentence_end = min(sentence_ends, default=len(text))
+            sentence = text[sentence_start + 1 : sentence_end]
+            if country and any(
+                pattern.search(sentence) for pattern in context_patterns
+            ):
+                return match
     return None
 
 
@@ -1351,6 +1371,12 @@ def main() -> int:
     parser.add_argument("--rules", type=Path, default=DEFAULT_RULES)
     parser.add_argument("--attack-index", type=Path, default=DEFAULT_ATTACK)
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    parser.add_argument(
+        "--actor",
+        action="append",
+        default=[],
+        help="Limit processing to one or more profile slugs.",
+    )
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--report", type=Path)
     args = parser.parse_args()
@@ -1362,6 +1388,8 @@ def main() -> int:
     rows: list[dict[str, Any]] = []
     changed = 0
     for path in sorted(args.profiles_root.glob("*/actor-profile.json")):
+        if args.actor and path.parent.name not in set(args.actor):
+            continue
         profile = load_json(path)
         before = json.dumps(profile, ensure_ascii=False, sort_keys=True)
         slug = path.parent.name

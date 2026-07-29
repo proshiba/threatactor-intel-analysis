@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--bitter`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:09Z
+- 更新日時: 2026-07-29T23:11:59Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -124,16 +124,29 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Pakistan | Targeting text mentions pakistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | Saudi Arabia | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 中国 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--daily-d3ece976544c2d6909ce`, `source--mitre-attack-19-1` |
+| countries | インド | 構造化OSINTの被害国フィールドでBITTERの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エジプト | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
+| countries | サウジアラビア | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-d3ece976544c2d6909ce`, `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでBITTERの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | バングラデシュ | MITRE ATT&CKのGroup概要でBITTERの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | Targeting text mentions pakistan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | レバノン | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
+| countries | 中国 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--daily-d3ece976544c2d6909ce`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | アジア | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095` |
+| regions | アフリカ | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的地域としてアフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
+| regions | 中東 | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-1dd0fd6a374bf37bcc74`, `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--target-audit-etda-threat-group-cards` |
+| regions | 北アフリカ | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的地域として北アフリカが明示されている。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
+| regions | 南アジア | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南米 | 活動「Bitterハッカーグループ、サイバー作戦を拡大」の記述で標的地域として南米が明示されている。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce` |
+| regions | 欧州 | トルコ、ドイツで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--target-audit-misp-threat-actor` |
 | sectors | 防衛・軍事 | 活動「'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
 | sectors | 非営利・市民社会 | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
 | sectors | 政府・行政 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--daily-1dd0fd6a374bf37bcc74`, `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--mitre-attack-19-1` |
 | sectors | エネルギー | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 製造・産業 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -217,6 +230,8 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

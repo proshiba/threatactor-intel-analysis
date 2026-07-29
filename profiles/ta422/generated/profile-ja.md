@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta422`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -110,9 +110,76 @@ Aliasなし
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アフガニスタン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アルメニア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | イタリア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イラク | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イラン | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウガンダ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてウガンダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カザフスタン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | キプロス | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてキプロスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | クロアチア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてクロアチアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ジョージア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | スイス | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スウェーデン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スロバキア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてスロバキアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タジキスタン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてタジキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | チリ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ノルウェー | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ハンガリー | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フランス | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルガリア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベラルーシ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベルギー | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | モンゴル | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | モンテネグロ | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてモンテネグロが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ヨルダン | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ラトビア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルーマニア | 構造化OSINTの被害国フィールドでTA422の標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a` |
+| countries | 中国 | 活動「国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでTA422の標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでTA422の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでTA422の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでTA422の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでTA422の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | NATO加盟国 | 構造化OSINTの被害地域フィールドでTA422の標的範囲としてNATO加盟国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | アジア太平洋 | 構造化OSINTの被害地域フィールドでTA422の標的範囲としてアジア太平洋が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | アフリカ | ウガンダ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 中南米 | チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中央アジア | ウズベキスタン、カザフスタン、タジキスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 中東 | アラブ首長国連邦、イラク、イラン、サウジアラビア、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 南欧 | イタリア、キプロス、クロアチア、スペイン、モンテネグロで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南米 | チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | モンゴル、中国、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | タイ、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、スロバキア、ハンガリー、ブルガリア、ベラルーシ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-07ef6046e1668f840b3a`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでTA422の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -156,6 +223,8 @@ Aliasなし
 | source--ta422--16fb561dcabc6f55 | 2023 Network Vulnerability Situation Research Report |  | 2023 | summary/2024/2023 Network Vulnerability Situation Research Report.pdf | report | TLP:CLEAR | 中 |
 | source--ta422--7fd387441a658629 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
 | source--ta422--f4cdd55af197fe3c | ta422 |  | 不明 | actor_profile/evidence/ta422.csv | structured-data | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

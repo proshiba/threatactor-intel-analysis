@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sea-turtle`
 - 状態: draft
-- 更新日時: 2026-07-29T15:20:24Z
+- 更新日時: 2026-07-29T23:13:55Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -131,20 +131,34 @@ Sea Turtle
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Albania | Targeting text mentions albania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Armenia | Targeting text mentions armenia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Egypt | Targeting text mentions egypt. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Iraq | Targeting text mentions iraq. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Jordan | Targeting text mentions jordan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Lebanon | Targeting text mentions lebanon. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Sweden | Targeting text mentions sweden. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Syria | Targeting text mentions syria. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Turkey | Targeting text mentions turkey. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | アラブ首長国連邦 | レビュー済みアクターマッピングの標的欄に記録されたアラブ首長国連邦を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | アルバニア | Targeting text mentions albania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | アルメニア | Targeting text mentions armenia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | イラク | Targeting text mentions iraq. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | エジプト | Targeting text mentions egypt. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | キプロス | レビュー済みアクターマッピングの標的欄に記録されたキプロスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | ギリシャ | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてギリシャが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シリア | Targeting text mentions syria. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | スイス | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スウェーデン | Targeting text mentions sweden. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | スーダン | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてスーダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | Targeting text mentions turkey. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでSea Turtleの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ヨルダン | Targeting text mentions jordan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | リビア | レビュー済みアクターマッピングの標的欄に記録されたリビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | レバノン | Targeting text mentions lebanon. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | エジプト、スーダン、リビアで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | アラブ首長国連邦、イラク、シリア、トルコ、ヨルダン、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 北アフリカ | エジプト、リビアで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南欧 | アルバニア、キプロス、ギリシャで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | アルバニア、オランダ、キプロス、ギリシャ、スイス、スウェーデン、トルコ、ドイツで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -216,6 +230,8 @@ Sea Turtle
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--sea-turtle--4e9bc8701f782970 | readme |  | 不明 | Seaturtle/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

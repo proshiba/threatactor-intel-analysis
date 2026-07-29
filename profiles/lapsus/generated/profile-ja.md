@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lapsus`
 - 状態: draft
-- 更新日時: 2026-07-29T15:39:42Z
+- 更新日時: 2026-07-29T23:12:00Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -109,7 +109,7 @@ LAPSUS$の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | ransomware-extortion | 不明 | 不明 | 2025-05-06 |  |  |  | victim--activity-rule--39b4f4ac2f7d642ba592 | M&S、Co-op、Harrodsがサイバー攻撃を受け、NCSCが全企業に対策強化を呼びかけ。 攻撃者は従業員になりすまし、ITヘルプデスクを騙して認証情報を取得。 M&Sではランサムウェアが展開され、Co-opは暗号化前に攻撃を阻止。 Harrodsは侵入の試みを確認し、アクティブな対応としてインターネットアクセスを制限。結果、侵入は確認されず。 攻撃はDragonForce作戦により行われ、Scattered SpiderやLapsus$の戦術が使用された。 NCSCは、犠牲者や法執行機関と協力して犯人を特定しようとしており、現時点では攻撃が関連しているか、単一のアクターによる組織的なキャンペーンかについては推測を避けている。 | 中 | `source--daily-4cd1fe293925310c02b7` |
+| 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | ransomware-extortion | 不明 | 不明 | 2025-05-06 | target--activity-rule--country--f9601e2d842c9a05202b |  |  | victim--activity-rule--39b4f4ac2f7d642ba592 | M&S、Co-op、Harrodsがサイバー攻撃を受け、NCSCが全企業に対策強化を呼びかけ。 攻撃者は従業員になりすまし、ITヘルプデスクを騙して認証情報を取得。 M&Sではランサムウェアが展開され、Co-opは暗号化前に攻撃を阻止。 Harrodsは侵入の試みを確認し、アクティブな対応としてインターネットアクセスを制限。結果、侵入は確認されず。 攻撃はDragonForce作戦により行われ、Scattered SpiderやLapsus$の戦術が使用された。 NCSCは、犠牲者や法執行機関と協力して犯人を特定しようとしており、現時点では攻撃が関連しているか、単一のアクターによる組織的なキャンペーンかについては推測を避けている。 | 中 | `source--daily-4cd1fe293925310c02b7` |
 | ハッカーがサポートチケットを盗み、Discordがデータ侵害を公表 | ransomware-extortion | 不明 | 不明 | 2025-10-06 |  |  |  | victim--activity-rule--a861d5e217e49abc5df1 | Discordはサードパーティのサポート業者が侵害され、サポート由来の利用者データ流出を10月4日に公表。 攻撃は9月20日に発生し、サポート/Trust & Safetyとやり取りした一部ユーザーが影響。 流出は氏名/ユーザー名/メール/連絡先、IP、サポート宛のメッセージ/添付、政府ID画像、支払いの一部情報等。 犯人は漏えいデータの公開と引き換えに身代金を要求し、金銭目的の恐喝とみられる。 Scattered Lapsus$ HuntersがZendesk侵害を主張、Discordはアクセス遮断・調査・法執行機関連携を実施。 | 中 | `source--daily-9af96d00623df591e4cf` |
 | ジャガー・ランドローバー、サイバー攻撃で操業停止をさらに1週間延長 | ransomware-extortion | 不明 | 不明 | 2025-09-17 |  |  |  | victim--activity-rule--f6b8cc9fa92a36275fde | ジャガー・ランドローバーは8月末に発生したサイバー攻撃の影響で、操業停止をさらに1週間延長すると発表。 同社は9月2日に大規模障害を公表し、先週は「一部データの窃取」を認め、従業員へ出勤停止を指示。 9月16日の更新で、生産再開は少なくとも9月24日（水）まで延期し、段階的な安全再起動を進めると説明。 犯行声明はScattered Lapsus$ HuntersがTelegram上で行い、内部SAP画面やランサム展開の主張を掲示。 ただしJLRは攻撃者の特定やランサムグループの関与について声明を出していない。 | 中 | `source--daily-96306c5877ca4244921e` |
 | 英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施 | ransomware-extortion | 不明 | 不明 | 2025-09-30 | target--activity-rule--country--f9601e2d842c9a05202b, target--mitre-group--sector--54b3bca0635944bdc12d, target--mitre-group--sector--55400c7679dae0d87f49 |  |  | victim--activity-rule--b0219a533b5e0ea063d1 | 大規模サイバー攻撃で生産停止に陥ったJLR支援のため、英国政府が15億ポンドのローン保証を決定。 保証はUK Export FinanceのEDG枠で実施、直接融資ではなく民間融資を政府が保証、返済期間は5年。 攻撃は今月公表され、ITと製造に深刻な障害を引き起こし、複数工場の停止とデータ窃取をJLRが確認。 「Scattered Lapsus$ Hunters」が犯行を主張し、SAPのHOSTSファイル画像を掲示、ランサム展開を示唆。 JLRは段階的再開を近日開始予定で、NCSCや法執行・専門家と連携。保険未締結の報道もあり。 | 中 | `source--daily-04302db7cea311067bd3` |
@@ -124,7 +124,15 @@ LAPSUS$の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 英国 | 活動「英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-04302db7cea311067bd3` |
+| countries | アルゼンチン | 構造化OSINTの被害国フィールドでLAPSUS$の標的・被害国としてアルゼンチンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでLAPSUS$の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ポルトガル | 構造化OSINTの被害国フィールドでLAPSUS$の標的・被害国としてポルトガルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでLAPSUS$の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 活動「英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-04302db7cea311067bd3`, `source--daily-4cd1fe293925310c02b7` |
+| regions | 中南米 | アルゼンチン、ブラジルで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | MITRE ATT&CKのGroup概要でLAPSUS$の標的範囲として全世界が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 南米 | アルゼンチン、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | ポルトガル、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-04302db7cea311067bd3`, `source--daily-4cd1fe293925310c02b7`, `source--target-audit-etda-threat-group-cards` |
 | sectors | 情報通信 | The group has targeted organizations globally, including in the government, manufacturing, higher education, energy, healthcare, technology, telecommunications, and media sectors.(Citation: BBC LAPSUS Apr 2022)(Citation: MSTIC DEV-0537 Mar 2022)(Citation: UNIT 42 LAPSUS Mar 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 教育・研究 | The group has targeted organizations globally, including in the government, manufacturing, higher education, energy, healthcare, technology, telecommunications, and media sectors.(Citation: BBC LAPSUS Apr 2022)(Citation: MSTIC DEV-0537 Mar 2022)(Citation: UNIT 42 LAPSUS Mar 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | エネルギー | The group has targeted organizations globally, including in the government, manufacturing, higher education, energy, healthcare, technology, telecommunications, and media sectors.(Citation: BBC LAPSUS Apr 2022)(Citation: MSTIC DEV-0537 Mar 2022)(Citation: UNIT 42 LAPSUS Mar 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -133,14 +141,14 @@ LAPSUS$の標準化プロファイル。リポジトリ内の専用資料1件と
 | sectors | 医療・ヘルスケア | The group has targeted organizations globally, including in the government, manufacturing, higher education, energy, healthcare, technology, telecommunications, and media sectors.(Citation: BBC LAPSUS Apr 2022)(Citation: MSTIC DEV-0537 Mar 2022)(Citation: UNIT 42 LAPSUS Mar 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | メディア・報道 | The group has targeted organizations globally, including in the government, manufacturing, higher education, energy, healthcare, technology, telecommunications, and media sectors.(Citation: BBC LAPSUS Apr 2022)(Citation: MSTIC DEV-0537 Mar 2022)(Citation: UNIT 42 LAPSUS Mar 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: Salesforce、広範なデータ窃取攻撃に対する身代金支払いを拒否 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | クラウド／SaaS | data-theft: Salesforce、広範なデータ窃取攻撃に対する身代金支払いを拒否<br>credential-theft: 攻撃は二段階で、①ITサポート偽装で悪性OAuthアプリ連携→DB窃取、②8月にSalesloft/DriftのOAuthトークン悪用→CRMから流出。 | 不明 | 不明 | 2025-10-09 | 中 | `source--daily-5ba304eec88672244aca` |
-| 被害事例: 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  |  | 不明 | 不明 | 2025-05-06 | 中 | `source--daily-4cd1fe293925310c02b7` |
+| 被害事例: 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--f9601e2d842c9a05202b |  |  |  |  | 不明 | 不明 | 2025-05-06 | 中 | `source--daily-4cd1fe293925310c02b7` |
 | 被害事例: ハッカーがResecurityの侵害を主張、同社は「ハニーポットだった」と反論 | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--54b3bca0635944bdc12d |  |  |  | data-theft: SLH（Scattered Lapsus$ Hunters）を名乗る攻撃者が、Resecurity侵害と社内データ窃取をTelegramで主張した。 | 2025-11-21 | 2025-11-21 | 2026-01-05 | 中 | `source--daily-b582c9da4145059382ff` |
 | 被害事例: Scattered Lapsus$ HuntersがZendeskユーザー標的化に関与か | 非公開 | aggregate | multiple-organizations | reported |  |  |  | クラウド／SaaS | data-theft: 関連のSalesforce事案では盗難トークン悪用で760社＋約300社のデータ窃取が示され、手口の連続性が指摘。<br>credential-theft: 関連のSalesforce事案では盗難トークン悪用で760社＋約300社のデータ窃取が示され、手口の連続性が指摘。 | 不明 | 不明 | 2025-12-02 | 高 | `source--daily-4f7f6beeec2ea0a99a71` |
 | 被害事例: ハッカーがサポートチケットを盗み、Discordがデータ侵害を公表 | ハッカーがサポートチケットを盗み | named | organization | reported |  |  |  | メール／メールアカウント | data-theft: Discordはサードパーティのサポート業者が侵害され、サポート由来の利用者データ流出を10月4日に公表。 | 不明 | 不明 | 2025-10-06 | 中 | `source--daily-9af96d00623df591e4cf` |
@@ -261,6 +269,7 @@ LAPSUS$の標準化プロファイル。リポジトリ内の専用資料1件と
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

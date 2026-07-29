@@ -4,7 +4,7 @@
   "name": "IronHusky",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-29T15:36:10Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -182,6 +182,29 @@
   "targets": {
     "countries": [
       {
+        "id": "target--targeting-audit--country--edf7163adf40c65945b5",
+        "name": "モンゴル",
+        "description": "活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-4fa6e9612d1bc97443df",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
         "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
         "name": "ロシア",
         "description": "活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的として明示された国・地域。",
@@ -199,9 +222,10 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-4fa6e9612d1bc97443df"
+          "source--daily-4fa6e9612d1bc97443df",
+          "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
     "regions": [],
@@ -230,8 +254,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -469,6 +493,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -488,7 +537,7 @@
     "history": "",
     "capability_details": "MysterySnail, CVE-2021-40449",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=モンゴル、ロシア。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [

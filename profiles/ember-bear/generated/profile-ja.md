@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ember-bear`
 - 状態: draft
-- 更新日時: 2026-07-29T15:20:22Z
+- 更新日時: 2026-07-29T23:13:54Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -136,7 +136,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | cyber-espionage | 不明 | 不明 | 2024-09-06 | target--country--ukraine |  | ttp--activity-rule--f17a61b0acfb89cfe4ba | victim--activity-rule--84ba967e4f2df409774e | 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。 | 中 | `source--daily-f1baa9d2403423a63284` |
+| 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | cyber-espionage | 不明 | 不明 | 2024-09-06 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--country--ukraine |  | ttp--activity-rule--f17a61b0acfb89cfe4ba | victim--activity-rule--84ba967e4f2df409774e | 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。 | 中 | `source--daily-f1baa9d2403423a63284` |
 
 
 
@@ -144,17 +144,22 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Georgia | Targeting text mentions georgia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Kyrgyzstan | Targeting text mentions kyrgyzstan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Ukraine | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f1baa9d2403423a63284` |
+| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f1baa9d2403423a63284`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | キルギス | Targeting text mentions kyrgyzstan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ジョージア | Targeting text mentions georgia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-f1baa9d2403423a63284`, `source--target-audit-etda-threat-group-cards` |
+| regions | NATO加盟国 | 活動「米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-f1baa9d2403423a63284` |
+| regions | 中南米 | 構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として中南米が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中央アジア | 構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として中央アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | 非公開 | aggregate | multiple-organizations | reported | target--country--ukraine |  | ttp--activity-rule--f17a61b0acfb89cfe4ba |  | espionage: 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 | 不明 | 不明 | 2024-09-06 | 中 | `source--daily-f1baa9d2403423a63284` |
+| 被害事例: 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--country--ukraine |  | ttp--activity-rule--f17a61b0acfb89cfe4ba |  | espionage: 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 | 不明 | 不明 | 2024-09-06 | 中 | `source--daily-f1baa9d2403423a63284` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -273,6 +278,8 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

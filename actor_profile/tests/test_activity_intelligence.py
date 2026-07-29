@@ -120,6 +120,24 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("台湾", countries)
         self.assertNotIn("中国", countries)
 
+    def test_every_country_in_target_list_is_added(self) -> None:
+        profile = self.profile("Lazarus Group")
+        activity = self.activity(
+            "Operation Dream Job",
+            (
+                "Lazarus Group targeted the defense and aerospace sectors in "
+                "the United States, Israel, Australia, Russia, and India."
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertEqual(
+            countries,
+            {"米国", "イスラエル", "オーストラリア", "ロシア", "インド"},
+        )
+
     def test_mitre_group_summary_adds_targets_but_not_attribution_country(self) -> None:
         profile = self.profile("Axiom", ["Group 72"])
         group = {

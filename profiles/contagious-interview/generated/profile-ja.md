@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:10Z
+- 更新日時: 2026-07-29T23:12:00Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -136,11 +136,12 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | タイ | 活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
 | sectors | IT・ソフトウェア | 活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-2a32ed98e1bd6d1661b4`, `source--daily-47e80e1dc37b49447e5b`, `source--daily-b84641d39a296b1d232d`, `source--daily-cdb23aca8de000a4d647`, `source--daily-d00e6abeb3390b2c40e7` |
 | sectors | 非営利・市民社会 | 活動「北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-828c717719b991a7c676` |
 | sectors | 暗号資産・Web3 | [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

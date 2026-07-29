@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc2286`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -114,9 +114,45 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 米国 | 活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-976395d39cbe624f587e` |
+| countries | アフガニスタン | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アルゼンチン | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてアルゼンチンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-976395d39cbe624f587e`, `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エジプト | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エスワティニ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてエスワティニが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エチオピア | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてエチオピアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | グアテマラ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルキナファソ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてブルキナファソが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | リトアニア | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-976395d39cbe624f587e`, `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでUNC2286の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | エジプト、エスワティニ、エチオピア、ブルキナファソ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中南米 | アルゼンチン、グアテマラ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | イスラエル、サウジアラビアで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-976395d39cbe624f587e`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | アフガニスタン、インド、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-976395d39cbe624f587e`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南米 | 活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的地域として南米が明示されている。 | 不明 | 不明 | 中 | `source--daily-976395d39cbe624f587e`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | オランダ、ドイツ、フランス、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -160,6 +196,7 @@ TTPなし
 | source--unc2286--33918c43e145da63 | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
 | source--unc2286--56493a9195ef18a0 | unc2286 |  | 不明 | actor_profile/evidence/unc2286.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc2286--f588ad9bd7fcfa82 | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--scattered-spider`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:11Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -142,7 +142,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | Microsoft、Scattered SpiderハッカーをQilinランサムウェア攻撃にリンク | ransomware-extortion | 不明 | 不明 | 2024-07-17 | target--mitre-group--sector--686076db81fe62f0e452 |  |  | victim--activity-rule--de93db5943d00c1e03af | MicrosoftはScattered SpiderグループがQilinランサムウェアを使用していることを確認。 Scattered SpiderはフィッシングやSIMスワッピングなどで初期アクセスを得る。2022年から活動し、130以上の企業を標的にした。 Microsoftは、Scattered Spiderが攻撃キャンペーンのランサムウェアペイロードにRansomHubとQilinを追加したと報告。 QilinランサムウェアはVMware ESXiを含むシステムを狙う。 最近の攻撃ではロンドンの病院が影響を受けた。 | 高 | `source--daily-57b94c665c022e52410d` |
 | 英国NCSC：英国小売業者へのサイバー攻撃は警鐘となる | reported-activity | 不明 | 不明 | 2025-05-04 | target--activity-rule--country--f9601e2d842c9a05202b, target--mitre-group--sector--61d17a0f32698969a06a |  |  | victim--activity-rule--564b99fc1658184343f0 | 英国国家サイバーセキュリティセンター（NCSC）は、英国の複数の小売業者を標的とした最近のサイバー攻撃について、すべての組織にとっての「警鐘」となると警告 NCSCは、被害を受けた小売業者と連携し、攻撃の性質と影響を評価している NCSCのCEOであるリチャード・ホーン博士は、組織のリーダーに対し、NCSCのウェブサイトにあるアドバイスに従い、攻撃を防ぎ、効果的に対応・回復するための適切な対策を講じるよう促している 英国下院のビジネス・貿易委員会は、Marks & SpencerおよびCo-opのCEOに対し、国家犯罪対策庁（NCA）やNCSCなどの政府機関からの支援があったかどうかを報告するよう要請 Harrods、Co-op、Marks & Spencerなど、英国の主要な小売業者がサイバー攻撃の被害を受けており、これらの攻撃はDragonForceやScattered Spiderなどの脅威アクターに関連しているとされる | 中 | `source--daily-8516c3813705dff8c58d` |
 | Scattered Spider、ヘルプデスク詐欺を用いた攻撃手法とその対策 | ransomware-extortion | 不明 | 不明 | 2025-06-04 | target--activity-rule--sector--b8d6639a1884e2bacaa4, target--mitre-group--sector--39a48843dcf982340819 |  |  | victim--activity-rule--78fadb76493d39cfd04d | サイバー犯罪グループ「Scattered Spider」は、企業のヘルプデスクを標的にしたソーシャルエンジニアリング攻撃を展開し、MFA（多要素認証）を回避して管理者アカウントを乗っ取る手法を用いている。 攻撃者は、被害者になりすましてヘルプデスクに連絡し、「新しい電話にしたのでMFAをリセットしてほしい」などと依頼し、MFAリセットリンクを自身のメールアドレスや電話番号に送信させる。 その後、OktaやEntraなどのセルフサービスパスワードリセット機能を悪用してアカウントを完全に掌握し、データ窃取やランサムウェアの展開などの攻撃を行う。 この手法は、2022年からTwilio、LastPass、Riot Games、Coinbaseなどの企業に対して使用されており、最近ではMarks & SpencerやCo-opへの攻撃でも確認されている。 特に、Caesars EntertainmentやMGM Resorts、Transport for Londonへの攻撃では、ヘルプデスクを通じた認証情報のリセットが初期侵入手段として利用され、多大な被害が発生した。 | 高 | `source--daily-7b838d61f8caea5e02cd` |
-| 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | ransomware-extortion | 不明 | 不明 | 2025-05-06 |  |  |  | victim--activity-rule--e91ddfcb9610315ec52d | M&S、Co-op、Harrodsがサイバー攻撃を受け、NCSCが全企業に対策強化を呼びかけ。 攻撃者は従業員になりすまし、ITヘルプデスクを騙して認証情報を取得。 M&Sではランサムウェアが展開され、Co-opは暗号化前に攻撃を阻止。 Harrodsは侵入の試みを確認し、アクティブな対応としてインターネットアクセスを制限。結果、侵入は確認されず。 攻撃はDragonForce作戦により行われ、Scattered SpiderやLapsus$の戦術が使用された。 NCSCは、犠牲者や法執行機関と協力して犯人を特定しようとしており、現時点では攻撃が関連しているか、単一のアクターによる組織的なキャンペーンかについては推測を避けている。 | 中 | `source--daily-4cd1fe293925310c02b7` |
+| 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | ransomware-extortion | 不明 | 不明 | 2025-05-06 | target--activity-rule--country--f9601e2d842c9a05202b |  |  | victim--activity-rule--e91ddfcb9610315ec52d | M&S、Co-op、Harrodsがサイバー攻撃を受け、NCSCが全企業に対策強化を呼びかけ。 攻撃者は従業員になりすまし、ITヘルプデスクを騙して認証情報を取得。 M&Sではランサムウェアが展開され、Co-opは暗号化前に攻撃を阻止。 Harrodsは侵入の試みを確認し、アクティブな対応としてインターネットアクセスを制限。結果、侵入は確認されず。 攻撃はDragonForce作戦により行われ、Scattered SpiderやLapsus$の戦術が使用された。 NCSCは、犠牲者や法執行機関と協力して犯人を特定しようとしており、現時点では攻撃が関連しているか、単一のアクターによる組織的なキャンペーンかについては推測を避けている。 | 中 | `source--daily-4cd1fe293925310c02b7` |
 | Scattered Spiderは消えていなかった：研究者が新たな攻撃に“生存”の兆候を確認 | phishing-campaign | 不明 | 不明 | 2025-09-18 | target--mitre-group--sector--39a48843dcf982340819, target--mitre-group--sector--dcc98a8319bd5ee1f33c |  |  | victim--activity-rule--7c7ba3ffc0fd3650e604 | 閉鎖を宣言したはずのScattered Spiderが依然活動中で、金融分野を狙う新たな攻撃の兆候が確認された。 ReliaQuestは米国の銀行(法人名は未公表)への侵入を同グループに関連付け、業界向けのなりすましドメイン増加も観測した。 攻撃は幹部アカウントをソーシャルエンジニアリングで操り、Azure ADのセルフサービスPWリセット(SSPR)で初期アクセスを獲得。 その後CitrixやVPNで横展開し、ESXiの資格情報窃取やVM移動、VeeamとAzure全体管理者権限の悪用で昇格。 SnowflakeやAWS等からの流出試行も示唆され、挙動重視の検知とプロアクティブな防御が重要と研究者は助言。 | 高 | `source--daily-ee4056a54607e02fe6d8` |
 | Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | ransomware-extortion | 不明 | 不明 | 2025-06-11 |  |  |  | victim--activity-rule--fc53273c37fee98260ae | 2024年のSnowflake攻撃で流出したTicketmasterの569GB分の顧客データが、Arkana Securityという恐喝グループによって再販リストに一時掲載。 掲載されたデータは以前に盗まれたもので、新たな侵害ではなく再流通である。 データには“RapeFlake”という窃取ツールの痕跡も含まれていた。 当該販売リストは数日で削除され、現在は閲覧不可となっている。 この攻撃にはShinyHuntersやUNC5537（Scattered Spider）などのAPTグループが関与していた。 Arkanaがこのデータを以前購入したのか、以前データを持っていた脅威アクターで構成されているのか、あるいはShinyHuntersと協力して販売しているのかは不明。 | 中 | `source--daily-50b897d744561404ee8d` |
 | Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表 | intrusion | 不明 | 不明 | 2025-07-03 | target--activity-rule--sector--b8d6639a1884e2bacaa4 |  |  | victim--activity-rule--25ca8e3c2b8da0678e43 | Qantasはコールセンターのサードパーティプラットフォームで異常を検知後、攻撃を封じ込めた。 約600万人の顧客名、メール、電話番号、生年月日、フリークエントフライヤー番号が窃取された。 クレジットカード情報やパスワード、PIN等は侵害されていないとQantasは説明。 同社は豪州サイバーセキュリティセンター等へ通知し、調査を継続中。 Scattered Spiderの航空業界攻撃と類似し、Hawaiian AirlinesやWestJetも被害報告。 | 高 | `source--daily-0a6ab6298790c80e707e` |
@@ -154,7 +154,8 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | 米国 | 活動「Scattered SpiderがVMware ESXiを狙ったハッキングを拡大」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b562a237b8d95c792fb9`, `source--daily-d395324d918e79d06dc6` |
-| countries | 英国 | 活動「英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-04302db7cea311067bd3`, `source--daily-087eb7c60fcfe537fd54`, `source--daily-8516c3813705dff8c58d`, `source--daily-b562a237b8d95c792fb9`, `source--daily-d0008bd69d4947eb98cb` |
+| countries | 英国 | 活動「英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-04302db7cea311067bd3`, `source--daily-087eb7c60fcfe537fd54`, `source--daily-4cd1fe293925310c02b7`, `source--daily-8516c3813705dff8c58d`, `source--daily-b562a237b8d95c792fb9`, `source--daily-d0008bd69d4947eb98cb` |
+| regions | 全世界 | 構造化OSINTの被害地域フィールドでScattered Spiderの標的範囲として全世界が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 政府・行政 | 活動「暑かったのは気温だけではない——2025年夏にサイバー攻撃が急増」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-04302db7cea311067bd3`, `source--daily-1f9abeeb494497e6757c` |
 | sectors | 農業・食品 | 活動「Marks & Spencer、サイバー攻撃により4億200万ドルの利益損失の見込み」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-d0008bd69d4947eb98cb` |
 | sectors | 運輸・航空・海運 | 活動「Scattered SpiderがVMware ESXiを狙ったハッキングを拡大」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-0a6ab6298790c80e707e`, `source--daily-73035cf449d00dd55adf`, `source--daily-7b838d61f8caea5e02cd`, `source--daily-d395324d918e79d06dc6` |
@@ -165,7 +166,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | sectors | IT・ソフトウェア | (Citation: CrowdStrike Scattered Spider Profile) (Citation: MSTIC Octo Tempest Operations October 2023) The group initially targeted customer relationship management (CRM) providers, business process outsourcing (BPO) firms, and telecommunications and technology companies before expanding in 2023 to gaming, hospitality, retail, managed service provider (MSP), manufacturing, and financial sectors. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 金融 | ly targeted customer relationship management (CRM) providers, business process outsourcing (BPO) firms, and telecommunications and technology companies before expanding in 2023 to gaming, hospitality, retail, managed service provider (MSP), manufacturing, and financial sectors. | 不明 | 不明 | 高 | `source--daily-1f9abeeb494497e6757c`, `source--daily-ee4056a54607e02fe6d8`, `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -192,7 +193,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | 被害事例: Scattered Spiderハッカー、クラウドアプリに焦点をシフトしてデータ窃盗を行う | 非公開 | aggregate | multiple-organizations | reported | target--mitre-group--sector--39a48843dcf982340819 |  |  | クラウド／SaaS | data-theft: Mandiantが分析した結果、TTPがクラウドとSaaSに拡大しており、データを窃取して脅迫を行っていると指摘。<br>privacy: 正当な個人を装うため、事前に個人情報、役職、およびマネージャー名などを準備。 | 不明 | 不明 | 2024-06-15 | 高 | `source--daily-c18481a1b5cdd9fcdd92` |
 | 被害事例: カンタス航空、570万人の顧客に影響を及ぼすデータ侵害を確認 | カンタス航空 | named | organization | reported |  |  |  | メール／メールアカウント | data-theft: 攻撃者は570万件の顧客データを窃取し、公開阻止のために身代金を要求。 | 不明 | 不明 | 2025-07-10 | 中 | `source--daily-af6fa62de402bc99a853` |
 | 被害事例: Microsoft、Scattered SpiderハッカーをQilinランサムウェア攻撃にリンク | 非公開 | aggregate | multiple-organizations | reported | target--mitre-group--sector--686076db81fe62f0e452 |  |  |  | encryption: Microsoft、Scattered SpiderハッカーをQilinランサムウェア攻撃にリンク | 不明 | 不明 | 2024-07-17 | 高 | `source--daily-57b94c665c022e52410d` |
-| 被害事例: 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  |  | 不明 | 不明 | 2025-05-06 | 中 | `source--daily-4cd1fe293925310c02b7` |
+| 被害事例: 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--f9601e2d842c9a05202b |  |  |  |  | 不明 | 不明 | 2025-05-06 | 中 | `source--daily-4cd1fe293925310c02b7` |
 | 被害事例: Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | 非公開 | anonymous | unknown | reported |  |  |  |  |  | 不明 | 不明 | 2025-06-11 | 中 | `source--daily-50b897d744561404ee8d` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -397,6 +398,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | source--scattered-spider--f5c2bcd51b106043 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
 | source--scattered-spider--f71c4f74eb7a89ae | stokes superseding complaint 0 |  | 不明 | cybercrime/2026/stokes_superseding_complaint_0.pdf | report | TLP:CLEAR | 中 |
 | source--scattered-spider--f8504fa88662a428 | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

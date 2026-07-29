@@ -4,7 +4,7 @@
   "name": "UAC-0099",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-29T15:36:12Z",
+  "updated_at": "2026-07-29T23:12:01Z",
   "languages": [
     "ja"
   ],
@@ -161,7 +161,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39"
+      ],
       "malware_refs": [
         "malware--daily-0067ca7bc8c9a3dd3e9d",
         "malware--daily-75ab18d562d78bfce191",
@@ -177,7 +179,9 @@
         "ttp--activity-rule--26fad87edd30aab65d0c",
         "ttp--activity-rule--8235faa69f53cdff20b8"
       ],
-      "victim_refs": []
+      "victim_refs": [
+        "victim--activity-rule--32a83d51aade8f9e290c"
+      ]
     },
     {
       "activity_id": "activity--daily-e526344e9500f358b6b5",
@@ -229,7 +233,7 @@
       {
         "id": "target--activity-rule--country--36f1b9323d5faab92f39",
         "name": "ウクライナ",
-        "description": "活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された国・地域。",
+        "description": "活動「ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": "2025-06-01T00:00:00Z",
           "precision": "month",
@@ -244,9 +248,10 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-acae91555bc1bc0a4220"
+          "source--daily-acae91555bc1bc0a4220",
+          "source--daily-b6ba84745cdc81a329c5"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "regions": [],
@@ -319,8 +324,8 @@
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -658,10 +663,59 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--32a83d51aade8f9e290c",
+      "name": "被害事例: ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。",
+      "activity_refs": [
+        "activity--daily-72da5dad97e2e21f550f"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39"
+      ],
+      "malware_refs": [
+        "malware--daily-0067ca7bc8c9a3dd3e9d",
+        "malware--daily-75ab18d562d78bfce191",
+        "malware--daily-8759c33e657f191deae0"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--26fad87edd30aab65d0c",
+        "ttp--activity-rule--8235faa69f53cdff20b8"
+      ],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b6ba84745cdc81a329c5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--f9da9dc6b868f567f3c8",
       "name": "被害事例: Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害",

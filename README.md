@@ -96,12 +96,22 @@ Python 3で実行できます。PDF・XLSXを新たに取り込む場合は、`p
 利用できる環境が必要です。
 
 ```bash
+# 活動情報を更新した後、全件の標的国・地域を再監査
+python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/enrich_targeting_scope.py --apply
+
 # 既存のIOC/artifactを使って全プロファイルを再生成・検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 
 # 単体テスト
 python3 -m unittest discover -s actor_profile/tests -v
 ```
+
+標的地域の全件監査結果は
+[targeting-audit.json](profiles/targeting-audit.json)に保存します。広域活動は地域、
+確認できた個別被害国は国として分離し、`日本`は広域表示に埋めず個別に保持します。
+根拠付き地理情報を確認できないプロファイルは推測で埋めず、監査結果の
+`no-structured-geography`として継続調査対象に残します。
 
 新規プロファイルの作成、IOC/artifact取込、個別検証などの詳細は
 [Actor Profile Framework](actor_profile/README.md)を参照してください。

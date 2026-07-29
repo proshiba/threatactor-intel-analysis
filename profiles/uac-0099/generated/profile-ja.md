@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0099`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:12Z
+- 更新日時: 2026-07-29T23:12:01Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -108,7 +108,7 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | malware-campaign | 不明 | 不明 | 2026-07-24 |  | malware--daily-0067ca7bc8c9a3dd3e9d, malware--daily-75ab18d562d78bfce191, malware--daily-8759c33e657f191deae0 | ttp--activity-rule--26fad87edd30aab65d0c, ttp--activity-rule--8235faa69f53cdff20b8 |  | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
+| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | malware-campaign | 不明 | 不明 | 2026-07-24 | target--activity-rule--country--36f1b9323d5faab92f39 | malware--daily-0067ca7bc8c9a3dd3e9d, malware--daily-75ab18d562d78bfce191, malware--daily-8759c33e657f191deae0 | ttp--activity-rule--26fad87edd30aab65d0c, ttp--activity-rule--8235faa69f53cdff20b8 | victim--activity-rule--32a83d51aade8f9e290c | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
 | Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | disruptive-activity | 2025-06 | 2025-09 | 2025-11-07 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--598ee8d6d22873efc495, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--5178b790ed1002745052, ttp--activity-rule--ac677bbe93733e1f8ef3 | victim--activity-rule--f9da9dc6b868f567f3c8 | ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。 | 中 | `source--daily-acae91555bc1bc0a4220` |
 
 
@@ -117,17 +117,18 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | ウクライナ | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された国・地域。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
+| countries | ウクライナ | 活動「ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール」の記述で標的として明示された国・地域。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220`, `source--daily-b6ba84745cdc81a329c5` |
 | sectors | 政府・行政 | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
 | sectors | 農業・食品 | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
 | sectors | 教育・研究 | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39 | malware--daily-0067ca7bc8c9a3dd3e9d, malware--daily-75ab18d562d78bfce191, malware--daily-8759c33e657f191deae0 | ttp--activity-rule--26fad87edd30aab65d0c, ttp--activity-rule--8235faa69f53cdff20b8 |  |  | 不明 | 不明 | 2026-07-24 | 中 | `source--daily-b6ba84745cdc81a329c5` |
 | 被害事例: Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--598ee8d6d22873efc495, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--5178b790ed1002745052, ttp--activity-rule--ac677bbe93733e1f8ef3 |  | destruction: Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害<br>disruption: 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。 | 2025-06 | 2025-09 | 2025-11-07 | 中 | `source--daily-acae91555bc1bc0a4220` |
 
 ## MITRE ATT&CK Matrixデータ

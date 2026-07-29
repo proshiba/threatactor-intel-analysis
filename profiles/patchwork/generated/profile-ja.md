@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--patchwork`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:11Z
+- 更新日時: 2026-07-29T23:13:54Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -146,13 +146,52 @@ Hangover; Monsoon
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b4dd81678daba2178538` |
-| countries | パキスタン | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b4dd81678daba2178538` |
-| countries | 米国 | [Patchwork](https://attack.mitre.org/groups/G0040) was also seen operating spearphishing campaigns targeting U.S. think tank groups in March and April of 2018.(Citation: Cymmetria Patchwork) (Citation: Symantec Patchwork)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イラン | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-b4dd81678daba2178538`, `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オマーン | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストリア | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カンボジア | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | クウェート | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スリランカ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ネパール | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ノルウェー | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | パキスタン | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-b4dd81678daba2178538`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| countries | パナマ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてパナマが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブータン | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-b4dd81678daba2178538`, `source--target-audit-etda-threat-group-cards` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ミャンマー | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ヨルダン | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルーマニア | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | [Patchwork](https://attack.mitre.org/groups/G0040) was also seen operating spearphishing campaigns targeting U.S. think tank groups in March and April of 2018.(Citation: Cymmetria Patchwork) (Citation: Symantec Patchwork)(Citation: TrendMicro Patchwork Dec 2017)(Citation: Volexity Patchwork June 2018) | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | 構造化OSINTの被害地域フィールドでPatchworkの標的範囲としてアフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | レビュー済みアクターマッピングの標的欄に記録された全世界を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、スリランカ、ネパール、バングラデシュ、パキスタン、ブータンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-b4dd81678daba2178538`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | 構造化OSINTの被害地域フィールドでPatchworkの標的範囲として東アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
+| regions | 東南アジア | 構造化OSINTの被害地域フィールドでPatchworkの標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | レビュー済みアクターマッピングの標的欄に記録された欧州を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 非営利・市民社会 | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-b4dd81678daba2178538` |
 | sectors | 政府・行政 | [Patchwork](https://attack.mitre.org/groups/G0040) has been seen targeting industries related to diplomatic and government agencies. | 不明 | 不明 | 高 | `source--daily-b4dd81678daba2178538`, `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -240,6 +279,9 @@ Hangover; Monsoon
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--patchwork--a29942955af8ffca | README |  | 不明 | Patchwork/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

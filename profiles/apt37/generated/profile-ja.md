@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt37`
 - 状態: draft
-- 更新日時: 2026-07-29T15:36:09Z
+- 更新日時: 2026-07-29T23:13:53Z
 - 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
@@ -175,20 +175,37 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | インド | Targeting text mentions india. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | カンボジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-f00592605535c739c5c3`, `source--target-audit-etda-threat-group-cards` |
+| countries | クウェート | MITRE ATT&CKのGroup概要でAPT37の標的国として明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ネパール | MITRE ATT&CKのGroup概要でAPT37の標的国として明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | Targeting text mentions vietnam. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ラオス | 構造化OSINTの被害国フィールドでAPT37の標的・被害国としてラオスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルーマニア | Targeting text mentions romania. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
 | countries | 北朝鮮 | 活動「ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布」の記述で標的として明示された国・地域。 | 2024 | 2026-05-05 | 中 | `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66` |
-| countries | China | Targeting text mentions china. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | India | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | Japan | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | Romania | Targeting text mentions romania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
-| countries | South Korea | Targeting text mentions south korea. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--mitre-attack-19-1` |
-| countries | Vietnam | Targeting text mentions vietnam. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでAPT37の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでAPT37の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでAPT37の標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-f00592605535c739c5c3` |
+| regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 南アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f00592605535c739c5c3`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 中国、北朝鮮、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-24c4e22a7b0cd08d6063`, `source--daily-468e8f8090fe0064b1c4`, `source--daily-4961e6946e3ccac84312`, `source--daily-68fe928d58956df4f752`, `source--daily-b232a8993d5d82211f66`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | 活動「北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施」の記述で標的地域として東南アジアが明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f00592605535c739c5c3`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | チェコ、ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 活動「Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-79fb3689c96eb2761182`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
 | sectors | 暗号資産・Web3 | 活動「北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5be59ed011b127efaaf3` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Manufacturing | Targeting text indicates the Manufacturing sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -337,6 +354,8 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 
