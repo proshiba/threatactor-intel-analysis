@@ -15,7 +15,7 @@ import { state, findActor, slugForName, getGraph, incomingRelationships } from "
 import {
   app, esc, md, num, chips, section, dataTable, resultCount,
   fmtDate, confBadge, defang, fetchJson, fetchText, parseCsv, renderError,
-  bindLiveSearch, bindMoreButton,
+  bindLiveSearch, bindMoreButton, pivotLink, bindPivots,
 } from "./util.js";
 import { ja, jaTactic, jaNarrative } from "./locale-ja.js";
 
@@ -376,7 +376,8 @@ function buildArtifactsTab(summary) {
     parts.push(section(
       `IOC(${num(summary.counts.iocs)})`,
       `<div class="chip-list">${typeChips}</div>
-       <p class="defanged-note">表示上の値は defang 済みです(hxxp / [.])。原値は iocs.json を参照してください。</p>
+       <p class="defanged-note">表示上の値は defang 済みです(hxxp / [.])。原値は iocs.json を参照してください。<br>
+       値をクリックすると横断ポータルのクロスサーチが開き、他ソースに同じ値があるかを調べられます。</p>
        <div id="ioc-area"><div class="more-row"><button class="load-btn" id="ioc-load" type="button">IOC ${num(summary.counts.iocs)} 件を読み込む</button></div></div>`
     ));
   } else {
@@ -499,7 +500,11 @@ async function loadIocs(slug, summary) {
         ["種別", "値(defang済)", "状態", "観測数", "初観測", "最終観測"],
         shown.map((ind) => `<tr>
           <td class="small">${esc(ja(ind.type, "iocType"))}</td>
-          <td><span class="mono">${esc(defang(ind.value, ind.type))}</span></td>
+          <td>${pivotLink(
+            ind.normalized_value || ind.value,
+            `<span class="mono">${esc(defang(ind.value, ind.type))}</span>`,
+            "横断検索で他ソースとの一致を調べる",
+          )}</td>
           <td class="small">${esc(ja(ind.disposition || "", "disposition"))}</td>
           <td class="num small">${num(ind.observation_count)}</td>
           <td class="small">${esc(fmtDate(ind.first_observed))}</td>
@@ -513,6 +518,7 @@ async function loadIocs(slug, summary) {
       view.type = e.target.value; view.limit = IOC_PAGE; render();
     });
     bindMoreButton("ioc-more", () => { view.limit += IOC_PAGE * 2; render(); });
+    bindPivots(area);
   };
   render();
 }
