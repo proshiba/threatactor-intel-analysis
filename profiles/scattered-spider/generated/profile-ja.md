@@ -226,10 +226,10 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 
 ## IOC／artifact概要
 
-- IOC値: 9件
-- IOC観測: 11件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 5件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 128件（`artifacts.csv`）
 
 ## 主要判断と不確実性

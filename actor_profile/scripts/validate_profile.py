@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import ipaddress
 import json
 import re
 from dataclasses import dataclass
@@ -17,6 +18,12 @@ from common import (
     TIME_STATUSES,
     load_json,
     parse_json_array_cell,
+)
+from ingest_observables import (
+    IANA_TLDS,
+    SPECIAL_USE_TLDS,
+    host_of,
+    reference_host,
 )
 
 
@@ -242,6 +249,45 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     }
 
 
+def check_indicator_is_observable(
+    indicator: dict[str, Any], location: str, issues: list[Issue]
+) -> None:
+    """指標として成立しない値がIOCへ混入していないか検査する。
+
+    出典レポート自身の参考リンク（ベンダーブログ、CERT、報道）と、実在しない
+    TLDを持つ抽出失敗値を検出する。詳細は RULES.md 8. IOCモデルを参照。
+    """
+    ioc_type = indicator.get("type")
+    if ioc_type not in {"url", "domain", "email"}:
+        return
+    value = indicator.get("normalized_value") or indicator.get("value") or ""
+    host = host_of(value)
+    if not host:
+        issue(issues, "error", location, f"ホストを取り出せない値: {value!r}")
+        return
+    try:
+        # http://203.0.113.10/path のようにホストがIPアドレスのURLは指標として正当。
+        ipaddress.ip_address(host.strip("[]").split("%", 1)[0])
+    except ValueError:
+        pass
+    else:
+        return
+    if reference_host(value):
+        issue(
+            issues,
+            "error",
+            location,
+            f"出典の参考リンクはIOCにしない (RULES.md 8.): {host}",
+        )
+        return
+    if "." not in host:
+        issue(issues, "error", location, f"ホストとして成立しない値: {host}")
+        return
+    tld = host.rsplit(".", 1)[-1]
+    if IANA_TLDS and tld not in IANA_TLDS and tld not in SPECIAL_USE_TLDS:
+        issue(issues, "error", location, f"実在しないTLD: .{tld}")
+
+
 def validate_iocs(
     dataset: dict[str, Any],
     profile: dict[str, Any],
@@ -286,6 +332,7 @@ def validate_iocs(
         validate_time(indicator.get("last_observed"), f"{location}.last_observed", issues)
         if indicator.get("disposition") == "candidate":
             issue(issues, "warning", location, "candidate IOC requires analyst review")
+        check_indicator_is_observable(indicator, location, issues)
         for obs_index, observation in enumerate(observations):
             obs_location = f"{location}.observations[{obs_index}]"
             obs_id = observation.get("observation_id")

@@ -233,10 +233,10 @@ Onslow, North Carolina water; Dataresolution.net (MSP for multiple US newpapers)
 
 ## IOC／artifact概要
 
-- IOC値: 106件
-- IOC観測: 122件
+- IOC値: 96件
+- IOC観測: 112件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 55件
+- 要レビュー候補: 52件
 - 非IOC artifact観測: 5件（`artifacts.csv`）
 
 ## 主要判断と不確実性

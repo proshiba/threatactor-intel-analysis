@@ -130,10 +130,10 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 21件
-- IOC観測: 30件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 21件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 59件（`artifacts.csv`）
 
 ## 主要判断と不確実性

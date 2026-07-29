@@ -180,10 +180,10 @@ Sea Turtle
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 9件
+- IOC値: 2件
+- IOC観測: 2件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 7件
+- 要レビュー候補: 2件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性

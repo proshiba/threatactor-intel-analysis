@@ -198,10 +198,10 @@ Pay2Key
 
 ## IOC／artifact概要
 
-- IOC値: 11件
-- IOC観測: 12件
+- IOC値: 5件
+- IOC観測: 5件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 6件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 77件（`artifacts.csv`）
 
 ## 主要判断と不確実性

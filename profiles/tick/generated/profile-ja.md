@@ -192,10 +192,10 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 124件
-- IOC観測: 153件
+- IOC値: 84件
+- IOC観測: 104件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 67件
+- 要レビュー候補: 53件
 - 非IOC artifact観測: 93件（`artifacts.csv`）
 
 ## 主要判断と不確実性

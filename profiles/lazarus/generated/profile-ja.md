@@ -358,10 +358,10 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 
 ## IOC／artifact概要
 
-- IOC値: 1358件
-- IOC観測: 1599件
-- 複数攻撃で観測: 5件
-- 要レビュー候補: 441件
+- IOC値: 1069件
+- IOC観測: 1255件
+- 複数攻撃で観測: 2件
+- 要レビュー候補: 339件
 - 非IOC artifact観測: 1139件（`artifacts.csv`）
 
 ## 主要判断と不確実性

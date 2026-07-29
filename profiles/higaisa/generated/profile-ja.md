@@ -152,10 +152,10 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 38件
-- IOC観測: 50件
+- IOC値: 7件
+- IOC観測: 8件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 24件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 22件（`artifacts.csv`）
 
 ## 主要判断と不確実性

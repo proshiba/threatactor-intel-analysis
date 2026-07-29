@@ -186,10 +186,10 @@ Operation Exchange Marauder
 
 ## IOC／artifact概要
 
-- IOC値: 16件
-- IOC観測: 23件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 16件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 34件（`artifacts.csv`）
 
 ## 主要判断と不確実性

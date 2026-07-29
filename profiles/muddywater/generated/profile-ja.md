@@ -242,10 +242,10 @@ BlackWater; Operation Quicksand
 
 ## IOC／artifact概要
 
-- IOC値: 264件
-- IOC観測: 320件
+- IOC値: 239件
+- IOC観測: 279件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 72件
+- 要レビュー候補: 69件
 - 非IOC artifact観測: 46件（`artifacts.csv`）
 
 ## 主要判断と不確実性

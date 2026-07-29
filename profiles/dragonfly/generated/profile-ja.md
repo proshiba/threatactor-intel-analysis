@@ -234,10 +234,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 9件
-- IOC観測: 9件
+- IOC値: 2件
+- IOC観測: 2件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 5件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 98件（`artifacts.csv`）
 
 ## 主要判断と不確実性

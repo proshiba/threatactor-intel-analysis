@@ -273,10 +273,10 @@ Cleaver
 
 ## IOC／artifact概要
 
-- IOC値: 203件
-- IOC観測: 268件
+- IOC値: 109件
+- IOC観測: 160件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 20件
+- 要レビュー候補: 9件
 - 非IOC artifact観測: 7件（`artifacts.csv`）
 
 ## 主要判断と不確実性

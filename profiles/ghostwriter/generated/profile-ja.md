@@ -135,10 +135,10 @@ Operation Ghostwriter
 
 ## IOC／artifact概要
 
-- IOC値: 143件
-- IOC観測: 157件
+- IOC値: 131件
+- IOC観測: 143件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 7件
+- 要レビュー候補: 4件
 - 非IOC artifact観測: 72件（`artifacts.csv`）
 
 ## 主要判断と不確実性
