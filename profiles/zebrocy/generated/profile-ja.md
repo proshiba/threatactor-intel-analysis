@@ -144,10 +144,10 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 18件
-- IOC観測: 22件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 17件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 45件（`artifacts.csv`）
 
 ## 主要判断と不確実性

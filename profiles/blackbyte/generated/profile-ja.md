@@ -200,10 +200,10 @@ BazarCall Campaign
 
 ## IOC／artifact概要
 
-- IOC値: 66件
-- IOC観測: 96件
+- IOC値: 6件
+- IOC観測: 6件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 63件
+- 要レビュー候補: 6件
 - 非IOC artifact観測: 494件（`artifacts.csv`）
 
 ## 主要判断と不確実性

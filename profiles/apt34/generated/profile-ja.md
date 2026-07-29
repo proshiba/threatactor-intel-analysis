@@ -283,10 +283,10 @@ Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016�
 
 ## IOC／artifact概要
 
-- IOC値: 56件
-- IOC観測: 56件
+- IOC値: 55件
+- IOC観測: 55件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 56件
+- 要レビュー候補: 55件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性

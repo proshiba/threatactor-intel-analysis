@@ -147,10 +147,10 @@ Socialist; Olympic Games / Stuxnet; Project Sauron / Strider
 
 ## IOC／artifact概要
 
-- IOC値: 339件
-- IOC観測: 343件
+- IOC値: 327件
+- IOC観測: 328件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 165件
+- 要レビュー候補: 160件
 - 非IOC artifact観測: 16件（`artifacts.csv`）
 
 ## 主要判断と不確実性

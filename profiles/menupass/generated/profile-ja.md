@@ -231,10 +231,10 @@ Dust Storm; Cloud Hopper; ChessMaster
 
 ## IOC／artifact概要
 
-- IOC値: 18件
-- IOC観測: 20件
+- IOC値: 4件
+- IOC観測: 4件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 18件
+- 要レビュー候補: 4件
 - 非IOC artifact観測: 74件（`artifacts.csv`）
 
 ## 主要判断と不確実性

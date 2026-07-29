@@ -188,10 +188,10 @@ Operation C-Major
 
 ## IOC／artifact概要
 
-- IOC値: 451件
-- IOC観測: 531件
+- IOC値: 423件
+- IOC観測: 498件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 85件
+- 要レビュー候補: 84件
 - 非IOC artifact観測: 72件（`artifacts.csv`）
 
 ## 主要判断と不確実性

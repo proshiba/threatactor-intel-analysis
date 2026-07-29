@@ -421,10 +421,10 @@ Operation Ghost
 
 ## IOC／artifact概要
 
-- IOC値: 1208件
-- IOC観測: 1370件
+- IOC値: 997件
+- IOC観測: 1079件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 189件
+- 要レビュー候補: 129件
 - 非IOC artifact観測: 481件（`artifacts.csv`）
 
 ## 主要判断と不確実性

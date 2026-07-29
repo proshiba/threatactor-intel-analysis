@@ -207,10 +207,10 @@ Daybreak?; Fallout Team; WizardOpium
 
 ## IOC／artifact概要
 
-- IOC値: 97件
-- IOC観測: 118件
+- IOC値: 93件
+- IOC観測: 114件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 80件
+- 要レビュー候補: 77件
 - 非IOC artifact観測: 48件（`artifacts.csv`）
 
 ## 主要判断と不確実性

@@ -174,10 +174,10 @@ Nomadic Octopusの標準化プロファイル。リポジトリ内の専用資�
 
 ## IOC／artifact概要
 
-- IOC値: 36件
-- IOC観測: 47件
+- IOC値: 31件
+- IOC観測: 42件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 11件
+- 要レビュー候補: 6件
 - 非IOC artifact観測: 96件（`artifacts.csv`）
 
 ## 主要判断と不確実性

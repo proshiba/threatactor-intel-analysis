@@ -159,10 +159,10 @@ Wilted Tulip
 
 ## IOC／artifact概要
 
-- IOC値: 18件
-- IOC観測: 18件
+- IOC値: 16件
+- IOC観測: 16件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 13件
+- 要レビュー候補: 12件
 - 非IOC artifact観測: 29件（`artifacts.csv`）
 
 ## 主要判断と不確実性

@@ -265,10 +265,10 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 
 ## IOC／artifact概要
 
-- IOC値: 443件
-- IOC観測: 575件
+- IOC値: 363件
+- IOC観測: 482件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 85件
+- 要レビュー候補: 68件
 - 非IOC artifact観測: 363件（`artifacts.csv`）
 
 ## 主要判断と不確実性

@@ -118,8 +118,8 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 5件（`artifacts.csv`）

@@ -164,10 +164,10 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 
 ## IOC／artifact概要
 
-- IOC値: 37件
-- IOC観測: 42件
+- IOC値: 6件
+- IOC観測: 6件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 37件
+- 要レビュー候補: 6件
 - 非IOC artifact観測: 159件（`artifacts.csv`）
 
 ## 主要判断と不確実性

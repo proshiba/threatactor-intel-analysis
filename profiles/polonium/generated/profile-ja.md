@@ -142,8 +142,8 @@ POLONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## IOC／artifact概要
 
-- IOC値: 13件
-- IOC観測: 15件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 47件（`artifacts.csv`）

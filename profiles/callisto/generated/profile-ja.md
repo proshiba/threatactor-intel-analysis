@@ -154,10 +154,10 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 ## IOC／artifact概要
 
-- IOC値: 126件
-- IOC観測: 148件
+- IOC値: 79件
+- IOC観測: 98件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 7件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性

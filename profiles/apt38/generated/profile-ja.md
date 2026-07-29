@@ -212,10 +212,10 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 48件
-- IOC観測: 60件
+- IOC値: 14件
+- IOC観測: 18件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 46件
+- 要レビュー候補: 14件
 - 非IOC artifact観測: 148件（`artifacts.csv`）
 
 ## 主要判断と不確実性

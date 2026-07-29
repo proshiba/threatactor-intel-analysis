@@ -65,21 +65,9 @@ PLAIN_DOMAIN_RE = re.compile(
     r"\b(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,63}\b",
     re.IGNORECASE,
 )
-FILE_EXTENSIONS = {
-    "apk", "aspx", "bat", "cfg", "chm", "cmd", "com", "conf", "dat",
-    "dll", "doc", "docm", "docx", "elf", "enc", "exe", "hta", "hwp",
-    "ini", "js", "jse", "jsp", "lnk", "msc", "pdb", "pdf", "php",
-    "pif", "ppt", "pptm", "pptx", "ps1", "rar", "rtf", "scr", "sys",
-    "tmp", "vbe", "vbs", "xls", "xlsm", "xlsx", "zip",
-    # Below are extensions that are not delegated TLDs, so treating them as a
-    # filename can never shadow a real domain. Entries such as .md (Moldova),
-    # .py (Paraguay), .sh, .io, .zip and .mov are deliberately left out above
-    # because they are both file extensions and valid TLDs.
-    "asp", "bin", "bmp", "class", "crt", "css", "csv", "db", "drv", "gz",
-    "htm", "html", "ico", "img", "inf", "iso", "jar", "json", "jpeg", "jpg",
-    "log", "msi", "ocx", "pem", "png", "pyc", "pyd", "reg", "sql", "sqlite",
-    "svg", "tgz", "txt", "war", "xml", "yaml", "yml",
-}
+# ファイル名らしさの列挙はやめ、TLDが実在するかで判定する（plausible_domain）。
+# .exe や .txt は委任TLDではないため自動的に落ち、逆に .com や .zip のような
+# 実在TLDを列挙して本物のドメインを取りこぼすこともなくなる。
 
 # 出典レポート自身の参考リンク(ベンダーブログ、CERT、報道、リファレンス)は
 # IOCではない。ポータルの横串検索で誤結合を招くため取り込まない。
@@ -88,9 +76,16 @@ REFERENCE_HOSTS_PATH = (
 )
 
 
-def _load_reference_data(key: str) -> frozenset[str]:
+IANA_TLDS_PATH = (
+    Path(__file__).resolve().parents[1] / "reference" / "iana-tlds.json"
+)
+# IANAの委任TLDではないが、指標として正当な名前空間。
+SPECIAL_USE_TLDS = frozenset({"onion", "i2p", "bit", "exit"})
+
+
+def _load_reference_list(path: Path, key: str) -> frozenset[str]:
     try:
-        with REFERENCE_HOSTS_PATH.open(encoding="utf-8") as handle:
+        with path.open(encoding="utf-8") as handle:
             return frozenset(
                 entry.strip().lower()
                 for entry in json.load(handle).get(key, [])
@@ -100,10 +95,16 @@ def _load_reference_data(key: str) -> frozenset[str]:
         return frozenset()
 
 
+def _load_reference_data(key: str) -> frozenset[str]:
+    return _load_reference_list(REFERENCE_HOSTS_PATH, key)
+
+
 REFERENCE_HOSTS = _load_reference_data("hosts")
 # co.kr や ddns.net のような公開サフィックスは、それ単体では指標にならない。
 # サブドメイン (mfahost.ddns.net) は実際のIOCなので完全一致のときだけ弾く。
 PUBLIC_SUFFIXES = _load_reference_data("public_suffixes")
+# 実在しないTLDを持つ値は、ファイル名や文の断片であってドメインではない。
+IANA_TLDS = _load_reference_list(IANA_TLDS_PATH, "tlds")
 # 公開DNSリゾルバ。技術的には到達可能だが指標にはならない。
 PUBLIC_RESOLVERS = frozenset({
     "8.8.8.8", "8.8.4.4", "1.1.1.1", "1.0.0.1", "9.9.9.9", "149.112.112.112",
@@ -373,11 +374,33 @@ def reference_host(raw: str) -> bool:
     )
 
 
+def plausible_url_host(raw: str) -> bool:
+    """URLのホストが指標として成立するか。
+
+    ``https://www/`` や ``https://unit42/`` のように抽出途中で切れた値、
+    ``http://c2//Download.php`` のような疑似ホストを落とす。IPアドレスは通す。
+    """
+    host = host_of(raw)
+    if not host:
+        return False
+    try:
+        ipaddress.ip_address(host.strip("[]").split("%", 1)[0])
+    except ValueError:
+        pass
+    else:
+        return True
+    return plausible_domain(host)
+
+
 def plausible_domain(raw: str) -> bool:
     """Reject common filename/OCR shapes before treating text as a domain."""
     value = refang(raw).strip().strip(".").lower()
     labels = value.split(".")
-    if len(labels) < 2 or labels[-1] in FILE_EXTENSIONS:
+    if len(labels) < 2:
+        return False
+    # 実在しないTLDは、ファイル名(dbconn.asp、loader.exe)や文の断片
+    # (safe.headquartered)であってドメインではない。
+    if IANA_TLDS and labels[-1] not in IANA_TLDS and labels[-1] not in SPECIAL_USE_TLDS:
         return False
     # co.kr や ddns.net といった公開サフィックスそのものは指標にならない。
     if value in PUBLIC_SUFFIXES:
@@ -408,6 +431,8 @@ def extract_iocs(
     for match in URL_RE.finditer(text):
         raw = match.group()
         occupied.append(match.span())
+        if not plausible_url_host(raw):
+            continue  # https://www/ のように途中で切れた値
         if not analyst_marked(raw, explicit_structured) and reference_host(raw):
             continue  # 出典レポートの参考リンク
         results.append(("url", raw, disposition))
