@@ -549,6 +549,27 @@ def explicit_mapped_values(
     return iocs, artifacts
 
 
+def classified_record_values(
+    record: dict[str, Any], metadata: dict[str, Any]
+) -> tuple[list[tuple[str, str, str]], list[tuple[str, str, str]]]:
+    """Classify one record, preferring an explicit structured type mapping."""
+    mapped_iocs, mapped_artifacts = explicit_mapped_values(record, metadata)
+    if mapped_iocs or mapped_artifacts:
+        # A structured type mapping is authoritative for that row. Re-running
+        # heuristic extraction would, for example, turn a UUID mutex into an
+        # MD5 or a URI path into a file path.
+        return mapped_iocs, mapped_artifacts
+    explicit = record["method"] == "stix-indicator"
+    return (
+        extract_iocs(
+            record["text"],
+            allow_plain_domains=bool(metadata.get("allow_plain_domains", False)),
+            explicit_structured=explicit,
+        ),
+        extract_artifacts(record["text"], explicit_structured=explicit),
+    )
+
+
 def expand_sources(
     manifest: dict[str, Any], repository_root: Path
 ) -> list[dict[str, Any]]:
@@ -634,15 +655,8 @@ def main() -> int:
                 text = record["text"]
                 if not text.strip():
                     continue
-                mapped_iocs, mapped_artifacts = explicit_mapped_values(record, source)
-                explicit = bool(mapped_iocs or mapped_artifacts or record["method"] == "stix-indicator")
-                ioc_matches = mapped_iocs + extract_iocs(
-                    text,
-                    allow_plain_domains=bool(source.get("allow_plain_domains", False)),
-                    explicit_structured=explicit,
-                )
-                artifact_matches = mapped_artifacts + extract_artifacts(
-                    text, explicit_structured=explicit
+                ioc_matches, artifact_matches = classified_record_values(
+                    record, source
                 )
                 observed_at = time_from_record(record, source)
                 source_published = normalize_time(
@@ -840,7 +854,10 @@ def main() -> int:
     artifacts_output.parent.mkdir(parents=True, exist_ok=True)
     with artifacts_output.open("w", encoding="utf-8", newline="") as stream:
         writer = csv.DictWriter(
-            stream, fieldnames=columns_spec["columns"], extrasaction="ignore"
+            stream,
+            fieldnames=columns_spec["columns"],
+            extrasaction="ignore",
+            lineterminator="\n",
         )
         writer.writeheader()
         writer.writerows(artifact_rows)

@@ -13,7 +13,11 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
-from ingest_observables import extract_artifacts, extract_iocs  # noqa: E402
+from ingest_observables import (  # noqa: E402
+    classified_record_values,
+    extract_artifacts,
+    extract_iocs,
+)
 
 
 class ObservableBoundaryTests(unittest.TestCase):
@@ -43,6 +47,29 @@ class ObservableBoundaryTests(unittest.TestCase):
         self.assertIn("command", kinds)
         self.assertIn("file-path", kinds)
         self.assertIn("registry-key", kinds)
+
+    def test_explicit_artifact_type_prevents_uuid_hash_misclassification(self) -> None:
+        value = "A8215357-F99A-44FE-BC65-D8F0434B0C03"
+        record = {
+            "text": f"artifact\t{value}\tmutex",
+            "location": {"row": 2},
+            "fields": {
+                "type": "artifact",
+                "value": value,
+                "artifact_type": "mutex",
+            },
+            "method": "csv-row",
+        }
+        metadata = {
+            "field_map": {
+                "type": "type",
+                "value": "value",
+                "artifact_type": "artifact_type",
+            }
+        }
+        iocs, artifacts = classified_record_values(record, metadata)
+        self.assertEqual(iocs, [])
+        self.assertEqual(artifacts, [("mutex", value, "confirmed")])
 
     def test_file_names_are_not_domains(self) -> None:
         values = extract_iocs(
