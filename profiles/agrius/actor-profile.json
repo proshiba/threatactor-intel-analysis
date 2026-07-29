@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--agrius",
   "name": "Agrius",
   "status": "draft",
   "created_at": "2026-07-25T09:00:24Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T15:39:41Z",
   "languages": [
     "ja"
   ],
@@ -424,9 +424,31 @@
     "regions": [],
     "sectors": [
       {
-        "id": "target--sector--telecommunications",
-        "name": "Telecommunications",
-        "description": "Targeting text indicates the Telecommunications sector.",
+        "id": "target--mitre-group--sector--f590c96ba96ff3a7179b",
+        "name": "政府・行政",
+        "description": "for a series of ransomware and wiper operations in the Middle East, with an emphasis on Israeli targets.(Citation: SentinelOne Agrius 2021)(Citation: CheckPoint Agrius 2023) Public reporting has linked [Agrius](https://attack.mitre.org/groups/G1030) to Iran's Ministry of Intelligence and Security (MOIS).(Citation: Microsoft Iran Cyber 2023)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
+      {
+        "id": "target--sector--education-and-research",
+        "name": "Education and Research",
+        "description": "Targeting text indicates the Education and Research sector.",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -468,9 +490,9 @@
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
       },
       {
-        "id": "target--sector--education-and-research",
-        "name": "Education and Research",
-        "description": "Targeting text indicates the Education and Research sector.",
+        "id": "target--sector--telecommunications",
+        "name": "Telecommunications",
+        "description": "Targeting text indicates the Telecommunications sector.",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -500,7 +522,7 @@
       "tactic": "Credential Access",
       "technique_id": "T1003.001",
       "technique_name": "LSASS Memory",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used tools such as [Mimikatz](https://attack.mitre.org/software/S0002) to dump LSASS memory to capture credentials in victim environments.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -520,14 +542,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1003-002--general",
       "tactic": "Credential Access",
       "technique_id": "T1003.002",
       "technique_name": "Security Account Manager",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) dumped the SAM file on victim machines to capture credentials.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -547,14 +569,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1005--general",
       "tactic": "Collection",
       "technique_id": "T1005",
       "technique_name": "Data from Local System",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) gathered data from database and other critical servers in victim environments, then used wiping mechanisms as an anti-analysis and anti-forensics mechanism.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -574,14 +596,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1018--general",
       "tactic": "Discovery",
       "technique_id": "T1018",
       "technique_name": "Remote System Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used the tool [NBTscan](https://attack.mitre.org/software/S0590) to scan for remote, accessible hosts in victim environments.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -601,14 +623,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021-001--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.001",
       "technique_name": "Remote Desktop Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) tunnels RDP traffic through deployed web shells to access victim environments via compromised accounts.(Citation: SentinelOne Agrius 2021) [Agrius](https://attack.mitre.org/groups/G1030) used the Plink tool to tunnel RDP connections for remote access and lateral movement in victim environments.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -628,14 +650,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036--general",
       "tactic": "Stealth",
       "technique_id": "T1036",
       "technique_name": "Masquerading",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used the Plink tool for tunneling and connections to remote machines, renaming it <code>systems.exe</code> in some instances.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -655,14 +677,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1041--general",
       "tactic": "Exfiltration",
       "technique_id": "T1041",
       "technique_name": "Exfiltration Over C2 Channel",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) exfiltrated staged data using tools such as Putty and WinSCP, communicating with command and control servers.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -682,14 +704,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1046--general",
       "tactic": "Discovery",
       "technique_id": "T1046",
       "technique_name": "Network Service Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used the open-source port scanner <code>WinEggDrop</code> to perform detailed scans of hosts of interest in victim networks.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -709,14 +731,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-003--general",
       "tactic": "Execution",
       "technique_id": "T1059.003",
       "technique_name": "Windows Command Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) uses [ASPXSpy](https://attack.mitre.org/software/S0073) web shells to enable follow-on command execution via <code>cmd.exe</code>.(Citation: SentinelOne Agrius 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -736,14 +758,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1074-001--general",
       "tactic": "Collection",
       "technique_id": "T1074.001",
       "technique_name": "Local Data Staging",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) has used the folder, <code>C:\\\\windows\\\\temp\\\\s\\\\</code>, to stage data for exfiltration.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -763,14 +785,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1078-002--general",
       "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
       "technique_id": "T1078.002",
       "technique_name": "Domain Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) attempted to acquire valid credentials for victim environments through various means to enable follow-on lateral movement.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -790,14 +812,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1110--general",
       "tactic": "Credential Access",
       "technique_id": "T1110",
       "technique_name": "Brute Force",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) engaged in various brute forcing activities via SMB in victim environments.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -817,14 +839,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1110-003--general",
       "tactic": "Credential Access",
       "technique_id": "T1110.003",
       "technique_name": "Password Spraying",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) engaged in password spraying via SMB in victim environments.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -844,14 +866,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1119--general",
       "tactic": "Collection",
       "technique_id": "T1119",
       "technique_name": "Automated Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used a custom tool, <code>sql.net4.exe</code>, to query SQL databases and then identify and extract personally identifiable information.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -871,14 +893,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1140--general",
       "tactic": "Stealth",
       "technique_id": "T1140",
       "technique_name": "Deobfuscate/Decode Files or Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) has deployed base64-encoded variants of [ASPXSpy](https://attack.mitre.org/software/S0073) to evade detection.(Citation: SentinelOne Agrius 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -898,14 +920,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1190--general",
       "tactic": "Initial Access",
       "technique_id": "T1190",
       "technique_name": "Exploit Public-Facing Application",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) exploits public-facing applications for initial access to victim environments. Examples include widespread attempts to exploit CVE-2018-13379 in FortiOS devices and SQL injection activity.(Citation: SentinelOne Agrius 2021) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -925,14 +947,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1505-003--general",
       "tactic": "Persistence",
       "technique_id": "T1505.003",
       "technique_name": "Web Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) typically deploys a variant of the [ASPXSpy](https://attack.mitre.org/software/S0073) web shell following initial access via exploitation.(Citation: SentinelOne Agrius 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -952,14 +974,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1543-003--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1543.003",
       "technique_name": "Windows Service",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) has deployed [IPsec Helper](https://attack.mitre.org/software/S1132) malware post-exploitation and registered it as a service for persistence.(Citation: SentinelOne Agrius 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -979,14 +1001,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1560-001--general",
       "tactic": "Collection",
       "technique_id": "T1560.001",
       "technique_name": "Archive via Utility",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used 7zip to archive extracted data in preparation for exfiltration.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1006,14 +1028,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1570--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1570",
       "technique_name": "Lateral Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) downloaded some payloads for follow-on execution from legitimate filesharing services such as <code>ufile.io</code> and <code>easyupload.io</code>.(Citation: CheckPoint Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1033,14 +1055,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583--general",
       "tactic": "Resource Development",
       "technique_id": "T1583",
       "technique_name": "Acquire Infrastructure",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) typically uses commercial VPN services for anonymizing last-hop traffic to victim networks, such as ProtonVPN.(Citation: SentinelOne Agrius 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1060,14 +1082,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1685--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1685",
       "technique_name": "Disable or Modify Tools",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Agrius](https://attack.mitre.org/groups/G1030) used several mechanisms to try to disable security tools. [Agrius](https://attack.mitre.org/groups/G1030) attempted to modify EDR-related services to disable auto-start on system reboot. [Agrius](https://attack.mitre.org/groups/G1030) used a publicly available driver, <code>GMER64.sys</code> typically used for anti-rootkit functionality, to selectively stop and remove security software processes.(Citation: Unit42 Agrius 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1087,7 +1109,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -1313,5 +1335,6 @@
     "infrastructure_details": "",
     "targeting_details": "Finance, Hosting, Telecomminication, Israeli people, Academic Sector",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt-c-37`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:09Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -117,9 +117,9 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Meta Syrian network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | 2021-11-16 | APT-C-37: Meta disrupted APT-C-37 infrastructure linked to a separate Syrian Air Force Intelligence unit. The actor used credential phishing, SandroRAT, and SSLove against opposition-linked targets. | 高 | `source--meta-syria-hackers-2021` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Meta Syrian network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | 2021-11-16 | target--country--syria | malware--sslove, malware--sandrorat |  | victim--activity-rule--fd272643244685f97d5e | APT-C-37: Meta disrupted APT-C-37 infrastructure linked to a separate Syrian Air Force Intelligence unit. The actor used credential phishing, SandroRAT, and SSLove against opposition-linked targets. | 高 | `source--meta-syria-hackers-2021` |
 
 
 
@@ -128,13 +128,19 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | Syria | Meta observed targeting of people and organizations in Syria. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
-| sectors | Government | Meta's observed victim set included Government targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
-| sectors | Defense | Meta's observed victim set included Defense targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | sectors | Civil Society | Meta's observed victim set included Civil Society targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
-| roles | Free Syrian Army-linked persons | Meta identified Free Syrian Army-linked persons in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
+| sectors | Defense | Meta's observed victim set included Defense targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
+| sectors | Government | Meta's observed victim set included Government targets. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 | roles | former military personnel | Meta identified former military personnel in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
+| roles | Free Syrian Army-linked persons | Meta identified Free Syrian Army-linked persons in the observed victim set. | 2021-10 | 2021-10 | 高 | `source--meta-syria-hackers-2021` |
 
 選定ロジック: Syrian civil-society, media, humanitarian, opposition, and former military targets holding politically or militarily relevant information.
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Meta Syrian network disruption (October 2021) | 非公開 | anonymous | unknown | reported | target--country--syria | malware--sandrorat, malware--sslove |  |  |  | 2021-10 | 2021-10 | 2021-11-16 | 高 | `source--meta-syria-hackers-2021` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -168,7 +174,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--apt-c-37--c5182ee6ef4d9146 | apt c 37 |  | 不明 | actor_profile/evidence/apt-c-37.csv | structured-data | TLP:CLEAR | 中 |
 | source--apt-c-37--8b48290b6cf47748 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--spivy`
 - 状態: draft
-- 更新日時: 2026-07-25T11:07:07Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:11Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -116,6 +116,10 @@ The repository mapping workbook places this actor in the China worksheet.
 
 選定ロジック: 未評価
 
+## 被害事例
+
+構造化された被害事例なし
+
 ## MITRE ATT&CK Matrixデータ
 
 TTPなし
@@ -145,7 +149,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--spivy--7a09ea4b2f550447 | spivy |  | 不明 | actor_profile/evidence/spivy.csv | structured-data | TLP:CLEAR | 中 |
 

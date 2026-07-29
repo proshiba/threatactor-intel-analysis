@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ghostwriter`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -106,9 +106,9 @@ Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Operation Ghostwriter | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Operation Ghostwriter | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 Operation Ghostwriter
 
@@ -117,6 +117,10 @@ Operation Ghostwriter
 ターゲット情報なし
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -158,7 +162,6 @@ Operation Ghostwriter
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--ghostwriter--94bca5a8ebb026a7 | Ghostwriter Report Final |  | 不明 | Ghostwriter/Ghostwriter-Report-Final.pdf | report | TLP:CLEAR | 中 |
 | source--ghostwriter--3d35d6b65a4c4640 | README |  | 不明 | Ghostwriter/README.MD | repository-notes | TLP:CLEAR | 中 |

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--bitter`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:30Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:09Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -112,11 +112,11 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Bitterハッカーグループ、サイバー作戦を拡大 | phishing-campaign | 不明 | 不明 | 2025-06-06 | Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。 | 高 | `source--daily-d3ece976544c2d6909ce` |
-| 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | phishing-campaign | 不明 | 不明 | 2024-12-19 | サイバースパイ集団「Bitter」が、新たなマルウェア「MiyaRAT」を使用し、トルコの防衛組織を標的に攻撃を行っている。 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 アーカイブ内のLNKファイルを開くと、PowerShellコードが実行され、MiyaRATが展開される。 マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 Bitterは、2013年から活動している南アジアのサイバースパイ集団で、主にアジアの政府や重要組織を標的としている。 | 高 | `source--daily-f0b4d93d130c33f27095` |
-| BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | phishing-campaign | 不明 | 不明 | 2026-04-15 | Lookoutは、Access Nowの調査協力を通じて、中東の市民社会関係者を狙う継続的なスピアフィッシングとAndroidスパイウェア配布を分析し、2022年以降続く諜報活動と評価した。 Android向けProSpyはSignal、ToTok、Botimを装い、連絡先、SMS、端末情報、文書、画像、音声、動画、アーカイブ、バックアップなどを収集してC2へ送信する。 攻撃は偽のSNS・メッセージ相手やApple Supportを装う接触から始まり、iOS利用者にはiCloudやSignal連携のフィッシング、Android利用者には悪性APK配布が使われた。 研究では複数のC2、配布サイト、フィッシング基盤が確認され、被害対象にはエジプトやレバノンの市民社会関係者のほか、政府関係者とみられる標的も含まれる。 Lookoutは、被害者像、インフラ、マルウェアの共通点から、この活動を南アジア系BITTER APTと関係するハック・フォー・ハイヤー作戦の可能性が高いと中程度の確度で評価した。 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Bitterハッカーグループ、サイバー作戦を拡大 | phishing-campaign | 不明 | 不明 | 2025-06-06 | target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0 | malware--artradownloader, malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | victim--activity-rule--508a2f4c32d7ef8c0bbc | Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。 | 高 | `source--daily-d3ece976544c2d6909ce` |
+| 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | phishing-campaign | 不明 | 不明 | 2024-12-19 | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--45b05f79fd85ee2358d0 |  | ttp--activity-rule--772f5d41013df2be715c, ttp--activity-rule--907ca6412a3b822a13c2, ttp--activity-rule--ad9fc7270c8c42da0122, ttp--activity-rule--e0f8b1e9d8bb8e85fe7b, ttp--activity-rule--e63d3626e7d5417a6e78 | victim--activity-rule--c0e702423a9d88afe0ac | サイバースパイ集団「Bitter」が、新たなマルウェア「MiyaRAT」を使用し、トルコの防衛組織を標的に攻撃を行っている。 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 アーカイブ内のLNKファイルを開くと、PowerShellコードが実行され、MiyaRATが展開される。 マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 Bitterは、2013年から活動している南アジアのサイバースパイ集団で、主にアジアの政府や重要組織を標的としている。 | 高 | `source--daily-f0b4d93d130c33f27095` |
+| BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | phishing-campaign | 不明 | 不明 | 2026-04-15 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--mitre-group--sector--45b05f79fd85ee2358d0 |  |  | victim--activity-rule--85aa4730c9f9c6b836c9 | Lookoutは、Access Nowの調査協力を通じて、中東の市民社会関係者を狙う継続的なスピアフィッシングとAndroidスパイウェア配布を分析し、2022年以降続く諜報活動と評価した。 Android向けProSpyはSignal、ToTok、Botimを装い、連絡先、SMS、端末情報、文書、画像、音声、動画、アーカイブ、バックアップなどを収集してC2へ送信する。 攻撃は偽のSNS・メッセージ相手やApple Supportを装う接触から始まり、iOS利用者にはiCloudやSignal連携のフィッシング、Android利用者には悪性APK配布が使われた。 研究では複数のC2、配布サイト、フィッシング基盤が確認され、被害対象にはエジプトやレバノンの市民社会関係者のほか、政府関係者とみられる標的も含まれる。 Lookoutは、被害者像、インフラ、マルウェアの共通点から、この活動を南アジア系BITTER APTと関係するハック・フォー・ハイヤー作戦の可能性が高いと中程度の確度で評価した。 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
 
 
 
@@ -124,36 +124,56 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | Pakistan | Targeting text mentions pakistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
 | countries | Saudi Arabia | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Pakistan | Targeting text mentions pakistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 中国 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--daily-d3ece976544c2d6909ce`, `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | 活動「'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| sectors | 非営利・市民社会 | 活動「BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1dd0fd6a374bf37bcc74` |
+| sectors | 政府・行政 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--daily-1dd0fd6a374bf37bcc74`, `source--daily-d3ece976544c2d6909ce`, `source--daily-f0b4d93d130c33f27095`, `source--mitre-attack-19-1` |
+| sectors | エネルギー | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 製造・産業 | [BITTER](https://attack.mitre.org/groups/G1002) has targeted government, energy, and engineering organizations in Pakistan, China, Bangladesh, and Saudi Arabia.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Bitterハッカーグループ、サイバー作戦を拡大 | 非公開 | anonymous | unknown | reported | target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0 | malware--artradownloader, malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | メール／メールアカウント | espionage: Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 | 不明 | 不明 | 2025-06-06 | 高 | `source--daily-d3ece976544c2d6909ce` |
+| 被害事例: BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--mitre-group--sector--45b05f79fd85ee2358d0 |  |  | エンドポイント, モバイル端末 |  | 不明 | 不明 | 2026-04-15 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
+| 被害事例: 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--45b05f79fd85ee2358d0 |  | ttp--activity-rule--772f5d41013df2be715c, ttp--activity-rule--907ca6412a3b822a13c2, ttp--activity-rule--ad9fc7270c8c42da0122, ttp--activity-rule--e0f8b1e9d8bb8e85fe7b, ttp--activity-rule--e63d3626e7d5417a6e78 | メール／メールアカウント |  | 不明 | 不明 | 2024-12-19 | 高 | `source--daily-f0b4d93d130c33f27095` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.013 | Encrypted/Encoded File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.004 | Masquerade Task or Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 |  | activity--daily-3d87dd146a5797f63b60 | 不明 | 不明 | 中 | `source--daily-d3ece976544c2d6909ce` |
+| Collection | T1560.001 | Archive via Utility | 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Collection | T1113 | Screen Capture | MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Initial Access | T1566.001 | Spearphishing Attachment | 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Discovery | T1082 | System Information Discovery | MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 |  | activity--daily-6408cf1dda686dc502da | 不明 | 不明 | 中 | `source--daily-f0b4d93d130c33f27095` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [BITTER](https://attack.mitre.org/groups/G1002) has used a RAR SFX dropper to deliver malware.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.004 | Masquerade Task or Service | [BITTER](https://attack.mitre.org/groups/G1002) has disguised malware as a Windows Security update service.(Citation: Cisco Talos Bitter Bangladesh May 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [BITTER](https://attack.mitre.org/groups/G1002) has used scheduled tasks for persistence and execution.(Citation: Cisco Talos Bitter Bangladesh May 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [BITTER](https://attack.mitre.org/groups/G1002) has exploited CVE-2021-1732 for privilege escalation.(Citation: DBAPPSecurity BITTER zero-day Feb 2021)(Citation: Microsoft CVE-2021-1732 Feb 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [BITTER](https://attack.mitre.org/groups/G1002) has used HTTP POST requests for C2.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | /iMessage delivery T1539 Steal Web Session Cookie 10-year tracking cookie T1111 Multi-Factor Authentication Interception Real-time 2FA relay T1078 Valid Accounts iCloud account takeover T1204.001 User Execution: Malicious Link Phishing link click |  |  | 不明 | 不明 | 中 | `source--bitter--2cfec8a10f89e0b3` |
-| Command And Control | T1095 | Non-Application Layer Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1095 | Non-Application Layer Protocol | [BITTER](https://attack.mitre.org/groups/G1002) has used TCP for C2 communications.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [BITTER](https://attack.mitre.org/groups/G1002) has downloaded additional malware and tools onto a compromised host.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Credential Access | T1111 | Multi-Factor Authentication Interception | hnique ID Technique Name Usage T1566.002 Spearphishing Link WhatsApp/iMessage delivery T1539 Steal Web Session Cookie 10-year tracking cookie T1111 Multi-Factor Authentication Interception Real-time 2FA relay T1078 Valid Accounts iCloud account takeover T1204.001 User Execution: Malicious Link Phishing link click |  |  | 不明 | 不明 | 中 | `source--bitter--2cfec8a10f89e0b3` |
-| Execution | T1203 | Exploitation for Client Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1203 | Exploitation for Client Execution | [BITTER](https://attack.mitre.org/groups/G1002) has exploited Microsoft Office vulnerabilities CVE-2012-0158, CVE-2017-11882, CVE-2018-0798, and CVE-2018-0802.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Execution | T1204.001 | Malicious Link | okie 10-year tracking cookie T1111 Multi-Factor Authentication Interception Real-time 2FA relay T1078 Valid Accounts iCloud account takeover T1204.001 User Execution: Malicious Link Phishing link click |  |  | 不明 | 不明 | 中 | `source--bitter--2cfec8a10f89e0b3` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [BITTER](https://attack.mitre.org/groups/G1002) has attempted to lure victims into opening malicious attachments delivered via spearphishing.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Credential Access | T1539 | Steal Web Session Cookie | .]com iMessage phishing sender MITRE ATT&CK Mapping Technique ID Technique Name Usage T1566.002 Spearphishing Link WhatsApp/iMessage delivery T1539 Steal Web Session Cookie 10-year tracking cookie T1111 Multi-Factor Authentication Interception Real-time 2FA relay T1078 Valid Accounts iCloud account takeover T1204.001 User Execution: Malicious Link Phishing link click |  |  | 不明 | 不明 | 中 | `source--bitter--2cfec8a10f89e0b3` |
-| Execution | T1559.002 | Dynamic Data Exchange | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1559.002 | Dynamic Data Exchange | [BITTER](https://attack.mitre.org/groups/G1002) has executed OLE objects using Microsoft Equation Editor to download and run malicious payloads.(Citation: Cisco Talos Bitter Bangladesh May 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [BITTER](https://attack.mitre.org/groups/G1002) has sent spearphishing emails with a malicious RTF document or Excel spreadsheet.(Citation: Cisco Talos Bitter Bangladesh May 2022)(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access | T1566.002 | Spearphishing Link | 40 Email Addresses Email Usage idapple[.]review@icloud[.]com iMessage phishing sender MITRE ATT&CK Mapping Technique ID Technique Name Usage T1566.002 Spearphishing Link WhatsApp/iMessage delivery T1539 Steal Web Session Cookie 10-year tracking cookie T1111 Multi-Factor Authentication Interception Real-time 2FA relay T1078 Valid Accounts iCloud account takeover T1204.001 User Execution: Malicious |  |  | 不明 | 不明 | 中 | `source--bitter--2cfec8a10f89e0b3` |
-| Command And Control | T1568 | Dynamic Resolution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573 | Encrypted Channel | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1568 | Dynamic Resolution | [BITTER](https://attack.mitre.org/groups/G1002) has used DDNS for C2 communications.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1573 | Encrypted Channel | [BITTER](https://attack.mitre.org/groups/G1002) has encrypted their C2 communications.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [BITTER](https://attack.mitre.org/groups/G1002) has registered a variety of domains to host malicious payloads and for C2.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [BITTER](https://attack.mitre.org/groups/G1002) has obtained tools such as PuTTY for use in their operations.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [BITTER](https://attack.mitre.org/groups/G1002) has registered domains to stage payloads.(Citation: Forcepoint BITTER Pakistan Oct 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

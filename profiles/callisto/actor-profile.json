@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--callisto",
   "name": "Callisto Group",
   "status": "draft",
   "created_at": "2026-07-25T09:00:28Z",
-  "updated_at": "2026-07-27T11:17:22Z",
+  "updated_at": "2026-07-29T15:20:22Z",
   "languages": [
     "ja"
   ],
@@ -162,31 +162,151 @@
         "basis": "daily-news-file-date"
       },
       "description": "GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-000ea03bc7f9b3f702ec"
       ],
-      "analyst_notes": "日次収集レコード daily-record--99b5ac281926f2b2c7f58cbb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は、ロシアの連邦保安庁（FSB）と関連するColdRiver（別名：Star Blizzard、Callisto Group、Seaborgium）である。"
+      "analyst_notes": "日次収集レコード daily-record--99b5ac281926f2b2c7f58cbb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は、ロシアの連邦保安庁（FSB）と関連するColdRiver（別名：Star Blizzard、Callisto Group、Seaborgium）である。",
+      "ttp_refs": [
+        "ttp--activity-rule--42d1e63e49f3cca5b345",
+        "ttp--activity-rule--4eacc810da09c0b2b54d",
+        "ttp--activity-rule--714e895c938fc762d78b"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--c80973708fca655b5050"
+      ]
     }
   ],
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-000ea03bc7f9b3f702ec"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
     "roles": [],
     "selection_logic": "",
     "analyst_notes": "No structured target statement was available in the mapping workbook."
   },
   "ttps": [
     {
+      "ttp_id": "ttp--activity-rule--42d1e63e49f3cca5b345",
+      "tactic": "Command And Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。",
+      "activity_refs": [
+        "activity--daily-99b5ac281926f2b2c7f5"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-000ea03bc7f9b3f702ec"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--4eacc810da09c0b2b54d",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。",
+      "activity_refs": [
+        "activity--daily-99b5ac281926f2b2c7f5"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-000ea03bc7f9b3f702ec"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--714e895c938fc762d78b",
+      "tactic": "Execution",
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "observed_behavior": "このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。",
+      "activity_refs": [
+        "activity--daily-99b5ac281926f2b2c7f5"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-000ea03bc7f9b3f702ec"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "ttp_id": "ttp--t1059-007--general",
       "tactic": "Execution",
       "technique_id": "T1059.007",
       "technique_name": "JavaScript",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used JavaScript to redirect victim traffic from an adversary controlled server to a server hosting the Evilginx phishing framework.(Citation: StarBlizzard) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -206,14 +326,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1078--general",
       "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
       "technique_id": "T1078",
       "technique_name": "Valid Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used stolen credentials to sign into victim email accounts.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -233,14 +353,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1114-002--general",
       "tactic": "Collection",
       "technique_id": "T1114.002",
       "technique_name": "Remote Email Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has remotely accessed victims' email accounts to steal messages and attachments.(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -260,14 +380,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1114-003--general",
       "tactic": "Collection",
       "technique_id": "T1114.003",
       "technique_name": "Email Forwarding Rule",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has abused email forwarding rules to monitor the activities of a victim, steal information, and maintain persistent access after compromised credentials are reset.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -287,14 +407,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has lured targets into opening malicious .pdf files to deliver malware.(Citation: Google TAG COLDRIVER January 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -314,14 +434,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1539--general",
       "tactic": "Credential Access",
       "technique_id": "T1539",
       "technique_name": "Steal Web Session Cookie",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used EvilGinx to steal the session cookies of victims directed to\n phishing domains.(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -341,14 +461,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1550-004--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1550.004",
       "technique_name": "Web Session Cookie",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has bypassed multi-factor authentication on victim email accounts by using session cookies stolen using EvilGinx.(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -368,14 +488,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-001--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.001",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails with malicious .pdf files to spread malware.(Citation: Google TAG COLDRIVER January 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -395,14 +515,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583--general",
       "tactic": "Resource Development",
       "technique_id": "T1583",
       "technique_name": "Acquire Infrastructure",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used HubSpot and MailerLite marketing platform services to hide the true sender of phishing emails.(Citation: StarBlizzard) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -422,14 +542,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1583.001",
       "technique_name": "Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has registered domains using randomized words and with names resembling legitimate organizations.(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -449,14 +569,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1585.001",
       "technique_name": "Social Media Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has established fraudulent profiles on professional networking sites to conduct reconnaissance.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -476,14 +596,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1585.002",
       "technique_name": "Email Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has registered impersonation email accounts to spoof experts in a particular field or individuals and organizations affiliated with the intended target.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: Google TAG COLDRIVER January 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -503,14 +623,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1586-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1586.002",
       "technique_name": "Email Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has used compromised email accounts to conduct spearphishing against\n contacts of the original victim.(Citation: CISA Star Blizzard Advisory December 2023)\n",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -530,14 +650,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.002",
       "technique_name": "Tool",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has incorporated the open-source EvilGinx framework into their spearphishing activity.(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -557,14 +677,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1589--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1589",
       "technique_name": "Gather Victim Identity Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has identified ways to engage targets by researching potential victims' interests and social or professional contacts.(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -584,14 +704,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1593--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1593",
       "technique_name": "Search Open Websites/Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "\n[Star Blizzard](https://attack.mitre.org/groups/G1033) has used open-source research to identify information about victims to use in targeting.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -611,7 +731,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1598--general",
@@ -645,7 +765,7 @@
       "tactic": "Reconnaissance",
       "technique_id": "T1598.002",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails to establish rapport with targets eventually sending messages with attachments containing links to credential-stealing sites.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)\n",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -665,14 +785,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1598-003--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1598.003",
       "technique_name": "Spearphishing Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails to establish rapport with targets eventually sending messages with links to credential-stealing sites.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)\n",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -692,7 +812,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1608--general",
@@ -726,7 +846,7 @@
       "tactic": "Resource Development",
       "technique_id": "T1608.001",
       "technique_name": "Upload Malware",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has uploaded malicious payloads to cloud storage sites.(Citation: Google TAG COLDRIVER January 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -746,14 +866,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1684-001--general",
       "tactic": "Stealth",
       "technique_id": "T1684.001",
       "technique_name": "Impersonation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Star Blizzard](https://attack.mitre.org/groups/G1033) has registered impersonation email accounts to spoof experts in a particular field or individuals and organizations affiliated with the intended target.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: Google TAG COLDRIVER January 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -773,7 +893,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -1053,5 +1173,58 @@
     "infrastructure_details": "",
     "targeting_details": "",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--c80973708fca655b5050",
+      "name": "被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。",
+      "activity_refs": [
+        "activity--daily-99b5ac281926f2b2c7f5"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--42d1e63e49f3cca5b345",
+        "ttp--activity-rule--4eacc810da09c0b2b54d",
+        "ttp--activity-rule--714e895c938fc762d78b"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-05-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-000ea03bc7f9b3f702ec"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

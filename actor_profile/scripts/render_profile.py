@@ -296,6 +296,10 @@ def render_markdown(
             time_label(item["first_observed"]),
             time_label(item["last_observed"]),
             time_label(item["reported_at"]),
+            ", ".join(item.get("target_refs", [])),
+            ", ".join(item.get("malware_refs", [])),
+            ", ".join(item.get("ttp_refs", [])),
+            ", ".join(item.get("victim_refs", [])),
             item["description"],
             confidence_label(item["confidence"]),
             refs_label(item["evidence_refs"], sources),
@@ -305,7 +309,10 @@ def render_markdown(
     lines.extend(
         [
             table(
-                ["活動", "種別", "初回", "最終", "報告日", "説明", "確度", "証拠"],
+                [
+                    "活動", "種別", "初回", "最終", "報告日", "標的", "マルウェア",
+                    "TTP", "被害事例", "説明", "確度", "証拠",
+                ],
                 activity_rows,
             )
             if activity_rows
@@ -341,6 +348,45 @@ def render_markdown(
             else "ターゲット情報なし",
             "",
             f"選定ロジック: {profile['targets'].get('selection_logic') or '未評価'}",
+            "",
+            "## 被害事例",
+            "",
+        ]
+    )
+    victim_rows = [
+        [
+            item["name"],
+            item.get("victim_name") or "非公開",
+            item["disclosure_status"],
+            item["victim_type"],
+            item["case_status"],
+            ", ".join(item["target_refs"]),
+            ", ".join(item["malware_refs"]),
+            ", ".join(item["ttp_refs"]),
+            ", ".join(item["affected_assets"]),
+            "<br>".join(
+                f"{impact['impact_type']}: {impact['description']}"
+                for impact in item["impacts"]
+            ),
+            time_label(item["first_observed"]),
+            time_label(item["last_observed"]),
+            time_label(item["reported_at"]),
+            confidence_label(item["confidence"]),
+            refs_label(item["evidence_refs"], sources),
+        ]
+        for item in profile.get("victim_cases", [])
+    ]
+    lines.extend(
+        [
+            table(
+                [
+                    "事例", "被害者", "公開状態", "種別", "事例状態", "標的属性", "マルウェア",
+                    "TTP", "影響資産", "影響", "初回", "最終", "報告日", "確度", "証拠",
+                ],
+                victim_rows,
+            )
+            if victim_rows
+            else "構造化された被害事例なし",
             "",
             "## MITRE ATT&CK Matrixデータ",
             "",
@@ -614,6 +660,42 @@ def render_stix(
             objects.append(obj)
             object_id_by_profile_id[target["id"]] = obj["id"]
 
+    for victim in profile.get("victim_cases", []):
+        identity_class = (
+            "individual"
+            if victim.get("victim_type") in {"person", "multiple-persons"}
+            else "organization"
+        )
+        obj = stix_base(
+            "identity",
+            victim["victim_case_id"],
+            now,
+            {
+                "name": victim.get("victim_name") or victim["name"],
+                "identity_class": identity_class,
+                "description": victim["description"],
+                "external_references": external_refs(
+                    victim["evidence_refs"], source_by_id
+                ),
+                "x_profile_object_id": victim["victim_case_id"],
+                "x_disclosure_status": victim["disclosure_status"],
+                "x_victim_type": victim["victim_type"],
+                "x_case_status": victim["case_status"],
+                "x_target_refs": victim["target_refs"],
+                "x_malware_refs": victim["malware_refs"],
+                "x_ttp_refs": victim["ttp_refs"],
+                "x_affected_assets": victim["affected_assets"],
+                "x_impacts": victim["impacts"],
+                "x_first_observed": victim["first_observed"],
+                "x_last_observed": victim["last_observed"],
+                "x_reported_at": victim["reported_at"],
+                "x_confidence": victim["confidence"],
+                "x_analyst_notes": victim.get("analyst_notes", ""),
+            },
+        )
+        objects.append(obj)
+        object_id_by_profile_id[victim["victim_case_id"]] = obj["id"]
+
     for ttp in profile["ttps"]:
         obj = stix_base(
             "attack-pattern",
@@ -703,6 +785,24 @@ def render_stix(
                     "targets",
                     object_id_by_profile_id[ref],
                     f"{activity['name']} targets {ref}.",
+                    activity["confidence"],
+                )
+        for ref in activity.get("ttp_refs", []):
+            if ref in object_id_by_profile_id:
+                add_relationship(
+                    campaign_id,
+                    "uses",
+                    object_id_by_profile_id[ref],
+                    f"{activity['name']} uses {ref}.",
+                    activity["confidence"],
+                )
+        for ref in activity.get("victim_refs", []):
+            if ref in object_id_by_profile_id:
+                add_relationship(
+                    campaign_id,
+                    "targets",
+                    object_id_by_profile_id[ref],
+                    f"{activity['name']} affected {ref}.",
                     activity["confidence"],
                 )
     for ttp in profile["ttps"]:

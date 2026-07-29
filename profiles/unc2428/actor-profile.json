@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--unc2428",
   "name": "UNC2428",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:04:37Z",
+  "updated_at": "2026-07-29T15:36:12Z",
   "languages": [
     "ja"
   ],
@@ -89,7 +89,11 @@
       "evidence_refs": [
         "source--daily-7839c220d8ee6cec8013"
       ],
-      "analyst_notes": "日次収集レコード daily-record--c3986b435d9ee7d75e7592b2 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - イラン関連の脅威グループUNC2428が、イスラエルの防衛企業ラファエルを装った偽の求人キャンペーンを実施。"
+      "analyst_notes": "日次収集レコード daily-record--c3986b435d9ee7d75e7592b2 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - イラン関連の脅威グループUNC2428が、イスラエルの防衛企業ラファエルを装った偽の求人キャンペーンを実施。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--c2a1236c011a447d08fe"
+      ]
     }
   ],
   "targets": {
@@ -137,24 +141,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_04-06/20250424.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -238,5 +224,52 @@
     "infrastructure_details": "",
     "targeting_details": "",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--c2a1236c011a447d08fe",
+      "name": "被害事例: イラン関連ハッカー、偽の求人キャンペーンを通じてイスラエルを標的にMURKYTOURマルウェアを展開",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "イラン関連の脅威グループUNC2428が、イスラエルの防衛企業ラファエルを装った偽の求人キャンペーンを実施。 応募者は「RafaelConnect.exe」というツールをダウンロードさせられ、個人情報や履歴書を入力するよう誘導された。 このツールはLONEFLEETインストーラーであり、LEAFPILEランチャーを介してMURKYTOURバックドアを密かに展開。 MURKYTOURは持続的なアクセスを提供し、被害者のマシンを完全に制御可能にする。 このキャンペーンは、イスラエル国家サイバー総局が「Black Shadow」として追跡している活動と重複している。",
+      "activity_refs": [
+        "activity--daily-c3986b435d9ee7d75e75"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "privacy",
+          "description": "応募者は「RafaelConnect.exe」というツールをダウンロードさせられ、個人情報や履歴書を入力するよう誘導された。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-7839c220d8ee6cec8013"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

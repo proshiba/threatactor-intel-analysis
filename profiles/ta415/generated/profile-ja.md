@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ta415`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:35Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -104,21 +104,32 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | phishing-campaign | 不明 | 不明 | 2025-09-18 | 中国関与とされるTA415が、米政府・シンクタンク・大学の経済政策専門家を狙い、米中テーマで誘導して標的型攻撃を展開。 下院対中特別委員会委員長やU.S.-China Business Councilを装い、送信元にuschina@zohomail[.]comを用いたフィッシングを実施。 送付アーカイブのLNKがバッチを起動し、難読化Pythonローダー「WhirlCoil」を実行、PDFを囮に2時間毎の常駐タスクを設定。 ローダーはVS Code Remote Tunnelsで持続的アクセスを確立し、収集情報をrequestrepo[.]comへHTTP POST（Base64）で送信。 活動は2025年7～8月に観測。APT41／Brass Typhoonとの重複が指摘され、米中通商交渉下での諜報収集が目的と分析。 | 高 | `source--daily-5771658f42dfbb4596d9` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | phishing-campaign | 不明 | 不明 | 2025-09-18 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--82b731147199c28add83 | victim--activity-rule--73a796206a0da6325312 | 中国関与とされるTA415が、米政府・シンクタンク・大学の経済政策専門家を狙い、米中テーマで誘導して標的型攻撃を展開。 下院対中特別委員会委員長やU.S.-China Business Councilを装い、送信元にuschina@zohomail[.]comを用いたフィッシングを実施。 送付アーカイブのLNKがバッチを起動し、難読化Pythonローダー「WhirlCoil」を実行、PDFを囮に2時間毎の常駐タスクを設定。 ローダーはVS Code Remote Tunnelsで持続的アクセスを確立し、収集情報をrequestrepo[.]comへHTTP POST（Base64）で送信。 活動は2025年7～8月に観測。APT41／Brass Typhoonとの重複が指摘され、米中通商交渉下での諜報収集が目的と分析。 | 高 | `source--daily-5771658f42dfbb4596d9` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 政府・行政 | 活動「中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5771658f42dfbb4596d9` |
+| sectors | 教育・研究 | 活動「中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5771658f42dfbb4596d9` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--82b731147199c28add83 |  |  | 不明 | 不明 | 2025-09-18 | 高 | `source--daily-5771658f42dfbb4596d9` |
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Stealth | T1027 | Obfuscated Files or Information | 送付アーカイブのLNKがバッチを起動し、難読化Pythonローダー「WhirlCoil」を実行、PDFを囮に2時間毎の常駐タスクを設定。 |  | activity--daily-1a4f1dee2ecbdaa47b9d | 不明 | 不明 | 中 | `source--daily-5771658f42dfbb4596d9` |
 
 ## IOC／artifact概要
 
@@ -147,7 +158,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-5771658f42dfbb4596d9 | 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | thehackernews.com | 2025-09-18 | https://thehackernews.com/2025/09/chinese-ta415-uses-vs-code-remote.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--ta415--26523ec4fbe0b554 | ta415 |  | 不明 | actor_profile/evidence/ta415.csv | structured-data | TLP:CLEAR | 中 |

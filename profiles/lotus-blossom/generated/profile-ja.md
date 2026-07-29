@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--lotus-blossom`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -143,35 +143,41 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 政府・行政 | In addition to government and related targets, [Lotus Blossom](https://attack.mitre.org/groups/G0030) has also targeted entities such as digital certificate issuers.(Citation: Lotus Blossom Jun 2015)(Citation: Symantec Bilbug 2022)(Citation: Cisco LotusBlossom 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Discovery | T1012 | Query Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1016 | System Network Configuration Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1016.001 | Internet Connection Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.001 | Local Data Staging | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.001 | Local Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.001 | Internal Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.003 | Multi-hop Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1134 | Access Token Manipulation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1482 | Domain Trust Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1539 | Steal Web Session Cookie | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1543.003 | Windows Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.003 | Archive via Custom Method | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1012 | Query Registry | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has run commands such as `reg query HKLM\SYSTEM\CurrentControlSet\Services\[service name]\Parameters` to verify if installed implants are running as a service.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016 | System Network Configuration Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used commands such as `ipconfig` and `netstat` to gather network information on compromised hosts.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016.001 | Internet Connection Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has performed checks to determine if a victim machine is able to access the Internet.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used [Ping](https://attack.mitre.org/software/S0097) to identify remote systems.(Citation: Symantec Bilbug 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used port scanners to enumerate services on remote hosts.(Citation: Symantec Bilbug 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used WMI to enable lateral movement.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1049 | System Network Connections Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used commands such as `netstat` to identify system network connections.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1074.001 | Local Data Staging | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has locally staged compressed and archived data for follow-on exfiltration.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1083 | File and Directory Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used commands such as `dir` to examine the local filesystem of victim machines.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.001 | Local Account | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used commands such as `net` to profile local system users.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.002 | Domain Account | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used `net` commands and tools such as [AdFind](https://attack.mitre.org/software/S0552) to profile domain accounts associated with victim machines and make Active Directory queries.(Citation: Cisco LotusBlossom 2025)(Citation: Symantec Bilbug 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090.001 | Internal Proxy | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used publicly available tools such as the Venom proxy tool to proxy traffic out of victim environments.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090.003 | Multi-hop Proxy | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used tools such as the publicly available HTran tool for proxying traffic in victim environments.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has installed tools such as [Sagerunex](https://attack.mitre.org/software/S1210) by writing them to the Windows registry.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1134 | Access Token Manipulation | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has retrieved process tokens for processes to adjust the privileges of the launch process or other items.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1482 | Domain Trust Discovery | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used tools such as [AdFind](https://attack.mitre.org/software/S0552) to make Active Directory queries.(Citation: Symantec Bilbug 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1539 | Steal Web Session Cookie | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used publicly-available tools to steal cookies from browsers such as Chrome.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1543.003 | Windows Service | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has configured tools such as [Sagerunex](https://attack.mitre.org/software/S1210) to run as Windows services.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used WinRAR for compressing data in RAR format.(Citation: Cisco LotusBlossom 2025)(Citation: Symantec Bilbug 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.003 | Archive via Custom Method | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used custom tools to compress and archive data on victim systems.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [Lotus Blossom](https://attack.mitre.org/groups/G0030) has used publicly-available tools such as a Python-based cookie stealer for Chrome browsers, [Impacket](https://attack.mitre.org/software/S0357), and the Venom proxy tool.(Citation: Cisco LotusBlossom 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

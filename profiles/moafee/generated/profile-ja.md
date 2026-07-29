@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--moafee`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:20:23Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -118,11 +118,15 @@ Aliasなし
 
 選定ロジック: 未評価
 
+## 被害事例
+
+構造化された被害事例なし
+
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.001 | Binary Padding | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.001 | Binary Padding | [Moafee](https://attack.mitre.org/groups/G0002) has been known to employ binary padding.(Citation: Haq 2014) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

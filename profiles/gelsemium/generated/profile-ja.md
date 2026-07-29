@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--gelsemium`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:32Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -111,9 +111,9 @@ Gelsemiumの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用 | malware-campaign | 不明 | 不明 | 2024-11-22 | 中国のサイバー攻撃グループGelsemiumが、新たなLinuxバックドア「WolfsBane」を使用。 WolfsBaneは、ドロッパー、ランチャー、バックドアから成る完全なマルウェアツール。 改変されたオープンソースのルートキットを用いて検出を回避。 マルウェアは、「.config/autostart/」に自動起動ファイル（gnome-control.desktop）を作成することで、ホストへの永続性を設定。 Windows向けマルウェア「Project Wood」と関連するLinuxマルウェア「FireWood」も発見。 APTグループがLinuxプラットフォームへの攻撃を強化する傾向が増加。 | 高 | `source--daily-c14d3c6623afcdc68bdf` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用 | malware-campaign | 不明 | 不明 | 2024-11-22 |  |  |  |  | 中国のサイバー攻撃グループGelsemiumが、新たなLinuxバックドア「WolfsBane」を使用。 WolfsBaneは、ドロッパー、ランチャー、バックドアから成る完全なマルウェアツール。 改変されたオープンソースのルートキットを用いて検出を回避。 マルウェアは、「.config/autostart/」に自動起動ファイル（gnome-control.desktop）を作成することで、ホストへの永続性を設定。 Windows向けマルウェア「Project Wood」と関連するLinuxマルウェア「FireWood」も発見。 APTグループがLinuxプラットフォームへの攻撃を強化する傾向が増加。 | 高 | `source--daily-c14d3c6623afcdc68bdf` |
 
 
 
@@ -122,8 +122,14 @@ Gelsemiumの標準化プロファイル。リポジトリ内の専用資料1件�
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | Taiwan | Targeting text mentions taiwan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| sectors | 政府・行政 | [Gelsemium](https://attack.mitre.org/groups/G0141) is a cyberespionage group that has been active since at least 2014, targeting governmental institutions, electronics manufacturers, universities, and religious organizations in East Asia and the Middle East.(Citation: ESET Gelsemium June 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 製造・産業 | [Gelsemium](https://attack.mitre.org/groups/G0141) is a cyberespionage group that has been active since at least 2014, targeting governmental institutions, electronics manufacturers, universities, and religious organizations in East Asia and the Middle East.(Citation: ESET Gelsemium June 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 

@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--storm-1811",
   "name": "Storm-1811",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:04:35Z",
+  "updated_at": "2026-07-29T15:36:11Z",
   "languages": [
     "ja"
   ],
@@ -289,7 +289,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ",
-      "target_refs": [],
+      "target_refs": [
+        "target--mitre-group--sector--6ace32369b881a0c4d24"
+      ],
       "malware_refs": [
         "malware--black-basta"
       ],
@@ -298,24 +300,85 @@
       "evidence_refs": [
         "source--daily-1ba1d9f38d8366b3c0a3"
       ],
-      "analyst_notes": "日次収集レコード daily-record--34b52b95ce7e51038b32d6a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用"
+      "analyst_notes": "日次収集レコード daily-record--34b52b95ce7e51038b32d6a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用",
+      "ttp_refs": [
+        "ttp--activity-rule--d7c3d4655179616e68af"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--4510836a063ad9eed051"
+      ]
     }
   ],
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--6ace32369b881a0c4d24",
+        "name": "製造・産業",
+        "description": "[Storm-1811](https://attack.mitre.org/groups/G1046) is notable for unique phishing and social engineering mechanisms for initial access, such as overloading victim email inboxes with non-malicious spam to prompt a fake \"help desk\" interaction leading to the deployment of adversary tools and capabilities.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-1ba1d9f38d8366b3c0a3",
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
     "selection_logic": "",
     "analyst_notes": "No structured target statement was available in the mapping workbook."
   },
   "ttps": [
     {
+      "ttp_id": "ttp--activity-rule--d7c3d4655179616e68af",
+      "tactic": "Execution",
+      "technique_id": "T1059.003",
+      "technique_name": "Windows Command Shell",
+      "observed_behavior": "Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ",
+      "activity_refs": [
+        "activity--daily-34b52b95ce7e51038b32"
+      ],
+      "malware_refs": [
+        "malware--black-basta"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-1ba1d9f38d8366b3c0a3"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "ttp_id": "ttp--t1021-002--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.002",
       "technique_name": "SMB/Windows Admin Shares",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has attempted to move laterally in victim environments via SMB using [Impacket](https://attack.mitre.org/software/S0357).(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -335,14 +398,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021-004--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.004",
       "technique_name": "SSH",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used OpenSSH to establish an SSH tunnel to victims for persistent access.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -362,14 +425,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027-013--general",
       "tactic": "Stealth",
       "technique_id": "T1027.013",
       "technique_name": "Encrypted/Encoded File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) XOR encodes a [Cobalt Strike](https://attack.mitre.org/software/S0154) installation payload in a DLL file that is decoded with a hardcoded key when called by a legitimate 7zip installation process.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -389,14 +452,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1033--general",
       "tactic": "Discovery",
       "technique_id": "T1033",
       "technique_name": "System Owner/User Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used `whoami.exe` to determine if the active user on a compromised system is an administrator.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -416,14 +479,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036--general",
       "tactic": "Stealth",
       "technique_id": "T1036",
       "technique_name": "Masquerading",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has prompted users to download and execute batch scripts that masquerade as legitimate update files during initial access and social engineering operations.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -443,14 +506,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-005--general",
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has disguised [Cobalt Strike](https://attack.mitre.org/software/S0154) installers as a malicious DLL masquerading as part of a legitimate 7zip installation package.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -470,14 +533,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-010--general",
       "tactic": "Stealth",
       "technique_id": "T1036.010",
       "technique_name": "Masquerade Account Name",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created Microsoft Teams accounts that spoof IT support and helpdesk members for use in application and voice phishing.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -497,14 +560,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1048-002--general",
       "tactic": "Exfiltration",
       "technique_id": "T1048.002",
       "technique_name": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has exfiltrated captured user credentials via Secure Copy Protocol (SCP).(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -524,14 +587,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1056--general",
       "tactic": "Collection, Credential Access",
       "technique_id": "T1056",
       "technique_name": "Input Capture",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used a PowerShell script to capture user credentials after prompting a user to authenticate to run a malicious script masquerading as a legitimate update item.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -551,14 +614,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-001--general",
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used PowerShell for multiple purposes, such as using PowerShell scripts executing in an infinite loop to create an SSH connection to a command and control server.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -578,14 +641,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-003--general",
       "tactic": "Execution",
       "technique_id": "T1059.003",
       "technique_name": "Windows Command Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used multiple batch scripts during initial access and subsequent actions on victim machines.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -605,14 +668,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1074-001--general",
       "tactic": "Collection",
       "technique_id": "T1074.001",
       "technique_name": "Local Data Staging",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has locally staged captured credentials for subsequent manual exfiltration.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -632,14 +695,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1087-002--general",
       "tactic": "Discovery",
       "technique_id": "T1087.002",
       "technique_name": "Domain Account",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has performed domain account enumeration during intrusions.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -659,14 +722,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1105--general",
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used scripted `cURL` commands, [BITSAdmin](https://attack.mitre.org/software/S0190), and other mechanisms to retrieve follow-on batch scripts and tools for execution on victim devices.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary June Insights 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -686,14 +749,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1140--general",
       "tactic": "Stealth",
       "technique_id": "T1140",
       "technique_name": "Deobfuscate/Decode Files or Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has distributed password-protected archives such as ZIP files during intrusions.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -713,14 +776,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has prompted users to execute downloaded software and payloads as the result of social engineering activity.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -740,14 +803,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1219-002--general",
       "tactic": "Command And Control",
       "technique_id": "T1219.002",
       "technique_name": "Remote Desktop Software",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has abused multiple types of legitimate remote access software and tools, such as ScreenConnect, NetSupport Manager, and AnyDesk.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -767,14 +830,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1222-001--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1222.001",
       "technique_name": "Windows Permissions",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used `cacls.exe` via batch script to modify file and directory permissions in victim environments.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -794,14 +857,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1482--general",
       "tactic": "Discovery",
       "technique_id": "T1482",
       "technique_name": "Domain Trust Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has enumerated domain accounts and access during intrusions.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -821,14 +884,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1486--general",
       "tactic": "Impact",
       "technique_id": "T1486",
       "technique_name": "Data Encrypted for Impact",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) is a financially-motivated entity linked to the deployment of [Black Basta](https://attack.mitre.org/software/S1070) ransomware in victim environments.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -848,14 +911,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1547-001--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1547.001",
       "technique_name": "Registry Run Keys / Startup Folder",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created Windows Registry Run keys that execute various batch scripts to establish persistence on victim devices.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -875,14 +938,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-002--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.002",
       "technique_name": "Spearphishing Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has distributed malicious links to victims that redirect to EvilProxy-based phishing sites to harvest credentials.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -902,14 +965,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-003--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.003",
       "technique_name": "Spearphishing via Service",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used Microsoft Teams to send messages and initiate voice calls to victims posing as IT support personnel.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -929,14 +992,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-004--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.004",
       "technique_name": "Spearphishing Voice",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has initiated voice calls with victims posing as IT support to prompt users to download and execute scripts and other tools for initial access.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -956,14 +1019,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1570--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1570",
       "technique_name": "Lateral Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has used the [Impacket](https://attack.mitre.org/software/S0357) toolset to move and remotely execute payloads to other hosts in victim networks.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -983,14 +1046,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574-001--general",
       "tactic": "Execution, Stealth",
       "technique_id": "T1574.001",
       "technique_name": "DLL",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has deployed a malicious DLL (7z.DLL) that is sideloaded by a modified, legitimate installer (7zG.exe) when that installer is executed with an additional command line parameter of `b` at runtime to load a [Cobalt Strike](https://attack.mitre.org/software/S0154) beacon payload.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1010,14 +1073,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1583.001",
       "technique_name": "Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created domains for use with RMM tools.(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1037,14 +1100,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585-003--general",
       "tactic": "Resource Development",
       "technique_id": "T1585.003",
       "technique_name": "Cloud Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has created malicious accounts to enable activity via Microsoft Teams, typically spoofing various IT support and helpdesk themes.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1064,14 +1127,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.002",
       "technique_name": "Tool",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) acquired various legitimate and malicious tools, such as RMM software and commodity malware packages, for operations.(Citation: Microsoft Storm-1811 2024)(Citation: rapid7-email-bombing)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1091,14 +1154,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1667--general",
       "tactic": "Impact",
       "technique_id": "T1667",
       "technique_name": "Email Bombing",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) has deployed large volumes of non-malicious email spam to victims in order to prompt follow-on interactions with the threat actor posing as IT support or helpdesk to resolve the problem.(Citation: rapid7-email-bombing)(Citation: RedCanary Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1118,14 +1181,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1684-001--general",
       "tactic": "Stealth",
       "technique_id": "T1684.001",
       "technique_name": "Impersonation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Storm-1811](https://attack.mitre.org/groups/G1046) impersonates help desk and IT support personnel for phishing and social engineering purposes during initial access to victim environments.(Citation: Microsoft Storm-1811 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1145,7 +1208,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -1399,5 +1462,60 @@
     "infrastructure_details": "",
     "targeting_details": "",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--4510836a063ad9eed051",
+      "name": "被害事例: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ",
+      "activity_refs": [
+        "activity--daily-34b52b95ce7e51038b32"
+      ],
+      "target_refs": [
+        "target--mitre-group--sector--6ace32369b881a0c4d24"
+      ],
+      "malware_refs": [
+        "malware--black-basta"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--d7c3d4655179616e68af"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-05-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-1ba1d9f38d8366b3c0a3"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

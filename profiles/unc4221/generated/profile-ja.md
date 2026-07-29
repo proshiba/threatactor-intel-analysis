@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc4221`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:26Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,17 +102,28 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に | phishing-campaign | 不明 | 不明 | 2026-06-29 | FBIとCISAは、ロシア情報機関に関連するSignal利用者向けフィッシングが進化したと警告した。 攻撃者はSignalサポートを装い、被害者にSignalバックアップを有効化させ、復旧キーを送らせようとする。 復旧キーを渡すと、攻撃者は自分の端末でバックアップを復元し、過去の個人・グループ会話を閲覧できる。 標的は米国・国際政府関係者、軍関係者、政治家、ジャーナリスト、ウクライナの重要人物などである。 侵害後に同じ電話番号で新規アカウントを作っても古い復旧キーは無効化されず、新しい復旧キー生成が必要である。 | 中 | `source--daily-2e312afd1a9ab081a613` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に | phishing-campaign | 不明 | 不明 | 2026-06-29 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61 |  |  | victim--activity-rule--99e3079cfd294d184602 | FBIとCISAは、ロシア情報機関に関連するSignal利用者向けフィッシングが進化したと警告した。 攻撃者はSignalサポートを装い、被害者にSignalバックアップを有効化させ、復旧キーを送らせようとする。 復旧キーを渡すと、攻撃者は自分の端末でバックアップを復元し、過去の個人・グループ会話を閲覧できる。 標的は米国・国際政府関係者、軍関係者、政治家、ジャーナリスト、ウクライナの重要人物などである。 侵害後に同じ電話番号で新規アカウントを作っても古い復旧キーは無効化されず、新しい復旧キー生成が必要である。 | 中 | `source--daily-2e312afd1a9ab081a613` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | ウクライナ | 活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-2e312afd1a9ab081a613` |
+| countries | 米国 | 活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-2e312afd1a9ab081a613` |
+| sectors | 政府・行政 | 活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-2e312afd1a9ab081a613` |
+| sectors | メディア・報道 | 活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-2e312afd1a9ab081a613` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--5403aec9c83d6a925f61 |  |  | エンドポイント |  | 不明 | 不明 | 2026-06-29 | 中 | `source--daily-2e312afd1a9ab081a613` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -145,7 +156,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-2e312afd1a9ab081a613 | FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に | ic3.gov | 2026-06-29 | https://www.ic3.gov/PSA/2026/PSA260626 | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc4221--15f93f54a2611309 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
 | source--unc4221--8328a6afe33458d4 | Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics |  | 不明 | International Strategic/Russia/Russian Cyber Operations Attack Automation, Espionage Against Defense Sector and New Tactics.pdf | report | TLP:CLEAR | 中 |

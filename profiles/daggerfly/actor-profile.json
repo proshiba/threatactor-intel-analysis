@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--daggerfly",
   "name": "Daggerfly",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-27T11:17:23Z",
+  "updated_at": "2026-07-29T15:36:10Z",
   "languages": [
     "ja"
   ],
@@ -289,24 +289,124 @@
       "evidence_refs": [
         "source--daily-3416f994a1eefc895ed4"
       ],
-      "analyst_notes": "日次収集レコード daily-record--e6a1fb3331093f1f95ff5f6f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。"
+      "analyst_notes": "日次収集レコード daily-record--e6a1fb3331093f1f95ff5f6f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。",
+      "ttp_refs": [
+        "ttp--activity-rule--05c6be6b3497b5378ff5"
+      ],
+      "victim_refs": []
     }
   ],
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--208da276636a399ad838",
+        "name": "政府・行政",
+        "description": "[Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
+      {
+        "id": "target--mitre-group--sector--3fd3423ae376b3cf9dc9",
+        "name": "非営利・市民社会",
+        "description": "[Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
+      {
+        "id": "target--mitre-group--sector--b4f8d490a4675b30e665",
+        "name": "情報通信",
+        "description": "[Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
     "selection_logic": "",
     "analyst_notes": "No structured target statement was available in the mapping workbook."
   },
   "ttps": [
     {
+      "ttp_id": "ttp--activity-rule--05c6be6b3497b5378ff5",
+      "tactic": "Discovery",
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery",
+      "observed_behavior": "このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。",
+      "activity_refs": [
+        "activity--daily-e6a1fb3331093f1f95ff"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-3416f994a1eefc895ed4"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "ttp_id": "ttp--t1003-002--general",
       "tactic": "Credential Access",
       "technique_id": "T1003.002",
       "technique_name": "Security Account Manager",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) used [Reg](https://attack.mitre.org/software/S0075) to dump the Security Account Manager (SAM) hive from victim machines for follow-on credential extraction.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -326,14 +426,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1012--general",
       "tactic": "Discovery",
       "technique_id": "T1012",
       "technique_name": "Query Registry",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) used [Reg](https://attack.mitre.org/software/S0075) to dump the Security Account Manager (SAM), System, and Security Windows registry hives from victim machines.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -353,14 +453,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-003--general",
       "tactic": "Stealth",
       "technique_id": "T1036.003",
       "technique_name": "Rename Legitimate Utilities",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) used a renamed version of rundll32.exe, such as \"dbengin.exe\" located in the `ProgramData\\Microsoft\\PlayReady` directory, to proxy malicious DLL execution.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -380,14 +480,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1053-005--general",
       "tactic": "Execution, Persistence, Privilege Escalation",
       "technique_id": "T1053.005",
       "technique_name": "Scheduled Task",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) has attempted to use scheduled tasks for persistence in victim environments.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -407,14 +507,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-001--general",
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) used PowerShell to download and execute remote-hosted files on victim systems.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -434,14 +534,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-001--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.001",
       "technique_name": "Web Protocols",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) uses HTTP for command and control communication.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -461,14 +561,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1082--general",
       "tactic": "Discovery",
       "technique_id": "T1082",
       "technique_name": "System Information Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) utilizes victim machine operating system information to create custom User Agent strings for subsequent command and control communication.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -488,14 +588,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1105--general",
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) has used PowerShell and [BITSAdmin](https://attack.mitre.org/software/S0190) to retrieve follow-on payloads from external locations for execution on victim machines.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -515,14 +615,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1136-001--general",
       "tactic": "Persistence",
       "technique_id": "T1136.001",
       "technique_name": "Local Account",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) created a local account on victim machines to maintain access.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -542,14 +642,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1189--general",
       "tactic": "Initial Access",
       "technique_id": "T1189",
       "technique_name": "Drive-by Compromise",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) has used strategic website compromise for initial access against victims.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -569,14 +669,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1195-002--general",
       "tactic": "Initial Access",
       "technique_id": "T1195.002",
       "technique_name": "Compromise Software Supply Chain",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) is associated with several supply chain compromises using malicious updates to compromise victims.(Citation: ESET EvasivePanda 2023)(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -596,14 +696,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-001--general",
       "tactic": "Execution",
       "technique_id": "T1204.001",
       "technique_name": "Malicious Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) has used strategic website compromise to deliver a malicious link requiring user interaction.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -623,14 +723,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1218-011--general",
       "tactic": "Stealth",
       "technique_id": "T1218.011",
       "technique_name": "Rundll32",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) proxied execution of malicious DLLs through a renamed rundll32.exe binary.(Citation: Symantec Daggerfly 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -650,14 +750,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1553-002--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1553.002",
       "technique_name": "Code Signing",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) has used signed, but not notarized, malicious files for execution in macOS environments.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -677,14 +777,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574-001--general",
       "tactic": "Execution, Stealth",
       "technique_id": "T1574.001",
       "technique_name": "DLL",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) has used legitimate software to side-load [PlugX](https://attack.mitre.org/software/S0013) loaders onto victim systems.(Citation: Symantec Daggerfly 2023) [Daggerfly](https://attack.mitre.org/groups/G1034) is also linked to multiple other instances of side-loading for initial loading activity.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -704,14 +804,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1584-004--general",
       "tactic": "Resource Development",
       "technique_id": "T1584.004",
       "technique_name": "Server",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) compromised web servers hosting updates for software as part of a supply chain intrusion.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -731,14 +831,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1587-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1587.002",
       "technique_name": "Code Signing Certificates",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Daggerfly](https://attack.mitre.org/groups/G1034) created code signing certificates to sign malicious macOS files.(Citation: ESET EvasivePanda 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -758,7 +858,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -986,5 +1086,6 @@
     "infrastructure_details": "",
     "targeting_details": "",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

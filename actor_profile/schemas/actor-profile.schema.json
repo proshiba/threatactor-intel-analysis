@@ -18,6 +18,7 @@
     "diamond_model",
     "capabilities",
     "activities",
+    "victim_cases",
     "targets",
     "ttps",
     "sources",
@@ -25,7 +26,7 @@
     "free_text"
   ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"const": "1.1.0"},
     "profile_id": {"type": "string", "pattern": "^actor--[a-z0-9][a-z0-9-]*$"},
     "name": {"type": "string", "minLength": 1},
     "status": {"enum": ["draft", "review", "published", "deprecated"]},
@@ -96,6 +97,7 @@
       }
     },
     "activities": {"type": "array", "items": {"$ref": "#/$defs/activity"}},
+    "victim_cases": {"type": "array", "items": {"$ref": "#/$defs/victimCase"}},
     "targets": {
       "type": "object",
       "additionalProperties": false,
@@ -220,7 +222,7 @@
     },
     "activity": {
       "type": "object",
-      "required": ["activity_id", "name", "activity_type", "first_observed", "last_observed", "reported_at", "description", "target_refs", "malware_refs", "infrastructure_refs", "confidence", "evidence_refs", "analyst_notes"],
+      "required": ["activity_id", "name", "activity_type", "first_observed", "last_observed", "reported_at", "description", "target_refs", "malware_refs", "infrastructure_refs", "ttp_refs", "victim_refs", "confidence", "evidence_refs", "analyst_notes"],
       "properties": {
         "activity_id": {"type": "string", "pattern": "^activity--"},
         "name": {"type": "string"},
@@ -232,6 +234,45 @@
         "target_refs": {"type": "array", "items": {"type": "string"}},
         "malware_refs": {"type": "array", "items": {"type": "string"}},
         "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
+        "ttp_refs": {"type": "array", "items": {"type": "string"}},
+        "victim_refs": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "victimCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["victim_case_id", "name", "victim_name", "disclosure_status", "victim_type", "case_status", "description", "activity_refs", "target_refs", "malware_refs", "ttp_refs", "affected_assets", "impacts", "first_observed", "last_observed", "reported_at", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "victim_case_id": {"type": "string", "pattern": "^victim--"},
+        "name": {"type": "string"},
+        "victim_name": {"type": ["string", "null"]},
+        "disclosure_status": {"enum": ["named", "anonymous", "aggregate", "unknown"]},
+        "victim_type": {"enum": ["organization", "person", "multiple-organizations", "multiple-persons", "mixed", "unknown"]},
+        "case_status": {"enum": ["confirmed", "reported", "alleged", "disputed", "unknown"]},
+        "description": {"type": "string"},
+        "activity_refs": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "target_refs": {"type": "array", "items": {"type": "string"}},
+        "malware_refs": {"type": "array", "items": {"type": "string"}},
+        "ttp_refs": {"type": "array", "items": {"type": "string"}},
+        "affected_assets": {"type": "array", "items": {"type": "string"}},
+        "impacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["impact_type", "description"],
+            "properties": {
+              "impact_type": {"enum": ["data-theft", "credential-theft", "financial-loss", "encryption", "destruction", "disruption", "espionage", "account-compromise", "privacy", "supply-chain", "unknown", "other"]},
+              "description": {"type": "string"}
+            }
+          }
+        },
+        "first_observed": {"$ref": "#/$defs/timePoint"},
+        "last_observed": {"$ref": "#/$defs/timePoint"},
+        "reported_at": {"$ref": "#/$defs/timePoint"},
         "confidence": {"$ref": "#/$defs/confidence"},
         "evidence_refs": {"$ref": "#/$defs/referenceArray"},
         "analyst_notes": {"type": "string"}

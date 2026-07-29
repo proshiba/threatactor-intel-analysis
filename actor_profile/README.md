@@ -128,6 +128,12 @@ python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 ```
 
+単一アクターの日次更新では、全件の監査時刻を書き換えずに対象台帳だけを再生成できます。
+
+```bash
+python3 actor_profile/scripts/build_claim_audits.py --actor actor-slug
+```
+
 固定データセットのバージョン、取得時刻、SHA-256は
 `reference/osint/dataset-manifest.json`へ保存します。照合対象はMISP Galaxy、
 Microsoft公式actor mapping、CERT-UA公式記事索引、ETDA/ThaiCERT Threat Group

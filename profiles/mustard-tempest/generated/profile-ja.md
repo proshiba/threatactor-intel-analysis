@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--mustard-tempest`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:24Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:20:23Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -116,10 +116,10 @@ Mustard Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供 | malware-campaign | 不明 | 不明 | 2025-08-08 | SocGholishがParrot/KeitaroなどのTDSを悪用し、ユーザーを不正サイトへ誘導。 偽のブラウザ更新を装うJSローダーで、改ざんサイトから配信される。 侵害端末へのアクセスは、Evil CorpやLockBit、Dridex等に販売される。 Raspberry Robin経由の拡散も観測、ChaCha20やCVE-2024-38196の悪用に言及。 Keitaroは正規利用も多く、過剰検知なく全面遮断は困難と指摘。 | 中 | `source--daily-4c5a096408cb1636d9f7` |
-| HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信 | malware-campaign | 不明 | 不明 | 2024-12-04 | HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。 | 中 | `source--daily-766a563d30b306b7681d` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供 | malware-campaign | 不明 | 不明 | 2025-08-08 |  | malware--socgholish |  |  | SocGholishがParrot/KeitaroなどのTDSを悪用し、ユーザーを不正サイトへ誘導。 偽のブラウザ更新を装うJSローダーで、改ざんサイトから配信される。 侵害端末へのアクセスは、Evil CorpやLockBit、Dridex等に販売される。 Raspberry Robin経由の拡散も観測、ChaCha20やCVE-2024-38196の悪用に言及。 Keitaroは正規利用も多く、過剰検知なく全面遮断は困難と指摘。 | 中 | `source--daily-4c5a096408cb1636d9f7` |
+| HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信 | malware-campaign | 不明 | 不明 | 2024-12-04 |  |  |  |  | HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。 | 中 | `source--daily-766a563d30b306b7681d` |
 
 
 
@@ -129,22 +129,26 @@ Mustard Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 選定ロジック: 未評価
 
+## 被害事例
+
+構造化された被害事例なし
+
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1189 | Drive-by Compromise | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.004 | Server | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.008 | Malvertising | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1584.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.004 | Drive-by Target | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.006 | SEO Poisoning | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has used the filename `AutoUpdater.js` to mimic legitimate update files and has also used the Cyrillic homoglyph characters С `(0xd0a1)` and а `(0xd0b0)`, to produce the filename `Сhrome.Updаte.zip`.(Citation: Red Canary SocGholish March 2024)(Citation: SocGholish-update) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1082 | System Information Discovery | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has used implants to perform system reconnaissance on targeted systems.(Citation: Microsoft Ransomware as a Service) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has deployed secondary payloads and third stage implants to compromised hosts.(Citation: Microsoft Ransomware as a Service) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1189 | Drive-by Compromise | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has used drive-by downloads for initial infection, often using fake browser updates as a lure.(Citation: SocGholish-update)(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: Red Canary SocGholish March 2024)(Citation: Secureworks Gold Prelude Profile) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has lured users into downloading malware through malicious links in fake advertisements and spearphishing emails.(Citation: Microsoft Ransomware as a Service)(Citation: SocGholish-update) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has sent victims emails containing links to compromised websites.(Citation: SocGholish-update) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.004 | Server | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has acquired servers to host second-stage payloads that remain active for a period of either days, weeks, or months.(Citation: SentinelOne SocGholish Infrastructure November 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.008 | Malvertising | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has posted false advertisements including for software packages and browser updates in order to distribute malware.(Citation: Microsoft Ransomware as a Service) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1584.001 | Domains | [Mustard Tempest](https://attack.mitre.org/groups/G1020) operates a global network of compromised websites that redirect into a traffic distribution system (TDS) to select victims for a fake browser update page.(Citation: Secureworks Gold Prelude Profile)(Citation: SocGholish-update)(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: Red Canary SocGholish March 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has hosted payloads on acquired second-stage servers for periods of either days, weeks, or months.(Citation: SentinelOne SocGholish Infrastructure November 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.004 | Drive-by Target | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has injected malicious JavaScript into compromised websites to infect victims via drive-by download.(Citation: SocGholish-update)(Citation: SentinelOne SocGholish Infrastructure November 2022)(Citation: Red Canary SocGholish March 2024)(Citation: Secureworks Gold Prelude Profile) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.006 | SEO Poisoning | [Mustard Tempest](https://attack.mitre.org/groups/G1020) has poisoned search engine results to return fake software updates in order to distribute malware.(Citation: Microsoft Ransomware as a Service)(Citation: SocGholish-update) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

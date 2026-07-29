@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--roaming-mantis`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:11Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -116,16 +116,20 @@ Roaming Mantisの標準化プロファイル。リポジトリ内の専用資料
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Kazakhstan | Targeting text mentions kazakhstan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Bangladesh | Targeting text mentions bangladesh. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | Azerbaijan | Targeting text mentions azerbaijan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Vietnam | Targeting text mentions vietnam. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | Bangladesh | Targeting text mentions bangladesh. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | India | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Japan | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | Iran | Targeting text mentions iran. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | Japan | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | Kazakhstan | Targeting text mentions kazakhstan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | Vietnam | Targeting text mentions vietnam. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -156,7 +160,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--roaming-mantis--991123d894e5a80b | roaming mantis |  | 不明 | actor_profile/evidence/roaming-mantis.csv | structured-data | TLP:CLEAR | 中 |
 | source--roaming-mantis--6bf5a85c4f5529c9 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |

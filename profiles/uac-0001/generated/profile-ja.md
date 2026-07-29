@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--uac-0001`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:36Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,21 +102,34 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認 | cyber-espionage | 不明 | 不明 | 2026-04-22 | ロシア背景のPawn Stormは、PRISMEXと総称される連携型マルウェア群を用い、ウクライナやNATO加盟国の防衛サプライチェーンを標的にした。 攻撃ではステガノグラフィ、COMハイジャック、正規クラウドサービス悪用を組み合わせ、EDR回避とC&C通信を実現していた。 2026年1月下旬のキャンペーンではCVE-2026-21509が悪用され、関連検体ではCVE-2026-21513のゼロデイ悪用も確認された。 PRISMEXはPrismexSheet、PrismexDrop、PrismexLoader、PrismexStagerで構成され、Filen系サブドメインを使ってCovenant経由の通信を行う。 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認 | cyber-espionage | 不明 | 不明 | 2026-04-22 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d |  | ttp--activity-rule--0200d906a0fd1da614c8 | victim--activity-rule--901695fa9c5e37834e54 | ロシア背景のPawn Stormは、PRISMEXと総称される連携型マルウェア群を用い、ウクライナやNATO加盟国の防衛サプライチェーンを標的にした。 攻撃ではステガノグラフィ、COMハイジャック、正規クラウドサービス悪用を組み合わせ、EDR回避とC&C通信を実現していた。 2026年1月下旬のキャンペーンではCVE-2026-21509が悪用され、関連検体ではCVE-2026-21513のゼロデイ悪用も確認された。 PRISMEXはPrismexSheet、PrismexDrop、PrismexLoader、PrismexStagerで構成され、Filen系サブドメインを使ってCovenant経由の通信を行う。 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。 | 中 | `source--daily-183d3d6935d0c269b0c9` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | ウクライナ | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+| countries | ロシア | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+| sectors | 政府・行政 | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+| sectors | 防衛・軍事 | 活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
 
 選定ロジック: 未評価
 
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d |  | ttp--activity-rule--0200d906a0fd1da614c8 | クラウド／SaaS | destruction: 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。<br>espionage: 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。 | 不明 | 不明 | 2026-04-22 | 中 | `source--daily-183d3d6935d0c269b0c9` |
+
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Impact | T1485 | Data Destruction | 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。 |  | activity--daily-00e51d0ed75215a24fee | 不明 | 不明 | 中 | `source--daily-183d3d6935d0c269b0c9` |
 
 ## IOC／artifact概要
 
@@ -145,7 +158,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-183d3d6935d0c269b0c9 | APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認 | trendmicro.com | 2026-04-22 | https://www.trendmicro.com/ja_jp/research/26/d/pawn-storm-targets-govt-infra.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--uac-0001--26bdbcc83365e3fe | CERTFR 2025 CTI 007 |  | 2025 | APT28/CERTFR-2025-CTI-007.pdf | report | TLP:CLEAR | 中 |

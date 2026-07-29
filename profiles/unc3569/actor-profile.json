@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--unc3569",
   "name": "UNC3569",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:17:26Z",
+  "updated_at": "2026-07-29T15:36:12Z",
   "languages": [
     "ja"
   ],
@@ -82,25 +82,86 @@
         "basis": "daily-news-file-date"
       },
       "description": "Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-c20a23c702af45ff32d4"
       ],
-      "analyst_notes": "日次収集レコード daily-record--48716db321e86ff0f40754a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国関与の国家支援系と推定；UNC3569/Earth Baxia/APT41/Earth Luscaなどが関連し、ギャンブル業界やアジア政府機関を狙う。"
+      "analyst_notes": "日次収集レコード daily-record--48716db321e86ff0f40754a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国関与の国家支援系と推定；UNC3569/Earth Baxia/APT41/Earth Luscaなどが関連し、ギャンブル業界やアジア政府機関を狙う。",
+      "ttp_refs": [
+        "ttp--activity-rule--d23ef70e9a6b6307bc52"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--b58e62cfdbc20134f3f1"
+      ]
     }
   ],
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-c20a23c702af45ff32d4"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
     "roles": [],
     "selection_logic": "",
     "analyst_notes": "No structured target statement was available in the mapping workbook."
   },
-  "ttps": [],
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--d23ef70e9a6b6307bc52",
+      "tactic": "Credential Access",
+      "technique_id": "T1555.003",
+      "technique_name": "Credentials from Web Browsers",
+      "observed_behavior": "SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。",
+      "activity_refs": [
+        "activity--daily-48716db321e86ff0f407"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-c20a23c702af45ff32d4"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
   "sources": [
     {
       "source_id": "source--actor-mapping-workbook",
@@ -137,24 +198,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260128.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -238,5 +281,60 @@
     "infrastructure_details": "",
     "targeting_details": "",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--b58e62cfdbc20134f3f1",
+      "name": "被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。",
+      "activity_refs": [
+        "activity--daily-48716db321e86ff0f407"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--d23ef70e9a6b6307bc52"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-01-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-c20a23c702af45ff32d4"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

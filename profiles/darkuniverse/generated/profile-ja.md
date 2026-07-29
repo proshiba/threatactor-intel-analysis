@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--darkuniverse`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -114,15 +114,19 @@ The repository mapping workbook places this actor in the China worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | United Arab Emirates | Targeting text mentions united arab emirates. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | Afghanistan | Targeting text mentions afghanistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | Belarus | Targeting text mentions belarus. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | Iran | Targeting text mentions iran. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | Syria | Targeting text mentions syria. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Iran | Targeting text mentions iran. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | United Arab Emirates | Targeting text mentions united arab emirates. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Nonprofit and Civil Society | Targeting text indicates the Nonprofit and Civil Society sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -153,7 +157,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--darkuniverse--128b402f1401f5fe | darkuniverse |  | 不明 | actor_profile/evidence/darkuniverse.csv | structured-data | TLP:CLEAR | 中 |
 | source--darkuniverse--6a7bbf196c53f2d7 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |

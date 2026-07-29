@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--lunar-spider`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:33Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:10Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -104,9 +104,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | intrusion | 不明 | 不明 | 2025-09-30 | From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | 高 | `source--daily-36945315bd0d7f2ed55e` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | intrusion | 不明 | 不明 | 2025-09-30 |  |  |  | victim--activity-rule--b306db09877210972cea | From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | 高 | `source--daily-36945315bd0d7f2ed55e` |
 
 
 
@@ -117,6 +117,12 @@ Aliasなし
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 未評価
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | 非公開 | anonymous | unknown | reported |  |  |  |  |  | 不明 | 不明 | 2025-09-30 | 高 | `source--daily-36945315bd0d7f2ed55e` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -157,7 +163,6 @@ TTPなし
 | source--lunar-spider--c49a90a256a83118 | Cyber Threat Intelligence Report 2025 2 |  | 2025 | summary/2025/Cyber Threat Intelligence Report 2025 2.pdf | report | TLP:CLEAR | 中 |
 | source--lunar-spider--c56d4edb1ed89e69 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
 | source--lunar-spider--e1b8016de7de9455 | lunar spider |  | 不明 | actor_profile/evidence/lunar-spider.csv | structured-data | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 

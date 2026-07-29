@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc4536`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:26Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T15:36:12Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,9 +102,9 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 人気のソフトウェア検索を悪用するサイバー犯罪者 | phishing-campaign | 不明 | 不明 | 2024-08-20 | サイバー犯罪者が、不正広告キャンペーンを通じて、FakeBatと呼ばれるローダーを拡散 感染には、トロイの木馬化されたMSIXインストーラーが使用される。このインストーラは、PowerShellスクリプトを実行してペイロードをダウンロード 被害者はBraveやKeePassなどになりすましたインストーラーを使って感染させる。 FakeBatはEugenfestという脅威アクターに関連付けられる。また、このマルウェアはMaaSで提供されており、このMaaSの提供元をUNC4536として追跡。 FakeBatは、IcedID、RedLine Stealer、Lumma Stealer、SectopRAT、Carbanakなどの他マルウェアの配信に使用。 | 中 | `source--daily-b4aa05b2cb79bd0a59d6` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 人気のソフトウェア検索を悪用するサイバー犯罪者 | phishing-campaign | 不明 | 不明 | 2024-08-20 |  |  |  |  | サイバー犯罪者が、不正広告キャンペーンを通じて、FakeBatと呼ばれるローダーを拡散 感染には、トロイの木馬化されたMSIXインストーラーが使用される。このインストーラは、PowerShellスクリプトを実行してペイロードをダウンロード 被害者はBraveやKeePassなどになりすましたインストーラーを使って感染させる。 FakeBatはEugenfestという脅威アクターに関連付けられる。また、このマルウェアはMaaSで提供されており、このMaaSの提供元をUNC4536として追跡。 FakeBatは、IcedID、RedLine Stealer、Lumma Stealer、SectopRAT、Carbanakなどの他マルウェアの配信に使用。 | 中 | `source--daily-b4aa05b2cb79bd0a59d6` |
 
 
 
@@ -113,6 +113,10 @@ Aliasなし
 ターゲット情報なし
 
 選定ロジック: 未評価
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -145,7 +149,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-b4aa05b2cb79bd0a59d6 | 人気のソフトウェア検索を悪用するサイバー犯罪者 | thehackernews.com | 2024-08-20 | https://thehackernews.com/2024/08/cybercriminals-exploit-popular-software.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc4536--1a9cdc39c7ff3468 | unc4536 |  | 不明 | actor_profile/evidence/unc4536.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc4536--6875735979c7f9cb | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |

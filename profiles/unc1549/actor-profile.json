@@ -1,16 +1,47 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--unc1549",
   "name": "UNC1549",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:17:26Z",
+  "updated_at": "2026-07-29T15:37:04Z",
   "languages": [
     "ja"
   ],
   "actor": {
     "canonical_name": "UNC1549",
-    "aliases": [],
+    "aliases": [
+      {
+        "name": "Mirage Kitten",
+        "vendor": "Kaspersky",
+        "scope": "exact",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+      },
+      {
+        "name": "Smoke Sandstorm",
+        "vendor": "Kaspersky",
+        "scope": "exact",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+      },
+      {
+        "name": "Nimbus Manticore",
+        "vendor": "Kaspersky",
+        "scope": "exact",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+      }
+    ],
     "actor_types": [
       "threat-cluster"
     ],
@@ -27,41 +58,304 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": ""
+    "description": "UNC1549は、航空宇宙、航空、防衛、通信などを対象に情報収集を行う脅威クラスタである。KasperskyはMirage Kitten、Smoke Sandstorm、Nimbus Manticoreの別名で追跡し、2026年にNightLedger、ArcBridge、BridgeHeadからなる新しいツールセットを確認した。",
+    "analyst_notes": "別名はKasperskyの2026年7月28日付調査に基づく。TA455など、他資料だけで同一性が示唆される別プロファイルは今回統合していない。"
   },
   "attribution": {
-    "countries": [],
-    "sponsor_type": "unknown",
-    "organizations": [],
-    "assessment": "",
-    "confidence": "unknown",
-    "evidence_refs": [],
-    "analyst_notes": ""
+    "countries": [
+      "Iran"
+    ],
+    "sponsor_type": "state-aligned",
+    "organizations": [
+      {
+        "id": "organization--irgc-cec",
+        "name": "Islamic Revolutionary Guard Corps Cyber Electronic Command",
+        "relationship": "米国政府の評価として活動の整合性が報告されている",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--unc1549--5ad26a22b1f5c730"
+        ],
+        "analyst_notes": "Dragos報告内の米国政府評価に基づく。組織による個別作戦の直接指揮を示すものではない。"
+      }
+    ],
+    "assessment": "複数資料はUNC1549をイラン系またはイランの情報目的に整合する脅威クラスタとして評価している。",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--daily-96ac11961cae303bc9fd",
+      "source--unc1549--5ad26a22b1f5c730",
+      "source--unc1549--c47ef662fbdb6d88"
+    ],
+    "analyst_notes": "国・組織への帰属と、Kasperskyが今回観測した個々の侵害活動の実行主体評価は分けて扱う。"
   },
-  "motivations": [],
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "航空宇宙、航空、防衛、通信分野を中心とする情報収集。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "Kasperskyは一連の活動をcyberespionageとして記述している。"
+    }
+  ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "",
-    "capability": "",
-    "infrastructure": "",
-    "victim": "",
-    "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "adversary": "UNC1549（Kaspersky追跡名: Mirage Kitten。別名: Smoke Sandstorm、Nimbus Manticore）。",
+    "capability": "NightLedgerバックドア、ArcBridgeおよびBridgeHead WebSocketトンネラー。DLL検索順序ハイジャック、SOCKS5トンネリング、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
+    "infrastructure": "HTTPSとWebSocketを用いるC2、Azure App ServiceやCloudflare配下を含むドメイン、標的別に調整したドメインや採用・ビデオ会議を装う誘導基盤。",
+    "victim": "中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野。2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの組織が挙げられた。",
+    "socio_political": "情報収集目的のサイバースパイ活動。既存資料ではイランの情報目的やIRGC-CECとの整合性が評価されている。",
+    "analyst_notes": "2026年7月28日付Kaspersky調査と、既存のUnit 42、Dragos、M-Trends資料を統合した。公開日と攻撃観測日は分離している。"
   },
   "capabilities": {
-    "malware": [],
+    "malware": [
+      {
+        "id": "malware--nightledger",
+        "name": "NightLedger",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "backdoor"
+        ],
+        "description": "DLL検索順序ハイジャックで実行されるWindowsバックドア。ホスト偵察、プロセス実行・列挙、ファイル操作、画面取得、DLLロード、アップロード、ドライブ列挙などのコマンドを備える。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "Kasperskyが解析した新規バックドア。公開日は観測日に転用していない。"
+      },
+      {
+        "id": "malware--arcbridge",
+        "name": "ArcBridge",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "WebSocket tunneler"
+        ],
+        "description": "DNS解決とTCP通信をWebSocket経由で中継するカスタムトンネラー。設定を実行ファイル末尾から読み込み、企業プロキシを考慮した通信を行う。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "Kasperskyは2026年4月に中東での活動から初めて特定したと記載している。"
+      },
+      {
+        "id": "malware--bridgehead",
+        "name": "BridgeHead",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "WebSocket tunneler",
+          "SOCKS5 proxy"
+        ],
+        "description": "WebSocket上でSOCKS5通信を中継するカスタムトンネラー。レジストリまたは末尾付加設定からC2を読み込み、企業プロキシ経由でも接続する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "EgyptおよびPakistanで、侵害後のアクセス維持・通信中継に使われた。"
+      }
+    ],
     "tools": [],
-    "infrastructure": [],
-    "delivery_formats": [],
+    "infrastructure": [
+      {
+        "id": "infrastructure--mirage-kitten-cloud-c2",
+        "name": "Cloud-hosted HTTPS/WebSocket C2",
+        "aliases": [],
+        "types": [
+          "command-and-control",
+          "cloud-hosting",
+          "WebSocket"
+        ],
+        "description": "Azure App Service、Cloudflare配下のホスト、標的に合わせた名称のドメインを組み合わせ、HTTPSおよびWebSocketでバックドアとトンネラーを制御する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026",
+          "source--unc1549--c47ef662fbdb6d88"
+        ],
+        "analyst_notes": "個々のドメイン・IPはiocs.jsonに、通信定数はartifacts.csvに分離して保存する。"
+      }
+    ],
+    "delivery_formats": [
+      {
+        "id": "delivery--recruitment-videoconference-archive",
+        "name": "採用・ビデオ会議を装うアーカイブ配布",
+        "aliases": [],
+        "types": [
+          "spearphishing",
+          "social-engineering"
+        ],
+        "description": "採用をテーマにした内容と正規ビデオ会議サービスの類似ページを用い、第三者サービス上の悪性アーカイブへ標的を誘導する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "KasperskyがEgyptおよびPakistanの侵害で確認した配布・誘導手法。"
+      }
+    ],
     "vulnerabilities": [],
-    "operational_capabilities": [],
-    "analyst_notes": ""
+    "operational_capabilities": [
+      {
+        "id": "capability--per-victim-execution-gating",
+        "name": "標的別の実行制御",
+        "aliases": [],
+        "types": [
+          "operational-security"
+        ],
+        "description": "標的ごとの実行条件を設け、意図した被害環境以外でのペイロード実行を抑制する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "Kasperskyはペイロードの実行が被害者ごとの値で制御されていたと報告している。"
+      },
+      {
+        "id": "capability--proxy-aware-websocket-tunneling",
+        "name": "プロキシ対応WebSocketトンネリング",
+        "aliases": [],
+        "types": [
+          "command-and-control",
+          "tunneling"
+        ],
+        "description": "企業プロキシを検出・利用し、WebSocket上でDNS、TCP、SOCKS5通信を中継する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "ArcBridgeおよびBridgeHeadの解析結果に基づく。"
+      }
+    ],
+    "analyst_notes": "新規マルウェア名、C2基盤、配布手法、運用上の特徴を分離して構造化した。"
   },
   "activities": [
     {
       "activity_id": "activity--daily-6b2a23bcddd9757abbb0",
       "name": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--904728608f27c39df0df"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-96ac11961cae303bc9fd"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--6b2a23bcddd9757abbb019a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScreening Serpens、別名UNC1549、Smoke Sandstorm、Iranian Dream Jobで、イラン情報目的に沿うサイバースパイ集団とされる。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [
+        "ttp--activity-rule--58d557d2679ee65b66a5"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--071152112a80d6125133"
+      ]
+    },
+    {
+      "activity_id": "activity--mirage-kitten-middle-east-africa-2026",
+      "name": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動",
       "activity_type": "cyber-espionage",
       "first_observed": {
         "value": null,
@@ -76,32 +370,839 @@
         "basis": "not-stated"
       },
       "reported_at": {
-        "value": "2026-05-25T00:00:00Z",
+        "value": "2026-07-28T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-stated"
       },
-      "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
-      "target_refs": [],
+      "description": "Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
+      "target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "target--country--burkina-faso",
+        "target--country--egypt",
+        "target--country--ethiopia",
+        "target--country--jordan",
+        "target--country--pakistan",
+        "target--country--tanzania",
+        "target--sector--aerospace",
+        "target--sector--aviation",
+        "target--sector--defense",
+        "target--sector--financial-services",
+        "target--sector--government",
+        "target--sector--telecommunications"
+      ],
+      "malware_refs": [
+        "malware--nightledger",
+        "malware--arcbridge",
+        "malware--bridgehead"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--mirage-kitten-cloud-c2"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "報告は被害国とツールの利用を明記するが、活動全体の開始日・終了日は明記しないためunknownとした。ArcBridge固有の初回確認月はcapability側に保持する。",
+      "ttp_refs": [
+        "ttp--activity-rule--543c54c03eee4074488f",
+        "ttp--activity-rule--64e01cb31f20cb632f2c",
+        "ttp--activity-rule--eee5857560ca39325182",
+        "ttp--t1057--nightledger",
+        "ttp--t1071-001--mirage-kitten-2026",
+        "ttp--t1082--nightledger",
+        "ttp--t1090--bridgehead",
+        "ttp--t1113--nightledger",
+        "ttp--t1566-002--mirage-kitten-2026",
+        "ttp--t1574-001--nightledger"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--15a1bbc4304a95fa57dc"
+      ]
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-96ac11961cae303bc9fd"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--country--904728608f27c39df0df",
+        "name": "イスラエル",
+        "description": "活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-96ac11961cae303bc9fd"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--country--burkina-faso",
+        "name": "Burkina Faso",
+        "description": "金融分野の被害組織が報告された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "報告公開日を標的化時期として扱わない。"
+      },
+      {
+        "id": "target--country--egypt",
+        "name": "Egypt",
+        "description": "BridgeHeadを含む侵害後活動が確認された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "報告公開日を標的化時期として扱わない。"
+      },
+      {
+        "id": "target--country--ethiopia",
+        "name": "Ethiopia",
+        "description": "通信分野の被害組織が報告された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "報告公開日を標的化時期として扱わない。"
+      },
+      {
+        "id": "target--country--jordan",
+        "name": "Jordan",
+        "description": "中小組織または政府関連組織を含む標的地域として報告された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "組織種別の国別対応は原文以上に細分化しない。"
+      },
+      {
+        "id": "target--country--pakistan",
+        "name": "Pakistan",
+        "description": "航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "報告公開日を標的化時期として扱わない。"
+      },
+      {
+        "id": "target--country--tanzania",
+        "name": "Tanzania",
+        "description": "中小組織または政府関連組織を含む標的地域として報告された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "組織種別の国別対応は原文以上に細分化しない。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--region--africa",
+        "name": "Africa",
+        "description": "2026年報告で活動範囲の拡大が確認された地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--region--middle-east",
+        "name": "Middle East",
+        "description": "継続的な重点標的地域として報告された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026",
+          "source--unc1549--c47ef662fbdb6d88"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "name": "金融",
+        "description": "活動「Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--sector--aerospace",
+        "name": "Aerospace",
+        "description": "主要な情報収集標的分野。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026",
+          "source--unc1549--c47ef662fbdb6d88"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--aviation",
+        "name": "Aviation",
+        "description": "主要な情報収集標的分野。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026",
+          "source--unc1549--c47ef662fbdb6d88"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--defense",
+        "name": "Defense",
+        "description": "主要な情報収集標的分野。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026",
+          "source--unc1549--c47ef662fbdb6d88"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--financial-services",
+        "name": "Financial Services",
+        "description": "Burkina Fasoの被害例で挙げられた標的分野。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--government",
+        "name": "Government",
+        "description": "JordanおよびTanzaniaに関する報告で対象組織種別として挙げられた。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--telecommunications",
+        "name": "Telecommunications",
+        "description": "Ethiopiaの被害例を含む標的分野。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "roles": [],
+    "selection_logic": "航空宇宙、航空、防衛、通信など、国家・産業上の情報価値が高い組織を選び、技術職向けの採用・会議テーマを用いて個別に接触する。",
+    "analyst_notes": "国と産業の対応は報告で明示された範囲に限定し、公開日から標的化時期を推定していない。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--543c54c03eee4074488f",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--arcbridge",
+        "malware--bridgehead",
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--58d557d2679ee65b66a5",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。",
+      "activity_refs": [
+        "activity--daily-6b2a23bcddd9757abbb0"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-96ac11961cae303bc9fd"
       ],
-      "analyst_notes": "日次収集レコード daily-record--6b2a23bcddd9757abbb019a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScreening Serpens、別名UNC1549、Smoke Sandstorm、Iranian Dream Jobで、イラン情報目的に沿うサイバースパイ集団とされる。"
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--64e01cb31f20cb632f2c",
+      "tactic": "Discovery",
+      "technique_id": "T1057",
+      "technique_name": "Process Discovery",
+      "observed_behavior": "新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--arcbridge",
+        "malware--bridgehead",
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--eee5857560ca39325182",
+      "tactic": "Discovery",
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "observed_behavior": "新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--arcbridge",
+        "malware--bridgehead",
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--t1057--nightledger",
+      "tactic": "Discovery",
+      "technique_id": "T1057",
+      "technique_name": "Process Discovery",
+      "observed_behavior": "NightLedgerは実行中プロセスを列挙するコマンドを備える。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "原文のコマンド機能をMITRE ATT&CK 19.1へ分析者が対応付けた。"
+    },
+    {
+      "ttp_id": "ttp--t1071-001--mirage-kitten-2026",
+      "tactic": "Command And Control",
+      "technique_id": "T1071.001",
+      "technique_name": "Web Protocols",
+      "observed_behavior": "NightLedgerはHTTPS、ArcBridgeとBridgeHeadはWebSocketを用いてC2通信を行った。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--nightledger",
+        "malware--arcbridge",
+        "malware--bridgehead"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--mirage-kitten-cloud-c2"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "原文の通信解析をMITRE ATT&CK 19.1へ分析者が対応付けた。"
+    },
+    {
+      "ttp_id": "ttp--t1082--nightledger",
+      "tactic": "Discovery",
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery",
+      "observed_behavior": "NightLedgerは被害ホストのシステム情報を収集する偵察コマンドを備える。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "原文のコマンド機能をMITRE ATT&CK 19.1へ分析者が対応付けた。"
+    },
+    {
+      "ttp_id": "ttp--t1090--bridgehead",
+      "tactic": "Command And Control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "BridgeHeadはWebSocket上でSOCKS5通信を中継し、ArcBridgeとともに企業プロキシ経由の接続に対応した。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--arcbridge",
+        "malware--bridgehead"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--mirage-kitten-cloud-c2"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "原文のトンネリング機能をMITRE ATT&CK 19.1へ分析者が対応付けた。"
+    },
+    {
+      "ttp_id": "ttp--t1113--nightledger",
+      "tactic": "Collection",
+      "technique_id": "T1113",
+      "technique_name": "Screen Capture",
+      "observed_behavior": "NightLedgerは画面を取得してC2へ送るコマンドを備える。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "原文のコマンド機能をMITRE ATT&CK 19.1へ分析者が対応付けた。"
+    },
+    {
+      "ttp_id": "ttp--t1566-002--mirage-kitten-2026",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "採用をテーマにした内容とビデオ会議サービスの類似ページを用い、第三者サービス上の悪性アーカイブへ標的を誘導した。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--bridgehead"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--mirage-kitten-cloud-c2"
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "原文の挙動をMITRE ATT&CK 19.1へ分析者が対応付けた。"
+    },
+    {
+      "ttp_id": "ttp--t1574-001--nightledger",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "正規のAppVShNotify.exeにSspiCli.dllを読み込ませるDLL検索順序ハイジャックでNightLedgerを実行した。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "malware_refs": [
+        "malware--nightledger"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026",
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK 19.1のローカル索引にある現行名称「DLL」を使用。原文の挙動はDLL search order hijacking。"
     }
   ],
-  "targets": {
-    "countries": [],
-    "regions": [],
-    "sectors": [],
-    "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
-  },
-  "ttps": [],
   "sources": [
+    {
+      "source_id": "source--kaspersky-mirage-kitten-2026",
+      "path": "https://securelist.com/mirage-kitten-new-tools/120811/",
+      "url": "https://securelist.com/mirage-kitten-new-tools/120811/",
+      "title": "Mirage Kitten targets Middle East and Africa region with new malware",
+      "publisher": "Kaspersky GReAT",
+      "published_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-07-29T14:09:02Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "alias",
+        "activity",
+        "capability",
+        "targeting",
+        "infrastructure",
+        "observable"
+      ],
+      "analyst_notes": "本文とIOC一覧を直接確認。検索結果スニペットは根拠に使用していない。別名の同一性はKasperskyの追跡範囲に基づき、他ベンダーのクラスタ境界を自動統合しない。"
+    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -137,24 +1238,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260525.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-etda-threat-group-cards",
@@ -331,26 +1414,189 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository. ATT&CK relationship modification dates are not observation dates."
     }
   ],
   "assessment": {
-    "key_judgments": [],
+    "key_judgments": [
+      {
+        "statement": "KasperskyがMirage Kittenとして追跡するUNC1549は、2026年にNightLedger、ArcBridge、BridgeHeadからなる新たなWindowsツールセットを運用した。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "一次解析レポート内の検体解析と被害事例に基づく。"
+      },
+      {
+        "statement": "同活動は中東に加えてアフリカへ対象を広げ、航空宇宙、航空、防衛、通信、政府、金融分野を狙っている。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-mirage-kitten-2026"
+        ],
+        "analyst_notes": "報告で明示された被害国・産業に限定した判断。"
+      }
+    ],
     "gaps": [
-      "Unknown observation dates must not be replaced by publication dates.",
-      "Automatically mapped aliases, targets, and workbook software require analyst review."
+      "IOCの初回・最終観測日は原文に記載がなく、公開日で補完していない。",
+      "NightLedgerとBridgeHeadの初回確認時期、活動全体の開始・終了時期は不明。",
+      "Kaspersky以外のベンダーが使うTA455、GalaxyGato、Screening Serpens等とのクラスタ境界には追加の一次資料レビューが必要。"
     ],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "ベンダーごとに追跡するクラスタ範囲が異なる可能性がある。",
+      "既存資料が示すイラン系・IRGC-CEC整合性は帰属評価であり、今回報告された個々の侵害に対する指揮関係を直接証明しない。"
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc1549.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-07-25T14:07:08Z; result=matched.",
-    "analyst_notes": ""
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc1549.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-07-25T14:07:08Z; result=matched.\n2026-07-29 daily OSINT: Kaspersky Securelist本文・IOC一覧を直接確認し、actor_profile/evidence/unc1549-kaspersky-2026-07-28.csvへ構造化した。",
+    "analyst_notes": "Operation Talked（SOCRadar、2026-07-29）はUAC-0056/UAC-0114とのTTP重複のみを示し、UNC1549とは無関係である。重複のみの情報を既存アクターへ同一視しない方針を継続する。"
   },
   "free_text": {
-    "executive_summary": "UNC1549の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
-    "history": "",
-    "capability_details": "",
-    "infrastructure_details": "",
-    "targeting_details": "",
-    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+    "executive_summary": "UNC1549はイラン系と評価される情報収集クラスタで、KasperskyはMirage Kitten、Smoke Sandstorm、Nimbus Manticoreとして追跡している。2026年7月の報告では、中東・アフリカの航空宇宙、航空、防衛、通信などを対象とする活動と、NightLedger、ArcBridge、BridgeHeadの新規ツールセットが明らかになった。",
+    "history": "2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。",
+    "capability_details": "NightLedgerはDLL検索順序ハイジャックで起動するWindowsバックドアで、偵察、プロセス実行・列挙、ファイル操作、画面取得、DLLロード、アップロード等に対応する。ArcBridgeはDNS/TCPを、BridgeHeadはSOCKS5をWebSocketで中継し、両者とも企業プロキシを考慮する。",
+    "infrastructure_details": "HTTPSおよびWebSocketを用い、Azure App Service、Cloudflare配下のホスト、標的に合わせた名称の独自ドメインを組み合わせる。IOCはiocs.json、通信パス、mutex、設定マーカー、User-Agent等はartifacts.csvに保存する。",
+    "targeting_details": "主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
+    "additional_notes": "Kasperskyが明示した別名はexactとして保持するが確度はmediumとし、他ベンダーの追跡名を根拠なく統合しない。IOCの観測日は不明のまま保持する。"
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--071152112a80d6125133",
+      "name": "被害事例: イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
+      "activity_refs": [
+        "activity--daily-6b2a23bcddd9757abbb0"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--904728608f27c39df0df"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--58d557d2679ee65b66a5"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-96ac11961cae303bc9fd"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--15a1bbc4304a95fa57dc",
+      "name": "被害事例: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。",
+      "activity_refs": [
+        "activity--mirage-kitten-middle-east-africa-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "target--country--burkina-faso",
+        "target--country--egypt",
+        "target--country--ethiopia",
+        "target--country--jordan",
+        "target--country--pakistan",
+        "target--country--tanzania",
+        "target--sector--aerospace",
+        "target--sector--aviation",
+        "target--sector--defense",
+        "target--sector--financial-services",
+        "target--sector--government",
+        "target--sector--telecommunications"
+      ],
+      "malware_refs": [
+        "malware--arcbridge",
+        "malware--bridgehead",
+        "malware--nightledger"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--543c54c03eee4074488f",
+        "ttp--activity-rule--64e01cb31f20cb632f2c",
+        "ttp--activity-rule--eee5857560ca39325182",
+        "ttp--t1057--nightledger",
+        "ttp--t1071-001--mirage-kitten-2026",
+        "ttp--t1082--nightledger",
+        "ttp--t1090--bridgehead",
+        "ttp--t1113--nightledger",
+        "ttp--t1566-002--mirage-kitten-2026",
+        "ttp--t1574-001--nightledger"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }
