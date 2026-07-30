@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--fox-kitten`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:13:54Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -132,9 +132,9 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Pay2Key | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Pay2Key | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 Pay2Key
 
@@ -142,66 +142,92 @@ Pay2Key
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イタリア | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストリア | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | クウェート | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ハンガリー | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フィンランド | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてフィンランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | レバノン | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでFox Kittenの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | アラブ首長国連邦、イスラエル、クウェート、サウジアラビア、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | レビュー済みアクターマッピングの標的欄に記録された全世界を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 東欧 | ハンガリー、ポーランドで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | イタリア、オーストリア、ドイツ、ハンガリー、フィンランド、フランス、ポーランドで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| sectors | 製造・産業 | [Fox Kitten](https://attack.mitre.org/groups/G0117) has targeted multiple industrial verticals including oil and gas, technology, government, defense, healthcare, manufacturing, and engineering.(Citation: ClearkSky Fox Kitten February 2020)(Citation: CrowdStrike PIONEER KITTEN August 2020)(Citation: Dragos PARISITE )(Citation: ClearSky Pay2Ki | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | [Fox Kitten](https://attack.mitre.org/groups/G0117) has targeted multiple industrial verticals including oil and gas, technology, government, defense, healthcare, manufacturing, and engineering.(Citation: ClearkSky Fox Kitten February 2020)(Citation: CrowdStrike PIONEER KITTEN August 2020)(Citation: Dragos PARISITE )(Citation: ClearSky Pay2Kitten December 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 医療・ヘルスケア | [Fox Kitten](https://attack.mitre.org/groups/G0117) has targeted multiple industrial verticals including oil and gas, technology, government, defense, healthcare, manufacturing, and engineering.(Citation: ClearkSky Fox Kitten February 2020)(Citation: CrowdStrike PIONEER KITTEN August 2020)(Citation: Dragos PARISITE )(Citation: ClearSky Pay2Kitten December 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
 | sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.003 | NTDS | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1005 | Data from Local System | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1012 | Query Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.004 | SSH | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.005 | VNC | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.004 | Masquerade Task or Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1039 | Data from Network Shared Drive | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059 | Command and Scripting Interpreter | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.001 | Local Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090 | Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1102 | Web Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110 | Brute Force | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1136.001 | Local Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1210 | Exploitation of Remote Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1213.005 | Messaging Applications | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1217 | Browser Information Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1530 | Data from Cloud Storage | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1546.008 | Accessibility Features | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1552.001 | Credentials In Files | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1555.005 | Password Managers | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1572 | Protocol Tunneling | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585 | Establish Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.001 | Social Media Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used prodump to dump credentials from LSASS.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.003 | NTDS | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used Volume Shadow Copy to access credential information from NTDS.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1005 | Data from Local System | [Fox Kitten](https://attack.mitre.org/groups/G0117) has searched local system resources to access sensitive documents.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1012 | Query Registry | [Fox Kitten](https://attack.mitre.org/groups/G0117) has accessed Registry hives ntuser.dat and UserClass.dat.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used Angry IP Scanner to detect remote systems.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used RDP to log in and move laterally in the target environment.(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used valid accounts to access SMB shares.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.004 | SSH | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used the PuTTY and Plink tools for lateral movement.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.005 | VNC | [Fox Kitten](https://attack.mitre.org/groups/G0117) has installed TightVNC server and client on compromised servers and endpoints for lateral movement.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [Fox Kitten](https://attack.mitre.org/groups/G0117) has base64 encoded scripts to avoid detection.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [Fox Kitten](https://attack.mitre.org/groups/G0117) has base64 encoded payloads to avoid detection.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.004 | Masquerade Task or Service | [Fox Kitten](https://attack.mitre.org/groups/G0117) has named the task for a reverse proxy lpupdate to appear legitimate.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Fox Kitten](https://attack.mitre.org/groups/G0117) has named binaries and configuration files svhost and dllhost respectively to appear legitimate.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1039 | Data from Network Shared Drive | [Fox Kitten](https://attack.mitre.org/groups/G0117) has searched network shares to access sensitive documents.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used tools including NMAP to conduct broad scanning to identify open ports.(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used Scheduled Tasks for persistence and to load and execute a reverse proxy binary.(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059 | Command and Scripting Interpreter | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used a Perl reverse shell to communicate with C2.(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used PowerShell scripts to access credential data.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used cmd.exe likely as a password changing mechanism.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used valid credentials with various services during lateral movement.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1083 | File and Directory Discovery | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used WizTree to obtain network files and directory listings.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.001 | Local Account | [Fox Kitten](https://attack.mitre.org/groups/G0117) has accessed ntuser.dat and UserClass.dat on compromised hosts.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.002 | Domain Account | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used the Softerra LDAP browser to browse documentation on service accounts.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090 | Proxy | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used the open source reverse proxy tools including FRPC and Go Proxy to establish connections from C2 to local servers.(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020)(Citation: Check Point Pay2Key November 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1102 | Web Service | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used Amazon Web Services to host C2.(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Fox Kitten](https://attack.mitre.org/groups/G0117) has downloaded additional tools including [PsExec](https://attack.mitre.org/software/S0029) directly to endpoints.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1110 | Brute Force | [Fox Kitten](https://attack.mitre.org/groups/G0117) has brute forced RDP credentials.(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence | T1136.001 | Local Account | [Fox Kitten](https://attack.mitre.org/groups/G0117) has created a local user account with administrator privileges.(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [Fox Kitten](https://attack.mitre.org/groups/G0117) has exploited known vulnerabilities in Fortinet, PulseSecure, and Palo Alto VPN appliances.(Citation: ClearkSky Fox Kitten February 2020)(Citation: Dragos PARISITE )(Citation: CrowdStrike PIONEER KITTEN August 2020)(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1210 | Exploitation of Remote Services | [Fox Kitten](https://attack.mitre.org/groups/G0117) has exploited known vulnerabilities in remote services including RDP.(Citation: ClearkSky Fox Kitten February 2020)(Citation: CrowdStrike PIONEER KITTEN August 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1213.005 | Messaging Applications | [Fox Kitten](https://attack.mitre.org/groups/G0117) has accessed victim security and IT environments and Microsoft Teams to mine valuable information.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1217 | Browser Information Discovery | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used Google Chrome bookmarks to identify internal resources and assets.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence | T1505.003 | Web Shell | [Fox Kitten](https://attack.mitre.org/groups/G0117) has installed web shells on compromised hosts to maintain access.(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1530 | Data from Cloud Storage | [Fox Kitten](https://attack.mitre.org/groups/G0117) has obtained files from the victim's cloud storage instances.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1546.008 | Accessibility Features | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used sticky keys to launch a command prompt.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1552.001 | Credentials In Files | [Fox Kitten](https://attack.mitre.org/groups/G0117) has accessed files to gain valid credentials.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1555.005 | Password Managers | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used scripts to access credential information from the KeePass database.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used 7-Zip to archive data.(Citation: CISA AA20-259A Iran-Based Actor September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1572 | Protocol Tunneling | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used protocol tunneling for communication and RDP activity on compromised hosts through the use of open source tools such as [ngrok](https://attack.mitre.org/software/S0508) and custom tool SSHMinion.(Citation: CrowdStrike PIONEER KITTEN August 2020)(Citation: CISA AA20-259A Iran-Based Actor September 2020)(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585 | Establish Accounts | [Fox Kitten](https://attack.mitre.org/groups/G0117) has created KeyBase accounts to communicate with ransomware victims.(Citation: ClearSky Pay2Kitten December 2020)(Citation: Check Point Pay2Key November 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585.001 | Social Media Accounts | [Fox Kitten](https://attack.mitre.org/groups/G0117) has used a Twitter account to communicate with ransomware victims.(Citation: ClearSky Pay2Kitten December 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 11件
-- IOC観測: 12件
+- IOC値: 5件
+- IOC観測: 5件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 6件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 77件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -249,6 +275,7 @@ Pay2Key
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--unc3347`
 - 状態: draft
-- 更新日時: 2026-07-25T09:01:10Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -110,7 +110,11 @@ Aliasなし
 
 ターゲット情報なし
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -118,10 +122,10 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 17件
-- IOC観測: 22件
+- IOC値: 14件
+- IOC観測: 17件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 11件
+- 要レビュー候補: 10件
 - 非IOC artifact観測: 18件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -141,7 +145,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--unc3347--142ca01be564a5d2 | GroundPeony Crawling with Malice |  | 不明 | UNC****/UNC3347/GroundPeony_Crawling_with_Malice.pdf | report | TLP:CLEAR | 中 |
 | source--unc3347--3f21779de5adbc40 | readme |  | 不明 | UNC****/UNC3347/readme.md | repository-notes | TLP:CLEAR | 中 |

@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--denim-tsunami`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -113,7 +113,11 @@ Denim Tsunamiの標準化プロファイル。リポジトリ内の専用資料1
 
 ターゲット情報なし
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -121,10 +125,10 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 10件
-- IOC観測: 13件
+- IOC値: 2件
+- IOC観測: 3件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 10件
+- 要レビュー候補: 2件
 - 非IOC artifact観測: 24件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -144,7 +148,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--denim-tsunami--0fe5e394526fd2c0 | denim tsunami |  | 不明 | actor_profile/evidence/denim-tsunami.csv | structured-data | TLP:CLEAR | 中 |
 | source--denim-tsunami--560110fcf5d43a48 | Buying Spying Insights into Commercial Surveillance Vendors TAG report |  | 不明 | Spyware/Buying_Spying_-_Insights_into_Commercial_Surveillance_Vendors_-_TAG_report.pdf | report | TLP:CLEAR | 中 |

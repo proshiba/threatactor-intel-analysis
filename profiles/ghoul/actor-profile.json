@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--ghoul",
   "name": "Ghoul",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T11:07:06Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -89,7 +89,9 @@
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
-      }
+      },
+      "ttp_refs": [],
+      "victim_refs": []
     }
   ],
   "targets": {
@@ -120,29 +122,11 @@
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [],
   "sources": [
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
     {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
@@ -269,7 +253,8 @@
     "history": "Operation Ghoul",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "mainly industrial, engineering and manufacturing organizations in more than 30 countries",
+    "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nmainly industrial, engineering and manufacturing organizations in more than 30 countries",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--4a35afff-26b6-4c51-9ca4-c7158aad222e",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -44,7 +44,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "This threat actor targets the South Korean government, transportation, and energy sectors.",
+        "targeting_details": "構造化ターゲット監査: 標的国=韓国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nThis threat actor targets the South Korean government, transportation, and energy sectors.",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -168,23 +168,28 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "id": "identity--21ea6435-7863-438b-9aee-4d24a08e3041",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Government",
+      "name": "韓国",
       "identity_class": "organization",
-      "description": "Targeting text indicates the Government sector.",
+      "description": "構造化OSINTの被害国フィールドでOnionDogの標的・被害国として韓国が記録されている。",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        },
+        {
+          "source_name": "MISP Project / Council on Foreign Relations",
+          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
+          "external_id": "source--target-audit-misp-threat-actor"
         }
       ],
-      "x_target_category": "sectors",
+      "x_target_category": "countries",
       "x_confidence": "medium"
     },
     {
@@ -199,6 +204,28 @@
       "name": "Energy",
       "identity_class": "organization",
       "description": "Targeting text indicates the Energy sector.",
+      "external_references": [
+        {
+          "source_name": "Florian Roth and community contributors",
+          "description": "Local source: APT Groups and Operations.xlsx",
+          "external_id": "source--actor-mapping-workbook"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "created": "2026-07-25T15:23:00Z",
+      "modified": "2026-07-25T15:23:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Government",
+      "identity_class": "organization",
+      "description": "Targeting text indicates the Government sector.",
       "external_references": [
         {
           "source_name": "Florian Roth and community contributors",
@@ -232,211 +259,64 @@
       "x_confidence": "medium"
     },
     {
-      "type": "indicator",
+      "type": "relationship",
       "spec_version": "2.1",
-      "id": "indicator--66718639-4d3c-4264-a94d-85afc9d31064",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "id": "relationship--92ee68f2-5acb-473e-a711-c35180881515",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "url: http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-b",
-      "pattern": "[url:value = 'http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-b']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:32709b53d08118f1d5ac78164c6979dc746753800fd83ca6d67ed66e92358dc5",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--oniondog--07c679d9ae3d416c",
-          "source_path": "actor_profile/evidence/oniondog.csv",
-          "source_location": {
-            "row": 2
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 8, \"sheet\": \"North Korea\"} OnionDog OnionDog This threat actor targets the South Korean government, transportation, and energy sectors. False Positive. APT Training by SK Government http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-b",
-          "analyst_notes": "",
-          "raw_value": "http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-b"
-        }
-      ]
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4a35afff-26b6-4c51-9ca4-c7158aad222e",
+      "target_ref": "identity--21ea6435-7863-438b-9aee-4d24a08e3041",
+      "description": "OnionDog targets 韓国 (profile target category: countries).",
+      "x_confidence": "medium"
     },
     {
-      "type": "indicator",
+      "type": "relationship",
       "spec_version": "2.1",
-      "id": "indicator--8cb77044-b414-4e2c-b6cc-0c987161ccf9",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "id": "relationship--306cb614-dbef-4dad-9fa7-aed65d30edf5",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "url: http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondo",
-      "pattern": "[url:value = 'http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondo']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2016-03-09T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:17a7dac52005ff563275aa36aa070ef5a8027a3e198128ee5f84690ade7c26a2",
-          "observed_at": {
-            "value": "2016-03-09T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--oniondog--07c679d9ae3d416c",
-          "source_path": "actor_profile/evidence/oniondog.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 8, \"sheet\": \"North Korea\"} oniondog his threat actor targets the South Korean government, transportation, and energy sectors. False Positive. APT Training by SK Government http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml http://zhuiri.360.cn/upload/APT-C-03-en.pdf http://www.chinadaily.com.cn/china/2016-03/09/content_23794129.htm http://news.softpedia.com/news/korean-energy-and-transportation-targ",
-          "analyst_notes": "",
-          "raw_value": "http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondo"
-        }
-      ]
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4a35afff-26b6-4c51-9ca4-c7158aad222e",
+      "target_ref": "identity--66251a77-93ed-4960-b417-bc9827b462a3",
+      "description": "OnionDog targets Energy (profile target category: sectors).",
+      "x_confidence": "medium"
     },
     {
-      "type": "indicator",
+      "type": "relationship",
       "spec_version": "2.1",
-      "id": "indicator--0fde2247-394c-4d53-980d-a782fd58f0fb",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
+      "id": "relationship--2704df0d-953d-43a7-9dcc-36c56ea18116",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "url: http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml",
-      "pattern": "[url:value = 'http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2016-03-09T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4a35afff-26b6-4c51-9ca4-c7158aad222e",
+      "target_ref": "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+      "description": "OnionDog targets Government (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f13060bd-7fab-434a-8136-4bb4d1db8f9a",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:cb3a4d664a6a45386778403f1c30736423d6776b2e9125dbfa27ed7d30c6b060",
-          "observed_at": {
-            "value": "2016-03-09T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--oniondog--07c679d9ae3d416c",
-          "source_path": "actor_profile/evidence/oniondog.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 8, \"sheet\": \"North Korea\"} oniondog his threat actor targets the South Korean government, transportation, and energy sectors. False Positive. APT Training by SK Government http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml http://zhuiri.360.cn/upload/APT-C-03-en.pdf http://www.chinadaily.com.cn/china/2016-03/09/content_23794129.htm http://news.softpedia.com/news/korean-energy-and-transportation-targ",
-          "analyst_notes": "",
-          "raw_value": "http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml"
-        },
-        {
-          "observation_id": "observation--sha256:4a429ca616a44fed9f1f3bad35e9f8e87276f9801446b0a8a7d4423db03591f2",
-          "observed_at": {
-            "value": "2016-03-09T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--oniondog--07c679d9ae3d416c",
-          "source_path": "actor_profile/evidence/oniondog.csv",
-          "source_location": {
-            "row": 4
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 8, \"sheet\": \"North Korea\"} oniondog niondog-apt-501534.shtml http://zhuiri.360.cn/upload/APT-C-03-en.pdf http://www.chinadaily.com.cn/china/2016-03/09/content_23794129.htm http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml",
-          "analyst_notes": "",
-          "raw_value": "http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml"
-        }
-      ]
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--4a35afff-26b6-4c51-9ca4-c7158aad222e",
+      "target_ref": "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
+      "description": "OnionDog targets Transportation (profile target category: sectors).",
+      "x_confidence": "medium"
     },
     {
       "type": "indicator",
@@ -528,95 +408,6 @@
       ]
     },
     {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--0aab76b3-d070-4da0-b24d-b1f7014837a4",
-      "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T15:23:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: http://zhuiri.360.cn/upload/APT-C-03-en.pdf",
-      "pattern": "[url:value = 'http://zhuiri.360.cn/upload/APT-C-03-en.pdf']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2016-03-09T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:7c9e81f5026535095efe53e96ffc210d62f06986e89a1aa3b4fceb535bbdee8b",
-          "observed_at": {
-            "value": "2016-03-09T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--oniondog--07c679d9ae3d416c",
-          "source_path": "actor_profile/evidence/oniondog.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 8, \"sheet\": \"North Korea\"} oniondog his threat actor targets the South Korean government, transportation, and energy sectors. False Positive. APT Training by SK Government http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml http://zhuiri.360.cn/upload/APT-C-03-en.pdf http://www.chinadaily.com.cn/china/2016-03/09/content_23794129.htm http://news.softpedia.com/news/korean-energy-and-transportation-targ",
-          "analyst_notes": "",
-          "raw_value": "http://zhuiri.360.cn/upload/APT-C-03-en.pdf"
-        },
-        {
-          "observation_id": "observation--sha256:189d77e42f48f1f74f3b1bf9a0b81a3104409df8474d325245d1f80bc4f4eab8",
-          "observed_at": {
-            "value": "2016-03-09T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--oniondog--07c679d9ae3d416c",
-          "source_path": "actor_profile/evidence/oniondog.csv",
-          "source_location": {
-            "row": 4
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 8, \"sheet\": \"North Korea\"} oniondog niondog-apt-501534.shtml http://zhuiri.360.cn/upload/APT-C-03-en.pdf http://www.chinadaily.com.cn/china/2016-03/09/content_23794129.htm http://news.softpedia.com/news/korean-energy-and-transportation-targets-attacked-by-oniondog-apt-501534.shtml",
-          "analyst_notes": "",
-          "raw_value": "http://zhuiri.360.cn/upload/APT-C-03-en.pdf"
-        }
-      ]
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--39468ef1-5675-46e4-9f84-6f74dd660345",
@@ -638,7 +429,7 @@
       "spec_version": "2.1",
       "id": "report--c9420266-7ce0-4417-af4e-0f34aa324530",
       "created": "2026-07-25T15:23:00Z",
-      "modified": "2026-07-25T14:07:08Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -647,19 +438,16 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T14:07:08Z",
+      "published": "2026-07-29T23:12:00Z",
       "object_refs": [
         "intrusion-set--4a35afff-26b6-4c51-9ca4-c7158aad222e",
-        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
+        "identity--21ea6435-7863-438b-9aee-4d24a08e3041",
         "identity--66251a77-93ed-4960-b417-bc9827b462a3",
+        "identity--271dc723-aaa4-4e75-9ed8-51f507e84e5b",
         "identity--f3e00adc-7fa3-4bdf-8891-e2139b0c450c",
-        "indicator--66718639-4d3c-4264-a94d-85afc9d31064",
-        "indicator--8cb77044-b414-4e2c-b6cc-0c987161ccf9",
-        "indicator--0fde2247-394c-4d53-980d-a782fd58f0fb",
-        "indicator--abba651d-3fa1-446b-96a3-d6abc75714e2",
-        "indicator--0aab76b3-d070-4da0-b24d-b1f7014837a4"
+        "indicator--abba651d-3fa1-446b-96a3-d6abc75714e2"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

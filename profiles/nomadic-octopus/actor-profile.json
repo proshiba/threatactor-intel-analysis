@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--nomadic-octopus",
   "name": "Nomadic Octopus",
   "status": "draft",
   "created_at": "2026-07-25T09:00:34Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T23:13:54Z",
   "languages": [
     "ja"
   ],
@@ -100,8 +100,100 @@
   },
   "activities": [],
   "targets": {
-    "countries": [],
-    "regions": [],
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--89ea0959a2767fb7f874",
+        "name": "アフガニスタン",
+        "description": "構造化OSINTの被害国フィールドでNomadic Octopusの標的・被害国としてアフガニスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--16bd559d0cd13571121a",
+        "name": "カザフスタン",
+        "description": "構造化OSINTの被害国フィールドでNomadic Octopusの標的・被害国としてカザフスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--510cecbe9c8a5c880703",
+        "name": "アジア",
+        "description": "MITRE ATT&CKのGroup概要でNomadic Octopusの標的範囲としてアジアが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--region--9fc676709b40489c86e8",
+        "name": "中央アジア",
+        "description": "MITRE ATT&CKのGroup概要でNomadic Octopusの標的範囲として中央アジアが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--actor-mapping-workbook",
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 既存の標的専用自由記述から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
     "sectors": [
       {
         "id": "target--sector--government",
@@ -121,14 +213,15 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--actor-mapping-workbook",
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -352,7 +445,7 @@
       "tactic": "Stealth",
       "technique_id": "T1036",
       "technique_name": "Masquerading",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) attempted to make [Octopus](https://attack.mitre.org/software/S0340) appear as a  Telegram Messenger with a Russian interface.(Citation: Securelist Octopus Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -373,7 +466,7 @@
         "source--mitre-attack-19-1",
         "source--nomadic-octopus--85beb3f33e9c346d"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1040--general",
@@ -569,7 +662,7 @@
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) has used PowerShell for execution.(Citation: ESET Nomadic Octopus 2018) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -589,14 +682,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-003--general",
       "tactic": "Execution",
       "technique_id": "T1059.003",
       "technique_name": "Windows Command Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) used <code>cmd.exe /c</code> within a malicious macro.(Citation: ESET Nomadic Octopus 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -616,7 +709,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071--general",
@@ -758,7 +851,7 @@
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) has used malicious macros to download additional files to the victim's machine.(Citation: ESET Nomadic Octopus 2018) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -778,7 +871,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1113--general",
@@ -1001,7 +1094,7 @@
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) as attempted to lure victims into clicking on malicious attachments within spearphishing emails.(Citation: Securelist Octopus Oct 2018)(Citation: ESET Nomadic Octopus 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1021,7 +1114,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1547--general",
@@ -1190,7 +1283,7 @@
       "tactic": "Stealth",
       "technique_id": "T1564.003",
       "technique_name": "Hidden Window",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) executed PowerShell in a hidden window.(Citation: ESET Nomadic Octopus 2018) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1210,14 +1303,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-001--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.001",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Nomadic Octopus](https://attack.mitre.org/groups/G0133) has targeted victims with spearphishing emails containing malicious attachments.(Citation: Security Affairs DustSquad Oct 2018)(Citation: ESET Nomadic Octopus 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1237,7 +1330,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1570--general",
@@ -1606,6 +1699,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -1625,7 +1743,8 @@
     "history": "",
     "capability_details": "Octopus",
     "infrastructure_details": "",
-    "targeting_details": "Central Asian users and diplomatic entities",
+    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、カザフスタン。標的地域=アジア、中央アジア。日本は確認時に個別国として保持する。\n\nCentral Asian users and diplomatic entities",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

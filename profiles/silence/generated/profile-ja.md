@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--silence`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -114,49 +114,131 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | アイルランド | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアイルランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アゼルバイジャン | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アルメニア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアルメニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アンティグア・バーブーダ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてアンティグア・バーブーダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストリア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カザフスタン | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ガーナ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてガーナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | キプロス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてキプロスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | キルギス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ギリシャ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてギリシャが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | クロアチア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてクロアチアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ケニア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてケニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | コスタリカ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてコスタリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ジブラルタル | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてジブラルタルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ジャマイカ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてジャマイカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ジョージア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スイス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スウェーデン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スリランカ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | セルビア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | セーシェル | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてセーシェルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チリ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてチリが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ノルウェー | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パナマ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてパナマが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フィンランド | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてフィンランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルガリア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベラルーシ | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | ベリーズ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてベリーズが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベルギー | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ポーランド | MITRE ATT&CKのGroup概要でSilenceの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | モルドバ | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてモルドバが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ヨルダン | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ラトビア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてラトビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルクセンブルク | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてルクセンブルクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルーマニア | 構造化OSINTの被害国フィールドでSilenceの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | Their main targets reside in Russia, Ukraine, Belarus, Azerbaijan, Poland and Kazakhstan. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでSilenceの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | ガーナ、ケニア、セーシェルで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | コーカサス | アゼルバイジャン、アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 中南米 | アンティグア・バーブーダ、コスタリカ、ジャマイカ、チリ、パナマ、ベリーズ、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中央アジア | ウズベキスタン、カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | アラブ首長国連邦、イスラエル、サウジアラビア、トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、スリランカ、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南欧 | キプロス、ギリシャ、クロアチア、スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 中国、台湾、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | インドネシア、シンガポール、タイ、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、チェコ、ブルガリア、ベラルーシ、ポーランド、モルドバ、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | アイルランド、ウクライナ、オランダ、オーストリア、キプロス、ギリシャ、クロアチア、ジブラルタル、スイス、スウェーデン、スペイン、セルビア、チェコ、トルコ、ドイツ、ノルウェー、フィンランド、フランス、ブルガリア、ベラルーシ、ベルギー、ポーランド、モルドバ、ラトビア、ルクセンブルク、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 金融 | [Silence](https://attack.mitre.org/groups/G0091) is a financially motivated threat actor targeting financial institutions in different countries. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.007 | JavaScript | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Lateral Movement | T1072 | Software Deployment Tools | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.002 | External Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1106 | Native API | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1113 | Screen Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1125 | Video Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.001 | Compiled HTML File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1553.002 | Code Signing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1571 | Non-Standard Port | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [Silence](https://attack.mitre.org/groups/G0091) has used the Farse6.1 utility (based on [Mimikatz](https://attack.mitre.org/software/S0002)) to extract credentials from lsass.exe.(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [Silence](https://attack.mitre.org/groups/G0091) has used Nmap to scan the corporate network, build a network topology, and identify vulnerable hosts.(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [Silence](https://attack.mitre.org/groups/G0091) has used RDP for lateral movement.(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [Silence](https://attack.mitre.org/groups/G0091) has used environment variable string substitution for obfuscation.(Citation: Cyber Forensicator Silence Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Silence](https://attack.mitre.org/groups/G0091) has named its backdoor "WINWORD.exe".(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Silence](https://attack.mitre.org/groups/G0091) has used scheduled tasks to stage its operation.(Citation: Cyber Forensicator Silence Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [Silence](https://attack.mitre.org/groups/G0091) has injected a DLL library containing a Trojan into the fwmain32.exe process.(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [Silence](https://attack.mitre.org/groups/G0091) has used PowerShell to download and execute payloads.(Citation: Cyber Forensicator Silence Jan 2019)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [Silence](https://attack.mitre.org/groups/G0091) has used Windows command-line to run commands.(Citation: Cyber Forensicator Silence Jan 2019)(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [Silence](https://attack.mitre.org/groups/G0091) has used VBS scripts.(Citation: Cyber Forensicator Silence Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.007 | JavaScript | [Silence](https://attack.mitre.org/groups/G0091) has used JS scripts.(Citation: Cyber Forensicator Silence Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1070.004 | File Deletion | [Silence](https://attack.mitre.org/groups/G0091) has deleted artifacts, including scheduled tasks, communicates files from the C2 and other logs.(Citation: Cyber Forensicator Silence Jan 2019)(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Lateral Movement | T1072 | Software Deployment Tools | [Silence](https://attack.mitre.org/groups/G0091) has used RAdmin, a remote software tool used to remotely control workstations and ATMs.(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [Silence](https://attack.mitre.org/groups/G0091) has used compromised credentials to log on to other systems and escalate privileges.(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090.002 | External Proxy | [Silence](https://attack.mitre.org/groups/G0091) has used ProxyBot, which allows the attacker to redirect traffic from the current node to the backconnect server via Sock4\Socks5.(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Silence](https://attack.mitre.org/groups/G0091) has downloaded additional modules and malware to victim’s machines.(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1106 | Native API | [Silence](https://attack.mitre.org/groups/G0091) has leveraged the Windows API, including using CreateProcess() or ShellExecute(), to perform a variety of tasks.(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [Silence](https://attack.mitre.org/groups/G0091) can create, delete, or modify a specified Registry key or value.(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1113 | Screen Capture | [Silence](https://attack.mitre.org/groups/G0091) can capture victim screen activity.(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1125 | Video Capture | [Silence](https://attack.mitre.org/groups/G0091) has been observed making videos of victims to observe bank employees day to day activities.(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [Silence](https://attack.mitre.org/groups/G0091) attempts to get users to launch malicious attachments delivered via spearphishing emails.(Citation: Cyber Forensicator Silence Jan 2019)(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.001 | Compiled HTML File | [Silence](https://attack.mitre.org/groups/G0091) has weaponized CHM files in their phishing campaigns.(Citation: Cyber Forensicator Silence Jan 2019)(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Aug 2019)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [Silence](https://attack.mitre.org/groups/G0091) has used <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code>, <code>HKLM\Software\Microsoft\Windows\CurrentVersion\Run</code>, and the Startup folder to establish persistence.(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1553.002 | Code Signing | [Silence](https://attack.mitre.org/groups/G0091) has used a valid certificate to sign their primary loader Silence.Downloader (aka TrueBot).(Citation: Group IB Silence Aug 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [Silence](https://attack.mitre.org/groups/G0091) has sent emails with malicious DOCX, CHM, LNK and ZIP attachments. (Citation: Cyber Forensicator Silence Jan 2019)(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1569.002 | Service Execution | [Silence](https://attack.mitre.org/groups/G0091) has used [Winexe](https://attack.mitre.org/software/S0191) to install a service on the remote system.(Citation: SecureList Silence Nov 2017)(Citation: Group IB Silence Sept 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1571 | Non-Standard Port | [Silence](https://attack.mitre.org/groups/G0091) has used port 444 when sending data about the system from the client to the server.(Citation: Group IB Silence Sept 2018)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [Silence](https://attack.mitre.org/groups/G0091) has obtained and modified versions of publicly-available tools like [Empire](https://attack.mitre.org/software/S0363) and [PsExec](https://attack.mitre.org/software/S0029).(Citation: Group IB Silence Aug 2019) (Citation: SecureList Silence Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 8件
-- IOC観測: 9件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 8件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 34件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -196,6 +278,7 @@ Silenceの標準化プロファイル。リポジトリ内の専用資料1件と
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

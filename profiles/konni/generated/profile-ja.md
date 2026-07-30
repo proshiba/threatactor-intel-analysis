@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--konni`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:24Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -104,25 +104,51 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Google広告を悪用しEndRATを配布する新たなスピアフィッシング攻撃 | phishing-campaign | 不明 | 不明 | 2026-01-20 | 韓国組織を狙うKonni APTの作戦「Poseidon」が確認され、Google広告基盤を悪用してEndRATを配布するスピアフィッシングを実施。 メール内の偽装URLはad.doubleclick.net経由の正規広告トラフィックに見せかけ、侵害WordPressへ誘導して不正ZIPを取得させる。 ZIP内のLNKがAutoItスクリプトを起動し、PDF風に偽装してメモリ上にEndRAT系RATをロード、追加操作なしで感染を成立。 不可視テキストのパディングでAI検知を回避し、や1×1ピクセルの透過画像を使って開封を追跡、C2識別子「endServer9688」「endClient9688」など内部アーティファクトも確認。 攻撃者は北朝鮮人権団体や金融機関への成りすましで信用を獲得し、取引確認書や通知文書に偽装した誘導を行う。 | 中 | `source--daily-04ea119cefbe5973a36c` |
-| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | phishing-campaign | 不明 | 不明 | 2025-05-14 | 北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。 | 中 | `source--daily-a70f8f04454a7b9e932e` |
-| KonniグループによるスピアフィッシングとKakaoTalk連動型脅威キャンペーンの分析 | phishing-campaign | 不明 | 不明 | 2026-03-17 | Geniansは、北朝鮮人権講師の任命通知を装うスピアフィッシングから始まるKonniグループの多段階攻撃を分析し、初期侵入から二次拡散までの流れを整理した。 受信者が文書に見せかけた悪性LNKを実行すると、PowerShellが埋め込みデータを復号して偽装PDFを展開し、C2から追加ペイロードを取得して永続化する。 C2からはAutoIT3.exeとPDFに偽装したAutoItScriptがダウンロード及び実行される。 解析の結果EndRAT系の挙動が確認され、さらにEndRAT・RftRAT・RemcosRATの複数RATが段階的に展開されていた。 攻撃者は侵害端末上のKakaoTalk PCセッションに不正アクセスし、友だち一覧から選んだ相手へ北朝鮮関連の誘引ファイルを再送して信頼連鎖で拡散した。 記事は、単一IOCの遮断だけでは不十分であり、LNK実行後の異常プロセス、永続化、情報窃取、メッセンジャー悪用をEDRで相関検知すべきだと強調する。 | 高 | `source--daily-22cb41823695505fc8c4` |
-| Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | infrastructure-operation | 不明 | 不明 | 2026-01-26 | 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。 | 高 | `source--daily-96093ec62047a80740ea` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Google広告を悪用しEndRATを配布する新たなスピアフィッシング攻撃 | phishing-campaign | 不明 | 不明 | 2026-01-20 |  |  | ttp--activity-rule--8874df6d75dd53844b7d |  | 韓国組織を狙うKonni APTの作戦「Poseidon」が確認され、Google広告基盤を悪用してEndRATを配布するスピアフィッシングを実施。 メール内の偽装URLはad.doubleclick.net経由の正規広告トラフィックに見せかけ、侵害WordPressへ誘導して不正ZIPを取得させる。 ZIP内のLNKがAutoItスクリプトを起動し、PDF風に偽装してメモリ上にEndRAT系RATをロード、追加操作なしで感染を成立。 不可視テキストのパディングでAI検知を回避し、や1×1ピクセルの透過画像を使って開封を追跡、C2識別子「endServer9688」「endClient9688」など内部アーティファクトも確認。 攻撃者は北朝鮮人権団体や金融機関への成りすましで信用を獲得し、取引確認書や通知文書に偽装した誘導を行う。 | 中 | `source--daily-04ea119cefbe5973a36c` |
+| 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | phishing-campaign | 不明 | 不明 | 2025-05-14 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--4a21572c08119350dbce, ttp--activity-rule--a99b07bd6fac90ad2cf9 | victim--activity-rule--2e0d34b8d92fddc23fdc | 北朝鮮支援のハッカーグループ「Konni（TA406）」が、ウクライナ政府機関を標的に情報収集活動を実施。 フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 攻撃の目的は、北朝鮮軍のウクライナ派遣に伴うリスク評価とロシアからの追加要請の可能性を分析すること。 攻撃には、偽のMicrosoftセキュリティ警告を用いた認証情報の収集も含まれる。 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| KonniグループによるスピアフィッシングとKakaoTalk連動型脅威キャンペーンの分析 | phishing-campaign | 不明 | 不明 | 2026-03-17 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  | ttp--activity-rule--d913e43869f268f61241, ttp--activity-rule--fa5094b7781f1eaa6aed | victim--activity-rule--624fced7f6106b0b0296 | Geniansは、北朝鮮人権講師の任命通知を装うスピアフィッシングから始まるKonniグループの多段階攻撃を分析し、初期侵入から二次拡散までの流れを整理した。 受信者が文書に見せかけた悪性LNKを実行すると、PowerShellが埋め込みデータを復号して偽装PDFを展開し、C2から追加ペイロードを取得して永続化する。 C2からはAutoIT3.exeとPDFに偽装したAutoItScriptがダウンロード及び実行される。 解析の結果EndRAT系の挙動が確認され、さらにEndRAT・RftRAT・RemcosRATの複数RATが段階的に展開されていた。 攻撃者は侵害端末上のKakaoTalk PCセッションに不正アクセスし、友だち一覧から選んだ相手へ北朝鮮関連の誘引ファイルを再送して信頼連鎖で拡散した。 記事は、単一IOCの遮断だけでは不十分であり、LNK実行後の異常プロセス、永続化、情報窃取、メッセンジャー悪用をEDRで相関検知すべきだと強調する。 | 高 | `source--daily-22cb41823695505fc8c4` |
+| Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | infrastructure-operation | 不明 | 不明 | 2026-01-26 | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--7f8cf8af7ca879bb493f, ttp--activity-rule--e73e2a355fda877065d3 | victim--activity-rule--3313dadf412423edd869 | 北朝鮮系Konni（Opal Sleet/TA406）がAI生成と見られるPowerShellマルウェアでブロックチェーン開発者・技術者を標的化。 Check Point分析では日本・豪州・インド由来の検体が確認され、APACを中心とする最近の活動とされる。 攻撃はDiscordホストのリンクからZIPを配布、PDFおとりと悪性LNKで開始しPowerShellローダでDOCXとCABを展開。 CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。 | 高 | `source--daily-96093ec62047a80740ea` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | ウクライナ | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| countries | ロシア | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| countries | 北朝鮮 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-04ea119cefbe5973a36c`, `source--daily-a70f8f04454a7b9e932e` |
+| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| sectors | 政府・行政 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| sectors | 暗号資産・Web3 | 活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
+| sectors | IT・ソフトウェア | 活動「Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
+| sectors | 防衛・軍事 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| sectors | 非営利・市民社会 | 活動「KonniグループによるスピアフィッシングとKakaoTalk連動型脅威キャンペーンの分析」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-22cb41823695505fc8c4` |
+| sectors | 教育・研究 | 活動「北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--country--f0d8df51439c4d0f3a05, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--4a21572c08119350dbce, ttp--activity-rule--a99b07bd6fac90ad2cf9 | メール／メールアカウント | espionage: 北朝鮮、ウクライナでの戦争リスク評価のためサイバースパイ活動を強化 | 不明 | 不明 | 2025-05-14 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| 被害事例: Konniハッカー、AI生成マルウェアでブロックチェーン技術者を標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--7f8cf8af7ca879bb493f, ttp--activity-rule--e73e2a355fda877065d3 |  |  | 不明 | 不明 | 2026-01-26 | 高 | `source--daily-96093ec62047a80740ea` |
+| 被害事例: KonniグループによるスピアフィッシングとKakaoTalk連動型脅威キャンペーンの分析 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  | ttp--activity-rule--d913e43869f268f61241, ttp--activity-rule--fa5094b7781f1eaa6aed | エンドポイント |  | 不明 | 不明 | 2026-03-17 | 高 | `source--daily-22cb41823695505fc8c4` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Initial Access | T1566.002 | Spearphishing Link | フィッシングメールでシンクタンクを装い、政治・軍事イベントに関するリンクを送信。 |  | activity--daily-4c04ed57332555303c93 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | CABにはPSバックドア・2つのBAT・UAC回避用実行ファイルが含まれ、OneDrive偽装のタスクでXOR暗号化スクリプトを定期実行・痕跡削除。 |  | activity--daily-647f622408c58cbd428c | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
+| Stealth | T1036 | Masquerading | ZIP内のLNKがAutoItスクリプトを起動し、PDF風に偽装してメモリ上にEndRAT系RATをロード、追加操作なしで感染を成立。 |  | activity--daily-23024095c33771cf0ad3 | 不明 | 不明 | 中 | `source--daily-04ea119cefbe5973a36c` |
+| Execution | T1059.001 | PowerShell | リンク先でパスワード付きRARファイルを配布し、PowerShellスクリプトで感染させる。 |  | activity--daily-4c04ed57332555303c93 | 不明 | 不明 | 中 | `source--daily-a70f8f04454a7b9e932e` |
+| Command And Control | T1105 | Ingress Tool Transfer | 受信者が文書に見せかけた悪性LNKを実行すると、PowerShellが埋め込みデータを復号して偽装PDFを展開し、C2から追加ペイロードを取得して永続化する。 |  | activity--daily-5ff1d091898ba9ae1303 | 不明 | 不明 | 中 | `source--daily-22cb41823695505fc8c4` |
+| Stealth | T1027 | Obfuscated Files or Information | バックドアは難読化されC2と定期通信、整然としたコメントやUUID記述からAI支援生成の痕跡が示唆されKonniに帰属。 |  | activity--daily-647f622408c58cbd428c | 不明 | 不明 | 中 | `source--daily-96093ec62047a80740ea` |
+| Stealth | T1036 | Masquerading | C2からはAutoIT3.exeとPDFに偽装したAutoItScriptがダウンロード及び実行される。 |  | activity--daily-5ff1d091898ba9ae1303 | 不明 | 不明 | 中 | `source--daily-22cb41823695505fc8c4` |
 | Command And Control | T1001 | Data Obfuscation | 1082 System Information Discovery T1083 File and Directory Discovery T1518 Software Discovery Collection T1005 Data from Local System Command and Control T1001 Data Obfuscation T1132.001 Data Encoding: Standard Encoding Exfiltration T1041 Exfiltration Over C2 Channel [표 18] MITRE ATT&CK, Tactics and Techniques 11 ATT&CK : The Adversarial Tactics, Techniques, and Common Knowledge |  |  | 不明 | 不明 | 中 | `source--konni--079e51a056632f53` |
 | Collection | T1005 | Data from Local System | Configuration Discovery T1057 Process Discovery T1082 System Information Discovery T1083 File and Directory Discovery T1518 Software Discovery Collection T1005 Data from Local System Command and Control T1001 Data Obfuscation T1132.001 Data Encoding: Standard Encoding Exfiltration T1041 Exfiltration Over C2 Channel [표 18] MITRE ATT&CK, Tactics and Techniques 11 ATT&CK : The Adv |  |  | 不明 | 不明 | 中 | `source--konni--079e51a056632f53` |
 | Discovery | T1016 | System Network Configuration Discovery | Obfuscated Files or Information: Command Obfuscation T1036.007 Masquerading: Double File Extension T1140 Deobfuscate/Decode Files or Information Discovery T1016 System Network Configuration Discovery T1057 Process Discovery T1082 System Information Discovery T1083 File and Directory Discovery T1518 Software Discovery Collection T1005 Data from Local System Command and Control T1001 Data Obfuscation T1132.001 Data Encoding: Stan |  |  | 不明 | 不明 | 中 | `source--konni--079e51a056632f53` |
@@ -157,10 +183,10 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 240件
-- IOC観測: 340件
+- IOC値: 173件
+- IOC観測: 256件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 55件
+- 要レビュー候補: 19件
 - 非IOC artifact観測: 289件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -192,7 +218,6 @@ Aliasなし
 | source--konni--9f9859221e0eb3bc | 20230926 threat inteligence report konniapt |  | 2023-09-26 | konni/20230926_threat_inteligence_report_konniapt.pdf | report | TLP:CLEAR | 中 |
 | source--konni--a7ca5a441a2a4faf | ReadME |  | 不明 | konni/ReadME.md | repository-notes | TLP:CLEAR | 中 |
 | source--konni--e22c456560b2d889 | bluesky |  | 不明 | konni/bluesky.txt | text-data | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |

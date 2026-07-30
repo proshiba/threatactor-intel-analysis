@@ -125,7 +125,28 @@ python3 actor_profile/scripts/crosscheck_all_actors.py
 
 # 主張台帳と人間向けMarkdown／STIXを再生成
 python3 actor_profile/scripts/build_claim_audits.py
+python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+```
+
+`enrich_targeting_scope.py`は、活動本文、MITRE ATT&CK Group概要、高確度で
+アクター照合できたMISP／ETDAの被害地理フィールド、レビュー済み一次資料補正を
+標的国・地域へ統合します。帰属国、C2の所在国、帰属表明を行った国は標的として
+扱いません。広域活動は`全世界`等の地域を保持し、日本の被害が確認できる場合は
+地域表示とは別に`日本`を個別保持します。複数の個別国から導出した地域は
+「域内全体が標的だった」という意味ではなく、UIでの集約表示用です。
+
+監査結果は`profiles/targeting-audit.json`に保存されます。
+`no-structured-geography`、`single-country-no-region`、
+`unresolved-osint-values`は追加調査キューとして扱い、証拠のない国を推測で
+補完しません。一次資料で確認した例外・補正は
+`actor_profile/targeting-curation.json`へ根拠とともに追加します。
+
+単一アクターの日次更新では、全件の監査時刻を書き換えずに対象台帳だけを再生成できます。
+
+```bash
+python3 actor_profile/scripts/build_claim_audits.py --actor actor-slug
 ```
 
 固定データセットのバージョン、取得時刻、SHA-256は

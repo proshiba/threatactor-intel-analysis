@@ -1,6 +1,7 @@
 /* DOM非依存の整形ヘルパーと、複数ビューで共有する小さなUI部品 */
 
 import { ja } from "./locale-ja.js";
+import { PORTAL_URL, PORTAL_SEARCH_ROUTE } from "./config.js";
 
 export const app = document.getElementById("app");
 
@@ -137,6 +138,45 @@ export function bindLiveSearch(id, onValue, delay = 150) {
       }
     }, delay);
   });
+}
+
+/* ---------- 横断ポータルへのピボット ---------- */
+
+export function portalSearchUrl(value) {
+  return PORTAL_URL + PORTAL_SEARCH_ROUTE + encodeURIComponent(value);
+}
+
+// 値をポータルのクロスサーチで開くリンク。難読化した表示のまま、検索には生値を渡す。
+export function pivotLink(rawValue, displayHtml, title) {
+  return `<a class="pivot" href="${esc(portalSearchUrl(rawValue))}"
+    data-pivot="${esc(rawValue)}" title="${esc(title || "横断検索で関連を調べる")}"
+    target="_blank" rel="noopener">${displayHtml}<span class="pivot-mark">⇗</span></a>`;
+}
+
+/* ポータルのiframe内で開かれている場合は、新しいタブではなく親フレームを
+ * クロスサーチへ遷移させる。GitHub Pagesのプロジェクトページは同一オリジンなので
+ * 親のhashを直接書き換えられる。単体で開いている場合は通常のリンクとして動く。 */
+function embeddedTop() {
+  try {
+    if (window.top === window.self) return null;
+    // 同一オリジンでなければ参照した時点で例外になる
+    const host = window.top.location.host;
+    return host === window.location.host ? window.top : null;
+  } catch {
+    return null;
+  }
+}
+
+export function bindPivots(container) {
+  const root = container || document;
+  for (const link of root.querySelectorAll("a.pivot[data-pivot]")) {
+    link.addEventListener("click", (event) => {
+      const top = embeddedTop();
+      if (!top) return; // 単体表示。既定の別タブ遷移に任せる
+      event.preventDefault();
+      top.location.hash = PORTAL_SEARCH_ROUTE + encodeURIComponent(link.dataset.pivot);
+    });
+  }
 }
 
 // 「さらに表示」: 再描画してもスクロール位置を保つ

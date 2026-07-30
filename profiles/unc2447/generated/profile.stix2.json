@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--b1b36d0a-6a46-4ff4-86a4-10d912a407b5",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-07-25T15:23:07Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -32,7 +32,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=北米、欧州。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -143,6 +143,80 @@
       }
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--fe29a25b-7471-4a4c-80af-cadc3717e8ec",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北米",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害地域フィールドでUNC2447の標的範囲として北米が記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--223afa34-4d26-4b6a-8913-4364ad14841f",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "欧州",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害地域フィールドでUNC2447の標的範囲として欧州が記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--75a94381-89b0-4d9e-a8c3-db18855fc04e",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b1b36d0a-6a46-4ff4-86a4-10d912a407b5",
+      "target_ref": "identity--fe29a25b-7471-4a4c-80af-cadc3717e8ec",
+      "description": "UNC2447 targets 北米 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e77e9663-c8cd-4916-b6d6-19ec3d67563f",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b1b36d0a-6a46-4ff4-86a4-10d912a407b5",
+      "target_ref": "identity--223afa34-4d26-4b6a-8913-4364ad14841f",
+      "description": "UNC2447 targets 欧州 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--472bd268-7e39-4772-8d05-00e75077ccba",
@@ -164,7 +238,7 @@
       "spec_version": "2.1",
       "id": "report--35b860d1-cf49-4682-908d-ab48112cd224",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-07-25T14:07:08Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -173,11 +247,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T14:07:08Z",
+      "published": "2026-07-29T23:12:01Z",
       "object_refs": [
-        "intrusion-set--b1b36d0a-6a46-4ff4-86a4-10d912a407b5"
+        "intrusion-set--b1b36d0a-6a46-4ff4-86a4-10d912a407b5",
+        "identity--fe29a25b-7471-4a4c-80af-cadc3717e8ec",
+        "identity--223afa34-4d26-4b6a-8913-4364ad14841f"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

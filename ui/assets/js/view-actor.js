@@ -15,7 +15,7 @@ import { state, findActor, slugForName, getGraph, incomingRelationships } from "
 import {
   app, esc, md, num, chips, section, dataTable, resultCount,
   fmtDate, confBadge, defang, fetchJson, fetchText, parseCsv, renderError,
-  bindLiveSearch, bindMoreButton,
+  bindLiveSearch, bindMoreButton, pivotLink, bindPivots,
 } from "./util.js";
 import { ja, jaTactic, jaNarrative } from "./locale-ja.js";
 
@@ -146,8 +146,10 @@ function buildOverviewTab(profile, summary) {
   }
 
   const targetsHtml = `
-    <h3>標的国・地域(${(targets.countries || []).length})</h3>
+    <h3>標的国(${(targets.countries || []).length})</h3>
     ${chips((targets.countries || []).map((t) => ja(t.name, "country")), "country")}
+    <h3>標的地域(${(targets.regions || []).length})</h3>
+    ${chips((targets.regions || []).map((t) => ja(t.name, "country")), "country")}
     <h3>標的産業(${(targets.sectors || []).length})</h3>
     ${chips((targets.sectors || []).map((t) => ja(t.name, "sector")), "type")}
     ${targets.selection_logic ? `<p class="small muted">選定ロジック: ${md(targets.selection_logic)}</p>` : ""}
@@ -203,7 +205,18 @@ function buildCapabilitiesTab(profile) {
   const c = profile.capabilities || {};
   const freeText = profile.free_text || {};
   const parts = [];
-  if ((c.malware || []).length) parts.push(section(`マルウェア(${c.malware.length})`, softwareTable(c.malware)));
+  if ((c.malware || []).length) {
+    const filters = TTP_FILTERS.map((f, i) =>
+      `<button type="button" class="filter-btn ${i === 0 ? "active" : ""}" data-years="${f.years}">${f.label}</button>`
+    ).join("");
+    parts.push(section(
+      `マルウェア利用履歴(${c.malware.length})`,
+      `<p class="small muted">活動との参照から利用件数と最終観測を集計します。日付不明の利用はall timeだけに含めます。</p>
+       <div class="filter-row" id="malware-filters">${filters}</div>
+       <div id="malware-usage-area"></div>`
+    ));
+    parts.push(section(`マルウェア詳細(${c.malware.length})`, softwareTable(c.malware)));
+  }
   if ((c.tools || []).length) parts.push(section(`ツール(${c.tools.length})`, softwareTable(c.tools)));
   if ((c.infrastructure || []).length) parts.push(section(`インフラ・サービス(${c.infrastructure.length})`, softwareTable(c.infrastructure)));
   if ((c.vulnerabilities || []).length) parts.push(section(`悪用脆弱性(${c.vulnerabilities.length})`, genericItems(c.vulnerabilities)));
@@ -213,6 +226,49 @@ function buildCapabilitiesTab(profile) {
   if (folds) parts.push(section("詳細メモ", folds));
   if (!parts.length) parts.push(section("能力", '<p class="muted">記録された能力情報はありません。</p>'));
   return parts.join("");
+}
+
+function activityObservationDate(activity) {
+  return observationDate(activity.last_observed) || observationDate(activity.first_observed);
+}
+
+function malwareUsageHtml(profile, years) {
+  const activities = profile.activities || [];
+  const cutoff = new Date();
+  if (years) cutoff.setFullYear(cutoff.getFullYear() - years);
+  const rows = (profile.capabilities?.malware || []).map((malware) => {
+    const used = activities.filter((activity) => {
+      if (!(activity.malware_refs || []).includes(malware.id)) return false;
+      if (!years) return true;
+      const date = activityObservationDate(activity);
+      return date && date >= cutoff;
+    });
+    const dates = used.map(activityObservationDate).filter(Boolean).sort((a, b) => b - a);
+    return { malware, used, last: dates[0] || null };
+  }).sort((a, b) => b.used.length - a.used.length || String(a.malware.name).localeCompare(String(b.malware.name)));
+  return dataTable(
+    ["マルウェア", "期間内の活動", "最終観測", "活動・キャンペーン"],
+    rows.map(({ malware, used, last }) => `<tr>
+      <td><strong>${esc(malware.name || malware.id)}</strong></td>
+      <td><span class="usage-count ${heatClass(used.length)}">${num(used.length)}</span></td>
+      <td class="small">${esc(last ? last.toISOString().slice(0, 10) : "不明")}</td>
+      <td class="small muted">${esc(used.map((activity) => activity.name || activity.activity_id).join(", ") || "活動単位の利用記録なし")}</td>
+    </tr>`).join("")
+  );
+}
+
+function bindMalwareUsage(profile) {
+  const area = document.getElementById("malware-usage-area");
+  if (!area) return;
+  const render = (years) => { area.innerHTML = malwareUsageHtml(profile, years); };
+  document.querySelectorAll("#malware-filters .filter-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#malware-filters .filter-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      render(Number(btn.dataset.years));
+    });
+  });
+  render(0);
 }
 
 /* ---------- ttps タブ(マトリックス表示) ---------- */
@@ -235,25 +291,90 @@ function groupTtpsByTactic(ttps) {
   return [...groups.entries()].sort((a, b) => orderOf(a[0]) - orderOf(b[0]) || a[0].localeCompare(b[0]));
 }
 
-function buildTtpsTab(ttps) {
-  if (!ttps || !ttps.length) return section("MITRE ATT&CK TTP", '<p class="muted">TTP情報なし</p>');
+const TTP_FILTERS = [
+  { years: 0, label: "all time" },
+  { years: 3, label: "過去3年" },
+  { years: 1, label: "過去1年" },
+];
+
+function ttpObservationDate(t) {
+  return observationDate(t.last_observed) || observationDate(t.first_observed);
+}
+
+function heatClass(count) {
+  if (count >= 5) return "heat-critical";
+  if (count >= 3) return "heat-high";
+  if (count >= 2) return "heat-medium";
+  if (count >= 1) return "heat-low";
+  return "heat-none";
+}
+
+function filteredTtpRecords(records, years) {
+  const linked = records.filter((t) => (t.activity_refs || []).length);
+  if (!years) return linked;
+  const cutoff = new Date();
+  cutoff.setFullYear(cutoff.getFullYear() - years);
+  return linked.filter((t) => {
+    const date = ttpObservationDate(t);
+    return date && date >= cutoff;
+  });
+}
+
+function ttpMatrixHtml(profile, years) {
+  const ttps = profile.ttps || [];
+  const activityById = new Map((profile.activities || []).map((a) => [a.activity_id, a]));
+  const malwareById = new Map((profile.capabilities?.malware || []).map((m) => [m.id, m.name || m.id]));
+  const observedTechniqueIds = new Set();
+  const observationKeys = new Set();
+  const excludedUndatedIds = new Set();
+
   const columns = groupTtpsByTactic(ttps).map(([, group]) => {
-    // 同一Techniqueの重複をまとめる
     const byId = new Map();
     for (const t of group.items) {
       const id = t.technique_id || t.technique_name || "?";
-      if (!byId.has(id)) byId.set(id, { ...t, count: 0 });
-      byId.get(id).count += 1;
+      if (!byId.has(id)) byId.set(id, {
+        technique_id: t.technique_id,
+        technique_name: t.technique_name,
+        records: [],
+      });
+      byId.get(id).records.push(t);
     }
     const cells = [...byId.values()]
       .sort((a, b) => String(a.technique_id).localeCompare(String(b.technique_id)))
-      .map((t) => {
-        const behavior = String(t.observed_behavior || "").replace(/\(Citation:[^)]*\)/g, " ").trim();
-        return `<a class="ttp-cell" href="${t.technique_id ? mitreUrl(t.technique_id) : "#"}"
-          target="_blank" rel="noopener" title="${esc(behavior.slice(0, 400))}">
-          <span class="mono">${esc(t.technique_id || "")}</span>
-          <span class="ttp-name">${esc(t.technique_name || "")}</span>
-          ${t.count > 1 ? `<span class="ttp-count">×${t.count}</span>` : ""}
+      .map((item) => {
+        const observed = filteredTtpRecords(item.records, years);
+        const activityRefs = [...new Set(observed.flatMap((t) => t.activity_refs || []))];
+        const malwareRefs = [...new Set(observed.flatMap((t) => t.malware_refs || []))];
+        const count = activityRefs.length;
+        if (count) observedTechniqueIds.add(item.technique_id);
+        activityRefs.forEach((ref) => observationKeys.add(`${item.technique_id}|${ref}`));
+        if (years) item.records
+          .filter((t) => (t.activity_refs || []).length && !ttpObservationDate(t))
+          .forEach((t) => excludedUndatedIds.add(t.ttp_id));
+        const dates = observed.map(ttpObservationDate).filter(Boolean).sort((a, b) => b - a);
+        const behavior = observed
+          .map((t) => String(t.observed_behavior || "").replace(/\(Citation:[^)]*\)/g, " ").trim())
+          .filter(Boolean)
+          .slice(0, 3)
+          .join(" / ");
+        const activityNames = activityRefs
+          .map((ref) => activityById.get(ref)?.name || ref)
+          .slice(0, 8);
+        const malwareNames = malwareRefs
+          .map((ref) => malwareById.get(ref) || ref)
+          .slice(0, 8);
+        const title = [
+          behavior,
+          activityNames.length ? `活動: ${activityNames.join(", ")}` : "期間内の活動観測なし",
+          malwareNames.length ? `マルウェア: ${malwareNames.join(", ")}` : "",
+          dates.length ? `最終観測: ${dates[0].toISOString().slice(0, 10)}` : "",
+        ].filter(Boolean).join("\n");
+        return `<a class="ttp-cell ${heatClass(count)}" href="${item.technique_id ? mitreUrl(item.technique_id) : "#"}"
+          target="_blank" rel="noopener" title="${esc(title.slice(0, 1200))}">
+          <span class="mono">${esc(item.technique_id || "")}</span>
+          <span class="ttp-name">${esc(item.technique_name || "")}</span>
+          <span class="ttp-count">${count ? `活動 ${num(count)}件` : "基礎マッピング"}</span>
+          ${dates.length ? `<span class="ttp-last">最終 ${esc(dates[0].toISOString().slice(0, 10))}</span>` : ""}
         </a>`;
       }).join("");
     return `<div class="ttp-col">
@@ -261,11 +382,45 @@ function buildTtpsTab(ttps) {
       ${cells}
     </div>`;
   }).join("");
+  const range = years ? `過去${years}年` : "all time";
+  const note = years && excludedUndatedIds.size
+    ? ` / 日付不明の活動別観測 ${num(excludedUndatedIds.size)}件は期間集計から除外`
+    : "";
+  return `<p class="small muted">${esc(range)}: 観測Technique ${num(observedTechniqueIds.size)}件 / 活動×Technique ${num(observationKeys.size)}件${note}</p>
+    <div class="ttp-heat-legend" aria-label="活動観測数の色分け">
+      <span class="heat-none">0 基礎</span><span class="heat-low">1</span>
+      <span class="heat-medium">2</span><span class="heat-high">3–4</span>
+      <span class="heat-critical">5以上</span>
+    </div>
+    <div class="ttp-matrix">${columns}</div>`;
+}
+
+function buildTtpsTab(profile) {
+  const ttps = profile.ttps || [];
+  if (!ttps.length) return section("MITRE ATT&CK TTP", '<p class="muted">TTP情報なし</p>');
+  const filters = TTP_FILTERS.map((f, i) =>
+    `<button type="button" class="filter-btn ${i === 0 ? "active" : ""}" data-years="${f.years}">${f.label}</button>`
+  ).join("");
   return section(
     "MITRE ATT&CK マトリックス",
-    `<p class="small muted">戦術ごとの観測Technique一覧です。セルにカーソルを乗せると観測内容、クリックでMITRE ATT&CKの解説を表示します。</p>
-     <div class="ttp-matrix">${columns}</div>`
+    `<p class="small muted">色は期間内に観測された異なる攻撃活動の件数です。日付のない活動別観測はall timeだけに含め、汎用的なActor→Technique対応は頻度へ加算しません。</p>
+     <div class="filter-row" id="ttp-filters">${filters}</div>
+     <div id="ttp-area"></div>`
   );
+}
+
+function bindTtps(profile) {
+  const area = document.getElementById("ttp-area");
+  if (!area) return;
+  const render = (years) => { area.innerHTML = ttpMatrixHtml(profile, years); };
+  document.querySelectorAll("#ttp-filters .filter-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#ttp-filters .filter-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      render(Number(btn.dataset.years));
+    });
+  });
+  render(0);
 }
 
 /* ---------- activities タブ(タイムライン+期間フィルタ) ---------- */
@@ -279,11 +434,19 @@ const ACTIVITY_FILTERS = [
 ];
 
 function knownDate(field) {
-  return field?.status === "known" && field.value ? new Date(field.value) : null;
+  return ["known", "inferred"].includes(field?.status) && field.value ? new Date(field.value) : null;
+}
+
+function observationDate(field) {
+  const date = knownDate(field);
+  if (!date) return null;
+  const basis = String(field?.basis || "").toLowerCase();
+  if (/(?:publication|published|report(?:ed)?[-_ ]?date|daily-news-file-date)/.test(basis)) return null;
+  return date;
 }
 
 function activityDate(a) {
-  return knownDate(a.last_observed) || knownDate(a.first_observed) || knownDate(a.reported_at);
+  return activityObservationDate(a);
 }
 
 function activityPeriod(a) {
@@ -297,14 +460,70 @@ function activityPeriod(a) {
   return `${f} 〜 ${l}`;
 }
 
-function timelineHtml(dated) {
+function activityReferenceSummary(activity, profile) {
+  const targets = new Map(
+    ["countries", "regions", "sectors", "roles"]
+      .flatMap((key) => profile.targets?.[key] || [])
+      .map((item) => [item.id, item.name || item.id])
+  );
+  const malware = new Map(
+    (profile.capabilities?.malware || []).map((item) => [item.id, item.name || item.id])
+  );
+  const parts = [];
+  const targetNames = (activity.target_refs || []).map((ref) => targets.get(ref) || ref);
+  const malwareNames = (activity.malware_refs || []).map((ref) => malware.get(ref) || ref);
+  if (targetNames.length) parts.push(`標的: ${targetNames.join(", ")}`);
+  if (malwareNames.length) parts.push(`マルウェア: ${malwareNames.join(", ")}`);
+  if ((activity.ttp_refs || []).length) parts.push(`TTP: ${activity.ttp_refs.length}件`);
+  if ((activity.victim_refs || []).length) parts.push(`被害事例: ${activity.victim_refs.length}件`);
+  return parts.length ? `<div class="tl-links">${esc(parts.join(" / "))}</div>` : "";
+}
+
+function timelineHtml(dated, profile) {
   if (!dated.length) return '<p class="muted">該当期間に日付付きの活動はありません。</p>';
   return `<div class="timeline">${dated.map((a) => `
     <div class="tl-item">
       <div class="tl-date">${esc(activityPeriod(a))}</div>
       <div class="tl-title">${esc(a.name || "")}${a.activity_type ? ` <span class="badge type">${esc(ja(a.activity_type, "activityType"))}</span>` : ""}</div>
+      ${activityReferenceSummary(a, profile)}
       ${a.description ? `<div class="small muted">${md(a.description)}</div>` : ""}
     </div>`).join("")}</div>`;
+}
+
+function victimCasesHtml(profile) {
+  const cases = profile.victim_cases || [];
+  if (!cases.length) return "";
+  const activities = new Map((profile.activities || []).map((a) => [a.activity_id, a.name || a.activity_id]));
+  const targets = new Map(
+    ["countries", "regions", "sectors", "roles"]
+      .flatMap((key) => profile.targets?.[key] || [])
+      .map((item) => [item.id, item.name || item.id])
+  );
+  const malware = new Map(
+    (profile.capabilities?.malware || []).map((item) => [item.id, item.name || item.id])
+  );
+  const rows = cases.map((item) => {
+    const impact = (item.impacts || [])
+      .map((value) => `${value.impact_type}: ${value.description}`)
+      .join(" / ");
+    return `<tr>
+      <td><strong>${esc(item.victim_name || (item.disclosure_status === "aggregate" ? "複数の被害者(集約)" : "被害者名非公開"))}</strong>
+        <div class="small muted">${esc(item.name || "")}</div>
+        <span class="badge type">${esc(item.case_status || "unknown")}</span></td>
+      <td class="small">${esc((item.activity_refs || []).map((ref) => activities.get(ref) || ref).join(", "))}</td>
+      <td class="small">${esc((item.target_refs || []).map((ref) => targets.get(ref) || ref).join(", "))}</td>
+      <td class="small">${esc((item.malware_refs || []).map((ref) => malware.get(ref) || ref).join(", "))}</td>
+      <td class="small">${esc((item.ttp_refs || []).map((ref) => profile.ttps?.find((t) => t.ttp_id === ref)?.technique_id || ref).join(", "))}</td>
+      <td class="small">${esc((item.affected_assets || []).join(", "))}</td>
+      <td class="small muted">${md(impact || item.description || "")}</td>
+      <td class="small">${esc(activityPeriod(item))}</td>
+    </tr>`;
+  }).join("");
+  return section(
+    `被害事例(${cases.length})`,
+    `<p class="small muted">個別名が公開されない事例も、匿名または集約事例として活動・標的・マルウェア・TTPと結び付けています。</p>
+     ${dataTable(["被害者", "活動", "国・産業", "マルウェア", "TTP", "影響資産", "影響・概要", "観測期間"], rows)}`
+  );
 }
 
 function buildActivitiesTab(profile) {
@@ -312,7 +531,7 @@ function buildActivitiesTab(profile) {
   if (!activities.length) return section("活動・キャンペーン", '<p class="muted">記録された活動はありません。</p>');
   const filters = ACTIVITY_FILTERS.map((f, i) =>
     `<button type="button" class="filter-btn ${i === 0 ? "active" : ""}" data-years="${f.years}">${f.label}</button>`).join("");
-  return section(
+  return victimCasesHtml(profile) + section(
     `活動・キャンペーン(${activities.length})`,
     `<div class="filter-row" id="act-filters">${filters}</div>
      <div id="act-area"></div>`
@@ -338,8 +557,8 @@ function bindActivities(profile) {
       rows = dated.filter((x) => x.d >= cutoff);
     }
     area.innerHTML = `
-      <p class="small muted">活動日または報告日付き ${num(rows.length)} 件${years ? `(過去${years}年)` : ""} / 日付不明 ${num(undated.length)} 件</p>
-      ${timelineHtml(rows.map((x) => x.a))}
+      <p class="small muted">観測日付き ${num(rows.length)} 件${years ? `(過去${years}年)` : ""} / 観測日不明 ${num(undated.length)} 件（報告日は期間判定に使用しません）</p>
+      ${timelineHtml(rows.map((x) => x.a), profile)}
       ${undated.length ? `<details class="fold"><summary>日付情報のない活動(${undated.length})</summary>
         <div class="fold-body">${dataTable(
           ["名称", "種別", "説明"],
@@ -376,7 +595,8 @@ function buildArtifactsTab(summary) {
     parts.push(section(
       `IOC(${num(summary.counts.iocs)})`,
       `<div class="chip-list">${typeChips}</div>
-       <p class="defanged-note">表示上の値は defang 済みです(hxxp / [.])。原値は iocs.json を参照してください。</p>
+       <p class="defanged-note">表示上の値は defang 済みです(hxxp / [.])。原値は iocs.json を参照してください。<br>
+       値をクリックすると横断ポータルのクロスサーチが開き、他ソースに同じ値があるかを調べられます。</p>
        <div id="ioc-area"><div class="more-row"><button class="load-btn" id="ioc-load" type="button">IOC ${num(summary.counts.iocs)} 件を読み込む</button></div></div>`
     ));
   } else {
@@ -499,7 +719,11 @@ async function loadIocs(slug, summary) {
         ["種別", "値(defang済)", "状態", "観測数", "初観測", "最終観測"],
         shown.map((ind) => `<tr>
           <td class="small">${esc(ja(ind.type, "iocType"))}</td>
-          <td><span class="mono">${esc(defang(ind.value, ind.type))}</span></td>
+          <td>${pivotLink(
+            ind.normalized_value || ind.value,
+            `<span class="mono">${esc(defang(ind.value, ind.type))}</span>`,
+            "横断検索で他ソースとの一致を調べる",
+          )}</td>
           <td class="small">${esc(ja(ind.disposition || "", "disposition"))}</td>
           <td class="num small">${num(ind.observation_count)}</td>
           <td class="small">${esc(fmtDate(ind.first_observed))}</td>
@@ -513,6 +737,7 @@ async function loadIocs(slug, summary) {
       view.type = e.target.value; view.limit = IOC_PAGE; render();
     });
     bindMoreButton("ioc-more", () => { view.limit += IOC_PAGE * 2; render(); });
+    bindPivots(area);
   };
   render();
 }
@@ -578,9 +803,9 @@ export async function renderActor(slug, initialTab) {
   const tabs = [
     { id: "overview", label: "概要", build: () => buildOverviewTab(profile, summary) },
     { id: "relations", label: `関係 (${relCount})`, build: () => buildRelationsTab(profile, slug, incoming), empty: !relCount },
-    { id: "capabilities", label: `能力 (${capCount})`, build: () => buildCapabilitiesTab(profile), empty: !capCount },
-    { id: "ttps", label: `TTP (${(profile.ttps || []).length})`, build: () => buildTtpsTab(profile.ttps), empty: !(profile.ttps || []).length },
-    { id: "activities", label: `活動 (${(profile.activities || []).length})`, build: () => buildActivitiesTab(profile), empty: !(profile.activities || []).length, bind: () => bindActivities(profile) },
+    { id: "capabilities", label: `能力 (${capCount})`, build: () => buildCapabilitiesTab(profile), empty: !capCount, bind: () => bindMalwareUsage(profile) },
+    { id: "ttps", label: `TTP (${(profile.ttps || []).length})`, build: () => buildTtpsTab(profile), empty: !(profile.ttps || []).length, bind: () => bindTtps(profile) },
+    { id: "activities", label: `活動・被害 (${(profile.activities || []).length}/${(profile.victim_cases || []).length})`, build: () => buildActivitiesTab(profile), empty: !(profile.activities || []).length, bind: () => bindActivities(profile) },
     { id: "artifacts", label: `技術的アーティファクト (${num(summary.counts.iocs + summary.counts.artifacts)})`, build: () => buildArtifactsTab(summary), bind: () => {
         const iocBtn = document.getElementById("ioc-load");
         if (iocBtn) iocBtn.addEventListener("click", () => loadIocs(slug, summary));

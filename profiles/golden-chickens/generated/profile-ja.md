@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--golden-chickens`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:23Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -106,28 +106,37 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| More_eggsマルウェアが履歴書を装いリクルーターを狙うフィッシング攻撃 | phishing-campaign | 不明 | 不明 | 2024-06-11 | More_eggsマルウェアが履歴書を装い、リクルーターをターゲットにフィッシング攻撃を実施 攻撃はLinkedIn経由で行われ、偽の履歴書ダウンロードサイトに誘導 マルウェアはLNKファイルを利用して悪意のあるDLLを取得し、regsvr32.exeで動かす。システムへの持続性を確保 More_eggsは、Golden Chickens（別名Venom Spider）とされるグループによるMaaSとして他のサイバー犯罪者に提供 | 中 | `source--daily-0e3e2f14439a2e9f9ca0` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| More_eggsマルウェアが履歴書を装いリクルーターを狙うフィッシング攻撃 | phishing-campaign | 不明 | 不明 | 2024-06-11 |  |  | ttp--activity-rule--4215e3f64293aca10472, ttp--activity-rule--ad89cb22215867c0453f |  | More_eggsマルウェアが履歴書を装い、リクルーターをターゲットにフィッシング攻撃を実施 攻撃はLinkedIn経由で行われ、偽の履歴書ダウンロードサイトに誘導 マルウェアはLNKファイルを利用して悪意のあるDLLを取得し、regsvr32.exeで動かす。システムへの持続性を確保 More_eggsは、Golden Chickens（別名Venom Spider）とされるグループによるMaaSとして他のサイバー犯罪者に提供 | 中 | `source--daily-0e3e2f14439a2e9f9ca0` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | 米国 | 構造化OSINTの被害国フィールドでGolden Chickensの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Discovery | T1083 | File and Directory Discovery | More_eggsマルウェアが履歴書を装い、リクルーターをターゲットにフィッシング攻撃を実施 攻撃はLinkedIn経由で行われ、偽の履歴書ダウンロードサイトに誘導 マルウェアはLNKファイルを利用して悪意のあるDLLを取得し、regsvr32.exeで動かす。 |  | activity--daily-339c2ac36665ac48d8ab | 不明 | 不明 | 中 | `source--daily-0e3e2f14439a2e9f9ca0` |
+| Stealth | T1218.010 | Regsvr32 | More_eggsマルウェアが履歴書を装い、リクルーターをターゲットにフィッシング攻撃を実施 攻撃はLinkedIn経由で行われ、偽の履歴書ダウンロードサイトに誘導 マルウェアはLNKファイルを利用して悪意のあるDLLを取得し、regsvr32.exeで動かす。 |  | activity--daily-339c2ac36665ac48d8ab | 不明 | 不明 | 中 | `source--daily-0e3e2f14439a2e9f9ca0` |
 
 ## IOC／artifact概要
 
-- IOC値: 3件
-- IOC観測: 3件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 3件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 12件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -153,9 +162,9 @@ TTPなし
 | source--golden-chickens--6d0e5225b513bcbb | Unmasking VenomSpider Report Final |  | 不明 | International Strategic/Russia/GoldenChickens/Unmasking_VenomSpider_Report-Final.pdf | report | TLP:CLEAR | 中 |
 | source--golden-chickens--7b514ff30a32bf4a | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--golden-chickens--de4e5cbc16bb4188 | golden chickens |  | 不明 | actor_profile/evidence/golden-chickens.csv | structured-data | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

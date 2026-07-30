@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -45,7 +45,7 @@
         "history": "",
         "capability_details": "Cobalt Strike, OwlProxy, SessionManager, Net, BloodHound, Mimikatz, esentutl, PsExec",
         "infrastructure_details": "",
-        "targeting_details": "Taiwan semiconductors",
+        "targeting_details": "構造化ターゲット監査: 標的国=オランダ、台湾。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nTaiwan semiconductors",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -1540,13 +1540,35 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--65fac589-4a22-4251-88ac-2b2cbe79c63e",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "id": "identity--ed6f5655-fe09-43b6-ba00-35b1f14f2605",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "Taiwan",
+      "name": "オランダ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでChimeraの標的・被害国としてオランダが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--65fac589-4a22-4251-88ac-2b2cbe79c63e",
+      "created": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "台湾",
       "identity_class": "organization",
       "description": "Targeting text mentions taiwan.",
       "external_references": [
@@ -1554,22 +1576,54 @@
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-1"
+        },
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
-      "x_confidence": "medium"
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d4c1a7c4-9d65-4f71-a26c-aa96efdbc5df",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-07-29T15:36:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "運輸・航空・海運",
+      "identity_class": "organization",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) is a suspected China-based threat group that has been active since at least 2018 targeting the semiconductor industry in Taiwan as well as data from the airline industry.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--e9e43ae1-bc7e-4829-8494-875243d95e59",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "NTDS",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has gathered the SYSTEM registry and ntds.dit files from target systems.(Citation: Cycraft Chimera April 2020) [Chimera](https://attack.mitre.org/groups/G0114) specifically has used the NtdsAudit tool to dump the password hashes of domain users via <code>msadcs.exe \"NTDS.dit\" -s \"SYSTEM\" -p RecordedTV_pdmp.txt --users-csv RecordedTV_users.csv</code> and used ntdsutil to copy the Active Directory database.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1600,19 +1654,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--2ecabf34-7c07-4bf7-a35b-a818adae6242",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Service Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net start</code> and <code>net use</code> for system service discovery.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1643,19 +1697,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Query Registry",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has queried Registry keys using <code>reg query \\\\<host>\\HKU\\<SID>\\SOFTWARE\\Microsoft\\Terminal Server Client\\Servers</code> and <code>reg query \\\\<host>\\HKU\\<SID>\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</code>.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1686,19 +1740,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Network Configuration Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [ipconfig](https://attack.mitre.org/software/S0100), [Ping](https://attack.mitre.org/software/S0097), and <code>tracert</code> to enumerate the IP address and network environment and settings of the local host.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1729,19 +1783,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Remote System Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has utilized various scans and queries to find domain controllers and remote services in the target environment.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1772,19 +1826,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Remote Desktop Protocol",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used RDP to access targeted systems.(Citation: Cycraft Chimera April 2020)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1815,19 +1869,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--241969c5-6e6f-4ee5-8d26-979a5a35e5dd",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "SMB/Windows Admin Shares",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used Windows admin shares to move laterally.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1858,19 +1912,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--bc3e7602-d1aa-485c-8172-c58e118126aa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Windows Remote Management",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used WinRM for lateral movement.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1901,19 +1955,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Command Obfuscation",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has encoded PowerShell commands.(Citation: Cycraft Chimera April 2020)\t",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1944,19 +1998,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Owner/User Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the <code>quser</code> command to show currently logged on users.(Citation: NCC Group Chimera January 2021) ",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1987,19 +2041,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Match Legitimate Resource Name or Location",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has renamed malware to GoogleUpdate.exe and WinRAR to jucheck.exe, RecordedTV.ms, teredo.tmp, update.exe, and msadcs1.exe.(Citation: Cycraft Chimera April 2020)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2030,19 +2084,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--dfd5d120-a675-4fcb-b69e-3429922dc39d",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Data from Network Shared Drive",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has collected data of interest from network shares.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2073,19 +2127,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Exfiltration Over C2 Channel",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) C2 beacons for data exfiltration.(Citation: NCC Group Chimera January 2021) ",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2116,19 +2170,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Network Service Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the <code>get -b <start ip> -e <end ip> -p</code> command for network scanning as well as a custom Python tool  packed into a Windows executable named Get.exe to scan IP ranges for HTTP.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2159,19 +2213,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Windows Management Instrumentation",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used WMIC to execute remote commands.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2202,19 +2256,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--1000efd0-5918-4be5-aa1d-477cef3a7212",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Network Connections Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>netstat -ano | findstr EST</code> to discover network connections.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2245,19 +2299,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Scheduled Task",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used scheduled tasks to invoke Cobalt Strike including through batch script <code>schtasks /create /ru \"SYSTEM\" /tn \"update\" /tr \"cmd /c c:\\windows\\temp\\update.bat\" /sc once /f /st</code> and to maintain persistence.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2288,19 +2342,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a3bcbadc-c4a9-4143-8b29-38b118a8fa7c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Process Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>tasklist</code> to enumerate processes.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2331,19 +2385,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "PowerShell",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used PowerShell scripts to execute malicious payloads and the DSInternals PowerShell module to make use of Active Directory features.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)\t",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2374,19 +2428,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Windows Command Shell",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the Windows Command Shell and batch scripts for execution on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2417,19 +2471,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--0b3ec200-5c1e-4a10-8ed7-e70f77302039",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Local Groups",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net localgroup administrators</code> to identify  accounts with local administrative rights.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2460,19 +2514,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "File Deletion",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has performed file deletion to evade detection.(Citation: Cycraft Chimera April 2020) ",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2503,19 +2557,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a1e252cc-9b79-4821-9319-d7d726d5c3c7",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Timestomp",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used a Windows version of the Linux <code>touch</code> command to modify the date and time stamp on DLLs.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2546,19 +2600,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Web Protocols",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used HTTPS for C2 communications.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2589,19 +2643,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4024cd80-bd7b-40ea-bd30-fb0afdfca53a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "DNS",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) to encapsulate C2 in DNS traffic.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2632,19 +2686,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Local Data Staging",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has staged stolen data locally on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2675,19 +2729,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--15ab621f-b59f-4396-bc59-a340f8ae6136",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Remote Data Staging",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has staged stolen data on designated servers in the target environment.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2718,19 +2772,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Valid Accounts",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used a valid account to maintain persistence via scheduled task.(Citation: Cycraft Chimera April 2020)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2761,19 +2815,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--b03f5086-a914-4b0a-9883-77da010f644e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Domain Accounts",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used compromised domain accounts to gain access to the target environment.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2804,19 +2858,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "File and Directory Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has utilized multiple commands to identify data of interest in file and directory listings.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2847,19 +2901,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4b87bea7-ab73-4a53-b541-9766bad896d9",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Local Account",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net user</code> for account discovery.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2890,19 +2944,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--afe9be49-45aa-46f2-ab7a-5307299063aa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Domain Account",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has has used <code>net user /dom</code> and <code>net user Administrator</code> to enumerate domain accounts including administrator accounts.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2933,19 +2987,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Ingress Tool Transfer",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has remotely copied tools and malware onto targeted systems.(Citation: Cycraft Chimera April 2020)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2976,19 +3030,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--d095b9c1-ca61-4ed2-a20e-5d71f548bdb2",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Native API",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used direct Windows system calls by leveraging Dumpert.(Citation: Cycraft Chimera April 2020)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3019,19 +3073,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--52a527c3-091a-45c3-80ef-619e286ef8d6",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Password Spraying",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used multiple password spraying attacks against victim's remote services to obtain valid user and administrator accounts.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3062,19 +3116,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--3b818e04-4082-48f8-8605-f5936408fbae",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Credential Stuffing",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used credential stuffing against victim's remote services to obtain valid accounts.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3105,19 +3159,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--6543f70d-01c6-4e6b-9088-d2ea916959a6",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Multi-Factor Authentication Interception",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has registered alternate phone numbers for compromised users to intercept 2FA codes sent via SMS.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3148,19 +3202,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--47608442-44a8-433f-b4c3-d7f6ac5265c4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Local Email Collection",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has harvested data from victim's e-mail including through execution of <code>wmic /node:<ip> process call create \"cmd /c copy c:\\Users\\<username>\\<path>\\backup.pst c:\\windows\\temp\\backup.pst\" copy \"i:\\<path>\\<username>\\My Documents\\<filename>.pst\"\ncopy</code>.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3191,19 +3245,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--43199bd3-49cd-452d-8dec-fa1f6caa062f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Remote Email Collection",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has harvested data from remote mailboxes including through execution of <code>\\\\<hostname>\\c$\\Users\\<username>\\AppData\\Local\\Microsoft\\Outlook*.ost</code>.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3234,19 +3288,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Automated Collection",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used custom DLLs for continuous retrieval of data from memory.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3277,19 +3331,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--25a8014f-6881-420b-9d97-68f39026668e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Time Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>time /t</code> and <code>net time \\\\ip/hostname</code> for system time discovery.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3320,19 +3374,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--beec897d-82e5-4ca1-97a1-1ead75f78e3c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "External Remote Services",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used legitimate credentials to login to an external VPN, Citrix, SSH, and other remote services.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3363,19 +3417,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--f5cf2c22-cedd-4156-88ce-5566cc4c0e30",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Network Share Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net share</code> and <code>net view</code> to identify network shares of interest.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3406,19 +3460,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--e143987f-5646-441b-9cf0-88de8f60cb23",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Password Policy Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the NtdsAudit utility to collect information related to accounts and passwords.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3449,19 +3503,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--cde19ee9-2f93-4759-98a4-0876f6552645",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Sharepoint",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has collected documents from the victim's SharePoint.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3492,19 +3546,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--f0a2488f-d0af-4954-a9a4-7e8739b70e03",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Browser Information Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>type \\\\<hostname>\\c$\\Users\\<username>\\Favorites\\Links\\Bookmarks bar\\Imported From IE\\*citrix*</code> for bookmark discovery.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3535,19 +3589,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--883c46a7-66cd-4fa1-9b37-8291abe200b6",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Domain Trust Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has <code>nltest /domain_trusts</code> to identify domain trust relationships.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3578,19 +3632,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--0be959da-1b24-4f37-9d2e-a7a7ba1ad688",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Pass the Hash",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has dumped password hashes for use in pass the hash authentication attacks.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3621,19 +3675,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--d76c7fbb-1af7-4bfb-96e5-79eba377bfb4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Domain Controller Authentication",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114)'s malware has altered the NTLM authentication program on domain controllers to allow [Chimera](https://attack.mitre.org/groups/G0114) to login without a valid credential.(Citation: Cycraft Chimera April 2020)\t",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3664,19 +3718,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Archive via Utility",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used gzip for Linux OS and a modified RAR software to archive data on Windows hosts.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3707,19 +3761,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Exfiltration to Cloud Storage",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has exfiltrated stolen data to OneDrive accounts.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3750,19 +3804,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Service Execution",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [PsExec](https://attack.mitre.org/software/S0029) to deploy beacons on compromised systems.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3793,19 +3847,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--5e4bc7fe-fd08-4d1c-89cd-bff1ba63e844",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Lateral Tool Transfer",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has copied tools between compromised hosts using SMB.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3836,19 +3890,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--320ae3be-e331-486f-a034-d7be5c08c5ef",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Protocol Tunneling",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has encapsulated [Cobalt Strike](https://attack.mitre.org/software/S0154)'s C2 protocol in DNS and HTTPS.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3879,19 +3933,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "DLL",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used side loading to place malicious DLLs in memory.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3922,19 +3976,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Tool",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has obtained and used tools such as [BloodHound](https://attack.mitre.org/software/S0521), [Cobalt Strike](https://attack.mitre.org/software/S0154), [Mimikatz](https://attack.mitre.org/software/S0002), and [PsExec](https://attack.mitre.org/software/S0029).(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3965,19 +4019,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--6b48cb0e-60a2-44eb-a5fe-e85ee374d06d",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Credentials",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has collected credentials for the target organization from previous breaches for use in brute force attacks.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -4008,19 +4062,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--20fb7785-3e44-465e-bed0-c3ae4a4a92be",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Local Storage Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used `fsutil fsinfo drives`, `systeminfo`, and `vssadmin list shadows` for system information including shadow volumes and drive information.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -4051,19 +4105,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Clear Windows Event Logs",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has cleared event logs on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -4094,7 +4148,7 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "relationship",
@@ -4219,16 +4273,61 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--93a50cca-c286-4b1b-91c8-c09f674169a8",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
+      "target_ref": "identity--ed6f5655-fe09-43b6-ba00-35b1f14f2605",
+      "description": "Chimera targets オランダ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--426534ed-6fac-41d4-a045-026e322bb472",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
+      "target_ref": "identity--65fac589-4a22-4251-88ac-2b2cbe79c63e",
+      "description": "Chimera targets 台湾 (profile target category: countries).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1c629808-ff06-45fd-9650-73aae48dc970",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
+      "target_ref": "identity--d4c1a7c4-9d65-4f71-a26c-aa96efdbc5df",
+      "description": "Chimera targets 運輸・航空・海運 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--56df4911-5392-4926-a581-6ca624b29faa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--e9e43ae1-bc7e-4829-8494-875243d95e59",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has gathered the SYSTEM registry and ntds.dit files from target systems.(Citation: Cycraft Chimera April 2020) [Chimera](https://attack.mitre.org/groups/G0114) specifically has used the NtdsAudit tool to dump the password hashes of domain users via <code>msadcs.exe \"NTDS.dit\" -s \"SYSTEM\" -p RecordedTV_pdmp.txt --users-csv RecordedTV_users.csv</code> and used ntdsutil to copy the Active Directory database.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4236,14 +4335,14 @@
       "spec_version": "2.1",
       "id": "relationship--0b5aa6cf-c39a-415c-9b71-c8c38beedaf2",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--2ecabf34-7c07-4bf7-a35b-a818adae6242",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net start</code> and <code>net use</code> for system service discovery.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4251,14 +4350,14 @@
       "spec_version": "2.1",
       "id": "relationship--31b06924-2c07-44e9-8469-a856083fb9f8",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has queried Registry keys using <code>reg query \\\\<host>\\HKU\\<SID>\\SOFTWARE\\Microsoft\\Terminal Server Client\\Servers</code> and <code>reg query \\\\<host>\\HKU\\<SID>\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</code>.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4266,14 +4365,14 @@
       "spec_version": "2.1",
       "id": "relationship--594c2010-34bd-472a-9a91-078867bc2ef6",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [ipconfig](https://attack.mitre.org/software/S0100), [Ping](https://attack.mitre.org/software/S0097), and <code>tracert</code> to enumerate the IP address and network environment and settings of the local host.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4281,14 +4380,14 @@
       "spec_version": "2.1",
       "id": "relationship--8e77f6ce-54de-45f1-8d0b-2bbdbd2ba838",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has utilized various scans and queries to find domain controllers and remote services in the target environment.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4296,14 +4395,14 @@
       "spec_version": "2.1",
       "id": "relationship--1a2b957b-29b1-4800-97d7-7a8a2c55aabe",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--be05576d-30b8-4ac7-ad0a-7b65cd0c36b5",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used RDP to access targeted systems.(Citation: Cycraft Chimera April 2020)",
       "x_confidence": "high"
     },
     {
@@ -4311,14 +4410,14 @@
       "spec_version": "2.1",
       "id": "relationship--7479db87-645e-46df-8738-80f13613c405",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--241969c5-6e6f-4ee5-8d26-979a5a35e5dd",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used Windows admin shares to move laterally.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4326,14 +4425,14 @@
       "spec_version": "2.1",
       "id": "relationship--272973bb-061b-4729-a49c-56c288ba8f00",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--bc3e7602-d1aa-485c-8172-c58e118126aa",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used WinRM for lateral movement.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4341,14 +4440,14 @@
       "spec_version": "2.1",
       "id": "relationship--4ae51dbf-0aa2-4dd5-9b45-3a7619278fe4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has encoded PowerShell commands.(Citation: Cycraft Chimera April 2020)\t",
       "x_confidence": "high"
     },
     {
@@ -4356,14 +4455,14 @@
       "spec_version": "2.1",
       "id": "relationship--aae32778-17d4-4605-aba8-d2e8b8169678",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--eecb67fd-6717-4cd3-8117-c19ae501a830",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the <code>quser</code> command to show currently logged on users.(Citation: NCC Group Chimera January 2021) ",
       "x_confidence": "high"
     },
     {
@@ -4371,14 +4470,14 @@
       "spec_version": "2.1",
       "id": "relationship--e54d9cdf-b693-4b89-b84c-a565b7547209",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--918f8fe2-131d-4d7a-b89f-586506842a28",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has renamed malware to GoogleUpdate.exe and WinRAR to jucheck.exe, RecordedTV.ms, teredo.tmp, update.exe, and msadcs1.exe.(Citation: Cycraft Chimera April 2020)",
       "x_confidence": "high"
     },
     {
@@ -4386,14 +4485,14 @@
       "spec_version": "2.1",
       "id": "relationship--d56c0e37-f628-484b-ada7-7b0cdfcd0ce8",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--dfd5d120-a675-4fcb-b69e-3429922dc39d",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has collected data of interest from network shares.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4401,14 +4500,14 @@
       "spec_version": "2.1",
       "id": "relationship--cdaaec2d-b12b-49b1-93e1-98e6b4575b05",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--44caadb5-ea69-4dcd-8154-6e8d1ed54166",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) C2 beacons for data exfiltration.(Citation: NCC Group Chimera January 2021) ",
       "x_confidence": "high"
     },
     {
@@ -4416,14 +4515,14 @@
       "spec_version": "2.1",
       "id": "relationship--409770cc-0309-4b1a-9ae7-99d378661634",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--2874f4d8-d808-4984-9b10-0f1122750bde",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the <code>get -b <start ip> -e <end ip> -p</code> command for network scanning as well as a custom Python tool  packed into a Windows executable named Get.exe to scan IP ranges for HTTP.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4431,14 +4530,14 @@
       "spec_version": "2.1",
       "id": "relationship--2adfccc9-8a31-4e6c-ac85-4d59d0a7ec71",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--e1628563-2ef3-415e-962d-571f47ed1812",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used WMIC to execute remote commands.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4446,14 +4545,14 @@
       "spec_version": "2.1",
       "id": "relationship--4456457b-c80e-4e5d-a5fe-7cb35e4c771f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--1000efd0-5918-4be5-aa1d-477cef3a7212",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>netstat -ano | findstr EST</code> to discover network connections.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4461,14 +4560,14 @@
       "spec_version": "2.1",
       "id": "relationship--c5114097-6e85-436a-8509-af9588c8c73a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used scheduled tasks to invoke Cobalt Strike including through batch script <code>schtasks /create /ru \"SYSTEM\" /tn \"update\" /tr \"cmd /c c:\\windows\\temp\\update.bat\" /sc once /f /st</code> and to maintain persistence.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4476,14 +4575,14 @@
       "spec_version": "2.1",
       "id": "relationship--b01c876b-0e3f-4836-8bde-af5ab49a20d5",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--a3bcbadc-c4a9-4143-8b29-38b118a8fa7c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>tasklist</code> to enumerate processes.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4491,14 +4590,14 @@
       "spec_version": "2.1",
       "id": "relationship--91834f3f-c92f-419b-bddf-bd36996ab19c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used PowerShell scripts to execute malicious payloads and the DSInternals PowerShell module to make use of Active Directory features.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)\t",
       "x_confidence": "high"
     },
     {
@@ -4506,14 +4605,14 @@
       "spec_version": "2.1",
       "id": "relationship--fdf167f5-942a-43f0-8f03-eda8574a4550",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--079cdb66-0498-4681-b12e-4f6ae55ca09b",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the Windows Command Shell and batch scripts for execution on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4521,14 +4620,14 @@
       "spec_version": "2.1",
       "id": "relationship--ca32acc1-dc28-479a-8c92-798349b01f9c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--0b3ec200-5c1e-4a10-8ed7-e70f77302039",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net localgroup administrators</code> to identify  accounts with local administrative rights.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4536,14 +4635,14 @@
       "spec_version": "2.1",
       "id": "relationship--0a18dbca-21ca-424f-84b2-d49feaff869c",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has performed file deletion to evade detection.(Citation: Cycraft Chimera April 2020) ",
       "x_confidence": "high"
     },
     {
@@ -4551,14 +4650,14 @@
       "spec_version": "2.1",
       "id": "relationship--3ae85a42-ad28-4083-8ffa-f11400528cc6",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--a1e252cc-9b79-4821-9319-d7d726d5c3c7",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used a Windows version of the Linux <code>touch</code> command to modify the date and time stamp on DLLs.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4566,14 +4665,14 @@
       "spec_version": "2.1",
       "id": "relationship--d3c72894-88f2-4e40-86fb-48237db19efa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--d11f69f3-98f5-4ea1-a54c-c6c6c883eae5",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used HTTPS for C2 communications.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4581,14 +4680,14 @@
       "spec_version": "2.1",
       "id": "relationship--9b0f58c2-6084-4e7e-a827-f7ae3ffb12da",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--4024cd80-bd7b-40ea-bd30-fb0afdfca53a",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) to encapsulate C2 in DNS traffic.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4596,14 +4695,14 @@
       "spec_version": "2.1",
       "id": "relationship--8fbf5867-685e-45e8-bad3-097a3b07babf",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has staged stolen data locally on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4611,14 +4710,14 @@
       "spec_version": "2.1",
       "id": "relationship--c17deacd-a8b7-48b6-9c18-12cafb0fde77",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--15ab621f-b59f-4396-bc59-a340f8ae6136",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has staged stolen data on designated servers in the target environment.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4626,14 +4725,14 @@
       "spec_version": "2.1",
       "id": "relationship--a891deeb-448d-4f89-9729-40af968f4b32",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used a valid account to maintain persistence via scheduled task.(Citation: Cycraft Chimera April 2020)",
       "x_confidence": "high"
     },
     {
@@ -4641,14 +4740,14 @@
       "spec_version": "2.1",
       "id": "relationship--fa266e41-900d-426d-aa8b-a8fb2680c3a1",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--b03f5086-a914-4b0a-9883-77da010f644e",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used compromised domain accounts to gain access to the target environment.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4656,14 +4755,14 @@
       "spec_version": "2.1",
       "id": "relationship--27f173bd-cc35-4a5e-a8bb-7459d11092aa",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--80931334-4437-4d77-acc3-4602794e5f0c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has utilized multiple commands to identify data of interest in file and directory listings.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4671,14 +4770,14 @@
       "spec_version": "2.1",
       "id": "relationship--3510b983-f538-4191-a644-bdcab304f6c4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--4b87bea7-ab73-4a53-b541-9766bad896d9",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net user</code> for account discovery.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4686,14 +4785,14 @@
       "spec_version": "2.1",
       "id": "relationship--d926e802-8767-452f-b824-b2e84e80b0f5",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--afe9be49-45aa-46f2-ab7a-5307299063aa",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has has used <code>net user /dom</code> and <code>net user Administrator</code> to enumerate domain accounts including administrator accounts.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4701,14 +4800,14 @@
       "spec_version": "2.1",
       "id": "relationship--9525b99a-b692-4916-8c68-168a5e07d609",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--c429e5f8-6214-41e6-80d9-1f782f12e483",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has remotely copied tools and malware onto targeted systems.(Citation: Cycraft Chimera April 2020)",
       "x_confidence": "high"
     },
     {
@@ -4716,14 +4815,14 @@
       "spec_version": "2.1",
       "id": "relationship--b7a1c51a-93e3-44a3-9f86-96c5b16b0436",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--d095b9c1-ca61-4ed2-a20e-5d71f548bdb2",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used direct Windows system calls by leveraging Dumpert.(Citation: Cycraft Chimera April 2020)",
       "x_confidence": "high"
     },
     {
@@ -4731,14 +4830,14 @@
       "spec_version": "2.1",
       "id": "relationship--d080f886-6187-4974-a524-099166a0b286",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--52a527c3-091a-45c3-80ef-619e286ef8d6",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used multiple password spraying attacks against victim's remote services to obtain valid user and administrator accounts.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4746,14 +4845,14 @@
       "spec_version": "2.1",
       "id": "relationship--75db902f-5c85-4eea-b95a-cde27619fcfb",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--3b818e04-4082-48f8-8605-f5936408fbae",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used credential stuffing against victim's remote services to obtain valid accounts.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4761,14 +4860,14 @@
       "spec_version": "2.1",
       "id": "relationship--56108eaa-0e1c-4956-922c-c0491029983a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--6543f70d-01c6-4e6b-9088-d2ea916959a6",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has registered alternate phone numbers for compromised users to intercept 2FA codes sent via SMS.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4776,14 +4875,14 @@
       "spec_version": "2.1",
       "id": "relationship--cfb6565e-e28c-4715-8f12-28345612c769",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--47608442-44a8-433f-b4c3-d7f6ac5265c4",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has harvested data from victim's e-mail including through execution of <code>wmic /node:<ip> process call create \"cmd /c copy c:\\Users\\<username>\\<path>\\backup.pst c:\\windows\\temp\\backup.pst\" copy \"i:\\<path>\\<username>\\My Documents\\<filename>.pst\"\ncopy</code>.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4791,14 +4890,14 @@
       "spec_version": "2.1",
       "id": "relationship--0321f433-0f0d-473e-b723-91736e347e87",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--43199bd3-49cd-452d-8dec-fa1f6caa062f",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has harvested data from remote mailboxes including through execution of <code>\\\\<hostname>\\c$\\Users\\<username>\\AppData\\Local\\Microsoft\\Outlook*.ost</code>.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4806,14 +4905,14 @@
       "spec_version": "2.1",
       "id": "relationship--36e99a7c-4910-4efa-8452-2be6088d2c5a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used custom DLLs for continuous retrieval of data from memory.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4821,14 +4920,14 @@
       "spec_version": "2.1",
       "id": "relationship--e4eae577-952f-4616-ba6b-528ee5e81441",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--25a8014f-6881-420b-9d97-68f39026668e",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>time /t</code> and <code>net time \\\\ip/hostname</code> for system time discovery.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4836,14 +4935,14 @@
       "spec_version": "2.1",
       "id": "relationship--cf4fa65a-2b35-413d-9686-87ae8c7cefd3",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--beec897d-82e5-4ca1-97a1-1ead75f78e3c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used legitimate credentials to login to an external VPN, Citrix, SSH, and other remote services.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4851,14 +4950,14 @@
       "spec_version": "2.1",
       "id": "relationship--e5fea1d4-8418-4069-bd27-efdfd527921f",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--f5cf2c22-cedd-4156-88ce-5566cc4c0e30",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net share</code> and <code>net view</code> to identify network shares of interest.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4866,14 +4965,14 @@
       "spec_version": "2.1",
       "id": "relationship--f1765d5f-742e-450f-9a28-39ce5bcafe2a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--e143987f-5646-441b-9cf0-88de8f60cb23",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used the NtdsAudit utility to collect information related to accounts and passwords.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4881,14 +4980,14 @@
       "spec_version": "2.1",
       "id": "relationship--e135e455-3f91-4ee4-ab00-c776de672bbc",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--cde19ee9-2f93-4759-98a4-0876f6552645",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has collected documents from the victim's SharePoint.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4896,14 +4995,14 @@
       "spec_version": "2.1",
       "id": "relationship--ca04c97d-a860-4f22-8aad-1b92a94edd7e",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--f0a2488f-d0af-4954-a9a4-7e8739b70e03",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>type \\\\<hostname>\\c$\\Users\\<username>\\Favorites\\Links\\Bookmarks bar\\Imported From IE\\*citrix*</code> for bookmark discovery.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4911,14 +5010,14 @@
       "spec_version": "2.1",
       "id": "relationship--84817590-1383-45b8-8c2c-aa0e5fffbab3",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--883c46a7-66cd-4fa1-9b37-8291abe200b6",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has <code>nltest /domain_trusts</code> to identify domain trust relationships.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4926,14 +5025,14 @@
       "spec_version": "2.1",
       "id": "relationship--27c35806-abfc-4c14-85a8-a83dd6b30e60",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--0be959da-1b24-4f37-9d2e-a7a7ba1ad688",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has dumped password hashes for use in pass the hash authentication attacks.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4941,14 +5040,14 @@
       "spec_version": "2.1",
       "id": "relationship--ab9b56b6-ebc7-408f-be6d-f035d8bbde40",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--d76c7fbb-1af7-4bfb-96e5-79eba377bfb4",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114)'s malware has altered the NTLM authentication program on domain controllers to allow [Chimera](https://attack.mitre.org/groups/G0114) to login without a valid credential.(Citation: Cycraft Chimera April 2020)\t",
       "x_confidence": "high"
     },
     {
@@ -4956,14 +5055,14 @@
       "spec_version": "2.1",
       "id": "relationship--ca45d32e-d052-4b9a-b0ee-9c4ce31326bd",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--f295797f-d997-4658-b3e6-8e5e387a2a8d",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used gzip for Linux OS and a modified RAR software to archive data on Windows hosts.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4971,14 +5070,14 @@
       "spec_version": "2.1",
       "id": "relationship--d5a8b1d3-03ba-4910-927d-9102935081e0",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has exfiltrated stolen data to OneDrive accounts.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -4986,14 +5085,14 @@
       "spec_version": "2.1",
       "id": "relationship--d39259f3-ee0f-4428-8046-ffe2139f6bcd",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--a60a0a3e-7fe5-40c7-83b8-42ed2362777d",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used [PsExec](https://attack.mitre.org/software/S0029) to deploy beacons on compromised systems.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5001,14 +5100,14 @@
       "spec_version": "2.1",
       "id": "relationship--34b15cf4-8630-43b0-a3d1-966aa2a613cc",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--5e4bc7fe-fd08-4d1c-89cd-bff1ba63e844",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has copied tools between compromised hosts using SMB.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5016,14 +5115,14 @@
       "spec_version": "2.1",
       "id": "relationship--393fe032-0559-4236-8139-b44a91f768c3",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--320ae3be-e331-486f-a034-d7be5c08c5ef",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has encapsulated [Cobalt Strike](https://attack.mitre.org/software/S0154)'s C2 protocol in DNS and HTTPS.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5031,14 +5130,14 @@
       "spec_version": "2.1",
       "id": "relationship--db74ce12-1bdc-47c4-af19-2fc6d0e342c0",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used side loading to place malicious DLLs in memory.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5046,14 +5145,14 @@
       "spec_version": "2.1",
       "id": "relationship--1257bc47-d2cd-409f-9469-2bf930db94bf",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has obtained and used tools such as [BloodHound](https://attack.mitre.org/software/S0521), [Cobalt Strike](https://attack.mitre.org/software/S0154), [Mimikatz](https://attack.mitre.org/software/S0002), and [PsExec](https://attack.mitre.org/software/S0029).(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5061,14 +5160,14 @@
       "spec_version": "2.1",
       "id": "relationship--b1e1d27e-103b-4cc4-a4a7-a20fa9bca912",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--6b48cb0e-60a2-44eb-a5fe-e85ee374d06d",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has collected credentials for the target organization from previous breaches for use in brute force attacks.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5076,14 +5175,14 @@
       "spec_version": "2.1",
       "id": "relationship--0df7973c-d365-4bb4-9f5d-3a4539e60a96",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--20fb7785-3e44-465e-bed0-c3ae4a4a92be",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has used `fsutil fsinfo drives`, `systeminfo`, and `vssadmin list shadows` for system information including shadow volumes and drive information.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
     },
     {
@@ -5091,696 +5190,15 @@
       "spec_version": "2.1",
       "id": "relationship--749c45a8-4cb8-46e6-b4ea-079e5fbdc79b",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
       "target_ref": "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Chimera](https://attack.mitre.org/groups/G0114) has cleared event logs on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "x_confidence": "high"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--187ef446-686f-4b03-9aa6-9e3ea61d8819",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://blog.fox-it.com/2021/01/12/a",
-      "pattern": "[url:value = 'https://blog.fox-it.com/2021/01/12/a']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2021-01-12T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:82691df4bbf82ad124292004be5de7c545cd6228a68415031563483b6c0f3f13",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 2
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera Chimera GELSEMIUM OwlProxy, SessionManager Taiwan semiconductors Likely a Chinese group, inconclusive overlap w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/a",
-          "analyst_notes": "",
-          "raw_value": "https://blog.fox-it.com/2021/01/12/a"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--2236c71b-cbcd-48c4-acb3-887206fa208e",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://blog.fox-it.com/2021/01/12/abusing-clo",
-      "pattern": "[url:value = 'https://blog.fox-it.com/2021/01/12/abusing-clo']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2021-01-12T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:4f41fe23a10caab74793bae1b972b19aad00fabf57ffdc99d1ea92e10c772aa8",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 4
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} GELSEMIUM Chimera GELSEMIUM OwlProxy, SessionManager Taiwan semiconductors Likely a Chinese group, inconclusive overlap w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-clo",
-          "analyst_notes": "",
-          "raw_value": "https://blog.fox-it.com/2021/01/12/abusing-clo"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--185a11bc-030e-4597-aeb3-3dbc8eedadcb",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/",
-      "pattern": "[url:value = 'https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2021-01-12T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:5061779991627135c09035175b22499055a95f6cecf19d64a04e9602ab81bead",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/",
-          "analyst_notes": "",
-          "raw_value": "https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--a4def84a-62a1-492c-a48b-6b0729316430",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf",
-      "pattern": "[url:value = 'https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2021-01-12T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 3,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:5e2d2cce2aadb45a565813080820bbb7e84738566f40a69bd55508f818a2208c",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 2
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera Chimera GELSEMIUM OwlProxy, SessionManager Taiwan semiconductors Likely a Chinese group, inconclusive overlap w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/a",
-          "analyst_notes": "",
-          "raw_value": "https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf"
-        },
-        {
-          "observation_id": "observation--sha256:088ff50cf410d689e71a7f8655eda7c10ffb4ca0e4f7f0e5b81ee07e5714b12b",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 4
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} GELSEMIUM Chimera GELSEMIUM OwlProxy, SessionManager Taiwan semiconductors Likely a Chinese group, inconclusive overlap w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-clo",
-          "analyst_notes": "",
-          "raw_value": "https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf"
-        },
-        {
-          "observation_id": "observation--sha256:dcf5e436c363aae7d1c56e86623371b255e6b7c3721586adf6627badfd0df1b3",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/",
-          "analyst_notes": "",
-          "raw_value": "https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--63b8233e-fe79-4b71-9821-02955fc5e861",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd",
-      "pattern": "[url:value = 'https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2021-01-12T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:60cfb2e5efeaa2b4d59919a306ea8c1eb06aa6e63d99f0edd9e27960b65817d7",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/",
-          "analyst_notes": "",
-          "raw_value": "https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--1df9b6ca-5f36-4ebb-aece-f3d8ca13e19f",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://i.blackhat.com/USA-20/Thursday/us-20-Ch",
-      "pattern": "[url:value = 'https://i.blackhat.com/USA-20/Thursday/us-20-Ch']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2021-01-12T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:e203bac40cc555b4b738768c8745363da4d34aaadfd788f72a6ec21705333dc6",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/",
-          "analyst_notes": "",
-          "raw_value": "https://i.blackhat.com/USA-20/Thursday/us-20-Ch"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--347f8e72-f4ea-4249-8a89-d8d9267f48a1",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf",
-      "pattern": "[url:value = 'https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:cffd3b4a59a012c810d67e1196ceb65da2b78d9ff8cdb894e5d23bce3f4c10b0",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera dar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://s",
-          "analyst_notes": "",
-          "raw_value": "https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf"
-        },
-        {
-          "observation_id": "observation--sha256:5584ade252ebedc27dd0e5a03f4358b4a9661270eefb80ef13de24081bd6f496",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera y-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://securelist.com/owowa-credential-stealer-and-remote-access/105219/ https://secur",
-          "analyst_notes": "",
-          "raw_value": "https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--36c0bd56-e0e3-4f07-9410-e3856ce437ce",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/",
-      "pattern": "[url:value = 'https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:0aaeee1a517773a46dd3ec8924d8d82c4bbfc993051e380e496c93bf7b82985d",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera dar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://s",
-          "analyst_notes": "",
-          "raw_value": "https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/"
-        },
-        {
-          "observation_id": "observation--sha256:2873606f77d59f5e426325d5ca0b305e5d959e6c0c5a8eaa36dbef4418b908be",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera y-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://securelist.com/owowa-credential-stealer-and-remote-access/105219/ https://secur",
-          "analyst_notes": "",
-          "raw_value": "https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--11f869ca-d104-433c-ac79-1b9c871965fa",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2",
-      "pattern": "[url:value = 'https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:9c020ee3a7b91639d05337ae107c6513e7934de985baa114b28d27baecb830d1",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera dar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://s",
-          "analyst_notes": "",
-          "raw_value": "https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2"
-        },
-        {
-          "observation_id": "observation--sha256:9f5add03aa26d882e028ae4b40710c0128dcfa1cf94cf1f8c6213258beebb1d6",
-          "observed_at": {
-            "value": "2021-01-12T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera w/Winnti https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf https://blog.fox-it.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ https://cycrafttechnology.medium.com/threat-attribution-chimera-under-the-radar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/",
-          "analyst_notes": "",
-          "raw_value": "https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2"
-        }
-      ]
     },
     {
       "type": "indicator",
@@ -5901,538 +5319,6 @@
       ]
     },
     {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--dc6f9624-4110-4c33-a754-16321eeaff6a",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://securelist.com/owow",
-      "pattern": "[url:value = 'https://securelist.com/owow']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:c5dd9d4c657af7228b8d5c446cb57d9be2224d4ac33b1134fc960ff3f8606322",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera dar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://s",
-          "analyst_notes": "",
-          "raw_value": "https://securelist.com/owow"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--7fec386a-fc3e-4277-9b21-58bd3e418be5",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://securelist.com/owowa-credential-stealer-and-remote-access/105219/",
-      "pattern": "[url:value = 'https://securelist.com/owowa-credential-stealer-and-remote-access/105219/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:109107fc5695704752b76a521239029d33a0036d9fc60a54828ddc964dd8bfad",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera y-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://securelist.com/owowa-credential-stealer-and-remote-access/105219/ https://secur",
-          "analyst_notes": "",
-          "raw_value": "https://securelist.com/owowa-credential-stealer-and-remote-access/105219/"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--9a927a70-9792-4167-aa4c-3069bbc52148",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://securelist.com/the-sess",
-      "pattern": "[url:value = 'https://securelist.com/the-sess']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:f65ad6f27105a63019d8f700fbcc01994f92b5472944b0afcef70b8415052a3f",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera y-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://securelist.com/owowa-credential-stealer-and-remote-access/105219/ https://secur",
-          "analyst_notes": "",
-          "raw_value": "https://securelist.com/the-sess"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--36213da3-c864-4b39-9765-284661226155",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/",
-      "pattern": "[url:value = 'https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:55Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:91f07c370f14a2d2388a27eaa583c99cfc50b6e5956c7f8e128d12192f2359d5",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 19
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/Qianxin 2023 APT Report.pdf {\"page\": 113} gelsemium .https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look- into-the-group-s-unconventional-techniques-new-attack-vectors-and-tools/ 299.https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/ 300.https://mp.weixin.qq.com/s/DZwbJ8-UTji29kH2on90fQ 301.https://mp.weixin.qq.com/s/dOQ5kA7MwQCDg2x_NgBoEA 302.https://www.barracuda.com/company/legal/esg-vulnerability 303.https:/",
-          "analyst_notes": "",
-          "raw_value": "https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/"
-        },
-        {
-          "observation_id": "observation--sha256:6e01a320ba222021e277eb1b32e954e72c24e470b4b9cec09367ffe40db07e4d",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 24
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/readme.md {\"line\": 462} gelsemium 299. https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/",
-          "analyst_notes": "",
-          "raw_value": "https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--858eb54b-e858-447d-bea4-e17a133fcb2b",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.barracuda.com/company/legal/esg-vulnerability",
-      "pattern": "[url:value = 'https://www.barracuda.com/company/legal/esg-vulnerability']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:55Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:7953982a08da736726a1285d62fa11ff3f3cdc4b5fb48ecd132adf035696654c",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 19
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/Qianxin 2023 APT Report.pdf {\"page\": 113} gelsemium .https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look- into-the-group-s-unconventional-techniques-new-attack-vectors-and-tools/ 299.https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/ 300.https://mp.weixin.qq.com/s/DZwbJ8-UTji29kH2on90fQ 301.https://mp.weixin.qq.com/s/dOQ5kA7MwQCDg2x_NgBoEA 302.https://www.barracuda.com/company/legal/esg-vulnerability 303.https:/",
-          "analyst_notes": "",
-          "raw_value": "https://www.barracuda.com/company/legal/esg-vulnerability"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--9af5f961-f6b6-4df1-acee-144ba8764e26",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.mandiant/",
-      "pattern": "[url:value = 'https://www.mandiant/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:55Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:f70313af229487febf671c9351c175d58c2ebdebc4884447eda4d6cb63901be4",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 19
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/Qianxin 2023 APT Report.pdf {\"page\": 113} gelsemium .https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look- into-the-group-s-unconventional-techniques-new-attack-vectors-and-tools/ 299.https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/ 300.https://mp.weixin.qq.com/s/DZwbJ8-UTji29kH2on90fQ 301.https://mp.weixin.qq.com/s/dOQ5kA7MwQCDg2x_NgBoEA 302.https://www.barracuda.com/company/legal/esg-vulnerability 303.https:/",
-          "analyst_notes": "",
-          "raw_value": "https://www.mandiant."
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--a1a5cb8a-b28e-453a-ad00-bd74ed9aab2e",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look-",
-      "pattern": "[url:value = 'https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look-']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:55Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:c45420530afab27fb080327ce569f64f880c4b193d8d9e3fef1951e6192a9bd3",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 19
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/Qianxin 2023 APT Report.pdf {\"page\": 113} gelsemium .https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look- into-the-group-s-unconventional-techniques-new-attack-vectors-and-tools/ 299.https://unit42.paloaltonetworks.com/rare-possible-gelsemium-attack-targets-se-asia/ 300.https://mp.weixin.qq.com/s/DZwbJ8-UTji29kH2on90fQ 301.https://mp.weixin.qq.com/s/dOQ5kA7MwQCDg2x_NgBoEA 302.https://www.barracuda.com/company/legal/esg-vulnerability 303.https:/",
-          "analyst_notes": "",
-          "raw_value": "https://www.ptsecurity.com/ww-en/analytics/pt-esc-threat-intelligence/space-pirates-a-look-"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--98c726b1-e3db-406f-b48b-d518a5a421b3",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf",
-      "pattern": "[url:value = 'https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2020-03-01T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 2,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:1136e309fb84bec4ee18fbdf35e50e7cc988f2a08d01300b8e9c0f8720a4d72c",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 3
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} Chimera dar-7c4cce390efd https://medium.com/@cycraft_corp/taiwan-government-targeted-by-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://s",
-          "analyst_notes": "",
-          "raw_value": "https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf"
-        },
-        {
-          "observation_id": "observation--sha256:99197926ff8205736e62c452a895426df0c263cd8b26bdb069e2b26e0ee4523a",
-          "observed_at": {
-            "value": "2020-03-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--chimera--d4c16ff82ad4d37c",
-          "source_path": "actor_profile/evidence/chimera.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 37, \"sheet\": \"Unknown\"} chimera y-multiple-cyberattacks-in-april-2020-3b20cea1dc20?source=rss-2eb56b81d7e4------2 https://i.blackhat.com/USA-20/Thursday/us-20-Chen-Operation-Chimera-APT-Operation-Targets-Semiconductor-Vendors.pdf https://lab52.io/blog/chimera-apt-updates-on-its-owlproxy-malware/ https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf https://securelist.com/owowa-credential-stealer-and-remote-access/105219/ https://secur",
-          "analyst_notes": "",
-          "raw_value": "https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf"
-        }
-      ]
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--57dd8824-90e2-4e8c-8430-b71366fcc128",
@@ -6454,7 +5340,7 @@
       "spec_version": "2.1",
       "id": "report--27a3cfab-d100-4bae-8551-7027ee227252",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T14:07:08Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6463,7 +5349,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T14:07:08Z",
+      "published": "2026-07-29T23:12:00Z",
       "object_refs": [
         "intrusion-set--fd57f482-62b9-4611-a7a6-6b891912c9db",
         "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
@@ -6474,7 +5360,9 @@
         "tool--00a7dd51-886c-41c9-8cb9-4d186cfd878f",
         "tool--bca8db3d-f835-400c-b423-615224507510",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+        "identity--ed6f5655-fe09-43b6-ba00-35b1f14f2605",
         "identity--65fac589-4a22-4251-88ac-2b2cbe79c63e",
+        "identity--d4c1a7c4-9d65-4f71-a26c-aa96efdbc5df",
         "attack-pattern--e9e43ae1-bc7e-4829-8494-875243d95e59",
         "attack-pattern--2ecabf34-7c07-4bf7-a35b-a818adae6242",
         "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
@@ -6534,27 +5422,10 @@
         "attack-pattern--6b48cb0e-60a2-44eb-a5fe-e85ee374d06d",
         "attack-pattern--20fb7785-3e44-465e-bed0-c3ae4a4a92be",
         "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781",
-        "indicator--187ef446-686f-4b03-9aa6-9e3ea61d8819",
-        "indicator--2236c71b-cbcd-48c4-acb3-887206fa208e",
-        "indicator--185a11bc-030e-4597-aeb3-3dbc8eedadcb",
-        "indicator--a4def84a-62a1-492c-a48b-6b0729316430",
-        "indicator--63b8233e-fe79-4b71-9821-02955fc5e861",
-        "indicator--1df9b6ca-5f36-4ebb-aece-f3d8ca13e19f",
-        "indicator--347f8e72-f4ea-4249-8a89-d8d9267f48a1",
-        "indicator--36c0bd56-e0e3-4f07-9410-e3856ce437ce",
-        "indicator--11f869ca-d104-433c-ac79-1b9c871965fa",
         "indicator--784c0681-94ef-497f-b198-fd708ee02f87",
-        "indicator--098f0c9f-d2df-4e5a-a189-ffffe817f84a",
-        "indicator--dc6f9624-4110-4c33-a754-16321eeaff6a",
-        "indicator--7fec386a-fc3e-4277-9b21-58bd3e418be5",
-        "indicator--9a927a70-9792-4167-aa4c-3069bbc52148",
-        "indicator--36213da3-c864-4b39-9765-284661226155",
-        "indicator--858eb54b-e858-447d-bea4-e17a133fcb2b",
-        "indicator--9af5f961-f6b6-4df1-acee-144ba8764e26",
-        "indicator--a1a5cb8a-b28e-453a-ad00-bd74ed9aab2e",
-        "indicator--98c726b1-e3db-406f-b48b-d518a5a421b3"
+        "indicator--098f0c9f-d2df-4e5a-a189-ffffe817f84a"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

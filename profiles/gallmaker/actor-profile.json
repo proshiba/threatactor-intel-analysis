@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--gallmaker",
   "name": "Gallmaker",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -61,11 +61,102 @@
   "activities": [],
   "targets": {
     "countries": [],
-    "regions": [],
-    "sectors": [],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--2b2ab0515c2ac0cdfed8",
+        "name": "中東",
+        "description": "MITRE ATT&CKのGroup概要でGallmakerの標的範囲として中東が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--region--83777359e6aa9f27a428",
+        "name": "東欧",
+        "description": "構造化OSINTの被害地域フィールドでGallmakerの標的範囲として東欧が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--a6c9ebb771cbb1288d0e",
+        "name": "防衛・軍事",
+        "description": "The group has mainly targeted victims in the defense, military, and government sectors.(Citation: Symantec Gallmaker Oct 2018)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
+      {
+        "id": "target--mitre-group--sector--ed4105945daf08589075",
+        "name": "政府・行政",
+        "description": "The group has mainly targeted victims in the defense, military, and government sectors.(Citation: Symantec Gallmaker Oct 2018)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -73,7 +164,7 @@
       "tactic": "Stealth",
       "technique_id": "T1027",
       "technique_name": "Obfuscated Files or Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Gallmaker](https://attack.mitre.org/groups/G0084) obfuscated shellcode used during execution.(Citation: Symantec Gallmaker Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -93,14 +184,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-001--general",
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Gallmaker](https://attack.mitre.org/groups/G0084) used PowerShell to download additional payloads and for execution.(Citation: Symantec Gallmaker Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -120,14 +211,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Gallmaker](https://attack.mitre.org/groups/G0084) sent victims a lure document with a warning that asked victims to “enable content” for execution.(Citation: Symantec Gallmaker Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -147,14 +238,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1559-002--general",
       "tactic": "Execution",
       "technique_id": "T1559.002",
       "technique_name": "Dynamic Data Exchange",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Gallmaker](https://attack.mitre.org/groups/G0084) attempted to exploit Microsoft’s DDE protocol in order to gain access to victim machines and for execution.(Citation: Symantec Gallmaker Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -174,14 +265,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1560-001--general",
       "tactic": "Collection",
       "technique_id": "T1560.001",
       "technique_name": "Archive via Utility",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Gallmaker](https://attack.mitre.org/groups/G0084) has used WinZip, likely to archive data prior to exfiltration.(Citation: Symantec Gallmaker Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -201,14 +292,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-001--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.001",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Gallmaker](https://attack.mitre.org/groups/G0084) sent emails with malicious Microsoft Office documents attached.(Citation: Symantec Gallmaker Oct 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -228,7 +319,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -417,6 +508,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -436,7 +552,8 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=中東、東欧。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

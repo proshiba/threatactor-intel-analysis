@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ember-bear`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:31Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:13:54Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -134,9 +134,9 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | cyber-espionage | 不明 | 不明 | 2024-09-06 | 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。 | 中 | `source--daily-f1baa9d2403423a63284` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | cyber-espionage | 不明 | 不明 | 2024-09-06 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--country--ukraine |  | ttp--activity-rule--f17a61b0acfb89cfe4ba | victim--activity-rule--84ba967e4f2df409774e | 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。 | 中 | `source--daily-f1baa9d2403423a63284` |
 
 
 
@@ -144,70 +144,82 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Kyrgyzstan | Targeting text mentions kyrgyzstan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Georgia | Targeting text mentions georgia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Ukraine | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-f1baa9d2403423a63284`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | キルギス | Targeting text mentions kyrgyzstan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ジョージア | Targeting text mentions georgia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-f1baa9d2403423a63284`, `source--target-audit-etda-threat-group-cards` |
+| regions | NATO加盟国 | 活動「米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-f1baa9d2403423a63284` |
+| regions | 中南米 | 構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として中南米が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中央アジア | 構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として中央アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--country--ukraine |  | ttp--activity-rule--f17a61b0acfb89cfe4ba |  | espionage: 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 | 不明 | 不明 | 2024-09-06 | 中 | `source--daily-f1baa9d2403423a63284` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003 | OS Credential Dumping | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.002 | Security Account Manager | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.004 | LSA Secrets | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1005 | Data from Local System | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021 | Remote Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036 | Masquerading | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.004 | DNS | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.001 | Default Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.003 | Multi-hop Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1095 | Non-Application Layer Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110 | Brute Force | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110.003 | Password Spraying | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1114 | Email Collection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1119 | Automated Collection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1125 | Video Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence | T1133 | External Remote Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1195 | Supply Chain Compromise | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1203 | Exploitation for Client Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1210 | Exploitation of Remote Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1491.002 | External Defacement | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1550.002 | Pass the Hash | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1552.001 | Credentials In Files | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560 | Archive Collected Data | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1561.002 | Disk Structure Wipe | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1570 | Lateral Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1571 | Non-Standard Port | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1572 | Protocol Tunneling | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583 | Acquire Infrastructure | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.003 | Virtual Private Server | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585 | Establish Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.001 | Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.005 | Exploits | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1595.001 | Scanning IP Blocks | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1595.002 | Vulnerability Scanning | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1654 | Log Enumeration | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1485 | Data Destruction | 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 |  | activity--daily-b7a84ad717db2af67833 | 不明 | 不明 | 中 | `source--daily-f1baa9d2403423a63284` |
+| Credential Access | T1003 | OS Credential Dumping | [Ember Bear](https://attack.mitre.org/groups/G1003) gathers credential material from target systems, such as SSH keys, to facilitate access to victim environments.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [Ember Bear](https://attack.mitre.org/groups/G1003) uses legitimate Sysinternals tools such as procdump to dump LSASS memory.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.002 | Security Account Manager | [Ember Bear](https://attack.mitre.org/groups/G1003) acquires victim credentials by extracting registry hives such as the Security Account Manager through commands such as <code>reg save</code>.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.004 | LSA Secrets | [Ember Bear](https://attack.mitre.org/groups/G1003) has used frameworks such as [Impacket](https://attack.mitre.org/software/S0357) to dump LSA secrets for credential capture.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1005 | Data from Local System | [Ember Bear](https://attack.mitre.org/groups/G1003) gathers victim system information such as enumerating the volume of a given device or extracting system and security event logs for analysis.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as Nmap and MASSCAN for remote service discovery.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021 | Remote Services | [Ember Bear](https://attack.mitre.org/groups/G1003) uses valid network credentials gathered through credential harvesting to move laterally within victim networks, often employing the [Impacket](https://attack.mitre.org/software/S0357) framework to do so.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036 | Masquerading | [Ember Bear](https://attack.mitre.org/groups/G1003) has renamed the legitimate Sysinternals tool procdump to alternative names such as <code>dump64.exe</code> to evade detection.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Ember Bear](https://attack.mitre.org/groups/G1003) has renamed tools to match legitimate utilities, such as renaming GOST tunneling instances to `java` in victim environments.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as NMAP for remote system discovery and enumeration in victim environments.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [Ember Bear](https://attack.mitre.org/groups/G1003) has used WMI execution with password hashes for command execution and lateral movement.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Ember Bear](https://attack.mitre.org/groups/G1003) uses remotely scheduled tasks to facilitate remote command execution on victim machines.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [Ember Bear](https://attack.mitre.org/groups/G1003) has used PowerShell commands to gather information from compromised systems,  such as email servers.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1070.004 | File Deletion | [Ember Bear](https://attack.mitre.org/groups/G1003) deletes files related to lateral movement to avoid detection.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.004 | DNS | [Ember Bear](https://attack.mitre.org/groups/G1003) has used DNS tunnelling tools, such as dnscat/2 and Iodine, for C2 purposes.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.001 | Default Accounts | [Ember Bear](https://attack.mitre.org/groups/G1003) has abused default user names and passwords in externally-accessible IP cameras for initial access.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090.003 | Multi-hop Proxy | [Ember Bear](https://attack.mitre.org/groups/G1003) has configured multi-hop proxies via ProxyChains within victim environments.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1095 | Non-Application Layer Protocol | [Ember Bear](https://attack.mitre.org/groups/G1003) uses socket-based tunneling utilities for command and control purposes such as NetCat and Go Simple Tunnel (GOST). These tunnels are used to push interactive command prompts over the created sockets.(Citation: Cadet Blizzard emerges as novel threat actor) [Ember Bear](https://attack.mitre.org/groups/G1003) has also used reverse TCP connections from Meterpreter installations to communicate back with C2 infrastructure.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1110 | Brute Force | [Ember Bear](https://attack.mitre.org/groups/G1003) used the `su-bruteforce` tool to brute force specific users using the `su` command.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1110.003 | Password Spraying | [Ember Bear](https://attack.mitre.org/groups/G1003) has conducted password spraying against Outlook Web Access (OWA) infrastructure to identify valid user names and passwords.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [Ember Bear](https://attack.mitre.org/groups/G1003) modifies registry values for anti-forensics and defense evasion purposes.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1114 | Email Collection | [Ember Bear](https://attack.mitre.org/groups/G1003) attempts to collect mail from accessed systems and servers.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1119 | Automated Collection | [Ember Bear](https://attack.mitre.org/groups/G1003) engages in mass collection from compromised systems during intrusions.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1125 | Video Capture | [Ember Bear](https://attack.mitre.org/groups/G1003) has exfiltrated images from compromised IP cameras.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence | T1133 | External Remote Services | [Ember Bear](https://attack.mitre.org/groups/G1003) have used VPNs both for initial access to victim environments and for persistence within them following compromise.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [Ember Bear](https://attack.mitre.org/groups/G1003) gains initial access to victim environments by exploiting external-facing services. Examples include exploitation of CVE-2021-26084 in Confluence servers; CVE-2022-41040, ProxyShell, and other vulnerabilities in Microsoft Exchange; and multiple vulnerabilities in open-source platforms such as content management systems.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1195 | Supply Chain Compromise | [Ember Bear](https://attack.mitre.org/groups/G1003) has compromised information technology providers and software developers providing services to targets of interest, building initial access to ultimate victims at least in part through compromise of service providers that work with the victim organizations.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1203 | Exploitation for Client Execution | [Ember Bear](https://attack.mitre.org/groups/G1003) has used exploits to enable follow-on execution of frameworks such as Meterpreter.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1210 | Exploitation of Remote Services | [Ember Bear](https://attack.mitre.org/groups/G1003) has used exploits for vulnerabilities such as MS17-010, also known as `Eternal Blue`, during operations.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1491.002 | External Defacement | [Ember Bear](https://attack.mitre.org/groups/G1003) is linked to the defacement of several Ukrainian organization websites.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence | T1505.003 | Web Shell | [Ember Bear](https://attack.mitre.org/groups/G1003) deploys web shells following initial access for either follow-on command execution or protocol tunneling. Example web shells used by [Ember Bear](https://attack.mitre.org/groups/G1003) include P0wnyshell, reGeorg, [P.A.S. Webshell](https://attack.mitre.org/software/S0598), and custom variants of publicly-available web shell examples.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1550.002 | Pass the Hash | [Ember Bear](https://attack.mitre.org/groups/G1003) has used pass-the-hash techniques for lateral movement in victim environments.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1552.001 | Credentials In Files | [Ember Bear](https://attack.mitre.org/groups/G1003) has dumped configuration settings in accessed IP cameras including plaintext credentials.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560 | Archive Collected Data | [Ember Bear](https://attack.mitre.org/groups/G1003) has compressed collected data prior to exfiltration.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1561.002 | Disk Structure Wipe | [Ember Bear](https://attack.mitre.org/groups/G1003) conducted destructive operations against victims, including disk structure wiping, via the [WhisperGate](https://attack.mitre.org/software/S0689) malware in Ukraine.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | [Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as [Rclone](https://attack.mitre.org/software/S1040) to exfiltrate information from victim environments to cloud storage such as `mega.nz`.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1570 | Lateral Tool Transfer | [Ember Bear](https://attack.mitre.org/groups/G1003) retrieves follow-on payloads direct from adversary-owned infrastructure for deployment on compromised hosts.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1571 | Non-Standard Port | [Ember Bear](https://attack.mitre.org/groups/G1003) has used various non-standard ports for C2 communication.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1572 | Protocol Tunneling | [Ember Bear](https://attack.mitre.org/groups/G1003) has used ProxyChains to tunnel protocols to internal networks.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583 | Acquire Infrastructure | [Ember Bear](https://attack.mitre.org/groups/G1003) uses services such as IVPN, SurfShark, and Tor to add anonymization to operations.(Citation: Cadet Blizzard emerges as novel threat actor) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.003 | Virtual Private Server | [Ember Bear](https://attack.mitre.org/groups/G1003) has used virtual private servers (VPSs) to host tools, perform reconnaissance, exploit victim infrastructure, and as a destination for data exfiltration.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585 | Establish Accounts | [Ember Bear](https://attack.mitre.org/groups/G1003) has created accounts on dark web forums to obtain various tools and malware.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.001 | Malware | [Ember Bear](https://attack.mitre.org/groups/G1003) has acquired malware and related tools from dark web forums.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.005 | Exploits | [Ember Bear](https://attack.mitre.org/groups/G1003) has obtained exploitation scripts against publicly-disclosed vulnerabilities from public repositories.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1595.001 | Scanning IP Blocks | [Ember Bear](https://attack.mitre.org/groups/G1003) has targeted IP ranges for vulnerability scanning related to government and critical infrastructure organizations.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1595.002 | Vulnerability Scanning | [Ember Bear](https://attack.mitre.org/groups/G1003) has used publicly available tools such as MASSCAN and Acunetix for vulnerability scanning of public-facing infrastructure.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1654 | Log Enumeration | [Ember Bear](https://attack.mitre.org/groups/G1003) has enumerated SECURITY and SYSTEM log files during intrusions.(Citation: CISA GRU29155 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 11件
-- IOC観測: 14件
+- IOC値: 3件
+- IOC観測: 3件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 11件
+- 要レビュー候補: 3件
 - 非IOC artifact観測: 102件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -266,6 +278,8 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

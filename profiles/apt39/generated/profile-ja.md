@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt39`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:13:53Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -143,74 +143,97 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | イラン | [APT39](https://attack.mitre.org/groups/G0087) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer Dec 2015)(Citation: FBI FLASH APT39 September 2020)(Citation: Dept. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | クウェート | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ヨルダン | 構造化OSINTの被害国フィールドでAPT39の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでAPT39の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アジア | MITRE ATT&CKのGroup概要でAPT39の標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | アフリカ | MITRE ATT&CKのGroup概要でAPT39の標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 中東 | 構造化OSINTの被害地域フィールドでAPT39の標的範囲として中東が記録されている。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 全世界 | レビュー済みアクターマッピングの標的欄に記録された全世界を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 北米 | MITRE ATT&CKのGroup概要でAPT39の標的範囲として北米が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 欧州 | MITRE ATT&CKのGroup概要でAPT39の標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 医療・ヘルスケア | [APT39](https://attack.mitre.org/groups/G0087) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer Dec 2015)(Citation: FBI FLASH APT39 September 2020)(Citation: Dept. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 情報通信 | [APT39](https://attack.mitre.org/groups/G0087) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer Dec 2015)(Citation: FBI FLASH APT39 September 2020)(Citation: Dept. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 小売・ホスピタリティ | [APT39](https://attack.mitre.org/groups/G0087) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer Dec 2015)(Citation: FBI FLASH APT39 September 2020)(Citation: Dept. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 教育・研究 | [APT39](https://attack.mitre.org/groups/G0087) has primarily targeted the travel, hospitality, academic, and telecommunications industries in Iran and across Asia, Africa, Europe, and North America to track individuals and entities considered to be a threat by the MOIS.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer Dec 2015)(Citation: FBI FLASH APT39 September 2020)(Citation: Dept. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003 | OS Credential Dumping | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1005 | Data from Local System | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1012 | Query Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.004 | SSH | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.002 | Software Packing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1033 | System Owner/User Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1041 | Exfiltration Over C2 Channel | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056 | Input Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.001 | Keylogging | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059 | Command and Scripting Interpreter | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.006 | Python | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.010 | AutoHotKey & AutoIT | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.004 | DNS | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.001 | Local Data Staging | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.001 | Internal Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.002 | External Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1102.002 | Bidirectional Communication | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110 | Brute Force | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1113 | Screen Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1115 | Clipboard Data | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1135 | Network Share Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1136.001 | Local Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Stealth | T1197 | BITS Jobs | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1546.010 | AppInit DLLs | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.009 | Shortcut Modification | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1553.006 | Code Signing Policy Modification | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1555 | Credentials from Password Stores | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003 | OS Credential Dumping | [APT39](https://attack.mitre.org/groups/G0087) has used different versions of Mimikatz to obtain credentials.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [APT39](https://attack.mitre.org/groups/G0087) has used Mimikatz, Windows Credential Editor and ProcDump to dump credentials.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1005 | Data from Local System | [APT39](https://attack.mitre.org/groups/G0087) has used various tools to steal files from the compromised host.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1012 | Query Registry | [APT39](https://attack.mitre.org/groups/G0087) has used various strains of malware to query the Registry.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [APT39](https://attack.mitre.org/groups/G0087) has used [NBTscan](https://attack.mitre.org/software/S0590) and custom tools to discover remote systems.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [APT39](https://attack.mitre.org/groups/G0087) has been seen using RDP for lateral movement and persistence, in some cases employing the rdpwinst tool for mangement of multiple sessions.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [APT39](https://attack.mitre.org/groups/G0087) has used SMB for lateral movement.(Citation: Symantec Chafer February 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.004 | SSH | [APT39](https://attack.mitre.org/groups/G0087) used secure shell (SSH) to move laterally among their targets.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.002 | Software Packing | [APT39](https://attack.mitre.org/groups/G0087) has packed tools with UPX, and has repacked a modified version of [Mimikatz](https://attack.mitre.org/software/S0002) to thwart anti-virus detection.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [APT39](https://attack.mitre.org/groups/G0087) has used malware to drop encrypted CAB files.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1033 | System Owner/User Discovery | [APT39](https://attack.mitre.org/groups/G0087) used [Remexi](https://attack.mitre.org/software/S0375) to collect usernames from the system.(Citation: Symantec Chafer Dec 2015) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [APT39](https://attack.mitre.org/groups/G0087) has used malware disguised as Mozilla Firefox and a tool named mfevtpse.exe to proxy C2 communications, closely mimicking a legitimate McAfee file mfevtps.exe.(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1041 | Exfiltration Over C2 Channel | [APT39](https://attack.mitre.org/groups/G0087) has exfiltrated stolen victim data through C2 communications.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [APT39](https://attack.mitre.org/groups/G0087) has used [CrackMapExec](https://attack.mitre.org/software/S0488) and a custom port scanner known as BLUETORCH for network scanning.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [APT39](https://attack.mitre.org/groups/G0087) has created scheduled tasks for persistence.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection, Credential Access | T1056 | Input Capture | [APT39](https://attack.mitre.org/groups/G0087) has utilized tools to capture mouse movements.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection, Credential Access | T1056.001 | Keylogging | [APT39](https://attack.mitre.org/groups/G0087) has used tools for capturing keystrokes.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059 | Command and Scripting Interpreter | [APT39](https://attack.mitre.org/groups/G0087) has utilized custom scripts to perform internal reconnaissance.(Citation: FireEye APT39 Jan 2019)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [APT39](https://attack.mitre.org/groups/G0087) has used PowerShell to execute malicious code.(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [APT39](https://attack.mitre.org/groups/G0087) has utilized malicious VBS scripts in malware.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.006 | Python | [APT39](https://attack.mitre.org/groups/G0087) has used a command line utility and a network scanner written in python.(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.010 | AutoHotKey & AutoIT | [APT39](https://attack.mitre.org/groups/G0087) has utilized AutoIt malware scripts embedded in Microsoft Office documents or malicious links.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1070.004 | File Deletion | [APT39](https://attack.mitre.org/groups/G0087) has used malware to delete files after they are deployed on a compromised host.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [APT39](https://attack.mitre.org/groups/G0087) has used HTTP in communications with C2.(Citation: BitDefender Chafer May 2020)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.004 | DNS | [APT39](https://attack.mitre.org/groups/G0087) has used remote access tools that leverage DNS in communications with C2.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1074.001 | Local Data Staging | [APT39](https://attack.mitre.org/groups/G0087) has utilized tools to aggregate data prior to exfiltration.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [APT39](https://attack.mitre.org/groups/G0087) has used stolen credentials to compromise Outlook Web Access (OWA).(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1083 | File and Directory Discovery | [APT39](https://attack.mitre.org/groups/G0087) has used tools with the ability to search for files on a compromised host.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090.001 | Internal Proxy | [APT39](https://attack.mitre.org/groups/G0087) used custom tools to create SOCK5 and custom protocol proxies between infected hosts.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090.002 | External Proxy | [APT39](https://attack.mitre.org/groups/G0087) has used various tools to proxy C2 communications.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1102.002 | Bidirectional Communication | [APT39](https://attack.mitre.org/groups/G0087) has communicated with C2 through files uploaded to and downloaded from DropBox.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [APT39](https://attack.mitre.org/groups/G0087) has downloaded tools to compromised hosts.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1110 | Brute Force | [APT39](https://attack.mitre.org/groups/G0087) has used Ncrack to reveal credentials.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1113 | Screen Capture | [APT39](https://attack.mitre.org/groups/G0087) has used a screen capture utility to take screenshots on a compromised host.(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1115 | Clipboard Data | [APT39](https://attack.mitre.org/groups/G0087) has used tools capable of stealing contents of the clipboard.(Citation: Symantec Chafer February 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1135 | Network Share Discovery | [APT39](https://attack.mitre.org/groups/G0087) has used the post exploitation tool [CrackMapExec](https://attack.mitre.org/software/S0488) to enumerate network shares.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence | T1136.001 | Local Account | [APT39](https://attack.mitre.org/groups/G0087) has created accounts on multiple compromised hosts to perform actions within the network.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [APT39](https://attack.mitre.org/groups/G0087) has used malware to decrypt encrypted CAB files.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [APT39](https://attack.mitre.org/groups/G0087) has used SQL injection for initial compromise.(Citation: Symantec Chafer February 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Stealth | T1197 | BITS Jobs | [APT39](https://attack.mitre.org/groups/G0087) has used the BITS protocol to exfiltrate stolen data from a compromised host.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [APT39](https://attack.mitre.org/groups/G0087) has sent spearphishing emails in an attempt to lure users to click on a malicious link.(Citation: FireEye APT39 Jan 2019)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [APT39](https://attack.mitre.org/groups/G0087) has sent spearphishing emails in an attempt to lure users to click on a malicious attachment.(Citation: FireEye APT39 Jan 2019)(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence | T1505.003 | Web Shell | [APT39](https://attack.mitre.org/groups/G0087) has installed ANTAK and ASPXSPY web shells.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1546.010 | AppInit DLLs | [APT39](https://attack.mitre.org/groups/G0087) has used malware to set <code>LoadAppInit_DLLs</code> in the Registry key <code>SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows</code> in order to establish persistence.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [APT39](https://attack.mitre.org/groups/G0087) has maintained persistence using the startup folder.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.009 | Shortcut Modification | [APT39](https://attack.mitre.org/groups/G0087) has modified LNK shortcuts.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1553.006 | Code Signing Policy Modification | [APT39](https://attack.mitre.org/groups/G0087) has used malware to turn off the <code>RequireSigned</code> feature which ensures only signed DLLs can be run on Windows.(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1555 | Credentials from Password Stores | [APT39](https://attack.mitre.org/groups/G0087) has used the Smartftp Password Decryptor tool to decrypt FTP passwords.(Citation: BitDefender Chafer May 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [APT39](https://attack.mitre.org/groups/G0087) has used WinRAR and 7-Zip to compress an archive stolen data.(Citation: FireEye APT39 Jan 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [APT39](https://attack.mitre.org/groups/G0087) leveraged spearphishing emails with malicious attachments to initially compromise victims.(Citation: FireEye APT39 Jan 2019)(Citation: Symantec Chafer February 2018)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [APT39](https://attack.mitre.org/groups/G0087) leveraged spearphishing emails with malicious links to initially compromise victims.(Citation: FireEye APT39 Jan 2019)(Citation: FBI FLASH APT39 September 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1569.002 | Service Execution | [APT39](https://attack.mitre.org/groups/G0087) has used post-exploitation tools including RemCom and the Non-sucking Service Manager (NSSM) to execute processes.(Citation: BitDefender Chafer May 2020)(Citation: Symantec Chafer February 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [APT39](https://attack.mitre.org/groups/G0087) has modified and used customized versions of publicly-available tools like PLINK and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: BitDefender Chafer May 2020)(Citation: IBM ITG07 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 1件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -238,6 +261,7 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

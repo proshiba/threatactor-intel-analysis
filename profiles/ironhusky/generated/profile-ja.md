@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ironhusky`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:32Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -111,30 +111,41 @@ The repository mapping workbook places this actor in the China worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | malware-campaign | 不明 | 不明 | 2025-04-20 | 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 新たなバージョン「MysteryMonoSnail」は、単一コンポーネントで構成され、軽量化されている。 このマルウェアは、サービスの管理、シェルコマンドの実行、プロセスの生成・終了、ファイルの操作など、数十のコマンドをサポートする。 過去の攻撃では、CVE-2021-40449やCVE-2017-11882などのゼロデイ脆弱性が悪用されていた。 | 中 | `source--daily-4fa6e9612d1bc97443df` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | malware-campaign | 不明 | 不明 | 2025-04-20 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91 | malware--cve-2021-40449, malware--mysterysnail | ttp--activity-rule--29e8c3b9fe65c4959da7 | victim--activity-rule--b2806c55784b9aecd942 | 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 新たなバージョン「MysteryMonoSnail」は、単一コンポーネントで構成され、軽量化されている。 このマルウェアは、サービスの管理、シェルコマンドの実行、プロセスの生成・終了、ファイルの操作など、数十のコマンドをサポートする。 過去の攻撃では、CVE-2021-40449やCVE-2017-11882などのゼロデイ脆弱性が悪用されていた。 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | モンゴル | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df`, `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 政府・行政 | 活動「中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91 | malware--cve-2021-40449, malware--mysterysnail | ttp--activity-rule--29e8c3b9fe65c4959da7 |  |  | 不明 | 不明 | 2025-04-20 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Stealth | T1036 | Masquerading | 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 |  | activity--daily-7adb47935bc2762cf483 | 不明 | 不明 | 中 | `source--daily-4fa6e9612d1bc97443df` |
 | Stealth | T1036.005 | Match Legitimate Resource Name or Location | cks conducted by the APT group known as IronHusky. These incidents also involved implementations of the subtechnique known as Match Legitimate Name or Location T1036.005. Example 4 We also detected similar behavior from the ToddyCat group. This is an APT group that wa |  |  | 不明 | 不明 | 中 | `source--ironhusky--17a5734d667d6538` |
 
 ## IOC／artifact概要
 
-- IOC値: 3件
-- IOC観測: 3件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 3件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 8件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -161,9 +172,9 @@ The repository mapping workbook places this actor in the China worksheet.
 | source--ironhusky--37b1eb7ac640a809 | 2021 Advanced Threat Trends Research Report dbappsecurity |  | 2021 | summary/2022/2021 Advanced Threat Trends Research Report-dbappsecurity.pdf | report | TLP:CLEAR | 中 |
 | source--ironhusky--680537e8bf8b4058 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--ironhusky--a5bfad247a36ff1c | kaspersky ics cert apt attacks on industrial organizations in h2 2022 en |  | 2022 | summary/2023/kaspersky-ics-cert-apt-attacks-on-industrial-organizations-in-h2-2022-en.pdf | report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

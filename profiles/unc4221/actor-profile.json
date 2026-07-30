@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--unc4221",
   "name": "UNC4221",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:17:26Z",
+  "updated_at": "2026-07-29T23:12:01Z",
   "languages": [
     "ja"
   ],
@@ -82,23 +82,167 @@
         "basis": "daily-news-file-date"
       },
       "description": "FBIとCISAは、ロシア情報機関に関連するSignal利用者向けフィッシングが進化したと警告した。 攻撃者はSignalサポートを装い、被害者にSignalバックアップを有効化させ、復旧キーを送らせようとする。 復旧キーを渡すと、攻撃者は自分の端末でバックアップを復元し、過去の個人・グループ会話を閲覧できる。 標的は米国・国際政府関係者、軍関係者、政治家、ジャーナリスト、ウクライナの重要人物などである。 侵害後に同じ電話番号で新規アカウントを作っても古い復旧キーは無効化されず、新しい復旧キー生成が必要である。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--5403aec9c83d6a925f61"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-2e312afd1a9ab081a613"
       ],
-      "analyst_notes": "日次収集レコード daily-record--dd5e6f6608c5916dc03839c4 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア情報機関関連のRISで、FSB国境警備隊に組み込まれたFSB職員やロシア軍のために活動する人物を含み、UNC5792およびUNC4221として追跡されている。"
+      "analyst_notes": "日次収集レコード daily-record--dd5e6f6608c5916dc03839c4 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア情報機関関連のRISで、FSB国境警備隊に組み込まれたFSB職員やロシア軍のために活動する人物を含み、UNC5792およびUNC4221として追跡されている。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--99e3079cfd294d184602"
+      ]
     }
   ],
   "targets": {
-    "countries": [],
-    "regions": [],
-    "sectors": [],
+    "countries": [
+      {
+        "id": "target--activity-rule--country--36f1b9323d5faab92f39",
+        "name": "ウクライナ",
+        "description": "活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2e312afd1a9ab081a613"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--f4efe0738496e575bd8b",
+        "name": "ロシア",
+        "description": "活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2e312afd1a9ab081a613"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2e312afd1a9ab081a613"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--b9d2822cdc4b92cf0ef7",
+        "name": "東欧",
+        "description": "ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2e312afd1a9ab081a613"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2e312afd1a9ab081a613"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "name": "メディア・報道",
+        "description": "活動「FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2e312afd1a9ab081a613"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [],
   "sources": [
@@ -137,24 +281,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260629.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-misp-threat-actor",
@@ -254,7 +380,56 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、ロシア、米国。標的地域=東欧。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--99e3079cfd294d184602",
+      "name": "被害事例: FBI：ロシアのハッカーがSignalのバックアップ復旧キーを標的に",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "FBIとCISAは、ロシア情報機関に関連するSignal利用者向けフィッシングが進化したと警告した。 攻撃者はSignalサポートを装い、被害者にSignalバックアップを有効化させ、復旧キーを送らせようとする。 復旧キーを渡すと、攻撃者は自分の端末でバックアップを復元し、過去の個人・グループ会話を閲覧できる。 標的は米国・国際政府関係者、軍関係者、政治家、ジャーナリスト、ウクライナの重要人物などである。 侵害後に同じ電話番号で新規アカウントを作っても古い復旧キーは無効化されず、新しい復旧キー生成が必要である。",
+      "activity_refs": [
+        "activity--daily-dd5e6f6608c5916dc038"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--5403aec9c83d6a925f61"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "エンドポイント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-2e312afd1a9ab081a613"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

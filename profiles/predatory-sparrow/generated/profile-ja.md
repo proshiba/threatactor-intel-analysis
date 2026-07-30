@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--predatory-sparrow`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -110,9 +110,15 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | イラン | 構造化OSINTの被害国フィールドでPredatory Sparrowの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -120,10 +126,10 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 5件
-- IOC観測: 5件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 5件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 16件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -143,7 +149,6 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--predatory-sparrow--2b33c80ad5d9d724 | predatory sparrow |  | 不明 | actor_profile/evidence/predatory-sparrow.csv | structured-data | TLP:CLEAR | 中 |
 | source--predatory-sparrow--d70bb114d2876293 | the rise of state sponsored hacktivism |  | 不明 | Anonymous/the-rise-of-state-sponsored-hacktivism.pdf | report | TLP:CLEAR | 中 |
@@ -155,6 +160,7 @@ TTPなし
 | source--predatory-sparrow--4a312754247fd755 | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
 | source--predatory-sparrow--07063e8477757488 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

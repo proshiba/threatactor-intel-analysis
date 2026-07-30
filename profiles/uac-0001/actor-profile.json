@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--uac-0001",
   "name": "UAC-0001",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-27T11:04:36Z",
+  "updated_at": "2026-07-29T23:12:01Z",
   "languages": [
     "ja"
   ],
@@ -82,25 +82,755 @@
         "basis": "daily-news-file-date"
       },
       "description": "ロシア背景のPawn Stormは、PRISMEXと総称される連携型マルウェア群を用い、ウクライナやNATO加盟国の防衛サプライチェーンを標的にした。 攻撃ではステガノグラフィ、COMハイジャック、正規クラウドサービス悪用を組み合わせ、EDR回避とC&C通信を実現していた。 2026年1月下旬のキャンペーンではCVE-2026-21509が悪用され、関連検体ではCVE-2026-21513のゼロデイ悪用も確認された。 PRISMEXはPrismexSheet、PrismexDrop、PrismexLoader、PrismexStagerで構成され、Filen系サブドメインを使ってCovenant経由の通信を行う。 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--country--72caf60a2fbce4a1be7a",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--b94dc560a327b601965d"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-183d3d6935d0c269b0c9"
       ],
-      "analyst_notes": "日次収集レコード daily-record--00e51d0ed75215a24fee3522 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア背景のPawn Stormで、APT28、Fancy Bear、UAC-0001、Forest Blizzardとしても知られ、主に諜報活動と支援妨害、潜在的破壊工作が示唆される。"
+      "analyst_notes": "日次収集レコード daily-record--00e51d0ed75215a24fee3522 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア背景のPawn Stormで、APT28、Fancy Bear、UAC-0001、Forest Blizzardとしても知られ、主に諜報活動と支援妨害、潜在的破壊工作が示唆される。",
+      "ttp_refs": [
+        "ttp--activity-rule--0200d906a0fd1da614c8"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--901695fa9c5e37834e54"
+      ]
     }
   ],
   "targets": {
-    "countries": [],
-    "regions": [],
-    "sectors": [],
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--40aa386865110eee0df7",
+        "name": "アフガニスタン",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてアフガニスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--cbde8c367275116d7185",
+        "name": "アルメニア",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてアルメニアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--36f1b9323d5faab92f39",
+        "name": "ウクライナ",
+        "description": "活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9",
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--87fc075dd67ca7c7d9f9",
+        "name": "カザフスタン",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてカザフスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--ebe0aec5dee84b40183d",
+        "name": "ジョージア",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてジョージアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--e5c02095a2d1b032187c",
+        "name": "タジキスタン",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてタジキスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--15826ca96d36423a2bfb",
+        "name": "トルコ",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてトルコが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--334f513b6effc27ab62e",
+        "name": "ドイツ",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてドイツが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--d4fa1929ab44b16ed51b",
+        "name": "ハンガリー",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてハンガリーが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--6570e0853c9635cc3030",
+        "name": "パキスタン",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてパキスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--8e66ad159835406dd4b8",
+        "name": "フランス",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてフランスが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--61d0e2fc69d83c8b4a28",
+        "name": "ベルギー",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてベルギーが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--8e6353563443038f6af2",
+        "name": "ポーランド",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてポーランドが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--aa95a08683a2f89a34c2",
+        "name": "モンゴル",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてモンゴルが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--4a19e9ef1241143ad594",
+        "name": "ヨルダン",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国としてヨルダンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--72caf60a2fbce4a1be7a",
+        "name": "ロシア",
+        "description": "活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--3c81ba44393e36ad9e0e",
+        "name": "中国",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として中国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--40e27d6db2195c13c7c8",
+        "name": "日本",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として日本が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--0eb8aa97baa4bbd58f37",
+        "name": "米国",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として米国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--8a46ac94cc4733980028",
+        "name": "英国",
+        "description": "構造化OSINTの被害国フィールドでUAC-0001の標的・被害国として英国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--35fee2eb3820ff378dbf",
+        "name": "NATO加盟国",
+        "description": "活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的地域としてNATO加盟国が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9",
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--region--1805d7f350bc87cc2bfd",
+        "name": "アジア太平洋",
+        "description": "構造化OSINTの被害地域フィールドでUAC-0001の標的範囲としてアジア太平洋が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--region--e43f1c20afa5191ef4e4",
+        "name": "コーカサス",
+        "description": "アルメニア、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--8055ac650bc207db2969",
+        "name": "中央アジア",
+        "description": "カザフスタン、タジキスタンで確認された標的・被害事例を中央アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--6289de85efbc9aa07b9b",
+        "name": "中東",
+        "description": "トルコ、ヨルダンで確認された標的・被害事例を中東として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--fd99d06c784d505da02f",
+        "name": "南アジア",
+        "description": "アフガニスタン、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--4aafca61b8be7888ec58",
+        "name": "東アジア",
+        "description": "モンゴル、中国、日本で確認された標的・被害事例を東アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--87373dfc4081d249243d",
+        "name": "東欧",
+        "description": "ウクライナ、ハンガリー、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9",
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--b2e994f59926df44487e",
+        "name": "欧州",
+        "description": "構造化OSINTの被害地域フィールドでUAC-0001の標的範囲として欧州が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9",
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-183d3d6935d0c269b0c9"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
-  "ttps": [],
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--0200d906a0fd1da614c8",
+      "tactic": "Impact",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "observed_behavior": "調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。",
+      "activity_refs": [
+        "activity--daily-00e51d0ed75215a24fee"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-183d3d6935d0c269b0c9"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
   "sources": [
     {
       "source_id": "source--actor-mapping-workbook",
@@ -137,24 +867,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260422.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-cert-ua-uac-index",
@@ -315,6 +1027,31 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     }
   ],
   "assessment": {
@@ -334,7 +1071,67 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アルメニア、ウクライナ、カザフスタン、ジョージア、タジキスタン、トルコ、ドイツ、ハンガリー、パキスタン、フランス、ベルギー、ポーランド、モンゴル、ヨルダン、ロシア、中国、日本、米国、英国。標的地域=NATO加盟国、アジア太平洋、コーカサス、中央アジア、中東、南アジア、東アジア、東欧、欧州。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--901695fa9c5e37834e54",
+      "name": "被害事例: APTグループ「Pawn Storm」がマルウェア群「PRISMEX」を展開：政府機関や重要インフラ関連組織への攻撃を確認",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "ロシア背景のPawn Stormは、PRISMEXと総称される連携型マルウェア群を用い、ウクライナやNATO加盟国の防衛サプライチェーンを標的にした。 攻撃ではステガノグラフィ、COMハイジャック、正規クラウドサービス悪用を組み合わせ、EDR回避とC&C通信を実現していた。 2026年1月下旬のキャンペーンではCVE-2026-21509が悪用され、関連検体ではCVE-2026-21513のゼロデイ悪用も確認された。 PRISMEXはPrismexSheet、PrismexDrop、PrismexLoader、PrismexStagerで構成され、Filen系サブドメインを使ってCovenant経由の通信を行う。 調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。",
+      "activity_refs": [
+        "activity--daily-00e51d0ed75215a24fee"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--country--72caf60a2fbce4a1be7a",
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--b94dc560a327b601965d"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--0200d906a0fd1da614c8"
+      ],
+      "affected_assets": [
+        "クラウド／SaaS"
+      ],
+      "impacts": [
+        {
+          "impact_type": "destruction",
+          "description": "調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "調査ではサイバー諜報だけでなく、%USERPROFILE%配下を削除するワイパーコマンドも見つかり、破壊工作の可能性も示された。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-04-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-183d3d6935d0c269b0c9"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

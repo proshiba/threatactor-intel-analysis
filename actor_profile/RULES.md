@@ -74,8 +74,39 @@ IDはアクター内で一意かつ安定させる。
 Activityは`first_observed`、`last_observed`に加えて`reported_at`を必ず持つ。
 `reported_at`は活動を報告した資料の発行日または日次収集日であり、攻撃期間ではない。
 攻撃期間が不明でもActivity自体を省略せず、`first_observed`と`last_observed`をunknown、
-`reported_at`を判明範囲で記録する。UIの期間表示・並び替えで`reported_at`を補助的に
-使用しても、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
+`reported_at`を判明範囲で記録する。UIの「過去1年」「過去3年」等の活動・TTP・
+マルウェア期間集計と並び替えには`reported_at`を使用しない。報告日は活動時期不明の
+理由を明示する補助表示に限り、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
+
+Activityは`ttp_refs`と`victim_refs`も必ず持つ。参照先が判明しない場合は空配列にする。
+TTP・マルウェア・標的・被害事例を活動へ結び付ける際は、同じ証拠がその活動内での
+利用または被害を支持することを確認する。単なるアクター一般の利用実績は活動へ
+結び付けない。
+
+## 4.1 被害事例
+
+被害事例は`victim_cases`へ保存し、単なる標的一覧と分離する。公開情報が個別組織名を
+明示しない場合も、匿名組織または集約事例として保存できる。必須項目は次の通り。
+
+- `victim_case_id`
+- `victim_name`と`disclosure_status`
+- `victim_type`
+- `case_status`
+- `activity_refs`
+- `target_refs`
+- `malware_refs`
+- `ttp_refs`
+- `affected_assets`
+- `impacts`
+- `first_observed`、`last_observed`、`reported_at`
+- `confidence`、`evidence_refs`
+
+`disclosure_status`は`named`、`anonymous`、`aggregate`、`unknown`のいずれかとする。
+`case_status`は`confirmed`、`reported`、`alleged`、`disputed`、`unknown`のいずれかとし、
+攻撃者のリークサイト上の主張、被害組織の確認、第三者報告、明示的な否定を混同しない。
+アクターの帰属国、報告元の所在地、ニュース発行国を被害国として推定しない。
+被害組織名、国、産業、影響は情報源が明示した範囲だけを記録する。複数組織をまとめた
+統計は、架空の単一被害者へ変換せず`aggregate`として保持する。
 
 ## 5. Alias規則
 
@@ -135,6 +166,13 @@ TTPは1行を「Actor × Technique × Activity」として扱える粒度にす�
 - `confidence`
 - `evidence_refs`
 
+UIの期間別集計では、活動参照を持つTTPだけを「観測」として数える。汎用的な
+Actor→Techniqueマッピングは基礎マッピングとして表示できるが、活動頻度には加算しない。
+`all time`は日付不明の活動別観測も含める。過去1年・過去3年などの期間表示は、
+TTP自身の`first_observed`または`last_observed`がknown/inferredの場合だけ対象にする。
+資料発行日`reported_at`をTTP観測日へ代入しない。互換データに
+`basis: source-publication`や`publication/ongoing`が残る場合も、期間集計から除外する。
+
 ## 8. IOCモデル
 
 IOC値と観測イベントを分離する。IOCとして扱うのは、原則として次の値である。
@@ -148,25 +186,51 @@ IOC値と観測イベントを分離する。IOCとして扱うのは、原則�
 
 実行コマンド、ファイルパス、検体内文字列等はIOCへ混在させず、`artifacts.csv`へ保存する。
 
+### 8.0 IOCとして扱わない値
+
 次の値は、形式が上記に当てはまってもIOCとして取り込まない。いずれも脅威と無関係な値であり、
-横断検索で無関係な資料同士を誤って結び付けるためである。判定用の一覧は
-[reference-hosts.json](reference/reference-hosts.json)に置き、
-`scripts/ingest_observables.py`と`../ui/build_portal_index.py`が共有する。
+横断検索で無関係な資料同士を誤って結び付けるためである。判定用のデータは
+[reference-hosts.json](reference/reference-hosts.json)と
+[iana-tlds.json](reference/iana-tlds.json)に置き、`scripts/ingest_observables.py`（取込）、
+`scripts/validate_profile.py`（検証）、`../ui/build_portal_index.py`（公開索引）が共有する。
 
-- 出典レポート自身の参考リンク。ベンダーブログ、CERT、報道、リファレンスサイトのURL・
-  ドメイン・問い合わせ窓口メールアドレス。`securelist.com`、`attack.mitre.org`、
-  `www.microsoft.com`など。
-- 公開サフィックス単体。`co.kr`、`ddns.net`など。サブドメイン（`mfahost.ddns.net`）は
-  実際の指標なので残す。
-- 到達不能・予約済みアドレス。ループバック、RFC1918、ドキュメント用レンジ
-  （`192.0.2.0/24`等の伏字）、マルチキャスト、および公開DNSリゾルバ。
-- 拡張子がTLDとして存在しないファイル名。`readme.txt`、`index.html`など。
-  `.md`（モルドバ）、`.py`（パラグアイ）のようにTLDでもある拡張子は除外しない。
+**1. 出典レポート自身の参考リンク**
 
-ただし出典側で難読化されている値（`hxxps://github[.]com/...`）と、構造化IOC表から
-取り込んだ値は、アナリストが指標として明示したものとみなし上記に関わらず残す。
+ベンダーブログ、CERT、報道、リファレンスサイトのURL・ドメイン・問い合わせ窓口
+メールアドレス。`securelist.com`、`attack.mitre.org`、`www.microsoft.com`など。
+ホスト名の完全一致とドット区切りのサフィックス一致で判定する。
+
+**2. ホストとして成立しない値**
+
+TLDが[IANAの委任一覧](reference/iana-tlds.json)に存在しない値は、ファイル名
+（`dbconn.asp`、`loader.exe`）か文の断片（`safe.headquartered`）であってドメインではない。
+ドットを含まない値（`https://www/`、`https://unit42/`）も抽出途中で切れたものとして扱う。
+
+ファイル拡張子を列挙して判定してはならない。`.com`はCOM実行ファイルの拡張子でもあるが
+TLDとして実在するため、列挙すると本物のドメインを取りこぼす。`.md`（モルドバ）、
+`.py`（パラグアイ）、`.zip`、`.mov`も同様である。判定はTLDの実在性だけで行う。
+
+`.onion`、`.i2p`、`.bit`、`.exit`は委任TLDではないが指標として正当なので除外しない。
+
+**3. 公開サフィックス単体**
+
+`co.kr`、`ddns.net`など。サブドメイン（`mfahost.ddns.net`）は実際の指標なので残す。
+
+**4. 到達不能・予約済みアドレス**
+
+ループバック、RFC1918、ドキュメント用レンジ（`192.0.2.0/24`等の伏字）、マルチキャスト、
+および公開DNSリゾルバ。ホストがIPアドレスのURLは指標として正当なので除外しない。
+
+**例外**
+
+出典側で難読化されている値（`hxxps://github[.]com/...`）と、構造化IOC表から取り込んだ値は、
+アナリストが指標として明示したものとみなし1.に関わらず残す。2.〜4.に例外はない。
+
 `t.me`、`bit.ly`、`telegra.ph`、`webhook.site`のように攻撃者の実利用が多いサービスは、
 参考リンクとしての出現があっても一覧に入れない。
+
+既存データの点検には`scripts/audit_reference_iocs.py`を使う。検出のみが既定で、
+`--apply`で`iocs.json`から除去する。除去後は生成物の再生成が必要である。
 
 ### 8.1 Indicator
 
@@ -211,7 +275,11 @@ IOC値と観測イベントを分離する。IOCとして扱うのは、原則�
 ### 8.3 取りこぼし防止
 
 抽出した候補は捨てず、確証がないものは`disposition: "candidate"`として保存する。
-プレーンな一般ドメイン、メールアドレス、文書中の参考URLなどは自動的にconfirmedへ昇格しない。
+プレーンな一般ドメイン、メールアドレスは自動的にconfirmedへ昇格しない。
+
+ただしこの原則は「指標になり得る値」に対するものである。8.0で挙げた値は指標に
+なり得ないため、`candidate`として保存するのではなく取り込まない。確証の不足と、
+そもそも指標でないことを混同しない。
 
 ### 8.4 日付
 

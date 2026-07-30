@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--sidecopy",
   "name": "SideCopy",
   "status": "draft",
   "created_at": "2026-07-25T09:00:44Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T23:12:01Z",
   "languages": [
     "ja"
   ],
@@ -152,12 +152,104 @@
   },
   "activities": [],
   "targets": {
-    "countries": [],
-    "regions": [],
-    "sectors": [],
+    "countries": [
+      {
+        "id": "target--mitre-group--country--10e4d6129dcad8a850a8",
+        "name": "インド",
+        "description": "[SideCopy](https://attack.mitre.org/groups/G1008) is a Pakistani threat group that has primarily targeted South Asian countries, including Indian and Afghani government personnel, since at least 2019.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。 [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--4ec59b4d4bb7fc8d7ea2",
+        "name": "アジア",
+        "description": "MITRE ATT&CKのGroup概要でSideCopyの標的範囲としてアジアが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--region--e877deadb1d5cf543a19",
+        "name": "南アジア",
+        "description": "MITRE ATT&CKのGroup概要でSideCopyの標的範囲として南アジアが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--0df89bf8c0f0fb41c3dd",
+        "name": "政府・行政",
+        "description": "[SideCopy](https://attack.mitre.org/groups/G1008) is a Pakistani threat group that has primarily targeted South Asian countries, including Indian and Afghani government personnel, since at least 2019.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -165,7 +257,7 @@
       "tactic": "Discovery",
       "technique_id": "T1016",
       "technique_name": "System Network Configuration Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has identified the IP address of a compromised host.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -185,14 +277,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-005--general",
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has used a legitimate DLL file name, `Duser.dll` to disguise a malicious remote access tool.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -212,14 +304,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-005--general",
       "tactic": "Execution",
       "technique_id": "T1059.005",
       "technique_name": "Visual Basic",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has sent Microsoft Office Publisher documents to victims that have embedded malicious macros that execute an hta file via calling `mshta.exe`.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -239,14 +331,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1082--general",
       "tactic": "Discovery",
       "technique_id": "T1082",
       "technique_name": "System Information Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has identified the OS version of a compromised host.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -266,14 +358,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1105--general",
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has delivered trojanized executables via spearphishing emails that contacts actor-controlled servers to download malicious payloads.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -293,14 +385,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1106--general",
       "tactic": "Execution",
       "technique_id": "T1106",
       "technique_name": "Native API",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": " [SideCopy](https://attack.mitre.org/groups/G1008) has executed malware by calling the API function `CreateProcessW`.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -320,14 +412,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has attempted to lure victims into clicking on malicious embedded archive files sent via spearphishing campaigns.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -347,14 +439,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1218-005--general",
       "tactic": "Stealth",
       "technique_id": "T1218.005",
       "technique_name": "Mshta",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has utilized `mshta.exe` to execute a malicious hta file.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -374,14 +466,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1518--general",
       "tactic": "Discovery",
       "technique_id": "T1518",
       "technique_name": "Software Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has collected browser information from a compromised host.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -401,14 +493,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1518-001--general",
       "tactic": "Discovery",
       "technique_id": "T1518.001",
       "technique_name": "Security Software Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) uses a loader DLL file to collect AV product names from an infected host.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -428,14 +520,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-001--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.001",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has sent spearphishing emails with malicious hta file attachments.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -455,14 +547,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574-001--general",
       "tactic": "Execution, Stealth",
       "technique_id": "T1574.001",
       "technique_name": "DLL",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has used a malicious loader DLL file to execute the `credwiz.exe` process and side-load the malicious payload `Duser.dll`.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -482,14 +574,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1584-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1584.001",
       "technique_name": "Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has compromised domains for some of their infrastructure, including for C2 and staging malware.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -509,14 +601,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1598-002--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1598.002",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has crafted generic lures for spam campaigns to collect emails and credentials for targeting efforts.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -536,14 +628,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1608-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1608.001",
       "technique_name": "Upload Malware",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has used compromised domains to host its malicious payloads.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -563,14 +655,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1614--general",
       "tactic": "Discovery",
       "technique_id": "T1614",
       "technique_name": "System Location Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[SideCopy](https://attack.mitre.org/groups/G1008) has identified the country location of a compromised host.(Citation: MalwareBytes SideCopy Dec 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -590,7 +682,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -831,6 +923,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -850,7 +967,8 @@
     "history": "",
     "capability_details": "Action RAT, AuTo Stealer",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=インド。標的地域=アジア、南アジア。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

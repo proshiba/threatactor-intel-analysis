@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--magecart`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:33Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,17 +102,25 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 | campaign | 不明 | 不明 | 2026-06-06 | 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。 | 中 | `source--daily-5b3e49d018b8dff5644f` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 | campaign | 不明 | 不明 | 2026-06-06 | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | victim--activity-rule--450ca787b4c7bb9ad8ac | 新たなMagecartキャンペーンが、StripeのAPI基盤をカード窃取ペイロードのホストと流出データ保管に悪用している。 悪意ある活動はオンライン店舗が信頼しやすいGoogle Tag ManagerとStripeのドメインに依存している。 悪性コードは正規に見えるGTMコンテナから読み込まれ、Magento/Adobe Commerceのチェックアウトページを狙う。 窃取対象はカード番号、有効期限、CVV、氏名、請求先住所、メールアドレス、電話番号などである。 SansecはFirestoreを使う亜種も確認し、Stripe上の記録作成日から少なくとも2025年12月24日以降の活動を示唆した。 | 中 | `source--daily-5b3e49d018b8dff5644f` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 金融 | 活動「クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-5b3e49d018b8dff5644f` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | メール／メールアカウント |  | 不明 | 不明 | 2026-06-06 | 中 | `source--daily-5b3e49d018b8dff5644f` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -146,7 +154,6 @@ TTPなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-5b3e49d018b8dff5644f | クレジットカード窃取キャンペーン、盗難決済情報の保管にStripeを悪用 | sansec.io | 2026-06-06 | https://sansec.io/research/stripe-api-skimmer-infrastructure | osint-report | TLP:CLEAR | 中 |
 | source--magecart--15766072d35a10d4 | README |  | 不明 | Magecart/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述

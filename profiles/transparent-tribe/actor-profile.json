@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--transparent-tribe",
   "name": "Transparent Tribe",
   "status": "draft",
   "created_at": "2026-07-25T09:00:44Z",
-  "updated_at": "2026-07-27T11:04:36Z",
+  "updated_at": "2026-07-29T23:12:01Z",
   "languages": [
     "ja"
   ],
@@ -154,16 +154,16 @@
         ],
         "description": "[Crimson](https://attack.mitre.org/software/S0115) is a remote access Trojan that has been used by [Transparent Tribe](https://attack.mitre.org/groups/G0134) since at least 2016.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020)",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2021-12-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-07-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
@@ -348,6 +348,56 @@
   },
   "activities": [
     {
+      "activity_id": "activity--c0011",
+      "name": "C0011",
+      "activity_type": "campaign",
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "description": "[C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) ",
+      "target_refs": [
+        "target--country--india",
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--crimson"
+      ],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "",
+      "reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "ttp_refs": [
+        "ttp--mitre-campaign--2190b7f723ca8b505db8",
+        "ttp--mitre-campaign--316336d66e0779a09423",
+        "ttp--mitre-campaign--491f3c666f93e55402d6",
+        "ttp--mitre-campaign--588e8190abaf6ad385cd",
+        "ttp--mitre-campaign--7d63f0df6c08571978c6",
+        "ttp--mitre-campaign--9b709fe37ae48a5728e2",
+        "ttp--mitre-campaign--ad8a4a3eb993f5fe638e",
+        "ttp--mitre-campaign--f324682b1c519c6387c3"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--d28e41b1d16aa4dca383"
+      ]
+    },
+    {
       "activity_id": "activity--daily-48f331a7033096914857",
       "name": "ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中",
       "activity_type": "malware-campaign",
@@ -370,14 +420,23 @@
         "basis": "daily-news-file-date"
       },
       "description": "ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。",
-      "target_refs": [],
+      "target_refs": [
+        "target--country--india",
+        "target--sector--defense"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-b5bf76c5ef95da099eb5"
       ],
-      "analyst_notes": "日次収集レコード daily-record--48f331a703309691485727c1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。"
+      "analyst_notes": "日次収集レコード daily-record--48f331a703309691485727c1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。",
+      "ttp_refs": [
+        "ttp--activity-rule--9f71c23b587163876322"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--a0e47c664c46d16a865d"
+      ]
     },
     {
       "activity_id": "activity--operation-c-major",
@@ -409,72 +468,131 @@
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
-      }
-    },
-    {
-      "activity_id": "activity--c0011",
-      "name": "C0011",
-      "activity_type": "campaign",
-      "first_observed": {
-        "value": "2021-12-01T06:00:00.000Z",
-        "precision": "second",
-        "status": "known",
-        "basis": "mitre-attack"
       },
-      "last_observed": {
-        "value": "2022-07-01T05:00:00.000Z",
-        "precision": "second",
-        "status": "known",
-        "basis": "mitre-attack"
-      },
-      "description": "[C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) ",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--mitre-attack-19-1"
-      ],
-      "analyst_notes": "",
-      "reported_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "earliest-evidence-source-published-at"
-      }
+      "ttp_refs": [],
+      "victim_refs": []
     }
   ],
   "targets": {
     "countries": [
       {
+        "id": "target--targeting-audit--country--e915bf4a2857f23c1bde",
+        "name": "アゼルバイジャン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアゼルバイジャンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--bbb723409f1dd4f40a48",
+        "name": "アフガニスタン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアフガニスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--ef6f2ecdff96c21a5874",
+        "name": "アラブ首長国連邦",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアラブ首長国連邦が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--be2257247f53b235c256",
+        "name": "イラン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてイランが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
         "id": "target--country--india",
-        "name": "India",
+        "name": "インド",
         "description": "Targeting text mentions india.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2021-12-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-07-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--actor-mapping-workbook",
+          "source--daily-b5bf76c5ef95da099eb5",
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-360net"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
-      }
-    ],
-    "regions": [],
-    "sectors": [
+        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
       {
-        "id": "target--sector--government",
-        "name": "Government",
-        "description": "Targeting text indicates the Government sector.",
+        "id": "target--targeting-audit--country--15366870c671ad737190",
+        "name": "オマーン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオマーンが記録されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -489,10 +607,745 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
+      {
+        "id": "target--targeting-audit--country--ab68ba8f601e7cdbcbbb",
+        "name": "オランダ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオランダが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--2746a7635d8068b74cfa",
+        "name": "オーストラリア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオーストラリアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--ba1b8e8c46a0d888f731",
+        "name": "オーストリア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオーストリアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--be0b8d5150786edf9e19",
+        "name": "カザフスタン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてカザフスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--c620b8931bb435ec2913",
+        "name": "カナダ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてカナダが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--b105fd37da28330cf8fc",
+        "name": "ケニア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてケニアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--b6915eac3e35be9c2b8b",
+        "name": "サウジアラビア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてサウジアラビアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--db391b0b93fe2908f138",
+        "name": "スウェーデン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてスウェーデンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--0d4fe404245297c86ebc",
+        "name": "スペイン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてスペインが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--2bc1eba852331d3241ab",
+        "name": "タイ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてタイが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--1e4f1c979bae8bfa497b",
+        "name": "チェコ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてチェコが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--751bf60595cf28930a15",
+        "name": "トルコ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてトルコが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--e76472cf2ede8d76e68a",
+        "name": "ドイツ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてドイツが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--507eaeb30fb25700b404",
+        "name": "ネパール",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてネパールが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--3576409a050f649c4fdb",
+        "name": "パキスタン",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてパキスタンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--26bfb612c6189bf5f4f6",
+        "name": "ブルガリア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてブルガリアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--38d4d9cb8d1104792e93",
+        "name": "ベルギー",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてベルギーが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--36a29ecbc817e1c9393b",
+        "name": "ボツワナ",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてボツワナが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--30f8c4db3b77a3861d23",
+        "name": "マレーシア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてマレーシアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--6792c074a9af906c3e02",
+        "name": "モンゴル",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてモンゴルが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--074e043686dd966fe4b6",
+        "name": "ルーマニア",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてルーマニアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--476b2aeb27d5d11d397a",
+        "name": "中国",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として中国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--63a61befcfdc61bb79bd",
+        "name": "日本",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として日本が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--11baf8776380d28c4f0e",
+        "name": "米国",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として米国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--031c5ccca525990c5469",
+        "name": "英国",
+        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国として英国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--27ba6d633f95d17fc898",
+        "name": "アフリカ",
+        "description": "ケニア、ボツワナで確認された標的・被害事例をアフリカとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--c237494339d276af3a12",
+        "name": "中東",
+        "description": "アラブ首長国連邦、イラン、オマーン、サウジアラビア、トルコで確認された標的・被害事例を中東として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--25d82c374ec0714a4db6",
+        "name": "北米",
+        "description": "カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--daf42c44909f1638d487",
+        "name": "南アジア",
+        "description": "アフガニスタン、インド、ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook",
+          "source--daily-b5bf76c5ef95da099eb5",
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-360net"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--6a91760cb3f9b96804bb",
+        "name": "東アジア",
+        "description": "モンゴル、中国、日本で確認された標的・被害事例を東アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--7ab6751a649268c241be",
+        "name": "東南アジア",
+        "description": "タイ、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--08063265ee0fc88f70cf",
+        "name": "東欧",
+        "description": "チェコ、ブルガリア、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--c2ddcb220aaf25a0ce68",
+        "name": "欧州",
+        "description": "構造化OSINTの被害地域フィールドでTransparent Tribeの標的範囲として欧州が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-360net"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "sectors": [
       {
         "id": "target--sector--defense",
         "name": "Defense",
@@ -511,16 +1364,302 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--actor-mapping-workbook",
+          "source--daily-b5bf76c5ef95da099eb5",
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+      },
+      {
+        "id": "target--sector--government",
+        "name": "Government",
+        "description": "Targeting text indicates the Government sector.",
+        "first_observed": {
+          "value": "2021-12-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "last_observed": {
+          "value": "2022-07-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook",
+          "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--9f71c23b587163876322",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中",
+      "activity_refs": [
+        "activity--daily-48f331a7033096914857"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b5bf76c5ef95da099eb5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--2190b7f723ca8b505db8",
+      "tactic": "Execution",
+      "technique_id": "T1204.002",
+      "technique_name": "Malicious File",
+      "observed_behavior": "During [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) relied on a student target to open a malicious document delivered via email.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--316336d66e0779a09423",
+      "tactic": "Execution",
+      "technique_id": "T1204.001",
+      "technique_name": "Malicious Link",
+      "observed_behavior": "During [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) relied on student targets to click on a malicious link sent via email.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--491f3c666f93e55402d6",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.001",
+      "technique_name": "Spearphishing Attachment",
+      "observed_behavior": "During [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) sent malicious attachments via email to student targets in India.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) ",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--588e8190abaf6ad385cd",
+      "tactic": "Resource Development",
+      "technique_id": "T1587.003",
+      "technique_name": "Digital Certificates",
+      "observed_behavior": "For [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) established SSL certificates on the typo-squatted domains the group registered.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--7d63f0df6c08571978c6",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.001",
+      "technique_name": "Domains",
+      "observed_behavior": "For [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) registered domains likely designed to appear relevant to student targets in India.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--9b709fe37ae48a5728e2",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "During [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) sent emails containing a malicious link to student targets in India.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--ad8a4a3eb993f5fe638e",
+      "tactic": "Resource Development",
+      "technique_id": "T1608.001",
+      "technique_name": "Upload Malware",
+      "observed_behavior": "For [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) hosted malicious documents on domains registered by the group.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) ",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--f324682b1c519c6387c3",
+      "tactic": "Execution",
+      "technique_id": "T1059.005",
+      "technique_name": "Visual Basic",
+      "observed_behavior": "For [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) used malicious VBA macros within a lure document as part of the [Crimson](https://attack.mitre.org/software/S0115) malware installation process onto a compromised host.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
     {
       "ttp_id": "ttp--t1005--general",
       "tactic": "Collection",
@@ -634,7 +1773,7 @@
       "tactic": "Stealth",
       "technique_id": "T1027.013",
       "technique_name": "Encrypted/Encoded File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has dropped encoded executables on compromised hosts.(Citation: Proofpoint Operation Transparent Tribe March 2016)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -654,7 +1793,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036--general",
@@ -688,7 +1827,7 @@
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) can mimic legitimate Windows directories by using the same icons and names.(Citation: Kaspersky Transparent Tribe August 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -708,7 +1847,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1041--general",
@@ -823,7 +1962,7 @@
       "tactic": "Execution",
       "technique_id": "T1059.005",
       "technique_name": "Visual Basic",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has crafted VBS-based malicious documents.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020)\t ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -844,7 +1983,7 @@
         "source--mitre-attack-19-1",
         "source--transparent-tribe--8c7cc7c46f9a6fd9"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-007--general",
@@ -1148,7 +2287,7 @@
       "tactic": "Initial Access",
       "technique_id": "T1189",
       "technique_name": "Drive-by Compromise",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has used websites with malicious hyperlinks and iframes to infect targeted victims with [Crimson](https://attack.mitre.org/software/S0115), [njRAT](https://attack.mitre.org/software/S0385), and other malicious tools.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Unit 42 ProjectM March 2016)(Citation: Talos Transparent Tribe May 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1168,14 +2307,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1203--general",
       "tactic": "Execution",
       "technique_id": "T1203",
       "technique_name": "Exploitation for Client Execution",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has crafted malicious files to exploit CVE-2012-0158 and CVE-2010-3333 for execution.(Citation: Proofpoint Operation Transparent Tribe March 2016)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1195,14 +2334,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-001--general",
       "tactic": "Execution",
       "technique_id": "T1204.001",
       "technique_name": "Malicious Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has directed users to open URLs hosting malicious content.(Citation: Talos Oblique RAT March 2021)(Citation: Talos Transparent Tribe May 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1222,14 +2361,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has used weaponized documents in e-mail to compromise targeted systems.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020)(Citation: Talos Oblique RAT March 2021)(Citation: Talos Transparent Tribe May 2021)(Citation: Unit 42 ProjectM March 2016)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1250,7 +2389,7 @@
         "source--mitre-attack-19-1",
         "source--transparent-tribe--8c7cc7c46f9a6fd9"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1218--general",
@@ -1419,7 +2558,7 @@
       "tactic": "Stealth",
       "technique_id": "T1564.001",
       "technique_name": "Hidden Files and Directories",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) can hide legitimate directories and replace them with malicious copies of the same name.(Citation: Kaspersky Transparent Tribe August 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1439,7 +2578,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1565-001--general",
@@ -1473,7 +2612,7 @@
       "tactic": "Initial Access",
       "technique_id": "T1566.001",
       "technique_name": "Spearphishing Attachment",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has sent spearphishing e-mails with attachments to deliver malicious payloads.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Kaspersky Transparent Tribe August 2020)(Citation: Talos Oblique RAT March 2021)(Citation: Talos Transparent Tribe May 2021)(Citation: Unit 42 ProjectM March 2016)\t ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1494,14 +2633,14 @@
         "source--mitre-attack-19-1",
         "source--transparent-tribe--8c7cc7c46f9a6fd9"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-002--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.002",
       "technique_name": "Spearphishing Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has embedded links to malicious downloads in e-mails.(Citation: Talos Oblique RAT March 2021)(Citation: Talos Transparent Tribe May 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1522,14 +2661,14 @@
         "source--mitre-attack-19-1",
         "source--transparent-tribe--8c7cc7c46f9a6fd9"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1568--general",
       "tactic": "Command And Control",
       "technique_id": "T1568",
       "technique_name": "Dynamic Resolution",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has used dynamic DNS services to set up C2.(Citation: Proofpoint Operation Transparent Tribe March 2016)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1549,7 +2688,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1573-002--general",
@@ -1583,7 +2722,7 @@
       "tactic": "Resource Development",
       "technique_id": "T1583.001",
       "technique_name": "Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has registered domains to mimic file sharing, government, defense, and research websites for use in targeted campaigns.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Talos Transparent Tribe May 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1603,14 +2742,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1584-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1584.001",
       "technique_name": "Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has compromised domains for use in targeted malicious campaigns.(Citation: Proofpoint Operation Transparent Tribe March 2016)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1630,14 +2769,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1608-004--general",
       "tactic": "Resource Development",
       "technique_id": "T1608.004",
       "technique_name": "Drive-by Target",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Transparent Tribe](https://attack.mitre.org/groups/G0134) has set up websites with malicious hyperlinks and iframes to infect targeted victims with [Crimson](https://attack.mitre.org/software/S0115), [njRAT](https://attack.mitre.org/software/S0385), and other malicious tools.(Citation: Proofpoint Operation Transparent Tribe March 2016)(Citation: Unit 42 ProjectM March 2016)(Citation: Talos Transparent Tribe May 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1657,7 +2796,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -1942,6 +3081,56 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--target-audit-misp-360net",
+      "path": "actor_profile/reference/osint/misp-360net.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/360net.json",
+      "title": "MISP 360.net suspected-victim fields",
+      "publisher": "MISP Project / 360.net",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "zh",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Suspected-victim fields are vendor assessments and may reflect geopolitical source bias; entries use medium confidence."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -1961,7 +3150,115 @@
     "history": "Operation C-Major",
     "capability_details": "Crimson, DarkComet, ObliqueRAT, Peppy, njRAT, Crimson RAT, Limepad",
     "infrastructure_details": "",
-    "targeting_details": "Government of India diplomatic and military",
+    "targeting_details": "構造化ターゲット監査: 標的国=アゼルバイジャン、アフガニスタン、アラブ首長国連邦、イラン、インド、オマーン、オランダ、オーストラリア、オーストリア、カザフスタン、カナダ、ケニア、サウジアラビア、スウェーデン、スペイン、タイ、チェコ、トルコ、ドイツ、ネパール、パキスタン、ブルガリア、ベルギー、ボツワナほか7か国。標的地域=アフリカ、中東、北米、南アジア、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nGovernment of India diplomatic and military",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--a0e47c664c46d16a865d",
+      "name": "被害事例: ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。",
+      "activity_refs": [
+        "activity--daily-48f331a7033096914857"
+      ],
+      "target_refs": [
+        "target--country--india",
+        "target--sector--defense"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--9f71c23b587163876322"
+      ],
+      "affected_assets": [
+        "サーバー"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-05-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b5bf76c5ef95da099eb5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--d28e41b1d16aa4dca383",
+      "name": "被害事例: C0011",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "[C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) ",
+      "activity_refs": [
+        "activity--c0011"
+      ],
+      "target_refs": [
+        "target--country--india",
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--crimson"
+      ],
+      "ttp_refs": [
+        "ttp--mitre-campaign--2190b7f723ca8b505db8",
+        "ttp--mitre-campaign--316336d66e0779a09423",
+        "ttp--mitre-campaign--491f3c666f93e55402d6",
+        "ttp--mitre-campaign--588e8190abaf6ad385cd",
+        "ttp--mitre-campaign--7d63f0df6c08571978c6",
+        "ttp--mitre-campaign--9b709fe37ae48a5728e2",
+        "ttp--mitre-campaign--ad8a4a3eb993f5fe638e",
+        "ttp--mitre-campaign--f324682b1c519c6387c3"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "[C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India."
+        }
+      ],
+      "first_observed": {
+        "value": "2021-12-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "last_observed": {
+        "value": "2022-07-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

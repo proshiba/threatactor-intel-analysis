@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--ember-bear",
   "name": "Ember Bear",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-27T11:04:31Z",
+  "updated_at": "2026-07-29T23:13:54Z",
   "languages": [
     "ja"
   ],
@@ -573,21 +573,55 @@
         "basis": "daily-news-file-date"
       },
       "description": "米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--country--ukraine"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-f1baa9d2403423a63284"
       ],
-      "analyst_notes": "日次収集レコード daily-record--b7a84ad717db2af67833f8a0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。"
+      "analyst_notes": "日次収集レコード daily-record--b7a84ad717db2af67833f8a0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。",
+      "ttp_refs": [
+        "ttp--activity-rule--f17a61b0acfb89cfe4ba"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--84ba967e4f2df409774e"
+      ]
     }
   ],
   "targets": {
     "countries": [
       {
+        "id": "target--country--ukraine",
+        "name": "ウクライナ",
+        "description": "Targeting text mentions ukraine.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--actor-mapping-workbook",
+          "source--daily-f1baa9d2403423a63284",
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
         "id": "target--country--kyrgyzstan",
-        "name": "Kyrgyzstan",
+        "name": "キルギス",
         "description": "Targeting text mentions kyrgyzstan.",
         "first_observed": {
           "value": null,
@@ -605,11 +639,11 @@
         "evidence_refs": [
           "source--actor-mapping-workbook"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
       },
       {
         "id": "target--country--georgia",
-        "name": "Georgia",
+        "name": "ジョージア",
         "description": "Targeting text mentions georgia.",
         "first_observed": {
           "value": null,
@@ -625,14 +659,15 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--actor-mapping-workbook",
+          "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
-        "id": "target--country--ukraine",
-        "name": "Ukraine",
-        "description": "Targeting text mentions ukraine.",
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -647,24 +682,143 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--daily-f1baa9d2403423a63284",
+          "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
-    "regions": [],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--662b70f80dd9e02e76ad",
+        "name": "NATO加盟国",
+        "description": "活動「米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表」の記述で標的地域としてNATO加盟国が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f1baa9d2403423a63284"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--region--0f5152aa37e521e4aef0",
+        "name": "中南米",
+        "description": "構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として中南米が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--region--23db61ed4c3ba7a990d2",
+        "name": "中央アジア",
+        "description": "構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として中央アジアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--region--aa7f74a2a06416b8bd30",
+        "name": "欧州",
+        "description": "構造化OSINTの被害地域フィールドでEmber Bearの標的範囲として欧州が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
     "sectors": [],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--f17a61b0acfb89cfe4ba",
+      "tactic": "Impact",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "observed_behavior": "2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。",
+      "activity_refs": [
+        "activity--daily-b7a84ad717db2af67833"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f1baa9d2403423a63284"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--t1003--general",
       "tactic": "Credential Access",
       "technique_id": "T1003",
       "technique_name": "OS Credential Dumping",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) gathers credential material from target systems, such as SSH keys, to facilitate access to victim environments.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -684,14 +838,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1003-001--general",
       "tactic": "Credential Access",
       "technique_id": "T1003.001",
       "technique_name": "LSASS Memory",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses legitimate Sysinternals tools such as procdump to dump LSASS memory.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -711,14 +865,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1003-002--general",
       "tactic": "Credential Access",
       "technique_id": "T1003.002",
       "technique_name": "Security Account Manager",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) acquires victim credentials by extracting registry hives such as the Security Account Manager through commands such as <code>reg save</code>.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -738,14 +892,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1003-004--general",
       "tactic": "Credential Access",
       "technique_id": "T1003.004",
       "technique_name": "LSA Secrets",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used frameworks such as [Impacket](https://attack.mitre.org/software/S0357) to dump LSA secrets for credential capture.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -765,14 +919,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1005--general",
       "tactic": "Collection",
       "technique_id": "T1005",
       "technique_name": "Data from Local System",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) gathers victim system information such as enumerating the volume of a given device or extracting system and security event logs for analysis.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -792,14 +946,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1018--general",
       "tactic": "Discovery",
       "technique_id": "T1018",
       "technique_name": "Remote System Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as Nmap and MASSCAN for remote service discovery.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -819,14 +973,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021",
       "technique_name": "Remote Services",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses valid network credentials gathered through credential harvesting to move laterally within victim networks, often employing the [Impacket](https://attack.mitre.org/software/S0357) framework to do so.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -846,14 +1000,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036--general",
       "tactic": "Stealth",
       "technique_id": "T1036",
       "technique_name": "Masquerading",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has renamed the legitimate Sysinternals tool procdump to alternative names such as <code>dump64.exe</code> to evade detection.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -873,14 +1027,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-005--general",
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has renamed tools to match legitimate utilities, such as renaming GOST tunneling instances to `java` in victim environments.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -900,14 +1054,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1046--general",
       "tactic": "Discovery",
       "technique_id": "T1046",
       "technique_name": "Network Service Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as NMAP for remote system discovery and enumeration in victim environments.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -927,14 +1081,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1047--general",
       "tactic": "Execution",
       "technique_id": "T1047",
       "technique_name": "Windows Management Instrumentation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used WMI execution with password hashes for command execution and lateral movement.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -954,14 +1108,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1053-005--general",
       "tactic": "Execution, Persistence, Privilege Escalation",
       "technique_id": "T1053.005",
       "technique_name": "Scheduled Task",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses remotely scheduled tasks to facilitate remote command execution on victim machines.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -981,14 +1135,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-001--general",
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used PowerShell commands to gather information from compromised systems,  such as email servers.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1008,14 +1162,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-004--general",
       "tactic": "Stealth",
       "technique_id": "T1070.004",
       "technique_name": "File Deletion",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) deletes files related to lateral movement to avoid detection.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1035,14 +1189,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-004--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.004",
       "technique_name": "DNS",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used DNS tunnelling tools, such as dnscat/2 and Iodine, for C2 purposes.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1062,14 +1216,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1078-001--general",
       "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
       "technique_id": "T1078.001",
       "technique_name": "Default Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has abused default user names and passwords in externally-accessible IP cameras for initial access.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1089,14 +1243,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1090-003--general",
       "tactic": "Command And Control",
       "technique_id": "T1090.003",
       "technique_name": "Multi-hop Proxy",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has configured multi-hop proxies via ProxyChains within victim environments.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1116,14 +1270,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1095--general",
       "tactic": "Command And Control",
       "technique_id": "T1095",
       "technique_name": "Non-Application Layer Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses socket-based tunneling utilities for command and control purposes such as NetCat and Go Simple Tunnel (GOST). These tunnels are used to push interactive command prompts over the created sockets.(Citation: Cadet Blizzard emerges as novel threat actor) [Ember Bear](https://attack.mitre.org/groups/G1003) has also used reverse TCP connections from Meterpreter installations to communicate back with C2 infrastructure.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1143,14 +1297,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1110--general",
       "tactic": "Credential Access",
       "technique_id": "T1110",
       "technique_name": "Brute Force",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) used the `su-bruteforce` tool to brute force specific users using the `su` command.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1170,14 +1324,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1110-003--general",
       "tactic": "Credential Access",
       "technique_id": "T1110.003",
       "technique_name": "Password Spraying",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has conducted password spraying against Outlook Web Access (OWA) infrastructure to identify valid user names and passwords.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1197,14 +1351,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1112--general",
       "tactic": "Defense Impairment, Persistence",
       "technique_id": "T1112",
       "technique_name": "Modify Registry",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) modifies registry values for anti-forensics and defense evasion purposes.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1224,14 +1378,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1114--general",
       "tactic": "Collection",
       "technique_id": "T1114",
       "technique_name": "Email Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) attempts to collect mail from accessed systems and servers.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1251,14 +1405,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1119--general",
       "tactic": "Collection",
       "technique_id": "T1119",
       "technique_name": "Automated Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) engages in mass collection from compromised systems during intrusions.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1278,14 +1432,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1125--general",
       "tactic": "Collection",
       "technique_id": "T1125",
       "technique_name": "Video Capture",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has exfiltrated images from compromised IP cameras.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1305,14 +1459,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1133--general",
       "tactic": "Initial Access, Persistence",
       "technique_id": "T1133",
       "technique_name": "External Remote Services",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) have used VPNs both for initial access to victim environments and for persistence within them following compromise.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1332,14 +1486,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1190--general",
       "tactic": "Initial Access",
       "technique_id": "T1190",
       "technique_name": "Exploit Public-Facing Application",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) gains initial access to victim environments by exploiting external-facing services. Examples include exploitation of CVE-2021-26084 in Confluence servers; CVE-2022-41040, ProxyShell, and other vulnerabilities in Microsoft Exchange; and multiple vulnerabilities in open-source platforms such as content management systems.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1359,14 +1513,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1195--general",
       "tactic": "Initial Access",
       "technique_id": "T1195",
       "technique_name": "Supply Chain Compromise",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has compromised information technology providers and software developers providing services to targets of interest, building initial access to ultimate victims at least in part through compromise of service providers that work with the victim organizations.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1386,14 +1540,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1203--general",
       "tactic": "Execution",
       "technique_id": "T1203",
       "technique_name": "Exploitation for Client Execution",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used exploits to enable follow-on execution of frameworks such as Meterpreter.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1413,14 +1567,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1210--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1210",
       "technique_name": "Exploitation of Remote Services",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used exploits for vulnerabilities such as MS17-010, also known as `Eternal Blue`, during operations.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1440,14 +1594,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1491-002--general",
       "tactic": "Impact",
       "technique_id": "T1491.002",
       "technique_name": "External Defacement",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) is linked to the defacement of several Ukrainian organization websites.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1467,14 +1621,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1505-003--general",
       "tactic": "Persistence",
       "technique_id": "T1505.003",
       "technique_name": "Web Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) deploys web shells following initial access for either follow-on command execution or protocol tunneling. Example web shells used by [Ember Bear](https://attack.mitre.org/groups/G1003) include P0wnyshell, reGeorg, [P.A.S. Webshell](https://attack.mitre.org/software/S0598), and custom variants of publicly-available web shell examples.(Citation: Cadet Blizzard emerges as novel threat actor)(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1494,14 +1648,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1550-002--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1550.002",
       "technique_name": "Pass the Hash",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used pass-the-hash techniques for lateral movement in victim environments.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1521,14 +1675,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1552-001--general",
       "tactic": "Credential Access",
       "technique_id": "T1552.001",
       "technique_name": "Credentials In Files",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has dumped configuration settings in accessed IP cameras including plaintext credentials.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1548,14 +1702,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1560--general",
       "tactic": "Collection",
       "technique_id": "T1560",
       "technique_name": "Archive Collected Data",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has compressed collected data prior to exfiltration.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1575,14 +1729,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1561-002--general",
       "tactic": "Impact",
       "technique_id": "T1561.002",
       "technique_name": "Disk Structure Wipe",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) conducted destructive operations against victims, including disk structure wiping, via the [WhisperGate](https://attack.mitre.org/software/S0689) malware in Ukraine.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1602,14 +1756,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1567-002--general",
       "tactic": "Exfiltration",
       "technique_id": "T1567.002",
       "technique_name": "Exfiltration to Cloud Storage",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used tools such as [Rclone](https://attack.mitre.org/software/S1040) to exfiltrate information from victim environments to cloud storage such as `mega.nz`.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1629,14 +1783,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1570--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1570",
       "technique_name": "Lateral Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) retrieves follow-on payloads direct from adversary-owned infrastructure for deployment on compromised hosts.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1656,14 +1810,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1571--general",
       "tactic": "Command And Control",
       "technique_id": "T1571",
       "technique_name": "Non-Standard Port",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used various non-standard ports for C2 communication.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1683,14 +1837,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1572--general",
       "tactic": "Command And Control",
       "technique_id": "T1572",
       "technique_name": "Protocol Tunneling",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used ProxyChains to tunnel protocols to internal networks.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1710,14 +1864,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583--general",
       "tactic": "Resource Development",
       "technique_id": "T1583",
       "technique_name": "Acquire Infrastructure",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) uses services such as IVPN, SurfShark, and Tor to add anonymization to operations.(Citation: Cadet Blizzard emerges as novel threat actor)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1737,14 +1891,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583-003--general",
       "tactic": "Resource Development",
       "technique_id": "T1583.003",
       "technique_name": "Virtual Private Server",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used virtual private servers (VPSs) to host tools, perform reconnaissance, exploit victim infrastructure, and as a destination for data exfiltration.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1764,14 +1918,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585--general",
       "tactic": "Resource Development",
       "technique_id": "T1585",
       "technique_name": "Establish Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has created accounts on dark web forums to obtain various tools and malware.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1791,14 +1945,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.001",
       "technique_name": "Malware",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has acquired malware and related tools from dark web forums.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1818,14 +1972,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-005--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.005",
       "technique_name": "Exploits",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has obtained exploitation scripts against publicly-disclosed vulnerabilities from public repositories.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1845,14 +1999,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1595-001--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1595.001",
       "technique_name": "Scanning IP Blocks",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has targeted IP ranges for vulnerability scanning related to government and critical infrastructure organizations.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1872,14 +2026,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1595-002--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1595.002",
       "technique_name": "Vulnerability Scanning",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has used publicly available tools such as MASSCAN and Acunetix for vulnerability scanning of public-facing infrastructure.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1899,14 +2053,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1654--general",
       "tactic": "Discovery",
       "technique_id": "T1654",
       "technique_name": "Log Enumeration",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Ember Bear](https://attack.mitre.org/groups/G1003) has enumerated SECURITY and SYSTEM log files during intrusions.(Citation: CISA GRU29155 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1926,7 +2080,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -2679,6 +2833,56 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     }
   ],
   "assessment": {
@@ -2698,7 +2902,59 @@
     "history": "",
     "capability_details": "reGeorg, P.A.S. Webshell, WhisperGate, Saint Bot, WhisperGate wiper, Elephant Framework, BloodHound, Impacket, ngrok, Rclone, Responder, CrackMapExec, PsExec",
     "infrastructure_details": "",
-    "targeting_details": "Ukraine, limited evidence to suggest that the group has been involved in attacks on targets in Kyrgyzstan. Third-party reporting has also linked the group to attacks on Georgia.",
+    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、キルギス、ジョージア、米国。標的地域=NATO加盟国、中南米、中央アジア、欧州。日本は確認時に個別国として保持する。\n\nUkraine, limited evidence to suggest that the group has been involved in attacks on targets in Kyrgyzstan. Third-party reporting has also linked the group to attacks on Georgia.",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--84ba967e4f2df409774e",
+      "name": "被害事例: 米国と同盟国、ロシアのGRU部隊が重要インフラ攻撃に関与と発表",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "米国と同盟国が、重要インフラ攻撃を積極的に行っているロシアのハッカー集団(Cadet BlizzardおよびEmber Bearとして追跡)にロシアのGRU部隊のUnit29155が関与していると発表。 GRU部隊29155は、NATO加盟国やウクライナを対象としたサイバー攻撃を行った。 2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。 主要ターゲットはエネルギー、政府、航空宇宙分野を含む米国の重要インフラ。 米国は、GRUのUnit 29155の一員とみられる5人のロシア軍情報将校に関する情報に対して、最大1,000万ドルの報奨金を発表。",
+      "activity_refs": [
+        "activity--daily-b7a84ad717db2af67833"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--country--ukraine"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--f17a61b0acfb89cfe4ba"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "2020年以降、スパイ活動のための情報の収集、機密情報の盗難と漏洩による評判の失墜、データの破壊による組織的な妨害を目的とした攻撃を行っている。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-09-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f1baa9d2403423a63284"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

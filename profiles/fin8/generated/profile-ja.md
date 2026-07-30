@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--fin8`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:31Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -122,9 +122,9 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | ransomware-extortion | 不明 | 不明 | 2025-03-08 | 脅威ハンターたちは、Ragnar Loaderと呼ばれる「洗練された進化するマルウェアツールキット」が、Ragnar Locker（別名Monstrous Mantis）、FIN7、FIN8、Ruthless Mantis（元REvil）などのサイバー犯罪およびランサムウェアグループによって使用されていることを明らかにした。 Ragnar Loaderは、侵害されたシステムへの持続的なアクセスを維持し、攻撃者が長期間にわたってネットワーク内に滞在するのを支援する重要な役割を果たしている。 このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 Ragnar Loaderは、リバースシェル、ローカル特権昇格、リモートデスクトップアクセスを容易にする複数のコンポーネントを含むアーカイブファイルパッケージとしてアフィリエイトに提供されている。 このマルウェアは、DLLプラグインやシェルコードを実行し、任意のファイルの内容を読み取り、持ち出す能力を持ち、ネットワーク内での横方向の移動を可能にするために、別のPowerShellベースのピボットファイルを使用している。 | 高 | `source--daily-070fa8287bb523515401` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | ransomware-extortion | 不明 | 不明 | 2025-03-08 |  | malware--ragnar-locker | ttp--activity-rule--be52eaae4400cbad854b | victim--activity-rule--fad27aa4b61efbca3f61 | 脅威ハンターたちは、Ragnar Loaderと呼ばれる「洗練された進化するマルウェアツールキット」が、Ragnar Locker（別名Monstrous Mantis）、FIN7、FIN8、Ruthless Mantis（元REvil）などのサイバー犯罪およびランサムウェアグループによって使用されていることを明らかにした。 Ragnar Loaderは、侵害されたシステムへの持続的なアクセスを維持し、攻撃者が長期間にわたってネットワーク内に滞在するのを支援する重要な役割を果たしている。 このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 Ragnar Loaderは、リバースシェル、ローカル特権昇格、リモートデスクトップアクセスを容易にする複数のコンポーネントを含むアーカイブファイルパッケージとしてアフィリエイトに提供されている。 このマルウェアは、DLLプラグインやシェルコードを実行し、任意のファイルの内容を読み取り、持ち出す能力を持ち、ネットワーク内での横方向の移動を可能にするために、別のPowerShellベースのピボットファイルを使用している。 | 高 | `source--daily-070fa8287bb523515401` |
 
 
 
@@ -132,57 +132,73 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | イタリア | 構造化OSINTの被害国フィールドでFIN8の標的・被害国としてイタリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでFIN8の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パナマ | 構造化OSINTの被害国フィールドでFIN8の標的・被害国としてパナマが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでFIN8の標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでFIN8の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| sectors | 医療・ヘルスケア | [FIN8](https://attack.mitre.org/groups/G0061) is a financially motivated threat group that has been active since at least January 2016, and known for targeting organizations in the hospitality, retail, entertainment, insurance, technology, chemical, and financial sectors. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 小売・ホスピタリティ | [FIN8](https://attack.mitre.org/groups/G0061) is a financially motivated threat group that has been active since at least January 2016, and known for targeting organizations in the hospitality, retail, entertainment, insurance, technology, chemical, and financial sectors. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 金融 | [FIN8](https://attack.mitre.org/groups/G0061) is a financially motivated threat group that has been active since at least January 2016, and known for targeting organizations in the hospitality, retail, entertainment, insurance, technology, chemical, and financial sectors. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Retail and Hospitality | Targeting text indicates the Retail and Hospitality sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | 非公開 | aggregate | multiple-organizations | reported |  | malware--ragnar-locker | ttp--activity-rule--be52eaae4400cbad854b |  | encryption: FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | 不明 | 不明 | 2025-03-08 | 高 | `source--daily-070fa8287bb523515401` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1016.001 | Internet Connection Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1033 | System Owner/User Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1048.003 | Exfiltration Over Unencrypted Non-C2 Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055.004 | Asynchronous Procedure Call | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.002 | Remote Data Staging | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1102 | Web Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1134.001 | Token Impersonation/Theft | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1482 | Domain Trust Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1486 | Data Encrypted for Impact | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1518.001 | Security Software Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1546.003 | Windows Management Instrumentation Event Subscription | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.002 | Asymmetric Cryptography | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.003 | Code Signing Certificates | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685.005 | Clear Windows Event Logs | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 |  | activity--daily-a538bc813f4e1d096ac8 | 不明 | 不明 | 中 | `source--daily-070fa8287bb523515401` |
+| Credential Access | T1003.001 | LSASS Memory | [FIN8](https://attack.mitre.org/groups/G0061) harvests credentials using Invoke-Mimikatz or Windows Credentials Editor (WCE).(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016.001 | Internet Connection Discovery | [FIN8](https://attack.mitre.org/groups/G0061) has used the [Ping](https://attack.mitre.org/software/S0097) command to check connectivity to actor-controlled C2 servers.(Citation: Bitdefender Sardonic Aug 2021)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [FIN8](https://attack.mitre.org/groups/G0061) has used [dsquery](https://attack.mitre.org/software/S0105) and other Active Directory utilities to enumerate hosts; they have also used <code>nltest.exe /dclist</code> to retrieve a list of domain controllers.(Citation: FireEye Know Your Enemy FIN8 Aug 2016)(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [FIN8](https://attack.mitre.org/groups/G0061) has used RDP for lateral movement.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [FIN8](https://attack.mitre.org/groups/G0061) has attempted to map to C$ on enumerated hosts to test the scope of their current credentials/context. [FIN8](https://attack.mitre.org/groups/G0061) has also used smbexec from the [Impacket](https://attack.mitre.org/software/S0357) suite for lateral movement.(Citation: FireEye Know Your Enemy FIN8 Aug 2016)(Citation: Bitdefender Sardonic Aug 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [FIN8](https://attack.mitre.org/groups/G0061) has used environment variables and standard input (stdin) to obfuscate command-line arguments. [FIN8](https://attack.mitre.org/groups/G0061) also obfuscates malicious macros delivered as payloads.(Citation: FireEye Obfuscation June 2017)(Citation: FireEye Know Your Enemy FIN8 Aug 2016)(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1033 | System Owner/User Discovery | [FIN8](https://attack.mitre.org/groups/G0061) has executed the command `quser` to display the session details of a compromised machine.(Citation: Symantec FIN8 Jul 2023)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [FIN8](https://attack.mitre.org/groups/G0061)'s malicious spearphishing payloads use WMI to launch malware and spawn `cmd.exe` execution. [FIN8](https://attack.mitre.org/groups/G0061) has also used WMIC and the [Impacket](https://attack.mitre.org/software/S0357) suite for lateral movement, as well as during and post compromise cleanup activities.(Citation: FireEye Obfuscation June 2017)(Citation: Bitdefender FIN8 July 2021)(Citation: FireEye Know Your Enemy FIN8 Aug 2016)(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1048.003 | Exfiltration Over Unencrypted Non-C2 Protocol | [FIN8](https://attack.mitre.org/groups/G0061) has used FTP to exfiltrate collected data.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [FIN8](https://attack.mitre.org/groups/G0061) has used scheduled tasks to maintain RDP backdoors.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1055.004 | Asynchronous Procedure Call | [FIN8](https://attack.mitre.org/groups/G0061) has injected malicious code into a new svchost.exe process.(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [FIN8](https://attack.mitre.org/groups/G0061)'s malicious spearphishing payloads are executed as [PowerShell](https://attack.mitre.org/techniques/T1059/001). [FIN8](https://attack.mitre.org/groups/G0061) has also used [PowerShell](https://attack.mitre.org/techniques/T1059/001) for lateral movement and credential access.(Citation: FireEye Obfuscation June 2017)(Citation: Bitdefender FIN8 July 2021)(Citation: FireEye Know Your Enemy FIN8 Aug 2016)(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [FIN8](https://attack.mitre.org/groups/G0061) has used a Batch file to automate frequently executed post compromise cleanup activities.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) [FIN8](https://attack.mitre.org/groups/G0061) has also executed commands remotely via `cmd.exe`.(Citation: FireEye Obfuscation June 2017)(Citation: Bitdefender FIN8 July 2021)(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [FIN8](https://attack.mitre.org/groups/G0061) has exploited the CVE-2016-0167 local vulnerability.(Citation: FireEye Fin8 May 2016)(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1070.004 | File Deletion | [FIN8](https://attack.mitre.org/groups/G0061) has deleted tmp and prefetch files during post compromise cleanup activities. [FIN8](https://attack.mitre.org/groups/G0061) has also deleted PowerShell scripts to evade detection on compromised machines.(Citation: FireEye Know Your Enemy FIN8 Aug 2016)(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [FIN8](https://attack.mitre.org/groups/G0061) has used HTTPS for command and control.(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1074.002 | Remote Data Staging | [FIN8](https://attack.mitre.org/groups/G0061) aggregates staged data from a network into a single location.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [FIN8](https://attack.mitre.org/groups/G0061) has used valid accounts for persistence and lateral movement.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1082 | System Information Discovery | [FIN8](https://attack.mitre.org/groups/G0061) has used PowerShell Scripts to check the architecture of a compromised machine before the selection of a 32-bit or 64-bit version of a malicious .NET loader.(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1102 | Web Service | [FIN8](https://attack.mitre.org/groups/G0061) has used <code>sslip.io</code>, a free IP to domain mapping service that also makes SSL certificate generation easier for traffic encryption, as part of their command and control.(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [FIN8](https://attack.mitre.org/groups/G0061) has used remote code execution to download subsequent payloads.(Citation: FireEye Fin8 May 2016)(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [FIN8](https://attack.mitre.org/groups/G0061) has deleted Registry keys during post compromise cleanup activities.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1134.001 | Token Impersonation/Theft | [FIN8](https://attack.mitre.org/groups/G0061) has used a malicious framework designed to impersonate the lsass.exe/vmtoolsd.exe token.(Citation: Bitdefender FIN8 July 2021)(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [FIN8](https://attack.mitre.org/groups/G0061) has used emails with malicious links to lure victims into installing malware.(Citation: FireEye Obfuscation June 2017)(Citation: FireEye Fin8 May 2016)(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [FIN8](https://attack.mitre.org/groups/G0061) has used malicious e-mail attachments to lure victims into executing malware.(Citation: FireEye Obfuscation June 2017)(Citation: FireEye Fin8 May 2016)(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1482 | Domain Trust Discovery | [FIN8](https://attack.mitre.org/groups/G0061) has retrieved a list of trusted domains by using <code>nltest.exe /domain_trusts</code>.(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1486 | Data Encrypted for Impact | [FIN8](https://attack.mitre.org/groups/G0061) has deployed ransomware such as [Ragnar Locker](https://attack.mitre.org/software/S0481), White Rabbit, and attempted to execute Noberus on compromised networks.(Citation: Symantec FIN8 Jul 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1518.001 | Security Software Discovery | [FIN8](https://attack.mitre.org/groups/G0061) has used Registry keys to detect and avoid executing in potential sandboxes.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1546.003 | Windows Management Instrumentation Event Subscription | [FIN8](https://attack.mitre.org/groups/G0061) has used WMI event subscriptions for persistence.(Citation: Bitdefender FIN8 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [FIN8](https://attack.mitre.org/groups/G0061) has used RAR to compress collected data before exfiltration.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [FIN8](https://attack.mitre.org/groups/G0061) has distributed targeted emails containing Word documents with embedded malicious macros.(Citation: FireEye Obfuscation June 2017)(Citation: FireEye Fin8 May 2016)(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [FIN8](https://attack.mitre.org/groups/G0061) has distributed targeted emails containing links to malicious documents with embedded macros.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1573.002 | Asymmetric Cryptography | [FIN8](https://attack.mitre.org/groups/G0061) has used the Plink utility to tunnel RDP back to C2 infrastructure.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [FIN8](https://attack.mitre.org/groups/G0061) has used open-source tools such as [Impacket](https://attack.mitre.org/software/S0357) for targeting efforts.(Citation: Bitdefender Sardonic Aug 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.003 | Code Signing Certificates | [FIN8](https://attack.mitre.org/groups/G0061) has used an expired open-source X.509 certificate for testing in the OpenSSL repository, to connect to actor-controlled C2 servers.(Citation: Bitdefender Sardonic Aug 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1685.005 | Clear Windows Event Logs | [FIN8](https://attack.mitre.org/groups/G0061) has cleared logs during post compromise cleanup activities.(Citation: FireEye Know Your Enemy FIN8 Aug 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 12件
-- IOC観測: 20件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 12件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 38件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -223,6 +239,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

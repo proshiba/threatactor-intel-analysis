@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--apt43`
 - 状態: review
-- 更新日時: 2026-07-27T11:17:22Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:11:59Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -131,16 +131,16 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| capability--apt43-public-llm-access | Access to Public LLM Tools | GTIG detected APT43 actors accessing multiple publicly available LLM tools. The source did not establish what APT43 intended to do with them. | 不明 | 2025-01-29 | 高 | `source--gtig-apt43-llm-access-2025` |
+| capability--apt43-public-llm-access | Access to Public LLM Tools | GTIG detected APT43 actors accessing multiple publicly available LLM tools. The source did not establish what APT43 intended to do with them. | 不明 | 不明 | 高 | `source--gtig-apt43-llm-access-2025` |
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | phishing-campaign | 不明 | 不明 | 2026-01-10 | FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。 | 中 | `source--daily-4c3098e731ae81f16008` |
-| 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | phishing-campaign | 不明 | 不明 | 2024-05-04 | NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。 弱いDMARCポリシーが設定されているドメインから偽のメールを送信することで、攻撃者は偽のメールを信頼できるソースから送信されたように見せかける。 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 攻撃は日本、韓国、米国、その他の国々のシンクタンクや研究センター、報道機関を標的としている。 「v=DMARC1; p=reject;」または「v=DMARC1; p=quarantine;」などのDMARCポリシーで、なりすましメールの送信に悪用されるのを防止することが推奨されている。 | 中 | `source--daily-251ff3261ef519dfe8d5` |
-| 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
-| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | phishing-campaign | 不明 | 不明 | 2026-01-10 | target--activity-rule--country--6604ad21c713b8dfd8c7 |  | ttp--activity-rule--e8957cb3783e2d0ff76d | victim--activity-rule--4b583ac5e9ca93d7b2cd | FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。 | 中 | `source--daily-4c3098e731ae81f16008` |
+| 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | phishing-campaign | 不明 | 不明 | 2024-05-04 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--5403aec9c83d6a925f61, target--activity-rule--sector--e7608f51421ca8b1e297 |  |  | victim--activity-rule--45826a90a8cda3e73668 | NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。 弱いDMARCポリシーが設定されているドメインから偽のメールを送信することで、攻撃者は偽のメールを信頼できるソースから送信されたように見せかける。 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 攻撃は日本、韓国、米国、その他の国々のシンクタンクや研究センター、報道機関を標的としている。 「v=DMARC1; p=reject;」または「v=DMARC1; p=quarantine;」などのDMARCポリシーで、なりすましメールの送信に悪用されるのを防止することが推奨されている。 | 中 | `source--daily-251ff3261ef519dfe8d5` |
+| 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 |  |  | ttp--activity-rule--376a281097c3ea027f31 |  | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--8a9e510cae6ff4929709 | victim--activity-rule--09400b273fb65a333cc4 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
 
 2025年1月、GTIGはAPT43関係者が複数の公開LLMツールへアクセスしていた証拠を報告した。ただし目的は不明であり、特定の攻撃工程での利用を示す情報ではない。
 
@@ -148,14 +148,38 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでAPT43の標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでAPT43の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでAPT43の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでAPT43の標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-251ff3261ef519dfe8d5`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-251ff3261ef519dfe8d5`, `source--daily-4c3098e731ae81f16008`, `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-251ff3261ef519dfe8d5`, `source--daily-444c87a0051642065f55`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-251ff3261ef519dfe8d5`, `source--daily-444c87a0051642065f55`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでAPT43の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| sectors | メディア・報道 | 活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-251ff3261ef519dfe8d5` |
+| sectors | 製造・産業 | 活動「北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
+| sectors | 教育・研究 | 活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-251ff3261ef519dfe8d5` |
 | sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--8a9e510cae6ff4929709 | VPN／リモートアクセス機器 |  | 不明 | 不明 | 2024-08-06 | 中 | `source--daily-444c87a0051642065f55` |
+| 被害事例: 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--5403aec9c83d6a925f61, target--activity-rule--sector--e7608f51421ca8b1e297 |  |  | メール／メールアカウント | espionage: 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 | 不明 | 不明 | 2024-05-04 | 中 | `source--daily-251ff3261ef519dfe8d5` |
+| 被害事例: FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 |  | ttp--activity-rule--e8957cb3783e2d0ff76d | メール／メールアカウント | credential-theft: QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 | 不明 | 不明 | 2026-01-10 | 中 | `source--daily-4c3098e731ae81f16008` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Execution | T1204.004 | Malicious Copy and Paste | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 |  | activity--daily-ad2a0b8acf43d0efef90 | 不明 | 不明 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
+| Initial Access | T1190 | Exploit Public-Facing Application | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 |  | activity--daily-b3aa2e40b5964cd73801 | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
+| Initial Access | T1566.002 | Spearphishing Link | FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 |  | activity--daily-47a3435a13311fff4bdb | 不明 | 不明 | 中 | `source--daily-4c3098e731ae81f16008` |
 | Discovery | T1007 | System Service Discovery | b Service T1102.002 Bidirectional Communication T1105 Ingress Tool Transfer T1132.001 Standard Encoding T1573.002 Asymmetric Cryptography Discovery T1007 System Service Discovery T1010 Application Window Discovery T1012 Query Registry T1016 System Network Configuration Discovery T1033 System Owner/User Discovery T1057 Process Discovery T1082 System Information Discovery T1083 File and Dir |  |  | 不明 | 不明 | 中 | `source--apt43--d022e60103e01413` |
 | Discovery | T1010 | Application Window Discovery | munication T1105 Ingress Tool Transfer T1132.001 Standard Encoding T1573.002 Asymmetric Cryptography Discovery T1007 System Service Discovery T1010 Application Window Discovery T1012 Query Registry T1016 System Network Configuration Discovery T1033 System Owner/User Discovery T1057 Process Discovery T1082 System Information Discovery T1083 File and Directory Discovery T1087 Account Dis |  |  | 不明 | 不明 | 中 | `source--apt43--d022e60103e01413` |
 | Discovery | T1012 | Query Registry | sfer T1132.001 Standard Encoding T1573.002 Asymmetric Cryptography Discovery T1007 System Service Discovery T1010 Application Window Discovery T1012 Query Registry T1016 System Network Configuration Discovery T1033 System Owner/User Discovery T1057 Process Discovery T1082 System Information Discovery T1083 File and Directory Discovery T1087 Account Discovery T1518 Software Discovery T161 |  |  | 不明 | 不明 | 中 | `source--apt43--d022e60103e01413` |
@@ -238,10 +262,10 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 6件
-- IOC観測: 6件
+- IOC値: 2件
+- IOC観測: 2件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 2件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 17件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -274,13 +298,15 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | source--daily-dddef70e68c0dc59a5d3 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | thehackernews.com | 2025-09-22 | https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html | osint-report | TLP:CLEAR | 中 |
 | source--gtig-apt43-llm-access-2025 | Adversarial Misuse of Generative AI | Google Threat Intelligence Group | 2025-01-29 | https://cloud.google.com/blog/topics/threat-intelligence/adversarial-misuse-generative-ai | vendor-research | TLP:CLEAR | 高 |
 | source--mandiant-apt43-2023 | APT43: North Korean Group Uses Cybercrime to Fund Espionage Operations | Mandiant | 2023-03-28 | https://cloud.google.com/blog/topics/threat-intelligence/apt43-north-korea-cybercrime-espionage/ | vendor-research | TLP:CLEAR | 高 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-live-kimsuky-2026 | Kimsuky, Group G0094 | MITRE ATT&CK | 2026-04-23 | https://attack.mitre.org/groups/G0094/ | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -32,7 +32,7 @@
         "history": "",
         "capability_details": "Embargo, Cobalt Strike, Net, Impacket, AADInternals, Tasklist, Rclone, Nltest",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -1460,16 +1460,178 @@
       }
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3fde1601-bd4c-4728-94cb-74c0b33ae881",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Embargoランサムウェア、クラウド環境への攻撃を強化",
+      "identity_class": "organization",
+      "description": "Embargoランサムウェアのアフィリエイトである攻撃グループStorm-0501は、ハイブリッドクラウド環境を標的にした新たな戦術を採用。 資格情報の悪用や特権アカウントの利用を通じてクラウド環境へのアクセスを獲得し、データを盗み、ランサムウェアペイロードを実行することを目的としている。 初期アクセスの取得方法は、侵害された、または購入した資格情報を使用、または既知の脆弱性を悪用すること。 アクセスを取得した後、攻撃者は、Microsoft Entraテナント内に新しいフェデレーションドメインを作成することにより、永続的なバックドアを配置。 攻撃者は、被害者のオンプレミスおよびクラウド環境にEmbargoランサムウェアを展開するか、後のためにバックドアアクセスを維持。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/embargo-ransomware-escalates-attacks-to-cloud-environments/",
+          "external_id": "source--daily-a7defc5bd3e885aefd88"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--b78c2a719aac8707e619",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--embargo"
+      ],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "Embargoランサムウェア、クラウド環境への攻撃を強化"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-09-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b5a47e85-ae7c-4f93-bad2-f84e480f910b",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行",
+      "identity_class": "organization",
+      "description": "MicrosoftはStorm-0501が端末暗号化からクラウド中心の身代金攻撃へ移行と警告。 クラウド機能を悪用し、窃取・バックアップ破壊・新しいKey Vault鍵で暗号化して恐喝。 DefenderのギャップでAD/Entra侵害、DSAを窃取して悪用し、AzureHoundで列挙、MFAがないグローバル管理者アカウント(GA)を奪取。 悪性フェデレーションドメインで永続化し、elevateAccess操作でOwner権限を取得。 スナップショット等を削除後、Teamsで身代金要求。検知・ハンティング情報も提示。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/storm-0501-hackers-shift-to-ransomware-attacks-in-the-cloud/",
+          "external_id": "source--daily-3f6df09902adf66bfcb4"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--d585ab724da24035a5c1",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--9536da68a35c9d55182e"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--165dabb1-c829-4e63-afb6-b1a2896ff760",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Data Encrypted for Impact",
+      "description": "Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行 MicrosoftはStorm-0501が端末暗号化からクラウド中心の身代金攻撃へ移行と警告。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1486",
+          "url": "https://attack.mitre.org/techniques/T1486/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/storm-0501-hackers-shift-to-ransomware-attacks-in-the-cloud/",
+          "external_id": "source--daily-3f6df09902adf66bfcb4"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--9536da68a35c9d55182e",
+      "x_tactic": "Impact",
+      "x_activity_refs": [
+        "activity--daily-4bee6f1f25cef5b69398"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4527120f-8ac4-4f37-99de-352a1a7cfad0",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "OS Credential Dumping",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used the SecretsDump module within [Impacket](https://attack.mitre.org/software/S0357) can perform credential dumping to obtain account and password information.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1500,19 +1662,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--57ad9cc7-ff24-4d54-9585-caa039e8ec9d",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "DCSync",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized DCSync to extract credentials from victims.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1543,19 +1705,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--bc3e7602-d1aa-485c-8172-c58e118126aa",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Windows Remote Management",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized the post-exploitation tool known as Evil-WinRM that uses PowerShell over Windows Remote Management (WinRM) for remote code execution.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1586,19 +1748,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--f72ae531-5216-4670-a066-3b7c441eddfb",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud Services",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used compromised Entra Connect Sync Server to move laterally within the victim environment.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1629,19 +1791,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Software Packing",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used Themida to pack [Cobalt Strike](https://attack.mitre.org/software/S0154) payloads.(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1672,19 +1834,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--17f0af66-6e30-4c8e-aa0a-bc6ed008102c",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Masquerade Task or Service",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized [Rclone](https://attack.mitre.org/software/S1040) masqueraded as svhost.exe and scvhost.exe.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1715,19 +1877,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Scheduled Task",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) had used a scheduled task named “SysUpdate” that was registered via GPO on devices in the network to distribute the [Embargo](https://attack.mitre.org/software/S1247) ransomware.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1758,19 +1920,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a3bcbadc-c4a9-4143-8b29-38b118a8fa7c",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Process Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has discovered running processes through `tasklist.exe`.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1801,19 +1963,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "PowerShell",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged PowerShell to execute commands and scripts.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1844,19 +2006,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--11aab3a2-5c07-4f33-9436-eeab0f0ce200",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud API",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged Cloud CLI to execute commands and exfiltrate data from compromised environments.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1887,19 +2049,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--c5e46297-4125-42a7-9755-46ec343ceee1",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud Accounts",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged compromised accounts to access Microsoft Entra Connect, which was used to synchronize on-premises identities and Microsoft Entra identities, allowing users to sign into both environments with the same password.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024) [Storm-0501](https://attack.mitre.org/groups/G1053) has also used the victim Global Administrator account that lacked any registered MFA method to access victim cloud environments.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025) [Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged Storage Account Access Keys within the victim environment.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1930,19 +2092,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Information Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged native Windows tools and commands such as `systeminfo` and open-source tools including OSQuery and ossec-win32 to query details about the endpoint.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -1973,19 +2135,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--afe9be49-45aa-46f2-ab7a-5307299063aa",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Domain Account",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized an obfuscated version of the Active Directory reconnaissance tool ADRecon.ps1 (obfs.ps1 or recon.ps1) to discover domain accounts.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2016,19 +2178,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--32cb138e-7ca2-4507-98a6-c5c3822ef298",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud Account",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has conducted enumeration of users, roles, and resources within victim Azure tenants using the tool Azurehound.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2059,19 +2221,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--92a06cad-3c05-4a52-a40a-ad0a5b837128",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Additional Cloud Credentials",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has reset the password of identified administrator accounts that lack MFA and registered their own MFA method.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2102,19 +2264,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--9624108b-5947-49c6-85e3-ad1935d2d8f2",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Additional Cloud Roles",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has elevated their access to Azure resources using `Microsoft.Authorization/elevateAccess/action` and `Microsoft.Authorization/roleAssignments/write` operations to gain User Access Administrator and Owner Azure roles over the victims’ Azure subscriptions.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2145,19 +2307,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Brute Force",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged brute force attacks to obtain credentials.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2188,19 +2350,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Exploit Public-Facing Application",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has exploited N-day vulnerabilities associated with public facing services to gain initial access to victim environments to include Zoho ManageEngine (CVE-2022-47966), Citrix NetScaler “Citrix Bleed” (CVE-2023-4966), and Adobe ColdFusion 2016 (CVE-2023-29300 or CVE-2023-38203).(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2231,19 +2393,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--3cda1050-d26b-42a8-b932-09acb31e82b4",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Regsvr32",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has launched [Cobalt Strike](https://attack.mitre.org/software/S0154) Beacon files using regsvr32.exe.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2274,19 +2436,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--8eb8a2e8-26b5-4ba6-a761-8694256053e2",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Rundll32",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has launched [Cobalt Strike](https://attack.mitre.org/software/S0154) Beacon files with rundll32.exe.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2317,19 +2479,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--272cd0e3-16ee-4553-95dd-dee449807716",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Remote Desktop Software",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used legitimate remote monitoring and management (RMM) tools including AnyDesk, NinjaOne, and Level.io.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2360,19 +2522,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--883c46a7-66cd-4fa1-9b37-8291abe200b6",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Domain Trust Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used Windows native utility [Nltest](https://attack.mitre.org/software/S0359) `nltest.exe` for discovery.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2403,19 +2565,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4a493bdf-fed1-4a55-aacc-4bfb5d81b643",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Group Policy Modification",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) distributed Group Policy Objects to tamper with security products.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2446,19 +2608,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--83637285-9058-432a-b11f-0f70b53d9f3b",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Trust Modification",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) created a new federated domain within the victim Microsoft Entra tenant using Global Administrator level access to establish a persistent backdoor for later use.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2489,19 +2651,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--5380102d-98fe-4e62-aa61-7c8628378857",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Data Destruction",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has destroyed data and backup files.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2532,19 +2694,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--5f95c788-4e43-4a81-b9f0-8b3c6d560e8f",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Data Encrypted for Impact",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has encrypted files in victim environments using ransomware as a service (RaaS) including Sabbath, Hive, [BlackCat](https://attack.mitre.org/software/S1068), Hunters International, [LockBit 3.0](https://attack.mitre.org/software/S1202) and [Embargo](https://attack.mitre.org/software/S1247) ransomware.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2575,19 +2737,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--3878d33a-822c-4bc8-b971-165d32d8db49",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Inhibit System Recovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has deleted snapshots, restore points, storage accounts, and backup services to prevent remediation and restoration.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025) [Storm-0501](https://attack.mitre.org/groups/G1053) has also impacted Azure resources through the targeting of `Microsoft.Compute/snapshots/delete`,\n`Microsoft.Compute/restorePointCollections/delete`,\n`Microsoft.Storage/storageAccounts/delete`, and \n`Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete`.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2618,19 +2780,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--ad0d52fc-0289-4fa8-8cac-130401551f8c",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Security Software Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has detected endpoint security solutions using `sc query sense` and `sc query windefend`.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2661,19 +2823,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--35c8f809-5e3f-43ac-8bba-f077f2579660",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud Service Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has discovered the victim environment’s protections to include Azure policies, resource locks, and Azure Storage immutability policies.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2704,19 +2866,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--26fb5844-c167-4b1e-9489-ef85b874261f",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Data from Cloud Storage",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) had modified Azure Storage account resources through the `Microsoft.Storage/storageAccounts/write` operation to expose non-remotely accessible accounts for data exfiltration.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2747,19 +2909,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--8e89b416-7cb4-4ac8-893a-6f89446c5278",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Transfer Data to Cloud Account",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has copied data from the victims environment to their own infrastructure leveraging AzCopy CLI.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2790,19 +2952,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--10cb5c83-a52b-4a52-ac51-0cd256ef54a9",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Private Keys",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged the Azure Owner role to access and steal the Storage Account Access keys using the `Microsoft.Storage/storageAccounts/listkeys/action` operation.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2833,19 +2995,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--129259ec-eb20-4764-a218-28298c6d6683",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Password Managers",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has stolen credentials contained in the password manager Keepass by utilizing Find-KeePassConfig.ps1.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2876,19 +3038,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--ee1e9d4d-a20e-4f31-86ea-778fddb5bf56",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud Secrets Management Stores",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized Azure Key Vault to store the encryption key using the operation `Microsoft.KeyVault/Vaults/write`.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2919,19 +3081,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--28c9bb58-b86e-48e2-aa56-4b9508591b94",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Conditional Access Policies",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has registered their own MFA method, and leveraged a victim hybrid joined server to circumvent Conditional Access Policies.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -2962,19 +3124,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Exfiltration to Cloud Storage",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has exfiltrated stolen data to the MEGA file sharing site.(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021) [Storm-0501](https://attack.mitre.org/groups/G1053) has also utilized [Rclone](https://attack.mitre.org/software/S1040) to exfiltrate data from victim environments to cloud storage such as MegaSync.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024) [Storm-0501](https://attack.mitre.org/groups/G1053) has exfiltrated data to their own infrastructure utilizing AzCopy Command-Line tool (CLI).(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3005,19 +3167,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--84168c22-90fd-4ffc-8cc5-3236b07919e2",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Delete Cloud Instance",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has conducted mass deletion of cloud data stores and resources from Azure subscriptions.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3048,19 +3210,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--d30122df-e288-499a-bb3f-1e789336818f",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Cloud Infrastructure Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has enumerated compromised cloud environments to identify critical assets, data stores, and back resources.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3091,19 +3253,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--cc4cb212-6194-4e87-957d-88637c9f4eb9",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Digital Certificates",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized their own self-signed TLS certificate “Microsoft IT TLS CA 5” with their infrastructure.(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3134,19 +3296,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--44f1f55a-39d4-4dae-ae47-b75c065ac5f9",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Vulnerabilities",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has obtained capabilities to exploit N-day vulnerabilities associated with public facing services to gain initial access to victim environments to include Zoho ManageEngine (CVE-2022-47966), Citrix NetScaler “Citrix Bleed” (CVE-2023-4966), and Adobe ColdFusion 2016 (CVE-2023-29300 or CVE-2023-38203).(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3177,19 +3339,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--5319c1f7-c723-478f-8158-57b00ebf4b23",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "System Language Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has identified system language codes on a compromised host to determine if the victim falls under a non-supported language code that is prohibited for targeting, including victims associated with Russia and other Commonwealth of Independent States (CIS) that may draw attention of law enforcement in countries where the ransomware operator or affiliates may reside/operate from.(Citation: Avertium Storm-0501 Sabbath Ransomware Arcane January 2022)(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3220,19 +3382,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--e967681d-aa83-4a1a-8e14-3b14d14dd325",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Financial Theft",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has engaged in double-extortion ransomware, exfiltrating data and directly contacting victims when the primary organization refuses to pay along with posting data on their data leak sites.(Citation: Avertium Storm-0501 Sabbath Ransomware Arcane January 2022)(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -3263,7 +3425,7 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "relationship",
@@ -3418,6 +3580,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--ab8935cf-096e-439b-93dd-8d6c8f03f9e6",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--b9f218d0-67f3-47d3-b002-0bf53e331e06",
+      "target_ref": "identity--3fde1601-bd4c-4728-94cb-74c0b33ae881",
+      "description": "Embargoランサムウェア、クラウド環境への攻撃を強化 affected victim--activity-rule--b78c2a719aac8707e619.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--6f3b1dd2-0d3d-4fe4-bf33-371ad47332fc",
       "created": "2026-07-27T11:04:35Z",
       "modified": "2026-07-27T11:04:35Z",
@@ -3433,16 +3610,61 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--7ef0269c-17bc-4761-9d46-52cf065d4af8",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--55559b50-0de5-4d29-a452-3c4793246be6",
+      "target_ref": "attack-pattern--165dabb1-c829-4e63-afb6-b1a2896ff760",
+      "description": "Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行 uses ttp--activity-rule--9536da68a35c9d55182e.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e452fa58-1f98-4202-b185-fc2c976147b2",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--55559b50-0de5-4d29-a452-3c4793246be6",
+      "target_ref": "identity--b5a47e85-ae7c-4f93-bad2-f84e480f910b",
+      "description": "Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行 affected victim--activity-rule--d585ab724da24035a5c1.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--faba7e13-1cf8-4d3e-83c9-133ed82f443a",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
+      "target_ref": "attack-pattern--165dabb1-c829-4e63-afb6-b1a2896ff760",
+      "description": "Storm-0501ハッカー、クラウドでのランサムウェア型攻撃へ移行 MicrosoftはStorm-0501が端末暗号化からクラウド中心の身代金攻撃へ移行と警告。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--f295a68d-c153-4edf-927f-9e44d15c480e",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--4527120f-8ac4-4f37-99de-352a1a7cfad0",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used the SecretsDump module within [Impacket](https://attack.mitre.org/software/S0357) can perform credential dumping to obtain account and password information.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3450,14 +3672,14 @@
       "spec_version": "2.1",
       "id": "relationship--d6f32c9f-48de-4d46-ab83-505a7b7de967",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--57ad9cc7-ff24-4d54-9585-caa039e8ec9d",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized DCSync to extract credentials from victims.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3465,14 +3687,14 @@
       "spec_version": "2.1",
       "id": "relationship--3c26876e-c93e-4798-87ca-4ecd6a34163f",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--bc3e7602-d1aa-485c-8172-c58e118126aa",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized the post-exploitation tool known as Evil-WinRM that uses PowerShell over Windows Remote Management (WinRM) for remote code execution.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3480,14 +3702,14 @@
       "spec_version": "2.1",
       "id": "relationship--87f5ce1c-df23-413f-87a7-d60e5fd736d4",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--f72ae531-5216-4670-a066-3b7c441eddfb",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used compromised Entra Connect Sync Server to move laterally within the victim environment.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3495,14 +3717,14 @@
       "spec_version": "2.1",
       "id": "relationship--865f6863-ef50-4999-8708-e3ba53352a12",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used Themida to pack [Cobalt Strike](https://attack.mitre.org/software/S0154) payloads.(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "x_confidence": "high"
     },
     {
@@ -3510,14 +3732,14 @@
       "spec_version": "2.1",
       "id": "relationship--3b86e7d8-a8b7-4b7c-b23d-859fee980d52",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--17f0af66-6e30-4c8e-aa0a-bc6ed008102c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized [Rclone](https://attack.mitre.org/software/S1040) masqueraded as svhost.exe and scvhost.exe.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3525,14 +3747,14 @@
       "spec_version": "2.1",
       "id": "relationship--36d077e6-c29d-478b-ac51-d2a1ffebe5a7",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--c4586e1f-85b9-44a4-b15c-c61bf7c99588",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) had used a scheduled task named “SysUpdate” that was registered via GPO on devices in the network to distribute the [Embargo](https://attack.mitre.org/software/S1247) ransomware.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3540,14 +3762,14 @@
       "spec_version": "2.1",
       "id": "relationship--97618717-2481-434d-aa3e-c6ad4a535d19",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--a3bcbadc-c4a9-4143-8b29-38b118a8fa7c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has discovered running processes through `tasklist.exe`.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3555,14 +3777,14 @@
       "spec_version": "2.1",
       "id": "relationship--dafb8d51-3d89-4f28-b984-06d946d4b002",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--314b9d93-4fac-4fbc-aa83-de7e1b264bda",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged PowerShell to execute commands and scripts.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3570,14 +3792,14 @@
       "spec_version": "2.1",
       "id": "relationship--4337fb36-02d1-4704-9025-49842c089648",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--11aab3a2-5c07-4f33-9436-eeab0f0ce200",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged Cloud CLI to execute commands and exfiltrate data from compromised environments.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3585,14 +3807,14 @@
       "spec_version": "2.1",
       "id": "relationship--a70f97ef-a038-46db-959c-fbc671b5244d",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--c5e46297-4125-42a7-9755-46ec343ceee1",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged compromised accounts to access Microsoft Entra Connect, which was used to synchronize on-premises identities and Microsoft Entra identities, allowing users to sign into both environments with the same password.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024) [Storm-0501](https://attack.mitre.org/groups/G1053) has also used the victim Global Administrator account that lacked any registered MFA method to access victim cloud environments.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025) [Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged Storage Account Access Keys within the victim environment.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3600,14 +3822,14 @@
       "spec_version": "2.1",
       "id": "relationship--45d9802f-5def-4293-9779-3897349bb8b7",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--7127059e-03e3-4104-ac97-1946f6678a14",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged native Windows tools and commands such as `systeminfo` and open-source tools including OSQuery and ossec-win32 to query details about the endpoint.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3615,14 +3837,14 @@
       "spec_version": "2.1",
       "id": "relationship--47870410-587a-4b8f-876d-7ef87c372c96",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--afe9be49-45aa-46f2-ab7a-5307299063aa",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized an obfuscated version of the Active Directory reconnaissance tool ADRecon.ps1 (obfs.ps1 or recon.ps1) to discover domain accounts.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3630,14 +3852,14 @@
       "spec_version": "2.1",
       "id": "relationship--800e609d-a934-4f13-a14f-708b99fb016b",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--32cb138e-7ca2-4507-98a6-c5c3822ef298",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has conducted enumeration of users, roles, and resources within victim Azure tenants using the tool Azurehound.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3645,14 +3867,14 @@
       "spec_version": "2.1",
       "id": "relationship--eff9b098-282b-4009-84e8-12bb055b8e33",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--92a06cad-3c05-4a52-a40a-ad0a5b837128",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has reset the password of identified administrator accounts that lack MFA and registered their own MFA method.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3660,14 +3882,14 @@
       "spec_version": "2.1",
       "id": "relationship--24f3ef1e-b66e-46d6-bf28-46a58fb6cbb0",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--9624108b-5947-49c6-85e3-ad1935d2d8f2",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has elevated their access to Azure resources using `Microsoft.Authorization/elevateAccess/action` and `Microsoft.Authorization/roleAssignments/write` operations to gain User Access Administrator and Owner Azure roles over the victims’ Azure subscriptions.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3675,14 +3897,14 @@
       "spec_version": "2.1",
       "id": "relationship--7e175d63-d246-4858-8270-4ae587e65a8a",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged brute force attacks to obtain credentials.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3690,14 +3912,14 @@
       "spec_version": "2.1",
       "id": "relationship--742b5f2e-1f2f-44fa-bb4b-9f025ca489a8",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--99246889-3afa-4672-a2c3-e8d3ab838fe9",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has exploited N-day vulnerabilities associated with public facing services to gain initial access to victim environments to include Zoho ManageEngine (CVE-2022-47966), Citrix NetScaler “Citrix Bleed” (CVE-2023-4966), and Adobe ColdFusion 2016 (CVE-2023-29300 or CVE-2023-38203).(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3705,14 +3927,14 @@
       "spec_version": "2.1",
       "id": "relationship--6c019ab1-bf49-4900-9420-968d468e3a69",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--3cda1050-d26b-42a8-b932-09acb31e82b4",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has launched [Cobalt Strike](https://attack.mitre.org/software/S0154) Beacon files using regsvr32.exe.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3720,14 +3942,14 @@
       "spec_version": "2.1",
       "id": "relationship--9363dc85-17f5-4691-b242-8ec7f3a67465",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--8eb8a2e8-26b5-4ba6-a761-8694256053e2",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has launched [Cobalt Strike](https://attack.mitre.org/software/S0154) Beacon files with rundll32.exe.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3735,14 +3957,14 @@
       "spec_version": "2.1",
       "id": "relationship--7b3c86b8-ef42-4677-a891-47f484199cd6",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--272cd0e3-16ee-4553-95dd-dee449807716",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used legitimate remote monitoring and management (RMM) tools including AnyDesk, NinjaOne, and Level.io.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3750,14 +3972,14 @@
       "spec_version": "2.1",
       "id": "relationship--52ccd845-fb3b-436a-b9b6-2b4e5ab36b8c",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--883c46a7-66cd-4fa1-9b37-8291abe200b6",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has used Windows native utility [Nltest](https://attack.mitre.org/software/S0359) `nltest.exe` for discovery.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3765,14 +3987,14 @@
       "spec_version": "2.1",
       "id": "relationship--56db5795-41ce-4f14-a462-a580e6a2f0bb",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--4a493bdf-fed1-4a55-aacc-4bfb5d81b643",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) distributed Group Policy Objects to tamper with security products.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3780,14 +4002,14 @@
       "spec_version": "2.1",
       "id": "relationship--7c03beab-8a14-41af-9f6d-30c747b89666",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--83637285-9058-432a-b11f-0f70b53d9f3b",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) created a new federated domain within the victim Microsoft Entra tenant using Global Administrator level access to establish a persistent backdoor for later use.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3795,14 +4017,14 @@
       "spec_version": "2.1",
       "id": "relationship--11297254-9bfd-46fe-954f-8acc5c151424",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--5380102d-98fe-4e62-aa61-7c8628378857",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has destroyed data and backup files.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3810,14 +4032,14 @@
       "spec_version": "2.1",
       "id": "relationship--192caeec-38d0-4310-a579-457e37091776",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--5f95c788-4e43-4a81-b9f0-8b3c6d560e8f",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has encrypted files in victim environments using ransomware as a service (RaaS) including Sabbath, Hive, [BlackCat](https://attack.mitre.org/software/S1068), Hunters International, [LockBit 3.0](https://attack.mitre.org/software/S1202) and [Embargo](https://attack.mitre.org/software/S1247) ransomware.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3825,14 +4047,14 @@
       "spec_version": "2.1",
       "id": "relationship--95d262d8-7de5-4263-99ef-2ec949973c63",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--3878d33a-822c-4bc8-b971-165d32d8db49",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has deleted snapshots, restore points, storage accounts, and backup services to prevent remediation and restoration.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025) [Storm-0501](https://attack.mitre.org/groups/G1053) has also impacted Azure resources through the targeting of `Microsoft.Compute/snapshots/delete`,\n`Microsoft.Compute/restorePointCollections/delete`,\n`Microsoft.Storage/storageAccounts/delete`, and \n`Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete`.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3840,14 +4062,14 @@
       "spec_version": "2.1",
       "id": "relationship--d985dbb4-10f9-405d-9e37-8622ef619dc3",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--ad0d52fc-0289-4fa8-8cac-130401551f8c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has detected endpoint security solutions using `sc query sense` and `sc query windefend`.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3855,14 +4077,14 @@
       "spec_version": "2.1",
       "id": "relationship--5c9cff5e-5590-4bc4-a7e9-b432211bd81f",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--35c8f809-5e3f-43ac-8bba-f077f2579660",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has discovered the victim environment’s protections to include Azure policies, resource locks, and Azure Storage immutability policies.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3870,14 +4092,14 @@
       "spec_version": "2.1",
       "id": "relationship--3e838c33-4029-47ac-a283-6d3cb3c103ff",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--26fb5844-c167-4b1e-9489-ef85b874261f",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) had modified Azure Storage account resources through the `Microsoft.Storage/storageAccounts/write` operation to expose non-remotely accessible accounts for data exfiltration.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3885,14 +4107,14 @@
       "spec_version": "2.1",
       "id": "relationship--a3be960a-d20d-4599-8454-69c9598e94ed",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--8e89b416-7cb4-4ac8-893a-6f89446c5278",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has copied data from the victims environment to their own infrastructure leveraging AzCopy CLI.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3900,14 +4122,14 @@
       "spec_version": "2.1",
       "id": "relationship--a56e2581-6464-4db4-aa90-ee39cf98a26e",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--10cb5c83-a52b-4a52-ac51-0cd256ef54a9",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has leveraged the Azure Owner role to access and steal the Storage Account Access keys using the `Microsoft.Storage/storageAccounts/listkeys/action` operation.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3915,14 +4137,14 @@
       "spec_version": "2.1",
       "id": "relationship--8eac1b39-7578-4408-b8bd-557d4e2bf756",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--129259ec-eb20-4764-a218-28298c6d6683",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has stolen credentials contained in the password manager Keepass by utilizing Find-KeePassConfig.ps1.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -3930,14 +4152,14 @@
       "spec_version": "2.1",
       "id": "relationship--4643828c-3973-4dde-9430-5efecf0b16bc",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--ee1e9d4d-a20e-4f31-86ea-778fddb5bf56",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized Azure Key Vault to store the encryption key using the operation `Microsoft.KeyVault/Vaults/write`.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3945,14 +4167,14 @@
       "spec_version": "2.1",
       "id": "relationship--e3a54a21-3970-4e69-95ba-537fae233750",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--28c9bb58-b86e-48e2-aa56-4b9508591b94",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has registered their own MFA method, and leveraged a victim hybrid joined server to circumvent Conditional Access Policies.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3960,14 +4182,14 @@
       "spec_version": "2.1",
       "id": "relationship--e50beca7-868e-4a53-a2e7-bbe6c9e75e8d",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--91b541ac-917a-4eaf-aac1-29dc4a9a6d91",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has exfiltrated stolen data to the MEGA file sharing site.(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021) [Storm-0501](https://attack.mitre.org/groups/G1053) has also utilized [Rclone](https://attack.mitre.org/software/S1040) to exfiltrate data from victim environments to cloud storage such as MegaSync.(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024) [Storm-0501](https://attack.mitre.org/groups/G1053) has exfiltrated data to their own infrastructure utilizing AzCopy Command-Line tool (CLI).(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3975,14 +4197,14 @@
       "spec_version": "2.1",
       "id": "relationship--ae42e5f2-80b9-40ee-bf49-187f05da8712",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--84168c22-90fd-4ffc-8cc5-3236b07919e2",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has conducted mass deletion of cloud data stores and resources from Azure subscriptions.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -3990,14 +4212,14 @@
       "spec_version": "2.1",
       "id": "relationship--5dbba240-7375-4db6-b5bd-1d9db2b7494d",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--d30122df-e288-499a-bb3f-1e789336818f",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has enumerated compromised cloud environments to identify critical assets, data stores, and back resources.(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)",
       "x_confidence": "high"
     },
     {
@@ -4005,14 +4227,14 @@
       "spec_version": "2.1",
       "id": "relationship--9b5526d3-3301-461d-9255-f6938ccaf61d",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--cc4cb212-6194-4e87-957d-88637c9f4eb9",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has utilized their own self-signed TLS certificate “Microsoft IT TLS CA 5” with their infrastructure.(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "x_confidence": "high"
     },
     {
@@ -4020,14 +4242,14 @@
       "spec_version": "2.1",
       "id": "relationship--44c4a99b-0879-42da-ae7c-83019c018a5e",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--44f1f55a-39d4-4dae-ae47-b75c065ac5f9",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has obtained capabilities to exploit N-day vulnerabilities associated with public facing services to gain initial access to victim environments to include Zoho ManageEngine (CVE-2022-47966), Citrix NetScaler “Citrix Bleed” (CVE-2023-4966), and Adobe ColdFusion 2016 (CVE-2023-29300 or CVE-2023-38203).(Citation: Microsoft Storm-501 Sabbath Ransomware Embargo September 2024)",
       "x_confidence": "high"
     },
     {
@@ -4035,14 +4257,14 @@
       "spec_version": "2.1",
       "id": "relationship--57316d1e-fee8-407e-955f-eb6012201a6a",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--5319c1f7-c723-478f-8158-57b00ebf4b23",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has identified system language codes on a compromised host to determine if the victim falls under a non-supported language code that is prohibited for targeting, including victims associated with Russia and other Commonwealth of Independent States (CIS) that may draw attention of law enforcement in countries where the ransomware operator or affiliates may reside/operate from.(Citation: Avertium Storm-0501 Sabbath Ransomware Arcane January 2022)(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "x_confidence": "high"
     },
     {
@@ -4050,74 +4272,15 @@
       "spec_version": "2.1",
       "id": "relationship--6ca70521-7d03-47a1-b808-77c6beffffa8",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
+      "modified": "2026-07-29T15:20:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
       "target_ref": "attack-pattern--e967681d-aa83-4a1a-8e14-3b14d14dd325",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[Storm-0501](https://attack.mitre.org/groups/G1053) has engaged in double-extortion ransomware, exfiltrating data and directly contacting victims when the primary organization refuses to pay along with posting data on their data leak sites.(Citation: Avertium Storm-0501 Sabbath Ransomware Arcane January 2022)(Citation: Microsoft Storm-0501 Embargo Ransomware August 2025)(Citation: Google Mandiant Storm-0501 Sabbath Ransomware November 2021)",
       "x_confidence": "high"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--c731dadc-651a-41dc-80f5-8fa07b96547a",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker-",
-      "pattern": "[url:value = 'https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker-']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2024-09-26T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:94f294ff34d1c7ce59ec66297bda5155284b36b59e0a0ef81189f726b96b2d7e",
-          "observed_at": {
-            "value": "2024-09-26T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0501--9dca41b1465ff529",
-          "source_path": "actor_profile/evidence/storm-0501.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf {\"page\": 112} storm-0501 144]https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise- ransomware/ [145]https://mp.weixin.qq.com/s/dWtLGGdEPBhqX11qQ4j1IQ [146]https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware- attacks-expanding-to-hybrid-cloud-environments/ [147]https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker- variant-since-2022/ [148]h",
-          "analyst_notes": "",
-          "raw_value": "https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker-"
-        }
-      ]
     },
     {
       "type": "indicator",
@@ -4179,183 +4342,6 @@
       ]
     },
     {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--12252412-85bd-4e56-9d21-c23270622f13",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://unit42.paloaltonetworks.com/in",
-      "pattern": "[url:value = 'https://unit42.paloaltonetworks.com/in']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2024-09-26T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:07d76fa449cd53aab93a5bee564c4165dbeecfb0a62976a38e3e6f63503f999a",
-          "observed_at": {
-            "value": "2024-09-26T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0501--9dca41b1465ff529",
-          "source_path": "actor_profile/evidence/storm-0501.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf {\"page\": 112} storm-0501 144]https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise- ransomware/ [145]https://mp.weixin.qq.com/s/dWtLGGdEPBhqX11qQ4j1IQ [146]https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware- attacks-expanding-to-hybrid-cloud-environments/ [147]https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker- variant-since-2022/ [148]h",
-          "analyst_notes": "",
-          "raw_value": "https://unit42.paloaltonetworks.com/in"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--a76b136f-4661-43ec-84db-0631c1dcbaf5",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware-",
-      "pattern": "[url:value = 'https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware-']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2024-09-26T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:49b9de5d16c497e0c23d24d78b7ccd6dfbac0ec03996b832183efb2d59df4622",
-          "observed_at": {
-            "value": "2024-09-26T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0501--9dca41b1465ff529",
-          "source_path": "actor_profile/evidence/storm-0501.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf {\"page\": 112} storm-0501 144]https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise- ransomware/ [145]https://mp.weixin.qq.com/s/dWtLGGdEPBhqX11qQ4j1IQ [146]https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware- attacks-expanding-to-hybrid-cloud-environments/ [147]https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker- variant-since-2022/ [148]h",
-          "analyst_notes": "",
-          "raw_value": "https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware-"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--7e4cef1d-652d-4262-ba31-ef784e7a18e7",
-      "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-25T15:23:02Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise-",
-      "pattern": "[url:value = 'https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise-']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2024-09-26T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:a02efc773ed93cf0ee1cc2435f0158c418d7ccaeb51ebdda1f2e9b629421f88c",
-          "observed_at": {
-            "value": "2024-09-26T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0501--9dca41b1465ff529",
-          "source_path": "actor_profile/evidence/storm-0501.csv",
-          "source_location": {
-            "row": 5
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf {\"page\": 112} storm-0501 144]https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise- ransomware/ [145]https://mp.weixin.qq.com/s/dWtLGGdEPBhqX11qQ4j1IQ [146]https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware- attacks-expanding-to-hybrid-cloud-environments/ [147]https://blog.talosintelligence.com/threat-actor-believed-to-be-spreading-new-medusalocker- variant-since-2022/ [148]h",
-          "analyst_notes": "",
-          "raw_value": "https://www.sentinelone.com/labs/kryptina-raas-from-unsellable-cast-off-to-enterprise-"
-        }
-      ]
-    },
-    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--dd05adb3-36d3-480f-9f32-2d075528b16c",
@@ -4377,7 +4363,7 @@
       "spec_version": "2.1",
       "id": "report--a707605d-aaf2-4594-86d1-b4e0cd5dcc8b",
       "created": "2026-07-25T15:23:02Z",
-      "modified": "2026-07-27T11:04:35Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4386,7 +4372,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-27T11:04:35Z",
+      "published": "2026-07-29T23:12:01Z",
       "object_refs": [
         "intrusion-set--d80656e1-3510-41e5-8f70-3e69e86a5b03",
         "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
@@ -4399,6 +4385,9 @@
         "tool--9edf649e-cec6-4166-b906-182e4ed93155",
         "campaign--b9f218d0-67f3-47d3-b002-0bf53e331e06",
         "campaign--55559b50-0de5-4d29-a452-3c4793246be6",
+        "identity--3fde1601-bd4c-4728-94cb-74c0b33ae881",
+        "identity--b5a47e85-ae7c-4f93-bad2-f84e480f910b",
+        "attack-pattern--165dabb1-c829-4e63-afb6-b1a2896ff760",
         "attack-pattern--4527120f-8ac4-4f37-99de-352a1a7cfad0",
         "attack-pattern--57ad9cc7-ff24-4d54-9585-caa039e8ec9d",
         "attack-pattern--bc3e7602-d1aa-485c-8172-c58e118126aa",
@@ -4441,13 +4430,9 @@
         "attack-pattern--44f1f55a-39d4-4dae-ae47-b75c065ac5f9",
         "attack-pattern--5319c1f7-c723-478f-8158-57b00ebf4b23",
         "attack-pattern--e967681d-aa83-4a1a-8e14-3b14d14dd325",
-        "indicator--c731dadc-651a-41dc-80f5-8fa07b96547a",
-        "indicator--55b7c2c1-933b-4f2d-a765-d05efe551268",
-        "indicator--12252412-85bd-4e56-9d21-c23270622f13",
-        "indicator--a76b136f-4661-43ec-84db-0631c1dcbaf5",
-        "indicator--7e4cef1d-652d-4262-ba31-ef784e7a18e7"
+        "indicator--55b7c2c1-933b-4f2d-a765-d05efe551268"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

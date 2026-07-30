@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--earth-lusca`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:31Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -125,76 +125,110 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | cyber-espionage | 不明 | 不明 | 2024-03-15 | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 | `source--daily-4c4674e1b8568e329ce6` |
-| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | malware-campaign | 2023 | 2024 | 2026-06-17 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | cyber-espionage | 不明 | 不明 | 2024-03-15 | target--mitre-group--country--229770f82a3ccca1f9d3 |  |  | victim--activity-rule--da89d11ebe8549dd9c9c | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 | `source--daily-4c4674e1b8568e329ce6` |
+| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | malware-campaign | 2023 | 2024 | 2026-06-17 | target--activity-rule--country--67ce22b843f136bff928, target--mitre-group--country--229770f82a3ccca1f9d3, target--mitre-group--sector--cae03348db9509019d3e | malware--daily-f196d446e69f62aacb40 |  | victim--activity-rule--139409ab845111706d30 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | アラブ首長国連邦 | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | オーストラリア | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | タイ | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 2023 | 2024 | 高 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ナイジェリア | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ネパール | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | パキスタン | 活動「SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用」の記述で標的として明示された国・地域。 | 2023 | 2024 | 中 | `source--daily-ff80b256acceafc23ada` |
+| countries | フィリピン | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フランス | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ベトナム | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | モンゴル | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 中国 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 台湾 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 2023 | 2024 | 高 | `source--daily-4c4674e1b8568e329ce6`, `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでEarth Luscaの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 米国 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 香港 | MITRE ATT&CKのGroup概要でEarth Luscaの標的国として明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | モンゴル、中国、台湾、日本、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-4c4674e1b8568e329ce6`, `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | ドイツ、フランスで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| sectors | 暗号資産・Web3 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | メディア・報道 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 非営利・市民社会 | [Earth Lusca](https://attack.mitre.org/groups/G1006) has targeted organizations in Australia, China, Hong Kong, Mongolia, Nepal, the Philippines, Taiwan, Thailand, Vietnam, the United Arab Emirates, Nigeria, Germany, France, and the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 情報通信 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 政府・行政 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 2023 | 2024 | 高 | `source--daily-ff80b256acceafc23ada`, `source--mitre-attack-19-1` |
+| sectors | 教育・研究 | Targets included government institutions, news media outlets, gambling companies, educational institutions, COVID-19 research organizations, telecommunications companies, religious movements banned in China, and cryptocurrency trading platforms; security researchers assess some [Earth Lusca](https://attack.mitre.org/groups/G1006) operations may be financially motivated.(Citation: TrendMicro EarthLusca 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--67ce22b843f136bff928, target--mitre-group--country--229770f82a3ccca1f9d3, target--mitre-group--sector--cae03348db9509019d3e | malware--daily-f196d446e69f62aacb40 |  |  |  | 2023 | 2024 | 2026-06-17 | 高 | `source--daily-ff80b256acceafc23ada` |
+| 被害事例: 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 非公開 | anonymous | unknown | reported | target--mitre-group--country--229770f82a3ccca1f9d3 |  |  |  | espionage: 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 不明 | 不明 | 2024-03-15 | 高 | `source--daily-4c4674e1b8568e329ce6` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.006 | DCSync | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1007 | System Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1016 | System Network Configuration Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027 | Obfuscated Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.003 | Steganography | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1033 | System Owner/User Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1057 | Process Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.006 | Python | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.007 | JavaScript | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090 | Proxy | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1098.004 | SSH Authorized Keys | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1189 | Drive-by Compromise | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--earth-lusca--98b7035a52ea7c69`, `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1210 | Exploitation of Remote Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.005 | Mshta | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1482 | Domain Trust Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1543.003 | Windows Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--earth-lusca--98b7035a52ea7c69`, `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.012 | Print Processors | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1548.002 | Bypass User Account Control | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used ProcDump to obtain the hashes of credentials by dumping the memory of the LSASS process.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.006 | DCSync | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used a <code>DCSync</code> command with [Mimikatz](https://attack.mitre.org/software/S0002) to retrieve credentials from an exploited controller.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1007 | System Service Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used [Tasklist](https://attack.mitre.org/software/S0057) to obtain information from a compromised host.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016 | System Network Configuration Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) used the command <code>ipconfig</code> to obtain information about network configurations.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1018 | Remote System Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) used the command <code>powershell “Get-EventLog -LogName security -Newest 500 \| where {$_.EventID -eq 4624} \| format-list -<br>property * \| findstr “Address””</code> to find the network information of successfully logged-in accounts to discovery addresses of other machines. [Earth Lusca](https://attack.mitre.org/groups/G1006) has also used multiple scanning tools to discover other machines within the same compromised network.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027 | Obfuscated Files or Information | [Earth Lusca](https://attack.mitre.org/groups/G1006) used Base64 to encode strings.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.003 | Steganography | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used steganography to hide shellcode in a BMP image file.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1033 | System Owner/User Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) collected information on user accounts via the <code>whoami</code> command.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Earth Lusca](https://attack.mitre.org/groups/G1006) used the command `move [file path] c:\windows\system32\spool\prtprocs\x64\spool.dll` to move and register a malicious DLL name as a Windows print processor, which eventually was loaded by the Print Spooler service.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [Earth Lusca](https://attack.mitre.org/groups/G1006) used a VBA script to execute WMI.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1049 | System Network Connections Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) employed a PowerShell script called RDPConnectionParser to read and filter the Windows event log “Microsoft-Windows-TerminalServices-RDPClient/Operational”<br>(Event ID 1024) to obtain network information from RDP connections. [Earth Lusca](https://attack.mitre.org/groups/G1006) has also used [netstat](https://attack.mitre.org/software/S0104) from a compromised system to obtain network connection information.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Earth Lusca](https://attack.mitre.org/groups/G1006) used the command <code>schtasks /Create /SC ONLOgon /TN WindowsUpdateCheck /TR “[file path]” /ru system</code> for persistence.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1057 | Process Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used [Tasklist](https://attack.mitre.org/software/S0057) to obtain information from a compromised host.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used PowerShell to execute commands.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [Earth Lusca](https://attack.mitre.org/groups/G1006) used VBA scripts.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.006 | Python | [Earth Lusca](https://attack.mitre.org/groups/G1006) used Python scripts for port scanning or building reverse shells.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.007 | JavaScript | [Earth Lusca](https://attack.mitre.org/groups/G1006) has manipulated legitimate websites to inject malicious JavaScript code as part of their watering hole operations.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1090 | Proxy | [Earth Lusca](https://attack.mitre.org/groups/G1006) adopted Cloudflare as a proxy for compromised servers.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1098.004 | SSH Authorized Keys | [Earth Lusca](https://attack.mitre.org/groups/G1006) has dropped an SSH-authorized key in the `/root/.ssh` folder in order to access a compromised server with SSH.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [Earth Lusca](https://attack.mitre.org/groups/G1006) modified the registry using the command <code>reg add “HKEY_CURRENT_USER\Environment” /v UserInitMprLogonScript /t REG_SZ /d “[file path]”</code> for persistence.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used [certutil](https://attack.mitre.org/software/S0160) to decode a string into a cabinet file.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1189 | Drive-by Compromise | [Earth Lusca](https://attack.mitre.org/groups/G1006) has performed watering hole attacks.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--earth-lusca--98b7035a52ea7c69`, `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [Earth Lusca](https://attack.mitre.org/groups/G1006) has compromised victims by directly exploiting vulnerabilities of public-facing servers, including those associated with Microsoft Exchange and Oracle GlassFish.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [Earth Lusca](https://attack.mitre.org/groups/G1006)  has sent spearphishing emails that required the user to click on a malicious link and subsequently open a decoy document with a malicious loader.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [Earth Lusca](https://attack.mitre.org/groups/G1006) required users to click on a malicious file for the loader to activate.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1210 | Exploitation of Remote Services | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used [Mimikatz](https://attack.mitre.org/software/S0002) to exploit a domain controller via the ZeroLogon exploit (CVE-2020-1472).(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.005 | Mshta | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used `mshta.exe` to load an HTA script within a malicious .LNK file.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1482 | Domain Trust Discovery | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used [Nltest](https://attack.mitre.org/software/S0359) to obtain information about domain controllers.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1543.003 | Windows Service | [Earth Lusca](https://attack.mitre.org/groups/G1006) created a service using the command <code>sc create “SysUpdate” binpath= “cmd /c start “[file path]””&&sc config “SysUpdate” start= auto&&net<br>start SysUpdate</code> for persistence.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--earth-lusca--98b7035a52ea7c69`, `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.012 | Print Processors | [Earth Lusca](https://attack.mitre.org/groups/G1006) has added the Registry key `HKLM\SYSTEM\ControlSet001\Control\Print\Environments\Windows x64\Print Processors\UDPrint” /v Driver /d “spool.dll /f` to load malware as a Print Processor.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation | T1548.002 | Bypass User Account Control | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used the Fodhelper UAC bypass technique to gain elevated privileges.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Credential Access | T1555.003 | Credentials from Web Browsers | Anonymous/RussiaUkrainewar/Report_Notes_of_Cyber_inspector_.pdf {"page": 151} Chromium из файлов. T1555.003 Credentials from Web Browsers Angry Likho может извлекать с целью хищения аутентификационные данные из браузеров. APT может работать с большинством современных браузеров, включая браузеры на основе Chromium. T1555.005 Password Managers Angry Likho может извлекать учетные данные |  |  | 不明 | 不明 | 中 | `source--earth-lusca--98b7035a52ea7c69` |
 | Credential Access | T1555.005 | Password Managers | извлекать с целью хищения аутентификационные данные из браузеров. APT может работать с большинством современных браузеров, включая браузеры на основе Chromium. T1555.005 Password Managers Angry Likho может извлекать учетные данные из различных менеджеров паролей. Например, импланты, основанные на Rhadamanthys Stealer, могут извлекать учетные данные из менеджеров паролей KeeP |  |  | 不明 | 不明 | 中 | `source--earth-lusca--98b7035a52ea7c69` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Stealth | T1574.001 | DLL | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.004 | Server | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.006 | Web Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1584.004 | Server | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1584.006 | Web Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.001 | Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1595.002 | Vulnerability Scanning | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used WinRAR to compress stolen files into an archive prior to exfiltration.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [Earth Lusca](https://attack.mitre.org/groups/G1006) has sent spearphishing emails to potential targets that contained a malicious link.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used the megacmd tool to upload stolen files from a victim network to MEGA.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Stealth | T1574.001 | DLL | [Earth Lusca](https://attack.mitre.org/groups/G1006) has placed a malicious payload in `%WINDIR%\SYSTEM32\oci.dll` so it would be sideloaded by the MSDTC service.(Citation: TrendMicro EarthLusca 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [Earth Lusca](https://attack.mitre.org/groups/G1006) has registered domains, intended to look like legitimate target domains, that have been used in watering hole attacks.(Citation: TrendMicro EarthLusca 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.004 | Server | [Earth Lusca](https://attack.mitre.org/groups/G1006) has acquired multiple servers for some of their operations, using each server for a different role.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.006 | Web Services | [Earth Lusca](https://attack.mitre.org/groups/G1006) has established GitHub accounts to host their malware.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1584.004 | Server | [Earth Lusca](https://attack.mitre.org/groups/G1006) has used compromised web servers as part of their operational infrastructure.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1584.006 | Web Services | [Earth Lusca](https://attack.mitre.org/groups/G1006) has compromised Google Drive repositories.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.001 | Malware | [Earth Lusca](https://attack.mitre.org/groups/G1006) has acquired and used a variety of malware, including [Cobalt Strike](https://attack.mitre.org/software/S0154).(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [Earth Lusca](https://attack.mitre.org/groups/G1006) has acquired and used a variety of open source tools.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1595.002 | Vulnerability Scanning | [Earth Lusca](https://attack.mitre.org/groups/G1006) has scanned for vulnerabilities in the public-facing servers of their targets.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [Earth Lusca](https://attack.mitre.org/groups/G1006) has staged malware and malicious files on compromised web servers, GitHub, and Google Drive.(Citation: TrendMicro EarthLusca 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 52件
-- IOC観測: 57件
+- IOC値: 18件
+- IOC観測: 18件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 30件
+- 要レビュー候補: 3件
 - 非IOC artifact観測: 103件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -270,6 +304,8 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

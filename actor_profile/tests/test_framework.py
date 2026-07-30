@@ -13,7 +13,11 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
-from ingest_observables import extract_artifacts, extract_iocs  # noqa: E402
+from ingest_observables import (  # noqa: E402
+    classified_record_values,
+    extract_artifacts,
+    extract_iocs,
+)
 
 
 class ObservableBoundaryTests(unittest.TestCase):
@@ -21,7 +25,7 @@ class ObservableBoundaryTests(unittest.TestCase):
         # 192.0.2.0/24 などのドキュメント用レンジは伏字であって指標ではないため、
         # ここでは実際に到達し得るアドレスを使う。
         text = (
-            "IOC: hxxps://c2[.]example/path, 45.61.136.56, "
+            "IOC: hxxps://c2[.]evil-actor.net/path, 45.61.136.56, "
             "44d88612fea8a8f36de82e1278abb02f"
         )
         iocs = extract_iocs(
@@ -44,24 +48,79 @@ class ObservableBoundaryTests(unittest.TestCase):
         self.assertIn("file-path", kinds)
         self.assertIn("registry-key", kinds)
 
+    def test_explicit_artifact_type_prevents_uuid_hash_misclassification(self) -> None:
+        value = "A8215357-F99A-44FE-BC65-D8F0434B0C03"
+        record = {
+            "text": f"artifact\t{value}\tmutex",
+            "location": {"row": 2},
+            "fields": {
+                "type": "artifact",
+                "value": value,
+                "artifact_type": "mutex",
+            },
+            "method": "csv-row",
+        }
+        metadata = {
+            "field_map": {
+                "type": "type",
+                "value": "value",
+                "artifact_type": "artifact_type",
+            }
+        }
+        iocs, artifacts = classified_record_values(record, metadata)
+        self.assertEqual(iocs, [])
+        self.assertEqual(artifacts, [("mutex", value, "confirmed")])
+
     def test_file_names_are_not_domains(self) -> None:
         values = extract_iocs(
-            "IOC table: loader.exe report.pdf c2.example.org",
+            "IOC table: loader.exe report.pdf c2.example-actor.org",
             allow_plain_domains=True,
             explicit_structured=False,
         )
         domains = {normalize_observable(kind, value) for kind, value, _ in values}
-        self.assertEqual(domains, {"c2.example.org"})
+        self.assertEqual(domains, {"c2.example-actor.org"})
 
     def test_non_tld_file_names_are_not_domains(self) -> None:
-        """readme.md 形式の誤抽出は横串検索で誤結合するため domain にしない。"""
+        """実在しないTLDを持つ値はファイル名や文の断片であり domain にしない。"""
         values = extract_iocs(
-            "IOC: files readme.txt config.json index.html plus c2.example.org",
+            "IOC: files readme.txt config.json index.html dbconn.asp "
+            "safe.headquartered plus c2.example-actor.org",
             allow_plain_domains=True,
             explicit_structured=False,
         )
         domains = {value for kind, value, _ in values if kind == "domain"}
-        self.assertEqual(domains, {"c2.example.org"})
+        self.assertEqual(domains, {"c2.example-actor.org"})
+
+    def test_com_domains_are_not_rejected_as_executables(self) -> None:
+        """.comはCOM実行ファイルの拡張子でもあるが、TLDとして実在するため落とさない。"""
+        values = extract_iocs(
+            "IOC: c2 is malicious-c2.com",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        domains = {value for kind, value, _ in values if kind == "domain"}
+        self.assertIn("malicious-c2.com", domains)
+
+    def test_special_use_tlds_are_kept(self) -> None:
+        """.onion は委任TLDではないが指標として正当。"""
+        values = extract_iocs(
+            "IOC: hidden service at fckilfkscwusoopguhi7i6yg3l6tknaz7lrumvlhg5mvtxzxbbxlimid.onion",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        domains = {value for kind, value, _ in values if kind == "domain"}
+        self.assertEqual(len(domains), 1)
+        self.assertTrue(next(iter(domains)).endswith(".onion"))
+
+    def test_truncated_url_hosts_are_dropped(self) -> None:
+        """https://www/ のように抽出途中で切れたURLはIOCにしない。"""
+        values = extract_iocs(
+            "IOC: see https://www/ and https://unit42/ but c2 was https://evil-c2.net/gate",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        urls = {value for kind, value, _ in values if kind == "url"}
+        self.assertEqual(urls, {"https://evil-c2.net/gate"})
 
 
 class ReferenceHostTests(unittest.TestCase):
@@ -71,14 +130,14 @@ class ReferenceHostTests(unittest.TestCase):
         text = (
             "IOC report. See https://securelist.com/some-analysis/12345/ and "
             "https://www.microsoft.com/security/blog/post for background. "
-            "The C2 was https://evil-c2.example/gate.php"
+            "The C2 was https://evil-c2.net/gate.php"
         )
         urls = {
             value for kind, value, _ in
             extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
             if kind == "url"
         }
-        self.assertEqual(urls, {"https://evil-c2.example/gate.php"})
+        self.assertEqual(urls, {"https://evil-c2.net/gate.php"})
 
     def test_citation_subdomains_are_not_iocs(self) -> None:
         text = "IOC: https://blog.securelist.com/x and https://unit42.paloaltonetworks.com/y"
@@ -90,13 +149,13 @@ class ReferenceHostTests(unittest.TestCase):
         self.assertEqual(urls, [])
 
     def test_bare_reference_domains_are_not_iocs(self) -> None:
-        text = "IOC list: securelist.com attack.mitre.org bad-domain.example"
+        text = "IOC list: securelist.com attack.mitre.org bad-domain.net"
         domains = {
             value for kind, value, _ in
             extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
             if kind == "domain"
         }
-        self.assertEqual(domains, {"bad-domain.example"})
+        self.assertEqual(domains, {"bad-domain.net"})
 
     def test_defanged_reference_host_is_kept(self) -> None:
         """難読化はアナリストが悪性と判断した印なので、参考ホストでも残す。"""
@@ -110,13 +169,13 @@ class ReferenceHostTests(unittest.TestCase):
         self.assertEqual(refang(urls[0]), "https://github.com/evil/repo")
 
     def test_vendor_contact_emails_are_not_iocs(self) -> None:
-        text = "IOC: contact ti_support@qianxin.com or phish@bad-domain.example"
+        text = "IOC: contact ti_support@qianxin.com or phish@bad-domain.net"
         emails = {
             value for kind, value, _ in
             extract_iocs(text, allow_plain_domains=True, explicit_structured=False)
             if kind == "email"
         }
-        self.assertEqual(emails, {"phish@bad-domain.example"})
+        self.assertEqual(emails, {"phish@bad-domain.net"})
 
     def test_bare_public_suffix_is_not_a_domain(self) -> None:
         """co.kr や ddns.net 単体は指標にならないが、サブドメインは残す。"""
@@ -151,8 +210,8 @@ class ReferenceHostTests(unittest.TestCase):
 class RefangTests(unittest.TestCase):
     def test_bracketed_scheme_leaves_no_residue(self) -> None:
         """[:] を先に解決しないと hxxp が残る(旧実装の不具合)。"""
-        self.assertEqual(refang("hxxps[:]//evil.example/a"), "https://evil.example/a")
-        self.assertEqual(refang("hxxp[:]//evil.example"), "http://evil.example")
+        self.assertEqual(refang("hxxps[:]//evil-actor.net/a"), "https://evil-actor.net/a")
+        self.assertEqual(refang("hxxp[:]//evil-actor.net"), "http://evil-actor.net")
 
     def test_scheme_is_case_insensitive(self) -> None:
         self.assertEqual(refang("HXXPS://Evil.example"), "https://Evil.example")

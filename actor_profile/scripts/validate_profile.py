@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import ipaddress
 import json
 import re
 from dataclasses import dataclass
@@ -17,6 +18,17 @@ from common import (
     TIME_STATUSES,
     load_json,
     parse_json_array_cell,
+)
+from ingest_observables import (
+    IANA_TLDS,
+    SPECIAL_USE_TLDS,
+    host_of,
+    reference_host,
+)
+
+PUBLICATION_BASIS = re.compile(
+    r"(?:publication|published|report(?:ed)?[-_ ]?date|daily-news-file-date)",
+    re.IGNORECASE,
 )
 
 
@@ -62,6 +74,27 @@ def validate_time(
         issue(issues, "warning", location, "observation time is unknown")
 
 
+def validate_observation_time(
+    value: Any,
+    location: str,
+    issues: list[Issue],
+    *,
+    warn_unknown: bool = False,
+) -> None:
+    validate_time(value, location, issues, warn_unknown=warn_unknown)
+    if (
+        isinstance(value, dict)
+        and value.get("value")
+        and PUBLICATION_BASIS.search(str(value.get("basis", "")))
+    ):
+        issue(
+            issues,
+            "error",
+            location,
+            "publication/report date cannot be used as an observation date",
+        )
+
+
 def check_unique_ids(
     items: Iterable[dict[str, Any]],
     key: str,
@@ -101,14 +134,14 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     required = {
         "schema_version", "profile_id", "name", "status", "created_at", "updated_at",
         "actor", "attribution", "motivations", "relationships", "diamond_model",
-        "capabilities", "activities", "targets", "ttps", "sources", "assessment",
-        "free_text",
+        "capabilities", "activities", "victim_cases", "targets", "ttps", "sources",
+        "assessment", "free_text",
     }
     missing = required - set(profile)
     for key in sorted(missing):
         issue(issues, "error", "$", f"missing top-level field: {key}")
-    if profile.get("schema_version") != "1.0.0":
-        issue(issues, "error", "$.schema_version", "expected 1.0.0")
+    if profile.get("schema_version") != "1.1.0":
+        issue(issues, "error", "$.schema_version", "expected 1.1.0")
     if not re.match(r"^actor--[a-z0-9][a-z0-9-]*$", profile.get("profile_id", "")):
         issue(issues, "error", "$.profile_id", "invalid profile ID")
 
@@ -152,7 +185,7 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         )
         for key in ("first_observed", "last_observed"):
             if key in relationship:
-                validate_time(
+                validate_observation_time(
                     relationship[key],
                     f"$.relationships[{index}].{key}",
                     issues,
@@ -173,20 +206,24 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         all_capability_ids |= ids
         capability_ids[category] = ids
         for index, item in enumerate(items):
-            validate_time(item.get("first_observed"), f"$.capabilities.{category}[{index}].first_observed", issues)
-            validate_time(item.get("last_observed"), f"$.capabilities.{category}[{index}].last_observed", issues)
+            validate_observation_time(item.get("first_observed"), f"$.capabilities.{category}[{index}].first_observed", issues)
+            validate_observation_time(item.get("last_observed"), f"$.capabilities.{category}[{index}].last_observed", issues)
             check_evidence_refs(item, f"$.capabilities.{category}[{index}]", source_ids, issues)
 
     activities = profile.get("activities", [])
     activity_ids = check_unique_ids(activities, "activity_id", "$.activities", issues)
+    victim_cases = profile.get("victim_cases", [])
+    victim_ids = check_unique_ids(
+        victim_cases, "victim_case_id", "$.victim_cases", issues
+    )
     target_items = []
     for category in ("countries", "regions", "sectors", "roles"):
         target_items.extend(profile.get("targets", {}).get(category, []))
     target_ids = check_unique_ids(target_items, "id", "$.targets.*", issues)
 
     for index, activity in enumerate(activities):
-        validate_time(activity.get("first_observed"), f"$.activities[{index}].first_observed", issues)
-        validate_time(activity.get("last_observed"), f"$.activities[{index}].last_observed", issues)
+        validate_observation_time(activity.get("first_observed"), f"$.activities[{index}].first_observed", issues)
+        validate_observation_time(activity.get("last_observed"), f"$.activities[{index}].last_observed", issues)
         validate_time(activity.get("reported_at"), f"$.activities[{index}].reported_at", issues)
         check_evidence_refs(activity, f"$.activities[{index}]", source_ids, issues)
         for ref in activity.get("target_refs", []):
@@ -198,11 +235,30 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for ref in activity.get("infrastructure_refs", []):
             if ref not in capability_ids.get("infrastructure", set()):
                 issue(issues, "error", f"$.activities[{index}].infrastructure_refs", f"dangling infrastructure reference: {ref}")
+        for ref in activity.get("victim_refs", []):
+            if ref not in victim_ids:
+                issue(issues, "error", f"$.activities[{index}].victim_refs", f"dangling victim reference: {ref}")
+
+    for index, victim in enumerate(victim_cases):
+        location = f"$.victim_cases[{index}]"
+        for key in ("first_observed", "last_observed"):
+            validate_observation_time(victim.get(key), f"{location}.{key}", issues)
+        validate_time(victim.get("reported_at"), f"{location}.reported_at", issues)
+        check_evidence_refs(victim, location, source_ids, issues)
+        for ref in victim.get("activity_refs", []):
+            if ref not in activity_ids:
+                issue(issues, "error", f"{location}.activity_refs", f"dangling activity reference: {ref}")
+        for ref in victim.get("target_refs", []):
+            if ref not in target_ids:
+                issue(issues, "error", f"{location}.target_refs", f"dangling target reference: {ref}")
+        for ref in victim.get("malware_refs", []):
+            if ref not in capability_ids.get("malware", set()):
+                issue(issues, "error", f"{location}.malware_refs", f"dangling malware reference: {ref}")
 
     for category in ("countries", "regions", "sectors", "roles"):
         for index, target in enumerate(profile.get("targets", {}).get(category, [])):
-            validate_time(target.get("first_observed"), f"$.targets.{category}[{index}].first_observed", issues)
-            validate_time(target.get("last_observed"), f"$.targets.{category}[{index}].last_observed", issues)
+            validate_observation_time(target.get("first_observed"), f"$.targets.{category}[{index}].first_observed", issues)
+            validate_observation_time(target.get("last_observed"), f"$.targets.{category}[{index}].last_observed", issues)
             check_evidence_refs(target, f"$.targets.{category}[{index}]", source_ids, issues)
 
     ttps = profile.get("ttps", [])
@@ -212,8 +268,8 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
             issue(issues, "error", f"$.ttps[{index}].technique_id", "invalid ATT&CK technique ID")
         if not ttp.get("observed_behavior"):
             issue(issues, "warning", f"$.ttps[{index}].observed_behavior", "observed behavior is empty")
-        validate_time(ttp.get("first_observed"), f"$.ttps[{index}].first_observed", issues)
-        validate_time(ttp.get("last_observed"), f"$.ttps[{index}].last_observed", issues)
+        validate_observation_time(ttp.get("first_observed"), f"$.ttps[{index}].first_observed", issues)
+        validate_observation_time(ttp.get("last_observed"), f"$.ttps[{index}].last_observed", issues)
         check_evidence_refs(ttp, f"$.ttps[{index}]", source_ids, issues)
         for ref in ttp.get("activity_refs", []):
             if ref not in activity_ids:
@@ -224,6 +280,45 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for ref in ttp.get("infrastructure_refs", []):
             if ref not in capability_ids.get("infrastructure", set()):
                 issue(issues, "error", f"$.ttps[{index}].infrastructure_refs", f"dangling infrastructure reference: {ref}")
+        if ttp.get("activity_refs") and not (
+            ttp.get("first_observed", {}).get("value")
+            or ttp.get("last_observed", {}).get("value")
+        ):
+            issue(
+                issues,
+                "warning",
+                f"$.ttps[{index}]",
+                "activity-linked TTP has no observation date",
+            )
+
+    activity_by_id = {item["activity_id"]: item for item in activities}
+    ttp_by_id = {item["ttp_id"]: item for item in ttps}
+    victim_by_id = {item["victim_case_id"]: item for item in victim_cases}
+    for index, activity in enumerate(activities):
+        activity_id = activity["activity_id"]
+        for ref in activity.get("ttp_refs", []):
+            ttp = ttp_by_id.get(ref)
+            if ttp is None:
+                issue(issues, "error", f"$.activities[{index}].ttp_refs", f"dangling TTP reference: {ref}")
+            elif activity_id not in ttp.get("activity_refs", []):
+                issue(issues, "error", f"$.activities[{index}].ttp_refs", f"TTP backlink is missing: {ref}")
+        for ref in activity.get("victim_refs", []):
+            victim = victim_by_id.get(ref)
+            if victim is not None and activity_id not in victim.get("activity_refs", []):
+                issue(issues, "error", f"$.activities[{index}].victim_refs", f"victim backlink is missing: {ref}")
+    for index, ttp in enumerate(ttps):
+        for ref in ttp.get("activity_refs", []):
+            activity = activity_by_id.get(ref)
+            if activity is not None and ttp["ttp_id"] not in activity.get("ttp_refs", []):
+                issue(issues, "error", f"$.ttps[{index}].activity_refs", f"activity backlink is missing: {ref}")
+    for index, victim in enumerate(victim_cases):
+        for ref in victim.get("activity_refs", []):
+            activity = activity_by_id.get(ref)
+            if activity is not None and victim["victim_case_id"] not in activity.get("victim_refs", []):
+                issue(issues, "error", f"$.victim_cases[{index}].activity_refs", f"activity backlink is missing: {ref}")
+        for ref in victim.get("ttp_refs", []):
+            if ref not in ttp_ids:
+                issue(issues, "error", f"$.victim_cases[{index}].ttp_refs", f"dangling TTP reference: {ref}")
 
     for index, judgment in enumerate(profile.get("assessment", {}).get("key_judgments", [])):
         check_evidence_refs(judgment, f"$.assessment.key_judgments[{index}]", source_ids, issues)
@@ -237,9 +332,49 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         "malware_ids": capability_ids.get("malware", set()),
         "infrastructure_ids": capability_ids.get("infrastructure", set()),
         "target_ids": target_ids,
+        "victim_ids": victim_ids,
         "relationship_ids": relationship_ids,
         "ttp_ids": ttp_ids,
     }
+
+
+def check_indicator_is_observable(
+    indicator: dict[str, Any], location: str, issues: list[Issue]
+) -> None:
+    """指標として成立しない値がIOCへ混入していないか検査する。
+
+    出典レポート自身の参考リンク（ベンダーブログ、CERT、報道）と、実在しない
+    TLDを持つ抽出失敗値を検出する。詳細は RULES.md 8. IOCモデルを参照。
+    """
+    ioc_type = indicator.get("type")
+    if ioc_type not in {"url", "domain", "email"}:
+        return
+    value = indicator.get("normalized_value") or indicator.get("value") or ""
+    host = host_of(value)
+    if not host:
+        issue(issues, "error", location, f"ホストを取り出せない値: {value!r}")
+        return
+    try:
+        # http://203.0.113.10/path のようにホストがIPアドレスのURLは指標として正当。
+        ipaddress.ip_address(host.strip("[]").split("%", 1)[0])
+    except ValueError:
+        pass
+    else:
+        return
+    if reference_host(value):
+        issue(
+            issues,
+            "error",
+            location,
+            f"出典の参考リンクはIOCにしない (RULES.md 8.): {host}",
+        )
+        return
+    if "." not in host:
+        issue(issues, "error", location, f"ホストとして成立しない値: {host}")
+        return
+    tld = host.rsplit(".", 1)[-1]
+    if IANA_TLDS and tld not in IANA_TLDS and tld not in SPECIAL_USE_TLDS:
+        issue(issues, "error", location, f"実在しないTLD: .{tld}")
 
 
 def validate_iocs(
@@ -286,6 +421,7 @@ def validate_iocs(
         validate_time(indicator.get("last_observed"), f"{location}.last_observed", issues)
         if indicator.get("disposition") == "candidate":
             issue(issues, "warning", location, "candidate IOC requires analyst review")
+        check_indicator_is_observable(indicator, location, issues)
         for obs_index, observation in enumerate(observations):
             obs_location = f"{location}.observations[{obs_index}]"
             obs_id = observation.get("observation_id")

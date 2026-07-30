@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--wirte`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:13:55Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -121,47 +121,62 @@ WIRTEの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | アラブ首長国連邦 | レビュー済みアクターマッピングの標的欄に記録されたアラブ首長国連邦を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | イスラエル | [WIRTE](https://attack.mitre.org/groups/G0090) has remained persistently active despite the ongoing Israel-Hamas conflict and has expanded their operations to include wiper malware attacks against Israeli targets.(Citation: Lab52 WIRTE Apr 2019)(Citation: Kaspersky WIRTE November 2021)(Citation: Check Point Wirte NOV 2024)(Citation: Palo Alto Ashen Lepus DEC 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | パレスチナ | レビュー済みアクターマッピングの標的欄に記録されたパレスチナを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | アフリカ | MITRE ATT&CKのGroup概要でWIRTEの標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でWIRTEの標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| regions | 北アフリカ | MITRE ATT&CKのGroup概要でWIRTEの標的範囲として北アフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 非営利・市民社会 | [WIRTE](https://attack.mitre.org/groups/G0090) has remained persistently active despite the ongoing Israel-Hamas conflict and has expanded their operations to include wiper malware attacks against Israeli targets.(Citation: Lab52 WIRTE Apr 2019)(Citation: Kaspersky WIRTE November 2021)(Citation: Check Point Wirte NOV 2024)(Citation: Palo Alto Ashen Lepus | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 金融 | [WIRTE](https://attack.mitre.org/groups/G0090) has targeted diplomatic, financial, military, legal, and technology organizations across the Middle East, North Africa, and in Europe to gather intelligence. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | [WIRTE](https://attack.mitre.org/groups/G0090) has targeted diplomatic, financial, military, legal, and technology organizations across the Middle East, North Africa, and in Europe to gather intelligence. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 政府・行政 | [WIRTE](https://attack.mitre.org/groups/G0090) has targeted diplomatic, financial, military, legal, and technology organizations across the Middle East, North Africa, and in Europe to gather intelligence. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.015 | Compression | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1041 | Exfiltration Over C2 Channel | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.001 | Local Data Staging | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1106 | Native API | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1114.001 | Local Email Collection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.010 | Regsvr32 | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery, Stealth | T1497.001 | System Checks | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1571 | Non-Standard Port | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Stealth | T1574.001 | DLL | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1586.002 | Email Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1684.001 | Impersonation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [WIRTE](https://attack.mitre.org/groups/G0090) has XOR encrypted command line strings to conceal malware execution chains.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.015 | Compression | [WIRTE](https://attack.mitre.org/groups/G0090) has compressed malicious files within RAR and ZIP archives for obfuscation.  (Citation: Check Point Wirte NOV 2024)(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [WIRTE](https://attack.mitre.org/groups/G0090) has used security service provider naming conventions such as ESET and Kasperky ("Kaspersky Update Agent") in order to appear legitimate.(Citation: Kaspersky WIRTE November 2021)(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1041 | Exfiltration Over C2 Channel | [WIRTE](https://attack.mitre.org/groups/G0090) has exfiltrated collected victim data to C2 infrastructure.(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [WIRTE](https://attack.mitre.org/groups/G0090) has used PowerShell for script execution.(Citation: Lab52 WIRTE Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [WIRTE](https://attack.mitre.org/groups/G0090) has used the Windows command line as part of infection chains to open documents.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [WIRTE](https://attack.mitre.org/groups/G0090) has used VBScript  in its operations.(Citation: Lab52 WIRTE Apr 2019)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [WIRTE](https://attack.mitre.org/groups/G0090) has used HTTP for network communication.(Citation: Lab52 WIRTE Apr 2019)	 |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1074.001 | Local Data Staging | [WIRTE](https://attack.mitre.org/groups/G0090) has staged collected documents of interest in `C:\Users\Public folder`.(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [WIRTE](https://attack.mitre.org/groups/G0090) has downloaded PowerShell code from the C2 server to be executed.(Citation: Lab52 WIRTE Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1106 | Native API | [WIRTE](https://attack.mitre.org/groups/G0090) has used the `RtlIpv4StringToAddressA` to convert IP-formatted string to a byte array.(Citation: Check Point Wirte NOV 2024)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1114.001 | Local Email Collection | [WIRTE](https://attack.mitre.org/groups/G0090) has collected documents from victims' email accounts.(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [WIRTE](https://attack.mitre.org/groups/G0090) has used Base64 to decode malicious VBS script.(Citation: Lab52 WIRTE Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [WIRTE](https://attack.mitre.org/groups/G0090) has used links embedded in emails to lure users into downloading malicious files.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [WIRTE](https://attack.mitre.org/groups/G0090) has attempted to lure users into opening malicious documents including MS Word and Excel files, at times using a decoy document to encourage execution of malicious payloads.(Citation: Kaspersky WIRTE November 2021)(Citation: Check Point Wirte NOV 2024)(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.010 | Regsvr32 | [WIRTE](https://attack.mitre.org/groups/G0090) has used `regsvr32.exe` to trigger the execution of a malicious script.(Citation: Lab52 WIRTE Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery, Stealth | T1497.001 | System Checks | [WIRTE](https://attack.mitre.org/groups/G0090) has configured C2 servers to check location and user-agent strings for victim endpoints to prevent sending a payload to sandboxed environments.(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [WIRTE](https://attack.mitre.org/groups/G0090) has sent emails to intended victims with malicious MS Word and Excel attachments.(Citation: Kaspersky WIRTE November 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [WIRTE](https://attack.mitre.org/groups/G0090) has sent targeted spearphishing emails with malicious links directing victims to malware downloads.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1571 | Non-Standard Port | [WIRTE](https://attack.mitre.org/groups/G0090) has used HTTPS over ports 2083 and 2087 for C2.(Citation: Kaspersky WIRTE November 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Stealth | T1574.001 | DLL | [WIRTE](https://attack.mitre.org/groups/G0090) has used RAR archives containing a legitimate executable and a lure document to execute malicious DLLs via sideloading.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [WIRTE](https://attack.mitre.org/groups/G0090) has registered domains designed to mimic legitimate sites for use in phishing campaigns.(Citation: Check Point Wirte NOV 2024)(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1586.002 | Email Accounts | [WIRTE](https://attack.mitre.org/groups/G0090) has used compromised emails, including one belonging to an Israel-based technology reseller, to deliver targeted spearphishing messages.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [WIRTE](https://attack.mitre.org/groups/G0090) has obtained and used [Empire](https://attack.mitre.org/software/S0363) and [Rclone](https://attack.mitre.org/software/S1040) for post-exploitation activities.(Citation: Lab52 WIRTE Apr 2019)(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [WIRTE](https://attack.mitre.org/groups/G0090) has directed victims to malicious payloads staged on file sharing services.(Citation: Palo Alto Ashen Lepus DEC 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1684.001 | Impersonation | [WIRTE](https://attack.mitre.org/groups/G0090) has used utilized look-alike domains and graphics of trusted security solution providers to entice victims to click on phishing links.(Citation: Check Point Wirte NOV 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 11件
-- IOC観測: 20件
+- IOC値: 2件
+- IOC観測: 3件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 11件
+- 要レビュー候補: 2件
 - 非IOC artifact観測: 31件（`artifacts.csv`）
 
 ## 主要判断と不確実性

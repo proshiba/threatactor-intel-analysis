@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--callisto`
 - 状態: draft
-- 更新日時: 2026-07-27T11:17:22Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -113,51 +113,75 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | phishing-campaign | 不明 | 不明 | 2025-05-09 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b | victim--activity-rule--c80973708fca655b5050 | GoogleのThreat Intelligence Groupは、ロシアの国家支援型ハッカー集団ColdRiverが新たに使用するマルウェア「LostKeys」を特定。 LostKeysは、特定のファイル拡張子やディレクトリからファイルを窃取し、システム情報や実行中のプロセス情報を攻撃者に送信する機能を持つ。 このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 ColdRiverは、NATO加盟国の政府、非政府組織、ジャーナリスト、シンクタンクなどを標的にしたスピアフィッシング攻撃で知られている。 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | レバノン | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでCallisto Groupの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | NATO加盟国 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的地域としてNATO加盟国が明示されている。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec`, `source--target-audit-etda-threat-group-cards` |
+| regions | コーカサス | 構造化OSINTの被害地域フィールドでCallisto Groupの標的範囲としてコーカサスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | アラブ首長国連邦、レバノンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 構造化OSINTの被害地域フィールドでCallisto Groupの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| sectors | 教育・研究 | 活動「Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--42d1e63e49f3cca5b345, ttp--activity-rule--4eacc810da09c0b2b54d, ttp--activity-rule--714e895c938fc762d78b |  | data-theft: Google、ロシアのサイバースパイと関連する新たなデータ窃取マルウェア「LostKeys」を特定 | 不明 | 不明 | 2025-05-09 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Execution | T1059.007 | JavaScript | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1114.002 | Remote Email Collection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1114.003 | Email Forwarding Rule | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1539 | Steal Web Session Cookie | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1550.004 | Web Session Cookie | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583 | Acquire Infrastructure | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.001 | Social Media Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.002 | Email Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1586.002 | Email Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1589 | Gather Victim Identity Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1593 | Search Open Websites/Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | スクリプトが実行されると、追加のPowerShellペイロードがダウンロード・実行され、最終的にVisual Basic Script (VBS) のデータ窃盗マルウェアであるLostKeysが実行。 |  | activity--daily-99b5ac281926f2b2c7f5 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| Execution | T1204.004 | Malicious Copy and Paste | このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 |  | activity--daily-99b5ac281926f2b2c7f5 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| Execution | T1059.001 | PowerShell | このマルウェアは、ClickFixと呼ばれるソーシャルエンジニアリング攻撃の一環として、悪意のあるPowerShellスクリプトを通じて配布される。 |  | activity--daily-99b5ac281926f2b2c7f5 | 不明 | 不明 | 中 | `source--daily-000ea03bc7f9b3f702ec` |
+| Execution | T1059.007 | JavaScript | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used JavaScript to redirect victim traffic from an adversary controlled server to a server hosting the Evilginx phishing framework.(Citation: StarBlizzard)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used stolen credentials to sign into victim email accounts.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1114.002 | Remote Email Collection | [Star Blizzard](https://attack.mitre.org/groups/G1033) has remotely accessed victims' email accounts to steal messages and attachments.(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1114.003 | Email Forwarding Rule | [Star Blizzard](https://attack.mitre.org/groups/G1033) has abused email forwarding rules to monitor the activities of a victim, steal information, and maintain persistent access after compromised credentials are reset.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [Star Blizzard](https://attack.mitre.org/groups/G1033) has lured targets into opening malicious .pdf files to deliver malware.(Citation: Google TAG COLDRIVER January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1539 | Steal Web Session Cookie | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used EvilGinx to steal the session cookies of victims directed to<br> phishing domains.(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1550.004 | Web Session Cookie | [Star Blizzard](https://attack.mitre.org/groups/G1033) has bypassed multi-factor authentication on victim email accounts by using session cookies stolen using EvilGinx.(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails with malicious .pdf files to spread malware.(Citation: Google TAG COLDRIVER January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583 | Acquire Infrastructure | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used HubSpot and MailerLite marketing platform services to hide the true sender of phishing emails.(Citation: StarBlizzard)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [Star Blizzard](https://attack.mitre.org/groups/G1033) has registered domains using randomized words and with names resembling legitimate organizations.(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585.001 | Social Media Accounts | [Star Blizzard](https://attack.mitre.org/groups/G1033) has established fraudulent profiles on professional networking sites to conduct reconnaissance.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1585.002 | Email Accounts | [Star Blizzard](https://attack.mitre.org/groups/G1033) has registered impersonation email accounts to spoof experts in a particular field or individuals and organizations affiliated with the intended target.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: Google TAG COLDRIVER January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1586.002 | Email Accounts | [Star Blizzard](https://attack.mitre.org/groups/G1033) has used compromised email accounts to conduct spearphishing against<br> contacts of the original victim.(Citation: CISA Star Blizzard Advisory December 2023)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [Star Blizzard](https://attack.mitre.org/groups/G1033) has incorporated the open-source EvilGinx framework into their spearphishing activity.(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1589 | Gather Victim Identity Information | [Star Blizzard](https://attack.mitre.org/groups/G1033) has identified ways to engage targets by researching potential victims' interests and social or professional contacts.(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1593 | Search Open Websites/Domains | <br>[Star Blizzard](https://attack.mitre.org/groups/G1033) has used open-source research to identify information about victims to use in targeting.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Reconnaissance | T1598 | Phishing for Information | CYBERTHREATANALYSIS AppendixB—MitreATT&CKTechniques Tactic:Technique ATT&CKCode Reconnaissance: Phishingfor Information T1598 ResourceDevelopment: StageCapabilities T1608 About Insikt Group ® RecordedFuture’sInsikt Group, thecompany’sthreat researchdivision, comprisesanalystsandsecurityresearcherswithdeepgovernment, lawenforcement, military, andintelligenceagencyexperience. Their missionistoproduceinte |  |  | 不明 | 不明 | 中 | `source--callisto--f45614e65d3b5aba` |
-| Reconnaissance | T1598.002 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1598.003 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1598.002 | Spearphishing Attachment | [Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails to establish rapport with targets eventually sending messages with attachments containing links to credential-stealing sites.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1598.003 | Spearphishing Link | [Star Blizzard](https://attack.mitre.org/groups/G1033) has sent emails to establish rapport with targets eventually sending messages with links to credential-stealing sites.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: StarBlizzard)(Citation: Google TAG COLDRIVER January 2024)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Resource Development | T1608 | Stage Capabilities | THREATANALYSIS AppendixB—MitreATT&CKTechniques Tactic:Technique ATT&CKCode Reconnaissance: Phishingfor Information T1598 ResourceDevelopment: StageCapabilities T1608 About Insikt Group ® RecordedFuture’sInsikt Group, thecompany’sthreat researchdivision, comprisesanalystsandsecurityresearcherswithdeepgovernment, lawenforcement, military, andintelligenceagencyexperience. Their missionistoproduceintelligencethat reducesriskfor clients, enablest |  |  | 不明 | 不明 | 中 | `source--callisto--f45614e65d3b5aba` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1684.001 | Impersonation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [Star Blizzard](https://attack.mitre.org/groups/G1033) has uploaded malicious payloads to cloud storage sites.(Citation: Google TAG COLDRIVER January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1684.001 | Impersonation | [Star Blizzard](https://attack.mitre.org/groups/G1033) has registered impersonation email accounts to spoof experts in a particular field or individuals and organizations affiliated with the intended target.(Citation: Microsoft Star Blizzard August 2022)(Citation: CISA Star Blizzard Advisory December 2023)(Citation: Google TAG COLDRIVER January 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 126件
-- IOC観測: 148件
+- IOC値: 79件
+- IOC観測: 98件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 7件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -189,6 +213,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

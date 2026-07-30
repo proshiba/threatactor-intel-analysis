@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--e5e518fe-a3aa-47f0-b356-8bafa1880a10",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -32,7 +32,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=ドイツ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -252,6 +252,43 @@
       }
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b7face46-a0c3-43e7-8157-af408a8a5763",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ドイツ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでStorm-0978の標的・被害国としてドイツが記録されている。",
+      "external_references": [
+        {
+          "source_name": "MISP Project / Council on Foreign Relations",
+          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
+          "external_id": "source--target-audit-misp-threat-actor"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--eda09c2f-13fc-4d1a-a4f1-5bf07ba8bc49",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--e5e518fe-a3aa-47f0-b356-8bafa1880a10",
+      "target_ref": "identity--b7face46-a0c3-43e7-8157-af408a8a5763",
+      "description": "Storm-0978 targets ドイツ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--32da29a8-dcfb-435c-8c0b-d06781d8e83f",
@@ -265,183 +302,6 @@
       "target_ref": "intrusion-set--e5e518fe-a3aa-47f0-b356-8bafa1880a10",
       "description": "WinRARゼロデイ攻撃の詳細が判明、マルウェアでPCが感染 is attributed or linked to Storm-0978.",
       "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--5efa7b66-cefc-427f-979c-73edb982c7b8",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://ti.qianxin.com/",
-      "pattern": "[url:value = 'https://ti.qianxin.com/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:23:03Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:8f0d3b1da5635bd2969cc1e29f05510d8c0c56e6a954e6d947986ac8f99b9cea",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0978--db0220ee23c91e6f",
-          "source_path": "actor_profile/evidence/storm-0978.csv",
-          "source_location": {
-            "row": 7
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/Qianxin 2023 APT Report.pdf {\"page\": 24} Storm-0978 官网：https://ti.qianxin.com 在后续深入跟踪该团伙的过程中我们发现了一个技术含量非常高的样本，攻击者实现了一套完整的代码 注入方案，能够绕过主流杀软的HOOK和内存检测，这意味着攻击者内部至少存在一个精通Windows内 核的研究人员，并且能熟练编写恶意代码和掌握EDR杀软的监控原理，这在众多以Loader为生的APT组 织中是比较少见的存在，我们会在2024年发布有关该样本的详细分析报告。 （九） Storm-0978 关键词：通信、医疗、金融、电感元器件 奇安信威胁情报中心在2 0 2 3年下半年公开披露了O p e r a t i o n H i d e B e a r活动 ，并将该活动与 Storm-0978 [314] 相关联，在报告中我们回顾了从 2020 年至今该团伙针对我国医疗、金融和电感元器件 等行业的定向攻击活动，其攻击手法主要依托于定向的鱼叉邮件诱导用户访问并下载仿冒页面中带有合 法签名的恶意安装包。该团伙非常善于",
-          "analyst_notes": "",
-          "raw_value": "https://ti.qianxin.com"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--fd066bbc-e086-4514-a77d-dca3f761a46a",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.microsoft.com/en-us/",
-      "pattern": "[url:value = 'https://www.microsoft.com/en-us/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2023-07-11T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:904913b14d9eac35d876ddd3a8fbe12fb3577c1f47f93d177388e754c42eba87",
-          "observed_at": {
-            "value": "2023-07-11T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0978--db0220ee23c91e6f",
-          "source_path": "actor_profile/evidence/storm-0978.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/CERTFR-2024-CTI-002.pdf {\"page\": 41} Storm-0978 of RomCom Backdoor Shows a Growing Shift in Threat Actors’ Goals. 30 May 2023. https://www.trendmicro.com/en_us/ research/23/e/void-rabisu-s-use-of- romcom-backdoor-shows-a-growing-shift- in-th.html [11] MICROSOFT Storm-0978 attacks reveal financial and espionage motives. 11 July 2023. https://www.microsoft.com/en-us/ security/blog/2023/07/11/storm-0978- attacks-reveal-financial-and-espionage- motives/ [12] CERT-UA Cyberattack on DELT",
-          "analyst_notes": "",
-          "raw_value": "https://www.microsoft.com/en-us/"
-        }
-      ]
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--8d604a7a-c520-4d4c-b347-351a20d9fe2f",
-      "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-25T15:23:03Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "url: https://www.trendmicro.com/en_us/",
-      "pattern": "[url:value = 'https://www.trendmicro.com/en_us/']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2023-07-11T00:00:00Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:eba4082a1b1039d96664ff4e485ee77b5d58aa41ebf18bcd31281e3308dd21d3",
-          "observed_at": {
-            "value": "2023-07-11T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "same-record"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--storm-0978--db0220ee23c91e6f",
-          "source_path": "actor_profile/evidence/storm-0978.csv",
-          "source_location": {
-            "row": 6
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "summary/2024/CERTFR-2024-CTI-002.pdf {\"page\": 41} Storm-0978 of RomCom Backdoor Shows a Growing Shift in Threat Actors’ Goals. 30 May 2023. https://www.trendmicro.com/en_us/ research/23/e/void-rabisu-s-use-of- romcom-backdoor-shows-a-growing-shift- in-th.html [11] MICROSOFT Storm-0978 attacks reveal financial and espionage motives. 11 July 2023. https://www.microsoft.com/en-us/ security/blog/2023/07/11/storm-0978- attacks-reveal-financial-and-espionage- motives/ [12] CERT-UA Cyberattack on DELT",
-          "analyst_notes": "",
-          "raw_value": "https://www.trendmicro.com/en_us/"
-        }
-      ]
     },
     {
       "type": "note",
@@ -465,7 +325,7 @@
       "spec_version": "2.1",
       "id": "report--6ae1c6b3-3582-41b9-8068-c98a6487daee",
       "created": "2026-07-25T15:23:03Z",
-      "modified": "2026-07-27T11:04:35Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -474,15 +334,13 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-27T11:04:35Z",
+      "published": "2026-07-29T23:12:01Z",
       "object_refs": [
         "intrusion-set--e5e518fe-a3aa-47f0-b356-8bafa1880a10",
         "campaign--1d3d0454-cdc8-40af-bb73-690a74578e61",
-        "indicator--5efa7b66-cefc-427f-979c-73edb982c7b8",
-        "indicator--fd066bbc-e086-4514-a77d-dca3f761a46a",
-        "indicator--8d604a7a-c520-4d4c-b347-351a20d9fe2f"
+        "identity--b7face46-a0c3-43e7-8157-af408a8a5763"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

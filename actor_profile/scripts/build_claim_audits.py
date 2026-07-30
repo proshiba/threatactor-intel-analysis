@@ -70,13 +70,29 @@ def main() -> int:
     parser.add_argument(
         "--output", type=Path, default=Path("profiles/claim-audit-summary.json")
     )
+    parser.add_argument(
+        "--actor",
+        action="append",
+        default=[],
+        help="limit regeneration to an actor slug; repeat for multiple actors",
+    )
     args = parser.parse_args()
     catalog = load_json(args.catalog)
     profiles_root = args.profiles_root.resolve()
     collection_counts: Counter[str] = Counter()
     actors: list[dict[str, Any]] = []
+    selected_slugs = set(args.actor)
+    catalog_actors = catalog["actors"]
+    if selected_slugs:
+        known_slugs = {actor["slug"] for actor in catalog_actors}
+        unknown_slugs = sorted(selected_slugs - known_slugs)
+        if unknown_slugs:
+            parser.error(f"unknown actor slug(s): {', '.join(unknown_slugs)}")
+        catalog_actors = [
+            actor for actor in catalog_actors if actor["slug"] in selected_slugs
+        ]
 
-    for actor in catalog["actors"]:
+    for actor in catalog_actors:
         slug = actor["slug"]
         profile_path = profiles_root / slug / "actor-profile.json"
         profile = load_json(profile_path)
@@ -314,7 +330,10 @@ def main() -> int:
         "counts": dict(collection_counts),
         "actors": actors,
     }
-    write_json_atomic(args.output.resolve(), summary)
+    # A filtered run intentionally leaves the full collection summary untouched;
+    # otherwise it would be replaced by a misleading partial collection.
+    if not selected_slugs:
+        write_json_atomic(args.output.resolve(), summary)
     print(json.dumps({key: summary[key] for key in ("actor_count", "claim_count", "counts")}, ensure_ascii=False))
     return 0
 

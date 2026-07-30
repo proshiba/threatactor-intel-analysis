@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "modified": "2026-07-29T23:13:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -44,7 +44,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "USA",
+        "targeting_details": "構造化ターゲット監査: 標的国=米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nUSA",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -105,63 +105,41 @@
       }
     },
     {
-      "type": "indicator",
+      "type": "identity",
       "spec_version": "2.1",
-      "id": "indicator--800e4b9a-9bff-418c-8c9b-19953bebb55d",
-      "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T15:22:55Z",
+      "id": "identity--89460bde-b9da-4114-97ec-080efc273f5d",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-07-29T23:13:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "url: http://itlaw.wikia.com/wiki/Moonlight_Maze",
-      "pattern": "[url:value = 'http://itlaw.wikia.com/wiki/Moonlight_Maze']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:55Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "candidate",
-      "x_observation_count": 1,
-      "x_campaign_count": 0,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [],
-      "x_malware_refs": [],
-      "x_infrastructure_refs": [],
-      "x_roles": [],
-      "x_observations": [
+      "name": "米国",
+      "identity_class": "organization",
+      "description": "レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。",
+      "external_references": [
         {
-          "observation_id": "observation--sha256:2f8ed77896f9b015f863867023f03f3a841dbebb00c27fad9aa984bc2e300903",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_id": "source--carberb--5501c7dbfeb0afae",
-          "source_path": "actor_profile/evidence/carberb.csv",
-          "source_location": {
-            "row": 2
-          },
-          "campaign_refs": [],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "csv-row",
-          "context_excerpt": "APT Groups and Operations.xlsx {\"row\": 13, \"sheet\": \"Russia\"} Carberb Carberb USA http://itlaw.wikia.com/wiki/Moonlight_Maze",
-          "analyst_notes": "",
-          "raw_value": "http://itlaw.wikia.com/wiki/Moonlight_Maze"
+          "source_name": "Florian Roth and community contributors",
+          "description": "Local source: APT Groups and Operations.xlsx",
+          "external_id": "source--actor-mapping-workbook"
         }
-      ]
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d8660f82-4b60-4bb2-aed1-717250f5d717",
+      "created": "2026-07-29T23:13:54Z",
+      "modified": "2026-07-29T23:13:54Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
+      "target_ref": "identity--89460bde-b9da-4114-97ec-080efc273f5d",
+      "description": "Carberb targets 米国 (profile target category: countries).",
+      "x_confidence": "medium"
     },
     {
       "type": "note",
@@ -185,7 +163,7 @@
       "spec_version": "2.1",
       "id": "report--5040c562-6eb7-4de8-abb1-3438a46a3ab4",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-25T11:07:06Z",
+      "modified": "2026-07-29T23:13:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -194,12 +172,12 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T11:07:06Z",
+      "published": "2026-07-29T23:13:54Z",
       "object_refs": [
         "intrusion-set--5b6965bc-86bd-455f-be17-9901e9514043",
-        "indicator--800e4b9a-9bff-418c-8c9b-19953bebb55d"
+        "identity--89460bde-b9da-4114-97ec-080efc273f5d"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

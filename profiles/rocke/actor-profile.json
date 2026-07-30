@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--rocke",
   "name": "Rocke",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -113,10 +113,33 @@
   "targets": {
     "countries": [],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--8e5b45296d89d11109b8",
+        "name": "暗号資産・Web3",
+        "description": "[Rocke](https://attack.mitre.org/groups/G0106) is an alleged Chinese-speaking adversary whose primary objective appeared to be cryptojacking, or stealing victim system resources for the purposes of mining cryptocurrency.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -124,7 +147,7 @@
       "tactic": "Stealth",
       "technique_id": "T1014",
       "technique_name": "Rootkit",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has modified /etc/ld.so.preload to hook libc functions in order to hide the installed dropper and mining software in process lists.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -144,14 +167,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1018--general",
       "tactic": "Discovery",
       "technique_id": "T1018",
       "technique_name": "Remote System Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has looked for IP addresses in the known_hosts file on the infected system and attempted to SSH into them.(Citation: Talos Rocke August 2018)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -171,14 +194,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021-004--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.004",
       "technique_name": "SSH",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has spread its coinminer via SSH.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -198,14 +221,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027--general",
       "tactic": "Stealth",
       "technique_id": "T1027",
       "technique_name": "Obfuscated Files or Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has modified UPX headers after packing files to break unpackers.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -225,14 +248,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027-002--general",
       "tactic": "Stealth",
       "technique_id": "T1027.002",
       "technique_name": "Software Packing",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106)'s miner has created UPX-packed files in the Windows Start Menu Folder.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -252,14 +275,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027-004--general",
       "tactic": "Stealth",
       "technique_id": "T1027.004",
       "technique_name": "Compile After Delivery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has compiled malware, delivered to victims as .c files, with the GNU Compiler Collection (GCC).(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -279,14 +302,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-005--general",
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has used shell scripts which download mining executables and saves them with the filename \"java\".(Citation: Talos Rocke August 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -306,14 +329,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1037--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1037",
       "technique_name": "Boot or Logon Initialization Scripts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has installed an \"init.d\" startup script to maintain persistence.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -333,14 +356,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1046--general",
       "tactic": "Discovery",
       "technique_id": "T1046",
       "technique_name": "Network Service Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) conducted scanning for exposed TCP port 7001 as well as SSH and Redis servers.(Citation: Talos Rocke August 2018)(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -360,14 +383,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1053-003--general",
       "tactic": "Execution, Persistence, Privilege Escalation",
       "technique_id": "T1053.003",
       "technique_name": "Cron",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) installed a cron job that downloaded and executed files from the C2.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -387,14 +410,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1055-002--general",
       "tactic": "Privilege Escalation, Stealth",
       "technique_id": "T1055.002",
       "technique_name": "Portable Executable Injection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106)'s miner, \"TermsHost.exe\", evaded defenses by injecting itself into Windows processes, including Notepad.exe.(Citation: Talos Rocke August 2018)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -414,14 +437,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1057--general",
       "tactic": "Discovery",
       "technique_id": "T1057",
       "technique_name": "Process Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) can detect a running process's PID on the infected machine.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -441,14 +464,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-004--general",
       "tactic": "Execution",
       "technique_id": "T1059.004",
       "technique_name": "Unix Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) used shell scripts to run commands which would obtain persistence and execute the cryptocurrency mining malware.(Citation: Talos Rocke August 2018)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -468,14 +491,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-006--general",
       "tactic": "Execution",
       "technique_id": "T1059.006",
       "technique_name": "Python",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has used Python-based malware to install and spread their coinminer.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -495,14 +518,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-004--general",
       "tactic": "Stealth",
       "technique_id": "T1070.004",
       "technique_name": "File Deletion",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has deleted files on infected machines.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -522,14 +545,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-006--general",
       "tactic": "Stealth",
       "technique_id": "T1070.006",
       "technique_name": "Timestomp",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has changed the time stamp of certain files.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -549,14 +572,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071--general",
       "tactic": "Command And Control",
       "technique_id": "T1071",
       "technique_name": "Application Layer Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) issued wget requests from infected systems to the C2.(Citation: Talos Rocke August 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -576,14 +599,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-001--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.001",
       "technique_name": "Web Protocols",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has executed wget and curl commands to Pastebin over the HTTPS protocol.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -603,14 +626,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1082--general",
       "tactic": "Discovery",
       "technique_id": "T1082",
       "technique_name": "System Information Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has used uname -m to collect the name and information about the infected system's kernel.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -630,14 +653,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1102--general",
       "tactic": "Command And Control",
       "technique_id": "T1102",
       "technique_name": "Web Service",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has used Pastebin, Gitee, and GitLab for Command and Control.(Citation: Anomali Rocke March 2019)(Citation: Talos Rocke August 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -657,14 +680,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1102-001--general",
       "tactic": "Command And Control",
       "technique_id": "T1102.001",
       "technique_name": "Dead Drop Resolver",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has used Pastebin to check the version of beaconing malware and redirect to another Pastebin hosting updated malware.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -684,14 +707,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1105--general",
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) used malware to download additional malicious files to the target system.(Citation: Talos Rocke August 2018)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -711,14 +734,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1140--general",
       "tactic": "Stealth",
       "technique_id": "T1140",
       "technique_name": "Deobfuscate/Decode Files or Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has extracted tar.gz files after downloading them from a C2 server.(Citation: Talos Rocke August 2018)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -738,14 +761,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1190--general",
       "tactic": "Initial Access",
       "technique_id": "T1190",
       "technique_name": "Exploit Public-Facing Application",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) exploited Apache Struts, Oracle WebLogic (CVE-2017-10271), and Adobe ColdFusion (CVE-2017-3066) vulnerabilities to deliver malware.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -765,14 +788,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1222-002--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1222.002",
       "technique_name": "Linux and Mac Permissions",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has changed file permissions of files so they could not be modified.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -792,14 +815,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1496-001--general",
       "tactic": "Impact",
       "technique_id": "T1496.001",
       "technique_name": "Compute Hijacking",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has distributed cryptomining malware.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -819,14 +842,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1518-001--general",
       "tactic": "Discovery",
       "technique_id": "T1518.001",
       "technique_name": "Security Software Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) used scripts which detected and uninstalled antivirus software.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -846,14 +869,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1543-002--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1543.002",
       "technique_name": "Systemd Service",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has installed a systemd service script to maintain persistence.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -873,14 +896,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1547-001--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1547.001",
       "technique_name": "Registry Run Keys / Startup Folder",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106)'s miner has created UPX-packed files in the Windows Start Menu Folder.(Citation: Talos Rocke August 2018)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -900,14 +923,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1552-004--general",
       "tactic": "Credential Access",
       "technique_id": "T1552.004",
       "technique_name": "Private Keys",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has used SSH private keys on the infected machine to spread its coinminer throughout a network.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -927,14 +950,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1564-001--general",
       "tactic": "Stealth",
       "technique_id": "T1564.001",
       "technique_name": "Hidden Files and Directories",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) downloaded a file \"libprocesshider\", which could hide files on the target system.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -954,14 +977,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1571--general",
       "tactic": "Command And Control",
       "technique_id": "T1571",
       "technique_name": "Non-Standard Port",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106)'s miner connects to a C2 server using port 51640.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -981,14 +1004,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574-006--general",
       "tactic": "Execution, Stealth",
       "technique_id": "T1574.006",
       "technique_name": "Dynamic Linker Hijacking",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has modified /etc/ld.so.preload to hook libc functions in order to hide the installed dropper and mining software in process lists.(Citation: Anomali Rocke March 2019)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1008,14 +1031,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1685--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1685",
       "technique_name": "Disable or Modify Tools",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) used scripts which detected and uninstalled antivirus software.(Citation: Talos Rocke August 2018)(Citation: Unit 42 Rocke January 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1035,14 +1058,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1685-006--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1685.006",
       "technique_name": "Clear Linux or Mac System Logs",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) has cleared log files within the /var/log/ folder.(Citation: Anomali Rocke March 2019)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1062,14 +1085,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1686--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1686",
       "technique_name": "Disable or Modify System Firewall",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Rocke](https://attack.mitre.org/groups/G0106) used scripts which killed processes and added firewall rules to block traffic related to other cryptominers.(Citation: Talos Rocke August 2018)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1089,7 +1112,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -1333,7 +1356,8 @@
     "history": "",
     "capability_details": "XBash",
     "infrastructure_details": "",
-    "targeting_details": "Cybercrime, Cryptomining, Cryptojacking",
+    "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。\n\nCybercrime, Cryptomining, Cryptojacking",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

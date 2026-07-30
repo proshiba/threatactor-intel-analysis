@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--metador",
   "name": "Metador",
   "status": "draft",
   "created_at": "2026-07-25T09:00:38Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -118,11 +118,79 @@
   "activities": [],
   "targets": {
     "countries": [],
-    "regions": [],
-    "sectors": [],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--232f63943d255b7e417c",
+        "name": "アフリカ",
+        "description": "MITRE ATT&CKのGroup概要でMetadorの標的範囲としてアフリカが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--region--818894e9aeca579dc141",
+        "name": "中東",
+        "description": "MITRE ATT&CKのGroup概要でMetadorの標的範囲として中東が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--d8ad33b1c9b5a9979be1",
+        "name": "情報通信",
+        "description": "[Metador](https://attack.mitre.org/groups/G1013) has targeted a limited number of telecommunication companies, internet service providers, and universities in the Middle East and Africa.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -130,7 +198,7 @@
       "tactic": "Stealth",
       "technique_id": "T1027.013",
       "technique_name": "Encrypted/Encoded File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has encrypted their payloads.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -150,14 +218,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-003--general",
       "tactic": "Execution",
       "technique_id": "T1059.003",
       "technique_name": "Windows Command Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has used the Windows command line to execute commands.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -177,14 +245,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-004--general",
       "tactic": "Stealth",
       "technique_id": "T1070.004",
       "technique_name": "File Deletion",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has quickly deleted `cbd.exe` from a compromised host following the successful deployment of their malware.(Citation: SentinelLabs Metador Sept 2022) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -204,14 +272,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-001--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.001",
       "technique_name": "Web Protocols",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has used HTTP for C2.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -231,14 +299,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1095--general",
       "tactic": "Command And Control",
       "technique_id": "T1095",
       "technique_name": "Non-Application Layer Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has used TCP for C2.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -258,14 +326,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1105--general",
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has downloaded tools and malware onto a compromised system.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -285,14 +353,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1546-003--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1546.003",
       "technique_name": "Windows Management Instrumentation Event Subscription",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has established persistence through the use of a WMI event subscription combined with unusual living-off-the-land binaries such as `cdb.exe`.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -312,14 +380,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.001",
       "technique_name": "Malware",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has used unique malware in their operations, including [metaMain](https://attack.mitre.org/software/S1059) and [Mafalda](https://attack.mitre.org/software/S1060).(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -339,14 +407,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.002",
       "technique_name": "Tool",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Metador](https://attack.mitre.org/groups/G1013) has used Microsoft's Console Debugger in some of their operations.(Citation: SentinelLabs Metador Sept 2022)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -366,7 +434,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -512,7 +580,8 @@
     "history": "",
     "capability_details": "Mafalda, metaMain",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=アフリカ、中東。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

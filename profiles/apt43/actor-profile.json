@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--apt43",
   "name": "APT43",
   "status": "review",
   "created_at": "2026-07-25T09:00:23Z",
-  "updated_at": "2026-07-27T11:17:22Z",
+  "updated_at": "2026-07-29T23:11:59Z",
   "languages": [
     "ja"
   ],
@@ -418,16 +418,16 @@
           "basis": "not-stated"
         },
         "last_observed": {
-          "value": "2025-01-29T00:00:00Z",
-          "precision": "day",
-          "status": "known",
-          "basis": "publication"
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--gtig-apt43-llm-access-2025"
         ],
-        "analyst_notes": "This is evidence of access, not evidence that AI was used in a specific intrusion or malware workflow."
+        "analyst_notes": "This is evidence of access, not evidence that AI was used in a specific intrusion or malware workflow. [observation-time-audit-v1] 資料公開日のみを根拠とする観測日時をunknownへ戻した: last_observed=2025-01-29T00:00:00Z (basis=publication)。公開日はreported_atまたはsource metadataで保持する。"
       }
     ],
     "analyst_notes": ""
@@ -456,14 +456,22 @@
         "basis": "daily-news-file-date"
       },
       "description": "FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-4c3098e731ae81f16008"
       ],
-      "analyst_notes": "日次収集レコード daily-record--47a3435a13311fff4bdba862 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。"
+      "analyst_notes": "日次収集レコード daily-record--47a3435a13311fff4bdba862 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。",
+      "ttp_refs": [
+        "ttp--activity-rule--e8957cb3783e2d0ff76d"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--4b583ac5e9ca93d7b2cd"
+      ]
     },
     {
       "activity_id": "activity--daily-8231265f9c3d2cf3a6d5",
@@ -488,14 +496,24 @@
         "basis": "daily-news-file-date"
       },
       "description": "NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。 弱いDMARCポリシーが設定されているドメインから偽のメールを送信することで、攻撃者は偽のメールを信頼できるソースから送信されたように見せかける。 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 攻撃は日本、韓国、米国、その他の国々のシンクタンクや研究センター、報道機関を標的としている。 「v=DMARC1; p=reject;」または「v=DMARC1; p=quarantine;」などのDMARCポリシーで、なりすましメールの送信に悪用されるのを防止することが推奨されている。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--6cb716c577f256f44a3e",
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-251ff3261ef519dfe8d5"
       ],
-      "analyst_notes": "日次収集レコード daily-record--8231265f9c3d2cf3a6d5776c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。"
+      "analyst_notes": "日次収集レコード daily-record--8231265f9c3d2cf3a6d5776c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--45826a90a8cda3e73668"
+      ]
     },
     {
       "activity_id": "activity--daily-ad2a0b8acf43d0efef90",
@@ -527,7 +545,11 @@
       "evidence_refs": [
         "source--daily-dddef70e68c0dc59a5d3"
       ],
-      "analyst_notes": "日次収集レコード daily-record--ad2a0b8acf43d0efef90675b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。"
+      "analyst_notes": "日次収集レコード daily-record--ad2a0b8acf43d0efef90675b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。",
+      "ttp_refs": [
+        "ttp--activity-rule--376a281097c3ea027f31"
+      ],
+      "victim_refs": []
     },
     {
       "activity_id": "activity--daily-b3aa2e40b5964cd73801",
@@ -552,20 +574,325 @@
         "basis": "daily-news-file-date"
       },
       "description": "北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--6cb716c577f256f44a3e",
+        "target--activity-rule--sector--dfc80b76cad93a318adc"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-444c87a0051642065f55"
       ],
-      "analyst_notes": "日次収集レコード daily-record--b3aa2e40b5964cd738016ddb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。"
+      "analyst_notes": "日次収集レコード daily-record--b3aa2e40b5964cd738016ddb から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。",
+      "ttp_refs": [
+        "ttp--activity-rule--8a9e510cae6ff4929709"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--09400b273fb65a333cc4"
+      ]
     }
   ],
   "targets": {
-    "countries": [],
-    "regions": [],
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--ffc91f1af6028da15f3c",
+        "name": "ウクライナ",
+        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてウクライナが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--c2bf6141c56a98427501",
+        "name": "タイ",
+        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてタイが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--863133d06351049426ea",
+        "name": "ドイツ",
+        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてドイツが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--9cfbde0869fcc10279bd",
+        "name": "ベトナム",
+        "description": "構造化OSINTの被害国フィールドでAPT43の標的・被害国としてベトナムが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--f35cd09db0a72555b38a",
+        "name": "日本",
+        "description": "活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-251ff3261ef519dfe8d5",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-251ff3261ef519dfe8d5",
+          "source--daily-4c3098e731ae81f16008",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--6cb716c577f256f44a3e",
+        "name": "韓国",
+        "description": "活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-251ff3261ef519dfe8d5",
+          "source--daily-444c87a0051642065f55",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--308b04ba82ab2b8e0e7d",
+        "name": "東アジア",
+        "description": "日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-251ff3261ef519dfe8d5",
+          "source--daily-444c87a0051642065f55",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--1560d6941c7af9becb03",
+        "name": "東南アジア",
+        "description": "タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--9b05a43fdfbebff4c143",
+        "name": "欧州",
+        "description": "構造化OSINTの被害地域フィールドでAPT43の標的範囲として欧州が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-threat-actor"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
     "sectors": [
+      {
+        "id": "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "name": "メディア・報道",
+        "description": "活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-251ff3261ef519dfe8d5"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "name": "製造・産業",
+        "description": "活動「北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-444c87a0051642065f55"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「北朝鮮のハッカー、弱いDMARCメールポリシーを悪用」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-251ff3261ef519dfe8d5"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
       {
         "id": "target--sector--government",
         "name": "Government",
@@ -590,10 +917,97 @@
       }
     ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--376a281097c3ea027f31",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
+      "activity_refs": [
+        "activity--daily-ad2a0b8acf43d0efef90"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-dddef70e68c0dc59a5d3"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--8a9e510cae6ff4929709",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。",
+      "activity_refs": [
+        "activity--daily-b3aa2e40b5964cd73801"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-444c87a0051642065f55"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--e8957cb3783e2d0ff76d",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告",
+      "activity_refs": [
+        "activity--daily-47a3435a13311fff4bdb"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-4c3098e731ae81f16008"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--t1007--general",
       "tactic": "Discovery",
@@ -2901,24 +3315,6 @@
       "analyst_notes": "Mandiant defines APT43 from its own collection and notes collaboration with other DPRK operators."
     },
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--mitre-live-kimsuky-2026",
       "path": "https://attack.mitre.org/groups/G0094/",
       "url": "https://attack.mitre.org/groups/G0094/",
@@ -3067,6 +3463,74 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository. ATT&CK relationship modification dates are not observation dates."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     }
   ],
   "assessment": {
@@ -3112,7 +3576,160 @@
     "history": "2025年1月、GTIGはAPT43関係者が複数の公開LLMツールへアクセスしていた証拠を報告した。ただし目的は不明であり、特定の攻撃工程での利用を示す情報ではない。",
     "capability_details": "KPortScan, PsExec, Procdump, Mimikatz, Eternal suite of exploits, NirSoft MailPassView/Network Password Recovery/Remote Desktop PassView/SniffPass/WebBrowserPassView, Mechanical, Grease, KGH_SPY",
     "infrastructure_details": "",
-    "targeting_details": "This threat actor targets South Korean think tanks, industry, nuclear power operators, and the Ministry of Unification for espionage purposes.",
+    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、タイ、ドイツ、ベトナム、日本、米国、韓国。標的地域=東アジア、東南アジア、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets South Korean think tanks, industry, nuclear power operators, and the Ministry of Unification for espionage purposes.",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--09400b273fb65a333cc4",
+      "name": "被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。",
+      "activity_refs": [
+        "activity--daily-b3aa2e40b5964cd73801"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6cb716c577f256f44a3e",
+        "target--activity-rule--sector--dfc80b76cad93a318adc"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--8a9e510cae6ff4929709"
+      ],
+      "affected_assets": [
+        "VPN／リモートアクセス機器"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-08-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-444c87a0051642065f55"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--45826a90a8cda3e73668",
+      "name": "被害事例: 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。 弱いDMARCポリシーが設定されているドメインから偽のメールを送信することで、攻撃者は偽のメールを信頼できるソースから送信されたように見せかける。 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 攻撃は日本、韓国、米国、その他の国々のシンクタンクや研究センター、報道機関を標的としている。 「v=DMARC1; p=reject;」または「v=DMARC1; p=quarantine;」などのDMARCポリシーで、なりすましメールの送信に悪用されるのを防止することが推奨されている。",
+      "activity_refs": [
+        "activity--daily-8231265f9c3d2cf3a6d5"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--6cb716c577f256f44a3e",
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "情報収集を目的としたスピアフィッシングキャンペーンが実施されている。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-05-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-251ff3261ef519dfe8d5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--4b583ac5e9ca93d7b2cd",
+      "name": "被害事例: FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "FBIは北朝鮮系APT「Kimsuky（APT43）」が、悪性QRコード付きスピアフィッシング（Quishing）を米国組織へ行っていると警告。 対象は北朝鮮関連の政策・研究に関わるNGO、シンクタンク、学術機関、戦略アドバイザリ、政府組織などとされる。 QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。 2025年5〜6月に、アンケート／セキュアドライブ／会議登録を装い、攻撃者管理インフラ経由で偽Microsoft 365等へ誘導した事例を提示。 対策として、QRコード教育、送信元検証、MDM導入、フィッシング耐性MFAの徹底、スキャン後の監視・通報を推奨。",
+      "activity_refs": [
+        "activity--daily-47a3435a13311fff4bdb"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--e8957cb3783e2d0ff76d"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "QRをスマホで読ませてメール防御を迂回し、偽ログイン等へ誘導して資格情報やセッショントークン窃取→MFA回避に繋げる手口。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-01-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-4c3098e731ae81f16008"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

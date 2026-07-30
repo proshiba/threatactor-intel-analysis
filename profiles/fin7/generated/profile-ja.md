@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--fin7`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:31Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:13:54Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -140,14 +140,14 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| FIN7ハッカーグループ、悪意あるGoogle広告を使ってNetSupport RATを配布 | malware-campaign | 不明 | 不明 | 2024-05-13 | FIN7がGoogle広告を通じてNetSupport RATを配布 有名ブランドを装った広告によるマルウェア感染が確認 攻撃対象には企業ユーザーが含まれる FIN7は以前から金銭目的のサイバー攻撃を行っている Microsoftはセキュリティ機能を強化し、MSIXプロトコルを無効に | 高 | `source--daily-828f9038762b7cf5681e` |
-| FIN7ハッカー、ディープフェイクヌード生成サイトを使いマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2024-10-03 | FIN7が偽のディープフェイクヌード生成サイトを利用し、情報窃取マルウェアを拡散。 これらのサイトは、服を着た人の写真から偽のヌードバージョンを作成すると主張しており、ディープフェイクヌードの生成に関心のある人々にとってのハニーポットとして機能。 ユーザーが写真をアップロードすると、ダウンロード可能な生成画像へのリンクが表示。 しかし実際には、ダウンロードしたアーカイブには、Lumma StealerやRedline Stealerが含まれており感染させる。 これらのマルウェアはブラウザの認証情報や暗号通貨ウォレットを盗む。 | 高 | `source--daily-807d3e4b47434ad13a7f` |
-| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | malware-campaign | 不明 | 不明 | 2025-04-03 | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 高 | `source--daily-aa4ff1b6006e51c3ed82` |
-| 研究者がFIN7サイバー犯罪グループに関連する新たなインフラを発見 | infrastructure-operation | 不明 | 不明 | 2024-08-20 | FIN7サイバー犯罪グループに関連する新たなインフラが発見された。 発見されたインフラはロシアやエストニアのサービスプロバイダーから提供されていた。 Stark Industriesの再販業者からのインフラ購入が推測されている。 Starkは、このインフラがFIN7によるものであるとSilent Pushが発見した後にテイクダウンした。 FIN7は金銭目的のサイバー犯罪グループ。 | 高 | `source--daily-69aca35bec8446690e17` |
-| FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | ransomware-extortion | 不明 | 不明 | 2025-03-08 | 脅威ハンターたちは、Ragnar Loaderと呼ばれる「洗練された進化するマルウェアツールキット」が、Ragnar Locker（別名Monstrous Mantis）、FIN7、FIN8、Ruthless Mantis（元REvil）などのサイバー犯罪およびランサムウェアグループによって使用されていることを明らかにした。 Ragnar Loaderは、侵害されたシステムへの持続的なアクセスを維持し、攻撃者が長期間にわたってネットワーク内に滞在するのを支援する重要な役割を果たしている。 このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 Ragnar Loaderは、リバースシェル、ローカル特権昇格、リモートデスクトップアクセスを容易にする複数のコンポーネントを含むアーカイブファイルパッケージとしてアフィリエイトに提供されている。 このマルウェアは、DLLプラグインやシェルコードを実行し、任意のファイルの内容を読み取り、持ち出す能力を持ち、ネットワーク内での横方向の移動を可能にするために、別のPowerShellベースのピボットファイルを使用している。 | 高 | `source--daily-070fa8287bb523515401` |
-| FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に | phishing-campaign | 不明 | 不明 | 2024-04-19 | FIN7がアメリカの大手自動車メーカーのITスタッフを標的にした 攻撃は権限の大きい従業員を標的にし、スピアフィッシングメールでAnunakバックドアを配布 電子メール内には、Advanced IP Scannerになりすました悪意のあるURLがあり、アクセスすると正規のインストーラを装ったWsTaskLoad.exeのインストールが求められる。 攻撃は最初に感染したホストにとどまり、ネットワーク内の別システムへ感染は拡大しなかった BlackBerryによる分析でFIN7の特有の「PowerTrash」難読化ツールを利用したPowerShellスクリプトが使用されていたことが判明 | 高 | `source--daily-be6e9936378029a65c65` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| FIN7ハッカーグループ、悪意あるGoogle広告を使ってNetSupport RATを配布 | malware-campaign | 不明 | 不明 | 2024-05-13 |  |  |  |  | FIN7がGoogle広告を通じてNetSupport RATを配布 有名ブランドを装った広告によるマルウェア感染が確認 攻撃対象には企業ユーザーが含まれる FIN7は以前から金銭目的のサイバー攻撃を行っている Microsoftはセキュリティ機能を強化し、MSIXプロトコルを無効に | 高 | `source--daily-828f9038762b7cf5681e` |
+| FIN7ハッカー、ディープフェイクヌード生成サイトを使いマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2024-10-03 |  |  |  |  | FIN7が偽のディープフェイクヌード生成サイトを利用し、情報窃取マルウェアを拡散。 これらのサイトは、服を着た人の写真から偽のヌードバージョンを作成すると主張しており、ディープフェイクヌードの生成に関心のある人々にとってのハニーポットとして機能。 ユーザーが写真をアップロードすると、ダウンロード可能な生成画像へのリンクが表示。 しかし実際には、ダウンロードしたアーカイブには、Lumma StealerやRedline Stealerが含まれており感染させる。 これらのマルウェアはブラウザの認証情報や暗号通貨ウォレットを盗む。 | 高 | `source--daily-807d3e4b47434ad13a7f` |
+| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | malware-campaign | 不明 | 不明 | 2025-04-03 |  |  | ttp--activity-rule--85ff7043ed59c3428534, ttp--activity-rule--cedd0a0b2316fd50d056, ttp--activity-rule--d1e93bd0a09f55baffe6, ttp--activity-rule--f9daa094c8fa810e7348 | victim--activity-rule--af41f8144a4af28ced06 | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 高 | `source--daily-aa4ff1b6006e51c3ed82` |
+| 研究者がFIN7サイバー犯罪グループに関連する新たなインフラを発見 | infrastructure-operation | 不明 | 不明 | 2024-08-20 |  |  |  |  | FIN7サイバー犯罪グループに関連する新たなインフラが発見された。 発見されたインフラはロシアやエストニアのサービスプロバイダーから提供されていた。 Stark Industriesの再販業者からのインフラ購入が推測されている。 Starkは、このインフラがFIN7によるものであるとSilent Pushが発見した後にテイクダウンした。 FIN7は金銭目的のサイバー犯罪グループ。 | 高 | `source--daily-69aca35bec8446690e17` |
+| FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | ransomware-extortion | 不明 | 不明 | 2025-03-08 |  | malware--revil | ttp--activity-rule--7d77bae4a556494c0709 | victim--activity-rule--948a0bf7f29632afb7d4 | 脅威ハンターたちは、Ragnar Loaderと呼ばれる「洗練された進化するマルウェアツールキット」が、Ragnar Locker（別名Monstrous Mantis）、FIN7、FIN8、Ruthless Mantis（元REvil）などのサイバー犯罪およびランサムウェアグループによって使用されていることを明らかにした。 Ragnar Loaderは、侵害されたシステムへの持続的なアクセスを維持し、攻撃者が長期間にわたってネットワーク内に滞在するのを支援する重要な役割を果たしている。 このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 Ragnar Loaderは、リバースシェル、ローカル特権昇格、リモートデスクトップアクセスを容易にする複数のコンポーネントを含むアーカイブファイルパッケージとしてアフィリエイトに提供されている。 このマルウェアは、DLLプラグインやシェルコードを実行し、任意のファイルの内容を読み取り、持ち出す能力を持ち、ネットワーク内での横方向の移動を可能にするために、別のPowerShellベースのピボットファイルを使用している。 | 高 | `source--daily-070fa8287bb523515401` |
+| FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に | phishing-campaign | 不明 | 不明 | 2024-04-19 | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--carbanak | ttp--activity-rule--229f465ec300f65d7455, ttp--activity-rule--6a4b857a6fd043a5a7e8 | victim--activity-rule--ffc93c47ccaf2f55aaed | FIN7がアメリカの大手自動車メーカーのITスタッフを標的にした 攻撃は権限の大きい従業員を標的にし、スピアフィッシングメールでAnunakバックドアを配布 電子メール内には、Advanced IP Scannerになりすました悪意のあるURLがあり、アクセスすると正規のインストーラを装ったWsTaskLoad.exeのインストールが求められる。 攻撃は最初に感染したホストにとどまり、ネットワーク内の別システムへ感染は拡大しなかった BlackBerryによる分析でFIN7の特有の「PowerTrash」難読化ツールを利用したPowerShellスクリプトが使用されていたことが判明 | 高 | `source--daily-be6e9936378029a65c65` |
 
 
 
@@ -155,89 +155,143 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | アイスランド | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてアイスランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウクライナ | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ウズベキスタン | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オーストリア | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スイス | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スウェーデン | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてスウェーデンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ネパール | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ノルウェー | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルガリア | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてブルガリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | マルタ | レビュー済みアクターマッピングの標的欄に記録されたマルタを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | モロッコ | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてモロッコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ルクセンブルク | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてルクセンブルクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | 構造化OSINTの被害国フィールドでFIN7の標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでFIN7の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでFIN7の標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 活動「FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-be6e9936378029a65c65`, `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでFIN7の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | 構造化OSINTの被害国フィールドでFIN7の標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-be6e9936378029a65c65`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南欧 | スペイン、マルタで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 中国、台湾、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、チェコ、ブルガリア、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | アイスランド、ウクライナ、オーストリア、スイス、スウェーデン、スペイン、チェコ、ドイツ、ノルウェー、フランス、ブルガリア、ポーランド、マルタ、ルクセンブルク、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 小売・ホスピタリティ | [FIN7](https://attack.mitre.org/groups/G0046) has targeted the retail, restaurant, hospitality, software, consulting, financial services, medical equipment, cloud services, media, food and beverage, transportation, pharmaceutical, and utilities industries in the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 運輸・航空・海運 | [FIN7](https://attack.mitre.org/groups/G0046) has targeted the retail, restaurant, hospitality, software, consulting, financial services, medical equipment, cloud services, media, food and beverage, transportation, pharmaceutical, and utilities industries in the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 医療・ヘルスケア | [FIN7](https://attack.mitre.org/groups/G0046) has targeted the retail, restaurant, hospitality, software, consulting, financial services, medical equipment, cloud services, media, food and beverage, transportation, pharmaceutical, and utilities industries in the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | メディア・報道 | [FIN7](https://attack.mitre.org/groups/G0046) has targeted the retail, restaurant, hospitality, software, consulting, financial services, medical equipment, cloud services, media, food and beverage, transportation, pharmaceutical, and utilities industries in the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 金融 | [FIN7](https://attack.mitre.org/groups/G0046) has targeted the retail, restaurant, hospitality, software, consulting, financial services, medical equipment, cloud services, media, food and beverage, transportation, pharmaceutical, and utilities industries in the United States. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | 非公開 | aggregate | multiple-organizations | reported |  | malware--revil | ttp--activity-rule--7d77bae4a556494c0709 |  | encryption: FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | 不明 | 不明 | 2025-03-08 | 高 | `source--daily-070fa8287bb523515401` |
+| 被害事例: FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--85ff7043ed59c3428534, ttp--activity-rule--cedd0a0b2316fd50d056, ttp--activity-rule--d1e93bd0a09f55baffe6, ttp--activity-rule--f9daa094c8fa810e7348 | VPN／リモートアクセス機器, サーバー, エンドポイント | credential-theft: 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 不明 | 不明 | 2025-04-03 | 高 | `source--daily-aa4ff1b6006e51c3ed82` |
+| 被害事例: FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--carbanak | ttp--activity-rule--229f465ec300f65d7455, ttp--activity-rule--6a4b857a6fd043a5a7e8 | メール／メールアカウント |  | 不明 | 不明 | 2024-04-19 | 高 | `source--daily-be6e9936378029a65c65` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Collection | T1005 | Data from Local System | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1008 | Fallback Channels | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.004 | SSH | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.005 | VNC | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.016 | Junk Code Insertion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1033 | System Owner/User Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.004 | Masquerade Task or Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1057 | Process Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059 | Command and Scripting Interpreter | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.007 | JavaScript | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1069.002 | Domain Groups | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.004 | DNS | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.003 | Local Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Lateral Movement | T1091 | Replication Through Removable Media | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1102.002 | Bidirectional Communication | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1113 | Screen Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1124 | System Time Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1125 | Video Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1195.002 | Compromise Software Supply Chain | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | 攻撃は最初に感染したホストにとどまり、ネットワーク内の別システムへ感染は拡大しなかった BlackBerryによる分析でFIN7の特有の「PowerTrash」難読化ツールを利用したPowerShellスクリプトが使用されていたことが判明 |  | activity--daily-de6c1a21107df6383bb2 | 不明 | 不明 | 中 | `source--daily-be6e9936378029a65c65` |
+| Stealth | T1027 | Obfuscated Files or Information | 攻撃は最初に感染したホストにとどまり、ネットワーク内の別システムへ感染は拡大しなかった BlackBerryによる分析でFIN7の特有の「PowerTrash」難読化ツールを利用したPowerShellスクリプトが使用されていたことが判明 |  | activity--daily-de6c1a21107df6383bb2 | 不明 | 不明 | 中 | `source--daily-be6e9936378029a65c65` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 |  | activity--daily-ddb3ccfc94f068acbcb3 | 不明 | 不明 | 中 | `source--daily-070fa8287bb523515401` |
+| Collection | T1560.001 | Archive via Utility | 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 |  | activity--daily-ab167c39e30704e86031 | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Stealth | T1027 | Obfuscated Files or Information | 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 |  | activity--daily-ab167c39e30704e86031 | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Collection | T1113 | Screen Capture | 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 |  | activity--daily-ab167c39e30704e86031 | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Execution | T1059.006 | Python | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 |  | activity--daily-ab167c39e30704e86031 | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+| Collection | T1005 | Data from Local System | [FIN7](https://attack.mitre.org/groups/G0046) has collected files and other sensitive information from a compromised network.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1008 | Fallback Channels | [FIN7](https://attack.mitre.org/groups/G0046)'s Harpy backdoor malware can use DNS as a backup channel for C2 if HTTP fails.(Citation: Crowdstrike GTR2020 Mar 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [FIN7](https://attack.mitre.org/groups/G0046) has used RDP to move laterally in victim environments.(Citation: CrowdStrike Carbon Spider August 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.004 | SSH | [FIN7](https://attack.mitre.org/groups/G0046) has used SSH to move laterally through victim environments.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.005 | VNC | [FIN7](https://attack.mitre.org/groups/G0046) has used TightVNC to control compromised hosts.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [FIN7](https://attack.mitre.org/groups/G0046) has used fragmented strings, environment variables, standard input (stdin), and native character-replacement functionalities to obfuscate commands.(Citation: FireEye Obfuscation June 2017)(Citation: FireEye FIN7 Aug 2018)(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.016 | Junk Code Insertion | [FIN7](https://attack.mitre.org/groups/G0046) has used random junk code to obfuscate malware code.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1033 | System Owner/User Discovery | [FIN7](https://attack.mitre.org/groups/G0046) has used the command `cmd.exe /C quser` to collect user session information.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.004 | Masquerade Task or Service | [FIN7](https://attack.mitre.org/groups/G0046) has created a scheduled task named “AdobeFlashSync” to establish persistence.(Citation: Morphisec FIN7 June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [FIN7](https://attack.mitre.org/groups/G0046) has attempted to run Darkside ransomware with the filename sleep.exe.(Citation: CrowdStrike Carbon Spider August 2021) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has mimicked WsTaskLoad.exe, which is associated with the Wondershare software suite, by using a malicious executable under the same name.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [FIN7](https://attack.mitre.org/groups/G0046) has used WMI to install malware on targeted systems.(Citation: eSentire FIN7 July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [FIN7](https://attack.mitre.org/groups/G0046) malware has created scheduled tasks to establish persistence.(Citation: FireEye FIN7 April 2017)(Citation: Morphisec FIN7 June 2017)(Citation: FireEye FIN7 Aug 2018)(Citation: Flashpoint FIN 7 March 2019) Specifically, [FIN7](https://attack.mitre.org/groups/G0046) has used OpenSSH to establish persistence.(Citation: BlackBerry_FIN7_April2024)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1057 | Process Discovery | [FIN7](https://attack.mitre.org/groups/G0046) has used the PowerShell script 3CF9.ps1 to perform process discovery by executing `tasklist /v`. Additionally, WsTaskLoad.exe executes `tasklist /v` to perform process discovery.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059 | Command and Scripting Interpreter | [FIN7](https://attack.mitre.org/groups/G0046) used SQL scripts to help perform tasks on the victim's machine.(Citation: FireEye FIN7 Aug 2018)(Citation: Flashpoint FIN 7 March 2019)(Citation: FireEye FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [FIN7](https://attack.mitre.org/groups/G0046) used a PowerShell script to launch shellcode that retrieved an additional payload.(Citation: FireEye FIN7 April 2017)(Citation: Morphisec FIN7 June 2017)(Citation: FBI Flash FIN7 USB)(Citation: Mandiant FIN7 Apr 2022)(Citation: Gemini_FIN7_Jan2022) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has executed a custom obfuscation of the shellcode invoker in [PowerSploit](https://attack.mitre.org/software/S0194) called POWERTRASH.(Citation: BlackBerry_FIN7_April2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [FIN7](https://attack.mitre.org/groups/G0046) used the command prompt to launch commands on the victim’s machine.(Citation: FireEye FIN7 Aug 2018)(Citation: Flashpoint FIN 7 March 2019)(Citation: Mandiant FIN7 Apr 2022) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has used cmd.exe to open the Run dialog by sending the “Windows + R” keys through malicious USBs acting as virtual keyboards.(Citation: Gemini_FIN7_Jan2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [FIN7](https://attack.mitre.org/groups/G0046) used VBS scripts to help perform tasks on the victim's machine.(Citation: FireEye FIN7 Aug 2018)(Citation: Flashpoint FIN 7 March 2019)(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.007 | JavaScript | [FIN7](https://attack.mitre.org/groups/G0046) used JavaScript scripts to help perform tasks on the victim's machine.(Citation: FireEye FIN7 Aug 2018)(Citation: Flashpoint FIN 7 March 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1069.002 | Domain Groups | [FIN7](https://attack.mitre.org/groups/G0046) has used the command `net group "domain admins" /domain` to enumerate domain groups.(Citation: Mandiant FIN7 Apr 2022)(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.004 | DNS | [FIN7](https://attack.mitre.org/groups/G0046) has performed C2 using DNS via A, OPT, and TXT records.(Citation: FireEye FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [FIN7](https://attack.mitre.org/groups/G0046) has harvested valid administrative credentials for lateral movement.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.003 | Local Accounts | [FIN7](https://attack.mitre.org/groups/G0046) has used compromised credentials for access as SYSTEM on Exchange servers.(Citation: Microsoft Ransomware as a Service) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1082 | System Information Discovery | [FIN7](https://attack.mitre.org/groups/G0046) has used csvde.exe, which is a built-in Windows command line tool, to export system information. Additionally, WsTaskLoad has gathered system information, such as operating system and hostname.(Citation: BlackBerry_FIN7_April2024)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.002 | Domain Account | [FIN7](https://attack.mitre.org/groups/G0046) has used the PowerShell script 3CF9.ps1 and the executable WsTaskLoad to enumerate domain administrations by executing `net group “Domain Admins” /domain`.(Citation: BlackBerry_FIN7_April2024) [FIN7](https://attack.mitre.org/groups/G0046) has also used csvde.exe, which is a built-in Windows command line tool, to export Active Directory information.  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Lateral Movement | T1091 | Replication Through Removable Media | [FIN7](https://attack.mitre.org/groups/G0046) actors have mailed USB drives to potential victims containing malware that downloads and installs various backdoors, including in some cases for ransomware operations.(Citation: FBI Flash FIN7 USB) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has used malicious USBs that acted as virtual keyboards to install malware and txt files that decode to PowerShell commands.(Citation: Gemini_FIN7_Jan2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1102.002 | Bidirectional Communication | [FIN7](https://attack.mitre.org/groups/G0046) used legitimate services like Google Docs, Google Scripts, and Pastebin for C2.(Citation: FireEye FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [FIN7](https://attack.mitre.org/groups/G0046) has downloaded additional malware to execute on the victim's machine, including by using a PowerShell script to launch shellcode that retrieves an additional payload.(Citation: FireEye FIN7 April 2017)(Citation: DOJ FIN7 Aug 2018)(Citation: Mandiant FIN7 Apr 2022)(Citation: Gemini_FIN7_Jan2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1113 | Screen Capture | [FIN7](https://attack.mitre.org/groups/G0046) captured screenshots and desktop video recordings.(Citation: DOJ FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1124 | System Time Discovery | [FIN7](https://attack.mitre.org/groups/G0046) has used the PowerShell script 3CF9.ps1 to execute `net time`.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1125 | Video Capture | [FIN7](https://attack.mitre.org/groups/G0046) created a custom video recording capability that could be used to monitor operations in the victim's environment.(Citation: FireEye FIN7 Aug 2018)(Citation: DOJ FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [FIN7](https://attack.mitre.org/groups/G0046) has decoded a malicious PowerShell script using `certutil -decode hex` and has decoded an XOR-obfuscated block of data with the key `qawsed1q2w3e`, which led to the installation of [Lizar](https://attack.mitre.org/software/S0681).(Citation: Gemini_FIN7_Jan2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [FIN7](https://attack.mitre.org/groups/G0046) has compromised targeted organizations through exploitation of CVE-2021-31207 in Exchange.(Citation: Microsoft Ransomware as a Service) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1195.002 | Compromise Software Supply Chain | [FIN7](https://attack.mitre.org/groups/G0046) has gained initial access by compromising a victim's software supply chain.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access | T1200 | Hardware Additions | доступ к инфраструктуре жертв через наборы эксплоитов. Например, опера - торы ZLoader использовали Spelevo EK, а с Dridex – набор Rig EK. • Hardware additions T1200 В 2021 году группировка FIN7 продолжила проводить атаки типа BadUSB для заражения компьютеров в корпоративной среде, отправляя посылки через почтовую службу США и логистическую компанию UPS. Отправителями значились Министерство здраво - охранени |  |  | 不明 | 不明 | 中 | `source--fin7--6269b5f18e206dc0` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1210 | Exploitation of Remote Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.005 | Mshta | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.011 | Rundll32 | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1219 | Remote Access Tools | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1486 | Data Encrypted for Impact | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery, Stealth | T1497.002 | User Activity Based Checks | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1543.003 | Windows Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1546.011 | Application Shimming | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1553.002 | Code Signing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1558.003 | Kerberoasting | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1559.002 | Dynamic Data Exchange | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1564.001 | Hidden Files and Directories | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1564.003 | Hidden Window | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1571 | Non-Standard Port | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1572 | Protocol Tunneling | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.006 | Web Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1587.001 | Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1591 | Gather Victim Org Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1591.004 | Identify Roles | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.004 | Drive-by Target | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.005 | Link Target | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1620 | Reflective Code Loading | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1674 | Input Injection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1686 | Disable or Modify System Firewall | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [FIN7](https://attack.mitre.org/groups/G0046) has used malicious links to lure victims into downloading malware.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [FIN7](https://attack.mitre.org/groups/G0046) lured victims to double-click on images in the attachments they sent which would then execute the hidden LNK file.(Citation: FireEye FIN7 April 2017)(Citation: eSentire FIN7 July 2021)(Citation: CrowdStrike Carbon Spider August 2021) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has used malicious Microsoft Word and Excel files and Leo VBS to distribute an updated version of [JSS Loader](https://attack.mitre.org/software/S0648) and to distribute the Harpy backdoor.(Citation: Crowdstrike_CarbonSpider_Part2_Nov2024)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1210 | Exploitation of Remote Services | [FIN7](https://attack.mitre.org/groups/G0046) has exploited ZeroLogon (CVE-2020-1472) against vulnerable domain controllers.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.005 | Mshta | [FIN7](https://attack.mitre.org/groups/G0046) has used mshta.exe to execute VBScript to execute malicious code on victim systems.(Citation: FireEye FIN7 April 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.011 | Rundll32 | [FIN7](https://attack.mitre.org/groups/G0046) has used `rundll32.exe` to execute malware on a compromised network.(Citation: Mandiant FIN7 Apr 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1219 | Remote Access Tools | [FIN7](https://attack.mitre.org/groups/G0046) has utilized the remote management tool Atera to download malware to a compromised system.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1486 | Data Encrypted for Impact | [FIN7](https://attack.mitre.org/groups/G0046) has encrypted virtual disk volumes on ESXi servers using a version of Darkside ransomware.(Citation: CrowdStrike Carbon Spider August 2021)(Citation: Mandiant FIN7 Apr 2022) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has deployed ransomware as the end payload during big game hunting.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery, Stealth | T1497.002 | User Activity Based Checks | [FIN7](https://attack.mitre.org/groups/G0046) used images embedded into document lures that only activate the payload when a user double clicks to avoid sandboxes.(Citation: FireEye FIN7 April 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1543.003 | Windows Service | [FIN7](https://attack.mitre.org/groups/G0046) created new Windows services and added them to the startup directories for persistence.(Citation: FireEye FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1546.011 | Application Shimming | [FIN7](https://attack.mitre.org/groups/G0046) has used application shim databases for persistence.(Citation: FireEye FIN7 Shim Databases) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [FIN7](https://attack.mitre.org/groups/G0046) malware has created Registry Run and RunOnce keys to establish persistence, and has also added items to the Startup folder.(Citation: FireEye FIN7 April 2017)(Citation: FireEye FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1553.002 | Code Signing | [FIN7](https://attack.mitre.org/groups/G0046) has signed [Carbanak](https://attack.mitre.org/software/S0030) payloads with legally purchased code signing certificates. [FIN7](https://attack.mitre.org/groups/G0046) has also digitally signed their phishing documents, backdoors and other staging tools to bypass security controls.(Citation: FireEye CARBANAK June 2017)(Citation: FireEye FIN7 Aug 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1558.003 | Kerberoasting | [FIN7](https://attack.mitre.org/groups/G0046) has used Kerberoasting PowerShell commands such as, `Invoke-Kerberoast` for credential access and to enable lateral movement.(Citation: CrowdStrike Carbon Spider August 2021)(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1559.002 | Dynamic Data Exchange | [FIN7](https://attack.mitre.org/groups/G0046) spear phishing campaigns have included malicious Word documents with DDE execution.(Citation: CyberScoop FIN7 Oct 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1564.001 | Hidden Files and Directories | [FIN7](https://attack.mitre.org/groups/G0046) has used `attrib +h “C:\ProgramData\ssh”` to make the SSH folder hidden.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1564.003 | Hidden Window | [FIN7](https://attack.mitre.org/groups/G0046) has used .txt files to conceal PowerShell commands.(Citation: Gemini_FIN7_Jan2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [FIN7](https://attack.mitre.org/groups/G0046) sent spearphishing emails with either malicious Microsoft Documents or RTF files attached.(Citation: FireEye FIN7 April 2017)(Citation: DOJ FIN7 Aug 2018)(Citation: Flashpoint FIN 7 March 2019)(Citation: eSentire FIN7 July 2021)(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [FIN7](https://attack.mitre.org/groups/G0046) has conducted broad phishing campaigns using malicious links.(Citation: CrowdStrike Carbon Spider August 2021) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has sent spearphishing emails containing a typosquatted link to “ip-sccanner[.]com.”(Citation: BlackBerry_FIN7_April2024)    |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1567.002 | Exfiltration to Cloud Storage | [FIN7](https://attack.mitre.org/groups/G0046) has exfiltrated stolen data to the MEGA file sharing site.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1569.002 | Service Execution | [FIN7](https://attack.mitre.org/groups/G0046) has started the SSH service by executing `sc start sshd`.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1571 | Non-Standard Port | [FIN7](https://attack.mitre.org/groups/G0046) has used port-protocol mismatches on ports such as 53, 80, 443, and 8080 during C2.(Citation: FireEye FIN7 Aug 2018) [FIN7](https://attack.mitre.org/groups/G0046) has used TCP ports 59999 and 9898 for firewall rules.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1572 | Protocol Tunneling | [FIN7](https://attack.mitre.org/groups/G0046) has tunneled C2 traffic via OpenSSH.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [FIN7](https://attack.mitre.org/groups/G0046) has registered look-alike domains for use in phishing campaigns.(Citation: eSentire FIN7 July 2021) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has registered a malicious domain as `advanced-ip-sccanner[.]com` that redirected to an adversary-controlled Dropbox which contained the malicious executable.(Citation: BlackBerry_FIN7_April2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.006 | Web Services | [FIN7](https://attack.mitre.org/groups/G0046) has set up Amazon S3 buckets to host trojanized digital products.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1587.001 | Malware | [FIN7](https://attack.mitre.org/groups/G0046) has developed malware for use in operations, including the creation of infected removable media.(Citation: FBI Flash FIN7 USB)(Citation: FireEye FIN7 Oct 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [FIN7](https://attack.mitre.org/groups/G0046) has utilized a variety of tools such as [Cobalt Strike](https://attack.mitre.org/software/S0154), [PowerSploit](https://attack.mitre.org/software/S0194), and the remote management tool, Atera for targeting efforts.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1591 | Gather Victim Org Information | [FIN7](https://attack.mitre.org/groups/G0046) has compiled a list of victims by filtering companies by revenue using Zoominfo, which is a service that provides business information.(Citation: BiZone Lizar May 2021)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1591.004 | Identify Roles | [FIN7](https://attack.mitre.org/groups/G0046) has identified IT staff and employees who had higher levels of administrative rights.(Citation: BlackBerry_FIN7_April2024)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [FIN7](https://attack.mitre.org/groups/G0046) has staged legitimate software, that was trojanized to contain an Atera agent installer, on Amazon S3.(Citation: Mandiant FIN7 Apr 2022) [FIN7](https://attack.mitre.org/groups/G0046) has also used an open directory web server as a staging server for payloads and other tools, such as OpenSSH and 7zip.(Citation: Cocomazzi FIN7 Reboot)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.004 | Drive-by Target | [FIN7](https://attack.mitre.org/groups/G0046) has compromised a digital product website and modified multiple download links to point to trojanized versions of offered digital products.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.005 | Link Target | [FIN7](https://attack.mitre.org/groups/G0046) has created a fake link that redirected to an adversary-controlled Dropbox that downloaded the malicious executable.(Citation: BlackBerry_FIN7_April2024)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1620 | Reflective Code Loading | [FIN7](https://attack.mitre.org/groups/G0046) has loaded a .NET assembly into the currect execution context via `Reflection.Assembly::Load`.(Citation: Gemini_FIN7_Jan2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1674 | Input Injection | FIN7 has used malicious USBs to emulate keystrokes to launch PowerShell to download and execute malware from the adversary's server.(Citation: FBI Flash FIN7 USB)(Citation: Gemini_FIN7_Jan2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1686 | Disable or Modify System Firewall | [FIN7](https://attack.mitre.org/groups/G0046) has added a firewall rule to allow TCP port 59999 inbound and a rule to allow sshd.exe on TCP port 9898.(Citation: BlackBerry_FIN7_April2024)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
-- IOC値: 24件
-- IOC観測: 37件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 22件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 123件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -309,6 +363,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 
