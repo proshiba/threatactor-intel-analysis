@@ -45,14 +45,17 @@ IOC_TYPE_MAP = {
     "md5": "ioc.md5",
     "sha1": "ioc.sha1",
     "sha256": "ioc.sha256",
-    "sha512": "ioc.sha256",  # 語彙に ioc.sha512 が無いため sha256 に寄せる
+    "sha512": "ioc.sha512",
     "ipv4": "ioc.ipv4",
     "ipv6": "ioc.ipv6",
     "domain": "ioc.domain",
     "url": "ioc.url",
     "email": "ioc.email",
 }
-HASH_TYPES = {"ioc.md5", "ioc.sha1", "ioc.sha256"}
+# 型ごとの16進桁数。長さで検証するので、型と値の不一致（50桁の値が
+# ioc.sha256 で来る等）を弾ける。HASH_TYPES はこのキー集合と同じにする。
+HASH_LENGTHS = {"ioc.md5": 32, "ioc.sha1": 40, "ioc.sha256": 64, "ioc.sha512": 128}
+HASH_TYPES = frozenset(HASH_LENGTHS)
 
 # activity_type がこれらのものを campaign エンティティとして出す
 CAMPAIGN_ACTIVITY_TYPES = {
@@ -213,7 +216,7 @@ def normalize_ioc(spec_type: str, value: str) -> str | None:
         value = re.sub(r"^([A-Za-z][A-Za-z0-9+.\-]*)://", lambda m: m.group(1).lower() + "://", value)
     elif spec_type in HASH_TYPES:
         value = value.lower()
-        if not re.fullmatch(r"[0-9a-f]{32,128}", value):
+        if not re.fullmatch(r"[0-9a-f]{%d}" % HASH_LENGTHS[spec_type], value):
             return None
     elif spec_type == "ioc.ipv4":
         if not re.fullmatch(r"\d{1,3}(?:\.\d{1,3}){3}", value):
