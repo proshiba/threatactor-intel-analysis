@@ -235,8 +235,8 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 ## IOC／artifact概要
 
-- IOC値: 183件
-- IOC観測: 203件
+- IOC値: 182件
+- IOC観測: 202件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 19件
 - 非IOC artifact観測: 171件（`artifacts.csv`）

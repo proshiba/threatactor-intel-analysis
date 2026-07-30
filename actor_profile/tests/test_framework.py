@@ -6,6 +6,7 @@ from __future__ import annotations
 import sys
 import unittest
 import json
+from itertools import groupby
 from pathlib import Path
 
 
@@ -14,9 +15,12 @@ sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
 from ingest_observables import (  # noqa: E402
+    NON_HASH_WORD_RE,
     classified_record_values,
+    classify_hash,
     extract_artifacts,
     extract_iocs,
+    looks_like_hash,
 )
 
 
@@ -121,6 +125,84 @@ class ObservableBoundaryTests(unittest.TestCase):
         )
         urls = {value for kind, value, _ in values if kind == "url"}
         self.assertEqual(urls, {"https://evil-c2.net/gate"})
+
+
+class HashClassificationTests(unittest.TestCase):
+    """長さがハッシュと一致するだけの16進列を取り込まないこと。"""
+
+    REAL_HASHES = {
+        "md5": "44d88612fea8a8f36de82e1278abb02f",
+        "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+        "sha256": (
+            "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+        ),
+        # sha512("abc")。実在の値を使い、統計判定が本物を弾かないことを確かめる。
+        "sha512": (
+            "ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a"
+            "2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f"
+        ),
+    }
+
+    # 依頼文の実例。復号すると正体が分かるものだけを並べている。
+    NON_HASHES = {
+        "PEのDOSスタブ": "2072756e20696e20444f53206d6f6465",
+        "PowerShellの断片": "203d204765742d4368696c644974656d",
+        "User-Agentの断片": "3935312e3534205361666172692f3533372e3336",
+        "シェルコード": "6a04680020000068000040006a00ffd5",
+        ".NET IL": (
+            "0228030000067d120000040202fe0623000006735b00000a14208813000015"
+            "735c00000a7d130000040202fe0624000006735b00000a14208813000015735c00"
+        ),
+        "ゼロ埋め": "11200000000000000000000000000000",
+        "4バイトの繰り返し": "0412da510412da510412da511f8f4451",
+        # 3バイトの並びの条件でしか弾けない2件。この条件を外すと両方通る。
+        "RLOによるファイル名偽装": "e280ade280aee280aee280ae6664702e",
+        "x86機械語": (
+            "c744243c256c6f63508d442440c7442444616c617050b9bd881775c744244c"
+            "70646174c744245061255c6cc74424546f675f67c74424586f6c6432c744245c2e"
+        ),
+    }
+
+    def test_real_hashes_of_every_length_are_classified(self) -> None:
+        for kind, value in self.REAL_HASHES.items():
+            with self.subTest(kind=kind):
+                self.assertEqual(classify_hash(value), (kind, value))
+
+    def test_uppercase_hashes_are_normalized(self) -> None:
+        value = self.REAL_HASHES["md5"]
+        self.assertEqual(classify_hash(value.upper()), ("md5", value))
+
+    def test_hex_encoded_content_is_not_a_hash(self) -> None:
+        for label, value in self.NON_HASHES.items():
+            with self.subTest(label=label):
+                self.assertIsNone(classify_hash(value))
+
+    def test_trigram_repetition_alone_catches_machine_code(self) -> None:
+        """3バイトの並びの条件を落とさないための番人。
+
+        x86の``c74424XX``とRLOの制御文字は、ゼロ埋めでも同一バイトの連続でも
+        可読文字列でもないため、この条件を外すと他のどれにも掛からない。
+        """
+        for label in ("x86機械語", "RLOによるファイル名偽装"):
+            compact = self.NON_HASHES[label]
+            raw = bytes.fromhex(compact)
+            longest = max(len(list(group)) for _, group in groupby(raw))
+            with self.subTest(label=label):
+                self.assertLess(raw.count(0) / len(raw), 0.20)
+                self.assertLess(longest, 4)
+                self.assertIsNone(NON_HASH_WORD_RE.search(raw))
+                self.assertFalse(looks_like_hash(compact))
+
+    def test_non_hash_hex_is_not_extracted_as_an_ioc(self) -> None:
+        text = (
+            "The stub contains 2072756e20696e20444f53206d6f6465 and the sample "
+            "hash is 44d88612fea8a8f36de82e1278abb02f."
+        )
+        values = extract_iocs(
+            text, allow_plain_domains=True, explicit_structured=True
+        )
+        hashes = {value for kind, value, _ in values if kind == "md5"}
+        self.assertEqual(hashes, {"44d88612fea8a8f36de82e1278abb02f"})
 
 
 class ReferenceHostTests(unittest.TestCase):

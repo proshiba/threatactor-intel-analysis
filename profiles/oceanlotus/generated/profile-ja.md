@@ -296,10 +296,10 @@ Cobalt Kitty
 
 ## IOC／artifact概要
 
-- IOC値: 339件
-- IOC観測: 387件
+- IOC値: 335件
+- IOC観測: 383件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 186件
+- 要レビュー候補: 182件
 - 非IOC artifact観測: 327件（`artifacts.csv`）
 
 ## 主要判断と不確実性

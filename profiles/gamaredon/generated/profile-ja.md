@@ -334,8 +334,8 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 ## IOC／artifact概要
 
-- IOC値: 1593件
-- IOC観測: 1639件
+- IOC値: 1591件
+- IOC観測: 1637件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 48件
 - 非IOC artifact観測: 532件（`artifacts.csv`）

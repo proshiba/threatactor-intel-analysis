@@ -142,10 +142,10 @@ GOLD SOUTHFIELDの標準化プロファイル。リポジトリ内の専用資�
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 1件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 29件（`artifacts.csv`）
 
 ## 主要判断と不確実性
