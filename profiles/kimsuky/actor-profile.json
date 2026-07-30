@@ -4,7 +4,7 @@
   "name": "Kimsuky",
   "status": "review",
   "created_at": "2026-07-25T00:00:00Z",
-  "updated_at": "2026-07-29T23:12:00Z",
+  "updated_at": "2026-07-30T12:43:04Z",
   "languages": [
     "ja"
   ],
@@ -402,6 +402,30 @@
         "analyst_notes": "最終payloadとして直接解析されている。"
       },
       {
+        "id": "malware--daily-36c21f1c91a9419fec3b",
+        "name": "PrxClient",
+        "aliases": [],
+        "types": [],
+        "description": "Kimsukyとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-6f6e88199bc7e8479193"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
+      },
+      {
         "id": "malware--fastviewer",
         "name": "FastViewer Android Malware",
         "aliases": [
@@ -736,92 +760,6 @@
   },
   "activities": [
     {
-      "activity_id": "activity--browser-google-play",
-      "name": "Browser Extension and Google Play Abuse",
-      "activity_type": "campaign",
-      "first_observed": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "inferred",
-        "basis": "advisory-observation-window"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "description": "Chromium拡張でGmailを窃取し、Google Play同期機能でAndroidマルウェアを配布。",
-      "target_refs": [
-        "target--germany",
-        "target--research-academia"
-      ],
-      "malware_refs": [
-        "malware--fastviewer"
-      ],
-      "infrastructure_refs": [
-        "infra--lookalike-domains"
-      ],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--browser-advisory-2023"
-      ],
-      "analyst_notes": "[observation-time-audit-v1] 資料公開日のみを根拠とする観測日時をunknownへ戻した: last_observed=2023-03-20T00:00:00Z (basis=source-publication)。公開日はreported_atまたはsource metadataで保持する。",
-      "reported_at": {
-        "value": "2023-03-20T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "earliest-evidence-source-published-at"
-      },
-      "ttp_refs": [
-        "ttp--t1114--email-collection",
-        "ttp--t1566-002--credential-links"
-      ],
-      "victim_refs": [
-        "victim--activity-rule--81ab232ac4d2bee5f37b"
-      ]
-    },
-    {
-      "activity_id": "activity--daily-0c474e6b7ce54ba49c5e",
-      "name": "国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開",
-      "activity_type": "phishing-campaign",
-      "first_observed": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": "2025-02-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "reported_at": {
-        "value": "2025-04-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "中国・イラン・ロシア・北朝鮮支援のAPTがClickFixを用いたフィッシング攻撃を展開。 TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 TA450 (MuddyWater): イランに関連するこのグループは、持続的なアクセスを維持するために、Levelなどの正当なリモート監視および管理 (RMM) ソフトウェアを悪用するためにClickFixを利用 UNK_RemoteRogue: 2024年末に確認されたこのロシアの可能性のあるグループは、侵害された可能性のあるZimbraサーバーから送信された、Microsoft Officeドキュメントへのリンクを含むおとりメールを使用してClickFixを使用 PowerShellコマンドを利用しQuasar RATやRMMソフトを導入。 日本大使館を装った誘導や、YouTube動画を含む偽ページなどを利用。",
-      "target_refs": [
-        "target--mitre-group--sector--c5b1f7936acf85af11e4"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-07ef6046e1668f840b3a"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--0c474e6b7ce54ba49c5eca94 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [
-        "ttp--activity-rule--1f8b1ff7e839aaca7ece"
-      ],
-      "victim_refs": [
-        "victim--activity-rule--78b3d620ec98d71ea8ad"
-      ]
-    },
-    {
       "activity_id": "activity--daily-1a2aa6449d0568cc8dea",
       "name": "北朝鮮マルウェアのモジュール化：多様性と機能特化",
       "activity_type": "cyber-espionage",
@@ -937,6 +875,42 @@
       "victim_refs": [
         "victim--activity-rule--e2b0c84831cb7f6ab33f"
       ]
+    },
+    {
+      "activity_id": "activity--daily-2f12e771b5227843f161",
+      "name": "Kimsukyグループによる外交関係者を装った攻撃事例（PebbleDash、PrxClient）",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Kimsukyは外交関係者を装ったスピアフィッシングで悪性LNKを配布し、PebbleDashやPrxClientなど複数のツールを導入している。 LNKはPowerShell、JavaScript、HTAを実行し、追加ペイロードの取得、端末情報の収集、ファイルの窃取を行う。 PebbleDashはコマンド実行、ファイル操作、プロセス制御、システム情報収集などを備え、LSASSへ注入される亜種も確認された。 攻撃者はRDP Wrapper、バックドアアカウント、RDP Patcherを使い、感染端末への継続的な遠隔アクセスを確保していた。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-36c21f1c91a9419fec3b"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-6f6e88199bc7e8479193"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--2f12e771b5227843f161e8d5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(AhnLab ASEC 2026-07-29)を確認。記事タイトル・本文ともKimsukyを攻撃の実行主体として明記し、外交関係者を装ったスピアフィッシング(LNK添付)で外交関係者を標的にしたと記載。PrxClientは「引数で受けたC&Cサーバーとローカルポートを中継する」機能を持ち、感染システムへのRDP接続に利用されたと明記されているため固有マルウェア名として採用する。IOCはtech-memoの構造化actor列がKimsukyへexact一致し、記事掲載のMD5 5件・URL 5件・FQDN 5件・IP 3件と件数が一致する。攻撃期間は一次資料に明示がないためunknownとし、記事公開日はreported_atへ分離する。"
     },
     {
       "activity_id": "activity--daily-309ace8d538b441913e7",
@@ -1061,44 +1035,6 @@
       ]
     },
     {
-      "activity_id": "activity--daily-51873b85e75734a0d314",
-      "name": "北朝鮮のハッカー、新たなGolangマルウェア「Durian」を暗号通貨企業に対して使用",
-      "activity_type": "malware-campaign",
-      "first_observed": {
-        "value": "2023-08-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": "2023-11-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "reported_at": {
-        "value": "2024-05-11T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "北朝鮮のAPT「Kimsuky」、Golangベースの新マルウェア「Durian」を使用 韓国の暗号通貨企業2社が標的にされた マルウェアはバックドア機能を備え、ファイルを抽出 侵入手段は韓国固有の正規ソフトウェアを通じたものであるが、正確なメカニズムは明らかにされていない 攻撃は2023年8月と11月に発生",
-      "target_refs": [
-        "target--south-korea"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-a5ca98841868974d600b"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--51873b85e75734a0d3149da0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮のAPT「Kimsuky」、Golangベースの新マルウェア「Durian」を使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [],
-      "victim_refs": [
-        "victim--activity-rule--b40066714da8e40790a5"
-      ]
-    },
-    {
       "activity_id": "activity--daily-695d59cb97999ec6281a",
       "name": "北朝鮮のハッカー、標的型マルウェアキャンペーンでFacebook Messengerを悪用",
       "activity_type": "malware-campaign",
@@ -1174,47 +1110,6 @@
       "victim_refs": []
     },
     {
-      "activity_id": "activity--daily-7a9584dd178b67430a5e",
-      "name": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用",
-      "activity_type": "infrastructure-operation",
-      "first_observed": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": "2024-01-01T00:00:00Z",
-        "precision": "year",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "reported_at": {
-        "value": "2024-05-17T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "北朝鮮のKimsukyグループがGomirマルウェアを使用。 攻撃は2024年初めに始まり、韓国政府機関を標的。 GomirはGoBearのLinux版で、持続性とC2通信を持つ。 マルウェアはroot権限で動作し、/var/log/syslogdにコピーされる。 マルウェアは17の操作をサポートしており、HTTP POSTリクエストで実行。 操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
-      "target_refs": [
-        "target--mitre-group--sector--4eba90b76b16e9d6d89b",
-        "target--south-korea"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--daily-01bbfa4ce1d271e9e220"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--7a9584dd178b67430a5e2600 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [
-        "ttp--activity-rule--d97d1bd687c6c8f70793"
-      ],
-      "victim_refs": [
-        "victim--activity-rule--643a32a3eac4d1304920"
-      ]
-    },
-    {
       "activity_id": "activity--daily-7fba10858bc6d43d600f",
       "name": "FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告",
       "activity_type": "phishing-campaign",
@@ -1253,40 +1148,6 @@
       "victim_refs": [
         "victim--activity-rule--cf9f7422af16e0e9dbab"
       ]
-    },
-    {
-      "activity_id": "activity--daily-85030340c998f3f9ab89",
-      "name": "Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃",
-      "activity_type": "infrastructure-operation",
-      "first_observed": {
-        "value": "2025-09-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": "2025-09-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "reported_at": {
-        "value": "2025-12-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "北朝鮮関与のKimsukyが、宅配追跡を装う偽サイトと武器化QRコードでAndroid向けマルウェア「DOCSWAP」を配布。 2025年9月に観測。スミッシングで偽追跡サイトへ誘導し、QR読取や直接アクセスで「セキュリティアプリ」偽装APKを落とさせる。 配布C2は27.102.137.181。SecDelivery.apk内のsecurity.datをlibnative-lib.soで復号し、多権限取得と常駐を確立。 RATは57コマンドを実装し、録音・録画、位置・通話・連絡先・SMS収集、遠隔操作、アクセシビリティ経由のキー入力記録を実施。 インフラやHTMLの韓国語コメント、「Million OK !!!!」が過去作戦と一致し、Kimsuky関与の根拠となった。",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--daily-f7383fd875d71ae63151"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--85030340c998f3f9ab899f40 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [],
-      "victim_refs": []
     },
     {
       "activity_id": "activity--daily-8721476f36a3485f1496",
@@ -1368,88 +1229,6 @@
       "victim_refs": [
         "victim--activity-rule--db5cce1fb86560a03996"
       ]
-    },
-    {
-      "activity_id": "activity--daily-9a84486a6c98d6fea40f",
-      "name": "2026年第1四半期 DPRK Operation Kimsuky 分析",
-      "activity_type": "phishing-campaign",
-      "first_observed": {
-        "value": "2026-01-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": "2026-06-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "reported_at": {
-        "value": "2026-05-20T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。",
-      "target_refs": [
-        "target--activity-rule--sector--63c9fa67327d005b07b7",
-        "target--activity-rule--sector--932f4928d5e1ec28e2df",
-        "target--activity-rule--sector--b94dc560a327b601965d",
-        "target--mitre-group--sector--c5b1f7936acf85af11e4"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [
-        "infra--cloud-code-hosting"
-      ],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-f3e6fda98089cb5da96d"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--9a84486a6c98d6fea40f59ea から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: LogpressoがKimsukyの4キャンペーンとして分析。PowerShell RATは固有ファミリー名ではないためCapability名としては採用しない。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [
-        "ttp--activity-rule--4e7a9106baf629cb2a5d",
-        "ttp--activity-rule--e326bf94ac733031173e"
-      ],
-      "victim_refs": [
-        "victim--activity-rule--3df32433e6e912714b2a"
-      ]
-    },
-    {
-      "activity_id": "activity--daily-a75732bcf0cbd93ba89d",
-      "name": "Kimsuky、TRANSLATEXT Chrome拡張機能を使用して機密データを盗む",
-      "activity_type": "reported-activity",
-      "first_observed": {
-        "value": "2024-03-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": "2024-03-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "reported_at": {
-        "value": "2024-06-29T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "北朝鮮のハッカーグループKimsukyがTRANSLATEXTという悪意のあるChrome拡張機能を使用。 拡張機能は、メールアドレス、ユーザー名、パスワード、クッキー、ブラウザのスクリーンショットを収集。 主なターゲットは韓国の学術機関で、北朝鮮の政治問題に焦点を当てた学術関係が特に狙われた。 Zscaler ThreatLabzが2024年3月に活動を観測。 拡張機能はGoogle Translateを装い、セキュリティを回避。",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--daily-303f2ea1899dc2bdab19"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--a75732bcf0cbd93ba89ddf04 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsuky、TRANSLATEXT Chrome拡張機能を使用して機密データを盗む [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [
-        "ttp--activity-rule--5c91761bada372170084"
-      ],
-      "victim_refs": []
     },
     {
       "activity_id": "activity--daily-ca0d00789c7bb400d0f4",
@@ -1573,44 +1352,6 @@
       "victim_refs": []
     },
     {
-      "activity_id": "activity--daily-e11797d9d962cf0c0e06",
-      "name": "北朝鮮のハッカー、PowerShellの手法を悪用して新たなサイバー攻撃を実行",
-      "activity_type": "phishing-campaign",
-      "first_observed": {
-        "value": "2025-01-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "activity-description-explicit-period"
-      },
-      "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "reported_at": {
-        "value": "2025-02-13T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "description": "北朝鮮のハッカーグループ「Kimsuky」が、PowerShellを管理者権限で実行させ、悪意のあるコードを実行させる新たな手法を使用しています。 攻撃者は、南韓政府関係者を装い、ターゲットと関係を構築した後、PDF添付のスピアフィッシングメールを送信します。 被害者は、Windowsシステムの登録手順を記載したURLをクリックするよう促され、PowerShellを管理者として実行し、提示されたコードをコピー&ペーストして実行するよう指示されます。 このコードは、リモートサーバーからブラウザベースのリモートデスクトップツールと証明書ファイルをダウンロードし、攻撃者がデバイスにアクセスし、データを抽出できるようにします。 この手法は、2025年1月以降、限定的な攻撃で観測されており、Kimsukyが使う従来の手法から逸脱しています。",
-      "target_refs": [
-        "target--mitre-group--sector--4eba90b76b16e9d6d89b"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-b859524205edbc7c576c"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--e11797d9d962cf0c0e06aa7b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮のハッカーグループ「Kimsuky」が、PowerShellを管理者権限で実行させ、悪意のあるコードを実行させる新たな手法を使用しています。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "ttp_refs": [],
-      "victim_refs": [
-        "victim--activity-rule--b327511a595ac3276ab1"
-      ]
-    },
-    {
       "activity_id": "activity--daily-ea9ff4545671891d56e1",
       "name": "北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行",
       "activity_type": "infrastructure-operation",
@@ -1724,92 +1465,48 @@
       "victim_refs": []
     },
     {
-      "activity_id": "activity--darkhorse",
-      "name": "Operation DarkHorse",
+      "activity_id": "activity--smoke-screen",
+      "name": "Smoke Screen / Stealth Power",
       "activity_type": "campaign",
       "first_observed": {
-        "value": "2022-02-01T00:00:00Z",
+        "value": "2019-03-01T00:00:00Z",
         "precision": "month",
         "status": "known",
         "basis": "source-stated"
       },
       "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2019-05-31T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
       },
-      "description": "VBSからJSEへ変化したCHM活動。暗号資産、金融、保険等の誘引を利用。",
+      "description": "DPRK関連のHWP/DOCフィッシング、HTA、PowerShellキーロガーを伴う活動。",
       "target_refs": [
-        "target--finance"
+        "target--government-diplomacy",
+        "target--south-korea"
       ],
       "malware_refs": [],
       "infrastructure_refs": [
-        "infra--lookalike-domains"
+        "infra--compromised-web-servers"
       ],
-      "confidence": "medium",
+      "confidence": "high",
       "evidence_refs": [
-        "source--darkhorse-2023"
+        "source--smoke-screen"
       ],
-      "analyst_notes": "APT37説との帰属競合がある。 [observation-time-audit-v1] 資料公開日のみを根拠とする観測日時をunknownへ戻した: last_observed=2023-10-16T00:00:00Z (basis=source-publication)。公開日はreported_atまたはsource metadataで保持する。",
+      "analyst_notes": "",
       "reported_at": {
-        "value": "2023-10-16T00:00:00Z",
+        "value": "2019-04-17T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "earliest-evidence-source-published-at"
       },
       "ttp_refs": [
+        "ttp--activity-rule--a2250f5bde5c4e0d27c0",
         "ttp--t1059-001--powershell",
         "ttp--t1566-001--documents"
       ],
       "victim_refs": [
-        "victim--activity-rule--190f76f226f2f78defa7"
-      ]
-    },
-    {
-      "activity_id": "activity--kimsuky-quishing-2025",
-      "name": "Kimsuky QR-code Spearphishing Campaign",
-      "activity_type": "campaign",
-      "first_observed": {
-        "value": "2025-05-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "fbi-observation"
-      },
-      "last_observed": {
-        "value": "2025-06-30T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "fbi-observation"
-      },
-      "description": "Kimsuky impersonated foreign advisers, embassy and think-tank personnel, and conference organizers. QR codes led think-tank and strategic-advisory targets to credential-harvesting infrastructure.",
-      "target_refs": [
-        "target--journalists-policy-experts",
-        "target--research-academia"
-      ],
-      "malware_refs": [],
-      "infrastructure_refs": [
-        "infra--qr-credential-phishing"
-      ],
-      "confidence": "high",
-      "evidence_refs": [
-        "source--fbi-kimsuky-quishing-2026"
-      ],
-      "analyst_notes": "",
-      "reported_at": {
-        "value": "2026-01-08T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "earliest-evidence-source-published-at"
-      },
-      "ttp_refs": [
-        "ttp--t1056-003--kimsuky-quishing-2025",
-        "ttp--t1098--kimsuky-quishing-2025",
-        "ttp--t1550-004--kimsuky-quishing-2025",
-        "ttp--t1566-002--kimsuky-quishing-2025"
-      ],
-      "victim_refs": [
-        "victim--activity-rule--8a36dde11b25a11054ec"
+        "victim--activity-rule--c4bf5579c78fe551b1fe"
       ]
     },
     {
@@ -1861,48 +1558,411 @@
       ]
     },
     {
-      "activity_id": "activity--smoke-screen",
-      "name": "Smoke Screen / Stealth Power",
+      "activity_id": "activity--browser-google-play",
+      "name": "Browser Extension and Google Play Abuse",
       "activity_type": "campaign",
       "first_observed": {
-        "value": "2019-03-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "source-stated"
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "inferred",
+        "basis": "advisory-observation-window"
       },
       "last_observed": {
-        "value": "2019-05-31T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "source-stated"
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
-      "description": "DPRK関連のHWP/DOCフィッシング、HTA、PowerShellキーロガーを伴う活動。",
+      "description": "Chromium拡張でGmailを窃取し、Google Play同期機能でAndroidマルウェアを配布。",
       "target_refs": [
-        "target--government-diplomacy",
-        "target--south-korea"
+        "target--germany",
+        "target--research-academia"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--fastviewer"
+      ],
       "infrastructure_refs": [
-        "infra--compromised-web-servers"
+        "infra--lookalike-domains"
       ],
       "confidence": "high",
       "evidence_refs": [
-        "source--smoke-screen"
+        "source--browser-advisory-2023"
       ],
-      "analyst_notes": "",
+      "analyst_notes": "[observation-time-audit-v1] 資料公開日のみを根拠とする観測日時をunknownへ戻した: last_observed=2023-03-20T00:00:00Z (basis=source-publication)。公開日はreported_atまたはsource metadataで保持する。",
       "reported_at": {
-        "value": "2019-04-17T00:00:00Z",
+        "value": "2023-03-20T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "earliest-evidence-source-published-at"
       },
       "ttp_refs": [
-        "ttp--activity-rule--a2250f5bde5c4e0d27c0",
+        "ttp--t1114--email-collection",
+        "ttp--t1566-002--credential-links"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--81ab232ac4d2bee5f37b"
+      ]
+    },
+    {
+      "activity_id": "activity--darkhorse",
+      "name": "Operation DarkHorse",
+      "activity_type": "campaign",
+      "first_observed": {
+        "value": "2022-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "description": "VBSからJSEへ変化したCHM活動。暗号資産、金融、保険等の誘引を利用。",
+      "target_refs": [
+        "target--finance"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--lookalike-domains"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--darkhorse-2023"
+      ],
+      "analyst_notes": "APT37説との帰属競合がある。 [observation-time-audit-v1] 資料公開日のみを根拠とする観測日時をunknownへ戻した: last_observed=2023-10-16T00:00:00Z (basis=source-publication)。公開日はreported_atまたはsource metadataで保持する。",
+      "reported_at": {
+        "value": "2023-10-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "ttp_refs": [
         "ttp--t1059-001--powershell",
         "ttp--t1566-001--documents"
       ],
       "victim_refs": [
-        "victim--activity-rule--c4bf5579c78fe551b1fe"
+        "victim--activity-rule--190f76f226f2f78defa7"
+      ]
+    },
+    {
+      "activity_id": "activity--daily-51873b85e75734a0d314",
+      "name": "北朝鮮のハッカー、新たなGolangマルウェア「Durian」を暗号通貨企業に対して使用",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": "2023-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2023-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2024-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮のAPT「Kimsuky」、Golangベースの新マルウェア「Durian」を使用 韓国の暗号通貨企業2社が標的にされた マルウェアはバックドア機能を備え、ファイルを抽出 侵入手段は韓国固有の正規ソフトウェアを通じたものであるが、正確なメカニズムは明らかにされていない 攻撃は2023年8月と11月に発生",
+      "target_refs": [
+        "target--south-korea"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-a5ca98841868974d600b"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--51873b85e75734a0d3149da0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮のAPT「Kimsuky」、Golangベースの新マルウェア「Durian」を使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--b40066714da8e40790a5"
+      ]
+    },
+    {
+      "activity_id": "activity--daily-7a9584dd178b67430a5e",
+      "name": "Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2024-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2024-05-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮のKimsukyグループがGomirマルウェアを使用。 攻撃は2024年初めに始まり、韓国政府機関を標的。 GomirはGoBearのLinux版で、持続性とC2通信を持つ。 マルウェアはroot権限で動作し、/var/log/syslogdにコピーされる。 マルウェアは17の操作をサポートしており、HTTP POSTリクエストで実行。 操作の例: C&Cサーバーとの通信を一時停止、任意のシェルコマンドを実行、リモート接続用のリバース プロキシを開始、システムからファイルを取得、など",
+      "target_refs": [
+        "target--mitre-group--sector--4eba90b76b16e9d6d89b",
+        "target--south-korea"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-01bbfa4ce1d271e9e220"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--7a9584dd178b67430a5e2600 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [
+        "ttp--activity-rule--d97d1bd687c6c8f70793"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--643a32a3eac4d1304920"
+      ]
+    },
+    {
+      "activity_id": "activity--daily-a75732bcf0cbd93ba89d",
+      "name": "Kimsuky、TRANSLATEXT Chrome拡張機能を使用して機密データを盗む",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": "2024-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2024-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2024-06-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮のハッカーグループKimsukyがTRANSLATEXTという悪意のあるChrome拡張機能を使用。 拡張機能は、メールアドレス、ユーザー名、パスワード、クッキー、ブラウザのスクリーンショットを収集。 主なターゲットは韓国の学術機関で、北朝鮮の政治問題に焦点を当てた学術関係が特に狙われた。 Zscaler ThreatLabzが2024年3月に活動を観測。 拡張機能はGoogle Translateを装い、セキュリティを回避。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-303f2ea1899dc2bdab19"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--a75732bcf0cbd93ba89ddf04 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsuky、TRANSLATEXT Chrome拡張機能を使用して機密データを盗む [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [
+        "ttp--activity-rule--5c91761bada372170084"
+      ],
+      "victim_refs": []
+    },
+    {
+      "activity_id": "activity--daily-0c474e6b7ce54ba49c5e",
+      "name": "国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2025-04-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "中国・イラン・ロシア・北朝鮮支援のAPTがClickFixを用いたフィッシング攻撃を展開。 TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 TA450 (MuddyWater): イランに関連するこのグループは、持続的なアクセスを維持するために、Levelなどの正当なリモート監視および管理 (RMM) ソフトウェアを悪用するためにClickFixを利用 UNK_RemoteRogue: 2024年末に確認されたこのロシアの可能性のあるグループは、侵害された可能性のあるZimbraサーバーから送信された、Microsoft Officeドキュメントへのリンクを含むおとりメールを使用してClickFixを使用 PowerShellコマンドを利用しQuasar RATやRMMソフトを導入。 日本大使館を装った誘導や、YouTube動画を含む偽ページなどを利用。",
+      "target_refs": [
+        "target--mitre-group--sector--c5b1f7936acf85af11e4"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-07ef6046e1668f840b3a"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--0c474e6b7ce54ba49c5eca94 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - TA427 (Kimsuky): 2025年1月と2月に、シンクタンク部門の少数組織の個人を標的としたフィッシングキャンペーンでClickFixを使用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [
+        "ttp--activity-rule--1f8b1ff7e839aaca7ece"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--78b3d620ec98d71ea8ad"
+      ]
+    },
+    {
+      "activity_id": "activity--daily-e11797d9d962cf0c0e06",
+      "name": "北朝鮮のハッカー、PowerShellの手法を悪用して新たなサイバー攻撃を実行",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2025-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-02-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮のハッカーグループ「Kimsuky」が、PowerShellを管理者権限で実行させ、悪意のあるコードを実行させる新たな手法を使用しています。 攻撃者は、南韓政府関係者を装い、ターゲットと関係を構築した後、PDF添付のスピアフィッシングメールを送信します。 被害者は、Windowsシステムの登録手順を記載したURLをクリックするよう促され、PowerShellを管理者として実行し、提示されたコードをコピー&ペーストして実行するよう指示されます。 このコードは、リモートサーバーからブラウザベースのリモートデスクトップツールと証明書ファイルをダウンロードし、攻撃者がデバイスにアクセスし、データを抽出できるようにします。 この手法は、2025年1月以降、限定的な攻撃で観測されており、Kimsukyが使う従来の手法から逸脱しています。",
+      "target_refs": [
+        "target--mitre-group--sector--4eba90b76b16e9d6d89b"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b859524205edbc7c576c"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--e11797d9d962cf0c0e06aa7b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮のハッカーグループ「Kimsuky」が、PowerShellを管理者権限で実行させ、悪意のあるコードを実行させる新たな手法を使用しています。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--b327511a595ac3276ab1"
+      ]
+    },
+    {
+      "activity_id": "activity--kimsuky-quishing-2025",
+      "name": "Kimsuky QR-code Spearphishing Campaign",
+      "activity_type": "campaign",
+      "first_observed": {
+        "value": "2025-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "fbi-observation"
+      },
+      "last_observed": {
+        "value": "2025-06-30T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "fbi-observation"
+      },
+      "description": "Kimsuky impersonated foreign advisers, embassy and think-tank personnel, and conference organizers. QR codes led think-tank and strategic-advisory targets to credential-harvesting infrastructure.",
+      "target_refs": [
+        "target--journalists-policy-experts",
+        "target--research-academia"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--qr-credential-phishing"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--fbi-kimsuky-quishing-2026"
+      ],
+      "analyst_notes": "",
+      "reported_at": {
+        "value": "2026-01-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "ttp_refs": [
+        "ttp--t1056-003--kimsuky-quishing-2025",
+        "ttp--t1098--kimsuky-quishing-2025",
+        "ttp--t1550-004--kimsuky-quishing-2025",
+        "ttp--t1566-002--kimsuky-quishing-2025"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--8a36dde11b25a11054ec"
+      ]
+    },
+    {
+      "activity_id": "activity--daily-85030340c998f3f9ab89",
+      "name": "Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": "2025-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2025-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2025-12-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "北朝鮮関与のKimsukyが、宅配追跡を装う偽サイトと武器化QRコードでAndroid向けマルウェア「DOCSWAP」を配布。 2025年9月に観測。スミッシングで偽追跡サイトへ誘導し、QR読取や直接アクセスで「セキュリティアプリ」偽装APKを落とさせる。 配布C2は27.102.137.181。SecDelivery.apk内のsecurity.datをlibnative-lib.soで復号し、多権限取得と常駐を確立。 RATは57コマンドを実装し、録音・録画、位置・通話・連絡先・SMS収集、遠隔操作、アクセシビリティ経由のキー入力記録を実施。 インフラやHTMLの韓国語コメント、「Million OK !!!!」が過去作戦と一致し、Kimsuky関与の根拠となった。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-f7383fd875d71ae63151"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--85030340c998f3f9ab899f40 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [],
+      "victim_refs": []
+    },
+    {
+      "activity_id": "activity--daily-9a84486a6c98d6fea40f",
+      "name": "2026年第1四半期 DPRK Operation Kimsuky 分析",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2026-05-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。",
+      "target_refs": [
+        "target--activity-rule--sector--63c9fa67327d005b07b7",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--mitre-group--sector--c5b1f7936acf85af11e4"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--cloud-code-hosting"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f3e6fda98089cb5da96d"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--9a84486a6c98d6fea40f59ea から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: LogpressoがKimsukyの4キャンペーンとして分析。PowerShell RATは固有ファミリー名ではないためCapability名としては採用しない。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [
+        "ttp--activity-rule--4e7a9106baf629cb2a5d",
+        "ttp--activity-rule--e326bf94ac733031173e"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--3df32433e6e912714b2a"
       ]
     }
   ],
@@ -4048,6 +4108,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_01-03/20250207.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-6f6e88199bc7e8479193",
+      "path": "https://asec.ahnlab.com/jp/94655/",
+      "title": "Kimsukyグループによる外交関係者を装った攻撃事例（PebbleDash、PrxClient）",
+      "publisher": "asec.ahnlab.com",
+      "published_at": {
+        "value": "2026-07-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260730.md; source commit: 70b9ca4388f24882d53b84696fe4a8c2d91ad1ea; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-75d0d2c890d6c822d6f6",
       "path": "https://thehackernews.com/2024/05/north-korean-hackers-exploit-facebook.html",
       "title": "北朝鮮のハッカー、標的型マルウェアキャンペーンでFacebook Messengerを悪用",
@@ -4419,6 +4497,24 @@
       "analyst_notes": ""
     },
     {
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository. ATT&CK relationship modification dates are not observation dates."
+    },
+    {
       "source_id": "source--mitre-live-kimsuky-2026",
       "path": "https://attack.mitre.org/groups/G0094/",
       "url": "https://attack.mitre.org/groups/G0094/",
@@ -4639,24 +4735,6 @@
       "reliability": "high",
       "sha256": null,
       "analyst_notes": ""
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository. ATT&CK relationship modification dates are not observation dates."
     },
     {
       "source_id": "source--target-audit-etda-threat-group-cards",

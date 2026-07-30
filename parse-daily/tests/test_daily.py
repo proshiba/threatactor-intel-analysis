@@ -6,10 +6,20 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
+
+import daily_check  # noqa: E402
+from daily_check import latest_activity  # noqa: E402
+
+UNKNOWN_POINT = {"value": None, "precision": "unknown", "status": "unknown", "basis": "not-stated"}
+
+
+def known_point(value: str) -> dict:
+    return {"value": value, "precision": "day", "status": "known", "basis": "source-reporting"}
 
 from daily_common import (  # noqa: E402
     ActorMatch,
@@ -385,6 +395,80 @@ class DailyCommonTests(unittest.TestCase):
             [item["record_id"] for item in rebuilt["records"]],
             ["daily-record--new"],
         )
+
+
+class DailyCheckTests(unittest.TestCase):
+    """日次チェックの抽出ロジック（daily_check.py）。"""
+
+    def test_report_date_is_used_when_period_is_unknown(self) -> None:
+        """攻撃期間不明でも reported_at があれば直近活動として拾う。"""
+        profile = {
+            "activities": [
+                {
+                    "first_observed": UNKNOWN_POINT,
+                    "last_observed": UNKNOWN_POINT,
+                    "reported_at": known_point("2026-07-20T00:00:00Z"),
+                }
+            ],
+            "actor": {"last_seen": UNKNOWN_POINT},
+        }
+        point, basis = latest_activity(profile)
+        self.assertIsNotNone(point)
+        self.assertEqual(point.date().isoformat(), "2026-07-20")
+        self.assertEqual(basis, "activity.reported_at")
+
+    def test_newest_signal_wins_across_fields(self) -> None:
+        profile = {
+            "activities": [
+                {
+                    "first_observed": known_point("2024-01-01T00:00:00Z"),
+                    "last_observed": known_point("2024-03-01T00:00:00Z"),
+                    "reported_at": known_point("2024-04-01T00:00:00Z"),
+                }
+            ],
+            "actor": {"last_seen": known_point("2026-05-05T00:00:00Z")},
+        }
+        point, basis = latest_activity(profile)
+        self.assertEqual(point.date().isoformat(), "2026-05-05")
+        self.assertEqual(basis, "actor.last_seen")
+
+    def test_unknown_dates_are_not_treated_as_activity(self) -> None:
+        profile = {
+            "activities": [{"first_observed": UNKNOWN_POINT, "last_observed": UNKNOWN_POINT}],
+            "actor": {"last_seen": UNKNOWN_POINT},
+        }
+        self.assertEqual(latest_activity(profile), (None, ""))
+
+    def test_mentioned_actors_put_recently_active_first(self) -> None:
+        """直近活動のあるアクターが最優先で並ぶこと。"""
+        queue = {
+            "records": [
+                {
+                    "review_status": "pending",
+                    "actor": {"slug": "quiet-actor", "canonical_name": "Quiet", "matched_term": "Quiet"},
+                    "activity": {"title": "記事A", "news_date": "2026-07-27"},
+                    "activity_claim": {"assessment": "strong-subject"},
+                },
+                {
+                    "review_status": "pending",
+                    "actor": {"slug": "active-actor", "canonical_name": "Active", "matched_term": "Active"},
+                    "activity": {"title": "記事B", "news_date": "2026-07-27"},
+                    "activity_claim": {"assessment": "candidate"},
+                },
+            ]
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            queue_path = Path(tmp) / "review-queue.json"
+            queue_path.write_text(json.dumps(queue), encoding="utf-8")
+            recent = [{"slug": "active-actor", "last_activity": "2026-07-01"}]
+            with mock.patch.object(daily_check, "QUEUE_PATH", queue_path), \
+                 mock.patch.object(daily_check, "STATE_PATH", Path(tmp) / "missing.json"), \
+                 mock.patch.object(daily_check, "collect_recent_actors", return_value=recent):
+                report = daily_check.build_report(365, "2026-07-27")
+        names = [entry["slug"] for entry in report["mentioned_actors"]]
+        self.assertEqual(names[0], "active-actor")
+        self.assertTrue(report["mentioned_actors"][0]["in_recent_set"])
+        self.assertEqual(report["statistics"]["mentioned_recent_actors"], 1)
 
 
 if __name__ == "__main__":

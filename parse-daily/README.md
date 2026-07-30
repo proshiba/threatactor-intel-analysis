@@ -3,6 +3,35 @@
 `proshiba/tech-memo`の`daily-news/news`と`daily-news/iocs`を取得し、既存の脅威
 アクタープロファイルへ反映するためのレビュー優先パイプラインです。
 
+## 日次チェック
+
+全673アクターを毎日見るのは現実的でないため、`daily_check.py`が次の2観点に絞って
+確認対象を抽出します。プロファイルは変更しません。
+
+1. 直近に活動があったアクター（既定は過去365日、現在75件）に新しい報告がないか
+2. tech-memoのdaily-newsで言及されたアクターの活動記載
+
+```bash
+# tech-memoの取得とキュー生成から通しで実行して報告を出す
+python3 parse-daily/daily_check.py --run-scan
+
+# 既存のoutput/review-queue.jsonを使って報告だけ出す
+python3 parse-daily/daily_check.py
+
+# 直近の定義を変える／JSONで受け取る
+python3 parse-daily/daily_check.py --days 180 --json
+```
+
+報告は「直近活動があり、かつ新たに言及されたアクター」を最優先に並べます。これが
+最も確認すべき対象です。次いで新規言及のみのアクター、既存プロファイルに一致しない
+名前（新規プロファイル候補）、直近活動アクターの一覧を出します。
+
+`--since`の既定は`state.json`の`last_scanned_date`です。結果は
+`output/daily-check.json`にも保存します（Git管理外）。
+
+採用可否の判断と反映は下記の手順と[AGENT.md](AGENT.md)に従ってください。
+このチェックは検知だけを行い、承認・反映は行いません。
+
 ```bash
 # 1. sparse cloneを作成、またはmainをfast-forward
 python3 parse-daily/sync_daily.py
