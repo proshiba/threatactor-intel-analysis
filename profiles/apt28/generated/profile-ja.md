@@ -502,10 +502,10 @@ Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOl
 
 ## IOC／artifact概要
 
-- IOC値: 1180件
-- IOC観測: 1398件
+- IOC値: 1172件
+- IOC観測: 1390件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 116件
+- 要レビュー候補: 112件
 - 非IOC artifact観測: 777件（`artifacts.csv`）
 
 ## 主要判断と不確実性

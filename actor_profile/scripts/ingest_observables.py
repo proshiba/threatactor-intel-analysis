@@ -13,7 +13,7 @@ import ipaddress
 import json
 import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Iterator
 
@@ -316,11 +316,52 @@ def structured_metadata(
     return result
 
 
+NON_HASH_WORD_RE = re.compile(rb"[A-Za-z0-9 _./$\\-]{10,}")
+
+
+def looks_like_hash(compact: str) -> bool:
+    """本物のファイルハッシュらしいか。
+
+    マルウェア解析の資料には逆アセンブル結果・PEヘッダ・シェルコード・スクリプトの
+    16進表現が載る。これらがちょうど32/40/64/128桁だとハッシュに見えてしまうため、
+    「ランダムな16バイト以上では起きえない特徴」で弾く。
+    偽陰性(本物を弾く)を出さないよう、閾値は確率的に十分余裕のあるところに置く。
+    """
+    raw = bytes.fromhex(compact)
+
+    # ゼロバイトが多い: 1バイトが0x00になる確率は1/256
+    if raw.count(0) / len(raw) >= 0.20:
+        return False
+
+    # 同じバイトの連続: ダンプのパディングや繰り返しパターン
+    run = longest = 1
+    for prev, cur in zip(raw, raw[1:]):
+        run = run + 1 if cur == prev else 1
+        longest = max(longest, run)
+    if longest >= 4:
+        return False
+
+    # 同じ3バイトの並びが繰り返す: 機械語の定型命令やファイル名偽装の制御文字。
+    # x86の`c74424XX`のように、ゼロでも連続でも可読でもない繰り返しはこれでしか
+    # 捕まらないため、この条件は外さないこと。
+    trigrams = Counter(bytes(raw[index : index + 3]) for index in range(len(raw) - 2))
+    if trigrams.most_common(1)[0][1] >= 3:
+        return False
+
+    # 復号すると読める: 文字列を16進化したもの
+    if NON_HASH_WORD_RE.search(raw):
+        return False
+
+    return True
+
+
 def classify_hash(raw: str) -> tuple[str, str] | None:
-    compact = re.sub(r"[^0-9A-Fa-f]", "", raw)
+    compact = re.sub(r"[^0-9A-Fa-f]", "", raw).lower()
     kind_by_length = {32: "md5", 40: "sha1", 64: "sha256", 128: "sha512"}
     kind = kind_by_length.get(len(compact))
-    return (kind, compact) if kind else None
+    if not kind or not looks_like_hash(compact):
+        return None
+    return (kind, compact)
 
 
 def analyst_marked(raw: str, explicit_structured: bool) -> bool:
@@ -422,11 +463,13 @@ def extract_iocs(
 
     occupied: list[tuple[int, int]] = []
     for match in HASH_RE.finditer(text):
+        # ハッシュとして採らなかった16進列も占有済みにする。区切り文字入りの
+        # 16進列がドメインとして拾い直されると、誤検知を別の誤検知へ移すだけになる。
+        occupied.append(match.span())
         classified = classify_hash(match.group())
         if classified:
             kind, raw = classified
             results.append((kind, raw, disposition))
-            occupied.append(match.span())
 
     for match in URL_RE.finditer(text):
         raw = match.group()
