@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--blacktech`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:30Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:13:54Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -117,13 +117,13 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
-| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
-| PLEAD | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Shrouded Crossbow | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Waterbear | operation | 不明 | 不明 | 不明 | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 |  | malware--waterbear |  |  | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
+| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--a880b3c2a984d91381dc | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
+| PLEAD | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Shrouded Crossbow | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| Waterbear | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 PLEAD; Shrouded Crossbow; Waterbear
 
@@ -131,30 +131,42 @@ PLEAD; Shrouded Crossbow; Waterbear
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | Hong Kong | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Taiwan | Targeting text mentions taiwan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Japan | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 中国 | 構造化OSINTの被害国フィールドでBlackTechの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | Targeting text mentions taiwan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでBlackTechの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | アジア | MITRE ATT&CKのGroup概要でBlackTechの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--daily-1dfee7d2a70ba1432540`, `source--daily-718b90e4e11c27f888d6`, `source--mitre-attack-19-1` |
+| regions | アジア太平洋 | 活動「中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開」の記述で標的地域としてアジア太平洋が明示されている。 | 不明 | 不明 | 中 | `source--daily-1dfee7d2a70ba1432540`, `source--daily-718b90e4e11c27f888d6` |
+| regions | 東アジア | MITRE ATT&CKのGroup概要でBlackTechの標的範囲として東アジアが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 政府・行政 | 活動「BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-1dfee7d2a70ba1432540` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | サーバー, ネットワーク機器 |  | 不明 | 不明 | 2024-04-20 | 高 | `source--daily-1dfee7d2a70ba1432540` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Lateral Movement | T1021.001 | Remote Desktop Protocol | ) products. Common methods of persistence on a host include NetCat shells, modifying the victim registry [T1112] to enable the remote desktop protocol (RDP) [T1021.001], and secure shell (SSH) [T1021.004]. The actors have also used SNScan for enumeration [TA0007], and a local file transfer protocol (FTP) server [T1071.002] to move data through the victim network. For additional examples of malicious cyber actors living off the land, see Peo |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
-| Lateral Movement | T1021.004 | SSH | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--mitre-attack-19-1` |
-| Stealth | T1036.002 | Right-to-Left Override | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.004 | SSH | [BlackTech](https://attack.mitre.org/groups/G0098) has used Putty for remote access.(Citation: Symantec Palmerworm Sep 2020) |  |  | 不明 | 不明 | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--mitre-attack-19-1` |
+| Stealth | T1036.002 | Right-to-Left Override | [BlackTech](https://attack.mitre.org/groups/G0098) has used right-to-left-override to obfuscate the filenames of malicious e-mail attachments.(Citation: TrendMicro BlackTech June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [BlackTech](https://attack.mitre.org/groups/G0098) has used the SNScan tool to find other potential targets on victim networks.(Citation: Symantec Palmerworm Sep 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Command And Control | T1071.002 | File Transfer Protocols | [T1021.001], and secure shell (SSH) [T1021.004]. The actors have also used SNScan for enumeration [TA0007], and a local file transfer protocol (FTP) server [T1071.002] to move data through the victim network. For additional examples of malicious cyber actors living off the land, see People's Republic of China State- Sponsored Cyber Actor Living off the Land to Evade Detection. [2] Pivoting from international subsidiaries The PRC-linked Bl |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Command And Control | T1090 | Proxy | : File Transfer Protocols T1071.002 BlackTech actors use FTP to move data through a victim’s network or to deliver scripts for compromising routers. Proxy T1090 BlackTech actors use compromised routers to proxy traffic. |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Command And Control | T1090.002 | External Proxy | their infrastructure for proxying traffic [TA0011], blending in with corporate network traffic, and pivoting to other victims on the same corporate network [T1090.002]. Maintaining access via stealthy router backdoors BlackTech has targeted and exploited various brands and versions of router devices. TTPs against routers enable the actors to conceal configuration changes, hide commands, and disable logging while BlackTech actors conduct |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
-| Execution | T1106 | Native API | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1106 | Native API | [BlackTech](https://attack.mitre.org/groups/G0098) has used built-in API functions.(Citation: IronNet BlackTech Oct 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Defense Impairment, Persistence | T1112 | Modify Registry | de detection by endpoint detection and response (EDR) products. Common methods of persistence on a host include NetCat shells, modifying the victim registry [T1112] to enable the remote desktop protocol (RDP) [T1021.001], and secure shell (SSH) [T1021.004]. The actors have also used SNScan for enumeration [TA0007], and a local file transfer protocol (FTP) server [T1071.002] to move data through the victim network. For additional example |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
-| Initial Access | T1190 | Exploit Public-Facing Application | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [BlackTech](https://attack.mitre.org/groups/G0098) has exploited a buffer overflow vulnerability in Microsoft Internet Information Services (IIS) 6.0, CVE-2017-7269, in order to establish a new HTTP or command and control (C2) server.(Citation: TrendMicro BlackTech June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access | T1199 | Trusted Relationship | and tailored persistence mechanisms for compromising routers. These TTPs allow the actors to disable logging [T1562] and abuse trusted domain relationships [T1199] to pivot between international subsidiaries and domestic headquarters’ networks. Observable TTPs BlackTech cyber actors use custom malware payloads and remote access tools (RATs) to target victims’ operating systems. The actors have used a range of custom malware families |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
-| Execution | T1203 | Exploitation for Client Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1203 | Exploitation for Client Execution | [BlackTech](https://attack.mitre.org/groups/G0098) has exploited multiple vulnerabilities for execution, including Microsoft Office vulnerabilities CVE-2012-0158, CVE-2014-6352, CVE-2017-0199, and Adobe Flash CVE-2015-5119.(Citation: TrendMicro BlackTech June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [BlackTech](https://attack.mitre.org/groups/G0098) has used e-mails with malicious links to lure victims into installing malware.(Citation: TrendMicro BlackTech June 2017)	  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [BlackTech](https://attack.mitre.org/groups/G0098) has used e-mails with malicious documents to lure victims into installing malware.(Citation: TrendMicro BlackTech June 2017)(Citation: NTT Security Flagpro new December 2021)	  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Command And Control, Persistence, Stealth | T1205 | Traffic Signaling | ng variations of a customized firmware backdoor [T1542.004]. The backdoor functionality is enabled and disabled through specially crafted TCP or UDP packets [T1205]. This TTP is not solely limited to Cisco routers, and similar techniques could be used to enable backdoors in other network equipment. In some cases, BlackTech actors replace the firmware for certain Cisco IOS®-based routers with malicious firmware. Although BlackTech actor |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Persistence, Stealth | T1542.004 | ROMMONkit | ber Actors Hide in Router Firmware TLP:CLEAR TLP:CLEAR 4 actors have compromised several Cisco® routers using variations of a customized firmware backdoor [T1542.004]. The backdoor functionality is enabled and disabled through specially crafted TCP or UDP packets [T1205]. This TTP is not solely limited to Cisco routers, and similar techniques could be used to enable backdoors in other network equipment. In some cases, BlackTech actors re |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Defense Impairment | T1553.002 | Code Signing | Firmware TLP:CLEAR TLP:CLEAR 3 sign the malicious payloads, which make them appear legitimate and therefore more difficult for security software to detect [T1553.002]. BlackTech actors use living off the land TTPs to blend in with normal operating system and network activities, allowing them to evade detection by endpoint detection and response (EDR) products. Common methods of persistence on a host include NetCat shells, modifying the v |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
@@ -164,12 +176,12 @@ PLEAD; Shrouded Crossbow; Waterbear
 | Uncategorized | T1562.001 | MITRE ATT&CK T1562.001 | he execution of other legitimate CLI commands, such as hindering forensic analysis by blocking copy, rename, and move commands for the associated EEM policy [T1562.001]. Firmware replacement process BlackTech actors utilize the following file types to compromise the router. These files are downloaded to the router via FTP or SSH. |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Uncategorized | T1562.003 | MITRE ATT&CK T1562.003 | uses a built-in SSH backdoor [T1556.004], allowing BlackTech actors to maintain access to the compromised router without BlackTech connections being logged [T1562.003]. BlackTech actors bypass the router's built-in security features by first installing older legitimate firmware [T1601.002] that they then modify in memory to allow the installation of a modified, unsigned bootloader and modified, unsigned firmware [T1601.001]. The modified b |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Uncategorized | T1562.006 | MITRE ATT&CK T1562.006 | timate commands. This policy has two functions: (1) to remove lines containing certain strings in the output of specified, legitimate Cisco IOS CLI commands [T1562.006], and (2) prevent the execution of other legitimate CLI commands, such as hindering forensic analysis by blocking copy, rename, and move commands for the associated EEM policy [T1562.001]. Firmware replacement process BlackTech actors utilize the following file types to com |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Stealth | T1574.001 | DLL | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.003 | Code Signing Certificates | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--mitre-attack-19-1` |
-| Resource Development | T1588.004 | Digital Certificates | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [BlackTech](https://attack.mitre.org/groups/G0098) has used spearphishing e-mails with malicious password-protected archived files (ZIP or RAR) to deliver malware.(Citation: TrendMicro BlackTech June 2017)(Citation: NTT Security Flagpro new December 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [BlackTech](https://attack.mitre.org/groups/G0098) has used spearphishing e-mails with links to cloud services to deliver malware.(Citation: TrendMicro BlackTech June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Stealth | T1574.001 | DLL | [BlackTech](https://attack.mitre.org/groups/G0098) has used DLL side loading by giving DLLs hardcoded names and placing them in searched directories.(Citation: Trend Micro Waterbear December 2019)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [BlackTech](https://attack.mitre.org/groups/G0098) has obtained and used tools such as Putty, SNScan, and [PsExec](https://attack.mitre.org/software/S0029) for its operations.(Citation: Symantec Palmerworm Sep 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.003 | Code Signing Certificates | [BlackTech](https://attack.mitre.org/groups/G0098) has used stolen code-signing certificates for its malicious payloads.(Citation: Symantec Palmerworm Sep 2020) |  |  | 不明 | 不明 | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--mitre-attack-19-1` |
+| Resource Development | T1588.004 | Digital Certificates | [BlackTech](https://attack.mitre.org/groups/G0098) has used valid, stolen digital certificates for some of their malware and tools.(Citation: ESET PLEAD Malware July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Defense Impairment | T1601.001 | Patch System Image | legitimate firmware [T1601.002] that they then modify in memory to allow the installation of a modified, unsigned bootloader and modified, unsigned firmware [T1601.001]. The modified bootloader enables the modified firmware to continue evading detection [T1553.006], however, it is not always necessary. BlackTech actors may also hide their presence and obfuscate changes made to compromised Cisco routers by hiding Embedded Event Manager (EEM |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Defense Impairment | T1601.002 | Downgrade System Image | BlackTech connections being logged [T1562.003]. BlackTech actors bypass the router's built-in security features by first installing older legitimate firmware [T1601.002] that they then modify in memory to allow the installation of a modified, unsigned bootloader and modified, unsigned firmware [T1601.001]. The modified bootloader enables the modified firmware to continue evading detection [T1553.006], however, it is not always necessary. B |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 
@@ -209,6 +221,7 @@ PLEAD; Shrouded Crossbow; Waterbear
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

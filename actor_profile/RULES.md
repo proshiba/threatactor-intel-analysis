@@ -74,8 +74,39 @@ IDはアクター内で一意かつ安定させる。
 Activityは`first_observed`、`last_observed`に加えて`reported_at`を必ず持つ。
 `reported_at`は活動を報告した資料の発行日または日次収集日であり、攻撃期間ではない。
 攻撃期間が不明でもActivity自体を省略せず、`first_observed`と`last_observed`をunknown、
-`reported_at`を判明範囲で記録する。UIの期間表示・並び替えで`reported_at`を補助的に
-使用しても、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
+`reported_at`を判明範囲で記録する。UIの「過去1年」「過去3年」等の活動・TTP・
+マルウェア期間集計と並び替えには`reported_at`を使用しない。報告日は活動時期不明の
+理由を明示する補助表示に限り、STIX Campaignの`first_seen`/`last_seen`へ転用しない。
+
+Activityは`ttp_refs`と`victim_refs`も必ず持つ。参照先が判明しない場合は空配列にする。
+TTP・マルウェア・標的・被害事例を活動へ結び付ける際は、同じ証拠がその活動内での
+利用または被害を支持することを確認する。単なるアクター一般の利用実績は活動へ
+結び付けない。
+
+## 4.1 被害事例
+
+被害事例は`victim_cases`へ保存し、単なる標的一覧と分離する。公開情報が個別組織名を
+明示しない場合も、匿名組織または集約事例として保存できる。必須項目は次の通り。
+
+- `victim_case_id`
+- `victim_name`と`disclosure_status`
+- `victim_type`
+- `case_status`
+- `activity_refs`
+- `target_refs`
+- `malware_refs`
+- `ttp_refs`
+- `affected_assets`
+- `impacts`
+- `first_observed`、`last_observed`、`reported_at`
+- `confidence`、`evidence_refs`
+
+`disclosure_status`は`named`、`anonymous`、`aggregate`、`unknown`のいずれかとする。
+`case_status`は`confirmed`、`reported`、`alleged`、`disputed`、`unknown`のいずれかとし、
+攻撃者のリークサイト上の主張、被害組織の確認、第三者報告、明示的な否定を混同しない。
+アクターの帰属国、報告元の所在地、ニュース発行国を被害国として推定しない。
+被害組織名、国、産業、影響は情報源が明示した範囲だけを記録する。複数組織をまとめた
+統計は、架空の単一被害者へ変換せず`aggregate`として保持する。
 
 ## 5. Alias規則
 
@@ -134,6 +165,13 @@ TTPは1行を「Actor × Technique × Activity」として扱える粒度にす�
 - `last_observed`
 - `confidence`
 - `evidence_refs`
+
+UIの期間別集計では、活動参照を持つTTPだけを「観測」として数える。汎用的な
+Actor→Techniqueマッピングは基礎マッピングとして表示できるが、活動頻度には加算しない。
+`all time`は日付不明の活動別観測も含める。過去1年・過去3年などの期間表示は、
+TTP自身の`first_observed`または`last_observed`がknown/inferredの場合だけ対象にする。
+資料発行日`reported_at`をTTP観測日へ代入しない。互換データに
+`basis: source-publication`や`publication/ongoing`が残る場合も、期間集計から除外する。
 
 ## 8. IOCモデル
 

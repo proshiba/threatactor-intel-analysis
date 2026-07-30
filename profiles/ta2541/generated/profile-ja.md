@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ta2541`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -119,42 +119,50 @@ Aliasなし
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| sectors | 防衛・軍事 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 製造・産業 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 運輸・航空・海運 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Discovery | T1016.001 | Internet Connection Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.002 | Software Packing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.015 | Compression | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055.012 | Process Hollowing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.005 | Mshta | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1518.001 | Security Software Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1568 | Dynamic Resolution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.002 | Asymmetric Cryptography | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.006 | Web Services | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.001 | Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016.001 | Internet Connection Discovery | <br>[TA2541](https://attack.mitre.org/groups/G1018) has run scripts to check internet connectivity from compromised hosts. (Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.002 | Software Packing | [TA2541](https://attack.mitre.org/groups/G1018) has used a .NET packer to obfuscate malicious files.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.013 | Encrypted/Encoded File | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used compressed and char-encoded scripts in operations.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.015 | Compression | [TA2541](https://attack.mitre.org/groups/G1018) has used compressed and char-encoded scripts in operations.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [TA2541](https://attack.mitre.org/groups/G1018) has used file names to mimic legitimate Windows files or system functionality.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1047 | Windows Management Instrumentation | [TA2541](https://attack.mitre.org/groups/G1018) has used WMI to query targeted systems for security products.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [TA2541](https://attack.mitre.org/groups/G1018) has used scheduled tasks to establish persistence for installed tools.(Citation: Proofpoint TA2541 February 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [TA2541](https://attack.mitre.org/groups/G1018) has injected malicious code into legitimate .NET related processes including  regsvcs.exe, msbuild.exe, and installutil.exe.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1055.012 | Process Hollowing | [TA2541](https://attack.mitre.org/groups/G1018) has used process hollowing to execute CyberGate malware.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [TA2541](https://attack.mitre.org/groups/G1018) has used PowerShell to download files and to inject into various Windows processes.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [TA2541](https://attack.mitre.org/groups/G1018) has used VBS files to execute or establish persistence for additional payloads, often using file names consistent with email themes or mimicking system functionality.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1082 | System Information Discovery | [TA2541](https://attack.mitre.org/groups/G1018) has collected system information prior to downloading malware on the targeted host.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used malicious scripts and macros with the ability to download additional payloads.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [TA2541](https://attack.mitre.org/groups/G1018) has used malicious links to cloud and web services to gain execution on victim machines.(Citation: Proofpoint TA2541 February 2022)(Citation: FireEye NETWIRE March 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [TA2541](https://attack.mitre.org/groups/G1018) has used macro-enabled MS Word documents to lure victims into executing malicious payloads.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021)(Citation: Telefonica Snip3 December 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.005 | Mshta | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used `mshta` to execute scripts including VBS.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1518.001 | Security Software Discovery | [TA2541](https://attack.mitre.org/groups/G1018) has used tools to search victim systems for security products such as antivirus and firewall software.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [TA2541](https://attack.mitre.org/groups/G1018) has placed VBS files in the Startup folder and used Registry run keys to establish persistence for malicious payloads.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [TA2541](https://attack.mitre.org/groups/G1018) has sent phishing emails with malicious attachments for initial access including MS Word documents.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [TA2541](https://attack.mitre.org/groups/G1018) has used spearphishing e-mails with malicious links to deliver malware.  (Citation: Proofpoint TA2541 February 2022)(Citation: Telefonica Snip3 December 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1568 | Dynamic Resolution | [TA2541](https://attack.mitre.org/groups/G1018) has used dynamic DNS services for C2 infrastructure.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1573.002 | Asymmetric Cryptography | [TA2541](https://attack.mitre.org/groups/G1018) has used TLS encrypted C2 communications including for campaigns using AsyncRAT.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [TA2541](https://attack.mitre.org/groups/G1018) has registered domains often containing the keywords “kimjoy,” “h0pe,” and “grace,” using domain registrars including Netdorm and No-IP DDNS, and hosting providers including xTom GmbH and Danilenko, Artyom.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.006 | Web Services | [TA2541](https://attack.mitre.org/groups/G1018) has hosted malicious files on various platforms including Google Drive, OneDrive, Discord, PasteText, ShareText, and GitHub.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.001 | Malware | [TA2541](https://attack.mitre.org/groups/G1018) has used multiple strains of malware available for purchase on criminal forums or in open-source repositories.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used commodity remote access tools.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [TA2541](https://attack.mitre.org/groups/G1018) has uploaded malware to various platforms including Google Drive, Pastetext, Sharetext, and GitHub.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [TA2541](https://attack.mitre.org/groups/G1018)  has attempted to disable built-in security protections such as Windows AMSI. (Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

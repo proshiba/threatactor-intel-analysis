@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--chimera",
   "name": "Chimera",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-25T14:07:08Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -320,9 +320,9 @@
   "targets": {
     "countries": [
       {
-        "id": "target--country--taiwan",
-        "name": "Taiwan",
-        "description": "Targeting text mentions taiwan.",
+        "id": "target--targeting-audit--country--3498474dbc1f638d75b4",
+        "name": "オランダ",
+        "description": "構造化OSINTの被害国フィールドでChimeraの標的・被害国としてオランダが記録されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -337,16 +337,63 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity."
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--country--taiwan",
+        "name": "台湾",
+        "description": "Targeting text mentions taiwan.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--actor-mapping-workbook",
+          "source--mitre-attack-19-1",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 公式ATT&CKのGroup概要から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--mitre-group--sector--875a1817d15bb56ae7fd",
+        "name": "運輸・航空・海運",
+        "description": "[Chimera](https://attack.mitre.org/groups/G0114) is a suspected China-based threat group that has been active since at least 2018 targeting the semiconductor industry in Taiwan as well as data from the airline industry.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
     {
@@ -354,7 +401,7 @@
       "tactic": "Credential Access",
       "technique_id": "T1003.003",
       "technique_name": "NTDS",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has gathered the SYSTEM registry and ntds.dit files from target systems.(Citation: Cycraft Chimera April 2020) [Chimera](https://attack.mitre.org/groups/G0114) specifically has used the NtdsAudit tool to dump the password hashes of domain users via <code>msadcs.exe \"NTDS.dit\" -s \"SYSTEM\" -p RecordedTV_pdmp.txt --users-csv RecordedTV_users.csv</code> and used ntdsutil to copy the Active Directory database.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -374,14 +421,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1007--general",
       "tactic": "Discovery",
       "technique_id": "T1007",
       "technique_name": "System Service Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net start</code> and <code>net use</code> for system service discovery.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -401,14 +448,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1012--general",
       "tactic": "Discovery",
       "technique_id": "T1012",
       "technique_name": "Query Registry",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has queried Registry keys using <code>reg query \\\\<host>\\HKU\\<SID>\\SOFTWARE\\Microsoft\\Terminal Server Client\\Servers</code> and <code>reg query \\\\<host>\\HKU\\<SID>\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings</code>.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -428,14 +475,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1016--general",
       "tactic": "Discovery",
       "technique_id": "T1016",
       "technique_name": "System Network Configuration Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used [ipconfig](https://attack.mitre.org/software/S0100), [Ping](https://attack.mitre.org/software/S0097), and <code>tracert</code> to enumerate the IP address and network environment and settings of the local host.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -455,14 +502,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1018--general",
       "tactic": "Discovery",
       "technique_id": "T1018",
       "technique_name": "Remote System Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has utilized various scans and queries to find domain controllers and remote services in the target environment.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -482,14 +529,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021-001--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.001",
       "technique_name": "Remote Desktop Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used RDP to access targeted systems.(Citation: Cycraft Chimera April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -509,14 +556,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021-002--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.002",
       "technique_name": "SMB/Windows Admin Shares",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used Windows admin shares to move laterally.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -536,14 +583,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1021-006--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1021.006",
       "technique_name": "Windows Remote Management",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used WinRM for lateral movement.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -563,14 +610,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027-010--general",
       "tactic": "Stealth",
       "technique_id": "T1027.010",
       "technique_name": "Command Obfuscation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has encoded PowerShell commands.(Citation: Cycraft Chimera April 2020)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -590,14 +637,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1033--general",
       "tactic": "Discovery",
       "technique_id": "T1033",
       "technique_name": "System Owner/User Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used the <code>quser</code> command to show currently logged on users.(Citation: NCC Group Chimera January 2021) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -617,14 +664,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036-005--general",
       "tactic": "Stealth",
       "technique_id": "T1036.005",
       "technique_name": "Match Legitimate Resource Name or Location",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has renamed malware to GoogleUpdate.exe and WinRAR to jucheck.exe, RecordedTV.ms, teredo.tmp, update.exe, and msadcs1.exe.(Citation: Cycraft Chimera April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -644,14 +691,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1039--general",
       "tactic": "Collection",
       "technique_id": "T1039",
       "technique_name": "Data from Network Shared Drive",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has collected data of interest from network shares.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -671,14 +718,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1041--general",
       "tactic": "Exfiltration",
       "technique_id": "T1041",
       "technique_name": "Exfiltration Over C2 Channel",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) C2 beacons for data exfiltration.(Citation: NCC Group Chimera January 2021) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -698,14 +745,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1046--general",
       "tactic": "Discovery",
       "technique_id": "T1046",
       "technique_name": "Network Service Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used the <code>get -b <start ip> -e <end ip> -p</code> command for network scanning as well as a custom Python tool  packed into a Windows executable named Get.exe to scan IP ranges for HTTP.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -725,14 +772,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1047--general",
       "tactic": "Execution",
       "technique_id": "T1047",
       "technique_name": "Windows Management Instrumentation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used WMIC to execute remote commands.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -752,14 +799,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1049--general",
       "tactic": "Discovery",
       "technique_id": "T1049",
       "technique_name": "System Network Connections Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>netstat -ano | findstr EST</code> to discover network connections.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -779,14 +826,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1053-005--general",
       "tactic": "Execution, Persistence, Privilege Escalation",
       "technique_id": "T1053.005",
       "technique_name": "Scheduled Task",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used scheduled tasks to invoke Cobalt Strike including through batch script <code>schtasks /create /ru \"SYSTEM\" /tn \"update\" /tr \"cmd /c c:\\windows\\temp\\update.bat\" /sc once /f /st</code> and to maintain persistence.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -806,14 +853,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1057--general",
       "tactic": "Discovery",
       "technique_id": "T1057",
       "technique_name": "Process Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>tasklist</code> to enumerate processes.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -833,14 +880,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-001--general",
       "tactic": "Execution",
       "technique_id": "T1059.001",
       "technique_name": "PowerShell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used PowerShell scripts to execute malicious payloads and the DSInternals PowerShell module to make use of Active Directory features.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -860,14 +907,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-003--general",
       "tactic": "Execution",
       "technique_id": "T1059.003",
       "technique_name": "Windows Command Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used the Windows Command Shell and batch scripts for execution on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -887,14 +934,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1069-001--general",
       "tactic": "Discovery",
       "technique_id": "T1069.001",
       "technique_name": "Local Groups",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net localgroup administrators</code> to identify  accounts with local administrative rights.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -914,14 +961,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-004--general",
       "tactic": "Stealth",
       "technique_id": "T1070.004",
       "technique_name": "File Deletion",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has performed file deletion to evade detection.(Citation: Cycraft Chimera April 2020) ",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -941,14 +988,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-006--general",
       "tactic": "Stealth",
       "technique_id": "T1070.006",
       "technique_name": "Timestomp",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used a Windows version of the Linux <code>touch</code> command to modify the date and time stamp on DLLs.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -968,14 +1015,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-001--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.001",
       "technique_name": "Web Protocols",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used HTTPS for C2 communications.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -995,14 +1042,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-004--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.004",
       "technique_name": "DNS",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used [Cobalt Strike](https://attack.mitre.org/software/S0154) to encapsulate C2 in DNS traffic.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1022,14 +1069,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1074-001--general",
       "tactic": "Collection",
       "technique_id": "T1074.001",
       "technique_name": "Local Data Staging",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has staged stolen data locally on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1049,14 +1096,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1074-002--general",
       "tactic": "Collection",
       "technique_id": "T1074.002",
       "technique_name": "Remote Data Staging",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has staged stolen data on designated servers in the target environment.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1076,14 +1123,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1078--general",
       "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
       "technique_id": "T1078",
       "technique_name": "Valid Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used a valid account to maintain persistence via scheduled task.(Citation: Cycraft Chimera April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1103,14 +1150,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1078-002--general",
       "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
       "technique_id": "T1078.002",
       "technique_name": "Domain Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used compromised domain accounts to gain access to the target environment.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1130,14 +1177,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1083--general",
       "tactic": "Discovery",
       "technique_id": "T1083",
       "technique_name": "File and Directory Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has utilized multiple commands to identify data of interest in file and directory listings.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1157,14 +1204,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1087-001--general",
       "tactic": "Discovery",
       "technique_id": "T1087.001",
       "technique_name": "Local Account",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net user</code> for account discovery.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1184,14 +1231,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1087-002--general",
       "tactic": "Discovery",
       "technique_id": "T1087.002",
       "technique_name": "Domain Account",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has has used <code>net user /dom</code> and <code>net user Administrator</code> to enumerate domain accounts including administrator accounts.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1211,14 +1258,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1105--general",
       "tactic": "Command And Control",
       "technique_id": "T1105",
       "technique_name": "Ingress Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has remotely copied tools and malware onto targeted systems.(Citation: Cycraft Chimera April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1238,14 +1285,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1106--general",
       "tactic": "Execution",
       "technique_id": "T1106",
       "technique_name": "Native API",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used direct Windows system calls by leveraging Dumpert.(Citation: Cycraft Chimera April 2020)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1265,14 +1312,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1110-003--general",
       "tactic": "Credential Access",
       "technique_id": "T1110.003",
       "technique_name": "Password Spraying",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used multiple password spraying attacks against victim's remote services to obtain valid user and administrator accounts.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1292,14 +1339,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1110-004--general",
       "tactic": "Credential Access",
       "technique_id": "T1110.004",
       "technique_name": "Credential Stuffing",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used credential stuffing against victim's remote services to obtain valid accounts.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1319,14 +1366,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1111--general",
       "tactic": "Credential Access",
       "technique_id": "T1111",
       "technique_name": "Multi-Factor Authentication Interception",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has registered alternate phone numbers for compromised users to intercept 2FA codes sent via SMS.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1346,14 +1393,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1114-001--general",
       "tactic": "Collection",
       "technique_id": "T1114.001",
       "technique_name": "Local Email Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has harvested data from victim's e-mail including through execution of <code>wmic /node:<ip> process call create \"cmd /c copy c:\\Users\\<username>\\<path>\\backup.pst c:\\windows\\temp\\backup.pst\" copy \"i:\\<path>\\<username>\\My Documents\\<filename>.pst\"\ncopy</code>.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1373,14 +1420,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1114-002--general",
       "tactic": "Collection",
       "technique_id": "T1114.002",
       "technique_name": "Remote Email Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has harvested data from remote mailboxes including through execution of <code>\\\\<hostname>\\c$\\Users\\<username>\\AppData\\Local\\Microsoft\\Outlook*.ost</code>.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1400,14 +1447,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1119--general",
       "tactic": "Collection",
       "technique_id": "T1119",
       "technique_name": "Automated Collection",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used custom DLLs for continuous retrieval of data from memory.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1427,14 +1474,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1124--general",
       "tactic": "Discovery",
       "technique_id": "T1124",
       "technique_name": "System Time Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>time /t</code> and <code>net time \\\\ip/hostname</code> for system time discovery.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1454,14 +1501,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1133--general",
       "tactic": "Initial Access, Persistence",
       "technique_id": "T1133",
       "technique_name": "External Remote Services",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used legitimate credentials to login to an external VPN, Citrix, SSH, and other remote services.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1481,14 +1528,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1135--general",
       "tactic": "Discovery",
       "technique_id": "T1135",
       "technique_name": "Network Share Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>net share</code> and <code>net view</code> to identify network shares of interest.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1508,14 +1555,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1201--general",
       "tactic": "Discovery",
       "technique_id": "T1201",
       "technique_name": "Password Policy Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used the NtdsAudit utility to collect information related to accounts and passwords.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1535,14 +1582,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1213-002--general",
       "tactic": "Collection",
       "technique_id": "T1213.002",
       "technique_name": "Sharepoint",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has collected documents from the victim's SharePoint.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1562,14 +1609,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1217--general",
       "tactic": "Discovery",
       "technique_id": "T1217",
       "technique_name": "Browser Information Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used <code>type \\\\<hostname>\\c$\\Users\\<username>\\Favorites\\Links\\Bookmarks bar\\Imported From IE\\*citrix*</code> for bookmark discovery.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1589,14 +1636,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1482--general",
       "tactic": "Discovery",
       "technique_id": "T1482",
       "technique_name": "Domain Trust Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has <code>nltest /domain_trusts</code> to identify domain trust relationships.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1616,14 +1663,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1550-002--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1550.002",
       "technique_name": "Pass the Hash",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has dumped password hashes for use in pass the hash authentication attacks.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1643,14 +1690,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1556-001--general",
       "tactic": "Credential Access, Defense Impairment, Persistence",
       "technique_id": "T1556.001",
       "technique_name": "Domain Controller Authentication",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114)'s malware has altered the NTLM authentication program on domain controllers to allow [Chimera](https://attack.mitre.org/groups/G0114) to login without a valid credential.(Citation: Cycraft Chimera April 2020)\t",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1670,14 +1717,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1560-001--general",
       "tactic": "Collection",
       "technique_id": "T1560.001",
       "technique_name": "Archive via Utility",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used gzip for Linux OS and a modified RAR software to archive data on Windows hosts.(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1697,14 +1744,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1567-002--general",
       "tactic": "Exfiltration",
       "technique_id": "T1567.002",
       "technique_name": "Exfiltration to Cloud Storage",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has exfiltrated stolen data to OneDrive accounts.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1724,14 +1771,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1569-002--general",
       "tactic": "Execution",
       "technique_id": "T1569.002",
       "technique_name": "Service Execution",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used [PsExec](https://attack.mitre.org/software/S0029) to deploy beacons on compromised systems.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1751,14 +1798,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1570--general",
       "tactic": "Lateral Movement",
       "technique_id": "T1570",
       "technique_name": "Lateral Tool Transfer",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has copied tools between compromised hosts using SMB.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1778,14 +1825,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1572--general",
       "tactic": "Command And Control",
       "technique_id": "T1572",
       "technique_name": "Protocol Tunneling",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has encapsulated [Cobalt Strike](https://attack.mitre.org/software/S0154)'s C2 protocol in DNS and HTTPS.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1805,14 +1852,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1574-001--general",
       "tactic": "Execution, Stealth",
       "technique_id": "T1574.001",
       "technique_name": "DLL",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used side loading to place malicious DLLs in memory.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1832,14 +1879,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.002",
       "technique_name": "Tool",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has obtained and used tools such as [BloodHound](https://attack.mitre.org/software/S0521), [Cobalt Strike](https://attack.mitre.org/software/S0154), [Mimikatz](https://attack.mitre.org/software/S0002), and [PsExec](https://attack.mitre.org/software/S0029).(Citation: Cycraft Chimera April 2020)(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1859,14 +1906,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1589-001--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1589.001",
       "technique_name": "Credentials",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has collected credentials for the target organization from previous breaches for use in brute force attacks.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1886,14 +1933,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1680--general",
       "tactic": "Discovery",
       "technique_id": "T1680",
       "technique_name": "Local Storage Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has used `fsutil fsinfo drives`, `systeminfo`, and `vssadmin list shadows` for system information including shadow volumes and drive information.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1913,14 +1960,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1685-005--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1685.005",
       "technique_name": "Clear Windows Event Logs",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Chimera](https://attack.mitre.org/groups/G0114) has cleared event logs on compromised hosts.(Citation: NCC Group Chimera January 2021)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1940,7 +1987,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -2237,6 +2284,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -2256,7 +2328,8 @@
     "history": "",
     "capability_details": "Cobalt Strike, OwlProxy, SessionManager, Net, BloodHound, Mimikatz, esentutl, PsExec",
     "infrastructure_details": "",
-    "targeting_details": "Taiwan semiconductors",
+    "targeting_details": "構造化ターゲット監査: 標的国=オランダ、台湾。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nTaiwan semiconductors",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": []
 }

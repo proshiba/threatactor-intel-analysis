@@ -35,7 +35,11 @@ def plain_snippet(text: str | None) -> str:
 
 
 def date_value(field) -> str | None:
-    if isinstance(field, dict) and field.get("status") == "known" and field.get("value"):
+    if (
+        isinstance(field, dict)
+        and field.get("status") in {"known", "inferred"}
+        and field.get("value")
+    ):
         return str(field["value"])[:10]
     return None
 
@@ -106,13 +110,19 @@ def build_record(slug: str, profile_dir: Path) -> tuple[dict, list] | None:
         },
         "motivations": sorted({m.get("type") for m in profile.get("motivations", []) if m.get("type")}),
         "target_countries": [t.get("name") for t in targets.get("countries", []) if t.get("name")],
+        "target_regions": [t.get("name") for t in targets.get("regions", []) if t.get("name")],
         "target_sectors": [t.get("name") for t in targets.get("sectors", []) if t.get("name")],
         "counts": {
             "aliases": len(aliases),
             "malware": len(capabilities.get("malware", [])),
             "tools": len(capabilities.get("tools", [])),
             "ttps": len(profile.get("ttps", [])),
+            "observed_ttps": sum(
+                bool(item.get("activity_refs"))
+                for item in profile.get("ttps", [])
+            ),
             "activities": len(profile.get("activities", [])),
+            "victim_cases": len(profile.get("victim_cases", [])),
             "relationships": len(profile.get("relationships", [])),
             "sources": len(profile.get("sources", [])),
             "iocs": ioc_count,
@@ -181,6 +191,8 @@ def main() -> int:
         "aliases": sum(r["counts"]["aliases"] for r in records),
         "malware_tools": sum(r["counts"]["malware"] + r["counts"]["tools"] for r in records),
         "ttps": sum(r["counts"]["ttps"] for r in records),
+        "observed_ttps": sum(r["counts"]["observed_ttps"] for r in records),
+        "victim_cases": sum(r["counts"]["victim_cases"] for r in records),
         "iocs": sum(r["counts"]["iocs"] for r in records),
         "artifacts": sum(r["counts"]["artifacts"] for r in records),
         "sources": sum(r["counts"]["sources"] for r in records),

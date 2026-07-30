@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -32,7 +32,7 @@
         "history": "",
         "capability_details": "FLIPSIDE, RawPOS, Windows Credential Editor, pwdump, SDelete, PsExec",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -449,16 +449,60 @@
       ]
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2afc0939-3c6b-416f-99bb-f61e5dba68f7",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-07-29T15:36:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "金融",
+      "identity_class": "organization",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) is a financially motivated threat group that has targeted personally identifiable information and payment card information.",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--c955d47a-8016-44c4-86af-bc73129fcde5",
+      "created": "2026-07-29T15:36:10Z",
+      "modified": "2026-07-29T15:36:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "小売・ホスピタリティ",
+      "identity_class": "organization",
+      "description": "The group has been active since at least 2008 and has targeted the restaurant, gaming, and hotel industries.",
+      "external_references": [
+        {
+          "source_name": "MITRE",
+          "description": "Local source: actor_profile/reference/attack-index.json",
+          "external_id": "source--mitre-attack-19-1"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Remote System Discovery",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has used the open source tool Essential NetTools to map the network and build a list of targets.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -489,19 +533,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Command and Scripting Interpreter",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) scans processes on all victim systems in the environment and uses automated scripts to pull back the results.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -532,19 +576,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "File Deletion",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) uses [SDelete](https://attack.mitre.org/software/S0195) to clean up the environment and attempt to prevent detection.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -575,19 +619,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Local Data Staging",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) scripts save memory dump data into a specific directory on hosts in the victim environment.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -618,19 +662,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Valid Accounts",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has used legitimate VPN, RDP, Citrix, or VNC credentials to maintain access to a victim environment.(Citation: FireEye Respond Webinar July 2017)(Citation: DarkReading FireEye FIN5 Oct 2015)(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -661,19 +705,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--1376f048-3708-454b-932a-19b5a37aff6f",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "External Proxy",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) maintains access to victim environments by using [FLIPSIDE](https://attack.mitre.org/software/S0173) to create a proxy for a backup RDP tunnel.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -704,19 +748,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Brute Force",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has has used the tool GET2 Penetrator to look for remote login and hard-coded credentials.(Citation: DarkReading FireEye FIN5 Oct 2015)(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -747,19 +791,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Automated Collection",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) scans processes on all victim systems in the environment and uses automated scripts to pull back the results.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -790,19 +834,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--beec897d-82e5-4ca1-97a1-1ead75f78e3c",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "External Remote Services",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has used legitimate VPN, Citrix, or VNC credentials to maintain access to a victim environment.(Citation: FireEye Respond Webinar July 2017)(Citation: DarkReading FireEye FIN5 Oct 2015)(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -833,19 +877,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Tool",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has obtained and used a customized version of [PsExec](https://attack.mitre.org/software/S0029), as well as use other tools such as [pwdump](https://attack.mitre.org/software/S0006), [SDelete](https://attack.mitre.org/software/S0195), and [Windows Credential Editor](https://attack.mitre.org/software/S0005).(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -876,19 +920,19 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
       "id": "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Clear Windows Event Logs",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has cleared event logs from victims.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "external_references": [
         {
           "source_name": "mitre-attack",
@@ -919,7 +963,7 @@
         "basis": "not-stated"
       },
       "x_confidence": "high",
-      "x_analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "x_analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "type": "relationship",
@@ -1014,16 +1058,46 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--b7a4cf61-adda-4e0d-8993-3d0181c0d500",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
+      "target_ref": "identity--2afc0939-3c6b-416f-99bb-f61e5dba68f7",
+      "description": "FIN5 targets 金融 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fd97366c-bf42-487b-80cf-6317e98034bf",
+      "created": "2026-07-29T23:12:00Z",
+      "modified": "2026-07-29T23:12:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
+      "target_ref": "identity--c955d47a-8016-44c4-86af-bc73129fcde5",
+      "description": "FIN5 targets 小売・ホスピタリティ (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--0a95d5d0-043d-4f17-871e-fa48e04ec9ee",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has used the open source tool Essential NetTools to map the network and build a list of targets.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1031,14 +1105,14 @@
       "spec_version": "2.1",
       "id": "relationship--bf7ba6ac-3690-4c25-8743-52e554bb438e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) scans processes on all victim systems in the environment and uses automated scripts to pull back the results.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1046,14 +1120,14 @@
       "spec_version": "2.1",
       "id": "relationship--329b12bb-8cb6-4b10-b284-e7399635fe6e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) uses [SDelete](https://attack.mitre.org/software/S0195) to clean up the environment and attempt to prevent detection.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1061,14 +1135,14 @@
       "spec_version": "2.1",
       "id": "relationship--17ba4635-fb96-4740-8e20-2228a1ffade5",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--b7029372-a04b-4d44-b153-3c71bb2a05ed",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) scripts save memory dump data into a specific directory on hosts in the victim environment.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1076,14 +1150,14 @@
       "spec_version": "2.1",
       "id": "relationship--fcb1fcae-b607-4654-81b6-47a1765fc784",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--a05984d1-ca04-4a85-ae60-b1c5bf103e06",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has used legitimate VPN, RDP, Citrix, or VNC credentials to maintain access to a victim environment.(Citation: FireEye Respond Webinar July 2017)(Citation: DarkReading FireEye FIN5 Oct 2015)(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1091,14 +1165,14 @@
       "spec_version": "2.1",
       "id": "relationship--da8bd5d6-6b23-46a8-ba25-c48a51072a84",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--1376f048-3708-454b-932a-19b5a37aff6f",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) maintains access to victim environments by using [FLIPSIDE](https://attack.mitre.org/software/S0173) to create a proxy for a backup RDP tunnel.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1106,14 +1180,14 @@
       "spec_version": "2.1",
       "id": "relationship--3a257d8d-7153-411f-9742-912e97a141de",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--4e5ee11b-9c97-4e5e-9bd7-43e4ccd09757",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has has used the tool GET2 Penetrator to look for remote login and hard-coded credentials.(Citation: DarkReading FireEye FIN5 Oct 2015)(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1121,14 +1195,14 @@
       "spec_version": "2.1",
       "id": "relationship--1e3a738d-15c0-4d5c-830e-fdaada80502e",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--e14aed35-ac85-4e41-9597-fe263a634450",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) scans processes on all victim systems in the environment and uses automated scripts to pull back the results.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1136,14 +1210,14 @@
       "spec_version": "2.1",
       "id": "relationship--563b398a-1c21-4aff-9e54-079c47c7220a",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--beec897d-82e5-4ca1-97a1-1ead75f78e3c",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has used legitimate VPN, Citrix, or VNC credentials to maintain access to a victim environment.(Citation: FireEye Respond Webinar July 2017)(Citation: DarkReading FireEye FIN5 Oct 2015)(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1151,14 +1225,14 @@
       "spec_version": "2.1",
       "id": "relationship--b17a4b5b-9d2d-4c39-bd0d-e81dca797701",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has obtained and used a customized version of [PsExec](https://attack.mitre.org/software/S0029), as well as use other tools such as [pwdump](https://attack.mitre.org/software/S0006), [SDelete](https://attack.mitre.org/software/S0195), and [Windows Credential Editor](https://attack.mitre.org/software/S0005).(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1166,14 +1240,14 @@
       "spec_version": "2.1",
       "id": "relationship--bd44dc79-cf04-48f3-af13-a503a8b855cb",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "modified": "2026-07-29T15:20:22Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
       "target_ref": "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781",
-      "description": "MITRE ATT&CK maps this technique to the actor.",
+      "description": "[FIN5](https://attack.mitre.org/groups/G0053) has cleared event logs from victims.(Citation: Mandiant FIN5 GrrCON Oct 2016)",
       "x_confidence": "high"
     },
     {
@@ -1198,7 +1272,7 @@
       "spec_version": "2.1",
       "id": "report--b4f0e937-90ba-4f69-b823-e0418507dc42",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T14:07:08Z",
+      "modified": "2026-07-29T23:12:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1207,7 +1281,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T14:07:08Z",
+      "published": "2026-07-29T23:12:00Z",
       "object_refs": [
         "intrusion-set--e58143b9-160b-45ca-b601-9664ade53553",
         "malware--bc9c452f-1b28-474d-b26e-d38a25d1f164",
@@ -1216,6 +1290,8 @@
         "tool--c8e6961b-e323-4d3c-8d72-2aba85846d6a",
         "tool--90989f53-64f0-4432-bee1-9ba26ad32500",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+        "identity--2afc0939-3c6b-416f-99bb-f61e5dba68f7",
+        "identity--c955d47a-8016-44c4-86af-bc73129fcde5",
         "attack-pattern--a0580007-6f7d-40e1-8e0f-896c395cf5f4",
         "attack-pattern--92251f1f-ab4e-447e-8aa4-b00a852e39fa",
         "attack-pattern--2b54af2e-3944-460a-a0fd-46aa6ca34708",
@@ -1228,7 +1304,7 @@
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
         "attack-pattern--0f238d4c-28f4-4169-bce0-6098d0a8a781"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

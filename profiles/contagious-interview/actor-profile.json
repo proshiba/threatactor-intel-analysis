@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--contagious-interview",
   "name": "Contagious Interview",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-27T11:17:23Z",
+  "updated_at": "2026-07-29T23:12:00Z",
   "languages": [
     "ja"
   ],
@@ -262,7 +262,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化 Socket Threat ResearchがBeaverTailインフォスティーラーとInvisibleFerretバックドアを検出 24アカウントから公開、累計4,000回超ダウンロード、6パッケージが現存 これらのパッケージの多くは、タイポスクワッティング（スペルミスを利用して正規のパッケージを装うこと）や既知の信頼できるライブラリを模倣 攻撃者はLinkedInで面接を偽装しGoogle Docs経由でテスト課題と共にパッケージを配布 求職者は、コードをコンテナ化された環境ではなく、自身のOS上で実行するように圧力をかけられることが多く、画面共有中に実行を促されることもある",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [
         "malware--beavertail",
         "malware--invisibleferret"
@@ -272,7 +274,11 @@
       "evidence_refs": [
         "source--daily-2a32ed98e1bd6d1661b4"
       ],
-      "analyst_notes": "日次収集レコード daily-record--019e5cc3a9bb7ac76a1aeaf6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化"
+      "analyst_notes": "日次収集レコード daily-record--019e5cc3a9bb7ac76a1aeaf6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--6f11b2b6322cd2dec974"
+      ]
     },
     {
       "activity_id": "activity--daily-201759f2b0d0872727a6",
@@ -304,7 +310,9 @@
       "evidence_refs": [
         "source--daily-25f950d9ddf02f2d5ba4"
       ],
-      "analyst_notes": "日次収集レコード daily-record--201759f2b0d0872727a69871 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は北朝鮮（DPRK）系とされ、Contagious Interview関連の採用詐欺を用いた情報窃取が目的。"
+      "analyst_notes": "日次収集レコード daily-record--201759f2b0d0872727a69871 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は北朝鮮（DPRK）系とされ、Contagious Interview関連の採用詐欺を用いた情報窃取が目的。",
+      "ttp_refs": [],
+      "victim_refs": []
     },
     {
       "activity_id": "activity--daily-4b5096b05e14d4f33652",
@@ -329,14 +337,23 @@
         "basis": "daily-news-file-date"
       },
       "description": "Socket は、Contagious Interview に結び付く北朝鮮系活動として、npm・PyPI・Go Modules・Rust・PHP を含む5系統にまたがる悪性パッケージ群を確認した。 各パッケージは debug や license などの正規開発ツールを装い、通常メソッドの裏で downloadUrl を取得し、ZIP や base64 の第2段階ペイロードを配信した。 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 攻撃者は golangorg や aokisasakidev など複数の GitHub ペルソナを使い分け、一部パッケージは削除済みだが、執筆時点でなお残存しているものもあった。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
         "source--daily-828c717719b991a7c676"
       ],
-      "analyst_notes": "日次収集レコード daily-record--4b5096b05e14d4f336523db0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布"
+      "analyst_notes": "日次収集レコード daily-record--4b5096b05e14d4f336523db0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布",
+      "ttp_refs": [
+        "ttp--activity-rule--6b786b9be7290d0da343",
+        "ttp--activity-rule--74e655e05d84ec47e3e9"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--ba353bbe87673efbe856"
+      ]
     },
     {
       "activity_id": "activity--daily-4ec7937fad63eb6c62e1",
@@ -361,7 +378,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。XORIndexという新たなローダーも発見された。 これらは計17,000以上のダウンロードを獲得し、先月の35パッケージ（HexEvalローダー）攻撃を拡大。 悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。 XORIndexは第1世代の試作から第3世代でシステム偵察・ステルス機能を追加し、C2にビークン送信。 2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [
         "malware--beavertail",
         "malware--invisibleferret"
@@ -371,7 +390,11 @@
       "evidence_refs": [
         "source--daily-d00e6abeb3390b2c40e7"
       ],
-      "analyst_notes": "日次収集レコード daily-record--4ec7937fad63eb6c62e115b4 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。"
+      "analyst_notes": "日次収集レコード daily-record--4ec7937fad63eb6c62e115b4 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--acbdb28e817b4bf3d9cf"
+      ]
     },
     {
       "activity_id": "activity--daily-55d0db8b81a7beada6ea",
@@ -405,7 +428,13 @@
       "evidence_refs": [
         "source--daily-cf8c33fcf3e4b3907567"
       ],
-      "analyst_notes": "日次収集レコード daily-record--55d0db8b81a7beada6ea9b41 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 既に攻撃が行われており、攻撃者は北朝鮮支援グループ（Contagious Interview、UNC5342など）と特定。"
+      "analyst_notes": "日次収集レコード daily-record--55d0db8b81a7beada6ea9b41 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 既に攻撃が行われており、攻撃者は北朝鮮支援グループ（Contagious Interview、UNC5342など）と特定。",
+      "ttp_refs": [
+        "ttp--activity-rule--f408909e69d6ddf20b90"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--dcdc8d3a6f0ce46415ff"
+      ]
     },
     {
       "activity_id": "activity--daily-776d32d6f4cae5db1e99",
@@ -430,7 +459,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "北朝鮮のハッカーが、npmレジストリに悪意のあるパッケージを公開し、開発者を標的に。 マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。 攻撃は8月12日から27日の間に確認され、「temp-etherscan-api」「ethersscan-api」「telegram-con」「helmet-validate」「qq-console」という名称のパッケージが使用された。 これらの攻撃は「Contagious Interview」作戦の一環とされる。CrowdStrikeはこの活動を「Famous Chollima」として追跡中。 攻撃目的は主に金銭だが、機密情報の窃取が目的であったケースもある",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [
         "malware--invisibleferret"
       ],
@@ -439,7 +470,11 @@
       "evidence_refs": [
         "source--daily-b84641d39a296b1d232d"
       ],
-      "analyst_notes": "日次収集レコード daily-record--776d32d6f4cae5db1e994cd6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - これらの攻撃は「Contagious Interview」作戦の一環とされる。"
+      "analyst_notes": "日次収集レコード daily-record--776d32d6f4cae5db1e994cd6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - これらの攻撃は「Contagious Interview」作戦の一環とされる。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--6e417d99ab0a8ac0baa3"
+      ]
     },
     {
       "activity_id": "activity--daily-78d8958cbdce563148fa",
@@ -473,7 +508,9 @@
       "evidence_refs": [
         "source--daily-e8f48a18d1cc39fa808c"
       ],
-      "analyst_notes": "日次収集レコード daily-record--78d8958cbdce563148facd4f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮系「Contagious Interview」集団がBeaverTailとOtterCookieの機能を収斂、進化させたJS系マルウェア運用が確認。"
+      "analyst_notes": "日次収集レコード daily-record--78d8958cbdce563148facd4f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮系「Contagious Interview」集団がBeaverTailとOtterCookieの機能を収斂、進化させたJS系マルウェア運用が確認。",
+      "ttp_refs": [],
+      "victim_refs": []
     },
     {
       "activity_id": "activity--daily-79005e1272b11df4ca7e",
@@ -498,7 +535,9 @@
         "basis": "daily-news-file-date"
       },
       "description": "NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。 攻撃者はLinkedIn等で開発者に接触し、GitHub/GitLab/Bitbucketのデモ取得を装いトロイ化プロジェクトを配布。 プロジェクト内の“.config.env”にBase64偽API鍵を埋め込み、実態はJSON Keeperやnpoint.io等の次段URLを指す。 取得されたBeaverTailが情報窃取やInvisibleFerret投下、さらにPastebin経由のTsunamiKit取得など機能が観測。 ESETは9月にTsunamiKit等を確認；.onionのC2は現在オフラインで、広範な開発者狙いが継続と結論。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [
         "malware--beavertail",
         "malware--invisibleferret"
@@ -508,7 +547,11 @@
       "evidence_refs": [
         "source--daily-cdb23aca8de000a4d647"
       ],
-      "analyst_notes": "日次収集レコード daily-record--79005e1272b11df4ca7e6373 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。"
+      "analyst_notes": "日次収集レコード daily-record--79005e1272b11df4ca7e6373 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--cf6980464e1532c85677"
+      ]
     },
     {
       "activity_id": "activity--daily-8f6c009aea607abba488",
@@ -540,7 +583,13 @@
       "evidence_refs": [
         "source--daily-93581ba9dc03b85be996"
       ],
-      "analyst_notes": "日次収集レコード daily-record--8f6c009aea607abba4883e32 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが当該活動への帰属先として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 本キャンペーンは北朝鮮関連のContagious Interview／Famous Chollima活動クラスタに関連付けられている。"
+      "analyst_notes": "日次収集レコード daily-record--8f6c009aea607abba4883e32 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが当該活動への帰属先として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 本キャンペーンは北朝鮮関連のContagious Interview／Famous Chollima活動クラスタに関連付けられている。",
+      "ttp_refs": [
+        "ttp--activity-rule--33bfe0dee0f21b67e99c"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--831dfdd3f37cf68e8d8c"
+      ]
     },
     {
       "activity_id": "activity--daily-9b3e802e4795ffa8fefb",
@@ -565,14 +614,20 @@
         "basis": "daily-news-file-date"
       },
       "description": "北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。 OtterCookieはNode.jsプロジェクトやnpmパッケージ、最近ではQtやElectronアプリケーションを介して拡散。 OtterCookieはSocket.IO WebSocketツールを使用してコマンド＆コントロール（C2）インフラストラクチャとの安全な通信を確立し、リモートシェルコマンドを受信。 マルウェアは暗号通貨ウォレットの鍵や機密データを盗むコマンドが観測した。 標的の環境調査や情報窃取を進め、さらなる侵入を目指す行動が観察。 偽求人を介した攻撃手法の多様化が進んでいる。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-47e80e1dc37b49447e5b"
       ],
-      "analyst_notes": "日次収集レコード daily-record--9b3e802e4795ffa8fefb46c1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。"
+      "analyst_notes": "日次収集レコード daily-record--9b3e802e4795ffa8fefb46c1 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--ebe63f831e54cb716a26"
+      ]
     },
     {
       "activity_id": "activity--daily-ad821db17bd56b3397be",
@@ -607,23 +662,27 @@
       "evidence_refs": [
         "source--daily-dddef70e68c0dc59a5d3"
       ],
-      "analyst_notes": "日次収集レコード daily-record--ad821db17bd56b3397be231d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は北朝鮮連関のLazarus下位クラスター（Contagious Interview/ClickFake Interview）と評価。"
+      "analyst_notes": "日次収集レコード daily-record--ad821db17bd56b3397be231d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は北朝鮮連関のLazarus下位クラスター（Contagious Interview/ClickFake Interview）と評価。",
+      "ttp_refs": [
+        "ttp--activity-rule--4db999f75969a8979172"
+      ],
+      "victim_refs": []
     },
     {
       "activity_id": "activity--daily-e98674dd97bf22866f7f",
       "name": "OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加",
       "activity_type": "malware-campaign",
       "first_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
       },
       "last_observed": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
       },
       "reported_at": {
         "value": "2025-05-12T00:00:00Z",
@@ -639,24 +698,300 @@
       "evidence_refs": [
         "source--daily-56f1f7edcfb3f507fe75"
       ],
-      "analyst_notes": "日次収集レコード daily-record--e98674dd97bf22866f7f9dd6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。"
+      "analyst_notes": "日次収集レコード daily-record--e98674dd97bf22866f7f9dd6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "ttp_refs": [
+        "ttp--activity-rule--437616c0b22d107a1a92"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--0e4094ae0b8e107cfaa8"
+      ]
     }
   ],
   "targets": {
-    "countries": [],
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--9b6d295bda7abdd8257f",
+        "name": "タイ",
+        "description": "活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2a32ed98e1bd6d1661b4"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
     "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "name": "IT・ソフトウェア",
+        "description": "活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2a32ed98e1bd6d1661b4",
+          "source--daily-47e80e1dc37b49447e5b",
+          "source--daily-b84641d39a296b1d232d",
+          "source--daily-cdb23aca8de000a4d647",
+          "source--daily-d00e6abeb3390b2c40e7"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "name": "非営利・市民社会",
+        "description": "活動「北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-828c717719b991a7c676"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--mitre-group--sector--9344745b7aeff4dbe6af",
+        "name": "暗号資産・Web3",
+        "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--33bfe0dee0f21b67e99c",
+      "tactic": "Stealth",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "observed_behavior": "攻撃者は正規リポジトリを侵害し、難読化JavaScriptローダーを設定ファイルや偽の.woff2ファイルに隠す。",
+      "activity_refs": [
+        "activity--daily-8f6c009aea607abba488"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-93581ba9dc03b85be996"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--437616c0b22d107a1a92",
+      "tactic": "Credential Access",
+      "technique_id": "T1555.003",
+      "technique_name": "Credentials from Web Browsers",
+      "observed_behavior": "OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加",
+      "activity_refs": [
+        "activity--daily-e98674dd97bf22866f7f"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "last_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-56f1f7edcfb3f507fe75"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--4db999f75969a8979172",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布",
+      "activity_refs": [
+        "activity--daily-ad821db17bd56b3397be"
+      ],
+      "malware_refs": [
+        "malware--beavertail"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-dddef70e68c0dc59a5d3"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--6b786b9be7290d0da343",
+      "tactic": "Credential Access",
+      "technique_id": "T1555.003",
+      "technique_name": "Credentials from Web Browsers",
+      "observed_behavior": "主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。",
+      "activity_refs": [
+        "activity--daily-4b5096b05e14d4f33652"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-828c717719b991a7c676"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--74e655e05d84ec47e3e9",
+      "tactic": "Discovery",
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "observed_behavior": "特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。",
+      "activity_refs": [
+        "activity--daily-4b5096b05e14d4f33652"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-828c717719b991a7c676"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--f408909e69d6ddf20b90",
+      "tactic": "Discovery",
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery",
+      "observed_behavior": "マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。",
+      "activity_refs": [
+        "activity--daily-55d0db8b81a7beada6ea"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-cf8c33fcf3e4b3907567"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--t1027-010--general",
       "tactic": "Stealth",
       "technique_id": "T1027.010",
       "technique_name": "Command Obfuscation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has obfuscated JavaScript code using Base64 and variable substitutions.(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: Securonix Contagious Interview DEVPOPPER April 2024)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -676,14 +1011,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1027-013--general",
       "tactic": "Stealth",
       "technique_id": "T1027.013",
       "technique_name": "Encrypted/Encoded File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used hexadecimal string encoding to hide critical JavaScript module names, function names, and C2 URLs, which are decoded dynamically at runtime.(Citation: Socket Contagious Interview NPM April 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -703,14 +1038,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1036--general",
       "tactic": "Stealth",
       "technique_id": "T1036",
       "technique_name": "Masquerading",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has delivered [BeaverTail](https://attack.mitre.org/software/S1246) malware masquerading as legitimate software or applications.(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also delivered malicious payloads masquerading as legitimate software drivers.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -730,14 +1065,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1041--general",
       "tactic": "Exfiltration",
       "technique_id": "T1041",
       "technique_name": "Exfiltration Over C2 Channel",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has exfiltrated data from a compromised host to actor-controlled C2 servers.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -757,14 +1092,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1048-003--general",
       "tactic": "Exfiltration",
       "technique_id": "T1048.003",
       "technique_name": "Exfiltration Over Unencrypted Non-C2 Protocol",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has exfiltrated victim information using FTP.(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -784,14 +1119,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-003--general",
       "tactic": "Execution",
       "technique_id": "T1059.003",
       "technique_name": "Windows Command Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has utilized VBS scripts to open cmd.exe and run commands to include the go_batch.bat batch file.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -811,14 +1146,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-004--general",
       "tactic": "Execution",
       "technique_id": "T1059.004",
       "technique_name": "Unix Shell",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has targeted macOS victim hosts using a bash downloader coremedia.sh and a bash script cloud.sh.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -838,14 +1173,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-005--general",
       "tactic": "Execution",
       "technique_id": "T1059.005",
       "technique_name": "Visual Basic",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has utilized Visual Basic scripts in the execution of their downloader malware targeting Windows devices including as script called update.vbs.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -865,14 +1200,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-006--general",
       "tactic": "Execution",
       "technique_id": "T1059.006",
       "technique_name": "Python",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used the Python-based malware such as [InvisibleFerret](https://attack.mitre.org/software/S1245) to install and execute Python Packages and Python modules.(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -892,14 +1227,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1059-007--general",
       "tactic": "Execution",
       "technique_id": "T1059.007",
       "technique_name": "JavaScript",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has leveraged JavaScript in the execution of their downloader malware targeting Windows devices using a NodeJS script titled nvidia.js.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -919,14 +1254,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1070-004--general",
       "tactic": "Stealth",
       "technique_id": "T1070.004",
       "technique_name": "File Deletion",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has configured malware to remove archives used in collection activities following successful exfiltration.(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -946,14 +1281,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1071-003--general",
       "tactic": "Command And Control",
       "technique_id": "T1071.003",
       "technique_name": "Mail Protocols",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has utilized email notifications from malware distribution servers to track victim engagement.(Citation: Sentinel One Contagious Interview ClickFix September 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -973,14 +1308,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1082--general",
       "tactic": "Discovery",
       "technique_id": "T1082",
       "technique_name": "System Information Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has configured malicious webpages to identify the victim’s operating system by reviewing the details of the victims User-Agent of their browser.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1000,14 +1335,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1083--general",
       "tactic": "Discovery",
       "technique_id": "T1083",
       "technique_name": "File and Directory Discovery",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has conducted key word searches within files and directories on a compromised hosts to identify files for exfiltration.(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1027,14 +1362,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1090--general",
       "tactic": "Command And Control",
       "technique_id": "T1090",
       "technique_name": "Proxy",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has leveraged Astrill VPN for C2.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1054,14 +1389,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-001--general",
       "tactic": "Execution",
       "technique_id": "T1204.001",
       "technique_name": "Malicious Link",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has lured victims to click on a malicious link that led to download of a malicious payload.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also leveraged links to malicious payloads on social media and code repositories.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1081,14 +1416,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-002--general",
       "tactic": "Execution",
       "technique_id": "T1204.002",
       "technique_name": "Malicious File",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has distributed malicious files requiring direct victim interaction to execute through the guise of a code test.(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: SecurityScorecard Contagious Interview FamousChollima October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1108,14 +1443,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-004--general",
       "tactic": "Execution",
       "technique_id": "T1204.004",
       "technique_name": "Malicious Copy and Paste",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has leveraged ClickFix type tactics enticing victims to copy and paste malicious code.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Sekoia ClickFake 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1135,14 +1470,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1204-005--general",
       "tactic": "Execution",
       "technique_id": "T1204.005",
       "technique_name": "Malicious Library",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has relied on users to install a malicious library from a code repository to infect the victim's device and has led to additional payload distribution and theft of sensitive data.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Securonix Contagious Interview DEVPOPPER April 2024)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1162,14 +1497,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1219-002--general",
       "tactic": "Command And Control",
       "technique_id": "T1219.002",
       "technique_name": "Remote Desktop Software",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has downloaded remote management and monitoring software such as “AnyDesk” for post compromise activities.(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1189,14 +1524,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1480--general",
       "tactic": "Stealth",
       "technique_id": "T1480",
       "technique_name": "Execution Guardrails",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has configured C2 endpoints to review IP geolocation, request headers, victim environment details and runtime conditions prior to delivering payloads.(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1216,14 +1551,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1497--general",
       "tactic": "Discovery, Stealth",
       "technique_id": "T1497",
       "technique_name": "Virtualization/Sandbox Evasion",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has requested victims to disable Docker and other container environments in attempts to thwart container isolation and ensure device infection.(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1243,14 +1578,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1543-001--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1543.001",
       "technique_name": "Launch Agent",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has established persistence using [InvisibleFerret](https://attack.mitre.org/software/S1245) malware to create file to run the script on Startup via LaunchAgents.(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also utilized a plist file located in `/Library/LaunchAgents` to enable a malicious bash script the ability to persist.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1270,14 +1605,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1546-004--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1546.004",
       "technique_name": "Unix Shell Configuration Modification",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has targeted macOS victim hosts using a bash downloader `coremedia.sh` and a bash script `cloud.sh`.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1297,14 +1632,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1547-001--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1547.001",
       "technique_name": "Registry Run Keys / Startup Folder",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has established persistence using [InvisibleFerret](https://attack.mitre.org/software/S1245) malware to place a .bat file in the Startup Folder.(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1324,14 +1659,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1547-013--general",
       "tactic": "Persistence, Privilege Escalation",
       "technique_id": "T1547.013",
       "technique_name": "XDG Autostart Entries",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has established persistence using [InvisibleFerret](https://attack.mitre.org/software/S1245) malware to create a .desktop entry to run on startup on GNOME-based Linux devices.(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1351,14 +1686,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1555-001--general",
       "tactic": "Credential Access",
       "technique_id": "T1555.001",
       "technique_name": "Keychain",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has leveraged malware variants configured to dump credentials from the macOS keychain.(Citation: Sekoia ClickFake 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1378,14 +1713,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1566-003--general",
       "tactic": "Initial Access",
       "technique_id": "T1566.003",
       "technique_name": "Spearphishing via Service",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used fake job advertisements and messages sent via social media to spearphish targets.(Citation: Sekoia ClickFake 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: SecurityScorecard Contagious Interview FamousChollima October 2024) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also leveraged hiring websites to solicit victims.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1405,14 +1740,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1567--general",
       "tactic": "Exfiltration",
       "technique_id": "T1567",
       "technique_name": "Exfiltration Over Web Service",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has leveraged Telegram API to exfiltrate stolen data.(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1432,14 +1767,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1567-002--general",
       "tactic": "Exfiltration",
       "technique_id": "T1567.002",
       "technique_name": "Exfiltration to Cloud Storage",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has exfiltrated stolen passwords to Dropbox.(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1459,14 +1794,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1571--general",
       "tactic": "Command And Control",
       "technique_id": "T1571",
       "technique_name": "Non-Standard Port",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used TCP port 1224 for C2.(Citation: Socket Contagious Interview NPM April 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1486,14 +1821,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1573-001--general",
       "tactic": "Command And Control",
       "technique_id": "T1573.001",
       "technique_name": "Symmetric Cryptography",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has encrypted C2 traffic using RC4.(Citation: Sekoia ClickFake 2025)\n",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1513,14 +1848,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583--general",
       "tactic": "Resource Development",
       "technique_id": "T1583",
       "technique_name": "Acquire Infrastructure",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used services such as Astrill VPN.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1540,14 +1875,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1583.001",
       "technique_name": "Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has registered domains to leverage in their social engineering campaigns.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also registered domains to utilize for C2.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Sekoia ClickFake 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1567,14 +1902,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583-003--general",
       "tactic": "Resource Development",
       "technique_id": "T1583.003",
       "technique_name": "Virtual Private Server",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has acquired virtual private servers from services such as Stark Industries Solutions and RouterHosting.(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also utilized hosting providers to include Tier[.]Net, Majestic Hosting, Leaseweb Singapore, and Kaopu Cloud.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1594,14 +1929,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1583-006--general",
       "tactic": "Resource Development",
       "technique_id": "T1583.006",
       "technique_name": "Web Services",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used web services such as Dropbox to receive stolen data and Google Drive, Firebase, GitHub, and Telegram to disseminate files.(Citation: Sekoia ClickFake 2025)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also used a cloud platform such as Vercel for C2 operations leveraging malicious web applications and static pages.(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also used Slack to coordinate their activities.(Citation: Sentinel One Contagious Interview ClickFix September 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1621,14 +1956,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585--general",
       "tactic": "Resource Development",
       "technique_id": "T1585",
       "technique_name": "Establish Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has created and maintained personas on code repositories to distribute malicious payloads.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1648,14 +1983,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1585.001",
       "technique_name": "Social Media Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has created fake social media accounts such as LinkedIn and Telegram accounts for their targeting efforts.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: SecurityScorecard Contagious Interview FamousChollima October 2024)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1675,14 +2010,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1585-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1585.002",
       "technique_name": "Email Accounts",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has created fake email accounts to correspond with social media accounts, fake LinkedIn personas, code repository accounts, and job announcements on development job board services.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also utilized fake email accounts with Threat Intelligence vendor services.(Citation: Sentinel One Contagious Interview ClickFix September 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1702,14 +2037,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1587--general",
       "tactic": "Resource Development",
       "technique_id": "T1587",
       "technique_name": "Develop Capabilities",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) developed malicious NPM packages for delivery to or retrieval by victims.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1729,14 +2064,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1587-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1587.001",
       "technique_name": "Malware",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has developed malware that utilizes Qt cross-platform framework to include [BeaverTail](https://attack.mitre.org/software/S1246).(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1756,14 +2091,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.002",
       "technique_name": "Tool",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used remote management and monitoring software such as “AnyDesk”.(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1783,14 +2118,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1588-007--general",
       "tactic": "Resource Development",
       "technique_id": "T1588.007",
       "technique_name": "Artificial Intelligence",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has appeared to have used AI to generate images and content to facilitate their campaigns.(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1810,14 +2145,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1589--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1589",
       "technique_name": "Gather Victim Identity Information",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has researched specific professional groups such as software developers for targeting.(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: Securonix Contagious Interview DEVPOPPER April 2024)(Citation: SecurityScorecard Contagious Interview FamousChollima October 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024) [Contagious Interview](https://attack.mitre.org/groups/G1052) has also researched individuals who work in roles related to cryptocurrency and blockchain technologies.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Sekoia ClickFake 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1837,14 +2172,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1593--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1593",
       "technique_name": "Search Open Websites/Domains",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has utilized open-source indicator of compromise repositories to determine their exposure to include VirusTotal, and MalTrail.(Citation: Sentinel One Contagious Interview ClickFix September 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1864,14 +2199,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1593-001--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1593.001",
       "technique_name": "Social Media",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) had identified and solicited victims through social media such as LinkedIn, X, and Telegram.(Citation: Sekoia ClickFake 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: SecurityScorecard Contagious Interview FamousChollima October 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1891,14 +2226,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1593-003--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1593.003",
       "technique_name": "Code Repositories",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) had identified and solicited victims through code repositories such as GitHub.(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1918,14 +2253,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1608-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1608.001",
       "technique_name": "Upload Malware",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has hosted malicious payloads on code repositories used as lures for victims to download.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: Socket Contagious Interview NPM April 2025)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: Securonix Contagious Interview DEVPOPPER April 2024)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1945,14 +2280,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1657--general",
       "tactic": "Impact",
       "technique_id": "T1657",
       "technique_name": "Financial Theft",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has stolen cryptocurrency wallet credentials and credit card information utilizing [BeaverTail](https://attack.mitre.org/software/S1246) and [InvisibleFerret](https://attack.mitre.org/software/S1245) malware.(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Socket BeaverTail XORIndex HexEval Contagious Interview July 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1972,14 +2307,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1681--general",
       "tactic": "Reconnaissance",
       "technique_id": "T1681",
       "technique_name": "Search Threat Vendor Data",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has registered accounts with Threat Intelligence vendor services to check for reporting associated with their infrastructure and to evaluate new potential infrastructure.(Citation: Sentinel One Contagious Interview ClickFix September 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -1999,14 +2334,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1683-001--general",
       "tactic": "Resource Development",
       "technique_id": "T1683.001",
       "technique_name": "Written Content",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has created fake social media accounts such as LinkedIn and Telegram accounts for their targeting efforts.(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -2026,14 +2361,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1683-002--general",
       "tactic": "Resource Development",
       "technique_id": "T1683.002",
       "technique_name": "Audio-Visual Content",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has used AI to clone video-conferencing applications to distribute their [BeaverTail](https://attack.mitre.org/software/S1246) malware. They have also used AI to create deepfake videos. (Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -2053,14 +2388,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1684-001--general",
       "tactic": "Stealth",
       "technique_id": "T1684.001",
       "technique_name": "Impersonation",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) had impersonated HR hiring personnel through social media, job board notifications, and conducted interviews with victims in order to entice them to download malware disguised as legitimate applications or malicious scripts from code repositories.(Citation: Sentinel One Contagious Interview ClickFix September 2025)(Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: Securonix Contagious Interview DEVPOPPER April 2024)(Citation: SecurityScorecard Contagious Interview FamousChollima October 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -2080,14 +2415,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1685--general",
       "tactic": "Defense Impairment",
       "technique_id": "T1685",
       "technique_name": "Disable or Modify Tools",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[Contagious Interview](https://attack.mitre.org/groups/G1052) has convinced victims to disable Docker and other container environments and run code on their machine natively in attempts to bypass container isolation and ensure device infection.(Citation: Socket HexEval BeaverTail Contagious Interview June 2025)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -2107,7 +2442,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -2801,7 +3136,462 @@
     "history": "",
     "capability_details": "InvisibleFerret, HexEval Loader, BeaverTail, XORIndex Loader",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=タイ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--0e4094ae0b8e107cfaa8",
+      "name": "被害事例: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。 v4では、Google ChromeやBraveブラウザ、MetaMask、iCloud Keychainからの認証情報窃取機能が追加。 仮想環境（VMware、VirtualBox、Microsoft、QEMU）での実行を検出し、解析を回避する機能を搭載。 マルウェアは、npmパッケージ、GitHub/Bitbucketのリポジトリ、偽のビデオ会議アプリを通じて配布。 「DriverMinUpdate.app」などの偽アプリを用いたmacOS向けの情報窃取も確認されている。",
+      "activity_refs": [
+        "activity--daily-e98674dd97bf22866f7f"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--437616c0b22d107a1a92"
+      ],
+      "affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2025-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-56f1f7edcfb3f507fe75"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--6e417d99ab0a8ac0baa3",
+      "name": "被害事例: 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "北朝鮮のハッカーが、npmレジストリに悪意のあるパッケージを公開し、開発者を標的に。 マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。 攻撃は8月12日から27日の間に確認され、「temp-etherscan-api」「ethersscan-api」「telegram-con」「helmet-validate」「qq-console」という名称のパッケージが使用された。 これらの攻撃は「Contagious Interview」作戦の一環とされる。CrowdStrikeはこの活動を「Famous Chollima」として追跡中。 攻撃目的は主に金銭だが、機密情報の窃取が目的であったケースもある",
+      "activity_refs": [
+        "activity--daily-776d32d6f4cae5db1e99"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [
+        "malware--invisibleferret"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-08-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b84641d39a296b1d232d"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--6f11b2b6322cd2dec974",
+      "name": "被害事例: 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化 Socket Threat ResearchがBeaverTailインフォスティーラーとInvisibleFerretバックドアを検出 24アカウントから公開、累計4,000回超ダウンロード、6パッケージが現存 これらのパッケージの多くは、タイポスクワッティング（スペルミスを利用して正規のパッケージを装うこと）や既知の信頼できるライブラリを模倣 攻撃者はLinkedInで面接を偽装しGoogle Docs経由でテスト課題と共にパッケージを配布 求職者は、コードをコンテナ化された環境ではなく、自身のOS上で実行するように圧力をかけられることが多く、画面共有中に実行を促されることもある",
+      "activity_refs": [
+        "activity--daily-019e5cc3a9bb7ac76a1a"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [
+        "malware--beavertail",
+        "malware--invisibleferret"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-06-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-2a32ed98e1bd6d1661b4"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--831dfdd3f37cf68e8d8c",
+      "name": "被害事例: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Socketは、npm、Packagist、Go modules、Chrome拡張にまたがるPolinRiderの悪性リリース162件を確認した。 本キャンペーンは北朝鮮関連のContagious Interview／Famous Chollima活動クラスタに関連付けられている。 攻撃者は正規リポジトリを侵害し、難読化JavaScriptローダーを設定ファイルや偽の.woff2ファイルに隠す。 VS Codeのtasks.jsonなどを悪用して開発環境でローダーを実行し、二段階目ペイロードを取得・復号・実行する。 観測されたペイロードにはDEV#POPPERとOmniStealerが含まれ、認証情報窃取やC2通信などの機能を持つ。",
+      "activity_refs": [
+        "activity--daily-8f6c009aea607abba488"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--33bfe0dee0f21b67e99c"
+      ],
+      "affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "観測されたペイロードにはDEV#POPPERとOmniStealerが含まれ、認証情報窃取やC2通信などの機能を持つ。"
+        },
+        {
+          "impact_type": "supply-chain",
+          "description": "PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-93581ba9dc03b85be996"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--acbdb28e817b4bf3d9cf",
+      "name": "被害事例: 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。XORIndexという新たなローダーも発見された。 これらは計17,000以上のダウンロードを獲得し、先月の35パッケージ（HexEvalローダー）攻撃を拡大。 悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。 XORIndexは第1世代の試作から第3世代でシステム偵察・ステルス機能を追加し、C2にビークン送信。 2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。",
+      "activity_refs": [
+        "activity--daily-4ec7937fad63eb6c62e1"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [
+        "malware--beavertail",
+        "malware--invisibleferret"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。"
+        },
+        {
+          "impact_type": "supply-chain",
+          "description": "2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-07-16T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-d00e6abeb3390b2c40e7"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--ba353bbe87673efbe856",
+      "name": "被害事例: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Socket は、Contagious Interview に結び付く北朝鮮系活動として、npm・PyPI・Go Modules・Rust・PHP を含む5系統にまたがる悪性パッケージ群を確認した。 各パッケージは debug や license などの正規開発ツールを装い、通常メソッドの裏で downloadUrl を取得し、ZIP や base64 の第2段階ペイロードを配信した。 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 攻撃者は golangorg や aokisasakidev など複数の GitHub ペルソナを使い分け、一部パッケージは削除済みだが、執筆時点でなお残存しているものもあった。",
+      "activity_refs": [
+        "activity--daily-4b5096b05e14d4f33652"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--6b786b9be7290d0da343",
+        "ttp--activity-rule--74e655e05d84ec47e3e9"
+      ],
+      "affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-04-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-828c717719b991a7c676"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--cf6980464e1532c85677",
+      "name": "被害事例: 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。 攻撃者はLinkedIn等で開発者に接触し、GitHub/GitLab/Bitbucketのデモ取得を装いトロイ化プロジェクトを配布。 プロジェクト内の“.config.env”にBase64偽API鍵を埋め込み、実態はJSON Keeperやnpoint.io等の次段URLを指す。 取得されたBeaverTailが情報窃取やInvisibleFerret投下、さらにPastebin経由のTsunamiKit取得など機能が観測。 ESETは9月にTsunamiKit等を確認；.onionのC2は現在オフラインで、広範な開発者狙いが継続と結論。",
+      "activity_refs": [
+        "activity--daily-79005e1272b11df4ca7e"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [
+        "malware--beavertail",
+        "malware--invisibleferret"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "disruption",
+          "description": "ESETは9月にTsunamiKit等を確認；.onionのC2は現在オフラインで、広範な開発者狙いが継続と結論。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-11-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-cdb23aca8de000a4d647"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--dcdc8d3a6f0ce46415ff",
+      "name": "被害事例: 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "北朝鮮支援のグループが偽の仮想通貨企業を設立し、就職面接を装いマルウェアを拡散。 BlockNovas、Angeloper、SoftGlideの3社を使い、BeaverTailなど複数マルウェアを配布。 マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 ロシアのIPレンジを使い活動を匿名化し、米FBIはBlockNovasドメインを押収。 活動の背後にはAIツールを利用した偽プロファイル作成も含まれる。",
+      "activity_refs": [
+        "activity--daily-55d0db8b81a7beada6ea"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--beavertail"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--f408909e69d6ddf20b90"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-cf8c33fcf3e4b3907567"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--ebe63f831e54cb716a26",
+      "name": "被害事例: 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。 OtterCookieはNode.jsプロジェクトやnpmパッケージ、最近ではQtやElectronアプリケーションを介して拡散。 OtterCookieはSocket.IO WebSocketツールを使用してコマンド＆コントロール（C2）インフラストラクチャとの安全な通信を確立し、リモートシェルコマンドを受信。 マルウェアは暗号通貨ウォレットの鍵や機密データを盗むコマンドが観測した。 標的の環境調査や情報窃取を進め、さらなる侵入を目指す行動が観察。 偽求人を介した攻撃手法の多様化が進んでいる。",
+      "activity_refs": [
+        "activity--daily-9b3e802e4795ffa8fefb"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-12-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-47e80e1dc37b49447e5b"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

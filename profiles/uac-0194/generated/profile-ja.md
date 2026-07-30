@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--uac-0194`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:37Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -102,21 +102,32 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 | phishing-campaign | 不明 | 不明 | 2024-11-14 | Microsoftは、ウクライナへのサイバー攻撃で悪用されていたWindowsのゼロデイ脆弱性を修正しました。 脆弱性CVE-2024-43451は、NTLMハッシュを不正に取得するため、攻撃者が準備したリモートサーバに接続を誘導する可能性があります。 この攻撃は、フィッシングメールのリンクを介して教育省サーバーから拡散されていました。 リンクは、この攻撃以前に侵害していたサーバー（osvita-kp.gov[.]ua）を悪用していました。 SparkRATを利用し、被害者のシステム制御を試みるリモートアクセスが確認されています。 Microsoftは11月のパッチで修正し、CISAは12月3日までの対応を勧告しました。 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 | phishing-campaign | 不明 | 不明 | 2024-11-14 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--b83e6fdad771428695b9 | victim--activity-rule--7e98c96c4a9ec0bb062d | Microsoftは、ウクライナへのサイバー攻撃で悪用されていたWindowsのゼロデイ脆弱性を修正しました。 脆弱性CVE-2024-43451は、NTLMハッシュを不正に取得するため、攻撃者が準備したリモートサーバに接続を誘導する可能性があります。 この攻撃は、フィッシングメールのリンクを介して教育省サーバーから拡散されていました。 リンクは、この攻撃以前に侵害していたサーバー（osvita-kp.gov[.]ua）を悪用していました。 SparkRATを利用し、被害者のシステム制御を試みるリモートアクセスが確認されています。 Microsoftは11月のパッチで修正し、CISAは12月3日までの対応を勧告しました。 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
 
 
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | ウクライナ | 活動「Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
+| sectors | 教育・研究 | 活動「Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--b83e6fdad771428695b9 | メール／メールアカウント, VPN／リモートアクセス機器, サーバー |  | 不明 | 不明 | 2024-11-14 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
 
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Initial Access | T1566.002 | Spearphishing Link | この攻撃は、フィッシングメールのリンクを介して教育省サーバーから拡散されていました。 |  | activity--daily-1f015b78b237d64334f6 | 不明 | 不明 | 中 | `source--daily-f0e69b17ee92aa7c00c6` |
 
 ## IOC／artifact概要
 
@@ -145,7 +156,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-f0e69b17ee92aa7c00c6 | Microsoftがウクライナへの攻撃で悪用されたWindowsのゼロデイ脆弱性を修正 | bleepingcomputer.com | 2024-11-14 | https://www.bleepingcomputer.com/news/security/microsoft-patches-windows-zero-day-exploited-in-attacks-on-ukraine/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--uac-0194--401dc8fe4c0241c8 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0194--d9b7cb891c070366 | Zero day cve 2024 4351 report |  | 不明 | Exploit/Zero-day-cve-2024-4351-report.pdf | report | TLP:CLEAR | 中 |

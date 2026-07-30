@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ta551`
 - 状態: draft
-- 更新日時: 2026-07-25T14:07:08Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -120,31 +120,40 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## ターゲット
 
-ターゲット情報なし
+| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| countries | イタリア | (Citation: Secureworks GOLD CABIN) The group has primarily targeted English, German, Italian, and Japanese speakers through email-based malware distribution campaigns. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | ドイツ | (Citation: Secureworks GOLD CABIN) The group has primarily targeted English, German, Italian, and Japanese speakers through email-based malware distribution campaigns. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| countries | 日本 | (Citation: Secureworks GOLD CABIN) The group has primarily targeted English, German, Italian, and Japanese speakers through email-based malware distribution campaigns. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 欧州 | イタリア、ドイツで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--mitre-attack-19-1` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.003 | Steganography | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036 | Masquerading | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--ta551--a793ec3f0d3326bb` |
+| Stealth | T1027.003 | Steganography | [TA551](https://attack.mitre.org/groups/G0127) has hidden encoded data for malware DLLs in a PNG.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [TA551](https://attack.mitre.org/groups/G0127) has used obfuscated variable names in a JavaScript configuration file.(Citation: Unit 42 Valak July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036 | Masquerading | [TA551](https://attack.mitre.org/groups/G0127) has masked malware DLLs as dat and jpg files.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--ta551--a793ec3f0d3326bb` |
 | Stealth | T1036.003 | Rename Legitimate Utilities | summary/2021/2021-Threat-Detection-Report.pdf {"page": 2} TA551 64 #9 T1569 System Services 69 T1569.002 Service Execution 70 #10 T1036 Masquerading 73 T1036.003 Rename System Utilities 74 #1 TA551 79 #2 Cobalt Strike 84 #3 Qbot 88 #4 IcedID 92 #5 Mimikatz 96 #6 Shlayer 100 #7 Dridex 103 #8 Emotet 107 #9 TrickBot |  |  | 不明 | 不明 | 中 | `source--ta551--a793ec3f0d3326bb` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1132.001 | Standard Encoding | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.005 | Mshta | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--ta551--a793ec3f0d3326bb` |
-| Stealth | T1218.010 | Regsvr32 | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.011 | Rundll32 | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1568.002 | Domain Generation Algorithms | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [TA551](https://attack.mitre.org/groups/G0127) has used <code>cmd.exe</code> to execute commands.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [TA551](https://attack.mitre.org/groups/G0127) has used HTTP for C2 communications.(Citation: Unit 42 Valak July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [TA551](https://attack.mitre.org/groups/G0127) has retrieved DLLs and installer binaries for malware execution from C2.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1132.001 | Standard Encoding | [TA551](https://attack.mitre.org/groups/G0127) has used encoded ASCII text for initial C2 communications.(Citation: Unit 42 Valak July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [TA551](https://attack.mitre.org/groups/G0127) has prompted users to enable macros within spearphishing attachments to install malware.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.005 | Mshta | [TA551](https://attack.mitre.org/groups/G0127) has used mshta.exe to execute malicious payloads.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--ta551--a793ec3f0d3326bb` |
+| Stealth | T1218.010 | Regsvr32 | [TA551](https://attack.mitre.org/groups/G0127) has used regsvr32.exe to load malicious DLLs.(Citation: Unit 42 Valak July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.011 | Rundll32 | [TA551](https://attack.mitre.org/groups/G0127) has used rundll32.exe to load malicious DLLs.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [TA551](https://attack.mitre.org/groups/G0127) has sent spearphishing attachments with password protected ZIP files.(Citation: Unit 42 Valak July 2020)(Citation: Unit 42 TA551 Jan 2021)(Citation: Secureworks GOLD CABIN) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1568.002 | Domain Generation Algorithms | [TA551](https://attack.mitre.org/groups/G0127) has used a DGA to generate URLs from executed macros.(Citation: Unit 42 TA551 Jan 2021)(Citation: Secureworks GOLD CABIN) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Execution | T1569 | System Services | summary/2021/2021-Threat-Detection-Report.pdf {"page": 2} TA551 64 #9 T1569 System Services 69 T1569.002 Service Execution 70 #10 T1036 Masquerading 73 T1036.003 Rename System Utilities 74 #1 TA551 79 #2 Cobalt Strike 84 #3 Qbot 88 #4 IcedID 92 #5 Mimikatz 96 #6 Shlayer 100 #7 Dridex 103 #8 Emotet 107 #9 TrickBot |  |  | 不明 | 不明 | 中 | `source--ta551--a793ec3f0d3326bb` |
 | Execution | T1569.002 | Service Execution | summary/2021/2021-Threat-Detection-Report.pdf {"page": 2} TA551 64 #9 T1569 System Services 69 T1569.002 Service Execution 70 #10 T1036 Masquerading 73 T1036.003 Rename System Utilities 74 #1 TA551 79 #2 Cobalt Strike 84 #3 Qbot 88 #4 IcedID 92 #5 Mimikatz 96 #6 Shlayer 100 #7 Dridex 103 #8 Emotet 107 #9 TrickBot |  |  | 不明 | 不明 | 中 | `source--ta551--a793ec3f0d3326bb` |
-| Reconnaissance | T1589.002 | Email Addresses | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Reconnaissance | T1589.002 | Email Addresses | [TA551](https://attack.mitre.org/groups/G0127) has used spoofed company emails that were acquired from email clients on previously infected hosts to target other individuals.(Citation: Unit 42 TA551 Jan 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 

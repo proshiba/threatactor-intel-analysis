@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--de89a9ae-41c2-43d1-aa2d-534142df4b57",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-07-29T23:13:55Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -68,7 +68,7 @@
         "history": "Olympic Games / Stuxnet",
         "capability_details": "Stuxnet",
         "infrastructure_details": "",
-        "targeting_details": "Directed at Iranian nuclear facilities",
+        "targeting_details": "構造化ターゲット監査: 標的国=イラン、スーダン。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nDirected at Iranian nuclear facilities",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -254,6 +254,55 @@
       }
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d82f907b-4a5e-4e50-8536-ba8003f059e0",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-07-29T23:13:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "イラン",
+      "identity_class": "organization",
+      "description": "レビュー済みアクターマッピングの標的欄に記録されたイランを構造化した。",
+      "external_references": [
+        {
+          "source_name": "Florian Roth and community contributors",
+          "description": "Local source: APT Groups and Operations.xlsx",
+          "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "MISP Project / Council on Foreign Relations",
+          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
+          "external_id": "source--target-audit-misp-threat-actor"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--57855e1e-9b2b-455d-bd85-58e90e45bd34",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-07-29T23:13:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "スーダン",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでUnit 8200の標的・被害国としてスーダンが記録されている。",
+      "external_references": [
+        {
+          "source_name": "MISP Project / Council on Foreign Relations",
+          "description": "Local source: actor_profile/reference/osint/misp-threat-actor.json",
+          "external_id": "source--target-audit-misp-threat-actor"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f9b5728c-1851-45c5-afba-e400a3d9fd4e",
@@ -266,6 +315,36 @@
       "source_ref": "intrusion-set--de89a9ae-41c2-43d1-aa2d-534142df4b57",
       "target_ref": "malware--c4767b1b-1a04-434a-9474-5d265890ce7f",
       "description": "Unit 8200 uses Stuxnet.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a10d9bac-a422-4d7e-b57e-95c51a523bb3",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-07-29T23:13:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--de89a9ae-41c2-43d1-aa2d-534142df4b57",
+      "target_ref": "identity--d82f907b-4a5e-4e50-8536-ba8003f059e0",
+      "description": "Unit 8200 targets イラン (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f91b42a6-c06e-4bcf-ad30-21d15236b5eb",
+      "created": "2026-07-29T23:13:55Z",
+      "modified": "2026-07-29T23:13:55Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--de89a9ae-41c2-43d1-aa2d-534142df4b57",
+      "target_ref": "identity--57855e1e-9b2b-455d-bd85-58e90e45bd34",
+      "description": "Unit 8200 targets スーダン (profile target category: countries).",
       "x_confidence": "medium"
     },
     {
@@ -305,7 +384,7 @@
       "spec_version": "2.1",
       "id": "report--34f4b39a-63f6-4a0d-89fc-a6c6ab83b5fe",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T14:07:08Z",
+      "modified": "2026-07-29T23:13:55Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -314,13 +393,15 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-25T14:07:08Z",
+      "published": "2026-07-29T23:13:55Z",
       "object_refs": [
         "intrusion-set--de89a9ae-41c2-43d1-aa2d-534142df4b57",
         "malware--c4767b1b-1a04-434a-9474-5d265890ce7f",
-        "campaign--b1016556-1303-448a-8de9-50472b843d5e"
+        "campaign--b1016556-1303-448a-8de9-50472b843d5e",
+        "identity--d82f907b-4a5e-4e50-8536-ba8003f059e0",
+        "identity--57855e1e-9b2b-455d-bd85-58e90e45bd34"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

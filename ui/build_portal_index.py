@@ -332,6 +332,16 @@ def read_profile(slug: str) -> dict | None:
         "sponsor_type": attribution.get("sponsor_type") or "",
         "confidence": attribution.get("confidence") or "",
         "motivations": sorted({m.get("type") for m in profile.get("motivations") or [] if m.get("type")}),
+        "target_countries": [
+            t.get("name")
+            for t in targets.get("countries") or []
+            if t.get("name")
+        ],
+        "target_regions": [
+            t.get("name")
+            for t in targets.get("regions") or []
+            if t.get("name")
+        ],
         "sectors": [t.get("name") for t in targets.get("sectors") or [] if t.get("name")],
         "summary": plain_text(free_text.get("executive_summary") or actor.get("description")),
         "updated_at": profile.get("updated_at") or "",
@@ -484,6 +494,10 @@ def build_entities(profiles: list[dict]) -> tuple[list[dict], dict[str, int]]:
             attrs["確度"] = p["confidence"]
         if p["motivations"]:
             attrs["動機"] = "、".join(p["motivations"])
+        if p["target_countries"]:
+            attrs["標的国"] = "、".join(p["target_countries"][:16])
+        if p["target_regions"]:
+            attrs["標的地域"] = "、".join(p["target_regions"][:12])
         if p["sectors"]:
             attrs["標的分野"] = "、".join(p["sectors"][:8])
         if p["summary"]:

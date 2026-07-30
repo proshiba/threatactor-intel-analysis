@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--applejeus",
   "name": "AppleJeus",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-27T11:17:21Z",
+  "updated_at": "2026-07-29T23:11:59Z",
   "languages": [
     "ja"
   ],
@@ -116,7 +116,38 @@
   },
   "capabilities": {
     "malware": [],
-    "tools": [],
+    "tools": [
+      {
+        "id": "tool--mitre--s1144",
+        "name": "FRP",
+        "aliases": [
+          "FRP"
+        ],
+        "types": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "description": "[FRP](https://attack.mitre.org/software/S1144), which stands for Fast Reverse Proxy, is an openly available tool that is capable of exposing a server located behind a firewall or Network Address Translation (NAT) to the Internet. [FRP](https://attack.mitre.org/software/S1144) can support multiple protocols including TCP, UDP, and HTTP(S) and has been abused by threat actors to proxy command and control communications.(Citation: FRP GitHub)(Citation: Joint Cybersecurity Advisory Volt Typhoon June 2023)(Citation: RedCanary Mockingbird May 2020)(Citation: DFIR Phosphorus November 2021)",
+        "first_observed": {
+          "value": "2022-11-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "last_observed": {
+          "value": "2023-03-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "MITRE ATT&CK campaign-to-software relationship. ATT&CK coverage is a public-reporting subset."
+      }
+    ],
     "infrastructure": [],
     "delivery_formats": [],
     "vulnerabilities": [],
@@ -124,6 +155,68 @@
     "analyst_notes": ""
   },
   "activities": [
+    {
+      "activity_id": "activity--3cx-supply-chain-attack",
+      "name": "3CX Supply Chain Attack",
+      "activity_type": "campaign",
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "description": "The [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057) was the first publicly reported case of one supply chain compromise triggering another, leading to a cascading, two-stage intrusion. The initial supply chain attack began when a 3CX employee downloaded and executed a trojanized, end-of-life version of the X_Trader trading software from Trading Technologies. This provided UNC4736, a threat cluster associated with [AppleJeus](https://attack.mitre.org/groups/G1049), access to the 3CX environment. From there UNC4736 compromised the Windows and macOS build environments used to distribute the 3CX desktop application to their customers.(Citation: Mandiant 3cx UNC4736 2023) While 3CX serves more than 600,000 customers and 12 million users, only a subset of systems were affected. Subsequent targeting focused on victims in the defense and cryptocurrency sectors, where attackers deployed secondary payloads such as Gopuram for credential theft and persistence.(Citation: Kaspersky 3CX Gopuram 2023) The campaign began in late 2022 and was disrupted after security vendors publicly reported the compromise in March 2023.(Citation: 3cx official statement 2023)(Citation: Krebs 3cx overview 2023)",
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--mitre-group--sector--f85697f31d3eefe544e2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "",
+      "reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "ttp_refs": [
+        "ttp--mitre-campaign--00eebce179e2cc165a78",
+        "ttp--mitre-campaign--09b1c7c970cc6f0872ff",
+        "ttp--mitre-campaign--10162a98ebfac9199a1f",
+        "ttp--mitre-campaign--1eee9d018fec2af13386",
+        "ttp--mitre-campaign--213481447859524a9328",
+        "ttp--mitre-campaign--271a72b9c2a22725acff",
+        "ttp--mitre-campaign--39b87e2e673dd6758c97",
+        "ttp--mitre-campaign--464d5726f874a68d2ff3",
+        "ttp--mitre-campaign--4fec03052d9bb90bcfcc",
+        "ttp--mitre-campaign--53a86942be3f4c2beffa",
+        "ttp--mitre-campaign--84a8e41beba9ba2a8ecb",
+        "ttp--mitre-campaign--863977544862a6feb9d7",
+        "ttp--mitre-campaign--8e86c6b7197ec50ac3de",
+        "ttp--mitre-campaign--aab01ff9f91ce4d15c34",
+        "ttp--mitre-campaign--adf5756d9d7c4a3ebe51",
+        "ttp--mitre-campaign--b5a6e63f8effa5428825",
+        "ttp--mitre-campaign--b69f659ac2baa6116cd9",
+        "ttp--mitre-campaign--e1007fd2d70a43c93a3c",
+        "ttp--mitre-campaign--f06ef908333d43453295",
+        "ttp--mitre-campaign--f0c2354d4975290b9f03",
+        "ttp--mitre-campaign--f434cc8e6bdd6b0a6530",
+        "ttp--mitre-campaign--fe00acecd59b2d85e57e"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--92a04f97301418051a53"
+      ]
+    },
     {
       "activity_id": "activity--daily-7a025baf69fb080e5d6e",
       "name": "Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける",
@@ -147,63 +240,1561 @@
         "basis": "daily-news-file-date"
       },
       "description": "Radiant Capitalは、10月16日のサイバー攻撃で5,000万ドルの暗号通貨が盗まれたと発表。 サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。 攻撃は、3人の信頼された開発者のデバイスにマルウェアを感染させ、正規の署名を収集して不正な取引を実行する手法で行われた。 ハッカーは、ルーチンのマルチシグネチャプロセスを悪用し、トランザクションエラーを装って有効な署名を収集し、ArbitrumおよびBSC市場から資金を窃取。 米国政府は以前から、北朝鮮のハッカーが暗号通貨企業を標的にして資金を窃取し、国家活動を支援していると警告している。 攻撃は2024年9月11日に始まり、Radiantの開発者が元請負業者を装ったTelegramメッセージを受信し、悪意のあるZIPファイルをダウンロードするように仕向けられた。このZIPファイルには、「InletDrift」という名前のmacOSマルウェアがあった。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-f645f7df90b96e0f1b18"
       ],
-      "analyst_notes": "日次収集レコード daily-record--7a025baf69fb080e5d6eebda から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが当該活動への帰属先として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。"
-    },
+      "analyst_notes": "日次収集レコード daily-record--7a025baf69fb080e5d6eebda から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが当該活動への帰属先として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。",
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--83f649cfc55e69ff542f"
+      ]
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--97d9c112e505fedad74d",
+        "name": "イスラエル",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてイスラエルが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--b35128db7cc31a0f8343",
+        "name": "インド",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてインドが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--9cb78bc144b2ad0c9fd7",
+        "name": "エクアドル",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてエクアドルが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--9897c3556a387f5a798e",
+        "name": "オランダ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてオランダが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--bc816bdc02c13aed4b3c",
+        "name": "オーストラリア",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてオーストラリアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--14753cfa7c849825f557",
+        "name": "カナダ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてカナダが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--1974d09e4197d71ed0f1",
+        "name": "グアテマラ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてグアテマラが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--9fe070b54a682a53a7ed",
+        "name": "タイ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてタイが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--961c1218a954651a91e2",
+        "name": "チリ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてチリが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--d3e8b44ec2c7b45628de",
+        "name": "ドイツ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてドイツが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--71daaa3b7e54074030b6",
+        "name": "バングラデシュ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてバングラデシュが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--3c7b45423c6e77680d82",
+        "name": "フィリピン",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてフィリピンが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--c370fa926ff526fe4e4c",
+        "name": "フランス",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてフランスが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--66e8afd61517fb4a8095",
+        "name": "ブラジル",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてブラジルが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--e2e1a3380d877b92c256",
+        "name": "ベトナム",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてベトナムが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--97a157b6eb224e5eaaa2",
+        "name": "ベルギー",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてベルギーが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--5116abcfd0c6a3bd4fbd",
+        "name": "ポーランド",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてポーランドが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--7038bea854908fa7ea36",
+        "name": "メキシコ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてメキシコが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--5c6717ce60f9cf6464c5",
+        "name": "ロシア",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国としてロシアが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--2dd9656f9994fae34f97",
+        "name": "中国",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として中国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--598f913dfc85bd9e69a7",
+        "name": "南アフリカ",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として南アフリカが記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--3d5f72ec81446481f5f3",
+        "name": "台湾",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として台湾が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--b7516be5fbc1ea421fdd",
+        "name": "日本",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として日本が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f645f7df90b96e0f1b18",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--c0692e0dee5561113751",
+        "name": "英国",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として英国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--1f6decf29533c17d9a66",
+        "name": "韓国",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として韓国が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--country--71aee738802d89ebeb2a",
+        "name": "香港",
+        "description": "構造化OSINTの被害国フィールドでAppleJeusの標的・被害国として香港が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--57a819d7f696d8ab8a72",
+        "name": "中南米",
+        "description": "エクアドル、グアテマラ、チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--04861912f20bb6372be4",
+        "name": "全世界",
+        "description": "構造化OSINTの被害地域フィールドでAppleJeusの標的範囲として全世界が記録されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--targeting-audit--region--6abc5edb5e4869906d0d",
+        "name": "北米",
+        "description": "カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f645f7df90b96e0f1b18",
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--5d75a87d680fe8cc42a4",
+        "name": "南アジア",
+        "description": "インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--f91a4447c830bcbe2e2d",
+        "name": "南米",
+        "description": "エクアドル、チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--50b3477d648abf1b786d",
+        "name": "東アジア",
+        "description": "中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--b1ad644019b5ef77df56",
+        "name": "東南アジア",
+        "description": "タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--fd830ae4bc6f4a33344c",
+        "name": "東欧",
+        "description": "ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--011b93e1aafbc46017e7",
+        "name": "欧州",
+        "description": "オランダ、ドイツ、フランス、ベルギー、ポーランド、英国で確認された標的・被害事例を欧州として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--target-audit-etda-threat-group-cards"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "name": "IT・ソフトウェア",
+        "description": "活動「Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f645f7df90b96e0f1b18"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「3CX Supply Chain Attack」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2022-11-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "last_observed": {
+          "value": "2023-03-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--mitre-group--sector--2bedc96a0c253722b517",
+        "name": "金融",
+        "description": "From these compromised environments, it selectively deploys additional backdoors to enable extended operations against high-value financial targets.(Citation: Mandiant DPRK Groups 2023)(Citation: JPCert Blog Laz Subgroups 2025)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      },
+      {
+        "id": "target--mitre-group--sector--f85697f31d3eefe544e2",
+        "name": "暗号資産・Web3",
+        "description": "[AppleJeus](https://attack.mitre.org/groups/G1049) primarily targets the cryptocurrency industry and is most notably responsible for the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057).(Citation: Mandiant 3cx UNC4736 2023) The group traditionally deploys malicious cryptocurrency software in combination with [Phishing](https://attack.mitre.org/techniques/T1566).",
+        "first_observed": {
+          "value": "2022-11-01T06:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "last_observed": {
+          "value": "2023-03-01T05:00:00.000Z",
+          "precision": "second",
+          "status": "known",
+          "basis": "mitre-attack; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
     {
-      "activity_id": "activity--3cx-supply-chain-attack",
-      "name": "3CX Supply Chain Attack",
-      "activity_type": "campaign",
+      "ttp_id": "ttp--mitre-campaign--00eebce179e2cc165a78",
+      "tactic": "Command And Control",
+      "technique_id": "T1071.001",
+      "technique_name": "Web Protocols",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049)'s COLDCAT C2 leverages cookie headers to contain data over HTTPS. Cookies also contain hardcoded variables `__tutma` or `__tutmc` in the payload's HTTPS request.(Citation: Mandiant 3cx UNC4736 2023)(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
       "first_observed": {
         "value": "2022-11-01T06:00:00.000Z",
         "precision": "second",
         "status": "known",
-        "basis": "mitre-attack"
+        "basis": "mitre-attack; activity-period"
       },
       "last_observed": {
         "value": "2023-03-01T05:00:00.000Z",
         "precision": "second",
         "status": "known",
-        "basis": "mitre-attack"
+        "basis": "mitre-attack; activity-period"
       },
-      "description": "The [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057) was the first publicly reported case of one supply chain compromise triggering another, leading to a cascading, two-stage intrusion. The initial supply chain attack began when a 3CX employee downloaded and executed a trojanized, end-of-life version of the X_Trader trading software from Trading Technologies. This provided UNC4736, a threat cluster associated with [AppleJeus](https://attack.mitre.org/groups/G1049), access to the 3CX environment. From there UNC4736 compromised the Windows and macOS build environments used to distribute the 3CX desktop application to their customers.(Citation: Mandiant 3cx UNC4736 2023) While 3CX serves more than 600,000 customers and 12 million users, only a subset of systems were affected. Subsequent targeting focused on victims in the defense and cryptocurrency sectors, where attackers deployed secondary payloads such as Gopuram for credential theft and persistence.(Citation: Kaspersky 3CX Gopuram 2023) The campaign began in late 2022 and was disrupted after security vendors publicly reported the compromise in March 2023.(Citation: 3cx official statement 2023)(Citation: Krebs 3cx overview 2023)",
-      "target_refs": [],
-      "malware_refs": [],
-      "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "",
-      "reported_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--09b1c7c970cc6f0872ff",
+      "tactic": "Execution",
+      "technique_id": "T1559",
+      "technique_name": "Inter-Process Communication",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049)'s VEILEDSIGNAL creates and listens on a Windows named pipe to exchange messages between modules.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
         "status": "known",
-        "basis": "earliest-evidence-source-published-at"
-      }
-    }
-  ],
-  "targets": {
-    "countries": [],
-    "regions": [],
-    "sectors": [],
-    "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
-  },
-  "ttps": [
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--10162a98ebfac9199a1f",
+      "tactic": "Command And Control",
+      "technique_id": "T1573.001",
+      "technique_name": "Symmetric Cryptography",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049)'s VEILEDSIGNAL communication module supports three commands to conduct the following actions: send implant data, execute shellcode, and terminate itself.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--1eee9d018fec2af13386",
+      "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "observed_behavior": "During [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) has gained access to the 3CX corporate environment through legitimate VPN credentials.(Citation: 3cx official statement 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--213481447859524a9328",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1546.016",
+      "technique_name": "Installer Packages",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) added a malicious .dylib file to a .dmg installer package for the macOS 3CX application.(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--271a72b9c2a22725acff",
+      "tactic": "Initial Access",
+      "technique_id": "T1189",
+      "technique_name": "Drive-by Compromise",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) compromised the `www.tradingtechnologies[.]com` website hosting a hidden IFRAME to exploit visitors, two months before the site was known to deliver a compromised version of the X_TRADER software package.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--39b87e2e673dd6758c97",
+      "tactic": "Stealth",
+      "technique_id": "T1620",
+      "technique_name": "Reflective Code Loading",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) leverages the publicly available open-source project DAVESHELL to convert PE-COFF files to position-independent code to reflectively load the payload into memory.(Citation: Mandiant 3cx UNC4736 2023)(Citation: Daveshell sRDI GitHub shell code loader)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--464d5726f874a68d2ff3",
+      "tactic": "Discovery",
+      "technique_id": "T1217",
+      "technique_name": "Browser Information Discovery",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) leveraged ICONICSTEALER to steal browser information to include browser history located on the infected host.(Citation: Volexity 3CX Supply Chain Compromise AppleJeus IconicStealer March 2023)(Citation: Mandiant 3cx UNC4736 2023)(Citation: Trend Micro 3CX AppleJeus ICONICSTEALER March 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--4fec03052d9bb90bcfcc",
+      "tactic": "Stealth",
+      "technique_id": "T1218.007",
+      "technique_name": "Msiexec",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) delivered components using a Windows Installer package (.msi). The MSI installer extracted several files and executed the 3CXDesktopApp.exe, which loaded the malicious library file ffmpeg.dll.(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--53a86942be3f4c2beffa",
+      "tactic": "Privilege Escalation, Stealth",
+      "technique_id": "T1055",
+      "technique_name": "Process Injection",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049)'s VEILEDSIGNAL uses process injection to inject the C2 communication module code in the first found process instance of Chrome, Firefox, or Edge web browsers. It also monitors the established named pipe and re-injects the C2 communication module if necessary.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--84a8e41beba9ba2a8ecb",
+      "tactic": "Privilege Escalation, Stealth",
+      "technique_id": "T1055.002",
+      "technique_name": "Portable Executable Injection",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) uses the SigFlip tool to inject arbitrary code without affecting or breaking the file's signature.(Citation: GitHub SigFlip opensource tool)(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--863977544862a6feb9d7",
+      "tactic": "Stealth",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) payloads use AES-256 GCM cipher to encrypt data to include ICONICSTEALER and VEILEDSIGNAL.(Citation: Volexity 3CX Supply Chain Compromise AppleJeus IconicStealer March 2023)(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--8e86c6b7197ec50ac3de",
+      "tactic": "Execution",
+      "technique_id": "T1203",
+      "technique_name": "Exploitation for Client Execution",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) leveraged the Chrome vulnerability, CVE-2022-0609, in combination with a [Drive-by Compromise](https://attack.mitre.org/techniques/T1189) website.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--aab01ff9f91ce4d15c34",
+      "tactic": "Stealth",
+      "technique_id": "T1027.013",
+      "technique_name": "Encrypted/Encoded File",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) encrypts its dynamic library files (.dll) using RC4, and when loaded only decrypts specific portions of the file using the key `3jB(2bsG#@c7`.(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--adf5756d9d7c4a3ebe51",
+      "tactic": "Stealth",
+      "technique_id": "T1218.015",
+      "technique_name": "Electron Applications",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) leveraged the 3CX application's electron framework to execute its malicious libraries under the official 3CX electron application.(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--b5a6e63f8effa5428825",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) splits functionally across multiple .dll files using export functions, such as DLLGetClassObject, to execute code from an embedded .dll file within another .dll file. [AppleJeus](https://attack.mitre.org/groups/G1049) has also used DLL search order hijacking via the IKEEXT service, running with LocalSystem privileges, to load the TAXHAUL DLL for persistence.(Citation: Unit42 3cx supply chain 2023)(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--b69f659ac2baa6116cd9",
+      "tactic": "Initial Access",
+      "technique_id": "T1195.002",
+      "technique_name": "Compromise Software Supply Chain",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) first compromised an “end-of-life\" trading software application which was downloaded and executed inside the 3CX enterprise environment. The second compromise modified the Windows and macOS build environments used to distribute the 3CX software to their customer base.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--e1007fd2d70a43c93a3c",
+      "tactic": "Stealth",
+      "technique_id": "T1027.009",
+      "technique_name": "Embedded Payloads",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) uses embedded .dll as apart of a chained delivery mechanism to invoke the COM class factory.(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--f06ef908333d43453295",
+      "tactic": "Persistence, Privilege Escalation",
+      "technique_id": "T1543.004",
+      "technique_name": "Launch Daemon",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) installs a Launch Daemon to execute the POOLRAT macOS backdoor software.(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--f0c2354d4975290b9f03",
+      "tactic": "Defense Impairment",
+      "technique_id": "T1553.002",
+      "technique_name": "Code Signing",
+      "observed_behavior": "Although the X_TRADER platform was reportedly discontinued in 2020, it was still available for download from the legitimate Trading Technologies website in 2022. During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) used a code signing certificate to digitally sign the malicious software with an expiration date set to October 2022. This file was signed with the subject “Trading Technologies International, Inc” and contained the executable file Setup.exe, also signed with the same digital certificate.(Citation: Mandiant 3cx UNC4736 2023)(Citation: 3cx official statement 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--f434cc8e6bdd6b0a6530",
+      "tactic": "Command And Control",
+      "technique_id": "T1102.001",
+      "technique_name": "Dead Drop Resolver",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049) leveraged a GitHub repository to host icon files containing the command and control URL.(Citation: Unit42 3cx supply chain 2023)(Citation: Mandiant 3cx UNC4736 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
+    {
+      "ttp_id": "ttp--mitre-campaign--fe00acecd59b2d85e57e",
+      "tactic": "Stealth",
+      "technique_id": "T1678",
+      "technique_name": "Delay Execution",
+      "observed_behavior": "During the [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057), [AppleJeus](https://attack.mitre.org/groups/G1049)'s software generates a randomly selected date that is between 1-4 weeks in the future. This timestamp is then checked against the current time of the compromised machine, and the malware will sleep until that time is encountered.(Citation: Unit42 3cx supply chain 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack; activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "MITRE ATT&CK campaign-to-technique relationship. Campaign period is used as the observation interval; relationship modification and source publication dates are not used."
+    },
     {
       "ttp_id": "ttp--t1566--general",
       "tactic": "Initial Access",
       "technique_id": "T1566",
       "technique_name": "Phishing",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[AppleJeus](https://attack.mitre.org/groups/G1049) has used spearphishing emails to distribute malicious payloads.(Citation: dtex DPRK 2025 structure ITworkers)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -223,14 +1814,14 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     },
     {
       "ttp_id": "ttp--t1657--general",
       "tactic": "Impact",
       "technique_id": "T1657",
       "technique_name": "Financial Theft",
-      "observed_behavior": "MITRE ATT&CK maps this technique to the actor.",
+      "observed_behavior": "[AppleJeus](https://attack.mitre.org/groups/G1049) has targeted the cryptocurrency industry with the goal of stealing digital assets.(Citation: Mandiant DPRK Groups 2023)",
       "activity_refs": [],
       "malware_refs": [],
       "infrastructure_refs": [],
@@ -250,7 +1841,7 @@
       "evidence_refs": [
         "source--mitre-attack-19-1"
       ],
-      "analyst_notes": "General actor-level mapping; split by activity when source evidence permits."
+      "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
     }
   ],
   "sources": [
@@ -1013,6 +2604,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -1032,7 +2648,123 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、インド、エクアドル、オランダ、オーストラリア、カナダ、グアテマラ、タイ、チリ、ドイツ、バングラデシュ、フィリピン、フランス、ブラジル、ベトナム、ベルギー、ポーランド、メキシコ、ロシア、中国、南アフリカ、台湾、日本、米国ほか3か国。標的地域=中南米、全世界、北米、南アジア、南米、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--83f649cfc55e69ff542f",
+      "name": "被害事例: Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Radiant Capitalは、10月16日のサイバー攻撃で5,000万ドルの暗号通貨が盗まれたと発表。 サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。 攻撃は、3人の信頼された開発者のデバイスにマルウェアを感染させ、正規の署名を収集して不正な取引を実行する手法で行われた。 ハッカーは、ルーチンのマルチシグネチャプロセスを悪用し、トランザクションエラーを装って有効な署名を収集し、ArbitrumおよびBSC市場から資金を窃取。 米国政府は以前から、北朝鮮のハッカーが暗号通貨企業を標的にして資金を窃取し、国家活動を支援していると警告している。 攻撃は2024年9月11日に始まり、Radiantの開発者が元請負業者を装ったTelegramメッセージを受信し、悪意のあるZIPファイルをダウンロードするように仕向けられた。このZIPファイルには、「InletDrift」という名前のmacOSマルウェアがあった。",
+      "activity_refs": [
+        "activity--daily-7a025baf69fb080e5d6e"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-12-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f645f7df90b96e0f1b18"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--92a04f97301418051a53",
+      "name": "被害事例: 3CX Supply Chain Attack",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "The [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057) was the first publicly reported case of one supply chain compromise triggering another, leading to a cascading, two-stage intrusion. The initial supply chain attack began when a 3CX employee downloaded and executed a trojanized, end-of-life version of the X_Trader trading software from Trading Technologies. This provided UNC4736, a threat cluster associated with [AppleJeus](https://attack.mitre.org/groups/G1049), access to the 3CX environment. From there UNC4736 compromised the Windows and macOS build environments used to distribute the 3CX desktop application to their customers.(Citation: Mandiant 3cx UNC4736 2023) While 3CX serves more than 600,000 customers and 12 million users, only a subset of systems were affected. Subsequent targeting focused on victims in the defense and cryptocurrency sectors, where attackers deployed secondary payloads such as Gopuram for credential theft and persistence.(Citation: Kaspersky 3CX Gopuram 2023) The campaign began in late 2022 and was disrupted after security vendors publicly reported the compromise in March 2023.(Citation: 3cx official statement 2023)(Citation: Krebs 3cx overview 2023)",
+      "activity_refs": [
+        "activity--3cx-supply-chain-attack"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--mitre-group--sector--f85697f31d3eefe544e2"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--mitre-campaign--00eebce179e2cc165a78",
+        "ttp--mitre-campaign--09b1c7c970cc6f0872ff",
+        "ttp--mitre-campaign--10162a98ebfac9199a1f",
+        "ttp--mitre-campaign--1eee9d018fec2af13386",
+        "ttp--mitre-campaign--213481447859524a9328",
+        "ttp--mitre-campaign--271a72b9c2a22725acff",
+        "ttp--mitre-campaign--39b87e2e673dd6758c97",
+        "ttp--mitre-campaign--464d5726f874a68d2ff3",
+        "ttp--mitre-campaign--4fec03052d9bb90bcfcc",
+        "ttp--mitre-campaign--53a86942be3f4c2beffa",
+        "ttp--mitre-campaign--84a8e41beba9ba2a8ecb",
+        "ttp--mitre-campaign--863977544862a6feb9d7",
+        "ttp--mitre-campaign--8e86c6b7197ec50ac3de",
+        "ttp--mitre-campaign--aab01ff9f91ce4d15c34",
+        "ttp--mitre-campaign--adf5756d9d7c4a3ebe51",
+        "ttp--mitre-campaign--b5a6e63f8effa5428825",
+        "ttp--mitre-campaign--b69f659ac2baa6116cd9",
+        "ttp--mitre-campaign--e1007fd2d70a43c93a3c",
+        "ttp--mitre-campaign--f06ef908333d43453295",
+        "ttp--mitre-campaign--f0c2354d4975290b9f03",
+        "ttp--mitre-campaign--f434cc8e6bdd6b0a6530",
+        "ttp--mitre-campaign--fe00acecd59b2d85e57e"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "3CX Supply Chain Attack"
+        }
+      ],
+      "first_observed": {
+        "value": "2022-11-01T06:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "last_observed": {
+        "value": "2023-03-01T05:00:00.000Z",
+        "precision": "second",
+        "status": "known",
+        "basis": "mitre-attack"
+      },
+      "reported_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "earliest-evidence-source-published-at"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

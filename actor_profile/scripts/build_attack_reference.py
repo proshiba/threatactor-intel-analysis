@@ -19,6 +19,28 @@ def external_id(obj: dict[str, Any]) -> str:
     return ""
 
 
+def relationship_record(
+    relationship: dict[str, Any],
+    target: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "relationship_id": relationship.get("relationship_id", ""),
+        "target_ref": relationship.get("target_ref", ""),
+        "target_type": target.get("type", ""),
+        "target_external_id": external_id(target),
+        "target_name": target.get("name", ""),
+        "description": relationship.get("description", ""),
+        "external_references": [
+            {
+                key: reference[key]
+                for key in ("source_name", "url", "description")
+                if reference.get(key)
+            }
+            for reference in relationship.get("external_references", [])
+        ],
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
@@ -34,9 +56,11 @@ def main() -> int:
             continue
         relationships[obj.get("source_ref", "")].append(
             {
+                "relationship_id": obj.get("id", ""),
                 "relationship_type": obj.get("relationship_type", ""),
                 "target_ref": obj.get("target_ref", ""),
                 "description": obj.get("description", ""),
+                "external_references": obj.get("external_references", []),
             }
         )
 
@@ -79,6 +103,7 @@ def main() -> int:
     for obj in objects:
         if obj.get("type") != "campaign" or obj.get("revoked"):
             continue
+        campaign_relationships = relationships.get(obj["id"], [])
         campaigns[obj["id"]] = {
             "stix_id": obj["id"],
             "external_id": external_id(obj),
@@ -87,6 +112,35 @@ def main() -> int:
             "description": obj.get("description", ""),
             "first_seen": obj.get("first_seen"),
             "last_seen": obj.get("last_seen"),
+            "technique_uses": sorted(
+                [
+                    relationship_record(item, by_id[item["target_ref"]])
+                    for item in campaign_relationships
+                    if item["relationship_type"] == "uses"
+                    and item["target_ref"] in by_id
+                    and by_id[item["target_ref"]].get("type") == "attack-pattern"
+                ],
+                key=lambda item: item["target_external_id"],
+            ),
+            "software_uses": sorted(
+                [
+                    relationship_record(item, by_id[item["target_ref"]])
+                    for item in campaign_relationships
+                    if item["relationship_type"] == "uses"
+                    and item["target_ref"] in by_id
+                    and by_id[item["target_ref"]].get("type") in {"malware", "tool"}
+                ],
+                key=lambda item: (item["target_type"], item["target_name"]),
+            ),
+            "group_refs": sorted(
+                {
+                    item["target_ref"]
+                    for item in campaign_relationships
+                    if item["relationship_type"] == "attributed-to"
+                    and item["target_ref"] in by_id
+                    and by_id[item["target_ref"]].get("type") == "intrusion-set"
+                }
+            ),
         }
 
     groups: dict[str, Any] = {}
@@ -103,6 +157,16 @@ def main() -> int:
             "description": obj.get("description", ""),
             "first_seen": obj.get("first_seen"),
             "last_seen": obj.get("last_seen"),
+            "technique_uses": sorted(
+                [
+                    relationship_record(item, by_id[item["target_ref"]])
+                    for item in group_relationships
+                    if item["relationship_type"] == "uses"
+                    and item["target_ref"] in by_id
+                    and by_id[item["target_ref"]].get("type") == "attack-pattern"
+                ],
+                key=lambda item: item["target_external_id"],
+            ),
             "technique_ids": sorted(
                 {
                     external_id(by_id[item["target_ref"]])

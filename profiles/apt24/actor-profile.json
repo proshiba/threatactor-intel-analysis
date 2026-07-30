@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "profile_id": "actor--apt24",
   "name": "APT24",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-27T11:04:28Z",
+  "updated_at": "2026-07-29T23:11:59Z",
   "languages": [
     "ja"
   ],
@@ -82,25 +82,86 @@
         "basis": "daily-news-file-date"
       },
       "description": "中国関与とされるAPT24が未公開のBadAudioを用い、近年は手口を高度化しつつ3年規模の諜報活動を展開。 2022年以降、スピアフィッシング・サプライチェーン侵害・ウォータリングホールで配布し、標的は主にWindows。 2024年以降は台湾のJS配布企業を繰り返し侵害し、偽CDN名の登録を通じて千超のドメインに悪性JSを拡散。 BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。 一部でCobalt Strike展開が観測されるも検知率は低く、サンプルの多くが長期にわたり見逃されていた。",
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--country--0c17dd6f4a5e07d5f7d6"
+      ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "confidence": "high",
       "evidence_refs": [
         "source--daily-f3b162a1cedd89627cee"
       ],
-      "analyst_notes": "日次収集レコード daily-record--848f359f9119eb58068d795e から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開"
+      "analyst_notes": "日次収集レコード daily-record--848f359f9119eb58068d795e から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "ttp_refs": [
+        "ttp--activity-rule--fc00ac622b1fec8b44be"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--38e46cd48137f4c95b60"
+      ]
     }
   ],
   "targets": {
-    "countries": [],
+    "countries": [
+      {
+        "id": "target--activity-rule--country--0c17dd6f4a5e07d5f7d6",
+        "name": "台湾",
+        "description": "活動「Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f3b162a1cedd89627cee"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
     "regions": [],
     "sectors": [],
     "roles": [],
-    "selection_logic": "",
-    "analyst_notes": "No structured target statement was available in the mapping workbook."
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
-  "ttps": [],
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--fc00ac622b1fec8b44be",
+      "tactic": "Stealth",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "observed_behavior": "BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。",
+      "activity_refs": [
+        "activity--daily-848f359f9119eb58068d"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f3b162a1cedd89627cee"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
   "sources": [
     {
       "source_id": "source--actor-mapping-workbook",
@@ -173,24 +234,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251122.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
-    },
-    {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
       "source_id": "source--osint-microsoft-threat-actor-mapping",
@@ -288,7 +331,53 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=台湾。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
-  }
+  },
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--38e46cd48137f4c95b60",
+      "name": "被害事例: Google、APT24の諜報作戦で使用された「BadAudio」マルウェアを公開",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "中国関与とされるAPT24が未公開のBadAudioを用い、近年は手口を高度化しつつ3年規模の諜報活動を展開。 2022年以降、スピアフィッシング・サプライチェーン侵害・ウォータリングホールで配布し、標的は主にWindows。 2024年以降は台湾のJS配布企業を繰り返し侵害し、偽CDN名の登録を通じて千超のドメインに悪性JSを拡散。 BadAudioはDLLサーチ順ハイジャックと高度難読化で実行し、収集情報をAESで暗号化してC2へ送信後に追加ペイロード取得。 一部でCobalt Strike展開が観測されるも検知率は低く、サンプルの多くが長期にわたり見逃されていた。",
+      "activity_refs": [
+        "activity--daily-848f359f9119eb58068d"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--0c17dd6f4a5e07d5f7d6"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--fc00ac622b1fec8b44be"
+      ],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2025-11-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-f3b162a1cedd89627cee"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

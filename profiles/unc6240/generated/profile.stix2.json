@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -32,7 +32,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -123,12 +123,14 @@
       "spec_version": "2.1",
       "id": "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
       "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-07-27T11:04:38Z",
+      "modified": "2026-07-29T15:20:25Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響",
       "description": "サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 侵害は2025年5月29日発生、翌30日に検知・封じ込めを実施と説明。 氏名・住所・生年月日・運転免許番号・SSN下4桁などが流出。 8月22日から影響者へ通知、メイン州AGに通知サンプル提出。 攻撃はSalesforce悪用で、vishingと悪性OAuth連携→データ窃取・恐喝。",
+      "first_seen": "2025-05-29T00:00:00Z",
+      "last_seen": "2025-05-29T00:00:00Z",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -138,13 +140,164 @@
       ],
       "x_profile_object_id": "activity--daily-e5ea0ab20b6a80de211f",
       "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--e5ea0ab20b6a80de211f0d13 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はUNC6040/UNC6240。",
+      "x_analyst_notes": "日次収集レコード daily-record--e5ea0ab20b6a80de211f0d13 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はUNC6040/UNC6240。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
       "x_reported_at": {
         "value": "2025-08-26T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
       }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "金融",
+      "identity_class": "organization",
+      "description": "活動「Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/",
+          "external_id": "source--daily-8012423fa9a259605e9c"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--9ffe6d7f-62e9-4df1-8fb5-732766c49abe",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述",
+      "identity_class": "organization",
+      "description": "Mandiantは、ShinyHuntersのSaaSデータ窃取が、電話を伴うvishingと企業風フィッシングでSSO資格情報とMFAコードを奪う手口で拡大と説明。 攻撃者はIT/ヘルプデスクを装い通話中に偽ポータルへ誘導、奪取直後にログインし正規MFAを操作して自機を登録して持続化。 侵害後はOkta/Entra/GoogleのSSOダッシュボードを足場に、Salesforce（主標的）やMicrosoft 365、SharePoint、DocuSignなどへ横断アクセス。 MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。 これらの攻撃を検知するために、SSO侵害直後の大量流出、SharePoint/OneDriveのPowerShell UAでのアクセス、ToogleBox Recallの不意なOAuthやMFA通知削除を監視することを提案。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/",
+          "external_id": "source--daily-02e1336153d9062de8f2"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--08fecf1c5b48c6bc87e9",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-02-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Salesforce攻撃後にFarmers Insurance",
+      "identity_class": "organization",
+      "description": "サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 侵害は2025年5月29日発生、翌30日に検知・封じ込めを実施と説明。 氏名・住所・生年月日・運転免許番号・SSN下4桁などが流出。 8月22日から影響者へ通知、メイン州AGに通知サンプル提出。 攻撃はSalesforce悪用で、vishingと悪性OAuth連携→データ窃取・恐喝。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/farmers-insurance-data-breach-impacts-11m-people-after-salesforce-attack/",
+          "external_id": "source--daily-8012423fa9a259605e9c"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--dd9c7a0f1e6caf1b0984",
+      "x_disclosure_status": "named",
+      "x_victim_type": "organization",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-05-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2025-05-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2025-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--87333440-11df-4c58-a7bf-e93483dede6e",
+      "created": "2026-07-29T23:12:01Z",
+      "modified": "2026-07-29T23:12:01Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "UNC6240 targets 金融 (profile target category: sectors).",
+      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -164,6 +317,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--8c85188d-7052-412e-888b-e1206d12f934",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c1405f24-0c45-498b-9dae-00aec301e660",
+      "target_ref": "identity--9ffe6d7f-62e9-4df1-8fb5-732766c49abe",
+      "description": "Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 affected victim--activity-rule--08fecf1c5b48c6bc87e9.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--37f18f7a-9962-4887-93e9-96515b8446cb",
       "created": "2026-07-27T11:04:38Z",
       "modified": "2026-07-27T11:04:38Z",
@@ -174,6 +342,36 @@
       "source_ref": "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
       "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
       "description": "Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 is attributed or linked to UNC6240.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ec74771d-6389-43a5-b847-fe3933e82ddf",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cef5286a-a294-464b-b8d2-fdf9ecd5fb38",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
+      "target_ref": "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46",
+      "description": "Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 affected victim--activity-rule--dd9c7a0f1e6caf1b0984.",
       "x_confidence": "medium"
     },
     {
@@ -198,7 +396,7 @@
       "spec_version": "2.1",
       "id": "report--f2a9c8ea-8041-4d4a-84d2-50d9c0c55c84",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-27T11:04:38Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -207,13 +405,16 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-27T11:04:38Z",
+      "published": "2026-07-29T23:12:01Z",
       "object_refs": [
         "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
         "campaign--c1405f24-0c45-498b-9dae-00aec301e660",
-        "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e"
+        "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
+        "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+        "identity--9ffe6d7f-62e9-4df1-8fb5-732766c49abe",
+        "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -45,7 +45,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "",
+        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -244,6 +244,251 @@
       }
     },
     {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a8b75c2f-820f-44ad-88f2-9c533b4e8f63",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害",
+      "identity_class": "organization",
+      "description": "MalBeaconは、Velvet TempestがClickFixと正規のWindowsユーティリティを使い、DonutLoaderとCastleRATを展開する一連の侵害活動を観測した。 観測は2026年2月3日から16日にかけて、米国の非営利組織を模した3,000超の端末と2,500超の利用者を持つ観測環境で12日間実施された。 初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 最終的にDonutLoaderとCastleRATが展開されたが、今回MalBeaconが観測した侵害ではTermiteランサムウェア本体が実行された形跡はなかった。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/",
+          "external_id": "source--daily-ebcbecadd73228eda327"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--10854ac29d4fa44cfdf0",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--0340cc3b09f76a67a2b9",
+        "ttp--activity-rule--2d1cff90d507f785194b",
+        "ttp--activity-rule--7663020e8831577e6f57",
+        "ttp--activity-rule--ab1701024d8b466b0fa0"
+      ],
+      "x_affected_assets": [
+        "エンドポイント"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-03-09T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--98a53692-bd98-4f7e-972e-fd59028fd2ec",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Credentials from Web Browsers",
+      "description": "侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1555.003",
+          "url": "https://attack.mitre.org/techniques/T1555/003/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/",
+          "external_id": "source--daily-ebcbecadd73228eda327"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--0340cc3b09f76a67a2b9",
+      "x_tactic": "Credential Access",
+      "x_activity_refs": [
+        "activity--daily-29144f6bc264652b3e32"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--3a89182c-b227-4dc3-9201-35f68f97630e",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/",
+          "external_id": "source--daily-ebcbecadd73228eda327"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--2d1cff90d507f785194b",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-29144f6bc264652b3e32"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--821a80b6-725f-43b3-aa87-1124b7403f83",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Obfuscated Files or Information",
+      "description": "初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/",
+          "external_id": "source--daily-ebcbecadd73228eda327"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--7663020e8831577e6f57",
+      "x_tactic": "Stealth",
+      "x_activity_refs": [
+        "activity--daily-29144f6bc264652b3e32"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--d37bcdd3-a60e-4d50-9613-a94ce11f9392",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ingress Tool Transfer",
+      "description": "侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1105",
+          "url": "https://attack.mitre.org/techniques/T1105/"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/",
+          "external_id": "source--daily-ebcbecadd73228eda327"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--ab1701024d8b466b0fa0",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--daily-29144f6bc264652b3e32"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b72bed15-710e-4b3f-9623-74fefab6ad60",
@@ -256,6 +501,141 @@
       "source_ref": "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
       "target_ref": "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
       "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 is attributed or linked to Velvet Tempest.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--08c677da-a313-4a69-a6c4-b4391765a602",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
+      "target_ref": "attack-pattern--98a53692-bd98-4f7e-972e-fd59028fd2ec",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 uses ttp--activity-rule--0340cc3b09f76a67a2b9.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ac9eecc8-9ae8-4fc0-9d7c-7d64d18752a8",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
+      "target_ref": "attack-pattern--3a89182c-b227-4dc3-9201-35f68f97630e",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 uses ttp--activity-rule--2d1cff90d507f785194b.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6142396f-da8a-4e33-8325-19079b678d6d",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
+      "target_ref": "attack-pattern--821a80b6-725f-43b3-aa87-1124b7403f83",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 uses ttp--activity-rule--7663020e8831577e6f57.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dff73633-09ca-42c5-8f38-cc629acf8cbd",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
+      "target_ref": "attack-pattern--d37bcdd3-a60e-4d50-9613-a94ce11f9392",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 uses ttp--activity-rule--ab1701024d8b466b0fa0.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1b27a9ef-a556-4771-8499-f20cc1775ffa",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
+      "target_ref": "identity--a8b75c2f-820f-44ad-88f2-9c533b4e8f63",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 affected victim--activity-rule--10854ac29d4fa44cfdf0.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0e2f2ff1-2e3f-4e5d-b68d-4dd2022d0496",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
+      "target_ref": "attack-pattern--98a53692-bd98-4f7e-972e-fd59028fd2ec",
+      "description": "侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a1e846e5-8ad3-44f9-ac67-5263142ee844",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
+      "target_ref": "attack-pattern--3a89182c-b227-4dc3-9201-35f68f97630e",
+      "description": "ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c187135a-e3f3-4461-8794-accd5aae61f6",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
+      "target_ref": "attack-pattern--821a80b6-725f-43b3-aa87-1124b7403f83",
+      "description": "初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bb179b85-3b65-4b26-b32f-2dba91bc8f0b",
+      "created": "2026-07-29T15:20:25Z",
+      "modified": "2026-07-29T15:20:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
+      "target_ref": "attack-pattern--d37bcdd3-a60e-4d50-9613-a94ce11f9392",
+      "description": "侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。",
       "x_confidence": "medium"
     },
     {
@@ -280,7 +660,7 @@
       "spec_version": "2.1",
       "id": "report--c73f54ed-6410-474e-8ef9-07b079232230",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-27T11:04:39Z",
+      "modified": "2026-07-29T23:12:01Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -289,12 +669,17 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-27T11:04:39Z",
+      "published": "2026-07-29T23:12:01Z",
       "object_refs": [
         "intrusion-set--53bc67b9-c09f-4aed-93f4-fdb51bf2ed7f",
-        "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d"
+        "campaign--ba74f3d4-0c29-4b0e-9af8-f77f16120a4d",
+        "identity--a8b75c2f-820f-44ad-88f2-9c533b4e8f63",
+        "attack-pattern--98a53692-bd98-4f7e-972e-fd59028fd2ec",
+        "attack-pattern--3a89182c-b227-4dc3-9201-35f68f97630e",
+        "attack-pattern--821a80b6-725f-43b3-aa87-1124b7403f83",
+        "attack-pattern--d37bcdd3-a60e-4d50-9613-a94ce11f9392"
       ],
-      "x_schema_version": "1.0.0"
+      "x_schema_version": "1.1.0"
     }
   ]
 }

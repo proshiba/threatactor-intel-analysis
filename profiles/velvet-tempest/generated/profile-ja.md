@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--velvet-tempest`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:39Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -104,9 +104,9 @@ Velvet Tempestの標準化プロファイル。リポジトリ内の専用資料
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | ransomware-extortion | 不明 | 不明 | 2026-03-09 | MalBeaconは、Velvet TempestがClickFixと正規のWindowsユーティリティを使い、DonutLoaderとCastleRATを展開する一連の侵害活動を観測した。 観測は2026年2月3日から16日にかけて、米国の非営利組織を模した3,000超の端末と2,500超の利用者を持つ観測環境で12日間実施された。 初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 最終的にDonutLoaderとCastleRATが展開されたが、今回MalBeaconが観測した侵害ではTermiteランサムウェア本体が実行された形跡はなかった。 | 中 | `source--daily-ebcbecadd73228eda327` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | ransomware-extortion | 不明 | 不明 | 2026-03-09 |  |  | ttp--activity-rule--0340cc3b09f76a67a2b9, ttp--activity-rule--2d1cff90d507f785194b, ttp--activity-rule--7663020e8831577e6f57, ttp--activity-rule--ab1701024d8b466b0fa0 | victim--activity-rule--10854ac29d4fa44cfdf0 | MalBeaconは、Velvet TempestがClickFixと正規のWindowsユーティリティを使い、DonutLoaderとCastleRATを展開する一連の侵害活動を観測した。 観測は2026年2月3日から16日にかけて、米国の非営利組織を模した3,000超の端末と2,500超の利用者を持つ観測環境で12日間実施された。 初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 最終的にDonutLoaderとCastleRATが展開されたが、今回MalBeaconが観測した侵害ではTermiteランサムウェア本体が実行された形跡はなかった。 | 中 | `source--daily-ebcbecadd73228eda327` |
 
 
 
@@ -114,11 +114,22 @@ Velvet Tempestの標準化プロファイル。リポジトリ内の専用資料
 
 ターゲット情報なし
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--0340cc3b09f76a67a2b9, ttp--activity-rule--2d1cff90d507f785194b, ttp--activity-rule--7663020e8831577e6f57, ttp--activity-rule--ab1701024d8b466b0fa0 | エンドポイント | credential-theft: 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。<br>encryption: ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | 不明 | 不明 | 2026-03-09 | 中 | `source--daily-ebcbecadd73228eda327` |
 
 ## MITRE ATT&CK Matrixデータ
 
-TTPなし
+| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|
+| Credential Access | T1555.003 | Credentials from Web Browsers | 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 |  | activity--daily-29144f6bc264652b3e32 | 不明 | 不明 | 中 | `source--daily-ebcbecadd73228eda327` |
+| Execution | T1204.004 | Malicious Copy and Paste | ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 |  | activity--daily-29144f6bc264652b3e32 | 不明 | 不明 | 中 | `source--daily-ebcbecadd73228eda327` |
+| Stealth | T1027 | Obfuscated Files or Information | 初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。 |  | activity--daily-29144f6bc264652b3e32 | 不明 | 不明 | 中 | `source--daily-ebcbecadd73228eda327` |
+| Command And Control | T1105 | Ingress Tool Transfer | 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 |  | activity--daily-29144f6bc264652b3e32 | 不明 | 不明 | 中 | `source--daily-ebcbecadd73228eda327` |
 
 ## IOC／artifact概要
 
@@ -147,7 +158,6 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-ebcbecadd73228eda327 | ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | bleepingcomputer.com | 2026-03-09 | https://www.bleepingcomputer.com/news/security/termite-ransomware-breaches-linked-to-clickfix-castlerat-attacks/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |

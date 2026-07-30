@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--ta505`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:36Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:01Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -157,9 +157,9 @@ TA505の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | ransomware-extortion | 不明 | 不明 | 2025-10-18 | Envoy Air（アメリカン航空子会社）がOracle E-Business Suiteからのデータ流出を確認、Clopがリークサイトに掲載。 Envoyは調査と法執行機関へ通報を実施、顧客や機微データは無影響、業務情報と商用連絡先の一部流出の可能性。 本件はClopの8月の窃取キャンペーンに関連し、9月から恐喝メールを送付、Oracle EBS侵害を主張。 Oracleは後にCVE-2025-61882のゼロデイ悪用を認め、さらにCVE-2025-61884も静かに修正。 Google側は被害が数十社規模と示唆、同キャンペーンでハーバード等も影響、Clopはゼロデイ悪用で悪名高い。 | 中 | `source--daily-7070dbbd163a3e029839` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | ransomware-extortion | 不明 | 不明 | 2025-10-18 | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--clop |  | victim--activity-rule--262c49c45e54ec38c392 | Envoy Air（アメリカン航空子会社）がOracle E-Business Suiteからのデータ流出を確認、Clopがリークサイトに掲載。 Envoyは調査と法執行機関へ通報を実施、顧客や機微データは無影響、業務情報と商用連絡先の一部流出の可能性。 本件はClopの8月の窃取キャンペーンに関連し、9月から恐喝メールを送付、Oracle EBS侵害を主張。 Oracleは後にCVE-2025-61882のゼロデイ悪用を認め、さらにCVE-2025-61884も静かに修正。 Google側は被害が数十社規模と示唆、同キャンペーンでハーバード等も影響、Clopはゼロデイ悪用で悪名高い。 | 中 | `source--daily-7070dbbd163a3e029839` |
 
 
 
@@ -167,49 +167,78 @@ TA505の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| countries | インド | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | セルビア | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | タイ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | チェコ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | トルコ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ハンガリー | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ルーマニア | 構造化OSINTの被害国フィールドでTA505の標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでTA505の標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 活動「アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-7070dbbd163a3e029839`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでTA505の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでTA505の標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 全世界 | 構造化OSINTの被害地域フィールドでTA505の標的範囲として全世界が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-7070dbbd163a3e029839`, `source--target-audit-misp-threat-actor` |
+| regions | 南欧 | スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東アジア | 日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | シンガポール、タイで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | チェコ、ハンガリー、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | スペイン、セルビア、チェコ、トルコ、ドイツ、ハンガリー、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Retail and Hospitality | Targeting text indicates the Retail and Hospitality sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | アメリカン航空子会社のEnvoy | named | organization | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--clop |  | メール／メールアカウント | data-theft: アメリカン航空子会社のEnvoy、Oracle関連のデータ窃取攻撃を確認 | 不明 | 不明 | 2025-10-18 | 中 | `source--daily-7070dbbd163a3e029839` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.002 | Software Packing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.010 | Command Obfuscation | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055.001 | Dynamic-link Library Injection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.007 | JavaScript | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1069 | Permission Groups Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.003 | Email Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1106 | Native API | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.007 | Msiexec | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.011 | Rundll32 | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1486 | Data Encrypted for Impact | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1552.001 | Credentials In Files | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1553.002 | Code Signing | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1553.005 | Mark-of-the-Web Bypass | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1555.003 | Credentials from Web Browsers | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1559.002 | Dynamic Data Exchange | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1568.001 | Fast Flux DNS | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.001 | Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.002 | Software Packing | [TA505](https://attack.mitre.org/groups/G0092) has used UPX to obscure malicious code.(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.010 | Command Obfuscation | [TA505](https://attack.mitre.org/groups/G0092) has used base64 encoded PowerShell commands.(Citation: Cybereason TA505 April 2019)(Citation: Deep Instinct TA505 Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [TA505](https://attack.mitre.org/groups/G0092) has password-protected malicious Word documents.(Citation: Proofpoint TA505 Sep 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Privilege Escalation, Stealth | T1055.001 | Dynamic-link Library Injection | [TA505](https://attack.mitre.org/groups/G0092) has been seen injecting a DLL into winword.exe.(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [TA505](https://attack.mitre.org/groups/G0092) has used PowerShell to download and execute malware and reconnaissance scripts.(Citation: Proofpoint TA505 Sep 2017)(Citation: ProofPoint SettingContent-ms July 2018)(Citation: Cybereason TA505 April 2019)(Citation: Deep Instinct TA505 Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [TA505](https://attack.mitre.org/groups/G0092) has executed commands using <code>cmd.exe</code>.(Citation: Trend Micro TA505 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [TA505](https://attack.mitre.org/groups/G0092) has used VBS for code execution.(Citation: Proofpoint TA505 Sep 2017)(Citation: Proofpoint TA505 June 2018)(Citation: Trend Micro TA505 June 2019)(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.007 | JavaScript | [TA505](https://attack.mitre.org/groups/G0092) has used JavaScript for code execution.(Citation: Proofpoint TA505 Sep 2017)(Citation: Proofpoint TA505 June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1069 | Permission Groups Discovery | [TA505](https://attack.mitre.org/groups/G0092) has used TinyMet to enumerate members of privileged groups.(Citation: IBM TA505 April 2020) [TA505](https://attack.mitre.org/groups/G0092) has also run <code>net group /domain</code>.(Citation: Trend Micro TA505 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [TA505](https://attack.mitre.org/groups/G0092) has used HTTP to communicate with C2 nodes.(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [TA505](https://attack.mitre.org/groups/G0092) has used stolen domain admin accounts to compromise additional hosts.(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.003 | Email Account | [TA505](https://attack.mitre.org/groups/G0092) has used the tool EmailStealer to steal and send lists of e-mail addresses to a remote server.(Citation: Trend Micro TA505 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [TA505](https://attack.mitre.org/groups/G0092) has downloaded additional malware to execute on victim systems.(Citation: Cybereason TA505 April 2019)(Citation: Deep Instinct TA505 Apr 2019)(Citation: ProofPoint SettingContent-ms July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1106 | Native API | [TA505](https://attack.mitre.org/groups/G0092) has deployed payloads that use Windows API calls on a compromised host.(Citation: Korean FSI TA505 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [TA505](https://attack.mitre.org/groups/G0092) has used malware to disable Windows Defender through modification of the Registry.(Citation: Korean FSI TA505 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [TA505](https://attack.mitre.org/groups/G0092) has decrypted packed DLLs with an XOR key.(Citation: NCC Group TA505) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [TA505](https://attack.mitre.org/groups/G0092) has used lures to get users to click links in emails and attachments. For example, [TA505](https://attack.mitre.org/groups/G0092) makes their malware look like legitimate Microsoft Word documents, .pdf and/or .lnk files. (Citation: Proofpoint TA505 Sep 2017)(Citation: Proofpoint TA505 June 2018)(Citation: Proofpoint TA505 Jan 2019)(Citation: Cybereason TA505 April 2019)(Citation: ProofPoint SettingContent-ms July 2018)(Citation: Proofpoint TA505 Mar 2018)(Citation: Trend Micro TA505 June 2019)(Citation: Proofpoint TA505 October 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [TA505](https://attack.mitre.org/groups/G0092) has used lures to get users to enable content in malicious attachments and execute malicious files contained in archives. For example, [TA505](https://attack.mitre.org/groups/G0092) makes their malware look like legitimate Microsoft Word documents, .pdf and/or .lnk files. (Citation: Proofpoint TA505 Sep 2017)(Citation: Proofpoint TA505 June 2018)(Citation: Proofpoint TA505 Jan 2019)(Citation: Cybereason TA505 April 2019)(Citation: ProofPoint SettingContent-ms July 2018)(Citation: Proofpoint TA505 Mar 2018)(Citation: Trend Micro TA505 June 2019)(Citation: Proofpoint TA505 October 2019)(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.007 | Msiexec | [TA505](https://attack.mitre.org/groups/G0092) has used <code>msiexec</code> to download and execute malicious Windows Installer files.(Citation: Cybereason TA505 April 2019)(Citation: Deep Instinct TA505 Apr 2019)(Citation: Trend Micro TA505 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.011 | Rundll32 | [TA505](https://attack.mitre.org/groups/G0092) has leveraged <code>rundll32.exe</code> to execute malicious DLLs.(Citation: Cybereason TA505 April 2019)(Citation: Deep Instinct TA505 Apr 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Impact | T1486 | Data Encrypted for Impact | [TA505](https://attack.mitre.org/groups/G0092) has used a wide variety of ransomware, such as [Clop](https://attack.mitre.org/software/S0611), Locky, Jaff, Bart, Philadelphia, and GlobeImposter, to encrypt victim files and demand a ransom payment.(Citation: Proofpoint TA505 Sep 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1552.001 | Credentials In Files | [TA505](https://attack.mitre.org/groups/G0092) has used malware to gather credentials from FTP clients and Outlook.(Citation: Proofpoint TA505 Sep 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1553.002 | Code Signing | [TA505](https://attack.mitre.org/groups/G0092) has signed payloads with code signing certificates from Thawte and Sectigo.(Citation: Cybereason TA505 April 2019)(Citation: Deep Instinct TA505 Apr 2019)(Citation: Trend Micro TA505 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1553.005 | Mark-of-the-Web Bypass | [TA505](https://attack.mitre.org/groups/G0092) has used .iso files to deploy malicious .lnk files.(Citation: TrendMicro TA505 Aug 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1555.003 | Credentials from Web Browsers | [TA505](https://attack.mitre.org/groups/G0092) has used malware to gather credentials from Internet Explorer.(Citation: Proofpoint TA505 Sep 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1559.002 | Dynamic Data Exchange | [TA505](https://attack.mitre.org/groups/G0092) has leveraged malicious Word documents that abused DDE.(Citation: Proofpoint TA505 June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [TA505](https://attack.mitre.org/groups/G0092) has used spearphishing emails with malicious attachments to initially compromise victims.(Citation: Proofpoint TA505 Sep 2017)(Citation: Proofpoint TA505 June 2018)(Citation: Proofpoint TA505 Jan 2019)(Citation: Cybereason TA505 April 2019)(Citation: ProofPoint SettingContent-ms July 2018)(Citation: Proofpoint TA505 Mar 2018)(Citation: Trend Micro TA505 June 2019)(Citation: Proofpoint TA505 October 2019)(Citation: IBM TA505 April 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [TA505](https://attack.mitre.org/groups/G0092) has sent spearphishing emails containing malicious links.(Citation: Proofpoint TA505 Sep 2017)(Citation: Proofpoint TA505 Jan 2019)(Citation: Trend Micro TA505 June 2019)(Citation: Proofpoint TA505 October 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1568.001 | Fast Flux DNS | [TA505](https://attack.mitre.org/groups/G0092) has used fast flux to mask botnets by distributing payloads across multiple IPs.(Citation: Trend Micro TA505 June 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.001 | Domains | [TA505](https://attack.mitre.org/groups/G0092) has registered domains to impersonate services such as Dropbox to distribute malware.(Citation: Korean FSI TA505 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.001 | Malware | [TA505](https://attack.mitre.org/groups/G0092) has used malware such as [Azorult](https://attack.mitre.org/software/S0344) and [Cobalt Strike](https://attack.mitre.org/software/S0154) in their operations.(Citation: NCC Group TA505) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1588.002 | Tool | [TA505](https://attack.mitre.org/groups/G0092) has used a variety of tools in their operations, including [AdFind](https://attack.mitre.org/software/S0552), [BloodHound](https://attack.mitre.org/software/S0521), [Mimikatz](https://attack.mitre.org/software/S0002), and [PowerSploit](https://attack.mitre.org/software/S0194).(Citation: NCC Group TA505) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1608.001 | Upload Malware | [TA505](https://attack.mitre.org/groups/G0092) has staged malware on actor-controlled domains.(Citation: Korean FSI TA505 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [TA505](https://attack.mitre.org/groups/G0092) has used malware to disable Windows Defender.(Citation: Korean FSI TA505 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
@@ -286,6 +315,8 @@ TA505の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--ta505--f51bdb1dce04d96c | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
 | source--ta505--f8a1e91123e4d3c2 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
 | source--ta505--fc6f84249f4aee06 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

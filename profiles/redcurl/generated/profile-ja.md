@@ -2,8 +2,8 @@
 
 - プロファイルID: `actor--redcurl`
 - 状態: draft
-- 更新日時: 2026-07-27T11:04:34Z
-- 構造バージョン: 1.0.0
+- 更新日時: 2026-07-29T23:12:00Z
+- 構造バージョン: 1.1.0
 
 ## エグゼクティブサマリー
 
@@ -106,11 +106,11 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|
-| RedCurlサイバー犯罪グループがWindows PCAツールを悪用して企業スパイ活動を行う | phishing-campaign | 不明 | 不明 | 2024-03-15 | RedCurlは正規のMicrosoft WindowsコンポーネントであるPCAを悪用 PCAを使って悪意のあるコマンドを実行し、セキュリティ制約を回避 攻撃チェーンにはフィッシングメールと偽の添付ファイルが含まれる Trend Microが詳細な攻撃手法を分析し、報告 RedCurlは複数国の企業を対象にスパイ活動を行っている | 高 | `source--daily-970254fe18c304ec58c0` |
-| サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | cyber-espionage | 不明 | 不明 | 2024-04-03 | サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | 高 | `source--daily-a7ead7d250e5387d2fd8` |
-| RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | ransomware-extortion | 不明 | 不明 | 2025-03-27 | RedCurlは2018年から企業スパイ活動を行っている脅威アクターで、最近Hyper-V仮想マシンを標的とするランサムウェア「QWCrypt」を使用開始。 攻撃は、履歴書に見せかけた.IMGファイルを含むフィッシングメールから始まり、Windowsが自動的にマウントする。 マウントされたドライブ内のLNKファイルを実行すると、PowerShellスクリプトが起動し、Cobalt Strikeビーコンをダウンロードして攻撃者にリモートアクセスを提供。 攻撃者はネットワーク内を横展開し、最終的にQWCryptランサムウェアを展開してHyper-V仮想マシンを暗号化。 RedCurlは以前はデータ窃取に焦点を当てていたが、今回初めてランサムウェアを使用した。 二重脅迫のための専用リークサイトがないことから、RedCurlがランサムウェアを偽旗として使用しているのか、真の金銭目的の攻撃なのか疑問が提起されている。 | 高 | `source--daily-7ebbf6fb62e219c36773` |
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| RedCurlサイバー犯罪グループがWindows PCAツールを悪用して企業スパイ活動を行う | phishing-campaign | 不明 | 不明 | 2024-03-15 |  |  | ttp--activity-rule--ad60b8f605df3c8bd2b8 |  | RedCurlは正規のMicrosoft WindowsコンポーネントであるPCAを悪用 PCAを使って悪意のあるコマンドを実行し、セキュリティ制約を回避 攻撃チェーンにはフィッシングメールと偽の添付ファイルが含まれる Trend Microが詳細な攻撃手法を分析し、報告 RedCurlは複数国の企業を対象にスパイ活動を行っている | 高 | `source--daily-970254fe18c304ec58c0` |
+| サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | cyber-espionage | 不明 | 不明 | 2024-04-03 |  |  |  |  | サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | 高 | `source--daily-a7ead7d250e5387d2fd8` |
+| RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | ransomware-extortion | 不明 | 不明 | 2025-03-27 |  |  | ttp--activity-rule--3e969aed36a08f427741, ttp--activity-rule--5bf50c6515823fde06e4 | victim--activity-rule--561b836975c65a2b65fd | RedCurlは2018年から企業スパイ活動を行っている脅威アクターで、最近Hyper-V仮想マシンを標的とするランサムウェア「QWCrypt」を使用開始。 攻撃は、履歴書に見せかけた.IMGファイルを含むフィッシングメールから始まり、Windowsが自動的にマウントする。 マウントされたドライブ内のLNKファイルを実行すると、PowerShellスクリプトが起動し、Cobalt Strikeビーコンをダウンロードして攻撃者にリモートアクセスを提供。 攻撃者はネットワーク内を横展開し、最終的にQWCryptランサムウェアを展開してHyper-V仮想マシンを暗号化。 RedCurlは以前はデータ窃取に焦点を当てていたが、今回初めてランサムウェアを使用した。 二重脅迫のための専用リークサイトがないことから、RedCurlがランサムウェアを偽旗として使用しているのか、真の金銭目的の攻撃なのか疑問が提起されている。 | 高 | `source--daily-7ebbf6fb62e219c36773` |
 
 
 
@@ -118,62 +118,79 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | United Kingdom | Targeting text mentions united kingdom. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Ukraine | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Germany | Targeting text mentions germany. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Canada | Targeting text mentions canada. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Norway | Targeting text mentions norway. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | Russia | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでRedCurlの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | Targeting text mentions canada. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | スペイン | 構造化OSINTの被害国フィールドでRedCurlの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | Targeting text mentions germany. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | ノルウェー | Targeting text mentions norway. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでRedCurlの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでRedCurlの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | Targeting text mentions united kingdom. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ウクライナ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | ウクライナ、スペイン、ドイツ、ノルウェー、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 金融 | //attack.mitre.org/groups/G1039) is a threat actor active since 2018 notable for corporate espionage targeting a variety of locations, including Ukraine, Canada and the United Kingdom, and a variety of industries, including but not limited to travel agencies, insurance companies, and banks.(Citation: group-ib_redcurl1) [RedCurl](https://attack.mitre.org/groups/G1039) is allegedly a Russian-speaking threat actor.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) The group’s operations typically start with spearphishing emails to gain initial access, then the group executes discovery and | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Retail and Hospitality | Targeting text indicates the Retail and Hospitality sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
-選定ロジック: 未評価
+選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+
+## 被害事例
+
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--3e969aed36a08f427741, ttp--activity-rule--5bf50c6515823fde06e4 | メール／メールアカウント, VPN／リモートアクセス機器, サーバー | data-theft: RedCurlは以前はデータ窃取に焦点を当てていたが、今回初めてランサムウェアを使用した。<br>encryption: RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成<br>espionage: RedCurlは2018年から企業スパイ活動を行っている脅威アクターで、最近Hyper-V仮想マシンを標的とするランサムウェア「QWCrypt」を使用開始。 | 不明 | 不明 | 2025-03-27 | 高 | `source--daily-7ebbf6fb62e219c36773` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1005 | Data from Local System | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1020 | Automated Exfiltration | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027 | Obfuscated Files or Information | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1039 | Data from Network Shared Drive | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.002 | GUI Input Capture | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.006 | Python | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1080 | Taint Shared Content | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.001 | Local Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.002 | Domain Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.003 | Email Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1102 | Web Service | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1114.001 | Local Email Collection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1119 | Automated Collection | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1199 | Trusted Relationship | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1202 | Indirect Command Execution | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.011 | Rundll32 | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1537 | Transfer Data to Cloud Account | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1552.001 | Credentials In Files | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1552.002 | Credentials in Registry | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1555.003 | Credentials from Web Browsers | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1564.001 | Hidden Files and Directories | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.001 | Symmetric Cryptography | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.002 | Asymmetric Cryptography | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1587.001 | Malware | MITRE ATT&CK maps this technique to the actor. |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | マウントされたドライブ内のLNKファイルを実行すると、PowerShellスクリプトが起動し、Cobalt Strikeビーコンをダウンロードして攻撃者にリモートアクセスを提供。 |  | activity--daily-d3e416b7f22a06f08992 | 不明 | 不明 | 中 | `source--daily-7ebbf6fb62e219c36773` |
+| Impact | T1486 | Data Encrypted for Impact | 攻撃者はネットワーク内を横展開し、最終的にQWCryptランサムウェアを展開してHyper-V仮想マシンを暗号化。 |  | activity--daily-d3e416b7f22a06f08992 | 不明 | 不明 | 中 | `source--daily-7ebbf6fb62e219c36773` |
+| Initial Access | T1566.001 | Spearphishing Attachment | RedCurlは正規のMicrosoft WindowsコンポーネントであるPCAを悪用 PCAを使って悪意のあるコマンドを実行し、セキュリティ制約を回避 攻撃チェーンにはフィッシングメールと偽の添付ファイルが含まれる Trend Microが詳細な攻撃手法を分析し、報告 RedCurlは複数国の企業を対象にスパイ活動を行っている |  | activity--daily-82ea374adca530ce5578 | 不明 | 不明 | 中 | `source--daily-970254fe18c304ec58c0` |
+| Credential Access | T1003.001 | LSASS Memory | [RedCurl](https://attack.mitre.org/groups/G1039) used [LaZagne](https://attack.mitre.org/software/S0349) to obtain passwords from memory.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1005 | Data from Local System | [RedCurl](https://attack.mitre.org/groups/G1039) has collected data from the local disk of compromised hosts.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1020 | Automated Exfiltration | [RedCurl](https://attack.mitre.org/groups/G1039) has used batch scripts to exfiltrate data.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027 | Obfuscated Files or Information | [RedCurl](https://attack.mitre.org/groups/G1039) has used malware with string encryption.(Citation: therecord_redcurl) [RedCurl](https://attack.mitre.org/groups/G1039) has also encrypted data and has encoded PowerShell commands using Base64.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) [RedCurl](https://attack.mitre.org/groups/G1039) has used `PyArmor` to obfuscate code execution of [LaZagne](https://attack.mitre.org/software/S0349). (Citation: group-ib_redcurl1) Additionally, [RedCurl](https://attack.mitre.org/groups/G1039) has obfuscated downloaded files by renaming them as commonly used tools and has used `echo`, instead of file names themselves, to execute files.(Citation: trendmicro_redcurl) <br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [RedCurl](https://attack.mitre.org/groups/G1039) mimicked legitimate file names and scheduled tasks, e.g. ` MicrosoftCurrentupdatesCheck` and<br>`MdMMaintenenceTask` to mask malicious files and scheduled tasks.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1039 | Data from Network Shared Drive | [RedCurl](https://attack.mitre.org/groups/G1039) has collected data about network drives.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1046 | Network Service Discovery | [RedCurl](https://attack.mitre.org/groups/G1039) has used netstat to check if port 4119 is open.(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [RedCurl](https://attack.mitre.org/groups/G1039) has created scheduled tasks for persistence.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)(Citation: trendmicro_redcurl) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection, Credential Access | T1056.002 | GUI Input Capture | [RedCurl](https://attack.mitre.org/groups/G1039) prompts the user for credentials through a Microsoft Outlook pop-up.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.001 | PowerShell | [RedCurl](https://attack.mitre.org/groups/G1039) has used PowerShell to execute commands and to download malware.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)(Citation: trendmicro_redcurl) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.003 | Windows Command Shell | [RedCurl](https://attack.mitre.org/groups/G1039) has used the Windows Command Prompt to execute commands.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)(Citation: trendmicro_redcurl) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.005 | Visual Basic | [RedCurl](https://attack.mitre.org/groups/G1039) has used VBScript to run malicious files.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.006 | Python | [RedCurl](https://attack.mitre.org/groups/G1039) has used a Python script to establish outbound communication and to execute commands using SMB port 445.(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1070.004 | File Deletion | [RedCurl](https://attack.mitre.org/groups/G1039) has deleted files after execution.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)(Citation: trendmicro_redcurl) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1071.001 | Web Protocols | [RedCurl](https://attack.mitre.org/groups/G1039) has used HTTP, HTTPS and Webdav protocls for C2 communications.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1080 | Taint Shared Content | [RedCurl](https://attack.mitre.org/groups/G1039) has placed modified LNK files on network drives for lateral movement.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1082 | System Information Discovery | [RedCurl](https://attack.mitre.org/groups/G1039) has collected information about the target system, such as system information and list of network connections.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1083 | File and Directory Discovery | [RedCurl](https://attack.mitre.org/groups/G1039) has searched for and collected files on local and network drives.(Citation: therecord_redcurl)(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.001 | Local Account | [RedCurl](https://attack.mitre.org/groups/G1039) has collected information about local accounts.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.002 | Domain Account | [RedCurl](https://attack.mitre.org/groups/G1039) has collected information about domain accounts using SysInternal’s AdExplorer functionality   .(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1087.003 | Email Account | [RedCurl](https://attack.mitre.org/groups/G1039) has collected information about email accounts.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1102 | Web Service | [RedCurl](https://attack.mitre.org/groups/G1039) has used web services to download malicious files.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1114.001 | Local Email Collection | [RedCurl](https://attack.mitre.org/groups/G1039) has collected emails to use in future phishing campaigns.(Citation: group-ib_redcurl1) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1119 | Automated Collection | [RedCurl](https://attack.mitre.org/groups/G1039) has used batch scripts to collect data.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1199 | Trusted Relationship | [RedCurl](https://attack.mitre.org/groups/G1039) has gained access to a contractor to pivot to the victim’s infrastructure.(Citation: therecord_redcurl) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1202 | Indirect Command Execution | [RedCurl](https://attack.mitre.org/groups/G1039) has used pcalua.exe to obfuscate binary execution and remote connections.(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.001 | Malicious Link | [RedCurl](https://attack.mitre.org/groups/G1039) has used malicious links to infect the victim machines.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1204.002 | Malicious File | [RedCurl](https://attack.mitre.org/groups/G1039) has used malicious files to infect the victim machines.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1218.011 | Rundll32 | [RedCurl](https://attack.mitre.org/groups/G1039) has used rundll32.exe to execute malicious files.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Exfiltration | T1537 | Transfer Data to Cloud Account | [RedCurl](https://attack.mitre.org/groups/G1039) has used cloud storage to exfiltrate data, in particular the megatools utilities were used to exfiltrate data to Mega, a file storage service.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [RedCurl](https://attack.mitre.org/groups/G1039) has established persistence by creating entries in `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1552.001 | Credentials In Files | [RedCurl](https://attack.mitre.org/groups/G1039) used [LaZagne](https://attack.mitre.org/software/S0349) to obtain passwords in files.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1552.002 | Credentials in Registry | [RedCurl](https://attack.mitre.org/groups/G1039) used [LaZagne](https://attack.mitre.org/software/S0349) to obtain passwords in the Registry.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2)      |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1555.003 | Credentials from Web Browsers | [RedCurl](https://attack.mitre.org/groups/G1039) used [LaZagne](https://attack.mitre.org/software/S0349) to obtain passwords from web browsers.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1560.001 | Archive via Utility | [RedCurl](https://attack.mitre.org/groups/G1039) has downloaded 7-Zip to decompress password protected archives.(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1564.001 | Hidden Files and Directories | [RedCurl](https://attack.mitre.org/groups/G1039) added the “hidden” file attribute to original files, manipulating victims to click on malicious LNK files.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [RedCurl](https://attack.mitre.org/groups/G1039) has used phishing emails with malicious files to gain initial access.(Citation: group-ib_redcurl1)(Citation: trendmicro_redcurl)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [RedCurl](https://attack.mitre.org/groups/G1039) has used phishing emails with malicious links to gain initial access.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1573.001 | Symmetric Cryptography | [RedCurl](https://attack.mitre.org/groups/G1039) has used AES-128 CBC to encrypt C2 communications.(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1573.002 | Asymmetric Cryptography | [RedCurl](https://attack.mitre.org/groups/G1039) has used HTTPS for C2 communication.(Citation: group-ib_redcurl1)(Citation: group-ib_redcurl2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1587.001 | Malware | [RedCurl](https://attack.mitre.org/groups/G1039) has created its own tools to use during operations.(Citation: therecord_redcurl) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ## IOC／artifact概要
 
@@ -209,6 +226,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--redcurl--78aa91b6349af791 | redcurl |  | 不明 | actor_profile/evidence/redcurl.csv | structured-data | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

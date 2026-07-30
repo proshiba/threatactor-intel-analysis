@@ -14,7 +14,8 @@ export const DEFAULT_FILTERS = Object.freeze({
 // MITRE ATT&CK の戦術表示順(小文字で比較)
 export const TACTIC_ORDER = [
   "reconnaissance", "resource development", "initial access", "execution",
-  "persistence", "privilege escalation", "defense evasion", "credential access",
+  "persistence", "privilege escalation", "stealth", "defense impairment",
+  "defense evasion", "credential access",
   "discovery", "lateral movement", "collection", "command and control",
   "exfiltration", "impact",
 ];

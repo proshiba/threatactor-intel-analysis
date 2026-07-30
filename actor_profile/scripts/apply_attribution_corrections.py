@@ -164,6 +164,8 @@ def meta_activity(actor_name: str, description: str, target_refs: list[str]) -> 
         "target_refs": target_refs,
         "malware_refs": [],
         "infrastructure_refs": [],
+        "ttp_refs": [],
+        "victim_refs": [],
         "confidence": "high",
         "evidence_refs": [META_SOURCE_ID],
         "analyst_notes": (
