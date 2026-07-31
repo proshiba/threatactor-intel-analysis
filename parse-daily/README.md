@@ -56,6 +56,14 @@ python3 parse-daily/validate_daily.py \
   parse-daily/output/review-queue.json --check-applied
 ```
 
+既存プロファイルへ帰属できないクラスタは`unknown-clusters.json`へ記録します。
+`review-decisions.json`はキーにアクターslugを要求するため未帰属クラスタを保持できず、
+別台帳としています。日次チェックで未一致の名前を見つけたら、新規プロファイル作成や
+既存プロファイルへの寄せ付けより先にこの台帳を照合します。実体のあるクラスタは
+`clusters`へ観測を積み、文字列断片による名称衝突は`excluded_name_collisions`へ
+除外理由を残して再検討を避けます。台帳は`profiles/`配下ではないためUIには出ません。
+独立した一次資料が2本以上集まった時点で`profiles/<slug>/`への昇格を検討します。
+
 レビュー判断は`review-decisions.json`へ、`actor-slug|activity_reference`をキーとして
 保存できます。これにより同じ入力から同じ承認状態、帰属確度、活動期間、
 Capability採否、artifact採否を再現できます。IOC配布ファイルが記事と別URLでも、

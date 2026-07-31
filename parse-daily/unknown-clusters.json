@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-31T02:30:45Z",
+  "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
+  "promotion_policy": {
+    "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
+    "promote_to_profile": "独立クラスタとして維持する判断になった場合、profiles/<slug>/actor-profile.json を新規作成する。UNC1549、UNC3753、UNC4221、UAC-0099、UNC5342 等、未帰属クラスタ指定子が一級プロファイルとして存在する前例に従う。status は draft から開始する。",
+    "merge_into_existing": "既存アクターへの帰属が一次資料で確定した場合、observations を当該プロファイルの activities / sources へ統合し、この台帳のエントリへ統合先と統合日を残して status を merged にする。",
+    "promotion_threshold": "独立した一次資料が2本以上、または政府・CERT・法執行機関による言及。単一ベンダーの初報のみでは昇格しない。",
+    "retention": "反証や別クラスタへの吸収が確認できた場合も削除せず、status と理由を残す（AGENT.md 保存と冪等性）。"
+  },
+  "clusters": [
+    {
+      "cluster_id": "unknown-cluster--stac4749",
+      "primary_name": "STAC4749",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-31",
+      "last_seen": "2026-07-31",
+      "detected_via": "tech-memo daily-news 2026-07-31",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-intrusion-set",
+        "notes": "Sophosが独自クラスタ指定子として付与。既知グループへの帰属は行われていない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "Sophos",
+          "url": "https://www.sophos.com/en-us/blog/chaos-in-teams-vishing",
+          "title": "Chaos in Teams vishing",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "secondary_coverage": "https://www.bleepingcomputer.com/news/security/microsoft-teams-vishing-attacks-lead-to-chaos-ransomware-attacks/",
+          "activity_period": "2026-02 から 2026-06（一次資料の記載）",
+          "targets": "北米企業",
+          "summary": "Microsoft Teamsを悪用したボイスフィッシングで初期アクセスを獲得し、カスタムマルウェアを展開したのちChaosランサムウェアを導入する一連のキャンペーン。",
+          "verified_by_analyst": "原文を確認。STAC4749を実行主体として明記。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "muddywater",
+          "relation": "explicitly-refuted",
+          "notes": "Rapid7が2026年5月にChaosをMuddyWaterのfalse flagとして利用している可能性を示唆したが、Sophosは「STAC4749の活動と当該グループを結び付ける証拠は見つからなかった」と明記。日次キューではMuddyWaterへexact名一致したが、根拠文自体が関連を否定している。"
+        },
+        {
+          "slug": "blackbyte",
+          "relation": "false-match",
+          "notes": "日次キューでは本文中の「Conti」経由でBlackByteへoverlapping一致したが、BlackByte自体は原文に登場しない。"
+        }
+      ],
+      "unresolved_questions": [
+        "tech-memo要約にある「ロシア語との関連を示す痕跡」の具体的内容を一次資料で直接確認できていない。帰属根拠としては不十分とされている。",
+        "Chaosランサムウェアの運営者がBlackSuit/Royal（Conti系譜）の元メンバーと関連するとの分析があるが、これはRaaS運営者側の話であり、アフィリエイトであるSTAC4749の帰属とは分離して扱う必要がある。"
+      ],
+      "analyst_notes": "日次キューではBlackByteとMuddyWaterへの誤マッチとして現れたが、記事の実際の主体はこのクラスタである。両プロファイルへの反映は行わない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--toy-ghouls",
+      "primary_name": "Toy Ghouls",
+      "aliases": [
+        { "name": "Bearlyfy", "scope": "unknown", "vendor": "Kaspersky" },
+        { "name": "Labuib", "scope": "unknown", "vendor": "Kaspersky" },
+        { "name": "Laboo.boo", "scope": "unknown", "vendor": "Kaspersky" }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-07-31",
+      "last_seen": "2026-07-31",
+      "detected_via": "一次情報源チェック（Kaspersky Securelist）。tech-memo daily-news には未掲載。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-extortion-group",
+        "notes": "金銭目的の恐喝グループとして記載。国家帰属の主張はない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/genielocker-ransomware-for-windows-linux-and-esxi/120843/",
+          "title": "Toy Ghouls' new toy: the GenieLocker ransomware",
+          "published_at": "2026-07-30",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "GenieLockerは2026年3月以降。分析対象インシデントは2026年3月下旬。",
+          "targets": "ロシア連邦に検知が集中。製造業が主、次いで建設、金融サービス、小売、テクノロジー。",
+          "malware": ["GenieLocker", "RedAlert", "LockBit", "Babuk"],
+          "summary": "従来はRedAlert、LockBit、Babuk等のサードパーティ製暗号化トロイを利用していたが、独自開発のGenieLockerへ移行。Windows/Linux/ESXi対応。フォレンジックではデータ持ち出しの痕跡が確認されず、二重恐喝モデルは採用していない。",
+          "verified_by_analyst": "原文を確認。Toy Ghoulsを実行主体として明記。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "ghoul",
+          "relation": "name-collision-do-not-merge",
+          "notes": "既存プロファイル Ghoul とは別エンティティ。名称が似ているため将来の誤統合に注意する。一次資料にも両者を結び付ける記載はない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Bearlyfy / Labuib / Laboo.boo の各別名がどのベンダーの命名で、既存プロファイルのいずれかと重複しないか未確認。"
+      ],
+      "analyst_notes": "tech-memo経由ではなく一次情報源の公開一覧チェックで発見した新規クラスタ。"
+    },
+    {
+      "cluster_id": "unknown-cluster--octlurk-silklurk",
+      "primary_name": "OctLurk / SilkLurk operator (未命名)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-31",
+      "last_seen": "2026-07-31",
+      "detected_via": "一次情報源チェック（Kaspersky Securelist）。tech-memo daily-news には未掲載。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "language_indicator": "中国語話者の可能性（Kaspersky評価、確度は限定的）",
+        "notes": "Kasperskyは「同一の脅威主体がOctLurkとSilkLurkの両方を運用している」と中程度の確信で評価する一方、「発表時点でこの活動を既知グループに帰属させることはできなかった」と明記。クラスタ名は付与されていない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/octlurk-silklurk-backdoors-central-asia/120840/",
+          "title": "OctLurk and SilkLurk: newly identified tailored backdoors in cyber-espionage campaign in Central Asia",
+          "published_at": "2026-07-30",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "中央アジア（アフガニスタン、キルギス、タジキスタン、ウズベキスタン、カザフスタン）およびシリア",
+          "malware": ["OctLurk", "SilkLurk", "LurkProxy", "PlugX"],
+          "summary": "中央アジアを標的としたサイバースパイ活動で、専用設計のバックドアOctLurkとSilkLurkを新規に特定。",
+          "verified_by_analyst": "原文を確認。既知グループへの帰属は明示的に見送られている。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "PlugXの使用は「歴史的に中国語話者の脅威主体と結び付いている」という一般的観察として記載されているのみで、特定プロファイルへの帰属根拠にはならない。PlugXを共有する既存プロファイルへ安易に寄せないこと。",
+        "中央アジアを標的とする既存プロファイル（nomadic-octopus、sixlittlemonkeys、indigozebra、nomad-panda、ta459、teamspy-crew、turla 等）との重複有無は未検証。一次資料に言及がないため現時点では関連付けない。"
+      ],
+      "analyst_notes": "標的地域が既存の複数プロファイルと重なるため、将来の報告で帰属が進んだ場合は統合先候補の再確認が必要。"
+    }
+  ],
+  "excluded_name_collisions": [
+    {
+      "matched_profile": "carbanak",
+      "matched_term": "Ukraine",
+      "article": "https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/",
+      "reason": "URL文字列の断片一致。記事にCarbanakの言及はない。追跡対象としない。"
+    },
+    {
+      "matched_profile": "earth-lusca",
+      "matched_term": "CHROMIUM",
+      "article": "https://chromium.googlesource.com/chromium/src/+/main/docs/security/ai-generated-security-bugs-faq.md",
+      "reason": "一次ソースURL中の製品名との衝突。記事はChromeの脆弱性修正に関するもので脅威アクターの活動ではない。追跡対象としない。"
+    },
+    {
+      "matched_profile": "hellsing-apt",
+      "matched_term": "Asia",
+      "article": "https://www.unodc.org/roseap/uploads/documents/Publications/2026/TOCTA_South-East_Asia_2026.pdf",
+      "reason": "URL文字列中の地域名との衝突。追跡対象としない。"
+    },
+    {
+      "matched_profile": "night-dragon",
+      "matched_term": "Night Dragon",
+      "article": "https://hunt.io/blog/flying-eagle-android-rat-170-servers-night-dragon",
+      "reason": "記事中の「Night Dragon」はFlying Eagleの後継として2026-06-23に導入された新興Android RATプラットフォームの名称であり、既存プロファイルの脅威アクターとは無関係な同名別エンティティ。原文で確認済み。追跡対象としない。ただしプラットフォーム名としての「Night Dragon」は今後も日次キューで既存プロファイルへ誤一致する見込み。"
+    }
+  ],
+  "analyst_notes": "2026-07-31の日次チェックで抽出。実体のある未帰属クラスタ3件を追跡対象とし、文字列断片による名称衝突4件は除外理由のみ記録した。除外分を記録しているのは、同じ衝突を毎日再検討しないため。"
+}

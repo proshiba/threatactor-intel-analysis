@@ -74,7 +74,22 @@ activity_claim.assessment が strong-subject / attributed-subject でも自動�
 確定ではありません。evidence_text がアクターを実行主体としていること、同名製品・
 別クラスタ・法執行記事・過去言及でないかを原文で確認してください。
 
-## 4. 報告
+## 4. 未帰属クラスタの記録
+
+既存プロファイルに一致しない名前を見つけたら、まず
+parse-daily/unknown-clusters.json を照合してください。判断規則は
+parse-daily/AGENT.md の「アクター照合」に従います。
+
+- clusters に既出なら observations へ観測を追加し、last_seen を更新します
+- excluded_name_collisions に記録済みの名称衝突は再検討しません
+- どちらにも無く、原文で実体が確認できたクラスタは status: tracking で追加します
+
+この台帳は profiles/ 配下ではないためUIには出ません。独立した一次資料が2本以上
+集まった時点でプロファイル昇格を検討し、その判断は提案に留めて指示を待ってください。
+
+台帳への追記と、その追記のみを含むコミットは許可されています。
+
+## 5. 報告
 
 結果を日本語で簡潔に報告してください。
 
@@ -85,12 +100,18 @@ activity_claim.assessment が strong-subject / attributed-subject でも自動�
 
 ## 禁止事項
 
-このルーチンは検知・調査・報告までです。次は行わないでください。
+このルーチンは検知・調査・報告と、未帰属クラスタ台帳への追記までです。
+次は行わないでください。
 
-- profiles/ 配下の変更
+- profiles/ 配下の変更（台帳のクラスタをプロファイルへ昇格させる操作を含む）
 - レビューキューの承認状態の変更、apply_review_queue.py の --apply 実行
 - parse-daily/state.json の更新
-- git commit / git push / PR作成
+- PR作成
+- parse-daily/unknown-clusters.json 以外を含む git commit / git push
+
+台帳の追記だけは例外としてコミットとpushを許可します。コンテナは実行後に
+回収されるため、コミットしなければ観測が失われ、継続観察が成立しないためです。
+その場合も指定ブランチへのpushに留め、PRは作成しないでください。
 ```
 
 ---
