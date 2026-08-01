@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-08-01T23:18:26Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -119,6 +119,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | malware-campaign | 不明 | 不明 | 2025-06-26 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--6f11b2b6322cd2dec974 | 北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化 Socket Threat ResearchがBeaverTailインフォスティーラーとInvisibleFerretバックドアを検出 24アカウントから公開、累計4,000回超ダウンロード、6パッケージが現存 これらのパッケージの多くは、タイポスクワッティング（スペルミスを利用して正規のパッケージを装うこと）や既知の信頼できるライブラリを模倣 攻撃者はLinkedInで面接を偽装しGoogle Docs経由でテスト課題と共にパッケージを配布 求職者は、コードをコンテナ化された環境ではなく、自身のOS上で実行するように圧力をかけられることが多く、画面共有中に実行を促されることもある | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
 | FlexibleFerretマルウェアの攻撃が続く | malware-campaign | 不明 | 不明 | 2025-11-26 |  |  |  |  | Jamf Threat Labsは、DPRK系とされるFlexibleFerretが偽の採用評価サイトでmacOSの資格情報窃取を行う手口を解析。 求人ページのJSがcurl実行を誘導し/var/tmp/macpatch.shを取得、LaunchAgent作成などで永続化する多段感染へ移行。 おとりの「MediaPatcher」がChrome風PW入力を表示し、content[.]dropboxapi[.]comへ送信、api[.]ipify[.]orgでIP取得。 最終段はGo製CDriversバックドアが95[.]169[.]180[.]140:8080へ接続し、情報収集・転送・コマンド実行を行う。 IoCには偽求人ドメインと配布URLが列挙。面接課題での端末コマンド実行指示は高リスクとして停止・報告を周知。 | 中 | `source--daily-25f950d9ddf02f2d5ba4` |
+| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | infrastructure-operation | 不明 | 不明 | 2026-07-31 |  |  |  |  | 偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。 | 中 | `source--daily-f258b76090beb4d8cca9` |
 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | campaign | 不明 | 不明 | 2026-04-09 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  | ttp--activity-rule--6b786b9be7290d0da343, ttp--activity-rule--74e655e05d84ec47e3e9 | victim--activity-rule--ba353bbe87673efbe856 | Socket は、Contagious Interview に結び付く北朝鮮系活動として、npm・PyPI・Go Modules・Rust・PHP を含む5系統にまたがる悪性パッケージ群を確認した。 各パッケージは debug や license などの正規開発ツールを装い、通常メソッドの裏で downloadUrl を取得し、ZIP や base64 の第2段階ペイロードを配信した。 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 攻撃者は golangorg や aokisasakidev など複数の GitHub ペルソナを使い分け、一部パッケージは削除済みだが、執筆時点でなお残存しているものもあった。 | 高 | `source--daily-828c717719b991a7c676` |
 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | infrastructure-operation | 不明 | 不明 | 2025-07-16 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--acbdb28e817b4bf3d9cf | Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。XORIndexという新たなローダーも発見された。 これらは計17,000以上のダウンロードを獲得し、先月の35パッケージ（HexEvalローダー）攻撃を拡大。 悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。 XORIndexは第1世代の試作から第3世代でシステム偵察・ステルス機能を追加し、C2にビークン送信。 2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。 | 中 | `source--daily-d00e6abeb3390b2c40e7` |
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2025-04-26 |  | malware--beavertail | ttp--activity-rule--f408909e69d6ddf20b90 | victim--activity-rule--dcdc8d3a6f0ce46415ff | 北朝鮮支援のグループが偽の仮想通貨企業を設立し、就職面接を装いマルウェアを拡散。 BlockNovas、Angeloper、SoftGlideの3社を使い、BeaverTailなど複数マルウェアを配布。 マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 ロシアのIPレンジを使い活動を匿名化し、米FBIはBlockNovasドメインを押収。 活動の背後にはAIツールを利用した偽プロファイル作成も含まれる。 | 中 | `source--daily-cf8c33fcf3e4b3907567` |
@@ -136,6 +137,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 |---|---|---|---|---|---|---|---|
 | 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | 中 |
 | FlexibleFerretマルウェアの攻撃が続く | Contagious Interview | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | Contagious Interview | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | Contagious Interview | 情報なし | T1555.003 Credentials from Web Browsers, T1083 File and Directory Discovery | 情報なし | 非営利・市民社会 | 被害事例: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | 高 |
 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | 中 |
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | Contagious Interview | BeaverTail | T1082 System Information Discovery | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | 中 |
@@ -296,6 +298,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--daily-d00e6abeb3390b2c40e7 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | thehackernews.com | 2025-07-16 | https://thehackernews.com/2025/07/north-korean-hackers-flood-npm-registry.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-dddef70e68c0dc59a5d3 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | thehackernews.com | 2025-09-22 | https://thehackernews.com/2025/09/dprk-hackers-use-clickfix-to-deliver.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-e8f48a18d1cc39fa808c | 北朝鮮系ハッカー、BeaverTailとOtterCookieを統合した高度なJSマルウェアを展開 | thehackernews.com | 2025-10-18 | https://thehackernews.com/2025/10/north-korean-hackers-combine-beavertail.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-f258b76090beb4d8cca9 | ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | allsecure.io | 2026-07-31 | https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/ | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |

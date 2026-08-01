@@ -4,7 +4,7 @@
   "name": "Contagious Interview",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-29T23:12:00Z",
+  "updated_at": "2026-08-01T23:18:42Z",
   "languages": [
     "ja"
   ],
@@ -421,6 +421,104 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-25f950d9ddf02f2d5ba4"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-2f8e62cf1cd00748b2b7",
+      "name": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--be9df4470bc382b06ff7"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--792dfdc99346396f95d8"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f258b76090beb4d8cca9"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--2f8e62cf1cd00748b2b7502c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: context-only。 レビュー: 原文(AllSecure blog, 2026-07-29公開)を確認。本文は「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF through 2025-2026」と明記し、macOS ClickFix偽アップデート、EtherHiding経由のブロックチェーン型C2、暗号資産・開発者認証情報窃取という手口をContagious Interviewの既知の戦術と一致すると評価している。新規ドメイン(rg-telemetry.sbs, th-updates.sbs)は未公開の新規インフラと記載。活動期間は一次資料に明示値がないためunknownとし、記事公開日はreported_atとして分離する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--be9df4470bc382b06ff7"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--792dfdc99346396f95d8"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Execution"
+          ],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-f258b76090beb4d8cca9"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -1666,6 +1764,35 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-828c717719b991a7c676"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--be9df4470bc382b06ff7",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "activity_refs": [
+        "activity--daily-2f8e62cf1cd00748b2b7"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f258b76090beb4d8cca9"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -3735,6 +3862,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_10-12/20251018.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-f258b76090beb4d8cca9",
+      "path": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+      "title": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "publisher": "allsecure.io",
+      "published_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260731.md; source commit: 4bde2c2aba63f56fb9d3c91db98853aef54b8c4e; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--mitre-attack-19-1",
       "path": "actor_profile/reference/attack-index.json",
       "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
@@ -3992,6 +4137,53 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-2a32ed98e1bd6d1661b4"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--792dfdc99346396f95d8",
+      "name": "被害事例: ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。",
+      "activity_refs": [
+        "activity--daily-2f8e62cf1cd00748b2b7"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--be9df4470bc382b06ff7"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-f258b76090beb4d8cca9"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

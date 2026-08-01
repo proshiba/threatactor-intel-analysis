@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt38`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:53Z
+- 更新日時: 2026-08-01T23:18:25Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -105,12 +105,13 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--hoplight | HOPLIGHT | [HOPLIGHT](https://attack.mitre.org/software/S0376) is a backdoor Trojan that has reportedly been used by the North Korean government.(Citation: US-CERT HOPLIGHT Apr 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--daily-f30dd669ecd1c3776828 | typo-crypto | APT38との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
 | malware--darkcomet | DarkComet | [DarkComet](https://attack.mitre.org/software/S0334) is a Windows remote administration tool and backdoor.(Citation: TrendMicro DarkComet Sept 2014)(Citation: Malwarebytes DarkComet March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--killdisk | KillDisk | [KillDisk](https://attack.mitre.org/software/S0607) is a disk-wiping tool designed to overwrite files with random data to render the OS unbootable. It was first observed as a component of [BlackEnergy](https://attack.mitre.org/software/S0089) malware during cyber attacks against Ukraine in 2015. [KillDisk](https://attack.mitre.org/software/S0607) has since evolved into stand-alone malware used by a variety of threat actors against additional targets in Europe and Latin America; in 2016 a ransomware component was also incorporated into some [KillDisk](https://attack.mitre.org/software/S0607) variants.(Citation: KillDisk Ransomware)(Citation: ESEST Black Energy Jan 2016)(Citation: Trend Micro KillDisk 1)(Citation: Trend Micro KillDisk 2) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--eccentricbandwagon | ECCENTRICBANDWAGON | [ECCENTRICBANDWAGON](https://attack.mitre.org/software/S0593) is a remote access Trojan (RAT) used by North Korean cyber actors that was first identified in August 2020. It is a reconnaissance tool--with keylogging and screen capture functionality--used for information gathering on compromised systems.(Citation: CISA EB Aug 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--volgmer | VOLGMER | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--hoplight | HOPLIGHT | [HOPLIGHT](https://attack.mitre.org/software/S0376) is a backdoor Trojan that has reportedly been used by the North Korean government.(Citation: US-CERT HOPLIGHT Apr 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--killdisk | KillDisk | [KillDisk](https://attack.mitre.org/software/S0607) is a disk-wiping tool designed to overwrite files with random data to render the OS unbootable. It was first observed as a component of [BlackEnergy](https://attack.mitre.org/software/S0089) malware during cyber attacks against Ukraine in 2015. [KillDisk](https://attack.mitre.org/software/S0607) has since evolved into stand-alone malware used by a variety of threat actors against additional targets in Europe and Latin America; in 2016 a ransomware component was also incorporated into some [KillDisk](https://attack.mitre.org/software/S0607) variants.(Citation: KillDisk Ransomware)(Citation: ESEST Black Energy Jan 2016)(Citation: Trend Micro KillDisk 1)(Citation: Trend Micro KillDisk 2) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--peachpit | PEACHPIT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--volgmer | VOLGMER | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -137,11 +138,15 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | infrastructure-operation | 不明 | 不明 | 2026-07-31 |  | malware--daily-f30dd669ecd1c3776828 |  |  | Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
 
 ### 活動別ダイヤモンドモデル
 
-活動別ダイヤモンドモデルなし
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | APT38 | typo-crypto | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 
 
@@ -243,8 +248,8 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 14件
-- IOC観測: 18件
+- IOC値: 18件
+- IOC観測: 22件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 14件
 - 非IOC artifact観測: 148件（`artifacts.csv`）
@@ -268,72 +273,73 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--apt38--579d11dfe0ae4238 | apt38 |  | 不明 | actor_profile/evidence/apt38.csv | structured-data | TLP:CLEAR | 中 |
-| source--apt38--e9e44d11654ffedb | Automating APT Campaign and Group Attribution |  | 不明 | APT-hunting/Automating APT Campaign and Group Attribution.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--8b396a1f8f9232e2 | Threat Hunting with VirusTotal |  | 不明 | APT-hunting/Threat Hunting with VirusTotal.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--ac5857b429eb9fae | APT43 Report |  | 不明 | APT43/APT43 Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--f82a58381fcab3cb | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--5715dee99bf684fd | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--53d39dedbb8502ab | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--ee91d582d1fad020 | North Korea’s Cyber Strategy |  | 不明 | International Strategic/Korea/North Korea’s Cyber Strategy.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--241e1ed62d69493a | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--abb4e7a3abb0df2e | US Army report on North Korean military |  | 不明 | International Strategic/Korea/US-Army-report-on-North-Korean-military.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--c8e994207a21c4f2 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--2f6ecd70b84c34a8 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--e42a45b52776f627 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--7fd482a6ac8d3f55 | CryptoCore Lazarus Clearsky |  | 不明 | lazarus/CryptoCore-Lazarus-Clearsky.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--ab912926e1db0f93 | Dream Job Campaign |  | 不明 | lazarus/Dream-Job-Campaign.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--1a90d368468861d6 | README |  | 不明 | lazarus/README.MD | repository-notes | TLP:CLEAR | 中 |
-| source--apt38--8ec0ecccad50b690 | The Lazarus Constellation |  | 不明 | lazarus/The_Lazarus_Constellation.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--b22f71c52e45c313 | WithSecure Lazarus No Pineapple Threat Intelligence Report 2023 |  | 2023 | lazarus/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--98edf8a69714332e | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
-| source--apt38--c48f3b9eefe4e599 | APT group activities under the shadow of the epidemic(2020) |  | 2020 | summary/2021/APT group activities under the shadow of the epidemic(2020).pdf | report | TLP:CLEAR | 中 |
-| source--apt38--5f640852eff44ad7 | The CrowdStrike 2021 Global Threat Report |  | 2021 | summary/2021/The CrowdStrike 2021 Global Threat Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--3e70a5b10ab68475 | rpt mtrends 2021 fireeye |  | 2021 | summary/2021/rpt-mtrends-2021-fireeye.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--d8f348da3d009aaa | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--d016ac2267587e6b | Global APT Mid 2022 Report qianxin |  | 2022 | summary/2022/Global APT Mid-2022 Report-qianxin.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--1f3c1f0eb49c4e13 | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--36507790ef9f1a89 | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--f046b89cc1453339 | 2022 APT TRENDS INSIGHT REPORT |  | 2022 | summary/2023/2022_APT_TRENDS_INSIGHT_REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--a1d16d34983b49f2 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--2d795fb8c565e03e | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--80fa0a2750b497b7 | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--482c8b9909ecf926 | Global APT 2023 Mid Year Report QIANXIN |  | 2023 | summary/2023/Global APT 2023 Mid-Year Report-QIANXIN.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--9d1e25591670c1ec | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--f4b0f1caa4b664f7 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--b5f4049ef39ac59a | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--apt38--10c7f8863a1297b9 | Secureworks NC3 2022StateoftheThreat |  | 2022 | summary/2023/Secureworks_NC3_2022StateoftheThreat.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--44e73e38915723b6 | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--63cd13ed4cefa69d | MacMalware 2023 |  | 2023 | summary/2024/MacMalware_2023.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--5312c7555374eaf2 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--e08f3a9e3b41c4c2 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--81945794ed3781bf | Recordedfuture 2023 Annual Report ta 2024 0321 |  | 2023 | summary/2024/Recordedfuture 2023 Annual Report ta-2024-0321.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--fc581fa134eaf2de | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--apt38--329643e7ed4efd13 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
-| source--apt38--8c50143c640cbc8a | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--f55795b108df62ba | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--df7ff2e2140af116 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--50e0d17aebf86ad9 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--dcaff719d29e70be | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--da7029581b779c62 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--b01813ad282937d2 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--baf5e7425ad06679 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--a2aeec7d62eed864 | CrowdStrike 2026 Global Threat Report |  | 2026 | summary/2026/CrowdStrike-2026-Global-Threat-Report.pdf | report | TLP:CLEAR | 中 |
 | source--apt38--131cb847887ec4c7 | [Report] Bitsight State of the Underground 2026 |  | 2026 | summary/2026/[Report] Bitsight State of the Underground 2026.pdf | report | TLP:CLEAR | 中 |
-| source--apt38--ea65e855cff8bdeb | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--1a90d368468861d6 | README |  | 不明 | lazarus/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--apt38--1f3c1f0eb49c4e13 | Microsoft Digital Defense Report 2022 |  | 2022 | summary/2022/Microsoft Digital Defense Report 2022.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--241e1ed62d69493a | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--2d795fb8c565e03e | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--2f6ecd70b84c34a8 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--329643e7ed4efd13 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--apt38--36507790ef9f1a89 | 2022 year in retrospect report |  | 2022 | summary/2023/2022-year-in-retrospect-report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--3e70a5b10ab68475 | rpt mtrends 2021 fireeye |  | 2021 | summary/2021/rpt-mtrends-2021-fireeye.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--44e73e38915723b6 | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--482c8b9909ecf926 | Global APT 2023 Mid Year Report QIANXIN |  | 2023 | summary/2023/Global APT 2023 Mid-Year Report-QIANXIN.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--50e0d17aebf86ad9 | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--5312c7555374eaf2 | Microsoft Digital Defense Report 2024 |  | 2024 | summary/2024/Microsoft Digital Defense Report 2024.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--53d39dedbb8502ab | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--5715dee99bf684fd | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--579d11dfe0ae4238 | apt38 |  | 不明 | actor_profile/evidence/apt38.csv | structured-data | TLP:CLEAR | 中 |
+| source--apt38--5f640852eff44ad7 | The CrowdStrike 2021 Global Threat Report |  | 2021 | summary/2021/The CrowdStrike 2021 Global Threat Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--63cd13ed4cefa69d | MacMalware 2023 |  | 2023 | summary/2024/MacMalware_2023.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--7fd482a6ac8d3f55 | CryptoCore Lazarus Clearsky |  | 不明 | lazarus/CryptoCore-Lazarus-Clearsky.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--80fa0a2750b497b7 | Global APT 2022 Annual Report qianxin |  | 2022 | summary/2023/Global APT 2022 Annual Report-qianxin.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--81945794ed3781bf | Recordedfuture 2023 Annual Report ta 2024 0321 |  | 2023 | summary/2024/Recordedfuture 2023 Annual Report ta-2024-0321.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--8b396a1f8f9232e2 | Threat Hunting with VirusTotal |  | 不明 | APT-hunting/Threat Hunting with VirusTotal.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--8c50143c640cbc8a | 2025 Cyber Security Report Final |  | 2025 | summary/2025/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--8ec0ecccad50b690 | The Lazarus Constellation |  | 不明 | lazarus/The_Lazarus_Constellation.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--98edf8a69714332e | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
+| source--apt38--9d1e25591670c1ec | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--a1d16d34983b49f2 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--a2aeec7d62eed864 | CrowdStrike 2026 Global Threat Report |  | 2026 | summary/2026/CrowdStrike-2026-Global-Threat-Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--ab912926e1db0f93 | Dream Job Campaign |  | 不明 | lazarus/Dream-Job-Campaign.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--abb4e7a3abb0df2e | US Army report on North Korean military |  | 不明 | International Strategic/Korea/US-Army-report-on-North-Korean-military.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--ac5857b429eb9fae | APT43 Report |  | 不明 | APT43/APT43 Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--b01813ad282937d2 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--b22f71c52e45c313 | WithSecure Lazarus No Pineapple Threat Intelligence Report 2023 |  | 2023 | lazarus/WithSecure-Lazarus-No-Pineapple-Threat-Intelligence-Report-2023.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--b5f4049ef39ac59a | README |  | 不明 | summary/2023/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--apt38--baf5e7425ad06679 | Cloudflare 2026 threat report |  | 2026 | summary/2026/Cloudflare-2026-threat-report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--c48f3b9eefe4e599 | APT group activities under the shadow of the epidemic(2020) |  | 2020 | summary/2021/APT group activities under the shadow of the epidemic(2020).pdf | report | TLP:CLEAR | 中 |
 | source--apt38--c8152777606f552b | readme |  | 不明 | summary/2026/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
+| source--apt38--c8e994207a21c4f2 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--d016ac2267587e6b | Global APT Mid 2022 Report qianxin |  | 2022 | summary/2022/Global APT Mid-2022 Report-qianxin.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--d8f348da3d009aaa | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--da7029581b779c62 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--dcaff719d29e70be | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--df7ff2e2140af116 | 2025 CrowdStrike European Threat Landscape Report |  | 2025 | summary/2025/2025-CrowdStrike-European-Threat-Landscape-Report_.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--e08f3a9e3b41c4c2 | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--e42a45b52776f627 | Virtual Routes Pharos Report Series No. 3 |  | 不明 | cybercrime/2025/Virtual-Routes-Pharos-Report-Series-No.-3.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--e9e44d11654ffedb | Automating APT Campaign and Group Attribution |  | 不明 | APT-hunting/Automating APT Campaign and Group Attribution.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--ea65e855cff8bdeb | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--ee91d582d1fad020 | North Korea’s Cyber Strategy |  | 不明 | International Strategic/Korea/North Korea’s Cyber Strategy.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--f046b89cc1453339 | 2022 APT TRENDS INSIGHT REPORT |  | 2022 | summary/2023/2022_APT_TRENDS_INSIGHT_REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--f4b0f1caa4b664f7 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--f55795b108df62ba | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--f82a58381fcab3cb | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
+| source--apt38--fc581fa134eaf2de | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--daily-a7e2c22924a222a6eb0f | Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | aws.amazon.com | 2026-07-31 | https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/ | osint-report | TLP:CLEAR | 中 |
 | source--doj-dprk-conspiracy-2021 | Three North Korean Military Hackers Indicted in Wide-Ranging Scheme | U.S. Department of Justice | 2021-02-17 | https://www.justice.gov/archives/opa/pr/three-north-korean-military-hackers-indicted-wide-ranging-scheme-commit-cyberattacks-and | government-legal-announcement | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

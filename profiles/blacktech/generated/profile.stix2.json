@@ -512,6 +512,34 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--dfe9c0ba-d2ba-4d94-8da5-64e9cc2bc495",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "BlueShell",
+      "description": "BlackTechとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "sect.iij.ad.jp",
+          "description": "Local source: https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "external_id": "source--daily-2a35db86e8f078946ab5"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-b09eb7de4094c12dd639",
+      "x_confidence": "high",
+      "x_analyst_notes": "IIJが日本国内組織を標的としたBlackTechのAPT攻撃活動でBlueShell亜種を直接観測したと明記している。",
+      "is_family": true,
+      "malware_types": [
+        "RAT",
+        "dropper"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--a9bd30e1-328c-4a81-96bd-37d3364ba5f0",
       "created": "2026-07-25T15:22:55Z",
       "modified": "2026-07-25T15:22:55Z",
@@ -841,6 +869,88 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-1dfee7d2a70ba1432540"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--f8492bf3-400a-44ab-9a36-5e9a3f253889",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APTグループが使用するBlueShell亜種の分析",
+      "description": "IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。",
+      "external_references": [
+        {
+          "source_name": "sect.iij.ad.jp",
+          "description": "Local source: https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "external_id": "source--daily-2a35db86e8f078946ab5"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-9d44006d7db8843dc445",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--9d44006d7db8843dc445dcf0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(IIJ Security Diary)を確認。「我々はBlackTechによる日本国内の組織を標的としたAPT攻撃においてもBlueShell亜種を観測しています」と明記され、BlackTechが当該BlueShell亜種を用いた侵入後活動の実行主体であることが確認できる(BlueShell亜種自体は他の複数APTグループも使用する共通マルウェアである旨の記載もあるが、BlackTechによる観測は個別に明記されている)。",
+      "x_reported_at": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--blacktech",
+          "name": "BlackTech",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "disruptive-activity",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-2a35db86e8f078946ab5"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -2748,6 +2858,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--c90da6ca-6dfb-4338-be21-96775c31be5e",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--06631f3b-380c-4696-8451-62a907baf20c",
+      "target_ref": "malware--dfe9c0ba-d2ba-4d94-8da5-64e9cc2bc495",
+      "description": "BlackTech uses BlueShell.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--82a5f75d-72fb-494a-9a7b-d611be24131e",
       "created": "2026-07-25T15:22:55Z",
       "modified": "2026-07-25T15:22:55Z",
@@ -3043,6 +3168,36 @@
       "source_ref": "campaign--020ba925-85b9-4f57-8742-577e10f7cab7",
       "target_ref": "identity--2151da97-64ba-4033-a6c9-00fae3d5e51c",
       "description": "BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 affected victim--activity-rule--a880b3c2a984d91381dc.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5eea454a-0c4c-4f6f-bca5-bff841cc33d8",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--f8492bf3-400a-44ab-9a36-5e9a3f253889",
+      "target_ref": "intrusion-set--06631f3b-380c-4696-8451-62a907baf20c",
+      "description": "APTグループが使用するBlueShell亜種の分析 is attributed or linked to BlackTech.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a7a10161-0a6c-4a2f-a896-07da9e00e642",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f8492bf3-400a-44ab-9a36-5e9a3f253889",
+      "target_ref": "malware--dfe9c0ba-d2ba-4d94-8da5-64e9cc2bc495",
+      "description": "APTグループが使用するBlueShell亜種の分析 uses malware--daily-b09eb7de4094c12dd639.",
       "x_confidence": "high"
     },
     {
@@ -3630,6 +3785,273 @@
       "x_confidence": "medium"
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--88e4f71f-75fc-4425-93b5-59621da403f5",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 48.216.210.91",
+      "pattern": "[ipv4-addr:value = '48.216.210.91']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-9d44006d7db8843dc445"
+      ],
+      "x_malware_refs": [
+        "malware--daily-b09eb7de4094c12dd639"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:abef387531e83138945c16fdb624ea9e3312cfafea07b000dd0b988fc07153eb",
+          "observed_at": {
+            "value": "2026-07-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-2a35db86e8f078946ab5",
+          "source_path": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e",
+            "path": "daily-news/iocs/2026_07-09/20260801.csv",
+            "row": 94
+          },
+          "campaign_refs": [
+            "activity--daily-9d44006d7db8843dc445"
+          ],
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "48.216.210.91",
+          "context_excerpt": "AI generated. C2 server used by a Linux variant of the BlueShell RAT via the victim's proxy.",
+          "analyst_notes": "actor field: BlackTech; actor_attribute: china; reference: https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a2552094-3282-491e-a393-b7cb89154931",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--88e4f71f-75fc-4425-93b5-59621da403f5",
+      "target_ref": "intrusion-set--06631f3b-380c-4696-8451-62a907baf20c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c55b4671-b15c-4ad4-b21a-26db962e59c2",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 944b774d592f5e7fe2c34ac6c3abb2a77bfa96707c4f3c33ac77b8d54800244f",
+      "pattern": "[file:hashes.'SHA-256' = '944b774d592f5e7fe2c34ac6c3abb2a77bfa96707c4f3c33ac77b8d54800244f']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-9d44006d7db8843dc445"
+      ],
+      "x_malware_refs": [
+        "malware--daily-b09eb7de4094c12dd639"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6fc9e02bfb8b1f5b1dd3ee8a0123b1229a2f49b6f699d47faa60ce9e2847de68",
+          "observed_at": {
+            "value": "2026-07-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-2a35db86e8f078946ab5",
+          "source_path": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e",
+            "path": "daily-news/iocs/2026_07-09/20260801.csv",
+            "row": 95
+          },
+          "campaign_refs": [
+            "activity--daily-9d44006d7db8843dc445"
+          ],
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "944b774d592f5e7fe2c34ac6c3abb2a77bfa96707c4f3c33ac77b8d54800244f",
+          "context_excerpt": "AI generated. Dropper (named 'apid') that stages the BlueShell RAT variant on Linux hosts.",
+          "analyst_notes": "actor field: BlackTech; actor_attribute: china; reference: https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--016053ae-f64f-4d60-82da-f2c0b1806e12",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c55b4671-b15c-4ad4-b21a-26db962e59c2",
+      "target_ref": "intrusion-set--06631f3b-380c-4696-8451-62a907baf20c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--166fe2cd-770e-47db-bf88-712d4356a224",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 3228da011423853efd3d94ce3a28046b5ca19e921861ea5aee2700bc90fc1d55",
+      "pattern": "[file:hashes.'SHA-256' = '3228da011423853efd3d94ce3a28046b5ca19e921861ea5aee2700bc90fc1d55']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-9d44006d7db8843dc445"
+      ],
+      "x_malware_refs": [
+        "malware--daily-b09eb7de4094c12dd639"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0772add21269f9cc3c96f2f3e000ca67852762ba75b4a11c95a3616f91bc4071",
+          "observed_at": {
+            "value": "2026-07-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-2a35db86e8f078946ab5",
+          "source_path": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e",
+            "path": "daily-news/iocs/2026_07-09/20260801.csv",
+            "row": 96
+          },
+          "campaign_refs": [
+            "activity--daily-9d44006d7db8843dc445"
+          ],
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "3228da011423853efd3d94ce3a28046b5ca19e921861ea5aee2700bc90fc1d55",
+          "context_excerpt": "AI generated. BlueShell RAT executable (/tmp/kthread) that masquerades as a kernel worker process.",
+          "analyst_notes": "actor field: BlackTech; actor_attribute: china; reference: https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1375d4a0-e646-4f81-965d-d390def783b2",
+      "created": "2026-08-01T23:18:25Z",
+      "modified": "2026-08-01T23:18:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--166fe2cd-770e-47db-bf88-712d4356a224",
+      "target_ref": "intrusion-set--06631f3b-380c-4696-8451-62a907baf20c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--caad069d-e00f-40c3-890a-0cce266a5adb",
@@ -3651,7 +4073,7 @@
       "spec_version": "2.1",
       "id": "report--474c9c56-83b4-418a-bfb3-0d8da6b7f64a",
       "created": "2026-07-25T15:22:55Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-01T23:18:25Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3660,10 +4082,11 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T23:13:54Z",
+      "published": "2026-08-01T23:18:25Z",
       "object_refs": [
         "intrusion-set--06631f3b-380c-4696-8451-62a907baf20c",
         "malware--59f3c352-072e-4140-b3fc-0c46eb644d58",
+        "malware--dfe9c0ba-d2ba-4d94-8da5-64e9cc2bc495",
         "malware--a9bd30e1-328c-4a81-96bd-37d3364ba5f0",
         "malware--404cc210-66ad-4bba-a8d7-1ab5d62503df",
         "malware--c680e444-151e-4f89-b639-62ca621c11be",
@@ -3672,6 +4095,7 @@
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
         "campaign--334f3c06-d09c-4b32-a26c-ee237e3898a5",
         "campaign--020ba925-85b9-4f57-8742-577e10f7cab7",
+        "campaign--f8492bf3-400a-44ab-9a36-5e9a3f253889",
         "campaign--52f45165-21cf-4ab5-bc16-3458a3036826",
         "campaign--a7574ec2-85b0-4165-b57a-76dec084c657",
         "campaign--66c2f240-1a20-46c6-a804-f52194dfed07",
@@ -3716,7 +4140,10 @@
         "attack-pattern--437600fd-5b24-440f-af0b-7b5a41dd0f0f",
         "attack-pattern--2e382c4a-b33c-4432-b668-0aec5ad614db",
         "attack-pattern--3cb441d4-c86b-4d44-a4da-f3e58f050d29",
-        "indicator--531f1c2d-9343-4be8-a230-247d43197e7f"
+        "indicator--531f1c2d-9343-4be8-a230-247d43197e7f",
+        "indicator--88e4f71f-75fc-4425-93b5-59621da403f5",
+        "indicator--c55b4671-b15c-4ad4-b21a-26db962e59c2",
+        "indicator--166fe2cd-770e-47db-bf88-712d4356a224"
       ],
       "x_schema_version": "1.2.0"
     }

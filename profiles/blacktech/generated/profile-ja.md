@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blacktech`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:54Z
+- 更新日時: 2026-08-01T23:18:25Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -87,6 +87,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | malware--bendybear | BendyBear | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--daily-b09eb7de4094c12dd639 | BlueShell | BlackTechとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 高 | `source--daily-2a35db86e8f078946ab5` |
 | malware--flagpro | Flagpro | [Flagpro](https://attack.mitre.org/software/S0696) is a Windows-based, first-stage downloader that has been used by [BlackTech](https://attack.mitre.org/groups/G0098) since at least October 2020. It has primarily been used against defense, media, and communications companies in Japan.(Citation: NTT Security Flagpro new December 2021)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--kivars | Kivars | [Kivars](https://attack.mitre.org/software/S0437) is a modular remote access tool (RAT), derived from the Bifrost RAT, that was used by [BlackTech](https://attack.mitre.org/groups/G0098) in a 2010 campaign.(Citation: TrendMicro BlackTech June 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--plead | PLEAD | [PLEAD](https://attack.mitre.org/software/S0435) is a remote access tool (RAT) and downloader used by [BlackTech](https://attack.mitre.org/groups/G0098) in targeted attacks in East Asia including Taiwan, Japan, and Hong Kong.(Citation: TrendMicro BlackTech June 2017)(Citation: JPCert PLEAD Downloader June 2018) [PLEAD](https://attack.mitre.org/software/S0435) has also been referred to as [TSCookie](https://attack.mitre.org/software/S0436), though more recent reporting indicates likely separation between the two. [PLEAD](https://attack.mitre.org/software/S0435) was observed in use as early as March 2017.(Citation: JPCert TSCookie March 2018)(Citation: JPCert PLEAD Downloader June 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -121,6 +122,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 |  | malware--waterbear |  |  | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
 | BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--a880b3c2a984d91381dc | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
+| APTグループが使用するBlueShell亜種の分析 | disruptive-activity | 不明 | 不明 | 2026-08-01 |  | malware--daily-b09eb7de4094c12dd639 |  |  | IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。 | 高 | `source--daily-2a35db86e8f078946ab5` |
 | PLEAD | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Shrouded Crossbow | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Waterbear | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
@@ -131,6 +133,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 |---|---|---|---|---|---|---|---|
 | 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | BlackTech | Waterbear | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | BlackTech | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 高 |
+| APTグループが使用するBlueShell亜種の分析 | BlackTech | BlueShell | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 | PLEAD | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | Shrouded Crossbow | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | Waterbear | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
@@ -197,8 +200,8 @@ PLEAD; Shrouded Crossbow; Waterbear
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 4件
+- IOC観測: 4件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 11件（`artifacts.csv`）
@@ -224,6 +227,7 @@ PLEAD; Shrouded Crossbow; Waterbear
 | source--blacktech--24eb19b60ca5a2a3 | CSA BLACKTECH HIDE IN ROUTERS TLP CLEAR |  | 不明 | Blacktech/CSA_BLACKTECH_HIDE_IN_ROUTERS_TLP-CLEAR.PDF | report | TLP:CLEAR | 中 |
 | source--blacktech--8f7bfc2a1d9c653a | README |  | 不明 | Blacktech/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--daily-1dfee7d2a70ba1432540 | BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | thehackernews.com | 2024-04-20 | https://thehackernews.com/2024/04/blacktech-targets-tech-research-and-gov.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-2a35db86e8f078946ab5 | APTグループが使用するBlueShell亜種の分析 | sect.iij.ad.jp | 2026-08-01 | https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-718b90e4e11c27f888d6 | 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | thehackernews.com | 2024-05-18 | https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
