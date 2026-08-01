@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any
 
 from common import load_json, unknown_time, write_json_atomic
+from activity_diamond import SCHEMA_VERSION, materialize_profile_diamonds
 
 
-SCHEMA_VERSION = "1.1.0"
 PUBLICATION_BASIS = re.compile(
     r"(?:publication|published|report(?:ed)?[-_ ]?date|daily-news-file-date)",
     re.IGNORECASE,
@@ -112,6 +112,7 @@ def migrate(profile: dict[str, Any]) -> tuple[dict[str, Any], bool]:
                 activity["victim_refs"].sort()
                 changed = True
     changed = clear_publication_observation_dates(profile) or changed
+    changed = bool(materialize_profile_diamonds(profile)) or changed
     return profile, changed
 
 

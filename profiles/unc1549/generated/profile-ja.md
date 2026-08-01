@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc1549`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:55Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -123,6 +123,13 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | cyber-espionage | 2026-02 | 2026-04 | 2026-05-25 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--904728608f27c39df0df |  | ttp--activity-rule--58d557d2679ee65b66a5 | victim--activity-rule--071152112a80d6125133 | Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 中 | `source--daily-96ac11961cae303bc9fd` |
 | Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | cyber-espionage | 不明 | 不明 | 2026-07-28 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--country--burkina-faso, target--country--egypt, target--country--ethiopia, target--country--jordan, target--country--pakistan, target--country--tanzania, target--sector--aerospace, target--sector--aviation, target--sector--defense, target--sector--financial-services, target--sector--government, target--sector--telecommunications | malware--nightledger, malware--arcbridge, malware--bridgehead | ttp--activity-rule--543c54c03eee4074488f, ttp--activity-rule--64e01cb31f20cb632f2c, ttp--activity-rule--eee5857560ca39325182, ttp--t1057--nightledger, ttp--t1071-001--mirage-kitten-2026, ttp--t1082--nightledger, ttp--t1090--bridgehead, ttp--t1113--nightledger, ttp--t1566-002--mirage-kitten-2026, ttp--t1574-001--nightledger | victim--activity-rule--15a1bbc4304a95fa57dc | Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | 高 | `source--kaspersky-mirage-kitten-2026` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | UNC1549 | 情報なし | T1574.001 DLL | 情報なし | 米国, イスラエル | 被害事例: イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | 中 |
+| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | UNC1549 | ArcBridge, BridgeHead, NightLedger | T1574.001 DLL, T1057 Process Discovery, T1083 File and Directory Discovery, T1057 Process Discovery, T1071.001 Web Protocols, T1082 System Information Discovery, T1090 Proxy, T1113 Screen Capture, T1566.002 Spearphishing Link, T1574.001 DLL | Cloud-hosted HTTPS/WebSocket C2 | 金融, ブルキナファソ, エジプト, エチオピア, ヨルダン, パキスタン, タンザニア, Aerospace, Aviation, Defense, Financial Services, Government, Telecommunications | 被害事例: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | 高 |
 
 2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。
 

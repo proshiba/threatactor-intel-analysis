@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt28`
 - 状態: review
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -197,6 +197,32 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | OpOlympics | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Russian Doll | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | TV5 Monde "Cyber Caliphate" | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| APT28 SOHO Router DNS Hijacking Network | APT28 | 情報なし | T1584 Compromise Infrastructure | Compromised SOHO Router DNS Hijacking Network | Critical Infrastructure, Defense and Military, Government | 被害事例: APT28 SOHO Router DNS Hijacking Network | 高 |
+| APT28 Nearest Neighbor Campaign | APT28 | 情報なし | T1078 Valid Accounts, T1074.001 Local Data Staging, T1059.003 Windows Command Shell, T1584 Compromise Infrastructure, T1059.001 PowerShell, T1021.001 Remote Desktop Protocol, T1140 Deobfuscate/Decode Files or Information, T1560.001 Archive via Utility, T1090.001 Internal Proxy, T1003.002 Security Account Manager, T1669 Wi-Fi Networks, T1567 Exfiltration Over Web Service, T1686.003 Windows Host Firewall, T1016.002 Wi-Fi Discovery, T1006 Direct Volume Access, T1110.003 Password Spraying, T1561.001 Disk Content Wipe, T1003.003 NTDS, T1021.002 SMB/Windows Admin Shares | 情報なし | 情報なし | 情報なし | 高 |
+| Bundestag | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Burisma | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始 | APT28 | 情報なし | T1113 Screen Capture, T1059.001 PowerShell | 情報なし | ウクライナ, Government | 被害事例: APT28ハッカーがSignalチャットを利用してウクライナに新たなマルウェア攻撃を開始 | 高 |
+| 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: 当局、Microsoft 365 のログイン窃取に使われたルーターの DNS 乗っ取りを阻止 | 中 |
+| ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | APT28 | 情報なし | T1566.002 Spearphishing Link | 情報なし | ロシア, Government | 被害事例: ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張 | 中 |
+| NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | APT28 | 情報なし | 情報なし | 情報なし | ドイツ, Government | 被害事例: NATOとEU、ドイツとチェコへのロシアのサイバー攻撃を非難 | 中 |
+| フランス、ロシアのAPT28による12件のサイバー攻撃を非難 | APT28 | 情報なし | 情報なし | 情報なし | 金融, 防衛・軍事, 製造・産業, Government | 被害事例: フランス、ロシアのAPT28による12件のサイバー攻撃を非難 | 高 |
+| CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令 | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: CISA、ゼロデイとして悪用されたWindows脆弱性の修正を連邦機関に命令 | 中 |
+| 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | APT28 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | ウクライナ | 被害事例: 政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される | 中 |
+| ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | APT28 | 情報なし | T1110.003 Password Spraying | 情報なし | 米国 | 被害事例: ハッカー、ロシアからWi-Fiを介して米企業を侵害—「隣接ネットワーク攻撃」 | 中 |
+| APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | APT28 | 情報なし | 情報なし | 情報なし | 非営利・市民社会, ウクライナ, Government | 被害事例: APT28ハッカーグループ、広範囲にわたるフィッシング作戦でヨーロッパ、アメリカ、アジアを標的 | 高 |
+| ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用 | APT28 | 情報なし | T1027 Obfuscated Files or Information | 情報なし | ウクライナ, Government | 被害事例: ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用 | 高 |
+| APT28、Covenantオープンソースツールのカスタマイズ版を展開 | APT28 | 情報なし | 情報なし | 情報なし | ウクライナ | 被害事例: APT28、Covenantオープンソースツールのカスタマイズ版を展開 | 高 |
+| Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用 | APT28 | 情報なし | 情報なし | 情報なし | ウクライナ | 被害事例: Microsoft：APT28ハッカーがNSAが報告したWindowsの脆弱性を悪用 | 高 |
+| DNC Hack | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| EFF Attack | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| OpOlympics | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Russian Doll | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| TV5 Monde "Cyber Caliphate" | APT28 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Russian Doll; Bundestag; TV5 Monde "Cyber Caliphate"; EFF Attack; DNC Hack; OpOlympics; Burisma
 

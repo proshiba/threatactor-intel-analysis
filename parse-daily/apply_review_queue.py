@@ -40,6 +40,7 @@ HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent
 sys.path.insert(0, str(REPO_ROOT / "actor_profile" / "scripts"))
 import common as profile_common  # noqa: E402
+from activity_diamond import materialize_profile_diamonds  # noqa: E402
 
 
 def semantic_copy(value: dict[str, Any], volatile_key: str) -> dict[str, Any]:
@@ -246,6 +247,7 @@ def main() -> int:
             )
         )
         profile["capabilities"]["malware"].sort(key=lambda item: item["id"])
+        materialize_profile_diamonds(profile)
         finalize_dataset(dataset)
 
         profile_changed = semantic_copy(profile, "updated_at") != profile_before

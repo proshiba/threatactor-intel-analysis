@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt34`
 - 状態: review
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -190,6 +190,14 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | APT34 Destructive Wiper Operations (2016-2019) | historical-activity-cluster | 2016 | 2019 | 2026 |  |  | ttp--t1485--apt34-destructive-2016-2019 |  | Unit 42 retrospectively places APT34/Evasive Serpens among Iranian groups conducting visible disk-wiping operations against IT infrastructure in this period. | 高 | `source--unit42-iran-threat-evolution-2026` |
 | Juicy Mix | campaign | 2022-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 2026-05-12 | target--activity-rule--country--904728608f27c39df0df, target--activity-rule--sector--d406c8e5b7fa7aeff7d2 | malware--mango | ttp--mitre-campaign--3f554025662d533005a2, ttp--mitre-campaign--45d595a59b4403b0ff53, ttp--mitre-campaign--4682c397f864d36d8d5e, ttp--mitre-campaign--55bd494b10c7be2552fc, ttp--mitre-campaign--5a1c112991a3b253718e, ttp--mitre-campaign--95cce26df981a692565b, ttp--mitre-campaign--962bae9a2d45b0cb28ca, ttp--mitre-campaign--ae147b7ed211196d2c79, ttp--mitre-campaign--bf0febcece56b15f6f7b, ttp--mitre-campaign--c3fa70ca93f2965cc404, ttp--mitre-campaign--ccb061178b22cbe8338a, ttp--mitre-campaign--d8efd1b57e514a7f2067, ttp--mitre-campaign--d9f5583d0b11893e6f26, ttp--mitre-campaign--da02368b41ff7202bb02 | victim--activity-rule--6d3c9d3af50a8eb2a8f1 | [Juicy Mix](https://attack.mitre.org/campaigns/C0044) was a campaign conducted by [OilRig](https://attack.mitre.org/groups/G0049) throughout 2022 that targeted Israeli organizations with the [Mango](https://attack.mitre.org/software/S1169) backdoor.(Citation: ESET OilRig Campaigns Sep 2023) | 高 | `source--mitre-attack-19-1` |
 | Outer Space | campaign | 2021-01-01T05:00:00.000Z | 2021-12-01T05:00:00.000Z | 2026-05-12 | target--activity-rule--country--904728608f27c39df0df | malware--samplecheck5000, malware--solar | ttp--mitre-campaign--370306537b6f2363fb8b, ttp--mitre-campaign--53408b5a05843b864b73, ttp--mitre-campaign--730c95821decbcad8fe2, ttp--mitre-campaign--9e078c2330c1fb463ca5, ttp--mitre-campaign--a2af178d25acc75b8775, ttp--mitre-campaign--b168a610f26c4a9cbb67, ttp--mitre-campaign--c885f44008c6ee88e614, ttp--mitre-campaign--e2838ec9850b74f19ee1 | victim--activity-rule--e3776dc3d4004d3aaf8c | [Outer Space](https://attack.mitre.org/campaigns/C0042) was a campaign conducted by [OilRig](https://attack.mitre.org/groups/G0049) throughout 2021 that used the [SampleCheck5000](https://attack.mitre.org/software/S1168) downloader and [Solar](https://attack.mitre.org/software/S1166) backdoor to target Israeli organizations.(Citation: ESET OilRig Campaigns Sep 2023) | 高 | `source--mitre-attack-19-1` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| APT34 Destructive Wiper Operations (2016-2019) | APT34 | 情報なし | T1485 Data Destruction | 情報なし | 情報なし | 情報なし | 高 |
+| Juicy Mix | APT34 | Mango | T1059.001 PowerShell, T1071.001 Web Protocols, T1059.005 Visual Basic, T1518 Software Discovery, T1587.001 Malware, T1555.004 Windows Credential Manager, T1074.001 Local Data Staging, T1140 Deobfuscate/Decode Files or Information, T1584.004 Server, T1132.001 Standard Encoding, T1082 System Information Discovery, T1217 Browser Information Discovery, T1555.003 Credentials from Web Browsers, T1053.005 Scheduled Task | 情報なし | イスラエル, 非営利・市民社会 | 被害事例: Juicy Mix | 高 |
+| Outer Space | APT34 | SampleCheck5000, Solar | T1584.004 Server, T1585.003 Cloud Accounts, T1071.001 Web Protocols, T1217 Browser Information Discovery, T1587.001 Malware, T1027.013 Encrypted/Encoded File, T1105 Ingress Tool Transfer, T1059.005 Visual Basic | 情報なし | イスラエル | 被害事例: Outer Space | 高 |
 
 Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016～2019年にITインフラへ高可視性のディスク破壊攻撃を行ったイラン系グループの一つとして位置付けた。周辺記述は複数グループを扱うため、個別マルウェアの帰属は限定して記録した。
 

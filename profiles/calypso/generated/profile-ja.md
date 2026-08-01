@@ -3,7 +3,7 @@
 - プロファイルID: `actor--calypso`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:54Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -134,6 +134,13 @@ The repository mapping workbook places this actor in the China worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | cyber-espionage | 不明 | 不明 | 2026-05-22 | target--activity-rule--sector--97fa6f38a056d42117be |  | ttp--activity-rule--20b1bae9b0c6bca32748, ttp--activity-rule--7f1ef34595aa281d7470, ttp--activity-rule--b2ce07fcea1c942aa118 | victim--activity-rule--72a9b284ae5c1aa7f781 | 中国系サイバースパイ活動が、Linux向けShowboatとWindows向けJFMBackdoorで通信事業者を標的化。 活動は少なくとも2022年半ばから続き、アジア太平洋と中東の組織を狙い、Calypso(別名、Red Lamassu)に帰属。 攻撃者は複数の通信事業者風ドメインを用意し、標的組織になりすますインフラを使用していた。 Showboatはモジュール式のフレームワークで、侵害後の永続化、情報収集、ファイル転送、プロセス隠蔽、SOCKS5プロキシ機能を備える。 JFMBackdoorは多機能な諜報用マルウェアで、DLLサイドローディングで読み込まれ、リバースシェル、ファイル操作、画面取得、痕跡削除などが可能。 | 中 | `source--daily-350d930382dd3ed9f923` |
 | GhostNet | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | Calypso | 情報なし | T1090 Proxy, T1083 File and Directory Discovery, T1574.001 DLL | 情報なし | 情報通信 | 被害事例: 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | 中 |
+| GhostNet | Calypso | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 GhostNet
 

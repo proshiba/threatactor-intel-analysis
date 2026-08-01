@@ -3,7 +3,7 @@
 - プロファイルID: `actor--prince-of-persia`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:55Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -111,6 +111,10 @@ The repository mapping workbook places this actor in the Iran worksheet.
 ## 攻撃活動の履歴
 
 活動履歴なし
+
+### 活動別ダイヤモンドモデル
+
+活動別ダイヤモンドモデルなし
 
 
 

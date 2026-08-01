@@ -3,7 +3,7 @@
 - プロファイルID: `actor--storm-1811`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -114,6 +114,12 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | ransomware-extortion | 不明 | 不明 | 2024-05-16 | target--mitre-group--sector--6ace32369b881a0c4d24 | malware--black-basta | ttp--activity-rule--d7c3d4655179616e68af | victim--activity-rule--4510836a063ad9eed051 | Black Bastaランサムウェアを使う脅威アクター(Storm-1811)がWindows Quick Assistを悪用 攻撃者はソーシャルエンジニアリングで被害者のネットワークを侵入 大量のスパムメールを送信後、Microsoftサポートを装って電話をかけ、ソーシャルエンジニアリングでアクセス許可を騙し取る マルウェアや悪意のあるバッチファイルをダウンロード MicrosoftはQuick Assistの使用を見直すよう呼びかけ | 中 | `source--daily-1ba1d9f38d8366b3c0a3` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | Storm-1811 | Black Basta | T1059.003 Windows Command Shell | 情報なし | 製造・産業 | 被害事例: Windows Quick Assistを悪用したBlack Bastaランサムウェア攻撃 | 中 |
 
 
 

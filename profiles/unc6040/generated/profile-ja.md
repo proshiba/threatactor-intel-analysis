@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc6040`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -108,6 +108,15 @@ Aliasなし
 | Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | ransomware-extortion | 不明 | 不明 | 2025-06-05 |  |  |  | victim--activity-rule--1fa6e836484db0ee9a8a | GoogleのThreat Intelligence Group（GTIG）は、UNC6040と追跡される脅威グループが、SalesforceのData Loaderアプリケーションを悪用したソーシャルエンジニアリング攻撃を展開していると報告。 攻撃者は、ITサポートを装って従業員に電話をかけ、改ざんされたData LoaderアプリケーションをSalesforce環境に接続させるよう誘導。 この手法により、攻撃者は機密情報へのアクセスを獲得し、他のクラウドサービスや内部ネットワークへの侵入も可能となる。 約20の組織が影響を受け、一部ではデータの窃取が成功している。 攻撃者は、被害者に恐喝を行うが、ShinyHuntersとの連携を主張し圧力を高める事例も観測されている。 | 中 | `source--daily-80e44f9cbc707f36952a` |
 | FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | ransomware-extortion | 不明 | 不明 | 2025-09-15 |  |  |  | victim--activity-rule--8c7205640a5b006f025c | FBIはUNC6040/UNC6395がSalesforce環境を侵害しデータ窃取・恐喝を行うとしてFLASHを公開、IOCの提供で防御強化を促した。 UNC6040は2024年末以降、偽IT支援やvishingで従業員を欺き、悪性Salesforce Data Loader OAuthアプリ（My Ticket Portal等）を接続させた。 接続後にAccounts/Contactsなどを大量流出させ、ShinyHuntersが恐喝に悪用。GoogleやAdidasなどの大手にも影響が及んだとされる。 UNC6395はSalesloft DriftのOAuth/リフレッシュトークンを悪用（8/8〜18頃）し、Salesforceのサポートケース情報を狙って侵害した。 流出データからAWS鍵やパスワード、Snowflakeトークン等を抽出し横展開。Salesloftはトークン失効と再認証を実施、被害は多数に及んだ。 | 高 | `source--daily-d18643e84905959f1988` |
 | ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | phishing-campaign | 不明 | 不明 | 2025-07-31 |  |  |  | victim--activity-rule--0afbad5604962472d1de | ShinyHuntersが音声フィッシングでSalesforce環境に不正アプリを接続 Qantas・Allianz Life・LVMHなど複数社の顧客データが6–7月に流出 従業員に接続コード入力を促しData Loader OAuthを乗っ取り Okta偽装サイトで資格情報とMFAトークン窃取も併用 現時点で公開漏洩なし、攻撃者は私的に身代金を要求中 | 中 | `source--daily-636d2791761dd2b53914` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | UNC6040 | 情報なし | 情報なし | 情報なし | 金融 | Salesforce攻撃後にFarmers Insurance | 中 |
+| Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Google、Salesforceアカウントを標的としたデータ恐喝攻撃を警告 | 中 |
+| FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | 高 |
+| ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | UNC6040 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: ShinyHuntersがSalesforceデータ窃取攻撃を主導、Qantas・Allianz Life・LVMHが被害 | 中 |
 
 
 

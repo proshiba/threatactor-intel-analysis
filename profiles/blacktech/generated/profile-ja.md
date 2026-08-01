@@ -3,7 +3,7 @@
 - プロファイルID: `actor--blacktech`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:54Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -124,6 +124,16 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 | PLEAD | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Shrouded Crossbow | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Waterbear | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | BlackTech | Waterbear | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | BlackTech | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 高 |
+| PLEAD | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Shrouded Crossbow | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Waterbear | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 PLEAD; Shrouded Crossbow; Waterbear
 

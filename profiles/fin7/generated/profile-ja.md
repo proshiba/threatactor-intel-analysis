@@ -3,7 +3,7 @@
 - プロファイルID: `actor--fin7`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:54Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -148,6 +148,17 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 研究者がFIN7サイバー犯罪グループに関連する新たなインフラを発見 | infrastructure-operation | 不明 | 不明 | 2024-08-20 |  |  |  |  | FIN7サイバー犯罪グループに関連する新たなインフラが発見された。 発見されたインフラはロシアやエストニアのサービスプロバイダーから提供されていた。 Stark Industriesの再販業者からのインフラ購入が推測されている。 Starkは、このインフラがFIN7によるものであるとSilent Pushが発見した後にテイクダウンした。 FIN7は金銭目的のサイバー犯罪グループ。 | 高 | `source--daily-69aca35bec8446690e17` |
 | FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | ransomware-extortion | 不明 | 不明 | 2025-03-08 |  | malware--revil | ttp--activity-rule--7d77bae4a556494c0709 | victim--activity-rule--948a0bf7f29632afb7d4 | 脅威ハンターたちは、Ragnar Loaderと呼ばれる「洗練された進化するマルウェアツールキット」が、Ragnar Locker（別名Monstrous Mantis）、FIN7、FIN8、Ruthless Mantis（元REvil）などのサイバー犯罪およびランサムウェアグループによって使用されていることを明らかにした。 Ragnar Loaderは、侵害されたシステムへの持続的なアクセスを維持し、攻撃者が長期間にわたってネットワーク内に滞在するのを支援する重要な役割を果たしている。 このマルウェアは、PowerShellベースのペイロードを使用し、RC4やBase64などの強力な暗号化とエンコード手法を組み込み、プロセスインジェクション戦略を活用して、検出を回避し、侵害されたシステム上でのステルスな制御を維持している。 Ragnar Loaderは、リバースシェル、ローカル特権昇格、リモートデスクトップアクセスを容易にする複数のコンポーネントを含むアーカイブファイルパッケージとしてアフィリエイトに提供されている。 このマルウェアは、DLLプラグインやシェルコードを実行し、任意のファイルの内容を読み取り、持ち出す能力を持ち、ネットワーク内での横方向の移動を可能にするために、別のPowerShellベースのピボットファイルを使用している。 | 高 | `source--daily-070fa8287bb523515401` |
 | FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に | phishing-campaign | 不明 | 不明 | 2024-04-19 | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--carbanak | ttp--activity-rule--229f465ec300f65d7455, ttp--activity-rule--6a4b857a6fd043a5a7e8 | victim--activity-rule--ffc93c47ccaf2f55aaed | FIN7がアメリカの大手自動車メーカーのITスタッフを標的にした 攻撃は権限の大きい従業員を標的にし、スピアフィッシングメールでAnunakバックドアを配布 電子メール内には、Advanced IP Scannerになりすました悪意のあるURLがあり、アクセスすると正規のインストーラを装ったWsTaskLoad.exeのインストールが求められる。 攻撃は最初に感染したホストにとどまり、ネットワーク内の別システムへ感染は拡大しなかった BlackBerryによる分析でFIN7の特有の「PowerTrash」難読化ツールを利用したPowerShellスクリプトが使用されていたことが判明 | 高 | `source--daily-be6e9936378029a65c65` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| FIN7ハッカーグループ、悪意あるGoogle広告を使ってNetSupport RATを配布 | FIN7 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| FIN7ハッカー、ディープフェイクヌード生成サイトを使いマルウェアを拡散 | FIN7 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | FIN7 | 情報なし | T1560.001 Archive via Utility, T1027 Obfuscated Files or Information, T1113 Screen Capture, T1059.006 Python | 情報なし | 情報なし | 被害事例: FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | 高 |
+| 研究者がFIN7サイバー犯罪グループに関連する新たなインフラを発見 | FIN7 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | FIN7 | REvil | T1055 Process Injection | 情報なし | 情報なし | 被害事例: FIN7、FIN8などがRagnar Loaderを使用して持続的アクセスとランサムウェア攻撃を実行 | 高 |
+| FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に | FIN7 | Carbanak | T1059.001 PowerShell, T1027 Obfuscated Files or Information | 情報なし | 米国 | 被害事例: FIN7がアメリカの自動車メーカーのITスタッフをフィッシング攻撃で標的に | 高 |
 
 
 

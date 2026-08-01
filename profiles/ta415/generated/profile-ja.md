@@ -3,7 +3,7 @@
 - プロファイルID: `actor--ta415`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -107,6 +107,12 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | phishing-campaign | 不明 | 不明 | 2025-09-18 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--82b731147199c28add83 | victim--activity-rule--73a796206a0da6325312 | 中国関与とされるTA415が、米政府・シンクタンク・大学の経済政策専門家を狙い、米中テーマで誘導して標的型攻撃を展開。 下院対中特別委員会委員長やU.S.-China Business Councilを装い、送信元にuschina@zohomail[.]comを用いたフィッシングを実施。 送付アーカイブのLNKがバッチを起動し、難読化Pythonローダー「WhirlCoil」を実行、PDFを囮に2時間毎の常駐タスクを設定。 ローダーはVS Code Remote Tunnelsで持続的アクセスを確立し、収集情報をrequestrepo[.]comへHTTP POST（Base64）で送信。 活動は2025年7～8月に観測。APT41／Brass Typhoonとの重複が指摘され、米中通商交渉下での諜報収集が目的と分析。 | 高 | `source--daily-5771658f42dfbb4596d9` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | TA415 | 情報なし | T1027 Obfuscated Files or Information | 情報なし | 政府・行政, 教育・研究 | 被害事例: 中国系TA415、VS Code Remote Tunnelsを悪用し米経済政策専門家をスパイ | 高 |
 
 
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--storm-2077`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -105,6 +105,12 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | infrastructure-operation | 2024-06 | 2025-07 | 2025-09-25 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--43fe508edc0a2feb7189 | Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。中国国家支援と評価。 2024年6月〜2025年7月にエッジデバイスを狙い侵入、Go製PanteganaやCobalt Strike、Spark RATを用いたと報告。 既知脆弱性を武器化しCheck Point/Cisco/Citrix/F5/Fortinet/Ivanti/PA/SonicWall製品から初期侵入。 ExpressVPNやWarp VPNでインフラを管理、LESLIELOADER変種でBeacon/RAT起動。政府・防衛・法律分野に拡大。 中米・米国・台湾・韓国などで活動。中国訪問前の南米政府のOWA狙いなど地政学的意図が示唆。 | 中 | `source--daily-86f6aba61d69ac9dcac7` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | Storm-2077 | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | 中 |
 
 
 

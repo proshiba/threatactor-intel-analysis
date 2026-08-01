@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc5221`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -110,6 +110,15 @@ Aliasなし
 | Ivanti、3月中旬以降悪用されたConnect Secureのゼロデイ脆弱性を修正 | cyber-espionage | 不明 | 不明 | 2025-04-04 |  |  | ttp--activity-rule--d804599bbb259da95aad |  | IvantiはConnect Secureのリモートコード実行（RCE）脆弱性CVE-2025-22457を修正 この脆弱性はスタックベースのバッファオーバーフローに起因 Pulse Connect Secure 9.1x、Ivanti Connect Secure 22.7R2.5以前、Policy Secure、Neurons for ZTAゲートウェイに影響 2月11日にリリースされたバージョン22.7R2.6で修正済み 中国関連のサイバースパイグループUNC5221が3月中旬以降、この脆弱性を悪用してTRAILBLAZE（インメモリドロッパー）とBRUSHFIRE（パッシブバックドア）などのマルウェアを展開 | 中 | `source--daily-91b63e035fe4123d4de8` |
 | Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | cyber-espionage | 不明 | 不明 | 2025-09-25 | target--activity-rule--country--6604ad21c713b8dfd8c7 |  |  | victim--activity-rule--f34bbd1142d16c42d677 | Googleは、技術・法律・SaaS・BPO分野の米組織を主に標的とした、UNC5221によるBrickstormを使った長期スパイ活動を確認し、継続的なデータ窃取を報告。 BrickstormはGo製バックドアで、Webサーバ/ファイル操作/ドロッパ/SOCKS中継/シェル実行など多機能に振る舞う。 平均潜伏は393日。EDR非対応のvCenter/ESXi等に常駐し、CloudflareやHeroku風トラフィックでC2通信を偽装。 初期侵入はエッジデバイスのゼロデイ悪用が濃厚。vCenterに「Bricksteal」を導入し資格情報収集、VM複製やSSH有効化で横展開。 目的はEntra ID経由のメール流出。UNC5221に紐付けられ、Mandiantが検出スクリプト公開も限界（検出保証なし等）を明記。 | 中 | `source--daily-851d3853332e52ad741a` |
 | Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用 | intrusion | 2025-05-15 | 2025-05-15 | 2025-05-23 |  |  |  | victim--activity-rule--2777d9aa01e356b0a630 | 中国系ハッカーが、Ivanti Endpoint Manager Mobile（EPMM）のリモートコード実行脆弱性（CVE-2025-4428）を悪用。 この脆弱性は、特別に細工されたAPIリクエストにより、バージョン12.5.0.0以前のEPMMでコード実行が可能。 Ivantiは、認証バイパスの脆弱性（CVE-2025-4427）とともに、2025年5月13日にこれらの脆弱性を修正。 EclecticIQの研究者は、2025年5月15日以降、CVE-2025-4428が広範に悪用されていることを確認。 攻撃は、Ivanti製品のゼロデイ脆弱性を専門とするUNC5221と呼ばれるグループによるものとされる。 | 中 | `source--daily-9c44f6340b9488e0ae9a` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| CISA、RESURGEマルウェアがIvantiデバイスで休眠する可能性を警告 | UNC5221 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Ivanti、3月中旬以降悪用されたConnect Secureのゼロデイ脆弱性を修正 | UNC5221 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 情報なし | 中 |
+| Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | UNC5221 | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: Google：Brickstormマルウェアが1年以上にわたり米国組織のデータを窃取 | 中 |
+| Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用 | UNC5221 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Ivanti EPMMの脆弱性、政府機関への侵入に中国系ハッカーが悪用 | 中 |
 
 
 

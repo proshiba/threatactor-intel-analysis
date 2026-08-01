@@ -3,7 +3,7 @@
 - プロファイルID: `actor--aquatic-panda`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -115,6 +115,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | cyber-espionage | 2022-01 | 2022-10 | 2025-03-22 | target--activity-rule--country--0c17dd6f4a5e07d5f7d6, target--activity-rule--country--2113be5c12a85bcb7b3b, target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--mitre-group--sector--b35d0af2e7c9f2e2e6ec | malware--shadowpad |  | victim--activity-rule--157e8e01ba0178ccb52b | 中国のAPTグループ「Aquatic Panda」は、2022年1月から10月にかけて、7つの組織を標的としたスパイ活動を行った。 標的には、台湾、ハンガリー、トルコ、タイ、フランス、米国の政府、カトリック慈善団体、NGO、シンクタンクが含まれていた。 攻撃には、ShadowPad、SodaMaster、Spyderなどのマルウェアが使用された。 Aquatic Pandaは、少なくとも2019年から活動している中国のサイバースパイ集団で、Winntiグループの一部とされる。 2022年の攻撃では、ScatterBee、ShadowPad、Spyder、SodaMaster、RPipeCommanderの5つのマルウェアファミリーが使用された。 この活動はESETによって「Operation FishMedley」とコードネームが付けられた。 | 高 | `source--daily-a9818c561227639f76fb` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | Aquatic Panda | ShadowPad | 情報なし | 情報なし | 台湾, フランス, 米国, 中国, 非営利・市民社会, 教育・研究, 政府・行政 | 被害事例: 中国関連のAPT「Aquatic Panda」、10ヶ月にわたるスパイ活動で7つの国際組織を標的に | 高 |
 
 
 

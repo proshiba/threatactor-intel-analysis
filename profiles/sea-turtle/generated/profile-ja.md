@@ -3,7 +3,7 @@
 - プロファイルID: `actor--sea-turtle`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:55Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -124,6 +124,13 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | phishing-campaign | 不明 | 不明 | 2025-05-13 |  |  |  |  | トルコ支援のサイバースパイグループMarbled Dustが、Output Messengerのゼロデイ脆弱性（CVE-2025-27920）を悪用。 この脆弱性はディレクトリトラバーサルにより、認証済み攻撃者が機密ファイルにアクセス可能。 攻撃者は未更新のOutput Messenger Server Managerを標的にマルウェアを展開。 感染後、通信の傍受、ユーザーのなりすまし、内部システムへのアクセスが可能となる。 脆弱性は2024年12月に修正済みだが、未更新のシステムが依然としてリスクに晒されている。 | 中 | `source--daily-cca0fa46e5e1b4b6bc18` |
 | Sea Turtle | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | Sea Turtle | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Sea Turtle | Sea Turtle | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Sea Turtle
 

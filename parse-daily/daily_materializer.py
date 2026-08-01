@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,9 @@ from daily_common import (
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT / "actor_profile" / "scripts"))
+from activity_diamond import build_activity_diamond  # noqa: E402
+
 FILE_NAME_SEARCH = re.compile(
     r"([^/\\\s]+\.(?:exe|dll|sys|ps1|bat|cmd|js|jse|vbs|hta|lnk|"
     r"docm?|xlsm?|pptm?|pdf|zip|rar|7z|apk|dmg|pkg|sh|py))",
@@ -230,7 +234,7 @@ def activity_entry(
         }
         | set(_mentioned_profile_refs(profile, "malware", text))
     )
-    return {
+    modeled = {
         "activity_id": activity_id_for(record),
         "name": record["activity"]["title"],
         "activity_type": activity_type_for(record),
@@ -259,6 +263,20 @@ def activity_entry(
             f" レビュー: {record.get('review_notes') or '記載なし'}"
         ),
     }
+    diamond_profile = profile or {
+        "profile_id": f"actor--{record['actor']['slug']}",
+        "name": record["actor"].get("canonical_name") or record["actor"]["slug"],
+        "actor": {
+            "canonical_name": record["actor"].get("canonical_name")
+            or record["actor"]["slug"]
+        },
+        "attribution": {},
+        "victim_cases": [],
+        "targets": {},
+        "ttps": [],
+    }
+    modeled["diamond_model"] = build_activity_diamond(diamond_profile, modeled)
+    return modeled
 
 
 def capability_decision(record: dict[str, Any], name: str) -> dict[str, str]:

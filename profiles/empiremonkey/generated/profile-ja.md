@@ -3,7 +3,7 @@
 - プロファイルID: `actor--empiremonkey`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -107,6 +107,12 @@ EmpireMonkeyの標準化プロファイル。リポジトリ内の専用資料1�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Bank of Valletta | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Bank of Valletta | EmpireMonkey | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Bank of Valletta
 

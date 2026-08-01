@@ -3,7 +3,7 @@
 - プロファイルID: `actor--tag-100`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -106,6 +106,13 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | infrastructure-operation | 2024-06 | 2025-07 | 2025-09-25 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--75984dc07e4edbef70d3 | Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。中国国家支援と評価。 2024年6月〜2025年7月にエッジデバイスを狙い侵入、Go製PanteganaやCobalt Strike、Spark RATを用いたと報告。 既知脆弱性を武器化しCheck Point/Cisco/Citrix/F5/Fortinet/Ivanti/PA/SonicWall製品から初期侵入。 ExpressVPNやWarp VPNでインフラを管理、LESLIELOADER変種でBeacon/RAT起動。政府・防衛・法律分野に拡大。 中米・米国・台湾・韓国などで活動。中国訪問前の南米政府のOWA狙いなど地政学的意図が示唆。 | 中 | `source--daily-86f6aba61d69ac9dcac7` |
 | TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | cyber-espionage | 不明 | 不明 | 2024-07-19 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--9e892f3b23fa5df3a882 | TAG-100はオープンソースツールを用いて世界中の政府および民間組織を標的にしたサイバースパイ活動を展開。 攻撃はCitrix、F5、Zimbra、Microsoft Exchangeなどの既知の脆弱性を悪用。 2024-4-16から、Palo Alto Networks GlobalProtectの脆弱性（CVE-2024-3400）を悪用した攻撃を広範に行っている。これはエクスプロイトが公開されてすぐ開始された。 攻撃の一環としてPantegana、Spark RAT、Cobalt Strike Beaconを展開。 攻撃対象はアフリカ、アジア、北米、南米、オセアニアなどの広範な業界を攻撃。対象には日本も含まれる。 | 高 | `source--daily-5867c0ebb17c5df135a7` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | TAG-100 | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: 中国系ハッカー「RedNovember」がPanteganaとCobalt Strikeで世界の政府を標的に | 中 |
+| TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | TAG-100 | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: TAG-100：新たな脅威アクターがオープンソースツールを使用して広範な攻撃を実施 | 高 |
 
 
 

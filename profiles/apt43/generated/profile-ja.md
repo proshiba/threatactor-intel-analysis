@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt43`
 - 状態: review
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -141,6 +141,15 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | phishing-campaign | 不明 | 不明 | 2024-05-04 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--country--f35cd09db0a72555b38a, target--activity-rule--sector--5403aec9c83d6a925f61, target--activity-rule--sector--e7608f51421ca8b1e297 |  |  | victim--activity-rule--45826a90a8cda3e73668 | NSAとFBIは、北朝鮮APT43が弱いDMARCポリシーが設定されているドメインを悪用していると警告。 弱いDMARCポリシーが設定されているドメインから偽のメールを送信することで、攻撃者は偽のメールを信頼できるソースから送信されたように見せかける。 情報収集を目的としたスピアフィッシングキャンペーンが実施されている。 攻撃は日本、韓国、米国、その他の国々のシンクタンクや研究センター、報道機関を標的としている。 「v=DMARC1; p=reject;」または「v=DMARC1; p=quarantine;」などのDMARCポリシーで、なりすましメールの送信に悪用されるのを防止することが推奨されている。 | 中 | `source--daily-251ff3261ef519dfe8d5` |
 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 |  |  | ttp--activity-rule--376a281097c3ea027f31 |  | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
 | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | malware-campaign | 不明 | 不明 | 2024-08-06 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--8a9e510cae6ff4929709 | victim--activity-rule--09400b273fb65a333cc4 | 北朝鮮のハッカーグループがVPNのアップデートの脆弱性を悪用し、マルウェアをインストール。 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 VPNソフトウェアの通信プロトコルの脆弱性を悪用し、更新プログラムを置き換えてトロイの木馬化。遠隔操作用のDoraRATをインストール。 攻撃は産業機器や設計文書の盗難を目的としている。 NCSCが警告を発表し、セキュリティ対策を推奨。 | 中 | `source--daily-444c87a0051642065f55` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | APT43 | 情報なし | T1566.002 Spearphishing Link | 情報なし | 米国 | 被害事例: FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | 中 |
+| 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | APT43 | 情報なし | 情報なし | 情報なし | 米国, 韓国, 日本, メディア・報道, 教育・研究 | 被害事例: 北朝鮮のハッカー、弱いDMARCメールポリシーを悪用 | 中 |
+| 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | APT43 | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | 情報なし | 情報なし | 中 |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | APT43 | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 韓国, 製造・産業 | 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 中 |
 
 2025年1月、GTIGはAPT43関係者が複数の公開LLMツールへアクセスしていた証拠を報告した。ただし目的は不明であり、特定の攻撃工程での利用を示す情報ではない。
 

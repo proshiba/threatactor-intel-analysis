@@ -3,7 +3,7 @@
 - プロファイルID: `actor--blackbyte`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -133,6 +133,13 @@ The repository mapping workbook places this actor in the Russia worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | BazarCall Campaign | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | BlackByteが新たな脆弱性を活用し攻撃を継続 | reported-activity | 不明 | 不明 | 2024-08-29 |  |  |  |  | BlackByteが新たな脆弱性を活用し攻撃を継続 | 高 | `source--daily-41c3c863b2f45c7b4624` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| BazarCall Campaign | BlackByte | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| BlackByteが新たな脆弱性を活用し攻撃を継続 | BlackByte | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 
 BazarCall Campaign
 

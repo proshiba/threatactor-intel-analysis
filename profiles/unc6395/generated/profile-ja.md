@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc6395`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -109,6 +109,16 @@ Aliasなし
 | FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | ransomware-extortion | 不明 | 不明 | 2025-09-15 |  |  |  | victim--activity-rule--ac83caa59af2fa4c9b18 | FBIはUNC6040/UNC6395がSalesforce環境を侵害しデータ窃取・恐喝を行うとしてFLASHを公開、IOCの提供で防御強化を促した。 UNC6040は2024年末以降、偽IT支援やvishingで従業員を欺き、悪性Salesforce Data Loader OAuthアプリ（My Ticket Portal等）を接続させた。 接続後にAccounts/Contactsなどを大量流出させ、ShinyHuntersが恐喝に悪用。GoogleやAdidasなどの大手にも影響が及んだとされる。 UNC6395はSalesloft DriftのOAuth/リフレッシュトークンを悪用（8/8〜18頃）し、Salesforceのサポートケース情報を狙って侵害した。 流出データからAWS鍵やパスワード、Snowflakeトークン等を抽出し横展開。Salesloftはトークン失効と再認証を実施、被害は多数に及んだ。 | 高 | `source--daily-d18643e84905959f1988` |
 | Salesloft：3月のGitHubリポジトリ侵害がSalesforceデータ窃取攻撃に発展 | intrusion | 不明 | 不明 | 2025-09-09 |  |  |  | victim--activity-rule--1a80c726c6a7162426fd | Salesloftは3月にGitHubを侵害され、8月のSalesforceデータ窃取に発展と説明。 DriftのOAuthトークンが窃取され、顧客環境横断のアクセスに悪用。 Salesforceのサポートケースからシークレット情報を収集、AWS鍵やSnowflakeアクセストークン等。 Mandiantは3–6月にリポジトリダウンロードや不正ワークフロー作成を確認。 攻撃はUNC6395に帰属、ShinyHuntersとScattered Spider関与の主張も。 | 中 | `source--daily-5ccc06758fe72e4fc05e` |
 | Salesloftが侵害され、Salesforceデータ窃取攻撃用のOAuthトークンが盗まれる | infrastructure-operation | 不明 | 不明 | 2025-08-27 |  |  | ttp--activity-rule--b489d625786d2bc516b3 | victim--activity-rule--0c6a735d410dbf488002 | SalesloftのDrift-Salesforce連携のOAuth/リフレッシュトークンが盗まれ、顧客環境で窃取に悪用。 攻撃は2025/8/8〜8/18に実施。AWS鍵・パスワード・Snowflakeトークン等の取得を狙う。 Salesloftは全トークンを失効させ再認証を要求。影響は同連携を使う顧客に限定と説明。 GTIGはUNC6395(ShinyHunters)として追跡。SOQLで秘密抽出、インフラを隠すためにTorやAWS・DigitalOceanといったホスティングプロバイダーも利用。 リクエストにはpythonまたはカスタムツール用のUser-Agentが利用されていた。 python-requests/2.32.4、Python/3.11 aiohttp/3.12.15 | 中 | `source--daily-1280007d047388eb38ef` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Google、Salesloft侵害が一部Workspaceアカウントに影響と警告 | UNC6395 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Google、Salesloft侵害が一部Workspaceアカウントに影響と警告 | 中 |
+| パロアルトネットワークス、データ侵害で顧客情報とサポートケース情報が流出 | UNC6395 | 情報なし | 情報なし | 情報なし | 情報なし | パロアルトネットワークス | 中 |
+| FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | UNC6395 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: FBIがUNC6040／UNC6395によるSalesforceデータ窃取を警告 | 高 |
+| Salesloft：3月のGitHubリポジトリ侵害がSalesforceデータ窃取攻撃に発展 | UNC6395 | 情報なし | 情報なし | 情報なし | 情報なし | Salesloft：3月 | 中 |
+| Salesloftが侵害され、Salesforceデータ窃取攻撃用のOAuthトークンが盗まれる | UNC6395 | 情報なし | T1059.006 Python | 情報なし | 情報なし | Salesloft | 中 |
 
 
 

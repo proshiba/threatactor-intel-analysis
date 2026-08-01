@@ -309,7 +309,7 @@ class ActivityIntelligenceTests(unittest.TestCase):
             "basis": "source-publication",
         }
         profile = {
-            "schema_version": "1.1.0",
+            "schema_version": "1.2.0",
             "activities": [activity],
             "ttps": [],
             "victim_cases": [],

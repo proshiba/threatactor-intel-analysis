@@ -23,6 +23,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from common import load_json, stable_digest, unknown_time, utc_now, write_json_atomic
+from activity_diamond import materialize_profile_diamonds
 from enrich_activity_intelligence import (
     actor_attribution_context,
     compile_rules,
@@ -979,6 +980,7 @@ def process_profile(
     profile["targets"]["regions"].sort(key=lambda item: item["name"])
     append_audit_notes(profile)
     update_targeting_text(profile)
+    materialize_profile_diamonds(profile)
     after_countries = [
         item.get("name") for item in profile["targets"].get("countries", [])
     ]

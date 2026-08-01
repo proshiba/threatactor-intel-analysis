@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc1069`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -107,6 +107,14 @@ Aliasなし
 | 北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害 | infrastructure-operation | 2026-03-31 | 2026-03-31 | 2026-04-02 |  |  | ttp--activity-rule--b11b64c91d944331e1e1 | victim--activity-rule--61630d27ff1dbbc277ee | Google Threat Intelligence Groupは2026年3月31日、axiosの保守者アカウント侵害により、悪性依存関係`plain-crypto-js`が1.14.1と0.30.4へ混入したサプライチェーン攻撃を確認した。 インストール時に`postinstall`で`setup.js`が密かに実行され、Windows、macOS、Linux向けにWAVESHAPER.V2バックドアを展開する仕組みだと説明している。 攻撃では保守者メールが攻撃者管理アカウントへ変更され、難読化ドロッパーはC2と通信しつつ、自削除や`package.json`復元で痕跡隠しも試みる。 GTIGはWAVESHAPER.V2やインフラの一致から、2018年以降活動する金銭目的の北朝鮮系脅威アクターUNC1069による活動と評価している。 防御策として、危険版への更新回避、安全版への固定、`plain-crypto-js`の監査、影響ホスト隔離、資格情報ローテーション、C2遮断を勧告している。 | 中 | `source--daily-4105305f46ca812b4f99` |
 | OpenAI、Axios攻撃がコード署名ワークフローに及んだためmacOS証明書をローテーション | intrusion | 不明 | 不明 | 2026-04-14 |  |  |  | victim--activity-rule--bb1ffa5785bf7909fd25 | OpenAI は、2026年3月31日に GitHub Actions ワークフローが改ざん版 Axios 1.14.1 を実行したことを受け、macOS 用コード署名証明書のローテーションを開始した。 当該ワークフローは ChatGPT Desktop、Codex、Codex CLI、Atlas などの macOS アプリ署名用証明書へアクセスできたため、同社は証明書流出の証拠がなくても予防的に失効対応を進めている。 OpenAI は外部調査会社と調査を行い、証明書露出や悪性ソフト署名への悪用、ユーザーデータ侵害、知的財産侵害、ソフト改ざんの証拠は見つからなかったとしている。 ただし旧証明書が攻撃者に渡っていれば、OpenAI 正規署名に見える macOS アプリを作られる恐れがあるため、Apple と連携して旧証明書での今後の notarization を防ぐとしている。 影響は macOS アプリに限定され、Web、iOS、Android、Windows、Linux、ならびにユーザーアカウント、パスワード、API キーには影響せず、旧版は2026年5月8日以降に動作停止し得る。 | 中 | `source--daily-cad9400150d21f1c1004` |
 | 北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 | infrastructure-operation | 不明 | 不明 | 2026-02-11 | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--dfc80b76cad93a318adc |  | ttp--activity-rule--06795e7a0f3ad5e02bee | victim--activity-rule--aeea41b300f37025e36e | 北朝鮮系ハッカーが、AI生成動画とClickFix手口で暗号資産業界を狙い、macOS/Windowsへマルウェアを配布。 被害者はTelegramで暗号資産企業幹部の乗っ取られたアカウントから接触され、Calendly経由で偽Zoom会議へ誘導。 深層偽造（ディープフェイク）映像と「音声不具合」詐称で、Webページ上のコマンド実行を促し感染チェーンを開始。 AppleScript実行の痕跡後にMach-Oを展開し、WAVESHAPER等7種のmacOSマルウェアでC2通信や追加ペイロード実行を実施。 DEEPBREATHはTCC回避でKeychain等を窃取し、目的は暗号資産窃取と被害者情報を使った将来の詐欺/誘導の強化とされる。 | 中 | `source--daily-16dc3c27175f6cbffe47` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害 | UNC1069 | 情報なし | T1027 Obfuscated Files or Information | 情報なし | 情報なし | 被害事例: 北朝鮮系脅威アクターが、サプライチェーン攻撃で広く使われるAxios NPMパッケージを侵害 | 中 |
+| OpenAI、Axios攻撃がコード署名ワークフローに及んだためmacOS証明書をローテーション | UNC1069 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: OpenAI、Axios攻撃がコード署名ワークフローに及んだためmacOS証明書をローテーション | 中 |
+| 北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 | UNC1069 | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | 暗号資産・Web3, 製造・産業 | 被害事例: 北朝鮮ハッカー、新しいmacOSマルウェアで暗号資産窃取攻撃 | 中 |
 
 
 

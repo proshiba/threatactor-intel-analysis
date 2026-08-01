@@ -3,7 +3,7 @@
 - プロファイルID: `actor--muddywater`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:54Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -155,6 +155,20 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | イラン系ハッカー、大手韓国電子メーカーを標的に | cyber-espionage | 2026-02 | 2026-02 | 2026-05-15 | target--activity-rule--country--6cb716c577f256f44a3e, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--e7608f51421ca8b1e297, target--sector--government |  | ttp--activity-rule--9ec6997a03bc56042379, ttp--activity-rule--f5ac9f5f4870df904875, ttp--activity-rule--fb868c07a0a02c9cf751 | victim--activity-rule--1634a387c73e6503f854 | イラン関連のMuddyWaterは、複数国・複数業種の少なくとも9組織を狙う広範なサイバースパイ活動を展開した。 被害には韓国の大手電子メーカー、政府機関、中東の国際空港、アジアの産業メーカー、教育機関が含まれる。 Symantecによると、攻撃者は2026年2月に韓国電子メーカーのネットワーク内に約1週間滞在した。 攻撃ではDLLサイドローディング、PowerShell、Node.jsローダー、ChromElevatorなどが使われた。 攻撃者は認証情報窃取、偵察、スクリーンショット取得、永続化、SOCKS5トンネル作成、データ流出を行った。 | 高 | `source--daily-ad0ed26155c84becbe19` |
 | イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | phishing-campaign | 不明 | 不明 | 2024-04-13 | target--activity-rule--country--904728608f27c39df0df |  |  | victim--activity-rule--413bff8e6c421ef97bec | MuddyWaterが新C2ツール「DarkBeatC2」を採用 主にイスラエルの機関を対象に攻撃 攻撃はスピアフィッシングメールから開始 DarkBeatC2を介して追加ペイロードと通信 脅威活動は少なくとも2017年から活動中 | 高 | `source--daily-deef5a66e14d100f87cf` |
 | Operation Quicksand | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| BlackWater | MuddyWater | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | MuddyWater | 情報なし | T1204.004 Malicious Copy and Paste, T1059.001 PowerShell | 情報なし | ロシア | 被害事例: 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | 中 |
+| MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | MuddyWater | 情報なし | T1486 Data Encrypted for Impact | 情報なし | 情報なし | 被害事例: MuddyWaterのDarkBitランサムウェアが解読され、無償データ復旧が可能に | 高 |
+| MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | MuddyWater | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: MuddyWaterハッカー、攻撃でChaosランサムウェアを囮として使用 | 中 |
+| 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | MuddyWater | 情報なし | 情報なし | 情報なし | イスラエル, メディア・報道 | 被害事例: 新しいBugSleepマルウェア、MuddyWater攻撃に展開 | 高 |
+| イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | MuddyWater | 情報なし | T1071.001 Web Protocols | 情報なし | Government | 被害事例: イラン系ハッカーがPhoenixバックドアで100超の政府機関を標的に | 中 |
+| イラン系ハッカー、大手韓国電子メーカーを標的に | MuddyWater | 情報なし | T1574.001 DLL, T1113 Screen Capture, T1059.001 PowerShell | 情報なし | 韓国, 製造・産業, 教育・研究, Government | 被害事例: イラン系ハッカー、大手韓国電子メーカーを標的に | 高 |
+| イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | MuddyWater | 情報なし | 情報なし | 情報なし | イスラエル | 被害事例: イランのMuddyWaterハッカーグループ、新しいC2ツール「DarkBeatC2」を採用 | 高 |
+| Operation Quicksand | MuddyWater | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 BlackWater; Operation Quicksand
 

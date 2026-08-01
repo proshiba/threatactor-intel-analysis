@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt37`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:53Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -168,6 +168,27 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | Golden Time | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | North Korean Human Rights | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Operation Earth Kitsune | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Are you Happy? | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | APT37 | ROKRAT | T1102.003 One-Way Communication | 情報なし | 韓国 | 被害事例: JPEG を武器化する北朝鮮の APT37：多段階攻撃によりmspaint などのプロセスに悪意のコードを挿入 | 高 |
+| Microsoftを装うフィッシングとデッドドロップC2を悪用するAPT37 NarwhalRATの分析 | APT37 | NarwhalRAT | T1059.001 PowerShell, T1059.006 Python | 情報なし | 情報なし | 情報なし | 中 |
+| Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | APT37 | BirdCall, ROKRAT | 情報なし | 情報なし | 北朝鮮 | 被害事例: ScarCruftハッカー、ゲームプラットフォーム経由でAndroidマルウェアBirdCallを配布 | 高 |
+| 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | APT37 | 情報なし | T1059.001 PowerShell | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、新たな「VeilShell」バックドアを使用したステルス攻撃を実施 | 中 |
+| 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | APT37 | 情報なし | 情報なし | 情報なし | 暗号資産・Web3 | 被害事例: 北朝鮮のハッカー、偽の求人面接を通じてmacOS向けにFERRETマルウェアを展開 | 中 |
+| APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | APT37 | 情報なし | 情報なし | 情報なし | 韓国 | 被害事例: APT37がGoogleのFind Hubを悪用、Android端末を遠隔初期化する攻撃 | 高 |
+| APT37のハッカーが新たなマルウェアでエアギャップネットワークに侵入 | APT37 | BLUELIGHT | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| Erebus | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Evil New Year | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Evil New Year 2018 | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| FreeMilk | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Golden Time | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| North Korean Human Rights | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Operation Earth Kitsune | APT37 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human Rights; Evil New Year 2018; Operation Earth Kitsune
 

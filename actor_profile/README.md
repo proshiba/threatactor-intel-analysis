@@ -88,6 +88,9 @@ python3 actor_profile/scripts/apply_alias_overlap_relationships.py
 # 既存のIOC/artifactを使って再レンダリング・再検証のみ
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 
+# Activity、TTP、被害事例、標的の参照から活動別Diamond Modelを再生成
+python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+
 # 全体索引
 python3 actor_profile/scripts/render_collection_index.py \
   profiles/processing-summary.json \
@@ -127,6 +130,7 @@ python3 actor_profile/scripts/crosscheck_all_actors.py
 python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
+python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
 ```
 

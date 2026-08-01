@@ -3,7 +3,7 @@
 - プロファイルID: `actor--redcurl`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -111,6 +111,14 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | RedCurlサイバー犯罪グループがWindows PCAツールを悪用して企業スパイ活動を行う | phishing-campaign | 不明 | 不明 | 2024-03-15 |  |  | ttp--activity-rule--ad60b8f605df3c8bd2b8 |  | RedCurlは正規のMicrosoft WindowsコンポーネントであるPCAを悪用 PCAを使って悪意のあるコマンドを実行し、セキュリティ制約を回避 攻撃チェーンにはフィッシングメールと偽の添付ファイルが含まれる Trend Microが詳細な攻撃手法を分析し、報告 RedCurlは複数国の企業を対象にスパイ活動を行っている | 高 | `source--daily-970254fe18c304ec58c0` |
 | サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | cyber-espionage | 不明 | 不明 | 2024-04-03 |  |  |  |  | サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | 高 | `source--daily-a7ead7d250e5387d2fd8` |
 | RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | ransomware-extortion | 不明 | 不明 | 2025-03-27 |  |  | ttp--activity-rule--3e969aed36a08f427741, ttp--activity-rule--5bf50c6515823fde06e4 | victim--activity-rule--561b836975c65a2b65fd | RedCurlは2018年から企業スパイ活動を行っている脅威アクターで、最近Hyper-V仮想マシンを標的とするランサムウェア「QWCrypt」を使用開始。 攻撃は、履歴書に見せかけた.IMGファイルを含むフィッシングメールから始まり、Windowsが自動的にマウントする。 マウントされたドライブ内のLNKファイルを実行すると、PowerShellスクリプトが起動し、Cobalt Strikeビーコンをダウンロードして攻撃者にリモートアクセスを提供。 攻撃者はネットワーク内を横展開し、最終的にQWCryptランサムウェアを展開してHyper-V仮想マシンを暗号化。 RedCurlは以前はデータ窃取に焦点を当てていたが、今回初めてランサムウェアを使用した。 二重脅迫のための専用リークサイトがないことから、RedCurlがランサムウェアを偽旗として使用しているのか、真の金銭目的の攻撃なのか疑問が提起されている。 | 高 | `source--daily-7ebbf6fb62e219c36773` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| RedCurlサイバー犯罪グループがWindows PCAツールを悪用して企業スパイ活動を行う | RedCurl | 情報なし | T1566.001 Spearphishing Attachment | 情報なし | 情報なし | 情報なし | 高 |
+| サイバー諜報グループ「Earth Kapre（別称：RedCurl）」の手口を解明：トレンドマイクロMDRによる分析と脅威インテリジェンスの活用 | RedCurl | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | RedCurl | 情報なし | T1059.001 PowerShell, T1486 Data Encrypted for Impact | 情報なし | 情報なし | 被害事例: RedCurlサイバースパイ集団、Hyper-Vサーバーを暗号化するランサムウェアを作成 | 高 |
 
 
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt17`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -135,6 +135,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | malware-campaign | 不明 | 不明 | 2024-07-18 | target--activity-rule--country--64be7cf4bac6c92be378, target--sector--government |  | ttp--activity-rule--1da48b1cbdd35538df04 | victim--activity-rule--0b9807c88c5611b99ba0 | APT17がイタリア企業や政府機関を9002 RATマルウェアで攻撃。 攻撃は2024年6月24日と7月2日に行われた。 マルウェアはSkype for Businessの偽インストーラーを通じて配布。 VBSとJavaアプリケーションを使用して9002 RATをシェルコードで実行。 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。 | 高 | `source--daily-b39a4a815a12eb24617a` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | APT17 | 情報なし | T1113 Screen Capture | 情報なし | イタリア, Government | 被害事例: 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | 高 |
 
 
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--scattered-spider`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -146,6 +146,35 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | Scattered Spiderは消えていなかった：研究者が新たな攻撃に“生存”の兆候を確認 | phishing-campaign | 不明 | 不明 | 2025-09-18 | target--mitre-group--sector--39a48843dcf982340819, target--mitre-group--sector--dcc98a8319bd5ee1f33c |  |  | victim--activity-rule--7c7ba3ffc0fd3650e604 | 閉鎖を宣言したはずのScattered Spiderが依然活動中で、金融分野を狙う新たな攻撃の兆候が確認された。 ReliaQuestは米国の銀行(法人名は未公表)への侵入を同グループに関連付け、業界向けのなりすましドメイン増加も観測した。 攻撃は幹部アカウントをソーシャルエンジニアリングで操り、Azure ADのセルフサービスPWリセット(SSPR)で初期アクセスを獲得。 その後CitrixやVPNで横展開し、ESXiの資格情報窃取やVM移動、VeeamとAzure全体管理者権限の悪用で昇格。 SnowflakeやAWS等からの流出試行も示唆され、挙動重視の検知とプロアクティブな防御が重要と研究者は助言。 | 高 | `source--daily-ee4056a54607e02fe6d8` |
 | Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | ransomware-extortion | 不明 | 不明 | 2025-06-11 |  |  |  | victim--activity-rule--fc53273c37fee98260ae | 2024年のSnowflake攻撃で流出したTicketmasterの569GB分の顧客データが、Arkana Securityという恐喝グループによって再販リストに一時掲載。 掲載されたデータは以前に盗まれたもので、新たな侵害ではなく再流通である。 データには“RapeFlake”という窃取ツールの痕跡も含まれていた。 当該販売リストは数日で削除され、現在は閲覧不可となっている。 この攻撃にはShinyHuntersやUNC5537（Scattered Spider）などのAPTグループが関与していた。 Arkanaがこのデータを以前購入したのか、以前データを持っていた脅威アクターで構成されているのか、あるいはShinyHuntersと協力して販売しているのかは不明。 | 中 | `source--daily-50b897d744561404ee8d` |
 | Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表 | intrusion | 不明 | 不明 | 2025-07-03 | target--activity-rule--sector--b8d6639a1884e2bacaa4 |  |  | victim--activity-rule--25ca8e3c2b8da0678e43 | Qantasはコールセンターのサードパーティプラットフォームで異常を検知後、攻撃を封じ込めた。 約600万人の顧客名、メール、電話番号、生年月日、フリークエントフライヤー番号が窃取された。 クレジットカード情報やパスワード、PIN等は侵害されていないとQantasは説明。 同社は豪州サイバーセキュリティセンター等へ通知し、調査を継続中。 Scattered Spiderの航空業界攻撃と類似し、Hawaiian AirlinesやWestJetも被害報告。 | 高 | `source--daily-0a6ab6298790c80e707e` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| C0027 | Scattered Spider | 情報なし | T1087.004 Cloud Account, T1213.002 Sharepoint, T1566.004 Spearphishing Voice, T1572 Protocol Tunneling, T1578.002 Create Cloud Instance, T1098.001 Additional Cloud Credentials, T1190 Exploit Public-Facing Application, T1219.002 Remote Desktop Software, T1598.004 Spearphishing Voice, T1090 Proxy, T1003.006 DCSync, T1087.003 Email Account, T1102 Web Service, T1098.005 Device Registration, T1078.004 Cloud Accounts, T1589.001 Credentials, T1105 Ingress Tool Transfer, T1530 Data from Cloud Storage, T1021.007 Cloud Services, T1598.001 Spearphishing Service, T1098.003 Additional Cloud Roles, T1046 Network Service Discovery, T1588.002 Tool, T1069.003 Cloud Groups, T1047 Windows Management Instrumentation, T1621 Multi-Factor Authentication Request Generation, T1133 External Remote Services, T1684.001 Impersonation | 情報なし | 情報通信 | 被害事例: C0027 | 高 |
+| Marks & Spencerの侵害、Scattered Spiderランサムウェア攻撃に関連 | Scattered Spider | 情報なし | T1486 Data Encrypted for Impact, T1083 File and Directory Discovery | 情報なし | 製造・産業 | 被害事例: Marks & Spencerの侵害、Scattered Spiderランサムウェア攻撃に関連 | 高 |
+| 暑かったのは気温だけではない——2025年夏にサイバー攻撃が急増 | Scattered Spider | 情報なし | 情報なし | 情報なし | 政府・行政, 小売・ホスピタリティ, 医療・ヘルスケア, 金融 | 被害事例: 暑かったのは気温だけではない——2025年夏にサイバー攻撃が急増 | 中 |
+| Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 | Scattered Spider | 情報なし | T1490 Inhibit System Recovery | 情報なし | 米国, 運輸・航空・海運, 小売・ホスピタリティ | 被害事例: Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 | 高 |
+| Aflac、散発するScattered Spiderによる保険会社攻撃の中で侵害を公表 | Scattered Spider | 情報なし | 情報なし | 情報なし | 製造・産業 | Aflac | 高 |
+| 英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施 | Scattered Spider | 情報なし | 情報なし | 情報なし | 英国, 政府・行政, 製造・産業 | 被害事例: 英国政府、サイバー攻撃後のJLRに15億ポンドのローン保証を実施 | 中 |
+| Harrods、英国小売業界を狙ったサイバー攻撃の次なる標的に | Scattered Spider | 情報なし | 情報なし | 情報なし | 英国, 小売・ホスピタリティ | 被害事例: Harrods、英国小売業界を狙ったサイバー攻撃の次なる標的に | 中 |
+| サービスデスクが攻撃の標的に：私たちにできる対策は？ | Scattered Spider | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| DragonForceランサムとScattered Spiderの関係を深掘り | Scattered Spider | 情報なし | 情報なし | 情報なし | 製造・産業 | 被害事例: DragonForceランサムとScattered Spiderの関係を深掘り | 高 |
+| Scattered Spiderのハッカー、航空および輸送企業への標的をシフト | Scattered Spider | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Scattered Spiderのハッカー、航空および輸送企業への標的をシフト | 高 |
+| Scattered Spiderハッカー、クラウドアプリに焦点をシフトしてデータ窃盗を行う | Scattered Spider | 情報なし | 情報なし | 情報なし | 製造・産業 | 被害事例: Scattered Spiderハッカー、クラウドアプリに焦点をシフトしてデータ窃盗を行う | 高 |
+| Google、データ侵害でGoogle広告の見込み顧客情報が露出したと確認 | Scattered Spider | 情報なし | 情報なし | 情報なし | 情報なし | Google | 中 |
+| Scattered Spider、米国小売業界への攻撃を開始 | Scattered Spider | 情報なし | T1486 Data Encrypted for Impact | 情報なし | 米国, 英国, 小売・ホスピタリティ | 被害事例: Scattered Spider、米国小売業界への攻撃を開始 | 高 |
+| カンタス航空、570万人の顧客に影響を及ぼすデータ侵害を確認 | Scattered Spider | 情報なし | 情報なし | 情報なし | 情報なし | カンタス航空 | 中 |
+| Marks & Spencer、サイバー攻撃により4億200万ドルの利益損失の見込み | Scattered Spider | 情報なし | 情報なし | 情報なし | 英国, 農業・食品 | Marks & Spencer | 中 |
+| Scattered Spider攻撃でCo-opが1億700万ドルの損失と発表 | Scattered Spider | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Scattered Spider攻撃でCo-opが1億700万ドルの損失と発表 | 高 |
+| 最近のデータ窃取サイバー攻撃でQantasが身代金要求を受ける | Scattered Spider | 情報なし | 情報なし | 情報なし | 運輸・航空・海運 | 被害事例: 最近のデータ窃取サイバー攻撃でQantasが身代金要求を受ける | 中 |
+| Microsoft、Scattered SpiderハッカーをQilinランサムウェア攻撃にリンク | Scattered Spider | 情報なし | 情報なし | 情報なし | 医療・ヘルスケア | 被害事例: Microsoft、Scattered SpiderハッカーをQilinランサムウェア攻撃にリンク | 高 |
+| 英国NCSC：英国小売業者へのサイバー攻撃は警鐘となる | Scattered Spider | 情報なし | 情報なし | 情報なし | 英国, 小売・ホスピタリティ | 被害事例: 英国NCSC：英国小売業者へのサイバー攻撃は警鐘となる | 中 |
+| Scattered Spider、ヘルプデスク詐欺を用いた攻撃手法とその対策 | Scattered Spider | 情報なし | 情報なし | 情報なし | 運輸・航空・海運, 製造・産業 | 被害事例: Scattered Spider、ヘルプデスク詐欺を用いた攻撃手法とその対策 | 高 |
+| 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | Scattered Spider | 情報なし | 情報なし | 情報なし | 英国 | 被害事例: 英国、主要小売業へのサイバー攻撃を受けてセキュリティ対策を共有 | 中 |
+| Scattered Spiderは消えていなかった：研究者が新たな攻撃に“生存”の兆候を確認 | Scattered Spider | 情報なし | 情報なし | 情報なし | 製造・産業, 金融 | 被害事例: Scattered Spiderは消えていなかった：研究者が新たな攻撃に“生存”の兆候を確認 | 高 |
+| Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | Scattered Spider | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Ticketmasterから流出したSnowflake攻撃データ、再び販売リストに掲載 | 中 |
+| Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表 | Scattered Spider | 情報なし | 情報なし | 情報なし | 運輸・航空・海運 | Qantas | 高 |
 
 
 

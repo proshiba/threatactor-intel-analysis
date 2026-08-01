@@ -39,7 +39,7 @@ class TargetingScopeTests(unittest.TestCase):
     @staticmethod
     def profile(name: str, slug: str) -> dict:
         return {
-            "schema_version": "1.1.0",
+            "schema_version": "1.2.0",
             "profile_id": f"actor--{slug}",
             "name": name,
             "actor": {"canonical_name": name, "aliases": []},

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--ironhusky`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -114,6 +114,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | malware-campaign | 不明 | 不明 | 2025-04-20 | target--activity-rule--country--72caf60a2fbce4a1be7a, target--activity-rule--sector--210dddb39397dbe50e91 | malware--cve-2021-40449, malware--mysterysnail | ttp--activity-rule--29e8c3b9fe65c4959da7 | victim--activity-rule--b2806c55784b9aecd942 | 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。 攻撃は、Word文書に偽装された悪意のあるMMCスクリプトを通じて行われ、二次ペイロードのダウンロードと永続性の確保が行われた。 新たなバージョン「MysteryMonoSnail」は、単一コンポーネントで構成され、軽量化されている。 このマルウェアは、サービスの管理、シェルコマンドの実行、プロセスの生成・終了、ファイルの操作など、数十のコマンドをサポートする。 過去の攻撃では、CVE-2021-40449やCVE-2017-11882などのゼロデイ脆弱性が悪用されていた。 | 中 | `source--daily-4fa6e9612d1bc97443df` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | IronHusky | CVE-2021-40449, MysterySnail | T1036 Masquerading | 情報なし | ロシア, 政府・行政 | 被害事例: 中国のハッカーがロシア政府を標的に、強化されたRATマルウェアを使用 | 中 |
 
 
 

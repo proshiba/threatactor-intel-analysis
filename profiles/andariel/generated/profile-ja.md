@@ -3,7 +3,7 @@
 - プロファイルID: `actor--andariel`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -134,6 +134,23 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | Sony | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Vanxatm | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | XEDA | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | Andariel | 情報なし | 情報なし | 情報なし | 韓国 | 被害事例: Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | 高 |
+| Andarielハッカーグループ、米国組織への金融攻撃に注力 | Andariel | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: Andarielハッカーグループ、米国組織への金融攻撃に注力 | 高 |
+| 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連 | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: 北朝鮮政府ハッカー、Playランサムウェア攻撃に関連 | 中 |
+| 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | Andariel | 情報なし | 情報なし | 情報なし | 韓国, 防衛・軍事, 製造・産業 | 被害事例: 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | 中 |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | Andariel | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 韓国, 製造・産業 | 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 中 |
+| ハッカー、WindowsのRIDハイジャックを利用して隠れた管理者アカウントを作成 | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| DesertWolf | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| INITROY | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Mayday | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Sony | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Vanxatm | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| XEDA | Andariel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 
