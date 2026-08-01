@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from common import load_json, utc_now, write_json_atomic
+from activity_diamond import materialize_profile_diamonds
 
 
 KEYS = {
@@ -134,6 +135,7 @@ def main() -> int:
             ).strip()
     profile["updated_at"] = utc_now()
     profile["status"] = update.get("resulting_status", "review")
+    materialize_profile_diamonds(profile)
     write_json_atomic(args.profile, profile)
     print(
         json.dumps(

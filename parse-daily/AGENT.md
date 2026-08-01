@@ -43,6 +43,8 @@
     導出するUI用地域を再集約できる。日本は被害が確認できる場合に個別国として残す。
     `profiles/targeting-audit.json`の未解決値と地理情報なしのアクターを確認し、
     帰属国やインフラ所在国を標的国へ流用しない。
+    最後に`python3 actor_profile/scripts/materialize_activity_diamonds.py --apply`で
+    活動別Diamond Modelを再生成する（上記2つのenrichスクリプトからも自動実行される）。
 11. `validate_daily.py --check-applied`と各プロファイルの既存validatorを確認する。
     TTPの期間集計では`reported_at`を観測日として使用していないこと、活動・TTP・
     被害事例の双方向参照が切れていないことも確認する。

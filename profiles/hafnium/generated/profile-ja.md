@@ -3,7 +3,7 @@
 - プロファイルID: `actor--hafnium`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -126,6 +126,13 @@ The repository mapping workbook places this actor in the China worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Murky Pandaハッカー、クラウドの信頼関係を悪用して下流の顧客環境を侵害 | malware-campaign | 不明 | 不明 | 2025-08-23 |  | malware--china-chopper |  | victim--activity-rule--ab17a374efa3597bd312 | 中国系Murky Panda(Silk Typhoon/Hafnium)がクラウドの信頼関係を悪用し侵入。 SaaS/CSP侵害とEntra ID SecretやDAP権限を用いダウンストリーム顧客へ横展開。 メール/アプリ閲覧、バックドア作成、権限昇格で持続的アクセスと機密データを窃取。 初期侵入にCVE-2023-3519やCVE-2025-0282、ExchangeのProxyLogon等を悪用。 Neo-reGeorg/China ChopperといったOSSのWebShellやCloudedHopeというカスタムマルウェアを使用、SOHOプロキシを使って悪意のある通信を正規通信で隠す。 | 中 | `source--daily-befd567d8c384fdf1dc2` |
 | Operation Exchange Marauder | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Murky Pandaハッカー、クラウドの信頼関係を悪用して下流の顧客環境を侵害 | HAFNIUM | China Chopper | 情報なし | 情報なし | 情報なし | 被害事例: Murky Pandaハッカー、クラウドの信頼関係を悪用して下流の顧客環境を侵害 | 中 |
+| Operation Exchange Marauder | HAFNIUM | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Operation Exchange Marauder
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--sangria-tempest`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:55Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -121,6 +121,12 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | malware-campaign | 不明 | 不明 | 2025-04-03 |  |  | ttp--activity-rule--64ed665cb1f7db9eca79, ttp--activity-rule--8c922b8a2654133dc680, ttp--activity-rule--a1a927be99acfa6a147e, ttp--activity-rule--bf8e55ed5ea1e36409d8 | victim--activity-rule--be5e68d40dea8e62c598 | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | Sangria Tempest | 情報なし | T1059.006 Python, T1113 Screen Capture, T1027 Obfuscated Files or Information, T1560.001 Archive via Utility | 情報なし | 情報なし | 被害事例: FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | 中 |
 
 
 

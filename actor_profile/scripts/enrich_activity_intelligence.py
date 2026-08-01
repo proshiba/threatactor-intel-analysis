@@ -25,6 +25,7 @@ from common import (
     utc_now,
     write_json_atomic,
 )
+from activity_diamond import materialize_profile_diamonds
 
 
 HERE = Path(__file__).resolve().parent
@@ -1362,6 +1363,7 @@ def enrich_profile(
     profile["victim_cases"].sort(key=lambda item: item["victim_case_id"])
     for category in ("countries", "regions", "sectors", "roles"):
         profile["targets"][category].sort(key=lambda item: item["id"])
+    materialize_profile_diamonds(profile)
     return profile_stats(profile)
 
 

@@ -306,6 +306,58 @@ def render_markdown(
         ]
         for item in profile.get("activities", [])
     ]
+    capability_names = {
+        item["id"]: item["name"]
+        for category in ("malware", "infrastructure")
+        for item in profile["capabilities"].get(category, [])
+    }
+    ttp_names = {
+        item["ttp_id"]: f"{item['technique_id']} {item['technique_name']}"
+        for item in profile.get("ttps", [])
+    }
+    target_names = {
+        item["id"]: item["name"]
+        for category in ("countries", "regions", "sectors", "roles")
+        for item in profile["targets"].get(category, [])
+    }
+    victim_names = {
+        item["victim_case_id"]: item.get("victim_name") or item["name"]
+        for item in profile.get("victim_cases", [])
+    }
+    activity_diamond_rows = []
+    for item in profile.get("activities", []):
+        diamond = item["diamond_model"]
+        capability = diamond["capability"]
+        victim = diamond["victim"]
+        activity_diamond_rows.append(
+            [
+                item["name"],
+                diamond["adversary"]["name"],
+                ", ".join(
+                    capability_names.get(ref, ref)
+                    for ref in capability["malware_refs"]
+                )
+                or "情報なし",
+                ", ".join(
+                    ttp_names.get(ref, ref) for ref in capability["ttp_refs"]
+                )
+                or "情報なし",
+                ", ".join(
+                    capability_names.get(ref, ref)
+                    for ref in diamond["infrastructure"]["infrastructure_refs"]
+                )
+                or "情報なし",
+                ", ".join(
+                    target_names.get(ref, ref) for ref in victim["target_refs"]
+                )
+                or "情報なし",
+                ", ".join(
+                    victim_names.get(ref, ref) for ref in victim["victim_refs"]
+                )
+                or "情報なし",
+                confidence_label(diamond["confidence"]),
+            ]
+        )
     lines.extend(
         [
             table(
@@ -317,6 +369,18 @@ def render_markdown(
             )
             if activity_rows
             else "活動履歴なし",
+            "",
+            "### 活動別ダイヤモンドモデル",
+            "",
+            table(
+                [
+                    "活動", "攻撃者", "マルウェア", "TTP", "インフラ",
+                    "標的属性", "被害事例", "確度",
+                ],
+                activity_diamond_rows,
+            )
+            if activity_diamond_rows
+            else "活動別ダイヤモンドモデルなし",
             "",
             profile["free_text"].get("history", ""),
             "",
@@ -634,6 +698,7 @@ def render_stix(
                 "x_confidence": activity["confidence"],
                 "x_analyst_notes": activity.get("analyst_notes", ""),
                 "x_reported_at": activity["reported_at"],
+                "x_diamond_model": activity["diamond_model"],
             },
         )
         for key in ("first_seen", "last_seen"):

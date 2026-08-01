@@ -3,7 +3,7 @@
 - プロファイルID: `actor--storm-1175`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -106,6 +106,13 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け | ransomware-extortion | 不明 | 不明 | 2026-04-07 |  |  |  | victim--activity-rule--469e30e58089a636de26 | Microsoft は、Medusa ランサムウェアの展開で知られる中国拠点の金銭目的グループ Storm-1175 が、n-day と zero-day を高速に悪用していると報告した。 同グループは新規脆弱性の武器化が非常に速く、場合によっては公開前の週から悪用し、初期侵入から数日、時に24時間以内に暗号化まで進むとされる。 攻撃では複数の脆弱性を連鎖利用し、新規ユーザー作成、RMM 導入、認証情報窃取、セキュリティ機能停止を経て、ランサムウェア投下とデータ流出に至る。 具体例として、GoAnywhere MFT の CVE-2025-10035 を修正前から1週間超悪用し、SmarterMail の CVE-2026-23760 もゼロデイとして利用したと記載されている。 さらに Exchange、PaperCut、Ivanti、ScreenConnect、TeamCity、SimpleHelp、CrushFTP、SmarterMail、BeyondTrust など計10製品超の脆弱性悪用が確認された。 Storm-1175は、公開資産の脆弱性を特定する能力に長けており、エクスプロイトブローカーなどを通じて高度な開発能力やリソースへのアクセスを得ている可能性があると分析されている。 | 中 | `source--daily-6d966f0f2bd59b705455` |
 | Microsoft：重大なGoAnywhere脆弱性がランサムウェア攻撃で悪用 | ransomware-extortion | 不明 | 不明 | 2025-10-07 |  |  |  | victim--activity-rule--381a605f874c19b7c2ce | FortraのGoAnywhere MFTに最大深刻度のCVE-2025-10035（License Servletの不正デシリアライズ）が存在しリモートエクスプロイト可能。 MicrosoftはMedusaのアフィリエイト「Storm-1175」による悪用を確認、9月11日以降継続し9月10日からのゼロデイ疑いも報告。 侵入後はSimpleHelp/MeshAgentで持続化、Netscanとmstsc.exeで偵察・横展開し、Rcloneで持ち出し後にMedusaで暗号化。 Shadowserverは500超のGoAnywhereインスタンス露出を観測、何件が修正済みかは不明。 Fortraは9月18日に修正提供。Microsoft/Fortraは更新適用とログで"SignedObject.getObject"のスタックトレース確認を推奨。 | 中 | `source--daily-d32841215eeaadd319dd` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け | Storm-1175 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Microsoft、Medusaランサムウェアのアフィリエイトをゼロデイ攻撃と関連付け | 中 |
+| Microsoft：重大なGoAnywhere脆弱性がランサムウェア攻撃で悪用 | Storm-1175 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: Microsoft：重大なGoAnywhere脆弱性がランサムウェア攻撃で悪用 | 中 |
 
 
 

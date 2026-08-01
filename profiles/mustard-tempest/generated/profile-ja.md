@@ -3,7 +3,7 @@
 - プロファイルID: `actor--mustard-tempest`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -120,6 +120,13 @@ Mustard Tempestの標準化プロファイル。リポジトリ内の専用資�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供 | malware-campaign | 不明 | 不明 | 2025-08-08 |  | malware--socgholish |  |  | SocGholishがParrot/KeitaroなどのTDSを悪用し、ユーザーを不正サイトへ誘導。 偽のブラウザ更新を装うJSローダーで、改ざんサイトから配信される。 侵害端末へのアクセスは、Evil CorpやLockBit、Dridex等に販売される。 Raspberry Robin経由の拡散も観測、ChaCha20やCVE-2024-38196の悪用に言及。 Keitaroは正規利用も多く、過剰検知なく全面遮断は困難と指摘。 | 中 | `source--daily-4c5a096408cb1636d9f7` |
 | HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信 | malware-campaign | 不明 | 不明 | 2024-12-04 |  |  |  |  | HORNSキャンペーンは、主にロシアの個人ユーザー、小売業者、サービス業者を標的とし、NetSupport RATやBurnsRATを配信しています。 これらの攻撃の最終的な目標は、これらのトロイの木馬によって得られたアクセス権を利用して、RhadamanthysやMeduzaなどの窃盗マルウェアをインストールすることです。 攻撃は、潜在的な顧客やパートナーからのリクエストや入札に偽装したZIPアーカイブ内のJScriptスクリプトを含むメールを送信する手法を取っています。 これらのスクリプトは、リモートサーバーから追加のマルウェアをダウンロードし、感染したシステムにインストールします。 攻撃者は、JavaScriptペイロードを積極的に開発し、キャンペーンの進行中に大幅な変更を加えています。 このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。 | 中 | `source--daily-766a563d30b306b7681d` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 広告ツールを悪用して拡散するSocGholishマルウェア：LockBitやEvil Corp等への初期アクセスを提供 | Mustard Tempest | SocGholish | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| HORNSキャンペーン、偽のメールとJavaScriptペイロードを通じてRATを配信 | Mustard Tempest | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 
 

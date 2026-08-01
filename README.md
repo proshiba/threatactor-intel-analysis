@@ -42,7 +42,7 @@ profiles/<actor-slug>/
 ```
 
 `actor-profile.json`には、名称とalias、帰属、モチベーション、他アクターとの関係、
-Diamond Model、能力、マルウェア、インフラ、MITRE ATT&CK TTP、活動履歴、
+アクター全体および活動別のDiamond Model、能力、マルウェア、インフラ、MITRE ATT&CK TTP、活動履歴、
 標的国・産業、出典、分析上の留保を保存しています。構造化しきれない重要情報は
 `free_text`または`analyst_notes`に残します。
 
@@ -99,6 +99,7 @@ Python 3で実行できます。PDF・XLSXを新たに取り込む場合は、`p
 # 活動情報を更新した後、全件の標的国・地域を再監査
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
+python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 
 # 既存のIOC/artifactを使って全プロファイルを再生成・検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest

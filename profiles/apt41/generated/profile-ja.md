@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt41`
 - 状態: review
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -200,6 +200,25 @@ The repository mapping workbook places this actor in the China worksheet.
 | APT41、Googleカレンダーを悪用したステルス型C2通信を展開 | infrastructure-operation | 不明 | 不明 | 2025-05-30 | target--sector--government | malware--plusdrop, malware--plusinject, malware--toughprogress | ttp--activity-rule--5b3fed3352b8855e77ed, ttp--activity-rule--5c901051ec7d7b0b4bd5 | victim--activity-rule--ad247ebd74ff3b074d05 | 中国の国家支援型ハッカーグループAPT41が、新たなマルウェア「ToughProgress」を使用し、Googleカレンダーをコマンド＆コントロール（C2）通信に悪用。 攻撃は、政府機関のウェブサイトを侵害し、ZIPアーカイブをホスト。アーカイブには、PDFを装ったLNKファイルと画像ファイルを偽装したペイロード、DLLファイルが含まれていた。 LNKファイルを実行すると、DLL「PlusDrop」が起動し、次段階の「PlusInject」をメモリ上で実行。これにより、最終的なペイロード「ToughProgress」が展開される。 「ToughProgress」は、Googleカレンダーの特定のイベントをポーリングし、イベントの説明欄に埋め込まれた暗号化されたコマンドを取得・実行。結果もカレンダーイベントに書き戻される。 Googleは、攻撃者が管理するGoogleカレンダーとWorkspaceアカウントを特定・削除し、Safe Browsingブロックリストを更新して対策を講じた。 | 高 | `source--daily-7e05524db14274790b02` |
 | APT41：イタリア産業を標的とするKeyPlugの脅威 | cyber-espionage | 不明 | 不明 | 2024-05-24 | target--activity-rule--country--64be7cf4bac6c92be378, target--activity-rule--sector--dfc80b76cad93a318adc | malware--keyplug |  | victim--activity-rule--46bdf4e6cd5fca19c335 | APT41がイタリアの産業を標的にKeyPlugを使用 KeyPlugは、WindowsとLinux両方で動作。構成によって異なるプロトコルでバックドア通信を行う。 数か月にわたってイタリアのさまざまな産業が攻撃を受けた。 APT41の攻撃動機はスパイ活動から金銭目的まで様々。この攻撃活動による目的は記載されていなかった。 | 高 | `source--daily-dbac07148e6695d210a9` |
 | APT41 Winnti の ELF 型クラウド認証情報収集マルウェア：Alibaba のタイポスクワット基盤と 6 年にわたる系譜 | infrastructure-operation | 不明 | 不明 | 2026-04-14 |  |  |  |  | Breakglass Intelligence は、AWS、GCP、Azure、Alibaba Cloud 上の Linux ワークロードを狙う APT41(Winnti) の ELF バックドアを報告した。 このマルウェアはクラウド認証情報とメタデータを収集し、SMTP の 25/tcp を秘匿 C2 に使い、通常の HTTPS 通信を避ける設計になっている。 C2 サーバーは初回 EHLO に正しいトークンがない接続を遮断する選別型ハンドシェイクを実装し、Shodan や Censys から見えにくい。 関連基盤として Alibaba Cloud や Qianxin を装う 3 つのタイポスクワットドメインが 2026年1月20日から21日に集中登録されていた。 記事は、このサンプルを 2020年の PWNLNX から続く 6 年間の Winnti ELF 系譜上に位置付け、クラウド特化への進化とみなしている。 | 高 | `source--daily-2e4c99df2d0471e846db` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| APT41 DUST | APT41 | Cobalt Strike, DUSTPAN, DUSTTRAP | T1596.005 Scan Databases, T1573.002 Asymmetric Cryptography, T1567.002 Exfiltration to Cloud Storage, T1119 Automated Collection, T1036.004 Masquerade Task or Service, T1102 Web Service, T1070.004 File Deletion, T1553.002 Code Signing, T1213.006 Databases, T1543.003 Windows Service, T1569.002 Service Execution, T1593.002 Search Engines, T1027.013 Encrypted/Encoded File, T1574.001 DLL, T1586.003 Cloud Accounts, T1105 Ingress Tool Transfer, T1074.001 Local Data Staging, T1560.001 Archive via Utility, T1505.003 Web Shell, T1071.001 Web Protocols, T1594 Search Victim-Owned Websites, T1583.007 Serverless, T1588.003 Code Signing Certificates | 情報なし | 運輸・航空・海運 | 被害事例: APT41 DUST | 高 |
+| TOUGHPROGRESS Government Targeting Campaign | APT41 | PLUSDROP, PLUSINJECT, TOUGHPROGRESS | T1036 Masquerading, T1027 Obfuscated Files or Information, T1055.012 Process Injection: Process Hollowing, T1102 Web Service, T1204.002 User Execution: Malicious File, T1566.002 Phishing: Spearphishing Link | Compromised Government Website Delivery Infrastructure, Attacker-Controlled Google Calendar C2 | Government | 被害事例: TOUGHPROGRESS Government Targeting Campaign | 高 |
+| C0017 | APT41 | Cobalt Strike, KEYPLUG, DEADEYE | T1588.002 Tool, T1105 Ingress Tool Transfer, T1680 Local Storage Discovery, T1036.004 Masquerade Task or Service, T1140 Deobfuscate/Decode Files or Information, T1102.001 Dead Drop Resolver, T1005 Data from Local System, T1574 Hijack Execution Flow, T1041 Exfiltration Over C2 Channel, T1016 System Network Configuration Discovery, T1190 Exploit Public-Facing Application, T1074.001 Local Data Staging, T1134 Access Token Manipulation, T1560.003 Archive via Custom Method, T1053.005 Scheduled Task, T1048.003 Exfiltration Over Unencrypted Non-C2 Protocol, T1027.002 Software Packing, T1027 Obfuscated Files or Information, T1059.003 Windows Command Shell, T1102 Web Service, T1567 Exfiltration Over Web Service, T1003.002 Security Account Manager, T1001.003 Protocol or Service Impersonation, T1036.005 Match Legitimate Resource Name or Location, T1090 Proxy, T1059.007 JavaScript, T1033 System Owner/User Discovery, T1505.003 Web Shell, T1071.001 Web Protocols | 情報なし | 米国 | 被害事例: C0017 | 高 |
+| 中国のAPT41が再び活動を再開し、企業を侵害 | APT41 | DUSTPAN, DUSTTRAP | 情報なし | 情報なし | 情報なし | 被害事例: 中国のAPT41が再び活動を再開し、企業を侵害 | 高 |
+| Winntiの新ツール「UNAPIMON」がセキュリティソフトウェアからマルウェアを隠蔽 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | APT41 | 情報なし | T1574.001 DLL, T1102.003 One-Way Communication | 情報なし | Government | 被害事例: 中国のAPT41、DodgeBoxとMoonWalkでマルウェア兵器を強化 | 高 |
+| Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | APT41 | China Chopper | T1505.003 Web Shell | 情報なし | 日本, エネルギー | 被害事例: Winnti APT41、日本企業を標的としたRevivalStoneサイバースパイ活動を展開 | 高 |
+| 中国のハッキンググループがサイバースパイ活動で協力 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | APT41 | Cobalt Strike, ShadowPad | 情報なし | 情報なし | 台湾, 教育・研究, Government | 被害事例: 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃 | 高 |
+| 中国関与のAPT41、2025年交渉中に米通商当局者を標的 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| 中国のAPT41、活動を再開し企業を侵害 | APT41 | Cobalt Strike | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| APT41、Googleカレンダーを悪用したステルス型C2通信を展開 | APT41 | PLUSDROP, PLUSINJECT, TOUGHPROGRESS | T1560.001 Archive via Utility, T1102.003 One-Way Communication | 情報なし | Government | 被害事例: APT41、Googleカレンダーを悪用したステルス型C2通信を展開 | 高 |
+| APT41：イタリア産業を標的とするKeyPlugの脅威 | APT41 | KEYPLUG | 情報なし | 情報なし | イタリア, 製造・産業 | 被害事例: APT41：イタリア産業を標的とするKeyPlugの脅威 | 高 |
+| APT41 Winnti の ELF 型クラウド認証情報収集マルウェア：Alibaba のタイポスクワット基盤と 6 年にわたる系譜 | APT41 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 
 2024年10月、GTIGはAPT41が侵害済み政府サイトからLNKを含むZIPを配布し、PLUSDROP、PLUSINJECT、TOUGHPROGRESSを展開する活動を確認した。最終段はGoogle Calendarを暗号化C2として悪用した。
 

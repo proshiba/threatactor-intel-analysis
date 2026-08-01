@@ -3,7 +3,7 @@
 - プロファイルID: `actor--menupass`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -165,6 +165,14 @@ The repository mapping workbook places this actor in the China worksheet.
 | ChessMaster | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Cloud Hopper | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Dust Storm | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| ChessMaster | menuPass | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Cloud Hopper | menuPass | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Dust Storm | menuPass | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Dust Storm; Cloud Hopper; ChessMaster
 

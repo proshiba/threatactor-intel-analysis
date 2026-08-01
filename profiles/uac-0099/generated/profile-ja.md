@@ -3,7 +3,7 @@
 - プロファイルID: `actor--uac-0099`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -110,6 +110,13 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | malware-campaign | 不明 | 不明 | 2026-07-24 | target--activity-rule--country--36f1b9323d5faab92f39 | malware--daily-0067ca7bc8c9a3dd3e9d, malware--daily-75ab18d562d78bfce191, malware--daily-8759c33e657f191deae0 | ttp--activity-rule--26fad87edd30aab65d0c, ttp--activity-rule--8235faa69f53cdff20b8 | victim--activity-rule--32a83d51aade8f9e290c | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
 | Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | disruptive-activity | 2025-06 | 2025-09 | 2025-11-07 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--598ee8d6d22873efc495, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--5178b790ed1002745052, ttp--activity-rule--ac677bbe93733e1f8ef3 | victim--activity-rule--f9da9dc6b868f567f3c8 | ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。 | 中 | `source--daily-acae91555bc1bc0a4220` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | UAC-0099 | BURNYBEAR, LUNCHPOKE, MATCHBOIL.V2 | T1036 Masquerading, T1053.005 Scheduled Task | 情報なし | ウクライナ | 被害事例: ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | 中 |
+| Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | UAC-0099 | 情報なし | T1485 Data Destruction, T1053.005 Scheduled Task | 情報なし | ウクライナ, 政府・行政, 農業・食品, 教育・研究 | 被害事例: Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | 中 |
 
 
 

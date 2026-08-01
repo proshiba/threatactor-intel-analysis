@@ -3,7 +3,7 @@
 - プロファイルID: `actor--confucius`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -111,6 +111,12 @@ Confuciusの標準化プロファイル。リポジトリ内の専用資料2件�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 | phishing-campaign | 2025-07 | 2025-07 | 2025-10-03 | target--activity-rule--country--67ce22b843f136bff928 |  | ttp--activity-rule--5b28d97244888a45be87, ttp--activity-rule--d73305668f0a6f75ed97 | victim--activity-rule--a4fdf571878c0d84fab9 | スパイ集団Confuciusがフィッシングでパキスタンを標的化し、WooperStealerとAnondoorを投入。2013年以降活動。 2024年12月は.PPSXを開かせDLLサイドロードでWooperStealerを実行、感染を広げたとFortinetが報告。 2025年3月以降は.LNKを用いて悪性DLLを起動し情報窃取、8月の.LNKではAnondoor展開に切り替え。 Anondoorは外部C2へ端末情報を送信し、コマンド実行や画面取得、Chromeパスワード窃取などを実施。 KnownSecが2025年7月にAnondoor使用を観測。難読化とDLLサイドロードで検知回避する適応力が指摘。 | 高 | `source--daily-1020ead2bd9b87a29746` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 | Confucius | 情報なし | T1555.003 Credentials from Web Browsers, T1027 Obfuscated Files or Information | 情報なし | パキスタン | 被害事例: Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃 | 高 |
 
 
 

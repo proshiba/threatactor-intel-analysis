@@ -3,7 +3,7 @@
 - プロファイルID: `actor--wizard-spider`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -153,6 +153,13 @@ Wizard Spiderの標準化プロファイル。リポジトリ内の専用資料2
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Dataresolution.net (MSP for multiple US newpapers) | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Onslow, North Carolina water | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Dataresolution.net (MSP for multiple US newpapers) | Wizard Spider | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Onslow, North Carolina water | Wizard Spider | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Onslow, North Carolina water; Dataresolution.net (MSP for multiple US newpapers)
 

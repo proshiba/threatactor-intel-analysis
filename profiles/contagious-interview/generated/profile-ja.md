@@ -3,7 +3,7 @@
 - プロファイルID: `actor--contagious-interview`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -129,6 +129,23 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | infrastructure-operation | 不明 | 不明 | 2024-12-27 | target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--ebe63f831e54cb716a26 | 北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。 OtterCookieはNode.jsプロジェクトやnpmパッケージ、最近ではQtやElectronアプリケーションを介して拡散。 OtterCookieはSocket.IO WebSocketツールを使用してコマンド＆コントロール（C2）インフラストラクチャとの安全な通信を確立し、リモートシェルコマンドを受信。 マルウェアは暗号通貨ウォレットの鍵や機密データを盗むコマンドが観測した。 標的の環境調査や情報窃取を進め、さらなる侵入を目指す行動が観察。 偽求人を介した攻撃手法の多様化が進んでいる。 | 中 | `source--daily-47e80e1dc37b49447e5b` |
 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 |  | malware--beavertail, malware--invisibleferret | ttp--activity-rule--4db999f75969a8979172 |  | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
 | OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | malware-campaign | 2025-02 | 2025-04 | 2025-05-12 |  |  | ttp--activity-rule--437616c0b22d107a1a92 | victim--activity-rule--0e4094ae0b8e107cfaa8 | 北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。 v4では、Google ChromeやBraveブラウザ、MetaMask、iCloud Keychainからの認証情報窃取機能が追加。 仮想環境（VMware、VirtualBox、Microsoft、QEMU）での実行を検出し、解析を回避する機能を搭載。 マルウェアは、npmパッケージ、GitHub/Bitbucketのリポジトリ、偽のビデオ会議アプリを通じて配布。 「DriverMinUpdate.app」などの偽アプリを用いたmacOS向けの情報窃取も確認されている。 | 中 | `source--daily-56f1f7edcfb3f507fe75` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | 中 |
+| FlexibleFerretマルウェアの攻撃が続く | Contagious Interview | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | Contagious Interview | 情報なし | T1555.003 Credentials from Web Browsers, T1083 File and Directory Discovery | 情報なし | 非営利・市民社会 | 被害事例: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | 高 |
+| 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | 中 |
+| 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | Contagious Interview | BeaverTail | T1082 System Information Discovery | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | 中 |
+| 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | Contagious Interview | InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | 中 |
+| 北朝鮮系ハッカー、BeaverTailとOtterCookieを統合した高度なJSマルウェアを展開 | Contagious Interview | BeaverTail | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | 中 |
+| PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | Contagious Interview | 情報なし | T1027 Obfuscated Files or Information | 情報なし | 情報なし | 被害事例: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | 中 |
+| 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | Contagious Interview | 情報なし | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | 中 |
+| 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | Contagious Interview | BeaverTail, InvisibleFerret | T1204.004 Malicious Copy and Paste | 情報なし | 情報なし | 情報なし | 中 |
+| OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | Contagious Interview | 情報なし | T1555.003 Credentials from Web Browsers | 情報なし | 情報なし | 被害事例: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | 中 |
 
 
 

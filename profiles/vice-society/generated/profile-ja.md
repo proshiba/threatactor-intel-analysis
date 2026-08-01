@@ -3,7 +3,7 @@
 - プロファイルID: `actor--vice-society`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -111,6 +111,13 @@ The repository mapping workbook places this actor in the Russia worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | ransomware-extortion | 不明 | 不明 | 2024-09-19 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--260bd106ff4950e5430d |  |  | victim--activity-rule--ff2191c48399b7a73241 | Vanilla Tempest(別名:DEV-0832、Vice Society)は米国の医療機関にINCランサムウェアを使用した攻撃を実施。 攻撃の一環として、Gootloader経由でネットワーク侵入し、SupperマルウェアやAnyDeskを使用した。 攻撃により患者データベースのアクセスが失われ、予定の変更を余儀なくされた。 Vanilla Tempestはランサムウェアのアフィリエイトであり、BlackCat、Quantum Locker、Zeppelin、Rhysidaなどのさまざまなランサムウェアを使用。 Vanilla Tempestは他にも教育、製造業、IT分野を標的にしている。 | 中 | `source--daily-c1b12b52abae4635e5ea` |
 | Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | ransomware-extortion | 不明 | 不明 | 2025-10-17 | target--activity-rule--sector--260bd106ff4950e5430d, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--e7608f51421ca8b1e297 |  |  | victim--activity-rule--aa28ddb3998708678c1e | Microsoftは10月上旬のRhysida連携攻撃を妨害し、偽Teamsインストーラ署名に使われた200超の証明書を失効させた。 攻撃者Vanilla Tempest（Vice Society/VICE SPIDER）はteams-install[.]top等の偽サイトでOysterバックドアを配布した。 配布は9月下旬のマルバタイジングやSEOポイズニングで行われ、正規と同名MSTeamsSetup[.]exeで利用者を欺いた。 悪性インストーラは署名済みOysterを展開し、遠隔操作・情報窃取・追加ペイロード投下を可能にする。 同集団は金銭目的で教育・医療・IT・製造を頻繁に標的化し、近年は主にRhysidaを展開している。 | 中 | `source--daily-5287a969660d1bb7e309` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | Vice Society | 情報なし | 情報なし | 情報なし | 米国, 医療・ヘルスケア | 被害事例: Microsoft：Vanilla Tempestが医療機関をINCランサムウェアで攻撃 | 中 |
+| Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | Vice Society | 情報なし | 情報なし | 情報なし | 医療・ヘルスケア, 製造・産業, 教育・研究 | 被害事例: Microsoft、Teams利用者を狙うランサムウェア攻撃を妨害 | 中 |
 
 
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--salt-typhoon`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -126,6 +126,29 @@ Aliasなし
 | Salt Typhoonハッカー、通信事業者に新たなGhostSpiderマルウェアを仕掛ける | cyber-espionage | 不明 | 不明 | 2024-11-26 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--97fa6f38a056d42117be |  |  | victim--activity-rule--9a14e31c78b0dd3fc8f1 | 中国の国家支援ハッカー集団Salt Typhoonが、新たなバックドア「GhostSpider」を通信事業者に対して使用。 GhostSpiderは、暗号化とメモリ内のみの常駐を通じて実現される、高度なステルス性を必要とする長期的なスパイ活動のために設計されたモジュール式のバックドア。 Trend Microは、Salt TyphoonがLinuxバックドア「Masol RAT」、ルートキット「Demodex」、モジュール式バックドア「SnappyBee」も使用していると報告。 Salt Typhoonは2019年から活動し、政府機関や通信企業を主な標的としている。 最近、Verizon、AT&T、Lumen Technologies、T-Mobileなどの米国通信事業者への侵入が確認された。 これらの攻撃により、政府関係者の通信や法的な盗聴要請に関する情報が盗まれた可能性がある。 | 高 | `source--daily-b63b619b8242c38ce6a8` |
 | AT&TとVerizonが米国政府の通信傍受プラットフォームを狙った攻撃を受ける | infrastructure-operation | 不明 | 不明 | 2024-10-08 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--97fa6f38a056d42117be, target--mitre-group--country--41795735fc0e57933c4e |  |  | victim--activity-rule--434c24e35c5186e784ea | Salt Typhoonと呼ばれる中国のハッカー集団がAT&TやVerizon、Lumen Technologiesを含む米国の通信事業者を攻撃。 ハッカーは政府の通信傍受システムにアクセスし、通信データを収集した可能性がある。 この傍受システムは、米国政府が裁判所から承認を得て利用するもの。 攻撃の発生時期は不明だが、数か月にわたりインフラに侵入していた可能性がある。攻撃の影響は現在も評価中。 攻撃の目的は情報収集であると見られている。 攻撃は米国政府と民間のセキュリティ専門家によって調査中。 | 中 | `source--daily-783a5f048c1b5f5d1e87` |
 | 中国系ハッカーが米政府関係者の通信を最近の通信会社の侵害で傍受 | intrusion | 不明 | 不明 | 2024-11-15 | target--activity-rule--country--ee55e5e8faa5dd675d7b, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--97fa6f38a056d42117be, target--mitre-group--country--41795735fc0e57933c4e |  |  | victim--activity-rule--38086efc45abebb614ba | 中国系ハッカーが米国の通信会社を標的にし、政府関係者の通信を傍受 この攻撃で一部の通信会社の顧客情報や法執行機関のデータも盗まれた Salt Typhoon（別名: Earth Estries等）のグループが侵害に関与 攻撃者は数か月以上ネットワークにアクセスし続けていた可能性 カナダでも同様のスキャン攻撃が確認され、複数の政府機関が標的となった | 中 | `source--daily-66a6db2a9826ffe94b34` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| ワイデン議員、Salt Typhoonハッキング後の米国通信網保護法案を提案 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: ワイデン議員、Salt Typhoonハッキング後の米国通信網保護法案を提案 | 高 |
+| 米国、最近の通信事業者侵害に関与したハッカーを阻止するための対策を共有 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 政府・行政, 情報通信, 米国 | 被害事例: 米国、最近の通信事業者侵害に関与したハッカーを阻止するための対策を共有 | 中 |
+| FBI、通信事業者侵害に関与するSalt Typhoonハッカー特定への協力を呼びかけ | Salt Typhoon | JumbledPath | 情報なし | 情報なし | 政府・行政, 情報通信, 米国 | 被害事例: FBI、通信事業者侵害に関与するSalt Typhoonハッカー特定への協力を呼びかけ | 高 |
+| 中国のハッカー、T-Mobileのルーターを侵害しネットワークを探索 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 政府・行政, 情報通信 | 被害事例: 中国のハッカー、T-Mobileのルーターを侵害しネットワークを探索 | 中 |
+| Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ | Salt Typhoon | JumbledPath | 情報なし | 情報なし | インド, 米国 | 被害事例: Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ | 高 |
+| 中国、米国の通信企業9社をハッキング、CharterやWindstreamも被害 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 中国, 米国 | 被害事例: 中国、米国の通信企業9社をハッキング、CharterやWindstreamも被害 | 中 |
+| ホワイトハウスが9件目の通信事業者侵害を中国ハッカーに関連付ける | Salt Typhoon | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: ホワイトハウスが9件目の通信事業者侵害を中国ハッカーに関連付ける | 中 |
+| FCC、Salt Typhoon攻撃を受けた通信ネットワークの保護を命令 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 中国, 政府・行政, 米国 | 被害事例: FCC、Salt Typhoon攻撃を受けた通信ネットワークの保護を命令 | 高 |
+| 中国のSalt Typhoonハッカーによる大手通信会社Viasatへの侵害 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 情報通信, 米国 | 被害事例: 中国のSalt Typhoonハッカーによる大手通信会社Viasatへの侵害 | 高 |
+| ホワイトハウス：Salt Typhoon、中国のハッカーが数十か国の通信会社を侵害 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 情報通信, 米国 | 被害事例: ホワイトハウス：Salt Typhoon、中国のハッカーが数十か国の通信会社を侵害 | 高 |
+| Salt Typhoonの世界的ハッキング作戦、中国のテック企業に関連付け | Salt Typhoon | JumbledPath | 情報なし | 情報なし | 政府・行政, 運輸・航空・海運 | 被害事例: Salt Typhoonの世界的ハッキング作戦、中国のテック企業に関連付け | 高 |
+| テレコム攻撃後、CISAがSignalのような暗号化メッセージングアプリへの移行を推奨 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: テレコム攻撃後、CISAがSignalのような暗号化メッセージングアプリへの移行を推奨 | 中 |
+| カナダ、Ciscoの脆弱性を介してSalt Typhoonが通信会社をハッキングしたと発表 | Salt Typhoon | 情報なし | T1083 File and Directory Discovery | 情報なし | 情報なし | 被害事例: カナダ、Ciscoの脆弱性を介してSalt Typhoonが通信会社をハッキングしたと発表 | 高 |
+| 中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害 | Salt Typhoon | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | インド, 英国, 情報通信, 米国 | 被害事例: 中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害 | 中 |
+| AT&TとVerizon、Salt Typhoon侵害後にネットワークの安全性を確認 | Salt Typhoon | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| Salt Typhoonハッカー、通信事業者に新たなGhostSpiderマルウェアを仕掛ける | Salt Typhoon | 情報なし | 情報なし | 情報なし | 政府・行政, 情報通信 | 被害事例: Salt Typhoonハッカー、通信事業者に新たなGhostSpiderマルウェアを仕掛ける | 高 |
+| AT&TとVerizonが米国政府の通信傍受プラットフォームを狙った攻撃を受ける | Salt Typhoon | 情報なし | 情報なし | 情報なし | 政府・行政, 情報通信, 米国 | 被害事例: AT&TとVerizonが米国政府の通信傍受プラットフォームを狙った攻撃を受ける | 中 |
+| 中国系ハッカーが米政府関係者の通信を最近の通信会社の侵害で傍受 | Salt Typhoon | 情報なし | 情報なし | 情報なし | カナダ, 政府・行政, 情報通信, 米国 | 被害事例: 中国系ハッカーが米政府関係者の通信を最近の通信会社の侵害で傍受 | 中 |
 
 
 

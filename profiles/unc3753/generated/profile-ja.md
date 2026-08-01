@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc3753`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -106,6 +106,13 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | FBI、法律事務所を標的とするLuna Mothによる恐喝攻撃に警告 | ransomware-extortion | 不明 | 不明 | 2025-05-24 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--adfe952bca03d050ae2b, target--activity-rule--sector--dfc80b76cad93a318adc |  |  | victim--activity-rule--44fccb623b114e538b5e | FBIは、Silent Ransom Group（別名Luna Moth、Chatty Spider、UNC3753）が米国の法律事務所を標的にしていると警告。 攻撃手法は、ITサポートを装ったソーシャルエンジニアリングやコールバック型フィッシングを用いて、リモートアクセスを取得。 被害者のシステムを暗号化せず、機密データを盗み出し、公開をちらつかせて身代金を要求。 攻撃者は、偽のITサポートポータルを作成し、従業員にリモートセッションへの参加を促す。 FBIは、これらの攻撃が2023年春以降、特に法律事務所を狙ってしていると報告。 | 中 | `source--daily-a577dc352eda576c7ea9` |
 | Silent Ransom Group、偽のITサポート電話で法律事務所を標的に | ransomware-extortion | 2026-01 | 2026-05 | 2026-06-08 | target--activity-rule--sector--adfe952bca03d050ae2b |  |  | victim--activity-rule--6a449f8ecb6a841d1d5c | Silent Ransom Groupは、米国の法律事務所や専門サービス組織を偽ITサポート通話で積極的に狙っている。 Mandiantによると、UNC3753/Luna Moth/Chatty Spiderは2026年1月から5月に数十組織を標的にした。 攻撃は請求書風の無害なメールから始まり、その後の電話でIT担当者を装い遠隔サポート参加を促す。 攻撃者はAnyDesk、Zoho Assist、Bomgar、SuperOpsなどを導入させ、文書管理やクラウド保存先からデータを盗む。 盗難後は30分以内に恐喝要求が届くこともあり、未対応なら従業員や外部顧客へ連絡すると脅す。 | 高 | `source--daily-11c1de526630b46d3629` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| FBI、法律事務所を標的とするLuna Mothによる恐喝攻撃に警告 | UNC3753 | 情報なし | 情報なし | 情報なし | 米国, 法律, 製造・産業 | 被害事例: FBI、法律事務所を標的とするLuna Mothによる恐喝攻撃に警告 | 中 |
+| Silent Ransom Group、偽のITサポート電話で法律事務所を標的に | UNC3753 | 情報なし | 情報なし | 情報なし | 法律 | 被害事例: Silent Ransom Group、偽のITサポート電話で法律事務所を標的に | 高 |
 
 
 

@@ -479,14 +479,155 @@ function activityReferenceSummary(activity, profile) {
   return parts.length ? `<div class="tl-links">${esc(parts.join(" / "))}</div>` : "";
 }
 
+function activityLookups(profile) {
+  const targetItems = ["countries", "regions", "sectors", "roles"]
+    .flatMap((key) => (profile.targets?.[key] || []).map((item) => ({ ...item, category: key })));
+  return {
+    targets: new Map(targetItems.map((item) => [item.id, item])),
+    malware: new Map((profile.capabilities?.malware || []).map((item) => [item.id, item])),
+    infrastructure: new Map((profile.capabilities?.infrastructure || []).map((item) => [item.id, item])),
+    ttps: new Map((profile.ttps || []).map((item) => [item.ttp_id, item])),
+    victims: new Map((profile.victim_cases || []).map((item) => [item.victim_case_id, item])),
+    organizations: new Map((profile.attribution?.organizations || []).map((item) => [item.id, item])),
+    sources: new Map((profile.sources || []).map((item) => [item.source_id, item])),
+  };
+}
+
+function limitedActivityTags(items, limit = 10) {
+  const values = [...new Set(items.filter(Boolean))];
+  if (!values.length) return '<span class="muted small">活動単位のタグ情報なし</span>';
+  const visible = values.slice(0, limit);
+  const hidden = values.slice(limit);
+  return `<div class="activity-tags">${visible.map((value) => `<span class="badge">${esc(value)}</span>`).join("")}
+    ${hidden.length ? `<details class="tag-more"><summary>… +${num(hidden.length)}件</summary>
+      <div class="chip-list">${hidden.map((value) => `<span class="badge">${esc(value)}</span>`).join("")}</div>
+    </details>` : ""}</div>`;
+}
+
+function activityDiamondHtml(activity, profile) {
+  const diamond = activity.diamond_model || {};
+  const lookup = activityLookups(profile);
+  const adversary = diamond.adversary || {};
+  const capability = diamond.capability || {};
+  const infrastructure = diamond.infrastructure || {};
+  const victim = diamond.victim || {};
+  const meta = diamond.meta_features || {};
+
+  const list = (values) => values.length ? values.map(esc).join("<br>") : '<span class="muted">情報なし</span>';
+  const adversaryValues = [
+    adversary.name || profile.name,
+    ...(adversary.attribution_countries || []).map((value) => `帰属: ${ja(value, "country")}`),
+    ...(adversary.organization_refs || []).map((ref) => lookup.organizations.get(ref)?.name || ref),
+  ];
+  const capabilityValues = [
+    ...(capability.malware_refs || []).map((ref) => `Malware: ${lookup.malware.get(ref)?.name || ref}`),
+    ...(capability.ttp_refs || []).map((ref) => {
+      const item = lookup.ttps.get(ref);
+      return item ? `${item.technique_id} ${item.technique_name}` : ref;
+    }),
+  ];
+  const infrastructureValues = (infrastructure.infrastructure_refs || [])
+    .map((ref) => lookup.infrastructure.get(ref)?.name || ref);
+  const victimValues = [
+    ...(victim.target_refs || []).map((ref) => {
+      const item = lookup.targets.get(ref);
+      return item ? ja(item.name, item.category === "sectors" ? "sector" : "country") : ref;
+    }),
+    ...(victim.victim_refs || []).map((ref) => {
+      const item = lookup.victims.get(ref);
+      return item?.victim_name || item?.name || ref;
+    }),
+  ];
+  const node = (key, label, values) => `<div class="dm-node dm-${key}">
+    <div class="k">${esc(label)}</div><div class="v small">${list(values)}</div></div>`;
+
+  const sourceCountries = (meta.direction?.source_countries || adversary.attribution_countries || [])
+    .map((value) => ja(value, "country"));
+  const destinationRefs = [
+    ...(meta.direction?.target_country_refs || []),
+    ...(meta.direction?.target_region_refs || []),
+  ];
+  const destinations = destinationRefs.map((ref) => {
+    const item = lookup.targets.get(ref);
+    return item ? ja(item.name, "country") : ref;
+  });
+  const direction = `${sourceCountries.join("、") || "攻撃元不明"} → ${destinations.join("、") || "標的地域不明"}`;
+
+  return `<div class="diamond-wrap activity-diamond">
+      <svg class="diamond-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M50 3 L97 50 L50 97 L3 50 Z" fill="none" stroke="currentColor" stroke-width="0.5"/>
+        <path d="M50 3 L50 97 M3 50 L97 50" fill="none" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1.5 2"/>
+      </svg>
+      ${node("adversary", "攻撃者 (Adversary)", adversaryValues)}
+      ${node("infrastructure", "インフラ (Infrastructure)", infrastructureValues)}
+      ${node("capability", "能力 (Capability)", capabilityValues)}
+      ${node("victim", "被害者 (Victim)", victimValues)}
+      <div class="dm-center">活動別<br>Diamond</div>
+    </div>
+    <div class="attack-direction"><span class="k">攻撃方向</span><strong>${esc(direction)}</strong></div>`;
+}
+
+function activityVictimDetails(activity, profile) {
+  const lookup = activityLookups(profile);
+  const refs = activity.diamond_model?.victim?.victim_refs || activity.victim_refs || [];
+  const cases = refs.map((ref) => lookup.victims.get(ref)).filter(Boolean);
+  if (!cases.length) return '<p class="muted small">活動に直接結び付いた被害事例はありません。</p>';
+  return cases.map((item) => {
+    const targets = (item.target_refs || []).map((ref) => {
+      const target = lookup.targets.get(ref);
+      return target ? ja(target.name, target.category === "sectors" ? "sector" : "country") : ref;
+    });
+    const impacts = (item.impacts || []).map((impact) => `${impact.impact_type}: ${impact.description}`);
+    return `<div class="victim-card">
+      <strong>${esc(item.victim_name || (item.disclosure_status === "aggregate" ? "複数の被害者（集約）" : "被害者名非公開"))}</strong>
+      <span class="badge type">${esc(item.case_status || "unknown")}</span>
+      <div class="small muted">${md(item.description || item.name || "")}</div>
+      ${targets.length ? `<div class="small"><span class="k">標的属性:</span> ${esc(targets.join("、"))}</div>` : ""}
+      ${impacts.length ? `<div class="small"><span class="k">影響:</span> ${md(impacts.join(" / "))}</div>` : ""}
+      ${(item.affected_assets || []).length ? `<div class="small"><span class="k">影響資産:</span> ${esc(item.affected_assets.join("、"))}</div>` : ""}
+    </div>`;
+  }).join("");
+}
+
+function activityDetailHtml(activity, profile) {
+  const lookup = activityLookups(profile);
+  const diamond = activity.diamond_model || {};
+  const tags = [
+    ...(diamond.victim?.target_refs || []).map((ref) => lookup.targets.get(ref)?.name || ref),
+    ...(diamond.capability?.malware_refs || []).map((ref) => lookup.malware.get(ref)?.name || ref),
+    ...(diamond.capability?.ttp_refs || []).map((ref) => {
+      const item = lookup.ttps.get(ref);
+      return item ? `${item.technique_id} ${item.technique_name}` : ref;
+    }),
+    ...(diamond.infrastructure?.infrastructure_refs || []).map((ref) => lookup.infrastructure.get(ref)?.name || ref),
+  ];
+  const sources = (diamond.evidence_refs || activity.evidence_refs || [])
+    .map((ref) => lookup.sources.get(ref)?.title || ref);
+  return `<div class="activity-detail-head">
+      <div><div class="small muted">${esc(activityPeriod(activity))}</div><h3>${esc(activity.name || activity.activity_id)}</h3></div>
+      <button type="button" id="activity-detail-close" class="detail-close" aria-label="活動詳細を閉じる">×</button>
+    </div>
+    <div class="activity-detail-meta"><span class="badge type">${esc(ja(activity.activity_type || "", "activityType"))}</span>${confBadge(diamond.confidence || activity.confidence)}</div>
+    ${limitedActivityTags(tags)}
+    ${activity.description ? `<p>${md(activity.description)}</p>` : ""}
+    <h4>ダイヤモンドモデル</h4>
+    ${activityDiamondHtml(activity, profile)}
+    <h4>被害事例</h4>
+    ${activityVictimDetails(activity, profile)}
+    ${sources.length ? `<details class="fold"><summary>根拠資料 (${num(sources.length)})</summary><div class="fold-body small">${sources.map((value) => `<div>${esc(value)}</div>`).join("")}</div></details>` : ""}`;
+}
+
 function timelineHtml(dated, profile) {
   if (!dated.length) return '<p class="muted">該当期間に日付付きの活動はありません。</p>';
   return `<div class="timeline">${dated.map((a) => `
     <div class="tl-item">
-      <div class="tl-date">${esc(activityPeriod(a))}</div>
-      <div class="tl-title">${esc(a.name || "")}${a.activity_type ? ` <span class="badge type">${esc(ja(a.activity_type, "activityType"))}</span>` : ""}</div>
-      ${activityReferenceSummary(a, profile)}
-      ${a.description ? `<div class="small muted">${md(a.description)}</div>` : ""}
+      <button type="button" class="activity-select" data-activity-id="${esc(a.activity_id)}">
+        <span class="tl-date">${esc(activityPeriod(a))}</span>
+        <span class="tl-title">${esc(a.name || "")}${a.activity_type ? ` <span class="badge type">${esc(ja(a.activity_type, "activityType"))}</span>` : ""}</span>
+        ${activityReferenceSummary(a, profile)}
+        ${a.description ? `<span class="small muted tl-description">${esc(a.description)}</span>` : ""}
+        <span class="activity-open-hint">詳細・ダイヤモンドモデルを表示 →</span>
+      </button>
     </div>`).join("")}</div>`;
 }
 
@@ -548,6 +689,7 @@ function bindActivities(profile) {
     .filter((x) => x.d)
     .sort((x, y) => y.d - x.d);
   const undated = activities.filter((a) => !activityDate(a));
+  let selectedId = null;
 
   const render = (years) => {
     let rows = dated;
@@ -556,19 +698,38 @@ function bindActivities(profile) {
       cutoff.setFullYear(cutoff.getFullYear() - years);
       rows = dated.filter((x) => x.d >= cutoff);
     }
-    area.innerHTML = `
-      <p class="small muted">観測日付き ${num(rows.length)} 件${years ? `(過去${years}年)` : ""} / 観測日不明 ${num(undated.length)} 件（報告日は期間判定に使用しません）</p>
-      ${timelineHtml(rows.map((x) => x.a), profile)}
-      ${undated.length ? `<details class="fold"><summary>日付情報のない活動(${undated.length})</summary>
-        <div class="fold-body">${dataTable(
-          ["名称", "種別", "説明"],
-          undated.map((a) => `<tr>
-            <td><strong>${esc(a.name || "")}</strong></td>
-            <td class="small">${esc(ja(a.activity_type || "", "activityType"))}</td>
-            <td class="small muted">${md(a.description || "")}</td>
-          </tr>`).join("")
-        )}</div></details>` : ""}
-    `;
+    const visible = rows.map((x) => x.a);
+    area.innerHTML = `<div class="activity-browser">
+      <div class="activity-list-pane">
+        <p class="small muted">観測日付き ${num(rows.length)} 件${years ? `(過去${years}年)` : ""} / 観測日不明 ${num(undated.length)} 件（報告日は期間判定に使用しません）</p>
+        ${timelineHtml(visible, profile)}
+        ${undated.length ? `<details class="fold"><summary>日付情報のない活動(${undated.length})</summary>
+          <div class="fold-body"><div class="undated-activities">${undated.map((a) => `<button type="button" class="activity-select undated-activity" data-activity-id="${esc(a.activity_id)}">
+            <strong>${esc(a.name || "")}</strong><span class="small muted">${esc(ja(a.activity_type || "", "activityType"))}</span>
+          </button>`).join("")}</div></div></details>` : ""}
+      </div>
+      <aside id="activity-detail" class="activity-detail" hidden aria-live="polite"></aside>
+    </div>`;
+
+    const detail = document.getElementById("activity-detail");
+    const showDetail = (activityId) => {
+      const activity = activities.find((item) => item.activity_id === activityId);
+      if (!activity || !detail) return;
+      selectedId = activityId;
+      detail.innerHTML = activityDetailHtml(activity, profile);
+      detail.hidden = false;
+      area.querySelectorAll(".activity-select").forEach((button) =>
+        button.classList.toggle("selected", button.dataset.activityId === activityId));
+      document.getElementById("activity-detail-close")?.addEventListener("click", () => {
+        selectedId = null;
+        detail.hidden = true;
+        detail.innerHTML = "";
+        area.querySelectorAll(".activity-select").forEach((button) => button.classList.remove("selected"));
+      });
+    };
+    area.querySelectorAll(".activity-select").forEach((button) =>
+      button.addEventListener("click", () => showDetail(button.dataset.activityId)));
+    if (selectedId) showDetail(selectedId);
   };
 
   document.querySelectorAll("#act-filters .filter-btn").forEach((btn) => {

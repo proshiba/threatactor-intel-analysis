@@ -3,7 +3,7 @@
 - プロファイルID: `actor--leviathan`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -147,6 +147,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Leviathan Australian Intrusions | campaign | 2022-04-01T06:00:00.000Z | 2022-09-01T06:00:00.000Z | 2026-05-12 | target--mitre-group--country--4fabe7d586d1591c953e |  | ttp--activity-rule--7b161e2dd2783fd8def0, ttp--mitre-campaign--040a9e5527da36ef102f, ttp--mitre-campaign--0faf84021505e1cc0e12, ttp--mitre-campaign--187f9d121d77791a29cb, ttp--mitre-campaign--1a625a0af199c865a5f2, ttp--mitre-campaign--203982771da558165f46, ttp--mitre-campaign--291cbebad14f781d9e5f, ttp--mitre-campaign--301e1358e0f179779be9, ttp--mitre-campaign--4225beaf8d52820fd11e, ttp--mitre-campaign--458f37ee9c31cd960234, ttp--mitre-campaign--557f5a195d073bde6530, ttp--mitre-campaign--5bb0c25759be88aba1f1, ttp--mitre-campaign--68f230ae9f7be0d7e4d2, ttp--mitre-campaign--7b161e2dd2783fd8def0, ttp--mitre-campaign--7cbfd9c11e236f02df12, ttp--mitre-campaign--8720cfc5eeec7fc8d0c7, ttp--mitre-campaign--9fb8ab89ea9e9e26447b, ttp--mitre-campaign--a07899a6df3209a4af7d, ttp--mitre-campaign--b3666c7bfd9b0b84ab13, ttp--mitre-campaign--b42a2396ecb73006644e, ttp--mitre-campaign--b77d64a6478daf8325fd, ttp--mitre-campaign--cd9e5136ab9f22147cad, ttp--mitre-campaign--dba5b1e61643b94087cf, ttp--mitre-campaign--f9344a6478c31b3cd303, ttp--mitre-campaign--ff786d4885b2a458ebd0, ttp--mitre-campaign--ff8f6b83553531050cc1, ttp--mitre-campaign--ffe9c75146a30e398fb5 | victim--activity-rule--80dd52ed5da841845027 | [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049) consisted of at least two long-term intrusions against victims in Australia by [Leviathan](https://attack.mitre.org/groups/G0065), relying on similar tradecraft such as external service exploitation followed by extensive credential capture and re-use to enable privilege escalation and lateral movement. [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049) were focused on exfiltrating sensitive data including valid credentials for the victim organizations.(Citation: CISA Leviathan 2024) | 高 | `source--mitre-attack-19-1` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Leviathan Australian Intrusions | Leviathan | 情報なし | T1078 Valid Accounts, T1078.003 Local Accounts, T1082 System Information Discovery, T1558.003 Kerberoasting, T1135 Network Share Discovery, T1588.006 Vulnerabilities, T1021.004 SSH, T1190 Exploit Public-Facing Application, T1056 Input Capture, T1482 Domain Trust Discovery, T1594 Search Victim-Owned Websites, T1505.003 Web Shell, T1041 Exfiltration Over C2 Channel, T1078 Valid Accounts, T1074.001 Local Data Staging, T1213.006 Databases, T1111 Multi-Factor Authentication Interception, T1686 Disable or Modify System Firewall, T1615 Group Policy Discovery, T1018 Remote System Discovery, T1068 Exploitation for Privilege Escalation, T1021.002 SMB/Windows Admin Shares, T1552 Unsecured Credentials, T1552.001 Credentials In Files, T1528 Steal Application Access Token, T1078.002 Domain Accounts, T1212 Exploitation for Credential Access | 情報なし | オーストラリア | 被害事例: Leviathan Australian Intrusions | 高 |
 
 
 

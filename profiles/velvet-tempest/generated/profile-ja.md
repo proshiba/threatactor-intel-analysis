@@ -3,7 +3,7 @@
 - プロファイルID: `actor--velvet-tempest`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -107,6 +107,12 @@ Velvet Tempestの標準化プロファイル。リポジトリ内の専用資料
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | ransomware-extortion | 不明 | 不明 | 2026-03-09 |  |  | ttp--activity-rule--0340cc3b09f76a67a2b9, ttp--activity-rule--2d1cff90d507f785194b, ttp--activity-rule--7663020e8831577e6f57, ttp--activity-rule--ab1701024d8b466b0fa0 | victim--activity-rule--10854ac29d4fa44cfdf0 | MalBeaconは、Velvet TempestがClickFixと正規のWindowsユーティリティを使い、DonutLoaderとCastleRATを展開する一連の侵害活動を観測した。 観測は2026年2月3日から16日にかけて、米国の非営利組織を模した3,000超の端末と2,500超の利用者を持つ観測環境で12日間実施された。 初期侵入は悪性広告から誘導されるClickFixとCAPTCHAの組み合わせで、難読化コマンドをWindowsの「ファイル名を指定して実行」に貼り付けさせる手口だった。 侵入後はActive Directory偵察、ホスト探索、環境把握、Chrome保存認証情報の窃取、PowerShellやcsc.exeによる追加ペイロード取得とPython永続化が確認された。 最終的にDonutLoaderとCastleRATが展開されたが、今回MalBeaconが観測した侵害ではTermiteランサムウェア本体が実行された形跡はなかった。 | 中 | `source--daily-ebcbecadd73228eda327` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | Velvet Tempest | 情報なし | T1555.003 Credentials from Web Browsers, T1204.004 Malicious Copy and Paste, T1027 Obfuscated Files or Information, T1105 Ingress Tool Transfer | 情報なし | 情報なし | 被害事例: ClickFixとCastleRAT攻撃に結び付くTermiteランサムウェア侵害 | 中 |
 
 
 

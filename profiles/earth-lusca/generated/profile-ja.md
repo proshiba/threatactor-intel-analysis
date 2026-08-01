@@ -3,7 +3,7 @@
 - プロファイルID: `actor--earth-lusca`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -129,6 +129,13 @@ Earth Luscaの標準化プロファイル。リポジトリ内の専用資料1�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | cyber-espionage | 不明 | 不明 | 2024-03-15 | target--mitre-group--country--229770f82a3ccca1f9d3 |  |  | victim--activity-rule--da89d11ebe8549dd9c9c | 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 | `source--daily-4c4674e1b8568e329ce6` |
 | SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | malware-campaign | 2023 | 2024 | 2026-06-17 | target--activity-rule--country--67ce22b843f136bff928, target--mitre-group--country--229770f82a3ccca1f9d3, target--mitre-group--sector--cae03348db9509019d3e | malware--daily-f196d446e69f62aacb40 |  | victim--activity-rule--139409ab845111706d30 | ESETは、従来Linux向けとされていたSprySOCKSマルウェアのWindows版が政府機関攻撃に使われたと報告した。 攻撃は2023年から2024年にかけて、台湾、タイ、パキスタン、ホンジュラスの政府組織を標的にしていた。 ESETはこの活動を、中国系脅威アクターEarth Lusca、別名FishMongerに高い確度で帰属している。 Windows版にはWIN_DRVとWIN_PLUSがあり、WIN_DRVはカーネルドライバでプロセス、通信、ファイル、レジストリを隠蔽する。 一部の攻撃シナリオでは、Secure Boot脆弱性CVE-2023-24932を悪用するUEFIブートキットの関与も示唆された。 | 高 | `source--daily-ff80b256acceafc23ada` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | Earth Lusca | 情報なし | 情報なし | 情報なし | 台湾 | 被害事例: 攻撃グループ「Earth Lusca」が台湾総統選挙を目前に地政学的トピックを用いてサイバー諜報活動を展開 | 高 |
+| SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | Earth Lusca | SprySOCKS | 情報なし | 情報なし | パキスタン, 台湾, 政府・行政 | 被害事例: SprySOCKS LinuxマルウェアのWindows版、政府機関への攻撃に使用 | 高 |
 
 
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt3`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:53Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -138,6 +138,13 @@ The repository mapping workbook places this actor in the China worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Clandestine Wolf | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Double Tap | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Clandestine Wolf | APT3 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Double Tap | APT3 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Double Tap; Clandestine Wolf
 

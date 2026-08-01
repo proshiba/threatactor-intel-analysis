@@ -26,7 +26,7 @@
     "free_text"
   ],
   "properties": {
-    "schema_version": {"const": "1.1.0"},
+    "schema_version": {"const": "1.2.0"},
     "profile_id": {"type": "string", "pattern": "^actor--[a-z0-9][a-z0-9-]*$"},
     "name": {"type": "string", "minLength": 1},
     "status": {"enum": ["draft", "review", "published", "deprecated"]},
@@ -222,7 +222,7 @@
     },
     "activity": {
       "type": "object",
-      "required": ["activity_id", "name", "activity_type", "first_observed", "last_observed", "reported_at", "description", "target_refs", "malware_refs", "infrastructure_refs", "ttp_refs", "victim_refs", "confidence", "evidence_refs", "analyst_notes"],
+      "required": ["activity_id", "name", "activity_type", "first_observed", "last_observed", "reported_at", "description", "target_refs", "malware_refs", "infrastructure_refs", "ttp_refs", "victim_refs", "diamond_model", "confidence", "evidence_refs", "analyst_notes"],
       "properties": {
         "activity_id": {"type": "string", "pattern": "^activity--"},
         "name": {"type": "string"},
@@ -236,6 +236,77 @@
         "infrastructure_refs": {"type": "array", "items": {"type": "string"}},
         "ttp_refs": {"type": "array", "items": {"type": "string"}},
         "victim_refs": {"type": "array", "items": {"type": "string"}},
+        "diamond_model": {"$ref": "#/$defs/activityDiamond"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"$ref": "#/$defs/referenceArray"},
+        "analyst_notes": {"type": "string"}
+      }
+    },
+    "activityDiamond": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adversary", "capability", "infrastructure", "victim", "meta_features", "confidence", "evidence_refs", "analyst_notes"],
+      "properties": {
+        "adversary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["actor_ref", "name", "attribution_countries", "organization_refs"],
+          "properties": {
+            "actor_ref": {"type": "string", "pattern": "^actor--"},
+            "name": {"type": "string"},
+            "attribution_countries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "organization_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          }
+        },
+        "capability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["malware_refs", "ttp_refs"],
+          "properties": {
+            "malware_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "ttp_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          }
+        },
+        "infrastructure": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["infrastructure_refs"],
+          "properties": {
+            "infrastructure_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          }
+        },
+        "victim": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["target_refs", "victim_refs"],
+          "properties": {
+            "target_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "victim_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+          }
+        },
+        "meta_features": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["first_observed", "last_observed", "reported_at", "activity_type", "phases", "results", "direction"],
+          "properties": {
+            "first_observed": {"$ref": "#/$defs/timePoint"},
+            "last_observed": {"$ref": "#/$defs/timePoint"},
+            "reported_at": {"$ref": "#/$defs/timePoint"},
+            "activity_type": {"type": "string"},
+            "phases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "results": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+            "direction": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source_countries", "target_country_refs", "target_region_refs"],
+              "properties": {
+                "source_countries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+                "target_country_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+                "target_region_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+              }
+            }
+          }
+        },
         "confidence": {"$ref": "#/$defs/confidence"},
         "evidence_refs": {"$ref": "#/$defs/referenceArray"},
         "analyst_notes": {"type": "string"}

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--gamaredon`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -128,6 +128,13 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | phishing-campaign | 2026-01 | 2026-01 | 2026-06-03 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--52029eb0de30cafe0b41 | malware--daily-d2f92cab7d572d733a5d, malware--daily-dee986e090a2e04cffbb | ttp--activity-rule--c156a9757ac6d6ce11ab | victim--activity-rule--a5e83e9e93b643449173 | Sekoiaは、2026年1月に展開されたGamaredonの感染チェーンの初期アクセスとワーム部分を分析した。 GamaredonはロシアFSBに公式に関連付けられるAPTで、ウクライナの政府・軍・重要インフラを長期的に標的化している。 GammaPhishはxHTMLとRARを使い、WinRARのCVE-2025-8088を悪用してStartupフォルダへHTAを配置する。 GammaWormはVBScript、NTFS ADS、RunOnce、スケジュールタスクを悪用して永続化し、USBやネットワーク共有で拡散する。 Telegram、Cloudflare、Teletype、Telegra.phなどの正規サービスをDDRとして悪用し、C2構成更新と任意コード実行を行う。 | 中 | `source--daily-f9666a37c61d10f83b24` |
 | ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 | malware-campaign | 2025-02 | 2025-03 | 2025-04-11 | target--activity-rule--country--36f1b9323d5faab92f39, target--mitre-group--sector--ff8bca0df219b1480fef |  | ttp--activity-rule--93a860ff37caa628600c | victim--activity-rule--080918e720e48983e77d | ロシアの国家支援ハッカーグループGamaredonが、ウクライナの西側軍事ミッションを標的に攻撃を実施。 攻撃は2025年2月から3月にかけて行われ、更新版のGammaSteel情報窃取マルウェアが使用された。 感染経路は、悪意のある.LNKファイルを含むリムーバブルドライブと推測される。 VBSスクリプトからPowerShellベースのツールへの移行や、正規サービスの悪用が確認された。 マルウェアはスクリーンショットの取得やドキュメントの窃取を行い、持続的な攻撃を試みた。 | 中 | `source--daily-ae1b297bcc282623fbff` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | Gamaredon | GammaWorm, GammaPhish | T1053.005 Scheduled Task | 情報なし | ウクライナ, 政府・行政 | 被害事例: FSBのマトリョーシカ #1/3：展開され続けるGamaredonの贈り物――GammaPhishとGammaWorm | 中 |
+| ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 | Gamaredon | 情報なし | T1113 Screen Capture | 情報なし | ウクライナ, 防衛・軍事 | 被害事例: ロシアのハッカーが悪意のあるドライブを使用して西側の軍事ミッションを攻撃 | 中 |
 
 
 

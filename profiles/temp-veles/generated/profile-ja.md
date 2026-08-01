@@ -3,7 +3,7 @@
 - プロファイルID: `actor--temp-veles`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -117,6 +117,13 @@ The repository mapping workbook places this actor in the Russia worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | C0032 | campaign | 2014-10-01T04:00:00.000Z | 2017-01-01T05:00:00.000Z | 2026-05-12 |  |  | ttp--mitre-campaign--023f70b72f64b5f67d9c, ttp--mitre-campaign--3ba7f12143fe70f675bd, ttp--mitre-campaign--3bb2aac07000c264b64f, ttp--mitre-campaign--4047bfff19aa2396b904, ttp--mitre-campaign--422ac437afb08761baf9, ttp--mitre-campaign--6961fef08dd08ca0cc12, ttp--mitre-campaign--6e1dda584f99f3ad3ac8, ttp--mitre-campaign--79ecf147d17252208628, ttp--mitre-campaign--8680fe94bc75bd7f0aba, ttp--mitre-campaign--877c06cded8ad8dec428, ttp--mitre-campaign--8cca72777cd2d7823d20, ttp--mitre-campaign--91a185565b259f8df517, ttp--mitre-campaign--aa5fdd717d87305589cf, ttp--mitre-campaign--e371388c38e6bf2f5f17, ttp--mitre-campaign--e40f34db33c445ed236c, ttp--mitre-campaign--e86c3cba76bf86afe9ea, ttp--mitre-campaign--f0088e78b1e414a1e4c2 |  | [C0032](https://attack.mitre.org/campaigns/C0032) was an extended campaign suspected to involve the [Triton](https://attack.mitre.org/software/S1009) adversaries with related capabilities and techniques focused on gaining a foothold within IT environments. This campaign occurred in 2019 and was distinctly different from the [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030).(Citation: FireEye TRITON 2019) | 高 | `source--mitre-attack-19-1` |
 | Triton Safety Instrumented System Attack | campaign | 2017-06-01T04:00:00.000Z | 2017-08-01T04:00:00.000Z | 2026-05-12 |  |  | ttp--mitre-campaign--1998a738a233e9a25731, ttp--mitre-campaign--3d8e3df1c423e2ecc5b1, ttp--mitre-campaign--47d04170ee20c13bf35e, ttp--mitre-campaign--6bd42c85b9cb6e5995cd, ttp--mitre-campaign--74baece3a6ca2df2bbb8, ttp--mitre-campaign--8c18db5baf45c52cf640, ttp--mitre-campaign--a8a8d579809a7a485d47, ttp--mitre-campaign--aaaa1a5bdc3185ec1037, ttp--mitre-campaign--d41a62973859a95ff3bf, ttp--mitre-campaign--d6a2b44413491ff742c5 |  | [Triton Safety Instrumented System Attack](https://attack.mitre.org/campaigns/C0030) was a campaign employed by [TEMP.Veles](https://attack.mitre.org/groups/G0088) which leveraged the [Triton](https://attack.mitre.org/software/S1009) malware framework against a petrochemical organization.(Citation: Triton-EENews-2017) The malware and techniques used within this campaign targeted specific Triconex [Safety Controller](https://attack.mitre.org/assets/A0010)s within the environment.(Citation: FireEye TRITON 2018) The incident was eventually discovered due to a safety trip that occurred as a result of an issue in the malware.(Citation: FireEye TRITON 2017)<br> | 高 | `source--mitre-attack-19-1` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| C0032 | TEMP.Veles | 情報なし | T1036.005 Match Legitimate Resource Name or Location, T1133 External Remote Services, T1571 Non-Standard Port, T1070.006 Timestomp, T1546.012 Image File Execution Options Injection, T1021.001 Remote Desktop Protocol, T1070.004 File Deletion, T1583.003 Virtual Private Server, T1588.002 Tool, T1074.001 Local Data Staging, T1021.004 SSH, T1003.001 LSASS Memory, T1078 Valid Accounts, T1505.003 Web Shell, T1053.005 Scheduled Task, T1059.001 PowerShell, T1572 Protocol Tunneling | 情報なし | 情報なし | 情報なし | 高 |
+| Triton Safety Instrumented System Attack | TEMP.Veles | 情報なし | T1036.005 Match Legitimate Resource Name or Location, T1003.001 LSASS Memory, T1588.002 Tool, T1053.005 Scheduled Task, T1573 Encrypted Channel, T1056.003 Web Portal Capture, T1027.005 Indicator Removal from Tools, T1587.001 Malware, T1059.001 PowerShell, T1595 Active Scanning | 情報なし | 情報なし | 情報なし | 高 |
 
 
 

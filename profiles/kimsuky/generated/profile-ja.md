@@ -3,7 +3,7 @@
 - プロファイルID: `actor--kimsuky`
 - 状態: review
 - 更新日時: 2026-07-30T12:43:04Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -181,6 +181,41 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | Kimsuky QR-code Spearphishing Campaign | campaign | 2025-05 | 2025-06 | 2026-01-08 | target--journalists-policy-experts, target--research-academia |  | ttp--t1056-003--kimsuky-quishing-2025, ttp--t1098--kimsuky-quishing-2025, ttp--t1550-004--kimsuky-quishing-2025, ttp--t1566-002--kimsuky-quishing-2025 | victim--activity-rule--8a36dde11b25a11054ec | Kimsuky impersonated foreign advisers, embassy and think-tank personnel, and conference organizers. QR codes led think-tank and strategic-advisory targets to credential-harvesting infrastructure. | 高 | `source--fbi-kimsuky-quishing-2026` |
 | Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃 | infrastructure-operation | 2025-09 | 2025-09 | 2025-12-18 |  |  |  |  | 北朝鮮関与のKimsukyが、宅配追跡を装う偽サイトと武器化QRコードでAndroid向けマルウェア「DOCSWAP」を配布。 2025年9月に観測。スミッシングで偽追跡サイトへ誘導し、QR読取や直接アクセスで「セキュリティアプリ」偽装APKを落とさせる。 配布C2は27.102.137.181。SecDelivery.apk内のsecurity.datをlibnative-lib.soで復号し、多権限取得と常駐を確立。 RATは57コマンドを実装し、録音・録画、位置・通話・連絡先・SMS収集、遠隔操作、アクセシビリティ経由のキー入力記録を実施。 インフラやHTMLの韓国語コメント、「Million OK !!!!」が過去作戦と一致し、Kimsuky関与の根拠となった。 | 高 | `source--daily-f7383fd875d71ae63151` |
 | 2026年第1四半期 DPRK Operation Kimsuky 分析 | phishing-campaign | 2026-01 | 2026-06 | 2026-05-20 | target--activity-rule--sector--63c9fa67327d005b07b7, target--activity-rule--sector--932f4928d5e1ec28e2df, target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--c5b1f7936acf85af11e4 |  | ttp--activity-rule--4e7a9106baf629cb2a5d, ttp--activity-rule--e326bf94ac733031173e | victim--activity-rule--3df32433e6e912714b2a | Logpressoは、2026年上半期にKimsukyが実行した4件のスピアフィッシングキャンペーンを分析した。 標的は採用担当者、暗号資産関係者、開発者、国防関係者、公的機関や大学院委託教育関係者など。 各攻撃は、偽装文書表示、ペイロード投下、永続化、C2通信や遠隔操作という共通の流れを持つ。 GitHub raw/API、Microsoft CDN、VSCodeトンネルなどの正規サービス悪用が目立ち、評判ベースの遮断回避が意図されている。 LNK/JSEによる初期実行、LotL、難読化、タスクスケジューラ永続化、uid/IP/MACによる被害者識別が共通TTPとして整理されている。 | 中 | `source--daily-f3e6fda98089cb5da96d` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮マルウェアのモジュール化：多様性と機能特化 | Kimsuky | 情報なし | T1059.001 PowerShell | 情報なし | 暗号資産・Web3, IT・ソフトウェア, 製造・産業 | 被害事例: 北朝鮮マルウェアのモジュール化：多様性と機能特化 | 中 |
+| DPRK作戦の内情：LazarusとKimsukyの新インフラを世界的キャンペーンから特定 | Kimsuky | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | Kimsuky | 情報なし | T1190 Exploit Public-Facing Application | 情報なし | 製造・産業, 韓国 | 被害事例: 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール | 中 |
+| Kimsukyグループによる外交関係者を装った攻撃事例（PebbleDash、PrxClient） | Kimsuky | PrxClient | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| 北朝鮮のAPT「Kimsuky」、LNKファイルを使用してブラウザに保存された認証情報を窃取するforceCopyマルウェアを配布 | Kimsuky | 情報なし | T1555.003 Credentials from Web Browsers, T1036 Masquerading, T1105 Ingress Tool Transfer | 情報なし | 情報なし | 被害事例: 北朝鮮のAPT「Kimsuky」、LNKファイルを使用してブラウザに保存された認証情報を窃取するforceCopyマルウェアを配布 | 高 |
+| VS Codeエクステンションを悪用するKimsuky：ランサムウェアと永続化のためのキャンペーンとは？ | Kimsuky | 情報なし | T1027 Obfuscated Files or Information, T1057 Process Discovery, T1053.005 Scheduled Task | 情報なし | 情報なし | 被害事例: VS Codeエクステンションを悪用するKimsuky：ランサムウェアと永続化のためのキャンペーンとは？ | 高 |
+| 日本、北朝鮮のKimsukyハッカーに関連する攻撃を警告 | Kimsuky | 情報なし | T1566.001 Spearphishing Attachment | 情報なし | 日本, 政府・行政, 教育・研究 | 被害事例: 日本、北朝鮮のKimsukyハッカーに関連する攻撃を警告 | 高 |
+| 北朝鮮のハッカー、標的型マルウェアキャンペーンでFacebook Messengerを悪用 | Kimsuky | 情報なし | 情報なし | Cloud and Code Hosting Services | 情報なし | 情報なし | 中 |
+| 新たなDEEP#GOSUマルウェアキャンペーン、Windowsユーザーを高度な戦術で狙う | Kimsuky | 情報なし | T1036 Masquerading, T1102.003 One-Way Communication | Cloud and Code Hosting Services | 情報なし | 情報なし | 中 |
+| FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | Kimsuky | 情報なし | T1566.002 Spearphishing Link | 情報なし | 米国 | 被害事例: FBI、KimsukyがQRコードを使って米国組織をフィッシングしていると警告 | 高 |
+| Kimsuky、BlueKeep RDP脆弱性を悪用し、韓国と日本のシステムを侵害 | Kimsuky | 情報なし | T1056.001 Keylogging | 情報なし | 日本, 韓国 | 被害事例: Kimsuky、BlueKeep RDP脆弱性を悪用し、韓国と日本のシステムを侵害 | 高 |
+| Kimsukyは寛容なDMARCポリシーを利用してメールを偽装 | Kimsuky | 情報なし | 情報なし | 情報なし | メディア・報道, 政府・行政, 教育・研究 | 被害事例: Kimsukyは寛容なDMARCポリシーを利用してメールを偽装 | 高 |
+| Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 | Kimsuky | HttpSpy | 情報なし | 情報なし | 韓国 | 被害事例: Kimsukyの高度な攻撃手法：JSONPing、Webex偽装、新たなHttpSpy亜種 | 中 |
+| 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | Kimsuky | 情報なし | 情報なし | 情報なし | 防衛・軍事, 製造・産業, 韓国 | 被害事例: 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | 中 |
+| Pythonベースのバックドアを配布する悪性LNKファイルと配布手法の変化（Kimsukyグループ） | Kimsuky | 情報なし | T1053.005 Scheduled Task, T1059.006 Python, T1102.003 One-Way Communication, T1059.001 PowerShell | Cloud and Code Hosting Services | 情報なし | 情報なし | 高 |
+| 北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行 | Kimsuky | 情報なし | T1059.005 Visual Basic | 情報なし | 韓国 | 被害事例: 北朝鮮関連のKimsuky、継続的なサイバー攻撃でコンパイル済みHTMLヘルプファイルに移行 | 高 |
+| 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | Kimsuky | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | 情報なし | 情報なし | 中 |
+| 北朝鮮のハッカー、新しいKLogEXEとFPSpyマルウェアを標的型攻撃に使用 | Kimsuky | 情報なし | T1056.001 Keylogging, T1082 System Information Discovery | 情報なし | 情報なし | 情報なし | 中 |
+| Smoke Screen / Stealth Power | Kimsuky | 情報なし | T1056.001 Keylogging, T1059.001 Command and Scripting Interpreter: PowerShell, T1566.001 Phishing: Spearphishing Attachment | Compromised Web Servers, Lookalike Phishing Domains | Government and Diplomacy, 韓国 | 被害事例: Smoke Screen / Stealth Power | 高 |
+| Operation Newton | Kimsuky | AppleSeed, FastViewer Android Malware, KGH Spyware | T1505.003 Web Shell, T1041 Exfiltration Over C2 Channel, T1056.003 Input Capture: Web Portal Capture, T1505.003 Server Software Component: Web Shell, T1566.002 Phishing: Spearphishing Link | Cloud and Code Hosting Services, Compromised Web Servers, Lookalike Phishing Domains | Think Tanks and Academia | 被害事例: Operation Newton | 高 |
+| Browser Extension and Google Play Abuse | Kimsuky | AppleSeed, FastViewer Android Malware | T1114 Email Collection, T1566.002 Phishing: Spearphishing Link | Cloud and Code Hosting Services, Lookalike Phishing Domains | ドイツ, Think Tanks and Academia | 被害事例: Browser Extension and Google Play Abuse | 高 |
+| Operation DarkHorse | Kimsuky | 情報なし | T1059.001 Command and Scripting Interpreter: PowerShell, T1566.001 Phishing: Spearphishing Attachment | Compromised Web Servers, Lookalike Phishing Domains | Finance, Insurance, and Cryptocurrency | 被害事例: Operation DarkHorse | 中 |
+| 北朝鮮のハッカー、新たなGolangマルウェア「Durian」を暗号通貨企業に対して使用 | Kimsuky | 情報なし | 情報なし | 情報なし | 韓国 | 被害事例: 北朝鮮のハッカー、新たなGolangマルウェア「Durian」を暗号通貨企業に対して使用 | 中 |
+| Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 | Kimsuky | 情報なし | T1083 File and Directory Discovery | 情報なし | 政府・行政, 韓国 | 被害事例: Kimsukyハッカー、韓国への攻撃に新しいLinuxバックドアを使用 | 高 |
+| Kimsuky、TRANSLATEXT Chrome拡張機能を使用して機密データを盗む | Kimsuky | 情報なし | T1113 Screen Capture | 情報なし | 情報なし | 情報なし | 高 |
+| 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | Kimsuky | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | 教育・研究 | 被害事例: 国家支援ハッカー、ClickFix手法を武器化し標的型マルウェア攻撃を展開 | 中 |
+| 北朝鮮のハッカー、PowerShellの手法を悪用して新たなサイバー攻撃を実行 | Kimsuky | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: 北朝鮮のハッカー、PowerShellの手法を悪用して新たなサイバー攻撃を実行 | 中 |
+| Kimsuky QR-code Spearphishing Campaign | Kimsuky | 情報なし | T1056.003 Input Capture: Web Portal Capture, T1098 Account Manipulation, T1550.004 Use Alternate Authentication Material: Web Session Cookie, T1566.002 Phishing: Spearphishing Link | QR-code Credential Phishing Infrastructure | Journalists and Policy Experts, Think Tanks and Academia | 被害事例: Kimsuky QR-code Spearphishing Campaign | 高 |
+| Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃 | Kimsuky | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| 2026年第1四半期 DPRK Operation Kimsuky 分析 | Kimsuky | 情報なし | T1027 Obfuscated Files or Information, T1053.005 Scheduled Task | Cloud and Code Hosting Services | 暗号資産・Web3, IT・ソフトウェア, 防衛・軍事, 教育・研究 | 被害事例: 2026年第1四半期 DPRK Operation Kimsuky 分析 | 中 |
 
 少なくとも2012年から活動。2019年のSmoke ScreenとAppleSeed、2020-2021年のOperation Newton、2022-2023年のDarkHorseとCovert Stalker、2023年のブラウザ拡張・Google Play悪用、2024年のDMARC悪用へと配送・収集能力を更新している。
 

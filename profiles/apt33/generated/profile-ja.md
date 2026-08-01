@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt33`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:53Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -161,6 +161,13 @@ The repository mapping workbook places this actor in the Iran worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 | infrastructure-operation | 2024-04 | 2024-07 | 2024-08-29 |  |  | ttp--activity-rule--6150c1b75682e486b452 |  | APT33が新しいTicklerマルウェアを使用し、米国やUAEの政府・防衛機関のネットワークにバックドアを設置。 2024年4月から7月にかけて、情報収集活動の一環としてこの新しいマルウェアを使用。 2024年4月から5月にかけてパスワードスプレー攻撃を通じて侵入。 Microsoftの調査により、Azureインフラを利用した攻撃が明らかに。 APT33はIRGC（イラン革命防衛隊）に関連しているとされる。 | 高 | `source--daily-f8c5f7e3f2497c4aec2e` |
 | Stonedrill/ Shamoon2.0 | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置 | APT33 | 情報なし | T1110.003 Password Spraying | 情報なし | 情報なし | 情報なし | 高 |
+| Stonedrill/ Shamoon2.0 | APT33 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Stonedrill/ Shamoon2.0
 

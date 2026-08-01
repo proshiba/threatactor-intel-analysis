@@ -3,7 +3,7 @@
 - プロファイルID: `actor--apt-c-37`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -120,6 +120,12 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Meta Syrian network disruption (October 2021) | cyber-espionage | 2021-10 | 2021-10 | 2021-11-16 | target--country--syria | malware--sslove, malware--sandrorat |  | victim--activity-rule--fd272643244685f97d5e | APT-C-37: Meta disrupted APT-C-37 infrastructure linked to a separate Syrian Air Force Intelligence unit. The actor used credential phishing, SandroRAT, and SSLove against opposition-linked targets. | 高 | `source--meta-syria-hackers-2021` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Meta Syrian network disruption (October 2021) | APT-C-37 | SandroRAT, SSLove | 情報なし | APT-C-37 command-and-control infrastructure | シリア | 被害事例: Meta Syrian network disruption (October 2021) | 高 |
 
 
 

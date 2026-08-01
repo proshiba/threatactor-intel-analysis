@@ -3,7 +3,7 @@
 - プロファイルID: `actor--void-manticore`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -127,6 +127,13 @@ The repository mapping workbook places this actor in the Iran worksheet.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 | disruptive-activity | 不明 | 不明 | 2024-05-21 |  |  | ttp--activity-rule--7e8a4b46dd7a5b9c6c08 | victim--activity-rule--780f3983aa8216977285 | 新バージョンのBiBi Wiperがディスクパーティションテーブルを破壊 攻撃はイスラエルとアルバニアで発生 攻撃者はイランのハッカーグループであるVoid Manticore Void Manticoreは多様な破壊ツールを使用 新バージョンはデータ復旧を困難にする | 中 | `source--daily-0d70b2cb1fe1f39ff860` |
 | HomeLand Justice | campaign | 2021-05-01T04:00:00.000Z | 2022-09-01T04:00:00.000Z | 2026-05-12 |  | malware--mitre--s1149, malware--mitre--s1150, malware--mitre--s1151 | ttp--mitre-campaign--0b06909819cd839e84b0, ttp--mitre-campaign--1c878e11ead18e81f40e, ttp--mitre-campaign--2dc048bdae2a99349345, ttp--mitre-campaign--4f51d477b36b5e65b629, ttp--mitre-campaign--4f71c64125f203d9a37f, ttp--mitre-campaign--54df018259aa6e35c62b, ttp--mitre-campaign--597459b882a6121d02a7, ttp--mitre-campaign--607435dbf03c6b447456, ttp--mitre-campaign--6c8c3e304c7675e48e94, ttp--mitre-campaign--78ac41d87ea71b009685, ttp--mitre-campaign--7a4903fb7083eaf89222, ttp--mitre-campaign--7ff1d81738bca2650c4e, ttp--mitre-campaign--832ec2838375630f20a8, ttp--mitre-campaign--848ec9aaff8809a4b504, ttp--mitre-campaign--a1bc58011dfdee5560bc, ttp--mitre-campaign--ab6d95b9c827620ecaac, ttp--mitre-campaign--b6eabbd6aa66440ec7c8, ttp--mitre-campaign--bcfba187be6a64804365, ttp--mitre-campaign--bfba86287ab509282685, ttp--mitre-campaign--c7957c8dcc59a59f32e0, ttp--mitre-campaign--cd42f684fdd7e36a6dd5, ttp--mitre-campaign--d32f2450374e9ec586b2, ttp--mitre-campaign--df58953754d2afbde180, ttp--mitre-campaign--e4822e50db468b9f83f6, ttp--mitre-campaign--ea16c435dccfb5940d11 | victim--activity-rule--1bcee2af2ddefc48d2f1 | [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) was a disruptive cyber campaign conducted by Iranian state-affiliated actors against Albanian government networks in July and September 2022. The activity combined ransomware, wiper malware, and data leak operations. Initial access for [HomeLand Justice](https://attack.mitre.org/campaigns/C0038) was established as early as May 2021, and threat actors moved laterally, exfiltrated sensitive information, and maintained persistence for approximately 14 months prior to the destructive phase of the operation. Responsibility was claimed by the "HomeLand Justice" front, which framed the campaign as retaliation against the Mujahedeen-e Khalq (MEK), an Iranian opposition group with a presence in Albania. Multiple Iran-nexus groups are assessed to have participated in the campaign, including [HEXANE](https://attack.mitre.org/groups/G1001) who probed victim infrastructure.(Citation: Mandiant ROADSWEEP August 2022)(Citation: Microsoft Albanian Government Attacks September 2022)(Citation: CISA Iran Albanian Attacks September 2022) A second wave of attacks was launched in September 2022 using similar tactics following public attribution of the previous activity to Iran and the severing of diplomatic ties between Iran and Albania.(Citation: CISA Iran Albanian Attacks September 2022)<br><br> | 高 | `source--mitre-attack-19-1` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 | VOID MANTICORE | 情報なし | T1485 Data Destruction | 情報なし | 情報なし | 被害事例: BiBiワイパーの新バージョンがディスクパーティションテーブルも破壊 | 中 |
+| HomeLand Justice | VOID MANTICORE | CHIMNEYSWEEP, ROADSWEEP, ZeroCleare | T1190 Exploit Public-Facing Application, T1588.003 Code Signing Certificates, T1134.001 Token Impersonation/Theft, T1021.001 Remote Desktop Protocol, T1021.002 SMB/Windows Admin Shares, T1685 Disable or Modify Tools, T1003.001 LSASS Memory, T1114.002 Remote Email Collection, T1105 Ingress Tool Transfer, T1685.001 Disable or Modify Windows Event Log, T1059.003 Windows Command Shell, T1041 Exfiltration Over C2 Channel, T1078 Valid Accounts, T1046 Network Service Discovery, T1036.005 Match Legitimate Resource Name or Location, T1588.002 Tool, T1098.002 Additional Email Delegate Permissions, T1561.002 Disk Structure Wipe, T1570 Lateral Tool Transfer, T1486 Data Encrypted for Impact, T1087.003 Email Account, T1078.001 Default Accounts, T1059.001 PowerShell, T1505.003 Web Shell, T1047 Windows Management Instrumentation | 情報なし | 情報なし | 被害事例: HomeLand Justice | 高 |
 
 
 

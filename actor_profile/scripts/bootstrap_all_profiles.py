@@ -28,6 +28,7 @@ from common import (
     write_json_atomic,
 )
 from ingest_observables import SUPPORTED_SUFFIXES, source_records
+from activity_diamond import materialize_profile_diamonds
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -765,6 +766,7 @@ def create_profile(
         "sources": manifest_sources,
         "source_groups": [],
     }
+    materialize_profile_diamonds(profile)
     return profile, manifest
 
 

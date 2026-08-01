@@ -3,7 +3,7 @@
 - プロファイルID: `actor--darkhotel`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -131,6 +131,14 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 | Daybreak? | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Fallout Team | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | WizardOpium | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Daybreak? | Darkhotel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Fallout Team | Darkhotel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| WizardOpium | Darkhotel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Daybreak?; Fallout Team; WizardOpium
 

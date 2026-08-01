@@ -19,6 +19,7 @@ from common import (
     load_json,
     parse_json_array_cell,
 )
+from activity_diamond import build_activity_diamond
 from ingest_observables import (
     IANA_TLDS,
     SPECIAL_USE_TLDS,
@@ -140,8 +141,8 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
     missing = required - set(profile)
     for key in sorted(missing):
         issue(issues, "error", "$", f"missing top-level field: {key}")
-    if profile.get("schema_version") != "1.1.0":
-        issue(issues, "error", "$.schema_version", "expected 1.1.0")
+    if profile.get("schema_version") != "1.2.0":
+        issue(issues, "error", "$.schema_version", "expected 1.2.0")
     if not re.match(r"^actor--[a-z0-9][a-z0-9-]*$", profile.get("profile_id", "")):
         issue(issues, "error", "$.profile_id", "invalid profile ID")
 
@@ -238,6 +239,13 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for ref in activity.get("victim_refs", []):
             if ref not in victim_ids:
                 issue(issues, "error", f"$.activities[{index}].victim_refs", f"dangling victim reference: {ref}")
+        if not isinstance(activity.get("diamond_model"), dict):
+            issue(
+                issues,
+                "error",
+                f"$.activities[{index}].diamond_model",
+                "activity Diamond Model is missing",
+            )
 
     for index, victim in enumerate(victim_cases):
         location = f"$.victim_cases[{index}]"
@@ -319,6 +327,16 @@ def validate_profile(profile: dict[str, Any], issues: list[Issue]) -> dict[str, 
         for ref in victim.get("ttp_refs", []):
             if ref not in ttp_ids:
                 issue(issues, "error", f"$.victim_cases[{index}].ttp_refs", f"dangling TTP reference: {ref}")
+
+    for index, activity in enumerate(activities):
+        expected_diamond = build_activity_diamond(profile, activity)
+        if activity.get("diamond_model") != expected_diamond:
+            issue(
+                issues,
+                "error",
+                f"$.activities[{index}].diamond_model",
+                "activity Diamond Model is stale or inconsistent; run materialize_activity_diamonds.py --apply",
+            )
 
     for index, judgment in enumerate(profile.get("assessment", {}).get("key_judgments", [])):
         check_evidence_refs(judgment, f"$.assessment.key_judgments[{index}]", source_ids, issues)

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--applejeus`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -120,6 +120,13 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 3CX Supply Chain Attack | campaign | 2022-11-01T06:00:00.000Z | 2023-03-01T05:00:00.000Z | 2026-05-12 | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--f85697f31d3eefe544e2 |  | ttp--mitre-campaign--00eebce179e2cc165a78, ttp--mitre-campaign--09b1c7c970cc6f0872ff, ttp--mitre-campaign--10162a98ebfac9199a1f, ttp--mitre-campaign--1eee9d018fec2af13386, ttp--mitre-campaign--213481447859524a9328, ttp--mitre-campaign--271a72b9c2a22725acff, ttp--mitre-campaign--39b87e2e673dd6758c97, ttp--mitre-campaign--464d5726f874a68d2ff3, ttp--mitre-campaign--4fec03052d9bb90bcfcc, ttp--mitre-campaign--53a86942be3f4c2beffa, ttp--mitre-campaign--84a8e41beba9ba2a8ecb, ttp--mitre-campaign--863977544862a6feb9d7, ttp--mitre-campaign--8e86c6b7197ec50ac3de, ttp--mitre-campaign--aab01ff9f91ce4d15c34, ttp--mitre-campaign--adf5756d9d7c4a3ebe51, ttp--mitre-campaign--b5a6e63f8effa5428825, ttp--mitre-campaign--b69f659ac2baa6116cd9, ttp--mitre-campaign--e1007fd2d70a43c93a3c, ttp--mitre-campaign--f06ef908333d43453295, ttp--mitre-campaign--f0c2354d4975290b9f03, ttp--mitre-campaign--f434cc8e6bdd6b0a6530, ttp--mitre-campaign--fe00acecd59b2d85e57e | victim--activity-rule--92a04f97301418051a53 | The [3CX Supply Chain Attack](https://attack.mitre.org/campaigns/C0057) was the first publicly reported case of one supply chain compromise triggering another, leading to a cascading, two-stage intrusion. The initial supply chain attack began when a 3CX employee downloaded and executed a trojanized, end-of-life version of the X_Trader trading software from Trading Technologies. This provided UNC4736, a threat cluster associated with [AppleJeus](https://attack.mitre.org/groups/G1049), access to the 3CX environment. From there UNC4736 compromised the Windows and macOS build environments used to distribute the 3CX desktop application to their customers.(Citation: Mandiant 3cx UNC4736 2023) While 3CX serves more than 600,000 customers and 12 million users, only a subset of systems were affected. Subsequent targeting focused on victims in the defense and cryptocurrency sectors, where attackers deployed secondary payloads such as Gopuram for credential theft and persistence.(Citation: Kaspersky 3CX Gopuram 2023) The campaign began in late 2022 and was disrupted after security vendors publicly reported the compromise in March 2023.(Citation: 3cx official statement 2023)(Citation: Krebs 3cx overview 2023) | 高 | `source--mitre-attack-19-1` |
 | Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | malware-campaign | 不明 | 不明 | 2024-12-10 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--83f649cfc55e69ff542f | Radiant Capitalは、10月16日のサイバー攻撃で5,000万ドルの暗号通貨が盗まれたと発表。 サイバーセキュリティ企業Mandiantの調査により、攻撃者は北朝鮮の国家支援ハッカー「Citrine Sleet」（別名UNC4736、AppleJeus）であると特定。 攻撃は、3人の信頼された開発者のデバイスにマルウェアを感染させ、正規の署名を収集して不正な取引を実行する手法で行われた。 ハッカーは、ルーチンのマルチシグネチャプロセスを悪用し、トランザクションエラーを装って有効な署名を収集し、ArbitrumおよびBSC市場から資金を窃取。 米国政府は以前から、北朝鮮のハッカーが暗号通貨企業を標的にして資金を窃取し、国家活動を支援していると警告している。 攻撃は2024年9月11日に始まり、Radiantの開発者が元請負業者を装ったTelegramメッセージを受信し、悪意のあるZIPファイルをダウンロードするように仕向けられた。このZIPファイルには、「InletDrift」という名前のmacOSマルウェアがあった。 | 中 | `source--daily-f645f7df90b96e0f1b18` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 3CX Supply Chain Attack | AppleJeus | 情報なし | T1071.001 Web Protocols, T1559 Inter-Process Communication, T1573.001 Symmetric Cryptography, T1078 Valid Accounts, T1546.016 Installer Packages, T1189 Drive-by Compromise, T1620 Reflective Code Loading, T1217 Browser Information Discovery, T1218.007 Msiexec, T1055 Process Injection, T1055.002 Portable Executable Injection, T1027 Obfuscated Files or Information, T1203 Exploitation for Client Execution, T1027.013 Encrypted/Encoded File, T1218.015 Electron Applications, T1574.001 DLL, T1195.002 Compromise Software Supply Chain, T1027.009 Embedded Payloads, T1543.004 Launch Daemon, T1553.002 Code Signing, T1102.001 Dead Drop Resolver, T1678 Delay Execution | 情報なし | 防衛・軍事, 暗号資産・Web3 | 被害事例: 3CX Supply Chain Attack | 高 |
+| Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | AppleJeus | 情報なし | 情報なし | 情報なし | 米国, IT・ソフトウェア | 被害事例: Radiant、5,000万ドルの暗号通貨強奪を北朝鮮ハッカーと結びつける | 中 |
 
 
 

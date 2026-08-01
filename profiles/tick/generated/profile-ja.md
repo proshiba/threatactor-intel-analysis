@@ -3,7 +3,7 @@
 - プロファイルID: `actor--tick`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -136,6 +136,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国関与のハッカー、Lanscopeの脆弱性をゼロデイで悪用して攻撃 | cyber-espionage | 不明 | 不明 | 2025-11-03 |  |  | ttp--activity-rule--79b36f580fc50053d198 |  | 中国関与の諜報系グループ「Bronze Butler（Tick）」が、Motex Lanscope Endpoint ManagerのCVE-2025-61932をゼロデイで悪用して情報窃取を実施。 Sophosは2025年中頃からの悪用を観測、ベンダは10月20日に修正を公開し、CISAはKEVに追加して11月12日までのパッチ適用を要請。 欠陥は要求元検証の不備により未認証でSYSTEM権限の任意コード実行が可能となるもので、9.4.7.2以前のクライアントに影響。 攻撃では更新版Gokcpdoorを投下しKCPサポートを廃止、C2多重化通信を実装。OAED Loader経由のDLLサイドローディングやHavocも併用。 侵害後はgoddiやRDP、7-Zipを使い、クラウドストレージ（io、LimeWire、Piping Server等）を流出先として用いた可能性が示唆。 | 中 | `source--daily-a25c503fb0bab44c84b0` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国関与のハッカー、Lanscopeの脆弱性をゼロデイで悪用して攻撃 | BRONZE BUTLER | 情報なし | T1574.001 DLL | 情報なし | 情報なし | 情報なし | 中 |
 
 
 

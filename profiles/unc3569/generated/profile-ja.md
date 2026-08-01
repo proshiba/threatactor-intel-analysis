@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc3569`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -105,6 +105,12 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | infrastructure-operation | 不明 | 不明 | 2026-01-28 | target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--d23ef70e9a6b6307bc52 | victim--activity-rule--b58e62cfdbc20134f3f1 | Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。 | 中 | `source--daily-c20a23c702af45ff32d4` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | UNC3569 | 情報なし | T1555.003 Credentials from Web Browsers | 情報なし | 政府・行政 | 被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | 中 |
 
 
 

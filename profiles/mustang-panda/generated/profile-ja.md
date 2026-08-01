@@ -3,7 +3,7 @@
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:54Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -177,6 +177,24 @@ The repository mapping workbook places this actor in the China worksheet.
 | Mustang Panda、ZOHOMURKとMINIRECONでインドの政府・エネルギー部門を標的化 | infrastructure-operation | 2026-06-12 | 2026-06-22 | 2026-07-01 | target--activity-rule--country--0c17dd6f4a5e07d5f7d6, target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--sector--95362e6db57671167f8a | malware--daily-2e2fae64b72baefca8c8 |  | victim--activity-rule--3807c01b4b01f1ecb4f3 | Acronis TRUは、Mustang Pandaがインド政府機関を狙う2つの同時進行キャンペーンを追跡した。 標的はインドの水力発電部門と、台湾政府機関との協力協定(MOU)に関わる政府機関とされる。 攻撃ではSHARDLOADER、MINIRECON、ZOHOMURKという新たなマルウェア群が使われた。 ZOHOMURKは正規クラウドサービスZoho WorkDriveをC2、データ流出、遠隔タスク実行に悪用する。 TRUはインド政府部門の複数侵害システムを特定し、CERT-Inと連携して緩和と被害通知を支援した。 | 高 | `source--daily-f24514e21b73cfc154c2` |
 | 中国のMustang Panda、CoolClientバックドアで情報窃取ツールを展開 | cyber-espionage | 不明 | 不明 | 2026-01-29 | target--mitre-group--country--3741489f7d9087fab6e5, target--mitre-group--country--e35e01ac517c4dd06824, target--mitre-group--sector--95362e6db57671167f8a |  | ttp--activity-rule--62a4f30fbe312d7a9ddf | victim--activity-rule--0f84416c1c34272fdc44 | 中国関与のスパイ集団Mustang PandaがCoolClientを更新し、ブラウザ資格情報窃取やクリップボード監視機能を追加。 Kasperskyは新亜種が政府機関を狙った攻撃で観測され、ミャンマー・モンゴル・マレーシア・ロシア・パキスタンの政府機関に影響と報告。 配布にはSangforの正規ソフトが悪用され、過去にはBitdefender・VLC・Ulead PhotoImpactの署名バイナリでDLLサイドロード。 CoolClientはシステム情報収集、鍵入力記録、TCPトンネリング、プラグイン実行、UAC回避や権限昇格、永続化設定を備える。 新たにHTTPプロキシ資格情報のスニッフィングやリモートシェル/サービス管理/高度なファイル管理といったプラグイン等が強化された。 | 高 | `source--daily-babfc72d5fb1a4c1aea7` |
 | RedDelta Modified PlugX Infection Chain Operations | campaign | 2023-07-01T06:00:00.000Z | 2024-12-01T07:00:00.000Z | 2026-05-12 |  | malware--plugx, malware--shadowpad | ttp--mitre-campaign--02577a6738511a6e7c54, ttp--mitre-campaign--03498432967e6c24733e, ttp--mitre-campaign--06832584eb7aae2a36b5, ttp--mitre-campaign--19f6b6570101ff827377, ttp--mitre-campaign--2790a840dccdaaaee398, ttp--mitre-campaign--30bf590382a4ae3d1887, ttp--mitre-campaign--364b71da46dff8f74b3f, ttp--mitre-campaign--466ed0d90a1f5efb7bf5, ttp--mitre-campaign--4da0899fa292943dde34, ttp--mitre-campaign--5478997d0372aa60563d, ttp--mitre-campaign--57ef38d089937ab645a4, ttp--mitre-campaign--6d2d0780220683258607, ttp--mitre-campaign--8d75432722ab66dceafb, ttp--mitre-campaign--9a8d07964ada59da21ba, ttp--mitre-campaign--a6e878a64158ce053f7a, ttp--mitre-campaign--ad6918deadad349ffec0, ttp--mitre-campaign--c1fb3b7a8dd4d48b5cfb, ttp--mitre-campaign--c4ab5d2000cfdcbdb40c, ttp--mitre-campaign--ddf2ee19c071014fa157, ttp--mitre-campaign--e3e6536ab44df3e571e0, ttp--mitre-campaign--f1c8e9a436918d20916a, ttp--mitre-campaign--fd071bf27063beeb8dde |  | [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047) was executed by [Mustang Panda](https://attack.mitre.org/groups/G0129) from mid-2023 through the end of 2024 against multiple entities in East and Southeast Asia. [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047) involved phishing to deliver malicious files or links to users prompting follow-on installer downloads to load [PlugX](https://attack.mitre.org/software/S0013) on victim machines in a persistent state.(Citation: Recorded Future RedDelta 2025) | 高 | `source--mitre-attack-19-1` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Mustang Panda、ミャンマーを標的にStarProxyとTONESHELL改良版で攻撃 | Mustang Panda | CorKLOG, PAKLOG, SplatCloak, StarProxy, TONESHELL | T1056.001 Keylogging, T1574.001 DLL | 情報なし | 情報なし | 情報なし | 高 |
+| Silk Typhoonハッカー、外交官攻撃でネットワークのキャプティブポータルを乗っ取り | Mustang Panda | CANONSTAGER, PlugX | 情報なし | 情報なし | 政府・行政 | 被害事例: Silk Typhoonハッカー、外交官攻撃でネットワークのキャプティブポータルを乗っ取り | 中 |
+| 中国のAPTグループ2つ、ASEAN諸国に対するサイバースパイ活動を強化 | Mustang Panda | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に | Mustang Panda | 情報なし | T1574.001 DLL, T1071.001 Web Protocols, T1071.004 DNS | 情報なし | インド, 韓国, 金融, 米国 | 被害事例: 同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に | 高 |
+| 欧州の外交官を監視するために悪用されるWindowsゼロデイ（アクティブ攻撃中） | Mustang Panda | PlugX | 情報なし | 情報なし | 政府・行政 | 被害事例: 欧州の外交官を監視するために悪用されるWindowsゼロデイ（アクティブ攻撃中） | 中 |
+| 中国の国家支援ハッカーがルートキットでToneShellマルウェア活動を隠蔽 | Mustang Panda | TONESHELL | T1027 Obfuscated Files or Information | 情報なし | 政府・行政 | 被害事例: 中国の国家支援ハッカーがルートキットでToneShellマルウェア活動を隠蔽 | 中 |
+| 中国のハッカーが政府攻撃で新たなデータ窃盗マルウェアを使用 | Mustang Panda | HIUPAN, PUBLOAD | 情報なし | 情報なし | 中国, 政府・行政 | 被害事例: 中国のハッカーが政府攻撃で新たなデータ窃盗マルウェアを使用 | 中 |
+| 中国のハッカー、東南アジアのサイバー攻撃でVisual Studio Codeを悪用 | Mustang Panda | ShadowPad | 情報なし | 情報なし | 政府・行政 | 被害事例: 中国のハッカー、東南アジアのサイバー攻撃でVisual Studio Codeを悪用 | 中 |
+| 中国のハッキンググループがサイバースパイ活動で協力 | Mustang Panda | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Microsoft、ゼロデイ悪用のWindows LNK脆弱性を「緩和」 | Mustang Panda | PlugX | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Mustang Panda、ZOHOMURKとMINIRECONでインドの政府・エネルギー部門を標的化 | Mustang Panda | MINIRECON | 情報なし | 情報なし | 台湾, インド, エネルギー, 政府・行政 | 被害事例: Mustang Panda、ZOHOMURKとMINIRECONでインドの政府・エネルギー部門を標的化 | 高 |
+| 中国のMustang Panda、CoolClientバックドアで情報窃取ツールを展開 | Mustang Panda | 情報なし | T1082 System Information Discovery | 情報なし | パキスタン, ロシア, 政府・行政 | 被害事例: 中国のMustang Panda、CoolClientバックドアで情報窃取ツールを展開 | 高 |
+| RedDelta Modified PlugX Infection Chain Operations | Mustang Panda | PlugX, ShadowPad | T1547.001 Registry Run Keys / Startup Folder, T1480 Execution Guardrails, T1583.001 Domains, T1553.002 Code Signing, T1588.004 Digital Certificates, T1566.002 Spearphishing Link, T1566.001 Spearphishing Attachment, T1071.001 Web Protocols, T1059.001 PowerShell, T1218.014 MMC, T1203 Exploitation for Client Execution, T1036.004 Masquerade Task or Service, T1204.001 Malicious Link, T1218.007 Msiexec, T1095 Non-Application Layer Protocol, T1608.001 Upload Malware, T1090 Proxy, T1027.013 Encrypted/Encoded File, T1204.002 Malicious File, T1574.001 DLL, T1082 System Information Discovery, T1564.001 Hidden Files and Directories | 情報なし | 情報なし | 情報なし | 高 |
 
 
 

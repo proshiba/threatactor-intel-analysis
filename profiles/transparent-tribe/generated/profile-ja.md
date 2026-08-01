@@ -3,7 +3,7 @@
 - プロファイルID: `actor--transparent-tribe`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -126,6 +126,14 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 | C0011 | campaign | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 2026-05-12 | target--country--india, target--sector--government | malware--crimson | ttp--mitre-campaign--2190b7f723ca8b505db8, ttp--mitre-campaign--316336d66e0779a09423, ttp--mitre-campaign--491f3c666f93e55402d6, ttp--mitre-campaign--588e8190abaf6ad385cd, ttp--mitre-campaign--7d63f0df6c08571978c6, ttp--mitre-campaign--9b709fe37ae48a5728e2, ttp--mitre-campaign--ad8a4a3eb993f5fe638e, ttp--mitre-campaign--f324682b1c519c6387c3 | victim--activity-rule--d28e41b1d16aa4dca383 | [C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)  | 高 | `source--mitre-attack-19-1` |
 | ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | malware-campaign | 不明 | 不明 | 2025-05-13 | target--country--india, target--sector--defense |  | ttp--activity-rule--9f71c23b587163876322 | victim--activity-rule--a0e47c664c46d16a865d | ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
 | Operation C-Major | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| C0011 | Transparent Tribe | Crimson | T1204.002 Malicious File, T1204.001 Malicious Link, T1566.001 Spearphishing Attachment, T1587.003 Digital Certificates, T1583.001 Domains, T1566.002 Spearphishing Link, T1608.001 Upload Malware, T1059.005 Visual Basic | 情報なし | インド, Government | 被害事例: C0011 | 高 |
+| ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | Transparent Tribe | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | インド, Defense | 被害事例: ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | 中 |
+| Operation C-Major | Transparent Tribe | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Operation C-Major
 

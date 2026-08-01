@@ -3,7 +3,7 @@
 - プロファイルID: `actor--ta558`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -106,6 +106,13 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | SteganoAmor攻撃が全世界の320の組織を標的に | malware-campaign | 不明 | 不明 | 2024-04-16 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--570d54d1d21fab6540a9 |  |  | victim--activity-rule--8806ce9d668d7aa5df22 | SteganoAmorは画像内に隠された悪意あるコードを利用 TA558グループによる攻撃。様々な分野や国に影響を与えた320以上の攻撃が行われた TA558は、2018年から活動しており、標的は主にラテンアメリカのホスピタリティ関連組織 Microsoft Officeの脆弱性CVE-2017-11882を悪用 様々なマルウェアが配布される、AgentTeslaやFormBookなど | 中 | `source--daily-09539f0db091b1cf7875` |
 | TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開 | phishing-campaign | 不明 | 不明 | 2025-09-18 | target--activity-rule--sector--570d54d1d21fab6540a9 |  | ttp--activity-rule--72ed5e8ff59e9c3432cb | victim--activity-rule--61a6a8dfac5c5f1df7ae | 脅威グループTA558（KasperskyはRevengeHotelsとして追跡）が、ブラジルやスペイン語圏のホテルを狙いRATを配布。 2025年夏に観測。請求書や予約・採用通知を装うフィッシングで、ポルトガル語／スペイン語メールから感染を誘導。 LLM生成と推測されるコメント多めのJSローダーとPowerShellダウンローダーで最終的にVenom RATを展開。 Venom RATは窃取・リバースプロキシ・アンチキル・永続化を備え、特権化やDefender停止、USB経由拡散にも対応。 目的はホテルシステムやオンライン旅行代理店(OTA)（例: Booking[.]com）に保管された宿泊客のクレジットカード情報の窃取。 | 高 | `source--daily-f057489c6a517d53de51` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| SteganoAmor攻撃が全世界の320の組織を標的に | TA558 | 情報なし | 情報なし | 情報なし | 米国, 小売・ホスピタリティ | 被害事例: SteganoAmor攻撃が全世界の320の組織を標的に | 中 |
+| TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開 | TA558 | 情報なし | T1090 Proxy | 情報なし | 小売・ホスピタリティ | 被害事例: TA558、AI生成スクリプトを用いてブラジルのホテル攻撃でVenom RATを展開 | 高 |
 
 
 

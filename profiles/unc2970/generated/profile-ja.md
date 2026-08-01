@@ -3,7 +3,7 @@
 - プロファイルID: `actor--unc2970`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:01Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -106,6 +106,13 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | phishing-campaign | 不明 | 不明 | 2024-09-19 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--de0df51cff4adf4fc20b, target--activity-rule--country--f9601e2d842c9a05202b, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--b94dc560a327b601965d, target--activity-rule--sector--dfc80b76cad93a318adc, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  | ttp--activity-rule--9284011f4cc7699e8394 | victim--activity-rule--b694936d36ac7cdf3979 | UNC2970と呼ばれる北朝鮮のグループがエネルギーと航空宇宙企業を標的にスピアフィッシングを実施。 新たなMISTPENマルウェアを使用し、感染を広げた。 この攻撃は「Operation Dream Job」としても知られており、標的となる人物のプロフィールに合わせて修正された求人情報を装った悪意のあるZIPアーカイブファイルを送りつけるもの。 正規のPDFリーダーアプリケーションであるSumatra PDFのトロイの木馬化されたバージョンが含まれており、BURNBOOKと呼ばれるランチャーによってMISTPENが配信。 攻撃は米国、英国、ドイツなどの国で確認されている。 C2通信にMicrosoft Graphを利用。 | 中 | `source--daily-820c8bb063e8728fd388` |
 | Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | phishing-campaign | 不明 | 不明 | 2026-02-13 | target--activity-rule--country--72caf60a2fbce4a1be7a |  |  | victim--activity-rule--2614e7c2a95f18b40fb4 | Google Threat Intelligence Group（GTIG）は、国家支援型ハッカーがGeminiを攻撃の全段階で悪用していると述べた。 中国（APT31/Temp.HEX）、イラン（APT42）、北朝鮮（UNC2970）、ロシアの活動が、標的調査やOSINTに使われた。 Geminiはプロファイリング、フィッシング文面生成、翻訳、コーディング、脆弱性テスト、C2開発、データ持ち出しの補助に使われた。 既存マルウェアへの機能追加にも悪用が見られ、CoinBaitやHonestCueでAI生成の痕跡が示された（PoCではGemini APIでC#生成）。 Googleは悪用に紐づくアカウント/インフラを無効化し、Gemini分類器の防御強化と安全対策（ガードレール）を継続的に検証している。 | 中 | `source--daily-2cce580b31452f445118` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | UNC2970 | 情報なし | T1560.001 Archive via Utility | 情報なし | 米国, ドイツ, 英国, 運輸・航空・海運, 防衛・軍事, 製造・産業, エネルギー | 被害事例: 北朝鮮のハッカー、エネルギーおよび航空宇宙産業を新たなMISTPENマルウェアで標的に | 中 |
+| Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | UNC2970 | 情報なし | 情報なし | 情報なし | ロシア | 被害事例: Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | 中 |
 
 
 

@@ -3,7 +3,7 @@
 - プロファイルID: `actor--akira`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -134,6 +134,27 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 | Akiraランサムウェア：支払いだけでは匿名性を保てない | ransomware-extortion | 不明 | 不明 | 2025-06-01 |  | malware--akira | ttp--activity-rule--e6b5ee7e3aed202956a2 | victim--activity-rule--0c45f09657c09ed89b48 | ニュージャージー州の企業がAkiraランサムウェアの被害を受け、60万ドルの要求を20万ドルに交渉し支払った。 攻撃者は「List.7z」アーカイブで被害者のファイル構造を示し、データ所有の証拠として提示。 支払い後、「Deletion.7z」アーカイブでデータ削除の証拠を提供したが、実際の削除は確認できない。 被害者とのチャットログやファイル構造が公開され、匿名性が保たれなかった。 攻撃者はネットワークアクセスをダークウェブで購入し、Kerberoastingでドメイン管理者の資格情報を取得したと主張。 | 高 | `source--daily-08853165537986c77f7f` |
 | Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に | ransomware-extortion | 不明 | 不明 | 2025-08-02 |  | malware--akira |  | victim--activity-rule--eab06479686a6f477b11 | 7月中旬以降、AkiraランサムウェアがSonicWall SSL VPNを経由し侵入急増。 Arctic Wolfは未知のゼロデイ利用の可能性を示唆、資格情報攻撃も否定せず。 侵入後すぐ暗号化へ移行する傾向が2024年10月から継続確認。 管理者にはSSL VPN一時停止とホスティング系IPからのVPN認証遮断を推奨。 SMA 100のRCE脆弱性CVE-2025-40599も要パッチ、ログ確認でIoC調査を勧告。 | 高 | `source--daily-339537ab2997fa08795e` |
 | FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | ransomware-extortion | 2023-03 | 2023-03 | 2024-04-19 |  | malware--akira |  | victim--activity-rule--0c5b8c0e3e6470d94efd | Akiraランサムウェアが250以上の組織を標的に4200万ドルを詐取 2023年3月に出現し、幅広い業界を標的に急速に展開 北米、欧州、豪州で、幅広いビジネスと基盤インフラへ影響 FBIとCISAは組織の脆弱性対策と多要素認証の重要性を強調 攻撃の被害を減少させるための具体的な対策とガイドライン提供 | 高 | `source--daily-89a8fc15ce47bbec4793` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 | Akira | Akira | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 被害事例: FogランサムウェアがSonicWall VPNを標的に企業ネットワークに侵入 | 中 |
+| 重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される | Akira | Akira | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 被害事例: 重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される | 中 |
+| Hitachi Vantara、Akiraランサムウェア攻撃後にサーバーをオフライン化 | Akira | Akira | 情報なし | 情報なし | 政府・行政 | Hitachi Vantara | 高 |
+| Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用 | Akira | Akira | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 被害事例: Akiraランサムウェア、SonicWall SSLVPNの重大バグを再悪用 | 高 |
+| Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論 | Akira | Akira | 情報なし | 情報なし | 情報なし | Apache OpenOffice | 中 |
+| トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 | Akira | Akira | 情報なし | 情報なし | カナダ, 金融 | トロント動物園 | 中 |
+| AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 | 高 |
+| AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | 高 |
+| GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: GPUを活用したAkiraランサムウェアの復号ツールがGitHubで公開 | 高 |
+| 被害者が支払いをやめたことで、ランサムウェアの利益が減少 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: 被害者が支払いをやめたことで、ランサムウェアの利益が減少 | 中 |
+| SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 | Akira | Akira | T1190 Exploit Public-Facing Application | 情報なし | 情報なし | 被害事例: SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 | 高 |
+| Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: Akiraランサムウェア、MFA保護のSonicWall VPNアカウントを侵害 | 高 |
+| CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告 | Akira | Akira | T1190 Exploit Public-Facing Application, T1490 Inhibit System Recovery, T1486 Data Encrypted for Impact | 情報なし | 情報なし | 被害事例: CISA、Nutanix VMを狙うAkiraランサムウェアのLinux暗号化器に警告 | 高 |
+| Akiraランサムウェア：支払いだけでは匿名性を保てない | Akira | Akira | T1560.001 Archive via Utility | 情報なし | 情報なし | 被害事例: Akiraランサムウェア：支払いだけでは匿名性を保てない | 高 |
+| Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: Akiraランサムウェア攻撃が急増、SonicWallファイアウォールが標的に | 高 |
+| FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | 高 |
 
 
 

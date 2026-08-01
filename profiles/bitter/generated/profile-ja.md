@@ -3,7 +3,7 @@
 - プロファイルID: `actor--bitter`
 - 状態: draft
 - 更新日時: 2026-07-29T23:11:59Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -117,6 +117,14 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | Bitterハッカーグループ、サイバー作戦を拡大 | phishing-campaign | 不明 | 不明 | 2025-06-06 | target--mitre-group--country--7cc14f1275a45f6b7435, target--mitre-group--sector--45b05f79fd85ee2358d0 | malware--artradownloader, malware--zxxz | ttp--activity-rule--06fd46886e579b783e5a | victim--activity-rule--508a2f4c32d7ef8c0bbc | Bitter（別名TA397）は、インド政府の利益に沿った情報収集を目的とする国家支援のハッカーグループと評価されている。 同グループは、南アジアの政府機関や外交機関を主な標的としており、中国、サウジアラビア、南米、トルコなどにも攻撃を拡大している。 攻撃手法は、163[.]com、126[.]com、ProtonMailなどからのスピアフィッシングメールを使用し、マルウェアを含む添付ファイルを送信する。 使用されるマルウェアには、WmRAT、MiyaRAT、KugelBlitz、BDarkRAT、ArtraDownloader、MuuyDownloader（ZxxZ）などが含まれる。 Bitterは、他国の政府や外交機関になりすまし、マルウェアを拡散する手法を用いており、標的のネットワークに対して追加のペイロードを展開する。 | 高 | `source--daily-d3ece976544c2d6909ce` |
 | 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | phishing-campaign | 不明 | 不明 | 2024-12-19 | target--activity-rule--sector--b94dc560a327b601965d, target--mitre-group--sector--45b05f79fd85ee2358d0 |  | ttp--activity-rule--772f5d41013df2be715c, ttp--activity-rule--907ca6412a3b822a13c2, ttp--activity-rule--ad9fc7270c8c42da0122, ttp--activity-rule--e0f8b1e9d8bb8e85fe7b, ttp--activity-rule--e63d3626e7d5417a6e78 | victim--activity-rule--c0e702423a9d88afe0ac | サイバースパイ集団「Bitter」が、新たなマルウェア「MiyaRAT」を使用し、トルコの防衛組織を標的に攻撃を行っている。 攻撃は、投資プロジェクトに関する内容のスピアフィッシングメールから始まり、RARアーカイブを添付している。 アーカイブ内のLNKファイルを開くと、PowerShellコードが実行され、MiyaRATが展開される。 マルウェアは、「DsSvcCleanup」という名前のスケジュールタスクが作成され、17分ごとに悪意のあるcurlコマンドを実行。 MiyaRATは、システム情報の収集、スクリーンショットの取得、キーロギングなどの機能を持つ。 Bitterは、2013年から活動している南アジアのサイバースパイ集団で、主にアジアの政府や重要組織を標的としている。 | 高 | `source--daily-f0b4d93d130c33f27095` |
 | BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | phishing-campaign | 不明 | 不明 | 2026-04-15 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--mitre-group--sector--45b05f79fd85ee2358d0 |  |  | victim--activity-rule--85aa4730c9f9c6b836c9 | Lookoutは、Access Nowの調査協力を通じて、中東の市民社会関係者を狙う継続的なスピアフィッシングとAndroidスパイウェア配布を分析し、2022年以降続く諜報活動と評価した。 Android向けProSpyはSignal、ToTok、Botimを装い、連絡先、SMS、端末情報、文書、画像、音声、動画、アーカイブ、バックアップなどを収集してC2へ送信する。 攻撃は偽のSNS・メッセージ相手やApple Supportを装う接触から始まり、iOS利用者にはiCloudやSignal連携のフィッシング、Android利用者には悪性APK配布が使われた。 研究では複数のC2、配布サイト、フィッシング基盤が確認され、被害対象にはエジプトやレバノンの市民社会関係者のほか、政府関係者とみられる標的も含まれる。 Lookoutは、被害者像、インフラ、マルウェアの共通点から、この活動を南アジア系BITTER APTと関係するハック・フォー・ハイヤー作戦の可能性が高いと中程度の確度で評価した。 | 高 | `source--daily-1dd0fd6a374bf37bcc74` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Bitterハッカーグループ、サイバー作戦を拡大 | BITTER | ArtraDownloader, ZxxZ | T1566.001 Spearphishing Attachment | 情報なし | 中国, 政府・行政 | 被害事例: Bitterハッカーグループ、サイバー作戦を拡大 | 高 |
+| 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | BITTER | 情報なし | T1560.001 Archive via Utility, T1113 Screen Capture, T1053.005 Scheduled Task, T1566.001 Spearphishing Attachment, T1082 System Information Discovery | 情報なし | 防衛・軍事, 政府・行政 | 被害事例: 'Bitter'サイバースパイ、新たなMiyaRATマルウェアで防衛組織を標的に | 高 |
+| BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | BITTER | 情報なし | 情報なし | 情報なし | 非営利・市民社会, 政府・行政 | 被害事例: BITTERのその先：BITTER APTに関連するハック・フォー・ハイヤー作戦が中東・北アフリカの市民社会を標的に | 高 |
 
 
 

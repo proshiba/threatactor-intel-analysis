@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from common import normalize_time, stable_id, unknown_time, utc_now, write_json_atomic
+from activity_diamond import materialize_profile_diamonds
 
 
 PROFILES_ROOT = Path("profiles")
@@ -553,6 +554,7 @@ def correct_syrian_actor(slug: str) -> None:
         ),
     }
     append_unique(profile["relationships"], relation, "relationship_id")
+    materialize_profile_diamonds(profile)
     profile["updated_at"] = utc_now()
     write_json_atomic(path, profile)
     add_meta_manifest(slug, malware_refs)

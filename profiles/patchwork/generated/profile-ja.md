@@ -3,7 +3,7 @@
 - プロファイルID: `actor--patchwork`
 - 状態: draft
 - 更新日時: 2026-07-29T23:13:54Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -139,6 +139,14 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 | Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に | malware-campaign | 不明 | 不明 | 2024-07-25 | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--country--67ce22b843f136bff928, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--mitre-group--sector--1fe8537136738dcc3139 |  |  | victim--activity-rule--f1b93a8da9e0641cb12f | PatchworkハッカーがBrute Ratel C4ツールを使用し、ブータンを標的に ロマンスをテーマにしたおとりを使ってパキスタンとインドの被害者を誘い込み、VajraSpyというマルウェアに感染させる攻撃を実施 攻撃はWindowsショートカット（LNK）ファイルを介して開始 感染により、リモートシェル機能を持つPGoShellバックドアやBrute Ratel C4を配布 攻撃は主に政府機関や人権団体を対象 | 高 | `source--daily-b4dd81678daba2178538` |
 | Hangover | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Monsoon | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に | Patchwork | 情報なし | 情報なし | 情報なし | インド, パキスタン, 非営利・市民社会, 政府・行政 | 被害事例: Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に | 高 |
+| Hangover | Patchwork | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Monsoon | Patchwork | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Hangover; Monsoon
 

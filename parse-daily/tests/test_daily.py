@@ -324,6 +324,11 @@ class DailyCommonTests(unittest.TestCase):
             "2026-07-25T00:00:00Z",
         )
         self.assertEqual(activity["malware_refs"], ["malware--example-rat"])
+        self.assertIn("diamond_model", activity)
+        self.assertEqual(
+            activity["diamond_model"]["capability"]["malware_refs"],
+            ["malware--example-rat"],
+        )
 
     def test_only_approved_capability_is_materialized(self) -> None:
         profile_data = {

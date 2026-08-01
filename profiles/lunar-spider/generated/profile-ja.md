@@ -3,7 +3,7 @@
 - プロファイルID: `actor--lunar-spider`
 - 状態: draft
 - 更新日時: 2026-07-29T23:12:00Z
-- 構造バージョン: 1.1.0
+- 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
@@ -107,6 +107,12 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | intrusion | 不明 | 不明 | 2025-09-30 |  |  |  | victim--activity-rule--b306db09877210972cea | From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | 高 | `source--daily-36945315bd0d7f2ed55e` |
+
+### 活動別ダイヤモンドモデル
+
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | Lunar Spider | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: From a Single Click: How Lunar Spider Enabled a Near Two-Month Intrusion | 高 |
 
 
 
