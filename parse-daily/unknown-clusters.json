@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-31T02:30:45Z",
+  "generated_at": "2026-08-02T01:30:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -136,6 +136,206 @@
         "中央アジアを標的とする既存プロファイル（nomadic-octopus、sixlittlemonkeys、indigozebra、nomad-panda、ta459、teamspy-crew、turla 等）との重複有無は未検証。一次資料に言及がないため現時点では関連付けない。"
       ],
       "analyst_notes": "標的地域が既存の複数プロファイルと重なるため、将来の報告で帰属が進んだ場合は統合先候補の再確認が必要。"
+    },
+    {
+      "cluster_id": "unknown-cluster--knaithe-knyuan",
+      "primary_name": "knaithe / KnYuan",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-30",
+      "last_seen": "2026-07-30",
+      "detected_via": "一次情報源チェック（Palo Alto Networks Unit 42）。tech-memo daily-news 2026-08-01分に既に言及があるが、既存プロファイルに一致しない名前として未照合。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "individual-or-small-group-opportunistic",
+        "notes": "自称「バイナリセキュリティ研究者」。国家帰属の主張はなく、Unit 42は中国・珠海拠点の中国語話者個人/小規模グループと評価。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-02",
+          "publisher": "Unit 42 (Palo Alto Networks)",
+          "url": "https://unit42.paloaltonetworks.com/autonomous-ai-cyber-attack-campaign/",
+          "title": "Autonomous AI Cyber Attack Campaign",
+          "published_at": "2026-07-30",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "一次資料に明示された観測期間は未確認(継続的活動として記述)。",
+          "targets": "460以上の標的組織。確認された侵害事例: Citrix NetScaler(3組織)、Marimo notebook(11インスタンス)、マレーシア政府機関。",
+          "malware": [],
+          "summary": "自称バイナリセキュリティ研究者knaithe/KnYuanが、DeepSeekをHermes Agentフレームワーク経由で運用し、FOFA経由の自律的脆弱性列挙、公開PoCの自動取得・実行、Telegramベースの遠隔操作により自律型サイバー攻撃を実施。GitHub活動(1DayNewsツール保守)等の技術的痕跡から中国・珠海拠点と高確度で評価。",
+          "verified_by_analyst": "原文を確認。「The actor, operating under the aliases knaithe and KnYuan」と実行主体として明記。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "単一ベンダー(Unit 42)の初報のみのため、AGENT.mdの昇格基準(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)を満たしていない。継続監視が必要。"
+      ],
+      "analyst_notes": "tech-memo経由ではなく一次情報源(Unit 42)の公開一覧チェックで発見。日次チェックのunmatched_actor_valuesにも同名で2件観測あり(tech-memo 2026-08-01分)。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gunra",
+      "primary_name": "Gunra",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-30",
+      "last_seen": "2026-07-30",
+      "detected_via": "一次情報源チェック（AhnLab ASEC「Operation Double Barrel」レポート）経由でtech-memo日次IOCに記載。既存プロファイルに一致しない名前として未照合。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "ransomware-as-a-service",
+        "notes": "2025年4月に活動開始した金銭目的のランサムウェア組織(RaaS)。AhnLabは韓国NIS/NPA/KISA/FSI合同勧告関連の「Operation Double Barrel」レポートで、氏名非公表の国家支援型脅威グループとのインフラ・TTP重複(共有C2、同一脆弱性悪用、SSH鍵、マルウェア作成痕跡)を報告しているが、Gunra自体を国家支援型と主張してはいない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-02",
+          "publisher": "AhnLab ASEC",
+          "url": "https://image.ahnlab.com/atip/content/file/20260730/[AhnLab]Operation%20Double%20Barrel(ENG)(2026.07.30).pdf",
+          "title": "APT Group Tracking Report: Operation Double Barrel",
+          "published_at": "2026-07-30",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2025年4月以降(Gunraランサムウェアとしての活動開始)。本レポートで扱う重複事例は2026年1月〜3月。",
+          "targets": "韓国の医薬品会社、教育機関等。",
+          "malware": [
+            "Gunra ransomware"
+          ],
+          "summary": "PDF原文を直接取得し確認(WebFetch失敗のためcurlで直接ダウンロードしテキスト抽出)。「The Gunra ransomware group is a new ransomware organization that began operating in April 2025」。watering hole攻撃を行う氏名非公表の国家支援型脅威グループの攻撃事例と、Gunraランサムウェア感染事例の間で、OpenSSHリバーストンネルに使う同一IP(176.65.128[.]26)、同一脆弱性悪用スクリプト配信URL/ドメイン(jshosting.me, anyonecdn.com)、マルウェア作成の痕跡(SyncHost.exe関連)、PsExec実行時の引数の一致等、複数の技術的重複が報告されている。なお当該国家支援型脅威グループは「Brandoor(COPPERHEDGE)」というバックドアを使用しており、COPPERHEDGEは本リポジトリのLazarusプロファイルで既に追跡中のマルウェアファミリーである。ただしAhnLabの報告文中では「state-sponsored threat group」とのみ表記され、Lazarus等の具体名への帰属は一切明言されていない(Kasperskyの別レポートへの脚注参照があるのみ)。",
+          "verified_by_analyst": "PDF原文を直接確認。Gunraを実行主体として明記。国家支援型脅威グループとの関連についてはインフラ・TTP重複の報告に留まり、Gunra自体の帰属主張ではない。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "lazarus",
+          "relation": "possible-infrastructure-overlap-unconfirmed",
+          "notes": "AhnLabが報告した「state-sponsored threat group」が使用するBrandoorはCOPPERHEDGEの別名で、Lazarusプロファイルで既に追跡中のマルウェアファミリー。ただしAhnLab原文はLazarusへの明示的帰属を行っておらず、断定はできない。誤統合を防ぐため関連候補として記録するに留める。"
+        }
+      ],
+      "unresolved_questions": [
+        "AhnLabが言及する「state-sponsored threat group」の具体的な帰属先(Lazarus等)は原文で確認できていない。",
+        "Gunra自体は独立した金銭目的アクターとして扱うべきか、国家支援型グループとの協業/ツール共有関係として扱うべきか未確定。",
+        "単一ベンダー(AhnLab)の初報だが、韓国政府機関(NIS/NPA/KISA/FSI)合同勧告に関連するレポートであるため、AGENT.mdの昇格基準(政府・CERT・法執行機関の言及)を満たす可能性がある。要確認。"
+      ],
+      "analyst_notes": "tech-memo経由ではなく一次情報源(AhnLab)の直接確認で発見。慎重な扱いを要する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--unc6780-teampcp",
+      "primary_name": "UNC6780",
+      "aliases": [
+        {
+          "name": "TeamPCP",
+          "vendor": "Trend Micro / MISP",
+          "scope": "unknown"
+        },
+        {
+          "name": "Storm-2999",
+          "vendor": "Microsoft",
+          "scope": "unknown"
+        }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-07-30",
+      "last_seen": "2026-07-30",
+      "detected_via": "一次情報源チェック（Google Threat Intelligence Group）。tech-memoには未掲載。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-supply-chain-intrusion-set",
+        "notes": "金銭目的のオープンソースサプライチェーン攻撃者。国家帰属の主張はない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-02",
+          "publisher": "Google Threat Intelligence Group",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence/mitigation-guidance-for-supply-chain-compromise",
+          "title": "Batten Down Your Packages: Mitigation Guidance for Supply Chain Compromise",
+          "published_at": "2026-07-30",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2026年2月〜5月。",
+          "targets": "PyPI/npm/Docker Hub上の複数リポジトリ。",
+          "malware": [
+            "SANDCLOCK"
+          ],
+          "summary": "2026年2月〜5月にかけ、PyPI/npm/Docker Hubの複数リポジトリを侵害し、GitHub Actionsのシークレットを窃取。認証情報スティーラー「SANDCLOCK」を展開し、窃取した認証情報をランサムウェア集団へ横流ししたと報告されている。",
+          "verified_by_analyst": "WebFetchによる要約確認のみ(原文全文の直接取得は未実施)。GTIGの記事内でUNC6780/TeamPCPが実行主体として言及されている。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "TeamPCPという名称は本リポジトリ外のOSINT参照データ(actor_profile/reference/osint/misp-threat-actor.json、microsoft-threat-actor-mapping.json)に既に登録されており、Trend Micro・Flare.io等複数ベンダーによる独立した報告が確認できる。MicrosoftはStorm-2999として追跡中(group in development)。AGENT.mdの昇格基準(独立した一次資料2本以上)を満たす可能性が高く、プロファイル新規作成の優先候補として次回以降のレビューで検討する価値がある。"
+      ],
+      "analyst_notes": "tech-memo経由ではなく一次情報源(Google Threat Intelligence Group)の公開一覧チェックで発見。既存の参照OSINTデータには既出のため、真に「新規」ではなく本リポジトリでの未収録案件。"
+    },
+    {
+      "cluster_id": "unknown-cluster--xentry-team",
+      "primary_name": "XEntry Team",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-20",
+      "last_seen": "2026-07-20",
+      "detected_via": "一次情報源チェック（Kaspersky Securelist）。tech-memoには未掲載。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-extortion-group",
+        "notes": "小規模な金銭目的脅迫グループ。国家帰属の主張はない。重要度は低い。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-02",
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/new-extortion-scheme-printers-bitlocker/120718/",
+          "title": "A new extortion cocktail: office printers, small ransoms, and BitLocker",
+          "published_at": "2026-07-20",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "未確認。",
+          "targets": "業務用プリンター経由で侵入した組織。",
+          "malware": [
+            "BitLocker(悪用)"
+          ],
+          "summary": "業務用プリンターの悪用とBitLockerによる暗号化を組み合わせた小額脅迫キャンペーンの実行者として初出。",
+          "verified_by_analyst": "WebFetchによる要約確認のみ(原文全文の直接取得は未実施)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "単一ベンダー(Kaspersky)の初報のみ。規模・重要度とも低く、継続監視の優先度は低い。"
+      ],
+      "analyst_notes": "tech-memo経由ではなく一次情報源(Kaspersky)の公開一覧チェックで発見。"
+    },
+    {
+      "cluster_id": "unknown-cluster--cavern-manticore",
+      "primary_name": "Cavern Manticore",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "detected_via": "一次情報源チェック（SentinelLabs）。tech-memoには未掲載。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-sponsored-suspected",
+        "notes": "MOIS(イラン情報省)関連の中程度確度でSentinelLabsが評価。既存プロファイルへの一致なし。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-02",
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/iran-war-cyber-threat-landscape-a-midyear-assessment-on-what-matters/",
+          "title": "Iran War Cyber Threat Landscape | A Midyear Assessment on What Matters",
+          "published_at": "2026-07-21",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "未確認(中間評価記事のため個別インシデントの期間記載なし)。",
+          "targets": "サービスプロバイダー及びRMM経由での侵入先。",
+          "malware": [],
+          "summary": "既存のRMMアクセスを悪用し、ITサービスプロバイダー環境経由でスパイ活動を行うクラスタとして言及。MOIS関連の信頼度は中程度とされる。同記事内の具体的なキャンペーン記述は乏しく、役割分類の一文のみ。",
+          "verified_by_analyst": "原文を直接確認。ただし具体的IOC・キャンペーン詳細の記載はなく、内容は簡潔。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "単一ベンダー(SentinelLabs)の初報かつ内容が簡潔なため、継続監視のみで昇格検討は時期尚早。"
+      ],
+      "analyst_notes": "同記事内の「Screening Serpens」はUNC1549プロファイルへ既に統合済み(activity--daily-6b2a23bcddd9757abbb0)であることを確認済み。同記事のMuddyWater/APT34/APT42/VOID MANTICOREへの言及は役割分類の一文のみで、VOID MANTICOREのStryker/Handala事例含め既存プロファイルに既収録の内容と重複するため、この台帳への追加や既存プロファイルへの追加を見送った。"
     }
   ],
   "excluded_name_collisions": [

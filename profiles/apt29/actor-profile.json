@@ -4,7 +4,7 @@
   "name": "APT29",
   "status": "review",
   "created_at": "2026-07-25T09:00:19Z",
-  "updated_at": "2026-08-01T23:19:01Z",
+  "updated_at": "2026-08-02T01:22:59Z",
   "languages": [
     "ja"
   ],
@@ -2599,6 +2599,113 @@
       }
     },
     {
+      "activity_id": "activity--daily-9905b221d8db8a1e6f72",
+      "name": "CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Microsoftは2026年5月上旬以降、Midnight Blizzard(APT29)のサブクラスターStorm-2945が、世界各地のホテル等の公衆キャプティブポータルネットワークを侵害し、出張者を狙う広範だが標的を絞った通信操作攻撃を行っていると報告した。侵害したキャプティブポータル経由のDNS/HTTP通信操作でWindows向けCornFlake RATやPowerShellベースのChocoShellを配布し、Microsoft Entra IDに対するデバイスコードフィッシングや、ブラウザ悪用による認証情報窃取(Cookie、SSOトークン、Wi-Fiパスワード等)を実施。ロシアの対外政策上の情報収集目的に沿うスパイ活動と評価される。Microsoftは、Storm-2945についてMidnight Blizzardとの技術的・運用的な重複に基づきそのサブクラスターであると明記している。",
+      "target_refs": [
+        "target--activity-rule--sector--570d54d1d21fab6540a9"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--56efecd90c48688b30f4"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--190ac817d3e5e2e29248"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-9a096844f31d70cf18bd"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--manual-apt29-captivecrunch-20260802 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: attributed-subject。 レビュー: 日次ルーチンでMicrosoft Security Blogの公開一覧を直接確認し検出。原文(2026-07-31)を確認済み。「Since early May 2026, Microsoft Threat Intelligence has observed Storm-2945, a sub-cluster of Midnight Blizzard, conducting widespread but targeted traffic manipulation attacks」と明記され、MicrosoftはStorm-2945をMidnight Blizzard(APT29)の技術的・運用的重複に基づくサブクラスターと直接評価している。tech-memoには未収録の一次情報。採用。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt29",
+          "name": "APT29",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--56efecd90c48688b30f4"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--570d54d1d21fab6540a9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--190ac817d3e5e2e29248"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Credential Access"
+          ],
+          "results": [
+            "credential-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9a096844f31d70cf18bd"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-c4e09afebaa471f126d6",
       "name": "大使館を標的としたフィッシング攻撃に新たなGrapeLoaderマルウェアを展開",
       "activity_type": "phishing-campaign",
@@ -4708,7 +4815,7 @@
       {
         "id": "target--targeting-audit--country--323f413e7c299bd22136",
         "name": "ロシア",
-        "description": "構造化OSINTの被害国フィールドでAPT29の標的・被害国としてロシアが記録されている。",
+        "description": "活動「CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft」の記述で標的・被害国として明示されている。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -4723,9 +4830,10 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-9a096844f31d70cf18bd",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--7ea338cddbee788fbd07",
@@ -5057,6 +5165,28 @@
         "analyst_notes": "[targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
       },
       {
+        "id": "target--targeting-audit--region--1b76161348734d33ac60",
+        "name": "全世界",
+        "description": "活動「CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft」の記述で標的地域として全世界が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9a096844f31d70cf18bd"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
         "id": "target--targeting-audit--region--d14621a326afab2ce5f1",
         "name": "北米",
         "description": "活動「SolarWinds Compromise」の記述で標的地域として北米が明示されている。",
@@ -5193,6 +5323,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-833e8d72019628e85850",
+          "source--daily-9a096844f31d70cf18bd",
           "source--daily-b028cfa41afc98a11bc6",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
@@ -5231,6 +5362,28 @@
       }
     ],
     "sectors": [
+      {
+        "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "name": "小売・ホスピタリティ",
+        "description": "活動「CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-9a096844f31d70cf18bd"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
       {
         "id": "target--mitre-group--sector--15819db0d0d0ddf2c6b1",
         "name": "教育・研究",
@@ -5409,6 +5562,35 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-333754fe19b5747a8958"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--56efecd90c48688b30f4",
+      "tactic": "Credential Access",
+      "technique_id": "T1555.003",
+      "technique_name": "Credentials from Web Browsers",
+      "observed_behavior": "侵害したキャプティブポータル経由のDNS/HTTP通信操作でWindows向けCornFlake RATやPowerShellベースのChocoShellを配布し、Microsoft Entra IDに対するデバイスコードフィッシングや、ブラウザ悪用による認証情報窃取(Cookie、SSOトークン、Wi-Fiパスワード等)を実施。",
+      "activity_refs": [
+        "activity--daily-9905b221d8db8a1e6f72"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-9a096844f31d70cf18bd"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -13155,6 +13337,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241219.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-9a096844f31d70cf18bd",
+      "path": "https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+      "title": "CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft",
+      "publisher": "microsoft.com",
+      "published_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "en",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "日次ルーチンでMicrosoft Security Blogの公開一覧を直接確認し検出・取込(tech-memo経由ではない)。元ファイル参照: manual-primary-source-check/2026-08-02-microsoft-security-blog.md; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-9d15f8a2b79eddc0a96b",
       "path": "https://www.bleepingcomputer.com/news/security/cisa-orders-agencies-impacted-by-microsoft-hack-to-mitigate-risks/",
       "title": "CISAがマイクロソフトハックに影響を受けた機関にリスク軽減を指示",
@@ -13542,10 +13742,63 @@
     "history": "Operation Ghost\n\n2024年10月22日以降、APT29（Midnight Blizzard）は100超の組織の数千人へ署名済みRDP設定ファイルを送付した。標的が開くと攻撃者管理サーバーへ接続し、ローカルドライブ、クリップボード、周辺機器、認証機能等がリモート側へマッピングされた。",
     "capability_details": "PowerDuke, reGeorg, GeminiDuke, HAMMERTOSS, CosmicDuke, EnvyScout, TEARDROP, WellMess, PolyglotDuke, RegDuke, QUIETEXIT, Raindrop, FatDuke, GoldMax, POSHSPY, MiniDuke, SeaDuke, FoggyWeb, WellMail, LiteDuke, VaporRage, Sibot, Cobalt Strike, SUNBURST, PinchDuke, OnionDuke, NativeZone, GoldFinder, TrailBlazer, SUNSPOT, BoomBox, CloudDuke, SoreFang, CozyCar, CozyDuke, SeaDaddy implant developed in Python and compiled with py2exe, AdobeARM, ATI-Agent, MiniDionis, Grizzly Steppe, Vernaldrop, Tadpole, Spikerush, Net, BloodHound, Sliver, Impacket, ipconfig, AADInternals, Tasklist, meek, ROADTools, Systeminfo, Mimikatz, SDelete, Tor, AdFind, PsExec",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=アイルランド、アゼルバイジャン、アラブ首長国連邦、イスラエル、イタリア、インド、ウガンダ、ウクライナ、ウズベキスタン、オランダ、オーストラリア、カザフスタン、カナダ、キプロス、キルギス、シンガポール、ジョージア、スイス、スペイン、スロバキア、スロベニア、タイ、チェコ、チリほか26か国。標的地域=NATO加盟国、アジア、アフリカ、オセアニア、コーカサス、チェチェン、中南米、中央アジア、中東、北米、南欧、南米、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets government ministries and agencies in Europe, the US, Central Asia, East Africa, and the Middle East, associated with DNC attacks",
+    "targeting_details": "構造化ターゲット監査: 標的国=アイルランド、アゼルバイジャン、アラブ首長国連邦、イスラエル、イタリア、インド、ウガンダ、ウクライナ、ウズベキスタン、オランダ、オーストラリア、カザフスタン、カナダ、キプロス、キルギス、シンガポール、ジョージア、スイス、スペイン、スロバキア、スロベニア、タイ、チェコ、チリほか26か国。標的地域=NATO加盟国、アジア、アフリカ、オセアニア、コーカサス、チェチェン、中南米、中央アジア、中東、全世界、北米、南欧、南米、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nThis threat actor targets government ministries and agencies in Europe, the US, Central Asia, East Africa, and the Middle East, associated with DNC attacks",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--190ac817d3e5e2e29248",
+      "name": "被害事例: CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Microsoftは2026年5月上旬以降、Midnight Blizzard(APT29)のサブクラスターStorm-2945が、世界各地のホテル等の公衆キャプティブポータルネットワークを侵害し、出張者を狙う広範だが標的を絞った通信操作攻撃を行っていると報告した。侵害したキャプティブポータル経由のDNS/HTTP通信操作でWindows向けCornFlake RATやPowerShellベースのChocoShellを配布し、Microsoft Entra IDに対するデバイスコードフィッシングや、ブラウザ悪用による認証情報窃取(Cookie、SSOトークン、Wi-Fiパスワード等)を実施。ロシアの対外政策上の情報収集目的に沿うスパイ活動と評価される。Microsoftは、Storm-2945についてMidnight Blizzardとの技術的・運用的な重複に基づきそのサブクラスターであると明記している。",
+      "activity_refs": [
+        "activity--daily-9905b221d8db8a1e6f72"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--570d54d1d21fab6540a9"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--56efecd90c48688b30f4"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "侵害したキャプティブポータル経由のDNS/HTTP通信操作でWindows向けCornFlake RATやPowerShellベースのChocoShellを配布し、Microsoft Entra IDに対するデバイスコードフィッシングや、ブラウザ悪用による認証情報窃取(Cookie、SSOトークン、Wi-Fiパスワード等)を実施。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "ロシアの対外政策上の情報収集目的に沿うスパイ活動と評価される。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-9a096844f31d70cf18bd"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--3b53f10d25442bc69e29",
       "name": "被害事例: SolarWinds Compromise",
