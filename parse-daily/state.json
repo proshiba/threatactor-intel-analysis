@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "70b9ca4388f24882d53b84696fe4a8c2d91ad1ea",
-  "last_scanned_date": "2026-07-30",
+  "last_scanned_commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e",
+  "last_scanned_date": "2026-08-01",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -292,6 +292,148 @@
         }
       ],
       "analyst_notes": "tech-memoのdaily-newsとOSINT検索の両経路で収集。採用1件(Kimsuky)、不採用1件(Anonymous、名称衝突)。検索結果のスニペットだけを根拠にせず、AhnLab ASECの原文で実行主体・マルウェア機能・IOC件数を確認した。"
+    },
+    {
+      "completed_at": "2026-08-01T23:20:00Z",
+      "window": {
+        "since": "2026-07-30",
+        "until": "2026-08-01"
+      },
+      "source_commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e",
+      "statistics": {
+        "news_files": 3,
+        "articles": 36,
+        "review_records": 14,
+        "approved_records": 5,
+        "applied_records": 4,
+        "unmatched_ioc_actor_observations": 65
+      },
+      "applied": [
+        {
+          "actor": "apt38",
+          "activity": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定（typo-crypto等のnpmパッケージ侵害）",
+          "source": "https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
+          "ioc_observations": 4,
+          "capabilities": [
+            "typo-crypto"
+          ],
+          "decision": "本文はSAPPHIRE SLEET/STARDUST CHOLLIMA/BlueNoroff等の名で言及しAPT38表記は登場しないが、SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既存登録済み。scope: overlappingのため断定的な同一視ではない旨をreview_notesに明記した上で採用。"
+        },
+        {
+          "actor": "blacktech",
+          "activity": "APTグループが使用するBlueShell亜種の分析（BlackTechによる日本国内組織への攻撃を含む）",
+          "source": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "ioc_observations": 3,
+          "capabilities": [
+            "BlueShell"
+          ],
+          "decision": "原文(IIJ)に「BlackTechによる日本国内の組織を標的としたAPT攻撃においてもBlueShell亜種を観測している」と明記。複数APTが同マルウェアを使う旨の記載もあるがBlackTechの観測は個別に明記されているため採用。"
+        },
+        {
+          "actor": "contagious-interview",
+          "activity": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡（macOS ClickFix + ブロックチェーンC2キャンペーン）",
+          "source": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "ioc_observations": 0,
+          "capabilities": [],
+          "decision": "原文(AllSecure, 2026-07-29)に「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF」と明記。tech-memoの要約は『context-only』判定だったが、原文直接確認(r.jina.ai経由、allsecure.ioがJS SPAのためWebFetch単体では本文取得不可)により採用に変更。"
+        },
+        {
+          "actor": "unc5342",
+          "activity": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡（macOS ClickFix + ブロックチェーンC2キャンペーン）",
+          "source": "https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "ioc_observations": 0,
+          "capabilities": [],
+          "decision": "Contagious Interviewと同一記事・同一根拠。原文直接確認により採用。"
+        }
+      ],
+      "reviewed_non_matches": [
+        {
+          "name": "BlackByte",
+          "decision": "Sophos記事(Chaos vishing)にBlackByteへの言及自体がなく不採用。"
+        },
+        {
+          "name": "Carbanak",
+          "decision": "SOCRadar記事(Operation Talked)にCarbanakへの言及なし。URL文字列断片への誤一致。"
+        },
+        {
+          "name": "Earth Lusca",
+          "decision": "Chromiumのバグ修正記事とは無関係。「CHROMIUM」語との重複一致による名称衝突。"
+        },
+        {
+          "name": "Ember Bear",
+          "decision": "SOCRadar記事はUAC-0056/UAC-0114とのTTP類似を根拠の一つに挙げるのみで実行主体と明記していないため不採用。"
+        },
+        {
+          "name": "Hellsing APT",
+          "decision": "UNODC報告書・Securelist(OctLurk/SilkLurk)いずれも本文に「Hellsing」の言及なし。プロファイルのalias「Asia」が地域語(South-East Asia / Central Asia)に機械的に一致した名称衝突。2記事とも不採用。"
+        },
+        {
+          "name": "MuddyWater",
+          "decision": "Sophos自身が「STAC4749とMuddyWaterを結び付ける証拠は見つからなかった」と明記し関連を否定。STAC4749はunknown-clusters.jsonで既に台帳管理済み。"
+        },
+        {
+          "name": "Night Dragon",
+          "decision": "hunt.io記事の「Night Dragon」はSQLRCE0が2026年6月に発表した新規Android RATプラットフォーム名で、2011年の同名APTとは無関係。"
+        }
+      ],
+      "unmatched_entities": [
+        {
+          "value": "SQLRCE0 / Yx Technology",
+          "observations": 25,
+          "decision": "既存プロファイルに一致せず未反映。新規プロファイル候補として提示のみ。"
+        },
+        {
+          "value": "STAC4749",
+          "observations": 22,
+          "decision": "unknown-clusters.jsonで既にstatus: trackingとして台帳管理済み。MuddyWaterとの関連は原文で否定済み。"
+        },
+        {
+          "value": "TA488 (Void Blizzard / Laundry Bear)",
+          "observations": 5,
+          "decision": "既存プロファイルに一致せず未反映。新規プロファイル候補として提示のみ。"
+        },
+        {
+          "value": "SilverFox (medium-high confidence)",
+          "observations": 3,
+          "decision": "既存プロファイルに一致せず未反映。新規プロファイル候補として提示のみ。"
+        },
+        {
+          "value": "knaithe/KnYuan",
+          "observations": 2,
+          "decision": "既存プロファイルに一致せず未反映。"
+        },
+        {
+          "value": "Zhejiang Fengwo IoT Technology (Fengwo Group)",
+          "observations": 1,
+          "decision": "既存プロファイルに一致せず未反映。"
+        },
+        {
+          "value": "Gunra",
+          "observations": 1,
+          "decision": "既存プロファイルに一致せず未反映。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-07-31",
+          "result": "「CaptiveCrunch: Midnight Blizzard targets travelers worldwide」を確認。Storm-2945はMidnight Blizzard(APT29のoverlapping alias)のサブクラスタと明記。tech-memo・APT29プロファイルとも未反映の新規一次情報。APT29は本日の直近活動リストに含まれるが、日次レビューキューの対象(2026-07-30以降のtech-memo記事)には含まれていないため今回は反映せず、次回以降の反映候補として記録するのみ。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/mirage-kitten-new-tools/120811/",
+          "latest_relevant_publication": "2026-07-28",
+          "result": "Mirage Kitten(UNC1549)の記事を確認したが、UNC1549プロファイルへ出典・活動とも既に反映済みで対応不要。"
+        },
+        {
+          "publisher": "Google Threat Intelligence, Unit 42, Cisco Talos, ESET Research, SentinelLabs",
+          "url": "各社ブログ一覧ページ",
+          "latest_relevant_publication": "unknown",
+          "result": "一覧ページがJS依存で日付情報が一部欠落。ざっと確認した範囲では直近活動アクター(Kimsuky, UNC1549, UAC-0099, Mustang Panda, APT37等)に関する新規一次情報は見当たらなかったが、網羅的な確認はできていない。"
+        }
+      ],
+      "analyst_notes": "ユーザー承認を得てレビューキューを反映。作業中にorigin/mainへPR#16(activity-level diamond models, 2046ファイル変更)がマージされたため、担当ブランチをorigin/mainへリベース(ローカル固有コミットなし、fast-forward相当)してからAGENT.mdの手順を再実行した。採用4件(APT38/SAPPHIRE SLEET、BlackTech、Contagious Interview、UNC5342)、不採用7件(BlackByte、Carbanak、Earth Lusca、Ember Bear、Hellsing APT×2、MuddyWater、Night Dragon)。Contagious Interview/UNC5342はallsecure.ioがJSレンダリングのSPAでWebFetch単体では本文取得不可だったため、r.jina.ai経由で本文を取得し直接確認した上で採用に切り替えた。APT38はSAPPHIRE SLEETのalias scopeがoverlappingのため断定的な同一視ではない旨をreview_notesに明記。enrich_activity_intelligence.py/enrich_targeting_scope.pyは仕様通り全673プロファイルを再走査し、294/292プロファイルで派生フィールドが更新された(いずれも本日採用した5アクター以外はdiamond model移行等の全体的な再計算によるもので、レビュー内容自体の変更はない)。validate_daily.py・各プロファイルvalidatorともerror 0を確認。"
     }
   ],
   "full_history_activity_audit": {

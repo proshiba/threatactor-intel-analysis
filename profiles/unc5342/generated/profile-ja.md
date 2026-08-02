@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5342`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-08-01T23:18:28Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -105,6 +105,7 @@ Aliasなし
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2025-04-26 |  |  | ttp--activity-rule--212f3a2857a12748d2a8 | victim--activity-rule--a44df31e8e4b5309dfc1 | 北朝鮮支援のグループが偽の仮想通貨企業を設立し、就職面接を装いマルウェアを拡散。 BlockNovas、Angeloper、SoftGlideの3社を使い、BeaverTailなど複数マルウェアを配布。 マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 ロシアのIPレンジを使い活動を匿名化し、米FBIはBlockNovasドメインを押収。 活動の背後にはAIツールを利用した偽プロファイル作成も含まれる。 | 中 | `source--daily-cf8c33fcf3e4b3907567` |
+| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | infrastructure-operation | 不明 | 不明 | 2026-07-31 |  |  |  |  | 偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。 | 中 | `source--daily-f258b76090beb4d8cca9` |
 | 北朝鮮ハッカーが「EtherHiding」でブロックチェーン上にマルウェアを隠蔽 | malware-campaign | 不明 | 不明 | 2025-10-17 | target--activity-rule--sector--63c9fa67327d005b07b7 |  |  | victim--activity-rule--50584425405683df183b | Google TIGはDPRKのUNC5342が2025年2月からEtherHidingを採用し、スマートコントラクトで悪性ペイロードを配布と報告。 偽の採用面接で開発者にコード実行を促し、技術課題に見せかけてJavaScriptダウンローダを走らせる手口が用いられる。 スマートコントラクトにはJADESNOWを格納し、EthereumやBNB上からInvisibleFerretの第3段階を取得してメモリで実行。 読み取り専用コールで履歴が残りにくく、契約は4か月で20回超更新・平均$1.37の低コストで構成変更が容易と分析。 窃取機能はブラウザ保存のパスワード/クレカ/暗号資産ウォレットを狙う。管理者にダウンロード制限や厳格なブラウザ制御を推奨。 | 中 | `source--daily-658542b50150556febcb` |
 
 ### 活動別ダイヤモンドモデル
@@ -112,6 +113,7 @@ Aliasなし
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | UNC5342 | 情報なし | T1082 System Information Discovery | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | 中 |
+| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | UNC5342 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 北朝鮮ハッカーが「EtherHiding」でブロックチェーン上にマルウェアを隠蔽 | UNC5342 | 情報なし | 情報なし | 情報なし | 暗号資産・Web3 | 被害事例: 北朝鮮ハッカーが「EtherHiding」でブロックチェーン上にマルウェアを隠蔽 | 中 |
 
 
@@ -165,6 +167,7 @@ Aliasなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-658542b50150556febcb | 北朝鮮ハッカーが「EtherHiding」でブロックチェーン上にマルウェアを隠蔽 | bleepingcomputer.com | 2025-10-17 | https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-etherhiding-to-hide-malware-on-the-blockchain/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-cf8c33fcf3e4b3907567 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | thehackernews.com | 2025-04-26 | https://thehackernews.com/2025/04/north-korean-hackers-spread-malware-via.html | osint-report | TLP:CLEAR | 中 |
+| source--daily-f258b76090beb4d8cca9 | ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | allsecure.io | 2026-07-31 | https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/ | osint-report | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc5342--0cb1ed52898214d0 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--unc5342--6b4b85e4f862ca27 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |

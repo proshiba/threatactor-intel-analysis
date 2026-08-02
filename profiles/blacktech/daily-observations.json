@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--blacktech",
-  "updated_at": "2026-07-27T11:04:30Z",
+  "updated_at": "2026-08-01T23:18:25Z",
   "records": [
     {
       "record_id": "daily-record--1cd60904ee643a3f18637c5c",
@@ -94,6 +94,125 @@
         "suggested_confidence": "high"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--9d44006d7db8843dc445dcf0",
+      "review_status": "approved",
+      "suggested_action": "approve",
+      "actor": {
+        "slug": "blacktech",
+        "canonical_name": "BlackTech",
+        "matched_term": "BlackTech",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "ioc-actor-field",
+        "raw_value": "BlackTech"
+      },
+      "activity": {
+        "title": "APTグループが使用するBlueShell亜種の分析",
+        "summary": "IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。",
+        "news_date": "2026-08-01",
+        "news_url": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+        "primary_url": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+        "activity_reference": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+        "news_path": "daily-news/news/2026_07-09/20260801.md"
+      },
+      "confidence": "high",
+      "iocs": [
+        {
+          "row": 94,
+          "type": "ipv4",
+          "raw_type": "ip",
+          "value": "48.216.210.91",
+          "observed_date": "2026-07-29",
+          "category": "c2",
+          "roles": [
+            "c2"
+          ],
+          "actor": "BlackTech",
+          "actor_attribute": "china",
+          "malware": "BlueShell",
+          "malware_type": "RAT",
+          "reference": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "description": "AI generated. C2 server used by a Linux variant of the BlueShell RAT via the victim's proxy.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_07-09/20260801.csv",
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ]
+        },
+        {
+          "row": 95,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "944b774d592f5e7fe2c34ac6c3abb2a77bfa96707c4f3c33ac77b8d54800244f",
+          "observed_date": "2026-07-29",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BlackTech",
+          "actor_attribute": "china",
+          "malware": "BlueShell",
+          "malware_type": "dropper",
+          "reference": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "description": "AI generated. Dropper (named 'apid') that stages the BlueShell RAT variant on Linux hosts.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_07-09/20260801.csv",
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ]
+        },
+        {
+          "row": 96,
+          "type": "sha256",
+          "raw_type": "file_hash_sha256",
+          "value": "3228da011423853efd3d94ce3a28046b5ca19e921861ea5aee2700bc90fc1d55",
+          "observed_date": "2026-07-29",
+          "category": "malware",
+          "roles": [
+            "payload"
+          ],
+          "actor": "BlackTech",
+          "actor_attribute": "china",
+          "malware": "BlueShell",
+          "malware_type": "RAT",
+          "reference": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "description": "AI generated. BlueShell RAT executable (/tmp/kthread) that masquerades as a kernel worker process.",
+          "confidence": "medium",
+          "source_path": "daily-news/iocs/2026_07-09/20260801.csv",
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ]
+        }
+      ],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+          "source_path": "daily-news/news/2026_07-09/20260801.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [
+        {
+          "name": "BlueShell",
+          "status": "approved",
+          "reason": "IIJが日本国内組織を標的としたBlackTechのAPT攻撃活動でBlueShell亜種を直接観測したと明記している。"
+        }
+      ],
+      "review_notes": "原文(IIJ Security Diary)を確認。「我々はBlackTechによる日本国内の組織を標的としたAPT攻撃においてもBlueShell亜種を観測しています」と明記され、BlackTechが当該BlueShell亜種を用いた侵入後活動の実行主体であることが確認できる(BlueShell亜種自体は他の複数APTグループも使用する共通マルウェアである旨の記載もあるが、BlackTechによる観測は個別に明記されている)。",
+      "activity_claim": {
+        "assessment": "structured-actor-field",
+        "actor_role": "operator",
+        "match_location": "ioc-actor-field",
+        "evidence_text": "BlackTech",
+        "reasons": [
+          "tech-memo IOC CSVの構造化actor列に記載されている"
+        ],
+        "suggested_confidence": "medium"
+      },
+      "source_commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e"
     }
   ]
 }

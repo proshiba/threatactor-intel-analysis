@@ -4,7 +4,7 @@
   "name": "BlackTech",
   "status": "draft",
   "created_at": "2026-07-25T09:00:28Z",
-  "updated_at": "2026-07-29T23:13:54Z",
+  "updated_at": "2026-08-01T23:19:01Z",
   "languages": [
     "ja"
   ],
@@ -115,6 +115,33 @@
           "source--actor-mapping-workbook"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--daily-b09eb7de4094c12dd639",
+        "name": "BlueShell",
+        "aliases": [],
+        "types": [
+          "RAT",
+          "dropper"
+        ],
+        "description": "BlackTechとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-2a35db86e8f078946ab5"
+        ],
+        "analyst_notes": "IIJが日本国内組織を標的としたBlackTechのAPT攻撃活動でBlueShell亜種を直接観測したと明記している。"
       },
       {
         "id": "malware--flagpro",
@@ -474,6 +501,106 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-1dfee7d2a70ba1432540"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-9d44006d7db8843dc445",
+      "name": "APTグループが使用するBlueShell亜種の分析",
+      "activity_type": "disruptive-activity",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-b09eb7de4094c12dd639"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--053c40a51e41a666f966"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--09f2709e41fc6ff19fd5"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-2a35db86e8f078946ab5"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--9d44006d7db8843dc445dcf0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(IIJ Security Diary)を確認。「我々はBlackTechによる日本国内の組織を標的としたAPT攻撃においてもBlueShell亜種を観測しています」と明記され、BlackTechが当該BlueShell亜種を用いた侵入後活動の実行主体であることが確認できる(BlueShell亜種自体は他の複数APTグループも使用する共通マルウェアである旨の記載もあるが、BlackTechによる観測は個別に明記されている)。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--blacktech",
+          "name": "BlackTech",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-b09eb7de4094c12dd639"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--053c40a51e41a666f966"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--09f2709e41fc6ff19fd5"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "disruptive-activity",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-2a35db86e8f078946ab5"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -957,6 +1084,35 @@
     "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--053c40a51e41a666f966",
+      "tactic": "Command And Control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。",
+      "activity_refs": [
+        "activity--daily-9d44006d7db8843dc445"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-2a35db86e8f078946ab5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--t1021-001--general",
       "tactic": "Lateral Movement",
@@ -1871,6 +2027,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240420.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-2a35db86e8f078946ab5",
+      "path": "https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/",
+      "title": "APTグループが使用するBlueShell亜種の分析",
+      "publisher": "sect.iij.ad.jp",
+      "published_at": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260801.md; source commit: 4bde2c2aba63f56fb9d3c91db98853aef54b8c4e; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-718b90e4e11c27f888d6",
       "path": "https://thehackernews.com/2024/05/china-linked-hackers-adopt-two-stage.html",
       "title": "中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開",
@@ -2083,6 +2257,52 @@
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--09f2709e41fc6ff19fd5",
+      "name": "被害事例: APTグループが使用するBlueShell亜種の分析",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。",
+      "activity_refs": [
+        "activity--daily-9d44006d7db8843dc445"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-b09eb7de4094c12dd639"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--053c40a51e41a666f966"
+      ],
+      "affected_assets": [
+        "エンドポイント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-2a35db86e8f078946ab5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--a880b3c2a984d91381dc",
       "name": "被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」",
