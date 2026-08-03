@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt29`
 - 状態: review
-- 更新日時: 2026-07-29T23:13:53Z
+- 更新日時: 2026-08-03T03:46:03Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -160,6 +160,8 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | malware--vernaldrop | Vernaldrop | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--wellmail | WellMail | [WellMail](https://attack.mitre.org/software/S0515) is a lightweight malware written in Golang used by [APT29](https://attack.mitre.org/groups/G0016), similar in design and structure to [WellMess](https://attack.mitre.org/software/S0514).(Citation: CISA WellMail July 2020)(Citation: NCSC APT29 July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--wellmess | WellMess | [WellMess](https://attack.mitre.org/software/S0514) is lightweight malware family with variants written in .NET and Golang that has been in use since at least 2018 by [APT29](https://attack.mitre.org/groups/G0016).(Citation: CISA WellMess July 2020)(Citation: PWC WellMess July 2020)(Citation: NCSC APT29 July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--cornflake | CornFlake | Go言語で書かれたWindows向けRAT。キーロギング、監視、資格情報窃取機能を備える。 | 不明 | 不明 | 高 | `source--microsoft-captivecrunch-2026` |
+| malware--chocoshell | ChocoShell | PowerShellベースのインフォスティーラー。ブラウザCookieとSSOトークンの窃取を標的とする。 | 不明 | 不明 | 高 | `source--microsoft-captivecrunch-2026` |
 
 ### ツール
 
@@ -186,6 +188,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | infra--apt29-actor-controlled-rdp | Actor-Controlled RDP Endpoints | Malicious signed RDP files connected targets to actor-controlled systems and mapped local drives, clipboard, peripherals and authentication facilities bidirectionally. | 2024-10-22 | 不明 | 高 | `source--microsoft-apt29-rdp-2024` |
+| infra--captivecrunch-fruitstone-c2 | FruitStone C2 Operator Panel | CaptiveCrunchキャンペーンの基盤を操作するWebベースのC2オペレーターパネル。侵害したcaptive portal Wi-Fi経由のトラフィック操作、デバイスコードフィッシング、ClickFix型ソーシャルエンジニアリングによる攻撃の運用管理に用いられる。 | 不明 | 不明 | 高 | `source--microsoft-captivecrunch-2026` |
 
 ### 配送・ファイル形式
 
@@ -204,6 +207,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Midnight Blizzard Signed RDP Spearphishing Campaign | campaign | 2024-10-22 | 不明 | 2024-10-29 | target--sector--defense, target--sector--government, target--sector--higher-education, target--sector--ngo |  | ttp--t1021-001--apt29-rdp-2024, ttp--t1204-002--apt29-rdp-2024, ttp--t1566-001--apt29-rdp-2024 | victim--activity-rule--6c15a4c59bf690668644 | APT29 sent signed RDP configuration files to thousands of targets in more than 100 organizations. Opening the attachment connected the target to actor infrastructure and exposed mapped local resources. | 高 | `source--microsoft-apt29-rdp-2024` |
+| Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 | campaign | 2026-05 | 不明 | 2026-07-31 |  | malware--cornflake, malware--chocoshell | ttp--activity-rule--4b703096e6ee5c321f92 | victim--activity-rule--8b91ac12a7aa7c870ce1 | Microsoftは、Midnight Blizzardの運用サブクラスタ「Storm-2945」が2026年5月以降、世界各地の宿泊施設や空港、会議施設で提供される侵害されたcaptive portal Wi-Fiネットワークを悪用し、出張中の企業利用者の通信を攻撃者インフラへリダイレクトしていると報告した。通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。使用されたツールはGo製Windows RATのCornFlake、PowerShell製インフォスティーラーのChocoShell、キャンペーン基盤を操作するWebベースのC2オペレーターパネルFruitStoneである。 | 高 | `source--microsoft-captivecrunch-2026` |
 | 米英がロシアAPT29ハッカーのZimbraおよびTeamCityサーバー攻撃に警告 | ransomware-extortion | 不明 | 不明 | 2024-10-11 | target--sector--government |  |  | victim--activity-rule--eb3877620498e6437449 | 米英のサイバー機関がAPT29が脆弱なZimbraおよびTeamCityサーバーを標的にしていると警告。 攻撃にはCVE-2022-27924やCVE-2023-42793の脆弱性が利用されている。 CVE-2023-42793は、ランサムウェアギャングと北朝鮮のハッキンググループの両方によって、初期アクセスとサプライチェーン攻撃の試みに悪用されてきた。 被害者は世界中の多様な業界に及んでいる。 APT29はロシアSVRに関連し、長年政府や民間組織を標的にしている。 パッチ適用やソフトウェア更新が推奨されている。 | 高 | `source--daily-bef8400faee317cbc290` |
 | SEC、SolarWinds攻撃を過小評価した技術企業を告発 | intrusion | 不明 | 不明 | 2024-10-23 |  |  |  | victim--activity-rule--78daf72991d4fdc2ac4f | SECは、SolarWinds攻撃に関するリスクを過小評価していたとして、4つの技術企業を告発。 Unisys、Avaya、Check Point、Mimecastは、侵害の影響を投資家に誤認させた。 各企業は、罰金支払いに合意し、合計罰金は数百万ドルに上る。 SolarWinds攻撃は、2020年のSolarWinds Orionハッキングインシデントであり、APT29（ロシアのハッカーグループ）によるもの。 | 中 | `source--daily-c5473417135a62855056` |
 | TeamViewer、企業のサイバー攻撃をロシアの国家ハッカーと関連付ける | intrusion | 2024-06-26 | 2024-06-26 | 2024-06-29 |  |  |  | victim--activity-rule--ebe859836e7b28a155a4 | TeamViewerは、ロシアの国家支援ハッカーMidnight Blizzard（APT29）が最近の企業ネットワーク侵害の背後にいると発表。 攻撃は2024年6月26日に発生し、社員の資格情報が使用された。 プロダクション環境や顧客データへのアクセスは確認されていない。 TeamViewerは、多層的な防御策を強化している。 調査が進むにつれて新たな情報が出てくる可能性もあるため、ユーザーは多要素認証の使用と許可されたユーザーのみアクセスできるように制限し、TeamViewerログを監視することを推奨。 | 中 | `source--daily-084ae64a7546312e25bb` |
@@ -224,6 +228,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | Midnight Blizzard Signed RDP Spearphishing Campaign | APT29 | 情報なし | T1021.001 Remote Services: Remote Desktop Protocol, T1204.002 User Execution: Malicious File, T1566.001 Phishing: Spearphishing Attachment | Actor-Controlled RDP Endpoints | Defense, Government, Higher Education, Non-Governmental Organizations | 被害事例: Midnight Blizzard Signed RDP Spearphishing Campaign | 高 |
+| Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 | APT29 | ChocoShell, CornFlake | T1204.004 Malicious Copy and Paste | FruitStone C2 Operator Panel | 情報なし | 被害事例: Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 | 高 |
 | 米英がロシアAPT29ハッカーのZimbraおよびTeamCityサーバー攻撃に警告 | APT29 | 情報なし | 情報なし | 情報なし | Government | 被害事例: 米英がロシアAPT29ハッカーのZimbraおよびTeamCityサーバー攻撃に警告 | 高 |
 | SEC、SolarWinds攻撃を過小評価した技術企業を告発 | APT29 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: SEC、SolarWinds攻撃を過小評価した技術企業を告発 | 中 |
 | TeamViewer、企業のサイバー攻撃をロシアの国家ハッカーと関連付ける | APT29 | 情報なし | 情報なし | 情報なし | 情報なし | 被害事例: TeamViewer、企業のサイバー攻撃をロシアの国家ハッカーと関連付ける | 中 |
@@ -306,6 +311,7 @@ Operation Ghost
 | regions | 中南米 | チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 中央アジア | レビュー済みアクターマッピングの標的欄に記録された中央アジアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 中東 | 活動「SolarWinds Compromise」の記述で標的地域として中東が明示されている。 | 2019-08-01T05:00:00.000Z | 2021-01-01T06:00:00.000Z | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 全世界 | 活動「Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取」の記述で標的地域として全世界が明示されている。 | 2026-05 | 不明 | 中 | `source--microsoft-captivecrunch-2026` |
 | regions | 北米 | 活動「SolarWinds Compromise」の記述で標的地域として北米が明示されている。 | 2019-08-01T05:00:00.000Z | 2021-01-01T06:00:00.000Z | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 南欧 | イタリア、キプロス、スペイン、スロベニア、ポルトガル、モンテネグロで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 南米 | チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
@@ -333,6 +339,7 @@ Operation Ghost
 | 被害事例: Amazonがデータ窃盗目的の不正なリモートデスクトップキャンペーンに使用されたドメインを差し押さえ | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39 |  |  | メール／メールアカウント, クラウド／SaaS | credential-theft: 受信者が、RDPファイルを実行すると攻撃者のサーバへと接続が開始され、Windows認証情報を収集し、ターゲットのリソース情報などが共有される。 | 不明 | 不明 | 2024-10-26 | 中 | `source--daily-b028cfa41afc98a11bc6` |
 | 被害事例: SEC、SolarWinds攻撃を過小評価した技術企業を告発 | 非公開 | aggregate | multiple-organizations | reported |  |  |  |  |  | 不明 | 不明 | 2024-10-23 | 中 | `source--daily-c5473417135a62855056` |
 | 被害事例: ロシアのハッカーがWineLoaderマルウェアでドイツの政党を標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--country--de0df51cff4adf4fc20b, target--sector--government |  |  | メール／メールアカウント, VPN／リモートアクセス機器 | espionage: リモートアクセスを試みる 政党を騙るフィッシングメールで攻撃、CDUが標的に WineLoaderは以前にも外交官を装ったフィッシングで使用 APT29は技術的な高度さとスパイ活動への持続的努力を示す | 不明 | 不明 | 2024-03-23 | 中 | `source--daily-27037377b2315277772d` |
+| 被害事例: Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取 | 非公開 | aggregate | multiple-organizations | reported |  | malware--chocoshell, malware--cornflake | ttp--activity-rule--4b703096e6ee5c321f92 |  | credential-theft: 通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。 | 2026-05 | 不明 | 2026-07-31 | 高 | `source--microsoft-captivecrunch-2026` |
 | 被害事例: Amazon、Microsoft 365を標的とするロシアのAPT29を妨害 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--ab21af4f9810068ee56a | メール／メールアカウント, エンドポイント, クラウド／SaaS |  | 不明 | 不明 | 2025-09-02 | 高 | `source--daily-d9a038ea0c45c5f3cf8e` |
 | 被害事例: CISAがマイクロソフトハックに影響を受けた機関にリスク軽減を指示 | 非公開 | anonymous | unknown | reported | target--sector--government |  |  | メール／メールアカウント | account-compromise: CISAが新たな緊急指令を発行し、リスク軽減を命令 指令はマイクロソフトの電子メールアカウント侵害に対応 アカウント侵害はロシアのAPT29によるもの 政府機関には4月30日までにセキュリティ対策完了を求める 侵害されたことが分かった、またはその可能性がある、認証情報のリセットを指示 | 不明 | 不明 | 2024-04-12 | 中 | `source--daily-9d15f8a2b79eddc0a96b` |
 | 被害事例: 米英がロシアAPT29ハッカーのZimbraおよびTeamCityサーバー攻撃に警告 | 非公開 | aggregate | multiple-organizations | reported | target--sector--government |  |  | サーバー | encryption: CVE-2023-42793は、ランサムウェアギャングと北朝鮮のハッキンググループの両方によって、初期アクセスとサプライチェーン攻撃の試みに悪用されてきた。<br>supply-chain: CVE-2023-42793は、ランサムウェアギャングと北朝鮮のハッキンググループの両方によって、初期アクセスとサプライチェーン攻撃の試みに悪用されてきた。 | 不明 | 不明 | 2024-10-11 | 高 | `source--daily-bef8400faee317cbc290` |
@@ -345,6 +352,7 @@ Operation Ghost
 |---|---|---|---|---|---|---|---|---|---|
 | Credential Access | T1555.003 | Credentials from Web Browsers | APT29がiOSとChromeの脆弱性を悪用し、モンゴル政府サイトを標的に攻撃 攻撃は2023年11月から2024年7月にかけて発生し、この攻撃で使用された脆弱性のエクスプロイトは、スパイウェアベンダーが開発したものだった APT29は、モンゴル政府の複数のWebサイトを侵害し、水飲み場型攻撃に利用した 攻撃目的はブラウザクッキーやパスワードの窃取 脆弱性はすでにパッチが提供されているが、未更新デバイスは依然として脆弱 スパイウェアベンダーのエクスプロイトをAPT29が使えた理由は、スパイウェアベンダーをハッキングした、これらの企業で働く不正な内部関係者を採用または買収した、あるいは直接または仲介者を介して協力関係を維持していたなどが考えられる |  | activity--daily-8409455ea9e6cd651064 | 2023-11 | 2024-07 | 中 | `source--daily-283705f15c8b352febf2` |
 | Execution, Stealth | T1574.001 | DLL | ロシアのAPT29（Midnight Blizzard）が欧州の大使館を標的としたフィッシング攻撃を展開 ワインイベントへの招待メールを装い、GrapeLoaderマルウェアを配布 正規のPowerPoint実行ファイルとともにDLLサイドローディングで感染 GrapeLoaderはWineLoaderというバックドアをメモリ上で実行 「PAGE_NOACCESS」メモリ保護や、「ResumeThread」を介したシェルコード実行前の10秒間の遅延を利用して、アンチウイルスやEDRスキャナーからの悪意のあるペイロード実行を隠蔽 WineLoaderは標的環境を偵察し、追加のマルウェアを投入可能 |  | activity--daily-c4e09afebaa471f126d6 | 不明 | 不明 | 中 | `source--daily-333754fe19b5747a8958` |
+| Execution | T1204.004 | Malicious Copy and Paste | 通信操作に加え、Microsoft Entra IDの認証フローを悪用するデバイスコードフィッシングと、被害者に攻撃者のコマンドを実行させるClickFix型の心理的誘導手口を組み合わせ、マルウェア配布と資格情報・トークンの窃取につなげている。 |  | activity--captivecrunch-travel-wifi-2026 | 2026-05 | 不明 | 中 | `source--microsoft-captivecrunch-2026` |
 | Credential Access | T1110.003 | Password Spraying | 0016) used customized malware to inject malicious code into the SolarWinds Orion software build process that was later distributed through a normal software update; they also used password spraying, token theft, API abuse, spear phishing, and other supply chain attacks to compromise user accounts and leverage their associated access. |  | activity--solarwinds-compromise | 2019-08-01T05:00:00.000Z | 2021-01-01T06:00:00.000Z | 中 | `source--mitre-attack-19-1` |
 | Stealth | T1027 | Obfuscated Files or Information | Cookieで再リダイレクト抑止、Base64難読化JSで誘導コードを秘匿。 |  | activity--daily-f2dd46afad62ed8d5183 | 不明 | 不明 | 中 | `source--daily-d9a038ea0c45c5f3cf8e` |
 | Lateral Movement | T1021.001 | Remote Desktop Protocol | 攻撃者はPyRDPを使用し、RDP接続を悪意のあるサーバへリダイレクト。 |  | activity--daily-fcbe40d185eea24da148 | 不明 | 不明 | 中 | `source--daily-833e8d72019628e85850` |
@@ -606,8 +614,8 @@ Operation Ghost
 
 ## IOC／artifact概要
 
-- IOC値: 992件
-- IOC観測: 1074件
+- IOC値: 1000件
+- IOC観測: 1082件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 125件
 - 非IOC artifact観測: 481件（`artifacts.csv`）
@@ -673,6 +681,7 @@ Operation Ghost
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--microsoft-captivecrunch-2026 | CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft | Microsoft Threat Intelligence | 2026-07-31 | https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 
