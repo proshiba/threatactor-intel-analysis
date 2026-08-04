@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: draft
-- 更新日時: 2026-08-01T23:18:26Z
+- 更新日時: 2026-08-04T04:27:08Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -119,7 +119,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | malware-campaign | 不明 | 不明 | 2025-06-26 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--6f11b2b6322cd2dec974 | 北朝鮮の“Contagious Interview”キャンペーンが35個の悪質npmパッケージで開発者を標的化 Socket Threat ResearchがBeaverTailインフォスティーラーとInvisibleFerretバックドアを検出 24アカウントから公開、累計4,000回超ダウンロード、6パッケージが現存 これらのパッケージの多くは、タイポスクワッティング（スペルミスを利用して正規のパッケージを装うこと）や既知の信頼できるライブラリを模倣 攻撃者はLinkedInで面接を偽装しGoogle Docs経由でテスト課題と共にパッケージを配布 求職者は、コードをコンテナ化された環境ではなく、自身のOS上で実行するように圧力をかけられることが多く、画面共有中に実行を促されることもある | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
 | FlexibleFerretマルウェアの攻撃が続く | malware-campaign | 不明 | 不明 | 2025-11-26 |  |  |  |  | Jamf Threat Labsは、DPRK系とされるFlexibleFerretが偽の採用評価サイトでmacOSの資格情報窃取を行う手口を解析。 求人ページのJSがcurl実行を誘導し/var/tmp/macpatch.shを取得、LaunchAgent作成などで永続化する多段感染へ移行。 おとりの「MediaPatcher」がChrome風PW入力を表示し、content[.]dropboxapi[.]comへ送信、api[.]ipify[.]orgでIP取得。 最終段はGo製CDriversバックドアが95[.]169[.]180[.]140:8080へ接続し、情報収集・転送・コマンド実行を行う。 IoCには偽求人ドメインと配布URLが列挙。面接課題での端末コマンド実行指示は高リスクとして停止・報告を周知。 | 中 | `source--daily-25f950d9ddf02f2d5ba4` |
-| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | infrastructure-operation | 不明 | 不明 | 2026-07-31 |  |  |  |  | 偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。 | 中 | `source--daily-f258b76090beb4d8cca9` |
+| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | infrastructure-operation | 不明 | 不明 | 2026-07-31 |  |  | ttp--activity-rule--be9df4470bc382b06ff7 | victim--activity-rule--792dfdc99346396f95d8 | 偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。 | 中 | `source--daily-f258b76090beb4d8cca9` |
 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | campaign | 不明 | 不明 | 2026-04-09 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  | ttp--activity-rule--6b786b9be7290d0da343, ttp--activity-rule--74e655e05d84ec47e3e9 | victim--activity-rule--ba353bbe87673efbe856 | Socket は、Contagious Interview に結び付く北朝鮮系活動として、npm・PyPI・Go Modules・Rust・PHP を含む5系統にまたがる悪性パッケージ群を確認した。 各パッケージは debug や license などの正規開発ツールを装い、通常メソッドの裏で downloadUrl を取得し、ZIP や base64 の第2段階ペイロードを配信した。 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 攻撃者は golangorg や aokisasakidev など複数の GitHub ペルソナを使い分け、一部パッケージは削除済みだが、執筆時点でなお残存しているものもあった。 | 高 | `source--daily-828c717719b991a7c676` |
 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | infrastructure-operation | 不明 | 不明 | 2025-07-16 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--acbdb28e817b4bf3d9cf | Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。XORIndexという新たなローダーも発見された。 これらは計17,000以上のダウンロードを獲得し、先月の35パッケージ（HexEvalローダー）攻撃を拡大。 悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。 XORIndexは第1世代の試作から第3世代でシステム偵察・ステルス機能を追加し、C2にビークン送信。 2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。 | 中 | `source--daily-d00e6abeb3390b2c40e7` |
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2025-04-26 |  | malware--beavertail | ttp--activity-rule--f408909e69d6ddf20b90 | victim--activity-rule--dcdc8d3a6f0ce46415ff | 北朝鮮支援のグループが偽の仮想通貨企業を設立し、就職面接を装いマルウェアを拡散。 BlockNovas、Angeloper、SoftGlideの3社を使い、BeaverTailなど複数マルウェアを配布。 マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 ロシアのIPレンジを使い活動を匿名化し、米FBIはBlockNovasドメインを押収。 活動の背後にはAIツールを利用した偽プロファイル作成も含まれる。 | 中 | `source--daily-cf8c33fcf3e4b3907567` |
@@ -128,6 +128,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | infrastructure-operation | 不明 | 不明 | 2025-11-15 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--cf6980464e1532c85677 | NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。 攻撃者はLinkedIn等で開発者に接触し、GitHub/GitLab/Bitbucketのデモ取得を装いトロイ化プロジェクトを配布。 プロジェクト内の“.config.env”にBase64偽API鍵を埋め込み、実態はJSON Keeperやnpoint.io等の次段URLを指す。 取得されたBeaverTailが情報窃取やInvisibleFerret投下、さらにPastebin経由のTsunamiKit取得など機能が観測。 ESETは9月にTsunamiKit等を確認；.onionのC2は現在オフラインで、広範な開発者狙いが継続と結論。 | 中 | `source--daily-cdb23aca8de000a4d647` |
 | PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | infrastructure-operation | 不明 | 不明 | 2026-07-02 |  |  | ttp--activity-rule--33bfe0dee0f21b67e99c | victim--activity-rule--831dfdd3f37cf68e8d8c | Socketは、npm、Packagist、Go modules、Chrome拡張にまたがるPolinRiderの悪性リリース162件を確認した。 本キャンペーンは北朝鮮関連のContagious Interview／Famous Chollima活動クラスタに関連付けられている。 攻撃者は正規リポジトリを侵害し、難読化JavaScriptローダーを設定ファイルや偽の.woff2ファイルに隠す。 VS Codeのtasks.jsonなどを悪用して開発環境でローダーを実行し、二段階目ペイロードを取得・復号・実行する。 観測されたペイロードにはDEV#POPPERとOmniStealerが含まれ、認証情報窃取やC2通信などの機能を持つ。 | 中 | `source--daily-93581ba9dc03b85be996` |
 | 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | infrastructure-operation | 不明 | 不明 | 2024-12-27 | target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--ebe63f831e54cb716a26 | 北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。 OtterCookieはNode.jsプロジェクトやnpmパッケージ、最近ではQtやElectronアプリケーションを介して拡散。 OtterCookieはSocket.IO WebSocketツールを使用してコマンド＆コントロール（C2）インフラストラクチャとの安全な通信を確立し、リモートシェルコマンドを受信。 マルウェアは暗号通貨ウォレットの鍵や機密データを盗むコマンドが観測した。 標的の環境調査や情報窃取を進め、さらなる侵入を目指す行動が観察。 偽求人を介した攻撃手法の多様化が進んでいる。 | 中 | `source--daily-47e80e1dc37b49447e5b` |
+| NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | infrastructure-operation | 不明 | 不明 | 2026-08-04 |  |  |  | victim--activity-rule--6a67cf8d22901740910a | 北朝鮮関連の悪意あるnpmパッケージbianira-uiとfluid-type-uiから、新たなブロックチェーン型C2解決技術NullReceiverが発見された。 NullReceiverは、ゼロ送金・データなしのEthereum取引における受取人アドレスの一部へC2のIPアドレスを直接埋め込む。 マルウェアは攻撃者ウォレットの最新送金を参照し、受取人アドレスから166[.]88[.]134[.]62を復号してC2へ接続する。 スマートコントラクトやcalldata、固定のバーンアドレスを使用しないため、従来のEtherHiding向け検知では発見が難しい。 悪性パッケージは正規Tailwind CSSプラグインの複製で、北朝鮮のContagious Interviewキャンペーンに関連付けられている。 | 中 | `source--daily-3b508815c5f991656dcb` |
 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 |  | malware--beavertail, malware--invisibleferret | ttp--activity-rule--4db999f75969a8979172 |  | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
 | OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | malware-campaign | 2025-02 | 2025-04 | 2025-05-12 |  |  | ttp--activity-rule--437616c0b22d107a1a92 | victim--activity-rule--0e4094ae0b8e107cfaa8 | 北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。 v4では、Google ChromeやBraveブラウザ、MetaMask、iCloud Keychainからの認証情報窃取機能が追加。 仮想環境（VMware、VirtualBox、Microsoft、QEMU）での実行を検出し、解析を回避する機能を搭載。 マルウェアは、npmパッケージ、GitHub/Bitbucketのリポジトリ、偽のビデオ会議アプリを通じて配布。 「DriverMinUpdate.app」などの偽アプリを用いたmacOS向けの情報窃取も確認されている。 | 中 | `source--daily-56f1f7edcfb3f507fe75` |
 
@@ -137,7 +138,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 |---|---|---|---|---|---|---|---|
 | 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | 中 |
 | FlexibleFerretマルウェアの攻撃が続く | Contagious Interview | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | Contagious Interview | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | Contagious Interview | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | 情報なし | 被害事例: ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | 中 |
 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | Contagious Interview | 情報なし | T1555.003 Credentials from Web Browsers, T1083 File and Directory Discovery | 情報なし | 非営利・市民社会 | 被害事例: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | 高 |
 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | 中 |
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | Contagious Interview | BeaverTail | T1082 System Information Discovery | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | 中 |
@@ -146,6 +147,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | 中 |
 | PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | Contagious Interview | 情報なし | T1027 Obfuscated Files or Information | 情報なし | 情報なし | 被害事例: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | 中 |
 | 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | Contagious Interview | 情報なし | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | 中 |
+| NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | Contagious Interview | 情報なし | 情報なし | 情報なし | 暗号資産・Web3 | 被害事例: NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | 中 |
 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | Contagious Interview | BeaverTail, InvisibleFerret | T1204.004 Malicious Copy and Paste | 情報なし | 情報なし | 情報なし | 中 |
 | OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | Contagious Interview | 情報なし | T1555.003 Credentials from Web Browsers | 情報なし | 情報なし | 被害事例: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | 中 |
 
@@ -158,7 +160,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | countries | タイ | 活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
 | sectors | IT・ソフトウェア | 活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-2a32ed98e1bd6d1661b4`, `source--daily-47e80e1dc37b49447e5b`, `source--daily-b84641d39a296b1d232d`, `source--daily-cdb23aca8de000a4d647`, `source--daily-d00e6abeb3390b2c40e7` |
 | sectors | 非営利・市民社会 | 活動「北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-828c717719b991a7c676` |
-| sectors | 暗号資産・Web3 | [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 暗号資産・Web3 | [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. | 不明 | 不明 | 高 | `source--daily-3b508815c5f991656dcb`, `source--mitre-attack-19-1` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -167,8 +169,10 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--437616c0b22d107a1a92 | 開発環境／ソースコード | credential-theft: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | 2025-02 | 2025-04 | 2025-05-12 | 中 | `source--daily-56f1f7edcfb3f507fe75` |
+| 被害事例: NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--9344745b7aeff4dbe6af |  |  |  |  | 不明 | 不明 | 2026-08-04 | 中 | `source--daily-3b508815c5f991656dcb` |
 | 被害事例: 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--invisibleferret |  |  | data-theft: マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。 | 不明 | 不明 | 2024-08-31 | 中 | `source--daily-b84641d39a296b1d232d` |
 | 被害事例: 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  |  |  | 不明 | 不明 | 2025-06-26 | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
+| 被害事例: ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--be9df4470bc382b06ff7 |  | credential-theft: 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。 | 不明 | 不明 | 2026-07-31 | 中 | `source--daily-f258b76090beb4d8cca9` |
 | 被害事例: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--33bfe0dee0f21b67e99c | 開発環境／ソースコード | credential-theft: 観測されたペイロードにはDEV#POPPERとOmniStealerが含まれ、認証情報窃取やC2通信などの機能を持つ。<br>supply-chain: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | 不明 | 不明 | 2026-07-02 | 中 | `source--daily-93581ba9dc03b85be996` |
 | 被害事例: 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  |  | data-theft: 悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。<br>supply-chain: 2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。 | 不明 | 不明 | 2025-07-16 | 中 | `source--daily-d00e6abeb3390b2c40e7` |
 | 被害事例: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  | ttp--activity-rule--6b786b9be7290d0da343, ttp--activity-rule--74e655e05d84ec47e3e9 | 開発環境／ソースコード | data-theft: 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。<br>credential-theft: 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 | 不明 | 不明 | 2026-04-09 | 高 | `source--daily-828c717719b991a7c676` |
@@ -185,6 +189,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | Execution | T1204.004 | Malicious Copy and Paste | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | malware--beavertail | activity--daily-ad821db17bd56b3397be | 不明 | 不明 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
 | Credential Access | T1555.003 | Credentials from Web Browsers | 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 |  | activity--daily-4b5096b05e14d4f33652 | 不明 | 不明 | 中 | `source--daily-828c717719b991a7c676` |
 | Discovery | T1083 | File and Directory Discovery | 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 |  | activity--daily-4b5096b05e14d4f33652 | 不明 | 不明 | 中 | `source--daily-828c717719b991a7c676` |
+| Execution | T1204.004 | Malicious Copy and Paste | ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 |  | activity--daily-2f8e62cf1cd00748b2b7 | 不明 | 不明 | 中 | `source--daily-f258b76090beb4d8cca9` |
 | Discovery | T1082 | System Information Discovery | マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 |  | activity--daily-55d0db8b81a7beada6ea | 不明 | 不明 | 中 | `source--daily-cf8c33fcf3e4b3907567` |
 | Stealth | T1027.010 | Command Obfuscation | [Contagious Interview](https://attack.mitre.org/groups/G1052) has obfuscated JavaScript code using Base64 and variable substitutions.(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: SecurityScorecard Contagious Interview October 2024)(Citation: Securonix Contagious Interview DEVPOPPER April 2024)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Stealth | T1027.013 | Encrypted/Encoded File | [Contagious Interview](https://attack.mitre.org/groups/G1052) has used hexadecimal string encoding to hide critical JavaScript module names, function names, and C2 URLs, which are decoded dynamically at runtime.(Citation: Socket Contagious Interview NPM April 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -243,11 +248,11 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 
 ## IOC／artifact概要
 
-- IOC値: 3件
-- IOC観測: 3件
+- IOC値: 4件
+- IOC観測: 4件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 64件（`artifacts.csv`）
+- artifactデータ未指定
 
 ## 主要判断と不確実性
 
@@ -288,6 +293,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--contagious-interview--fea0ffb36c7936d4 | eset threat report h12025 |  | 不明 | summary/2025/eset-threat-report-h12025.pdf | report | TLP:CLEAR | 中 |
 | source--daily-25f950d9ddf02f2d5ba4 | FlexibleFerretマルウェアの攻撃が続く | jamf.com | 2025-11-26 | https://www.jamf.com/blog/flexibleferret-malware-continues-to-adapt/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-2a32ed98e1bd6d1661b4 | 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | bleepingcomputer.com | 2025-06-26 | https://www.bleepingcomputer.com/news/security/new-wave-of-fake-interviews-use-35-npm-packages-to-spread-malware/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-3b508815c5f991656dcb | NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | opensourcemalware.com | 2026-08-04 | https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique | osint-report | TLP:CLEAR | 中 |
 | source--daily-47e80e1dc37b49447e5b | 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | bleepingcomputer.com | 2024-12-27 | https://www.bleepingcomputer.com/news/security/new-ottercookie-malware-used-to-backdoor-devs-in-fake-job-offers/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-56f1f7edcfb3f507fe75 | OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | thehackernews.com | 2025-05-12 | https://thehackernews.com/2025/05/ottercookie-v4-adds-vm-detection-and.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-828c717719b991a7c676 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | socket.dev | 2026-04-09 | https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems | osint-report | TLP:CLEAR | 中 |

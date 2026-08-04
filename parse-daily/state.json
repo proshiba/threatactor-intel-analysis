@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "4bde2c2aba63f56fb9d3c91db98853aef54b8c4e",
-  "last_scanned_date": "2026-08-01",
+  "last_scanned_commit": "6ceacdb02b89dba752e7c2c8281af0c950095f3e",
+  "last_scanned_date": "2026-08-04",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -434,6 +434,103 @@
         }
       ],
       "analyst_notes": "ユーザー承認を得てレビューキューを反映。作業中にorigin/mainへPR#16(activity-level diamond models, 2046ファイル変更)がマージされたため、担当ブランチをorigin/mainへリベース(ローカル固有コミットなし、fast-forward相当)してからAGENT.mdの手順を再実行した。採用4件(APT38/SAPPHIRE SLEET、BlackTech、Contagious Interview、UNC5342)、不採用7件(BlackByte、Carbanak、Earth Lusca、Ember Bear、Hellsing APT×2、MuddyWater、Night Dragon)。Contagious Interview/UNC5342はallsecure.ioがJSレンダリングのSPAでWebFetch単体では本文取得不可だったため、r.jina.ai経由で本文を取得し直接確認した上で採用に切り替えた。APT38はSAPPHIRE SLEETのalias scopeがoverlappingのため断定的な同一視ではない旨をreview_notesに明記。enrich_activity_intelligence.py/enrich_targeting_scope.pyは仕様通り全673プロファイルを再走査し、294/292プロファイルで派生フィールドが更新された(いずれも本日採用した5アクター以外はdiamond model移行等の全体的な再計算によるもので、レビュー内容自体の変更はない)。validate_daily.py・各プロファイルvalidatorともerror 0を確認。"
+    },
+    {
+      "completed_at": "2026-08-04T04:28:55Z",
+      "window": {
+        "since": "2026-08-01",
+        "until": "2026-08-04"
+      },
+      "source_commit": "6ceacdb02b89dba752e7c2c8281af0c950095f3e",
+      "statistics": {
+        "news_files": 3,
+        "articles": 25,
+        "review_records": 4,
+        "approved_records": 2,
+        "applied_records": 1,
+        "unmatched_ioc_actor_observations": 46
+      },
+      "applied": [
+        {
+          "actor": "contagious-interview",
+          "activity": "NullReceiverの空の暗号資産送金がEtherHidingの課題を解決（悪意あるnpmパッケージbianira-ui/fluid-type-ui経由のブロックチェーン型C2）",
+          "source": "https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
+          "ioc_observations": 1,
+          "capabilities": [],
+          "decision": "原文に「Attribution: DPRK 'Contagious Interview' campaign」と一覧形式の帰属タグとして明記。本文同一文中の実行主体表現ではないが、名称衝突・製品名・過去言及ではなく明示的帰属のため採用。"
+        }
+      ],
+      "reviewed_non_matches": [
+        {
+          "name": "Hellsing APT",
+          "decision": "Kaspersky記事(OctLurk/SilkLurk)に「Hellsing」の言及なし。プロファイルaliasの地域語(Asia)への機械的一致。不採用(name-collision)。"
+        },
+        {
+          "name": "Earth Lusca",
+          "decision": "Chromium拡張機能ブロック機能に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "Rognar (@johnysilverhe)",
+          "observations": 43,
+          "note": "SOCRadar記事(doublecup-clickfix-loader-devicemanager-rats)。DOUBLECUP/CountLoader/DeviceManager RATを操るサイバークライム系オペレーター。新規プロファイル候補として報告のみ、作成せず。"
+        },
+        {
+          "name": "knaithe/KnYuan",
+          "observations": 2,
+          "note": "珠海拠点の中国語話者、DeepSeek駆動Hermes AgentをTelegram経由で操作。新規プロファイル候補として報告のみ、作成せず。"
+        },
+        {
+          "name": "Gunra",
+          "observations": 1,
+          "note": "ランサムウェア(RaaS)。国家支援型アクターとインフラ重複あるが関係未確定。新規プロファイル候補として報告のみ、作成せず。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-07-31",
+          "result": "CaptiveCrunch(Midnight Blizzard/APT29)記事を確認したが、APT29プロファイルへ既に反映済み(source--microsoft-captivecrunch-2026)。8/1以降の新規個別アクター記事なし。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "unknown",
+          "result": "一覧ページに日付情報が欠落。表示範囲では直近活動アクターへの新規個別言及は見当たらず。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-03",
+          "result": "Passkey認証(8/3)、XCSSET v4.0(7/31)、中国語話者AI悪用(7/30)を確認したが、いずれも特定アクター名への帰属明記なし。対応不要。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-03",
+          "result": "8/3はwebinar告知のみ。直近活動アクターに関する新規個別記事なし。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "8/1以降の新規記事なし。Gamaredon記事(6/25)は既存反映済み確認。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-07-22",
+          "result": "8/1以降の新規記事なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-07-30",
+          "result": "OctLurk/SilkLurk(7/30)はreview-queueで既にHellsing APTとの名称衝突として不採用判定済み。8/1以降の新規記事なし。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {

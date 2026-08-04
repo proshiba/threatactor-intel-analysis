@@ -956,7 +956,7 @@
       "spec_version": "2.1",
       "id": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
       "created": "2026-08-01T23:18:26Z",
-      "modified": "2026-08-01T23:18:26Z",
+      "modified": "2026-08-04T04:25:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -987,14 +987,18 @@
         },
         "capability": {
           "malware_refs": [],
-          "ttp_refs": []
+          "ttp_refs": [
+            "ttp--activity-rule--be9df4470bc382b06ff7"
+          ]
         },
         "infrastructure": {
           "infrastructure_refs": []
         },
         "victim": {
           "target_refs": [],
-          "victim_refs": []
+          "victim_refs": [
+            "victim--activity-rule--792dfdc99346396f95d8"
+          ]
         },
         "meta_features": {
           "first_observed": {
@@ -1016,8 +1020,12 @@
             "basis": "daily-news-file-date"
           },
           "activity_type": "infrastructure-operation",
-          "phases": [],
-          "results": [],
+          "phases": [
+            "Execution"
+          ],
+          "results": [
+            "credential-theft"
+          ],
           "direction": {
             "source_countries": [],
             "target_country_refs": [],
@@ -1740,6 +1748,90 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--467a41f8-7b79-4de3-abe6-18a896fbc0ea",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:27:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "NullReceiverの空の暗号資産送金がEtherHidingの課題を解決",
+      "description": "北朝鮮関連の悪意あるnpmパッケージbianira-uiとfluid-type-uiから、新たなブロックチェーン型C2解決技術NullReceiverが発見された。 NullReceiverは、ゼロ送金・データなしのEthereum取引における受取人アドレスの一部へC2のIPアドレスを直接埋め込む。 マルウェアは攻撃者ウォレットの最新送金を参照し、受取人アドレスから166[.]88[.]134[.]62を復号してC2へ接続する。 スマートコントラクトやcalldata、固定のバーンアドレスを使用しないため、従来のEtherHiding向け検知では発見が難しい。 悪性パッケージは正規Tailwind CSSプラグインの複製で、北朝鮮のContagious Interviewキャンペーンに関連付けられている。",
+      "external_references": [
+        {
+          "source_name": "opensourcemalware.com",
+          "description": "Local source: https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
+          "external_id": "source--daily-3b508815c5f991656dcb"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-a92114fe11ac7118f546",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--a92114fe11ac7118f546246b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(opensourcemalware.com, 2026-08-04)を確認。「Attribution: DPRK 'Contagious Interview' campaign」と記事内の一覧形式の帰属タグとして明記されている。本文の同一文中での実行主体表現ではなく一覧タグ由来の帰属である点に留意が必要だが、悪意あるnpmパッケージ(bianira-ui, fluid-type-ui)およびNullReceiver技術によるC2解決を北朝鮮関連のContagious Interviewキャンペーンに紐づける明示的な記述であり、同名製品・別クラスタ・法執行記事・過去言及のいずれにも該当しない。採用。",
+      "x_reported_at": {
+        "value": "2026-08-04T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--mitre-group--sector--9344745b7aeff4dbe6af"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--6a67cf8d22901740910a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-04T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-3b508815c5f991656dcb"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--6fb5ce7c-3178-4ed3-9066-f9730a6520cc",
       "created": "2026-07-27T11:04:31Z",
       "modified": "2026-07-29T23:12:00Z",
@@ -2005,7 +2097,7 @@
       "spec_version": "2.1",
       "id": "identity--60988064-b642-43b7-88c0-37787ed2421f",
       "created": "2026-07-29T15:36:10Z",
-      "modified": "2026-07-29T15:36:10Z",
+      "modified": "2026-08-04T04:27:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2013,6 +2105,11 @@
       "identity_class": "organization",
       "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities.",
       "external_references": [
+        {
+          "source_name": "opensourcemalware.com",
+          "description": "Local source: https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
+          "external_id": "source--daily-3b508815c5f991656dcb"
+        },
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
@@ -2073,6 +2170,57 @@
       },
       "x_reported_at": {
         "value": "2025-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d4e5c7fb-1ec7-4e21-97b6-46ee7eabb0fd",
+      "created": "2026-08-04T04:27:08Z",
+      "modified": "2026-08-04T04:27:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: NullReceiverの空の暗号資産送金がEtherHidingの課題を解決",
+      "identity_class": "organization",
+      "description": "北朝鮮関連の悪意あるnpmパッケージbianira-uiとfluid-type-uiから、新たなブロックチェーン型C2解決技術NullReceiverが発見された。 NullReceiverは、ゼロ送金・データなしのEthereum取引における受取人アドレスの一部へC2のIPアドレスを直接埋め込む。 マルウェアは攻撃者ウォレットの最新送金を参照し、受取人アドレスから166[.]88[.]134[.]62を復号してC2へ接続する。 スマートコントラクトやcalldata、固定のバーンアドレスを使用しないため、従来のEtherHiding向け検知では発見が難しい。 悪性パッケージは正規Tailwind CSSプラグインの複製で、北朝鮮のContagious Interviewキャンペーンに関連付けられている。",
+      "external_references": [
+        {
+          "source_name": "opensourcemalware.com",
+          "description": "Local source: https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
+          "external_id": "source--daily-3b508815c5f991656dcb"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--6a67cf8d22901740910a",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--mitre-group--sector--9344745b7aeff4dbe6af"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-04T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
@@ -2185,6 +2333,62 @@
       },
       "x_reported_at": {
         "value": "2025-06-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "identity_class": "organization",
+      "description": "偽のmacOS更新画面がクリップボードへコマンドをコピーし、利用者にTerminalで実行させるClickFix型攻撃が確認された。 実行されたコマンドはNode.js製RATを導入し、Ethereumスマートコントラクトから最新C2情報を取得して約5分間隔で通信する。 RATは攻撃者提供のJavaScriptを実行し、157種類の暗号資産ウォレットを狙う情報窃取機能と悪意あるChrome拡張機能を展開する。 攻撃基盤の資金はKuCoinやBinanceから供給され、複数キャンペーンの資金が共通ウォレットへ集約されることから同一運用者と判断された。 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。",
+      "external_references": [
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--792dfdc99346396f95d8",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--be9df4470bc382b06ff7"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-07-31T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
@@ -2765,6 +2969,51 @@
       "x_tactic": "Discovery",
       "x_activity_refs": [
         "activity--daily-4b5096b05e14d4f33652"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious Copy and Paste",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.004",
+          "url": "https://attack.mitre.org/techniques/T1204/004/"
+        },
+        {
+          "source_name": "allsecure.io",
+          "description": "Local source: https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/",
+          "external_id": "source--daily-f258b76090beb4d8cca9"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--be9df4470bc382b06ff7",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-2f8e62cf1cd00748b2b7"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -5378,6 +5627,36 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--7cdecb78-a431-46eb-9f22-6ebef2e61b79",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+      "target_ref": "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 uses ttp--activity-rule--be9df4470bc382b06ff7.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7ad3c28c-597e-4a51-8615-8485170dafcd",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--1eb4e5d7-bfe7-4cd4-a0f1-e90b469bffac",
+      "target_ref": "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 affected victim--activity-rule--792dfdc99346396f95d8.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--ddafb54d-e61a-470d-92dc-51081481f6c4",
       "created": "2026-07-27T11:04:31Z",
       "modified": "2026-07-27T11:04:31Z",
@@ -5843,6 +6122,36 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--6fff2e43-038b-437c-86a3-5fc85e04a607",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--467a41f8-7b79-4de3-abe6-18a896fbc0ea",
+      "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "description": "NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 is attributed or linked to Contagious Interview.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b01d4ffb-7b55-4e4c-ab82-9fbb7b03bd4c",
+      "created": "2026-08-04T04:27:08Z",
+      "modified": "2026-08-04T04:27:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--467a41f8-7b79-4de3-abe6-18a896fbc0ea",
+      "target_ref": "identity--d4e5c7fb-1ec7-4e21-97b6-46ee7eabb0fd",
+      "description": "NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 affected victim--activity-rule--6a67cf8d22901740910a.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--f836a2c1-49ae-4fd5-8698-16b2bc6ce279",
       "created": "2026-07-27T11:04:31Z",
       "modified": "2026-07-27T11:04:31Z",
@@ -6018,6 +6327,21 @@
       "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
       "target_ref": "attack-pattern--45567475-88b6-449c-baf4-37fdc9bf2268",
       "description": "特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--53c7a268-79d8-46b6-bf4a-93b4213cb58d",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "target_ref": "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
+      "description": "ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡",
       "x_confidence": "medium"
     },
     {
@@ -7068,28 +7392,96 @@
       "x_confidence": "medium"
     },
     {
-      "type": "note",
+      "type": "indicator",
       "spec_version": "2.1",
-      "id": "note--c53bb181-7df2-46ff-9046-fa888260bc38",
-      "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-07-25T15:22:56Z",
+      "id": "indicator--33d4f227-9c71-4dfb-adbb-d903f383156e",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "abstract": "Non-IOC artifact dataset",
-      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
-      "object_refs": [
-        "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c"
+      "name": "ipv4: 166.88.134.62",
+      "pattern": "[ipv4-addr:value = '166.88.134.62']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-02T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
       ],
-      "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 64
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-a92114fe11ac7118f546"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8498a0f83089b9a63241ec66fbd36375cb0326265aea89fd20c579f655af96a0",
+          "observed_at": {
+            "value": "2026-08-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-04T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-3b508815c5f991656dcb",
+          "source_path": "https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "6ceacdb02b89dba752e7c2c8281af0c950095f3e",
+            "path": "daily-news/iocs/2026_07-09/20260804.csv",
+            "row": 84
+          },
+          "campaign_refs": [
+            "activity--daily-a92114fe11ac7118f546"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "166.88.134.62",
+          "context_excerpt": "AI generated. C2 IP resolved from a zero-value Ethereum transaction recipient address via the NullReceiver technique.",
+          "analyst_notes": "actor field: Contagious Interview; actor_attribute: north-korea; reference: https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4540f55d-5603-4a13-9d51-dc4cd53fa72b",
+      "created": "2026-08-04T04:25:10Z",
+      "modified": "2026-08-04T04:25:10Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--33d4f227-9c71-4dfb-adbb-d903f383156e",
+      "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--18120405-d5f0-4eab-b859-51696e7c9a2d",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-08-01T23:18:26Z",
+      "modified": "2026-08-04T04:27:08Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7098,7 +7490,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-01T23:18:26Z",
+      "published": "2026-08-04T04:27:08Z",
       "object_refs": [
         "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
         "malware--13467814-c037-4e30-80c4-d1e517fb452c",
@@ -7116,6 +7508,7 @@
         "campaign--287d9f0c-67c7-4047-9fe1-e54774627c28",
         "campaign--74a34757-770e-45e6-9ce6-bf0e41e9498d",
         "campaign--2e4412f4-5142-453a-82e0-30feeab37f95",
+        "campaign--467a41f8-7b79-4de3-abe6-18a896fbc0ea",
         "campaign--6fb5ce7c-3178-4ed3-9066-f9730a6520cc",
         "campaign--69c7e241-4561-424a-89b5-6963e3c67498",
         "identity--9cff34eb-7c6e-4f54-8597-6afb4f1711bc",
@@ -7123,8 +7516,10 @@
         "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
         "identity--60988064-b642-43b7-88c0-37787ed2421f",
         "identity--b6b5a402-fec8-49ac-9d0e-a895bce17305",
+        "identity--d4e5c7fb-1ec7-4e21-97b6-46ee7eabb0fd",
         "identity--1403f5d2-af58-4c52-9adc-db6e556fb7e2",
         "identity--e220b58f-8a9e-432d-b7a5-659a03e6b2bd",
+        "identity--e038d208-f485-4590-bdbf-1ec56d59053c",
         "identity--615cd97a-bfc4-4a34-a046-f59540f17276",
         "identity--e4806d10-23b0-416b-9ca9-8c5f2fb11873",
         "identity--1d1ad382-93c1-436b-9970-03498ee6e965",
@@ -7136,6 +7531,7 @@
         "attack-pattern--8e27aa34-2745-4f22-a5ce-e6afa0e0640e",
         "attack-pattern--1bf5a1e3-78c9-446f-b258-b24037af0f0e",
         "attack-pattern--45567475-88b6-449c-baf4-37fdc9bf2268",
+        "attack-pattern--d3ba6b1a-9cb9-4750-a7cc-a41a688e229d",
         "attack-pattern--78c6f766-9edd-4ec8-9476-fe926863f251",
         "attack-pattern--4f35f0c7-63a3-4a26-baa6-82207f09ad89",
         "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
@@ -7193,7 +7589,8 @@
         "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
         "indicator--4068625b-1cce-456a-a767-96a2904bef15",
         "indicator--34da1dfa-0a7c-41e5-8b90-c2db390170c8",
-        "indicator--b2533e24-9800-46b9-bff6-23a0f456dc04"
+        "indicator--b2533e24-9800-46b9-bff6-23a0f456dc04",
+        "indicator--33d4f227-9c71-4dfb-adbb-d903f383156e"
       ],
       "x_schema_version": "1.2.0"
     }
