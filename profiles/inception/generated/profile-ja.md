@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--inception`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-08-07T10:35:25Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -87,7 +87,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--powershower | PowerShower | [PowerShower](https://attack.mitre.org/software/S0441) is a PowerShell backdoor used by [Inception](https://attack.mitre.org/groups/G0100) for initial reconnaissance and to download and execute second stage payloads.(Citation: Unit 42 Inception November 2018)(Citation: Kaspersky Cloud Atlas August 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--daily-74ffce722b79d1d77a0a | RevSocks | Inceptionとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2025-07 | 2026-01 | 高 | `source--daily-a049055857e706459add` |
+| malware--daily-849606416b313f470296 | VBCloud | Inceptionとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2025-07 | 2026-01 | 高 | `source--daily-a049055857e706459add` |
+| malware--daily-977abf02a8093874d5ad | PowerCloud | Inceptionとの直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 2025-07 | 2026-01 | 高 | `source--daily-a049055857e706459add` |
+| malware--powershower | PowerShower | [PowerShower](https://attack.mitre.org/software/S0441) is a PowerShell backdoor used by [Inception](https://attack.mitre.org/groups/G0100) for initial reconnaissance and to download and execute second stage payloads.(Citation: Unit 42 Inception November 2018)(Citation: Kaspersky Cloud Atlas August 2019) | 不明 | 不明 | 高 | `source--daily-a049055857e706459add`, `source--mitre-attack-19-1` |
 | malware--vbshower | VBShower | [VBShower](https://attack.mitre.org/software/S0442) is a backdoor that has been used by [Inception](https://attack.mitre.org/groups/G0100) since at least 2019. [VBShower](https://attack.mitre.org/software/S0442) has been used as a downloader for second stage payloads, including [PowerShower](https://attack.mitre.org/software/S0441).(Citation: Kaspersky Cloud Atlas August 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 
 ### ツール
@@ -117,6 +120,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Cloud Atlas | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+| 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | phishing-campaign | 2025-07 | 2026-01 | 2026-05-26 | target--sector--government | malware--daily-74ffce722b79d1d77a0a, malware--daily-849606416b313f470296, malware--daily-977abf02a8093874d5ad, malware--powershower | ttp--activity-rule--1654882a291124199026, ttp--activity-rule--c0823aaec95f59d3a0a9 | victim--activity-rule--b450a9ea54e52cd62b68 | Kasperskyは、2025年から2026年にかけてロシアとベラルーシの政府・商業組織を狙うCloud Atlasの活動を観測した。 攻撃はフィッシングでZIP内のLNKや悪性Office文書を送り、PowerShellスクリプトを実行、VBCloud、PowerShowerなどのマルウェアを展開する。 PowerShowerは探索や横展開、Kerberoasting、資格情報窃取を行い、termsrv.dll改変で複数RDPセッションを可能にする。 VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 攻撃者はOpenSSH、RevSocks、Torを用いたトンネルで永続化とバックアップの制御チャネルを構築していた。 新ツールPowerCloudは管理者権限ユーザー情報を収集し、Base64形式でGoogle Sheetsに書き込む。 | 高 | `source--daily-a049055857e706459add` |
 | Red October | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
@@ -124,6 +128,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | Cloud Atlas | Inception | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | Inception | RevSocks, VBCloud, PowerCloud, PowerShower | T1059.001 PowerShell, T1087 Account Discovery | 情報なし | Government | 被害事例: 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | 高 |
 | Red October | Inception | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Red October; Cloud Atlas
@@ -195,18 +200,22 @@ Red October; Cloud Atlas
 | regions | 東南アジア | インドネシア、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 東欧 | ウクライナ、チェコ、ベラルーシ、モルドバ、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 欧州 | MITRE ATT&CKのGroup概要でInceptionの標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| sectors | Government | Targeting text indicates the Government sector. | 2025-07 | 2026-01 | 中 | `source--actor-mapping-workbook`, `source--daily-a049055857e706459add`, `source--mitre-attack-19-1` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | 非公開 | aggregate | multiple-organizations | reported | target--sector--government | malware--daily-74ffce722b79d1d77a0a, malware--daily-849606416b313f470296, malware--daily-977abf02a8093874d5ad, malware--powershower | ttp--activity-rule--1654882a291124199026, ttp--activity-rule--c0823aaec95f59d3a0a9 |  | data-theft: VBCloudは資格情報やファイルを窃取するスティーラー機能を持つバックドア。 | 2025-07 | 2026-01 | 2026-05-26 | 高 | `source--daily-a049055857e706459add` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Execution | T1059.001 | PowerShell | 攻撃はフィッシングでZIP内のLNKや悪性Office文書を送り、PowerShellスクリプトを実行、VBCloud、PowerShowerなどのマルウェアを展開する。 | malware--daily-849606416b313f470296, malware--powershower | activity--daily-eb7dc1cbaaf211545ed7 | 2025-07 | 2026-01 | 中 | `source--daily-a049055857e706459add` |
+| Discovery | T1087 | Account Discovery | 新ツールPowerCloudは管理者権限ユーザー情報を収集し、Base64形式でGoogle Sheetsに書き込む。 | malware--daily-977abf02a8093874d5ad | activity--daily-eb7dc1cbaaf211545ed7 | 2025-07 | 2026-01 | 中 | `source--daily-a049055857e706459add` |
 | Credential Access | T1003.001 | LSASS Memory | iscovering rogue Mimikatz processes can be tricky because, since its inception, defenders have only had to worry about detecting compiled binaries. Nowadays, l T1003.001: LSASS Memory |  |  | 不明 | 不明 | 中 | `source--inception--f1cfea69304ea1b6` |
 | Collection | T1005 | Data from Local System | [Inception](https://attack.mitre.org/groups/G0100) used a file hunting plugin to collect .txt, .pdf, .xls or .doc files from the infected host.(Citation: Kaspersky Cloud Atlas August 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Stealth | T1027.013 | Encrypted/Encoded File | [Inception](https://attack.mitre.org/groups/G0100) has encrypted malware payloads dropped on victim machines with AES and RC4 encryption.(Citation: Kaspersky Cloud Atlas December 2014) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -233,8 +242,8 @@ Red October; Cloud Atlas
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 115件
+- IOC観測: 115件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
 - 非IOC artifact観測: 69件（`artifacts.csv`）
@@ -256,45 +265,46 @@ Red October; Cloud Atlas
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--inception--f1cfea69304ea1b6 | inception |  | 不明 | actor_profile/evidence/inception.csv | structured-data | TLP:CLEAR | 中 |
-| source--inception--70f51bafa5a1cabb | hunting cobaltstrike beacons in the dark |  | 不明 | APT-hunting/hunting-cobaltstrike-beacons-in-the-dark.pdf | report | TLP:CLEAR | 中 |
-| source--inception--5e52347f5ce0893a | eset sednit part1 |  | 不明 | APT28/history-report-pdf/eset-sednit-part1.pdf | report | TLP:CLEAR | 中 |
-| source--inception--b5a1d59d283bf876 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
-| source--inception--6fb226834cf8d6e3 | Report Notes of Cyber inspector |  | 不明 | Anonymous/RussiaUkrainewar/Report_Notes_of_Cyber_inspector_.pdf | report | TLP:CLEAR | 中 |
-| source--inception--93001a40d9ca5e16 | cyberespionage gamaredon way |  | 不明 | Gamaredon/cyberespionage-gamaredon-way.pdf | report | TLP:CLEAR | 中 |
-| source--inception--52ebc507b55028b9 | ACT1072452023ENGLISH |  | 不明 | Intellexa/Predator Files/ACT1072452023ENGLISH.pdf | report | TLP:CLEAR | 中 |
-| source--inception--43dde95e67a38a5e | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
-| source--inception--b36148c25d898e41 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
-| source--inception--87144c6f17587dcd | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--inception--c25afd32373c27ef | 2022 INTERNET CRIME REPORT |  | 2022 | cybercrime/2023/2022 INTERNET CRIME REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--inception--b0adfa5e32c0b743 | Stairwell threat report The ink stained trail of GOLDBACKDOOR |  | 不明 | group123/Stairwell-threat-report-The-ink-stained-trail-of-GOLDBACKDOOR.pdf | report | TLP:CLEAR | 中 |
-| source--inception--5218a4a3eb41bce0 | 20250507 TLP CLEAR NP SGDSN VIGINUM Technical report Storm 1516 |  | 2025-05-07 | information_operations/2025/20250507_TLP-CLEAR_NP_SGDSN_VIGINUM_Technical report_Storm-1516.pdf | report | TLP:CLEAR | 中 |
-| source--inception--a0ef8cb3860e6489 | RagaSerpent SideWinder Adjacent Tax Audit Cluster MultiCountry Targeted Chain |  | 不明 | sidewinder/RagaSerpent SideWinder-Adjacent Tax Audit Cluster MultiCountry Targeted Chain.pdf | report | TLP:CLEAR | 中 |
-| source--inception--974bc284efbf1d4b | ESET Threat Report Q22020 |  | 不明 | summary/2020/ESET_Threat_Report_Q22020.pdf | report | TLP:CLEAR | 中 |
-| source--inception--6fe0d186cf6867a7 | 2021 Threat Detection Report |  | 2021 | summary/2021/2021-Threat-Detection-Report.pdf | report | TLP:CLEAR | 中 |
-| source--inception--23e37be662997391 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
-| source--inception--a5341843b0593b8f | ACD6 full report |  | 不明 | summary/2023/ACD6-full-report.pdf | report | TLP:CLEAR | 中 |
-| source--inception--5a42b5ae6e675dfd | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
-| source--inception--796c9955489ab951 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
-| source--inception--7359b2b3030c01a0 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
-| source--inception--4611805fad19b5b3 | kaspersky ics cert apt attacks on industrial organizations in h2 2022 en |  | 2022 | summary/2023/kaspersky-ics-cert-apt-attacks-on-industrial-organizations-in-h2-2022-en.pdf | report | TLP:CLEAR | 中 |
-| source--inception--20796ce33526d9cb | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
-| source--inception--447207206a144096 | GRIT Ransomware Annual Report 2023 |  | 2023 | summary/2024/GRIT_Ransomware_Annual_Report_2023.pdf | report | TLP:CLEAR | 中 |
-| source--inception--7f612d71e40a5558 | Recordedfuture 2023 Annual Report ta 2024 0321 |  | 2023 | summary/2024/Recordedfuture 2023 Annual Report ta-2024-0321.pdf | report | TLP:CLEAR | 中 |
-| source--inception--7758458d1af794d8 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
-| source--inception--79bb0068646f38fa | 2024 Malicious Infrastructure Report |  | 2024 | summary/2025/2024 Malicious Infrastructure Report.pdf | report | TLP:CLEAR | 中 |
+| source--daily-a049055857e706459add | 2025年後半から2026年初頭にかけてのCloud Atlasの活動：新しいツールと新しいペイロード | securelist.ru | 2026-05-26 | https://securelist.ru/cloud-atlas-2026/115682/ | osint-report | TLP:CLEAR | 中 |
 | source--inception--0f06772ae8aede50 | 2025 dbir data breach investigations report |  | 2025 | summary/2025/2025-dbir-data-breach-investigations-report.pdf | report | TLP:CLEAR | 中 |
-| source--inception--caa4c89d3d6eae22 | 2025 Cost of Insider Risks Global Report by Ponemon and DTEX |  | 2025 | summary/2025/2025_Cost_of_Insider_Risks_Global_Report_by_Ponemon_and_DTEX.pdf | report | TLP:CLEAR | 中 |
-| source--inception--67bb7e636abb43a9 | Futuriom AI Clouds GPU Clouds |  | 不明 | summary/2025/Futuriom-AI-Clouds-GPU-Clouds.pdf | report | TLP:CLEAR | 中 |
-| source--inception--1baaa268fd002a51 | NCSC Cyber Threat Report 2024 FINAL |  | 2024 | summary/2025/NCSC-Cyber-Threat-Report-2024-FINAL.pdf | report | TLP:CLEAR | 中 |
-| source--inception--c0af277287ced945 | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
 | source--inception--128a66053fcad29e | DFIR otchet za polnyy 2025 final |  | 2025 | summary/2026/DFIR_otchet_za_polnyy_2025_final.pdf | report | TLP:CLEAR | 中 |
+| source--inception--1baaa268fd002a51 | NCSC Cyber Threat Report 2024 FINAL |  | 2024 | summary/2025/NCSC-Cyber-Threat-Report-2024-FINAL.pdf | report | TLP:CLEAR | 中 |
 | source--inception--1e751d28b9621976 | 004 |  | 不明 | summary/UNREDACTEDMagazine/004.pdf | report | TLP:CLEAR | 中 |
+| source--inception--20796ce33526d9cb | positive research 2023 eng |  | 2023 | summary/2023/positive-research-2023-eng.pdf | report | TLP:CLEAR | 中 |
+| source--inception--23e37be662997391 | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--inception--43dde95e67a38a5e | national cyber threat assessment 2025 2026 e |  | 不明 | International Strategic/Canada/national-cyber-threat-assessment-2025-2026-e.pdf | report | TLP:CLEAR | 中 |
+| source--inception--447207206a144096 | GRIT Ransomware Annual Report 2023 |  | 2023 | summary/2024/GRIT_Ransomware_Annual_Report_2023.pdf | report | TLP:CLEAR | 中 |
+| source--inception--4611805fad19b5b3 | kaspersky ics cert apt attacks on industrial organizations in h2 2022 en |  | 2022 | summary/2023/kaspersky-ics-cert-apt-attacks-on-industrial-organizations-in-h2-2022-en.pdf | report | TLP:CLEAR | 中 |
+| source--inception--5218a4a3eb41bce0 | 20250507 TLP CLEAR NP SGDSN VIGINUM Technical report Storm 1516 |  | 2025-05-07 | information_operations/2025/20250507_TLP-CLEAR_NP_SGDSN_VIGINUM_Technical report_Storm-1516.pdf | report | TLP:CLEAR | 中 |
+| source--inception--52ebc507b55028b9 | ACT1072452023ENGLISH |  | 不明 | Intellexa/Predator Files/ACT1072452023ENGLISH.pdf | report | TLP:CLEAR | 中 |
+| source--inception--5a42b5ae6e675dfd | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--inception--5e52347f5ce0893a | eset sednit part1 |  | 不明 | APT28/history-report-pdf/eset-sednit-part1.pdf | report | TLP:CLEAR | 中 |
+| source--inception--67bb7e636abb43a9 | Futuriom AI Clouds GPU Clouds |  | 不明 | summary/2025/Futuriom-AI-Clouds-GPU-Clouds.pdf | report | TLP:CLEAR | 中 |
+| source--inception--6fb226834cf8d6e3 | Report Notes of Cyber inspector |  | 不明 | Anonymous/RussiaUkrainewar/Report_Notes_of_Cyber_inspector_.pdf | report | TLP:CLEAR | 中 |
+| source--inception--6fe0d186cf6867a7 | 2021 Threat Detection Report |  | 2021 | summary/2021/2021-Threat-Detection-Report.pdf | report | TLP:CLEAR | 中 |
+| source--inception--70f51bafa5a1cabb | hunting cobaltstrike beacons in the dark |  | 不明 | APT-hunting/hunting-cobaltstrike-beacons-in-the-dark.pdf | report | TLP:CLEAR | 中 |
+| source--inception--7359b2b3030c01a0 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
+| source--inception--7758458d1af794d8 | eset threat report h22024 |  | 不明 | summary/2024/eset-threat-report-h22024.pdf | report | TLP:CLEAR | 中 |
+| source--inception--796c9955489ab951 | MDDR FINAL 2023 1004 |  | 2023-10-04 | summary/2023/MDDR_FINAL_2023_1004.pdf | report | TLP:CLEAR | 中 |
+| source--inception--79bb0068646f38fa | 2024 Malicious Infrastructure Report |  | 2024 | summary/2025/2024 Malicious Infrastructure Report.pdf | report | TLP:CLEAR | 中 |
+| source--inception--7f612d71e40a5558 | Recordedfuture 2023 Annual Report ta 2024 0321 |  | 2023 | summary/2024/Recordedfuture 2023 Annual Report ta-2024-0321.pdf | report | TLP:CLEAR | 中 |
+| source--inception--87144c6f17587dcd | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
+| source--inception--93001a40d9ca5e16 | cyberespionage gamaredon way |  | 不明 | Gamaredon/cyberespionage-gamaredon-way.pdf | report | TLP:CLEAR | 中 |
+| source--inception--974bc284efbf1d4b | ESET Threat Report Q22020 |  | 不明 | summary/2020/ESET_Threat_Report_Q22020.pdf | report | TLP:CLEAR | 中 |
+| source--inception--a0ef8cb3860e6489 | RagaSerpent SideWinder Adjacent Tax Audit Cluster MultiCountry Targeted Chain |  | 不明 | sidewinder/RagaSerpent SideWinder-Adjacent Tax Audit Cluster MultiCountry Targeted Chain.pdf | report | TLP:CLEAR | 中 |
+| source--inception--a5341843b0593b8f | ACD6 full report |  | 不明 | summary/2023/ACD6-full-report.pdf | report | TLP:CLEAR | 中 |
+| source--inception--b0adfa5e32c0b743 | Stairwell threat report The ink stained trail of GOLDBACKDOOR |  | 不明 | group123/Stairwell-threat-report-The-ink-stained-trail-of-GOLDBACKDOOR.pdf | report | TLP:CLEAR | 中 |
+| source--inception--b36148c25d898e41 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--inception--b5a1d59d283bf876 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
+| source--inception--c0af277287ced945 | Security Navigator 2026 |  | 2026 | summary/2025/Security_Navigator_2026.pdf | report | TLP:CLEAR | 中 |
+| source--inception--c25afd32373c27ef | 2022 INTERNET CRIME REPORT |  | 2022 | cybercrime/2023/2022 INTERNET CRIME REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--inception--caa4c89d3d6eae22 | 2025 Cost of Insider Risks Global Report by Ponemon and DTEX |  | 2025 | summary/2025/2025_Cost_of_Insider_Risks_Global_Report_by_Ponemon_and_DTEX.pdf | report | TLP:CLEAR | 中 |
+| source--inception--f1cfea69304ea1b6 | inception |  | 不明 | actor_profile/evidence/inception.csv | structured-data | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 

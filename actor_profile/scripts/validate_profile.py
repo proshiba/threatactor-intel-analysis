@@ -23,6 +23,7 @@ from activity_diamond import build_activity_diamond
 from ingest_observables import (
     IANA_TLDS,
     SPECIAL_USE_TLDS,
+    analyst_marked_indicator,
     host_of,
     reference_host,
 )
@@ -379,7 +380,9 @@ def check_indicator_is_observable(
         pass
     else:
         return
-    if reference_host(value):
+    if reference_host(value) and not analyst_marked_indicator(indicator):
+        # 8.0の例外: 構造化IOC表由来・難読化済みの値はアナリストが指標として
+        # 明示したものなので、参考ホスト(攻撃者が悪用した正規サービスを含む)でも残す。
         issue(
             issues,
             "error",

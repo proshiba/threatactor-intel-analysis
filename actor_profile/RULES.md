@@ -281,6 +281,13 @@ TLDとして実在するため、列挙すると本物のドメインを取り�
 アナリストが指標として明示したものとみなし1.に関わらず残す。2.〜5.に例外はない。
 とくに5.は値そのものが指標でないため、`disposition`が`confirmed`でも除去する。
 
+攻撃者が正規サービスをペイロード置き場に使う場合（Kimsukyによる
+`raw.githubusercontent.com`上の配布等）があるため、この例外は取込後の検証と
+公開索引にも適用する。保存済みIndicatorでは難読化が正規化で消えているため、
+観測側の`extraction_method`（`tech-memo-structured-csv`）と`raw_value`の難読化痕跡で
+判定する（`ingest_observables.analyst_marked_indicator()`。
+`validate_profile.py`と`../ui/build_portal_index.py`が共有する規則）。
+
 `t.me`、`bit.ly`、`telegra.ph`、`webhook.site`のように攻撃者の実利用が多いサービスは、
 参考リンクとしての出現があっても一覧に入れない。
 

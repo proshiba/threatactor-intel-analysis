@@ -4,7 +4,7 @@
   "name": "Ghostwriter",
   "status": "draft",
   "created_at": "2026-07-25T09:00:36Z",
-  "updated_at": "2026-08-01T23:19:02Z",
+  "updated_at": "2026-08-07T10:35:24Z",
   "languages": [
     "ja"
   ],
@@ -90,6 +90,92 @@
     "analyst_notes": ""
   },
   "activities": [
+    {
+      "activity_id": "activity--daily-7a0b25de357249d75824",
+      "name": "Ghostwriterの日次IOC観測",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "AI generated. IP hosting phishing certificates and infrastructure linked to UNC1151 Ghostwriter campaign.",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-264c4f3115e3e53b3d38"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--7a0b25de357249d75824f10b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次URL(Censys blog)はHTTP 403で原文を直接確認できなかった。tech-memo要約とIOC CSV(限定なしのactor=UNC1151、28件のフィッシング証明書・ホスティングIP)は、CensysがUNC1151のGhostwriterキャンペーン基盤としてインフラを特定したと記載。UNC1151はGhostwriterキャンペーンの実行主体とされるベラルーシ関連クラスタのMandiant名でghostwriterプロファイルのoverlapping alias。直接検証できないため確度はmedium。攻撃期間は不明のままとする。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--ghostwriter",
+          "name": "Ghostwriter",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-264c4f3115e3e53b3d38"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
     {
       "activity_id": "activity--operation-ghostwriter",
       "name": "Operation Ghostwriter",
@@ -794,10 +880,10 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--ghostwriter--94bca5a8ebb026a7",
-      "path": "Ghostwriter/Ghostwriter-Report-Final.pdf",
-      "title": "Ghostwriter Report Final",
-      "publisher": "",
+      "source_id": "source--daily-264c4f3115e3e53b3d38",
+      "path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+      "title": "Ghostwriterの日次IOC観測 — IOC補助資料",
+      "publisher": "censys.com",
       "published_at": {
         "value": null,
         "precision": "unknown",
@@ -805,11 +891,11 @@
         "basis": "not-stated"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260627.csv; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--ghostwriter--3d35d6b65a4c4640",
@@ -824,6 +910,24 @@
       },
       "language": "unknown",
       "source_type": "repository-notes",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--ghostwriter--94bca5a8ebb026a7",
+      "path": "Ghostwriter/Ghostwriter-Report-Final.pdf",
+      "title": "Ghostwriter Report Final",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
@@ -846,6 +950,32 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
     {
       "source_id": "source--osint-misp-microsoft-activity-group",
@@ -898,32 +1028,6 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
-    },
-    {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
     {
       "source_id": "source--target-audit-etda-threat-group-cards",

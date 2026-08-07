@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-31T02:30:45Z",
+  "generated_at": "2026-08-07T12:10:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -60,9 +60,21 @@
       "cluster_id": "unknown-cluster--toy-ghouls",
       "primary_name": "Toy Ghouls",
       "aliases": [
-        { "name": "Bearlyfy", "scope": "unknown", "vendor": "Kaspersky" },
-        { "name": "Labuib", "scope": "unknown", "vendor": "Kaspersky" },
-        { "name": "Laboo.boo", "scope": "unknown", "vendor": "Kaspersky" }
+        {
+          "name": "Bearlyfy",
+          "scope": "unknown",
+          "vendor": "Kaspersky"
+        },
+        {
+          "name": "Labuib",
+          "scope": "unknown",
+          "vendor": "Kaspersky"
+        },
+        {
+          "name": "Laboo.boo",
+          "scope": "unknown",
+          "vendor": "Kaspersky"
+        }
       ],
       "status": "tracking",
       "first_seen": "2026-07-31",
@@ -84,7 +96,12 @@
           "reliability": "vendor-direct-observation",
           "activity_period": "GenieLockerは2026年3月以降。分析対象インシデントは2026年3月下旬。",
           "targets": "ロシア連邦に検知が集中。製造業が主、次いで建設、金融サービス、小売、テクノロジー。",
-          "malware": ["GenieLocker", "RedAlert", "LockBit", "Babuk"],
+          "malware": [
+            "GenieLocker",
+            "RedAlert",
+            "LockBit",
+            "Babuk"
+          ],
           "summary": "従来はRedAlert、LockBit、Babuk等のサードパーティ製暗号化トロイを利用していたが、独自開発のGenieLockerへ移行。Windows/Linux/ESXi対応。フォレンジックではデータ持ち出しの痕跡が確認されず、二重恐喝モデルは採用していない。",
           "verified_by_analyst": "原文を確認。Toy Ghoulsを実行主体として明記。"
         }
@@ -125,7 +142,12 @@
           "source_type": "primary-report",
           "reliability": "vendor-direct-observation",
           "targets": "中央アジア（アフガニスタン、キルギス、タジキスタン、ウズベキスタン、カザフスタン）およびシリア",
-          "malware": ["OctLurk", "SilkLurk", "LurkProxy", "PlugX"],
+          "malware": [
+            "OctLurk",
+            "SilkLurk",
+            "LurkProxy",
+            "PlugX"
+          ],
           "summary": "中央アジアを標的としたサイバースパイ活動で、専用設計のバックドアOctLurkとSilkLurkを新規に特定。",
           "verified_by_analyst": "原文を確認。既知グループへの帰属は明示的に見送られている。"
         }
@@ -136,6 +158,418 @@
         "中央アジアを標的とする既存プロファイル（nomadic-octopus、sixlittlemonkeys、indigozebra、nomad-panda、ta459、teamspy-crew、turla 等）との重複有無は未検証。一次資料に言及がないため現時点では関連付けない。"
       ],
       "analyst_notes": "標的地域が既存の複数プロファイルと重なるため、将来の報告で帰属が進んだ場合は統合先候補の再確認が必要。"
+    },
+    {
+      "cluster_id": "unknown-cluster--silver-dragon",
+      "primary_name": "Silver Dragon",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-06",
+      "last_seen": "2026-08-06",
+      "detected_via": "tech-memo daily-news 2026-08-06",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Check Pointは高確度で中国関連(Chinese-nexus)と評価し、APT41傘下で活動している可能性に言及。独立クラスタとしての帰属は確定していない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-06",
+          "publisher": "Check Point Research",
+          "url": "https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/",
+          "title": "Silver Dragon targets organizations in Southeast Asia and Europe",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2024年半ば以降(一次資料の記載)",
+          "targets": "東南アジアと欧州の政府機関を中心とする組織",
+          "malware": [
+            "BamboLoader",
+            "MonikerLoader",
+            "GearDoor",
+            "SilverScreen",
+            "SSHcmd",
+            "Cobalt Strike"
+          ],
+          "summary": "公開サーバーの脆弱性悪用と悪性LNK添付で侵入し、AppDomainハイジャック等で永続化。Google DriveをC2に使う新型バックドアGearDoorを展開。",
+          "verified_by_analyst": "原文を確認(apt41レコード不採用判断時)。「assessed with high confidence to be linked to a Chinese-nexus threat actor, likely operating within the (APT41 umbrella)」。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "apt41",
+          "relation": "possible-parent-cluster",
+          "notes": "Check PointはAPT41との強い技術的・運用上の関連とAPT41傘下で活動する可能性を記載。APT41自身の活動としての帰属ではないためapt41レコードは不採用(review-decisions.json参照)。帰属が確定した場合はapt41配下クラスタとしての統合を検討。"
+        },
+        {
+          "slug": "hellsing-apt",
+          "relation": "false-match",
+          "notes": "日次キューではalias「Asia」がURL中の地域語に誤一致した。"
+        }
+      ],
+      "unresolved_questions": [
+        "日次キューの未一致IOC観測47件(C2ドメイン等)はtech-memo CSV(20260806)に保持されている。プロファイル昇格時に取り込む。"
+      ],
+      "analyst_notes": "単一ベンダー初報のため昇格閾値未達。継続観察。"
+    },
+    {
+      "cluster_id": "unknown-cluster--operation-talked",
+      "primary_name": "Operation Talked operator (未命名)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-31",
+      "last_seen": "2026-07-31",
+      "detected_via": "tech-memo daily-news 2026-07-31",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "SOCRadarはロシアまたはベラルーシ所在のロシア系アクターと高確度(85%)で評価。グループ名は付与されていない。UAC-0056/UAC-0114とは戦術的重複の指摘のみ。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "SOCRadar",
+          "url": "https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/",
+          "title": "Operation Talked: Russia-Ukraine defense industry espionage",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2025年6月以降継続(一次資料の記載)",
+          "targets": "ウクライナの防衛・航空宇宙・航空関連企業(9社侵害)。並行して110万以上の公開資産を探索。",
+          "malware": [
+            "Sliver",
+            "Godzilla",
+            "r57",
+            "suo5",
+            "Neo-reGeorg"
+          ],
+          "summary": "C2上で8,436件のファイルが認証なしで公開され、攻撃ツール・認証情報・標的一覧が流出。19件のCVEを悪用。公開時点でも侵害が継続。",
+          "verified_by_analyst": "原文を確認(ember-bearレコード不採用判断時)。帰属は「Russia-nexus actor with high confidence」でありUAC-0056への帰属ではない。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "ember-bear",
+          "relation": "tactical-overlap-only",
+          "notes": "IOC CSVのactor列は「UAC-0056 (high confidence)」だが、原文の高確度はロシア系という点に係り、UAC-0056は戦術的重複の指摘に留まる。ember-bearへの反映は不採用(review-decisions.json参照)。"
+        },
+        {
+          "slug": "carbanak",
+          "relation": "false-match",
+          "notes": "URL中の「Ukraine」がaliasに誤一致した。"
+        }
+      ],
+      "unresolved_questions": [
+        "未一致IOC観測(C2 IP等)はtech-memo CSV(20260731)に保持されている。"
+      ],
+      "analyst_notes": "帰属が命名付きクラスタへ進んだ場合に統合先を再検討する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--hollowgraph",
+      "primary_name": "HollowGraph operator (未命名)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-21",
+      "last_seen": "2026-07-21",
+      "detected_via": "tech-memo daily-news 2026-07-21",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Group-IBは「現在の証拠では既知アクターへ確実に帰属できない」と明記。イラン系Lyceumへの言及は低確度の潜在的リンクに留まる。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-21",
+          "publisher": "Group-IB",
+          "url": "https://www.group-ib.com/blog/hollowgraph-microsoft-365/",
+          "title": "HollowGraph: Microsoft 365 calendar-based C2",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2026-06-03〜2026-07-09(一次資料の記載)",
+          "targets": "イスラエル企業への極めて限定的な標的型攻撃(12システム感染、うち3つが活動中)",
+          "malware": [
+            "HollowGraph",
+            "Cavern framework"
+          ],
+          "summary": "侵害したMicrosoft 365メールボックスの予定表をC2に使い、2050年日付の予定と暗号化添付で命令と窃取データを秘匿。予備経路にDNSトンネル。",
+          "verified_by_analyst": "原文を確認(hexaneレコード不採用判断時)。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "hexane",
+          "relation": "low-confidence-link",
+          "notes": "Group-IBがLyceum(hexaneのoverlapping alias)との低確度の潜在的リンクに言及。帰属未確定のためhexaneへの反映は不採用(review-decisions.json参照)。"
+        }
+      ],
+      "unresolved_questions": [],
+      "analyst_notes": "帰属が進んだ場合はhexaneとの統合を再検討する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--void-blizzard",
+      "primary_name": "Void Blizzard",
+      "aliases": [
+        {
+          "name": "TA488",
+          "scope": "exact",
+          "vendor": "Proofpoint"
+        },
+        {
+          "name": "Laundry Bear",
+          "scope": "exact",
+          "vendor": "CrowdStrike"
+        }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-07-31",
+      "last_seen": "2026-07-31",
+      "detected_via": "tech-memo daily-news 2026-07-31",
+      "attribution": {
+        "state": "attributed-by-vendor",
+        "actor_type": "state-sponsored-espionage",
+        "notes": "ロシア国家支援型と報道・ベンダーが記載。2025年からMicrosoft(Void Blizzard)とオランダ情報機関(Laundry Bear)が公表している既知クラスタだが、本リポジトリにプロファイルが存在しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "Proofpoint (二次: BleepingComputer)",
+          "url": "https://www.proofpoint.com/us/blog/threat-insight/cleaning-out-inboxes-ta488-comes-outlook-another-half-click-exploit",
+          "title": "TA488 comes for Outlook: another half-click exploit",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "政府・防衛分野",
+          "summary": "Exchange OWAのゼロデイを悪用しメールボックスへの長期アクセスを確立する諜報活動。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Microsoft・AIVD/MIVDの過去公表と併せると昇格閾値(独立資料2本以上・政府機関言及)を満たす可能性が高い。プロファイル新規作成の判断を利用者へ提案する。"
+      ],
+      "analyst_notes": "既知の命名済みアクターにプロファイルが無いケース。watchlistでの暫定追跡。"
+    },
+    {
+      "cluster_id": "unknown-cluster--shinyhunters",
+      "primary_name": "ShinyHunters",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-30",
+      "last_seen": "2026-07-31",
+      "detected_via": "tech-memo daily-news 2026-07-30 / 2026-07-31",
+      "attribution": {
+        "state": "self-attributed",
+        "actor_type": "financially-motivated-extortion-group",
+        "notes": "著名な恐喝グループ。ビッシングとSaaS(Salesforce等)からのデータ窃取が特徴。本リポジトリにプロファイルが存在しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-30",
+          "publisher": "Health-ISAC",
+          "url": "https://health-isac.org/shiny-hunters-impact-to-health-sector-and-recommended-mitigation-strategies/",
+          "title": "Shiny Hunters impact to health sector and recommended mitigation strategies",
+          "source_type": "sector-advisory",
+          "reliability": "industry-body",
+          "targets": "医療分野",
+          "summary": "医療分野で増加するShinyHuntersのデータ窃取攻撃への注意喚起。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        },
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "Brinks Home (二次: BleepingComputer)",
+          "url": "https://brinkshome.com/cybersecurity-update",
+          "title": "Brinks Home cybersecurity update",
+          "source_type": "victim-disclosure",
+          "reliability": "victim-statement",
+          "targets": "住宅向けセキュリティ企業(Brinks Home)",
+          "summary": "ShinyHuntersがMicrosoft Entraへの音声フィッシング経由の侵入とSalesforce顧客データ110万行超の窃取を主張。被害者側は調査中。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。攻撃者の主張と被害者確認を分離して扱うこと。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "scattered-spider",
+          "relation": "reported-overlap-unverified",
+          "notes": "報道ではScattered Spider等との連携(Scattered LAPSUS$ Hunters)が語られるが、本観測の一次資料には現れないため関連付けない。"
+        }
+      ],
+      "unresolved_questions": [
+        "独立した観測2件(業界ISACと被害企業)があり昇格閾値に近い。プロファイル新規作成の判断を利用者へ提案する。"
+      ],
+      "analyst_notes": "命名済みの著名アクターにプロファイルが無いケース。"
+    },
+    {
+      "cluster_id": "unknown-cluster--silverfox",
+      "primary_name": "SilverFox",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-07-31",
+      "last_seen": "2026-07-31",
+      "detected_via": "tech-memo daily-news 2026-07-31",
+      "attribution": {
+        "state": "attributed-by-vendor",
+        "actor_type": "financially-motivated-intrusion-set",
+        "notes": "Cato Networksが中〜高確度でSilverFoxと評価。所在国・動機の記載なし。ValleyRAT系の中国語圏サイバー犯罪クラスタとして各ベンダーが追跡する名前。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-07-31",
+          "publisher": "Cato Networks",
+          "url": "https://www.catonetworks.com/blog/cato-ctrl-silverfox-evolves/",
+          "title": "Cato CTRL: SilverFox evolves",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "日本を含む",
+          "malware": [
+            "ValleyRAT"
+          ],
+          "summary": "新たなドライバー悪用と信頼済みソフトウェアの乗っ取りにより日本でValleyRATを展開。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "tech-memoのmalware campaign欄に日次で載る日本語マルスパム(ValleyRAT)との関係は原典で確認できていない。安易に同一運用者と見なさないこと。"
+      ],
+      "analyst_notes": "ValleyRATエコシステムの主要クラスタ。日本標的のため優先度高め。"
+    },
+    {
+      "cluster_id": "unknown-cluster--rognar",
+      "primary_name": "Rognar",
+      "aliases": [
+        {
+          "name": "@johnysilverhe",
+          "scope": "exact",
+          "vendor": "SOCRadar(攻撃者の自称ハンドル)"
+        }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-04",
+      "last_seen": "2026-08-04",
+      "detected_via": "tech-memo daily-news 2026-08-04",
+      "attribution": {
+        "state": "attributed-by-vendor",
+        "actor_type": "cybercrime-service-operator",
+        "notes": "DOUBLECUP ClickFixサービスの運用者としてSOCRadarが追跡する犯罪者ペルソナ。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-04",
+          "publisher": "SOCRadar",
+          "url": "https://socradar.io/blog/doublecup-clickfix-loader-devicemanager-rats/",
+          "title": "DOUBLECUP ClickFix loader and DeviceManager RATs",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "malware": [
+            "DOUBLECUP",
+            "CountLoader",
+            "DeviceManager"
+          ],
+          "summary": "ブラウザーキャッシュ内の画像にマルウェアを隠すClickFix型配布サービス。多数のSaaSブランドを装うフィッシングドメイン群を運用。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "未一致IOC観測43件はtech-memo CSV(20260804)に保持されている。"
+      ],
+      "analyst_notes": "犯罪サービスの運用者ペルソナ。ブランド名(DOUBLECUP)とハンドルの両方で追跡する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--the-gentlemen-affiliate",
+      "primary_name": "The Gentlemen affiliate (未命名)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-06",
+      "last_seen": "2026-08-06",
+      "detected_via": "tech-memo daily-news 2026-08-06",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "ransomware-affiliate",
+        "notes": "The Gentlemen RaaSのアフィリエイト。個別の命名はない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-06",
+          "publisher": "Hunt.io",
+          "url": "https://hunt.io/blog/the-gentlemen-etherrat-ethereum-smart-contract-c2",
+          "title": "The Gentlemen affiliate deploys EtherRAT with Ethereum smart contract C2",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "malware": [
+            "EtherRAT"
+          ],
+          "summary": "EthereumスマートコントラクトをC2に使うEtherRATをWindowsネットワークへ展開。特権アカウント作成、EDR停止、資格情報窃取、トンネル確立を実行。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "RaaS運営者(The Gentlemen)とアフィリエイトを分離して扱う。未一致IOC観測32件はtech-memo CSV(20260806)に保持されている。"
+      ],
+      "analyst_notes": "ブロックチェーンC2の採用事例として、北朝鮮系のEtherHiding/NullReceiverと混同しないこと(金銭目的の別系統)。"
+    },
+    {
+      "cluster_id": "unknown-cluster--smoke-screen",
+      "primary_name": "SMOKE#SCREEN",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-06",
+      "last_seen": "2026-08-06",
+      "detected_via": "tech-memo daily-news 2026-08-06",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-intrusion-set",
+        "notes": "Securonixのキャンペーン指定子。既知グループへの帰属記載なし。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-06",
+          "publisher": "Securonix",
+          "url": "https://www.securonix.com/blog/smoke-screen-screenconnect-rmm-abuse-cloudflare-tunnels/",
+          "title": "SMOKE#SCREEN: ScreenConnect RMM abuse and Cloudflare Tunnels",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "summary": "ScreenConnect RMMの悪用、Cloudflare Quick Tunnel、Dropboxを組み合わせ、信頼済みソフトウェアを装って検知を回避するキャンペーン。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "未一致IOC観測25件はtech-memo CSV(20260806)に保持されている。"
+      ],
+      "analyst_notes": "STAC4749(Teamsビッシング→RMM悪用)と手口が近い領域だが、一次資料に関連の記載はないため関連付けない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--shai-hulud-2",
+      "primary_name": "Shai-Hulud 2.0 operators (未命名)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-05",
+      "last_seen": "2026-08-05",
+      "detected_via": "tech-memo daily-news 2026-08-05",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "supply-chain-cybercrime",
+        "notes": "npmワームShai-Huludの後継(ChainDrop)の運用者。既知グループへの帰属記載なし。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-05",
+          "publisher": "StepSecurity",
+          "url": "https://www.stepsecurity.io/blog/chaindrop-npm-worm",
+          "title": "ChainDrop npm worm",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "malware": [
+            "ChainDrop"
+          ],
+          "summary": "Bunで実行されるnpmワーム。CI/CD認証情報を窃取し、EthereumデッドドロップとGitHubコミット検索をC2ディスカバリに使う。",
+          "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "未一致IOC観測10件はtech-memo CSV(20260805)に保持されている。北朝鮮系npm攻撃(apt38/Contagious Interview)との関係は一次資料に記載がなく関連付けない。"
+      ],
+      "analyst_notes": ""
     }
   ],
   "excluded_name_collisions": [
@@ -164,5 +598,5 @@
       "reason": "記事中の「Night Dragon」はFlying Eagleの後継として2026-06-23に導入された新興Android RATプラットフォームの名称であり、既存プロファイルの脅威アクターとは無関係な同名別エンティティ。原文で確認済み。追跡対象としない。ただしプラットフォーム名としての「Night Dragon」は今後も日次キューで既存プロファイルへ誤一致する見込み。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出。実体のある未帰属クラスタ3件を追跡対象とし、文字列断片による名称衝突4件は除外理由のみ記録した。除外分を記録しているのは、同じ衝突を毎日再検討しないため。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。"
 }

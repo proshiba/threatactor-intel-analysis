@@ -4,7 +4,7 @@
   "name": "Volt Typhoon",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-08-01T23:19:06Z",
+  "updated_at": "2026-08-07T10:35:29Z",
   "languages": [
     "ja"
   ],
@@ -716,16 +716,16 @@
       "name": "中国関連JDYボットネット、米軍ネットワークへの標的化を拡大",
       "activity_type": "malware-campaign",
       "first_observed": {
-        "value": "2022-01-01T00:00:00Z",
+        "basis": "Black Lotus LabsのJDY追跡開始年",
         "precision": "year",
         "status": "known",
-        "basis": "Black Lotus LabsのJDY追跡開始年"
+        "value": "2022-01-01T00:00:00Z"
       },
       "last_observed": {
-        "value": null,
+        "basis": "not-stated",
         "precision": "unknown",
         "status": "unknown",
-        "basis": "not-stated"
+        "value": null
       },
       "reported_at": {
         "value": "2026-06-11T00:00:00Z",
@@ -739,15 +739,15 @@
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--a1b1ba9ced5d8a662854"
+      ],
       "confidence": "low",
       "evidence_refs": [
         "source--daily-0c44ac5482af2d245bb8"
       ],
       "analyst_notes": "日次収集レコード daily-record--7e50b61a95c6f0a144a3c971 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: LumenはJDYをVolt Typhoonを含む複数の中国系国家支援アクターに関連する偵察ネットワークと説明している。Volt Typhoon専用または直接運用と断定しない。",
-      "ttp_refs": [],
-      "victim_refs": [
-        "victim--activity-rule--a1b1ba9ced5d8a662854"
-      ],
       "diamond_model": {
         "adversary": {
           "actor_ref": "actor--volt-typhoon",
@@ -772,16 +772,16 @@
         },
         "meta_features": {
           "first_observed": {
-            "value": "2022-01-01T00:00:00Z",
+            "basis": "Black Lotus LabsのJDY追跡開始年",
             "precision": "year",
             "status": "known",
-            "basis": "Black Lotus LabsのJDY追跡開始年"
+            "value": "2022-01-01T00:00:00Z"
           },
           "last_observed": {
-            "value": null,
+            "basis": "not-stated",
             "precision": "unknown",
             "status": "unknown",
-            "basis": "not-stated"
+            "value": null
           },
           "reported_at": {
             "value": "2026-06-11T00:00:00Z",
@@ -1399,10 +1399,10 @@
         "name": "米国",
         "description": "[Volt Typhoon](https://attack.mitre.org/groups/G1017) is a People's Republic of China (PRC) state-sponsored actor that has been active since at least 2021, primarily targeting critical infrastructure organizations in the US and its territories including Guam.",
         "first_observed": {
-          "value": "2022-01-01T00:00:00Z",
+          "basis": "Black Lotus LabsのJDY追跡開始年; activity-period",
           "precision": "year",
           "status": "known",
-          "basis": "Black Lotus LabsのJDY追跡開始年; activity-period"
+          "value": "2022-01-01T00:00:00Z"
         },
         "last_observed": {
           "value": "2024-01-01T05:00:00.000Z",
@@ -4687,7 +4687,7 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260611.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260611.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-640ce5a9037301fa77ea",
@@ -4890,6 +4890,31 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     },
     {
       "source_id": "source--volt-typhoon--002b0193611949f5",
@@ -5448,31 +5473,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -5668,16 +5668,16 @@
       "affected_assets": [],
       "impacts": [],
       "first_observed": {
-        "value": "2022-01-01T00:00:00Z",
+        "basis": "Black Lotus LabsのJDY追跡開始年",
         "precision": "year",
         "status": "known",
-        "basis": "Black Lotus LabsのJDY追跡開始年"
+        "value": "2022-01-01T00:00:00Z"
       },
       "last_observed": {
-        "value": null,
+        "basis": "not-stated",
         "precision": "unknown",
         "status": "unknown",
-        "basis": "not-stated"
+        "value": null
       },
       "reported_at": {
         "value": "2026-06-11T00:00:00Z",

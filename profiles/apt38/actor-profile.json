@@ -4,7 +4,7 @@
   "name": "APT38",
   "status": "draft",
   "created_at": "2026-07-25T11:08:02Z",
-  "updated_at": "2026-08-01T23:19:01Z",
+  "updated_at": "2026-08-07T10:35:22Z",
   "languages": [
     "ja"
   ],
@@ -212,6 +212,34 @@
   },
   "capabilities": {
     "malware": [
+      {
+        "id": "malware--daily-23df57c784215d7d89da",
+        "name": "NukeSped",
+        "aliases": [],
+        "types": [
+          "backdoor",
+          "dropper",
+          "stealer"
+        ],
+        "description": "APT38との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-44e7c8f8aa3a2ff5c023"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
+      },
       {
         "id": "malware--daily-f30dd669ecd1c3776828",
         "name": "typo-crypto",
@@ -476,6 +504,322 @@
   },
   "activities": [
     {
+      "activity_id": "activity--daily-0f684df47b88032d13f0",
+      "name": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。",
+      "target_refs": [
+        "target--mitre-group--sector--02706c11c1b12ef47b1c"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--99c6c1819178c8d97e7e"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-9658f03bb1aa2aaa44fd"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--0f684df47b88032d13f03596 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Security Blog)を確認。「高信頼度をもって北朝鮮国家アクターSapphire Sleetに帰属する」と明記。@mastraスコープ140超のnpmパッケージ侵害、タイポスクワット依存easy-day-jsのpostinstall実行。標的は暗号資産・VC・ブロックチェーン。Sapphire Sleet→apt38はoverlapping aliasのため手動確認の上で対応付け(PR #17の前例)。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt38",
+          "name": "APT38",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--mitre-group--sector--02706c11c1b12ef47b1c"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--99c6c1819178c8d97e7e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-06-16T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Microsoft: 2026-06-17に発見・遮断",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-06-17T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-06-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9658f03bb1aa2aaa44fd"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-6f29076d3fe7460da80a",
+      "name": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "JUMPSECは、ZoomやMicrosoft Teamsを装うBlueNoroffの稼働中フィッシング基盤から、誤って公開されたソースマップと攻撃用コードを取得・分析した。 乗っ取ったTelegramアカウントで信頼関係のある人物を装い、偽会議へ誘導してWebカメラ映像や暗号資産ウォレット情報を密かに収集する。 操作者は偽のSDK更新通知を表示し、ClickFix手法(クリップボードへ保存した悪性コマンドを被害者に実行させる手法)で、WindowsまたはmacOS用マルウェアを導入する。 WindowsではNukeSped系VBScript、macOSでは情報窃取マルウェアを展開し、端末情報、ブラウザー拡張、Chromeのキーチェーン鍵などを窃取する。 60件超のホスト名と10件のIPアドレスから成るCloudzy上の攻撃基盤が特定され、2026年7月24日時点でも多くが活動中と報告されている。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-23df57c784215d7d89da"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--bd3f12cacbc8b9b1afa7"
+      ],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-44e7c8f8aa3a2ff5c023"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--6f29076d3fe7460da80a6d03 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次URLはWAFによりレンダリング不可で原文を直接確認できなかった。tech-memo要約(一次ソース再確認済み)は、JUMPSECがBlueNoroffの稼働中フィッシング基盤のソースマップと攻撃用コードを直接取得・分析したと記載し、IOC CSVのactor列はBlueNoroff (high confidence)。直接検証できないため確度はhighへ上げずmediumとする。攻撃期間は不明のままとしreported_atへ分離。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt38",
+          "name": "APT38",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-23df57c784215d7d89da"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--bd3f12cacbc8b9b1afa7"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Execution"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-44e7c8f8aa3a2ff5c023"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-961f32783a2815c12691",
+      "name": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
+      "activity_type": "intrusion",
+      "first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Arctic Wolfは、北米のWeb3/暗号資産企業への侵入を、北朝鮮Lazarus傘下のBlueNoroffに高確度で帰属した。 攻撃者はFintech法務関係者を装い、Calendly招待内のタイポスクワットZoomリンクから偽会議へ誘導した。 偽Zoom/Teams画面は被害者のWebカメラ映像を窃取し、ClickFix型のクリップボード注入でPowerShellを実行させた。 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。 攻撃者は盗んだ映像やAI生成画像を再利用し、100人以上を標的にした偽会議・ディープフェイク誘導基盤を構築していた。 標的の約80%が暗号資産やブロックチェーン金融に関連しており、そのうち約45%がCEOや創業者などの幹部層。",
+      "target_refs": [
+        "target--activity-rule--sector--adfe952bca03d050ae2b",
+        "target--mitre-group--sector--02706c11c1b12ef47b1c",
+        "target--mitre-group--sector--7cdebddafb57ca131caf"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--30bbd6873322a0cdcb80",
+        "ttp--activity-rule--e75e1a7df4b24db0a86e"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--79861f83ab72b247bac1"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-bc8cdd6b896b84863be3",
+        "source--daily-f4d8b20e8b872b83b400"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--961f32783a2815c126915b51 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Arctic Wolf)を確認。「複数の独立した証拠タイプに基づき高い確度(High Confidence)でBlueNoroffに帰属」と明記(インフラ重複、ツール・コード重複、社会工学手法、標的特性、時間パターン)。標的は100名超、80%が暗号資産・ブロックチェーンまたは隣接金融、41%が米国。BlueNoroffはLazarus傘下の金銭目的サブグループでapt38プロファイルのoverlapping alias。Sapphire Sleet/BlueNoroff→apt38への手動確認済み対応付けはPR #17の前例に従う。IOC付録(rtkwlf/wolf-tools)はconfig.jsonのactivity_reference_aliasesで同一活動へ集約。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt38",
+          "name": "APT38",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--30bbd6873322a0cdcb80",
+            "ttp--activity-rule--e75e1a7df4b24db0a86e"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--adfe952bca03d050ae2b",
+            "target--mitre-group--sector--02706c11c1b12ef47b1c",
+            "target--mitre-group--sector--7cdebddafb57ca131caf"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--79861f83ab72b247bac1"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+            "precision": "month",
+            "status": "known",
+            "value": "2025-05-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-03-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-04-30T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Credential Access",
+            "Execution"
+          ],
+          "results": [
+            "credential-theft",
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-bc8cdd6b896b84863be3",
+          "source--daily-f4d8b20e8b872b83b400"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-e7e43253a3ee354a7560",
       "name": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
       "activity_type": "infrastructure-operation",
@@ -674,24 +1018,26 @@
       {
         "id": "target--targeting-audit--country--e58bd55e7497bcf2d501",
         "name": "タイ",
-        "description": "構造化OSINTの被害国フィールドでAPT38の標的・被害国としてタイが記録されている。",
+        "description": "活動「BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-05-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-03-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-bc8cdd6b896b84863be3",
+          "source--daily-f4d8b20e8b872b83b400",
           "source--target-audit-misp-threat-actor"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--5f5c345afc34085945ac",
@@ -1059,6 +1405,29 @@
     ],
     "sectors": [
       {
+        "id": "target--activity-rule--sector--adfe952bca03d050ae2b",
+        "name": "法律",
+        "description": "活動「BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-05-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-03-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-bc8cdd6b896b84863be3",
+          "source--daily-f4d8b20e8b872b83b400"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
         "id": "target--activity-rule--sector--dfc80b76cad93a318adc",
         "name": "製造・産業",
         "description": "活動「Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定」の記述で標的として明示された産業。",
@@ -1085,19 +1454,22 @@
         "name": "暗号資産・Web3",
         "description": "ial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-05-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Microsoft: 2026-06-17に発見・遮断; activity-period",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-06-17T00:00:00Z"
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-9658f03bb1aa2aaa44fd",
+          "source--daily-bc8cdd6b896b84863be3",
+          "source--daily-f4d8b20e8b872b83b400",
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
@@ -1107,19 +1479,21 @@
         "name": "金融",
         "description": "[APT38](https://attack.mitre.org/groups/G0082) is a North Korean state-sponsored threat group that specializes in financial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-05-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-03-01T00:00:00Z"
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-bc8cdd6b896b84863be3",
+          "source--daily-f4d8b20e8b872b83b400",
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
@@ -1152,6 +1526,95 @@
     "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--30bbd6873322a0cdcb80",
+      "tactic": "Credential Access",
+      "technique_id": "T1555.003",
+      "technique_name": "Credentials from Web Browsers",
+      "observed_behavior": "侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。",
+      "activity_refs": [
+        "activity--daily-961f32783a2815c12691"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-bc8cdd6b896b84863be3",
+        "source--daily-f4d8b20e8b872b83b400"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--bd3f12cacbc8b9b1afa7",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "activity_refs": [
+        "activity--daily-6f29076d3fe7460da80a"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-44e7c8f8aa3a2ff5c023"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--e75e1a7df4b24db0a86e",
+      "tactic": "Execution",
+      "technique_id": "T1204.004",
+      "technique_name": "Malicious Copy and Paste",
+      "observed_behavior": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
+      "activity_refs": [
+        "activity--daily-961f32783a2815c12691"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-bc8cdd6b896b84863be3",
+        "source--daily-f4d8b20e8b872b83b400"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--t1005--general",
       "tactic": "Collection",
@@ -3657,6 +4120,42 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
+      "source_id": "source--daily-44e7c8f8aa3a2ff5c023",
+      "path": "https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/",
+      "title": "北朝鮮BlueNoroffのClickFix攻撃キットの内幕",
+      "publisher": "jumpsec.com",
+      "published_at": {
+        "value": "2026-07-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260725.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-9658f03bb1aa2aaa44fd",
+      "path": "https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/",
+      "title": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "publisher": "microsoft.com",
+      "published_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260622.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-a7e2c22924a222a6eb0f",
       "path": "https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/",
       "title": "Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
@@ -3672,7 +4171,43 @@
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260731.md; source commit: 4bde2c2aba63f56fb9d3c91db98853aef54b8c4e; 出典信頼性はアクター帰属確度と分離して評価。"
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260731.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-bc8cdd6b896b84863be3",
+      "path": "https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md",
+      "title": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 — IOC補助資料",
+      "publisher": "raw.githubusercontent.com",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_04-06/20260430.csv; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-f4d8b20e8b872b83b400",
+      "path": "https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/",
+      "title": "BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
+      "publisher": "arcticwolf.com",
+      "published_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260430.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--doj-dprk-conspiracy-2021",
@@ -3970,6 +4505,110 @@
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--79861f83ab72b247bac1",
+      "name": "被害事例: BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Arctic Wolfは、北米のWeb3/暗号資産企業への侵入を、北朝鮮Lazarus傘下のBlueNoroffに高確度で帰属した。 攻撃者はFintech法務関係者を装い、Calendly招待内のタイポスクワットZoomリンクから偽会議へ誘導した。 偽Zoom/Teams画面は被害者のWebカメラ映像を窃取し、ClickFix型のクリップボード注入でPowerShellを実行させた。 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。 攻撃者は盗んだ映像やAI生成画像を再利用し、100人以上を標的にした偽会議・ディープフェイク誘導基盤を構築していた。 標的の約80%が暗号資産やブロックチェーン金融に関連しており、そのうち約45%がCEOや創業者などの幹部層。",
+      "activity_refs": [
+        "activity--daily-961f32783a2815c12691"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--adfe952bca03d050ae2b",
+        "target--mitre-group--sector--02706c11c1b12ef47b1c",
+        "target--mitre-group--sector--7cdebddafb57ca131caf"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--30bbd6873322a0cdcb80",
+        "ttp--activity-rule--e75e1a7df4b24db0a86e"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。"
+        }
+      ],
+      "first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-04-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-bc8cdd6b896b84863be3",
+        "source--daily-f4d8b20e8b872b83b400"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--99c6c1819178c8d97e7e",
+      "name": "被害事例: Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。",
+      "activity_refs": [
+        "activity--daily-0f684df47b88032d13f0"
+      ],
+      "target_refs": [
+        "target--mitre-group--sector--02706c11c1b12ef47b1c"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け"
+        }
+      ],
+      "first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-06-22T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-9658f03bb1aa2aaa44fd"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--b9fb787506a406311592",
       "name": "被害事例: Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定",
