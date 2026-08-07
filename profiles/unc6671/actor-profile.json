@@ -4,7 +4,7 @@
   "name": "UNC6671",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-29T23:12:01Z",
+  "updated_at": "2026-08-07T09:43:45Z",
   "languages": [
     "ja"
   ],
@@ -152,6 +152,103 @@
       }
     },
     {
+      "activity_id": "activity--daily-88da96b89053f0ca0aa8",
+      "name": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ヘッジファンド、プライベートエクイティ、金融機関を狙う最近の攻撃が、BlackFile関連の恐喝グループUNC6671に関連付けられた。 Point72、Millennium Management、Two Sigma、Citadelなどが標的となり、従業員を電話で騙すボイスフィッシングが使用された。 攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。 Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。 UNC6671はBlackFileに加えてRedact、Pink、Helix、Falconを使用し、Mandiantは現在UNC6671によって侵害された数十組織の侵害対応を支援している。",
+      "target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--9d131ccb215967a3529e"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-0f56214542b30c75b57a"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--88da96b89053f0ca0aa83f7d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 原文(Google Threat Intelligence Group, 2026-08-06公開)を確認。「a common group of threat actors are affiliated with the BlackFile, Redact, Pink, Helix, and Falcon extortion brands」とUNC6671が複数の恐喝ブランドを横断して運用する実行主体であることが明記されている。ヘッジファンド・プライベートエクイティ・金融機関を標的としたボイスフィッシングによるMicrosoft 365/Okta SSO侵害を新規活動として採用。活動期間は一次資料のドメイン登録観測(2026-04-01〜08-03)を別途確認できた範囲に限定し、記事公開日(2026-08-06/07)はreported_atとして分離する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6671",
+          "name": "UNC6671",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--4221b5fbb827488c6eaa"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--9d131ccb215967a3529e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0f56214542b30c75b57a"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-cd05cfe6bb87bc14a718",
       "name": "新たな恐喝グループBlackFile、急増するビッシング攻撃との関連が判明",
       "activity_type": "ransomware-extortion",
@@ -276,6 +373,28 @@
     "regions": [],
     "sectors": [
       {
+        "id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "name": "金融",
+        "description": "活動「ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-0f56214542b30c75b57a"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
         "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
         "name": "小売・ホスピタリティ",
         "description": "活動「新たな恐喝グループBlackFile、急増するビッシング攻撃との関連が判明」の記述で標的として明示された産業。",
@@ -339,6 +458,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260202.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-0f56214542b30c75b57a",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments",
+      "title": "ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "publisher": "cloud.google.com",
+      "published_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260807.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-2c44dcb080c9a145473f",
@@ -442,6 +579,60 @@
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--9d131ccb215967a3529e",
+      "name": "被害事例: ヘッジファンドへのサイバー攻撃、BlackFile関連の恐喝グループUNC6671と関連",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "ヘッジファンド、プライベートエクイティ、金融機関を狙う最近の攻撃が、BlackFile関連の恐喝グループUNC6671に関連付けられた。 Point72、Millennium Management、Two Sigma、Citadelなどが標的となり、従業員を電話で騙すボイスフィッシングが使用された。 攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。 Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。 UNC6671はBlackFileに加えてRedact、Pink、Helix、Falconを使用し、Mandiantは現在UNC6671によって侵害された数十組織の侵害対応を支援している。",
+      "activity_refs": [
+        "activity--daily-88da96b89053f0ca0aa8"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--4221b5fbb827488c6eaa"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "クラウド／SaaS"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Microsoft 365やOktaのSSOアカウントを侵害後、接続されたクラウドサービスから自動的にデータを窃取し、セキュリティ通知などを削除する。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "攻撃者は企業ITヘルプデスクを装ってパスキーやMFA更新を要求し、AiTMフィッシングサイトへ誘導して認証情報とセッションCookieを窃取する。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-0f56214542b30c75b57a"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--a246d00432371496b99a",
       "name": "被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述",
