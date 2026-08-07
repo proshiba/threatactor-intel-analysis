@@ -271,6 +271,86 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--4afc4c54-aef7-4492-b966-0988a3649d91",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ghostwriterの日次IOC観測",
+      "description": "AI generated. IP hosting phishing certificates and infrastructure linked to UNC1151 Ghostwriter campaign.",
+      "external_references": [
+        {
+          "source_name": "censys.com",
+          "description": "Local source: https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "external_id": "source--daily-264c4f3115e3e53b3d38"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-7a0b25de357249d75824",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--7a0b25de357249d75824f10b から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次URL(Censys blog)はHTTP 403で原文を直接確認できなかった。tech-memo要約とIOC CSV(限定なしのactor=UNC1151、28件のフィッシング証明書・ホスティングIP)は、CensysがUNC1151のGhostwriterキャンペーン基盤としてインフラを特定したと記載。UNC1151はGhostwriterキャンペーンの実行主体とされるベラルーシ関連クラスタのMandiant名でghostwriterプロファイルのoverlapping alias。直接検証できないため確度はmedium。攻撃期間は不明のままとする。",
+      "x_reported_at": {
+        "value": "2026-06-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--ghostwriter",
+          "name": "Ghostwriter",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-264c4f3115e3e53b3d38"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--d2f3530c-520f-47ad-a736-c4c695975e0a",
       "created": "2026-07-25T15:22:58Z",
       "modified": "2026-07-29T23:12:00Z",
@@ -1329,6 +1409,21 @@
       "source_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
       "target_ref": "identity--ca47f248-9609-41ca-86c9-427a83a97040",
       "description": "Ghostwriter targets 欧州 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7a67bd78-e01d-4005-8934-6b75f1994543",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--4afc4c54-aef7-4492-b966-0988a3649d91",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Ghostwriterの日次IOC観測 is attributed or linked to Ghostwriter.",
       "x_confidence": "medium"
     },
     {
@@ -11491,6 +11586,2386 @@
       ]
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--92f6097e-6467-4942-8fc1-7c2193eb65c7",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 45.197.133.104",
+      "pattern": "[ipv4-addr:value = '45.197.133.104']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:939e120650aeb249de0887180ca6d8acb2f19d796d4e0ac68a174d1f4eef2333",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 36
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "45.197.133.104",
+          "context_excerpt": "AI generated. IP hosting phishing certificates and infrastructure linked to UNC1151 Ghostwriter campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--40664498-d597-4b28-95dd-a93ad0aa3bf6",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--92f6097e-6467-4942-8fc1-7c2193eb65c7",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2b654c5d-ab87-420f-81e2-c39f8ecbd34d",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 45.194.44.44",
+      "pattern": "[ipv4-addr:value = '45.194.44.44']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:339a2b4d21925f4ec917785631c54f123d728b79f00e242036f255548c29d460",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 37
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "45.194.44.44",
+          "context_excerpt": "AI generated. Real origin IP for account.check-profile.digital phishing infrastructure in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6bf3dd07-e04a-4f85-8b70-4ff1003acc3c",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2b654c5d-ab87-420f-81e2-c39f8ecbd34d",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--501ee6c4-656e-477b-976d-39dfa5efd9fb",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 45.194.44.46",
+      "pattern": "[ipv4-addr:value = '45.194.44.46']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:341da8543fad43b8327eb2fe6e23e4bfd1416e9661edb0c011fefa956739828c",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 38
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "45.194.44.46",
+          "context_excerpt": "AI generated. IP hosting multiple phishing certificates for Ukrainian portal impersonations in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5eddef05-4920-4193-bd4f-7debde8617cb",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--501ee6c4-656e-477b-976d-39dfa5efd9fb",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9af48824-b93f-4261-9234-3e829de7e227",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 111.88.74.246",
+      "pattern": "[ipv4-addr:value = '111.88.74.246']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d6d4d377c47aa370be81ca90c7e5d397ba4be97515212bcd974aeec1bf9f72f2",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 39
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "111.88.74.246",
+          "context_excerpt": "AI generated. IP with WebSocket response patterns and phishing certificates linked to UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--88ea6326-ded9-4bf5-b06f-7aa448d6886d",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9af48824-b93f-4261-9234-3e829de7e227",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--51a68c70-da96-4e5f-92c3-76d69d5d9ca6",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://account.check-profile.digital/Verify",
+      "pattern": "[url:value = 'https://account.check-profile.digital/Verify']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ee3d34b4d1913d94f7c8783432246cf784b318a0cc582c08952c461c5de31721",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 40
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://account.check-profile.digital/Verify",
+          "context_excerpt": "AI generated. Fake Google login phishing URL used in UNC1151 credential harvesting campaign targeting Belarusian and Ukrainian individuals.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4c4e1fbd-3f90-4484-9a3b-b13f1cf47977",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--51a68c70-da96-4e5f-92c3-76d69d5d9ca6",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5a64ae0f-4c3e-4746-aa2c-c132a1742757",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://i-ua.cc.cd/",
+      "pattern": "[url:value = 'https://i-ua.cc.cd/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:84f343459751a6de737b1be910a86d96d0dc27ef893cd07eaab3ce7a7135190c",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 41
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://i-ua.cc.cd/",
+          "context_excerpt": "AI generated. Phishing site impersonating Ukrainian I.UA portal in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--38dc5698-fe41-4dee-ad6f-df743899f89a",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5a64ae0f-4c3e-4746-aa2c-c132a1742757",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--113c2dff-4277-4a3d-ae92-a780d0e11196",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://meta-ua.cc.cd/",
+      "pattern": "[url:value = 'https://meta-ua.cc.cd/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2d678b87c251eccfad4367c5bde51d2213fa20c10adf019f612883d085539b21",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 42
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://meta-ua.cc.cd/",
+          "context_excerpt": "AI generated. Phishing site impersonating Ukrainian META.UA portal in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--617d6e2c-68bd-4799-b206-d57fe3e8ae46",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--113c2dff-4277-4a3d-ae92-a780d0e11196",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1b40e62b-f86a-4834-aa3f-dd98688f1eea",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail.service-support.digital",
+      "pattern": "[domain-name:value = 'mail.service-support.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d328ba1f3f109020da04959abb290a367a80710dcbcbcfbb46a671b7e117ac9a",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 43
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail.service-support.digital",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e6d42ae9-833b-461a-9dc9-6a2362c3441e",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1b40e62b-f86a-4834-aa3f-dd98688f1eea",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a48b9c3c-9af9-403d-b898-55ea21752099",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: accounts-verification.cc.cd",
+      "pattern": "[domain-name:value = 'accounts-verification.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8e93a79aaf3cdf3080ece37b48e88f90f392bf5ac41a577709f6dec6ff479dcd",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 44
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "accounts-verification.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8d1f0503-32be-4aff-84b0-b42ba3c4956e",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a48b9c3c-9af9-403d-b898-55ea21752099",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--261d1cac-1f98-4683-a804-ecd5a030396b",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail.account-check.digital",
+      "pattern": "[domain-name:value = 'mail.account-check.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b62b8bef9ceacef9cc1ad83bf7c9948ba2d1903f433285d2a899b4b673a4fc7f",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 45
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail.account-check.digital",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--191b84bc-f86c-4997-936b-fed10f842b80",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--261d1cac-1f98-4683-a804-ecd5a030396b",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6e44ed58-d9fb-4498-9a3c-6cd5f7453b51",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: verification-service.cc.cd",
+      "pattern": "[domain-name:value = 'verification-service.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:3ba142378cb1020abcd4b058e9153531ffdd7a4d652fdba4051816775a481497",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 46
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "verification-service.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0b7eef98-60f8-47ab-bba6-96a4867a5bce",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6e44ed58-d9fb-4498-9a3c-6cd5f7453b51",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--17d9f036-160e-48d0-9acf-76660cd09572",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: verification-credentials.cc.cd",
+      "pattern": "[domain-name:value = 'verification-credentials.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e6198759a06d42a666b17f953320961d4812ef2af8c25a54938eb3d4ec797848",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 47
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "verification-credentials.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--63c634ed-63a0-49be-8431-edacdac84c1d",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--17d9f036-160e-48d0-9acf-76660cd09572",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0627b016-fc2f-423c-a537-dc579488d25b",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: account-email-verification.cc.cd",
+      "pattern": "[domain-name:value = 'account-email-verification.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d2507d1c0bb3300c1c008cb183bbbaaf380a3440d516076035b4d50c1aea9a1f",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 48
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "account-email-verification.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a681306a-3db4-4959-b254-018ddfe02ef8",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0627b016-fc2f-423c-a537-dc579488d25b",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6d415f6f-6f8a-438f-a84e-38ac283da4a2",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail-security-login.digital",
+      "pattern": "[domain-name:value = 'mail-security-login.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0bf7841871ce2f4276d3fdb575e8d551f7987184e5dfab93c7e7cffc594212f1",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 49
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail-security-login.digital",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--86167b24-e563-47e6-b332-682ad8a4a7d0",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6d415f6f-6f8a-438f-a84e-38ac283da4a2",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--31a692ac-38b2-4aac-b907-d0c04369178c",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail-secure-login.digital",
+      "pattern": "[domain-name:value = 'mail-secure-login.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0597e81775333c7023965e55a70cd2d4a9b41ef8af0eb5cbb07ee287dffbca86",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 50
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail-secure-login.digital",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--db98e6bd-bec7-42f0-899f-4a7f72d3b86e",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--31a692ac-38b2-4aac-b907-d0c04369178c",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c35a71c1-0d65-4157-a4e2-204d4a5fbc94",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: check-account.digital",
+      "pattern": "[domain-name:value = 'check-account.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5ca87e0ee66742b15ccbf171fd9d977bf0abe76867d09d16505f4f13ff73198d",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 51
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "check-account.digital",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1593af67-ddba-4159-bcdb-7d67373d2793",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c35a71c1-0d65-4157-a4e2-204d4a5fbc94",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5b4942af-bed3-47a0-b357-93e4964aed3e",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: account-emails-verification.cc.cd",
+      "pattern": "[domain-name:value = 'account-emails-verification.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c4c53c65b33ef104d5a143e6e8bf4134095b32590d181b0cc3b428a6484ebc8c",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 52
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "account-emails-verification.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain (WebSocket C2 host) in UNC1151 Ghostwriter campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1ea0f3a7-6109-4e7a-8f23-8a1c3913eaf5",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5b4942af-bed3-47a0-b357-93e4964aed3e",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f49253bb-90ec-4b47-ab58-94234ef032b1",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: account.check-profile.digital",
+      "pattern": "[domain-name:value = 'account.check-profile.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:41b99a4224e53510b4a2f486fc6fa32af77c4e3ccb916d10a8041847010440f9",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 53
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "account.check-profile.digital",
+          "context_excerpt": "AI generated. Phishing domain hosting fake Google login page in UNC1151 Ghostwriter campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ab318a30-cf44-4832-a5bf-618466227cc4",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f49253bb-90ec-4b47-ab58-94234ef032b1",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--bf22da95-9e9a-452c-8892-b71b9b21e5e5",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail.account-security.digital",
+      "pattern": "[domain-name:value = 'mail.account-security.digital']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8476b28b5190baaff2737ead809a7a3f6fd2cc94481569165d9a444ab0a51381",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 54
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail.account-security.digital",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--412da80e-1004-4fde-8768-0d321c0eec04",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bf22da95-9e9a-452c-8892-b71b9b21e5e5",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3a9a78c2-9210-4d29-8e76-c700426031d4",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail-alerts.cc.cd",
+      "pattern": "[domain-name:value = 'mail-alerts.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8a504802f9869a1dc3336848e055f889a20cdcdb98276737daccae2278dc6c25",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 55
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail-alerts.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a239e019-5362-4923-baf0-fa7b733d933a",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3a9a78c2-9210-4d29-8e76-c700426031d4",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--59fc7bb4-1c3c-4b0c-9889-41cecf4fa862",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail-verification.cc.cd",
+      "pattern": "[domain-name:value = 'mail-verification.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8ab1fbd5520130677cae0a8b18efd9c821c669820fba1c0aad1c595adae263f0",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 56
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail-verification.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--903cddc2-5ece-47ad-814c-2f19243bee41",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--59fc7bb4-1c3c-4b0c-9889-41cecf4fa862",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--95d1c64e-fad5-4dee-b0de-6399a5142989",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: i-ua.cc.cd",
+      "pattern": "[domain-name:value = 'i-ua.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9454c660ef1fd6021ceb49d60332340efb82a76a83cf4546287c56c613ccc7d2",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 57
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "i-ua.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain impersonating Ukrainian I.UA portal in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d79afe5f-17ff-4c82-8f18-dd0053e007f2",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--95d1c64e-fad5-4dee-b0de-6399a5142989",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c83cfc14-76dc-4a3a-96eb-4031956f5f34",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: bigmir-net.cc.cd",
+      "pattern": "[domain-name:value = 'bigmir-net.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d53837e0c8e415c5a3a6dacfbefcfc7fda20d6329d3ceb0209c953cffadb7d26",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 58
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "bigmir-net.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain impersonating Ukrainian bigmir.net portal in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c0723cae-5afe-48e4-b7e5-9dde1850fac4",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c83cfc14-76dc-4a3a-96eb-4031956f5f34",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--beaec50d-db81-4bd1-a480-8603304b5bdd",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: meta-ua.cc.cd",
+      "pattern": "[domain-name:value = 'meta-ua.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:1e9cf201ae9c8e8e79abb38d51629b53a5906eefc09c0f7b085a36053def9594",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 59
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "meta-ua.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain impersonating Ukrainian META.UA portal in UNC1151 campaign.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--760e66b2-984d-4eb1-87f1-7bfe1a416285",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--beaec50d-db81-4bd1-a480-8603304b5bdd",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--488cd677-3537-466f-b80b-2295cd16a86e",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail-alert.cc.cd",
+      "pattern": "[domain-name:value = 'mail-alert.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a1453d5de23173ba7cfca713ca0636575c0ee36dfe4e1412ea4dd454e7c7d0b9",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 60
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail-alert.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d1c6eb20-9142-47e0-a5a3-ebc714f1132c",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--488cd677-3537-466f-b80b-2295cd16a86e",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--9dcb9151-0cbe-4a37-9c19-2b78c76dd368",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: account-protection-team.icu",
+      "pattern": "[domain-name:value = 'account-protection-team.icu']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:84c2dda62e51930b8b2912c33ea866c34112b4d3a67fe59c958982ab35819a9b",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 61
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "account-protection-team.icu",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--11bb55a1-c941-4698-b3b0-3b001b91b1fe",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--9dcb9151-0cbe-4a37-9c19-2b78c76dd368",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c262669d-4551-40ea-8dd8-45bef6b0216c",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: support-accounts-checker.cc.cd",
+      "pattern": "[domain-name:value = 'support-accounts-checker.cc.cd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ed865ff5e8ed0582e94558cc0cd173f6c182eee56c05e611a7018dda9d09dc89",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 62
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "support-accounts-checker.cc.cd",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--464d814e-57eb-40cf-919c-038a9075b3d9",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c262669d-4551-40ea-8dd8-45bef6b0216c",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c30e022c-e7f5-4a8c-ac4c-7f81e1964308",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: account-protection-support.icu",
+      "pattern": "[domain-name:value = 'account-protection-support.icu']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-7a0b25de357249d75824"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:07d8ec163c368faddff3cb4b3eebbb7ce3b29e8b1da7c9fae3a6cdf1ed6b6588",
+          "observed_at": {
+            "value": "2026-06-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-06-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-264c4f3115e3e53b3d38",
+          "source_path": "https://censys.com/blog/unc1151-phishing-email-campaign/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260627.csv",
+            "row": 63
+          },
+          "campaign_refs": [
+            "activity--daily-7a0b25de357249d75824"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "account-protection-support.icu",
+          "context_excerpt": "AI generated. Phishing domain in UNC1151 Ghostwriter campaign targeting Belarus and Ukraine.",
+          "analyst_notes": "actor field: UNC1151; actor_attribute: belarus; reference: https://censys.com/blog/unc1151-phishing-email-campaign/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2346506c-ff97-47dc-b8af-6fa4218c7066",
+      "created": "2026-08-07T10:34:14Z",
+      "modified": "2026-08-07T10:34:14Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c30e022c-e7f5-4a8c-ac4c-7f81e1964308",
+      "target_ref": "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--76883a34-5ccf-4f2a-b036-d2b3079ad4bb",
@@ -11512,7 +13987,7 @@
       "spec_version": "2.1",
       "id": "report--71c38dc8-6bc4-428d-81ff-8df9e1c9ddd4",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-08-07T10:35:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11521,9 +13996,10 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T23:12:00Z",
+      "published": "2026-08-07T10:35:24Z",
       "object_refs": [
         "intrusion-set--0880e040-abc9-4c0b-b261-4cba52ac4fba",
+        "campaign--4afc4c54-aef7-4492-b966-0988a3649d91",
         "campaign--d2f3530c-520f-47ad-a736-c4c695975e0a",
         "identity--06a9e459-6a4d-486c-aa1c-0acb2b1a3069",
         "identity--4ccc661c-aa7c-445b-96c3-c3505e9c554e",
@@ -11679,7 +14155,35 @@
         "indicator--e9633231-461e-464a-8b7a-943fd571b967",
         "indicator--a17619dc-3e60-47dc-b08a-abb2879abdff",
         "indicator--27f9457d-4322-4c24-a104-9b543b68efc2",
-        "indicator--727f978e-6bc2-45c7-a1d8-29919c2a7cfe"
+        "indicator--727f978e-6bc2-45c7-a1d8-29919c2a7cfe",
+        "indicator--92f6097e-6467-4942-8fc1-7c2193eb65c7",
+        "indicator--2b654c5d-ab87-420f-81e2-c39f8ecbd34d",
+        "indicator--501ee6c4-656e-477b-976d-39dfa5efd9fb",
+        "indicator--9af48824-b93f-4261-9234-3e829de7e227",
+        "indicator--51a68c70-da96-4e5f-92c3-76d69d5d9ca6",
+        "indicator--5a64ae0f-4c3e-4746-aa2c-c132a1742757",
+        "indicator--113c2dff-4277-4a3d-ae92-a780d0e11196",
+        "indicator--1b40e62b-f86a-4834-aa3f-dd98688f1eea",
+        "indicator--a48b9c3c-9af9-403d-b898-55ea21752099",
+        "indicator--261d1cac-1f98-4683-a804-ecd5a030396b",
+        "indicator--6e44ed58-d9fb-4498-9a3c-6cd5f7453b51",
+        "indicator--17d9f036-160e-48d0-9acf-76660cd09572",
+        "indicator--0627b016-fc2f-423c-a537-dc579488d25b",
+        "indicator--6d415f6f-6f8a-438f-a84e-38ac283da4a2",
+        "indicator--31a692ac-38b2-4aac-b907-d0c04369178c",
+        "indicator--c35a71c1-0d65-4157-a4e2-204d4a5fbc94",
+        "indicator--5b4942af-bed3-47a0-b357-93e4964aed3e",
+        "indicator--f49253bb-90ec-4b47-ab58-94234ef032b1",
+        "indicator--bf22da95-9e9a-452c-8892-b71b9b21e5e5",
+        "indicator--3a9a78c2-9210-4d29-8e76-c700426031d4",
+        "indicator--59fc7bb4-1c3c-4b0c-9889-41cecf4fa862",
+        "indicator--95d1c64e-fad5-4dee-b0de-6399a5142989",
+        "indicator--c83cfc14-76dc-4a3a-96eb-4031956f5f34",
+        "indicator--beaec50d-db81-4bd1-a480-8603304b5bdd",
+        "indicator--488cd677-3537-466f-b80b-2295cd16a86e",
+        "indicator--9dcb9151-0cbe-4a37-9c19-2b78c76dd368",
+        "indicator--c262669d-4551-40ea-8dd8-45bef6b0216c",
+        "indicator--c30e022c-e7f5-4a8c-ac4c-7f81e1964308"
       ],
       "x_schema_version": "1.2.0"
     }

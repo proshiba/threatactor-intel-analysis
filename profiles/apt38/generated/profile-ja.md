@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt38`
 - 状態: draft
-- 更新日時: 2026-08-01T23:18:25Z
+- 更新日時: 2026-08-07T10:35:22Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -105,6 +105,7 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
+| malware--daily-23df57c784215d7d89da | NukeSped | APT38との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-44e7c8f8aa3a2ff5c023` |
 | malware--daily-f30dd669ecd1c3776828 | typo-crypto | APT38との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
 | malware--darkcomet | DarkComet | [DarkComet](https://attack.mitre.org/software/S0334) is a Windows remote administration tool and backdoor.(Citation: TrendMicro DarkComet Sept 2014)(Citation: Malwarebytes DarkComet March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--eccentricbandwagon | ECCENTRICBANDWAGON | [ECCENTRICBANDWAGON](https://attack.mitre.org/software/S0593) is a remote access Trojan (RAT) used by North Korean cyber actors that was first identified in August 2020. It is a reconnaissance tool--with keylogging and screen capture functionality--used for information gathering on compromised systems.(Citation: CISA EB Aug 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -140,13 +141,19 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | infrastructure-operation | 不明 | 不明 | 2026-07-31 |  | malware--daily-f30dd669ecd1c3776828 |  |  | Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
+| Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け | malware-campaign | 2026-06-16 | 2026-06-17 | 2026-06-22 | target--mitre-group--sector--02706c11c1b12ef47b1c |  |  | victim--activity-rule--99c6c1819178c8d97e7e | Microsoftは、140件超のnpmパッケージを侵害したMastra AIサプライチェーン攻撃をSapphire Sleetに関連付けた。 攻撃者はnpmメンテナーアカウント「ehindero」を侵害し、@mastraスコープの多数のパッケージに悪性依存関係を注入した。 注入された「easy-day-js」は正規dayjsライブラリのタイポスクワットで、postinstallフックによりドロッパーを実行した。 第2段階ペイロードはWindows、Linux、macOSに対応し、認証情報、APIキー、認証トークン、暗号資産ウォレットを狙った。 感染後にはPowerShellバックドア、永続化、Defender除外、SYSTEM権限の悪性サービスなどが確認された。 | 高 | `source--daily-9658f03bb1aa2aaa44fd` |
+| 北朝鮮BlueNoroffのClickFix攻撃キットの内幕 | phishing-campaign | 不明 | 不明 | 2026-07-25 |  | malware--daily-23df57c784215d7d89da | ttp--activity-rule--bd3f12cacbc8b9b1afa7 |  | JUMPSECは、ZoomやMicrosoft Teamsを装うBlueNoroffの稼働中フィッシング基盤から、誤って公開されたソースマップと攻撃用コードを取得・分析した。 乗っ取ったTelegramアカウントで信頼関係のある人物を装い、偽会議へ誘導してWebカメラ映像や暗号資産ウォレット情報を密かに収集する。 操作者は偽のSDK更新通知を表示し、ClickFix手法(クリップボードへ保存した悪性コマンドを被害者に実行させる手法)で、WindowsまたはmacOS用マルウェアを導入する。 WindowsではNukeSped系VBScript、macOSでは情報窃取マルウェアを展開し、端末情報、ブラウザー拡張、Chromeのキーチェーン鍵などを窃取する。 60件超のホスト名と10件のIPアドレスから成るCloudzy上の攻撃基盤が特定され、2026年7月24日時点でも多くが活動中と報告されている。 | 中 | `source--daily-44e7c8f8aa3a2ff5c023` |
+| BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 | intrusion | 2025-05 | 2026-03 | 2026-04-30 | target--activity-rule--sector--adfe952bca03d050ae2b, target--mitre-group--sector--02706c11c1b12ef47b1c, target--mitre-group--sector--7cdebddafb57ca131caf |  | ttp--activity-rule--30bbd6873322a0cdcb80, ttp--activity-rule--e75e1a7df4b24db0a86e | victim--activity-rule--79861f83ab72b247bac1 | Arctic Wolfは、北米のWeb3/暗号資産企業への侵入を、北朝鮮Lazarus傘下のBlueNoroffに高確度で帰属した。 攻撃者はFintech法務関係者を装い、Calendly招待内のタイポスクワットZoomリンクから偽会議へ誘導した。 偽Zoom/Teams画面は被害者のWebカメラ映像を窃取し、ClickFix型のクリップボード注入でPowerShellを実行させた。 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。 攻撃者は盗んだ映像やAI生成画像を再利用し、100人以上を標的にした偽会議・ディープフェイク誘導基盤を構築していた。 標的の約80%が暗号資産やブロックチェーン金融に関連しており、そのうち約45%がCEOや創業者などの幹部層。 | 高 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400` |
+| Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | infrastructure-operation | 不明 | 不明 | 2026-07-31 | target--activity-rule--sector--dfc80b76cad93a318adc | malware--daily-f30dd669ecd1c3776828 |  | victim--activity-rule--b9fb787506a406311592 | Amazonは、typo-crypto、debug、chalk、axiosのNPMパッケージ侵害を、同一の北朝鮮関連攻撃グループによる活動と中程度の確度で評価した。 攻撃者は信頼されたメンテナーをソーシャルエンジニアリングで侵害し、悪意ある更新を公開して依存する多数の環境へ侵入した。 typo-cryptoでは、特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows、macOS、Linux上で実行するコードが確認された。 攻撃手法は、複数パッケージへの機能分割、長期間の信頼構築、外部リソースによる後付けの悪性化、暗号化や解析環境回避へ高度化している。 生成AIは自然なコードや偽の開発者情報の生成、存在しない依存関係を悪用するslopsquatting、AIコード審査への間接プロンプトインジェクションに利用され得る。 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | APT38 | typo-crypto | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け | APT38 | 情報なし | 情報なし | 情報なし | 暗号資産・Web3 | 被害事例: Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け | 高 |
+| 北朝鮮BlueNoroffのClickFix攻撃キットの内幕 | APT38 | NukeSped | T1204.004 Malicious Copy and Paste | 情報なし | 情報なし | 情報なし | 中 |
+| BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 | APT38 | 情報なし | T1555.003 Credentials from Web Browsers, T1204.004 Malicious Copy and Paste | 情報なし | 法律, 暗号資産・Web3, 金融 | 被害事例: BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 | 高 |
+| Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | APT38 | typo-crypto | 情報なし | 情報なし | 製造・産業 | 被害事例: Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | 中 |
 
 
 
@@ -158,7 +165,7 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | countries | オーストラリア | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | countries | カナダ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | countries | グアテマラ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてグアテマラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | タイ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | タイ | 活動「BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化」の記述で標的・被害国として明示されている。 | 2025-05 | 2026-03 | 中 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400`, `source--target-audit-misp-threat-actor` |
 | countries | ドイツ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | countries | バングラデシュ | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | countries | フランス | 構造化OSINTの被害国フィールドでAPT38の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
@@ -175,20 +182,29 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
 | regions | 東アジア | レビュー済みアクターマッピングの標的欄に記録された東アジアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
 | regions | 欧州 | ドイツ、フランス、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| sectors | 暗号資産・Web3 | ial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 金融 | [APT38](https://attack.mitre.org/groups/G0082) is a North Korean state-sponsored threat group that specializes in financial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 法律 | 活動「BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化」の記述で標的として明示された産業。 | 2025-05 | 2026-03 | 中 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400` |
+| sectors | 製造・産業 | 活動「Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
+| sectors | 暗号資産・Web3 | ial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. | 2025-05 | 2026-06-17 | 高 | `source--daily-9658f03bb1aa2aaa44fd`, `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400`, `source--mitre-attack-19-1` |
+| sectors | 金融 | [APT38](https://attack.mitre.org/groups/G0082) is a North Korean state-sponsored threat group that specializes in financial cyber operations; it has been attributed to the Reconnaissance General Bureau.(Citation: CISA AA20-239A BeagleBoyz August 2020) Active since at least 2014, [APT38](https://attack.mitre.org/groups/G0082) has targeted banks, financial institutions, casinos, cryptocurrency exchanges, SWIFT system endpoints, and ATMs in at least 38 countries worldwide. | 2025-05 | 2026-03 | 高 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400`, `source--mitre-attack-19-1` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-構造化された被害事例なし
+| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--adfe952bca03d050ae2b, target--mitre-group--sector--02706c11c1b12ef47b1c, target--mitre-group--sector--7cdebddafb57ca131caf |  | ttp--activity-rule--30bbd6873322a0cdcb80, ttp--activity-rule--e75e1a7df4b24db0a86e |  | data-theft: 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。<br>credential-theft: 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。 | 2025-05 | 2026-03 | 2026-04-30 | 高 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400` |
+| 被害事例: Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け | 非公開 | aggregate | multiple-organizations | reported | target--mitre-group--sector--02706c11c1b12ef47b1c |  |  |  | supply-chain: Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け | 2026-06-16 | 2026-06-17 | 2026-06-22 | 高 | `source--daily-9658f03bb1aa2aaa44fd` |
+| 被害事例: Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--dfc80b76cad93a318adc | malware--daily-f30dd669ecd1c3776828 |  | モバイル端末 | supply-chain: Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | 不明 | 不明 | 2026-07-31 | 中 | `source--daily-a7e2c22924a222a6eb0f` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Credential Access | T1555.003 | Credentials from Web Browsers | 侵害後はTelegramセッション、ブラウザデータ、認証情報、暗号資産ウォレット関連情報を数分で窃取した。 |  | activity--daily-961f32783a2815c12691 | 2025-05 | 2026-03 | 中 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400` |
+| Execution | T1204.004 | Malicious Copy and Paste | 北朝鮮BlueNoroffのClickFix攻撃キットの内幕 |  | activity--daily-6f29076d3fe7460da80a | 不明 | 不明 | 中 | `source--daily-44e7c8f8aa3a2ff5c023` |
+| Execution | T1204.004 | Malicious Copy and Paste | BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 |  | activity--daily-961f32783a2815c12691 | 2025-05 | 2026-03 | 中 | `source--daily-bc8cdd6b896b84863be3`, `source--daily-f4d8b20e8b872b83b400` |
 | Collection | T1005 | Data from Local System | [APT38](https://attack.mitre.org/groups/G0082) has collected data from a compromised host.(Citation: CISA AA20-239A BeagleBoyz August 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Stealth | T1027.002 | Software Packing | [APT38](https://attack.mitre.org/groups/G0082) has used several code packing methods such as Themida, Enigma, VMProtect, and Obsidium, to pack their implants.(Citation: FireEye APT38 Oct 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Discovery | T1033 | System Owner/User Discovery | [APT38](https://attack.mitre.org/groups/G0082) has identified primary users, currently logged in users, sets of users that commonly use a system, or inactive users.(Citation: CISA AA20-239A BeagleBoyz August 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -248,8 +264,8 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 
 ## IOC／artifact概要
 
-- IOC値: 18件
-- IOC観測: 22件
+- IOC値: 172件
+- IOC観測: 176件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 14件
 - 非IOC artifact観測: 148件（`artifacts.csv`）
@@ -328,7 +344,11 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 | source--apt38--f55795b108df62ba | 2025 Blockchain Security and AML Annual Report |  | 2025 | summary/2025/2025-Blockchain-Security-and-AML-Annual-Report.pdf | report | TLP:CLEAR | 中 |
 | source--apt38--f82a58381fcab3cb | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
 | source--apt38--fc581fa134eaf2de | readme |  | 不明 | summary/2024/readme.md | repository-notes | TLP:CLEAR | 中 |
+| source--daily-44e7c8f8aa3a2ff5c023 | 北朝鮮BlueNoroffのClickFix攻撃キットの内幕 | jumpsec.com | 2026-07-25 | https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-9658f03bb1aa2aaa44fd | Microsoft、Mastra AIのサプライチェーン攻撃を北朝鮮ハッカーに関連付け | microsoft.com | 2026-06-22 | https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-a7e2c22924a222a6eb0f | Amazon、オープンソースのサプライチェーン攻撃を行う北朝鮮ハッカー集団を特定 | aws.amazon.com | 2026-07-31 | https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/ | osint-report | TLP:CLEAR | 中 |
+| source--daily-bc8cdd6b896b84863be3 | BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 — IOC補助資料 | raw.githubusercontent.com | 不明 | https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md | osint-report | TLP:CLEAR | 中 |
+| source--daily-f4d8b20e8b872b83b400 | BlueNoroff、ClickFix・ファイルレスPowerShell・AI生成の偽Zoom会議でWeb3分野を標的化 | arcticwolf.com | 2026-04-30 | https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/ | osint-report | TLP:CLEAR | 中 |
 | source--doj-dprk-conspiracy-2021 | Three North Korean Military Hackers Indicted in Wide-Ranging Scheme | U.S. Department of Justice | 2021-02-17 | https://www.justice.gov/archives/opa/pr/three-north-korean-military-hackers-indicted-wide-ranging-scheme-commit-cyberattacks-and | government-legal-announcement | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |

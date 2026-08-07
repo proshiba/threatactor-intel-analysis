@@ -1643,13 +1643,18 @@
       "spec_version": "2.1",
       "id": "malware--6aacb1b9-2100-45b1-b912-1e6c2ffabeeb",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-25T15:23:05Z",
+      "modified": "2026-08-07T10:34:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Kazuar",
       "description": "[Kazuar](https://attack.mitre.org/software/S0265) is a fully featured, multi-platform backdoor Trojan written using the Microsoft .NET framework. (Citation: Unit 42 Kazuar May 2017)",
       "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "external_id": "source--daily-0e103138b331cf8b266a"
+        },
         {
           "source_name": "MITRE",
           "description": "Local source: actor_profile/reference/attack-index.json",
@@ -2294,6 +2299,99 @@
       "tool_types": [
         "Windows"
       ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化",
+      "description": "ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 Microsoftの分析では、新しいKazuarはKernel、Bridge、Workerの3モジュールで構成され、感染環境内で役割を分担する。 Kernelはリーダーを選出し、非リーダー端末をサイレント化することで、C2との外部通信を減らして検知面を縮小する。 Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 Kazuarは150種類の設定項目を持ち、AMSI、ETW、WLDPのバイパスなど多様な回避機能も備えている。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "external_id": "source--daily-0e103138b331cf8b266a"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-6c5ab84f7ce816df64d9",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--6c5ab84f7ce816df64d9a48f から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Security Blog)を確認。KazuarボットネットをSecret Blizzardの活動として分析し、CISAがSecret BlizzardをFSB Center 16へ帰属している旨を明記。Secret BlizzardはTurla/VENOMOUS BEAR/Snake等と重複するMicrosoft名でありturlaプロファイルへ対応付け(overlapping aliasの手動確認)。観測期間の明示はないためunknownとしreported_atへ分離。",
+      "x_reported_at": {
+        "value": "2026-05-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--turla",
+          "name": "Turla",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--kazuar"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--23f91b330aff86b4e245",
+            "ttp--activity-rule--a065ec3abbf8e6d486d8"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--5d49c32b8b1bf735cbd0"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-05-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Collection",
+            "Discovery"
+          ],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0e103138b331cf8b266a"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
     },
     {
       "type": "campaign",
@@ -4362,6 +4460,72 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--f2766685-fa09-4e2e-90cc-8e506068e3f7",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化",
+      "identity_class": "organization",
+      "description": "ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 Microsoftの分析では、新しいKazuarはKernel、Bridge、Workerの3モジュールで構成され、感染環境内で役割を分担する。 Kernelはリーダーを選出し、非リーダー端末をサイレント化することで、C2との外部通信を減らして検知面を縮小する。 Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 Kazuarは150種類の設定項目を持ち、AMSI、ETW、WLDPのバイパスなど多様な回避機能も備えている。",
+      "external_references": [
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "external_id": "source--daily-0e103138b331cf8b266a"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--5d49c32b8b1bf735cbd0",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--kazuar"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--23f91b330aff86b4e245",
+        "ttp--activity-rule--a065ec3abbf8e6d486d8"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "エンドポイント"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-05-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--30555f5f-4f7f-4a42-a584-9888eb16388b",
       "created": "2026-07-29T15:20:24Z",
       "modified": "2026-07-29T23:12:01Z",
@@ -4482,6 +4646,96 @@
       },
       "x_confidence": "high",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--74dd62b5-0403-4fff-9534-3a17117da4ee",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "File and Directory Discovery",
+      "description": "Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083/"
+        },
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "external_id": "source--daily-0e103138b331cf8b266a"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--23f91b330aff86b4e245",
+      "x_tactic": "Discovery",
+      "x_activity_refs": [
+        "activity--daily-6c5ab84f7ce816df64d9"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--255d68f8-c079-4461-97c8-9007e4d378db",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Screen Capture",
+      "description": "Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1113",
+          "url": "https://attack.mitre.org/techniques/T1113/"
+        },
+        {
+          "source_name": "microsoft.com",
+          "description": "Local source: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "external_id": "source--daily-0e103138b331cf8b266a"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--a065ec3abbf8e6d486d8",
+      "x_tactic": "Collection",
+      "x_activity_refs": [
+        "activity--daily-6c5ab84f7ce816df64d9"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -11063,6 +11317,81 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--54f5ac5b-42db-45be-a61c-d97e8ee15867",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
+      "target_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "description": "ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 is attributed or linked to Turla.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0f7a8d9e-c181-4d3f-9d78-1577e492b567",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
+      "target_ref": "malware--6aacb1b9-2100-45b1-b912-1e6c2ffabeeb",
+      "description": "ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 uses malware--kazuar.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dda3b59e-7fca-4d6a-b084-374ab9415390",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
+      "target_ref": "attack-pattern--74dd62b5-0403-4fff-9534-3a17117da4ee",
+      "description": "ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 uses ttp--activity-rule--23f91b330aff86b4e245.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--51a40e27-397e-49d3-a5a5-2f275721cdcf",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
+      "target_ref": "attack-pattern--255d68f8-c079-4461-97c8-9007e4d378db",
+      "description": "ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 uses ttp--activity-rule--a065ec3abbf8e6d486d8.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5184167a-79ed-4bf5-be32-410f84ea1183",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
+      "target_ref": "identity--f2766685-fa09-4e2e-90cc-8e506068e3f7",
+      "description": "ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 affected victim--activity-rule--5d49c32b8b1bf735cbd0.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--6e137c18-c198-4d07-be97-01dd0aec6534",
       "created": "2026-07-27T11:04:36Z",
       "modified": "2026-07-27T11:04:36Z",
@@ -11238,6 +11567,36 @@
       "source_ref": "campaign--71165a82-d6a1-4d44-bfaa-f59890400f17",
       "target_ref": "identity--30555f5f-4f7f-4a42-a584-9888eb16388b",
       "description": "ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に affected victim--activity-rule--9899cfc7ca4bd10c1940.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6db53a8b-86cd-492f-9b29-bd7187d640e2",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "target_ref": "attack-pattern--74dd62b5-0403-4fff-9534-3a17117da4ee",
+      "description": "Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99e5bb63-43bf-4bc2-80a6-5f442864efc0",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "target_ref": "attack-pattern--255d68f8-c079-4461-97c8-9007e4d378db",
+      "description": "Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。",
       "x_confidence": "medium"
     },
     {
@@ -22347,6 +22706,362 @@
       ]
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3af34a92-9d26-4b8b-8f68-7dd14f7c3b10",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 69908f05b436bd97baae56296bf9b9e734486516f9bb9938c2b8752e152315d4",
+      "pattern": "[file:hashes.'SHA-256' = '69908f05b436bd97baae56296bf9b9e734486516f9bb9938c2b8752e152315d4']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-14T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-6c5ab84f7ce816df64d9"
+      ],
+      "x_malware_refs": [
+        "malware--kazuar"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5a47cafa4e833489eb64b91218b58a9f9312ccbc1ed19c43227e1af2f30b2f0d",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-05-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-0e103138b331cf8b266a",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260518.csv",
+            "row": 120
+          },
+          "campaign_refs": [
+            "activity--daily-6c5ab84f7ce816df64d9"
+          ],
+          "malware_refs": [
+            "malware--kazuar"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "69908f05b436bd97baae56296bf9b9e734486516f9bb9938c2b8752e152315d4",
+          "context_excerpt": "AI generated. SHA256 of Kazuar Loader (_hpbprndiLOC.dll) reported by Microsoft.",
+          "analyst_notes": "actor field: Secret Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d4038517-0409-4c03-b109-e720ffa88e3d",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3af34a92-9d26-4b8b-8f68-7dd14f7c3b10",
+      "target_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--573b1511-49af-451c-8429-6d31221e28fa",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: c1f278f88275e07cc03bd390fe1cbeedd55933110c6fd16de4187f4c4aaf42b9",
+      "pattern": "[file:hashes.'SHA-256' = 'c1f278f88275e07cc03bd390fe1cbeedd55933110c6fd16de4187f4c4aaf42b9']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-14T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-6c5ab84f7ce816df64d9"
+      ],
+      "x_malware_refs": [
+        "malware--kazuar"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5c61de6c415326c19b0b8a9f17f848ffd8c16644bd9769ed5e43307c583dcf35",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-05-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-0e103138b331cf8b266a",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260518.csv",
+            "row": 121
+          },
+          "campaign_refs": [
+            "activity--daily-6c5ab84f7ce816df64d9"
+          ],
+          "malware_refs": [
+            "malware--kazuar"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "c1f278f88275e07cc03bd390fe1cbeedd55933110c6fd16de4187f4c4aaf42b9",
+          "context_excerpt": "AI generated. SHA256 of Kazuar decrypted Kernel Module reported by Microsoft.",
+          "analyst_notes": "actor field: Secret Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9022c82a-8dac-464d-a344-e59af0b11038",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--573b1511-49af-451c-8429-6d31221e28fa",
+      "target_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4b68c028-0727-4b29-a0e1-d4be9e188ed6",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 6eb31006ca318a21eb619d008226f08e287f753aec9042269203290462eaa00d",
+      "pattern": "[file:hashes.'SHA-256' = '6eb31006ca318a21eb619d008226f08e287f753aec9042269203290462eaa00d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-14T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-6c5ab84f7ce816df64d9"
+      ],
+      "x_malware_refs": [
+        "malware--kazuar"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7dc9e6c4a48224e12b5ac897f6ac548caa14b90e076283c798d59994c35a170b",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-05-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-0e103138b331cf8b266a",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260518.csv",
+            "row": 122
+          },
+          "campaign_refs": [
+            "activity--daily-6c5ab84f7ce816df64d9"
+          ],
+          "malware_refs": [
+            "malware--kazuar"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "6eb31006ca318a21eb619d008226f08e287f753aec9042269203290462eaa00d",
+          "context_excerpt": "AI generated. SHA256 of Kazuar decrypted Bridge Module reported by Microsoft.",
+          "analyst_notes": "actor field: Secret Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--16510091-4050-400f-baa9-62639b79c5c1",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4b68c028-0727-4b29-a0e1-d4be9e188ed6",
+      "target_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ff132845-207d-4782-a411-e7268164fc0b",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 436cfce71290c2fc2f2c362541db68ced6847c66a73b55487e5e5c73b0636c85",
+      "pattern": "[file:hashes.'SHA-256' = '436cfce71290c2fc2f2c362541db68ced6847c66a73b55487e5e5c73b0636c85']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-14T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-6c5ab84f7ce816df64d9"
+      ],
+      "x_malware_refs": [
+        "malware--kazuar"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:eb82cb0113b9f1ab1d2c59d5bd6290abf8b7f8ff67e2e40e3141e9732acbb9e9",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-05-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-0e103138b331cf8b266a",
+          "source_path": "https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
+            "path": "daily-news/iocs/2026_04-06/20260518.csv",
+            "row": 123
+          },
+          "campaign_refs": [
+            "activity--daily-6c5ab84f7ce816df64d9"
+          ],
+          "malware_refs": [
+            "malware--kazuar"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "436cfce71290c2fc2f2c362541db68ced6847c66a73b55487e5e5c73b0636c85",
+          "context_excerpt": "AI generated. SHA256 of Kazuar decrypted Worker Module reported by Microsoft.",
+          "analyst_notes": "actor field: Secret Blizzard; actor_attribute: russia; reference: https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--19e1db93-8e09-4a21-bc86-35f2c6a5c3df",
+      "created": "2026-08-07T10:34:21Z",
+      "modified": "2026-08-07T10:34:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ff132845-207d-4782-a411-e7268164fc0b",
+      "target_ref": "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--039bc1b5-6c05-49d6-97a5-fd564ab01c25",
@@ -22368,7 +23083,7 @@
       "spec_version": "2.1",
       "id": "report--7d1feeb9-4696-4b6f-bd54-b6621cfedbe1",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-08-07T10:35:28Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22377,7 +23092,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T23:12:01Z",
+      "published": "2026-08-07T10:35:28Z",
       "object_refs": [
         "intrusion-set--dafed064-1cc0-4c50-bfe5-c69c0b3337d0",
         "malware--3882d32a-ef91-4640-89cb-a219a8005bba",
@@ -22410,6 +23125,7 @@
         "tool--ce59ad5e-9db3-49df-98fd-e106439407a2",
         "tool--3fda5788-7434-440d-b33d-a81fb4f16d41",
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
+        "campaign--1bd3cb97-9624-4ad9-ac4e-ab8264cd87ef",
         "campaign--553b0356-9b43-4392-b273-6cee6561b0b6",
         "campaign--71165a82-d6a1-4d44-bfaa-f59890400f17",
         "identity--226ee53c-0df6-4a6e-8f75-12387b99a7c0",
@@ -22490,8 +23206,11 @@
         "identity--35fd590a-a44b-4f9a-8549-386ec9cca4de",
         "identity--a6ac0d44-d344-4b55-8f37-aa769c02219a",
         "identity--82020e6e-8c42-42e3-9e57-cf46e52dd23a",
+        "identity--f2766685-fa09-4e2e-90cc-8e506068e3f7",
         "identity--30555f5f-4f7f-4a42-a584-9888eb16388b",
         "identity--bc322b7f-f012-4d5d-b9f3-4271626afaba",
+        "attack-pattern--74dd62b5-0403-4fff-9534-3a17117da4ee",
+        "attack-pattern--255d68f8-c079-4461-97c8-9007e4d378db",
         "attack-pattern--182eccc8-6486-4ae6-a9be-0930d32ffe16",
         "attack-pattern--34d8fd5d-2e28-4f2a-a8e5-6086f4e3b61b",
         "attack-pattern--0a223606-d0aa-4725-b79b-68a709c0eb2c",
@@ -22726,7 +23445,11 @@
         "indicator--cdcbac5a-314d-4913-94b5-b59d4bdb8edb",
         "indicator--db208210-ed9f-40db-ae9a-b072629cabbb",
         "indicator--113e3563-2d62-47c8-93c2-f0cf9ab0efb0",
-        "indicator--c64b7186-227e-40c7-b05f-9b4aab8e6ebd"
+        "indicator--c64b7186-227e-40c7-b05f-9b4aab8e6ebd",
+        "indicator--3af34a92-9d26-4b8b-8f68-7dd14f7c3b10",
+        "indicator--573b1511-49af-451c-8429-6d31221e28fa",
+        "indicator--4b68c028-0727-4b29-a0e1-d4be9e188ed6",
+        "indicator--ff132845-207d-4782-a411-e7268164fc0b"
       ],
       "x_schema_version": "1.2.0"
     }

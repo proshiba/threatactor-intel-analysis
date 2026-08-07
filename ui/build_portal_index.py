@@ -126,14 +126,18 @@ PUBLIC_RESOLVERS = frozenset({
 URL_HOST_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*://([^/?#:]+)")
 
 
-def is_non_indicator(spec_type: str, value: str) -> bool:
+def is_non_indicator(spec_type: str, value: str, analyst_marked: bool = False) -> bool:
     """指標として扱えない値かどうか。
 
     出典レポートの参考リンク、公開サフィックス単体、到達不能・予約済みアドレスを
     判定する。取り込み時(actor_profile/scripts/ingest_observables.py)と同じ一覧を
     共有する。原典レポートはリポジトリに含まれず再取り込みができないため、既に
-    profiles/ に入っている分はここで落とす。取り込み側と違い、出典で難読化されて
-    いたかどうかは正規化済みの値から復元できないので例外は設けない。
+    profiles/ に入っている分はここで落とす。
+
+    analyst_marked はRULES.md 8.0の例外で、構造化IOC表由来・難読化済みの値を指す。
+    攻撃者が正規サービス(raw.githubusercontent.com等)をペイロード置き場に使う場合が
+    あるため、参考ホスト判定だけを免除する。公開サフィックス単体と到達不能アドレスの
+    判定に例外はない。
     """
     if spec_type in ("ioc.ipv4", "ioc.ipv6"):
         try:
@@ -159,12 +163,30 @@ def is_non_indicator(spec_type: str, value: str) -> bool:
         host = host[4:]
     if spec_type == "ioc.domain" and host in PUBLIC_SUFFIXES:
         return True
+    if analyst_marked:
+        return False
     if host in REFERENCE_HOSTS:
         return True
     labels = host.split(".")
     return any(
         ".".join(labels[i:]) in REFERENCE_HOSTS for i in range(1, len(labels) - 1)
     )
+
+
+# 行単位でアクターを付けて整備された構造化IOC表(RULES.md 8.0 例外)。
+# 正規化済みの値には難読化が残らないため、観測側のextraction_methodとraw_valueで
+# 判定する。ingest_observables.analyst_marked_indicator()と同じ規則。
+STRUCTURED_EXTRACTION_METHODS = frozenset({"tech-memo-structured-csv"})
+DEFANG_MARKER_RE = re.compile(r"\[\s*[.@:/]\s*\]|\(\s*[.@]\s*\)|\{\s*\.\s*\}|hxxp", re.IGNORECASE)
+
+
+def analyst_marked_indicator(indicator: dict) -> bool:
+    for observation in indicator.get("observations") or []:
+        if observation.get("extraction_method") in STRUCTURED_EXTRACTION_METHODS:
+            return True
+        if DEFANG_MARKER_RE.search(observation.get("raw_value") or ""):
+            return True
+    return False
 
 
 def refang(value: str) -> str:
@@ -314,7 +336,7 @@ def read_profile(slug: str) -> dict | None:
             value = normalize_ioc(spec_type, ind.get("normalized_value") or ind.get("value") or "")
             if not value:
                 continue
-            if is_non_indicator(spec_type, value):
+            if is_non_indicator(spec_type, value, analyst_marked_indicator(ind)):
                 continue  # 出典レポートの参考リンク / 公開サフィックス単体
             iocs.append({
                 "type": spec_type,

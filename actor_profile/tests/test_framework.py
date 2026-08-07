@@ -16,6 +16,7 @@ sys.path.insert(0, str(SCRIPTS))
 from common import normalize_observable, normalize_time, refang  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
+    analyst_marked_indicator,
     classified_record_values,
     classify_hash,
     extract_artifacts,
@@ -203,6 +204,34 @@ class HashClassificationTests(unittest.TestCase):
         )
         hashes = {value for kind, value, _ in values if kind == "md5"}
         self.assertEqual(hashes, {"44d88612fea8a8f36de82e1278abb02f"})
+
+
+class AnalystMarkedIndicatorTests(unittest.TestCase):
+    """保存済みIndicatorへのRULES.md 8.0例外の適用判定。
+
+    攻撃者が正規サービス(raw.githubusercontent.com等)をペイロード置き場に使う場合、
+    構造化IOC表由来の観測を持つIndicatorは参考ホスト判定から除外される。
+    """
+
+    def test_structured_csv_observation_is_analyst_marked(self) -> None:
+        indicator = {"observations": [{"extraction_method": "tech-memo-structured-csv"}]}
+        self.assertTrue(analyst_marked_indicator(indicator))
+
+    def test_defanged_raw_value_is_analyst_marked(self) -> None:
+        indicator = {
+            "observations": [
+                {"extraction_method": "pdf-text", "raw_value": "hxxps://evil[.]example"}
+            ]
+        }
+        self.assertTrue(analyst_marked_indicator(indicator))
+
+    def test_plain_document_extraction_is_not_analyst_marked(self) -> None:
+        indicator = {
+            "observations": [
+                {"extraction_method": "pdf-text", "raw_value": "https://securelist.com/x/"}
+            ]
+        }
+        self.assertFalse(analyst_marked_indicator(indicator))
 
 
 class ReferenceHostTests(unittest.TestCase):

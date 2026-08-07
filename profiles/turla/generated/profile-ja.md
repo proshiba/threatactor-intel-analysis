@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--turla`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-08-07T10:35:28Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -101,7 +101,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | malware--epic | Epic | [Epic](https://attack.mitre.org/software/S0091) is a backdoor that has been used by [Turla](https://attack.mitre.org/groups/G0010). (Citation: Kaspersky Turla) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--gazer | Gazer | [Gazer](https://attack.mitre.org/software/S0168) is a backdoor used by [Turla](https://attack.mitre.org/groups/G0010) since at least 2016. (Citation: ESET Gazer Aug 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--hyperstack | HyperStack | [HyperStack](https://attack.mitre.org/software/S0537) is a RPC-based backdoor used by [Turla](https://attack.mitre.org/groups/G0010) since at least 2018. [HyperStack](https://attack.mitre.org/software/S0537) has similarities to other backdoors used by [Turla](https://attack.mitre.org/groups/G0010) including [Carbon](https://attack.mitre.org/software/S0335).(Citation: Accenture HyperStack October 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--kazuar | Kazuar | [Kazuar](https://attack.mitre.org/software/S0265) is a fully featured, multi-platform backdoor Trojan written using the Microsoft .NET framework. (Citation: Unit 42 Kazuar May 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--kazuar | Kazuar | [Kazuar](https://attack.mitre.org/software/S0265) is a fully featured, multi-platform backdoor Trojan written using the Microsoft .NET framework. (Citation: Unit 42 Kazuar May 2017) | 不明 | 不明 | 高 | `source--daily-0e103138b331cf8b266a`, `source--mitre-attack-19-1` |
 | malware--kopiluwak | KOPILUWAK | [KOPILUWAK](https://attack.mitre.org/software/S1075) is a JavaScript-based reconnaissance tool that has been used for victim profiling and C2 since at least 2017.(Citation: Mandiant Suspected Turla Campaign February 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--lightneuron | LightNeuron | [LightNeuron](https://attack.mitre.org/software/S0395) is a sophisticated backdoor that has targeted Microsoft Exchange servers since at least 2014. [LightNeuron](https://attack.mitre.org/software/S0395) has been used by [Turla](https://attack.mitre.org/groups/G0010) to target diplomatic and foreign affairs-related organizations. The presence of certain strings in the malware suggests a Linux variant of [LightNeuron](https://attack.mitre.org/software/S0395) exists.(Citation: ESET LightNeuron May 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--lunarloader | LunarLoader | [LunarLoader](https://attack.mitre.org/software/S1143) is the loader component for the [LunarWeb](https://attack.mitre.org/software/S1141) and [LunarMail](https://attack.mitre.org/software/S1142) backdoors that has been used by [Turla](https://attack.mitre.org/groups/G0010) since at least 2020 including against a European ministry of foreign affairs (MFA). [LunarLoader](https://attack.mitre.org/software/S1143) has been observed as a standalone and as a part of trojanized open-source software such as AdmPwd.(Citation: ESET Turla Lunar toolset May 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -151,6 +151,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | infrastructure-operation | 不明 | 不明 | 2026-05-18 |  | malware--kazuar | ttp--activity-rule--23f91b330aff86b4e245, ttp--activity-rule--a065ec3abbf8e6d486d8 | victim--activity-rule--5d49c32b8b1bf735cbd0 | ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 Microsoftの分析では、新しいKazuarはKernel、Bridge、Workerの3モジュールで構成され、感染環境内で役割を分担する。 Kernelはリーダーを選出し、非リーダー端末をサイレント化することで、C2との外部通信を減らして検知面を縮小する。 Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 Kazuarは150種類の設定項目を持ち、AMSI、ETW、WLDPのバイパスなど多様な回避機能も備えている。 | 高 | `source--daily-0e103138b331cf8b266a` |
 | ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | cyber-espionage | 不明 | 不明 | 2024-12-05 | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--8b0d895cbce29b8afc51 | malware--tinyturla |  | victim--activity-rule--fd84357d12102a31bedc | ロシアの国家支援グループTurlaが、パキスタンのAPT「Storm-0156」のインフラを乗っ取り、スパイ活動を実行。 Turlaは、Storm-0156の脅威アクターの既存のC2サーバーを利用し、Storm-0156が侵害していたアフガニスタンやインド政府機関を対象に攻撃を展開。 攻撃には、TinyTurlaバックドア、TwoDashバックドア、MiniPocketダウンローダーなどが使用された。 Storm-0156のマルウェアツール(CrimsonRATマルウェアとWainscotなど)や盗まれた認証情報も収集されていた。 Turlaは外国の標的からのデータの傍受、解読、収集を担当するロシア連邦保安庁（FSB）のCenter 16とつながりのある、ロシア国家が支援するハッキンググループ。高度なサイバー攻撃に長い歴史を持ち、世界中の政府や組織を標的にしている。 | 高 | `source--daily-7b8d62bd6d4144728793` |
 | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | cyber-espionage | 2024-03 | 2024-04 | 2024-12-12 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--227d97728274c9a45564 | malware--epic |  | victim--activity-rule--9899cfc7ca4bd10c1940 | ロシアのサイバー諜報グループ「Turla」（別名「Secret Blizzard」）は、他の脅威アクターのインフラを利用してウクライナの軍事デバイスを標的にしている。 MicrosoftとLumenの報告によれば、Turlaはパキスタンの脅威アクター「Storm-0156」のマルウェアとサーバーをハイジャックして使用している。 2024年3月から4月にかけて、TurlaはAmadeyボットネットや他のロシアのハッキンググループ「Storm-1837」のインフラを利用して、ウクライナのシステムに独自のマルウェア「Tavdig」や「KazuarV2」を展開した。 Microsoftは、TurlaがAmadeyのマルウェア・アズ・ア・サービス（MaaS）を使用したのか、またはAmadeyのコマンド・アンド・コントロール（C2）パネルに密かにアクセスしたのかは不明としている。 この手法は、Turlaが他のハッカーグループの背後に隠れて活動する一例である。 | 中 | `source--daily-785ae8d632612c179b8d` |
 
@@ -158,6 +159,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | Turla | Kazuar | T1083 File and Directory Discovery, T1113 Screen Capture | 情報なし | 情報なし | 被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | 高 |
 | ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | Turla | TinyTurla | 情報なし | 情報なし | インド, ロシア, 政府・行政 | 被害事例: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 高 |
 | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | Turla | Epic | 情報なし | 情報なし | ウクライナ, ロシア, 防衛・軍事 | 被害事例: ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | 中 |
 
@@ -252,6 +254,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | 非公開 | anonymous | unknown | reported |  | malware--kazuar | ttp--activity-rule--23f91b330aff86b4e245, ttp--activity-rule--a065ec3abbf8e6d486d8 | メール／メールアカウント, エンドポイント | data-theft: Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。<br>espionage: ロシア系ハッカー集団Secret Blizzardは、Kazuarバックドアを長期潜伏・隠密性・情報収集向けのP2Pボットネットへ発展させた。 | 不明 | 不明 | 2026-05-18 | 高 | `source--daily-0e103138b331cf8b266a` |
 | 被害事例: ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--227d97728274c9a45564 | malware--epic |  | サーバー | espionage: ロシアのサイバー諜報グループ「Turla」（別名「Secret Blizzard」）は、他の脅威アクターのインフラを利用してウクライナの軍事デバイスを標的にしている。 | 2024-03 | 2024-04 | 2024-12-12 | 中 | `source--daily-785ae8d632612c179b8d` |
 | 被害事例: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--48cc6b4cc2919459aec9, target--activity-rule--country--72caf60a2fbce4a1be7a, target--mitre-group--sector--8b0d895cbce29b8afc51 | malware--tinyturla |  | サーバー | espionage: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | 不明 | 不明 | 2024-12-05 | 高 | `source--daily-7b8d62bd6d4144728793` |
 
@@ -259,6 +262,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Discovery | T1083 | File and Directory Discovery | Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 |  | activity--daily-6c5ab84f7ce816df64d9 | 不明 | 不明 | 中 | `source--daily-0e103138b331cf8b266a` |
+| Collection | T1113 | Screen Capture | Workerはキー入力記録、スクリーンショット、ファイル収集、偵察、メール/MAPIデータ収集、最近使ったファイル窃取などを行う。 |  | activity--daily-6c5ab84f7ce816df64d9 | 不明 | 不明 | 中 | `source--daily-0e103138b331cf8b266a` |
 | Uncategorized | T0840 | MITRE ATT&CK T0840 | ion layer to the distant command processing layer, can and do remain entirely agnostic to the transport layer as long as it implements 4 MITRE ATT&CK IDs: [T0840], [T1003], [T1040], [T1046], [T1056.001], [T1078], [T1083], [T1135], [T1482] 5 MITRE ATT&CK IDs: [T1190], [T1570], [T1587.001], [T1608] 6 MITRE ATT&CK IDs: [T1095], [T1547.006], [T1587.001] |  |  | 不明 | 不明 | 中 | `source--turla--c3043639afceaf63` |
 | Command And Control | T1001 | Data Obfuscation | 128 encrypted using a different key for incoming and outgoing data. These keys were saved in the 0x2 Container in the 0x227 and 0x228 30 MITRE ATT&CK IDs: [T1001], [T1104] 31 MITRE ATT&CK IDs: [T1074], [T1119], [T1560.003] |  |  | 不明 | 不明 | 中 | `source--turla--c3043639afceaf63` |
 | Command And Control | T1001.003 | Protocol or Service Impersonation | tion mechanism to distinguish Snake traffic from legitimate traffic destined for application software on the compromised server. This 18 MITRE ATT&CK IDs: [T1001.003], [T1071], [T1071.003], [T1090.003], [T1095], [T1132], [T1572], [T1573] 19 MITRE ATT&CK IDs: [T1001.003], [T1071], [T1132.002], [T1547.006], [T1584] |  |  | 不明 | 不明 | 中 | `source--turla--c3043639afceaf63` |
@@ -376,8 +381,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 121件
-- IOC観測: 155件
+- IOC値: 125件
+- IOC観測: 159件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 62件
 - 非IOC artifact観測: 84件（`artifacts.csv`）
@@ -400,6 +405,7 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-0e103138b331cf8b266a | ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化 | microsoft.com | 2026-05-18 | https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-785ae8d632612c179b8d | ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に | bleepingcomputer.com | 2024-12-12 | https://www.bleepingcomputer.com/news/security/russian-cyber-spies-hide-behind-other-hackers-to-target-ukraine/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-7b8d62bd6d4144728793 | ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開 | bleepingcomputer.com | 2024-12-05 | https://www.bleepingcomputer.com/news/security/russian-turla-hackers-hijack-pakistani-apt-servers-for-cyber-espionage-attacks/ | osint-report | TLP:CLEAR | 中 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
@@ -409,6 +415,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--turla--381349fb0cea34f0 | Penquins Moonlit Maze AppendixB |  | 不明 | Turla/2017/Penquins_Moonlit_Maze_AppendixB.pdf | report | TLP:CLEAR | 中 |
 | source--turla--3d5a4d35095a89d3 | README |  | 不明 | Turla/2014/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--turla--6e90d1ef9571f3b1 | IOC |  | 不明 | Turla/IOC.TXT | text-data | TLP:CLEAR | 中 |
@@ -416,8 +424,6 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--turla--c3043639afceaf63 | aa23 129a snake malware 2 |  | 不明 | Turla/aa23-129a_snake_malware_2.pdf | report | TLP:CLEAR | 中 |
 | source--turla--e6c93c546a97e314 | README |  | 不明 | Turla/2017/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--turla--f0c7ef1fbe87f2c6 | Malware Technical Insight  Turla “Penquin x64” |  | 不明 | Turla/Malware Technical Insight _Turla “Penquin_x64”.pdf | report | TLP:CLEAR | 中 |
-| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

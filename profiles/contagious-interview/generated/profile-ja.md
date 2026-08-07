@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: draft
-- 更新日時: 2026-08-04T04:27:08Z
+- 更新日時: 2026-08-07T10:35:09Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -128,7 +128,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | infrastructure-operation | 不明 | 不明 | 2025-11-15 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--cf6980464e1532c85677 | NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。 攻撃者はLinkedIn等で開発者に接触し、GitHub/GitLab/Bitbucketのデモ取得を装いトロイ化プロジェクトを配布。 プロジェクト内の“.config.env”にBase64偽API鍵を埋め込み、実態はJSON Keeperやnpoint.io等の次段URLを指す。 取得されたBeaverTailが情報窃取やInvisibleFerret投下、さらにPastebin経由のTsunamiKit取得など機能が観測。 ESETは9月にTsunamiKit等を確認；.onionのC2は現在オフラインで、広範な開発者狙いが継続と結論。 | 中 | `source--daily-cdb23aca8de000a4d647` |
 | PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | infrastructure-operation | 不明 | 不明 | 2026-07-02 |  |  | ttp--activity-rule--33bfe0dee0f21b67e99c | victim--activity-rule--831dfdd3f37cf68e8d8c | Socketは、npm、Packagist、Go modules、Chrome拡張にまたがるPolinRiderの悪性リリース162件を確認した。 本キャンペーンは北朝鮮関連のContagious Interview／Famous Chollima活動クラスタに関連付けられている。 攻撃者は正規リポジトリを侵害し、難読化JavaScriptローダーを設定ファイルや偽の.woff2ファイルに隠す。 VS Codeのtasks.jsonなどを悪用して開発環境でローダーを実行し、二段階目ペイロードを取得・復号・実行する。 観測されたペイロードにはDEV#POPPERとOmniStealerが含まれ、認証情報窃取やC2通信などの機能を持つ。 | 中 | `source--daily-93581ba9dc03b85be996` |
 | 新しい「OtterCookie」マルウェアが偽の求人を通じて開発者をバックドア化 | infrastructure-operation | 不明 | 不明 | 2024-12-27 | target--activity-rule--sector--932f4928d5e1ec28e2df |  |  | victim--activity-rule--ebe63f831e54cb716a26 | 北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。 OtterCookieはNode.jsプロジェクトやnpmパッケージ、最近ではQtやElectronアプリケーションを介して拡散。 OtterCookieはSocket.IO WebSocketツールを使用してコマンド＆コントロール（C2）インフラストラクチャとの安全な通信を確立し、リモートシェルコマンドを受信。 マルウェアは暗号通貨ウォレットの鍵や機密データを盗むコマンドが観測した。 標的の環境調査や情報窃取を進め、さらなる侵入を目指す行動が観察。 偽求人を介した攻撃手法の多様化が進んでいる。 | 中 | `source--daily-47e80e1dc37b49447e5b` |
-| NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | infrastructure-operation | 不明 | 不明 | 2026-08-04 |  |  |  | victim--activity-rule--6a67cf8d22901740910a | 北朝鮮関連の悪意あるnpmパッケージbianira-uiとfluid-type-uiから、新たなブロックチェーン型C2解決技術NullReceiverが発見された。 NullReceiverは、ゼロ送金・データなしのEthereum取引における受取人アドレスの一部へC2のIPアドレスを直接埋め込む。 マルウェアは攻撃者ウォレットの最新送金を参照し、受取人アドレスから166[.]88[.]134[.]62を復号してC2へ接続する。 スマートコントラクトやcalldata、固定のバーンアドレスを使用しないため、従来のEtherHiding向け検知では発見が難しい。 悪性パッケージは正規Tailwind CSSプラグインの複製で、北朝鮮のContagious Interviewキャンペーンに関連付けられている。 | 中 | `source--daily-3b508815c5f991656dcb` |
+| NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | infrastructure-operation | 不明 | 不明 | 2026-08-04 | target--mitre-group--sector--9344745b7aeff4dbe6af |  |  | victim--activity-rule--6a67cf8d22901740910a | 北朝鮮関連の悪意あるnpmパッケージbianira-uiとfluid-type-uiから、新たなブロックチェーン型C2解決技術NullReceiverが発見された。 NullReceiverは、ゼロ送金・データなしのEthereum取引における受取人アドレスの一部へC2のIPアドレスを直接埋め込む。 マルウェアは攻撃者ウォレットの最新送金を参照し、受取人アドレスから166[.]88[.]134[.]62を復号してC2へ接続する。 スマートコントラクトやcalldata、固定のバーンアドレスを使用しないため、従来のEtherHiding向け検知では発見が難しい。 悪性パッケージは正規Tailwind CSSプラグインの複製で、北朝鮮のContagious Interviewキャンペーンに関連付けられている。 | 中 | `source--daily-3b508815c5f991656dcb` |
 | 北朝鮮系ハッカーが「ClickFix」を悪用し、暗号資産の偽求人でBeaverTailを配布 | campaign | 不明 | 不明 | 2025-09-22 |  | malware--beavertail, malware--invisibleferret | ttp--activity-rule--4db999f75969a8979172 |  | 北朝鮮関係者がClickFix誘導を用い、BeaverTailとInvisibleFerretを偽求人経由で配布する手口が確認された。 従来の開発者狙いから、暗号資産・小売のマーケ/トレーダー職志望者へ標的を拡大し、Vercel製偽採用サイトを配布基盤に利用。 OS別コマンド実行を促す偽マイク障害表示で、シェル/VBスクリプト経由の軽量版BeaverTailを展開するのが特徴。 2025年5月後半の波では、pkgやPyInstallerで作成したWindows/macOS/Linux向けバイナリ化版の投入が観測された。 この攻撃キャンペーンに時期を合わせ、北朝鮮と連携するKimsuky (別名 APT43)による2つの攻撃キャンペーンも観測されている。 | 中 | `source--daily-dddef70e68c0dc59a5d3` |
 | OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | malware-campaign | 2025-02 | 2025-04 | 2025-05-12 |  |  | ttp--activity-rule--437616c0b22d107a1a92 | victim--activity-rule--0e4094ae0b8e107cfaa8 | 北朝鮮の攻撃キャンペン「Contagious Interview」が、マルウェア「OtterCookie」のv3およびv4を2025年2月と4月に展開。 v4では、Google ChromeやBraveブラウザ、MetaMask、iCloud Keychainからの認証情報窃取機能が追加。 仮想環境（VMware、VirtualBox、Microsoft、QEMU）での実行を検出し、解析を回避する機能を搭載。 マルウェアは、npmパッケージ、GitHub/Bitbucketのリポジトリ、偽のビデオ会議アプリを通じて配布。 「DriverMinUpdate.app」などの偽アプリを用いたmacOS向けの情報窃取も確認されている。 | 中 | `source--daily-56f1f7edcfb3f507fe75` |
 
@@ -252,7 +252,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 - IOC観測: 4件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- artifactデータ未指定
+- 非IOC artifact観測: 64件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

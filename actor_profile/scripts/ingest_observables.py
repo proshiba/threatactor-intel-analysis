@@ -373,6 +373,27 @@ def analyst_marked(raw: str, explicit_structured: bool) -> bool:
     return explicit_structured or bool(DEFANG_MARKER_RE.search(raw))
 
 
+# 行単位でアクターを付けて整備された構造化IOC表。ここから来た観測は
+# アナリストが指標として明示したものとみなす(RULES.md 8.0 例外)。
+# pdf-text等の本文抽出は含めない。攻撃者が正規サービス(raw.githubusercontent.com等)を
+# ペイロード置き場に使う場合、参考ホスト判定だけでは指標を誤って落とすため。
+STRUCTURED_EXTRACTION_METHODS = frozenset({"tech-memo-structured-csv"})
+
+
+def analyst_marked_indicator(indicator: dict[str, Any]) -> bool:
+    """保存済みIndicatorにRULES.md 8.0の例外(構造化IOC表・難読化)が適用されるか。
+
+    取込後の検証・索引生成から使う。値は正規化済みで難読化が残らないため、
+    観測側のextraction_methodとraw_valueで判定する。
+    """
+    for observation in indicator.get("observations") or []:
+        if observation.get("extraction_method") in STRUCTURED_EXTRACTION_METHODS:
+            return True
+        if DEFANG_MARKER_RE.search(observation.get("raw_value") or ""):
+            return True
+    return False
+
+
 def routable_address(address: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
     """指標になり得るアドレスかどうか。
 

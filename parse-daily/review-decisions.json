@@ -248,6 +248,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: TeamViewer、ネットワーク分割でAPT29の攻撃を阻止",
     "review_status": "approved"
   },
+  "apt29|https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/": {
+    "confidence": "medium",
+    "review_notes": "同一活動(CaptiveCrunch、Storm-2945によるcaptive portal Wi-Fi悪用)は2026-08-03のコミット(PR #18)で既にAPT29プロファイルへ適用済み(活動名: 'Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取'、CornFlake/ChocoShell/FruitStoneを含む)。本レコードはbleepingcomputer経由の二次報道(2026-08-05付)がtech-memoに新規収録されたことによる重複検知であり、原文(Microsoft Security Blog, 2026-07-31)を再確認したが追加すべき新規情報はない。",
+    "review_status": "rejected"
+  },
   "apt33|https://www.bleepingcomputer.com/news/security/APT33-Iranian-hacking-group-uses-new-tickler-malware-to-backdoor-us-govt-defense-orgs/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT33(イランのハッキンググループ)、新しいTicklerマルウェアを使用して米国政府・防衛機関にバックドアを設置",
@@ -327,6 +332,73 @@
     "review_notes": "ESETの一次分析でScarCruft（APT37/Reaper）の活動として明示。IOC配布用MD5/SHA256ファイルは同一活動の補助資料として統合する。",
     "review_status": "approved"
   },
+  "apt38|https://arcticwolf.com/resources/blog/bluenoroff-uses-clickfix-fileless-powershell-and-ai-generated-zoom-meetings-to-target-web3-sector/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Arctic Wolf: メディアタイムスタンプ分析でキャンペーンは2025年5月から",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-05-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Arctic Wolf: キャンペーンは2026年3月まで継続",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-03-01T00:00:00Z"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "原文(Arctic Wolf)を確認。「複数の独立した証拠タイプに基づき高い確度(High Confidence)でBlueNoroffに帰属」と明記(インフラ重複、ツール・コード重複、社会工学手法、標的特性、時間パターン)。標的は100名超、80%が暗号資産・ブロックチェーンまたは隣接金融、41%が米国。BlueNoroffはLazarus傘下の金銭目的サブグループでapt38プロファイルのoverlapping alias。Sapphire Sleet/BlueNoroff→apt38への手動確認済み対応付けはPR #17の前例に従う。IOC付録(rtkwlf/wolf-tools)はconfig.jsonのactivity_reference_aliasesで同一活動へ集約。",
+    "review_status": "approved"
+  },
+  "apt38|https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/": {
+    "capability_decisions": [
+      {
+        "name": "typo-crypto",
+        "reason": "侵害されたnpmパッケージ自体。原文に「特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows/macOS/Linux上で実行するコードが確認された」と明記され、C2通信・ペイロード取得機能を持つ悪性実装として直接分析されている。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
+    "review_status": "approved"
+  },
+  "apt38|https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md": {
+    "confidence": "high",
+    "review_notes": "Arctic Wolf記事(bluenoroff-uses-clickfix-…)のIOC付録。config.jsonのactivity_reference_aliasesで本体記事の活動へ集約し、出典は個別Sourceとして保持する。判断根拠は本体記事の決定を参照。",
+    "review_status": "approved"
+  },
+  "apt38|https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/": {
+    "capability_decisions": [
+      {
+        "name": "NukeSped",
+        "review_notes": "CSVのmalware列。NukeSpedはLazarus系RATファミリーとして各ベンダーが用いる確立した固有名で、ファイル名・一般分類ではない。一次資料の直接確認はWAFで不可のため、当該90件のIOCとの結び付けはCSVのラベルに依拠する。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "一次URLはWAFによりレンダリング不可で原文を直接確認できなかった。tech-memo要約(一次ソース再確認済み)は、JUMPSECがBlueNoroffの稼働中フィッシング基盤のソースマップと攻撃用コードを直接取得・分析したと記載し、IOC CSVのactor列はBlueNoroff (high confidence)。直接検証できないため確度はhighへ上げずmediumとする。攻撃期間は不明のままとしreported_atへ分離。",
+    "review_status": "approved"
+  },
+  "apt38|https://www.microsoft.com/en-us/security/blog/2026/06/17/postinstall-payload-inside-mastra-npm-supply-chain-compromise/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Microsoft: 攻撃実行は2026-06-16〜17",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-16T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft: 2026-06-17に発見・遮断",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-06-17T00:00:00Z"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "原文(Microsoft Security Blog)を確認。「高信頼度をもって北朝鮮国家アクターSapphire Sleetに帰属する」と明記。@mastraスコープ140超のnpmパッケージ侵害、タイポスクワット依存easy-day-jsのpostinstall実行。標的は暗号資産・VC・ブロックチェーン。Sapphire Sleet→apt38はoverlapping aliasのため手動確認の上で対応付け(PR #17の前例)。",
+    "review_status": "approved"
+  },
   "apt41|https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃",
@@ -341,6 +413,11 @@
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT41 Winnti の ELF 型クラウド認証情報収集マルウェア：Alibaba のタイポスクワット基盤と 6 年にわたる系譜",
     "review_status": "approved"
+  },
+  "apt41|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
+    "confidence": "low",
+    "review_notes": "原文(Check Point Research)を確認。「Silver Dragon is assessed with high confidence to be linked to a Chinese-nexus threat actor, likely operating within the umbrella of APT41」とあり、'likely'による示唆に留まり確定的帰属ではない。Silver Dragonは同記事でCheck Pointが新規命名した独立クラスタで、根拠は導入スクリプト・シェルコード復号方式・Cobalt Strike設定・UTC+8タイムスタンプ等の技術的重複のみ。実行主体をAPT41と確定できないため不採用。Silver DragonはAPT41関連候補としてparse-daily/unknown-clusters.jsonでの追跡を推奨。",
+    "review_status": "rejected"
   },
   "apt41|https://securityaffairs.com/163598/apt/apt41-keyplug-targets-italian-industries.html": {
     "confidence": "high",
@@ -452,6 +529,23 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: BlackByteが新たな脆弱性を活用し攻撃を継続",
     "review_status": "approved"
   },
+  "blackbyte|https://www.sophos.com/en-us/blog/chaos-in-teams-vishing": {
+    "confidence": "low",
+    "review_notes": "原文(Sophos blog)を確認したが、BlackByteへの言及は本文中に一切ない。本文が言及するのはChaosランサムウェア運営者とBlackSuit/Royal(Conti系譜)元メンバーとの関連の疑いのみであり、BlackByteとの結び付けは確認できない。実行主体表現なしのため不採用。",
+    "review_status": "rejected"
+  },
+  "blacktech|https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/": {
+    "capability_decisions": [
+      {
+        "name": "BlueShell",
+        "reason": "IIJが日本国内組織を標的としたBlackTechのAPT攻撃活動でBlueShell亜種を直接観測したと明記している。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "原文(IIJ Security Diary)を確認。「我々はBlackTechによる日本国内の組織を標的としたAPT攻撃においてもBlueShell亜種を観測しています」と明記され、BlackTechが当該BlueShell亜種を用いた侵入後活動の実行主体であることが確認できる(BlueShell亜種自体は他の複数APTグループも使用する共通マルウェアである旨の記載もあるが、BlackTechによる観測は個別に明記されている)。",
+    "review_status": "approved"
+  },
   "blacktech|https://thehackernews.com/2024/04/blacktech-targets-tech-research-and-gov.html": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」",
@@ -472,6 +566,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 活動は少なくとも2022年半ばから続き、アジア太平洋と中東の組織を狙い、Calypso(別名、Red Lamassu)に帰属。",
     "review_status": "approved"
   },
+  "carbanak|https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/": {
+    "confidence": "low",
+    "review_notes": "原文(SOCRadar blog)を確認したが、Carbanakへの言及は本文中に存在しない。URL文字列の一部への機械的な誤一致であり、名称衝突として不採用。",
+    "review_status": "rejected"
+  },
   "cellebrite|https://www.bleepingcomputer.com/news/security/google-fixes-android-zero-days-exploited-in-attacks-60-other-flaws/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - CVE-2024-53197は、イスラエルのデジタルフォレンジック企業Cellebriteが開発したゼロデイエクスプロイトチェーンの一部として、セルビア当局が押収したAndroidデバイスのロック解除に悪用された。",
@@ -491,6 +590,11 @@
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃",
     "review_status": "approved"
+  },
+  "contagious-interview|https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique": {
+    "confidence": "medium",
+    "review_notes": "同一活動(NullReceiver、悪意あるnpmパッケージ経由のブロックチェーン型C2、IOC 166.88.134.62)は2026-08-04のコミット(PR #19)で既にContagious Interviewプロファイルへ適用済み。本レコードはキュー再生成による重複表示であり、追加適用は不要。",
+    "review_status": "rejected"
   },
   "contagious-interview|https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems": {
     "confidence": "high",
@@ -537,6 +641,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。",
     "review_status": "approved"
   },
+  "contagious-interview|https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/": {
+    "confidence": "medium",
+    "review_notes": "原文(AllSecure blog, 2026-07-29公開)を確認。本文は「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF through 2025-2026」と明記し、macOS ClickFix偽アップデート、EtherHiding経由のブロックチェーン型C2、暗号資産・開発者認証情報窃取という手口をContagious Interviewの既知の戦術と一致すると評価している。新規ドメイン(rg-telemetry.sbs, th-updates.sbs)は未公開の新規インフラと記載。活動期間は一次資料に明示値がないためunknownとし、記事公開日はreported_atとして分離する。",
+    "review_status": "approved"
+  },
   "contagious-interview|https://www.bleepingcomputer.com/news/security/new-ottercookie-malware-used-to-backdoor-devs-in-fake-job-offers/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮の攻撃者が「OtterCookie」マルウェアを使い、開発者を標的にした「Contagious Interview」キャンペーンを展開。",
@@ -552,10 +661,24 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は北朝鮮（DPRK）系とされ、Contagious Interview関連の採用詐欺を用いた情報窃取が目的。",
     "review_status": "approved"
   },
+  "contagious-interview|https://x.com/malwrhunterteam/status/2064325045938274373": {
+    "review_notes": "出典はX投稿1件で「北朝鮮ハッカーに使われている可能性のある(possible)」という可能性表現のみ。単一の間接情報で実行主体の帰属がなく不採用。",
+    "review_status": "rejected"
+  },
   "daggerfly|https://www.bleepingcomputer.com/news/security/chinese-cyberspies-use-new-ssh-backdoor-in-network-device-hacks/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。",
     "review_status": "approved"
+  },
+  "earth-lusca|https://chromium-review.googlesource.com/c/chromium/src/+/8165095": {
+    "confidence": "low",
+    "review_notes": "原文(Chromium Gerrit変更内容)およびBleepingComputer記事を確認したが、Earth Luscaへの言及はない。Google Chromeが新しいタブ乗っ取り拡張機能を既定でブロックする機能に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",
+    "review_status": "rejected"
+  },
+  "earth-lusca|https://chromium.googlesource.com/chromium/src/+/main/docs/security/ai-generated-security-bugs-faq.md": {
+    "confidence": "low",
+    "review_notes": "原文(Chromium security docs)を確認したが、Earth Luscaへの言及はない。Google ChromeのAI活用バグ修正に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",
+    "review_status": "rejected"
   },
   "earth-lusca|https://www.trendmicro.com/ja_jp/research/24/c/earth-lusca-uses-geopolitical-lure-to-target-taiwan.html": {
     "confidence": "high",
@@ -587,6 +710,11 @@
     "confidence": "high",
     "review_notes": "ESETはWindows版SprySOCKSをFishMongerへ高確度で帰属し、FishMongerの別名としてEarth Luscaを明示している。",
     "review_status": "approved"
+  },
+  "ember-bear|https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/": {
+    "confidence": "low",
+    "review_notes": "原文(SOCRadar blog)を確認。Ember Bearへの言及はなく、UAC-0056/UAC-0114についても「SOCRadar attributes this activity to a Russia-nexus actor with high confidence, based on TTP overlap with UAC-0056 / UAC-0114」とTTP類似を根拠の一つに挙げるのみで、実行主体と明記していない。帰属自体は別途6項目の技術的指標(Cyrillicキーボード痕跡、Yandex Cloudホスティング等)に基づく。実行主体を示す表現が不足しているため不採用。",
+    "review_status": "rejected"
   },
   "ember-bear|https://www.bleepingcomputer.com/news/security/us-and-allies-link-russian-military-hackers-behind-critical-infrastructure-attacks-to-gru-unit-29155/": {
     "confidence": "medium",
@@ -660,6 +788,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 中国のGelsemiumハッカー、Linux向け新マルウェア「WolfsBane」を使用",
     "review_status": "approved"
   },
+  "ghostwriter|https://censys.com/blog/unc1151-phishing-email-campaign/": {
+    "confidence": "medium",
+    "review_notes": "一次URL(Censys blog)はHTTP 403で原文を直接確認できなかった。tech-memo要約とIOC CSV(限定なしのactor=UNC1151、28件のフィッシング証明書・ホスティングIP)は、CensysがUNC1151のGhostwriterキャンペーン基盤としてインフラを特定したと記載。UNC1151はGhostwriterキャンペーンの実行主体とされるベラルーシ関連クラスタのMandiant名でghostwriterプロファイルのoverlapping alias。直接検証できないため確度はmedium。攻撃期間は不明のままとする。",
+    "review_status": "approved"
+  },
   "golden-chickens|https://thehackernews.com/2024/06/moreeggs-malware-disguised-as-resumes.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - More_eggsは、Golden Chickens（別名Venom Spider）とされるグループによるMaaSとして他のサイバー犯罪者に提供",
@@ -669,6 +802,25 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国系Murky Panda(Silk Typhoon/Hafnium)がクラウドの信頼関係を悪用し侵入。",
     "review_status": "approved"
+  },
+  "hellsing-apt|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
+    "confidence": "low",
+    "review_notes": "原文(Check Point Research)にHellsing APTへの言及なし。プロファイルのalias「Asia」が記事本文の地域語(Southeast Asia)に機械的一致した名称衝突。過去の同種ケース(UNODC報告書、Kaspersky OctLurk/SilkLurk記事)と同様のパターンで不採用。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://securelist.com/octlurk-silklurk-backdoors-central-asia/120840/": {
+    "confidence": "low",
+    "review_notes": "原文(Kaspersky Securelist)を確認したが、「Hellsing」という文字列自体が本文に登場しない。Kaspersky自身が「at the time of publication, we couldn't attribute this activity to any known group」と明記しており既知グループへの帰属を確認できていない。プロファイル上のalias「Asia」が『Central Asia』等の地域語に機械的に一致した名称衝突。本件はparse-daily/unknown-clusters.jsonに「OctLurk / SilkLurk operator (未命名)」として既に台帳管理済み。不採用。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://www.unodc.org/roseap/uploads/documents/Publications/2026/TOCTA_South-East_Asia_2026.pdf": {
+    "confidence": "low",
+    "review_notes": "原文(UNODC報告書プレスリリース)を確認したが、Hellsing APTへの言及はない。プロファイル上のalias「Asia」が『South-East Asia』等の一般語・地域名に機械的に一致した名称衝突。不採用。",
+    "review_status": "rejected"
+  },
+  "hexane|https://www.group-ib.com/blog/hollowgraph-microsoft-365/": {
+    "review_notes": "原文(Group-IB)を確認。「現在利用可能な証拠に基づいて既知の脅威アクターへ確実に帰属できない」と明記し、Lyceumへの言及は『低確度の潜在的リンク』に留まる。CSVもLyceum (low confidence)。不採用。HollowGraph活動自体(2026-06-03〜07-09、イスラエル企業標的)は実在する未帰属クラスタとしてunknown-clusters.jsonで継続観察。",
+    "review_status": "rejected"
   },
   "inc-ransom|https://www.bleepingcomputer.com/news/security/inc-ransom-threatens-to-leak-3tb-of-nhs-scotland-stolen-data/": {
     "confidence": "high",
@@ -693,6 +845,47 @@
   "inc-ransom|https://www.bleepingcomputer.com/news/security/retail-giant-ahold-delhaize-says-data-breach-affects-22-million-people/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ランサムウェアグループINC Ransomが攻撃を主張し、4月にダークウェブで資料の一部を流出させた。",
+    "review_status": "approved"
+  },
+  "inception|https://securelist.ru/cloud-atlas-2026/115682/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Kaspersky: 2025年後半から。後半を7月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-07-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Kaspersky: 2026年初頭まで。初頭を1月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "VBCloud",
+        "review_notes": "Kasperskyが本文で直接分析したファイル窃取型バックドア。固有名。",
+        "status": "approved"
+      },
+      {
+        "name": "PowerShower",
+        "review_notes": "Kasperskyが本文で直接分析した偵察用バックドア。固有名。",
+        "status": "approved"
+      },
+      {
+        "name": "PowerCloud",
+        "review_notes": "Kasperskyが本文で直接分析した情報収集ツール。固有名。",
+        "status": "approved"
+      },
+      {
+        "name": "RevSocks",
+        "review_notes": "公開ツールだが、本活動での利用(予備制御チャネル構築)を一次資料が明記している。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "原文(Kaspersky securelist.ru)を確認。Cloud Atlasを実行主体として2025年後半〜2026年初頭のロシア・ベラルーシの政府・外交機関への攻撃を直接分析。Cloud AtlasはInception(inceptionプロファイル)のoverlapping aliasで、両名は同一クラスタとして各ベンダーが対応付けており手動確認の上で採用。VBCloud/PowerShower/PowerCloudと公開ツール(SSH逆トンネル、ReverseSocks、Tor)の併用を明記。",
     "review_status": "approved"
   },
   "ironhusky|https://www.bleepingcomputer.com/news/security/chinese-hackers-target-russian-govt-with-upgraded-rat-malware/": {
@@ -971,6 +1164,10 @@
     "review_notes": "報告はContagious Interview/TaskJackerをLazarus Groupの活動として扱う。DPRK内の追跡クラスタ境界には留意する。",
     "review_status": "approved"
   },
+  "lazarus|https://research.jfrog.com/post/rollup-polyfill-masquerading/": {
+    "review_notes": "原文(JFrog)を確認。「similar to previous North Korean Lazarus-linked npm campaigns」と過去キャンペーンとの類似の指摘のみで、確度表現も帰属断定もない。CSVのactor列もLazarus Group (low confidence)。類似のみのため不採用。",
+    "review_status": "rejected"
+  },
   "lazarus|https://thehackernews.com/2024/09/new-pondrat-malware-hidden-in-python.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 北朝鮮のAPTグループ「Lazarus Group」が関与しており、サプライチェーン攻撃を狙っている。",
@@ -990,6 +1187,10 @@
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Lazarus Group、PondRAT・ThemeForestRAT・RemotePEでマルウェア兵器庫を拡張",
     "review_status": "approved"
+  },
+  "lazarus|https://www.elastic.co/security-labs/blockchain-c2-phantompulse-rat-sinkhole": {
+    "review_notes": "原文(Elastic Security Labs)を確認。帰属は「技術クラスが現在DPRK属性とされている」ことに基づき、Lazarus/BlueNoroff/UNC5342/APT38を列挙する間接的なもので、「直接の指紋ではない」と明記。CSVのactor列もLazarus Group (low confidence)。特定アクターの実行主体表現がないため不採用。",
+    "review_status": "rejected"
   },
   "lunar-spider|https://thedfirreport.com/2025/09/29/from-a-single-click-how-lunar-spider-enabled-a-near-two-month-intrusion/": {
     "confidence": "high",
@@ -1100,6 +1301,11 @@
     "review_notes": "Symantecは当該攻撃をSeedworm（MuddyWater）によるものと明示し、標的と観測内容を記載している。",
     "review_status": "approved"
   },
+  "muddywater|https://www.sophos.com/en-us/blog/chaos-in-teams-vishing": {
+    "confidence": "low",
+    "review_notes": "原文(Sophos blog)を確認。本文は「Sophos analysts have found no evidence linking STAC4749 activity to that group(MuddyWater)」と明記しており、Rapid7による関連示唆をSophos自身が明確に否定している。本件はparse-daily/unknown-clusters.jsonでSTAC4749として既に台帳管理済みであり、MuddyWaterとの関連は既に否定済み。不採用。",
+    "review_status": "rejected"
+  },
   "mustang-panda|https://thehackernews.com/2024/03/two-chinese-apt-groups-ramp-up-cyber.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Mustang Pandaは、フィッシングメールでマルウェアを配布",
@@ -1186,6 +1392,15 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はUNC6384（Silk Typhoon/Mustang Panda系）、中国関与と評価、外交官を主標的。",
     "review_status": "approved"
   },
+  "mustang-panda|https://www.darktrace.com/blog/chinese-apt-campaign-targets-entities-with-updated-fdmtp-backdoor": {
+    "review_notes": "原文(Darktrace)を確認。「assesses with moderate confidence that this activity aligns with publicly reported Twill Typhoon tradecraft」であり、手口の一致(alignment)の指摘に留まり実行主体の帰属ではない。Mustang Panda等の名称にも言及なし。Fortinet QuickFox記事(2026-08-06)の不採用判断(技術的重複のみ)と同基準で不採用。FDMTPバックドアの活動自体は実在するため、帰属が進んだ場合に備えunknown-clusters.jsonの参照先として記録。",
+    "review_status": "rejected"
+  },
+  "mustang-panda|https://www.fortinet.com/blog/threat-research/quickfox-supply-chain-attack-used-to-deploy-fdmtp-implant": {
+    "confidence": "low",
+    "review_notes": "原文(Fortinet FortiGuard Labs)に「FortiGuard Labs does not confidently attribute this campaign to a particular actor」と明記。Twill Typhoon(Mustang Pandaのoverlapping alias)との『significant technical crossover』の指摘のみで、確信度は低いと明言されている。tech-memo IOC CSVのactor列も「Twill Typhoon (low confidence)」と記載。OSINT_RULESの低信頼帰属自動承認禁止に該当するため不採用。",
+    "review_status": "rejected"
+  },
   "mustard-tempest|https://thehackernews.com/2024/12/horns-campaign-delivers-rats-via-fake.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - このキャンペーンは、TA569（別名Gold Prelude、Mustard Tempest、Purple Vallhund）と呼ばれる脅威アクターによるものとされています。",
@@ -1195,6 +1410,11 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はTA569（別名Gold Prelude/Mustard Tempest/Purple Vallhund/UNC1543）。",
     "review_status": "approved"
+  },
+  "night-dragon|https://hunt.io/blog/flying-eagle-android-rat-170-servers-night-dragon": {
+    "confidence": "low",
+    "review_notes": "原文(hunt.io blog)を確認。「On June 23, 2026, SQLRCE0 introduced Night Dragon (夜龙), a separately developed Android remote control kit」とあり、2026年6月にSQLRCE0が発表した新規Android RATプラットフォームの名称であることが明記されている。2011年の石油・エネルギー業界を標的にした同名APT「Night Dragon」とは無関係。偶然の命名一致のため不採用。",
+    "review_status": "rejected"
   },
   "noname|https://www.bleepingcomputer.com/news/security/noname-ransomware-gang-deploying-ransomhub-malware-in-recent-attacks/": {
     "confidence": "high",
@@ -1222,6 +1442,10 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 裁判では、NSO Groupが感染操作に直接関与しており、直接的な責任があることが明らかになった。",
     "review_status": "approved"
+  },
+  "oceanlotus|https://securelist.com/oceanlotus-suspected-pypi-zichatbot-campaign/119603/": {
+    "review_notes": "原文(Kaspersky Securelist)を確認。タイトル・本文ともOceanLotusは『suspected』であり、根拠はKTAEによるコード類似64%のみ。感染の観測も「to date, we have not observed any infections」と明記。ベンダー自身が断定していないsuspected帰属かつ類似性ベースのため不採用(AGENT.md: suspectedは自動承認せず、類似は含めない)。",
+    "review_status": "rejected"
   },
   "patchwork|https://thehackernews.com/2024/07/patchwork-hackers-target-bhutan-with.html": {
     "confidence": "high",
@@ -1623,6 +1847,18 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: ロシアのTurlaハッカー、パキスタンのAPTサーバーを乗っ取りサイバースパイ活動を展開",
     "review_status": "approved"
   },
+  "turla|https://www.microsoft.com/en-us/security/blog/2026/05/14/kazuar-anatomy-of-a-nation-state-botnet/": {
+    "capability_decisions": [
+      {
+        "name": "Kazuar",
+        "review_notes": "Microsoftが本文でKernel/Bridge/Workerの3モジュール構成を直接分析したTurlaの固有バックドア。偽旗・一般分類ではない。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "原文(Microsoft Security Blog)を確認。KazuarボットネットをSecret Blizzardの活動として分析し、CISAがSecret BlizzardをFSB Center 16へ帰属している旨を明記。Secret BlizzardはTurla/VENOMOUS BEAR/Snake等と重複するMicrosoft名でありturlaプロファイルへ対応付け(overlapping aliasの手動確認)。観測期間の明示はないためunknownとしreported_atへ分離。",
+    "review_status": "approved"
+  },
   "uac-0001|https://www.trendmicro.com/ja_jp/research/26/d/pawn-storm-targets-govt-infra.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア背景のPawn Stormで、APT28、Fancy Bear、UAC-0001、Forest Blizzardとしても知られ、主に諜報活動と支援妨害、潜在的破壊工作が示唆される。",
@@ -1688,6 +1924,32 @@
   "unc1069|https://www.bleepingcomputer.com/news/security/openai-rotates-macos-certs-after-axios-attack-hit-code-signing-workflow/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は Axios 事案に関連する北朝鮮系脅威アクター UNC1069 と結び付けられており、ソーシャルエンジニアリングでメンテナーをだまして悪性版を公開したと記載されている。",
+    "review_status": "approved"
+  },
+  "unc1549|https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-02-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Check Point: 2026年4月まで観測",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "MiniFast",
+        "review_notes": "Check Pointが本文で直接分析した新型バックドア。AI支援開発の痕跡と長期潜伏・遠隔コマンド実行機能を記載。固有名。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "原文(Check Point Research)を確認。Nimbus Manticore(IRGC関連、Google追跡名UNC1549)を実行主体として明記し、2026年2〜4月の防衛・航空・通信分野(欧州・中東・イスラエル・UAE、米国航空へ拡大)への攻撃を直接分析。Nimbus Manticoreはunc1549プロファイルのexact alias。SEOポイズニングと新型バックドアMiniFastを初観測。",
     "review_status": "approved"
   },
   "unc1549|https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416": {
@@ -1839,6 +2101,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが当該活動への帰属先として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 既に攻撃が行われており、攻撃者は北朝鮮支援グループ（Contagious Interview、UNC5342など）と特定。",
     "review_status": "approved"
   },
+  "unc5342|https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/": {
+    "confidence": "medium",
+    "review_notes": "原文(AllSecure blog, 2026-07-29公開)を確認。Contagious Interviewレコードと同一記事・同一根拠。「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF through 2025-2026」と明記され、EtherHiding型C2・crypto/開発者認証情報窃取の手口がUNC5342の既知手法と一致すると評価。活動期間は一次資料に明示値がないためunknownとし、記事公開日はreported_atとして分離する。",
+    "review_status": "approved"
+  },
   "unc5342|https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-etherhiding-to-hide-malware-on-the-blockchain/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Google TIGはDPRKのUNC5342が2025年2月からEtherHidingを採用し、スマートコントラクトで悪性ペイロードを配布と報告。",
@@ -1917,6 +2184,11 @@
   "unc6395|https://www.bleepingcomputer.com/news/security/salesloft-march-github-repo-breach-led-to-salesforce-data-theft-attacks/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃はUNC6395に帰属、ShinyHuntersとScattered Spider関与の主張も。",
+    "review_status": "approved"
+  },
+  "unc6671|https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments": {
+    "confidence": "high",
+    "review_notes": "原文(Google Threat Intelligence Group, 2026-08-06公開)を確認。「a common group of threat actors are affiliated with the BlackFile, Redact, Pink, Helix, and Falcon extortion brands」とUNC6671が複数の恐喝ブランドを横断して運用する実行主体であることが明記されている。ヘッジファンド・プライベートエクイティ・金融機関を標的としたボイスフィッシングによるMicrosoft 365/Okta SSO侵害を新規活動として採用。活動期間は一次資料のドメイン登録観測(2026-04-01〜08-03)を別途確認できた範囲に限定し、記事公開日(2026-08-06/07)はreported_atとして分離する。",
     "review_status": "approved"
   },
   "unc6671|https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/": {
@@ -2044,114 +2316,5 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は「Qilin」ランサムウェアグループ（別名Gold Feather、Water Galura）で、2022年10月以降RaaSとして活動中",
     "review_status": "approved"
-  },
-  "apt38|https://aws.amazon.com/jp/blogs/security/amazon-identifies-north-korean-hacker-group-behind-open-source-supply-chain-attacks/": {
-    "review_status": "approved",
-    "confidence": "medium",
-    "review_notes": "原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
-    "capability_decisions": [
-      {
-        "name": "typo-crypto",
-        "status": "approved",
-        "reason": "侵害されたnpmパッケージ自体。原文に「特定のハッシュ入力を受けるとC2から第2段階ペイロードを取得し、Windows/macOS/Linux上で実行するコードが確認された」と明記され、C2通信・ペイロード取得機能を持つ悪性実装として直接分析されている。"
-      }
-    ]
-  },
-  "blackbyte|https://www.sophos.com/en-us/blog/chaos-in-teams-vishing": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Sophos blog)を確認したが、BlackByteへの言及は本文中に一切ない。本文が言及するのはChaosランサムウェア運営者とBlackSuit/Royal(Conti系譜)元メンバーとの関連の疑いのみであり、BlackByteとの結び付けは確認できない。実行主体表現なしのため不採用。"
-  },
-  "carbanak|https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(SOCRadar blog)を確認したが、Carbanakへの言及は本文中に存在しない。URL文字列の一部への機械的な誤一致であり、名称衝突として不採用。"
-  },
-  "contagious-interview|https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/": {
-    "review_status": "approved",
-    "confidence": "medium",
-    "review_notes": "原文(AllSecure blog, 2026-07-29公開)を確認。本文は「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF through 2025-2026」と明記し、macOS ClickFix偽アップデート、EtherHiding経由のブロックチェーン型C2、暗号資産・開発者認証情報窃取という手口をContagious Interviewの既知の戦術と一致すると評価している。新規ドメイン(rg-telemetry.sbs, th-updates.sbs)は未公開の新規インフラと記載。活動期間は一次資料に明示値がないためunknownとし、記事公開日はreported_atとして分離する。"
-  },
-  "earth-lusca|https://chromium.googlesource.com/chromium/src/+/main/docs/security/ai-generated-security-bugs-faq.md": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Chromium security docs)を確認したが、Earth Luscaへの言及はない。Google ChromeのAI活用バグ修正に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。"
-  },
-  "earth-lusca|https://chromium-review.googlesource.com/c/chromium/src/+/8165095": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Chromium Gerrit変更内容)およびBleepingComputer記事を確認したが、Earth Luscaへの言及はない。Google Chromeが新しいタブ乗っ取り拡張機能を既定でブロックする機能に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。"
-  },
-  "ember-bear|https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(SOCRadar blog)を確認。Ember Bearへの言及はなく、UAC-0056/UAC-0114についても「SOCRadar attributes this activity to a Russia-nexus actor with high confidence, based on TTP overlap with UAC-0056 / UAC-0114」とTTP類似を根拠の一つに挙げるのみで、実行主体と明記していない。帰属自体は別途6項目の技術的指標(Cyrillicキーボード痕跡、Yandex Cloudホスティング等)に基づく。実行主体を示す表現が不足しているため不採用。"
-  },
-  "hellsing-apt|https://www.unodc.org/roseap/uploads/documents/Publications/2026/TOCTA_South-East_Asia_2026.pdf": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(UNODC報告書プレスリリース)を確認したが、Hellsing APTへの言及はない。プロファイル上のalias「Asia」が『South-East Asia』等の一般語・地域名に機械的に一致した名称衝突。不採用。"
-  },
-  "muddywater|https://www.sophos.com/en-us/blog/chaos-in-teams-vishing": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Sophos blog)を確認。本文は「Sophos analysts have found no evidence linking STAC4749 activity to that group(MuddyWater)」と明記しており、Rapid7による関連示唆をSophos自身が明確に否定している。本件はparse-daily/unknown-clusters.jsonでSTAC4749として既に台帳管理済みであり、MuddyWaterとの関連は既に否定済み。不採用。"
-  },
-  "night-dragon|https://hunt.io/blog/flying-eagle-android-rat-170-servers-night-dragon": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(hunt.io blog)を確認。「On June 23, 2026, SQLRCE0 introduced Night Dragon (夜龙), a separately developed Android remote control kit」とあり、2026年6月にSQLRCE0が発表した新規Android RATプラットフォームの名称であることが明記されている。2011年の石油・エネルギー業界を標的にした同名APT「Night Dragon」とは無関係。偶然の命名一致のため不採用。"
-  },
-  "unc5342|https://www.allsecure.io/blog/clickfix-etherhiding-dprk-wallet/": {
-    "review_status": "approved",
-    "confidence": "medium",
-    "review_notes": "原文(AllSecure blog, 2026-07-29公開)を確認。Contagious Interviewレコードと同一記事・同一根拠。「The tradecraft matches the DPRK threat cluster UNC5342 and the 'Contagious Interview' campaign publicly documented by Google Threat Intelligence Group, Microsoft and JAMF through 2025-2026」と明記され、EtherHiding型C2・crypto/開発者認証情報窃取の手口がUNC5342の既知手法と一致すると評価。活動期間は一次資料に明示値がないためunknownとし、記事公開日はreported_atとして分離する。"
-  },
-  "blacktech|https://sect.iij.ad.jp/blog/2026/07/blueshell-variant-deployed-by-apt-group/": {
-    "review_status": "approved",
-    "confidence": "high",
-    "review_notes": "原文(IIJ Security Diary)を確認。「我々はBlackTechによる日本国内の組織を標的としたAPT攻撃においてもBlueShell亜種を観測しています」と明記され、BlackTechが当該BlueShell亜種を用いた侵入後活動の実行主体であることが確認できる(BlueShell亜種自体は他の複数APTグループも使用する共通マルウェアである旨の記載もあるが、BlackTechによる観測は個別に明記されている)。",
-    "capability_decisions": [
-      {
-        "name": "BlueShell",
-        "status": "approved",
-        "reason": "IIJが日本国内組織を標的としたBlackTechのAPT攻撃活動でBlueShell亜種を直接観測したと明記している。"
-      }
-    ]
-  },
-  "hellsing-apt|https://securelist.com/octlurk-silklurk-backdoors-central-asia/120840/": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Kaspersky Securelist)を確認したが、「Hellsing」という文字列自体が本文に登場しない。Kaspersky自身が「at the time of publication, we couldn't attribute this activity to any known group」と明記しており既知グループへの帰属を確認できていない。プロファイル上のalias「Asia」が『Central Asia』等の地域語に機械的に一致した名称衝突。本件はparse-daily/unknown-clusters.jsonに「OctLurk / SilkLurk operator (未命名)」として既に台帳管理済み。不採用。"
-  },
-  "apt29|https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/": {
-    "review_status": "rejected",
-    "confidence": "medium",
-    "review_notes": "同一活動(CaptiveCrunch、Storm-2945によるcaptive portal Wi-Fi悪用)は2026-08-03のコミット(PR #18)で既にAPT29プロファイルへ適用済み(活動名: 'Storm-2945によるCaptiveCrunchキャンペーン:出張者向けcaptive portal Wi-Fi悪用によるマルウェア配布と資格情報窃取'、CornFlake/ChocoShell/FruitStoneを含む)。本レコードはbleepingcomputer経由の二次報道(2026-08-05付)がtech-memoに新規収録されたことによる重複検知であり、原文(Microsoft Security Blog, 2026-07-31)を再確認したが追加すべき新規情報はない。"
-  },
-  "contagious-interview|https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique": {
-    "review_status": "rejected",
-    "confidence": "medium",
-    "review_notes": "同一活動(NullReceiver、悪意あるnpmパッケージ経由のブロックチェーン型C2、IOC 166.88.134.62)は2026-08-04のコミット(PR #19)で既にContagious Interviewプロファイルへ適用済み。本レコードはキュー再生成による重複表示であり、追加適用は不要。"
-  },
-  "apt41|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Check Point Research)を確認。「Silver Dragon is assessed with high confidence to be linked to a Chinese-nexus threat actor, likely operating within the umbrella of APT41」とあり、'likely'による示唆に留まり確定的帰属ではない。Silver Dragonは同記事でCheck Pointが新規命名した独立クラスタで、根拠は導入スクリプト・シェルコード復号方式・Cobalt Strike設定・UTC+8タイムスタンプ等の技術的重複のみ。実行主体をAPT41と確定できないため不採用。Silver DragonはAPT41関連候補としてparse-daily/unknown-clusters.jsonでの追跡を推奨。"
-  },
-  "hellsing-apt|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Check Point Research)にHellsing APTへの言及なし。プロファイルのalias「Asia」が記事本文の地域語(Southeast Asia)に機械的一致した名称衝突。過去の同種ケース(UNODC報告書、Kaspersky OctLurk/SilkLurk記事)と同様のパターンで不採用。"
-  },
-  "mustang-panda|https://www.fortinet.com/blog/threat-research/quickfox-supply-chain-attack-used-to-deploy-fdmtp-implant": {
-    "review_status": "rejected",
-    "confidence": "low",
-    "review_notes": "原文(Fortinet FortiGuard Labs)に「FortiGuard Labs does not confidently attribute this campaign to a particular actor」と明記。Twill Typhoon(Mustang Pandaのoverlapping alias)との『significant technical crossover』の指摘のみで、確信度は低いと明言されている。tech-memo IOC CSVのactor列も「Twill Typhoon (low confidence)」と記載。OSINT_RULESの低信頼帰属自動承認禁止に該当するため不採用。"
-  },
-  "unc6671|https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments": {
-    "review_status": "approved",
-    "confidence": "high",
-    "review_notes": "原文(Google Threat Intelligence Group, 2026-08-06公開)を確認。「a common group of threat actors are affiliated with the BlackFile, Redact, Pink, Helix, and Falcon extortion brands」とUNC6671が複数の恐喝ブランドを横断して運用する実行主体であることが明記されている。ヘッジファンド・プライベートエクイティ・金融機関を標的としたボイスフィッシングによるMicrosoft 365/Okta SSO侵害を新規活動として採用。活動期間は一次資料のドメイン登録観測(2026-04-01〜08-03)を別途確認できた範囲に限定し、記事公開日(2026-08-06/07)はreported_atとして分離する。"
   }
 }
