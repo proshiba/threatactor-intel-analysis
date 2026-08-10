@@ -1,0 +1,1172 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--teampcp",
+  "name": "TeamPCP",
+  "status": "draft",
+  "created_at": "2026-08-10T02:40:00Z",
+  "updated_at": "2026-08-10T07:28:34Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "TeamPCP",
+    "aliases": [
+      {
+        "name": "UNC6780",
+        "vendor": "Google Threat Intelligence Group",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。"
+      },
+      {
+        "name": "TA-NATALSTATUS",
+        "vendor": "",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。"
+      },
+      {
+        "name": "IronErn",
+        "vendor": "",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "GitLabアカウント運用の重複を根拠とする関連であり、同一クラスタの確定ではない。"
+      },
+      {
+        "name": "PCPCat",
+        "vendor": "SentinelOne (SentinelLabs)",
+        "scope": "unknown",
+        "confidence": "low",
+        "evidence_refs": [
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "SentinelLabsが「early TeamPCP/PCPCat campaigns」と併記するが、対応関係の説明がないためスコープ不明として保持する。"
+      }
+    ],
+    "actor_types": [
+      "cybercrime"
+    ],
+    "first_seen": {
+      "value": "2020-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-04-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "yes",
+    "description": "金銭目的を公称するサイバー犯罪グループ。インターネットへ露出したRay、Docker、Redis、Reactなどのサービスを自動・ワーム型で侵害し、資格情報窃取、決済フィッシング、ランサムウェア展開、オープンソースサプライチェーン攻撃を行う。ShadowRay 2.0ではAI基盤が自己増殖型ボットネット化された。",
+    "analyst_notes": "2025年後半に公然化したが、Oligoは基盤の連続性から活動を2020年まで遡及している。"
+  },
+  "attribution": {
+    "countries": [],
+    "sponsor_type": "criminal",
+    "organizations": [],
+    "assessment": "一次資料は国家帰属を示していない。金銭目的のサイバー犯罪グループとして扱う。インフラ所在国を帰属国へ流用しない。",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--oligo-teampcp-2026",
+      "source--gtig-ai-threat-tracker-2026-05"
+    ],
+    "analyst_notes": "GTIGは分類上「cyber crime threat actor」としている。"
+  },
+  "motivations": [
+    {
+      "type": "financial",
+      "description": "資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--oligo-teampcp-2026",
+        "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": ""
+    }
+  ],
+  "relationships": [],
+  "diamond_model": {
+    "adversary": "金銭目的を公称するサイバー犯罪グループTeamPCP(GTIG命名 UNC6780)。国家帰属は不明。",
+    "capability": "露出サービスの自動探索とワーム型侵害、ShadowRay 2.0ペイロード、SANDCLOCK資格情報スティーラー、ランサムウェア、フィッシングページ。",
+    "infrastructure": "masscan.cloudとnatalstatus.orgを中心とするドメイン群、/EP9ts2/や/files/という特徴的な配置パス、複数のC2 IP。",
+    "victim": "インターネットへ露出したクラウド・AI基盤の運用組織、およびTrivy、Checkmarx、LiteLLM、BerriAIなどのオープンソースプロジェクト。",
+    "socio_political": "収益化のためランサムウェア・データ恐喝グループと提携する犯罪エコシステム。",
+    "analyst_notes": "アクター全体の要約であり、活動別ダイヤモンドは各Activityに保存する。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--sandclock",
+        "name": "SANDCLOCK",
+        "aliases": [],
+        "types": [
+          "credential stealer"
+        ],
+        "description": "ビルド環境からAWSキーとGitHubトークンを窃取する資格情報スティーラー。侵害したGitHub Actionsワークフローへ埋め込まれる。",
+        "first_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--shadowray-2-0-payloads",
+        "name": "ShadowRay 2.0 ペイロード",
+        "aliases": [],
+        "types": [
+          "Linux",
+          "worm",
+          "botnet"
+        ],
+        "description": "侵害したRay等のAI基盤を自己増殖型ボットネット化するペイロード群。第1段階はndt.shなどのシェルスクリプトで、リバースシェルと追加バイナリを取得する。",
+        "first_observed": {
+          "value": "2025-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "一次資料は個別IOCとマルウェア名の対応を明示していないため、キャンペーン単位の総称として登録する。"
+      }
+    ],
+    "tools": [],
+    "infrastructure": [
+      {
+        "id": "infra--masscan-cloud",
+        "name": "masscan.cloud / natalstatus.org 基盤",
+        "aliases": [],
+        "types": [
+          "domain",
+          "c2",
+          "phishing"
+        ],
+        "description": "TA-NATALSTATUS、ShadowRay 2.0、TeamPCPの各キャンペーンで再利用された中核基盤。auth、checkout、pay、mail、testなどのサブドメインが資格情報・決済フィッシングとインフラ試験に使われ、pcp.masscan.cloudはTeamPCPのTelegramチャンネルへ誘導していた。",
+        "first_observed": {
+          "value": "2020-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "delivery_formats": [
+      {
+        "id": "delivery--malicious-pypi-package",
+        "name": "侵害済みPyPIパッケージ",
+        "aliases": [],
+        "types": [
+          "package"
+        ],
+        "description": "初期アクセス経路として使用される汚染されたPyPIパッケージ。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--malicious-pull-request",
+        "name": "悪意あるプルリクエスト",
+        "aliases": [],
+        "types": [
+          "source-code"
+        ],
+        "description": "オープンソースリポジトリへの悪意あるプルリクエストを起点に権限を得る。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--worm-style-mass-exploitation",
+        "name": "ワーム型の大量侵害",
+        "aliases": [],
+        "types": [],
+        "description": "露出サービスを自動探索し、侵害先から次の対象へ自己増殖的に拡散する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--ransomware-partnership",
+        "name": "恐喝グループとの提携",
+        "aliases": [],
+        "types": [],
+        "description": "窃取した資格情報とデータをランサムウェア・データ恐喝グループとの提携で収益化する。SentinelLabsはVECTランサムウェアグループとの提携表明を記載している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--long-term-reverse-shell",
+        "name": "長期的なリバースシェル維持",
+        "aliases": [],
+        "types": [],
+        "description": "侵害したRayクラスタへ長期間リバースシェルを維持する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "capabilityは一次資料が当該アクターの利用として明記した項目のみを登録している。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--daily-5aa545c901df820c7aa2",
+      "name": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--teampcp-t1059-004-ndt-sh",
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1486-ransomware"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--829e65b1ac18ce5ea420",
+        "victim--teampcp-exposed-cloud-services"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-48f251212f832ab9b6df"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--5aa545c901df820c7aa23b26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Oligo Security, 2026-08-05公開)を原文で確認。「TeamPCP was responsible for the first known attack in which AI infrastructure was hijacked into a self-propagating botnet during the ShadowRay 2.0 campaign」とTeamPCPを実行主体として明記している。同名製品・法執行記事・過去言及のいずれでもない。独立した一次資料としてSentinelLabs(2026-05-07、TeamPCPを独立クラスタとして記述)とGoogle Threat Intelligence Group(2026-05-11、「TeamPCP」(aka UNC6780))も原文確認済み。活動期間は一次資料が明示する2020年からの遡及と、masscan.cloudの名前解決変更が観測された2026年4月を採用する。記事公開日はreported_atとして分離する。TA-NATALSTATUS/IronErnとの関係は、Oligoが同一運用者・密接な協力・基盤共有のいずれであるかを断定していないため、aliasのscopeをoverlappingに留める。TeamPCPは本レコードの採用に合わせて新規プロファイルへ昇格した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--shadowray-2-0-payloads"
+          ],
+          "ttp_refs": [
+            "ttp--teampcp-t1059-004-ndt-sh",
+            "ttp--teampcp-t1190-exposed-services",
+            "ttp--teampcp-t1486-ransomware"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--829e65b1ac18ce5ea420",
+            "victim--teampcp-exposed-cloud-services"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "source-stated",
+            "precision": "year",
+            "status": "known",
+            "value": "2020-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "source-stated",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Execution",
+            "Impact",
+            "Initial Access"
+          ],
+          "results": [
+            "account-compromise",
+            "credential-theft",
+            "encryption",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-48f251212f832ab9b6df",
+          "source--oligo-teampcp-2026",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--teampcp-oss-supply-chain-2026",
+      "name": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "activity_type": "supply-chain-cybercrime",
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "target_refs": [],
+      "malware_refs": [
+        "malware--sandclock"
+      ],
+      "infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "ttp_refs": [
+        "ttp--teampcp-t1195-002-oss-supply-chain",
+        "ttp--teampcp-t1552-001-build-secrets"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--36589755fc4094ee8555",
+        "victim--teampcp-oss-projects-2026"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--sandclock"
+          ],
+          "ttp_refs": [
+            "ttp--teampcp-t1195-002-oss-supply-chain",
+            "ttp--teampcp-t1552-001-build-secrets"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--36589755fc4094ee8555",
+            "victim--teampcp-oss-projects-2026"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-05-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "supply-chain-cybercrime",
+          "phases": [
+            "Credential Access",
+            "Initial Access"
+          ],
+          "results": [
+            "credential-theft",
+            "encryption",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-ai-threat-tracker-2026-05",
+        "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。"
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--36589755fc4094ee8555",
+      "name": "被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "activity_refs": [
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--sandclock"
+      ],
+      "ttp_refs": [
+        "ttp--teampcp-t1195-002-oss-supply-chain",
+        "ttp--teampcp-t1552-001-build-secrets"
+      ],
+      "affected_assets": [
+        "エンドポイント",
+        "クラウド／SaaS",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-ai-threat-tracker-2026-05",
+        "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--829e65b1ac18ce5ea420",
+      "name": "被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--teampcp-t1059-004-ndt-sh",
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1486-ransomware"
+      ],
+      "affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。"
+        }
+      ],
+      "first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-48f251212f832ab9b6df"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--teampcp-exposed-cloud-services",
+      "name": "インターネットへ露出したRay/Docker/Redis/React環境(集約)",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Oligo Securityは、Ray、Docker、Redis、Reactなど公開サービスの侵害を個別組織名を挙げずに集約して報告している。ShadowRay 2.0では侵害したAI基盤が自己増殖型ボットネット化された。",
+      "activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--shadowray-2-0-payloads"
+      ],
+      "ttp_refs": [
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1059-004-ndt-sh"
+      ],
+      "affected_assets": [
+        "Rayクラスタ",
+        "Redisサーバー",
+        "Dockerホスト",
+        "Kubernetes環境"
+      ],
+      "impacts": [
+        {
+          "impact_type": "account-compromise",
+          "description": "侵害環境へのリバースシェルによる長期的な支配。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "クラウド資格情報の窃取。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "ランサムウェア展開による暗号化。"
+        }
+      ],
+      "first_observed": {
+        "value": "2020-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--oligo-teampcp-2026"
+      ],
+      "analyst_notes": "被害組織名は一次資料に記載がないため集約事例として保存する。"
+    },
+    {
+      "victim_case_id": "victim--teampcp-oss-projects-2026",
+      "name": "Trivy、Checkmarx、LiteLLM、BerriAI",
+      "victim_name": "Trivy / Checkmarx / LiteLLM / BerriAI",
+      "disclosure_status": "named",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "GTIGは、TeamPCPがTrivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIに関連するGitHubリポジトリとGitHub Actionsの侵害に関与したと表明したことを記載している。SentinelLabsもAqua SecurityのTrivyとLiteLLMの侵害を記載している。",
+      "activity_refs": [
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--sandclock"
+      ],
+      "ttp_refs": [
+        "ttp--teampcp-t1195-002-oss-supply-chain",
+        "ttp--teampcp-t1552-001-build-secrets"
+      ],
+      "affected_assets": [
+        "GitHubリポジトリ",
+        "GitHub Actionsワークフロー",
+        "PyPIパッケージ"
+      ],
+      "impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "オープンソース配布物とCIワークフローの汚染。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "ビルド環境からのAWSキーとGitHubトークンの窃取。"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-ai-threat-tracker-2026-05",
+        "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": "被害組織は攻撃者側の犯行表明とベンダー報告の双方に基づく。被害組織自身による確認まで取れていないためcase_statusはreportedとする。"
+    }
+  ],
+  "targets": {
+    "countries": [],
+    "regions": [
+      {
+        "id": "target--teampcp--region--global",
+        "name": "全世界",
+        "description": "一次資料は特定国を標的条件として挙げず、インターネットへ露出したサービスとオープンソース配布網を対象としている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026",
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--teampcp--sector--cloud-ai-infrastructure",
+        "name": "クラウド・AI基盤運用",
+        "description": "Ray、Kubernetes、Docker、Redisなどの運用環境が侵害対象として明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--teampcp--sector--fintech",
+        "name": "フィンテック",
+        "description": "Oligo資料がフィンテックアプリケーションを標的技術・分野として挙げている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--teampcp--sector--open-source-software",
+        "name": "オープンソースソフトウェア",
+        "description": "Trivy、Checkmarx、LiteLLM、BerriAIなどの配布網が侵害対象として明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "roles": [],
+    "selection_logic": "国や産業ではなく、インターネットへ露出した特定技術スタックの有無で対象を選定する。サプライチェーン段階では、広く利用される開発・セキュリティツールを選定している。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "標的国の明示がないため個別国は登録せず、広域表示のみとする。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--teampcp-t1059-004-ndt-sh",
+      "tactic": "Execution",
+      "technique_id": "T1059.004",
+      "technique_name": "Unix Shell",
+      "observed_behavior": "侵害したRayクラスタへ第1段階シェルスクリプトndt.shを配信して実行し、リバースシェルと追加ペイロードを取得する。",
+      "activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--oligo-teampcp-2026"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--teampcp-t1190-exposed-services",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "Ray、Docker、Redis、Reactなどインターネットへ露出したサービスを自動・ワーム型で侵害する。",
+      "activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2020-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--oligo-teampcp-2026"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--teampcp-t1195-002-oss-supply-chain",
+      "tactic": "Initial Access",
+      "technique_id": "T1195.002",
+      "technique_name": "Compromise Software Supply Chain",
+      "observed_behavior": "侵害済みPyPIパッケージと悪意あるプルリクエストを起点にGitHubリポジトリとGitHub Actionsを侵害し、配布物へ悪性コードを埋め込む。",
+      "activity_refs": [
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-ai-threat-tracker-2026-05",
+        "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--teampcp-t1486-ransomware",
+      "tactic": "Impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "侵害したクラウド環境でランサムウェアを展開し、恐喝グループとの提携で収益化する。",
+      "activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--oligo-teampcp-2026",
+        "source--sentinellabs-pcpjack-2026"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--teampcp-t1552-001-build-secrets",
+      "tactic": "Credential Access",
+      "technique_id": "T1552.001",
+      "technique_name": "Credentials In Files",
+      "observed_behavior": "SANDCLOCK資格情報スティーラーをビルド環境へ埋め込み、AWSキーとGitHubトークンを窃取する。",
+      "activity_refs": [
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "malware_refs": [
+        "malware--sandclock"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-ai-threat-tracker-2026-05"
+      ],
+      "analyst_notes": ""
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--daily-48f251212f832ab9b6df",
+      "path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "title": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
+      "publisher": "oligo.security",
+      "published_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260808.md; source commit: a26e0feb958002424dfd09a674ba18cea2ccbbc7; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--gtig-ai-threat-tracker-2026-05",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+      "title": "GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」とUNC6780を併記している。"
+    },
+    {
+      "source_id": "source--oligo-teampcp-2026",
+      "path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+      "title": "New Intelligence Links TeamPCP to ShadowRay 2.0 and Traces Activity Back to 2020",
+      "publisher": "Oligo Security",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを実行主体として明記し、TA-NATALSTATUS/IronErnとの運用上の連続性を2020年まで遡及している。"
+    },
+    {
+      "source_id": "source--sentinellabs-pcpjack-2026",
+      "path": "https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+      "title": "PCPJack | Cloud Worm Evicts TeamPCP and Steals Credentials at Scale",
+      "publisher": "SentinelOne (SentinelLabs)",
+      "published_at": {
+        "value": "2026-05-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "TeamPCPは金銭目的のサイバー犯罪グループであり、露出サービスの大量侵害とオープンソースサプライチェーン攻撃を併用する。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026",
+          "source--gtig-ai-threat-tracker-2026-05",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "statement": "TeamPCPの運用はTA-NATALSTATUSおよびIronErnとして追跡された活動と基盤・配置パス・アカウント運用の面で連続している。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026"
+        ],
+        "analyst_notes": "Oligoは同一運用者と断定していない。"
+      },
+      {
+        "statement": "UNC6780はGoogle Threat Intelligence GroupによるTeamPCPの別称である。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "gaps": [
+      "個別IOCとマルウェアファミリー名の対応が一次資料で明示されていない。",
+      "運用者の所在国・言語圏を示す一次資料を未取得。",
+      "2020年から2025年の間の個別キャンペーンを裏付ける独立資料が不足している。"
+    ],
+    "uncertainties": [
+      "Trivy侵害の時期はSentinelLabsが2026年2月、GTIGが2026年3月下旬の犯行表明としており、侵害日と表明日のどちらを指すかで記述が異なる。両論を残す。",
+      "PCPCatとTeamPCPの対応関係が一次資料で説明されていない。",
+      "tech-memoのIOC CSVでShai-HuludのIOCにactor=TeamPCPが付与されているが、この帰属は一次資料で確認できていないため本プロファイルへ取り込んでいない。"
+    ],
+    "collection_notes": "Oligo Security(2026-08-05)、SentinelLabs(2026-05-07)、Google Threat Intelligence Group(2026-05-11)の3本の独立した一次資料を原文で確認した。IOCはtech-memoの2026-08-08収集分(一次ソースはOligo記事)から取り込む。",
+    "analyst_notes": "プロファイル昇格は独立一次資料3本の確認と利用者承認に基づく。"
+  },
+  "free_text": {
+    "executive_summary": "TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで、インターネットへ露出したRay、Docker、Redis、React環境をワーム型に侵害し、2026年にはGitHub ActionsとPyPIを経由するオープンソースサプライチェーン攻撃へ拡大した。Oligo Securityは基盤の連続性から活動を2020年まで遡及している。",
+    "history": "2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。",
+    "capability_details": "第1段階はndt.shなどのシェルスクリプト、資格情報窃取はSANDCLOCK、収益化はランサムウェア展開と恐喝グループとの提携による。SentinelLabsが報告したPCPJackはTeamPCPの基盤を排除する別主体であり、混同しない。",
+    "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/および/files/という特徴的な配置パスが複数キャンペーンで再利用されている。個別のIOCはiocs.jsonに保存する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。",
+    "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立一次資料3本の確認後に昇格した。status: draftから開始する。"
+  }
+}

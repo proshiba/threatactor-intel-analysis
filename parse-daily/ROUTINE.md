@@ -59,6 +59,12 @@ tech-memo に載っていない新規公開がないか、次の一次情報源�
 - ESET Research https://www.welivesecurity.com/en/eset-research/
 - SentinelLabs https://www.sentinelone.com/labs/
 - Kaspersky Securelist https://securelist.com/
+- Kaspersky Securelist（ロシア語版） https://securelist.ru/
+
+securelist.ru には securelist.com へ出ないロシア語圏アクターの記事が継続的に載ります。
+両方を確認してください。2026-08-10 の走査では、Head Mare の TrueConf Server 侵害
+（2026-08-07）と Awaken Likho の TokenBuoy 移行（2026-08-07）がいずれも .ru のみで公開され、
+.com だけを見ていた期間に取りこぼしていました。
 
 検索結果のスニペットだけを根拠にせず、公開一覧と原文を確認してください
 （actor_profile/OSINT_RULES.md）。結果は publisher・URL・最新の関連公開日・判定の
