@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--head-mare`
 - 状態: draft
-- 更新日時: 2026-08-10T07:28:34Z
+- 更新日時: 2026-08-10T07:33:16Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -47,6 +47,35 @@ Aliasなし
 | Infrastructure | フィッシング配信基盤、侵害したTrueConf Server上のWebシェル、C2として悪用するMicrosoft OneDrive、リバースSSHトンネル先。 |
 | Victim | ロシアとベラルーシの政府機関、運輸、エネルギー、製造、エンターテインメント、計測機器、電子、IT、ソフトウェア開発分野の組織。 |
 | Socio-political | ロシア・ウクライナ戦争を背景とする対ロシア・ベラルーシのハクティビズム。 |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-08-10T07:33:16Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | Head Mare | canonical-name | 高 |  | https://therecord.media/russian-researchers-winrar-bug-ukraine-espionage<br>https://www.facct.ru/blog/phantomdl-loader<br>https://securelist.com/head-mare-hacktivists/113555/ |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -191,6 +220,7 @@ Aliasなし
 | source--daily-fff05927bf91551e1b96 | ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん | securelist.ru | 2026-08-10 | https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/ | osint-report | TLP:CLEAR | 中 |
 | source--kaspersky-head-mare-2024 | Head Mare: adventures of a unicorn in Russia and Belarus | Kaspersky (Securelist) | 2024-09-02 | https://securelist.com/head-mare-hacktivists/113555/ | vendor-research-report | TLP:CLEAR | 高 |
 | source--kaspersky-head-mare-trueconf-2026 | APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph участникам ВКС | Kaspersky (Securelist RU) | 2026-08-07 | https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/ | vendor-research-report | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

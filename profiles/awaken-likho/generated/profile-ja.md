@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--awaken-likho`
 - 状態: draft
-- 更新日時: 2026-08-10T07:28:35Z
+- 更新日時: 2026-08-10T07:33:16Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,6 +48,35 @@ Awaken Likho(別称 Core Werewolf)は、2021年からロシアおよびベラル
 | Infrastructure | フィッシング配信基盤と攻撃者運用のMeshCentralサーバー。 |
 | Victim | ロシアおよびベラルーシの政府組織、政府請負業者、産業企業。 |
 | Socio-political | ロシア・ベラルーシの政府機能を対象とする継続的な諜報活動。 |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-08-10T07:33:16Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | Awaken Likho | canonical-name | 高 |  | https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/<br>https://bi.zone/eng/expertise/blog/core-werewolf-protiv-opk-i-kriticheskoy-infrastruktury/<br>https://bi.zone/eng/expertise/blog/ne-budi-likho-core-werewolf-sovershenstvuet-ataki-na-rossiyskie-gosorganizatsii/ |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | Awaken Likho | canonical-name | 高 |  | https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/<br>https://bi.zone/eng/expertise/blog/core-werewolf-protiv-opk-i-kriticheskoy-infrastruktury/ |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -175,6 +204,8 @@ Kasperskyは2021年7月から追跡している。2024年6〜8月のキャンペ
 |---|---|---|---|---|---|---|---|
 | source--kaspersky-awaken-likho-2024 | Awaken Likho is awake: new techniques of an APT group | Kaspersky (Securelist) | 2024-10-07 | https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/ | vendor-research-report | TLP:CLEAR | 高 |
 | source--kaspersky-awaken-likho-tokenbuoy-2026 | Awaken Likho окончательно меняет почерк: переход на собственные бэкдоры TokenBuoy и TokenBuoySH | Kaspersky (Securelist RU) | 2026-08-07 | https://securelist.ru/awaken-likho-tokenbuoy/116536/ | vendor-research-report | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

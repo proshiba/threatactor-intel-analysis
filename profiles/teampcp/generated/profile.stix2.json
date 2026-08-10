@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:33:16Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -98,6 +98,129 @@
         "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/および/files/という特徴的な配置パスが複数キャンペーンで再利用されている。個別のIOCはiocs.jsonに保存する。",
         "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。",
         "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立一次資料3本の確認後に昇格した。status: draftから開始する。"
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--teampcp",
+        "actor_name": "TeamPCP",
+        "searched_at": "2026-08-10T07:33:16Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "TeamPCP",
+            "UNC6780",
+            "TA-NATALSTATUS",
+            "IronErn",
+            "PCPCat"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [
+            {
+              "entry_uuid": "microsoft-actor--sha256:0c07edbc5f8cbd1a605a57fadd9b9e6ae86e3654f067949f7af4077a6edea005",
+              "entry_value": "Storm-2999",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "teampcp",
+                  "profile_value": "TeamPCP",
+                  "dataset_value": "TeamPCP"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Storm-2999",
+                "TeamPCP"
+              ],
+              "countries": [],
+              "description": "Microsoft threat actor mapping. Origin/Threat: Group in development",
+              "refs": [
+                "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+              ],
+              "related": []
+            }
+          ],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "d3682137-2845-424f-be8a-9112d23f4f58",
+              "entry_value": "TeamPCP",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "pcpcat",
+                  "profile_value": "PCPCat",
+                  "dataset_value": "PCPcat"
+                },
+                {
+                  "normalized": "teampcp",
+                  "profile_value": "TeamPCP",
+                  "dataset_value": "TeamPCP"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "TeamPCP",
+                "Altered Spider",
+                "PCPcat",
+                "ShellForce",
+                "DeadCatx3",
+                "CanisterWorm"
+              ],
+              "countries": [],
+              "description": "TeamPCP is a threat actor that has executed a coordinated series of supply chain attacks, compromising widely-used open source tools such as Trivy, KICS, and LiteLLM to deploy credential-stealing malware. They employed techniques like credential harvesting, lateral movement within Kubernetes environments, and audio steganography to evade detection. The group has demonstrated the ability to leverage stolen credentials to propagate attacks across multiple ecosystems, including npm and PyPI, using a self-propagating worm known as CanisterWorm. Their operations have included the use of AES-256 encryption and RSA-4096 for exfiltration of sensitive data.",
+              "refs": [
+                "https://www.trendmicro.com/en_us/research/26/c/teampcp-telnyx-attack-marks-a-shift-in-tactics.html",
+                "https://www.trendmicro.com/en_us/research/26/c/inside-litellm-supply-chain-compromise.html",
+                "https://tracebit.com/blog/detecting-cicd-supply-chain-attacks-with-canary-credentials",
+                "https://www.crowdstrike.com/en-us/adversaries/altered-spider/",
+                "https://www.ic3.gov/CSA/2026/260702.pdf",
+                "https://flare.io/learn/resources/blog/teampcp-cloud-native-ransomware",
+                "https://cstromblad.com/posts/threat-actor-profile-teampcp/"
+              ],
+              "related": []
+            }
+          ],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [],
+          "external_values": [],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
       }
     },
     {
@@ -3363,7 +3486,7 @@
       "spec_version": "2.1",
       "id": "report--d1dcd276-3e72-4de8-91ac-208726e53c0a",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:33:16Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3372,7 +3495,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-10T07:28:34Z",
+      "published": "2026-08-10T07:33:16Z",
       "object_refs": [
         "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
         "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",

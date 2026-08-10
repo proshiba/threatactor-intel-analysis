@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teampcp`
 - 状態: draft
-- 更新日時: 2026-08-10T07:28:34Z
+- 更新日時: 2026-08-10T07:33:16Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -51,6 +51,35 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | Infrastructure | masscan.cloudとnatalstatus.orgを中心とするドメイン群、/EP9ts2/や/files/という特徴的な配置パス、複数のC2 IP。 |
 | Victim | インターネットへ露出したクラウド・AI基盤の運用組織、およびTrivy、Checkmarx、LiteLLM、BerriAIなどのオープンソースプロジェクト。 |
 | Socio-political | 収益化のためランサムウェア・データ恐喝グループと提携する犯罪エコシステム。 |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-08-10T07:33:16Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Storm-2999 | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | TeamPCP | canonical-name | 高 |  | https://www.trendmicro.com/en_us/research/26/c/teampcp-telnyx-attack-marks-a-shift-in-tactics.html<br>https://www.trendmicro.com/en_us/research/26/c/inside-litellm-supply-chain-compromise.html<br>https://tracebit.com/blog/detecting-cicd-supply-chain-attacks-with-canary-credentials |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -172,6 +201,8 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | source--gtig-ai-threat-tracker-2026-05 | GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access | Google Threat Intelligence Group | 2026-05-11 | https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access | vendor-research-report | TLP:CLEAR | 高 |
 | source--oligo-teampcp-2026 | New Intelligence Links TeamPCP to ShadowRay 2.0 and Traces Activity Back to 2020 | Oligo Security | 2026-08-05 | https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020 | vendor-research-report | TLP:CLEAR | 高 |
 | source--sentinellabs-pcpjack-2026 | PCPJack \| Cloud Worm Evicts TeamPCP and Steals Credentials at Scale | SentinelOne (SentinelLabs) | 2026-05-07 | https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/ | vendor-research-report | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

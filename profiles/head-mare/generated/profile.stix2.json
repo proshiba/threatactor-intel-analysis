@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:33:16Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -53,6 +53,102 @@
         "infrastructure_details": "2026年の活動では侵害したTrueConf Server自体が配布基盤となり、外部C2としてMicrosoft OneDriveとリバースSSHトンネル先が使用された。個別のIOCはiocs.jsonに保存する。",
         "targeting_details": "構造化ターゲット監査: 標的国=ベラルーシ、ロシア。標的地域=東欧。日本は確認時に個別国として保持する。\n\n標的はロシアとベラルーシに限定され、分野は政府機関から製造・IT・ソフトウェア開発まで広い。2026年は共通基盤の露出が選定条件となっている。",
         "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立した一次資料の確認後に昇格した。status: draftから開始する。"
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--head-mare",
+        "actor_name": "Head Mare",
+        "searched_at": "2026-08-10T07:33:16Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "Head Mare"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "485947c7-edb6-4a07-9276-2114dc767551",
+              "entry_value": "Head Mare",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "headmare",
+                  "profile_value": "Head Mare",
+                  "dataset_value": "Head Mare"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Head Mare"
+              ],
+              "countries": [],
+              "description": "Head Mare is a hacktivism focussed threat actor group known for targeting Russia and Belarus sectors using a remote access malware called PhantomRAT. They have been observed executing malicious code through specially crafted RAR archives, different from previous attacks exploiting vulnerabilities. The attribution of their campaign to Ukraine is uncertain due to limited visibility inside Russian networks. PhantomCore's use of RAR archives in their attack chain has been previously observed in other threat actor groups like Forest Blizzard.",
+              "refs": [
+                "https://therecord.media/russian-researchers-winrar-bug-ukraine-espionage",
+                "https://www.facct.ru/blog/phantomdl-loader",
+                "https://securelist.com/head-mare-hacktivists/113555/",
+                "https://cyble.com/blog/head-mare-deploys-phantomcore-against-russia/"
+              ],
+              "related": []
+            }
+          ],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [
+          {
+            "profile_malware_id": "malware--phantomcore",
+            "profile_name": "PhantomCore",
+            "entry_uuid": "0a35cc96-d40a-4041-95cc-b5f8b9bf4090",
+            "entry_value": "PhantomCore",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/win.phantomcore",
+              "https://www.intrinsec.com/wp-content/uploads/2025/11/INTRINSEC-2025-Threat-Report-Trouble_in_the_air.pdf",
+              "https://cyble.com/blog/head-mare-deploys-phantomcore-against-russia/",
+              "https://securelist.com/head-mare-hacktivists/113555/",
+              "https://global.ptsecurity.com/en/research/pt-esc-threat-intelligence/phantom-pains-a-large-scale-cyber-espionage-campaign-and-a-possible-split-of-the-apt-group-phantomcore/"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          }
+        ],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [],
+          "external_values": [],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
       }
     },
     {
@@ -5658,7 +5754,7 @@
       "spec_version": "2.1",
       "id": "report--992961fc-b53e-4835-ba0f-90215d275827",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:33:16Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5667,7 +5763,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-10T07:28:34Z",
+      "published": "2026-08-10T07:33:16Z",
       "object_refs": [
         "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
         "malware--735b1a23-0a49-4ed6-a6b3-0ff1c5ff9c66",
