@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "153b082489afea8d247b3e646cb25c96e25b5601",
-  "last_scanned_date": "2026-08-07",
+  "last_scanned_commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+  "last_scanned_date": "2026-08-10",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -655,6 +655,141 @@
           "result": "OctLurk/SilkLurk(7/30)は前回走査でHellsing APTとの名称衝突として不採用判定済み。8月新規は関連なし。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-10T02:40:00Z",
+      "window": {
+        "since": "2026-08-07",
+        "until": null
+      },
+      "source_commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+      "statistics": {
+        "news_files": 3,
+        "articles": 20,
+        "review_records": 3,
+        "approved_records": 3,
+        "applied_records": 3,
+        "unmatched_ioc_actor_observations": 32
+      },
+      "applied": [
+        {
+          "actor": "head-mare",
+          "activity": "未更新TrueConf Serverの脆弱性連鎖によるクライアントインストーラー汚染とPhantomCore/PhantomGraph配布",
+          "source": "https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
+          "ioc_observations": 35,
+          "capabilities": [
+            "PhantomCore",
+            "PhantomGraph"
+          ],
+          "decision": "原文(Kaspersky Securelist RU, 2026-08-07公開)を確認。記事表題がHead Mareを実行主体として明記。新規プロファイルへ昇格したうえで活動を採用した。一次資料は攻撃観測期間を明示せず調査・発見時期として2026年7月を示すのみのため、first_observedはprecision: month / status: inferredとし、last_observedはunknown、記事公開日はreported_atへ分離した。"
+        },
+        {
+          "actor": "teampcp",
+          "activity": "TA-NATALSTATUS/IronErnから連続するTeamPCPのクラウド基盤大量侵害とShadowRay 2.0",
+          "source": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "ioc_observations": 23,
+          "capabilities": [],
+          "decision": "原文(Oligo Security, 2026-08-05公開)を確認。TeamPCPを実行主体として明記。SentinelLabs(2026-05-07)とGTIG(2026-05-11)の独立一次資料も原文確認し、新規プロファイルへ昇格した。活動期間は一次資料が明示する2020年からの遡及と2026年4月を採用した。"
+        },
+        {
+          "actor": "turla",
+          "activity": "STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動",
+          "source": "https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering",
+          "ioc_observations": 0,
+          "capabilities": [
+            "STOCKSTAY",
+            "WILDDAY",
+            "DIAMONDBACK"
+          ],
+          "decision": "tech-memo未収録。一次情報源の直接確認(GTIG, 2026-06-25公開)で検知し原文を確認した。活動期間は資料が明示する2022年12月〜2025年11月を採用。STOCKSTAYとKAZUARの共通開発者評価は中程度確度のため統合せず両論を残した。"
+        },
+        {
+          "actor": "awaken-likho",
+          "activity": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃",
+          "source": "https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "ioc_observations": 0,
+          "capabilities": [
+            "TokenBuoy",
+            "TokenBuoySH"
+          ],
+          "decision": "tech-memo未収録。securelist.ruの公開一覧確認で検知し、原文と2024-10-07の初報を確認して新規プロファイルへ昇格した。IOCはtech-memoに未収録のため未取得。"
+        }
+      ],
+      "reviewed_non_matches": [
+        {
+          "name": "UNC6671 (BlackFile関連の恐喝)",
+          "decision": "同一活動は2026-08-07のコミット(PR #20)で既にUNC6671プロファイルへ適用済み。キュー再生成による重複表示。追加の反映なし。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "wel1dropper campaign (NUL1DROPPER)",
+          "observations": 32,
+          "note": "OpenSourceMalware(2026-08-06)。帰属はロシア系の可能性を示唆する限定表現に留まる。単一ベンダー初報のため昇格閾値未達。unknown-clusters.json へunknown-cluster--wel1dropper として tracking で追加した。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-05",
+          "result": "8/7以降の新規記事なし。ChainDrop(8/4)・macOS ClickFix(8/5)は特定アクターへの帰属明記なし。対応不要。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-06-25",
+          "result": "UNC6671(8/6)は反映済み。公開一覧の再確認で「STOCKSTAY Another Day」(Turla、2026-06-25)がtech-memo・プロファイルとも未収録であることを検知し、原文確認のうえTurlaプロファイルへ反映した。GTIG AI Threat Tracker(2026-05-11)はTeamPCPの別名UNC6780の根拠として採用。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-07",
+          "result": "最新はSOC運用記事(8/7)。ChainDrop(8/6)は帰属明記なし。直近活動アクターに関する新規個別記事なし。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "8/6は論説。直近活動アクターに関する新規個別記事なし。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "8月新規記事なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-07-22",
+          "result": "8月新規記事なし。PCPJack記事(2026-05-07)はTeamPCP昇格の独立一次資料として採用。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-03",
+          "result": "8/7以降の新規記事なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (RU)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-07",
+          "result": "Head MareのTrueConf Server侵害(8/7)とAwaken LikhoのTokenBuoy移行(8/7)を検知。いずれもsecurelist.comに掲載がなく、従来の確認範囲では取りこぼしていた。両方とも原文確認のうえ新規プロファイルへ昇格した。本走査から securelist.ru を常設の確認対象へ追加した(ROUTINE.md)。"
+        },
+        {
+          "publisher": "Oligo Security",
+          "url": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "latest_relevant_publication": "2026-08-05",
+          "result": "tech-memo経由で検知した記事の原文を確認。TeamPCP昇格の主資料として採用。"
+        },
+        {
+          "publisher": "OpenSourceMalware",
+          "url": "https://opensourcemalware.com/blog/russian-ai-slopsquatting-npm-campaign",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "tech-memo経由で検知した記事の原文を確認。帰属が限定表現に留まるためプロファイル化せず、未帰属クラスタ台帳へ記録した。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -688,5 +823,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。"
 }

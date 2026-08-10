@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-07T12:10:00Z",
+  "generated_at": "2026-08-10T02:40:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -570,6 +570,46 @@
         "未一致IOC観測10件はtech-memo CSV(20260805)に保持されている。北朝鮮系npm攻撃(apt38/Contagious Interview)との関係は一次資料に記載がなく関連付けない。"
       ],
       "analyst_notes": ""
+    },
+    {
+      "cluster_id": "unknown-cluster--wel1dropper",
+      "primary_name": "wel1dropper campaign (NUL1DROPPER operators、未命名)",
+      "aliases": [
+        "NUL1DROPPER campaign"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-08",
+      "last_seen": "2026-08-08",
+      "detected_via": "tech-memo daily-news 2026-08-08 / IOC CSV actor列",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "supply-chain-cybercrime",
+        "notes": "一次資料はロシア系の可能性を示唆するに留まる。根拠はTXTレコードをホストするwel1[.]ruドメインと、マルウェアが言及するロシアの金融機関(cloudpayments[.]ru、tcsbank[.]ru)であり、「could indicate that the actor is Russian」という限定表現である。帰属は確定していない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-06",
+          "publisher": "OpenSourceMalware",
+          "url": "https://opensourcemalware.com/blog/russian-ai-slopsquatting-npm-campaign",
+          "title": "Russian AI Slopsquatting Publishes 700+ Malicious NPM Packages",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "48時間で700件超を公開、調査時点で788件(一次資料の記載)",
+          "targets": "npmを利用する開発者およびCI環境。Windows・macOS・Linux(x64/ARM64)",
+          "malware": [
+            "NUL1DROPPER"
+          ],
+          "summary": "installスクリプトを使わず、require()による読み込みだけでダウンローダーが起動する。ペイロードは3つのCloudflare Workersから取得し、失敗時はwel1[.]ru配下のDNS TXTレコードからBase64断片を再構築する。macOS版は解析・仮想環境を検知しLaunchAgentで永続化、最終段階にSliverの可能性があるペイロードも確認された。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-10)。マルウェア名はNUL1DROPPERで、wel1dropperは同一キャンペーンの別呼称。2026年4〜5月のMoikaキャンペーン(npmパッケージ250件超)との関連は「might be an evolution of」という推定表現であり確定していない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "未一致IOC観測32件はtech-memo CSV(20260808)に保持されている。プロファイル昇格時に取り込む。",
+        "Moikaキャンペーンとの同一性が確定していない。独立した一次資料での裏付けが必要。",
+        "運用者の命名が確立しておらず、クラスタ名は一次資料のマルウェア名に依存している。"
+      ],
+      "analyst_notes": "単一ベンダー初報のため昇格閾値未達。継続観察。帰属根拠がドメインTLDと文字列言及に留まる点に注意し、ロシア系という評価を確定として扱わない。"
     }
   ],
   "excluded_name_collisions": [

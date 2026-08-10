@@ -4,7 +4,7 @@
   "name": "Turla",
   "status": "draft",
   "created_at": "2026-07-25T09:00:45Z",
-  "updated_at": "2026-08-07T10:35:28Z",
+  "updated_at": "2026-08-10T07:28:35Z",
   "languages": [
     "ja"
   ],
@@ -235,6 +235,32 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--diamondback",
+        "name": "DIAMONDBACK",
+        "aliases": [],
+        "types": [
+          "toolkit"
+        ],
+        "description": "GTIGがTurlaの独自ツールキットとしてSTOCKSTAY・KAZUARと併記している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-stockstay-turla-2026"
+        ],
+        "analyst_notes": "本資料での記述は併記に留まり、技術詳細は限定的である。"
       },
       {
         "id": "malware--epic",
@@ -583,6 +609,38 @@
         "analyst_notes": ""
       },
       {
+        "id": "malware--stockstay",
+        "name": "STOCKSTAY",
+        "aliases": [
+          "STOCKSTAY.STOCKBROKER",
+          "STOCKSTAY.STOCKMARKET",
+          "STOCKSTAY.STOCKTRADER",
+          "STOCKSTAY.MARKETMAKER"
+        ],
+        "types": [
+          ".NET",
+          "backdoor"
+        ],
+        "description": "Turlaが継続的に開発・展開する多コンポーネント構成の.NETバックドア。STOCKBROKERがWebSocketトンネラーおよびプロキシ対応通信を、STOCKMARKETがオーケストレーターと設定管理を、STOCKTRADERがコマンド実行を伴うバックドア機能を担う。MARKETMAKERはダウンローダーコンポーネントである。",
+        "first_observed": {
+          "value": "2022-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-stockstay-turla-2026"
+        ],
+        "analyst_notes": "GTIGはSTOCKSTAYとKAZUARが共通の開発者またはチームによって部分的に開発された可能性を中程度の確度で評価している。両者を同一実装として扱わない。"
+      },
+      {
         "id": "malware--tinyturla",
         "name": "TinyTurla",
         "aliases": [
@@ -640,6 +698,32 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--wildday",
+        "name": "WILDDAY",
+        "aliases": [],
+        "types": [
+          "toolkit"
+        ],
+        "description": "GTIGがTurlaの独自ツールキットとしてSTOCKSTAY・KAZUARと併記している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-stockstay-turla-2026"
+        ],
+        "analyst_notes": "本資料での記述は併記に留まり、技術詳細は限定的である。"
       }
     ],
     "tools": [
@@ -1014,7 +1098,34 @@
     ],
     "infrastructure": [],
     "delivery_formats": [],
-    "vulnerabilities": [],
+    "vulnerabilities": [
+      {
+        "id": "vuln--cve-2025-8088",
+        "name": "CVE-2025-8088",
+        "aliases": [],
+        "types": [
+          "WinRAR"
+        ],
+        "description": "WinRARのパストラバーサル脆弱性。STOCKSTAY展開の一環として悪用された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-stockstay-turla-2026"
+        ],
+        "analyst_notes": "一次資料は悪用の事実を記載するが、悪用時期を月日単位で明示していない。"
+      }
+    ],
     "operational_capabilities": [],
     "analyst_notes": ""
   },
@@ -1338,6 +1449,133 @@
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
+    },
+    {
+      "activity_id": "activity--gtig-stockstay-turla-2026",
+      "name": "STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2022-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "Google Threat Intelligence Groupは、Turlaが多コンポーネント構成の.NETバックドアSTOCKSTAYを継続的に開発・展開し、政府、軍、外交関連組織への諜報活動に使用していると報告した。ウクライナの政府・軍組織を継続的に標的とし、2024年2月にはイタリアの外交・対外政策関連組織も標的とした。侵入には悪性RDPファイルを用いたフィッシングと侵害済みインフラを使用し、CVE-2025-8088(WinRARのパストラバーサル)も悪用している。STOCKSTAYはKAZUAR、WILDDAY、DIAMONDBACKなど他の独自ツールキットと併用される。最も古い開発痕跡は2022年12月まで遡り、2023年9月には初期版がVirusTotalへ投稿された。2024年1月にウクライナのネットワーク侵害、2025年3月から11月にかけてフィッシングと展開が継続して観測されている。",
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--mitre-group--sector--8b0d895cbce29b8afc51"
+      ],
+      "malware_refs": [
+        "malware--stockstay",
+        "malware--kazuar",
+        "malware--wildday",
+        "malware--diamondback"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--turla-stockstay-t1090-proxy",
+        "ttp--turla-stockstay-t1203-winrar",
+        "ttp--turla-stockstay-t1566-001",
+        "ttp--turla-stockstay-t1572-websocket"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--48105cd9cb10230243b9",
+        "victim--turla-stockstay-ukraine-italy"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "GTIG(2026-06-25)の原文確認に基づく。資料発行日はreported_atへ分離し、活動期間は資料が明示する2022年12月〜2025年11月を月精度で採用した。tech-memoの日次ニュースには未収録であり、一次情報源の直接確認で検知した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--turla",
+          "name": "Turla",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--diamondback",
+            "malware--kazuar",
+            "malware--stockstay",
+            "malware--wildday"
+          ],
+          "ttp_refs": [
+            "ttp--turla-stockstay-t1090-proxy",
+            "ttp--turla-stockstay-t1203-winrar",
+            "ttp--turla-stockstay-t1566-001",
+            "ttp--turla-stockstay-t1572-websocket"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--mitre-group--sector--8b0d895cbce29b8afc51"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--48105cd9cb10230243b9",
+            "victim--turla-stockstay-ukraine-italy"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2022-12-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-11-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Command and Control",
+            "Execution",
+            "Initial Access"
+          ],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-stockstay-turla-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
     }
   ],
   "targets": {
@@ -1456,24 +1694,25 @@
       {
         "id": "target--targeting-audit--country--b79c8cdc24f6db0641a0",
         "name": "イタリア",
-        "description": "構造化OSINTの被害国フィールドでTurlaの標的・被害国としてイタリアが記録されている。",
+        "description": "活動「STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--gtig-stockstay-turla-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--423c496e746aa1eed879",
@@ -1572,20 +1811,21 @@
         "name": "ウクライナ",
         "description": "活動「ロシアのサイバースパイ、他のハッカーの背後に隠れてウクライナを標的に」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": "2024-03-01T00:00:00Z",
+          "value": "2022-12-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "activity-description-explicit-period; activity-period"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": "2024-04-01T00:00:00Z",
+          "value": "2025-11-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "activity-description-explicit-period; activity-period"
+          "basis": "source-stated; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-785ae8d632612c179b8d",
+          "source--gtig-stockstay-turla-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
@@ -2883,6 +3123,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--gtig-stockstay-turla-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -2973,6 +3214,7 @@
         "evidence_refs": [
           "source--daily-785ae8d632612c179b8d",
           "source--daily-7b8d62bd6d4144728793",
+          "source--gtig-stockstay-turla-2026",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
         ],
@@ -2997,6 +3239,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-785ae8d632612c179b8d",
+          "source--gtig-stockstay-turla-2026",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
         ],
@@ -3054,20 +3297,21 @@
         "name": "政府・行政",
         "description": "They have compromised victims in over 50 countries since at least 2004, spanning a range of industries including government, embassies, military, education, research and pharmaceutical companies.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2022-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--daily-7b8d62bd6d4144728793",
+          "source--gtig-stockstay-turla-2026",
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
@@ -6246,6 +6490,130 @@
         "source--mitre-attack-19-1"
       ],
       "analyst_notes": "MITRE ATT&CK actor-level procedure example. No activity period is inferred from source publication or relationship modification dates."
+    },
+    {
+      "ttp_id": "ttp--turla-stockstay-t1090-proxy",
+      "tactic": "Command and Control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "STOCKSTAY.STOCKBROKERが企業プロキシ環境を考慮した通信経路を確立する。",
+      "activity_refs": [
+        "activity--gtig-stockstay-turla-2026"
+      ],
+      "malware_refs": [
+        "malware--stockstay"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "GTIG資料に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--turla-stockstay-t1203-winrar",
+      "tactic": "Execution",
+      "technique_id": "T1203",
+      "technique_name": "Exploitation for Client Execution",
+      "observed_behavior": "WinRARのパストラバーサル脆弱性CVE-2025-8088を悪用して実行に至らせる。",
+      "activity_refs": [
+        "activity--gtig-stockstay-turla-2026"
+      ],
+      "malware_refs": [
+        "malware--stockstay"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "一次資料は悪用の事実を記載するが観測時期を明示していないため観測日はunknown。"
+    },
+    {
+      "ttp_id": "ttp--turla-stockstay-t1566-001",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.001",
+      "technique_name": "Spearphishing Attachment",
+      "observed_behavior": "悪性のRDPファイルを添付したフィッシングでSTOCKSTAYの実行に至らせる。",
+      "activity_refs": [
+        "activity--gtig-stockstay-turla-2026"
+      ],
+      "malware_refs": [
+        "malware--stockstay"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "GTIG資料に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--turla-stockstay-t1572-websocket",
+      "tactic": "Command and Control",
+      "technique_id": "T1572",
+      "technique_name": "Protocol Tunneling",
+      "observed_behavior": "STOCKSTAY.STOCKBROKERがWebSocketトンネラーとしてC2通信を中継する。",
+      "activity_refs": [
+        "activity--gtig-stockstay-turla-2026"
+      ],
+      "malware_refs": [
+        "malware--stockstay"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "GTIG資料に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     }
   ],
   "sources": [
@@ -6670,16 +7038,46 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--gtig-stockstay-turla-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering",
+      "title": "STOCKSTAY Another Day: The Latest Addition to Turla's Intelligence Gathering Apparatus",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-06-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。本資料はtech-memoの日次ニュースに未収録で、2026-08-10の日次チェックにおける一次情報源の直接確認で検知した。"
     }
   ],
   "assessment": {
-    "key_judgments": [],
+    "key_judgments": [
+      {
+        "statement": "TurlaはSTOCKSTAYを2022年から2025年にかけて継続的に開発・展開し、ウクライナとイタリアの政府・外交関連組織への諜報活動に使用している。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-stockstay-turla-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
     "gaps": [
       "Unknown observation dates must not be replaced by publication dates.",
-      "Automatically mapped aliases, targets, and workbook software require analyst review."
+      "Automatically mapped aliases, targets, and workbook software require analyst review.",
+      "GTIGのSTOCKSTAY報告(2026-06-25)はtech-memoの日次ニュースに未収録であり、同種の取りこぼしがないか一次情報源の確認範囲を継続的に見直す必要がある。"
     ],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "Vendor cluster boundaries may differ from the canonical name used here.",
+      "STOCKSTAYとKAZUARの共通開発者評価はGTIGの中程度確度の判断であり、両マルウェアを同一系統として統合しない。",
+      "WILDDAYとDIAMONDBACKは本資料では併記に留まり、技術詳細と観測時期を確認できていない。"
     ],
     "collection_notes": "Catalog source roots: Turla\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-07-25T14:07:08Z; result=matched.",
     "analyst_notes": ""
@@ -6693,6 +7091,59 @@
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--48105cd9cb10230243b9",
+      "name": "被害事例: STOCKSTAYバックドアによるウクライナ・イタリア関連組織への諜報活動",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Google Threat Intelligence Groupは、Turlaが多コンポーネント構成の.NETバックドアSTOCKSTAYを継続的に開発・展開し、政府、軍、外交関連組織への諜報活動に使用していると報告した。ウクライナの政府・軍組織を継続的に標的とし、2024年2月にはイタリアの外交・対外政策関連組織も標的とした。侵入には悪性RDPファイルを用いたフィッシングと侵害済みインフラを使用し、CVE-2025-8088(WinRARのパストラバーサル)も悪用している。STOCKSTAYはKAZUAR、WILDDAY、DIAMONDBACKなど他の独自ツールキットと併用される。最も古い開発痕跡は2022年12月まで遡り、2023年9月には初期版がVirusTotalへ投稿された。2024年1月にウクライナのネットワーク侵害、2025年3月から11月にかけてフィッシングと展開が継続して観測されている。",
+      "activity_refs": [
+        "activity--gtig-stockstay-turla-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--mitre-group--sector--8b0d895cbce29b8afc51"
+      ],
+      "malware_refs": [
+        "malware--diamondback",
+        "malware--kazuar",
+        "malware--stockstay",
+        "malware--wildday"
+      ],
+      "ttp_refs": [
+        "ttp--turla-stockstay-t1090-proxy",
+        "ttp--turla-stockstay-t1203-winrar",
+        "ttp--turla-stockstay-t1566-001",
+        "ttp--turla-stockstay-t1572-websocket"
+      ],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": "2022-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
     {
       "victim_case_id": "victim--activity-rule--5d49c32b8b1bf735cbd0",
       "name": "被害事例: ロシアのハッカー、Kazuarバックドアをモジュール型P2Pボットネットへ進化",
@@ -6855,6 +7306,65 @@
         "source--daily-7b8d62bd6d4144728793"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--turla-stockstay-ukraine-italy",
+      "name": "ウクライナの政府・軍組織およびイタリアの外交関連組織(集約)",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "GTIGは個別組織名を挙げず、ウクライナの政府・軍組織を継続的な標的とし、イタリアの外交・対外政策関連組織も標的になったと集約して報告している。初期の開発検体はポーランド、オランダ、ドイツからも確認されている。",
+      "activity_refs": [
+        "activity--gtig-stockstay-turla-2026"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--stockstay"
+      ],
+      "ttp_refs": [
+        "ttp--turla-stockstay-t1566-001",
+        "ttp--turla-stockstay-t1203-winrar",
+        "ttp--turla-stockstay-t1572-websocket",
+        "ttp--turla-stockstay-t1090-proxy"
+      ],
+      "affected_assets": [
+        "Windows端末",
+        "政府・軍ネットワーク"
+      ],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "情報収集を目的とした継続的なアクセス。"
+        },
+        {
+          "impact_type": "data-theft",
+          "description": "STOCKSTAYによるコマンド実行とデータ取得。"
+        }
+      ],
+      "first_observed": {
+        "value": "2022-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-stockstay-turla-2026"
+      ],
+      "analyst_notes": "個別組織名の記載がないため集約事例として保存する。"
     }
   ]
 }

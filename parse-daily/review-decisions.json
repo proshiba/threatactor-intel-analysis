@@ -803,6 +803,37 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国系Murky Panda(Silk Typhoon/Hafnium)がクラウドの信頼関係を悪用し侵入。",
     "review_status": "approved"
   },
+  "head-mare|https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "source-stated-discovery-month",
+        "precision": "month",
+        "status": "inferred",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "PhantomCore",
+        "reason": "一次資料が、正規TrueConf Clientインストーラーへ埋め込まれたバックドアとしてPhantomCoreを明記している。Head Mare固有の実装として2023年の初報から継続的に報告されている。",
+        "status": "approved"
+      },
+      {
+        "name": "PhantomGraph",
+        "reason": "一次資料が、SysExcSvc.dllとSysReadSvc.dllの2モジュールで構成されOneDriveをC2とするバックドアとしてPhantomGraphを明記している。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "一次資料(Kaspersky Securelist RU, 2026-08-07公開)を原文で確認。記事表題が「APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph」であり、Head Mareを実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)の連鎖悪用、locale.phpのWebシェル置換、正規クライアントインストーラーのPhantomCore入り未署名版への差し替え、PhantomGraphによるOneDrive C2・LSASSダンプ・リバースSSHトンネルを新規活動として採用する。一次資料は攻撃観測期間を明示せず調査・発見時期として2026年7月を示すのみのため、first_observedはprecision: month / status: inferredで保持し、last_observedはunknownとする。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-10はreported_atとして分離する。Head Mareは本レコードの採用に合わせて新規プロファイルへ昇格した(Kaspersky 2024-09-02の初報と本報の2本を原文確認)。",
+    "review_status": "approved"
+  },
   "hellsing-apt|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
     "confidence": "low",
     "review_notes": "原文(Check Point Research)にHellsing APTへの言及なし。プロファイルのalias「Asia」が記事本文の地域語(Southeast Asia)に機械的一致した名称衝突。過去の同種ケース(UNODC報告書、Kaspersky OctLurk/SilkLurk記事)と同様のパターンで不採用。",
@@ -1820,6 +1851,25 @@
   "tag-100|https://thehackernews.com/2025/09/chinese-hackers-rednovember-target.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。",
+    "review_status": "approved"
+  },
+  "teampcp|https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "一次資料(Oligo Security, 2026-08-05公開)を原文で確認。「TeamPCP was responsible for the first known attack in which AI infrastructure was hijacked into a self-propagating botnet during the ShadowRay 2.0 campaign」とTeamPCPを実行主体として明記している。同名製品・法執行記事・過去言及のいずれでもない。独立した一次資料としてSentinelLabs(2026-05-07、TeamPCPを独立クラスタとして記述)とGoogle Threat Intelligence Group(2026-05-11、「TeamPCP」(aka UNC6780))も原文確認済み。活動期間は一次資料が明示する2020年からの遡及と、masscan.cloudの名前解決変更が観測された2026年4月を採用する。記事公開日はreported_atとして分離する。TA-NATALSTATUS/IronErnとの関係は、Oligoが同一運用者・密接な協力・基盤共有のいずれであるかを断定していないため、aliasのscopeをoverlappingに留める。TeamPCPは本レコードの採用に合わせて新規プロファイルへ昇格した。",
     "review_status": "approved"
   },
   "tick|https://www.bleepingcomputer.com/news/security/china-linked-hackers-exploited-lanscope-flaw-as-a-zero-day-in-attacks/": {

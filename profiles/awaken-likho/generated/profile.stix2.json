@@ -1,0 +1,2136 @@
+{
+  "type": "bundle",
+  "id": "bundle--4d61201c-0ec3-4287-857c-58adef137211",
+  "objects": [
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:33:16Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Awaken Likho",
+      "aliases": [
+        "Core Werewolf"
+      ],
+      "description": "ロシアおよびベラルーシの政府機関、政府請負業者、産業企業を標的とするAPTグループ。Kasperskyは2021年7月から追跡している。長らくUltraVNCやMeshCentralなど正規の遠隔管理ソフトを流用していたが、2026年に独自バックドアTokenBuoyとTokenBuoySHの開発・運用へ移行した。",
+      "first_seen": "2021-07-01T00:00:00Z",
+      "last_seen": "2026-07-01T00:00:00Z",
+      "goals": [
+        "政府機関と産業企業への継続的な遠隔アクセスとデータ持ち出しを目的とする。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_id": "actor--awaken-likho",
+      "x_alias_assessments": [
+        {
+          "name": "Core Werewolf",
+          "vendor": "",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--kaspersky-awaken-likho-2024"
+          ],
+          "analyst_notes": "Kasperskyが「also named by other vendors as Core Werewolf」と記載している。命名元ベンダーの原典を確認できていないためexactへ強めない。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "unknown",
+        "organizations": [],
+        "assessment": "一次資料は帰属国もスポンサーも示していない。標的がロシア・ベラルーシであることから攻撃元国を推定しない。",
+        "confidence": "unknown",
+        "evidence_refs": [
+          "source--kaspersky-awaken-likho-2024",
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        ],
+        "analyst_notes": "KasperskyはAPTグループとして分類するが、帰属主体は記載していない。"
+      },
+      "x_free_text": {
+        "executive_summary": "Awaken Likho(別称 Core Werewolf)は、2021年からロシアおよびベラルーシの政府機関、政府請負業者、産業企業を標的とするAPTグループである。長らく正規の遠隔管理ソフトを流用してきたが、2026年に独自バックドアTokenBuoy/TokenBuoySHの運用へ移行した。",
+        "history": "Kasperskyは2021年7月から追跡している。2024年6〜8月のキャンペーンではUltraVNCからMeshAgentへ切り替え、2024年10月に報告された。2026年前半から7月にかけて独自バックドアTokenBuoyとTokenBuoySHを投入し、2026年8月に報告された。",
+        "capability_details": "TokenBuoyはC++実装で約1MB、TokenBuoySHはOpenSSHを統合してサイズが約10倍になる。持ち出しにはRcloneを使用する。",
+        "infrastructure_details": "攻撃者が運用するMeshCentralサーバーとフィッシング配信基盤。本プロファイル作成時点で個別IOCは未取得である。",
+        "targeting_details": "構造化ターゲット監査: 標的国=ベラルーシ、ロシア。標的地域=東欧。日本は確認時に個別国として保持する。\n\n標的はロシアとベラルーシの政府組織およびその周辺に一貫している。",
+        "additional_notes": "本プロファイルは2026-08-10の一次情報源確認(securelist.ru)で検知され、利用者承認を経て作成した。status: draftから開始する。"
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--awaken-likho",
+        "actor_name": "Awaken Likho",
+        "searched_at": "2026-08-10T07:33:16Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "Awaken Likho",
+            "Core Werewolf"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [
+            {
+              "entry_uuid": "f3c3beeb-ae74-411b-8a9a-110533a0b28d",
+              "entry_value": "Awaken Likho",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "awakenlikho",
+                  "profile_value": "Awaken Likho",
+                  "dataset_value": "Awaken Likho"
+                },
+                {
+                  "normalized": "corewerewolf",
+                  "profile_value": "Core Werewolf",
+                  "dataset_value": "Core Werewolf"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Awaken Likho",
+                "Core Werewolf"
+              ],
+              "countries": [],
+              "description": "(Kaspersky) In July 2021, a campaign was launched primarily targeting Russian government agencies and industrial enterprises. Shortly after the campaign started, we began tracking it, and published three reports in August and September 2024 through our threat research subscription on the threat actor we named Awaken Likho (also named by other vendors as Core Werewolf).\n\nWhile investigating the activity of this APT group, we discovered a new campaign that began in June 2024 and continued at least until August. Analysis of the campaign revealed that the attackers had significantly changed the software they used in their attacks. The attackers now prefer using the agent for the legitimate MeshCentral platform instead of the UltraVNC module, which they had previously used to gain remote access to systems. The group remains focused on targeting Russian government organizations and enterprises.",
+              "refs": [
+                "https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+                "https://bi.zone/eng/expertise/blog/core-werewolf-protiv-opk-i-kriticheskoy-infrastruktury/",
+                "https://bi.zone/eng/expertise/blog/ne-budi-likho-core-werewolf-sovershenstvuet-ataki-na-rossiyskie-gosorganizatsii/",
+                "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Awaken+Likho&n=1"
+              ],
+              "related": []
+            }
+          ],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "b3a4c34f-0ad6-4083-938a-958deb34b6c7",
+              "entry_value": "Awaken Likho",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "awakenlikho",
+                  "profile_value": "Awaken Likho",
+                  "dataset_value": "Awaken Likho"
+                },
+                {
+                  "normalized": "corewerewolf",
+                  "profile_value": "Core Werewolf",
+                  "dataset_value": "Core Werewolf"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Awaken Likho",
+                "Core Werewolf"
+              ],
+              "countries": [],
+              "description": "Awaken Likho is an APT group that has targeted Russian government agencies and industrial enterprises, employing techniques such as information gathering via search engines and using MeshCentral for remote access. The group has been active since at least December 2021 and has ramped up its activities following the Russo-Ukrainian conflict. Recent reports indicate that they are focusing on espionage against critical infrastructure in the defense and energy sectors. Analysis of their malware reveals a new version that is still in development, suggesting ongoing operational capabilities.",
+              "refs": [
+                "https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+                "https://bi.zone/eng/expertise/blog/core-werewolf-protiv-opk-i-kriticheskoy-infrastruktury/"
+              ],
+              "related": []
+            }
+          ],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [],
+          "external_values": [],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
+      }
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--1cadf77d-400d-4abd-bdbb-de21dbabf345",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TokenBuoy",
+      "description": "C++で実装された約1MBの独自バックドア。2026年の活動から投入された。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "malware--tokenbuoy",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows",
+        "backdoor"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--7f9e4b9e-710d-46e0-b97f-cc054f6f12cd",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TokenBuoySH",
+      "description": "OpenSSHを統合したTokenBuoyの派生。サイズが約10倍になり、二次ペイロードとして展開される。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "malware--tokenbuoysh",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "Windows",
+        "backdoor"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--53acfff6-f14a-4fa0-bda8-f8f32f31c129",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UltraVNC",
+      "description": "初期の活動で遠隔操作に流用していた正規の遠隔管理ソフト。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "tool--ultravnc",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "remote access"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--bd18adcc-05be-41d4-b583-ffd5c0a0a668",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MeshCentral / MeshAgent",
+      "description": "オープンソースの遠隔デバイス管理基盤とそのエージェント。2024年の活動でUltraVNCから切り替えられた。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "tool--meshcentral-meshagent",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "remote access"
+      ]
+    },
+    {
+      "type": "tool",
+      "spec_version": "2.1",
+      "id": "tool--d1a60388-2006-4100-ab7a-bfca941b849a",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Rclone",
+      "description": "2026年の活動でデータ持ち出しに使用される正規のクラウド同期ツール。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "tool--rclone",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "tool_types": [
+        "exfiltration"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン",
+      "description": "Kasperskyは、Awaken Likhoが遠隔操作手段をUltraVNCからMeshCentralのエージェントMeshAgentへ切り替えたキャンペーンを報告した。被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。永続化はMeshAgentを起動するスケジュールタスクで行い、攻撃者のMeshCentralサーバーへの継続接続を維持する。標的はロシアの政府機関、その請負業者、産業企業である。",
+      "first_seen": "2024-06-01T00:00:00Z",
+      "last_seen": "2024-08-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "activity--awaken-likho-meshagent-2024",
+      "x_confidence": "high",
+      "x_analyst_notes": "Kaspersky Securelist(2024-10-07)の原文確認に基づく。資料発行日はreported_atへ分離し、活動期間は資料が明示する2024年6〜8月を採用した。",
+      "x_reported_at": {
+        "value": "2024-10-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--awaken-likho",
+          "name": "Awaken Likho",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--00a1028961658cc699e8",
+            "ttp--activity-rule--57707f4efc5babf267b5",
+            "ttp--activity-rule--7fb90d3f61cc773bf69f",
+            "ttp--awaken-likho-t1053-005-scheduled-task",
+            "ttp--awaken-likho-t1204-002-sfx",
+            "ttp--awaken-likho-t1219-remote-tools"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--dfc80b76cad93a318adc",
+            "target--awaken-likho--country--russia"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--1095b6e3f9313b47df2d",
+            "victim--awaken-likho-russian-government-2024"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2024-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2024-10-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "espionage",
+          "phases": [
+            "Command and Control",
+            "Execution",
+            "Initial Access",
+            "Persistence",
+            "Privilege Escalation",
+            "Stealth"
+          ],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--awaken-likho--country--russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-awaken-likho-2024",
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃",
+      "description": "Kasperskyは、Awaken Likhoが正規ソフトウェアの流用から独自バックドアの開発へ移行したと報告した。2026年に入り、C++で実装された約1MBのTokenBuoyと、OpenSSHを統合してサイズが約10倍になったTokenBuoySHを投入している。攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。標的はロシアおよびベラルーシの政府組織である。",
+      "first_seen": "2026-01-01T00:00:00Z",
+      "last_seen": "2026-07-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "activity--awaken-likho-tokenbuoy-2026",
+      "x_confidence": "high",
+      "x_analyst_notes": "Kaspersky Securelist RU(2026-08-07)の原文確認に基づく。開始時期は資料が日単位を示していないためprecision: month、status: inferredとした。",
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--awaken-likho",
+          "name": "Awaken Likho",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--tokenbuoy",
+            "malware--tokenbuoysh"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--66d044943eb633757eaf",
+            "ttp--awaken-likho-t1204-002-sfx",
+            "ttp--awaken-likho-t1566-001-rar",
+            "ttp--awaken-likho-t1567-002-rclone"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--awaken-likho--country--russia"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--0dd4c80ea2dbdcd07971",
+            "victim--awaken-likho-russia-belarus-2026"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "inferred",
+            "basis": "source-stated-approximate (начало 2026)"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "inferred",
+            "basis": "source-stated-discovery-month"
+          },
+          "reported_at": {
+            "value": "2026-08-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "espionage",
+          "phases": [
+            "Collection",
+            "Execution",
+            "Exfiltration",
+            "Initial Access"
+          ],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--awaken-likho--country--russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-awaken-likho-2024",
+          "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--492272c9-2015-4954-8038-f50454960947",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ベラルーシ",
+      "identity_class": "organization",
+      "description": "2026年資料が標的国として明示している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--773e1525-56af-4837-b947-31ba7389764f",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシア",
+      "identity_class": "organization",
+      "description": "両資料が標的国として明示している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--857dd067-5d1a-490b-9237-af7869e3e004",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "東欧",
+      "identity_class": "organization",
+      "description": "ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府・行政",
+      "identity_class": "organization",
+      "description": "活動「MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "organization",
+      "description": "活動「MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--675ff9ef-0c2b-49ab-a92f-41f3e1dbdd17",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府機関",
+      "identity_class": "organization",
+      "description": "両資料が標的分野として明示している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--37e288f1-04db-4ecb-ac4c-7e617d20fc08",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府請負業者",
+      "identity_class": "organization",
+      "description": "2024年資料が標的分野として明示している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a08c7cfa-50a5-4e56-8fe4-ab15d79a5eb8",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "産業企業",
+      "identity_class": "organization",
+      "description": "2024年資料が標的分野として明示している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--34a3b678-d917-49a7-9ee1-0528ae2fe201",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃",
+      "identity_class": "organization",
+      "description": "Kasperskyは、Awaken Likhoが正規ソフトウェアの流用から独自バックドアの開発へ移行したと報告した。2026年に入り、C++で実装された約1MBのTokenBuoyと、OpenSSHを統合してサイズが約10倍になったTokenBuoySHを投入している。攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。標的はロシアおよびベラルーシの政府組織である。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--0dd4c80ea2dbdcd07971",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--awaken-likho--country--russia"
+      ],
+      "x_malware_refs": [
+        "malware--tokenbuoy",
+        "malware--tokenbuoysh"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--66d044943eb633757eaf",
+        "ttp--awaken-likho-t1204-002-sfx",
+        "ttp--awaken-likho-t1566-001-rar",
+        "ttp--awaken-likho-t1567-002-rclone"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-approximate (начало 2026)"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a0393c43-e2a0-412e-8f22-88b8ba72998b",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン",
+      "identity_class": "organization",
+      "description": "Kasperskyは、Awaken Likhoが遠隔操作手段をUltraVNCからMeshCentralのエージェントMeshAgentへ切り替えたキャンペーンを報告した。被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。永続化はMeshAgentを起動するスケジュールタスクで行い、攻撃者のMeshCentralサーバーへの継続接続を維持する。標的はロシアの政府機関、その請負業者、産業企業である。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--1095b6e3f9313b47df2d",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--awaken-likho--country--russia"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--00a1028961658cc699e8",
+        "ttp--activity-rule--57707f4efc5babf267b5",
+        "ttp--activity-rule--7fb90d3f61cc773bf69f",
+        "ttp--awaken-likho-t1053-005-scheduled-task",
+        "ttp--awaken-likho-t1204-002-sfx",
+        "ttp--awaken-likho-t1219-remote-tools"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-10-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--81a28fa0-68c0-47f1-867f-6bd5c4ccd2dc",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシア・ベラルーシの政府組織(集約)",
+      "identity_class": "organization",
+      "description": "Kasperskyは、ロシアおよびベラルーシの政府組織が標的になったと集約して報告している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--awaken-likho-russia-belarus-2026",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--tokenbuoy",
+        "malware--tokenbuoysh"
+      ],
+      "x_ttp_refs": [
+        "ttp--awaken-likho-t1566-001-rar",
+        "ttp--awaken-likho-t1567-002-rclone"
+      ],
+      "x_affected_assets": [
+        "Windows端末"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "独自バックドアによる継続的なアクセス。"
+        },
+        {
+          "impact_type": "data-theft",
+          "description": "Rcloneによるデータ持ち出し。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-approximate (начало 2026)"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_reported_at": {
+        "value": "2026-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "個別組織名の記載がないため集約事例として保存する。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2f831708-cf64-4d9d-9ed2-84e291188263",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシアの政府機関・請負業者・産業企業(集約)",
+      "identity_class": "organization",
+      "description": "Kasperskyは被害組織を個別に特定せず、ロシアの政府機関、その請負業者、産業企業が標的になったと集約して報告している。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "victim--awaken-likho-russian-government-2024",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--awaken-likho-t1219-remote-tools",
+        "ttp--awaken-likho-t1053-005-scheduled-task"
+      ],
+      "x_affected_assets": [
+        "Windows端末"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "MeshAgentによる遠隔操作を通じた継続的なアクセス。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2024-10-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "個別組織名の記載がないため集約事例として保存する。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--6bd38260-b0c8-4162-b785-d43b1a9872db",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scheduled Task",
+      "description": "永続化はMeshAgentを起動するスケジュールタスクで行い、攻撃者のMeshCentralサーバーへの継続接続を維持する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.005",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--00a1028961658cc699e8",
+      "x_tactic": "Execution, Persistence, Privilege Escalation",
+      "x_activity_refs": [
+        "activity--awaken-likho-meshagent-2024"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--16a9189f-60da-4402-8e9e-13c2d54d041d",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Obfuscated Files or Information",
+      "description": "被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1027",
+          "url": "https://attack.mitre.org/techniques/T1027/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--57707f4efc5babf267b5",
+      "x_tactic": "Stealth",
+      "x_activity_refs": [
+        "activity--awaken-likho-meshagent-2024"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--af5fc16e-b7b3-4dd3-8328-10f43128485c",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Archive via Utility",
+      "description": "攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1560.001",
+          "url": "https://attack.mitre.org/techniques/T1560/001/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--66d044943eb633757eaf",
+      "x_tactic": "Collection",
+      "x_activity_refs": [
+        "activity--awaken-likho-tokenbuoy-2026"
+      ],
+      "x_malware_refs": [
+        "malware--tokenbuoy",
+        "malware--tokenbuoysh"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-approximate (начало 2026); activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--91d198e8-5c04-4fe4-a35d-1e5c85c34d12",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Spearphishing Link",
+      "description": "被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002",
+          "url": "https://attack.mitre.org/techniques/T1566/002/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--7fb90d3f61cc773bf69f",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--awaken-likho-meshagent-2024"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--6d828cf1-eac4-4e94-9661-b025bb935681",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scheduled Task",
+      "description": "MeshAgentを起動するスケジュールタスクを作成し、MeshCentralサーバーへの継続接続を維持する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.005",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "ttp--awaken-likho-t1053-005-scheduled-task",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--awaken-likho-meshagent-2024"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ed01933e-050b-45fc-a920-b58a1dcbed72",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious File",
+      "description": "自己展開書庫(SFX/7-Zip SFX)を実行させ、難読化スクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.002",
+          "url": "https://attack.mitre.org/techniques/T1204/002/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--awaken-likho-t1204-002-sfx",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--awaken-likho-meshagent-2024",
+        "activity--awaken-likho-tokenbuoy-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-discovery-month"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--7bc17d1d-1196-47dc-bf38-c266664fca60",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Access Software",
+      "description": "遠隔操作にUltraVNCを使用していたが、MeshCentralのエージェントMeshAgentへ切り替えた。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219",
+          "url": "https://attack.mitre.org/techniques/T1219/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist)",
+          "description": "Local source: https://securelist.com/awaken-likho-apt-new-implant-campaign/114101/",
+          "external_id": "source--kaspersky-awaken-likho-2024"
+        }
+      ],
+      "x_profile_object_id": "ttp--awaken-likho-t1219-remote-tools",
+      "x_tactic": "Command and Control",
+      "x_activity_refs": [
+        "activity--awaken-likho-meshagent-2024"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2024-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2024-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a94f9fc4-e67e-41e5-9fd1-15ad87f70da4",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Spearphishing Attachment",
+      "description": "フィッシングメールに悪性RARアーカイブを添付して配布する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.001",
+          "url": "https://attack.mitre.org/techniques/T1566/001/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--awaken-likho-t1566-001-rar",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--awaken-likho-tokenbuoy-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-approximate (начало 2026)"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--bef23b9c-e8ad-4c14-a270-95e058f7a62b",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Exfiltration to Cloud Storage",
+      "description": "Rcloneを用いて窃取データを外部へ持ち出す。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1567.002",
+          "url": "https://attack.mitre.org/techniques/T1567/002/"
+        },
+        {
+          "source_name": "Kaspersky (Securelist RU)",
+          "description": "Local source: https://securelist.ru/awaken-likho-tokenbuoy/116536/",
+          "external_id": "source--kaspersky-awaken-likho-tokenbuoy-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--awaken-likho-t1567-002-rclone",
+      "x_tactic": "Exfiltration",
+      "x_activity_refs": [
+        "activity--awaken-likho-tokenbuoy-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-01-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated-approximate (начало 2026)"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b14e2ea7-128d-474f-92b6-48e6549d8e09",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "malware--1cadf77d-400d-4abd-bdbb-de21dbabf345",
+      "description": "Awaken Likho uses TokenBuoy.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0086c77c-1b77-4beb-a99d-58d7edd8c35d",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "malware--7f9e4b9e-710d-46e0-b97f-cc054f6f12cd",
+      "description": "Awaken Likho uses TokenBuoySH.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6fd90ab4-14d6-4d10-b01b-8917b106571b",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "tool--53acfff6-f14a-4fa0-bda8-f8f32f31c129",
+      "description": "Awaken Likho uses UltraVNC.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--94904300-4194-46e0-9889-4c1b4a3b7de7",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "tool--bd18adcc-05be-41d4-b583-ffd5c0a0a668",
+      "description": "Awaken Likho uses MeshCentral / MeshAgent.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5f90ecad-f119-4054-8f3a-ee1f192be821",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "tool--d1a60388-2006-4100-ab7a-bfca941b849a",
+      "description": "Awaken Likho uses Rclone.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bd2eff42-39b3-449c-80e1-d9e908fde6fa",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--492272c9-2015-4954-8038-f50454960947",
+      "description": "Awaken Likho targets ベラルーシ (profile target category: countries).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7960783d-994c-4d9e-8fa9-9932e53d6e1b",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--773e1525-56af-4837-b947-31ba7389764f",
+      "description": "Awaken Likho targets ロシア (profile target category: countries).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c9ef8da1-ae73-4af1-8724-6ddd8c1705df",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--857dd067-5d1a-490b-9237-af7869e3e004",
+      "description": "Awaken Likho targets 東欧 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c0563448-f136-4b7e-baa1-8da6a39567f8",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "Awaken Likho targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e6e5a7c4-a26e-463e-8779-70dc6773d7c1",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "Awaken Likho targets 製造・産業 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2dbc5232-19f8-4624-8393-0ab3a1d11e1e",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--675ff9ef-0c2b-49ab-a92f-41f3e1dbdd17",
+      "description": "Awaken Likho targets 政府機関 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--475fb5c3-1280-4dcd-89c4-1242a7aa26b0",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--37e288f1-04db-4ecb-ac4c-7e617d20fc08",
+      "description": "Awaken Likho targets 政府請負業者 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4132a8f5-e584-4a1b-9efe-52487c2eaa1b",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "identity--a08c7cfa-50a5-4e56-8fe4-ab15d79a5eb8",
+      "description": "Awaken Likho targets 産業企業 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fee2419b-df54-453a-af02-8bb652501d32",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン is attributed or linked to Awaken Likho.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--193a518a-3039-4432-bf54-8260b6321304",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン targets target--activity-rule--sector--210dddb39397dbe50e91.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3532b554-d745-4698-92fb-dbf741f1d860",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン targets target--activity-rule--sector--dfc80b76cad93a318adc.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3f8033cf-c16f-44ab-ac62-20e90222634c",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "identity--773e1525-56af-4837-b947-31ba7389764f",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン targets target--awaken-likho--country--russia.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--65f05bd4-2245-47a3-b398-6a7365eb0024",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "attack-pattern--6bd38260-b0c8-4162-b785-d43b1a9872db",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン uses ttp--activity-rule--00a1028961658cc699e8.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5ecfe61c-d5c5-4d4a-8a75-5ccc2f79c29f",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "attack-pattern--16a9189f-60da-4402-8e9e-13c2d54d041d",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン uses ttp--activity-rule--57707f4efc5babf267b5.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fbaa81d8-0ff8-4c04-9a56-982e0009248f",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "attack-pattern--91d198e8-5c04-4fe4-a35d-1e5c85c34d12",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン uses ttp--activity-rule--7fb90d3f61cc773bf69f.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--37176539-464e-4f9c-8af4-4040bf1342da",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "attack-pattern--6d828cf1-eac4-4e94-9661-b025bb935681",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン uses ttp--awaken-likho-t1053-005-scheduled-task.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8a1e2ac0-593a-42fd-9c11-cf86cfd7f515",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "attack-pattern--ed01933e-050b-45fc-a920-b58a1dcbed72",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン uses ttp--awaken-likho-t1204-002-sfx.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aa1d1ec2-c4e7-43f4-a95c-bddc11bdb581",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "attack-pattern--7bc17d1d-1196-47dc-bf38-c266664fca60",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン uses ttp--awaken-likho-t1219-remote-tools.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--59402893-48f2-494f-9861-2caa44cee90a",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "identity--a0393c43-e2a0-412e-8f22-88b8ba72998b",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン affected victim--activity-rule--1095b6e3f9313b47df2d.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cf62801d-9a4e-4268-8f42-f76f1c1569e6",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+      "target_ref": "identity--2f831708-cf64-4d9d-9ed2-84e291188263",
+      "description": "MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン affected victim--awaken-likho-russian-government-2024.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0a410884-ba52-4be4-8991-4a1e4905727e",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 is attributed or linked to Awaken Likho.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8ccb3c86-9b90-475c-9864-101755fe614d",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "malware--1cadf77d-400d-4abd-bdbb-de21dbabf345",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 uses malware--tokenbuoy.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f1969479-46cb-461b-a3bc-f7154884b62d",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "malware--7f9e4b9e-710d-46e0-b97f-cc054f6f12cd",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 uses malware--tokenbuoysh.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--59b31519-b01a-4e2f-b975-cadad9c77c02",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 targets target--activity-rule--sector--210dddb39397dbe50e91.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--71fa971b-d566-40a8-b44c-9046e6fc16b7",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "identity--773e1525-56af-4837-b947-31ba7389764f",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 targets target--awaken-likho--country--russia.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--118e7c53-b500-4bea-a5df-2390302c5290",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "attack-pattern--af5fc16e-b7b3-4dd3-8328-10f43128485c",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 uses ttp--activity-rule--66d044943eb633757eaf.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7931f23d-2b3b-4a3f-8934-2314353fe106",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "attack-pattern--ed01933e-050b-45fc-a920-b58a1dcbed72",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 uses ttp--awaken-likho-t1204-002-sfx.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--43c8a42f-042c-4591-9e14-6fc11ba36e83",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "attack-pattern--a94f9fc4-e67e-41e5-9fd1-15ad87f70da4",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 uses ttp--awaken-likho-t1566-001-rar.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--47c3bd77-9884-4b79-8835-ebb7f4b1b516",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "attack-pattern--bef23b9c-e8ad-4c14-a270-95e058f7a62b",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 uses ttp--awaken-likho-t1567-002-rclone.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f77c4dd4-f51b-4130-92d0-6ca20dee6a59",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "identity--34a3b678-d917-49a7-9ee1-0528ae2fe201",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 affected victim--activity-rule--0dd4c80ea2dbdcd07971.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79c8b229-4f6f-4c67-ad4a-180996b9dfc7",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+      "target_ref": "identity--81a28fa0-68c0-47f1-867f-6bd5c4ccd2dc",
+      "description": "独自バックドアTokenBuoy/TokenBuoySHへの移行とロシア・ベラルーシ政府機関攻撃 affected victim--awaken-likho-russia-belarus-2026.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2ea7660c-39dd-4d3c-aaf0-eebaa5ce64bd",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--6bd38260-b0c8-4162-b785-d43b1a9872db",
+      "description": "永続化はMeshAgentを起動するスケジュールタスクで行い、攻撃者のMeshCentralサーバーへの継続接続を維持する。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0b0ae913-4cea-4d0d-b8e7-496dfd5462a4",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--16a9189f-60da-4402-8e9e-13c2d54d041d",
+      "description": "被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e3599796-6f4c-43d2-a5b8-6800b1ad312c",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--af5fc16e-b7b3-4dd3-8328-10f43128485c",
+      "description": "攻撃連鎖はフィッシングメールの悪性RARアーカイブから7-Zip自己展開書庫を経てTokenBuoyを配置し、続いてTokenBuoySHを二次ペイロードとして展開、Rcloneでデータを持ち出す。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8b47244e-f89f-4f9c-af01-3d4890e8b474",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--91d198e8-5c04-4fe4-a35d-1e5c85c34d12",
+      "description": "被害者はフィッシングメール経由とみられる悪性URLを受け取り、自己展開書庫(SFX)が難読化コマンドスクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6e489b18-9899-4ecb-970d-3f2a7c2907de",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--6d828cf1-eac4-4e94-9661-b025bb935681",
+      "description": "MeshAgentを起動するスケジュールタスクを作成し、MeshCentralサーバーへの継続接続を維持する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--10919582-db6a-423f-9f72-0c31f75dea89",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--ed01933e-050b-45fc-a920-b58a1dcbed72",
+      "description": "自己展開書庫(SFX/7-Zip SFX)を実行させ、難読化スクリプトと正規Windowsコンポーネントを装った実行ファイルを展開する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6eb99dbb-c0f2-4480-b2f8-55a7459b72fb",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--7bc17d1d-1196-47dc-bf38-c266664fca60",
+      "description": "遠隔操作にUltraVNCを使用していたが、MeshCentralのエージェントMeshAgentへ切り替えた。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--53af7375-72ca-4972-96a8-8abd6286fd2e",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--a94f9fc4-e67e-41e5-9fd1-15ad87f70da4",
+      "description": "フィッシングメールに悪性RARアーカイブを添付して配布する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b209817a-a2dd-4d6d-9890-5253d76b65da",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+      "target_ref": "attack-pattern--bef23b9c-e8ad-4c14-a270-95e058f7a62b",
+      "description": "Rcloneを用いて窃取データを外部へ持ち出す。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--ba9c0a95-f795-4aa6-b435-95733cb2a1f7",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:28:35Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Non-IOC artifact dataset",
+      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
+      "object_refs": [
+        "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c"
+      ],
+      "x_artifacts_path": "artifacts.csv",
+      "x_artifact_observation_count": 0
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--6b048505-3d9d-427d-9036-44103a12a08b",
+      "created": "2026-08-10T07:28:35Z",
+      "modified": "2026-08-10T07:33:16Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Awaken Likho Threat Actor Profile",
+      "description": "Awaken Likho(別称 Core Werewolf)は、2021年からロシアおよびベラルーシの政府機関、政府請負業者、産業企業を標的とするAPTグループである。長らく正規の遠隔管理ソフトを流用してきたが、2026年に独自バックドアTokenBuoy/TokenBuoySHの運用へ移行した。",
+      "report_types": [
+        "threat-actor"
+      ],
+      "published": "2026-08-10T07:33:16Z",
+      "object_refs": [
+        "intrusion-set--b50255b1-615b-49ab-bf7e-784f6e8e9d8c",
+        "malware--1cadf77d-400d-4abd-bdbb-de21dbabf345",
+        "malware--7f9e4b9e-710d-46e0-b97f-cc054f6f12cd",
+        "tool--53acfff6-f14a-4fa0-bda8-f8f32f31c129",
+        "tool--bd18adcc-05be-41d4-b583-ffd5c0a0a668",
+        "tool--d1a60388-2006-4100-ab7a-bfca941b849a",
+        "campaign--afdf8f23-bb12-416b-956b-c51df880f201",
+        "campaign--9b2d8a97-3ff3-457e-bc86-c33906e59681",
+        "identity--492272c9-2015-4954-8038-f50454960947",
+        "identity--773e1525-56af-4837-b947-31ba7389764f",
+        "identity--857dd067-5d1a-490b-9237-af7869e3e004",
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+        "identity--675ff9ef-0c2b-49ab-a92f-41f3e1dbdd17",
+        "identity--37e288f1-04db-4ecb-ac4c-7e617d20fc08",
+        "identity--a08c7cfa-50a5-4e56-8fe4-ab15d79a5eb8",
+        "identity--34a3b678-d917-49a7-9ee1-0528ae2fe201",
+        "identity--a0393c43-e2a0-412e-8f22-88b8ba72998b",
+        "identity--81a28fa0-68c0-47f1-867f-6bd5c4ccd2dc",
+        "identity--2f831708-cf64-4d9d-9ed2-84e291188263",
+        "attack-pattern--6bd38260-b0c8-4162-b785-d43b1a9872db",
+        "attack-pattern--16a9189f-60da-4402-8e9e-13c2d54d041d",
+        "attack-pattern--af5fc16e-b7b3-4dd3-8328-10f43128485c",
+        "attack-pattern--91d198e8-5c04-4fe4-a35d-1e5c85c34d12",
+        "attack-pattern--6d828cf1-eac4-4e94-9661-b025bb935681",
+        "attack-pattern--ed01933e-050b-45fc-a920-b58a1dcbed72",
+        "attack-pattern--7bc17d1d-1196-47dc-bf38-c266664fca60",
+        "attack-pattern--a94f9fc4-e67e-41e5-9fd1-15ad87f70da4",
+        "attack-pattern--bef23b9c-e8ad-4c14-a270-95e058f7a62b"
+      ],
+      "x_schema_version": "1.2.0"
+    }
+  ]
+}

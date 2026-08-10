@@ -1,0 +1,3546 @@
+{
+  "type": "bundle",
+  "id": "bundle--06c76a47-fd18-4a9a-be49-63c379641531",
+  "objects": [
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:33:16Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TeamPCP",
+      "aliases": [
+        "UNC6780",
+        "TA-NATALSTATUS",
+        "IronErn",
+        "PCPCat"
+      ],
+      "description": "金銭目的を公称するサイバー犯罪グループ。インターネットへ露出したRay、Docker、Redis、Reactなどのサービスを自動・ワーム型で侵害し、資格情報窃取、決済フィッシング、ランサムウェア展開、オープンソースサプライチェーン攻撃を行う。ShadowRay 2.0ではAI基盤が自己増殖型ボットネット化された。",
+      "first_seen": "2020-01-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z",
+      "goals": [
+        "資格情報・決済情報の窃取、ランサムウェア展開、恐喝グループとの提携による収益化。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ],
+      "x_profile_id": "actor--teampcp",
+      "x_alias_assessments": [
+        {
+          "name": "UNC6780",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-ai-threat-tracker-2026-05"
+          ],
+          "analyst_notes": "GTIGが「the cyber crime threat actor \"TeamPCP\" (aka UNC6780)」と同一主体として明記している。"
+        },
+        {
+          "name": "TA-NATALSTATUS",
+          "vendor": "",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--oligo-teampcp-2026"
+          ],
+          "analyst_notes": "Oligoは以前TA-NATALSTATUSとして追跡されたキャンペーンがTeamPCPと連続すると評価するが、同一運用者・密接な協力・基盤共有のいずれかまでは断定していないためexactへ強めない。"
+        },
+        {
+          "name": "IronErn",
+          "vendor": "",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--oligo-teampcp-2026"
+          ],
+          "analyst_notes": "GitLabアカウント運用の重複を根拠とする関連であり、同一クラスタの確定ではない。"
+        },
+        {
+          "name": "PCPCat",
+          "vendor": "SentinelOne (SentinelLabs)",
+          "scope": "unknown",
+          "confidence": "low",
+          "evidence_refs": [
+            "source--sentinellabs-pcpjack-2026"
+          ],
+          "analyst_notes": "SentinelLabsが「early TeamPCP/PCPCat campaigns」と併記するが、対応関係の説明がないためスコープ不明として保持する。"
+        }
+      ],
+      "x_attribution": {
+        "countries": [],
+        "sponsor_type": "criminal",
+        "organizations": [],
+        "assessment": "一次資料は国家帰属を示していない。金銭目的のサイバー犯罪グループとして扱う。インフラ所在国を帰属国へ流用しない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--oligo-teampcp-2026",
+          "source--gtig-ai-threat-tracker-2026-05"
+        ],
+        "analyst_notes": "GTIGは分類上「cyber crime threat actor」としている。"
+      },
+      "x_free_text": {
+        "executive_summary": "TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで、インターネットへ露出したRay、Docker、Redis、React環境をワーム型に侵害し、2026年にはGitHub ActionsとPyPIを経由するオープンソースサプライチェーン攻撃へ拡大した。Oligo Securityは基盤の連続性から活動を2020年まで遡及している。",
+        "history": "2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。",
+        "capability_details": "第1段階はndt.shなどのシェルスクリプト、資格情報窃取はSANDCLOCK、収益化はランサムウェア展開と恐喝グループとの提携による。SentinelLabsが報告したPCPJackはTeamPCPの基盤を排除する別主体であり、混同しない。",
+        "infrastructure_details": "masscan.cloudとnatalstatus.orgを中核とし、/EP9ts2/および/files/という特徴的な配置パスが複数キャンペーンで再利用されている。個別のIOCはiocs.jsonに保存する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=全世界。日本は確認時に個別国として保持する。\n\n国や産業ではなく露出した技術スタックで対象を選定する。サプライチェーン段階では広く使われる開発・セキュリティツールが選ばれている。",
+        "additional_notes": "本プロファイルは2026-08-10の日次更新チェックで未一致名として検知され、独立一次資料3本の確認後に昇格した。status: draftから開始する。"
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--teampcp",
+        "actor_name": "TeamPCP",
+        "searched_at": "2026-08-10T07:33:16Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "TeamPCP",
+            "UNC6780",
+            "TA-NATALSTATUS",
+            "IronErn",
+            "PCPCat"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [
+            {
+              "entry_uuid": "microsoft-actor--sha256:0c07edbc5f8cbd1a605a57fadd9b9e6ae86e3654f067949f7af4077a6edea005",
+              "entry_value": "Storm-2999",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "teampcp",
+                  "profile_value": "TeamPCP",
+                  "dataset_value": "TeamPCP"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Storm-2999",
+                "TeamPCP"
+              ],
+              "countries": [],
+              "description": "Microsoft threat actor mapping. Origin/Threat: Group in development",
+              "refs": [
+                "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+              ],
+              "related": []
+            }
+          ],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "d3682137-2845-424f-be8a-9112d23f4f58",
+              "entry_value": "TeamPCP",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "pcpcat",
+                  "profile_value": "PCPCat",
+                  "dataset_value": "PCPcat"
+                },
+                {
+                  "normalized": "teampcp",
+                  "profile_value": "TeamPCP",
+                  "dataset_value": "TeamPCP"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "TeamPCP",
+                "Altered Spider",
+                "PCPcat",
+                "ShellForce",
+                "DeadCatx3",
+                "CanisterWorm"
+              ],
+              "countries": [],
+              "description": "TeamPCP is a threat actor that has executed a coordinated series of supply chain attacks, compromising widely-used open source tools such as Trivy, KICS, and LiteLLM to deploy credential-stealing malware. They employed techniques like credential harvesting, lateral movement within Kubernetes environments, and audio steganography to evade detection. The group has demonstrated the ability to leverage stolen credentials to propagate attacks across multiple ecosystems, including npm and PyPI, using a self-propagating worm known as CanisterWorm. Their operations have included the use of AES-256 encryption and RSA-4096 for exfiltration of sensitive data.",
+              "refs": [
+                "https://www.trendmicro.com/en_us/research/26/c/teampcp-telnyx-attack-marks-a-shift-in-tactics.html",
+                "https://www.trendmicro.com/en_us/research/26/c/inside-litellm-supply-chain-compromise.html",
+                "https://tracebit.com/blog/detecting-cicd-supply-chain-attacks-with-canary-credentials",
+                "https://www.crowdstrike.com/en-us/adversaries/altered-spider/",
+                "https://www.ic3.gov/CSA/2026/260702.pdf",
+                "https://flare.io/learn/resources/blog/teampcp-cloud-native-ransomware",
+                "https://cstromblad.com/posts/threat-actor-profile-teampcp/"
+              ],
+              "related": []
+            }
+          ],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [],
+          "external_values": [],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
+      }
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "SANDCLOCK",
+      "description": "ビルド環境からAWSキーとGitHubトークンを窃取する資格情報スティーラー。侵害したGitHub Actionsワークフローへ埋め込まれる。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ],
+      "x_profile_object_id": "malware--sandclock",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "is_family": true,
+      "malware_types": [
+        "credential stealer"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--baa3c926-afaa-48a7-ba1b-4d737082a88c",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ShadowRay 2.0 ペイロード",
+      "description": "侵害したRay等のAI基盤を自己増殖型ボットネット化するペイロード群。第1段階はndt.shなどのシェルスクリプトで、リバースシェルと追加バイナリを取得する。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_profile_object_id": "malware--shadowray-2-0-payloads",
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料は個別IOCとマルウェア名の対応を明示していないため、キャンペーン単位の総称として登録する。",
+      "is_family": true,
+      "malware_types": [
+        "Linux",
+        "worm",
+        "botnet"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "masscan.cloud / natalstatus.org 基盤",
+      "description": "TA-NATALSTATUS、ShadowRay 2.0、TeamPCPの各キャンペーンで再利用された中核基盤。auth、checkout、pay、mail、testなどのサブドメインが資格情報・決済フィッシングとインフラ試験に使われ、pcp.masscan.cloudはTeamPCPのTelegramチャンネルへ誘導していた。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_profile_object_id": "infra--masscan-cloud",
+      "x_confidence": "high",
+      "x_analyst_notes": "",
+      "infrastructure_types": [
+        "domain",
+        "c2",
+        "phishing"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "first_seen": "2020-01-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-5aa545c901df820c7aa2",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--5aa545c901df820c7aa23b26 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Oligo Security, 2026-08-05公開)を原文で確認。「TeamPCP was responsible for the first known attack in which AI infrastructure was hijacked into a self-propagating botnet during the ShadowRay 2.0 campaign」とTeamPCPを実行主体として明記している。同名製品・法執行記事・過去言及のいずれでもない。独立した一次資料としてSentinelLabs(2026-05-07、TeamPCPを独立クラスタとして記述)とGoogle Threat Intelligence Group(2026-05-11、「TeamPCP」(aka UNC6780))も原文確認済み。活動期間は一次資料が明示する2020年からの遡及と、masscan.cloudの名前解決変更が観測された2026年4月を採用する。記事公開日はreported_atとして分離する。TA-NATALSTATUS/IronErnとの関係は、Oligoが同一運用者・密接な協力・基盤共有のいずれであるかを断定していないため、aliasのscopeをoverlappingに留める。TeamPCPは本レコードの採用に合わせて新規プロファイルへ昇格した。",
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--shadowray-2-0-payloads"
+          ],
+          "ttp_refs": [
+            "ttp--teampcp-t1059-004-ndt-sh",
+            "ttp--teampcp-t1190-exposed-services",
+            "ttp--teampcp-t1486-ransomware"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--829e65b1ac18ce5ea420",
+            "victim--teampcp-exposed-cloud-services"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "source-stated",
+            "precision": "year",
+            "status": "known",
+            "value": "2020-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "source-stated",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Execution",
+            "Impact",
+            "Initial Access"
+          ],
+          "results": [
+            "account-compromise",
+            "credential-theft",
+            "encryption",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-48f251212f832ab9b6df",
+          "source--oligo-teampcp-2026",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-03-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_profile_object_id": "activity--teampcp-oss-supply-chain-2026",
+      "x_confidence": "high",
+      "x_analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。",
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--teampcp",
+          "name": "TeamPCP",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--sandclock"
+          ],
+          "ttp_refs": [
+            "ttp--teampcp-t1195-002-oss-supply-chain",
+            "ttp--teampcp-t1552-001-build-secrets"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--masscan-cloud"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--36589755fc4094ee8555",
+            "victim--teampcp-oss-projects-2026"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-05-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "supply-chain-cybercrime",
+          "phases": [
+            "Credential Access",
+            "Initial Access"
+          ],
+          "results": [
+            "credential-theft",
+            "encryption",
+            "supply-chain"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-ai-threat-tracker-2026-05",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "全世界",
+      "identity_class": "organization",
+      "description": "一次資料は特定国を標的条件として挙げず、インターネットへ露出したサービスとオープンソース配布網を対象としている。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--006eebbb-ad54-4d66-a49e-cd8dd21dfde2",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "クラウド・AI基盤運用",
+      "identity_class": "organization",
+      "description": "Ray、Kubernetes、Docker、Redisなどの運用環境が侵害対象として明示されている。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "フィンテック",
+      "identity_class": "organization",
+      "description": "Oligo資料がフィンテックアプリケーションを標的技術・分野として挙げている。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "オープンソースソフトウェア",
+      "identity_class": "organization",
+      "description": "Trivy、Checkmarx、LiteLLM、BerriAIなどの配布網が侵害対象として明示されている。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "identity_class": "organization",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--36589755fc4094ee8555",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--sandclock"
+      ],
+      "x_ttp_refs": [
+        "ttp--teampcp-t1195-002-oss-supply-chain",
+        "ttp--teampcp-t1552-001-build-secrets"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "クラウド／SaaS",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及",
+      "identity_class": "organization",
+      "description": "Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。",
+      "external_references": [
+        {
+          "source_name": "oligo.security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--daily-48f251212f832ab9b6df"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--829e65b1ac18ce5ea420",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--teampcp-t1059-004-ndt-sh",
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1486-ransomware"
+      ],
+      "x_affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "source-stated",
+        "precision": "year",
+        "status": "known",
+        "value": "2020-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "source-stated",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "インターネットへ露出したRay/Docker/Redis/React環境(集約)",
+      "identity_class": "organization",
+      "description": "Oligo Securityは、Ray、Docker、Redis、Reactなど公開サービスの侵害を個別組織名を挙げずに集約して報告している。ShadowRay 2.0では侵害したAI基盤が自己増殖型ボットネット化された。",
+      "external_references": [
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--teampcp-exposed-cloud-services",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--shadowray-2-0-payloads"
+      ],
+      "x_ttp_refs": [
+        "ttp--teampcp-t1190-exposed-services",
+        "ttp--teampcp-t1059-004-ndt-sh"
+      ],
+      "x_affected_assets": [
+        "Rayクラスタ",
+        "Redisサーバー",
+        "Dockerホスト",
+        "Kubernetes環境"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "account-compromise",
+          "description": "侵害環境へのリバースシェルによる長期的な支配。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "クラウド資格情報の窃取。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "ランサムウェア展開による暗号化。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2020-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "被害組織名は一次資料に記載がないため集約事例として保存する。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Trivy / Checkmarx / LiteLLM / BerriAI",
+      "identity_class": "organization",
+      "description": "GTIGは、TeamPCPがTrivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIに関連するGitHubリポジトリとGitHub Actionsの侵害に関与したと表明したことを記載している。SentinelLabsもAqua SecurityのTrivyとLiteLLMの侵害を記載している。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--teampcp-oss-projects-2026",
+      "x_disclosure_status": "named",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--sandclock"
+      ],
+      "x_ttp_refs": [
+        "ttp--teampcp-t1195-002-oss-supply-chain",
+        "ttp--teampcp-t1552-001-build-secrets"
+      ],
+      "x_affected_assets": [
+        "GitHubリポジトリ",
+        "GitHub Actionsワークフロー",
+        "PyPIパッケージ"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "supply-chain",
+          "description": "オープンソース配布物とCIワークフローの汚染。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "ビルド環境からのAWSキーとGitHubトークンの窃取。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-05-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "被害組織は攻撃者側の犯行表明とベンダー報告の双方に基づく。被害組織自身による確認まで取れていないためcase_statusはreportedとする。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Unix Shell",
+      "description": "侵害したRayクラスタへ第1段階シェルスクリプトndt.shを配信して実行し、リバースシェルと追加ペイロードを取得する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1059.004",
+          "url": "https://attack.mitre.org/techniques/T1059/004/"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--teampcp-t1059-004-ndt-sh",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [
+        "infra--masscan-cloud"
+      ],
+      "x_first_observed": {
+        "value": "2025-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Exploit Public-Facing Application",
+      "description": "Ray、Docker、Redis、Reactなどインターネットへ露出したサービスを自動・ワーム型で侵害する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1190",
+          "url": "https://attack.mitre.org/techniques/T1190/"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--teampcp-t1190-exposed-services",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2020-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Compromise Software Supply Chain",
+      "description": "侵害済みPyPIパッケージと悪意あるプルリクエストを起点にGitHubリポジトリとGitHub Actionsを侵害し、配布物へ悪性コードを埋め込む。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1195.002",
+          "url": "https://attack.mitre.org/techniques/T1195/002/"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--teampcp-t1195-002-oss-supply-chain",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Data Encrypted for Impact",
+      "description": "侵害したクラウド環境でランサムウェアを展開し、恐喝グループとの提携で収益化する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1486",
+          "url": "https://attack.mitre.org/techniques/T1486/"
+        },
+        {
+          "source_name": "Oligo Security",
+          "description": "Local source: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "external_id": "source--oligo-teampcp-2026"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--teampcp-t1486-ransomware",
+      "x_tactic": "Impact",
+      "x_activity_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Credentials In Files",
+      "description": "SANDCLOCK資格情報スティーラーをビルド環境へ埋め込み、AWSキーとGitHubトークンを窃取する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1552.001",
+          "url": "https://attack.mitre.org/techniques/T1552/001/"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        }
+      ],
+      "x_profile_object_id": "ttp--teampcp-t1552-001-build-secrets",
+      "x_tactic": "Credential Access",
+      "x_activity_refs": [
+        "activity--teampcp-oss-supply-chain-2026"
+      ],
+      "x_malware_refs": [
+        "malware--sandclock"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": ""
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6ce8982c-aa72-4ea0-8cbd-ed53aba654b9",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
+      "description": "TeamPCP uses SANDCLOCK.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a9518544-c77f-4088-a71e-491ee36aba99",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "malware--baa3c926-afaa-48a7-ba1b-4d737082a88c",
+      "description": "TeamPCP uses ShadowRay 2.0 ペイロード.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--00bdb7ca-86d7-45ef-b28b-72f36b4b68ca",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+      "description": "TeamPCP uses masscan.cloud / natalstatus.org 基盤.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--afd6d066-0bee-4a03-a13d-27b85ff0565e",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
+      "description": "TeamPCP targets 全世界 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--32ecb4f2-172b-4e24-ae90-221cae2da2b3",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "identity--006eebbb-ad54-4d66-a49e-cd8dd21dfde2",
+      "description": "TeamPCP targets クラウド・AI基盤運用 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cdca3465-8383-4ab1-8680-5503108bf2ce",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
+      "description": "TeamPCP targets フィンテック (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7c9a7493-da4d-48bb-8e3c-187277298184",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",
+      "description": "TeamPCP targets オープンソースソフトウェア (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--62be941f-207c-4655-8754-e180e2c852f8",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 is attributed or linked to TeamPCP.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--29caa6d0-e1e0-4f5b-bd6b-515c138505e3",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "target_ref": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
+      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1059-004-ndt-sh.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c59d6ce1-9c7a-4053-963d-d275195d0c00",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "target_ref": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
+      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1190-exposed-services.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f832b9f0-0416-434b-b382-02623b08d317",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "target_ref": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
+      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 uses ttp--teampcp-t1486-ransomware.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7bd1fdbe-19d4-4c09-863f-1dd0d34f7b75",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "target_ref": "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
+      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 affected victim--activity-rule--829e65b1ac18ce5ea420.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3e7c337f-ac6c-4616-93a8-4b55f63c69f7",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+      "target_ref": "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
+      "description": "新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 affected victim--teampcp-exposed-cloud-services.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a3cd563c-aee3-479c-a4a7-b2708198783b",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 is attributed or linked to TeamPCP.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fc17149b-6ec3-44d0-9c56-b4b7b3cb5c60",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses malware--sandclock.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a8f01f7a-1c9b-4345-ae81-14607a849430",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses infra--masscan-cloud.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--710c6ce8-691c-4476-b9c4-c54fe826c399",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1195-002-oss-supply-chain.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f46ea036-eaef-4f98-a889-dafb531fb933",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1552-001-build-secrets.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0f9f9271-5f82-4c00-8959-52cef761e897",
+      "created": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-10T07:28:34Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 affected victim--activity-rule--36589755fc4094ee8555.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8f9c04b2-860f-4ea3-a529-e031181c8cf4",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
+      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 affected victim--teampcp-oss-projects-2026.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5b061ee4-07c2-4605-a132-57ac653e3545",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
+      "description": "侵害したRayクラスタへ第1段階シェルスクリプトndt.shを配信して実行し、リバースシェルと追加ペイロードを取得する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aa0acd83-6a64-43ca-830e-8b53cc6174d8",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
+      "description": "Ray、Docker、Redis、Reactなどインターネットへ露出したサービスを自動・ワーム型で侵害する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b4ba123d-3153-414d-a7cd-e0656ca8515e",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
+      "description": "侵害済みPyPIパッケージと悪意あるプルリクエストを起点にGitHubリポジトリとGitHub Actionsを侵害し、配布物へ悪性コードを埋め込む。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7088d457-e897-48af-85eb-7d227bc19f66",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
+      "description": "侵害したクラウド環境でランサムウェアを展開し、恐喝グループとの提携で収益化する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3cbd622d-cf0f-4e4a-8328-2755b51ace55",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
+      "description": "SANDCLOCK資格情報スティーラーをビルド環境へ埋め込み、AWSキーとGitHubトークンを窃取する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4d99780c-a281-4a86-a285-95bc64632562",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: masscan.cloud",
+      "pattern": "[domain-name:value = 'masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-05-11T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5375d77e9803617f713a63cf654a4605fc86f3922e56472845fbcb849eac897d",
+          "observed_at": {
+            "value": "2025-05-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 43
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "masscan.cloud",
+          "context_excerpt": "AI generated. Core attacker domain reused across TA-NATALSTATUS, ShadowRay 2.0 and TeamPCP operations.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--309ee1ce-6ef8-4eca-86f8-30a9240c7041",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4d99780c-a281-4a86-a285-95bc64632562",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--70ddb5e4-6589-488f-9a37-3850c0ad9d2c",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: matrix.masscan.cloud",
+      "pattern": "[domain-name:value = 'matrix.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-05-11T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:afb67564351dc1256a1f206ee05be76744c73dc965ed567c290bc09ce789f658",
+          "observed_at": {
+            "value": "2025-05-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 44
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "matrix.masscan.cloud",
+          "context_excerpt": "AI generated. Backup C2 and malware delivery host used to stage first-stage scripts.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f92cc5b2-05cc-4f30-883e-5d505e3d2632",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--70ddb5e4-6589-488f-9a37-3850c0ad9d2c",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5a4d3a2a-412e-4b33-b863-93dee0a066fb",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: natalstatus.org",
+      "pattern": "[domain-name:value = 'natalstatus.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:df07eedf1c01448f7e08e08b4a1fa1da85aa07373e0c1de41415355ec57939bf",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 45
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "natalstatus.org",
+          "context_excerpt": "AI generated. Primary backend domain used by TA-NATALSTATUS activity and linked to TeamPCP.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--26c307a6-3ba3-4f7f-bf9c-69dc10011dc5",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5a4d3a2a-412e-4b33-b863-93dee0a066fb",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8f17a0d8-cd0b-4851-8827-3d8311209137",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: auth.masscan.cloud",
+      "pattern": "[domain-name:value = 'auth.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-10-31T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:1a7dd974185534400df712897af9016fec65250ccff146100539e894c47dec88",
+          "observed_at": {
+            "value": "2025-10-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 46
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "auth.masscan.cloud",
+          "context_excerpt": "AI generated. Subdomain observed hosting credential phishing content.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b18db576-c22c-4591-ba13-651b617cce92",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8f17a0d8-cd0b-4851-8827-3d8311209137",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c1997590-dc76-4044-923e-48e3ea5e5d12",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: checkout.masscan.cloud",
+      "pattern": "[domain-name:value = 'checkout.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-11-19T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6eede856818deccfffdc13e081b3628745dc267d6331d3d0245a4bf09a93aaa4",
+          "observed_at": {
+            "value": "2025-11-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 47
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "checkout.masscan.cloud",
+          "context_excerpt": "AI generated. Subdomain observed impersonating a checkout page for payment phishing.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3f0aed2d-22c0-47a3-8e4d-207bb7e4a436",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c1997590-dc76-4044-923e-48e3ea5e5d12",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--833cc373-6b40-4cc7-bbdc-d7a5c02efc81",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: pay.masscan.cloud",
+      "pattern": "[domain-name:value = 'pay.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-11-19T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0b27a063574deebb7f2ffb6e3555b11b0f1ec692f66917f148798c5d539e1443",
+          "observed_at": {
+            "value": "2025-11-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 48
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "pay.masscan.cloud",
+          "context_excerpt": "AI generated. Subdomain observed operating as a payment phishing page.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--878d5351-ab13-4125-9143-4d0dbc08ce2d",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--833cc373-6b40-4cc7-bbdc-d7a5c02efc81",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--32309f4c-d66b-4c5e-8203-5ac8af3bc66b",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: mail.masscan.cloud",
+      "pattern": "[domain-name:value = 'mail.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-12-29T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:bd47f88ad35f03f123ca2373dfd141d7ccda7124b760153d0a78f7a5818a87e6",
+          "observed_at": {
+            "value": "2025-12-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 49
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mail.masscan.cloud",
+          "context_excerpt": "AI generated. Subdomain observed serving as TeamPCP related email infrastructure.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--932296cc-83c9-4a7d-87a4-8273cf925a5a",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--32309f4c-d66b-4c5e-8203-5ac8af3bc66b",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--60529ee5-d548-4c2e-be68-05a1488dd40f",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: test.masscan.cloud",
+      "pattern": "[domain-name:value = 'test.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-01-02T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:44f985c188c51c834ad919c5b8542c67ed05924d55b6897417a784aa6d859a73",
+          "observed_at": {
+            "value": "2026-01-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 50
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "test.masscan.cloud",
+          "context_excerpt": "AI generated. Subdomain used by TeamPCP for infrastructure testing.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9f332732-5931-4eca-a33b-4dac6dd17daa",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--60529ee5-d548-4c2e-be68-05a1488dd40f",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--27928e49-04e1-430c-8a7a-f2d9ca60cfd7",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: pcp.masscan.cloud",
+      "pattern": "[domain-name:value = 'pcp.masscan.cloud']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:067b4f835df1a9fb0e296d25d0fd1e620a71a6f4c3d1a976f07d8fec0337f987",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 51
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "pcp.masscan.cloud",
+          "context_excerpt": "AI generated. Subdomain that redirected visitors to the TeamPCP Telegram channel, observed April 2026.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c6859463-a6f5-463a-b234-094ec6217c31",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--27928e49-04e1-430c-8a7a-f2d9ca60cfd7",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7312a4a2-ed88-49ef-8668-af737770093a",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: scan.aquasecurity.org",
+      "pattern": "[domain-name:value = 'scan.aquasecurity.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:47c1e31b57f62f062b2f226e82d14dd53cd5a8fd494bebd7190ead0f3ae967d5",
+          "observed_at": {
+            "value": "2026-03-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 52
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "scan.aquasecurity.org",
+          "context_excerpt": "AI generated. Staging domain seen in certificate transparency records during the supply chain attack phase.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0d3ae5ee-be4f-432a-abf9-6d9c045af585",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7312a4a2-ed88-49ef-8668-af737770093a",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2fa7a0d2-626e-4630-8509-e392e51fa7ae",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: checkmarx.zone",
+      "pattern": "[domain-name:value = 'checkmarx.zone']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-22T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d66d6e85f4f237d927c061ddbba809dcce93ec1cdaf1cde0fb18d7c09ec8fa43",
+          "observed_at": {
+            "value": "2026-03-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 53
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "checkmarx.zone",
+          "context_excerpt": "AI generated. Staging domain supporting the March 2026 software supply chain attack phase.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--263c0b8a-dc30-4a11-aee4-11ad6fc3acac",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2fa7a0d2-626e-4630-8509-e392e51fa7ae",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2b9f0cd9-3835-400c-b805-ff69170df333",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.79.77.16",
+      "pattern": "[ipv4-addr:value = '103.79.77.16']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a1055982265b5dd1e3c31f525bdb74c9059dbc6afa4a26594ae272d52bcfaa2b",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 54
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.79.77.16",
+          "context_excerpt": "AI generated. Host serving ndt.sh from the distinctive deployment path, observed June 2025.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99bd2778-1512-40b7-ae68-efa8f5089eff",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2b9f0cd9-3835-400c-b805-ff69170df333",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8d0673c5-4edd-414d-b57e-c805bd40d4c4",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 67.217.57.240",
+      "pattern": "[ipv4-addr:value = '67.217.57.240']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8be93b02735fe54703cb5effe824c11bcd3ecc7b6cff13ed8301892b1b56f440",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 55
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "67.217.57.240",
+          "context_excerpt": "AI generated. TeamPCP C2 used for reverse shells and payload delivery against Ray and Redis compromises.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ca9f5f27-5861-4f1a-9a4b-59cdd3f3fb82",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8d0673c5-4edd-414d-b57e-c805bd40d4c4",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a11e555e-e067-4dfc-be50-704258425d29",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 44.252.85.168",
+      "pattern": "[ipv4-addr:value = '44.252.85.168']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:784023732d454702fef6a6bd49d41002165bc7ccf79c3e3711882b0dcbffd02d",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 56
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "44.252.85.168",
+          "context_excerpt": "AI generated. Payload delivery host sharing the /files/ layout with the TeamPCP C2, later resolved by masscan.cloud.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--48d4a7e3-7541-4a37-ac2c-41919cf3fcf1",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a11e555e-e067-4dfc-be50-704258425d29",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d68b719b-68c9-4588-9acc-1c6bce239e19",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 213.139.205.74",
+      "pattern": "[ipv4-addr:value = '213.139.205.74']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b6e52c88274c13d9da460ca93d74d6878386a066953d0178d3aefbb9efaf1951",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 57
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "213.139.205.74",
+          "context_excerpt": "AI generated. Historical DNS resolution of masscan.cloud assessed as directly related to TeamPCP.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a6af9eb4-30d1-4c21-bd75-f0ea55a0a1af",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d68b719b-68c9-4588-9acc-1c6bce239e19",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b8df22f2-f331-4763-be32-f9ad247ec29d",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 104.164.55.217",
+      "pattern": "[ipv4-addr:value = '104.164.55.217']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:22e0fd335b12b572e9d354b5dbab9160d37e7ff8726b99de14ca47a645352c00",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 58
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "104.164.55.217",
+          "context_excerpt": "AI generated. IP associated by URLhaus with malware distribution from matrix.masscan.cloud, observed August 2025.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6f81c1d2-29c6-48df-a01c-044ed7f42045",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b8df22f2-f331-4763-be32-f9ad247ec29d",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--874f01b7-012d-4e35-aa32-3b5a2b6e66cb",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.127.134.124",
+      "pattern": "[ipv4-addr:value = '103.127.134.124']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ebd8f2d1f514c9ee431a44a4bbc6e2aea4c75f3b901429c2cdb91d9d6f6c2402",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 59
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.127.134.124",
+          "context_excerpt": "AI generated. IP used both to receive reverse shells from compromised Ray clusters and to log into IronErn GitLab accounts.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--008d45f4-fee4-4afc-814c-75fb6fc235bb",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--874f01b7-012d-4e35-aa32-3b5a2b6e66cb",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--787645b9-5794-444a-b762-49d90f38cfb6",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 6.6.6.6",
+      "pattern": "[ipv4-addr:value = '6.6.6.6']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ba7a07c42d69522a939058b062f518d67c0a75dfd856cee0b988d5d06305ba45",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 60
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "6.6.6.6",
+          "context_excerpt": "AI generated. Address observed as the masscan.cloud DNS resolution after a change in April 2026.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b3b48b6f-3a78-439c-9a19-b440fc9572e2",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--787645b9-5794-444a-b762-49d90f38cfb6",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7e44790a-942b-45d1-8e87-bf884e55e1a2",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://matrix.masscan.cloud/ep9TS2/ndt.sh",
+      "pattern": "[url:value = 'https://matrix.masscan.cloud/ep9TS2/ndt.sh']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-07-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:36ec387d11e20eff49a76d1daeff373d5520473000c5095c1c615342d379d437",
+          "observed_at": {
+            "value": "2025-07-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 61
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://matrix.masscan.cloud/ep9TS2/ndt.sh",
+          "context_excerpt": "AI generated. URL delivering the first-stage ndt.sh script to compromised Ray clusters.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f413d25f-d703-480c-8c0d-0cd2c98017bd",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7e44790a-942b-45d1-8e87-bf884e55e1a2",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7b002d6e-d22c-4968-bf04-a108f05e21ec",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://natalstatus.org/ep9TS2/ndt.sh",
+      "pattern": "[url:value = 'https://natalstatus.org/ep9TS2/ndt.sh']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:88989df763146dd05f20e5da40023f1e023e94d9747bd9d878e982671b399ac0",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 62
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://natalstatus.org/ep9TS2/ndt.sh",
+          "context_excerpt": "AI generated. Malware delivery URL sharing the deployment path common to TA-NATALSTATUS and TeamPCP.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6c266ff1-61df-4dfc-87bf-8632ef313753",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7b002d6e-d22c-4968-bf04-a108f05e21ec",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6d5d3d05-822a-4610-8047-3600410c67b4",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.79.77.16/ep9TS2/ndt.sh",
+      "pattern": "[url:value = 'http://103.79.77.16/ep9TS2/ndt.sh']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-05T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0b3b087e4fc98c43bd321cf4492d5b40c9d82927e332713769a5a0711062b3ff",
+          "observed_at": {
+            "value": "2026-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 63
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.79.77.16/ep9TS2/ndt.sh",
+          "context_excerpt": "AI generated. URL serving ndt.sh from the same distinctive deployment path, observed June 2025.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2be88eab-9ef7-4fea-bef3-c1891cd9be49",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6d5d3d05-822a-4610-8047-3600410c67b4",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3dde8bfb-cb6a-47e9-a8c1-d029d1139ad0",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://67.217.57.240:666/files/netsh",
+      "pattern": "[url:value = 'http://67.217.57.240:666/files/netsh']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-09-21T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ea95f90d8d1e0e90823775fa126352801533d215bdf74854020d5f0b7bab7e41",
+          "observed_at": {
+            "value": "2025-09-21T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 64
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://67.217.57.240:666/files/netsh",
+          "context_excerpt": "AI generated. URL that repeatedly delivered the netsh payload into compromised environments.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--56b5a9dd-e959-4a62-839e-2e20c115aef0",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3dde8bfb-cb6a-47e9-a8c1-d029d1139ad0",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f18807c5-f446-407e-a901-8f4160d4f993",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://67.217.57.240:666/files/keyen.sh",
+      "pattern": "[url:value = 'http://67.217.57.240:666/files/keyen.sh']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-10-02T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-5aa545c901df820c7aa2"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6ddd6d5d2fd6caf0a543644bbe534d053fc20f1a6ba8aa98f8cd1c3a03707e64",
+          "observed_at": {
+            "value": "2025-10-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-48f251212f832ab9b6df",
+          "source_path": "https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
+            "path": "daily-news/iocs/2026_07-09/20260808.csv",
+            "row": 65
+          },
+          "campaign_refs": [
+            "activity--daily-5aa545c901df820c7aa2"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://67.217.57.240:666/files/keyen.sh",
+          "context_excerpt": "AI generated. URL used by TeamPCP to deliver an additional script in October 2025.",
+          "analyst_notes": "actor field: TeamPCP; actor_attribute: cybercrime; reference: https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f11b7f8a-fa15-491f-a2fc-d3711170f969",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f18807c5-f446-407e-a901-8f4160d4f993",
+      "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--79187d10-97fd-45e5-992f-ebaac2259b9f",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:26:12Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Non-IOC artifact dataset",
+      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
+      "object_refs": [
+        "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742"
+      ],
+      "x_artifacts_path": "artifacts.csv",
+      "x_artifact_observation_count": 0
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--d1dcd276-3e72-4de8-91ac-208726e53c0a",
+      "created": "2026-08-10T07:26:12Z",
+      "modified": "2026-08-10T07:33:16Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "TeamPCP Threat Actor Profile",
+      "description": "TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで、インターネットへ露出したRay、Docker、Redis、React環境をワーム型に侵害し、2026年にはGitHub ActionsとPyPIを経由するオープンソースサプライチェーン攻撃へ拡大した。Oligo Securityは基盤の連続性から活動を2020年まで遡及している。",
+      "report_types": [
+        "threat-actor"
+      ],
+      "published": "2026-08-10T07:33:16Z",
+      "object_refs": [
+        "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+        "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
+        "malware--baa3c926-afaa-48a7-ba1b-4d737082a88c",
+        "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
+        "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
+        "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+        "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
+        "identity--006eebbb-ad54-4d66-a49e-cd8dd21dfde2",
+        "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
+        "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",
+        "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
+        "identity--2902d55d-eed9-4ffd-a93f-af86bdcba46e",
+        "identity--a9e0fc40-28ab-4cf7-b290-dcb9b994e4cf",
+        "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
+        "attack-pattern--4d989df0-861c-4da3-9869-fcf4c92ae149",
+        "attack-pattern--10df3c81-387e-4a12-b35d-c4bdc452be48",
+        "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
+        "attack-pattern--8e63a2a1-1558-469c-90c7-b7b6570ebe3a",
+        "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
+        "indicator--4d99780c-a281-4a86-a285-95bc64632562",
+        "indicator--70ddb5e4-6589-488f-9a37-3850c0ad9d2c",
+        "indicator--5a4d3a2a-412e-4b33-b863-93dee0a066fb",
+        "indicator--8f17a0d8-cd0b-4851-8827-3d8311209137",
+        "indicator--c1997590-dc76-4044-923e-48e3ea5e5d12",
+        "indicator--833cc373-6b40-4cc7-bbdc-d7a5c02efc81",
+        "indicator--32309f4c-d66b-4c5e-8203-5ac8af3bc66b",
+        "indicator--60529ee5-d548-4c2e-be68-05a1488dd40f",
+        "indicator--27928e49-04e1-430c-8a7a-f2d9ca60cfd7",
+        "indicator--7312a4a2-ed88-49ef-8668-af737770093a",
+        "indicator--2fa7a0d2-626e-4630-8509-e392e51fa7ae",
+        "indicator--2b9f0cd9-3835-400c-b805-ff69170df333",
+        "indicator--8d0673c5-4edd-414d-b57e-c805bd40d4c4",
+        "indicator--a11e555e-e067-4dfc-be50-704258425d29",
+        "indicator--d68b719b-68c9-4588-9acc-1c6bce239e19",
+        "indicator--b8df22f2-f331-4763-be32-f9ad247ec29d",
+        "indicator--874f01b7-012d-4e35-aa32-3b5a2b6e66cb",
+        "indicator--787645b9-5794-444a-b762-49d90f38cfb6",
+        "indicator--7e44790a-942b-45d1-8e87-bf884e55e1a2",
+        "indicator--7b002d6e-d22c-4968-bf04-a108f05e21ec",
+        "indicator--6d5d3d05-822a-4610-8047-3600410c67b4",
+        "indicator--3dde8bfb-cb6a-47e9-a8c1-d029d1139ad0",
+        "indicator--f18807c5-f446-407e-a901-8f4160d4f993"
+      ],
+      "x_schema_version": "1.2.0"
+    }
+  ]
+}
