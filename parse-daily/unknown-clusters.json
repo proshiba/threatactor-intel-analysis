@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-10T02:40:00Z",
+  "generated_at": "2026-08-12T02:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -610,6 +610,44 @@
         "運用者の命名が確立しておらず、クラスタ名は一次資料のマルウェア名に依存している。"
       ],
       "analyst_notes": "単一ベンダー初報のため昇格閾値未達。継続観察。帰属根拠がドメインTLDと文字列言及に留まる点に注意し、ロシア系という評価を確定として扱わない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--project-cav3rn",
+      "primary_name": "Project CAV3RN (未帰属のモジュール型スパイ活動フレームワーク運用者)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-12",
+      "last_seen": "2026-08-12",
+      "detected_via": "一次情報源(securelist.com)の公開一覧の直接確認。tech-memo daily-newsには未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Kasperskyは技術的な能力とインフラのみを扱い、既知の脅威アクターやAPTグループへの帰属を一切行っていない。既存プロファイルへ寄せ付ける根拠はない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-11",
+          "publisher": "Kaspersky GReAT (Securelist)",
+          "url": "https://securelist.com/project-cav3rn-continues/120991/",
+          "title": "Project CAV3RN continues: Google Apps Script as C2 relay and DNS-based C2 channel selection",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2026年8月初旬に未文書化の新規コンポーネントを確認。インフラのドメイン登録は2024年2月に遡り、2026-05-12に再登録、2026-05-19に再委任(一次資料の記載)",
+          "targets": "イスラエル国内の組織。個別の被害組織名は記載なし",
+          "malware": [
+            "Project CAV3RN framework (.NET NativeAOT モジュール)"
+          ],
+          "summary": "DNSのAレコード応答でトランザクションごとに直接HTTPSとGoogle Apps Scriptリレーを選択するC2モジュール。同じDNS基盤でリレーのdeployment IDを検証・差し替えでき、Googleチャネルの切り替えが可能。従来のOutlookカレンダーイベント悪用に続き、正規サービスへC2通信を紛れ込ませてネットワーク検知を困難にしている。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-12)。記事本文に既知アクターへの帰属記述がないことを確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "同一ベンダーの先行報告(https://securelist.com/project-cav3rn-cyberespionage-framework-using-outlook-and-dns/120757/)と本報の2本はいずれもKaspersky GReATであり、独立した一次資料は1系統のみ。",
+        "運用者の命名が確立しておらず、クラスタ名はフレームワーク名に依存している。",
+        "イスラエル標的という点で既存の複数プロファイルと標的が重なるが、重複は帰属根拠にならない。"
+      ],
+      "analyst_notes": "単一ベンダー(Kaspersky GReAT)の系統のみで昇格閾値未達。継続観察。2026-08-12の日次チェックにおける一次情報源の公開一覧確認で検知した。"
     }
   ],
   "excluded_name_collisions": [

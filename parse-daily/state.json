@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "a26e0feb958002424dfd09a674ba18cea2ccbbc7",
-  "last_scanned_date": "2026-08-10",
+  "last_scanned_commit": "967228fd1ffbba0fdfb3bf8d73983f85296d7668",
+  "last_scanned_date": "2026-08-12",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -790,6 +790,165 @@
           "result": "tech-memo経由で検知した記事の原文を確認。帰属が限定表現に留まるためプロファイル化せず、未帰属クラスタ台帳へ記録した。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-12T02:05:00Z",
+      "window": {
+        "since": "2026-08-10",
+        "until": null
+      },
+      "source_commit": "967228fd1ffbba0fdfb3bf8d73983f85296d7668",
+      "statistics": {
+        "news_files": 3,
+        "articles": 29,
+        "review_records": 7,
+        "approved_records": 3,
+        "rejected_records": 4,
+        "applied_records": 3,
+        "unmatched_ioc_actor_observations": 40,
+        "materialization_window": "queueは2026-08-07以降で再生成した。2026-08-07〜08-09分は既にレビュー済み判断がreview-decisions.jsonにあり再現される。2026-08-10のみの窓では、既適用のUNC6671・Head Mare・TeamPCPの各レコードが当該窓に含まれるIOC CSV行だけから再構成され、適用済みの記事本文・標的・被害事例参照を上書きしてしまうため。"
+      },
+      "applied": [
+        {
+          "actor": "lazarus",
+          "activity": "Operation Dream Job: CVE-2026-68820ゼロデイとTroy/MISTPENによる防衛・航空宇宙分野への攻撃",
+          "source": "https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/",
+          "ioc_observations": 45,
+          "capabilities": [
+            "ForestTiger",
+            "FudModule",
+            "MISTPEN",
+            "RelayShell",
+            "SecurityPDF",
+            "Troy"
+          ],
+          "decision": "原文(Check Point Research, 2026-08-11公開)を確認。「The campaign is affiliated to DPRK-linked Lazarus group」と明示的に帰属している。活動期間は一次資料が明示する early 2026 以降と2026年7月の新キャンペーン観測を採用し、記事公開日はreported_atへ分離した。CVE-2026-68820の対応日程(MSRC報告・CVE採番・修正)は攻撃観測日へ流用していない。MISTPENを別サブクラスタへ帰属する報告も存在するため、サブクラスタの統合は行わず両論を残した。"
+        },
+        {
+          "actor": "kimsuky",
+          "activity": "Operation GitPower: GitHub/GitLabをC2とするAsyncRAT展開と攻撃運用へのAI統合",
+          "source": "https://www.genians.co.kr/en/blog/threat_intelligence/kimsuky_ai_llm",
+          "ioc_observations": 54,
+          "capabilities": [
+            "AsyncRAT"
+          ],
+          "decision": "原文(Genians Security Center, 2026-08-10公開)を確認。「activity assessed to be associated with Kimsuky」と帰属しているが断定ではないため確度はmediumとした。一次資料が攻撃観測期間を明示していないため活動期間はunknownのままとし、記事公開日はreported_atへ分離した。独自AIモデルの訓練証拠はないとされており、AI能力を確立済みTTPとして扱っていない。"
+        },
+        {
+          "actor": "storm-1175",
+          "activity": "StormEncryptorランサムウェアの展開とMedusaからの移行",
+          "source": "https://bsky.app/profile/threatintel.microsoft.com/post/3msjiybnb252n",
+          "ioc_observations": 1,
+          "capabilities": [
+            "StormEncryptor"
+          ],
+          "decision": "原文(Microsoft Threat Intelligence公式アカウントのBluesky投稿スレッド, 2026-08-07公開)をBluesky公開APIで全投稿確認。Storm-1175を実行主体として明記している。活動期間は一次資料が明示する唯一の観測日2026-08-02を始期・終期に採用した。N-able N-centralのCVE-2026-18577悪用は「likely exploiting」の評価に留まるため確定した初期侵入手段としては記載していない。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "sandworm",
+          "name": "ELECTRUM (CERT Polskaのポーランドエネルギー事案)",
+          "source": "https://cert.pl/uploads/docs/CERT_Polska_Energy_Sector_Incident_Follow_up_Report_2025.pdf",
+          "decision": "一次資料(CERT Polska, 2026-08-07公開, 全19ページ)の本文をすべて確認したが、ELECTRUM・Sandworm・APT44・ロシア・帰属に関する記述は一切存在しない。ELECTRUM帰属はtech-memoが参照したBleepingComputer記事(2026-08-10)の独自記述に由来し、CERT Polskaへ帰属を明示していない。alias scopeもoverlappingであり同一クラスタと断定できないため不採用。"
+        },
+        {
+          "actor": "blackbyte",
+          "name": "Conti (CISA AA26-222A Gunra勧告)",
+          "source": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a",
+          "decision": "原文(共同勧告 AA26-222A, 2026-08-10公開)を確認。GunraとContiの関係は流出ソースコードの系譜のみで、アクターの同一性を示すものではない。勧告本文にBlackByteへの言及はない。BlackByteのcatalog alias「Conti」経由の誤一致のため不採用。Gunraは新規プロファイルへ昇格した。"
+        },
+        {
+          "actor": "kimsuky",
+          "name": "偽GoogleTranslate Chrome拡張機能(Stealc v2キャンペーン)",
+          "source": "https://cybersecuritynews.com/fake-googletranslate-chrome-extension/",
+          "decision": "記事主題はStealc v2を展開する偽Chrome拡張機能のキャンペーンで、当該キャンペーンをKimsukyへ帰属する記述はない。Kimsukyは過去に同種の囮名を使用した例として言及されているに過ぎず、出典も二次集約サイトのため不採用。"
+        },
+        {
+          "actor": "unc6671",
+          "name": "GTIG UNC6671記事(?hl=en付きURL)",
+          "source": "https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments/?hl=en",
+          "decision": "同一の一次資料による同一活動が2026-08-10のコミット(PR #22)で既に適用済み。?hl=en付きURLがtech-memoへ新規収録されたことによる重複検知であり、追加すべき新規情報はないため不採用。"
+        }
+      ],
+      "new_profiles": [
+        {
+          "actor": "gunra",
+          "name": "Gunra",
+          "source": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a",
+          "decision": "日次チェックで既存プロファイル未一致名(観測25件)として検知。共同勧告 AA26-222A(FBI/CISA/DC3/NSA/USSS/韓国国家警察庁, 2026-08-10公開)の全21ページを原文確認し、政府・法執行機関による言及という昇格閾値を満たすため status: draft で新規作成した。cisa.govのHTML版はデータセンターIPから403となるため、media.defense.gov上の同一内容PDFを参照した。IOCはtech-memo未収録のため未取得で、勧告のSTIX配布物からの取込は別作業とする。"
+        }
+      ],
+      "alias_updates": [
+        {
+          "actor": "contagious-interview",
+          "alias": "Famous Chollima",
+          "scope": "broader",
+          "decision": "日次チェックで未一致名(観測9件)として繰り返し検知されていた。CrowdStrikeのadversaryページを原文確認し、community identifiersにContagious Interviewが含まれることを確認した。ただしFAMOUS CHOLLIMAの定義は北朝鮮へ送金するための不正就労全般であり偽求人面接キャンペーンより広いため、scopeはbroaderとした。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "Project CAV3RN",
+          "observations": 0,
+          "note": "Kaspersky GReAT(2026-08-11)。tech-memo未収録で、一次情報源の公開一覧確認により検知した。イスラエル標的のモジュール型スパイ活動フレームワークで、既知アクターへの帰属記述は一切ない。単一ベンダー系統のみのため昇格閾値未達。unknown-clusters.json へ unknown-cluster--project-cav3rn として tracking で追加した。"
+        },
+        {
+          "name": "DeadLock",
+          "observations": 6,
+          "note": "Microsoft Security Blog(2026-08-10)を原文確認。「deployed by multiple groups including an affiliate of the Lynx and INC ransomware ecosystems」と複数グループによる展開であり、単一の名前付きアクターへ帰属していない。アクターではなくランサムウェアファミリーのためプロファイル化しない。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "「DeadLock ransomware」(8/10)を原文確認。複数グループによる展開で名前付きアクターへの帰属なし。対応不要。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "UNC6671(8/6)は適用済み。公開一覧の先頭にある「GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access」はHTMLメタデータで datePublished 2026-05-11 を確認し新規ではない(UNC6780/TeamPCP該当部分は2026-08-10増分で確認済み)。新規なし。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "Kimwolf v7(8/11)、Aeternum(8/10)はいずれもマルウェア・ボットネット解析で名前付きアクターへの帰属なし。対応不要。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "8/7以降はPatch Tuesday(8/11)のみでアクター記載なし。対応不要。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "8/7以降の新規公開なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-07-22",
+          "result": "8/7以降の新規公開なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "Head Mare英語版(8/11)はロシア語版(8/7)の翻訳で適用済み。「Project CAV3RN continues」(8/11)がtech-memo未収録のため原文確認したが、既知アクターへの帰属記述がないため未帰属クラスタ台帳へ記録した。"
+        },
+        {
+          "publisher": "Kaspersky Securelist RU",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "8/7以降はQ2 2026統計(8/10)のみ。Head Mare(8/7)・Awaken Likho(8/6)は適用済み。新規なし。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -823,5 +982,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。"
 }

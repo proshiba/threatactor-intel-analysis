@@ -18,8 +18,9 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| DeceptiveDevelopment | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | DEV#POPPER | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| DeceptiveDevelopment | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Famous Chollima | CrowdStrike | broader | 中 | `source--crowdstrike-famous-chollima` | CrowdStrikeはFAMOUS CHOLLIMAのcommunity identifiersにContagious Interviewを挙げるが、同クラスタの定義は北朝鮮へ送金するための不正就労(IT worker)全般であり、偽求人面接によるマルウェア配布キャンペーンより広い。したがってscopeはbroaderとし、exactとは扱わない。日次チェックで未一致名(観測9件)として繰り返し検知されていたため登録した。 |
 | Gwisin Gang | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | PurpleBravo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TAG-121 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -309,6 +310,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--crowdstrike-famous-chollima | FAMOUS CHOLLIMA \| Adversary profile | CrowdStrike | 不明 | https://www.crowdstrike.com/adversaries/famous-chollima/ | vendor-adversary-profile | TLP:CLEAR | 中 |
 
 ## 自由記述
 
