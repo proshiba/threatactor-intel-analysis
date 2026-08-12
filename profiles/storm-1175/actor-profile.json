@@ -4,7 +4,7 @@
   "name": "Storm-1175",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-07-29T23:12:01Z",
+  "updated_at": "2026-08-12T01:51:59Z",
   "languages": [
     "ja"
   ],
@@ -50,7 +50,34 @@
     "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
   },
   "capabilities": {
-    "malware": [],
+    "malware": [
+      {
+        "id": "malware--daily-a4bc802d0acb6f9da9b3",
+        "name": "StormEncryptor",
+        "aliases": [],
+        "types": [
+          "ransomware"
+        ],
+        "description": "Storm-1175との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-02T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-02T00:00:00Z"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-b76705cd3ccd88a20697"
+        ],
+        "analyst_notes": "Storm-1175が展開する新型ランサムウェアとしてMicrosoftが直接命名・分析している(Ransom:Win64/StormEncryptor)。"
+      }
+    ],
     "tools": [],
     "infrastructure": [],
     "delivery_formats": [],
@@ -149,6 +176,113 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-6d966f0f2bd59b705455"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-612ec3618eed5cfcdbb9",
+      "name": "新たなStormEncryptorランサムウェア、元Medusaアフィリエイトが使用",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Microsoftは、金銭目的の攻撃者Storm-1175が2026年8月2日から新型ランサムウェア「StormEncryptor」を展開していると確認した。 最近の攻撃では、N-able N-centralの認証回避脆弱性CVE-2026-18577を初期侵入に悪用した可能性が高いと評価されている。 侵入後はAnyDeskやSimpleHelpで遠隔操作し、Advanced IP Scannerで探索、MimikatzでLSASSから認証情報を窃取する。 StormEncryptorはファイルへ「.encrypted」を付けて暗号化し、3日以内の身代金交渉を要求し、応じなければ窃取データを公開すると脅迫する。 Storm-1175は初期侵入からデータ窃取、ランサムウェア展開まで数日以内と速く、従来使用していたMedusaからStormEncryptorへ移行した。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-a4bc802d0acb6f9da9b3"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--930a84def0728e17de5d",
+        "ttp--activity-rule--b66518744de700598f4d"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--a6c8bb210ab26d8f527e"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-b76705cd3ccd88a20697"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--612ec3618eed5cfcdbb98873 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Microsoft Threat Intelligence 公式アカウントのBluesky投稿スレッド, 2026-08-07公開)をBluesky公開APIで全投稿確認。「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」とStorm-1175を実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。2026年4月以来Microsoftが観測した最初の活動であり、従来のMedusaからStormEncryptorへ移行したこと、AnyDesk/SimpleHelpによる遠隔操作、Advanced IP Scannerによる探索、MimikatzによるLSASSダンプ、初期侵入からデータ窃取・ランサムウェア展開まで数日以内という運用速度を新規活動として採用する。活動期間は一次資料が明示する唯一の観測日である2026-08-02を始期・終期の双方に採用する。終期の明示はなく報告時点で継続中と読めるため、2026-08-02は確認できた最終観測日であって活動終了日ではない。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-11はreported_atとして分離する。N-able N-centralのCVE-2026-18577悪用は「likely exploiting」の評価に留まるため、確定した初期侵入手段としては記載せず評価として残す。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--storm-1175",
+          "name": "Storm-1175",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-a4bc802d0acb6f9da9b3"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--930a84def0728e17de5d",
+            "ttp--activity-rule--b66518744de700598f4d"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--a6c8bb210ab26d8f527e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-02T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-02T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "Command And Control",
+            "Impact"
+          ],
+          "results": [
+            "credential-theft",
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-b76705cd3ccd88a20697"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -277,7 +411,68 @@
     "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
     "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
-  "ttps": [],
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--930a84def0728e17de5d",
+      "tactic": "Impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "StormEncryptorはファイルへ「.encrypted」を付けて暗号化し、3日以内の身代金交渉を要求し、応じなければ窃取データを公開すると脅迫する。",
+      "activity_refs": [
+        "activity--daily-612ec3618eed5cfcdbb9"
+      ],
+      "malware_refs": [
+        "malware--daily-a4bc802d0acb6f9da9b3"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b76705cd3ccd88a20697"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--b66518744de700598f4d",
+      "tactic": "Command And Control",
+      "technique_id": "T1219.002",
+      "technique_name": "Remote Desktop Software",
+      "observed_behavior": "侵入後はAnyDeskやSimpleHelpで遠隔操作し、Advanced IP Scannerで探索、MimikatzでLSASSから認証情報を窃取する。",
+      "activity_refs": [
+        "activity--daily-612ec3618eed5cfcdbb9"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。; activity-period",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-b76705cd3ccd88a20697"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
   "sources": [
     {
       "source_id": "source--actor-mapping-workbook",
@@ -314,6 +509,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260407.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-b76705cd3ccd88a20697",
+      "path": "https://bsky.app/profile/threatintel.microsoft.com/post/3msjiybnb252n",
+      "title": "新たなStormEncryptorランサムウェア、元Medusaアフィリエイトが使用",
+      "publisher": "bsky.app",
+      "published_at": {
+        "value": "2026-08-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260811.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-d32841215eeaadd319dd",
@@ -620,6 +833,64 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-6d966f0f2bd59b705455"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--a6c8bb210ab26d8f527e",
+      "name": "被害事例: 新たなStormEncryptorランサムウェア、元Medusaアフィリエイトが使用",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Microsoftは、金銭目的の攻撃者Storm-1175が2026年8月2日から新型ランサムウェア「StormEncryptor」を展開していると確認した。 最近の攻撃では、N-able N-centralの認証回避脆弱性CVE-2026-18577を初期侵入に悪用した可能性が高いと評価されている。 侵入後はAnyDeskやSimpleHelpで遠隔操作し、Advanced IP Scannerで探索、MimikatzでLSASSから認証情報を窃取する。 StormEncryptorはファイルへ「.encrypted」を付けて暗号化し、3日以内の身代金交渉を要求し、応じなければ窃取データを公開すると脅迫する。 Storm-1175は初期侵入からデータ窃取、ランサムウェア展開まで数日以内と速く、従来使用していたMedusaからStormEncryptorへ移行した。",
+      "activity_refs": [
+        "activity--daily-612ec3618eed5cfcdbb9"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--daily-a4bc802d0acb6f9da9b3"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--930a84def0728e17de5d",
+        "ttp--activity-rule--b66518744de700598f4d"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Storm-1175は初期侵入からデータ窃取、ランサムウェア展開まで数日以内と速く、従来使用していたMedusaからStormEncryptorへ移行した。"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "侵入後はAnyDeskやSimpleHelpで遠隔操作し、Advanced IP Scannerで探索、MimikatzでLSASSから認証情報を窃取する。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "新たなStormEncryptorランサムウェア、元Medusaアフィリエイトが使用"
+        }
+      ],
+      "first_observed": {
+        "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-b76705cd3ccd88a20697"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     }

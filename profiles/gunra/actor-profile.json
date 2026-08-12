@@ -1,0 +1,2521 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--gunra",
+  "name": "Gunra",
+  "status": "draft",
+  "created_at": "2026-08-12T01:53:38Z",
+  "updated_at": "2026-08-12T01:57:24Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "Gunra",
+    "aliases": [
+      {
+        "name": "Golden Community",
+        "vendor": "FBI",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "共同勧告は「The FBI observed the group adopting new branding aliases (notably operating under the name Golden Community)」と記載する。RaaS展開に伴うブランド名であり、同一クラスタと断定できないためscopeはoverlappingとする。"
+      }
+    ],
+    "actor_types": [
+      "financially-motivated"
+    ],
+    "first_seen": {
+      "value": "2025-04-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-07-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "yes",
+    "description": "2025年4月に出現した二重恐喝型ランサムウェアの運用主体。2022年に流出したContiのソースコードを基にした、または強い影響を受けたランサムウェアを使用する。2026年1月にダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供している。政府機関と重要インフラを含む幅広い業種を、南北アメリカ、欧州、中東、アフリカ、アジア太平洋にわたって標的としている。",
+    "analyst_notes": "Gunraはランサムウェアファミリー名であると同時に、勧告が「Gunra actors」「the group」として運用主体を指す名称でもある。アフィリエイトモデルであるため、個々の侵入の実行者と運用主体は必ずしも一致しない。"
+  },
+  "attribution": {
+    "countries": [],
+    "sponsor_type": "criminal",
+    "organizations": [],
+    "assessment": "共同勧告は金銭目的のサイバー犯罪(financially motivated cybercriminals)向けのRaaSと記載するのみで、帰属国もスポンサーも示していない。被害国やインフラ所在国から攻撃元国を推定しない。",
+    "confidence": "unknown",
+    "evidence_refs": [
+      "source--cisa-aa26-222a-gunra"
+    ],
+    "analyst_notes": "韓国国家警察庁(KNPA)が共同署名機関に含まれ韓国内の被害事例を提供しているが、これは被害地であって攻撃元ではない。"
+  },
+  "motivations": [
+    {
+      "type": "financial-gain",
+      "description": "データ窃取と暗号化を組み合わせた二重恐喝により身代金を得ることを目的とする。身代金交渉は数千万米ドル規模から開始されると勧告が記載している。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": ""
+    }
+  ],
+  "relationships": [],
+  "diamond_model": {
+    "adversary": "金銭目的のRaaS運用主体Gunra。アフィリエイトと初期アクセスブローカーを募集して運用する。帰属国は不明。",
+    "capability": "Contiの流出ソースコードに由来するWindows/Linuxロッカー(ChaCha20 + RSA-4096、拡張子.ENCRT)、OneDrive/SharePoint窃取ツールmain.exe、Impacket(psexec/smbclient/secretsdump)、Mimikatz、Sliver、RClone、7-Zip、FileZilla、AnyDesk等の正規・公開ツール。",
+    "infrastructure": "Tor上のDLSと交渉ポータル、clearnetミラーdatapub[.]news、恐喝交渉用のProton/Gmailアドレスとの qTox ID、攻撃者管理サーバー群。",
+    "victim": "南北アメリカ、欧州、中東、アフリカ、アジア太平洋の政府機関・重要インフラを含む10業種の組織。",
+    "socio_political": "ダークウェブフォーラムを通じたアフィリエイト募集と、ペネトレーションテスター・初期アクセスブローカーへの利益分配を伴う商業的なランサムウェアエコシステム。",
+    "analyst_notes": "アクター全体の要約であり、活動別ダイヤモンドは各Activityに保存する。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--gunra-ransomware",
+        "name": "Gunra",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "Linux",
+          "ransomware"
+        ],
+        "description": "二重恐喝型ランサムウェア。マルチスレッドでChaCha20 + RSA-4096により全ボリュームを暗号化し、暗号化済みファイルへ拡張子.ENCRTを付与する(2025年7月の1検体では.CRYPT)。各ディレクトリへ身代金メモR3ADM3.txtを書き込む。FindFirstFileW/FindNextFileWでA〜Zの全ドライブを走査し、システムディレクトリと.exe/.dll/.sys等を除外する二段フィルタを持つ。IsDebuggerPresentによるデバッガ検知を備え、ネットワーク通信を伴わない自己完結型である。2025年半ばにLinux版が追加された。",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告は2022年に流出したContiのソースコードに基づく、または強い影響を受けていると評価している。Conti自体との運用主体の同一性は主張していない。"
+      },
+      {
+        "id": "malware--gunra-main-exe",
+        "name": "main.exe",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "exfiltration-tool"
+        ],
+        "description": "Microsoft OneDriveとSharePointから被害データを持ち出すためにGunraが使用した悪性実行ファイル。勧告は2件のSHA256を掲載している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "汎用的なファイル名であり、ハッシュ値と併せてのみ同定に用いる。"
+      }
+    ],
+    "tools": [
+      {
+        "id": "tool--gunra-impacket",
+        "name": "Impacket",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "psexec.py / smbclient.py によるSMB経由の横展開と、secretsdump.py によるドメインコントローラーからのNTDS資格情報ダンプに使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-mimikatz",
+        "name": "Mimikatz",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "Windowsからの認証情報の取得に使用する後侵害ツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-sliver",
+        "name": "Sliver",
+        "aliases": [],
+        "types": [
+          "public-tool",
+          "c2-framework"
+        ],
+        "description": "遠隔操作に用いるペネトレーションテスト用C2フレームワーク。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-rclone",
+        "name": "RClone",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "クラウドストレージ間のファイル操作に用いるコマンドラインツール。データ持ち出しに使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-openssh",
+        "name": "OpenSSH",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "攻撃者管理の外部サーバーから取得し、侵害システム間のSSHトンネルと持続化に使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-archivers",
+        "name": "7-Zip / WinRAR",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "持ち出し前の圧縮アーカイブ作成に使用。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-filezilla",
+        "name": "FileZilla",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "代替プロトコル経由でのデータ持ち出しに使用するFTPクライアント。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--gunra-rmm",
+        "name": "AnyDesk / Google Remote Desktop / MobaXterm",
+        "aliases": [],
+        "types": [
+          "public-tool",
+          "rmm"
+        ],
+        "description": "遠隔アクセスと持続化に流用される正規のリモート管理・接続ツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告のLeveraged Toolsは「悪性と断定せず調査せよ」と注記しているため、確度をmediumとする。"
+      },
+      {
+        "id": "tool--gunra-amass",
+        "name": "Amass",
+        "aliases": [],
+        "types": [
+          "public-tool"
+        ],
+        "description": "ネットワークマッピングと情報収集に使用する偵察ツール。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infrastructure--gunra-dls",
+        "name": "Tor上のDLSと交渉ポータル",
+        "aliases": [],
+        "types": [
+          "leak-site",
+          "negotiation-portal"
+        ],
+        "description": "被害組織の一覧と窃取データを公開するTor上のDLS。被害者にはClient IDと初期パスワードが割り当てられる。2025年6〜7月はclearnetミラーdatapub[.]newsを運用し、2026年3月までに別の.onionアドレスへ移行した。",
+        "first_observed": {
+          "value": "2025-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "delivery_formats": [],
+    "vulnerabilities": [
+      {
+        "id": "vulnerability--cve-2024-55591",
+        "name": "CVE-2024-55591",
+        "aliases": [],
+        "types": [
+          "authentication-bypass"
+        ],
+        "description": "特定バージョンのFortiOS/FortiProxyに影響する認証バイパス(CWE-288)。FBIがGunraによる悪用を観測している。悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "vulnerability--cve-2025-24472",
+        "name": "CVE-2025-24472",
+        "aliases": [],
+        "types": [
+          "authentication-bypass"
+        ],
+        "description": "特定バージョンのFortiOS/FortiProxyに影響する認証バイパス(CWE-288)。FBIがGunraによる悪用を観測している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "operational_capabilities": [
+      {
+        "id": "opcap--gunra-raas",
+        "name": "RaaSアフィリエイトプログラム運営",
+        "aliases": [],
+        "types": [
+          "operational"
+        ],
+        "description": "2026年1月にダークウェブフォーラムで開始。管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供する。",
+        "first_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--gunra-iab-recruit",
+        "name": "初期アクセスブローカーの募集",
+        "aliases": [],
+        "types": [
+          "operational"
+        ],
+        "description": "企業ネットワークへのアクセス提供と引き換えに身代金の分配を提示し、ペネトレーションテスターやethical hackerを募集している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "capabilityは共同勧告AA26-222Aが当該アクターの利用として明記した項目のみを登録している。Leveraged Toolsの一部は正規ツールであり、単独では悪性の根拠にならない。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--gunra-knpa-vdi-intrusion-2025",
+      "name": "KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開",
+      "activity_type": "intrusion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "韓国国家警察庁(KNPA)が観測した被害事例。攻撃者はインターネット公開VPNゲートウェイの資格情報露出とSSHアクセス制御の不備を悪用して不正な遠隔アクセスを得た。ある被害組織では、アカウントロックアウト制御がないSSL-VPN機器の管理者アカウントへ既定資格情報でアクセスし、攻撃者管理サーバーからOpenSSHを取得してSSHトンネルで持続化した。ネットワーク管理者の端末を経由してSSL-VPN管理コンソールへアクセスし、インターネット側と社内側の双方に接続できる未使用アカウントの強制パスワード変更要件を回避する設定変更を行った。SSL-VPN機器のトラフィック制御機能を操作してVDI認証ポータル利用者の資格情報とセッション情報を収集し、窃取したセッションCookieでセッションハイジャックを行い内部VDI環境へ侵入、RDPでVDI認証Webサーバー、内部ADサーバー、IT担当者の仮想デスクトップへ横展開した。さらに認証処理ファイルを改変して攻撃者指定のOTP値でMFAを継続的に回避し、Hiwareのアクセス制御サーバーから共通鍵を窃取して全企業サーバーの資格情報を復号したうえで、DBサーバーとNASを暗号化した。ランサムウェア展開の前後には、主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除している。",
+      "target_refs": [
+        "target--gunra--country--south-korea"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--79e7281b8b02b45a190e",
+        "ttp--gunra-t1003",
+        "ttp--gunra-t1005",
+        "ttp--gunra-t1021-001",
+        "ttp--gunra-t1040",
+        "ttp--gunra-t1078-001",
+        "ttp--gunra-t1078-002",
+        "ttp--gunra-t1098",
+        "ttp--gunra-t1105",
+        "ttp--gunra-t1133",
+        "ttp--gunra-t1486",
+        "ttp--gunra-t1490",
+        "ttp--gunra-t1539",
+        "ttp--gunra-t1555",
+        "ttp--gunra-t1556-006",
+        "ttp--gunra-t1572"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--32917a8d98a0a8298a8e",
+        "victim--gunra-knpa-vdi"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AのKNPA観測部分に基づく。勧告は本事例の攻撃時期を明示していないため活動期間はunknownとし、資料発行日をreported_atへ分離した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--gunra",
+          "name": "Gunra",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--gunra-ransomware"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--79e7281b8b02b45a190e",
+            "ttp--gunra-t1003",
+            "ttp--gunra-t1005",
+            "ttp--gunra-t1021-001",
+            "ttp--gunra-t1040",
+            "ttp--gunra-t1078-001",
+            "ttp--gunra-t1078-002",
+            "ttp--gunra-t1098",
+            "ttp--gunra-t1105",
+            "ttp--gunra-t1133",
+            "ttp--gunra-t1486",
+            "ttp--gunra-t1490",
+            "ttp--gunra-t1539",
+            "ttp--gunra-t1555",
+            "ttp--gunra-t1556-006",
+            "ttp--gunra-t1572"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--gunra--country--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--32917a8d98a0a8298a8e",
+            "victim--gunra-knpa-vdi"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Collection",
+            "Command and Control",
+            "Credential Access",
+            "Defense Evasion",
+            "Impact",
+            "Initial Access",
+            "Lateral Movement",
+            "Persistence"
+          ],
+          "results": [
+            "credential-theft",
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--gunra--country--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--gunra-raas-2025-2026",
+      "name": "Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "FBIは2025年4月にGunraランサムウェアを初めて観測した。攻撃者はTor上にDLSを設置し、被害組織の一覧と窃取データを公開している。2026年1月にはダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供した。FBIはこの拡大に伴い、当該グループがGolden Communityという名称で活動する新たなブランドを採用したことを観測している。初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。身代金メモR3ADM3.txtで5〜7日以内の交渉開始を要求し、応じない場合はDLSでの公開と販売を脅迫する。",
+      "target_refs": [
+        "target--gunra--region--global",
+        "target--gunra--sector--academia",
+        "target--gunra--sector--critical-manufacturing",
+        "target--gunra--sector--financial-services",
+        "target--gunra--sector--government",
+        "target--gunra--sector--healthcare",
+        "target--gunra--sector--media",
+        "target--gunra--sector--professional-services",
+        "target--gunra--sector--retail",
+        "target--gunra--sector--transportation",
+        "target--gunra--sector--utilities"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware",
+        "malware--gunra-main-exe"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--gunra-dls"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--733895bfebede80e9001",
+        "ttp--gunra-t1003-003",
+        "ttp--gunra-t1005",
+        "ttp--gunra-t1021-002",
+        "ttp--gunra-t1047",
+        "ttp--gunra-t1048",
+        "ttp--gunra-t1049",
+        "ttp--gunra-t1059-003",
+        "ttp--gunra-t1070-003",
+        "ttp--gunra-t1083",
+        "ttp--gunra-t1106",
+        "ttp--gunra-t1114",
+        "ttp--gunra-t1190",
+        "ttp--gunra-t1486",
+        "ttp--gunra-t1490",
+        "ttp--gunra-t1530",
+        "ttp--gunra-t1550-002",
+        "ttp--gunra-t1550-003",
+        "ttp--gunra-t1560",
+        "ttp--gunra-t1567",
+        "ttp--gunra-t1622",
+        "ttp--gunra-t1657"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--59bc376b01842d5405da",
+        "victim--gunra-dls-multi-sector"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222A(2026-08-10公開)の原文確認に基づく。活動期間は勧告が明示する2025年4月の初観測と、DLSの.onionアドレスが2026年7月まで観測されている記載を採用した。資料発行日はreported_atへ分離している。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--gunra",
+          "name": "Gunra",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--gunra-main-exe",
+            "malware--gunra-ransomware"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--733895bfebede80e9001",
+            "ttp--gunra-t1003-003",
+            "ttp--gunra-t1005",
+            "ttp--gunra-t1021-002",
+            "ttp--gunra-t1047",
+            "ttp--gunra-t1048",
+            "ttp--gunra-t1049",
+            "ttp--gunra-t1059-003",
+            "ttp--gunra-t1070-003",
+            "ttp--gunra-t1083",
+            "ttp--gunra-t1106",
+            "ttp--gunra-t1114",
+            "ttp--gunra-t1190",
+            "ttp--gunra-t1486",
+            "ttp--gunra-t1490",
+            "ttp--gunra-t1530",
+            "ttp--gunra-t1550-002",
+            "ttp--gunra-t1550-003",
+            "ttp--gunra-t1560",
+            "ttp--gunra-t1567",
+            "ttp--gunra-t1622",
+            "ttp--gunra-t1657"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--gunra-dls"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--gunra--region--global",
+            "target--gunra--sector--academia",
+            "target--gunra--sector--critical-manufacturing",
+            "target--gunra--sector--financial-services",
+            "target--gunra--sector--government",
+            "target--gunra--sector--healthcare",
+            "target--gunra--sector--media",
+            "target--gunra--sector--professional-services",
+            "target--gunra--sector--retail",
+            "target--gunra--sector--transportation",
+            "target--gunra--sector--utilities"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--59bc376b01842d5405da",
+            "victim--gunra-dls-multi-sector"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [
+            "Collection",
+            "Credential Access",
+            "Defense Evasion",
+            "Discovery",
+            "Execution",
+            "Exfiltration",
+            "Impact",
+            "Initial Access",
+            "Lateral Movement"
+          ],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--gunra--region--global"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--32917a8d98a0a8298a8e",
+      "name": "被害事例: KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "韓国国家警察庁(KNPA)が観測した被害事例。攻撃者はインターネット公開VPNゲートウェイの資格情報露出とSSHアクセス制御の不備を悪用して不正な遠隔アクセスを得た。ある被害組織では、アカウントロックアウト制御がないSSL-VPN機器の管理者アカウントへ既定資格情報でアクセスし、攻撃者管理サーバーからOpenSSHを取得してSSHトンネルで持続化した。ネットワーク管理者の端末を経由してSSL-VPN管理コンソールへアクセスし、インターネット側と社内側の双方に接続できる未使用アカウントの強制パスワード変更要件を回避する設定変更を行った。SSL-VPN機器のトラフィック制御機能を操作してVDI認証ポータル利用者の資格情報とセッション情報を収集し、窃取したセッションCookieでセッションハイジャックを行い内部VDI環境へ侵入、RDPでVDI認証Webサーバー、内部ADサーバー、IT担当者の仮想デスクトップへ横展開した。さらに認証処理ファイルを改変して攻撃者指定のOTP値でMFAを継続的に回避し、Hiwareのアクセス制御サーバーから共通鍵を窃取して全企業サーバーの資格情報を復号したうえで、DBサーバーとNASを暗号化した。ランサムウェア展開の前後には、主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除している。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "target_refs": [
+        "target--gunra--country--south-korea"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--79e7281b8b02b45a190e",
+        "ttp--gunra-t1003",
+        "ttp--gunra-t1005",
+        "ttp--gunra-t1021-001",
+        "ttp--gunra-t1040",
+        "ttp--gunra-t1078-001",
+        "ttp--gunra-t1078-002",
+        "ttp--gunra-t1098",
+        "ttp--gunra-t1105",
+        "ttp--gunra-t1133",
+        "ttp--gunra-t1486",
+        "ttp--gunra-t1490",
+        "ttp--gunra-t1539",
+        "ttp--gunra-t1555",
+        "ttp--gunra-t1556-006",
+        "ttp--gunra-t1572"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "KNPAが観測したSSL-VPN経由のVDI侵入とMFA回避を伴うランサムウェア展開"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--59bc376b01842d5405da",
+      "name": "被害事例: Conti流出コード由来のロッカーによる二重恐喝とRaaSアフィリエイトプログラムの展開",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "FBIは2025年4月にGunraランサムウェアを初めて観測した。攻撃者はTor上にDLSを設置し、被害組織の一覧と窃取データを公開している。2026年1月にはダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始し、管理パネル、設定可能なランサムウェアビルダー、クロスプラットフォームのロッカー、アフィリエイト向け文書を提供した。FBIはこの拡大に伴い、当該グループがGolden Communityという名称で活動する新たなブランドを採用したことを観測している。初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。身代金メモR3ADM3.txtで5〜7日以内の交渉開始を要求し、応じない場合はDLSでの公開と販売を脅迫する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "target_refs": [
+        "target--gunra--region--global",
+        "target--gunra--sector--academia",
+        "target--gunra--sector--critical-manufacturing",
+        "target--gunra--sector--financial-services",
+        "target--gunra--sector--government",
+        "target--gunra--sector--healthcare",
+        "target--gunra--sector--media",
+        "target--gunra--sector--professional-services",
+        "target--gunra--sector--retail",
+        "target--gunra--sector--transportation",
+        "target--gunra--sector--utilities"
+      ],
+      "malware_refs": [
+        "malware--gunra-main-exe",
+        "malware--gunra-ransomware"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--733895bfebede80e9001",
+        "ttp--gunra-t1003-003",
+        "ttp--gunra-t1005",
+        "ttp--gunra-t1021-002",
+        "ttp--gunra-t1047",
+        "ttp--gunra-t1048",
+        "ttp--gunra-t1049",
+        "ttp--gunra-t1059-003",
+        "ttp--gunra-t1070-003",
+        "ttp--gunra-t1083",
+        "ttp--gunra-t1106",
+        "ttp--gunra-t1114",
+        "ttp--gunra-t1190",
+        "ttp--gunra-t1486",
+        "ttp--gunra-t1490",
+        "ttp--gunra-t1530",
+        "ttp--gunra-t1550-002",
+        "ttp--gunra-t1550-003",
+        "ttp--gunra-t1560",
+        "ttp--gunra-t1567",
+        "ttp--gunra-t1622",
+        "ttp--gunra-t1657"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "侵入後はImpacketによるSMB横展開とNTDSダンプ、Mimikatzによる資格情報取得、ログとコマンド履歴の削除、深夜〜早朝帯での偵察を行い、main.exeでOneDrive/SharePointから、7-Zip・RClone・FileZillaでファイル共有サービスMegaへ最大数十テラバイトを持ち出したうえで、ChaCha20 + RSA-4096により全ボリュームを暗号化する。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "FBIは2025年4月にGunraランサムウェアを初めて観測した。"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--gunra-dls-multi-sector",
+      "name": "被害事例: GunraのDLSに掲載された複数地域・複数業種の組織",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "GunraのDLSに掲載された被害組織は、南北アメリカ、欧州、中東、アフリカ、アジア太平洋にまたがり、医療・公衆衛生、金融サービス・保険、重要製造業・建設、運輸・物流、政府サービス・施設、公益事業、学術、メディア・通信、小売、専門サービス・非営利の各分野に及ぶ。身代金不払いの場合は被害組織を公表し、窃取データのディレクトリ一覧をプレビューとして提示する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "target_refs": [
+        "target--gunra--sector--healthcare",
+        "target--gunra--sector--financial-services",
+        "target--gunra--sector--critical-manufacturing",
+        "target--gunra--sector--transportation",
+        "target--gunra--sector--government",
+        "target--gunra--sector--utilities",
+        "target--gunra--sector--academia",
+        "target--gunra--sector--media",
+        "target--gunra--sector--retail",
+        "target--gunra--sector--professional-services",
+        "target--gunra--region--global"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "ttp_refs": [
+        "ttp--gunra-t1486",
+        "ttp--gunra-t1657"
+      ],
+      "affected_assets": [
+        "ファイルサーバー",
+        "業務文書",
+        "データベース",
+        "個人情報",
+        "社内メール",
+        "Microsoft OneDrive",
+        "Microsoft SharePoint"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "窃取データのDLS公開および販売の脅迫。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "Windows/Linux環境のファイル暗号化。"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "個別の被害組織名は勧告に記載がないため集約事例として保持する。"
+    },
+    {
+      "victim_case_id": "victim--gunra-knpa-vdi",
+      "name": "被害事例: KNPAが観測したSSL-VPNからVDI環境への侵入とDB/NAS暗号化",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "organization",
+      "case_status": "reported",
+      "description": "韓国国家警察庁(KNPA)が観測した被害事例。攻撃者はアカウントロックアウト制御のないSSL-VPN機器の管理者アカウントへ既定資格情報でアクセスし、未使用アカウントの設定を変更して悪用した。VDI認証ポータルの認証処理ファイルを改変して特定OTP値によるMFA回避を確立し、アクセス制御サーバーから窃取した共通鍵で全企業サーバーの資格情報を復号したうえで、DBサーバーとNASを暗号化した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "target_refs": [
+        "target--gunra--country--south-korea"
+      ],
+      "malware_refs": [
+        "malware--gunra-ransomware"
+      ],
+      "ttp_refs": [
+        "ttp--gunra-t1133",
+        "ttp--gunra-t1078-001",
+        "ttp--gunra-t1098",
+        "ttp--gunra-t1556-006",
+        "ttp--gunra-t1555",
+        "ttp--gunra-t1486"
+      ],
+      "affected_assets": [
+        "SSL-VPN機器",
+        "VDI認証Webサーバー",
+        "内部Active Directoryサーバー",
+        "IT担当者の仮想デスクトップ",
+        "Hiwareアクセス制御サーバー",
+        "データベースサーバー",
+        "NAS",
+        "バックアップ基盤"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "全企業サーバーの資格情報ダンプ。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "DBサーバーとNASの暗号化。"
+        },
+        {
+          "impact_type": "data-theft",
+          "description": "システム・ネットワーク構成情報を含む文書の収集。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "被害組織名と被害時期は勧告に記載がない。韓国は被害地であり攻撃元ではない。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--gunra--country--south-korea",
+        "name": "韓国",
+        "description": "韓国国家警察庁(KNPA)が共同署名機関として国内の被害事例(SSL-VPN管理者アカウント侵害からVDI環境への侵入とDB/NASの暗号化)を提供している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告はKNPAが観測した被害事例として記載する。被害国であり攻撃元国ではない。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--gunra--region--global",
+        "name": "全世界",
+        "description": "勧告は被害組織がAmericas、Europe、Middle East、Africa、Asia-Pacificにまたがると記載している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "個別国の明示は韓国のみ。広域表示であり域内の全国家が標的だったことを意味しない。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--gunra--sector--academia",
+        "name": "学術",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--critical-manufacturing",
+        "name": "重要製造業・建設",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--financial-services",
+        "name": "金融サービス・保険",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--government",
+        "name": "政府サービス・施設",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--healthcare",
+        "name": "医療・公衆衛生",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--media",
+        "name": "メディア・通信",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--professional-services",
+        "name": "専門サービス・非営利",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--retail",
+        "name": "小売",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--transportation",
+        "name": "運輸・物流",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--gunra--sector--utilities",
+        "name": "公益事業",
+        "description": "勧告のIntended Audienceおよび被害業種一覧に明記されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "標的は勧告が明示する業種と地域のみを登録する。個別の被害組織名は公開されていない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。",
+    "roles": [],
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--733895bfebede80e9001",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "初期侵入はインターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)の悪用が中心で、悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--79e7281b8b02b45a190e",
+      "tactic": "Impact",
+      "technique_id": "T1490",
+      "technique_name": "Inhibit System Recovery",
+      "observed_behavior": "ランサムウェア展開の前後には、主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除している。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1003",
+      "tactic": "Credential Access",
+      "technique_id": "T1003",
+      "technique_name": "OS Credential Dumping",
+      "observed_behavior": "窃取した共通鍵により全企業サーバーに関連する資格情報のダンプを行った。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1003-003",
+      "tactic": "Credential Access",
+      "technique_id": "T1003.003",
+      "technique_name": "OS Credential Dumping: NTDS",
+      "observed_behavior": "Impacketのsecretsdump.pyで侵害したドメインコントローラーからNTDSのパスワードハッシュを取得した。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1005",
+      "tactic": "Collection",
+      "technique_id": "T1005",
+      "technique_name": "Data from Local System",
+      "observed_behavior": "業務上重要な文書、データベース、PII、社内メールを収集する。KNPAの事例ではIT担当者のVDI環境からシステム・ネットワーク構成情報を含む文書を収集した。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026",
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1021-001",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1021.001",
+      "technique_name": "Remote Services: Remote Desktop Protocol",
+      "observed_behavior": "窃取したセッション情報で内部VDI環境へ侵入し、RDPでVDI認証Webサーバー、内部ADサーバー、IT担当者の仮想デスクトップへ横展開した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1021-002",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1021.002",
+      "technique_name": "Remote Services: SMB/Windows Admin Shares",
+      "observed_behavior": "Impacketのpsexec.pyとsmbclient.pyを用いてSMB経由で横展開する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1040",
+      "tactic": "Credential Access",
+      "technique_id": "T1040",
+      "technique_name": "Network Sniffing",
+      "observed_behavior": "SSL-VPN機器のトラフィック制御機能を操作し、企業VDI認証ポータルへ認証する利用者の資格情報とセッション情報を収集した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1047",
+      "tactic": "Execution",
+      "technique_id": "T1047",
+      "technique_name": "Windows Management Instrumentation",
+      "observed_behavior": "WMIを用いて暗号化前にボリュームシャドウコピーの削除を開始する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1048",
+      "tactic": "Exfiltration",
+      "technique_id": "T1048",
+      "technique_name": "Exfiltration Over Alternative Protocol",
+      "observed_behavior": "7-Zip、RClone、FileZillaを用いて収集データを持ち出す。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1049",
+      "tactic": "Discovery",
+      "technique_id": "T1049",
+      "technique_name": "System Network Connections Discovery",
+      "observed_behavior": "管理者による検知を避けるため、内部インフラの偵察を深夜から早朝(22時〜6時)に実施する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1059-003",
+      "tactic": "Execution",
+      "technique_id": "T1059.003",
+      "technique_name": "Command and Scripting Interpreter: Windows Command Shell",
+      "observed_behavior": "cmd.exe経由でWMIC.exeを実行し、ボリュームシャドウコピーを削除する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1070-003",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1070.003",
+      "technique_name": "Indicator Removal: Clear Command History",
+      "observed_behavior": "被害ネットワーク内でコマンド履歴を消去する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1078-001",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1078.001",
+      "technique_name": "Valid Accounts: Default Accounts",
+      "observed_behavior": "SSL-VPN機器の既定資格情報を悪用して管理者権限を取得した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1078-002",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1078.002",
+      "technique_name": "Valid Accounts: Domain Accounts",
+      "observed_behavior": "侵害したドメインアカウントを用いて内部システムへアクセスした。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1083",
+      "tactic": "Discovery",
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "observed_behavior": "暗号化前にA〜Zの全ドライブでファイルとディレクトリを探索し、対象データを特定する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1098",
+      "tactic": "Persistence",
+      "technique_id": "T1098",
+      "technique_name": "Account Manipulation",
+      "observed_behavior": "SSL-VPN管理コンソール上で未使用アカウントの設定を変更し、強制パスワード変更要件を回避して悪用可能にした。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1105",
+      "tactic": "Command and Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "攻撃者管理の外部サーバーからOpenSSHを取得した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1106",
+      "tactic": "Execution",
+      "technique_id": "T1106",
+      "technique_name": "Native API",
+      "observed_behavior": "Windows版ロッカーがFindFirstFileW/FindNextFileW APIでA〜Zの全ドライブのファイルとディレクトリを列挙する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1114",
+      "tactic": "Collection",
+      "technique_id": "T1114",
+      "technique_name": "Email Collection",
+      "observed_behavior": "社内メール通信を収集対象に含める。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1133",
+      "tactic": "Initial Access",
+      "technique_id": "T1133",
+      "technique_name": "External Remote Services",
+      "observed_behavior": "SSL-VPN機器の管理者アカウントへ、アカウントロックアウト制御がない状態で既定資格情報を用いてアクセスした。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1190",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "インターネットに露出したファイアウォール・VPN機器の既知脆弱性(CVE-2024-55591、CVE-2025-24472)を悪用して初期侵入する。悪用によりスーパーユーザー権限の永続アカウントforticloud-syncが作成される。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1486",
+      "tactic": "Impact",
+      "technique_id": "T1486",
+      "technique_name": "Data Encrypted for Impact",
+      "observed_behavior": "マルチスレッド構成のロッカーがChaCha20 + RSA-4096で高速に全ファイルシステムを暗号化し、拡張子.ENCRTを付与する。KNPAの事例では窃取した企業サーバー資格情報を用いてDBサーバーとNASを暗号化した。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026",
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1490",
+      "tactic": "Impact",
+      "technique_id": "T1490",
+      "technique_name": "Inhibit System Recovery",
+      "observed_behavior": "暗号化前にボリュームシャドウコピーを削除する。ある被害組織ではランサムウェア展開の前後に主データセンターと災害復旧センターの双方でバックアップとアーカイブデータを削除した。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026",
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1530",
+      "tactic": "Collection",
+      "technique_id": "T1530",
+      "technique_name": "Data from Cloud Storage",
+      "observed_behavior": "悪性実行ファイルmain.exeでMicrosoft OneDriveとSharePointから被害データを持ち出す。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1539",
+      "tactic": "Credential Access",
+      "technique_id": "T1539",
+      "technique_name": "Steal Web Session Cookie",
+      "observed_behavior": "窃取したセッションCookieでセッションハイジャックを行い、正規利用者になりすまして内部ネットワークへアクセスした。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1550-002",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1550.002",
+      "technique_name": "Use Alternate Authentication Material: Pass the Hash",
+      "observed_behavior": "取得したハッシュを用いて他の特権システムへ横展開した。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1550-003",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1550.003",
+      "technique_name": "Use Alternate Authentication Material: Pass the Ticket",
+      "observed_behavior": "取得した認証情報を用いて他の特権システムへ横展開した。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1555",
+      "tactic": "Credential Access",
+      "technique_id": "T1555",
+      "technique_name": "Credentials from Password Stores",
+      "observed_behavior": "侵害した仮想デスクトップからSSHでHiwareのアクセス制御サーバーへ接続し、保管されていた共通鍵を窃取してDB内の企業サーバーアカウントのパスワードを復号した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1556-006",
+      "tactic": "Credential Access",
+      "technique_id": "T1556.006",
+      "technique_name": "Modify Authentication Process: Multi-Factor Authentication",
+      "observed_behavior": "VDI認証ポータルサーバーの認証処理ファイルを改変し、攻撃者が指定した特定のOTP値で認証が通るようにしてMFAを継続的に回避した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1560",
+      "tactic": "Collection",
+      "technique_id": "T1560",
+      "technique_name": "Archive Collected Data",
+      "observed_behavior": "機微データを圧縮アーカイブへまとめてから持ち出す。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1567",
+      "tactic": "Exfiltration",
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "observed_behavior": "作成したアーカイブをファイル共有サービスMegaへ持ち出す。持ち出し量は最大で数十テラバイトに及ぶ。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1572",
+      "tactic": "Command and Control",
+      "technique_id": "T1572",
+      "technique_name": "Protocol Tunneling",
+      "observed_behavior": "侵害システム間にSSHトンネルを確立して持続化した。",
+      "activity_refs": [
+        "activity--gunra-knpa-vdi-intrusion-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1622",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1622",
+      "technique_name": "Debugger Evasion",
+      "observed_behavior": "Windows版ロッカーがIsDebuggerPresent APIでデバッガ実行を検知し、リバースエンジニアリングを妨害する。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    },
+    {
+      "ttp_id": "ttp--gunra-t1657",
+      "tactic": "Impact",
+      "technique_id": "T1657",
+      "technique_name": "Financial Theft",
+      "observed_behavior": "指定した暗号資産ウォレットアドレスへの身代金支払いを要求し、交渉は数千万米ドル規模から開始される。",
+      "activity_refs": [
+        "activity--gunra-raas-2025-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "activity-period"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--cisa-aa26-222a-gunra"
+      ],
+      "analyst_notes": "共同勧告AA26-222AがATT&CK技法IDを明記した行動のみを登録している。資料発行日は観測日として使用していない。 観測日は当該活動の期間(勧告が明示する2025年4月〜2026年7月)から継承した。資料発行日は使用していない。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--cisa-aa26-222a-gunra",
+      "path": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a",
+      "title": "#StopRansomware: Gunra Ransomware (AA26-222A)",
+      "publisher": "FBI / CISA / DC3 / NSA / USSS / 韓国国家警察庁(KNPA)",
+      "published_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(PDF版 https://media.defense.gov/2026/Aug/10/2003976697/-1/-1/0/CSA_STOPRANSOMWARE_GUNRA_RANSOMWARE.PDF 全21ページ、アクセス日 2026-08-12)。HTML版はデータセンターIPからのアクセスが403で拒否されるため、同一内容のPDF版を参照した。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "Gunraは2025年4月に出現し、2026年1月にRaaSへ発展した金銭目的のランサムウェア運用主体であり、複数国の政府機関・重要インフラを含む幅広い業種を標的としている。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "statement": "GunraのランサムウェアはContiの流出ソースコードに由来するが、これはコード系譜であり、Conti運用主体との同一性を示すものではない。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": "勧告は「derived from the leaked Conti ransomware source code」「appears to be based on, or significantly influenced by」と記載する。既存のBlackByte等Conti系aliasを持つプロファイルへは統合しない。"
+      },
+      {
+        "statement": "初期侵入はインターネット公開のファイアウォール・VPN機器の既知脆弱性悪用と既定資格情報の悪用が中心であり、エッジ機器のパッチ適用と資格情報管理が主要な防御点である。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--cisa-aa26-222a-gunra"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "gaps": [
+      "個別の被害組織名と各被害の発生時期が公開されていないため、被害規模と時系列を定量化できない。",
+      "アフィリエイトごとのクラスタ分離ができておらず、どの侵入がコア運用主体によるものかを区別できない。",
+      "Golden Communityブランドでの活動を示す独立した一次資料を未取得のため、alias scopeをoverlappingに留めている。",
+      "勧告が参照するTrend Micro、CYFIRMA、CloudSEK、Breakglass Intelligence各社の報告を原文未確認のため、Linux版の暗号化実装上の欠陥等はプロファイルへ取り込んでいない。"
+    ],
+    "uncertainties": [
+      "勧告はGunraをランサムウェアファミリー名としても運用主体名としても用いており、両者の境界が資料上明確でない。",
+      "Contiの流出コード由来という評価は他のConti派生ファミリーとも共通するため、コード類似性のみでのクラスタ同定はできない。"
+    ],
+    "collection_notes": "共同勧告 AA26-222A(FBI/CISA/DC3/NSA/USSS/KNPA、2026-08-10公開)を一次資料として原文確認した。cisa.govのHTML版は403のため、media.defense.gov上の同一内容PDF(全21ページ)を取得して全文を確認した。IOCはtech-memoに未収録のため本プロファイルでは未取得であり、勧告のSTIX配布物からの取込は別作業とする。",
+    "analyst_notes": "プロファイル昇格は2026-08-12の日次チェックでの未一致名検知と利用者承認に基づく。単一ベンダー初報ではなく政府・法執行機関の共同勧告であるため、AGENT.mdの昇格閾値を満たす。"
+  },
+  "free_text": {
+    "executive_summary": "Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用主体であり、2026年1月にダークウェブフォーラムで正式なRaaSアフィリエイトプログラムを開始した。ランサムウェアは2022年に流出したContiのソースコードに由来する。インターネット公開のファイアウォール・VPN機器の既知脆弱性悪用を主な初期侵入手段とし、データ窃取後にChaCha20 + RSA-4096で暗号化する。2026年8月10日にFBI・CISA・DC3・NSA・USSS・韓国国家警察庁の共同勧告AA26-222Aが公開された。",
+    "history": "2025年4月にFBIが初観測。同年6〜7月にはTor上のDLSのclearnetミラーdatapub[.]newsを運用した。2025年半ばにLinux版が追加され、クロスプラットフォーム化が進んだ。2026年1月にRaaSアフィリエイトプログラムを開始し、Golden Communityという新ブランドの採用が観測された。2026年3月までにDLSを別の.onionアドレスへ移行し、2026年7月まで当該アドレスが観測されている。",
+    "capability_details": "Windows版ロッカーはマルチスレッド構成で並列暗号化を行い、ChaCha20 + RSA-4096を使用する。暗号化済みファイルには.ENCRTを付与する(2025年7月の1検体では.CRYPT)。FindFirstFileW/FindNextFileWでA〜Zの全ドライブを走査し、C:\\Windows等のシステムディレクトリと.exe/.dll/.sys等を除外する二段フィルタで対象を絞る。IsDebuggerPresentによるデバッガ検知を備え、DNSやHTTPの通信を伴わない自己完結型である。持ち出しにはmain.exe(OneDrive/SharePoint)、7-Zip、RClone、FileZillaを、横展開と資格情報取得にはImpacketとMimikatzを使用する。",
+    "infrastructure_details": "Tor上のDLSと交渉ポータルを中核とし、被害者にはClient IDと初期パスワードが割り当てられる。交渉はTorポータルまたはqToxで行われ、Proton MailとGmailのアドレスも使用される。勧告は2025年初頭以降のIPアドレス・ドメイン、恐喝交渉用メールアドレス、qTox ID、悪性ファイルのSHA256、Fortinet機器上に作成される不正アカウントforticloud-syncを掲載している。個別のIOCは本プロファイルには未取得である。",
+    "targeting_details": "構造化ターゲット監査: 標的国=韓国。標的地域=全世界。日本は確認時に個別国として保持する。\n\n勧告は被害組織が南北アメリカ、欧州、中東、アフリカ、アジア太平洋にまたがると記載する。個別国として明示されているのはKNPAが観測した韓国の事例のみである。",
+    "additional_notes": "本プロファイルは2026-08-12の日次更新チェックで既存プロファイル未一致名(観測25件)として検知され、共同勧告AA26-222Aの原文確認後に昇格した。status: draftから開始する。GunraはBlackByteのcatalog alias「Conti」経由で誤一致していたが、Contiとの関係はコード系譜のみであり、レビューキュー側では不採用としている。"
+  }
+}

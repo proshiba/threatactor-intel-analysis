@@ -529,6 +529,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: BlackByteが新たな脆弱性を活用し攻撃を継続",
     "review_status": "approved"
   },
+  "blackbyte|https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a": {
+    "review_notes": "根拠文が「GunraはContiの流出ソースコードを基にしたとみられ」であり、BlackByteのcatalog alias「Conti」(scope: overlapping)経由の誤一致。原文(共同勧告 AA26-222A, FBI/CISA/DC3/NSA/USSS/韓国国家警察庁, 2026-08-10公開)を確認したところ「Gunra first emerged in April 2025 as a sophisticated double-extortion ransomware variant derived from the leaked Conti ransomware source code.」「Gunra ransomware appears to be based on, or significantly influenced by, the Conti ransomware source code leaked in 2022.」とあり、いずれもランサムウェアのコード系譜に関する記述であってアクターの同一性を示すものではない。勧告本文にBlackByteへの言及はない。GunraはBlackByteの活動ではないため不採用とし、Gunra自体は別途新規プロファイルとして昇格する。",
+    "review_status": "rejected"
+  },
   "blackbyte|https://www.sophos.com/en-us/blog/chaos-in-teams-vishing": {
     "confidence": "low",
     "review_notes": "原文(Sophos blog)を確認したが、BlackByteへの言及は本文中に一切ない。本文が言及するのはChaosランサムウェア運営者とBlackSuit/Royal(Conti系譜)元メンバーとの関連の疑いのみであり、BlackByteとの結び付けは確認できない。実行主体表現なしのため不採用。",
@@ -946,6 +950,10 @@
     "review_notes": "原文(AhnLab ASEC 2026-07-29)を確認。記事タイトル・本文ともKimsukyを攻撃の実行主体として明記し、外交関係者を装ったスピアフィッシング(LNK添付)で外交関係者を標的にしたと記載。PrxClientは「引数で受けたC&Cサーバーとローカルポートを中継する」機能を持ち、感染システムへのRDP接続に利用されたと明記されているため固有マルウェア名として採用する。IOCはtech-memoの構造化actor列がKimsukyへexact一致し、記事掲載のMD5 5件・URL 5件・FQDN 5件・IP 3件と件数が一致する。攻撃期間は一次資料に明示がないためunknownとし、記事公開日はreported_atへ分離する。",
     "review_status": "approved"
   },
+  "kimsuky|https://cybersecuritynews.com/fake-googletranslate-chrome-extension/": {
+    "review_notes": "根拠文が「過去にはKimsukyが『GoogleTranslate.』」であり、記事主題ではなく過去事例への言及。原文(cybersecuritynews.com, 2026-08-11公開)を確認したところ、記事の主題はRust製ローダーとAutoItスクリプトを用いてStealc v2情報窃取マルウェアを展開する偽Chrome拡張機能のキャンペーンであり、当該キャンペーンをKimsukyへ帰属する記述はない。Kimsukyは同種の囮名を過去に使用した例として挙げられているに過ぎない。加えて出典は二次集約サイトであり一次資料ではない。不採用とする。",
+    "review_status": "rejected"
+  },
   "kimsuky|https://cybersecuritynews.com/kimsuky-hackers-attacking-users/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsuky、武器化QRコード経由で悪性モバイルアプリを配布し利用者を攻撃",
@@ -1099,6 +1107,18 @@
     "review_notes": "Enkiはインフラ、コード、暗号鍵の再利用を根拠にKimsukyへ帰属している。",
     "review_status": "approved"
   },
+  "kimsuky|https://www.genians.co.kr/en/blog/threat_intelligence/kimsuky_ai_llm": {
+    "capability_decisions": [
+      {
+        "name": "AsyncRAT",
+        "reason": "Git上にRC4暗号化した.NETペイロードを画像偽装で配置し展開すると本報告が直接分析している。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "原文(Genians Security Center, 2026-08-10公開)を確認。「Genians Security Center has been continuously tracking GitHub- and GitLab-based attack activity assessed to be associated with Kimsuky, a cyber threat group known to operate under North Korea's Reconnaissance General Bureau.」と当該活動をKimsukyへ帰属している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。GitHub/GitLabをC2・配布基盤とする「Operation GitPower」(FlowerPowerの攻撃フローを継承)、ZIP内LNKからのPowerShell実行と正規PDFの囮表示、スケジュールタスクによる永続化、AsyncRAT展開、生成AI製と評価された囮文書の利用、攻撃者環境でのOllama・GPT4All(LocalDocs)・Msty・LLaMaSharp・Semantic Kernel等の導入痕跡を新規活動として採用する。帰属表現が「assessed to be associated with」の評価であり断定ではないため確度はmediumとする。一次資料は攻撃観測期間を明示せず「several years」にわたる継続と2026年の活動を示すのみのため、活動期間はunknownのままとし、記事公開日2026-08-10とtech-memo日次ファイル日付2026-08-11はreported_atとして分離する。独自AIモデルの訓練証拠はないとされており、AI能力を確立済みTTPとして扱わない。",
+    "review_status": "approved"
+  },
   "konni|https://cybersecuritynews.com/new-spear-phishing-attack-abusing-google-ads/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 韓国組織を狙うKonni APTの作戦「Poseidon」が確認され、Google広告基盤を悪用してEndRATを配布するスピアフィッシングを実施。",
@@ -1193,6 +1213,57 @@
     ],
     "confidence": "medium",
     "review_notes": "報告はContagious Interview/TaskJackerをLazarus Groupの活動として扱う。DPRK内の追跡クラスタ境界には留意する。",
+    "review_status": "approved"
+  },
+  "lazarus|https://research.checkpoint.com/2026/shattering-the-dream-when-a-job-offer-becomes-a-zero-day-attack/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Check Point Research: 「Since early 2026, Check Point Research has tracked a wave of the Operation Dream Job campaign」",
+        "precision": "year",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Check Point Research: 「In July 2026, we observed a new campaign sharing many characteristics with previously documented Operation Dream Job」",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "ForestTiger",
+        "reason": "MISTPENが展開する追加バックドアとして本報告が直接分析している。",
+        "status": "approved"
+      },
+      {
+        "name": "FudModule",
+        "reason": "CVE-2026-68820によるSYSTEM権限取得後に展開されるルートキットv3.1として本報告が直接分析している。",
+        "status": "approved"
+      },
+      {
+        "name": "MISTPEN",
+        "reason": "DLLサイドローディングで展開されるインメモリダウンローダーとして本報告が直接分析している。",
+        "status": "approved"
+      },
+      {
+        "name": "RelayShell",
+        "reason": "CVE-2025-49113で侵害したRoundcube等へ設置しC2中継に用いるPHP webshellとして本報告が直接分析している。",
+        "status": "approved"
+      },
+      {
+        "name": "SecurityPDF",
+        "reason": "細工PDFのペイロードを実行する改ざん済みPDFビューアとして本報告が直接分析している。",
+        "status": "approved"
+      },
+      {
+        "name": "Troy",
+        "reason": "本報告が新規に命名・分析したバックドア。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "原文(Check Point Research, 2026-08-11公開)を確認。「Check Point Research is tracking a long-running campaign called Operation Dream Job, targeting organizations worldwide, with a particular focus on the defense sector. The campaign is affiliated to DPRK-linked Lazarus group.」と当該キャンペーンをLazarusへ明示的に帰属している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。求人テーマのスピアフィッシングから、DLLサイドローディングによるMISTPEN展開と改ざんPDFビューアSecurityPDFによるTroy実行の2系統、Windows AFD.sysのゼロデイCVE-2026-68820によるSYSTEM権限取得とFudModule v3.1でのEDR無効化、CVE-2025-49113で侵害したRoundcube等へのRelayShell設置によるC2中継を新規活動として採用する。活動期間は一次資料が明示する「early 2026以降」と「2026年7月の新キャンペーン観測」を採用し、記事公開日2026-08-11とtech-memo日次ファイル日付2026-08-12はreported_atとして分離する。CVE-2026-68820の日付(MSRC報告2026-07-28、CVE採番2026-08-05、修正2026-08-11)は脆弱性対応の経緯であり攻撃観測日には流用しない。留意点: Check Pointは本キャンペーンをLazarus大枠へ帰属しており、MISTPENを別サブクラスタ(UNC2970等)へ帰属する報告も存在するため、サブクラスタの統合は行わず両論を残す。",
     "review_status": "approved"
   },
   "lazarus|https://research.jfrog.com/post/rollup-polyfill-masquerading/": {
@@ -1588,6 +1659,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: ワイデン議員、Salt Typhoonハッキング後の米国通信網保護法案を提案",
     "review_status": "approved"
   },
+  "sandworm|https://cert.pl/uploads/docs/CERT_Polska_Energy_Sector_Incident_Follow_up_Report_2025.pdf": {
+    "review_notes": "根拠文が「攻撃者はロシア関連のElectrum脅威グループと関連するとみられ」であり、Sandworm Teamのalias「ELECTRUM」(scope: overlapping)経由の一致。一次資料(CERT Polska「Follow-Up Analysis of the 29 December 2025 Energy Sector Incident」, 2026-08-07公開, 全19ページ)の本文をすべて確認したが、ELECTRUM、Sandworm、APT44、ロシア、帰属に関する記述は一切存在せず、報告書は攻撃手法(侵害済みFortiGate/Teltonikaルーター経由のプライベートAPN横展開、既定資格情報のWAGO PFC200侵害、SSHトンネルによるOT侵入、Siemens PLCのSTOPモード変更、Moxa機器の設定破壊)と対策勧告のみを扱っている。ELECTRUM帰属はtech-memoが参照したBleepingComputer記事(2026-08-10)の独自記述「an attacker believed to be linked to the Russian Electrum threat group」に由来し、CERT Polskaへ帰属を明示していない。加えてELECTRUM(Dragos)とSandworm Teamのalias scopeはoverlappingであり同一クラスタと断定できない。Sandworm Teamへは帰属せず不採用とする。",
+    "review_status": "rejected"
+  },
   "sangria-tempest|https://thehackernews.com/2025/04/fin7-deploys-anubis-backdoor-to-hijack.html": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - FIN7は、Carbon Spider、ELBRUS、Gold Niagara、Sangria Tempest、Savage Ladybugとも呼ばれるロシアのサイバー犯罪グループで、近年はランサムウェアのアフィリエイトとして活動している。",
@@ -1746,6 +1821,32 @@
   "storm-0978|https://www.bleepingcomputer.com/news/security/details-emerge-on-winrar-zero-day-attacks-that-infected-pcs-with-malware/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はロシア系RomCom（別名Storm-0978/Tropical Scorpius）。",
+    "review_status": "approved"
+  },
+  "storm-1175|https://bsky.app/profile/threatintel.microsoft.com/post/3msjiybnb252n": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Microsoft Threat Intelligence: 「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Microsoft Threat Intelligence: 明示された観測日は展開開始日の2026年8月2日のみ。一次資料は終期を明示しておらず、報告時点(2026-08-07)で継続中と読める。",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-02T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "StormEncryptor",
+        "reason": "Storm-1175が展開する新型ランサムウェアとしてMicrosoftが直接命名・分析している(Ransom:Win64/StormEncryptor)。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "原文(Microsoft Threat Intelligence 公式アカウントのBluesky投稿スレッド, 2026-08-07公開)をBluesky公開APIで全投稿確認。「On August 2, 2026, the financially motivated cybercriminal actor tracked by Microsoft Threat Intelligence as Storm-1175 began deploying a new ransomware strain called StormEncryptor.」とStorm-1175を実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。2026年4月以来Microsoftが観測した最初の活動であり、従来のMedusaからStormEncryptorへ移行したこと、AnyDesk/SimpleHelpによる遠隔操作、Advanced IP Scannerによる探索、MimikatzによるLSASSダンプ、初期侵入からデータ窃取・ランサムウェア展開まで数日以内という運用速度を新規活動として採用する。活動期間は一次資料が明示する唯一の観測日である2026-08-02を始期・終期の双方に採用する。終期の明示はなく報告時点で継続中と読めるため、2026-08-02は確認できた最終観測日であって活動終了日ではない。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-11はreported_atとして分離する。N-able N-centralのCVE-2026-18577悪用は「likely exploiting」の評価に留まるため、確定した初期侵入手段としては記載せず評価として残す。",
     "review_status": "approved"
   },
   "storm-1175|https://www.bleepingcomputer.com/news/security/microsoft-critical-goanywhere-bug-exploited-in-ransomware-attacks/": {
@@ -2240,6 +2341,10 @@
     "confidence": "high",
     "review_notes": "原文(Google Threat Intelligence Group, 2026-08-06公開)を確認。「a common group of threat actors are affiliated with the BlackFile, Redact, Pink, Helix, and Falcon extortion brands」とUNC6671が複数の恐喝ブランドを横断して運用する実行主体であることが明記されている。ヘッジファンド・プライベートエクイティ・金融機関を標的としたボイスフィッシングによるMicrosoft 365/Okta SSO侵害を新規活動として採用。活動期間は一次資料のドメイン登録観測(2026-04-01〜08-03)を別途確認できた範囲に限定し、記事公開日(2026-08-06/07)はreported_atとして分離する。",
     "review_status": "approved"
+  },
+  "unc6671|https://cloud.google.com/blog/topics/threat-intelligence/unc6671-targets-financial-services-and-enterprise-cloud-environments/?hl=en": {
+    "review_notes": "同一の一次資料(Google Threat Intelligence Group「UNC6671 Rebrands: Multi-Brand Vishing Extortion Targets Financial Services and Enterprise Cloud Environments」, 2026-08-06公開)による同一活動は、2026-08-10のコミット(PR #22)でUNC6671プロファイルへ既に適用済み(activity--daily-88da96b89053f0ca0aa8、source--daily-0f56214542b30c75b57a が同URLを保持)。本レコードは同記事の`?hl=en`付きURLがtech-memoへ新規収録されたことによる重複検知であり、原文を再確認したが追加すべき新規情報はない。不採用とする。なお適用済み活動のfirst_observed/last_observedはunknownのままであり、原文が明示するドメイン展開期間(2026-04-01〜05-31、2026-06-01〜07-31)と2026年7月の金融・法務セクターへの標的集中は、別途の期間補完で扱う。",
+    "review_status": "rejected"
   },
   "unc6671|https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/": {
     "confidence": "medium",
