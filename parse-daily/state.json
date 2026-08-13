@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "967228fd1ffbba0fdfb3bf8d73983f85296d7668",
-  "last_scanned_date": "2026-08-12",
+  "last_scanned_commit": "c4d871d22ea34d08ca689cb1a6886ea1c3bedc53",
+  "last_scanned_date": "2026-08-13",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -949,6 +949,138 @@
           "result": "8/7以降はQ2 2026統計(8/10)のみ。Head Mare(8/7)・Awaken Likho(8/6)は適用済み。新規なし。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-13T11:30:00Z",
+      "window": {
+        "since": "2026-08-12",
+        "until": null
+      },
+      "source_commit": "c4d871d22ea34d08ca689cb1a6886ea1c3bedc53",
+      "statistics": {
+        "news_files": 2,
+        "articles": 27,
+        "review_records": 6,
+        "approved_records": 1,
+        "rejected_records": 5,
+        "applied_records": 0,
+        "unmatched_ioc_actor_observations": 120,
+        "materialization_window": "queueは2026-08-12以降で再生成した。2026-08-12分のLazarus(Check Point)レコードは前回スキャンで適用済みであり、review-decisions.jsonのapprovedがそのまま再現される。今回の窓で新規に採用したレコードは0件で、profiles/への反映はすべて一次資料の原文から直接行った。"
+      },
+      "applied": [],
+      "rejected": [
+        {
+          "actor": "sandworm",
+          "name": "UAC-0145 (CERT-UAの偽採用プロセス事案)",
+          "source": "https://cert.gov.ua/article/6318863",
+          "decision": "一次資料(CERT-UA, 2026-08-08公開)の全文を確認した。原文は実行主体を「кластером кіберзагроз UAC-0145 (субкластер UAC-0002, також відомий як Sandworm, APT44, Seashell Blizzard)」と記載しており、政府CERTがUAC-0145をUAC-0002のサブクラスタとして明示している。活動は実在するが、UAC-0145はサブクラスタ(narrower)でありSandworm Teamと同一ではないため、Sandworm Teamプロファイルへは記載しない。UAC-0145を新規プロファイルへ昇格し、part-of関係で結び付けた。"
+        },
+        {
+          "actor": "uac-0145",
+          "name": "UAC-0145 (プロファイル新設後に再検知した同一記事)",
+          "source": "https://cert.gov.ua/article/6318863",
+          "decision": "プロファイル新設によりcanonical nameへexact一致し、assessmentもstrong-subjectとなったが、同一活動は一次資料の原文から直接profiles/uac-0145へ記述済みである。日次レコードとして取り込むとactivity--daily-*として重複するため不採用とした。"
+        },
+        {
+          "actor": "contagious-interview",
+          "name": "Famous Chollima (ANY.RUN 偽DeFi企業でのITワーカー採用調査 第2弾)",
+          "source": "https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/",
+          "decision": "一致はIOC CSVのactor列「Famous Chollima」経由で、alias scopeはbroader。一次資料(ANY.RUN, 2026-08-10公開)の主題は偽求人面接によるマルウェア配布ではなく、北朝鮮ITワーカーによる不正就労そのものであり、Contagious Interviewのスコープ外(broader側のみ)である。既存のDPRK IT Worker Schemesプロファイルへ記録した。"
+        },
+        {
+          "actor": "teampcp",
+          "name": "TeamPCP (CloudSEK LiteLLM露出規模報告)",
+          "source": "https://www.cloudsek.com/blog/ai-supply-chain-breach-2500-companies-434000-cicd-pipelines",
+          "decision": "一次資料(CloudSEK, 2026-08-11公開)を確認。攻撃時期は2026年3月で、既存のactivity--teampcp-oss-supply-chain-2026(2026-02〜03、LiteLLMとBerriAIを明記)が既に網羅しており新規活動ではない。CloudSEKは「Public reporting attributes the broader campaign to the financially motivated cluster TeamPCP.」として帰属を他社報告に依拠し、攻撃の実行を直接観測していない。固有情報である2,500社超・約43万4,000件のCI/CDパイプラインという数値も、CloudSEK自身が潜在的露出であって全社の侵害を意味しないと留保しているため、既存victim caseへ確定値として書き込まない。"
+        },
+        {
+          "actor": "sandworm",
+          "name": "ELECTRUM (CERT Polskaのポーランドエネルギー事案)",
+          "source": "https://cert.pl/uploads/docs/CERT_Polska_Energy_Sector_Incident_Follow_up_Report_2025.pdf",
+          "decision": "前回スキャンでの判断をreview-decisions.jsonから再現したもの。判断は変更なし。"
+        }
+      ],
+      "new_profiles": [
+        {
+          "actor": "uac-0145",
+          "name": "UAC-0145",
+          "source": "https://cert.gov.ua/article/6318863",
+          "decision": "CERT-UAの独立した2記事(6318437 2026-07-15、6318863 2026-08-08)を原文確認し、政府・CERTによる言及という昇格閾値を満たすためstatus: draftで新規作成した。cert.gov.uaはAngular SPAで記事ページのHTMLに本文を含まないため、同サイトのAPI(/api/articles/byId?id=<id>)から本文とIOC表を取得した。2件から活動2件(2026年7月時点の初期侵害ベクター群、偽採用プロセスとSopraVPN)、マルウェア11件(KALAMBUR、SUMBUR、TAMBUR、GHETTOVIBE、SCOUTCURL、FLUIDLEECH、LOADLOOP、FREAKYPOLL、SMARTAXE、COWARDDUCK、SopraVPN)、TTP 22件、IOC 56件、artifact 21件を収録した。UAC-0002およびSandworm Teamへはpart-of関係で結び付け、親クラスタの実績は複製していない。帰属国はこの2資料が記載していないためcountriesは空とし、sponsor_typeとattribution.confidenceはunknownのままとした。"
+        }
+      ],
+      "alias_updates": [],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "UAC-0145 (Sandworm/APT44 subcluster)",
+          "observations": 21,
+          "note": "IOC CSVのactor列の値。複合名のため自動一致しないままunmatchedに残るが、対応するIOCはCERT-UA原文のIOC表から56件をprofiles/uac-0145/iocs.jsonへ直接収録済みである。"
+        },
+        {
+          "name": "Armored Likho",
+          "observations": 0,
+          "note": "Kaspersky(securelist.ru, 2026-08-13)。securelist.comには未掲載、tech-memo未収録で、一次情報源の公開一覧確認により検知した。alias「Eagle Werewolf」。ロシア国内の個人・企業・国家機関・IT企業・教育機関を標的とし、3財団を騙る偽寄付アプリでRust製のStill Sync(Telegramセッション窃取)とStill Audio(秘匿録音)を配布する。Kaspersky系統の単一ベンダー報告のみのため昇格閾値未達。unknown-clusters.jsonへ unknown-cluster--armored-likho としてtrackingで追加した。"
+        },
+        {
+          "name": "City-Forum",
+          "observations": 13,
+          "note": "Reco(2026-08-12)を原文確認。「we've named the City-Forum Campaign, after a domain tied to the threat actor's IP」とあり、インフラ由来のキャンペーン名でアクター指定子ではない。Recoは「We don't know who this is, and we're not ruling anyone in or out.」として帰属を明示的に否定している。ShinyHuntersの過去のSalesforceキャンペーンとの類似に言及があるため、誤統合防止としてrelated_profilesへexplicitly-refutedで記録した。単一ベンダー初報のため昇格閾値未達。unknown-clusters.jsonへ tracking で追加した。"
+        },
+        {
+          "name": "Myxa VPN",
+          "observations": 86,
+          "note": "Socket(2026-08-11)を原文確認。Myxa VPNはロシアで税務登録された商用VPN事業の名称であってアクター指定子ではない。Socketは「Socket did not resolve the number to an individual, did not attempt to, and does not assert that the registrant is the person operating this campaign.」と個人への帰属を留保し、国家支援の証拠もないとしている。プロファイル化はしないが、86観測と多く毎回の走査で再検知されるため、判断を再現できるようunknown-clusters.jsonへ tracking で追加した。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "cutoff後のアクター別一次情報なし。DeadLock ransomware(2026-08-10)、Midnight Blizzard CaptiveCrunch(2026-07-31)はいずれも反映済み。公開一覧HTMLがデータセンターIPから503となるため公式RSS(/feed/)で確認した。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "cutoff後のアクター別一次情報なし。最新のアクター別記事はUNC6671 Rebrands(2026-08-06)で反映済み。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "cutoff後のアクター別一次情報なし。Kimwolf v7(2026-08-11)、Aeternum(2026-08-10)、ChainDrop(2026-08-06)はいずれもtech-memo収録済みで、既存プロファイルに該当するアクター名はない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-07-23",
+          "result": "cutoff後のアクター別一次情報なし。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後のアクター別一次情報なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-07-22",
+          "result": "cutoff後のアクター別一次情報なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "cutoff後のアクター別一次情報なし。Head Mare/TrueConf(2026-08-11)とProject CAV3RN(2026-08-11)はいずれも反映済み・台帳既出。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "新規1件。Armored Likho(Eagle Werewolf)のStill Toolkitキャンペーン(2026-08-13 08:00 UTC公開)。securelist.comには未掲載、tech-memo未収録で、本チェックでのみ検知した。既存プロファイルに一致する名前はなく、単一ベンダー報告のためunknown-clusters.jsonへtrackingで追加した。公開一覧はJavaScript描画のため公式RSS(/feed/)で公開日を確認し、原文を個別に確認した。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -982,5 +1114,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。"
 }

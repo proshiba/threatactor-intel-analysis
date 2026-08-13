@@ -595,6 +595,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃",
     "review_status": "approved"
   },
+  "contagious-interview|https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/": {
+    "review_notes": "一致は IOC CSV の actor 列「Famous Chollima」経由で、Contagious Interview の alias scope は broader である。一次資料(ANY.RUN、2026-08-10公開)の原文を確認したところ、主題は偽求人面接によるマルウェア配布ではなく、北朝鮮ITワーカーによる不正就労そのものであった。原文は「One of the many divisions operating under the Lazarus umbrella is Famous Chollima. Their goal is simple: get hired by Western companies.」「Unlike a traditional intrusion, their objective is not to compromise an organization for a few hours or days, but to become a part of it.」と記載する。Contagious Interview プロファイルのalias 注記が「FAMOUS CHOLLIMA の定義は北朝鮮へ送金するための不正就労(IT worker)全般であり、偽求人面接によるマルウェア配布キャンペーンより広い」として scope を broader としている通り、本記事は broader 側にのみ該当する。Contagious Interview の活動としては不採用とし、既存の DPRK IT Worker Schemes プロファイル(activity--dprk-it-workers-ballena-azul-2026)へ記録した。IOC 9件のうち5件は AstrillVPN の出口ノードで商用VPNの共用インフラであるため、DPRK運用VPS 3件および INVESTSTROY-NET の1件と分離し、candidate として保留した。",
+    "review_status": "rejected"
+  },
   "contagious-interview|https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique": {
     "confidence": "medium",
     "review_notes": "同一活動(NullReceiver、悪意あるnpmパッケージ経由のブロックチェーン型C2、IOC 166.88.134.62)は2026-08-04のコミット(PR #19)で既にContagious Interviewプロファイルへ適用済み。本レコードはキュー再生成による重複表示であり、追加適用は不要。",
@@ -1659,6 +1663,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: ワイデン議員、Salt Typhoonハッキング後の米国通信網保護法案を提案",
     "review_status": "approved"
   },
+  "sandworm|https://cert.gov.ua/article/6318863": {
+    "review_notes": "一次資料(CERT-UA、2026-08-08公開)の全文を確認した。cert.gov.uaはAngular SPAで記事ページのHTMLに本文を含まないため、同サイトのAPI(/api/articles/byId?id=6318863)から本文とIOCを取得した。原文は実行主体を「кластером кіберзагроз UAC-0145 (субкластер UAC-0002, також відомий як Sandworm, APT44, Seashell Blizzard)」と記載しており、UAC-0145をUAC-0002のサブクラスタとして政府CERTが明示している。したがって同名製品・別クラスタ・法執行記事・過去言及のいずれでもなく、活動自体は実在する。一方でUAC-0145はサブクラスタ(narrower)であってSandworm Teamと同一ではないため、本レコードをSandworm Teamプロファイルへは採用しない。代わりにUAC-0145を新規プロファイル(profiles/uac-0145、status: draft)へ昇格し、part-of関係でUAC-0002およびSandworm Teamへ結び付けた。CERT-UAによる独立した記事が2本(6318437 2026-07-15、6318863 2026-08-08)あり、政府・CERTの言及という昇格閾値を満たす。活動期間は原文が明示する「щонайменше з травня 2026 року」(少なくとも2026年5月以降)を採用し、tech-memoが収録したBleepingComputer記事の日付2026-08-13は観測日にも報告日にも使用していない。",
+    "review_status": "rejected"
+  },
   "sandworm|https://cert.pl/uploads/docs/CERT_Polska_Energy_Sector_Incident_Follow_up_Report_2025.pdf": {
     "review_notes": "根拠文が「攻撃者はロシア関連のElectrum脅威グループと関連するとみられ」であり、Sandworm Teamのalias「ELECTRUM」(scope: overlapping)経由の一致。一次資料(CERT Polska「Follow-Up Analysis of the 29 December 2025 Energy Sector Incident」, 2026-08-07公開, 全19ページ)の本文をすべて確認したが、ELECTRUM、Sandworm、APT44、ロシア、帰属に関する記述は一切存在せず、報告書は攻撃手法(侵害済みFortiGate/Teltonikaルーター経由のプライベートAPN横展開、既定資格情報のWAGO PFC200侵害、SSHトンネルによるOT侵入、Siemens PLCのSTOPモード変更、Moxa機器の設定破壊)と対策勧告のみを扱っている。ELECTRUM帰属はtech-memoが参照したBleepingComputer記事(2026-08-10)の独自記述「an attacker believed to be linked to the Russian Electrum threat group」に由来し、CERT Polskaへ帰属を明示していない。加えてELECTRUM(Dragos)とSandworm Teamのalias scopeはoverlappingであり同一クラスタと断定できない。Sandworm Teamへは帰属せず不採用とする。",
     "review_status": "rejected"
@@ -1954,6 +1962,10 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。",
     "review_status": "approved"
   },
+  "teampcp|https://www.cloudsek.com/blog/ai-supply-chain-breach-2500-companies-434000-cicd-pipelines": {
+    "review_notes": "一次資料(CloudSEK、2026-08-11公開)の原文を確認した。CloudSEKは「In March 2026, the threat actor group TeamPCP orchestrated what is believed to be the largest supply chain attack targeting AI infrastructure by compromising LiteLLM.」と記載する一方、「Public reporting attributes the broader campaign to the financially motivated cluster TeamPCP.」として帰属根拠を他社の公開報告に置いており、CloudSEK自身は攻撃の実行を直接観測していない。攻撃時期は2026年3月で、既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、LiteLLMとBerriAIを明記、SANDCLOCKを紐付け済み)が既に網羅しており、新規活動ではない。キューの assessment も candidate で「名前一致はあるが実行主体を示す表現が不足している」であり、これと整合する。したがって新規レコードとしては不採用とする。本記事の固有情報は2,500社超・約43万4,000件のCI/CDパイプラインという露出規模だが、CloudSEK自身が「潜在的露出であり全社の侵害を意味しない」と留保しているため、既存の victim case へ確定値として書き込むことはしない。二次的な露出推計の扱いを決めたうえで別途反映する。",
+    "review_status": "rejected"
+  },
   "teampcp|https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020": {
     "activity_period": {
       "first_observed": {
@@ -2046,6 +2058,10 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。",
     "review_status": "approved"
+  },
+  "uac-0145|https://cert.gov.ua/article/6318863": {
+    "review_notes": "主張自体は正しい。UAC-0145プロファイル新設に伴い、同じ記事が今度はcanonical name「UAC-0145」へexact一致し、assessmentもstrong-subjectとなった。ただし本活動は日次レコードとしてではなく、一次資料(CERT-UA 6318863 2026-08-08、および6318437 2026-07-15)の原文から直接profiles/uac-0145へ記述済みである(activity--uac-0145-fake-employment-sopravpn-2026 およびactivity--uac-0145-initial-access-vectors-2026)。日次レコードの取込元はtech-memoの要約とIOC CSVであり、原文から起こした記述より情報量が少ないうえ、activity--daily-* として重複した活動を生成してしまう。したがって重複回避のため不採用とする。IOC CSVのactor列「UAC-0145 (Sandworm/APT44 subcluster)」(21観測)は複合名のためunmatched_actor_valuesに残るが、対応するIOCはCERT-UA原文のIOC表から56件をprofiles/uac-0145/iocs.jsonへ直接収録済みである。",
+    "review_status": "rejected"
   },
   "uac-0188|https://www.bleepingcomputer.com/news/security/hackers-phish-finance-orgs-using-trojanized-minesweeper-clone/": {
     "confidence": "medium",
