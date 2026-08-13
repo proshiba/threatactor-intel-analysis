@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-12T02:00:00Z",
+  "generated_at": "2026-08-13T00:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -648,6 +648,130 @@
         "イスラエル標的という点で既存の複数プロファイルと標的が重なるが、重複は帰属根拠にならない。"
       ],
       "analyst_notes": "単一ベンダー(Kaspersky GReAT)の系統のみで昇格閾値未達。継続観察。2026-08-12の日次チェックにおける一次情報源の公開一覧確認で検知した。"
+    },
+    {
+      "cluster_id": "unknown-cluster--armored-likho",
+      "primary_name": "Armored Likho",
+      "aliases": [
+        "Eagle Werewolf"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-13",
+      "last_seen": "2026-08-13",
+      "detected_via": "一次情報源(securelist.ru)の公開一覧の直接確認。securelist.com には未掲載で、tech-memo daily-news にも未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Kasperskyは自社の命名でArmored Likhoを既知グループとして扱い、コードの類似性、過去キャンペーンとのアーキテクチャ一致、インフラのパターンから高確度で本キャンペーンを同グループへ帰属している。ただし後援国や既存の公開アクター(Awaken Likho、Sticky Werewolf等の他のLikho系クラスタを含む)との関係は記載していない。既存プロファイルへ寄せ付ける根拠はない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-05",
+          "publisher": "Kaspersky (Securelist ロシア語版)",
+          "url": "https://securelist.ru/armored-likho-still-toolkit/116417/",
+          "title": "Благотворительность как приманка: Armored Likho расширяет арсенал инструментов для кибершпионажа",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2026年5月にキャンペーンを発見(一次資料の記載)。記事公開日2026-08-13は観測日として使用しない。",
+          "targets": "ロシア国内の個人、企業、国家機関、IT企業、教育機関。個別の被害組織名は記載なし",
+          "malware": [
+            "Still Toolkit",
+            "Still Sync",
+            "Still Audio"
+          ],
+          "summary": "「ЗаЩИТа」「Братское сердце」「Защитники Отечества」の3財団を騙る偽の寄付アプリを餌にしたキャンペーン。Rust/Tauri製のドロッパーが認証フォームと商品カタログを表示する裏で、Still Toolkitを復号・実行する。Still SyncはTelegramのセッションデータとアカウントアクセスを窃取し、Still Audioは音声区間検出付きの秘匿録音を行う。いずれもRust製の新規実装。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-13)。記事は2024年11月の活動、2026年2月のStarlinkと慈善を題材にした政府職員向けキャンペーン、2026年7月のBusySnakeスティーラーを用いた活動を先行事例として参照している。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "参照されている先行キャンペーン(2024年11月、2026年2月、2026年7月)はいずれもKaspersky系統の報告であり、独立した一次資料は1系統のみ。",
+        "alias「Eagle Werewolf」の命名主体が記事本文に明記されていない。scopeを判断できないためexactとは扱わない。",
+        "Kaspersky命名のLikho系クラスタ(Awaken Likho、Sticky Werewolf等)との関係が記載されていない。標的国がロシアで一致する既存プロファイルがあるが、標的の重複は帰属根拠にならない。"
+      ],
+      "analyst_notes": "単一ベンダー(Kaspersky)の系統のみで昇格閾値未達。継続観察。2026-08-13の日次チェックにおける一次情報源の公開一覧確認で検知した。parse-daily/ROUTINE.md が指摘する通り securelist.ru のみで公開された事例であり、securelist.com だけを見ていると取りこぼす。"
+    },
+    {
+      "cluster_id": "unknown-cluster--city-forum",
+      "primary_name": "City-Forum (キャンペーン名。運用者の呼称は未確立)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-13",
+      "last_seen": "2026-08-13",
+      "detected_via": "tech-memo daily-news 2026-08-13。日次チェックの未一致名として13観測で検知した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "data-collection-intrusion-set",
+        "notes": "Recoは帰属を明示的に否定している。「We don't know who this is, and we're not ruling anyone in or out.」と記載し、ShinyHuntersの過去のSalesforceキャンペーンとの類似に触れつつ「reasoning from 'this doesn't look like their previous campaign' to 'different actor' is how confident, wrong attribution gets made.」として同一視も別クラスタ断定も避けている。"
+      },
+      "observations": [
+        {
+          "observed_on": "2025-03",
+          "publisher": "Reco",
+          "url": "https://www.reco.ai/blog/city-forum-campaign-salesforce-servicenow",
+          "title": "The City-Forum Campaign: A Sophisticated Actor Targeting Salesforce and ServiceNow Environments Worldwide",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "少なくとも2025年3月以降、単一IPからおよそ17か月continuousに稼働(一次資料の記載)。公開時点で継続中。",
+          "targets": "通信、銀行・金融サービス、セキュリティ・データプライバシー企業を含むエンタープライズソフトウェアベンダー、公共部門ポータル。個別の被害組織名は記載なし",
+          "malware": [
+            "Go製とみられる独自スキャンツール(命名なし)"
+          ],
+          "summary": "単一のContabo VPS(158.220.87.79)から、Salesforce Experience CloudのAura・LWR UI-APIとServiceNow Service Portalの検索APIを大量に探索し、匿名アクセス可能なデータを収集している。SalesforceやServiceNow自体の脆弱性ではなく、過剰なゲスト権限と公開設定の悪用である。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-13)。Recoは「we've named the City-Forum Campaign, after a domain tied to the threat actor's IP」と記載しており、City-Forumはインフラ由来のキャンペーン名であってアクター指定子ではない。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "shinyhunters",
+          "relation": "explicitly-refuted",
+          "notes": "Recoは過去のShinyHuntersによるSalesforceキャンペーンとの類似に言及するが、同一アクターとは結論していない。異なるという結論も避けている。将来の誤統合を防ぐため記録する。なおShinyHunters自体はプロファイルではなくunknown-cluster--shinyhuntersとして本台帳に存在する。"
+        }
+      ],
+      "unresolved_questions": [
+        "単一ベンダー(Reco)の初報のみで、独立した一次資料がない。",
+        "運用者の呼称が確立しておらず、クラスタ名はインフラのドメイン名に依存している。",
+        "17か月にわたり単一IPを使い続けている点が、通常の商用スキャンサービスとの区別を難しくしている。攻撃活動と調査目的スキャンの切り分けが未解決。"
+      ],
+      "analyst_notes": "単一ベンダーの初報のみで昇格閾値未達。継続観察。2026-08-13の日次チェックで未一致名(観測13件)として検知した。"
+    },
+    {
+      "cluster_id": "unknown-cluster--myxa-vpn-extension-campaign",
+      "primary_name": "Myxa VPN関連のChrome拡張機能なりすましキャンペーン(運用者の呼称は未確立)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-13",
+      "last_seen": "2026-08-13",
+      "detected_via": "tech-memo daily-news 2026-08-13。日次チェックの未一致名として86観測で検知した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-intrusion-set",
+        "notes": "「Myxa VPN」はアクター指定子ではなく、ロシアで税務登録された商用VPN事業の名称である。Socketは「The same threat actor runs a subscription VPN business in Russia.」として事業と運用者の結び付きを述べる一方、「Socket did not resolve the number to an individual, did not attempt to, and does not assert that the registrant is the person operating this campaign.」と個人への帰属を明示的に留保し、国家支援を示す証拠もないとしている。"
+      },
+      "observations": [
+        {
+          "observed_on": null,
+          "publisher": "Socket",
+          "url": "https://socket.dev/blog/chrome-vpn-extension-impersonation",
+          "title": "737 Chrome VPN Extensions Tied to Brand Impersonation and Browser Traffic Forwarding",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "一次資料に観測期間の明示なし。記事公開日2026-08-11は観測日として使用しない。",
+          "targets": "主にロシア語利用者。Chrome Web Store経由で75,486件以上の導入",
+          "malware": [
+            "Chrome拡張機能737件(命名なし)"
+          ],
+          "summary": "少なくとも40の開発者アカウントから公開されたVPN／プロキシChrome拡張737件を単一キャンペーンへ関連付けた報告。274件はProton VPNやNordVPNなど66の正規ブランドを偽装する。解析可能だった522件中520件がブラウザー通信全体を攻撃者側SOCKS5プロキシへ転送しAiTM位置を確立する。104件はCloudflareやGoogleのDNS-over-HTTPSでプロキシIPを解決し、攻撃者ドメインへの通常DNS照会を発生させず遮断を回避する。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-13)。Myxa VPNが事業名でありアクター指定子でないこと、Socketが登録者個人への帰属を留保していることを確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "単一ベンダー(Socket)の初報のみで、独立した一次資料がない。",
+        "運用者の呼称が確立しておらず、クラスタ名は関連事業の名称に依存している。",
+        "ロシアの自営業登録は他者名義で保持されうるとSocketが記載しており、登録者と運用者の同一性は未解決。"
+      ],
+      "analyst_notes": "単一ベンダーの初報のみで昇格閾値未達。継続観察。「Myxa VPN」は日次チェックで86観測の未一致名として上がるが、アクター指定子ではないためプロファイル化しない。本台帳へ記録することで、次回以降の走査で同じ判断を繰り返さないようにする。"
     }
   ],
   "excluded_name_collisions": [
