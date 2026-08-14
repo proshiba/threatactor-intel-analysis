@@ -74,6 +74,25 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張",
     "review_status": "approved"
   },
+  "akira|https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-04T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-05T00:00:00Z"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "原文(Huntress, 2026-08-12公開)を確認。記事はこの侵害を主題とし、実行主体をAkiraランサムウェアのアフィリエイトと明記している。MFA未設定で外部公開されたSonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、約2時間後にRDPでドメインコントローラーへ到達、PowerShellでActive Directoryを列挙、WinRARで書庫化してs5cmdで攻撃者管理のS3バケットへ窃取した。AnyDeskを遠隔操作兼C2として導入後、Safe Mode with Networkingで再起動してHuntress EDRとMicrosoft Defenderのリアルタイム保護を無効化しakira.exeを実行したが、Safe Modeの制限された仮想メモリでメモリ不足となり暗号化に失敗、通常モード復帰後にDefenderがペイロードを隔離した。暗号化は失敗したがデータ窃取は成立している。Huntress自身がEDRで直接観測した一次資料であり、同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-08-14)はreported_atとして分離する。",
+    "review_status": "approved"
+  },
   "akira|https://www.suspectfile.com/akira-ransomware-when-paying-isnt-enough-to-stay-anonymous/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Akiraランサムウェア：支払いだけでは匿名性を保てない",
@@ -570,6 +589,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 活動は少なくとも2022年半ばから続き、アジア太平洋と中東の組織を狙い、Calypso(別名、Red Lamassu)に帰属。",
     "review_status": "approved"
   },
+  "carbanak|https://cyberpolice.gov.ua/news/naczpolicziya-provela-ponad--obshukiv-i-prypynyla-robotu--shaxrajskyx-call-czentriv-640/": {
+    "confidence": "low",
+    "review_notes": "URL文字列断片との名称衝突。matched_termは「Ukraine」で、記事はウクライナ国家警察による詐欺コールセンター94カ所の摘発という法執行報道であり、Carbanakへの言及はない。実行主体はウクライナ国内の組織的詐欺ネットワークで既存プロファイルに該当しない。unknown-clusters.jsonのexcluded_name_collisionsに同一パターン(matched_profile: carbanak / matched_term: Ukraine)が既登録である。",
+    "review_status": "rejected"
+  },
   "carbanak|https://socradar.io/blog/operation-talked-russia-ukraine-defense-industry/": {
     "confidence": "low",
     "review_notes": "原文(SOCRadar blog)を確認したが、Carbanakへの言及は本文中に存在しない。URL文字列の一部への機械的な誤一致であり、名称衝突として不採用。",
@@ -850,6 +874,11 @@
   "hellsing-apt|https://securelist.com/octlurk-silklurk-backdoors-central-asia/120840/": {
     "confidence": "low",
     "review_notes": "原文(Kaspersky Securelist)を確認したが、「Hellsing」という文字列自体が本文に登場しない。Kaspersky自身が「at the time of publication, we couldn't attribute this activity to any known group」と明記しており既知グループへの帰属を確認できていない。プロファイル上のalias「Asia」が『Central Asia』等の地域語に機械的に一致した名称衝突。本件はparse-daily/unknown-clusters.jsonに「OctLurk / SilkLurk operator (未命名)」として既に台帳管理済み。不採用。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://www.dreamgroup.com/blog/inside-a-multi-agent-ai-framework-used-to-compromise-government-entities-in-asia": {
+    "confidence": "low",
+    "review_notes": "URL文字列断片との名称衝突。matched_termは「Asia」で、記事はDream Research Labsが報告したマルチエージェントAI攻撃基盤によるアジアの政府機関侵害であり、Hellsing APTへの言及はない。原文でも名前付きアクターへの帰属はなく、実行主体はHermesとOpenClawベースの自律エージェント基盤として記述されている。unknown-clusters.jsonのexcluded_name_collisionsに同一パターン(matched_profile: hellsing-apt / matched_term: Asia)が既登録である。",
     "review_status": "rejected"
   },
   "hellsing-apt|https://www.unodc.org/roseap/uploads/documents/Publications/2026/TOCTA_South-East_Asia_2026.pdf": {

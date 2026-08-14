@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "c4d871d22ea34d08ca689cb1a6886ea1c3bedc53",
-  "last_scanned_date": "2026-08-13",
+  "last_scanned_commit": "5f94d8426fac3266338b3237729dac738404d90f",
+  "last_scanned_date": "2026-08-14",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1079,6 +1079,123 @@
           "url": "https://securelist.ru/",
           "latest_relevant_publication": "2026-08-13",
           "result": "新規1件。Armored Likho(Eagle Werewolf)のStill Toolkitキャンペーン(2026-08-13 08:00 UTC公開)。securelist.comには未掲載、tech-memo未収録で、本チェックでのみ検知した。既存プロファイルに一致する名前はなく、単一ベンダー報告のためunknown-clusters.jsonへtrackingで追加した。公開一覧はJavaScript描画のため公式RSS(/feed/)で公開日を確認し、原文を個別に確認した。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-08-14T02:00:00Z",
+      "window": {
+        "since": "2026-08-13",
+        "until": null
+      },
+      "source_commit": "5f94d8426fac3266338b3237729dac738404d90f",
+      "statistics": {
+        "news_files": 2,
+        "articles": 23,
+        "review_records": 6,
+        "approved_records": 1,
+        "rejected_records": 5,
+        "applied_records": 1,
+        "unmatched_ioc_actor_observations": 175,
+        "materialization_window": "queueは2026-08-13以降で再生成した。2026-08-13分の5件は前回スキャンのreview-decisions.jsonがそのまま再現され、今回新規に採用したのは2026-08-14のAkira(Huntress)1件である。Jewelbugは既存プロファイルに一致しない名前として検知し、日次レコード経由ではなく一次資料の原文から新規プロファイルを作成した。"
+      },
+      "applied": [
+        {
+          "actor": "akira",
+          "name": "Akira (Huntress Safe Mode悪用インシデント)",
+          "source": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "decision": "一次資料(Huntress, 2026-08-12公開)の原文を確認。実行主体はAkiraランサムウェアのアフィリエイトで、記事は当該侵害を主題としている。MFA未設定の公開SonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、RDPでドメインコントローラーへ到達、WinRARとs5cmdで攻撃者管理のS3へ窃取、AnyDesk導入後にSafe Mode with NetworkingでEDRとDefenderを無効化してakira.exeを実行したが、仮想メモリ不足で暗号化に失敗した。HuntressがEDRで直接観測しているため確度はhigh。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付はreported_atへ分離した。IOC 3件(送信元IP 1、SHA256 2)とAnyDesk Client-ID 1件は、IOC CSVのactor列が「Akira ransomware affiliate」という複合名で自動一致しないため、原文のIOC表からprofiles/akiraへ直接収録した(s5cmdは正規のオープンソースツールでありハッシュが公開ビルドと一致し得るためdispositionはcandidate、AnyDesk Client-IDはIOCではなくartifactへ収録)。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "carbanak",
+          "name": "Carbanak (ウクライナ警察の詐欺コールセンター摘発報道)",
+          "source": "https://cyberpolice.gov.ua/news/naczpolicziya-provela-ponad--obshukiv-i-prypynyla-robotu--shaxrajskyx-call-czentriv-640/",
+          "decision": "URL文字列断片との名称衝突。matched_termは「Ukraine」で、記事にCarbanakの言及はない。実行主体はウクライナ国内の組織的詐欺ネットワークで既存プロファイルに該当しない。unknown-clusters.jsonのexcluded_name_collisionsに同一パターンが既登録である。"
+        },
+        {
+          "actor": "hellsing-apt",
+          "name": "Hellsing APT (マルチエージェントAI攻撃基盤による政府機関侵害)",
+          "source": "https://www.dreamgroup.com/blog/inside-a-multi-agent-ai-framework-used-to-compromise-government-entities-in-asia",
+          "decision": "URL文字列断片との名称衝突。matched_termは「Asia」で、記事にHellsing APTの言及はない。原文でも名前付きアクターへの帰属はない。unknown-clusters.jsonのexcluded_name_collisionsに同一パターンが既登録である。"
+        },
+        {
+          "actor": "sandworm",
+          "name": "Sandworm / UAC-0145 / TeamPCP (2026-08-13分の再現)",
+          "source": "https://cert.gov.ua/article/6318863",
+          "decision": "前回スキャンでの判断をreview-decisions.jsonから再現したもの。判断は変更なし(3件)。"
+        }
+      ],
+      "new_profiles": [
+        {
+          "actor": "jewelbug",
+          "name": "Jewelbug (aka Earth Alux, REF7707, CL-STA-0049)",
+          "source": "https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage",
+          "decision": "日次チェックで未一致名(観測52件)として検知した。unknown-clusters.jsonにも未登録で、既存673プロファイルのcanonical name・aliasのいずれとも一致しない。一次資料(Symantec, 2026-08-13公開)の原文を確認し、中東・東南アジア・南アジアの政府・軍・国営通信事業者・警察への諜報と、中国語話者を狙う暗号資産詐欺を同一の管理パネルで並行運用するクラスタとして記述されていることを確認した。昇格閾値については、別名Earth Aluxの一次資料(Trend Micro, 2025-03-31)と別名REF7707の一次資料(Elastic Security Labs, 2025-02-13)の原文も確認し、独立した一次資料2本以上という条件を満たすと判断してstatus: draftで新規作成した。活動2件(政府Webメール侵害の諜報、SEOポイズニングによる暗号資産詐欺)、マルウェア3件(Antino、PDF Viewer拡張機能、ClientKing)、ツール1件(XG-Web)、TTP 12件、被害事例1件、IOC 52件を収録した。被害国の大半が原文で匿名化されているため個別国は台湾のみとし、中東・東南アジア・南アジアは地域として保持した。帰属国(中国)は標的国へ流用していない。sponsor_typeは資料が後援主体を特定していないためunknownのままとした。別名3件のscopeはいずれもoverlappingとし、Earth Alux・REF7707側の活動・マルウェア実績は複製していない。CL-STA-0049はUnit 42側の一次資料を本レビューで確認できていないため確度lowとして未照合を明記した。"
+        }
+      ],
+      "alias_updates": [],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "Akira ransomware affiliate",
+          "observations": 3,
+          "note": "IOC CSVのactor列の値。Akiraのアフィリエイトを指す役割記述であり実体名ではないため、aliasとしては追加しない。対応するIOC 3件はHuntress原文のIOC表からprofiles/akiraへ直接収録済みである。"
+        },
+        {
+          "name": "Jewelbug (aka Earth Alux, REF7707)",
+          "observations": 52,
+          "note": "複合名のため自動一致しないままunmatchedに残るが、新規プロファイルjewelbugを作成し、対応するIOC 52件をprofiles/jewelbug/iocs.jsonへ収録済みである。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "cutoff後のアクター別一次情報なし。DeadLock ransomware(2026-08-10)は帰属アクターなしで判定済み。公開一覧HTMLがデータセンターIPから503となるため公式RSS(/feed/ および /topic/threat-intelligence/feed/)で確認した。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "cutoff後の新規なし。公開一覧の上位にあるSTOCKSTAY/Turla記事は公開日2026-06-25で、profiles/turlaへactivity(2026-06-25)およびsource--gtig-stockstay-turla-2026として収録済みである。最新のアクター別記事はUNC6671 Rebrands(2026-08-06)で反映済み。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "cutoff後の新規公開なし。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "新規2件。JWR phishing framework(2026-08-13)は原文確認したが名前付きアクターへの帰属がなく、簡体字の運用者向け文字列から中国語話者の運用と記載されるにとどまる。PhaaS「The Outsider」(運用体Outsider Enterprise)の変種であるとの中確度評価はあるが、JWR現行運用者への帰属ではないため台帳追加も見送った。Curiouser and Curiouser(2026-08-13)は週次ニュースレター。対応不要。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規公開なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "新規1件。The Model Is the Malware(2026-08-13)を原文確認。OpenAI・Anthropic・Meta・UK AISIで発生したエージェント起因の侵害4件を扱うが、名前付きアクターへの帰属はない。対応不要。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。Armored Likho英語版(2026-08-13)は前回スキャンで検知したロシア語版(2026-08-13)の翻訳で、unknown-cluster--armored-likhoとして台帳既出。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。Armored Likho(2026-08-13)は台帳既出。Q2 2026のマルウェア統計2件(2026-08-10)はAkira・Qilin等を統計として列挙するのみで活動主張がないため対象外。"
         }
       ]
     }

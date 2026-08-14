@@ -4,7 +4,7 @@
   "name": "Akira",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-08-01T23:19:00Z",
+  "updated_at": "2026-08-14T01:43:46Z",
   "languages": [
     "ja"
   ],
@@ -519,6 +519,104 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-0662aaff581d0ab45bce"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-267e235842a3fe8d98be",
+      "name": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-04T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-05T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 約2時間後にRDPでドメインコントローラーへ接続してActive Directoryを列挙し、WinRARとs5cmdを使ってファイルをS3へ窃取した。 攻撃者はAnyDeskを導入後、WindowsをSafe Mode with Networkingで再起動し、Huntress EDRとMicrosoft Defenderのリアルタイム保護を無効化した。 その後akira.exeを起動したが、Safe Mode環境で仮想メモリー不足が発生して暗号化に失敗し、通常モード復帰後にDefenderがペイロードを隔離した。 ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--akira"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--1bbbecca331245d17d02"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-0352fde34a4358d6927a"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--267e235842a3fe8d98beb045 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 原文(Huntress, 2026-08-12公開)を確認。記事はこの侵害を主題とし、実行主体をAkiraランサムウェアのアフィリエイトと明記している。MFA未設定で外部公開されたSonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、約2時間後にRDPでドメインコントローラーへ到達、PowerShellでActive Directoryを列挙、WinRARで書庫化してs5cmdで攻撃者管理のS3バケットへ窃取した。AnyDeskを遠隔操作兼C2として導入後、Safe Mode with Networkingで再起動してHuntress EDRとMicrosoft Defenderのリアルタイム保護を無効化しakira.exeを実行したが、Safe Modeの制限された仮想メモリでメモリ不足となり暗号化に失敗、通常モード復帰後にDefenderがペイロードを隔離した。暗号化は失敗したがデータ窃取は成立している。Huntress自身がEDRで直接観測した一次資料であり、同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-08-14)はreported_atとして分離する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--1bbbecca331245d17d02"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-04T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-05T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0352fde34a4358d6927a"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -3958,6 +4056,24 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
+      "source_id": "source--daily-0352fde34a4358d6927a",
+      "path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+      "title": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+      "publisher": "huntress.com",
+      "published_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260814.md; source commit: 5f94d8426fac3266338b3237729dac738404d90f; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-0662aaff581d0ab45bce",
       "path": "https://www.bleepingcomputer.com/news/security/critical-sonicwall-sslvpn-bug-exploited-in-ransomware-attacks/",
       "title": "重大なSonicWall SSLVPNバグ、ランサムウェア攻撃に悪用される",
@@ -4486,6 +4602,63 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-89a8fc15ce47bbec4793"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--1bbbecca331245d17d02",
+      "name": "被害事例: Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 約2時間後にRDPでドメインコントローラーへ接続してActive Directoryを列挙し、WinRARとs5cmdを使ってファイルをS3へ窃取した。 攻撃者はAnyDeskを導入後、WindowsをSafe Mode with Networkingで再起動し、Huntress EDRとMicrosoft Defenderのリアルタイム保護を無効化した。 その後akira.exeを起動したが、Safe Mode環境で仮想メモリー不足が発生して暗号化に失敗し、通常モード復帰後にDefenderがペイロードを隔離した。 ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。",
+      "activity_refs": [
+        "activity--daily-267e235842a3fe8d98be"
+      ],
+      "target_refs": [],
+      "malware_refs": [
+        "malware--akira"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "VPN／リモートアクセス機器"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。"
+        }
+      ],
+      "first_observed": {
+        "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-04T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-05T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-0352fde34a4358d6927a"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
