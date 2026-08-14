@@ -1,0 +1,1907 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--jewelbug",
+  "name": "Jewelbug",
+  "status": "draft",
+  "created_at": "2026-08-14T00:00:00Z",
+  "updated_at": "2026-08-14T01:50:53Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "Jewelbug",
+    "aliases": [
+      {
+        "name": "Earth Alux",
+        "vendor": "Trend Micro",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026",
+          "source--trendmicro-earth-alux-2025"
+        ],
+        "analyst_notes": "Symantecが「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT group」と記載する。Trend Microの原文(2025-03-31)ではEarth Aluxを中国系の侵入セットとして独立に定義しており、観測期間(2023年Q2〜)とマルウェア群(VARGEIT、COBEACON、RAILLOAD、RAILSETTER、MASQLOADER、GODZILLA)はSymantecがJewelbugとして報告した実装群と重ならない。同一視の根拠はSymantecの記載のみであるためscopeはoverlappingとし、Earth Alux側の実績は本プロファイルへ複製しない。"
+      },
+      {
+        "name": "REF7707",
+        "vendor": "Elastic Security Labs",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026",
+          "source--elastic-ref7707-2025"
+        ],
+        "analyst_notes": "Elasticの原文(2025-02-13)はREF7707を南米某国外務省への侵入から追跡したクラスタとして定義し、FINALDRAFT、PATHLOADER、GUIDLOADERを挙げる。出身国の帰属は主張していない。SymantecのみがJewelbugと同一視しているためscopeはoverlappingとする。"
+      },
+      {
+        "name": "CL-STA-0049",
+        "vendor": "Palo Alto Networks Unit 42",
+        "scope": "overlapping",
+        "confidence": "low",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "Symantecの別名列挙にのみ基づく。本レビューではUnit 42側の一次資料を確認できていないため確度はlowとし、未照合であることを明記する。"
+      }
+    ],
+    "actor_types": [
+      "threat-cluster",
+      "espionage",
+      "cybercrime"
+    ],
+    "first_seen": {
+      "value": null,
+      "precision": "unknown",
+      "status": "unknown",
+      "basis": "not-stated"
+    },
+    "last_seen": {
+      "value": "2026-08-13T00:00:00Z",
+      "precision": "day",
+      "status": "known",
+      "basis": "source-publication"
+    },
+    "active": "yes",
+    "description": "Symantecが報告する中国拠点のhack-for-hire型APTクラスタ。政府・軍への諜報活動と、中国語話者を標的とする大規模な暗号資産詐欺を、同一の管理パネルと重複する基盤・手法で並行運用する点を特徴とする。諜報側では国営通信事業者などが運用する共有ウェブホスティングを侵害し、単一のウォータリングホール注入で15を超える政府Webメールテナントへ共通の悪意あるJavaScriptを配信して、Webメールのcookieとメールアドレスを窃取する。重要標的にはAdobe Flash更新等を装ってWindowsバックドアAntinoと悪意あるブラウザー拡張機能を追加投入する。詐欺側では40台超のCMSサーバーと多数の類似ドメイン、AI生成のダウンロードページ、クリックボットによる検索順位操作を用い、OKXやBinanceを模した偽サイトへ誘導する。",
+    "analyst_notes": "本プロファイルはSymantecがJewelbugの名称で報告した範囲に限定する。別名として挙がるEarth Alux、REF7707、CL-STA-0049は各ベンダーが独立に定義したクラスタであり、同一視はSymantecの記載に依拠する。各別名側の活動・マルウェア実績を本プロファイルへ複製しない。"
+  },
+  "attribution": {
+    "countries": [
+      "中国"
+    ],
+    "sponsor_type": "unknown",
+    "organizations": [],
+    "assessment": "Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT group」と記載し、運用者が中国国内から活動していると評価する。根拠として、中国本土向け宛先を迂回するよう構成されたVPNルーティング、UTC+8の午後から深夜に集中する稼働パターン、湖南省長沙市に登記され自らSEO事業として広告する企業と、政府発行の身分証から特定された唯一の法定代表者を挙げる。運用者は管理パネル上で admin / admin_s を用い、ニックネームople500、ハンドルpaopaodada、エクスプロイトモジュール群の署名Xg Teamが確認されている。一方で、同資料はJewelbugを発注・後援する国家機関や組織を特定していないため、sponsor_typeはunknownのままとする。hack-for-hireという性格付けと、諜報活動と自己資金調達的な暗号資産詐欺の並行運用は同資料の評価である。",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--symantec-jewelbug-2026"
+    ],
+    "analyst_notes": "運用者の所在国(中国)についての確度と、後援主体の有無についての確度を分離して扱う。所在国はSymantecが複数の独立した根拠を挙げており相応に強いが、単一ベンダーの評価であるためconfidenceはmediumとする。後援主体は資料が特定していないため空とし、帰属国を標的国へ流用しない。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "中東・東南アジア・南アジアの政府省庁、軍、国営通信事業者、警察に対し、Webメールのcookie・認証情報・メール本文の窃取と、内部の仮想化管理基盤や政府通信システムへの到達を行う。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "type": "financial-gain",
+      "description": "中国語話者の暗号資産利用者を対象に、SEOポイズニングと偽の取引所配布ページ、ブラウザー拡張機能による暗号資産アドレスの差し替えで資金を窃取する。Symantecはこれを諜報活動と同一基盤・同一パネルで並行運用される活動として記述している。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "諜報活動の資金源であるか否かは資料が明示していないため、動機として分離して記載する。"
+    }
+  ],
+  "relationships": [],
+  "diamond_model": {
+    "adversary": "Symantecが中国拠点のhack-for-hire型APTと評価するクラスタJewelbug。運用者は湖南省長沙市に登記された企業と結び付き、UTC+8の稼働パターンを示す。後援主体は特定されていない。",
+    "capability": "WindowsバックドアAntino、悪意あるブラウザー拡張機能PDF Viewer、Rust実装のLinux/ルーターインプラントClientKing、自作の遠隔操作・情報窃取プラットフォームXG-Web。カーネルモジュール型ルートキットとsu/sudoフック型認証モジュールを併用する。",
+    "infrastructure": "侵害した国営通信事業者の共有Webメールホスティング、40台超のCMSサーバーと数百の類似ドメイン、Google Fontsを模したC&Cドメイン、C&CチャネルとしてのMicrosoft Graph API、Google Docs経由のペイロード配信。",
+    "victim": "中東・東南アジア・南アジアの政府省庁、軍、国営通信事業者、警察。詐欺側では中国語話者の暗号資産利用者。",
+    "socio_political": "政府・軍への諜報という国家的関心の対象と、中国語話者を狙う金銭目的の詐欺が、同一の運用者・同一の管理パネルで並行している。Symantecはこれをhack-for-hireの性格として整理している。",
+    "analyst_notes": "アクター単位のDiamond Model。活動単位のDiamond Modelは各activityが保持する。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--jewelbug-antino",
+        "name": "Antino",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "backdoor"
+        ],
+        "description": "HTAダウンローダーや偽のAdobe Flash・インストーラーを介して配布されるWindowsバックドア。C&CチャネルにMicrosoft Graph APIを悪用し、悪意あるブラウザー拡張機能「PDF Viewer」をサイドロードする。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "Symantecが直接解析した実装。観測期間は同資料が明示していないためunknownとする。"
+      },
+      {
+        "id": "malware--jewelbug-pdf-viewer-extension",
+        "name": "PDF Viewer (悪意あるブラウザー拡張機能)",
+        "aliases": [],
+        "types": [
+          "browser-extension",
+          "infostealer"
+        ],
+        "description": "Chrome/Firefox向けの悪意ある拡張機能。認証情報、cookie、閲覧履歴、ブックマーク、スクリーンショット、クリップボードを窃取し、暗号資産アドレスを差し替えるモジュールを備える。ネイティブメッセージングホスト com.microsoft.runedge と対で動作し、ブラウザーのサンドボックスから離脱する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "Symantecが直接解析した実装。観測期間は同資料が明示していないためunknownとする。"
+      },
+      {
+        "id": "malware--jewelbug-clientking",
+        "name": "ClientKing",
+        "aliases": [],
+        "types": [
+          "Linux",
+          "router",
+          "implant"
+        ],
+        "description": "Rustで実装されたLinux・ルーター向けインプラント。x86-64、ARM64、ASUSルーターを対象とする37種のビルドが確認されている。独自のDNSトンネルを含む5系統のC&Cトランスポートを備え、カーネルモジュールの読み込み、SOCKSによるピボット、認証情報窃取に対応する。カーネルモジュール型ルートキットと、su/sudoをフックする悪意ある認証モジュールを伴う。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "Symantecが直接解析した実装。観測期間は同資料が明示していないためunknownとする。"
+      }
+    ],
+    "tools": [
+      {
+        "id": "tool--jewelbug-xg-web",
+        "name": "XG-Web",
+        "aliases": [],
+        "types": [
+          "c2-framework"
+        ],
+        "description": "攻撃者が自作したブラウザー中心の遠隔操作・情報窃取プラットフォーム。Node.jsバックエンド上のReact製パネルとMySQLデータベースで構成され、被害端末のランデブーポイントとして機能する。パネル上では自らを「penetration-testing platform」と称している。諜報活動と暗号資産詐欺の双方がこの単一パネルから運用されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "Symantecがパネル自体を観測して記述している。"
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infrastructure--jewelbug-cms-fleet",
+        "name": "CMSサーバー群と類似ドメイン",
+        "aliases": [],
+        "types": [
+          "hosting"
+        ],
+        "description": "40台超のコンテンツ管理サーバーと数百の類似ドメインからなる基盤。AI生成の偽取引所ダウンロードページ、OKX・Binanceのタイポスクワットドメイン、クローラー向けに内容を出し分けるクローキングページを配信する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "infrastructure--jewelbug-compromised-shared-hosting",
+        "name": "侵害済み共有ウェブホスティング",
+        "aliases": [],
+        "types": [
+          "compromised-server"
+        ],
+        "description": "国営通信事業者が運用する共有Webメールホスティング基盤。単一のウォータリングホール注入で15を超える政府テナントへ共通の悪意あるJavaScriptを配信する起点となった。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "delivery_formats": [
+      {
+        "id": "delivery--jewelbug-hta",
+        "name": "HTAダウンローダー",
+        "aliases": [],
+        "types": [
+          "file-format"
+        ],
+        "description": "Antinoの配布に用いられるHTA形式のダウンローダー。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--jewelbug-fake-installer",
+        "name": "偽Adobe Flash／Microsoft Edge更新インストーラー",
+        "aliases": [],
+        "types": [
+          "social-engineering"
+        ],
+        "description": "重要標的に対して表示される偽の更新・インストーラー。flashcenter_pp_ax_install_en.exe のような正規名称を模した実行ファイルを含む。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--jewelbug-browser-extension",
+        "name": "悪意あるブラウザー拡張機能",
+        "aliases": [],
+        "types": [
+          "browser-extension"
+        ],
+        "description": "「PDF Viewer」の名称でChrome/Firefoxへ導入される拡張機能。Antinoによりサイドロードされる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--jewelbug-google-docs",
+        "name": "Google Docs経由のペイロード配信",
+        "aliases": [],
+        "types": [
+          "cloud-service-abuse"
+        ],
+        "description": "正規のGoogle Docsを配信経路として用いるペイロード投下と実行。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--jewelbug-multi-tenant-watering-hole",
+        "name": "共有ホスティング侵害による多テナント同時ウォータリングホール",
+        "aliases": [],
+        "types": [
+          "initial-access"
+        ],
+        "description": "単一の侵害点への注入で15を超える政府Webメールテナントの利用者へ同時に到達する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--jewelbug-session-token-theft",
+        "name": "ログインフォームのフックとセッショントークンのリアルタイム窃取",
+        "aliases": [],
+        "types": [
+          "credential-access"
+        ],
+        "description": "ログインフォームをフックして認証情報を取得し、cookieの窃取と併せてセッショントークンをリアルタイムで奪取する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--jewelbug-native-messaging-escape",
+        "name": "ネイティブメッセージングによるブラウザーサンドボックスからの離脱",
+        "aliases": [],
+        "types": [
+          "defense-evasion"
+        ],
+        "description": "ネイティブメッセージングホスト com.microsoft.runedge を介して拡張機能からホスト側の実行へ橋渡しする。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--jewelbug-seo-poisoning",
+        "name": "SEOポイズニングとクリックボットによる検索順位操作",
+        "aliases": [],
+        "types": [
+          "resource-development"
+        ],
+        "description": "40台超のCMSサーバー、AI生成ページ、クリックボット、クローキングを組み合わせて検索結果を操作する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--jewelbug-detection-monitoring",
+        "name": "VirusTotal評価の定期確認による検知状況の監視",
+        "aliases": [],
+        "types": [
+          "defense-evasion"
+        ],
+        "description": "12時間ごとに自らの検体の評価を確認する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--jewelbug-vpn-split-tunneling",
+        "name": "中国本土向け宛先を迂回するVPNスプリットトンネリング",
+        "aliases": [],
+        "types": [
+          "operational-security"
+        ],
+        "description": "運用者の所在を秘匿しつつ中国本土のフィルタリングを回避する構成。帰属評価の根拠のひとつでもある。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "Symantecの原文に記載された実装と運用能力のみを収録する。別名クラスタ(Earth Alux、REF7707)側のマルウェア群は本プロファイルへ複製しない。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--jewelbug-crypto-fraud-seo-2026",
+      "name": "SEOポイズニングと偽取引所サイトによる暗号資産詐欺",
+      "activity_type": "financial-fraud",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "諜報活動と同一の管理パネルから運用される、中国語話者を標的とする暗号資産詐欺。40台超のコンテンツ管理サーバーと数百の類似ドメインを用い、AI生成の偽取引所ダウンロードページ、OKX・Binanceのタイポスクワットドメイン、クローラー向けに内容を出し分けるクローキングページを配信する。クリックボットで検索順位を操作するSEOポイズニングにより被害者を誘導し、悪意あるブラウザー拡張機能の暗号資産アドレス差し替えモジュールと組み合わせて資金を窃取する。スポーツ賭博、海賊版ライブ配信サイト、私立探偵詐欺といった別の誘導手口も併用されている。",
+      "target_refs": [
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--sector--63c9fa67327d005b07b7",
+        "target--jewelbug--role--chinese-speaking-crypto-users"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-pdf-viewer-extension"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--jewelbug-cms-fleet"
+      ],
+      "ttp_refs": [
+        "ttp--jewelbug-t1036-005",
+        "ttp--jewelbug-t1608-006"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--da2d2e0da904c89a5535"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--jewelbug",
+          "name": "Jewelbug",
+          "attribution_countries": [
+            "中国"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--jewelbug-pdf-viewer-extension"
+          ],
+          "ttp_refs": [
+            "ttp--jewelbug-t1036-005",
+            "ttp--jewelbug-t1608-006"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--jewelbug-cms-fleet"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+            "target--activity-rule--sector--63c9fa67327d005b07b7",
+            "target--jewelbug--role--chinese-speaking-crypto-users"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--da2d2e0da904c89a5535"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-13T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "financial-fraud",
+          "phases": [
+            "Defense Evasion",
+            "Resource Development"
+          ],
+          "results": [
+            "セッションcookieの窃取",
+            "データ窃取",
+            "認証情報の窃取"
+          ],
+          "direction": {
+            "source_countries": [
+              "中国"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecは詐欺と諜報が同一基盤・同一パネル・重複手法で運用されていると明記している。活動期間の明示がないためunknownとし、公開日はreported_atへ分離する。"
+    },
+    {
+      "activity_id": "activity--jewelbug-government-webmail-espionage-2026",
+      "name": "共有Webメールホスティング侵害による政府・軍への諜報活動",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "国営通信事業者などが運用する共有ウェブホスティングを侵害し、単一のウォータリングホール注入で15を超える政府Webメールテナントへ共通の悪意あるJavaScriptを配信した。スクリプトはWebメールのcookieと電子メールアドレスを窃取し、重要標的には偽のAdobe Flash更新等を表示してWindowsバックドアAntinoと悪意あるブラウザー拡張機能「PDF Viewer」を追加投入する。LinuxホストとルーターにはRust実装のインプラントClientKingを配置し、独自DNSトンネルを含む5系統のC&C、SOCKSピボット、カーネルモジュール型ルートキット、su/sudoフックによる認証情報窃取を行う。内部の仮想化管理クラスタや政府の通信システムにも到達している。攻撃者の基盤には約110万件の位置情報イベント、58万件超のcookie、数千件の認証情報、2,300件超のメール本文が記録されていた。",
+      "target_refs": [
+        "target--activity-rule--sector--97fa6f38a056d42117be",
+        "target--jewelbug--country--taiwan",
+        "target--jewelbug--region--middle-east",
+        "target--jewelbug--region--south-asia",
+        "target--jewelbug--region--southeast-asia",
+        "target--jewelbug--sector--defense",
+        "target--jewelbug--sector--government",
+        "target--jewelbug--sector--law-enforcement",
+        "target--jewelbug--sector--telecommunications"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-antino",
+        "malware--jewelbug-pdf-viewer-extension",
+        "malware--jewelbug-clientking"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--jewelbug-compromised-shared-hosting"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--d370d222c172b5e5788d",
+        "ttp--jewelbug-t1014",
+        "ttp--jewelbug-t1036-005",
+        "ttp--jewelbug-t1071-004",
+        "ttp--jewelbug-t1090",
+        "ttp--jewelbug-t1102-002",
+        "ttp--jewelbug-t1176-001",
+        "ttp--jewelbug-t1189",
+        "ttp--jewelbug-t1204-002",
+        "ttp--jewelbug-t1539",
+        "ttp--jewelbug-t1556-003",
+        "ttp--jewelbug-t1584-004"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--60d3466b22698b895c22",
+        "victim--jewelbug-government-webmail-tenants"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--jewelbug",
+          "name": "Jewelbug",
+          "attribution_countries": [
+            "中国"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--jewelbug-antino",
+            "malware--jewelbug-clientking",
+            "malware--jewelbug-pdf-viewer-extension"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--d370d222c172b5e5788d",
+            "ttp--jewelbug-t1014",
+            "ttp--jewelbug-t1036-005",
+            "ttp--jewelbug-t1071-004",
+            "ttp--jewelbug-t1090",
+            "ttp--jewelbug-t1102-002",
+            "ttp--jewelbug-t1176-001",
+            "ttp--jewelbug-t1189",
+            "ttp--jewelbug-t1204-002",
+            "ttp--jewelbug-t1539",
+            "ttp--jewelbug-t1556-003",
+            "ttp--jewelbug-t1584-004"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--jewelbug-compromised-shared-hosting"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--97fa6f38a056d42117be",
+            "target--jewelbug--country--taiwan",
+            "target--jewelbug--region--middle-east",
+            "target--jewelbug--region--south-asia",
+            "target--jewelbug--region--southeast-asia",
+            "target--jewelbug--sector--defense",
+            "target--jewelbug--sector--government",
+            "target--jewelbug--sector--law-enforcement",
+            "target--jewelbug--sector--telecommunications"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--60d3466b22698b895c22",
+            "victim--jewelbug-government-webmail-tenants"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-13T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Command And Control",
+            "Command and Control",
+            "Credential Access",
+            "Defense Evasion",
+            "Execution",
+            "Initial Access",
+            "Persistence",
+            "Resource Development"
+          ],
+          "results": [
+            "セッションcookieの窃取",
+            "データ窃取",
+            "認証情報の窃取"
+          ],
+          "direction": {
+            "source_countries": [
+              "中国"
+            ],
+            "target_country_refs": [
+              "target--jewelbug--country--taiwan"
+            ],
+            "target_region_refs": [
+              "target--jewelbug--region--middle-east",
+              "target--jewelbug--region--south-asia",
+              "target--jewelbug--region--southeast-asia"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文から直接記述した。同資料は調査を数カ月にわたるものと記載するが、活動の開始日・終了日を明示していないため活動期間はunknownとし、公開日(2026-08-13)はreported_atとして分離する。"
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--60d3466b22698b895c22",
+      "name": "被害事例: 共有Webメールホスティング侵害による政府・軍への諜報活動",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "国営通信事業者などが運用する共有ウェブホスティングを侵害し、単一のウォータリングホール注入で15を超える政府Webメールテナントへ共通の悪意あるJavaScriptを配信した。スクリプトはWebメールのcookieと電子メールアドレスを窃取し、重要標的には偽のAdobe Flash更新等を表示してWindowsバックドアAntinoと悪意あるブラウザー拡張機能「PDF Viewer」を追加投入する。LinuxホストとルーターにはRust実装のインプラントClientKingを配置し、独自DNSトンネルを含む5系統のC&C、SOCKSピボット、カーネルモジュール型ルートキット、su/sudoフックによる認証情報窃取を行う。内部の仮想化管理クラスタや政府の通信システムにも到達している。攻撃者の基盤には約110万件の位置情報イベント、58万件超のcookie、数千件の認証情報、2,300件超のメール本文が記録されていた。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--97fa6f38a056d42117be",
+        "target--jewelbug--country--taiwan",
+        "target--jewelbug--region--middle-east",
+        "target--jewelbug--region--south-asia",
+        "target--jewelbug--region--southeast-asia",
+        "target--jewelbug--sector--defense",
+        "target--jewelbug--sector--government",
+        "target--jewelbug--sector--law-enforcement",
+        "target--jewelbug--sector--telecommunications"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-antino",
+        "malware--jewelbug-clientking",
+        "malware--jewelbug-pdf-viewer-extension"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--d370d222c172b5e5788d",
+        "ttp--jewelbug-t1014",
+        "ttp--jewelbug-t1036-005",
+        "ttp--jewelbug-t1071-004",
+        "ttp--jewelbug-t1090",
+        "ttp--jewelbug-t1102-002",
+        "ttp--jewelbug-t1176-001",
+        "ttp--jewelbug-t1189",
+        "ttp--jewelbug-t1204-002",
+        "ttp--jewelbug-t1539",
+        "ttp--jewelbug-t1556-003",
+        "ttp--jewelbug-t1584-004"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "ネットワーク機器"
+      ],
+      "impacts": [
+        {
+          "impact_type": "認証情報の窃取",
+          "description": "数千件の認証情報が攻撃者基盤に記録されていた。"
+        },
+        {
+          "impact_type": "セッションcookieの窃取",
+          "description": "58万件超のブラウザーcookieが記録され、セッショントークンのリアルタイム奪取に用いられた。"
+        },
+        {
+          "impact_type": "データ窃取",
+          "description": "2,300件超のメール本文が3カ月未満の期間に窃取・記録された。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--da2d2e0da904c89a5535",
+      "name": "被害事例: SEOポイズニングと偽取引所サイトによる暗号資産詐欺",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "諜報活動と同一の管理パネルから運用される、中国語話者を標的とする暗号資産詐欺。40台超のコンテンツ管理サーバーと数百の類似ドメインを用い、AI生成の偽取引所ダウンロードページ、OKX・Binanceのタイポスクワットドメイン、クローラー向けに内容を出し分けるクローキングページを配信する。クリックボットで検索順位を操作するSEOポイズニングにより被害者を誘導し、悪意あるブラウザー拡張機能の暗号資産アドレス差し替えモジュールと組み合わせて資金を窃取する。スポーツ賭博、海賊版ライブ配信サイト、私立探偵詐欺といった別の誘導手口も併用されている。",
+      "activity_refs": [
+        "activity--jewelbug-crypto-fraud-seo-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "target--activity-rule--sector--63c9fa67327d005b07b7",
+        "target--jewelbug--role--chinese-speaking-crypto-users"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-pdf-viewer-extension"
+      ],
+      "ttp_refs": [
+        "ttp--jewelbug-t1036-005",
+        "ttp--jewelbug-t1608-006"
+      ],
+      "affected_assets": [
+        "サーバー"
+      ],
+      "impacts": [
+        {
+          "impact_type": "認証情報の窃取",
+          "description": "数千件の認証情報が攻撃者基盤に記録されていた。"
+        },
+        {
+          "impact_type": "セッションcookieの窃取",
+          "description": "58万件超のブラウザーcookieが記録され、セッショントークンのリアルタイム奪取に用いられた。"
+        },
+        {
+          "impact_type": "データ窃取",
+          "description": "2,300件超のメール本文が3カ月未満の期間に窃取・記録された。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--jewelbug-government-webmail-tenants",
+      "name": "被害事例: 共有ホスティング上の政府Webメールテナント15超の侵害",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "中東某国の国営通信事業者が運用する共有Webメールホスティングが侵害され、単一のウォータリングホール注入により15を超える政府Webメールテナントの利用者へ悪意あるJavaScriptが配信された。南アジアでは警察・政府の電子メールアドレス90件超が侵害対象として確認され、東南アジアでは国営通信事業者と軍のネットワークが標的となった。攻撃者の基盤には58万件超のcookie、数千件の認証情報、2,300件超のメール本文が3カ月未満の期間に記録されていた。個別の被害組織名は公開されていない。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "target_refs": [
+        "target--jewelbug--region--middle-east",
+        "target--jewelbug--region--southeast-asia",
+        "target--jewelbug--region--south-asia",
+        "target--jewelbug--sector--government",
+        "target--jewelbug--sector--defense",
+        "target--jewelbug--sector--telecommunications",
+        "target--jewelbug--sector--law-enforcement"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-antino",
+        "malware--jewelbug-pdf-viewer-extension",
+        "malware--jewelbug-clientking"
+      ],
+      "ttp_refs": [
+        "ttp--jewelbug-t1584-004",
+        "ttp--jewelbug-t1189",
+        "ttp--jewelbug-t1539",
+        "ttp--jewelbug-t1204-002",
+        "ttp--jewelbug-t1176-001",
+        "ttp--jewelbug-t1102-002",
+        "ttp--jewelbug-t1071-004",
+        "ttp--jewelbug-t1090",
+        "ttp--jewelbug-t1014",
+        "ttp--jewelbug-t1556-003",
+        "ttp--jewelbug-t1036-005"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "共有ウェブホスティング",
+        "仮想化管理基盤",
+        "ルーター／ネットワーク機器"
+      ],
+      "impacts": [
+        {
+          "impact_type": "認証情報の窃取",
+          "description": "数千件の認証情報が攻撃者基盤に記録されていた。"
+        },
+        {
+          "impact_type": "セッションcookieの窃取",
+          "description": "58万件超のブラウザーcookieが記録され、セッショントークンのリアルタイム奪取に用いられた。"
+        },
+        {
+          "impact_type": "データ窃取",
+          "description": "2,300件超のメール本文が3カ月未満の期間に窃取・記録された。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "原文が被害組織を匿名化しているため集約事例として保持する。件数はSymantecが基盤上で観測した記録値であり、被害組織数の確定値ではない。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--activity-rule--country--95e363d6dfa8c6f2ecbb",
+        "name": "中国",
+        "description": "活動「SEOポイズニングと偽取引所サイトによる暗号資産詐欺」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--jewelbug--country--taiwan",
+        "name": "台湾",
+        "description": "Symantecは台湾の政府機関の体裁を模したデコイ文書が使用されたと記載している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "デコイ文書の体裁からの標的推定であり、台湾組織の侵害そのものが確認されたとは記載されていない。中東・東南アジア・南アジアの被害国は「a Middle Eastern country」「a Southeast Asian country」等と匿名化されているため、個別国としては起こさない。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--jewelbug--region--middle-east",
+        "name": "中東",
+        "description": "国営通信事業者が運用する共有Webメールホスティングの侵害を通じ、中東某国の15を超える政府Webメールテナントが侵害された。基盤の記録では中東某国からの接続が53,100件確認されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--jewelbug--region--south-asia",
+        "name": "南アジア",
+        "description": "南アジアでは警察および政府の電子メールアドレス90件超が侵害対象として確認されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--targeting-audit--region--1c5b935afd0b4f124e9e",
+        "name": "東アジア",
+        "description": "中国、台湾で確認された標的・被害事例を東アジアとして集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--jewelbug--region--southeast-asia",
+        "name": "東南アジア",
+        "description": "東南アジアの国営通信事業者と軍のネットワークが標的とされた。基盤の記録では東南アジア某国からの接続が87,200件、別の東南アジア某国から15,000件確認されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--63c9fa67327d005b07b7",
+        "name": "暗号資産・Web3",
+        "description": "活動「SEOポイズニングと偽取引所サイトによる暗号資産詐欺」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--97fa6f38a056d42117be",
+        "name": "情報通信",
+        "description": "活動「共有Webメールホスティング侵害による政府・軍への諜報活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--jewelbug--sector--defense",
+        "name": "国防・軍",
+        "description": "東南アジアの軍ネットワークが標的として記載されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--jewelbug--sector--government",
+        "name": "政府・行政",
+        "description": "中東・東南アジア・南アジアの政府省庁と政府通信システムが諜報活動の主対象である。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--jewelbug--sector--law-enforcement",
+        "name": "法執行機関",
+        "description": "南アジアの警察の電子メールアドレスが政府アドレスと併せて90件超確認されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--jewelbug--sector--telecommunications",
+        "name": "通信",
+        "description": "国営通信事業者およびナショナルキャリアが、直接の標的であると同時に共有ホスティング侵害を通じた配信経路としても利用された。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "roles": [
+      {
+        "id": "target--jewelbug--role--chinese-speaking-crypto-users",
+        "name": "中国語話者の暗号資産利用者",
+        "description": "暗号資産詐欺側のSEOポイズニングとタイポスクワットは中国語話者の暗号資産利用者を対象としている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "selection_logic": "諜報側は政府・軍・通信・法執行のWebメールと通信系システムを、共有ホスティングの侵害によって広く同時に取得できる標的として選定している。詐欺側は検索経由で偽の取引所配布ページへ誘導できる中国語話者の暗号資産利用者を対象とする。両者は同一の管理パネルと重複する基盤・手法で運用されている。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "被害国の大半が原文で匿名化されているため、個別国は台湾のみを起こし、それ以外は地域として保持する。帰属国(中国)を標的国へ流用しない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--d370d222c172b5e5788d",
+      "tactic": "Command And Control",
+      "technique_id": "T1071.004",
+      "technique_name": "DNS",
+      "observed_behavior": "LinuxホストとルーターにはRust実装のインプラントClientKingを配置し、独自DNSトンネルを含む5系統のC&C、SOCKSピボット、カーネルモジュール型ルートキット、su/sudoフックによる認証情報窃取を行う。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-clientking"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1014",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1014",
+      "technique_name": "Rootkit",
+      "observed_behavior": "ClientKingに随伴するツールキットにカーネルモジュール型ルートキットが含まれる。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-clientking"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1036-005",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1036.005",
+      "technique_name": "Match Legitimate Resource Name or Location",
+      "observed_behavior": "C&Cドメインに fonts[.]chrorne[.]com のようなGoogle Fontsを模した名称を用い、ネイティブメッセージングホスト名にも com.microsoft.runedge を用いる。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026",
+        "activity--jewelbug-crypto-fraud-seo-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1071-004",
+      "tactic": "Command and Control",
+      "technique_id": "T1071.004",
+      "technique_name": "DNS",
+      "observed_behavior": "ClientKingは独自実装のDNSトンネルを含む5系統のC&Cトランスポートを備える。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-clientking"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1090",
+      "tactic": "Command and Control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "ClientKingはSOCKSによるピボットに対応し、侵害したLinuxホストやルーターを経由点として利用する。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-clientking"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1102-002",
+      "tactic": "Command and Control",
+      "technique_id": "T1102.002",
+      "technique_name": "Bidirectional Communication",
+      "observed_behavior": "AntinoはMicrosoft Graph APIをC&Cチャネルとして悪用する。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-antino"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1176-001",
+      "tactic": "Persistence",
+      "technique_id": "T1176.001",
+      "technique_name": "Browser Extensions",
+      "observed_behavior": "Antinoが悪意あるブラウザー拡張機能「PDF Viewer」をサイドロードし、ネイティブメッセージングホスト com.microsoft.runedge と対で常駐させた。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-pdf-viewer-extension",
+        "malware--jewelbug-antino"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1189",
+      "tactic": "Initial Access",
+      "technique_id": "T1189",
+      "technique_name": "Drive-by Compromise",
+      "observed_behavior": "侵害した共有ホスティング上のWebメールへ共通の悪意あるJavaScriptを注入し、15を超える政府テナントの利用者に対するウォータリングホールとした。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1204-002",
+      "tactic": "Execution",
+      "technique_id": "T1204.002",
+      "technique_name": "Malicious File",
+      "observed_behavior": "重要標的に対し、偽のAdobe Flash更新やインストーラーを表示してAntinoバックドアを実行させた。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-antino"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1539",
+      "tactic": "Credential Access",
+      "technique_id": "T1539",
+      "technique_name": "Steal Web Session Cookie",
+      "observed_behavior": "注入したスクリプトと拡張機能によりWebメールのcookieを窃取し、セッショントークンをリアルタイムで奪取した。基盤には58万件超のcookieが記録されていた。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-pdf-viewer-extension"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1556-003",
+      "tactic": "Credential Access",
+      "technique_id": "T1556.003",
+      "technique_name": "Pluggable Authentication Modules",
+      "observed_behavior": "su および sudo をフックする悪意ある認証モジュールを配置し、認証情報を取得する。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [
+        "malware--jewelbug-clientking"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1584-004",
+      "tactic": "Resource Development",
+      "technique_id": "T1584.004",
+      "technique_name": "Server",
+      "observed_behavior": "国営通信事業者が運用する共有Webメールホスティング基盤を侵害し、配信起点として利用した。",
+      "activity_refs": [
+        "activity--jewelbug-government-webmail-espionage-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--jewelbug-t1608-006",
+      "tactic": "Resource Development",
+      "technique_id": "T1608.006",
+      "technique_name": "SEO Poisoning",
+      "observed_behavior": "AI生成の偽ダウンロードページ、40台超のCMSサーバー、クリックボットによる順位操作を組み合わせ、中国語話者の検索結果へ偽の取引所配布ページを露出させた。",
+      "activity_refs": [
+        "activity--jewelbug-crypto-fraud-seo-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--symantec-jewelbug-2026"
+      ],
+      "analyst_notes": "Symantecの原文に明示された行動を分析者がATT&CKへ対応付けた。資料発行日を観測日として使用していない。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--symantec-jewelbug-2026",
+      "path": "https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage",
+      "url": "https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage",
+      "title": "Jewelbug: Crypto Fraud and Espionage",
+      "publisher": "Symantec Threat Hunter Team",
+      "published_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "原文を確認(アクセス日 2026-08-14)。Symantecが数カ月にわたる調査として、攻撃者の管理パネルを含む基盤を直接観測して報告している。source reliabilityは出典信頼性であり、アクター帰属確度ではない。"
+    },
+    {
+      "source_id": "source--trendmicro-earth-alux-2025",
+      "path": "https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html",
+      "url": "https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html",
+      "title": "The Espionage Toolkit of Earth Alux: A Closer Look at its Advanced Techniques",
+      "publisher": "Trend Micro",
+      "published_at": {
+        "value": "2025-03-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "別名Earth Aluxの一次資料。原文を確認(アクセス日 2026-08-14)。本プロファイルでは別名の実在確認と昇格閾値の判断にのみ用い、Earth Alux固有の活動実績はJewelbugの活動として複製しない。"
+    },
+    {
+      "source_id": "source--elastic-ref7707-2025",
+      "path": "https://www.elastic.co/security-labs/fragile-web-ref7707",
+      "url": "https://www.elastic.co/security-labs/fragile-web-ref7707",
+      "title": "From South America to Southeast Asia: The Fragile Web of REF7707",
+      "publisher": "Elastic Security Labs",
+      "published_at": {
+        "value": "2025-02-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "別名REF7707の一次資料。原文を確認(アクセス日 2026-08-14)。Elasticは同資料で出身国の帰属を主張していない。本プロファイルでは別名の実在確認と昇格閾値の判断にのみ用いる。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "Jewelbugは政府・軍への諜報と、中国語話者を狙う暗号資産詐欺を、同一の管理パネルと重複する基盤・手法で並行運用している。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "Symantecは「Cryptocurrency fraud and espionage campaigns share the same infrastructure, overlapping techniques and one control panel」と記載する。"
+      },
+      {
+        "statement": "諜報側の中核は、国営通信事業者が運用する共有ウェブホスティングを侵害し、単一のウォータリングホール注入で15を超える政府Webメールテナントへ同時に到達する手口である。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "statement": "運用者の所在は中国であるとSymantecが複数の根拠(UTC+8の稼働パターン、中国本土向け宛先を迂回するVPN構成、湖南省長沙市の登記企業と法定代表者)から評価しているが、発注者・後援主体は特定されていない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026"
+        ],
+        "analyst_notes": "単一ベンダーの評価であるため確度はmedium。所在国の確度と後援主体の有無の確度を分離して扱う。"
+      },
+      {
+        "statement": "別名として挙がるEarth Alux(Trend Micro)とREF7707(Elastic Security Labs)は独立した一次資料を持つクラスタであり、新規プロファイル昇格の閾値を満たすが、同一クラスタであるかはSymantecの記載以外に裏付けがない。",
+        "confidence": "low",
+        "evidence_refs": [
+          "source--symantec-jewelbug-2026",
+          "source--trendmicro-earth-alux-2025",
+          "source--elastic-ref7707-2025"
+        ],
+        "analyst_notes": "各別名側の観測期間・マルウェア群はSymantecの報告内容と重ならない。aliasのscopeはoverlappingとし、実績を相互に流用しない。"
+      }
+    ],
+    "gaps": [
+      "被害国の大半が原文で匿名化されており、個別国単位の標的確定ができない。",
+      "活動の開始日・終了日が原文に明示されておらず、活動期間はunknownのままである。",
+      "別名CL-STA-0049についてはPalo Alto Networks Unit 42側の一次資料を本レビューで確認できていない。",
+      "Earth Alux・REF7707との同一視はSymantecの記載のみに依拠しており、各クラスタ側の資料は同一視を主張していない。"
+    ],
+    "uncertainties": [
+      "Earth Alux(Trend Micro, 2025-03-31)およびREF7707(Elastic, 2025-02-13)の観測期間・マルウェア群はSymantecがJewelbugとして報告した実装群と重ならないため、3者が同一クラスタであるかは未解決である。aliasのscopeはoverlappingとし、実績を相互に流用していない。",
+      "hack-for-hireという性格付けはSymantecの評価であり、顧客・発注関係を示す直接証拠は公開されていない。"
+    ],
+    "collection_notes": "Symantecの原文(2026-08-13)を一次資料として確認した。別名の実在確認のためTrend MicroのEarth Alux記事(2025-03-31)とElastic Security LabsのREF7707記事(2025-02-13)の原文も確認した。IOCはproshiba/tech-memoのdaily-news IOC CSV(2026-08-14)がSymantec原文のIOC節から収録した52件を取り込んだ。",
+    "analyst_notes": "status: draft。単一ベンダーの初報を主資料とするが、別名として独立した2ベンダー(Trend Micro、Elastic)の一次資料が存在するため、parse-daily/AGENT.mdの昇格閾値(独立した一次資料2本以上)を満たすと判断した。"
+  },
+  "free_text": {
+    "executive_summary": "Jewelbug(別名Earth Alux、REF7707、CL-STA-0049)は、Symantecが2026-08-13に報告した中国拠点のhack-for-hire型APTクラスタである。中東・東南アジア・南アジアの政府省庁・軍・国営通信事業者・警察に対する諜報活動と、中国語話者を標的とする大規模な暗号資産詐欺を、同一の管理パネルと重複する基盤・手法で並行運用する点が最大の特徴である。",
+    "history": "Symantecは数カ月にわたる調査として本件を報告しているが、活動の開始時期は明示していない。別名として挙がるEarth AluxはTrend Microが2025-03-31に、REF7707はElastic Security Labsが2025-02-13に、それぞれ独立に定義・公表したクラスタである。",
+    "capability_details": "諜報側はHTAダウンローダーと偽のAdobe Flash・インストーラーを起点にWindowsバックドアAntinoを投入し、Microsoft Graph APIをC&Cとして使う。Antinoは悪意あるブラウザー拡張機能「PDF Viewer」をサイドロードし、ネイティブメッセージングホスト com.microsoft.runedge を介してブラウザーのサンドボックスから離脱する。拡張機能は認証情報・cookie・履歴・ブックマーク・スクリーンショット・クリップボードを窃取し、暗号資産アドレスを差し替えるモジュールも備える。LinuxホストとルーターにはRust実装のClientKingを配置し、x86-64・ARM64・ASUSルーター向け37種のビルド、独自DNSトンネルを含む5系統のC&C、SOCKSピボット、カーネルモジュール読み込みに対応する。随伴ツールキットにはカーネルモジュール型ルートキットとsu/sudoをフックする認証モジュールが含まれる。全体はNode.jsバックエンドとReact製パネル、MySQLからなる自作プラットフォームXG-Webから運用される。",
+    "infrastructure_details": "諜報側の起点は国営通信事業者が運用する共有Webメールホスティングの侵害である。詐欺側は40台超のCMSサーバーと数百の類似ドメインを保持し、AI生成の偽取引所ダウンロードページ、OKX・Binanceのタイポスクワット、クローラー向けクローキングページを配信する。C&CドメインにはGoogle Fontsを模した fonts[.]chrorne[.]com のような名称が使われる。攻撃者は12時間ごとにVirusTotalの評価を確認し、中国本土向け宛先を迂回するVPNスプリットトンネリングを用いる。",
+    "targeting_details": "構造化ターゲット監査: 標的国=中国、台湾。標的地域=中東、南アジア、東アジア、東南アジア。日本は確認時に個別国として保持する。\n\n被害国の大半は原文で匿名化されており、地域として中東・東南アジア・南アジアが確認できる。個別国として明示があるのは、政府機関の体裁を模したデコイ文書が使われた台湾のみである。業種は政府・行政、国防・軍、通信、法執行機関に及ぶ。詐欺側の対象は中国語話者の暗号資産利用者である。帰属国(中国)は標的国へ流用していない。",
+    "additional_notes": "本プロファイルはSymantecがJewelbugの名称で報告した範囲に限定する。Earth AluxおよびREF7707の活動・マルウェア実績は、同一視の根拠がSymantecの記載のみであるため本プロファイルへ複製していない。"
+  }
+}

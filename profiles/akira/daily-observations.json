@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--akira",
-  "updated_at": "2026-07-27T11:17:21Z",
+  "updated_at": "2026-08-14T01:39:25Z",
   "records": [
     {
       "record_id": "daily-record--168bcc08caaa00d067b78e22",
@@ -94,6 +94,66 @@
         "suggested_confidence": "medium"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--267e235842a3fe8d98beb045",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "akira",
+        "canonical_name": "Akira",
+        "matched_term": "Akira",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "Akira"
+      },
+      "activity": {
+        "title": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+        "summary": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 約2時間後にRDPでドメインコントローラーへ接続してActive Directoryを列挙し、WinRARとs5cmdを使ってファイルをS3へ窃取した。 攻撃者はAnyDeskを導入後、WindowsをSafe Mode with Networkingで再起動し、Huntress EDRとMicrosoft Defenderのリアルタイム保護を無効化した。 その後akira.exeを起動したが、Safe Mode環境で仮想メモリー不足が発生して暗号化に失敗し、通常モード復帰後にDefenderがペイロードを隔離した。 ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。",
+        "news_date": "2026-08-14",
+        "news_url": "https://www.bleepingcomputer.com/news/security/akira-hackers-disable-edr-with-safe-mode-steal-data-but-fail-to-encrypt/",
+        "primary_url": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+        "activity_reference": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+        "news_path": "daily-news/news/2026_07-09/20260814.md"
+      },
+      "confidence": "high",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "source_path": "daily-news/news/2026_07-09/20260814.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "原文(Huntress, 2026-08-12公開)を確認。記事はこの侵害を主題とし、実行主体をAkiraランサムウェアのアフィリエイトと明記している。MFA未設定で外部公開されたSonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、約2時間後にRDPでドメインコントローラーへ到達、PowerShellでActive Directoryを列挙、WinRARで書庫化してs5cmdで攻撃者管理のS3バケットへ窃取した。AnyDeskを遠隔操作兼C2として導入後、Safe Mode with Networkingで再起動してHuntress EDRとMicrosoft Defenderのリアルタイム保護を無効化しakira.exeを実行したが、Safe Modeの制限された仮想メモリでメモリ不足となり暗号化に失敗、通常モード復帰後にDefenderがペイロードを隔離した。暗号化は失敗したがデータ窃取は成立している。Huntress自身がEDRで直接観測した一次資料であり、同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-08-14)はreported_atとして分離する。",
+      "activity_claim": {
+        "assessment": "strong-subject",
+        "actor_role": "operator",
+        "match_location": "title",
+        "evidence_text": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+        "reasons": [
+          "exact名が活動を主題とする記事タイトルに明記されている"
+        ],
+        "suggested_confidence": "high"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-04T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-05T00:00:00Z"
+        }
+      },
+      "source_commit": "5f94d8426fac3266338b3237729dac738404d90f"
     },
     {
       "record_id": "daily-record--2781476b874d2025b171c181",
