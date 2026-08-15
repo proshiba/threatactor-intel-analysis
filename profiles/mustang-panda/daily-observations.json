@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--mustang-panda",
-  "updated_at": "2026-08-07T10:34:20Z",
+  "updated_at": "2026-08-15T01:12:08Z",
   "records": [
     {
       "record_id": "daily-record--042869c9abc1cd8f0d2239f6",
@@ -324,6 +324,52 @@
         "suggested_confidence": "medium"
       },
       "source_commit": "cabf2f7b95ac54e2d4341f047f95401b7c9f555d"
+    },
+    {
+      "record_id": "daily-record--b8b3301d837c22e89850ee20",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "mustang-panda",
+        "canonical_name": "Mustang Panda",
+        "matched_term": "HoneyMyte",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "HoneyMyte"
+      },
+      "activity": {
+        "title": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+        "summary": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+        "news_date": "2026-08-15",
+        "news_url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+        "primary_url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+        "activity_reference": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+        "news_path": "daily-news/news/2026_07-09/20260815.md"
+      },
+      "confidence": "high",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_path": "daily-news/news/2026_07-09/20260815.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "原文(Kaspersky GReAT/Securelist, 2026-08-14公開、datePublished 2026-08-14T09:00:14Zで確認)を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視しており、Attribution節も「Our analysis confirms that the investigated malware is a new CoolClient variant associated with the HoneyMyte threat group」と当該アクターを実行主体として記述しているため、scope懸念は原文で解消されると判断した。内容はCoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行うもの。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害を挙げ、政府機関の被害を確認したと明記している。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。観測期間は原文が「In late 2025 and 2026」としか述べておらず明示日付がないためactivity_periodはunknownのままとし、資料公開日はreported_atとして分離する。IOC CSVのactor列は「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、IOCとartifactは原文のIOC節からprofiles/mustang-pandaへ直接収録する。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "title",
+        "evidence_text": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "source_commit": "5fe77b92aa89102e8aece158d95c7fee2da7dd2e"
     },
     {
       "record_id": "daily-record--be269ae444976dfb8f4aab05",

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--akira`
 - 状態: draft
-- 更新日時: 2026-08-14T01:39:25Z
+- 更新日時: 2026-08-15T01:12:07Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -156,7 +156,7 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 | FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | 高 |
 | AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | 高 |
 | AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 | 高 |
-| Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 | Akira | Akira | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 | Akira | Akira | 情報なし | 情報なし | 情報なし | 被害事例: Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 | 高 |
 
 
 
@@ -179,6 +179,7 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: Akiraランサムウェア：支払いだけでは匿名性を保てない | 非公開 | aggregate | multiple-organizations | reported |  | malware--akira | ttp--activity-rule--e6b5ee7e3aed202956a2 |  | financial-loss: ニュージャージー州の企業がAkiraランサムウェアの被害を受け、60万ドルの要求を20万ドルに交渉し支払った。<br>encryption: Akiraランサムウェア：支払いだけでは匿名性を保てない | 不明 | 不明 | 2025-06-01 | 高 | `source--daily-08853165537986c77f7f` |
 | 被害事例: FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | 非公開 | aggregate | multiple-organizations | reported |  | malware--akira |  |  | encryption: FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 | 2023-03 | 2023-03 | 2024-04-19 | 高 | `source--daily-89a8fc15ce47bbec4793` |
+| 被害事例: Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 | 非公開 | anonymous | unknown | reported |  | malware--akira |  | VPN／リモートアクセス機器 | data-theft: Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗<br>credential-theft: ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。<br>encryption: Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 | 2026-08-04 | 2026-08-05 | 2026-08-14 | 高 | `source--daily-0352fde34a4358d6927a` |
 | 被害事例: SonicWall、SSLVPNゼロデイ否定　2024年既知脆弱性悪用とAkiraランサム攻撃関連を確認 | 非公開 | aggregate | multiple-organizations | reported |  | malware--akira | ttp--activity-rule--fe14f3f3f9e39e3c3d2e | VPN／リモートアクセス機器, ネットワーク機器 |  | 不明 | 不明 | 2025-08-08 | 高 | `source--daily-4ccacc67cc78bb4bfd28` |
 | 被害事例: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | 非公開 | anonymous | unknown | reported |  | malware--akira |  | VPN／リモートアクセス機器, サーバー | data-theft: Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。<br>encryption: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 | 2024-09 | 2024-09 | 2024-10-14 | 高 | `source--daily-29f74832270318181f72` |
 | 被害事例: トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 | トロント動物園 | named | organization | alleged | target--activity-rule--country--ee55e5e8faa5dd675d7b, target--activity-rule--sector--4221b5fbb827488c6eaa | malware--akira |  | メール／メールアカウント | encryption: トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有<br>privacy: カナダ最大の動物園であるトロント動物園は、2024年1月に発生したランサムウェア攻撃によるデータ侵害について詳細を公表 侵害された情報には、従業員、元従業員、ボランティア、寄付者の個人情報や財務情報が含まれる 2022年1月から2023年4月の間にクレジットカード取引を行ったゲストや会員の名前、住所、電話番号、メールアドレス、クレジットカードの下4桁および有効期限が漏洩 2000年から2023年4月までの一般入場券や会員購入に関する取引データも含まれる トロント動物園は、オンタリオ州情報プライバシーコミッショナー事務局にデータ侵害を報告し、影 | 2022-01 | 2023-04 | 2025-03-06 | 中 | `source--daily-73166036d74c23fae026` |
@@ -229,11 +230,11 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 18件
-- IOC観測: 20件
+- IOC値: 21件
+- IOC観測: 23件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 16件
-- 非IOC artifact観測: 180件（`artifacts.csv`）
+- 要レビュー候補: 17件
+- 非IOC artifact観測: 181件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

@@ -3196,6 +3196,33 @@
     {
       "type": "malware",
       "spec_version": "2.1",
+      "id": "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "CoolClient",
+      "description": "HoneyMyte（Mustang Panda）に帰属されるバックドアファミリー。キーロギング、クリップボード窃取、認証情報収集、ファイル管理、システム偵察、プラグインによる機能拡張を備える。2026年8月にKaspersky GReATが報告した新亜種は、署名済みカーネルモードドライバー msagent.sys をWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリオブジェクトの隠蔽と保護、NsiproxyのフックによるC2アドレスの秘匿を行う。展開時はPlugXを初期の足掛かりとし、Sangfor社の正規実行ファイルによるDLLサイドローディングで読み込まれる。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        }
+      ],
+      "x_profile_object_id": "malware--coolclient",
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料(Kaspersky GReAT/Securelist, 2026-08-14公開)が本ファミリーをHoneyMyte(別名Mustang Panda)へ帰属している。Sophosによる2022年の初報およびTrend Microによる2023年の解析は原文が言及するのみで、公開日を観測日へ流用しないためfirst_observed/last_observedはunknownとした。",
+      "is_family": true,
+      "malware_types": [
+        "Windows"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
       "id": "malware--c42ed1e2-8d44-4ea4-b4a5-469cd9da411e",
       "created": "2026-07-26T05:28:45Z",
       "modified": "2026-07-26T05:28:45Z",
@@ -4479,6 +4506,104 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-b8b3301d837c22e89850",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--b8b3301d837c22e89850ee20 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 原文(Kaspersky GReAT/Securelist, 2026-08-14公開、datePublished 2026-08-14T09:00:14Zで確認)を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視しており、Attribution節も「Our analysis confirms that the investigated malware is a new CoolClient variant associated with the HoneyMyte threat group」と当該アクターを実行主体として記述しているため、scope懸念は原文で解消されると判断した。内容はCoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行うもの。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害を挙げ、政府機関の被害を確認したと明記している。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。観測期間は原文が「In late 2025 and 2026」としか述べておらず明示日付がないためactivity_periodはunknownのままとし、資料公開日はreported_atとして分離する。IOC CSVのactor列は「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、IOCとartifactは原文のIOC節からprofiles/mustang-pandaへ直接収録する。",
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--mustang-panda",
+          "name": "Mustang Panda",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--coolclient",
+            "malware--plugx"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--mongolia"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--424cfca2a8efacfa91f1"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Execution",
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [
+              "target--country--mongolia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--e95727df-1795-413a-8f22-feb0f8462795",
       "created": "2026-07-27T11:04:34Z",
       "modified": "2026-07-29T23:13:54Z",
@@ -4841,7 +4966,7 @@
       "spec_version": "2.1",
       "id": "campaign--b2243ab1-d3c0-41f3-8926-743126a99dc9",
       "created": "2026-07-27T11:04:34Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:16:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4873,7 +4998,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
           "ttp_refs": [
             "ttp--activity-rule--62a4f30fbe312d7a9ddf"
           ]
@@ -5522,7 +5649,7 @@
       "spec_version": "2.1",
       "id": "identity--72c36e0e-f40c-44ab-9a32-c0eaaf552d30",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5530,6 +5657,11 @@
       "identity_class": "organization",
       "description": "re.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam.",
       "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
         {
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
@@ -5696,7 +5828,7 @@
       "spec_version": "2.1",
       "id": "identity--58c9307e-05d6-420c-a89f-9ff46272f734",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5708,6 +5840,11 @@
           "source_name": "thehackernews.com",
           "description": "Local source: https://thehackernews.com/2025/04/mustang-panda-targets-myanmar-with.html",
           "external_id": "source--daily-0a1a885ea4fa4a799508"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -5733,7 +5870,7 @@
       "spec_version": "2.1",
       "id": "identity--1b4b16e8-ad24-4806-883d-7b25dba5499c",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5745,6 +5882,11 @@
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -5770,7 +5912,7 @@
       "spec_version": "2.1",
       "id": "identity--1357293e-c3d9-4635-9eb2-aebab73a37eb",
       "created": "2026-07-29T15:36:11Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5778,6 +5920,11 @@
       "identity_class": "organization",
       "description": "g Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam.",
       "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
         {
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/",
@@ -6123,7 +6270,7 @@
       "spec_version": "2.1",
       "id": "identity--0d010057-b8d0-47a2-9219-66796ffa3ae3",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6131,6 +6278,11 @@
       "identity_class": "organization",
       "description": "インド、ネパール、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
       "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        },
         {
           "source_name": "acronis.com",
           "description": "Local source: https://www.acronis.com/en/tru/posts/same-packet-different-magic-mustang-panda-hits-indias-banking-sector-and-korea-geopolitics/",
@@ -6192,7 +6344,7 @@
       "spec_version": "2.1",
       "id": "identity--27086c39-7a69-4be6-986c-26c50266eba5",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6214,6 +6366,11 @@
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-hackers-use-new-data-theft-malware-in-govt-attacks/",
           "external_id": "source--daily-6762aff5feb471d8906d"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
         },
         {
           "source_name": "acronis.com",
@@ -6249,7 +6406,7 @@
       "spec_version": "2.1",
       "id": "identity--3261ce75-9788-43be-8ded-6aac59738dae",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6266,6 +6423,11 @@
           "source_name": "thehackernews.com",
           "description": "Local source: https://thehackernews.com/2024/03/two-chinese-apt-groups-ramp-up-cyber.html",
           "external_id": "source--daily-283dce07d0cab28747ec"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -6291,7 +6453,7 @@
       "spec_version": "2.1",
       "id": "identity--5edbedf1-3d64-4414-a86a-07f403878c81",
       "created": "2026-07-29T23:13:54Z",
-      "modified": "2026-07-29T23:13:54Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6303,6 +6465,11 @@
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/chinese-hackers-exploit-windows-zero-day-to-spy-on-european-diplomats/",
           "external_id": "source--daily-0e120eeb7ae8f6ffbb8f"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -6833,6 +7000,62 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:16:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "identity_class": "organization",
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "external_references": [
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--424cfca2a8efacfa91f1",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--country--mongolia"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--beda3a60-51b3-4446-a85f-03e65c249a44",
       "created": "2026-07-29T15:20:23Z",
       "modified": "2026-07-29T15:36:11Z",
@@ -7141,7 +7364,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--ec4f7f15-7fbc-48b1-9754-3dcc4ccb6be7",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T15:20:23Z",
+      "modified": "2026-08-15T01:16:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7164,7 +7387,9 @@
       "x_activity_refs": [
         "activity--daily-fbd0eba0467d1280a9c5"
       ],
-      "x_malware_refs": [],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
       "x_infrastructure_refs": [],
       "x_first_observed": {
         "value": null,
@@ -7257,6 +7482,54 @@
         "activity--daily-4e56db2dfcf4b1a37b13"
       ],
       "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:16:03Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DLL",
+      "description": "攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1574.001",
+          "url": "https://attack.mitre.org/techniques/T1574/001/"
+        },
+        {
+          "source_name": "securelist.com",
+          "description": "Local source: https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "external_id": "source--daily-9232cff77ce0ef8f62b1"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--bb83afc59a90ec2e9e7f",
+      "x_tactic": "Execution, Stealth",
+      "x_activity_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
       "x_infrastructure_refs": [],
       "x_first_observed": {
         "value": null,
@@ -12200,6 +12473,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--bbaf73bb-6073-48ad-ae1a-3aa3c8fcac68",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+      "description": "Mustang Panda uses CoolClient.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--04636807-7c8d-4795-93e6-eb966d629248",
       "created": "2026-07-26T05:28:45Z",
       "modified": "2026-07-26T05:28:45Z",
@@ -13925,6 +14213,96 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--a6f446fc-7da5-4313-b120-4ae433591a73",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-08-15T01:12:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 is attributed or linked to Mustang Panda.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0e69aa05-19c0-463e-ae42-bf81c3b79580",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 uses malware--coolclient.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--617590eb-e46a-4160-ad85-ebf3ec0f3be6",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-08-15T01:12:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 uses malware--plugx.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--39e30baa-d43c-47b8-867b-27b172bfd05c",
+      "created": "2026-08-15T01:12:08Z",
+      "modified": "2026-08-15T01:12:08Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "identity--1b4b16e8-ad24-4806-883d-7b25dba5499c",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 targets target--country--mongolia.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3767c2fb-9ed8-4ed6-992a-463ff4a76ebc",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 uses ttp--activity-rule--bb83afc59a90ec2e9e7f.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d3a35189-ae83-4e6e-b581-fb1fbec35968",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
+      "target_ref": "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
+      "description": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加 affected victim--activity-rule--424cfca2a8efacfa91f1.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--ce202869-a1e0-4201-9ec3-b0bdf03cd49a",
       "created": "2026-07-27T11:04:34Z",
       "modified": "2026-07-27T11:04:34Z",
@@ -14685,6 +15063,21 @@
       "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "target_ref": "attack-pattern--44654275-943e-44bc-b9fa-01fcb1f0bdc5",
       "description": "バックドアは動的DNSベースのC2とHTTPSで通信し、リモートシェル、ファイル操作、セッション管理を行うなど、金銭目的ではなく諜報向け能力が中心とされた。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--57ed6c2a-e23e-463e-879a-1e2996b57a47",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "target_ref": "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
+      "description": "攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。",
       "x_confidence": "medium"
     },
     {
@@ -16355,6 +16748,182 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
+      "id": "indicator--5606ed5a-2161-4edc-9292-f0bd9a81342a",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: black-popular.com",
+      "pattern": "[domain-name:value = 'black-popular.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e1e3380998f812ec926c4ca216ee54156b944c9e3c5365d1e713b5525e844a82",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--07b3b8e0-6a48-47e2-91ca-c4c42342f264",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--5606ed5a-2161-4edc-9292-f0bd9a81342a",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cc69cee9-f3f7-4c03-a15f-927b1952f7ba",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: cloudtroe.giize.com",
+      "pattern": "[domain-name:value = 'cloudtroe.giize.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:98cdebe16280141dd1a6c2dd8b582fa2da70d6abb6713c8f661712d9bcf4e506",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--739257f9-8b25-48c1-a078-d06879fced59",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cc69cee9-f3f7-4c03-a15f-927b1952f7ba",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
       "id": "indicator--4ff353ad-c11d-4215-a2fd-8f2c11d7cb4e",
       "created": "2026-07-26T05:28:45Z",
       "modified": "2026-08-07T10:34:20Z",
@@ -16437,6 +17006,710 @@
       ],
       "relationship_type": "indicates",
       "source_ref": "indicator--4ff353ad-c11d-4215-a2fd-8f2c11d7cb4e",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--85d81375-818e-42ae-bb6c-1c1bd93df750",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: employers.theworkpc.com",
+      "pattern": "[domain-name:value = 'employers.theworkpc.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:1dc20ac01ff6cd0ba59cb168f8fb4be9563b69fb229720210f228d5a798533a2",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--54afc628-6c38-4207-9e22-c277653a1144",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--85d81375-818e-42ae-bb6c-1c1bd93df750",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--aa6a86c0-eb98-48b5-9b2a-dddd54690860",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: freeread.casacam.net",
+      "pattern": "[domain-name:value = 'freeread.casacam.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:df7a8613ee2d06a97bfac34a85754951493d18588b450e4f8294c5412701aeb8",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5a9c0dae-17cc-4dce-8f10-47bbe87c5cbb",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--aa6a86c0-eb98-48b5-9b2a-dddd54690860",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d4520abc-6511-4ef9-bff3-5abe3f5b8d25",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: news.dursamjbataar.org",
+      "pattern": "[domain-name:value = 'news.dursamjbataar.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:32ddabae53690ea9223367600954769ec069fc776e425203b4e53f683c2b2d78",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7dcebd85-ca81-4c63-a756-517b9aa33519",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d4520abc-6511-4ef9-bff3-5abe3f5b8d25",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6708a6be-a6ee-4bef-bd5f-4707c0daea51",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: sundanish.freeddns.org",
+      "pattern": "[domain-name:value = 'sundanish.freeddns.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b1baee21200fb9cf0a05c4c3b5b757f842ef9070e0df35789351611439200d64",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2891dbce-d787-4f98-846d-259f434ae829",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6708a6be-a6ee-4bef-bd5f-4707c0daea51",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ddee16dd-bde1-4971-8fb8-e694d63a3263",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: torinarlabs.webredirect.org",
+      "pattern": "[domain-name:value = 'torinarlabs.webredirect.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4a4c739701686feac0f079501ce3d8313d4ca5131ef6cf37e02cb62743c7e5f6",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--73067151-78ad-4bc3-9f80-c754e12091fd",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ddee16dd-bde1-4971-8fb8-e694d63a3263",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2bddc531-06f4-45e4-b54d-3e0407d21fc3",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: us.lenovoappstore.com",
+      "pattern": "[domain-name:value = 'us.lenovoappstore.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e18369b62427f79bac8df526ae6aff162331eaa625b880882419510f5640f90c",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6bfff7f9-d8e7-4927-81a9-6ffb7fa01122",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2bddc531-06f4-45e4-b54d-3e0407d21fc3",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cc16e1d0-9774-42a4-9474-e4975f111074",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: video.dursamjbataar.org",
+      "pattern": "[domain-name:value = 'video.dursamjbataar.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:900129ca8d6bc1a9e0d142596cac00b06c318f46db79f9c08aacb474f8f9798e",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0c9d3882-1bc3-439a-8cb4-db385f46bda1",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cc16e1d0-9774-42a4-9474-e4975f111074",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--8869874c-6aaa-47c2-9cb4-23fb348c002d",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: whatismybestthing.com",
+      "pattern": "[domain-name:value = 'whatismybestthing.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:042971ca5c78f4bf95d4447b4719f15d5f3530ad5964d87eeff3c652799cbd25",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8c2eccf3-0113-4c48-9b09-bd69fcb8e15f",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8869874c-6aaa-47c2-9cb4-23fb348c002d",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -16618,6 +17891,94 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
+      "id": "indicator--72b252e6-9c11-434e-a570-c99f4e30da39",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 2d7c8780e97409770a9d4f31c66c9d63",
+      "pattern": "[file:hashes.'MD5' = '2d7c8780e97409770a9d4f31c66c9d63']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:fd1d2d8fcc424b6fda6f317db9982d6705dec04161cd4205b83b8870bbf87844",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientがWindowsサービスとして展開する署名済みカーネルモードドライバー。 原文のIOC一覧にmsagent.sysのMD5として掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4688a5b1-34d6-41f0-97b9-51c01a935ab7",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--72b252e6-9c11-434e-a570-c99f4e30da39",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
       "id": "indicator--1eb1f382-4eaf-4537-a27e-3ba662215cea",
       "created": "2026-07-26T05:28:45Z",
       "modified": "2026-07-26T05:28:45Z",
@@ -16675,11 +18036,363 @@
       ]
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a0d50e40-6c59-451d-91ab-99ee52695f6a",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 9460e150e1981d5c165043520c5c12fe",
+      "pattern": "[file:hashes.'MD5' = '9460e150e1981d5c165043520c5c12fe']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7a30914796484d08ff63c4f961735a1b40e4e09729b2ec58e8d655debe4324d4",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientがWindowsサービスとして展開する署名済みカーネルモードドライバー。 原文のIOC一覧にmsagent.sysのMD5として掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5eef63e6-2df9-4850-a499-d6d4c9c3f41b",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a0d50e40-6c59-451d-91ab-99ee52695f6a",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--928b7299-dda0-419b-9394-2d4ea8ee47df",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 9717f005c5fb98e08d2ad983d88f94ee",
+      "pattern": "[file:hashes.'MD5' = '9717f005c5fb98e08d2ad983d88f94ee']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f46d19af7ab3898ca7c4d795001e9723fce702464ae648317ed57d39868a7cb3",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "DLLサイドローディングで読み込まれるCoolClientの第1段階。 原文のIOC一覧にlibngs.dllのMD5として掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e26791d8-bb65-4eac-a024-645212673470",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--928b7299-dda0-419b-9394-2d4ea8ee47df",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cd03fbd0-ab84-4a1e-8d91-681a6d11d47c",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: eb79558b037669792652a816e2c669de",
+      "pattern": "[file:hashes.'MD5' = 'eb79558b037669792652a816e2c669de']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ffe2badc785e1c38ff445d066e5a78baea1b327832fd4047db7c16213b7fda93",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "CoolClientのコンポーネントとしてIOC一覧に掲載されたDLL。 原文のIOC一覧にctxmui.dllのMD5として掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--83c938da-0c1a-4dc6-a8b0-b42330cb7fac",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cd03fbd0-ab84-4a1e-8d91-681a6d11d47c",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--587cbf32-2a9a-4f47-b0b7-04525fc1fdc9",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: f518d8e5fe70d9090f6280c68a95998f",
+      "pattern": "[file:hashes.'MD5' = 'f518d8e5fe70d9090f6280c68a95998f']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:08:02Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "x_malware_refs": [
+        "malware--coolclient"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b55d5503e6eec540faee3488e42dfd02e979cd5857ce98a16cf0126306eaa1c4",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
+          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-b8b3301d837c22e89850"
+          ],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "DLLサイドローディングで読み込まれるCoolClientの第1段階。 原文のIOC一覧にlibngs.dllのMD5として掲載。",
+          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--86cee9f6-5d5c-4ef8-b3b5-d7508bc7f86a",
+      "created": "2026-08-15T01:12:40Z",
+      "modified": "2026-08-15T01:12:40Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--587cbf32-2a9a-4f47-b0b7-04525fc1fdc9",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--6c683e28-fec1-4106-afa2-de4ca06e3203",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-07-26T05:28:45Z",
+      "modified": "2026-08-15T01:12:40Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -16689,14 +18402,14 @@
         "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 137
+      "x_artifact_observation_count": 158
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--951a21f9-0480-4342-8ff1-c978ad52fa81",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-08-07T10:35:26Z",
+      "modified": "2026-08-15T01:16:03Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -16705,7 +18418,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-07T10:35:26Z",
+      "published": "2026-08-15T01:16:03Z",
       "object_refs": [
         "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
         "malware--78f32f36-e41f-4ec1-8aab-a53288748a8f",
@@ -16714,6 +18427,7 @@
         "malware--db1b03cf-c619-4eb6-b783-461329ed7e99",
         "malware--0cc39e6c-96ab-489d-a355-afce051b26ff",
         "malware--3629beda-6d60-430a-a0b3-7718b9f80c7d",
+        "malware--a4d53a97-fb26-4ef2-837b-6fb1d8b5b188",
         "malware--c42ed1e2-8d44-4ea4-b4a5-469cd9da411e",
         "malware--94ebaf6f-b17f-43c0-922c-186c0b60d291",
         "malware--59dc077a-6f1d-4523-b576-0da94c5e551c",
@@ -16743,6 +18457,7 @@
         "campaign--268f4768-8af5-49b8-9a37-9a30dbb4f98a",
         "campaign--e08919a8-d8e3-4977-ab4a-6ca72aa6816e",
         "campaign--7c20dfd3-ef54-479a-a46d-a39dd4473b72",
+        "campaign--09804b50-e3ce-4b63-9fb4-5becc1741780",
         "campaign--e95727df-1795-413a-8f22-feb0f8462795",
         "campaign--233008bb-b833-410c-a809-281617ef615d",
         "campaign--7bf069af-4d32-4b6c-95b2-ba6656d8e423",
@@ -16809,6 +18524,7 @@
         "identity--6cd86218-40f2-44f8-a692-d157a4a9c1f3",
         "identity--93b82251-8d17-4905-8cd9-1396c2a8f38c",
         "identity--c0328d41-639e-46b2-923c-a7c850c4c5f0",
+        "identity--9b0e16a8-bcb2-44a9-a7bd-902291d3fba7",
         "identity--beda3a60-51b3-4446-a85f-03e65c249a44",
         "identity--1b504198-c048-4885-8c03-0d7bc0f8492b",
         "identity--97a9688d-0543-48d8-aab7-03bdd5898c36",
@@ -16818,6 +18534,7 @@
         "attack-pattern--ec4f7f15-7fbc-48b1-9754-3dcc4ccb6be7",
         "attack-pattern--f7756833-c1a8-46ed-864d-cb1c75dbf12e",
         "attack-pattern--44654275-943e-44bc-b9fa-01fcb1f0bdc5",
+        "attack-pattern--81370cd1-600a-43cd-807f-e08be2f9969d",
         "attack-pattern--73599afb-8b71-4d83-b6e6-b46ce693f6f1",
         "attack-pattern--b243cfca-675e-46da-bfa1-b881282a7d9d",
         "attack-pattern--5e54b8c7-44fa-4157-96d4-ac9e3a34376d",
@@ -16929,10 +18646,25 @@
         "attack-pattern--d31d4add-d417-4ccd-8d9d-7115dfa0dfcd",
         "attack-pattern--c3532af8-0189-4f80-825e-abdf3ce5848c",
         "attack-pattern--f6fb09a0-7776-4b7c-a3a6-cb02e1e0b528",
+        "indicator--5606ed5a-2161-4edc-9292-f0bd9a81342a",
+        "indicator--cc69cee9-f3f7-4c03-a15f-927b1952f7ba",
         "indicator--4ff353ad-c11d-4215-a2fd-8f2c11d7cb4e",
+        "indicator--85d81375-818e-42ae-bb6c-1c1bd93df750",
+        "indicator--aa6a86c0-eb98-48b5-9b2a-dddd54690860",
+        "indicator--d4520abc-6511-4ef9-bff3-5abe3f5b8d25",
+        "indicator--6708a6be-a6ee-4bef-bd5f-4707c0daea51",
+        "indicator--ddee16dd-bde1-4971-8fb8-e694d63a3263",
+        "indicator--2bddc531-06f4-45e4-b54d-3e0407d21fc3",
+        "indicator--cc16e1d0-9774-42a4-9474-e4975f111074",
+        "indicator--8869874c-6aaa-47c2-9cb4-23fb348c002d",
         "indicator--fea4a0c6-14ca-47a9-8d1b-870911c20be6",
         "indicator--b104de18-e906-4f46-b73f-b485627ba5c1",
-        "indicator--1eb1f382-4eaf-4537-a27e-3ba662215cea"
+        "indicator--72b252e6-9c11-434e-a570-c99f4e30da39",
+        "indicator--1eb1f382-4eaf-4537-a27e-3ba662215cea",
+        "indicator--a0d50e40-6c59-451d-91ab-99ee52695f6a",
+        "indicator--928b7299-dda0-419b-9394-2d4ea8ee47df",
+        "indicator--cd03fbd0-ab84-4a1e-8d91-681a6d11d47c",
+        "indicator--587cbf32-2a9a-4f47-b0b7-04525fc1fdc9"
       ],
       "x_schema_version": "1.2.0"
     }
