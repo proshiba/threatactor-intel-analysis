@@ -2029,7 +2029,7 @@
       "spec_version": "2.1",
       "id": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
       "created": "2026-08-14T01:39:25Z",
-      "modified": "2026-08-14T01:39:25Z",
+      "modified": "2026-08-15T01:12:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2071,7 +2071,9 @@
         },
         "victim": {
           "target_refs": [],
-          "victim_refs": []
+          "victim_refs": [
+            "victim--activity-rule--1bbbecca331245d17d02"
+          ]
         },
         "meta_features": {
           "first_observed": {
@@ -2094,7 +2096,11 @@
           },
           "activity_type": "ransomware-extortion",
           "phases": [],
-          "results": [],
+          "results": [
+            "credential-theft",
+            "data-theft",
+            "encryption"
+          ],
           "direction": {
             "source_countries": [],
             "target_country_refs": [],
@@ -2351,6 +2357,72 @@
       },
       "x_reported_at": {
         "value": "2024-04-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3ed03447-4761-419c-ba21-0d8795d59a9e",
+      "created": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+      "identity_class": "organization",
+      "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 約2時間後にRDPでドメインコントローラーへ接続してActive Directoryを列挙し、WinRARとs5cmdを使ってファイルをS3へ窃取した。 攻撃者はAnyDeskを導入後、WindowsをSafe Mode with Networkingで再起動し、Huntress EDRとMicrosoft Defenderのリアルタイム保護を無効化した。 その後akira.exeを起動したが、Safe Mode環境で仮想メモリー不足が発生して暗号化に失敗し、通常モード復帰後にDefenderがペイロードを隔離した。 ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。",
+      "external_references": [
+        {
+          "source_name": "huntress.com",
+          "description": "Local source: https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "external_id": "source--daily-0352fde34a4358d6927a"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--1bbbecca331245d17d02",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--akira"
+      ],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "VPN／リモートアクセス機器"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。"
+        },
+        {
+          "impact_type": "encryption",
+          "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-04T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-05T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-14T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "daily-news-file-date"
@@ -7222,11 +7294,251 @@
       "x_confidence": "medium"
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cc2f275d-9df7-458f-a3ea-8406681165e2",
+      "created": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 72.23.77.35",
+      "pattern": "[ipv4-addr:value = '72.23.77.35']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-267e235842a3fe8d98be"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "source"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f71f7661b752e77399a9f497488cdd795be45b30996f9ab24f7553fcd89e81fa",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--huntress-akira-safe-mode-2026",
+          "source_path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr#indicators-of-compromise",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-267e235842a3fe8d98be"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "source"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "raw_value": "72.23.77[.]35",
+          "context_excerpt": "SonicWall SSL VPNへのログイン成功に使われた外部送信元IP。",
+          "analyst_notes": "Huntressの原文IOC表に記載。初期侵入の送信元であり、被害組織の正規IPではない。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--462938d5-7577-4cc3-b9a4-e22c3034639a",
+      "created": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cc2f275d-9df7-458f-a3ea-8406681165e2",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--efb36539-f6da-44da-9d6b-9c619e25fb85",
+      "created": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: 414b9985f46714f44dd1bd63860d2a48dcfababcfe5c712a4b4f575378127a56",
+      "pattern": "[file:hashes.'SHA-256' = '414b9985f46714f44dd1bd63860d2a48dcfababcfe5c712a4b4f575378127a56']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-267e235842a3fe8d98be"
+      ],
+      "x_malware_refs": [
+        "malware--akira"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b0df3b317f532c3102011066ec1515539dd5c6a9a1db6197c89d1cad45899b92",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--huntress-akira-safe-mode-2026",
+          "source_path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr#indicators-of-compromise",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-267e235842a3fe8d98be"
+          ],
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "raw_value": "414b9985f46714f44dd1bd63860d2a48dcfababcfe5c712a4b4f575378127a56",
+          "context_excerpt": "Safe Mode下で実行されたakira.exeランサムウェアペイロードのSHA256。",
+          "analyst_notes": "Huntressの原文IOC表に記載。暗号化はメモリ不足で失敗したが検体は投入されている。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e9ae5361-3f76-4a04-8d3c-a8b51cfaad06",
+      "created": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--efb36539-f6da-44da-9d6b-9c619e25fb85",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b88ad640-9b30-42a1-916c-16b0623f1548",
+      "created": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha256: e2356c742c74cce5c6b6100162d0071a3f71e2fed2ed895c2011061a95b3299a",
+      "pattern": "[file:hashes.'SHA-256' = 'e2356c742c74cce5c6b6100162d0071a3f71e2fed2ed895c2011061a95b3299a']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-267e235842a3fe8d98be"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:1251937e9009b8bb8e31c393ee423fd8e1b68d28f09d63d9dda6b267670d2aad",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "source_id": "source--huntress-akira-safe-mode-2026",
+          "source_path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr#indicators-of-compromise",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--daily-267e235842a3fe8d98be"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "raw_value": "e2356c742c74cce5c6b6100162d0071a3f71e2fed2ed895c2011061a95b3299a",
+          "context_excerpt": "S3への窃取に悪用されたs5cmd.exeのSHA256。",
+          "analyst_notes": "Huntressの原文IOC表に記載。s5cmdは正規のオープンソースS3クライアントであり、当該ハッシュは公開ビルドと一致し得る。攻撃者固有の検体とは断定できないためdispositionはcandidateとする。"
+        }
+      ]
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--de7f13cd-0229-4b3b-a3e0-f5b4b7eb4009",
       "created": "2026-07-25T15:22:53Z",
-      "modified": "2026-07-25T15:22:53Z",
+      "modified": "2026-08-15T01:12:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7236,14 +7548,14 @@
         "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 180
+      "x_artifact_observation_count": 181
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--9f683577-7cd6-49d1-9713-6590927b03a8",
       "created": "2026-07-25T15:22:53Z",
-      "modified": "2026-08-14T01:39:25Z",
+      "modified": "2026-08-15T01:12:07Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7252,7 +7564,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-14T01:39:25Z",
+      "published": "2026-08-15T01:12:07Z",
       "object_refs": [
         "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
         "malware--a695430a-38fc-4086-8e38-d3932887e325",
@@ -7288,6 +7600,7 @@
         "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
         "identity--d84e42a8-f626-446d-a9b7-ff3b9d1e7069",
         "identity--e355f619-ebf3-4a42-962d-ea7177af428c",
+        "identity--3ed03447-4761-419c-ba21-0d8795d59a9e",
         "identity--976c0ce1-a5a1-4d71-bc59-46df0150a43d",
         "identity--0353ff98-b677-48eb-8be3-05921d260c61",
         "identity--c009c78c-6664-4ca5-b820-96e8d867e747",
@@ -7347,7 +7660,10 @@
         "indicator--99807126-1325-46ed-8495-0fad209edb47",
         "indicator--0e273453-8a1d-4619-8628-3137f284afaf",
         "indicator--380b1f73-2859-4726-99fd-90d7cc65e424",
-        "indicator--e5263d66-9f47-4e17-bc8b-0bdead29bc98"
+        "indicator--e5263d66-9f47-4e17-bc8b-0bdead29bc98",
+        "indicator--cc2f275d-9df7-458f-a3ea-8406681165e2",
+        "indicator--efb36539-f6da-44da-9d6b-9c619e25fb85",
+        "indicator--b88ad640-9b30-42a1-916c-16b0623f1548"
       ],
       "x_schema_version": "1.2.0"
     }

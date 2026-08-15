@@ -401,7 +401,7 @@
       "aliases": [],
       "status": "tracking",
       "first_seen": "2026-07-31",
-      "last_seen": "2026-07-31",
+      "last_seen": "2026-08-15",
       "detected_via": "tech-memo daily-news 2026-07-31",
       "attribution": {
         "state": "attributed-by-vendor",
@@ -422,11 +422,24 @@
           ],
           "summary": "新たなドライバー悪用と信頼済みソフトウェアの乗っ取りにより日本でValleyRATを展開。",
           "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        },
+        {
+          "observed_on": "2026-08-15",
+          "publisher": "Acronis Threat Research Unit",
+          "url": "https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/",
+          "title": "PATCHCORD: New malware cluster targets Afghan telecom and South Asian critical infrastructure",
+          "published_at": "2026-08-13",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "summary": "PATCHCORDキャンペーンのインフラがSuperShellを含み、SilverFoxへ過去に帰属されたインフラとC2フィンガープリントが類似すると記載されている。",
+          "assessment": "explicitly-refuted",
+          "verified_by_analyst": "原文を確認済み。「Although the infrastructure also contained SuperShell and shared a similar C2 fingerprint with infrastructure previously attributed to SilverFox, these observations alone are insufficient to support an attribution」と明記されており、SilverFoxへの帰属は支持されない。将来の誤統合を防ぐため否定側の記録として残す。"
         }
       ],
       "related_profiles": [],
       "unresolved_questions": [
-        "tech-memoのmalware campaign欄に日次で載る日本語マルスパム(ValleyRAT)との関係は原典で確認できていない。安易に同一運用者と見なさないこと。"
+        "tech-memoのmalware campaign欄に日次で載る日本語マルスパム(ValleyRAT)との関係は原典で確認できていない。安易に同一運用者と見なさないこと。",
+        "PATCHCORDキャンペーン(unknown-cluster--patchcord)とのC2フィンガープリント類似は、原文が帰属根拠として不十分と明言している。同一運用者と見なさないこと。"
       ],
       "analyst_notes": "ValleyRATエコシステムの主要クラスタ。日本標的のため優先度高め。"
     },
@@ -772,6 +785,65 @@
         "ロシアの自営業登録は他者名義で保持されうるとSocketが記載しており、登録者と運用者の同一性は未解決。"
       ],
       "analyst_notes": "単一ベンダーの初報のみで昇格閾値未達。継続観察。「Myxa VPN」は日次チェックで86観測の未一致名として上がるが、アクター指定子ではないためプロファイル化しない。本台帳へ記録することで、次回以降の走査で同じ判断を繰り返さないようにする。"
+    },
+    {
+      "cluster_id": "unknown-cluster--patchcord",
+      "primary_name": "PATCHCORD (キャンペーン／マルウェア名。運用者の呼称は未確立)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-15",
+      "last_seen": "2026-08-15",
+      "detected_via": "tech-memo daily-news 2026-08-15",
+      "attribution": {
+        "state": "overlap-suspected",
+        "actor_type": "state-linked-espionage-intrusion-set",
+        "notes": "Acronis TRUは「TRU assesses with moderate confidence that the activity overlaps with the broader APT36 (Transparent Tribe) cluster or a closely related Pakistan-linked threat actor」と評価している。Transparent Tribeそのものへの帰属確定ではなく、近縁のパキスタン関連主体の可能性を併記した中確度の重複評価であるため、profiles/transparent-tribe へは統合していない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-15",
+          "publisher": "Acronis Threat Research Unit",
+          "url": "https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/",
+          "title": "PATCHCORD: New malware cluster targets Afghan telecom and South Asian critical infrastructure",
+          "published_at": "2026-08-13",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "アフガニスタンの通信事業者(Afghan Telecom/AFTEL、Salaam Telecom、通信情報技術省)、およびインドを中心とする南アジアの政府・防衛・エネルギー組織。",
+          "malware": [
+            "PATCHCORD",
+            "SHEETCORD",
+            "HACKERAI C2 Agent"
+          ],
+          "tools": [
+            "SuperShell",
+            "Metasploit",
+            "HackBrowserData",
+            "GateSentinel"
+          ],
+          "activity_period": "原文は攻撃期間を明示していない。初期のDynamic DNS C2 appstoore[.]duckdns[.]org は2025年12月から確認、nicservice[.]org は2026年6月に停止と記載。公開時点でインフラは活動中。",
+          "summary": "偽Afghan Telecom VPNや通信管理ツールのインストーラーを用いてC/C++製バックドアPATCHCORDを配布し、ブラウザーショートカットの乗っ取りで永続化と遠隔コマンド実行を行う。派生のSHEETCORDはGoogle Sheets、HACKERAI C2 AgentはGitHub GistsをC2として悪用する。公開状態のステージングサーバーから運用者のツール群が確認された。",
+          "attribution_basis": [
+            "アフガニスタンの通信・政府インフラへの継続的な標的化（APT36の既知の標的と一致）",
+            "運用者サーバー上のHackBrowserData（インド空軍関係者を狙ったAPT36作戦で既出）",
+            "運用者のオープンディレクトリ上のGateSentinel（APT36のツールキットとして独立に記録済み）",
+            "SHEETCORDのGoogle Sheets C2がAPT36系と中確度で帰属されたSHEETCREEPと酷似"
+          ],
+          "verified_by_analyst": "原文を確認済み（WebFetchは403のためcurlで取得、Attribution and confidence節と公開日2026-08-13を直接確認）。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "transparent-tribe",
+          "relation": "overlap-suspected",
+          "confidence": "medium",
+          "basis": "Acronis TRUが標的・マルウェア類似・インフラ・運用手法の重複を根拠に中確度でAPT36(Transparent Tribe)クラスタとの重複を評価。ただし「or a closely related Pakistan-linked threat actor」を併記しており帰属は確定していない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Transparent Tribe本体か近縁のパキスタン関連主体かが未確定。独立した2本目の一次資料、または政府・CERTの言及が得られた時点で、プロファイル昇格かtransparent-tribeへの統合かを判断する。",
+        "原文はSuperShellの存在とSilverFox帰属インフラとのC2フィンガープリント類似に触れつつ、「these observations alone are insufficient to support an attribution」としてSilverFoxへの帰属を明確に否定している。unknown-cluster--silverfox とは結び付けない。"
+      ],
+      "analyst_notes": "2026-08-15の日次チェックで、レビューキューのtransparent-tribeレコード(daily-record--c5e374a4617188099050730f、assessment: attribution-uncertain)を不採用としたうえで台帳へ記録した。IOC CSVのactor列も「APT36 (Transparent Tribe) (medium confidence)」という複合名かつ低信頼表現で、自動一致の対象外である。"
     }
   ],
   "excluded_name_collisions": [

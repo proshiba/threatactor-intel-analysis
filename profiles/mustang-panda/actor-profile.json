@@ -4,7 +4,7 @@
   "name": "Mustang Panda",
   "status": "draft",
   "created_at": "2026-07-25T11:08:02Z",
-  "updated_at": "2026-08-07T10:35:26Z",
+  "updated_at": "2026-08-15T01:16:03Z",
   "languages": [
     "ja"
   ],
@@ -412,6 +412,32 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--coolclient",
+        "name": "CoolClient",
+        "aliases": [],
+        "types": [
+          "Windows"
+        ],
+        "description": "HoneyMyte（Mustang Panda）に帰属されるバックドアファミリー。キーロギング、クリップボード窃取、認証情報収集、ファイル管理、システム偵察、プラグインによる機能拡張を備える。2026年8月にKaspersky GReATが報告した新亜種は、署名済みカーネルモードドライバー msagent.sys をWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリオブジェクトの隠蔽と保護、NsiproxyのフックによるC2アドレスの秘匿を行う。展開時はPlugXを初期の足掛かりとし、Sangfor社の正規実行ファイルによるDLLサイドローディングで読み込まれる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1"
+        ],
+        "analyst_notes": "一次資料(Kaspersky GReAT/Securelist, 2026-08-14公開)が本ファミリーをHoneyMyte(別名Mustang Panda)へ帰属している。Sophosによる2022年の初報およびTrend Microによる2023年の解析は原文が言及するのみで、公開日を観測日へ流用しないためfirst_observed/last_observedはunknownとした。"
       },
       {
         "id": "malware--corklog",
@@ -1789,6 +1815,119 @@
       }
     },
     {
+      "activity_id": "activity--daily-b8b3301d837c22e89850",
+      "name": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "target_refs": [
+        "target--country--mongolia"
+      ],
+      "malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--424cfca2a8efacfa91f1"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-9232cff77ce0ef8f62b1"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--b8b3301d837c22e89850ee20 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 原文(Kaspersky GReAT/Securelist, 2026-08-14公開、datePublished 2026-08-14T09:00:14Zで確認)を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視しており、Attribution節も「Our analysis confirms that the investigated malware is a new CoolClient variant associated with the HoneyMyte threat group」と当該アクターを実行主体として記述しているため、scope懸念は原文で解消されると判断した。内容はCoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行うもの。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害を挙げ、政府機関の被害を確認したと明記している。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。観測期間は原文が「In late 2025 and 2026」としか述べておらず明示日付がないためactivity_periodはunknownのままとし、資料公開日はreported_atとして分離する。IOC CSVのactor列は「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、IOCとartifactは原文のIOC節からprofiles/mustang-pandaへ直接収録する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--mustang-panda",
+          "name": "Mustang Panda",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--coolclient",
+            "malware--plugx"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--mongolia"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--424cfca2a8efacfa91f1"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Execution",
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [
+              "target--country--mongolia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-be269ae444976dfb8f4a",
       "name": "中国のハッカー、東南アジアのサイバー攻撃でVisual Studio Codeを悪用",
       "activity_type": "malware-campaign",
@@ -2238,7 +2377,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--coolclient"
+          ],
           "ttp_refs": [
             "ttp--activity-rule--62a4f30fbe312d7a9ddf"
           ]
@@ -2917,6 +3058,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards"
@@ -3076,6 +3218,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-0a1a885ea4fa4a799508",
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards"
@@ -3101,6 +3244,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards"
@@ -3125,6 +3269,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards"
@@ -3444,6 +3589,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-a69a00355bf3c87debe0",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--daily-f24514e21b73cfc154c2",
@@ -3496,6 +3642,7 @@
           "source--actor-mapping-workbook",
           "source--daily-283dce07d0cab28747ec",
           "source--daily-6762aff5feb471d8906d",
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-a69a00355bf3c87debe0",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--daily-f24514e21b73cfc154c2",
@@ -3524,6 +3671,7 @@
         "evidence_refs": [
           "source--daily-0a1a885ea4fa4a799508",
           "source--daily-283dce07d0cab28747ec",
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards"
@@ -3549,6 +3697,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-0e120eeb7ae8f6ffbb8f",
+          "source--daily-9232cff77ce0ef8f62b1",
           "source--daily-babfc72d5fb1a4c1aea7",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards"
@@ -3827,7 +3976,9 @@
       "activity_refs": [
         "activity--daily-fbd0eba0467d1280a9c5"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--coolclient"
+      ],
       "infrastructure_refs": [],
       "first_observed": {
         "value": null,
@@ -3904,6 +4055,38 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-a69a00355bf3c87debe0"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--bb83afc59a90ec2e9e7f",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。",
+      "activity_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-9232cff77ce0ef8f62b1"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -7136,6 +7319,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2025_07-09/20250828.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-9232cff77ce0ef8f62b1",
+      "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+      "title": "APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "publisher": "securelist.com",
+      "published_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260815.md; source commit: 5fe77b92aa89102e8aece158d95c7fee2da7dd2e; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-a69a00355bf3c87debe0",
       "path": "https://www.acronis.com/en/tru/posts/same-packet-different-magic-mustang-panda-hits-indias-banking-sector-and-korea-geopolitics/",
       "title": "同じパケット、異なるマジック：Mustang Pandaがインドの銀行業界と韓国の地政学関連を標的に",
@@ -8415,6 +8616,53 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-f24514e21b73cfc154c2"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--424cfca2a8efacfa91f1",
+      "name": "被害事例: APTグループHoneyMyteがCoolClientを強化：バックドアにWindowsカーネルレベルのルートキットを追加",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "HoneyMyte（Mustang Panda）は、CoolClientの新亜種に署名済みカーネルモードドライバー「msagent.sys」を追加し、Windows上で高度な隠蔽機能を実装した。 攻撃ではPlugXを初期侵害後の足掛かりとして使い、Sangfor社の正規実行ファイルを悪用してDLLサイドローディングからCoolClientを展開する。 新ドライバーはプロセス、ファイル、レジストリ、ネットワーク情報を隠蔽・保護し、CoolClient本体の終了や解析、関連アーティファクトの削除を困難にする。 CoolClientはSYSTEM権限のタスクやサービス、UAC回避、synchost.exeへの注入を利用して永続化し、最終段階のcert.iniがC2通信とバックドア機能を担う。 CoolClientは、単なるユーザーモードのバックドアから、ルートキット機能を備えた極めて検知が困難なサイバースパイツールへと進化した。 最新亜種はミャンマー、モンゴル、パキスタン、ロシアの組織で確認され、政府機関も被害に含まれている。",
+      "activity_refs": [
+        "activity--daily-b8b3301d837c22e89850"
+      ],
+      "target_refs": [
+        "target--country--mongolia"
+      ],
+      "malware_refs": [
+        "malware--coolclient",
+        "malware--plugx"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--bb83afc59a90ec2e9e7f"
+      ],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-9232cff77ce0ef8f62b1"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

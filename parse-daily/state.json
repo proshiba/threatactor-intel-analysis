@@ -1198,6 +1198,148 @@
           "result": "cutoff後の新規なし。Armored Likho(2026-08-13)は台帳既出。Q2 2026のマルウェア統計2件(2026-08-10)はAkira・Qilin等を統計として列挙するのみで活動主張がないため対象外。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-15T02:10:00Z",
+      "window": {
+        "since": "2026-08-14",
+        "until": null
+      },
+      "source_commit": "5fe77b92aa89102e8aece158d95c7fee2da7dd2e",
+      "statistics": {
+        "news_files": 2,
+        "articles": 25,
+        "review_records": 8,
+        "approved_records": 2,
+        "rejected_records": 5,
+        "pending_records": 1,
+        "applied_records": 1,
+        "unmatched_actor_values": 107,
+        "materialization_window": "queueは2026-08-14以降で再生成した。approved 2件のうちakiraは前回スキャンのreview-decisions.jsonがそのまま再現されたもので、今回新規に採用したのは2026-08-15のMustang Panda(Securelist)1件である。Darkhotel(APT-C-06)は一次ソースが取得できずpendingのまま残したため、last_scanned_dateは2026-08-14から進めていない。2026-08-15分は次回再走査される。"
+      },
+      "applied": [
+        {
+          "actor": "mustang-panda",
+          "name": "Mustang Panda / HoneyMyte (CoolClientへのカーネルルートキット追加)",
+          "source": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "decision": "一次資料(Kaspersky GReAT/Securelist, 2026-08-14公開。ページのdatePublished 2026-08-14T09:00:14Zで確認)の原文を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視し、Attribution節も当該アクターを実行主体として記述しているためscope懸念は解消されると判断した。CoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行う。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害と政府機関の被害を明記。観測期間は原文が「In late 2025 and 2026」としか述べず明示日付がないためactivity_periodはunknownとし、日付はreported_atへ分離した。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、原文のIOC節からIOC 15件(C2ドメイン10、MD5 5)とartifact 21件(パス10、ファイル名7、プロセス名1、サービス名2、レジストリ値1)をprofiles/mustang-pandaへ直接収録した。本資料の主題であるCoolClientはcapabilities.malwareに未登録だったためmalware--coolclientを新規追加し、活動へ紐付けた。Sophos 2022・Trend Micro 2023の初報言及は公開日であり観測日へ流用しないためfirst_observed/last_observedはunknownとした。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "transparent-tribe",
+          "name": "PATCHCORD (Acronis TRUのアフガン通信・南アジア重要インフラ標的キャンペーン)",
+          "source": "https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/",
+          "decision": "原文(Acronis TRU, 2026-08-13公開)を確認。WebFetchは403のためcurlで取得した。Attribution and confidence節は「TRU assesses with moderate confidence that the activity overlaps with the broader APT36 (Transparent Tribe) cluster or a closely related Pakistan-linked threat actor」であり、Transparent Tribeへの帰属確定ではない。AGENT.mdのattribution-uncertainに該当するため活動として採用せず、unknown-clusters.jsonへunknown-cluster--patchcordとしてstatus: trackingで記録した。原文がSilverFox帰属インフラとのC2フィンガープリント類似を「insufficient to support an attribution」と明記しているため、SilverFoxクラスタ側にも否定側の観測として残した。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "AmnesiaStealer (Jamf Threat Labs)",
+          "source": "https://www.jamf.com/blog/amnesia-stealer-macos-infostealer-clickfix/",
+          "decision": "matched_termは「CHROMIUM」で、Earth Luscaのaliasと一般語の衝突。原文を確認したところ「Chromium」はChrome・Brave・Arc・Edgeを含むChromium系ブラウザーを指す製品名であり、Jamfは自社の呼称AmnesiaStealerを用いるのみで名前付きアクターへの帰属を行っていない。unknown-clusters.jsonのexcluded_name_collisionsにmatched_profile: earth-lusca / matched_term: CHROMIUM の同一パターンが既登録である。"
+        },
+        {
+          "actor": "jewelbug",
+          "name": "Jewelbug (Symantec) — 2026-08-14作業との重複",
+          "source": "https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage",
+          "decision": "主張自体は妥当だが、同一の一次資料と当該2活動は2026-08-14の作業でprofiles/jewelbugを新規作成した際に原文から直接収録済みである。日次レコード経由で再materializeすると同一活動が二重登録されるためrejectedとした。"
+        },
+        {
+          "actor": "carbanak / hellsing-apt",
+          "name": "2026-08-14分の再現",
+          "source": "review-decisions.json",
+          "decision": "前回スキャンでの名称衝突判断をそのまま再現したもの。判断は変更なし(2件)。"
+        }
+      ],
+      "pending": [
+        {
+          "actor": "darkhotel",
+          "name": "APT-C-06 (Darkhotel) の北朝鮮関連の囮を用いた攻撃活動",
+          "source": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "decision": "assessmentはstrong-subject(exact名が活動を主題とする記事タイトルに明記)だが、一次ソースが微信で、当環境からは「環境异常」の認証壁によりHTTP 200で検証ページのみが返り原文を取得できなかった。ミラーも確認できていない。actor_profile/OSINT_RULES.mdに従い要約とタイトルのみを根拠に採用せず、pendingで据え置く。採用時はDarkhotelプロファイルにとって日付を持つ初の活動記録となる。"
+        }
+      ],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--patchcord",
+          "action": "added",
+          "note": "status: tracking。related_profilesにtransparent-tribeをoverlap-suspected(中確度)で記録。独立した一次資料2本以上、または政府・CERTの言及が得られた時点で昇格か統合かを判断する。"
+        },
+        {
+          "cluster_id": "unknown-cluster--silverfox",
+          "action": "observation-added",
+          "note": "Acronis原文がSilverFoxへの帰属を「insufficient to support an attribution」と明確に否定しているため、explicitly-refutedとして観測を追加しlast_seenを更新した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "HoneyMyte (Mustang Panda)",
+          "observations": 15,
+          "note": "複合名のため自動一致しないままunmatchedに残るが、実体は既存のmustang-pandaプロファイルで、対応するIOC/artifactは原文から直接収録済みである。新規プロファイルは作成しない。"
+        },
+        {
+          "name": "APT36 (Transparent Tribe) (medium confidence)",
+          "observations": 32,
+          "note": "複合名かつ低信頼表現。PATCHCORDキャンペーンのIOCで、unknown-cluster--patchcordとして台帳へ記録した。プロファイルへは反映していない。"
+        },
+        {
+          "name": "APT-C-06 (Darkhotel)",
+          "observations": 5,
+          "note": "複合名。実体は既存のdarkhotelプロファイルだが、レコードがpendingのため未反映。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "cutoff後の新規なし。公開一覧HTMLはデータセンターIPから503となるため公式RSS(/topic/threat-intelligence/feed/)で確認した。最新はDeadLock ransomware(2026-08-10)で帰属アクターなし、判定済み。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "cutoff後の新規なし。公開一覧の最上位に出る「GTIG AI Threat Tracker」は原文の公開日が2026-05-11で既出であり、RSS(feedburner)の最新項目もUNC6671 Rebrands(2026-08-06、反映済み)のままであることを確認した。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "cutoff後の新規公開なし。最新はKimwolf v7 botnet(2026-08-11)。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "前回スキャンで確認済みの2件から変化なし。新規公開なし。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規公開なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "前回スキャンで確認済みのThe Model Is the Malware(2026-08-13)から変化なし。新規公開なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-14",
+          "result": "新規1件。APT group HoneyMyte upgrades CoolClient(2026-08-14)を原文確認しprofiles/mustang-pandaへ反映した。同カテゴリのArmored Likho expands its cyber-espionage toolkit(2026-08-13)とProject CAV3RN continues(2026-08-11)はunknown-clusters.jsonへ登録済みで取りこぼしではない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-12",
+          "result": ".com側と同一構成で、.ru固有の未取得記事はなし。HoneyMyte(116614)とArmored Likho(116417)はいずれも.com側で確認済み。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
