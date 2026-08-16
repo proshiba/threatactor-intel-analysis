@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "5f94d8426fac3266338b3237729dac738404d90f",
-  "last_scanned_date": "2026-08-14",
+  "last_scanned_commit": "5fe77b92aa89102e8aece158d95c7fee2da7dd2e",
+  "last_scanned_date": "2026-08-15",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1337,6 +1337,132 @@
           "publisher": "Kaspersky Securelist (ロシア語版)",
           "url": "https://securelist.ru/",
           "latest_relevant_publication": "2026-08-12",
+          "result": ".com側と同一構成で、.ru固有の未取得記事はなし。HoneyMyte(116614)とArmored Likho(116417)はいずれも.com側で確認済み。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-08-16T02:20:00Z",
+      "window": {
+        "since": "2026-08-14",
+        "until": null
+      },
+      "source_commit": "5fe77b92aa89102e8aece158d95c7fee2da7dd2e",
+      "statistics": {
+        "news_files": 2,
+        "articles": 25,
+        "review_records": 8,
+        "approved_records": 3,
+        "rejected_records": 5,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 107,
+        "materialization_window": "queueは2026-08-14以降で再生成した。approved 3件のうちakiraとmustang-pandaは前回スキャンのreview-decisions.jsonがそのまま再現されたもので、今回新規に採用したのは2026-08-15分のDarkhotel(360威胁情报中心)1件である。tech-memoは前回スキャンから新規コミットがなく、2026-08-16分の日次ニュースは未公開である。pendingが0になったためlast_scanned_dateを2026-08-14から2026-08-15へ前進させた。 反映後の点検で、活動記述由来の標的抽出に2件の誤検出(タイ・北朝鮮)を確認したため抽出規則を修正し、darkhotelプロファイルは修正後の規則で再生成し直した。"
+      },
+      "applied": [
+        {
+          "actor": "darkhotel",
+          "name": "Darkhotel / APT-C-06 (北朝鮮関連の囮を用いた2026年4〜5月のフィッシング活動)",
+          "source": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "decision": "前回スキャンで一次ソースを取得できずpendingとしたレコードを、今回原文取得に成功したため採用した。出典は360威胁情报中心(360高级威胁研究院)の公式WeChatアカウント、公開日はページのvar ct=1786527000(2026-08-12T09:30:00Z)で確認した。原文はタイトルと本文の同一文でAPT-C-06(Darkhotel)を実行主体として記述しており、strong-subjectの評価が裏付けられる。同名製品・別クラスタ・法執行報道・過去事例のいずれでもなく、冒頭のDarkhotel沿革は背景説明にとどまる。内容は2026年4月に「조선중앙텔레비죤실시간방영프로그람해설서.docx」を囮として朝鮮中央テレビ視聴アプリの導入を誘導する初期接入で、5月末に同アプリ入り圧縮ファイルのフィッシングメール配布へ移行した。第1段階MSIは2025年の攻撃と異なり悪意あるDLLを内包せず、VBScriptで永続化タスク(\\Microsoft\\Windows\\AppID\\PolicyManager経由のtp.ps1)と自削除タスク(\\ScriptingSchedule)を作成する。第2段階MSIの一部はパス名のhash照合でC:\\ProgramData\\0_a^r(9)+!+$&)#を特定し、ChaCha20で復号した内容を鍵としてShellcodeを復号する。最終Shellcodeの復号鍵は未取得で機能不明と原文が明記するため能力の断定は行わない。活動期間は原文が2026年4月と5月末を月単位で明示しているためactivity_periodへ月精度で設定し、tech-memo日次ファイルの日付(2026-08-15)はreported_atへ分離した。IOCは日次レコードに含まれないため原文の附録IOC節からドメイン1件とMD5 4件、artifactは本文から15件(計画タスク2、ファイル名4、ファイルパス2、囮名1、コマンド1、URIパス1、埋め込み文字列4)をprofiles/darkhotelへ直接収録した。正規プレイヤーVdPlayer.exeは攻撃連鎖で設置されるが正規プログラムのためdisposition: candidateとした。標的は原文が「目标众多」と述べるのみで国・業種の明示がないため追加していない。本件はDarkhotelプロファイルにとって日付を持つ初の活動記録である。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "earth-lusca / jewelbug / transparent-tribe / carbanak / hellsing-apt",
+          "name": "2026-08-14〜15分の再現(5件)",
+          "source": "parse-daily/review-decisions.json",
+          "decision": "前回までのスキャンでの不採用判断がそのまま再現されたもので、判断の変更はない。内訳はEarth Lusca(CHROMIUM名称衝突)、Jewelbug(2026-08-14作業との重複)、Transparent Tribe(PATCHCORDのattribution-uncertain)、Carbanak・Hellsing APT(一般語との名称衝突)。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [
+        {
+          "actor": "darkhotel",
+          "alias": "APT-C-06",
+          "action": "added",
+          "note": "360威胁情报中心の一次資料がタイトル・本文で一貫して「APT-C-06（Darkhotel）」と併記し両名称を同一実体として扱っているため、scope: exact / confidence: highで独立したaliasエントリを追加した。workbook由来の複合エントリ「APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA),」は残りの名称の照合が未実施のためscope: unknownのまま残し、analyst_notesに本追加への参照を追記した。"
+        }
+      ],
+      "unknown_cluster_updates": [],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "APT-C-06 (Darkhotel)",
+          "observations": 5,
+          "note": "複合名のため自動一致しないままunmatchedに残るが、実体は既存のdarkhotelプロファイルである。今回aliasへAPT-C-06をscope: exactで追加し、対応するIOC/artifactは原文から直接収録した。新規プロファイルは作成しない。"
+        }
+      ],
+      "extraction_rule_updates": [
+        {
+          "file": "actor_profile/activity-observation-rules.json",
+          "rule": "sectors / 小売・ホスピタリティ",
+          "change": "英語パターンを \"(?i)retail|hotel|hospitality|restaurant\" から \"(?i)\\\\b(?:retail|hotel|hospitality|restaurant)\" へ変更し、語頭境界を要求するようにした。",
+          "reason": "語境界がないため「Darkhotel」「RevengeHotels」といったアクター名の部分文字列がhotelに一致し、活動記述に業種の記載がなくても小売・ホスピタリティが標的として付与されていた。今回のDarkhotel活動で誤検出が発生したため修正した。",
+          "false_positive_audit": "全679プロファイルの活動タイトル・説明へ新旧パターンを適用して差分を確認した。旧パターンのみが一致する活動は2件で、darkhotel活動--daily-fbc4f59c4a844e18e5ab(誤検出。修正後は一致なしとなり、業種標的の紐付けを解消)とta558活動--daily-9d2d6ad9320182983777(RevengeHotelsの部分文字列。ただし同活動は日本語パターンの「ホテル」に正しく一致し、ブラジルのホテルを標的とする記述が原文にあるため業種の紐付けは維持される)のみであった。他の活動に対する追加・削除は発生しない。"
+        },
+        {
+          "file": "actor_profile/scripts/enrich_targeting_scope.py",
+          "rule": "compile_literal (target-geography.jsonの別名照合)",
+          "change": "カタカナのみで構成される国名別名に、ASCII別名と同等の境界条件 (?<![ァ-ヴーヽヾ]) … (?![ァ-ヴーヽヾ]) を追加した。",
+          "reason": "カタカナ別名には境界条件がなく、無関係なカタカナ語の部分文字列に一致していた。今回のDarkhotel活動では「リアルタイム」が国名「タイ」に一致し、原文に記載のないタイが当該活動の標的国として構造化されていた。",
+          "false_positive_audit": "全679プロファイルに対しenrich_targeting_scope.pyを修正前後で実行し、profiles/targeting-audit.json相当のレポートを比較した。差分は4プロファイル・国標的4件の削除のみで、いずれも誤検出であることを原文記述で確認した。内訳はakiraのシリア(「デシリアライゼーション」)、storm-1175のシリア(「デシリアライズ」)、contagious-interviewのタイ(「タイポスクワッティング」)、unc6671のタイ(「ワンタイムパスコード」)。正しい標的国(akiraのカナダ等)と、境界に非カタカナ文字が来る国名(スリランカ等)への影響はない。追加された標的は0件。"
+        },
+        {
+          "file": "actor_profile/scripts/enrich_activity_intelligence.py",
+          "rule": "contextual_match / lure_theme_context (新規)",
+          "change": "国名の照合において、直後40文字以内に囮・おとり・デコイ・decoy・lure・baitが現れ、かつ国名とその語の間に標的動詞(標的・攻撃・侵害・狙・被害・フィッシング・窃取およびtarget等の英語表現)が無い場合を、標的ではなく囮の題材として除外する判定を追加した。",
+          "reason": "「北朝鮮関連の囮を利用して実施した攻撃活動」のように、囮の題材として挙げられた国が、同一文の後方にある攻撃動詞によって標的国として構造化されていた。actor_profile/RULES.mdの、帰属国やインフラ所在国を標的国へ流用しないという原則と同種の誤りである。",
+          "false_positive_audit": "既存のactor_attribution_contextと同じくcountry=Trueの照合にのみ適用する。全679プロファイルでの修正前後比較において、本変更による標的の増減はDarkhotel以外で発生しなかった。標的動詞が国名と囮の間にある場合(「インドの政府機関を狙う囮文書」等)は除外されないことを条件式で担保している。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "cutoff後の新規なし。公開一覧HTMLはデータセンターIPから503となるため公式RSS(/feed/ および /topic/threat-intelligence/feed/)で確認した。最新はDeadLock ransomware(2026-08-10)で帰属アクターなし、判定済み。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "cutoff後の新規なし。公開一覧の最上位に出る「GTIG AI Threat Tracker」は原文の公開日が2026-05-11であることを再確認した。アクター別の最新はUNC6671 Rebrands(2026-08-06、反映済み)。従来使用していたfeedburnerのRSSは404を返すようになったため、公開一覧と個別記事の原文で確認した。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "cutoff後の新規公開なし。最新はKimwolf v7 botnet(2026-08-11)で前回判定済み。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規公開なし。JWR phishing framework(2026-08-13)とCuriouser and Curiouser(2026-08-13)は前回スキャンで判定済み。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規公開なし。2026-08-12・08-13のBlack Hat USA 2026関連記事はbusiness-securityカテゴリでeset-research枠外、かつ名前付きアクターの活動記載もない。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規公開なし。The Model Is the Malware(2026-08-13)から変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-14",
+          "result": "cutoff後の新規なし。最新はHoneyMyte CoolClient(2026-08-14)で前回反映済み。Armored Likho(2026-08-13)とProject CAV3RN(2026-08-11)はunknown-clusters.jsonへ登録済み。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-14",
           "result": ".com側と同一構成で、.ru固有の未取得記事はなし。HoneyMyte(116614)とArmored Likho(116417)はいずれも.com側で確認済み。"
         }
       ]

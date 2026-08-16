@@ -175,6 +175,12 @@ def compile_literal(alias: str) -> re.Pattern[str]:
     escaped = re.escape(alias)
     if re.search(r"[A-Za-z0-9]", alias):
         return re.compile(rf"(?<![A-Za-z0-9]){escaped}(?![A-Za-z0-9])", re.IGNORECASE)
+    if re.fullmatch(r"[ァ-ヴーヽヾ・]+", alias):
+        # Katakana country names are frequently substrings of unrelated katakana
+        # words (タイ in リアルタイム, インド in インドネシア).  Require the same
+        # kind of boundary the ASCII branch applies so only standalone mentions
+        # match.
+        return re.compile(rf"(?<![ァ-ヴーヽヾ]){escaped}(?![ァ-ヴーヽヾ])")
     return re.compile(escaped)
 
 

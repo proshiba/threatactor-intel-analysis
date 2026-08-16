@@ -702,6 +702,25 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。",
     "review_status": "approved"
   },
+  "darkhotel|https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q": {
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "360威胁情报中心: 「2026年4月，APT-C-06（Darkhotel）使用一个名为…的诱饵文档开展钓鱼攻击活动」と初回の攻撃時期を月まで明示"
+      },
+      "last_observed": {
+        "value": "2026-05-31T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "同資料: 「到5月底，攻击方式升级为通过钓鱼邮件投递包含同样应用的压缩包」と5月末の手口変更を明示"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "原文(360威胁情报中心/360高级威胁研究院、WeChat公式アカウント、2026-08-12公開。ページのvar ct=1786527000=2026-08-12T09:30:00Zで公開日を確認)を確認した。前回スキャンでは同URLを取得できずpendingとしたが、今回取得に成功したため判断を確定した。記事はタイトル「APT-C-06（Darkhotel）近期利用朝鲜相关诱饵发起的攻击活动分析」および本文「2026年4月，APT-C-06（Darkhotel）使用一个名为『조선중앙텔레비죤 실시간방영프로그람 해설서.docx』的诱饵文档开展钓鱼攻击活动」で当該アクターを実行主体として明記しており、strong-subjectの評価は原文で裏付けられる。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。冒頭のDarkhotel沿革(2014年Kaspersky初報)は背景説明にとどまり、記事の主題は2026年4〜5月の新規活動である。alias「APT-C-06」はプロファイル側でscope unknownの複合workbookエントリだが、本資料の発行元である360自身がAPT-C-06とDarkhotelを併記して同一視しているため、Mustang Panda/HoneyMyteと同じ前例で帰属主体の同定に支障はないと判断した。内容は、朝鮮中央テレビを実時間視聴するアプリの解説文書を囮に利用者へアプリ導入を誘導する初期接入で、複雑な脆弱性利用は伴わない。5月末には同アプリを含む圧縮ファイルをフィッシングメールで配布する方式へ移行し、MSIは2025年の攻撃と異なり悪意あるDLLを内包せず、VBScriptで2つの計画タスク(\\Microsoft\\Windows\\AppID\\PolicyManagerによるtp.ps1経由の永続化・次段階取得と、\\ScriptingScheduleによる自削除)を作成する。第2段階MSIの一部は悪意あるDLLを読み込み、パス名のhash照合でC:\\ProgramData\\0_a^r(9)+!+$&)#を特定し、ChaCha20で復号した内容を鍵として更にShellcodeを復号する。最終Shellcodeの復号鍵は未取得で機能は不明と原文が明記しているため、能力の断定は行わない。活動期間は原文が2026年4月および5月末と月単位で明示しているためactivity_periodへ月精度で設定し、tech-memo日次ファイルの日付(2026-08-15)はreported_atへ分離する。標的については原文が「目标众多」と述べるのみで国・業種を明示していないため、囮の内容から標的国を推定せず標的情報は追加しない。IOC(ドメイン1、MD5 4)とartifactは日次レコード側に含まれないため、原文の附録IOC節と本文から一次資料としてprofiles/darkhotelへ直接収録する。",
+    "review_status": "approved"
+  },
   "earth-lusca|https://chromium-review.googlesource.com/c/chromium/src/+/8165095": {
     "confidence": "low",
     "review_notes": "原文(Chromium Gerrit変更内容)およびBleepingComputer記事を確認したが、Earth Luscaへの言及はない。Google Chromeが新しいタブ乗っ取り拡張機能を既定でブロックする機能に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",

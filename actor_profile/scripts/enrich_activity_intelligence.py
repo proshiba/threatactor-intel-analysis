@@ -607,6 +607,27 @@ def actor_attribution_context(
     )
 
 
+def lure_theme_context(text: str, match: re.Match[str]) -> bool:
+    """Report whether a country is named as the theme of a lure, not a target.
+
+    Reports such as "北朝鮮関連の囮を利用した攻撃" name a country only to
+    describe the decoy content.  The targeting verb later in the sentence would
+    otherwise make the country look like a victim geography.  A targeting verb
+    between the country and the lure word means the country is a genuine target
+    ("インドの政府機関を狙う囮文書"), so only unqualified mentions are skipped.
+    """
+    after = text[match.end() : match.end() + 40]
+    lure = re.search(r"(?i)囮|おとり|デコイ|decoy|lure|bait", after)
+    if not lure:
+        return False
+    between = after[: lure.start()]
+    return not re.search(
+        r"(?i)標的|攻撃|侵害|狙|被害|フィッシング|窃取|"
+        r"target|attack|breach|compromise|phish|victim",
+        between,
+    )
+
+
 def contextual_match(
     text: str,
     patterns: Iterable[re.Pattern[str]],
@@ -618,6 +639,8 @@ def contextual_match(
     for pattern in patterns:
         for match in pattern.finditer(text):
             if country and actor_attribution_context(text, match, actor_pattern):
+                continue
+            if country and lure_theme_context(text, match):
                 continue
             if explicit_target_context(text, match, country=country):
                 return match

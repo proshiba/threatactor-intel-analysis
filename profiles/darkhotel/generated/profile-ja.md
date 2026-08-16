@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--darkhotel`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-08-16T02:17:54Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -26,7 +26,8 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 | Tapaoux | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
 | Nemim | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
 | Dubnium (Microsoft) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA), | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
+| APT-C-06 | 360威胁情报中心 | exact | 高 | `source--daily-a945409955df891618a3` | APT-C-06は360威胁情报中心による独自命名。2026-08-12公開の同社レポートがタイトルと本文で一貫して「APT-C-06（Darkhotel）」と併記し、両名称を同一実体として扱っているためscope: exactとした。workbook由来の複合エントリ「APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA),」はAPT-C-06以外の名称の照合が未確認のためscope: unknownのまま残す。 |
+| APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA), | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. APT-C-06については360の一次資料を根拠に独立したaliasエントリ(scope: exact)を追加済み。本エントリは残りの名称(SHADOW CRANE、T-APT-02、SIG25)の照合が未実施のため据え置く。 |
 | Information on Chinese forum indicating group may have targeted CVE-2015-8651, most likely a South Korean actor | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
 
 ## 帰属
@@ -94,15 +95,15 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--inexsmar | Inexsmar | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--asruex | Asruex | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--cve-2010-2883 | CVE-2010-2883 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--cve-2012-0158 | CVE-2012-0158 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--cve-2015-8651 | CVE-2015-8651 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--cve-2016-4171-and-cve-2018-817 | CVE-2016-4171 and CVE-2018-817 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--higaisa | Higaisa | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--inexsmar | Inexsmar | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--win32-karba | Win32.Karba | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--win32-pioneer | Win32.Pioneer | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2015-8651 | CVE-2015-8651 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--asruex | Asruex | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2012-0158 | CVE-2012-0158 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2010-2883 | CVE-2010-2883 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2016-4171-and-cve-2018-817 | CVE-2016-4171 and CVE-2018-817 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -128,6 +129,7 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | phishing-campaign | 2026-04 | 2026-05 | 2026-08-15 |  |  | ttp--activity-rule--234a71d43cad975ee342 |  | APT-C-06（Darkhotel）は2026年4月、北朝鮮中央テレビをリアルタイム視聴するアプリの解説文書を囮に、利用者へ悪意あるアプリの導入を誘導した。 5月末には同じアプリを含む圧縮ファイルをフィッシングメールで配布し、MSIからVBScriptとPowerShellを利用する攻撃チェーンへ発展した。 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 第2段階MSIの一部は悪意あるDLLを読み込み、ChaCha20で外部ファイルとShellcodeを復号して実行するが、最終Shellcodeの機能は未解明である。 2025年以降のDarkhotelではPowerShellがダウンロードや永続化に高頻度で使われており、今回も多数の標的が確認されたが実際のコード実行は比較的少なかった。 | 高 | `source--daily-a945409955df891618a3` |
 | Daybreak? | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Fallout Team | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | WizardOpium | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
@@ -136,6 +138,7 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | Darkhotel | 情報なし | T1053.005 Scheduled Task | 情報なし | 情報なし | 情報なし | 高 |
 | Daybreak? | Darkhotel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | Fallout Team | Darkhotel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | WizardOpium | Darkhotel | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
@@ -193,7 +196,6 @@ Daybreak?; Fallout Team; WizardOpium
 | regions | 東アジア | MITRE ATT&CKのGroup概要でDarkhotelの標的範囲として東アジアが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
 | regions | 東南アジア | インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | アイルランド、イタリア、ギリシャ、セルビア、トルコ、ドイツ、ベルギー、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| sectors | 小売・ホスピタリティ | [Darkhotel](https://attack.mitre.org/groups/G0012) is a suspected South Korean threat group that has targeted victims primarily in East Asia since at least 2004. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | 防衛・軍事 | rkhotel](https://attack.mitre.org/groups/G0012) has also conducted spearphishing campaigns and infected victims through peer-to-peer and file sharing networks.(Citation: Kaspersky Darkhotel)(Citation: Securelist Darkhotel Aug 2015)(Citation: Microsoft Digital Defense FY20 Sept 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
@@ -207,6 +209,7 @@ Daybreak?; Fallout Team; WizardOpium
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | 第1段階MSIは2つのスケジュールタスクを作成し、tp.ps1による永続化・次段階MSIの取得と、自身の削除処理を実行する。 |  | activity--daily-fbc4f59c4a844e18e5ab | 2026-04 | 2026-05 | 中 | `source--daily-a945409955df891618a3` |
 | Command And Control | T1001 | Data Obfuscation | 6 Input Capture T1113 Screen Capture Command and Control T1043 Commonly Used Port T1094 Custom Command and Control Protocol T1024 Custom Cryptographic Protocol T1001 Data Obfuscation T1065 Uncommonly Used Port 6.4 参考文章 1） https://malware.prevenity.com/2018/03/happy-new-year-wishes-from-china.ht ml 2） https://s.tencent.com/research/report/762.html |  |  | 不明 | 不明 | 中 | `source--darkhotel--ce28b9f812e95fb7` |
 | Collection | T1005 | Data from Local System | 御见威胁情报中心 72 / 73 T1082 System Information Discovery T1007 System Service Discovery Lateral Movement T1534 Internal Spearphishing Collection T1123 Audio Capture T1005 Data from Local System T1114 Email Collection T1056 Input Capture T1113 Screen Capture Command and Control T1043 Commonly Used Port T1094 Custom Command and Control Protocol T1024 Custom Cryptographic Protocol T1001 Data Obfuscation T1065 Uncommonly Used Port 6.4 参考文章 1） https:/ |  |  | 不明 | 不明 | 中 | `source--darkhotel--ce28b9f812e95fb7` |
 | Discovery | T1007 | System Service Discovery | TLP：WHITE 腾讯安全御见威胁情报中心 72 / 73 T1082 System Information Discovery T1007 System Service Discovery Lateral Movement T1534 Internal Spearphishing Collection T1123 Audio Capture T1005 Data from Local System T1114 Email Collection T1056 Input Capture T1113 Screen Capture Command and Control T1043 Commonly Used Port T1094 Custom Command and Control Protoc |  |  | 不明 | 不明 | 中 | `source--darkhotel--ce28b9f812e95fb7` |
@@ -262,11 +265,11 @@ Daybreak?; Fallout Team; WizardOpium
 
 ## IOC／artifact概要
 
-- IOC値: 93件
-- IOC観測: 114件
+- IOC値: 98件
+- IOC観測: 119件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 77件
-- 非IOC artifact観測: 48件（`artifacts.csv`）
+- 非IOC artifact観測: 63件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -285,20 +288,21 @@ Daybreak?; Fallout Team; WizardOpium
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-a945409955df891618a3 | APT-C-06（Darkhotel）が北朝鮮関連の囮を利用して実施した最近の攻撃活動の分析 | mp.weixin.qq.com | 2026-08-15 | https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q | osint-report | TLP:CLEAR | 中 |
 | source--darkhotel--6be8f2f16af88e57 | README |  | 不明 | Darkhotel/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--darkhotel--a8acea942272273e | README |  | 不明 | Darkhotel/higaisa/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--darkhotel--ce28b9f812e95fb7 | higaisa apt report |  | 不明 | Darkhotel/higaisa/higaisa_apt_report.pdf | report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-360net | MISP Galaxy 360.net Threat Actors | MISP Project / 360 Netlab | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
