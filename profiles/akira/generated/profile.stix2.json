@@ -785,6 +785,96 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
+      "created": "2026-08-14T01:39:25Z",
+      "modified": "2026-08-15T01:12:07Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
+      "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 約2時間後にRDPでドメインコントローラーへ接続してActive Directoryを列挙し、WinRARとs5cmdを使ってファイルをS3へ窃取した。 攻撃者はAnyDeskを導入後、WindowsをSafe Mode with Networkingで再起動し、Huntress EDRとMicrosoft Defenderのリアルタイム保護を無効化した。 その後akira.exeを起動したが、Safe Mode環境で仮想メモリー不足が発生して暗号化に失敗し、通常モード復帰後にDefenderがペイロードを隔離した。 ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。",
+      "first_seen": "2026-08-04T00:00:00Z",
+      "last_seen": "2026-08-05T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "huntress.com",
+          "description": "Local source: https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
+          "external_id": "source--daily-0352fde34a4358d6927a"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-267e235842a3fe8d98be",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--267e235842a3fe8d98beb045 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 原文(Huntress, 2026-08-12公開)を確認。記事はこの侵害を主題とし、実行主体をAkiraランサムウェアのアフィリエイトと明記している。MFA未設定で外部公開されたSonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、約2時間後にRDPでドメインコントローラーへ到達、PowerShellでActive Directoryを列挙、WinRARで書庫化してs5cmdで攻撃者管理のS3バケットへ窃取した。AnyDeskを遠隔操作兼C2として導入後、Safe Mode with Networkingで再起動してHuntress EDRとMicrosoft Defenderのリアルタイム保護を無効化しakira.exeを実行したが、Safe Modeの制限された仮想メモリでメモリ不足となり暗号化に失敗、通常モード復帰後にDefenderがペイロードを隔離した。暗号化は失敗したがデータ窃取は成立している。Huntress自身がEDRで直接観測した一次資料であり、同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-08-14)はreported_atとして分離する。",
+      "x_reported_at": {
+        "value": "2026-08-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--1bbbecca331245d17d02"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-04T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
+            "precision": "day",
+            "status": "known",
+            "value": "2026-08-05T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0352fde34a4358d6927a"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--1f804ed5-e1a9-43ab-90f5-ee881785dc88",
       "created": "2026-07-27T11:04:28Z",
       "modified": "2026-07-29T23:11:59Z",
@@ -1043,6 +1133,277 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-efcfda27f495de5d5c60"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有",
+      "description": "カナダ最大の動物園であるトロント動物園は、2024年1月に発生したランサムウェア攻撃によるデータ侵害について詳細を公表 侵害された情報には、従業員、元従業員、ボランティア、寄付者の個人情報や財務情報が含まれる 2022年1月から2023年4月の間にクレジットカード取引を行ったゲストや会員の名前、住所、電話番号、メールアドレス、クレジットカードの下4桁および有効期限が漏洩 2000年から2023年4月までの一般入場券や会員購入に関する取引データも含まれる トロント動物園は、オンタリオ州情報プライバシーコミッショナー事務局にデータ侵害を報告し、影響を受けた人々に対し、金融口座の明細を監視するよう助言 トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張",
+      "first_seen": "2022-01-01T00:00:00Z",
+      "last_seen": "2023-04-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/toronto-zoo-shares-update-on-last-years-ransomware-attack/",
+          "external_id": "source--daily-73166036d74c23fae026"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-72021ece0456478ddc56",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--72021ece0456478ddc568d32 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_reported_at": {
+        "value": "2025-03-06T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+            "target--activity-rule--sector--4221b5fbb827488c6eaa"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--2f21c13c1480ac133511"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2022-01-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2023-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2025-03-06T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "encryption",
+            "privacy"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--ee55e5e8faa5dd675d7b"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-73166036d74c23fae026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化",
+      "description": "Intel製CPUチューニングドライバーrwdrv.sysを悪用し、カーネル権限でDefenderを停止 2つ目の悪意ドライバーhlpdrv.sysがDefenderのDisableAntiSpywareレジストリを変更 BYOVD戦術は2025年7月15日以降のAkira攻撃で繰り返し観測 SonicWall SSLVPNを狙う活動やBumblebee/AdaptixC2経路も報告 Bumblebeeマルウェアを使う事例では、ManageEngine OpManagerのSEOポイズニングから感染させる事例もあった GuidePointがYARA・IOC公開、管理者は監視とブロックを推奨",
+      "first_seen": "2025-07-15T00:00:00Z",
+      "last_seen": "2025-07-15T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-ransomware-abuses-cpu-tuning-tool-to-disable-microsoft-defender/",
+          "external_id": "source--daily-4e4cc7628ff86fb403b4"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-76bd6acc119feb91761a",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--76bd6acc119feb91761acc18 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_reported_at": {
+        "value": "2025-08-07T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--b1521ba5d993086623a9"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-07-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2025-07-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2025-08-07T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-4e4cc7628ff86fb403b4"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-29T23:11:59Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
+      "description": "AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。",
+      "first_seen": "2024-09-01T00:00:00Z",
+      "last_seen": "2024-09-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
+          "external_id": "source--daily-29f74832270318181f72"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-845d100400e42d2f3ff6",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--845d100400e42d2f3ff65b7c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_reported_at": {
+        "value": "2024-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--akira",
+          "name": "Akira",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--akira"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--2f20859af17320f58e01"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-09-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2024-09-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2024-10-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "data-theft",
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-29f74832270318181f72"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -1668,100 +2029,6 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
-      "id": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有",
-      "description": "カナダ最大の動物園であるトロント動物園は、2024年1月に発生したランサムウェア攻撃によるデータ侵害について詳細を公表 侵害された情報には、従業員、元従業員、ボランティア、寄付者の個人情報や財務情報が含まれる 2022年1月から2023年4月の間にクレジットカード取引を行ったゲストや会員の名前、住所、電話番号、メールアドレス、クレジットカードの下4桁および有効期限が漏洩 2000年から2023年4月までの一般入場券や会員購入に関する取引データも含まれる トロント動物園は、オンタリオ州情報プライバシーコミッショナー事務局にデータ侵害を報告し、影響を受けた人々に対し、金融口座の明細を監視するよう助言 トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張",
-      "first_seen": "2022-01-01T00:00:00Z",
-      "last_seen": "2023-04-01T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/toronto-zoo-shares-update-on-last-years-ransomware-attack/",
-          "external_id": "source--daily-73166036d74c23fae026"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-72021ece0456478ddc56",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--72021ece0456478ddc568d32 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - トロント動物園は特定の攻撃者を公表していないが、Akiraランサムウェア集団が2024年1月に犯行声明を出し、133GBのデータを盗んだと主張 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2025-03-06T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--akira",
-          "name": "Akira",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--akira"
-          ],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [
-            "target--activity-rule--country--ee55e5e8faa5dd675d7b",
-            "target--activity-rule--sector--4221b5fbb827488c6eaa"
-          ],
-          "victim_refs": [
-            "victim--activity-rule--2f21c13c1480ac133511"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": "2022-01-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "last_observed": {
-            "value": "2023-04-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "reported_at": {
-            "value": "2025-03-06T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "ransomware-extortion",
-          "phases": [],
-          "results": [
-            "encryption",
-            "privacy"
-          ],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [
-              "target--activity-rule--country--ee55e5e8faa5dd675d7b"
-            ],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-73166036d74c23fae026"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
       "id": "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
       "created": "2026-07-27T11:04:28Z",
       "modified": "2026-07-29T23:11:59Z",
@@ -1843,273 +2110,6 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-89a8fc15ce47bbec4793"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用",
-      "description": "AkiraとFogランサムウェアがVeeam Backup & ReplicationのRCE脆弱性(CVE-2024-40711)を悪用。 この脆弱性 (CVE-2024-40711) は、認証されていない攻撃者が低複雑度の攻撃で悪用できる、信頼できないデータのデシリアライゼーションによるもの。 攻撃者は、VPNの脆弱性や既に漏洩した資格情報を用いて、ネットワークにアクセス。 悪用により、攻撃者は管理者権限を取得し、ランサムウェアを展開。 同脆弱性に対するパッチは2024年9月に公開されたが、既に悪用されている。 Fogランサムウェアを展開した攻撃者は、Hyper-Vサーバーに侵入し、rcloneでデータを流出させた事例も確認された。",
-      "first_seen": "2024-09-01T00:00:00Z",
-      "last_seen": "2024-09-01T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-and-fog-ransomware-now-exploiting-critical-veeam-rce-flaw/",
-          "external_id": "source--daily-29f74832270318181f72"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-845d100400e42d2f3ff6",
-      "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--845d100400e42d2f3ff65b7c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2024-10-14T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--akira",
-          "name": "Akira",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--akira"
-          ],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": [
-            "victim--activity-rule--2f20859af17320f58e01"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": "2024-09-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "last_observed": {
-            "value": "2024-09-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "reported_at": {
-            "value": "2024-10-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "ransomware-extortion",
-          "phases": [],
-          "results": [
-            "data-theft",
-            "encryption"
-          ],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-29f74832270318181f72"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-29T23:11:59Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化",
-      "description": "Intel製CPUチューニングドライバーrwdrv.sysを悪用し、カーネル権限でDefenderを停止 2つ目の悪意ドライバーhlpdrv.sysがDefenderのDisableAntiSpywareレジストリを変更 BYOVD戦術は2025年7月15日以降のAkira攻撃で繰り返し観測 SonicWall SSLVPNを狙う活動やBumblebee/AdaptixC2経路も報告 Bumblebeeマルウェアを使う事例では、ManageEngine OpManagerのSEOポイズニングから感染させる事例もあった GuidePointがYARA・IOC公開、管理者は監視とブロックを推奨",
-      "first_seen": "2025-07-15T00:00:00Z",
-      "last_seen": "2025-07-15T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "bleepingcomputer.com",
-          "description": "Local source: https://www.bleepingcomputer.com/news/security/akira-ransomware-abuses-cpu-tuning-tool-to-disable-microsoft-defender/",
-          "external_id": "source--daily-4e4cc7628ff86fb403b4"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-76bd6acc119feb91761a",
-      "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--76bd6acc119feb91761acc18 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2025-08-07T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--akira",
-          "name": "Akira",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--akira"
-          ],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": [
-            "victim--activity-rule--b1521ba5d993086623a9"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": "2025-07-15T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "last_observed": {
-            "value": "2025-07-15T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "reported_at": {
-            "value": "2025-08-07T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "ransomware-extortion",
-          "phases": [],
-          "results": [
-            "encryption"
-          ],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-4e4cc7628ff86fb403b4"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
-      "created": "2026-08-14T01:39:25Z",
-      "modified": "2026-08-15T01:12:07Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗",
-      "description": "Akiraランサムウェアのアフィリエイトは、MFA未設定で外部公開されたSonicWall SSL VPNから認証情報を使って被害ネットワークへ侵入した。 約2時間後にRDPでドメインコントローラーへ接続してActive Directoryを列挙し、WinRARとs5cmdを使ってファイルをS3へ窃取した。 攻撃者はAnyDeskを導入後、WindowsをSafe Mode with Networkingで再起動し、Huntress EDRとMicrosoft Defenderのリアルタイム保護を無効化した。 その後akira.exeを起動したが、Safe Mode環境で仮想メモリー不足が発生して暗号化に失敗し、通常モード復帰後にDefenderがペイロードを隔離した。 ファイル暗号化には失敗したものの、攻撃者は初期侵入から5時間以内に認証情報とファイルを窃取しており、データ恐喝は可能な状態だった。",
-      "first_seen": "2026-08-04T00:00:00Z",
-      "last_seen": "2026-08-05T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "huntress.com",
-          "description": "Local source: https://www.huntress.com/blog/akira-hits-safe-mode-ransomware-rebooting-around-edr",
-          "external_id": "source--daily-0352fde34a4358d6927a"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-267e235842a3fe8d98be",
-      "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--267e235842a3fe8d98beb045 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: 原文(Huntress, 2026-08-12公開)を確認。記事はこの侵害を主題とし、実行主体をAkiraランサムウェアのアフィリエイトと明記している。MFA未設定で外部公開されたSonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、約2時間後にRDPでドメインコントローラーへ到達、PowerShellでActive Directoryを列挙、WinRARで書庫化してs5cmdで攻撃者管理のS3バケットへ窃取した。AnyDeskを遠隔操作兼C2として導入後、Safe Mode with Networkingで再起動してHuntress EDRとMicrosoft Defenderのリアルタイム保護を無効化しakira.exeを実行したが、Safe Modeの制限された仮想メモリでメモリ不足となり暗号化に失敗、通常モード復帰後にDefenderがペイロードを隔離した。暗号化は失敗したがデータ窃取は成立している。Huntress自身がEDRで直接観測した一次資料であり、同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-08-14)はreported_atとして分離する。",
-      "x_reported_at": {
-        "value": "2026-08-14T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--akira",
-          "name": "Akira",
-          "attribution_countries": [],
-          "organization_refs": []
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--akira"
-          ],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [],
-          "victim_refs": [
-            "victim--activity-rule--1bbbecca331245d17d02"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "basis": "Huntress: 2026-08-04 03:45 UTCにSonicWall SSL VPNへのログイン失敗の連続後、有効アカウントで外部IPからログイン",
-            "precision": "day",
-            "status": "known",
-            "value": "2026-08-04T00:00:00Z"
-          },
-          "last_observed": {
-            "basis": "Huntress: 2026-08-05 08:12 UTCに通常モード復帰後のDefenderがペイロードを隔離",
-            "precision": "day",
-            "status": "known",
-            "value": "2026-08-05T00:00:00Z"
-          },
-          "reported_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "ransomware-extortion",
-          "phases": [],
-          "results": [
-            "credential-theft",
-            "data-theft",
-            "encryption"
-          ],
-          "direction": {
-            "source_countries": [],
-            "target_country_refs": [],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-0352fde34a4358d6927a"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -4853,6 +4853,51 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--63adfb7e-1bea-4fda-b84c-e31236d04f00",
+      "created": "2026-08-14T01:39:25Z",
+      "modified": "2026-08-14T01:39:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--70721057-0e19-41bf-baa5-05b9db3be739",
+      "created": "2026-08-14T01:39:25Z",
+      "modified": "2026-08-14T01:39:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4bb1a972-23ae-4f80-ae8f-9976bfbea34d",
+      "created": "2026-08-17T21:41:56Z",
+      "modified": "2026-08-17T21:41:56Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
+      "target_ref": "identity--3ed03447-4761-419c-ba21-0d8795d59a9e",
+      "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 affected victim--activity-rule--1bbbecca331245d17d02.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--7773e6cd-4dd8-48e9-b5bb-5c45b29431e2",
       "created": "2026-07-27T11:04:28Z",
       "modified": "2026-07-27T11:04:28Z",
@@ -5014,6 +5059,171 @@
       "target_ref": "identity--d1a5949e-e356-4f8f-8522-06c0c8a5a204",
       "description": "Apache OpenOffice、ランサムウェア集団のデータ侵害主張に反論 affected victim--activity-rule--7b83cc15a420f71f6ba8.",
       "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4d2627ff-92b9-49a1-a543-7daeb02a6e0f",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 is attributed or linked to Akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--71e24562-6bb7-4c56-a7b9-8308d927d5d5",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 uses malware--akira.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99882fd5-a425-4690-a09a-a958f9b7ed83",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "identity--c3c88319-299d-472d-81e1-1014f11e9d20",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 targets target--activity-rule--country--ee55e5e8faa5dd675d7b.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e0ab9b12-1032-4dc8-baf8-08bf0f7ede28",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6019b8b1-69e6-47f2-bc48-053f12366d97",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+      "target_ref": "identity--c009c78c-6664-4ca5-b820-96e8d867e747",
+      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 affected victim--activity-rule--2f21c13c1480ac133511.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e4301194-a06e-4fa0-9ed9-5f2a9765f265",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ea8b6a8f-f33a-4456-b103-35f5a968016e",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1473d191-3041-4dfd-adec-7384abd6270a",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+      "target_ref": "identity--a48ac7ec-45a1-4dfd-8acf-a26d3c30e82d",
+      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 affected victim--activity-rule--b1521ba5d993086623a9.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7d2a1909-2f7d-4d91-9be4-b72c6f780c57",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 is attributed or linked to Akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ec200461-733f-4cfa-bd33-30f9721ee5af",
+      "created": "2026-07-27T11:04:28Z",
+      "modified": "2026-07-27T11:04:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 uses malware--akira.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a4b66aed-f4c2-4454-897b-a615c6b6b57a",
+      "created": "2026-07-29T15:20:21Z",
+      "modified": "2026-07-29T15:20:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
+      "target_ref": "identity--0353ff98-b677-48eb-8be3-05921d260c61",
+      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 affected victim--activity-rule--2f20859af17320f58e01.",
+      "x_confidence": "high"
     },
     {
       "type": "relationship",
@@ -5408,81 +5618,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--4d2627ff-92b9-49a1-a543-7daeb02a6e0f",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-27T11:04:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
-      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
-      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 is attributed or linked to Akira.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--71e24562-6bb7-4c56-a7b9-8308d927d5d5",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-27T11:04:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
-      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
-      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 uses malware--akira.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--99882fd5-a425-4690-a09a-a958f9b7ed83",
-      "created": "2026-07-29T15:20:21Z",
-      "modified": "2026-07-29T15:20:21Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
-      "target_ref": "identity--c3c88319-299d-472d-81e1-1014f11e9d20",
-      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 targets target--activity-rule--country--ee55e5e8faa5dd675d7b.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e0ab9b12-1032-4dc8-baf8-08bf0f7ede28",
-      "created": "2026-07-29T15:20:21Z",
-      "modified": "2026-07-29T15:20:21Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
-      "target_ref": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
-      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 targets target--activity-rule--sector--4221b5fbb827488c6eaa.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6019b8b1-69e6-47f2-bc48-053f12366d97",
-      "created": "2026-07-29T15:20:21Z",
-      "modified": "2026-07-29T15:20:21Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
-      "target_ref": "identity--c009c78c-6664-4ca5-b820-96e8d867e747",
-      "description": "トロント動物園、昨年のランサムウェア攻撃に関する最新情報を共有 affected victim--activity-rule--2f21c13c1480ac133511.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--de7d92ad-a03e-40d9-b4cc-5f44e61b5249",
       "created": "2026-07-27T11:04:28Z",
       "modified": "2026-07-27T11:04:28Z",
@@ -5523,126 +5658,6 @@
       "source_ref": "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
       "target_ref": "identity--e355f619-ebf3-4a42-962d-ea7177af428c",
       "description": "FBI: Akiraランサムウェア、250社以上から4200万ドルを詐取 affected victim--activity-rule--0c5b8c0e3e6470d94efd.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7d2a1909-2f7d-4d91-9be4-b72c6f780c57",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-27T11:04:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
-      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
-      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 is attributed or linked to Akira.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ec200461-733f-4cfa-bd33-30f9721ee5af",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-27T11:04:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
-      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
-      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 uses malware--akira.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a4b66aed-f4c2-4454-897b-a615c6b6b57a",
-      "created": "2026-07-29T15:20:21Z",
-      "modified": "2026-07-29T15:20:21Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
-      "target_ref": "identity--0353ff98-b677-48eb-8be3-05921d260c61",
-      "description": "AkiraおよびFogランサムウェア、Veeamの重大なリモートコード実行脆弱性を悪用 affected victim--activity-rule--2f20859af17320f58e01.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e4301194-a06e-4fa0-9ed9-5f2a9765f265",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-27T11:04:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
-      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
-      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 is attributed or linked to Akira.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--ea8b6a8f-f33a-4456-b103-35f5a968016e",
-      "created": "2026-07-27T11:04:28Z",
-      "modified": "2026-07-27T11:04:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
-      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
-      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 uses malware--akira.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--1473d191-3041-4dfd-adec-7384abd6270a",
-      "created": "2026-07-29T15:20:21Z",
-      "modified": "2026-07-29T15:20:21Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
-      "target_ref": "identity--a48ac7ec-45a1-4dfd-8acf-a26d3c30e82d",
-      "description": "AkiraランサムウェアがCPUチューニングツールを悪用しMicrosoft Defenderを無効化 affected victim--activity-rule--b1521ba5d993086623a9.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--63adfb7e-1bea-4fda-b84c-e31236d04f00",
-      "created": "2026-08-14T01:39:25Z",
-      "modified": "2026-08-14T01:39:25Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
-      "target_ref": "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
-      "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 is attributed or linked to Akira.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--70721057-0e19-41bf-baa5-05b9db3be739",
-      "created": "2026-08-14T01:39:25Z",
-      "modified": "2026-08-14T01:39:25Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
-      "target_ref": "malware--a695430a-38fc-4086-8e38-d3932887e325",
-      "description": "Akira攻撃者、Safe ModeでEDRを無効化しデータを窃取するも暗号化には失敗 uses malware--akira.",
       "x_confidence": "high"
     },
     {
@@ -7555,7 +7570,7 @@
       "spec_version": "2.1",
       "id": "report--9f683577-7cd6-49d1-9713-6590927b03a8",
       "created": "2026-07-25T15:22:53Z",
-      "modified": "2026-08-15T01:12:07Z",
+      "modified": "2026-08-17T21:41:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7564,7 +7579,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-15T01:12:07Z",
+      "published": "2026-08-17T21:41:56Z",
       "object_refs": [
         "intrusion-set--b0a13e75-6317-4e66-b8ef-a3b8ad9ecac7",
         "malware--a695430a-38fc-4086-8e38-d3932887e325",
@@ -7577,9 +7592,13 @@
         "tool--68b338fe-9938-4864-9544-e1c80cffb6e9",
         "campaign--86b96db6-7360-4ce0-873b-bde6fbc2585b",
         "campaign--0adcc045-c7e5-46d8-9e09-814748934b81",
+        "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
         "campaign--1f804ed5-e1a9-43ab-90f5-ee881785dc88",
         "campaign--43ea8895-2c9b-4543-8649-a0818c8cf298",
         "campaign--21a629f4-09d8-4a5d-b5e9-e59869689dbc",
+        "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
+        "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
+        "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
         "campaign--858f37ff-2918-41a2-a324-52700c7f3e50",
         "campaign--34d92e38-3e2f-4375-94c8-7d7782fad4bf",
         "campaign--93dd2632-c0fe-4bd4-980d-b5baaf8de943",
@@ -7587,11 +7606,7 @@
         "campaign--f0413788-2ac8-4460-89cb-0535ba79f2f5",
         "campaign--e0701699-3355-40e8-bf0c-1a2d17d521a1",
         "campaign--67798fe7-89eb-4658-bb24-2894071f0203",
-        "campaign--63d372e1-992e-4e3a-b9a0-6f1f4b948856",
         "campaign--7cd47c18-1260-4fde-b156-bbbb48515580",
-        "campaign--f7131fcc-a9a8-467c-8686-cc73c7bd289a",
-        "campaign--15a13416-c0f0-4c11-ab5c-3acd226d562e",
-        "campaign--b43a9e4a-0fb4-4960-b095-8a76e366e806",
         "identity--c3c88319-299d-472d-81e1-1014f11e9d20",
         "identity--f75376d4-c87e-45a4-8552-7349b1dc0c93",
         "identity--c9b933ad-b1bd-4198-8d4a-1cf0479eb8b5",

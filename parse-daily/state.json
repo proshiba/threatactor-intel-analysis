@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "5f94d8426fac3266338b3237729dac738404d90f",
-  "last_scanned_date": "2026-08-14",
+  "last_scanned_commit": "c581b8d5916baa750e69b70586f4611782fd30d0",
+  "last_scanned_date": "2026-08-17",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1340,6 +1340,120 @@
           "result": ".com側と同一構成で、.ru固有の未取得記事はなし。HoneyMyte(116614)とArmored Likho(116417)はいずれも.com側で確認済み。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-17T22:35:00Z",
+      "window": {
+        "since": "2026-08-14",
+        "until": null
+      },
+      "source_commit": "c581b8d5916baa750e69b70586f4611782fd30d0",
+      "statistics": {
+        "news_files": 3,
+        "articles": 26,
+        "review_records": 8,
+        "approved_records": 3,
+        "rejected_records": 5,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 107,
+        "materialization_window": "queueは2026-08-14以降で再生成した。approved 3件のうちakira(2026-08-14)とmustang-panda(2026-08-15)はreview-decisions.jsonの既存判断がそのまま再現されたもので、今回新規に採用したのはdarkhotel 1件である。前回pendingで据え置いたDarkhotelの一次ソースを取得・原文確認できたため保留を解消し、2026-08-17分(Threema DDoS、帰属アクターなし)まで確認済みとしてlast_scanned_dateを2026-08-17へ進めた。pendingは0件。"
+      },
+      "applied": [
+        {
+          "actor": "darkhotel",
+          "name": "Darkhotel / APT-C-06 (北朝鮮関連の囮を用いたkctv.msiフィッシング活動)",
+          "source": "https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q",
+          "decision": "一次資料(360高级威胁研究院、微信公众号、2026-08-12公開。記事のcreateTime 2026-08-12 17:30 CST / ct=1786527000 = 2026-08-12T09:30:00Zで確認)の原文を確認。前回スキャンでは微信の認証壁により本文を取得できずpendingで据え置いたが、MicroMessenger系User-Agentで本文を取得でき原文確認が成立した。assessmentはstrong-subject。原文は「2026年4月，APT-C-06（Darkhotel）使用一个名为“조선중앙텔레비죤 실시간방영프로그람 해설서.docx”的诱饵文档开展钓鱼攻击活动」とDarkhotelを実行主体として明記し、冒頭の組織説明も高級ホテル宿泊者への攻撃に由来する名称と2014年11月のKaspersky初報に言及しているため既存profiles/darkhotelと同一クラスタである。同名製品・別クラスタ・法執行報道・過去言及のいずれでもない。攻撃連鎖は囮文書によるアプリ導入誘導から始まり、5月末にフィッシングメールでの圧縮ファイル配布へ発展。第1段階msiは内蔵dllのCustomAction読込をやめvbsで2つのスケジュールタスク(\\Microsoft\\Windows\\AppID\\PolicyManagerでtp.ps1を実行、\\ScriptingScheduleで自己削除)を作成する。第2段階msiの一部は悪意あるdllを読み込み、パス名のhash照合で0_a^r(9)+!+$&)#を特定しChaCha20で復号、その内容を鍵にshellcodeを復号して実行する。原文が最終shellcodeの復号鍵未取得・機能不明と明記しているため機能面は断定していない。活動期間は原文が2026年4月と5月末を明示しているためactivity_periodへ月精度で設定し、公開日とtech-memo日次ファイルの日付(2026-08-15)はreported_atへ分離した。IOC CSVのactor列が「APT-C-06 (Darkhotel)」という複合名で自動一致せずレコードのiocsが空のため、原文の附録IOC節からIOC 5件(domain 1、MD5 4)とartifact 10件(scheduled-task 2、command 1、file-name 4、file-path 2、lure-name 1)をprofiles/darkhotelへ直接収録した。附録は値を列挙するのみで役割注記がないためrolesは空とし、推測でc2等を付与していない。本レコードはDarkhotelプロファイルにとって日付を持つ初の活動記録である。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "transparent-tribe / earth-lusca / jewelbug / carbanak / hellsing-apt",
+          "name": "2026-08-15作業での判断の再現(5件)",
+          "source": "review-decisions.json",
+          "decision": "前回スキャンでのPATCHCORD(attribution-uncertain)、CHROMIUM名称衝突、Jewelbug重複、名称衝突2件の判断をそのまま再現したもの。判断は変更なし。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [
+        {
+          "actor": "darkhotel",
+          "action": "split-compound-alias",
+          "note": "actor-mapping-workbook Others row 81由来の複合文字列alias「APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA),」をAPT-C-06 / SHADOW CRANE / T-APT-02 / SIG25の4件へ分割した。APT-C-06は360高级威胁研究院の一次資料が「APT-C-06（Darkhotel）」と同一視しているためvendorを360高级威胁研究院、confidenceをhighへ更新し、OSINT_RULES.mdに従いscopeはexactと断定せずoverlappingとした。残る3件はworkbook由来のままscope: unknown / confidence: mediumを維持している。"
+        }
+      ],
+      "unknown_cluster_updates": [],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "APT-C-06 (Darkhotel)",
+          "observations": 5,
+          "note": "複合名のため自動一致しないままunmatchedに残るが、実体は既存のdarkhotelプロファイルで、対応するIOC/artifactは原文から直接収録済みである。新規プロファイル候補ではない。"
+        },
+        {
+          "name": "Jewelbug (aka Earth Alux, REF7707) / APT36 (Transparent Tribe) / HoneyMyte (Mustang Panda) / Akira ransomware affiliate",
+          "observations": 102,
+          "note": "いずれも既存プロファイルまたはunknown-clusters.jsonの既出クラスタに対応する複合名で、新規プロファイル候補ではない。判断は前回スキャンから変更なし。"
+        }
+      ],
+      "data_quality_corrections": [
+        {
+          "target": "profiles/darkhotel/actor-profile.json",
+          "issue": "enrich_activity_intelligence.py / enrich_targeting_scope.py が一次資料の裏付けなく標的へ活動期間と出典を付与した",
+          "note": "自動enrichがタイ・北朝鮮・小売・ホスピタリティの3標的へ活動期間2026-04〜2026-05とsource--daily-a945409955df891618a3を付与したが、360の一次資料はいずれも本キャンペーンの被害対象として記述していない。北朝鮮は囮のテーマであって被害国ではなく、タイは要約中の「リアルタイム」への部分一致による誤検出、小売・ホスピタリティはATT&CK Group概要由来の歴史的産業区分である。3標的の観測日と根拠を取込前の状態へ戻し、活動と被害事例からも当該標的参照を除去した。被害事例自体は原文の「虽然这次攻击活动涉及目标众多」に基づく匿名・集約事例として保持している。ルール側の恒久対処は未実施で、次回enrich実行時に再発するためactor_profile/activity-observation-rules.jsonの語境界処理と囮テーマの扱いを別途要検討。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security Blog",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-10",
+          "result": "cutoff後の新規なし。一覧HTMLはデータセンターIPから503となるため公式RSS(/topic/threat-intelligence/feed/)で確認した。最新はDeadLock ransomware(2026-08-10)で帰属アクターなし、判定済み。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-06",
+          "result": "cutoff後の新規なし。公開一覧はJavaScript描画のため各記事のdatePublishedを個別に取得して確認した。一覧最上位の「Adversaries Leverage AI for Vulnerability Exploitation...」はdatePublished 2026-05-11で既出。アクター別最新はUNC6671 Rebrands(2026-08-06、反映済み)で、mitigation-guidance(2026-07-30)以降に新しいアクター別記事はない。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-11",
+          "result": "cutoff後の新規公開なし。最新はKimwolf v7 botnet(2026-08-11)で前回から変化なし。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規公開なし。JWR phishing framework(2026-08-13、名前付きアクターへの帰属なし)とCuriouser and Curiouser(週次ニュースレター)から変化なし。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規公開なし。eset-research区分の一覧最上位はForgotten UEFI shims(2026-07-14)。8月の公開はbusiness-security・kids-online区分でESET Research外。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規公開なし。The Model Is the Malware(2026-08-13、名前付きアクターへの帰属なし)から変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-14",
+          "result": "cutoff後の新規なし。最新はHoneyMyte/CoolClient(2026-08-14)で反映済み。Armored Likho(2026-08-13)とProject CAV3RN(2026-08-11)はunknown-clusters.jsonへ登録済み。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-14",
+          "result": ".com側と同一構成で.ru固有の未取得記事はなし。HoneyMyte(116614)とArmored Likho(116417)はいずれも.com側で確認済み。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -1373,5 +1487,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-17増分では、tech-memo 2026-08-14〜08-17分の8レコードを主張単位でレビューし、前回pendingだったDarkhotel(APT-C-06)1件を新規採用した。微信の一次ソースはMicroMessenger系User-Agentで本文を取得でき、原文確認のうえ活動期間2026年4月〜5月末を月精度で設定、IOC 5件とartifact 10件を原文から直接収録した。Darkhotelにとって日付を持つ初の活動記録である。workbook由来の複合文字列aliasをAPT-C-06ほか4件へ分割した。一次情報源8サイトの公開一覧確認では新規公開は0件だった。自動enrichが一次資料の裏付けなく3標的へ活動期間を付与したため取込前の状態へ戻しており、ルール側の恒久対処は未実施である。"
 }

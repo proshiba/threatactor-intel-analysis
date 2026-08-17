@@ -702,6 +702,25 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。",
     "review_status": "approved"
   },
+  "darkhotel|https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "360高级威胁研究院: 「2026年4月，APT-C-06（Darkhotel）使用一个名为“조선중앙텔레비죤 실시간방영프로그람 해설서.docx”的诱饵文档开展钓鱼攻击活动」と原文が月単位で明示",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "360高级威胁研究院: 「到5月底，攻击方式升级为通过钓鱼邮件投递包含同样应用的压缩包」と原文が2026年5月末までの継続を月単位で明示",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "原文(360高级威胁研究院、微信公众号、2026-08-12公開。ページのcreateTime 2026-08-12 17:30 CST / ct=1786527000 = 2026-08-12T09:30:00Zで確認)を確認。前回スキャンでは微信の認証壁により本文を取得できずpendingで据え置いたが、MicroMessenger系User-Agentで本文を取得でき原文確認が成立した。記事はこの攻撃活動を主題とし、「2026年4月，APT-C-06（Darkhotel）使用一个名为“조선중앙텔레비죤 실시간방영프로그람 해설서.docx”的诱饵文档开展钓鱼攻击活动」とDarkhotelを実行主体として明記している。冒頭の組織説明も高級ホテル宿泊者への攻撃に由来する名称と2014年11月のKaspersky初報に言及しており、既存のprofiles/darkhotelと同一クラスタである。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。内容は北朝鮮中央テレビの実時間視聴アプリの解説文書を装った囮で利用者にアプリ導入を促し、5月末にはフィッシングメールで同アプリを含む圧縮ファイルを配布したもの。第1段階msiは内蔵dllのCustomAction読込をやめvbsで2つのスケジュールタスク(\\Microsoft\\Windows\\AppID\\PolicyManagerでtp.ps1を実行し駐留と次段階取得、\\ScriptingScheduleで自己削除)を作成し、正規プログラムVdPlayer.exeをC:\\Programdata\\vdplayer配下へ設置する。第2段階msiの一部は悪意あるdllを読み込み、パス名のhash照合で0_a^r(9)+!+$&)#ファイルを特定してChaCha20で復号し、その内容を鍵にshellcodeを復号して実行する。原文は最終shellcodeの復号鍵を未取得で機能は不明と明記しているため、機能面は断定しない。活動期間は原文が2026年4月と5月末を明示しているためactivity_periodへ月精度で設定し、資料公開日および tech-memo 日次ファイルの日付(2026-08-15)はreported_atとして分離する。IOC CSVのactor列が「APT-C-06 (Darkhotel)」という複合名で自動一致せずレコードのiocsが空のため、IOC 4件(MD5)とdomain 1件、artifact候補は原文の付録および本文からprofiles/darkhotelへ直接収録する。CSVのobserved列2026-08-12は公開日であり観測日へ流用しない。本レコードはDarkhotelプロファイルにとって日付を持つ初の活動記録となる。",
+    "review_status": "approved"
+  },
   "earth-lusca|https://chromium-review.googlesource.com/c/chromium/src/+/8165095": {
     "confidence": "low",
     "review_notes": "原文(Chromium Gerrit変更内容)およびBleepingComputer記事を確認したが、Earth Luscaへの言及はない。Google Chromeが新しいタブ乗っ取り拡張機能を既定でブロックする機能に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",
@@ -713,9 +732,9 @@
     "review_status": "rejected"
   },
   "earth-lusca|https://www.jamf.com/blog/amnesia-stealer-macos-infostealer-clickfix/": {
-    "review_status": "rejected",
     "confidence": "low",
-    "review_notes": "matched_termは「CHROMIUM」で、Earth Luscaのalias(Microsoft系命名)と一般語の衝突である。原文(Jamf Threat Labs, 2026-08-13公開)を確認したところ、記事はmacOS向け情報窃取マルウェアAmnesiaStealerの解析で、「Chromium」はChrome・Brave・Arc・Edgeを含むChromium系ブラウザーを指す製品名として使われている。Jamfは自社の呼称AmnesiaStealer(バックエンドのAmnesia Panelに由来)を用いるのみで、名前付きアクターへの帰属は行っていない。実行主体をEarth Luscaとする根拠はない。unknown-clusters.jsonのexcluded_name_collisionsにmatched_profile: earth-lusca / matched_term: CHROMIUMの同一パターンが既登録である。"
+    "review_notes": "matched_termは「CHROMIUM」で、Earth Luscaのalias(Microsoft系命名)と一般語の衝突である。原文(Jamf Threat Labs, 2026-08-13公開)を確認したところ、記事はmacOS向け情報窃取マルウェアAmnesiaStealerの解析で、「Chromium」はChrome・Brave・Arc・Edgeを含むChromium系ブラウザーを指す製品名として使われている。Jamfは自社の呼称AmnesiaStealer(バックエンドのAmnesia Panelに由来)を用いるのみで、名前付きアクターへの帰属は行っていない。実行主体をEarth Luscaとする根拠はない。unknown-clusters.jsonのexcluded_name_collisionsにmatched_profile: earth-lusca / matched_term: CHROMIUMの同一パターンが既登録である。",
+    "review_status": "rejected"
   },
   "earth-lusca|https://www.trendmicro.com/ja_jp/research/24/c/earth-lusca-uses-geopolitical-lure-to-target-taiwan.html": {
     "confidence": "high",
@@ -967,9 +986,9 @@
     "review_status": "approved"
   },
   "jewelbug|https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage": {
-    "review_status": "rejected",
     "confidence": "low",
-    "review_notes": "主張自体は妥当だが、同一の一次資料(Symantec, 2026-08-13公開)と当該2活動は2026-08-14の作業でprofiles/jewelbugを新規作成した際に原文から直接収録済みであり、本レコードは重複である。日次レコード経由で再度materializeすると同一活動が二重に登録されるため、rejectedとして重複登録を避ける。検知自体は正しく、Jewelbugプロファイル側のsource・activity・IOC 52件は既に反映されている。"
+    "review_notes": "主張自体は妥当だが、同一の一次資料(Symantec, 2026-08-13公開)と当該2活動は2026-08-14の作業でprofiles/jewelbugを新規作成した際に原文から直接収録済みであり、本レコードは重複である。日次レコード経由で再度materializeすると同一活動が二重に登録されるため、rejectedとして重複登録を避ける。検知自体は正しく、Jewelbugプロファイル側のsource・activity・IOC 52件は既に反映されている。",
+    "review_status": "rejected"
   },
   "judgement-panda|https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html": {
     "confidence": "medium",
@@ -1452,9 +1471,9 @@
     "review_status": "rejected"
   },
   "mustang-panda|https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/": {
-    "review_status": "approved",
     "confidence": "high",
-    "review_notes": "原文(Kaspersky GReAT/Securelist, 2026-08-14公開、datePublished 2026-08-14T09:00:14Zで確認)を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視しており、Attribution節も「Our analysis confirms that the investigated malware is a new CoolClient variant associated with the HoneyMyte threat group」と当該アクターを実行主体として記述しているため、scope懸念は原文で解消されると判断した。内容はCoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行うもの。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害を挙げ、政府機関の被害を確認したと明記している。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。観測期間は原文が「In late 2025 and 2026」としか述べておらず明示日付がないためactivity_periodはunknownのままとし、資料公開日はreported_atとして分離する。IOC CSVのactor列は「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、IOCとartifactは原文のIOC節からprofiles/mustang-pandaへ直接収録する。"
+    "review_notes": "原文(Kaspersky GReAT/Securelist, 2026-08-14公開、datePublished 2026-08-14T09:00:14Zで確認)を確認。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「CoolClient is a backdoor family attributed to the HoneyMyte APT group (also known as Mustang Panda)」とHoneyMyteとMustang Pandaを明示的に同一視しており、Attribution節も「Our analysis confirms that the investigated malware is a new CoolClient variant associated with the HoneyMyte threat group」と当該アクターを実行主体として記述しているため、scope懸念は原文で解消されると判断した。内容はCoolClientの新亜種が署名済みカーネルモードドライバーmsagent.sysをWindowsサービスとして展開し、IOCTL経由でプロセス・ファイル・レジストリの隠蔽と保護、NsiproxyフックによるC2アドレスのフィルタリングを行うもの。展開連鎖はPlugXを初期の足掛かりとし、Sangforの正規実行ファイルによるDLLサイドローディングでCoolClientへ移行する。Victimology節はミャンマー、モンゴル、パキスタン、ロシアの被害を挙げ、政府機関の被害を確認したと明記している。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。観測期間は原文が「In late 2025 and 2026」としか述べておらず明示日付がないためactivity_periodはunknownのままとし、資料公開日はreported_atとして分離する。IOC CSVのactor列は「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、IOCとartifactは原文のIOC節からprofiles/mustang-pandaへ直接収録する。",
+    "review_status": "approved"
   },
   "mustang-panda|https://thehackernews.com/2024/03/two-chinese-apt-groups-ramp-up-cyber.html": {
     "confidence": "medium",
@@ -2040,9 +2059,9 @@
     "review_status": "approved"
   },
   "transparent-tribe|https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/": {
-    "review_status": "rejected",
     "confidence": "low",
-    "review_notes": "原文(Acronis TRU, 2026-08-13公開)を確認。WebFetchは403のためcurlで取得した。Attribution and confidence節の記述は「TRU assesses with moderate confidence that the activity overlaps with the broader APT36 (Transparent Tribe) cluster or a closely related Pakistan-linked threat actor」であり、Transparent Tribeそのものへの帰属確定ではなく、近縁のパキスタン関連主体の可能性を併記した中確度の重複評価にとどまる。AGENT.mdのattribution-uncertainに該当し、類似・重複・関連のみを根拠にTransparent Tribeの活動として採用しない。IOC CSVのactor列も「APT36 (Transparent Tribe) (medium confidence)」という複合名かつ低信頼表現で自動一致対象外である。PATCHCORD/SHEETCORD/HACKERAI C2 Agentを扱う本クラスタはunknown-clusters.jsonへstatus: trackingで記録し、独立した一次資料が2本以上集まるか帰属が確定した時点で再評価する。原文はSuperShellおよびSilverFox帰属インフラとのC2フィンガープリント重複について「these observations alone are insufficient to support an attribution」と明記しており、SilverFoxへの帰属も支持されない旨を台帳へ残す。"
+    "review_notes": "原文(Acronis TRU, 2026-08-13公開)を確認。WebFetchは403のためcurlで取得した。Attribution and confidence節の記述は「TRU assesses with moderate confidence that the activity overlaps with the broader APT36 (Transparent Tribe) cluster or a closely related Pakistan-linked threat actor」であり、Transparent Tribeそのものへの帰属確定ではなく、近縁のパキスタン関連主体の可能性を併記した中確度の重複評価にとどまる。AGENT.mdのattribution-uncertainに該当し、類似・重複・関連のみを根拠にTransparent Tribeの活動として採用しない。IOC CSVのactor列も「APT36 (Transparent Tribe) (medium confidence)」という複合名かつ低信頼表現で自動一致対象外である。PATCHCORD/SHEETCORD/HACKERAI C2 Agentを扱う本クラスタはunknown-clusters.jsonへstatus: trackingで記録し、独立した一次資料が2本以上集まるか帰属が確定した時点で再評価する。原文はSuperShellおよびSilverFox帰属インフラとのC2フィンガープリント重複について「these observations alone are insufficient to support an attribution」と明記しており、SilverFoxへの帰属も支持されない旨を台帳へ残す。",
+    "review_status": "rejected"
   },
   "transparent-tribe|https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/": {
     "confidence": "medium",
