@@ -702,6 +702,25 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国のハッキンググループ「Evasive Panda（別名：DaggerFly）」が、ネットワーク機器のSSHデーモンにマルウェアを注入し、持続的なアクセスと隠密な操作を行っている。",
     "review_status": "approved"
   },
+  "darkhotel|https://mp.weixin.qq.com/s/KrQyZ2AZn9dcL3Fqyg_y3Q": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-04-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "activity-description-explicit-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-05-01T00:00:00Z"
+      }
+    },
+    "confidence": "high",
+    "review_notes": "一次資料(360高级威胁研究院, WeChat公式アカウント, 2026-08-12 17:30 UTC+8公開。ページ内 ct=1786527000 および createTime='2026-08-12 17:30' で公開日時を確認)の原文を確認。前回スキャン(2026-08-15)では一次ソースを取得できずpendingで残していたが、今回User-Agent付きcurlでHTTP 200・全文取得に成功したため判断を確定した。原文が「2026年4月，APT-C-06（Darkhotel）使用一个名为『조선중앙텔레비죤 실시간방영프로그람 해설서.docx』的诱饵文档开展钓鱼攻击活动」とAPT-C-06(Darkhotel)を実行主体として明記している。APT-C-06は本資料の発行元である360自身の呼称であり、原文が同一組織として扱っているためalias照合の懸念はない。同名製品・別クラスタ・法執行記事のいずれでもなく、原文が「和C06在25年的攻击活动使用的msi有一些不同」と2025年の活動と明示的に対比しているため過去言及でもない。攻撃連鎖は、朝鮮中央テレビをリアルタイム視聴するアプリの解説書を装った囮文書で利用者に導入を促し、第1段階MSIがCustomActionによる内蔵DLL読み込みではなくVBSを直接実行して計画タスク2件(\\Microsoft\\Windows\\AppID\\PolicyManager による tp.ps1 の永続化・次段階取得と、\\ScriptingSchedule による自己削除)を作成する。tp.ps1は system版・AV導入状況・識別子・32/64bit をURLパラメーターへ組み込んで iii ファイル(実体はMSI)を取得し、正規のVdPlayer.exeをC:\\Programdata\\vdplayer へ併せて導入する。第2段階MSIの一部は内蔵の悪性DLLを読み込み、各階層のパス名のhash列と埋め込みhash列を突き合わせる方式で C:\\ProgramData\\0_a^r(9)+!+$&)# を探索し、ChaCha20で復号した内容を鍵として更にShellcodeをChaCha20復号して実行する。最終Shellcodeの復号鍵は原文執筆時点で未入手であり機能は未解明であるため、能力としては登録しない。活動期間は原文が「2026年4月」および「到5月底」と明示しているため、first_observed=2026-04・last_observed=2026-05をprecision: monthで採用し、公開日2026-08-12とtech-memo日次ファイル日付2026-08-15はreported_atへ分離する(公開日を観測日へ流用しない)。原文は被害国・被害組織を明記していないため標的は追加せず、囮がKCTV関連であることから標的国を推定することもしない。IOC付録の5件(domain 1・MD5 4)はIOC CSVのactor列が「APT-C-06 (Darkhotel)」という複合名で自動一致しないため、レコード側のiocsは空のまま原文のIOC節から profiles/darkhotel へ直接収録する。本レコードの採用により、darkhotelは初めて日付を持つ活動を得る(既存3活動 Daybreak / Fallout Team / WizardOpium はいずれも期間unknown)。",
+    "review_status": "approved"
+  },
   "earth-lusca|https://chromium-review.googlesource.com/c/chromium/src/+/8165095": {
     "confidence": "low",
     "review_notes": "原文(Chromium Gerrit変更内容)およびBleepingComputer記事を確認したが、Earth Luscaへの言及はない。Google Chromeが新しいタブ乗っ取り拡張機能を既定でブロックする機能に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",
