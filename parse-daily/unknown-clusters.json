@@ -556,14 +556,28 @@
       "aliases": [],
       "status": "tracking",
       "first_seen": "2026-08-05",
-      "last_seen": "2026-08-05",
+      "last_seen": "2026-08-18",
       "detected_via": "tech-memo daily-news 2026-08-05",
       "attribution": {
         "state": "unattributed",
         "actor_type": "supply-chain-cybercrime",
-        "notes": "npmワームShai-Huludの後継(ChainDrop)の運用者。既知グループへの帰属記載なし。"
+        "notes": "npmワームShai-Huludの後継(ChainDrop)の運用者。既知グループへの帰属記載なし。 2026-08-18の確認時点で、Microsoft(2026-08-04)とUnit 42(2026-08-06)も本ワームを報告しているが、いずれも名前付きアクターへの帰属を行っていない。"
       },
       "observations": [
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/",
+          "title": "ChainDrop supply chain compromise: Anatomy of a self-propagating worm",
+          "published_at": "2026-08-04",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "malware": [
+            "ChainDrop"
+          ],
+          "summary": "400超のnpmパッケージが「a rapid sequence of unauthorized patch releases」として複数の無関係な公開者にまたがり侵害された。認証情報を窃取するワームを含む。",
+          "verified_by_analyst": "原文を確認済み。Microsoftは名前付き脅威アクターへの帰属を行っておらず、Typhoon/Sleet/Storm等の追跡名も付与していない。原文は攻撃期間を明示していない。"
+        },
         {
           "observed_on": "2026-08-05",
           "publisher": "StepSecurity",
@@ -576,11 +590,26 @@
           ],
           "summary": "Bunで実行されるnpmワーム。CI/CD認証情報を窃取し、EthereumデッドドロップとGitHubコミット検索をC2ディスカバリに使う。",
           "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。"
+        },
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/chaindrop-npm-worm-analysis/",
+          "title": "ChainDrop: Inside a Self-Propagating npm Worm",
+          "published_at": "2026-08-06",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "malware": [
+            "ChainDrop"
+          ],
+          "summary": "自己増殖型npmワームChainDropの解析。High Profile Threatsカテゴリで公開。",
+          "verified_by_analyst": "公開一覧で標題と公開日2026-08-06を確認。本文の詳細確認は未実施のため、本観測は独立した一次資料の存在確認までにとどめる。"
         }
       ],
       "related_profiles": [],
       "unresolved_questions": [
-        "未一致IOC観測10件はtech-memo CSV(20260805)に保持されている。北朝鮮系npm攻撃(apt38/Contagious Interview)との関係は一次資料に記載がなく関連付けない。"
+        "未一致IOC観測10件はtech-memo CSV(20260805)に保持されている。北朝鮮系npm攻撃(apt38/Contagious Interview)との関係は一次資料に記載がなく関連付けない。",
+        "独立した一次資料はStepSecurity・Microsoft・Unit 42の3本となり件数上は昇格閾値を満たすが、ChainDropはマルウェア／ワームの名称であり運用者は依然として未命名・未帰属である。アクター指定子が存在しないためプロファイルへは昇格させず、tracking を継続する。"
       ],
       "analyst_notes": ""
     },
@@ -844,6 +873,192 @@
         "原文はSuperShellの存在とSilverFox帰属インフラとのC2フィンガープリント類似に触れつつ、「these observations alone are insufficient to support an attribution」としてSilverFoxへの帰属を明確に否定している。unknown-cluster--silverfox とは結び付けない。"
       ],
       "analyst_notes": "2026-08-15の日次チェックで、レビューキューのtransparent-tribeレコード(daily-record--c5e374a4617188099050730f、assessment: attribution-uncertain)を不採用としたうえで台帳へ記録した。IOC CSVのactor列も「APT36 (Transparent Tribe) (medium confidence)」という複合名かつ低信頼表現で、自動一致の対象外である。"
+    },
+    {
+      "cluster_id": "unknown-cluster--jwr",
+      "primary_name": "JWR phishing framework の運用者（未命名）",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-18",
+      "last_seen": "2026-08-18",
+      "detected_via": "一次情報源チェック（Cisco Talos 公開一覧）。tech-memo daily-news には未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "phishing-as-a-service-cybercrime",
+        "notes": "Talos は運用者向けステータスメッセージが全て簡体字であることから 「indicating that a Chinese-speaking actor is operating this scam campaign」と中国語話者による運用を評価するにとどまり、名前付きグループへの帰属を行っていない。既存プロファイルに JWR・Outsider・Outsider Enterprise のいずれの名称も存在しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/dissecting-the-jwr-phishing-framework/",
+          "title": "Dissecting the JWR phishing framework",
+          "published_at": "2026-08-13",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "東南アジアと中東の利用者。SMSフィッシングで陸運当局、郵便・宅配事業者、UAEの電子料金収受システムを騙る。フィッシングページはShopify、PayPal、Apple、Klarna、各種銀行の決済・ログイン画面を模倣する。",
+          "malware": [
+            "JWR phishing framework"
+          ],
+          "tools": [],
+          "activity_period": "原文は攻撃観測期間を明示していない。公開日2026-08-13はreported_at相当であり観測日へ流用しない。",
+          "summary": "未文書化のリアルタイム型フィッシングフレームワーク。AES-CTRで暗号化したWebSocketで被害者のキーストロークを運用者へ逐次転送し、WebSocketが遮断される環境ではHTTPポーリングへフォールバックする。Vue.jsで描画する44種のフィッシングページと40超の運用者コマンドを備え、決済カード、パスポート・運転免許証等の身分証、社会保障番号、2FAコード、端末フィンガープリントを窃取する。ShopifyやWooCommerceの正規基盤とも連携する。",
+          "detection": {
+            "clamav": [
+              "Js.Phishing.JwrFramework-10060456-0"
+            ],
+            "snort": [
+              "66924",
+              "66925",
+              "66926",
+              "66927",
+              "66928"
+            ]
+          },
+          "verified_by_analyst": "原文を確認済み（帰属記述と公開日2026-08-13を直接確認）。IOCはハッシュ・ドメイン等の攻撃者インフラ値が原文本文に列挙されておらず、REST/WebSocketのURIパスのみのため本台帳には収録していない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Talos は「Talos assesses with medium confidence that the JWR phishing framework is a variant of 'The Outsider'」と評価し、The Outsider は中国語話者の運用者 'Outsider Enterprise' が運営する PhaaS であるとしている。ただしJWRとOutsider Enterpriseの同一性は確定していないため、本台帳ではJWR運用者を独立クラスタとして扱う。",
+        "原文は The Outsider プラットフォーム（2023年から稼働）に対するFBIの技術的テイクダウン作戦 'Ghost Hook' に言及している。法執行機関の資料そのものは未確認であり、一次資料を確認できた時点で 'Outsider Enterprise' を独立クラスタとして起こすか、本クラスタへ統合するかを判断する。現時点では単一ベンダーの初報のため昇格しない。"
+      ],
+      "analyst_notes": "2026-08-18の日次チェックで、tech-memo未収録の新規公開として一次情報源チェックのみで検知した。レビューキューには対応レコードが存在しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--cve-2026-59310-vcenter",
+      "primary_name": "CVE-2026-59310 を悪用する未分類の中国系侵入セット（QUIRSO 追跡）",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-18",
+      "last_seen": "2026-08-18",
+      "detected_via": "tech-memo daily-news 2026-08-18",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "suspected-china-nexus-intrusion-set",
+        "notes": "QUIRSOは「QUIRSO assesses with moderate confidence that the exploitation campaign targeting CVE-2026-59310 is operated by a Chinese-speaking threat actor, probably working in a UTC+8 environment」と中確度で中国語話者による運用を評価する一方、「QUIRSO currently has insufficient evidence to associate the campaign with a named Chinese threat group or determine that it is directed by the Chinese state. Until stronger infrastructure, malware or tradecraft overlaps are identified, QUIRSO tracks the activity as an uncategorized Chinese-nexus intrusion set」と明記し、名前付きグループへの帰属も国家指示の判断も行っていない。AGENT.mdのattribution-uncertainに該当する。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "QUIRSO GmbH (Threat Research / Incident Response)",
+          "url": "https://medium.com/@quirso_de/global-exploitation-of-cve-2026-59310-by-suspected-chinese-nexus-apt-related-cve-2026-59309-443a79e1466d",
+          "title": "Global Exploitation of CVE-2026-59310 by Suspected Chinese-Nexus APT & Related CVE-2026-59309 Activity",
+          "published_at": "2026-08-14",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "インターネット到達可能なVMware vCenter。47カ国361件の被害IP。上位5カ国はドイツ55、米国41、トルコ38、イラン26、フランス25で計185件。業種は技術・ソフトウェア・セキュリティ、高等教育・研究、通信・ネットワークサービスに集中。中国本土の被害は確認されていない。被害IP数は組織数ではない（ホスティング・クラウド・共用基盤を含むため）。",
+          "malware": [
+            "linuxFile (backdoor)",
+            "Babuk派生ランサムウェア (.babyk)"
+          ],
+          "tools": [
+            "reverse_ssh",
+            "JSP Webシェル",
+            "AList"
+          ],
+          "activity_period": "2026-08-03に最初の被害システムが攻撃者インフラへ接続（Broadcomの VMSA-2026-0006 公開 2026-07-29 の5日後）。2026-08-04に151件が新規観測され、2026-08-05までに361件中343件（約95%）が出現。図では2026-08-03〜2026-08-07の推移を示す。公開日2026-08-14は観測日へ流用しない。",
+          "summary": "vCenter Syslog Serverのディレクトリトラバーサル CVE-2026-59310 をroot権限のコード実行へ連鎖させ、linuxFileバックドアとreverse_sshを展開して永続的な遠隔アクセスを確立する。偽のVMware cronジョブ、SSH鍵、追加の管理者アカウント、パスワードなしsudoなど複数の永続化手段を併用し、ESXiホストへ横展開する。同一vCenterでは認証回避 CVE-2026-59309 とみられる別主体の可能性がある活動も観測された。一部環境ではESXi上でBabuk派生ランサムウェアが展開され、ESXiログも暗号化されたためフォレンジック情報が失われた。",
+          "attribution_basis": [
+            "攻撃者が作成したスクリプト中の中国語アーティファクト",
+            "中国のセキュリティ刊行物の研究内容の再利用が見られること",
+            "中国語のツール・管理ソフトウェアの反復使用",
+            "中国本土を除外した被害地理",
+            "UTC+8の勤務時間と整合する活動パターン"
+          ],
+          "verified_by_analyst": "原文を確認済み（Threat Actor Attribution節、Victimology節、公開日 2026-08-14T17:36:58Z を直接確認）。medium.com はWebFetch・curlともに403のため、テキスト抽出プロキシ経由で本文を取得した。IOC 32件はtech-memoのCSV(20260818)に保持されており、actor列は全て unknown である。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "原文はBabuk派生ランサムウェアの使用について「the use of Babuk-family ransomware should not be treated as strong attribution evidence in this case. It is possible that the Babuk-derived payload was selected opportunistically or even intentionally used to hinder attribution」と明記している。Babukの使用を根拠に既存のランサムウェア系プロファイルへ寄せない。",
+        "CVE-2026-59309 を悪用した活動は原文が「a possible different actor」として本キャンペーンと分離して扱っている。同一クラスタとして統合しない。",
+        "独立した2本目の一次資料、または政府・CERT・法執行機関の言及が得られた時点で昇格を検討する。現時点では単一ベンダーの報告2本（初報と本続報）であり、同一ベンダーのため昇格閾値を満たさない。"
+      ],
+      "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、IOC CSVのactor列が全て unknown のため review-queue にはレコードが生成されていない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--clop-windchill",
+      "primary_name": "Cl0p を名乗るPTC Windchill／FlexPLM恐喝キャンペーンの運用者",
+      "aliases": [
+        "Clop",
+        "Cl0p"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-18",
+      "last_seen": "2026-08-18",
+      "detected_via": "tech-memo daily-news 2026-08-18（既存プロファイルに Clop/Cl0p の名称が存在せず、名前一致もIOC CSVのactor一致も発生しなかったため、日次チェックの本文精査で検知した）",
+      "attribution": {
+        "state": "self-claimed-vendor-unconfirmed",
+        "actor_type": "data-extortion-cybercrime",
+        "notes": "直接観測したベンダーであるReliaQuestは「The actor behind these attacks remains unconfirmed. however, the observed tradecraft shares characteristics with previous Cl0p campaigns targeting enterprise applications and high-value data repositories」と明記しており、Cl0pへの帰属を確定していない。Cl0pへの結び付けは、リークサイトへの自己主張と恐喝メールの連絡先、および過去キャンペーンとの手口類似に基づく。AGENT.mdのattribution-uncertainに該当するため、活動レコードとしては採用しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "ReliaQuest（BleepingComputer経由で確認）",
+          "url": "https://www.bleepingcomputer.com/news/security/clop-ransomware-targets-windchill-flexplm-in-data-theft-attacks/",
+          "title": "Clop ransomware targets Windchill, FlexPLM in data theft attacks",
+          "published_at": "2026-07-24",
+          "source_type": "secondary-report-quoting-primary",
+          "reliability": "vendor-direct-observation-quoted",
+          "targets": "インターネット公開されたPTC Windchill／FlexPLM。製造、自動車、航空宇宙、小売の各分野で被害が確認されている。",
+          "malware": [],
+          "tools": [
+            "JSP Webシェル"
+          ],
+          "activity_period": "PTCは2026-06-17からCVE-2026-12569の修正提供を開始。研究者はCl0pのアフィリエイトが2026年6月上旬にゼロデイとして悪用を開始したと推定している。公開日は観測日へ流用しない。",
+          "summary": "CVE-2026-12569（安全でないデシリアライズによる未認証RCE、CVSS 9.3）を悪用し、JSP Webシェルを /Windchill/login/ 配下へ16進名で設置して製品データを窃取する。恐喝メールは無関係に侵害された正規メールアカウントから、対象組織の数百名へ一斉送信される。",
+          "verified_by_analyst": "ReliaQuestの原文はX投稿（https://x.com/ReliaQuestTR/status/2079963221365055890）であり未取得。BleepingComputerが引用した文言で帰属未確定の記述を確認した。PTCの公開advisoryはHTTP 403で取得できず、PTCは実際の悪用を確認していないと報じられている。"
+        },
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "bleepingcomputer.com",
+          "url": "https://www.bleepingcomputer.com/news/security/philips-and-ge-investigating-clop-ransomware-data-theft-claims/",
+          "title": "Philips and GE investigating Clop ransomware data theft claims",
+          "published_at": "2026-08-17",
+          "source_type": "secondary",
+          "reliability": "media",
+          "targets": "Cl0pはShell、GE、Philipsを含む43組織をリークサイトへ掲載した。",
+          "malware": [],
+          "tools": [
+            "JSP Webシェル"
+          ],
+          "activity_period": "原文は観測期間を明示していない。",
+          "summary": "PhilipsとGEがCl0pによるデータ窃取の主張を調査中。Philipsは特定の社内データ関連サーバーへの侵害試行を確認・封じ込め済みで顧客環境への影響はないとしている。GEとShellの被害範囲は調査中。",
+          "verified_by_analyst": "被害組織側の確認は「侵害試行の確認・封じ込め」までであり、Cl0pの主張する窃取内容は裏付けられていない。リークサイト掲載は攻撃者の自己主張であって独立した一次資料ではない。"
+        },
+        {
+          "observed_on": "2026-08-18",
+          "publisher": "CISA (Known Exploited Vulnerabilities Catalog)",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "title": "CVE-2026-12569 — PTC Windchill and FlexPLM Improper Input Validation Vulnerability",
+          "published_at": "2026-06-25",
+          "source_type": "government-advisory",
+          "reliability": "government",
+          "targets": "PTC Windchill and FlexPLM",
+          "malware": [],
+          "tools": [],
+          "activity_period": "dateAdded 2026-06-25、dueDate 2026-06-28。",
+          "summary": "CISA KEV（catalogVersion 2026.08.17）はCVE-2026-12569を実悪用として収録し、knownRansomwareCampaignUse を「Known」としている。ただしKEVはCl0pを含むいかなるアクター名も記載していない。",
+          "verified_by_analyst": "KEVのJSONフィードを直接取得して該当エントリを確認した（政府一次資料）。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "ta505",
+          "relation": "malware-attribution-overlap",
+          "confidence": "medium",
+          "basis": "公式MITRE ATT&CKはClopをマルウェア S0611 として登録し、これを使用するグループとして TA505 (G0092) のみを挙げている。ただしATT&CKのモデルではClopはアクター名ではなくマルウェア名であり、本キャンペーンの運用者がTA505本体であることを示す一次資料は確認できていない。profiles/ta505 は FIN11・Lace Tempest・DEV-0950・Indrik Spider・Evil Corp をいずれも scope: overlapping のaliasとして保持しており、Clop/Cl0p はaliasに含まれていない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Cl0p を独立プロファイルへ昇格させるか、profiles/ta505 のaliasとして scope を明示して扱うかが未決である。証拠は三方向に分かれる: (1) 公式ATT&CKとMalpediaはClopをマルウェア(S0611 / Clop (Windows), Clop (ELF))としてモデル化し、アクターはTA505とする。(2) ETDAとMISPは恐喝運用者をFIN11（別名 DEV-0950, Lace Tempest, Chubby Scorpius）として記録する。(3) 業界報道とtech-memoはCl0pを恐喝グループ名として扱う。AGENT.mdは新規プロファイル作成を別のレビュー対象と定めているため、本判断は保留し利用者の指示を待つ。",
+        "リポジトリには FIN11 の独立プロファイルが存在しない（profiles/fin1125 は別アクター FIN1125）。Cl0p を扱う場合、FIN11 の扱いも同時に決める必要がある。",
+        "現状 Clop/Cl0p はどのプロファイルの canonical name にも alias にも存在しないため、build_review_queue.py の名前一致でもIOC CSVのactor一致でも検知されない。本台帳エントリが解消されるまで、Cl0p 関連の日次ニュースはレビューキューに現れない点に注意する。",
+        "ReliaQuestの一次投稿（X）は未取得。Ransom-ISACの記事も未取得。いずれかを原文確認できれば帰属確度の評価を更新する。"
+      ],
+      "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、当該記事のIOCは「IOC情報なし」であり、review-queue にはレコードが生成されていない。「反証が見つからなかった」ではなく「ReliaQuestが明示的に帰属を未確定としている」状態である点を記録する。"
     }
   ],
   "excluded_name_collisions": [
