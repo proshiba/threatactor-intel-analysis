@@ -986,12 +986,12 @@
       ],
       "status": "tracking",
       "first_seen": "2026-08-18",
-      "last_seen": "2026-08-18",
+      "last_seen": "2026-08-19",
       "detected_via": "tech-memo daily-news 2026-08-18（既存プロファイルに Clop/Cl0p の名称が存在せず、名前一致もIOC CSVのactor一致も発生しなかったため、日次チェックの本文精査で検知した）",
       "attribution": {
-        "state": "self-claimed-vendor-unconfirmed",
+        "state": "attributed-by-vendor",
         "actor_type": "data-extortion-cybercrime",
-        "notes": "直接観測したベンダーであるReliaQuestは「The actor behind these attacks remains unconfirmed. however, the observed tradecraft shares characteristics with previous Cl0p campaigns targeting enterprise applications and high-value data repositories」と明記しており、Cl0pへの帰属を確定していない。Cl0pへの結び付けは、リークサイトへの自己主張と恐喝メールの連絡先、および過去キャンペーンとの手口類似に基づく。AGENT.mdのattribution-uncertainに該当するため、活動レコードとしては採用しない。"
+        "notes": "2026-08-19更新。2026-08-18時点ではReliaQuestの一次資料が未取得で、BleepingComputer経由の引用「The actor behind these attacks remains unconfirmed. however, the observed tradecraft shares characteristics with previous Cl0p campaigns targeting enterprise applications and high-value data repositories」しか確認できなかった。今回ReliaQuestの一次ブログ(2026-08-18)を直接取得し、同社が「This activity was highly likely conducted by the Clop extortion group」と評価を引き上げていること、根拠として恐喝メール連絡先のリークサイト一致、X-windchill-reqヘッダーの既存紐付け、DEWMODE／LEMURLOOTと同型の大量悪用パターンの3点を挙げていることを確認した。\nただし原文自身が「highly likely attribution」と限定しており、確定帰属ではない。AGENT.mdのattribution-uncertainを脱していないため、活動レコードとしては引き続き採用しない。また昇格閾値(独立した一次資料が2本以上、または政府・CERT・法執行機関による言及)も未達である。ReliaQuestは直接観測ベンダー1社であり、CISA KEVはCVE-2026-12569を収録するのみでCl0pを含むアクター名を記載していない。"
       },
       "observations": [
         {
@@ -1042,6 +1042,24 @@
           "activity_period": "dateAdded 2026-06-25、dueDate 2026-06-28。",
           "summary": "CISA KEV（catalogVersion 2026.08.17）はCVE-2026-12569を実悪用として収録し、knownRansomwareCampaignUse を「Known」としている。ただしKEVはCl0pを含むいかなるアクター名も記載していない。",
           "verified_by_analyst": "KEVのJSONフィードを直接取得して該当エントリを確認した（政府一次資料）。"
+        },
+        {
+          "observed_on": "2026-08-19",
+          "publisher": "ReliaQuest",
+          "url": "https://reliaquest.com/blog/clop-returns-with-custom-implant-in-mass-extortion-campaign/",
+          "title": "Clop Returns with Custom Implant in Mass-Extortion Campaign",
+          "published_at": "2026-08-18",
+          "source_type": "vendor-primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "インターネット公開されたPTC Windchill／FlexPLM。製造業の製品設計データと知的財産を保持するPLM基盤を対象とする。原文は個別の被害組織名を挙げていない。",
+          "malware": [],
+          "tools": [
+            "Windchill専用JSP Webシェル",
+            "カスタムJavaクラスローダー(Cldr)"
+          ],
+          "activity_period": "原文は観測期間を明示していない。公開日2026-08-18は観測日へ流用しない。原文は「within days of PTC's patch release, CISA added the vulnerability to its Known Exploited Vulnerabilities (KEV) catalog」と記載するにとどまる。",
+          "summary": "CVE-2026-12569(CVSS 9.3)悪用後に展開されるWindchill専用JSP Webシェルの解析。汎用Webシェルと異なり、Windchillの内部クラス(MethodContext、WTConnection、WTKeyStoreUtil)を直接呼び出す。(1)「S」コマンドでieStructProperties.txtを読み、keystoreのLDAP managerパスワードとオブジェクトストレージ資格情報、サイト管理者鍵を平文で復号して返す。(2)「fl」関数とFlst1クラスがgdb()経由でWindchill自身のDB接続を使い、vaultのstream ID・ファイル名・保管パス・サイズを列挙してflst.txtへ出力する。(3)カスタムJavaクラスローダーCldrがBase64化ZIP内のバイトコードをメモリー上でロード・実行し、横展開・追加マルウェア・暗号化ペイロードへ機能拡張できる。命令は独自HTTPヘッダー X-windchill-req で受け取り、応答はGZIP圧縮される。IOCとしてWebシェルのSHA256 1件と悪用元IP 7件が公開されている。",
+          "verified_by_analyst": "原文を直接取得して確認した(アクセス日 2026-08-19、JSON-LDの datePublished 2026-08-18T05:00-04:00)。2026-08-18時点で未取得だったReliaQuestの一次資料に該当する。帰属記述は「ReliaQuest identified a custom web shell highly likely linked to \"Clop\" (aka Cl0p)」「This activity was highly likely conducted by the Clop extortion group」であり、根拠として(a)恐喝メールの連絡先がCl0pの現行リークサイト掲載アドレスと一致すること、(b)X-windchill-reqヘッダーがCVE-2026-12569に関する外部報告で既にCl0pへ紐付いていること、(c)大量悪用後に専用Webシェルを展開する既知のパターン(CVE-2021-27101のDEWMODE、CVE-2023-34362のLEMURLOOT)との一致、の3点を明示している。原文は「References to \"Clop\" throughout reflect this highly likely attribution」と述べ、確定帰属ではないことを自ら限定している。IOC(SHA256 321e1fb01eb3462b48ff6ccdef132acc1182e3f7456548439f0d4ead12fd98bf、IP 5.180.41.35／78.128.113.10／104.194.9.14／104.243.35.63／185.227.83.236／209.222.98.44／216.152.151.204)は原文のIOC節で確認したが、帰属が確定していないため、いずれの既存プロファイルへも収録していない。昇格時に移送する。"
         }
       ],
       "related_profiles": [
@@ -1056,9 +1074,9 @@
         "Cl0p を独立プロファイルへ昇格させるか、profiles/ta505 のaliasとして scope を明示して扱うかが未決である。証拠は三方向に分かれる: (1) 公式ATT&CKとMalpediaはClopをマルウェア(S0611 / Clop (Windows), Clop (ELF))としてモデル化し、アクターはTA505とする。(2) ETDAとMISPは恐喝運用者をFIN11（別名 DEV-0950, Lace Tempest, Chubby Scorpius）として記録する。(3) 業界報道とtech-memoはCl0pを恐喝グループ名として扱う。AGENT.mdは新規プロファイル作成を別のレビュー対象と定めているため、本判断は保留し利用者の指示を待つ。",
         "リポジトリには FIN11 の独立プロファイルが存在しない（profiles/fin1125 は別アクター FIN1125）。Cl0p を扱う場合、FIN11 の扱いも同時に決める必要がある。",
         "現状 Clop/Cl0p はどのプロファイルの canonical name にも alias にも存在しないため、build_review_queue.py の名前一致でもIOC CSVのactor一致でも検知されない。本台帳エントリが解消されるまで、Cl0p 関連の日次ニュースはレビューキューに現れない点に注意する。",
-        "ReliaQuestの一次投稿（X）は未取得。Ransom-ISACの記事も未取得。いずれかを原文確認できれば帰属確度の評価を更新する。"
+        "解消済み(2026-08-19)。ReliaQuestの一次ブログ「Clop Returns with Custom Implant in Mass-Extortion Campaign」(2026-08-18)を直接取得し、帰属根拠とIOCを原文で確認した。2026-08-18時点で未取得だったX投稿は、同一調査の告知であり内容は本ブログに含まれると判断する。Ransom-ISACの記事は引き続き未取得で、原文中の恐喝メール画像の出典として参照されているのみである。"
       ],
-      "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、当該記事のIOCは「IOC情報なし」であり、review-queue にはレコードが生成されていない。「反証が見つからなかった」ではなく「ReliaQuestが明示的に帰属を未確定としている」状態である点を記録する。"
+      "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、当該記事のIOCは「IOC情報なし」であり、review-queue にはレコードが生成されていない。「反証が見つからなかった」ではなく「ReliaQuestが明示的に帰属を未確定としている」状態である点を記録する。 2026-08-19の日次チェックで、tech-memo daily-news 2026-08-19 経由でReliaQuestの一次ブログを検知し、原文確認のうえ観測を追加した。帰属評価はself-claimed-vendor-unconfirmed から attributed-by-vendor へ更新したが、昇格閾値は未達のため status は tracking のまま据え置く。Cl0pを独立プロファイルへ昇格させるか profiles/ta505 の alias として扱うかの判断は引き続き保留であり、利用者の指示を待つ。"
     }
   ],
   "excluded_name_collisions": [

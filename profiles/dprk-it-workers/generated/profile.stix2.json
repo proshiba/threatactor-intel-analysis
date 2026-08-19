@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-08-19T04:07:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -34,7 +34,7 @@
         "history": "",
         "capability_details": "",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
+        "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=北米、西欧。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -315,6 +315,158 @@
       }
     },
     {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明",
+      "description": "FlareとIBM X-Forceが共同で実施した、北朝鮮IT労働者(North Korean IT Worker、NKITW)エコシステムの日常運用に関する調査報告。原文は「does not focus on a specific incident or cluster of activity」と明記しており、特定の侵害事案ではなく、内部スプレッドシート、内部共有スライド、IP Messengerログ、Google Translate履歴、ブラウザ履歴といった一次資料から運用実態そのものを解明したものである。\n\n組織構造として、NKITWエコシステムはRecruiter(候補者の選別と初回面接の録画)、Facilitator(ペルソナ作成、就職獲得、新規要員のオンボーディング、協力者との接続)、IT Worker(実務)、Collaborator／Broker(西側の身元提供者・アカウント売買)の4つの役割で構成されると評価している。FacilitatorとIT Workerの職掌は重複し、厳密には分離できない。採用面接では「C Digital LLC」というステルス期のスタートアップを名乗り、候補者へ米国の身元(profiles)を貸与すると説明する。候補者自身がDPRKのための就労と認識しているかは確認できていない。\n\n身分偽装は、Protonmail等の捨てアドレスを起点にGmailを取得し、LinkedIn、GitHub、Upwork等へ偽プロフィールを作成する流れで行われる。顔写真は逆画像検索を避けるためAI編集され、履歴書テンプレートの改変、企業のメールアドレス書式調査に基づく偽の前職照会状の作成、偽装身分の国籍に合わせたGoogle Voice番号の使用が確認されている。フルタイム就労では本人確認と給与振込が障壁となるため、LinkedInやGitHubで勧誘した西側協力者に薬物検査、バックグラウンドチェック、I-9書類、社給端末の受領、銀行・税務情報の提供を代行させ、協力者の実機へAnyDesk等でリモート接続して就労する。フリーランス就労では検証済みアカウントを違法フォーラムやブローカーから購入する。\n\n就労維持の局面では、Google TranslateとChatGPTが恒常的に使用される。Jiraチケットの翻訳、ChatGPTへの解法照会、回答の翻訳、Slackの翻訳、GitHubへのPull Request提出という循環が数週間から数か月続く。翻訳履歴の多くが英語から韓国語への方向であり、英語で下書きした文面を韓国語へ戻して意味を自己検証していると評価されている。最終的に成果や意思疎通の問題から解雇に至り、協力者経由での端末返送と最終給与の受領を経て、新しい身分で同じ工程を繰り返す。\n\n内部基盤としては、北朝鮮側が運用する管理用Webプラットフォーム「RB Site」(内部アドレス 192.168.109.2、machine_info、network_reports、payment、blocked_urls等の画面)と「NetkeyRegister」(内部アドレス 172.20.100.7:8000)が特定された。FlareはRBをKorea Ryonbong General Corporationの略と中確度で評価している。端末にはDPRK製VPNのNetKey(4.1／5.0／5.1)またはOConnect(5.3／5.5／5.7／5.9.3／6.0.0)が導入され、実行パスに「STN Corp」「rb corp」が現れる。バージョンの連続性から、5.2前後でNetKeyがOConnectへ改称された可能性が高いと評価されている。内部連絡にはサーバー不要のIP Messengerが使われる。\n\n帰属について原文は、軍需工業部、国防省、科学教育部、偵察総局など複数の政府機関・党組織・フロント企業がそれぞれITワーカーを展開しており、個々のワーカーを特定部署へ確度高く帰属させることは困難であるとしている。最優先の動機は、獲得した給与を当局へ還流させることである。原文はさらに、一部のチームがデータの持ち出しや恐喝、暗号資産の窃取にも関与すると記載している。",
+      "external_references": [
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "activity--dprk-it-workers-flare-xforce-nkitw-2026",
+      "x_confidence": "high",
+      "x_analyst_notes": "本レコードは日次チェック(2026-08-19)で検知した。tech-memo daily-news 2026-08-19 に掲載されたが、原文の公開日は2026-03-18(dateModified 2026-06-24)であり新規公開ではない。tech-memo掲載日は公開日にも観測日にも流用していない。\n原文が「does not focus on a specific incident or cluster of activity」と明記し、被害組織名も秘匿されているため、個別被害者を特定したvictim_caseは作成していない(enrich_activity_intelligenceが生成する集約victim_caseはdisclosure_status: aggregate、victim_name: nullのまま保持する)。\n活動記述からの自動抽出では、帰属国である北朝鮮が標的国として、また動機記述中の暗号資産窃取が標的産業として誤検出された。いずれもAGENT.mdの「帰属国やインフラ所在国を標的国へ流用しない」に反するため、記述の文分割を調整して誤検出を解消した(内容は原文どおりで削っていない)。標的として収録したのは、原文が明示したNorth America／Western Europeの2地域と、IT・ソフトウェア開発企業およびWebエージェンシーの2産業のみである。\n観測期間は原文が明示していないためunknownとした。本文に引用されたIP Messengerログの表示に「Tue Jul 11 20:20:00 2023」があるが、単一ログの表示時刻であり調査全体の観測期間の根拠にはできないため、first_observed／last_observedへ採用していない。\n偽装身分の作成に用いられた国名(Iran、India、United States、Croatia、Czech Republic、Colombia、Ireland、Syria、Saudi Arabia、Japan)は、攻撃者が作成したプロフィールの設定国であって被害国ではない。日本が含まれるが日本国内の被害確認ではないため、標的国へ収録していない。標的地域は原文が明示した North America と Western Europe のみを収録した。\nRB Site(192.168.109.2)とNetkeyRegister(172.20.100.7)はいずれもprivate IPかつ北朝鮮内部網のアドレスであり、防御側から観測できる攻撃者インフラではないためIOCへ採用していない。NetKey／OConnectのバージョン、実行パス、プロセス名、IP Messengerのログ書式はartifact級の値であり、本活動追加とは別にartifacts.csvへの収録可否を判断する。\nNetKey／OConnectは北朝鮮内部網への認証用と評価されており、被害組織への通信を中継するproxyとしての記述はないため、T1090(Proxy)は付与していない。所在地偽装はT1583.003(Virtual Private Server)として記録した。\n「North Korean IT Workers (NKITW)」は本プロファイル(DPRK IT Worker Schemes)と同一概念の総称であり、新規プロファイルは作成していない。ただし現状aliasへ未登録のため、build_review_queue.pyの名前一致では検知されない。alias追加は別途の判断とする。",
+      "x_reported_at": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--dprk-it-workers",
+          "name": "DPRK IT Worker Schemes",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--c8e6994beb392d81aac5",
+            "ttp--dprk-it-workers-flare-nkitw-t1078",
+            "ttp--dprk-it-workers-flare-nkitw-t1219",
+            "ttp--dprk-it-workers-flare-nkitw-t1583-003",
+            "ttp--dprk-it-workers-flare-nkitw-t1585-001",
+            "ttp--dprk-it-workers-flare-nkitw-t1585-002",
+            "ttp--dprk-it-workers-flare-nkitw-t1586",
+            "ttp--dprk-it-workers-flare-nkitw-t1593-002",
+            "ttp--dprk-it-workers-flare-nkitw-t1656"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--dprk-it-workers--region--north-america",
+            "target--dprk-it-workers--region--western-europe",
+            "target--dprk-it-workers--sector--information-technology",
+            "target--dprk-it-workers--sector--web-agency"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a31956aff1a38158c5d9"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-03-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "financial-fraud",
+          "phases": [
+            "Command And Control",
+            "Defense Evasion",
+            "Persistence",
+            "Reconnaissance",
+            "Resource Development"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": [
+              "target--dprk-it-workers--region--north-america",
+              "target--dprk-it-workers--region--western-europe"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--flare-ibm-xforce-nkitw-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e0d3ce4e-ef38-4c30-9894-b3d2082a5239",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北米",
+      "identity_class": "organization",
+      "description": "原文は「The North Korean regime mobilizes thousands of skilled IT professionals to infiltrate organizations across North America and Western Europe」と明示しており、就労先として狙われる地域として記録する。",
+      "external_references": [
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0948188d-5b91-46f4-9e2d-39e24548e633",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "西欧",
+      "identity_class": "organization",
+      "description": "原文は「... infiltrate organizations across North America and Western Europe」と明示しており、就労先として狙われる地域として記録する。フランス人を装ったNKITWがフランス向けの履歴書を用意する例、Webエージェンシーへ就労した例が記載されている。",
+      "external_references": [
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "high"
+    },
+    {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
@@ -363,7 +515,7 @@
       "spec_version": "2.1",
       "id": "identity--eb3898a4-08b6-47d8-8d97-588bf39a78ef",
       "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "modified": "2026-08-19T04:07:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -375,6 +527,33 @@
           "source_name": "ANY.RUN",
           "description": "Local source: https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/",
           "external_id": "source--anyrun-it-workers-part-two-2026"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5f1bf110-548d-4a22-9338-55d2f9de40d7",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "受託開発を行うWebエージェンシーとそのクライアント",
+      "identity_class": "organization",
+      "description": "原文は「Web agencies that do contract work for multiple clients are a popular choice for NKITW to apply to」と記載し、エージェンシーへ就労したNKITWがエージェンシー自身に加えてそのクライアント環境(クライアント側の社用メール、Jira、SharePoint、Shopify、CRM)にもアカウントを付与された事例を示している。1件の就労が複数の顧客組織へ波及する構造として記録する。",
+      "external_references": [
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
         }
       ],
       "x_target_category": "sectors",
@@ -441,6 +620,126 @@
       },
       "x_confidence": "high",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--f330a17c-b8f8-428b-92c0-da1a6df1c7e1",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明",
+      "identity_class": "organization",
+      "description": "FlareとIBM X-Forceが共同で実施した、北朝鮮IT労働者(North Korean IT Worker、NKITW)エコシステムの日常運用に関する調査報告。原文は「does not focus on a specific incident or cluster of activity」と明記しており、特定の侵害事案ではなく、内部スプレッドシート、内部共有スライド、IP Messengerログ、Google Translate履歴、ブラウザ履歴といった一次資料から運用実態そのものを解明したものである。\n\n組織構造として、NKITWエコシステムはRecruiter(候補者の選別と初回面接の録画)、Facilitator(ペルソナ作成、就職獲得、新規要員のオンボーディング、協力者との接続)、IT Worker(実務)、Collaborator／Broker(西側の身元提供者・アカウント売買)の4つの役割で構成されると評価している。FacilitatorとIT Workerの職掌は重複し、厳密には分離できない。採用面接では「C Digital LLC」というステルス期のスタートアップを名乗り、候補者へ米国の身元(profiles)を貸与すると説明する。候補者自身がDPRKのための就労と認識しているかは確認できていない。\n\n身分偽装は、Protonmail等の捨てアドレスを起点にGmailを取得し、LinkedIn、GitHub、Upwork等へ偽プロフィールを作成する流れで行われる。顔写真は逆画像検索を避けるためAI編集され、履歴書テンプレートの改変、企業のメールアドレス書式調査に基づく偽の前職照会状の作成、偽装身分の国籍に合わせたGoogle Voice番号の使用が確認されている。フルタイム就労では本人確認と給与振込が障壁となるため、LinkedInやGitHubで勧誘した西側協力者に薬物検査、バックグラウンドチェック、I-9書類、社給端末の受領、銀行・税務情報の提供を代行させ、協力者の実機へAnyDesk等でリモート接続して就労する。フリーランス就労では検証済みアカウントを違法フォーラムやブローカーから購入する。\n\n就労維持の局面では、Google TranslateとChatGPTが恒常的に使用される。Jiraチケットの翻訳、ChatGPTへの解法照会、回答の翻訳、Slackの翻訳、GitHubへのPull Request提出という循環が数週間から数か月続く。翻訳履歴の多くが英語から韓国語への方向であり、英語で下書きした文面を韓国語へ戻して意味を自己検証していると評価されている。最終的に成果や意思疎通の問題から解雇に至り、協力者経由での端末返送と最終給与の受領を経て、新しい身分で同じ工程を繰り返す。\n\n内部基盤としては、北朝鮮側が運用する管理用Webプラットフォーム「RB Site」(内部アドレス 192.168.109.2、machine_info、network_reports、payment、blocked_urls等の画面)と「NetkeyRegister」(内部アドレス 172.20.100.7:8000)が特定された。FlareはRBをKorea Ryonbong General Corporationの略と中確度で評価している。端末にはDPRK製VPNのNetKey(4.1／5.0／5.1)またはOConnect(5.3／5.5／5.7／5.9.3／6.0.0)が導入され、実行パスに「STN Corp」「rb corp」が現れる。バージョンの連続性から、5.2前後でNetKeyがOConnectへ改称された可能性が高いと評価されている。内部連絡にはサーバー不要のIP Messengerが使われる。\n\n帰属について原文は、軍需工業部、国防省、科学教育部、偵察総局など複数の政府機関・党組織・フロント企業がそれぞれITワーカーを展開しており、個々のワーカーを特定部署へ確度高く帰属させることは困難であるとしている。最優先の動機は、獲得した給与を当局へ還流させることである。原文はさらに、一部のチームがデータの持ち出しや恐喝、暗号資産の窃取にも関与すると記載している。",
+      "external_references": [
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--a31956aff1a38158c5d9",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--dprk-it-workers--region--north-america",
+        "target--dprk-it-workers--region--western-europe",
+        "target--dprk-it-workers--sector--information-technology",
+        "target--dprk-it-workers--sector--web-agency"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--c8e6994beb392d81aac5",
+        "ttp--dprk-it-workers-flare-nkitw-t1078",
+        "ttp--dprk-it-workers-flare-nkitw-t1219",
+        "ttp--dprk-it-workers-flare-nkitw-t1583-003",
+        "ttp--dprk-it-workers-flare-nkitw-t1585-001",
+        "ttp--dprk-it-workers-flare-nkitw-t1585-002",
+        "ttp--dprk-it-workers-flare-nkitw-t1586",
+        "ttp--dprk-it-workers-flare-nkitw-t1593-002",
+        "ttp--dprk-it-workers-flare-nkitw-t1656"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "VPN／リモートアクセス機器",
+        "サーバー",
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "原文はさらに、一部のチームがデータの持ち出しや恐喝、暗号資産の窃取にも関与すると記載している。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--aec2482b-dbb2-4fe3-b33c-93ef8c4ceb6e",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Desktop Software",
+      "description": "フルタイム就労では本人確認と給与振込が障壁となるため、LinkedInやGitHubで勧誘した西側協力者に薬物検査、バックグラウンドチェック、I-9書類、社給端末の受領、銀行・税務情報の提供を代行させ、協力者の実機へAnyDesk等でリモート接続して就労する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219.002",
+          "url": "https://attack.mitre.org/techniques/T1219/002/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--c8e6994beb392d81aac5",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -666,6 +965,366 @@
       },
       "x_confidence": "high",
       "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。ANY.RUNが観測期間を明示していないため観測日はunknownとし、記事公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--039c90f5-3383-4108-88fb-c235b64ef434",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Valid Accounts",
+      "description": "採用後、雇用主から正規に付与されたアカウント(社用メール、Slack、Zoom、Teams、Jira、BambooHR)で業務を継続する。受託開発を行うWebエージェンシーへ就労した場合はエージェンシーのクライアント環境にもアカウント(クライアント側の社用メール、Jira、SharePoint、Shopify、CRM)が発行され、アクセス範囲がクライアントへ拡大する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1078",
+          "url": "https://attack.mitre.org/techniques/T1078/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1078",
+      "x_tactic": "Persistence",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--396c6e1f-6cf8-4d97-9dda-96044e8088ea",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Access Software",
+      "description": "西側協力者が所有する米国内の実機へリモートデスクトップ接続し、そこから求職・就労する。協力者が社給ノートPCを返送しに外出する際、AnyDeskのセッションを開いたまま離席した事例が記録されている。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219",
+          "url": "https://attack.mitre.org/techniques/T1219/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1219",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ef1c1ddf-3135-4de0-b495-5c7cbcd221be",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Acquire Infrastructure: Virtual Private Server",
+      "description": "所在地を偽装するため、なりすます地域のIPアドレスを持つクラウド上の仮想マシンで作業する。1台を複数人で共有し、同時に複数の偽装身分を運用する場合がある。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1583.003",
+          "url": "https://attack.mitre.org/techniques/T1583/003/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1583-003",
+      "x_tactic": "Resource Development",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ba9293e6-3d4e-46da-babf-891b78ff5da7",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Establish Accounts: Social Media Accounts",
+      "description": "LinkedIn、GitHub、Upwork等へ偽の身分でプロフィールを作成する。GitHubでは空またはboilerplateのみのリポジトリ(「nextjs-app」「flutter-app」等)とfork、AI編集した顔写真で経歴を装う。「how to create fake commit activity on GitHub」「how to get fake Github badges」の検索痕跡が確認されている。集客用の作り込んだプロフィールと、就労後の実務専用の空のプロフィールを使い分ける。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1585.001",
+          "url": "https://attack.mitre.org/techniques/T1585/001/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1585-001",
+      "x_tactic": "Resource Development",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--2dc5d5a4-5cd9-4ce6-954e-d87d33bf8925",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Establish Accounts: Email Accounts",
+      "description": "Protonmail等の本人確認要件が緩い事業者で捨てアドレスを作成し、これを二次確認用アドレスとしてGmailアカウントを取得する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1585.002",
+          "url": "https://attack.mitre.org/techniques/T1585/002/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1585-002",
+      "x_tactic": "Resource Development",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--1f119329-3411-4373-8056-01608d4479a1",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Compromise Accounts",
+      "description": "フリーランス系プラットフォームは本人確認と入金口座の登録を求めるため、検証済みアカウントを違法フォーラムや個別ブローカーから購入する。playerpuff.comの投稿では既知のNKITWペルソナが利益分配を条件にアカウント購入を持ちかけていた。Upworkのアカウントブローカーと本人確認をめぐって係争になった記録も確認されている。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1586",
+          "url": "https://attack.mitre.org/techniques/T1586/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1586",
+      "x_tactic": "Resource Development",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--784c9538-7806-4e8c-93d7-cfc33e06d43d",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Search Open Websites/Domains: Search Engines",
+      "description": "なりすます人物像に合わせるため、対象国のフリーランス求人プラットフォーム、対象地域の有名大学とIT企業、企業のメールアドレス書式をGoogleで検索し、履歴書と偽の前職照会状を作成する。求人検索向けGoogle Dorkの手順を記載した内部スライドがチームへ共有されていた。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1593.002",
+          "url": "https://attack.mitre.org/techniques/T1593/002/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1593-002",
+      "x_tactic": "Reconnaissance",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--08f56286-1e3f-4d7d-ba0c-58d5863dc421",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Impersonation",
+      "description": "偽名、偽の職歴、偽の推薦状で応募する。西側協力者から提供・売却された実在人物の身元を用いる場合は、氏名と連絡先だけ本人のものとし職歴・照会先・学歴を偽装する。協力者は薬物検査の受検、パスポートや運転免許の取得、バックグラウンドチェックとI-9書類の通過、社給端末の受領、銀行・税務情報の提供を代行する。顔写真は逆画像検索を避けるためAI編集され、背景画像もAIツールで加工される。面接時は偽装身分の国籍に合わせたGoogle Voice番号を用いる。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1656",
+          "url": "https://attack.mitre.org/techniques/T1656/"
+        },
+        {
+          "source_name": "Flare Research and IBM X-Force",
+          "description": "Local source: https://flare.io/learn/resources/north-korean-infiltrator-threat",
+          "external_id": "source--flare-ibm-xforce-nkitw-2026"
+        }
+      ],
+      "x_profile_object_id": "ttp--dprk-it-workers-flare-nkitw-t1656",
+      "x_tactic": "Defense Evasion",
+      "x_activity_refs": [
+        "activity--dprk-it-workers-flare-xforce-nkitw-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "一次資料に明示された行動をATT&CKへ分析者対応付けした。原文が観測期間を明示していないため観測日はunknownとし、公開日を観測日へ流用していない。"
     },
     {
       "type": "attack-pattern",
@@ -1696,6 +2355,36 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--535cb6b5-50a6-4d32-9ec0-e85ae7d6da5e",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "identity--e0d3ce4e-ef38-4c30-9894-b3d2082a5239",
+      "description": "DPRK IT Worker Schemes targets 北米 (profile target category: regions).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--89d79d6f-1169-452b-8ac7-0d92135a4943",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "identity--0948188d-5b91-46f4-9e2d-39e24548e633",
+      "description": "DPRK IT Worker Schemes targets 西欧 (profile target category: regions).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--73662a76-ec20-42b4-a78a-e0eb57c1ca75",
       "created": "2026-08-13T11:03:44Z",
       "modified": "2026-08-13T11:03:44Z",
@@ -1736,6 +2425,21 @@
       "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
       "target_ref": "identity--eb3898a4-08b6-47d8-8d97-588bf39a78ef",
       "description": "DPRK IT Worker Schemes targets リモート採用を行うIT・ソフトウェア開発企業 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a8dc1455-9dbb-40fa-a7d4-77a119bacc24",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "identity--5f1bf110-548d-4a22-9338-55d2f9de40d7",
+      "description": "DPRK IT Worker Schemes targets 受託開発を行うWebエージェンシーとそのクライアント (profile target category: sectors).",
       "x_confidence": "high"
     },
     {
@@ -1891,6 +2595,246 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--5fb36236-64ba-4906-a92b-49c4dfee7b9c",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 is attributed or linked to DPRK IT Worker Schemes.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e6097986-82fe-47d9-964d-2521f0a470e9",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "identity--e0d3ce4e-ef38-4c30-9894-b3d2082a5239",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 targets target--dprk-it-workers--region--north-america.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7430a6b3-b6c8-481b-bf0b-1b5a67e60be3",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "identity--0948188d-5b91-46f4-9e2d-39e24548e633",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 targets target--dprk-it-workers--region--western-europe.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--66a04ed2-279d-4dc2-a157-3a0700ea4381",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "identity--eb3898a4-08b6-47d8-8d97-588bf39a78ef",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 targets target--dprk-it-workers--sector--information-technology.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--251c24dd-e23e-427e-a6cc-8935ba6ff5d2",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "identity--5f1bf110-548d-4a22-9338-55d2f9de40d7",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 targets target--dprk-it-workers--sector--web-agency.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ad709ce8-46e8-42e8-b183-e2a8186d86c5",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--aec2482b-dbb2-4fe3-b33c-93ef8c4ceb6e",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--activity-rule--c8e6994beb392d81aac5.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ca59482c-9a80-4327-a131-dab86b5e60f1",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--039c90f5-3383-4108-88fb-c235b64ef434",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1078.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--865333f0-241e-4b22-990f-c0d3e42d1105",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--396c6e1f-6cf8-4d97-9dda-96044e8088ea",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1219.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ef42d564-1303-4e7e-a14d-499fdd6ffbd4",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--ef1c1ddf-3135-4de0-b495-5c7cbcd221be",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1583-003.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aca38a2b-b7db-4fc6-b515-ceb7d93ea023",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--ba9293e6-3d4e-46da-babf-891b78ff5da7",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1585-001.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--990b0f0d-d1c8-4412-96dd-5c1fa484ee75",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--2dc5d5a4-5cd9-4ce6-954e-d87d33bf8925",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1585-002.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8b3627ba-132f-403a-ae7f-ae25d04db785",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--1f119329-3411-4373-8056-01608d4479a1",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1586.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bf8c23e5-6282-49cb-8726-1b316a3caebd",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--784c9538-7806-4e8c-93d7-cfc33e06d43d",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1593-002.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cf6b90c3-7919-423d-afc4-61b30837c18c",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "attack-pattern--08f56286-1e3f-4d7d-ba0c-58d5863dc421",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 uses ttp--dprk-it-workers-flare-nkitw-t1656.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f75538e2-669c-4961-97a1-ded5b4f0ffd3",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+      "target_ref": "identity--f330a17c-b8f8-428b-92c0-da1a6df1c7e1",
+      "description": "NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 affected victim--activity-rule--a31956aff1a38158c5d9.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--94c65c1e-00fc-46bc-8d07-9abbfda2ebb0",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--aec2482b-dbb2-4fe3-b33c-93ef8c4ceb6e",
+      "description": "フルタイム就労では本人確認と給与振込が障壁となるため、LinkedInやGitHubで勧誘した西側協力者に薬物検査、バックグラウンドチェック、I-9書類、社給端末の受領、銀行・税務情報の提供を代行させ、協力者の実機へAnyDesk等でリモート接続して就労する。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--8c6346e8-606f-49e1-88de-82182233d3ce",
       "created": "2026-08-13T11:03:44Z",
       "modified": "2026-08-13T11:03:44Z",
@@ -1961,6 +2905,126 @@
       "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
       "target_ref": "attack-pattern--89fabfa2-a56b-4237-a50b-9efec36bd417",
       "description": "偽造または窃取した身分証明書、社会保障番号(SSN)、銀行口座を用いて別人になりすまし、Angelo Espree(スマートコントラクト開発者)、Jack Anderson(フロントエンド開発者)、Lucas Theo(バックエンド開発者)としてリモート職へ応募・採用された。偽装身分はテキサス、ニューヨーク、カリフォルニアの所在を主張していた。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--202ab50c-2e67-4b32-bb79-13cc6c7854ef",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--039c90f5-3383-4108-88fb-c235b64ef434",
+      "description": "採用後、雇用主から正規に付与されたアカウント(社用メール、Slack、Zoom、Teams、Jira、BambooHR)で業務を継続する。受託開発を行うWebエージェンシーへ就労した場合はエージェンシーのクライアント環境にもアカウント(クライアント側の社用メール、Jira、SharePoint、Shopify、CRM)が発行され、アクセス範囲がクライアントへ拡大する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--13750954-b8d7-4371-bf43-db5f712d0f39",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--396c6e1f-6cf8-4d97-9dda-96044e8088ea",
+      "description": "西側協力者が所有する米国内の実機へリモートデスクトップ接続し、そこから求職・就労する。協力者が社給ノートPCを返送しに外出する際、AnyDeskのセッションを開いたまま離席した事例が記録されている。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bcb2b252-ac4b-4c03-b892-c7ab653f350c",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--ef1c1ddf-3135-4de0-b495-5c7cbcd221be",
+      "description": "所在地を偽装するため、なりすます地域のIPアドレスを持つクラウド上の仮想マシンで作業する。1台を複数人で共有し、同時に複数の偽装身分を運用する場合がある。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b37a3970-3e3b-4d52-95e7-236a2545bd8c",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--ba9293e6-3d4e-46da-babf-891b78ff5da7",
+      "description": "LinkedIn、GitHub、Upwork等へ偽の身分でプロフィールを作成する。GitHubでは空またはboilerplateのみのリポジトリ(「nextjs-app」「flutter-app」等)とfork、AI編集した顔写真で経歴を装う。「how to create fake commit activity on GitHub」「how to get fake Github badges」の検索痕跡が確認されている。集客用の作り込んだプロフィールと、就労後の実務専用の空のプロフィールを使い分ける。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96b3dba3-dc5c-4f12-9368-52e52fcce256",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--2dc5d5a4-5cd9-4ce6-954e-d87d33bf8925",
+      "description": "Protonmail等の本人確認要件が緩い事業者で捨てアドレスを作成し、これを二次確認用アドレスとしてGmailアカウントを取得する。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7f3b26b4-4242-4ba0-b09c-9aab68f8f607",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--1f119329-3411-4373-8056-01608d4479a1",
+      "description": "フリーランス系プラットフォームは本人確認と入金口座の登録を求めるため、検証済みアカウントを違法フォーラムや個別ブローカーから購入する。playerpuff.comの投稿では既知のNKITWペルソナが利益分配を条件にアカウント購入を持ちかけていた。Upworkのアカウントブローカーと本人確認をめぐって係争になった記録も確認されている。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1f21ed49-aa06-41cb-a78b-c369d07725d7",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--784c9538-7806-4e8c-93d7-cfc33e06d43d",
+      "description": "なりすます人物像に合わせるため、対象国のフリーランス求人プラットフォーム、対象地域の有名大学とIT企業、企業のメールアドレス書式をGoogleで検索し、履歴書と偽の前職照会状を作成する。求人検索向けGoogle Dorkの手順を記載した内部スライドがチームへ共有されていた。",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2d8ab44d-5cec-4f23-9657-9365d55ccd4c",
+      "created": "2026-08-19T04:07:00Z",
+      "modified": "2026-08-19T04:07:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "target_ref": "attack-pattern--08f56286-1e3f-4d7d-ba0c-58d5863dc421",
+      "description": "偽名、偽の職歴、偽の推薦状で応募する。西側協力者から提供・売却された実在人物の身元を用いる場合は、氏名と連絡先だけ本人のものとし職歴・照会先・学歴を偽装する。協力者は薬物検査の受検、パスポートや運転免許の取得、バックグラウンドチェックとI-9書類の通過、社給端末の受領、銀行・税務情報の提供を代行する。顔写真は逆画像検索を避けるためAI編集され、背景画像もAIツールで加工される。面接時は偽装身分の国籍に合わせたGoogle Voice番号を用いる。",
       "x_confidence": "high"
     },
     {
@@ -13580,7 +14644,7 @@
       "spec_version": "2.1",
       "id": "report--4866b070-ed64-4a8c-adcd-7d4f48f7b9e4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "modified": "2026-08-19T04:07:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13589,7 +14653,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-13T11:03:44Z",
+      "published": "2026-08-19T04:07:00Z",
       "object_refs": [
         "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
         "tool--4cd7a435-8992-44e3-8eb2-58133f327b95",
@@ -13598,15 +14662,29 @@
         "tool--d4de0719-53d2-45ca-af90-0491bb5df1d1",
         "tool--15683e80-c92a-4d04-9c76-905a2c378707",
         "campaign--ae35d91d-b6a7-436f-b925-70420acbc2db",
+        "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
+        "identity--e0d3ce4e-ef38-4c30-9894-b3d2082a5239",
+        "identity--0948188d-5b91-46f4-9e2d-39e24548e633",
         "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
         "identity--46460d3e-e3aa-4135-9e3a-aefdaf0c3579",
         "identity--eb3898a4-08b6-47d8-8d97-588bf39a78ef",
+        "identity--5f1bf110-548d-4a22-9338-55d2f9de40d7",
         "identity--a5cf2c59-c054-45d2-9a48-53f321b29e83",
+        "identity--f330a17c-b8f8-428b-92c0-da1a6df1c7e1",
+        "attack-pattern--aec2482b-dbb2-4fe3-b33c-93ef8c4ceb6e",
         "attack-pattern--dab9e50d-91d4-409c-8e03-2b52f328ae39",
         "attack-pattern--01b059bd-c179-4350-a766-2c90992662be",
         "attack-pattern--d542281b-330a-4931-a606-234a66592b26",
         "attack-pattern--0bbe2480-1689-4cbd-84b1-fab7b304575b",
         "attack-pattern--89fabfa2-a56b-4237-a50b-9efec36bd417",
+        "attack-pattern--039c90f5-3383-4108-88fb-c235b64ef434",
+        "attack-pattern--396c6e1f-6cf8-4d97-9dda-96044e8088ea",
+        "attack-pattern--ef1c1ddf-3135-4de0-b495-5c7cbcd221be",
+        "attack-pattern--ba9293e6-3d4e-46da-babf-891b78ff5da7",
+        "attack-pattern--2dc5d5a4-5cd9-4ce6-954e-d87d33bf8925",
+        "attack-pattern--1f119329-3411-4373-8056-01608d4479a1",
+        "attack-pattern--784c9538-7806-4e8c-93d7-cfc33e06d43d",
+        "attack-pattern--08f56286-1e3f-4d7d-ba0c-58d5863dc421",
         "attack-pattern--25452de9-a2da-4736-8bc0-d56f459fd3fe",
         "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
         "attack-pattern--a355db3e-befd-49fb-a013-69bd590da728",
