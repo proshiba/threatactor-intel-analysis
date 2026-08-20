@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--silent-librarian`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-08-20T05:53:25Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -109,11 +109,15 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 ## 攻撃活動の履歴
 
-活動履歴なし
+| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | ransomware-extortion | 2013 | 2017-12 | 2026-08-20 |  |  |  |  | 米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。 | 中 | `source--daily-ac0aab951821b27df384` |
 
 ### 活動別ダイヤモンドモデル
 
-活動別ダイヤモンドモデルなし
+| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
+|---|---|---|---|---|---|---|---|
+| 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | Silent Librarian | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 
 
@@ -186,17 +190,18 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--silent-librarian--8face31a321e90fd | silent librarian |  | 不明 | actor_profile/evidence/silent-librarian.csv | structured-data | TLP:CLEAR | 中 |
-| source--silent-librarian--08f205a61fe8698f | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
-| source--silent-librarian--3f2755172c94632d | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
-| source--silent-librarian--c4f9158d7899ed12 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
-| source--silent-librarian--946ba58701120acd | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
-| source--silent-librarian--3464e33fce328076 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--daily-ac0aab951821b27df384 | 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | justice.gov | 2026-08-20 | https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary | osint-report | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--silent-librarian--08f205a61fe8698f | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
+| source--silent-librarian--3464e33fce328076 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--silent-librarian--3f2755172c94632d | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
+| source--silent-librarian--8face31a321e90fd | silent librarian |  | 不明 | actor_profile/evidence/silent-librarian.csv | structured-data | TLP:CLEAR | 中 |
+| source--silent-librarian--946ba58701120acd | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
+| source--silent-librarian--c4f9158d7899ed12 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述

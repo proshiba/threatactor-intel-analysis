@@ -581,14 +581,19 @@ def actor_attribution_context(
     )
     japanese_terms = (
         r"^\s*(?:(?:系|関連|関与|支援|国家支援|政府支援)(?:の)?|"
-        r"の(?:国家|政府)?(?:支援)?)?\s*"
+        r"の(?:国家|政府)?(?:支援)?)?\s*人?\s*"
         r"(?:APT|ハッカー|ハッキンググループ|アクター|攻撃者|グループ|"
         r"サイバー部隊|SVR|GRU|FSB)"
     )
+    # 「イラン人17人を起訴」のように国籍＋人数で被疑者を数える表現は攻撃者側の
+    # 国籍であり、被害国ではない。「日本人を標的」のような被害者表現は数詞を
+    # 伴わないため、この判定では除外されない。
+    japanese_nationality_count = r"^\s*人\s*(?:約)?\d+\s*人"
     if (
         re.search(attribution_suffix, after)
         or re.search(actor_terms, after)
         or re.search(japanese_terms, after)
+        or re.search(japanese_nationality_count, after)
         or re.search(r"^\s*(?:系|関連|関与|支援)(?:の)?", after)
         or re.search(r"^\s*の(?:敵対国|同盟国|友好国)", after)
     ):

@@ -4,7 +4,7 @@
   "name": "Silent Librarian",
   "status": "draft",
   "created_at": "2026-07-25T11:08:02Z",
-  "updated_at": "2026-08-01T23:19:04Z",
+  "updated_at": "2026-08-20T05:58:07Z",
   "languages": [
     "ja"
   ],
@@ -114,7 +114,117 @@
     "operational_capabilities": [],
     "analyst_notes": ""
   },
-  "activities": [],
+  "activities": [
+    {
+      "activity_id": "activity--daily-4d15dec07641eea42e80",
+      "name": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+      "activity_type": "ransomware-extortion",
+      "first_observed": {
+        "basis": "DOJ press release: The campaign started in approximately 2013",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "DOJ press release: continued through at least December 2017",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
+      "target_refs": [
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--country--united-states",
+        "target--sector--government"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--a3fd052f21deca13b807"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ac0aab951821b27df384"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--4d15dec07641eea42e809f27 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: DOJ原文（article:published_time 2026-08-18T13:47:35-04:00、ページ内time要素も Tuesday, August 18, 2026）をUser-Agent付きcurlでHTTP 200・全文取得して確認した。本件は法執行記事であり新規の攻撃活動報告ではないため「新しい活動の検知」としては扱わない。一方で原文が政府一次資料として活動期間と標的を明示しているため、期間unknownのまま放置せず、既存プロファイル（status: draft、activities 0件）へ当該キャンペーンを活動として登録する目的で承認する。\n主体の確認: 原文は「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute, an Iran-based company that, since at least 2013, has conducted a coordinated campaign of cyber intrusions」とMabna Instituteを実行主体として明記している。ATT&CK G0122の記述自体が「Members of Silent Librarian are known to have been affiliated with the Iran-based Mabna Institute」として同一の2018年3月起訴を引用しており、本件はその重畳起訴（17名中9名が2018年3月起訴済み、8名が新規追加）である。同名製品・別クラスタではない。\nconfidenceをmediumに留める理由: alias scopeがoverlappingであり、Mabna Institute（雇用元企業）と Silent Librarian（ATT&CKのグループ呼称）は完全には一致しない。DOJ原文は「Silent Librarian」の名称を使用していないため帰属確定として扱わない。\n活動期間: 原文の「The campaign started in approximately 2013, continued through at least December 2017」から first_observed=2013（precision: year）、last_observed=2017-12（precision: month）を採用した。公開日2026-08-18とtech-memo日次ファイル日付2026-08-20はreported_atへ分離する。\ntech-memo要約と原文の相違3点（採用しない）: (1)「34億ドル相当の知的財産窃取」は誤り。原文は「U.S.-based universities spent more than approximately $3.4 billion to procure and access such data and intellectual property」で米大学側の調達費用である。(2)「178大学」は海外分のみで、原文は米国144校＋海外178校＝322校。(3)「米国の少なくとも10州政府機関」は誤りで、原文は「at least five U.S. federal and state government agencies」（労働省、FERC、ハワイ州、インディアナ州、国連、UNICEFを列挙）。原文と一致した値: 31.5TB窃取、10万超の教授アカウント標的・約8,000件侵害、HBOへの約600万ドル相当Bitcoin恐喝、5名への最大1,000万ドル報奨金、NGO2団体。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--silent-librarian",
+          "name": "Silent Librarian",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+            "target--activity-rule--sector--e7608f51421ca8b1e297",
+            "target--country--united-states",
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a3fd052f21deca13b807"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "DOJ press release: The campaign started in approximately 2013",
+            "precision": "year",
+            "status": "known",
+            "value": "2013-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "DOJ press release: continued through at least December 2017",
+            "precision": "month",
+            "status": "known",
+            "value": "2017-12-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "data-theft",
+            "financial-loss"
+          ],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [
+              "target--country--united-states"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ac0aab951821b27df384"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
   "targets": {
     "countries": [
       {
@@ -276,20 +386,21 @@
         "name": "米国",
         "description": "Targeting text mentions united states.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "DOJ press release: The campaign started in approximately 2013; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2013-01-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "DOJ press release: continued through at least December 2017; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2017-12-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-ac0aab951821b27df384",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
@@ -381,6 +492,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-ac0aab951821b27df384",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -432,24 +544,69 @@
     ],
     "sectors": [
       {
+        "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "name": "非営利・市民社会",
+        "description": "活動「米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "DOJ press release: The campaign started in approximately 2013; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2013-01-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "DOJ press release: continued through at least December 2017; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2017-12-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ac0aab951821b27df384"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴」の記述で標的として明示された産業。",
+        "first_observed": {
+          "basis": "DOJ press release: The campaign started in approximately 2013; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2013-01-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "DOJ press release: continued through at least December 2017; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2017-12-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ac0aab951821b27df384"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
         "id": "target--sector--government",
         "name": "Government",
         "description": "Targeting text indicates the Government sector.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "DOJ press release: The campaign started in approximately 2013; activity-period",
+          "precision": "year",
+          "status": "known",
+          "value": "2013-01-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "DOJ press release: continued through at least December 2017; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2017-12-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-ac0aab951821b27df384",
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
@@ -814,24 +971,6 @@
   ],
   "sources": [
     {
-      "source_id": "source--mitre-attack-19-1",
-      "path": "actor_profile/reference/attack-index.json",
-      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-      "publisher": "MITRE",
-      "published_at": {
-        "value": "2026-05-12T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "upstream-release"
-      },
-      "language": "en",
-      "source_type": "structured-knowledge-base",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
-    },
-    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -850,112 +989,66 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
-      "source_id": "source--silent-librarian--8face31a321e90fd",
-      "path": "actor_profile/evidence/silent-librarian.csv",
-      "title": "silent librarian",
-      "publisher": "",
+      "source_id": "source--daily-ac0aab951821b27df384",
+      "path": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+      "title": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+      "publisher": "justice.gov",
       "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "structured-data",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--silent-librarian--08f205a61fe8698f",
-      "path": "A_Threat_Actor_Encyclopedia.pdf",
-      "title": "A Threat Actor Encyclopedia",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--silent-librarian--3f2755172c94632d",
-      "path": "Threat Group Cards.pdf",
-      "title": "Threat Group Cards",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--silent-librarian--c4f9158d7899ed12",
-      "path": "Threat_Group_Cards_v2.0.pdf",
-      "title": "Threat Group Cards v2.0",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
-    },
-    {
-      "source_id": "source--silent-librarian--946ba58701120acd",
-      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
-      "title": "APT group Intelligence Research handbook 2022",
-      "publisher": "",
-      "published_at": {
-        "value": "2022-01-01T00:00:00Z",
-        "precision": "year",
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "basis": "filename"
+        "basis": "daily-news-file-date"
       },
       "language": "unknown",
-      "source_type": "report",
+      "source_type": "osint-report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
       "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260820.md; source commit: d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
-      "source_id": "source--silent-librarian--3464e33fce328076",
-      "path": "summary/2024/threat actor list from cs.csv",
-      "title": "threat actor list from cs",
-      "publisher": "",
+      "source_id": "source--mitre-attack-19-1",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-05-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "language": "unknown",
-      "source_type": "structured-data",
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
     },
     {
       "source_id": "source--osint-misp-mitre-intrusion-set",
@@ -1010,30 +1103,112 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
-      "source_id": "source--osint-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
-      "publisher": "ETDA / ThaiCERT",
+      "source_id": "source--silent-librarian--08f205a61fe8698f",
+      "path": "A_Threat_Actor_Encyclopedia.pdf",
+      "title": "A Threat Actor Encyclopedia",
+      "publisher": "",
       "published_at": {
         "value": null,
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
       },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
+      "language": "unknown",
+      "source_type": "report",
       "tlp": "TLP:CLEAR",
       "reliability": "medium",
-      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
-      "actor_scope": "unknown",
-      "claims_supported": [
-        "identity-crosscheck",
-        "alias-lead",
-        "relationship-lead"
-      ],
-      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--silent-librarian--3464e33fce328076",
+      "path": "summary/2024/threat actor list from cs.csv",
+      "title": "threat actor list from cs",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--silent-librarian--3f2755172c94632d",
+      "path": "Threat Group Cards.pdf",
+      "title": "Threat Group Cards",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--silent-librarian--8face31a321e90fd",
+      "path": "actor_profile/evidence/silent-librarian.csv",
+      "title": "silent librarian",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "structured-data",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--silent-librarian--946ba58701120acd",
+      "path": "summary/2022/APT group Intelligence Research handbook-2022.pdf",
+      "title": "APT group Intelligence Research handbook 2022",
+      "publisher": "",
+      "published_at": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "filename"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--silent-librarian--c4f9158d7899ed12",
+      "path": "Threat_Group_Cards_v2.0.pdf",
+      "title": "Threat Group Cards v2.0",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
       "source_id": "source--target-audit-etda-threat-group-cards",
@@ -1081,5 +1256,60 @@
     "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、オーストラリア、カナダ、スイス、トルコ、中国、日本、米国、英国、香港。標的地域=中東、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\n144 universities in the United States, 176 foreign universities in 21 countries, five federal and state government agencies in the United States, 36 private companies in the United States, 11 foreign private companies, and two international non-governmental organizations",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
-  "victim_cases": []
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--a3fd052f21deca13b807",
+      "name": "被害事例: 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
+      "activity_refs": [
+        "activity--daily-4d15dec07641eea42e80"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "target--country--united-states",
+        "target--sector--government"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。"
+        },
+        {
+          "impact_type": "financial-loss",
+          "description": "侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。"
+        }
+      ],
+      "first_observed": {
+        "basis": "DOJ press release: The campaign started in approximately 2013",
+        "precision": "year",
+        "status": "known",
+        "value": "2013-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "DOJ press release: continued through at least December 2017",
+        "precision": "month",
+        "status": "known",
+        "value": "2017-12-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ac0aab951821b27df384"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ]
 }

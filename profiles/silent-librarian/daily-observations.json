@@ -1,0 +1,67 @@
+{
+  "schema_version": "2.0.0",
+  "actor_ref": "actor--silent-librarian",
+  "updated_at": "2026-08-20T05:53:25Z",
+  "records": [
+    {
+      "record_id": "daily-record--4d15dec07641eea42e809f27",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "silent-librarian",
+        "canonical_name": "Silent Librarian",
+        "matched_term": "Mabna Institute",
+        "scope": "overlapping",
+        "match_confidence": "high",
+        "reason": "news-body",
+        "raw_value": "Mabna Institute"
+      },
+      "activity": {
+        "title": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+        "summary": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
+        "news_date": "2026-08-20",
+        "news_url": "https://www.bleepingcomputer.com/news/security/us-charges-iranian-hackers-over-34-billion-intellectual-property-theft/",
+        "primary_url": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+        "activity_reference": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+        "news_path": "daily-news/news/2026_07-09/20260820.md"
+      },
+      "confidence": "medium",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "source_path": "daily-news/news/2026_07-09/20260820.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "DOJ原文（article:published_time 2026-08-18T13:47:35-04:00、ページ内time要素も Tuesday, August 18, 2026）をUser-Agent付きcurlでHTTP 200・全文取得して確認した。本件は法執行記事であり新規の攻撃活動報告ではないため「新しい活動の検知」としては扱わない。一方で原文が政府一次資料として活動期間と標的を明示しているため、期間unknownのまま放置せず、既存プロファイル（status: draft、activities 0件）へ当該キャンペーンを活動として登録する目的で承認する。\n主体の確認: 原文は「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute, an Iran-based company that, since at least 2013, has conducted a coordinated campaign of cyber intrusions」とMabna Instituteを実行主体として明記している。ATT&CK G0122の記述自体が「Members of Silent Librarian are known to have been affiliated with the Iran-based Mabna Institute」として同一の2018年3月起訴を引用しており、本件はその重畳起訴（17名中9名が2018年3月起訴済み、8名が新規追加）である。同名製品・別クラスタではない。\nconfidenceをmediumに留める理由: alias scopeがoverlappingであり、Mabna Institute（雇用元企業）と Silent Librarian（ATT&CKのグループ呼称）は完全には一致しない。DOJ原文は「Silent Librarian」の名称を使用していないため帰属確定として扱わない。\n活動期間: 原文の「The campaign started in approximately 2013, continued through at least December 2017」から first_observed=2013（precision: year）、last_observed=2017-12（precision: month）を採用した。公開日2026-08-18とtech-memo日次ファイル日付2026-08-20はreported_atへ分離する。\ntech-memo要約と原文の相違3点（採用しない）: (1)「34億ドル相当の知的財産窃取」は誤り。原文は「U.S.-based universities spent more than approximately $3.4 billion to procure and access such data and intellectual property」で米大学側の調達費用である。(2)「178大学」は海外分のみで、原文は米国144校＋海外178校＝322校。(3)「米国の少なくとも10州政府機関」は誤りで、原文は「at least five U.S. federal and state government agencies」（労働省、FERC、ハワイ州、インディアナ州、国連、UNICEFを列挙）。原文と一致した値: 31.5TB窃取、10万超の教授アカウント標的・約8,000件侵害、HBOへの約600万ドル相当Bitcoin恐喝、5名への最大1,000万ドル報奨金、NGO2団体。",
+      "activity_claim": {
+        "assessment": "scope-review-required",
+        "actor_role": "unknown",
+        "match_location": "body",
+        "evidence_text": "- 米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。",
+        "reasons": [
+          "alias scopeがoverlappingであり同一アクターと断定できない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_period": {
+        "first_observed": {
+          "basis": "DOJ press release: The campaign started in approximately 2013",
+          "precision": "year",
+          "status": "known",
+          "value": "2013-01-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "DOJ press release: continued through at least December 2017",
+          "precision": "month",
+          "status": "known",
+          "value": "2017-12-01T00:00:00Z"
+        }
+      },
+      "source_commit": "d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d"
+    }
+  ]
+}

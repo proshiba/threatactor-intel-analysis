@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "836c268d0fb747b2060f25aa7b772727ee29c440",
-  "last_scanned_date": "2026-08-18",
+  "last_scanned_commit": "d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d",
+  "last_scanned_date": "2026-08-20",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1459,6 +1459,143 @@
           "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
           "latest_relevant_publication": "2026-08-17",
           "result": "今回追加で確認した政府一次資料(catalogVersion 2026.08.17)。CVE-2026-12569(PTC Windchill/FlexPLM)をdateAdded 2026-06-25・knownRansomwareCampaignUse: Known として収録しているが、Cl0pを含むアクター名の記載はない。CVE-2026-59310/59309/47301/69414はKEV未収録。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-08-20T02:10:00Z",
+      "window": {
+        "since": "2026-08-18",
+        "until": null
+      },
+      "source_commit": "d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d",
+      "statistics": {
+        "news_files": 3,
+        "articles": 34,
+        "review_records": 1,
+        "approved_records": 1,
+        "rejected_records": 0,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 42,
+        "materialization_window": "queueは2026-08-18以降で再生成した。観点1・2の交差は0件で、直近365日に活動があった85アクターについてtech-memoの新規ウィンドウに新しい報告はなかった。生成されたレコードは silent-librarian の1件のみで、これを承認・反映した。pendingが0となり2026-08-20分までレビューを完了したため last_scanned_date を2026-08-20へ進めた。台帳へは新規4クラスタを追加した。"
+      },
+      "applied": [
+        {
+          "actor": "silent-librarian",
+          "name": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+          "source": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "decision": "DOJ原文（article:published_time 2026-08-18T13:47:35-04:00）をUser-Agent付きcurlでHTTP 200・全文取得して確認した。本件は法執行記事であり新規の攻撃活動報告ではないため「新しい活動の検知」としては扱わないが、原文が政府一次資料として活動期間と標的を明示しており、silent-librarianは status: draft かつ activities 0件であったため、当該キャンペーンを活動として登録する目的で承認した。原文の「The campaign started in approximately 2013, continued through at least December 2017」から first_observed=2013（precision: year）、last_observed=2017-12（precision: month）を採用し、公開日2026-08-18とtech-memo日次ファイル日付2026-08-20はreported_atへ分離した。14訴因のS2重畳起訴でMabna Institute構成員17名、うち9名は2018年3月起訴済み、8名が新規追加。alias scopeがoverlappingであるためconfidenceはmediumに留めた（DOJ原文は「Silent Librarian」の名称を使用していない）。validate_daily.py は error 0・warning 1（non-exact-approved: scope=overlapping、想定どおり）。\ntech-memo要約と原文の相違3点を確認し、プロファイルのanalyst_notesへ記録した。(1)「34億ドル相当の知的財産窃取」は誤りで、原文は米大学側が当該データ・IPの調達とアクセスに費やした額が34億ドル超であるとしている。(2)「178大学」は海外分のみで、原文は米国144校＋海外178校＝322校。(3)「米国の少なくとも10州政府機関」は誤りで、原文は連邦・州機関5つ以上（労働省、FERC、ハワイ州、インディアナ州、国連、UNICEFを列挙）。\n反映時に enrich_activity_intelligence.py が帰属国イランを標的国として誤登録した。原因はactor_attribution_context の日本語ガードが「イラン人ハッカー」「イラン人17人」という国籍表現を攻撃者側と認識できなかったことである。ガードへ国籍接尾辞「人」と「人N人」の判定を追加して修正し、全679プロファイルのdry-run差分で影響が silent-librarian の当該1件のみ（targets 6797→6796）であることを確認した。「日本人を標的」のような被害者表現は従来どおり標的として残る。回帰テストを2件追加した。"
+        }
+      ],
+      "rejected": [],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--quicsilver",
+          "action": "added",
+          "note": "status: tracking。Seqrite「Operation QUICSILVER」(2026-08-17)を原文確認。原文は「We assess this activity to be China-nexus with moderate confidence.」とのみ述べ名前付きAPTへ帰属していない。ミャンマー政府・外交関係者標的、2026年4〜7月、Go製バックドアQUICAgent。builder hostname「desktop-stv6gg」で Operation GriefLure（Seqrite 2026年5月）と重複。単一ベンダーの初報のため昇格しない。unmatched_actor_valuesの「China-nexus actor (medium confidence)」（観測16件）の実体である。"
+        },
+        {
+          "cluster_id": "unknown-cluster--cameraswarm",
+          "action": "added",
+          "note": "status: tracking。Hunt.io「Operation CameraSwarm」(2026-08-18)を原文確認。原文は「The toolkit is assembled, not authored.」として名前付きアクターへ帰属していない。2026-06-17〜07-22の35日間にDahua製IPカメラ14,530台超を侵害、ウクライナとロシアに集中。キャンペーン名でありアクター名ではない。単一ベンダーの初報のため昇格しない。"
+        },
+        {
+          "cluster_id": "unknown-cluster--thehatman",
+          "action": "added",
+          "note": "status: tracking。Unit 42 Threat Brief の2026-08-18更新で検知、tech-memo未収録。原文が「Unit 42 has not verified these claims.」と明記しており自己主張のみのため活動レコード化しない。profiles/temp-veles の「HatMan」（CISAによるTRITONマルウェアの呼称）とは無関係な同名別エンティティであり、誤統合防止のため related_profiles へ false-match として記録した。"
+        },
+        {
+          "cluster_id": "unknown-cluster--medusa-ransomware",
+          "action": "added",
+          "note": "status: tracking。CISA/FBI/HHS の AA25-071A 更新（2026年4月時点で重要インフラ500組織超、2025年3月初版は300組織超）。既存679プロファイルにMedusaの正式名・aliasがなく検知漏れであった。政府共同アドバイザリのため昇格閾値そのものは満たすが、cisa.gov が本実行環境から HTTP 403（Akamai edge）を返し、PDF版とWayback Machineも到達不能で原文を取得できていないため昇格は保留した。既存 storm-1175（MicrosoftがMedusa展開アフィリエイトとして命名）と、UNC3886が使用するLinuxルートキット MEDUSA はいずれも別エンティティであり、related_profiles で分離を明示した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "Clop",
+          "observations": 8,
+          "note": "重複確認の結果、既存の unknown-cluster--clop-windchill が該当する。2026-08-19のtech-memo記事「Clop、Windchillのデータ窃取攻撃向けに専用Webシェルを開発」の一次ソースは ReliaQuest ブログ（https://reliaquest.com/blog/clop-returns-with-custom-implant-in-mass-extortion-campaign/）であり、同URLは前回スキャン(2026-08-19)で既に observations へ収録済みである。重複エントリを作らないため追記しない。"
+        },
+        {
+          "name": "North Korean IT Workers (NKITW)",
+          "observations": 10,
+          "note": "既存 profiles/dprk-it-workers が該当し、前回スキャンで2026-08-19まで反映済み。新規対応なし。"
+        },
+        {
+          "name": "China-nexus actor (medium confidence)",
+          "observations": 16,
+          "note": "Operation QUICSILVER の記述的actor値。unknown-cluster--quicsilver として台帳へ記録した。"
+        },
+        {
+          "name": "CameraSwarm",
+          "observations": 8,
+          "note": "unknown-cluster--cameraswarm として台帳へ記録した。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "cutoff(2026-08-10)後の新規は2件。「Hunting MacSync Stealer infrastructure through behavioral pivots」(2026-08-18)は原文で名前付きアクターへの帰属がないことを確認した。MacSyncはマルウェアファミリー名で、Microsoftはアクタークラスタを定義していないため台帳へも追加しない。2026-08-19のFrost Radar記事は宣伝であり脅威研究ではない。RSSで公開日時を確認した。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "cutoff(2026-08-06)後の新規は「Staying Ahead of Adversarial AI Through Agentic Source Code Review」(2026-08-18)の1件で、原文にアクター記載なし。一覧の掲載順は時系列でないため個別記事の日付を原文で確認した。STOCKSTAY/Turla記事は2026-06-25でturlaプロファイルの最終活動日と一致し反映済み。GTIG AI Threat Trackerは2026-05-11で前回確認と同じ。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "新規1件。Threat Brief: Mitigating Large-Scale Credential Attacks が2026-08-18へ更新され、「Updated August 18, 2026 at 1:30 p.m. PT to add information about TheHatman attack.」として TheHatman が追記された。Unit 42は同アクターの主張を未検証と明記。unknown-cluster--thehatman として記録した。直近活動アクターに関する新規の一次情報はない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-19",
+          "result": "cutoff(2026-08-13)後の新規は「Describing attacks with crime script analysis」(2026-08-19)の1件。原文を確認したところBECを題材にした方法論記事で、名前付きアクターの活動報告ではない。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "変化なし。ESET Research欄の最新は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で前回と同じ。8月のwelivesecurity公開はQRコードフィッシング(2026-08-17)とBlack Hat所感で、いずれもResearch欄のアクター報告ではない。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "変化なし。最新は「The Model Is the Malware」(2026-08-13)でAI研究であり、名前付きアクターの活動報告ではない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-14",
+          "result": "変化なし。RSSのpubDateで最新がHoneyMyte/CoolClient(2026-08-14)であることを確認した（一覧表示は2026-08-12）。Armored Likho(2026-08-13)、Head Mare(2026-08-11)、Project CAV3RN(2026-08-11)はいずれも反映済みまたは台帳既出。"
+        },
+        {
+          "publisher": "Hunt.io",
+          "url": "https://hunt.io/blog/operation-cameraswarm-dahua-cameras-compromised",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "tech-memo経由で検知した一次資料を原文確認した。Operation CameraSwarm。名前付きアクターへの帰属なし。unknown-cluster--cameraswarm として記録した。"
+        },
+        {
+          "publisher": "Seqrite Labs",
+          "url": "https://www.seqrite.com/blog/operation-quicsilver-china-nexus-actor-targets-myanmar-diplomats-via-vhd-delivered-go-backdoor/",
+          "latest_relevant_publication": "2026-08-17",
+          "result": "tech-memo経由で検知した一次資料を原文確認した。Operation QUICSILVER。China-nexus中確度、名前付きAPTへの帰属なし。unknown-cluster--quicsilver として記録した。"
+        },
+        {
+          "publisher": "CISA / FBI / HHS",
+          "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-071a",
+          "latest_relevant_publication": "2026-08-19",
+          "result": "取得不能。cisa.gov は本実行環境から HTTP 403（Akamai edge の Access Denied、agent proxy の遮断ではない）を返す。PDF版URLとWayback Machine（web.archive.org）も到達できなかった。内容はBleepingComputer(2026-08-19)経由でのみ確認しており、unknown-cluster--medusa-ransomware へ原文未取得である旨を明記して記録した。次回スキャンで再取得を試みる。"
         }
       ]
     }

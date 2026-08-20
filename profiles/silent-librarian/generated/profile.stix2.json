@@ -370,6 +370,92 @@
       }
     },
     {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
+      "created": "2026-08-20T05:53:25Z",
+      "modified": "2026-08-20T05:53:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+      "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
+      "first_seen": "2013-01-01T00:00:00Z",
+      "last_seen": "2017-12-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "justice.gov",
+          "description": "Local source: https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "external_id": "source--daily-ac0aab951821b27df384"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-4d15dec07641eea42e80",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--4d15dec07641eea42e809f27 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: DOJ原文（article:published_time 2026-08-18T13:47:35-04:00、ページ内time要素も Tuesday, August 18, 2026）をUser-Agent付きcurlでHTTP 200・全文取得して確認した。本件は法執行記事であり新規の攻撃活動報告ではないため「新しい活動の検知」としては扱わない。一方で原文が政府一次資料として活動期間と標的を明示しているため、期間unknownのまま放置せず、既存プロファイル（status: draft、activities 0件）へ当該キャンペーンを活動として登録する目的で承認する。\n主体の確認: 原文は「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute, an Iran-based company that, since at least 2013, has conducted a coordinated campaign of cyber intrusions」とMabna Instituteを実行主体として明記している。ATT&CK G0122の記述自体が「Members of Silent Librarian are known to have been affiliated with the Iran-based Mabna Institute」として同一の2018年3月起訴を引用しており、本件はその重畳起訴（17名中9名が2018年3月起訴済み、8名が新規追加）である。同名製品・別クラスタではない。\nconfidenceをmediumに留める理由: alias scopeがoverlappingであり、Mabna Institute（雇用元企業）と Silent Librarian（ATT&CKのグループ呼称）は完全には一致しない。DOJ原文は「Silent Librarian」の名称を使用していないため帰属確定として扱わない。\n活動期間: 原文の「The campaign started in approximately 2013, continued through at least December 2017」から first_observed=2013（precision: year）、last_observed=2017-12（precision: month）を採用した。公開日2026-08-18とtech-memo日次ファイル日付2026-08-20はreported_atへ分離する。\ntech-memo要約と原文の相違3点（採用しない）: (1)「34億ドル相当の知的財産窃取」は誤り。原文は「U.S.-based universities spent more than approximately $3.4 billion to procure and access such data and intellectual property」で米大学側の調達費用である。(2)「178大学」は海外分のみで、原文は米国144校＋海外178校＝322校。(3)「米国の少なくとも10州政府機関」は誤りで、原文は「at least five U.S. federal and state government agencies」（労働省、FERC、ハワイ州、インディアナ州、国連、UNICEFを列挙）。原文と一致した値: 31.5TB窃取、10万超の教授アカウント標的・約8,000件侵害、HBOへの約600万ドル相当Bitcoin恐喝、5名への最大1,000万ドル報奨金、NGO2団体。",
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--silent-librarian",
+          "name": "Silent Librarian",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "DOJ press release: The campaign started in approximately 2013",
+            "precision": "year",
+            "status": "known",
+            "value": "2013-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "DOJ press release: continued through at least December 2017",
+            "precision": "month",
+            "status": "known",
+            "value": "2017-12-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ac0aab951821b27df384"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--b269d8b3-e978-44fb-892f-b10e373fece1",
@@ -1501,6 +1587,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--a728cf4a-bdd5-4e5e-a437-b15aacc03ec6",
+      "created": "2026-08-20T05:53:25Z",
+      "modified": "2026-08-20T05:53:25Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
+      "target_ref": "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
+      "description": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 is attributed or linked to Silent Librarian.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--8a6f268b-a283-47ea-9087-281d6384cdbf",
       "created": "2026-07-25T15:23:01Z",
       "modified": "2026-07-29T15:20:24Z",
@@ -1715,7 +1816,7 @@
       "spec_version": "2.1",
       "id": "report--0e2ff85b-a086-4dee-b2ae-ff56033c8aaf",
       "created": "2026-07-25T15:23:01Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-08-20T05:53:25Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1724,9 +1825,10 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T23:12:01Z",
+      "published": "2026-08-20T05:53:25Z",
       "object_refs": [
         "intrusion-set--435570fb-3b01-438f-923a-3b8b45b484ab",
+        "campaign--166a6e30-a727-4013-8bdc-a5dceb47ddf7",
         "identity--b269d8b3-e978-44fb-892f-b10e373fece1",
         "identity--d9bfbe4d-caa5-481d-8efc-5babe9016d49",
         "identity--a1c1ac00-937d-4839-9f9d-f0030d02f495",

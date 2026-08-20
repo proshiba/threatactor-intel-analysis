@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-13T00:00:00Z",
+  "generated_at": "2026-08-20T00:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -1077,6 +1077,197 @@
         "解消済み(2026-08-19)。ReliaQuestの一次ブログ「Clop Returns with Custom Implant in Mass-Extortion Campaign」(2026-08-18)を直接取得し、帰属根拠とIOCを原文で確認した。2026-08-18時点で未取得だったX投稿は、同一調査の告知であり内容は本ブログに含まれると判断する。Ransom-ISACの記事は引き続き未取得で、原文中の恐喝メール画像の出典として参照されているのみである。"
       ],
       "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、当該記事のIOCは「IOC情報なし」であり、review-queue にはレコードが生成されていない。「反証が見つからなかった」ではなく「ReliaQuestが明示的に帰属を未確定としている」状態である点を記録する。 2026-08-19の日次チェックで、tech-memo daily-news 2026-08-19 経由でReliaQuestの一次ブログを検知し、原文確認のうえ観測を追加した。帰属評価はself-claimed-vendor-unconfirmed から attributed-by-vendor へ更新したが、昇格閾値は未達のため status は tracking のまま据え置く。Cl0pを独立プロファイルへ昇格させるか profiles/ta505 の alias として扱うかの判断は引き続き保留であり、利用者の指示を待つ。"
+    },
+    {
+      "cluster_id": "unknown-cluster--quicsilver",
+      "primary_name": "Operation QUICSILVER の運用者（China-nexus、中確度）",
+      "aliases": [
+        "Operation QUICSILVER",
+        "QUICSILVER"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-20",
+      "last_seen": "2026-08-20",
+      "detected_via": "tech-memo daily-news 2026-08-20。IOC CSVのactor列が「China-nexus actor (medium confidence)」という記述的な値で既存プロファイルへ一致せず、unmatched_actor_values に観測16件として滞留していた。名前一致でもactor一致でも検知されないため日次チェックの本文精査で検知した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Seqriteは原文で「We assess this activity to be China-nexus with moderate confidence.」とのみ述べ、既知の名前付きAPTへは帰属していない。TTP・インフラ・標的情報の重複を根拠とする中確度評価であり、帰属確定ではない。標的がミャンマー政府・外交関係者である点はMustang Panda等の中国系アクターと重なるが、原文が名前付きグループとの関連を主張していないため既存プロファイルへ寄せない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-20",
+          "publisher": "Seqrite Labs",
+          "url": "https://www.seqrite.com/blog/operation-quicsilver-china-nexus-actor-targets-myanmar-diplomats-via-vhd-delivered-go-backdoor/",
+          "title": "Operation QUICSILVER: China-nexus actor targets Myanmar diplomats via VHD-delivered Go backdoor",
+          "published_at": "2026-08-17",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "ミャンマー政府職員、特に Information Technology and Cyber Security Department の外交・行政関係者。ASEAN、BIMSTEC、国連関連情報が狙われている。",
+          "malware": [
+            "QUICAgent"
+          ],
+          "tools": [
+            "正規 ftp.exe の悪用",
+            "VHD に偽装したJPEG",
+            "PDFに偽装したLNK"
+          ],
+          "activity_period": "原文が2026年4月〜7月と明示。2026年4月以降に3件の関連キャンペーンを確認。C2 register[.]mediumser[.]com は2026-07-07以降 104.64.211.22 へ、2026-07-01〜07-06は 38.60.244.141 へ名前解決していた。公開日2026-08-17は観測日へ流用しない。",
+          "summary": "JPEG画像を装ったVHDとPDFに偽装したLNKを配布し、LNKが正規 ftp.exe を悪用してローカルスクリプトを実行、header.doc と body.doc を結合して Windowsupdate.exe を再構築する。最終ペイロードのGo製バックドア QUICAgent は Cloudflare Workers から実C2ホスト名を動的取得し、QUIC／HTTP3 上のRC4暗号化で通信する。シェル実行、ファイル送受信、ディレクトリ列挙、ビーコン間隔変更を備え、Startupフォルダーの SystemIn.lnk で永続化する。",
+          "verified_by_analyst": "Seqriteの原文を取得して確認した。攻撃連鎖、帰属文言、活動期間、GriefLureとの重複根拠はいずれも原文記載である。"
+        }
+      ],
+      "unresolved_questions": [
+        "Operation GriefLure（Seqrite 2026年5月）の原文を未取得。builder hostname 以外の重複根拠と、GriefLure 側の標的・期間が未確認である。",
+        "Seqrite単独の初報であり、昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。"
+      ],
+      "analyst_notes": "系列キャンペーン: 原文が Operation GriefLure（Seqrite、2026年5月公開）との重複を明示している。根拠は TrainingAnnouncement.pdf.lnk に含まれるbuilder hostname「desktop-stv6gg」が GriefLure の解析時にSeqriteが特定したものと同一である点、および ftp.exe を悪用する同型のLNK感染連鎖である。GriefLure も既存プロファイル・本台帳のいずれにも未収録であり、同一運用者の可能性がある系列として記録する。\nunmatched_actor_values の「China-nexus actor (medium confidence)」（観測16件）の実体である。記述的なactor値は今後も既存プロファイルへ一致しないため、同種の検知漏れは本文精査でのみ拾える。"
+    },
+    {
+      "cluster_id": "unknown-cluster--cameraswarm",
+      "primary_name": "Operation CameraSwarm の運用者",
+      "aliases": [
+        "CameraSwarm",
+        "Operation CameraSwarm"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-20",
+      "last_seen": "2026-08-20",
+      "detected_via": "tech-memo daily-news 2026-08-20。IOC CSVのactor列に「CameraSwarm」が観測8件で現れるが、既存679プロファイルに該当名がなく unmatched_actor_values に滞留していた。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "iot-botnet-operation",
+        "notes": "Hunt.io は名前付きアクターへ帰属していない。原文は「The toolkit is assembled, not authored. Its components are credited to at least six upstream developers.」として、単一アクターの自作ツールではなく既存部品の寄せ集めであると評価している。改変コード内のロシア語コメントとロシア・CIS重点のスキャンは運用者の言語圏を示唆するに留まり、帰属根拠にはしない。CameraSwarm はキャンペーン名であってアクター名ではない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-20",
+          "publisher": "Hunt.io",
+          "url": "https://hunt.io/blog/operation-cameraswarm-dahua-cameras-compromised",
+          "title": "Operation CameraSwarm: Dahua Cameras Compromised",
+          "published_at": "2026-08-18",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "インターネット公開されたDahua製IPカメラ。侵害はウクライナとロシアに集中し、ウクライナが最大の割合を占める。スキャンはロシア発で全世界へ拡大した後、ロシア・CISの通信網へ重点化した。",
+          "malware": [],
+          "tools": [
+            "TCP/37777への認証情報ブルートフォース",
+            "Dahuaクラウドリレー経由のシリアル番号アクセス",
+            "Telegramへの結果送信"
+          ],
+          "activity_period": "原文が2026-06-17〜2026-07-22（35日間）と明示。公開日2026-08-18は観測日へ流用しない。",
+          "summary": "35日間で14,530台超のDahua製IPカメラを侵害した。経路は3系統で、TCP/37777への認証情報ブルートフォースで12,324の一意IP、CVE-2021-33044とCVE-2021-33045のバイパス連鎖で1,923台へ p2pwn／p2password の永続バックドアアカウント追加、Dahuaクラウドリレーとシリアル番号から生成する復旧コードでNAT配下283台へ直接到達した。運用者自身のログでは、リレー経由でアクセスした稼働シリアルの89.4%が認証不要であった。",
+          "verified_by_analyst": "Hunt.ioの原文を取得して確認した。期間、台数、CVE、地理的集中、帰属を行っていない旨はいずれも原文記載である。"
+        }
+      ],
+      "unresolved_questions": [
+        "Hunt.io単独の初報であり昇格閾値は未達。政府・CERTによる言及も現時点で確認していない。",
+        "キャンペーン名であって運用者名ではないため、将来アクター名が付与された場合は本エントリを統合先へ寄せる必要がある。"
+      ],
+      "analyst_notes": "CVE-2021-33044／33045は2021年公開の既知脆弱性であり、未更新機器の残存が侵害規模の主因である。IOCはtech-memo側に記載がなく、原文のIOC節も未取得のため本台帳にはIOCを収録していない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--thehatman",
+      "primary_name": "TheHatman を名乗る資格情報窃取・恐喝アクター",
+      "aliases": [
+        "TheHatman"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-20",
+      "last_seen": "2026-08-20",
+      "detected_via": "一次情報源チェック 2026-08-20。tech-memo未収録で、Unit 42 の Threat Brief 更新（2026-08-18）でのみ検知した。",
+      "attribution": {
+        "state": "self-claimed-unverified",
+        "actor_type": "data-extortion-cybercrime",
+        "notes": "Unit 42は原文で「TheHatman claims to have sensitive or confidential information from several high-profile organizations, and this actor has claimed that they used compromised credentials through MFA fatigue and password spraying attacks to gain unauthorized access to these organizations.」と述べた直後に 「Unit 42 has not verified these claims.」と明記している。侵害の裏付けは取れておらず、アクター本人の主張のみである。したがって活動レコードとしては採用せず、プロファイル昇格も行わない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-20",
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/large-scale-credential-attacks/",
+          "title": "Threat Brief: Mitigating Large-Scale Credential Attacks（2026-08-18 更新分）",
+          "published_at": "2026-08-18",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "Microsoft Entra テナント。TheHatmanは複数の著名組織から機微情報を取得したと主張している。",
+          "malware": [],
+          "tools": [
+            "MFA疲労攻撃",
+            "パスワードスプレー"
+          ],
+          "activity_period": "Unit 42は主張された資格情報窃取の期間を2026-08-01〜2026-08-17としている。Unit 42自身の観測ではなくアクターの主張であるため、期間も未検証として扱う。",
+          "summary": "既存のThreat Briefへ「Updated August 18, 2026 at 1:30 p.m. PT to add information about TheHatman attack.」として追記された。TheHatmanはMFA疲労攻撃とパスワードスプレーで得た資格情報によりMicrosoft Entraテナントへ不正アクセスしたと主張している。Unit 42は当該主張を検証していないと明記している。",
+          "verified_by_analyst": "Unit 42の原文を取得し、TheHatmanに関する記述と未検証である旨の文言を確認した。同ブリーフ内のFortiBleedについても「We have not validated their claims at this time.」と同様の留保がある。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "temp-veles",
+          "relation": "false-match",
+          "notes": "profiles/temp-veles に現れる「HatMan」はCISAがTRITON／TRISISマルウェアへ付けた呼称であり、本クラスタの自称名「TheHatman」とは無関係な別エンティティである。文字列としては近いため、将来の名前一致で誤って統合しないよう記録する。"
+        }
+      ],
+      "unresolved_questions": [
+        "Unit 42が未検証としているため、実体としての侵害が存在するか自体が未確認である。",
+        "被害を主張された組織名、リークサイトの有無、既知グループとの重複はいずれも未確認。"
+      ],
+      "analyst_notes": "自己主張のみを根拠とするため、独立した一次資料が現れるまで status: tracking を維持する。AGENT.mdの「一般サービス・被害組織の主張を攻撃者の実績として採用しない」方針に従い、活動レコード化しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--medusa-ransomware",
+      "primary_name": "Medusa ランサムウェア（RaaS）の運営者およびアフィリエイト",
+      "aliases": [
+        "Medusa",
+        "Medusa ransomware"
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-20",
+      "last_seen": "2026-08-20",
+      "detected_via": "tech-memo daily-news 2026-08-20（CISA/FBI/HHS の AA25-071A 更新報道）。既存679プロファイルに Medusa の正式名・aliasが存在せず、名前一致でもIOC CSVのactor一致でも検知されない検知漏れ。",
+      "attribution": {
+        "state": "named-by-government-advisory",
+        "actor_type": "ransomware-as-a-service",
+        "notes": "CISA・FBI・HHSの共同アドバイザリ AA25-071A が「Medusa actors」として言及している。2021年1月出現、当初は閉鎖型で後にRaaSへ移行し、初期アクセスブローカーを募集している。既存の profiles/storm-1175 は Microsoft が命名した Medusa ランサムウェア展開アフィリエイトであり、Medusa RaaS そのものとは同一ではない（RaaSは複数のアフィリエイトを抱え、Storm-1175はそのうちの1つ）。したがって storm-1175 へ寄せず、別クラスタとして記録する。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-20",
+          "publisher": "CISA / FBI / HHS（BleepingComputer経由で確認）",
+          "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-071a",
+          "title": "#StopRansomware: Medusa Ransomware (AA25-071A)",
+          "published_at": "2026-08-19",
+          "source_type": "government-advisory",
+          "reliability": "government",
+          "targets": "米国の重要インフラ。医療、防衛産業基盤、重要製造、政府施設、IT、金融の各分野で被害が確認されている。",
+          "malware": [
+            "Medusa"
+          ],
+          "tools": [],
+          "activity_period": "アドバイザリは2021年6月以降の累積影響を集計し、2026年4月時点で500組織超としている。2025年3月の初版では300組織超であった。公開日・更新日は観測日へ流用しない。",
+          "summary": "CISA・FBI・HHSは、Medusa ランサムウェアが2021年6月以降、米国の重要インフラ組織500件超へ影響を与えたと警告した。2025年3月公開の初版（300件超）からの更新である。Medusaは2021年1月に出現し、2023年以降はリークサイトによる二重恐喝を本格化、その後RaaSへ移行して初期アクセスブローカーへ100ドル〜100万ドルの報酬を提示し侵入口を調達している。",
+          "verified_by_analyst": "一次資料を取得できていない。cisa.gov は本実行環境から HTTP 403（Akamai edge の Access Denied、agent proxy 側の遮断ではない）を返し、PDF版・Wayback Machine（web.archive.org）も到達できなかった。内容は BleepingComputer（2026-08-19）経由でのみ確認しており、件数・as-of日付・共同署名機関は同記事の記載である。原文確認が済むまでプロファイル昇格は行わない。",
+          "secondary_coverage": "https://www.bleepingcomputer.com/news/security/cisa-medusa-ransomware-hit-over-500-critical-infrastructure-orgs/"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "storm-1175",
+          "relation": "affiliate-overlap",
+          "notes": "Storm-1175 は Microsoft が命名した中国拠点の金銭目的グループで、Medusa ランサムウェアの展開で知られるアフィリエイトである。既存プロファイルに活動3件（2025-10-07、2026-04-07、2026-08-11報告分）を収録済み。Medusa RaaS の運営者そのものではないため同一視しない。RaaS運営者とアフィリエイトはスコープを分離して扱う。"
+        },
+        {
+          "slug": "unc3886",
+          "relation": "false-match",
+          "notes": "profiles/unc3886 の malware--medusa（MEDUSA）は ATT&CK に登録された Linux ルートキットであり、本クラスタのランサムウェア Medusa とは無関係な同名別エンティティである。名前一致による誤統合を防ぐため記録する。"
+        }
+      ],
+      "unresolved_questions": [
+        "AA25-071A の原文を未取得。Release Date と Last Revised、正確な件数と as-of 日付、共同署名機関、IOC・TTP節を一次資料で確認する必要がある。",
+        "政府機関の共同アドバイザリであるため昇格閾値そのものは満たすが、原文未取得のため昇格は保留する。",
+        "昇格する場合、Medusa RaaS運営者を独立プロファイルとし、storm-1175 をアフィリエイトとして関係付けるか、既存プロファイル側へ関係を追加するかを決める必要がある。"
+      ],
+      "analyst_notes": "「Medusa」は3系統の同名エンティティが存在する。(1)本クラスタのランサムウェア／RaaS、(2)UNC3886が使用する Linux ルートキット MEDUSA、(3)Medusa を展開するアフィリエイト Storm-1175。日次キューの名前一致では区別できないため、台帳側で分離を明示する。"
     }
   ],
   "excluded_name_collisions": [
