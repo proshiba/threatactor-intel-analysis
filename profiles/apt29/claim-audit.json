@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "actor_ref": "actor--apt29",
-  "generated_at": "2026-07-25T14:07:17Z",
+  "generated_at": "2026-08-21T01:33:56Z",
   "status_values": [
     "supported",
     "partially-supported",
@@ -10,8 +10,8 @@
     "superseded"
   ],
   "counts": {
-    "supported": 242,
-    "partially-supported": 23
+    "partially-supported": 26,
+    "supported": 244
   },
   "claims": [
     {
@@ -3858,6 +3858,83 @@
       "verification_rationale": "Evidence tier=research; activity-level context may still be incomplete.",
       "counterevidence": [],
       "reviewed_at": "2026-07-25T14:07:17Z"
+    },
+    {
+      "claim_id": "claim--569a90f3151f2c16007801f3",
+      "category": "alias",
+      "subject": "ice-relic",
+      "statement": "ICE RELIC is Google Threat Intelligence Group's current name for APT29.",
+      "verification_status": "supported",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "verification_rationale": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記している。ベンダー呼称の変更であり帰属の変更ではない。GTIG以外のベンダーによる採用状況は未確認。",
+      "counterevidence": [],
+      "reviewed_at": "2026-08-21T01:33:56Z"
+    },
+    {
+      "claim_id": "claim--8247741b75725803851ad017",
+      "category": "alias",
+      "subject": "storm-2945",
+      "statement": "Storm-2945 is an operational sub-cluster of APT29 (Midnight Blizzard).",
+      "verification_status": "partially-supported",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026",
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "verification_rationale": "Microsoft(2026-07-31)はStorm-2945をMidnight Blizzardの運用サブクラスタと明記し、本プロファイルのactivity--captivecrunch-travel-wifi-2026はこれに基づきconfidence: highで収録されている。一方GTIG(2026-08-20)は同じ指定子について「UNC7005 (aka STORM-2945)」とし、「Although this group shares many high-level similarities with UNC6293, including targeting overlaps, we are tracking it separately due to its lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」として別クラスタで追跡し、ICE RELIC(=APT29)への接続は「moderate confidence」にとどめている。主体の同一性は両社とも認めるが、APT29への所属の強さについて評価が異なるためpartially-supportedとする。既存の帰属は上書きせず、Storm-2945を本プロファイルのaliasへは追加しない。",
+      "counterevidence": [
+        "GTIG(2026-08-20)はSTORM-2945をUNC7005として独立追跡し、ICE RELIC(=APT29)との接続をmoderate confidenceと評価している。profiles/unc7005を別プロファイルとして作成した。"
+      ],
+      "reviewed_at": "2026-08-21T01:33:56Z"
+    },
+    {
+      "claim_id": "claim--93743be4f317e113d26e98f6",
+      "category": "activity",
+      "subject": "captivecrunch-travel-wifi-2026",
+      "statement": "The CaptiveCrunch hospitality captive portal campaign is APT29 activity.",
+      "verification_status": "partially-supported",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026",
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "verification_rationale": "Microsoft(2026-07-31)は本キャンペーンをMidnight Blizzardの運用サブクラスタStorm-2945の活動として報告しており、直接観測に基づく一次資料である。GTIG(2026-08-20)は同じ作戦のインフラについて「UNC7005 in particular is tied to the hospitality captive portal redirects reported on by Reliaquest and Microsoft」「GTIG linked this infrastructure directly to the other authentication-focused and malware operations conducted by UNC7005 dating back to April 2026」と述べ、UNC7005の活動として扱っている。UNC7005とICE RELIC(=APT29)の接続はmoderate confidenceであるため、APT29への帰属は支持されるが確度はMicrosoft単独の記述より弱い。活動レコード自体はMicrosoftの帰属に基づきconfidence: highのまま保持し、同一作戦に対するGTIG側の観測はprofiles/unc7005のactivity--unc7005-hospitality-captive-portal-2026として別途記録した。",
+      "counterevidence": [
+        "GTIG(2026-08-20)は本作戦のインフラをUNC7005へ帰属し、UNC7005とICE RELIC(=APT29)の関係をmoderate confidenceにとどめている。"
+      ],
+      "reviewed_at": "2026-08-21T01:33:56Z"
+    },
+    {
+      "claim_id": "claim--12064c6d0f862b8f8931a318",
+      "category": "capability-malware",
+      "subject": "chocoshell",
+      "statement": "ChocoShell is the same malware that GTIG tracks as CHERRYPIE.",
+      "verification_status": "supported",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026",
+        "source--microsoft-captivecrunch-2026"
+      ],
+      "verification_rationale": "GTIGが「Samples of the CHERRYPIE PowerShell infostealer (also known as ChocoShell)」と明記している。GTIGは本マルウェアをUNC7005へ帰属し、MaaSで購入したインフォスティーラーを基にしている可能性を疑っている。アクター帰属の確度とマルウェアの同一性は分離して扱う。",
+      "counterevidence": [],
+      "reviewed_at": "2026-08-21T01:33:56Z"
+    },
+    {
+      "claim_id": "claim--2bc6c5859b04d425324752de",
+      "category": "relationship",
+      "subject": "unc6293",
+      "statement": "UNC6293 is an initial access sub-cluster of APT29 (ICE RELIC).",
+      "verification_status": "partially-supported",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "verification_rationale": "GTIGが「We assess with moderate confidence that UNC6293 is a sub cluster of ICE RELIC (formerly APT29) responsible for initial access operations」と述べる単独ベンダーのmoderate confidence評価である。根拠は標的業種・地域の重なりと、2021年から2024年のICE RELIC関連フィッシング作戦で文書化された題材の再利用である。同一アクターの確定ではないため、UNC6293はprofiles/unc6293として独立に保持し、関係としてのみ記録する。",
+      "counterevidence": [],
+      "reviewed_at": "2026-08-21T01:33:56Z"
     }
   ]
 }

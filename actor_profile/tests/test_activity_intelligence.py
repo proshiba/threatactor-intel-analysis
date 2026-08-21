@@ -120,6 +120,34 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("台湾", countries)
         self.assertNotIn("中国", countries)
 
+    def test_nationality_of_perpetrators_is_not_a_victim_country(self) -> None:
+        profile = self.profile("Silent Librarian")
+        activity = self.activity(
+            "米国、知的財産窃取に関与したイラン人ハッカーを起訴",
+            (
+                "米司法省は、Mabna Instituteに所属するとされるイラン人17人を、"
+                "米国の大学から長年データを窃取したとして起訴した。"
+            ),
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("米国", countries)
+        self.assertNotIn("イラン", countries)
+
+    def test_nationality_of_victims_is_still_a_victim_country(self) -> None:
+        profile = self.profile("Kimsuky")
+        activity = self.activity(
+            "日本人利用者への攻撃",
+            "Kimsukyは日本人を標的にしたフィッシングで日本の研究機関を侵害した。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("日本", countries)
+
     def test_every_country_in_target_list_is_added(self) -> None:
         profile = self.profile("Lazarus Group")
         activity = self.activity(

@@ -138,7 +138,7 @@ def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
     decision = decisions.get(key)
     if not decision:
         return
-    for field in ("review_status", "confidence", "review_notes"):
+    for field in ("review_status", "confidence", "review_notes", "activity_type"):
         if field in decision:
             record[field] = decision[field]
     if "activity_period" in decision:

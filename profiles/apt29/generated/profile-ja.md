@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt29`
 - 状態: review
-- 更新日時: 2026-08-03T03:46:03Z
+- 更新日時: 2026-08-21T01:45:24Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,32 +19,33 @@ APT29の標準化プロファイル。リポジトリ内の専用資料19件とM
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Blue Kitsune | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Cozer | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | Cozy Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| CozyCar | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | CozyDuke | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Cranefly / | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | Dark Halo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Dukes | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| EuroAPT | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| Fritillary | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| Group 100 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| Hammer Toss | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| ICE RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-going-with-the-flows-2026` | GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 |
 | IRON HEMLOCK | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | IRON RITUAL | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Midnight Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Minidionis | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | NOBELIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | NobleBaron | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Office Monkeys | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| SeaDuke | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | SolarStorm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| StellarParticle | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
+| TEMP.Monkeys | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | The Dukes | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC2452 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC3524 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | YTTRIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Dukes | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Group 100 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| EuroAPT | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| CozyCar | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Cozer | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Office Monkeys | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| TEMP.Monkeys | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Minidionis | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| SeaDuke | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Hammer Toss | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Fritillary | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| StellarParticle | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Cranefly / | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 
 ## 帰属
 
@@ -63,7 +64,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| actor--unc6293 | part-of | GTIGは「We assess with moderate confidence that UNC6293 is a sub cluster of ICE RELIC (formerly APT29) responsible for initial access operations」と述べ、UNC6293をICE RELIC(=APT29)の初期アクセス担当サブクラスタとmoderate confidenceで評価している。 | 中 | `source--gtig-going-with-the-flows-2026` |
+| actor--unc7005 | part-of | GTIGは「Similarly we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と述べている。UNC7005はMicrosoftの呼称ではSTORM-2945にあたり、Microsoftは同クラスタを「Midnight Blizzardの運用サブクラスタ」としてより強く帰属している。両者はクラスタ境界と確度の評価が異なる。 | 中 | `source--gtig-going-with-the-flows-2026`, `source--microsoft-captivecrunch-2026` |
 
 ## ダイヤモンドモデル
 
@@ -161,7 +165,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | malware--wellmail | WellMail | [WellMail](https://attack.mitre.org/software/S0515) is a lightweight malware written in Golang used by [APT29](https://attack.mitre.org/groups/G0016), similar in design and structure to [WellMess](https://attack.mitre.org/software/S0514).(Citation: CISA WellMail July 2020)(Citation: NCSC APT29 July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--wellmess | WellMess | [WellMess](https://attack.mitre.org/software/S0514) is lightweight malware family with variants written in .NET and Golang that has been in use since at least 2018 by [APT29](https://attack.mitre.org/groups/G0016).(Citation: CISA WellMess July 2020)(Citation: PWC WellMess July 2020)(Citation: NCSC APT29 July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cornflake | CornFlake | Go言語で書かれたWindows向けRAT。キーロギング、監視、資格情報窃取機能を備える。 | 不明 | 不明 | 高 | `source--microsoft-captivecrunch-2026` |
-| malware--chocoshell | ChocoShell | PowerShellベースのインフォスティーラー。ブラウザCookieとSSOトークンの窃取を標的とする。 | 不明 | 不明 | 高 | `source--microsoft-captivecrunch-2026` |
+| malware--chocoshell | ChocoShell | PowerShellベースのインフォスティーラー。ブラウザCookieとSSOトークンの窃取を標的とする。 | 不明 | 不明 | 高 | `source--gtig-going-with-the-flows-2026`, `source--microsoft-captivecrunch-2026` |
 
 ### ツール
 
@@ -634,6 +638,7 @@ Operation Ghost
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- captive portal作戦を担ったクラスタの境界について、Microsoft(2026-07-31)はStorm-2945をMidnight Blizzard(=APT29)の運用サブクラスタとして扱うのに対し、GTIG(2026-08-20)は同一クラスタをUNC7005 (aka STORM-2945)として別個に追跡し、ICE RELIC(=APT29)への接続をmoderate confidenceにとどめている。本プロファイルの activity--captivecrunch-travel-wifi-2026 はMicrosoftの帰属に基づくconfidence: highのまま保持し、GTIG側の評価はclaim-audit.jsonとprofiles/unc7005へ記録した。
 
 ## 出典
 
@@ -671,7 +676,9 @@ Operation Ghost
 | source--daily-c5473417135a62855056 | SEC、SolarWinds攻撃を過小評価した技術企業を告発 | bleepingcomputer.com | 2024-10-23 | https://www.bleepingcomputer.com/news/security/sec-charges-tech-companies-for-downplaying-solarwinds-breaches/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-d9a038ea0c45c5f3cf8e | Amazon、Microsoft 365を標的とするロシアのAPT29を妨害 | bleepingcomputer.com | 2025-09-02 | https://www.bleepingcomputer.com/news/security/amazon-disrupts-russian-apt29-hackers-targeting-microsoft-365/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-e3100c6758a5c2cb3b5f | TeamViewer、ネットワーク分割でAPT29の攻撃を阻止 | darkreading.com | 2024-07-02 | https://www.darkreading.com/cyberattacks-data-breaches/teamviewer-network-segmentation-apt29-attack | osint-report | TLP:CLEAR | 中 |
+| source--gtig-going-with-the-flows-2026 | Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia | Google Threat Intelligence Group | 2026-08-20 | https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia | vendor-research | TLP:CLEAR | 高 |
 | source--microsoft-apt29-rdp-2024 | Midnight Blizzard conducts large-scale spear-phishing campaign using RDP files | Microsoft Threat Intelligence | 2024-10-29 | https://www.microsoft.com/en-us/security/blog/2024/10/29/midnight-blizzard-conducts-large-scale-spear-phishing-campaign-using-rdp-files/ | vendor-research | TLP:CLEAR | 高 |
+| source--microsoft-captivecrunch-2026 | CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft | Microsoft Threat Intelligence | 2026-07-31 | https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/ | vendor-research | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
@@ -681,8 +688,7 @@ Operation Ghost
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--microsoft-captivecrunch-2026 | CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft | Microsoft Threat Intelligence | 2026-07-31 | https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-08-21の日次チェックでGTIG「Going with the Flow(s)」(2026-08-20)を確認し、GTIGの新呼称ICE RELICをaliasへ追加、ChocoShellの別名CHERRYPIEを追記、UNC6293・UNC7005とのサブクラスタ関係を関係として追加した。Storm-2945はGTIGがUNC7005として別クラスタで追跡しているため、本プロファイルのaliasへは追加していない。

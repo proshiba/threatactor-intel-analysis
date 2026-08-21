@@ -580,7 +580,7 @@ def actor_attribution_context(
         r"threat actors?|cyberspies|cyber espionage groups?)"
     )
     japanese_terms = (
-        r"^\s*(?:(?:系|関連|関与|支援|国家支援|政府支援)(?:の)?|"
+        r"^\s*(?:人|(?:系|関連|関与|支援|国家支援|政府支援)(?:の)?|"
         r"の(?:国家|政府)?(?:支援)?)?\s*"
         r"(?:APT|ハッカー|ハッキンググループ|アクター|攻撃者|グループ|"
         r"サイバー部隊|SVR|GRU|FSB)"
@@ -591,6 +591,10 @@ def actor_attribution_context(
         or re.search(japanese_terms, after)
         or re.search(r"^\s*(?:系|関連|関与|支援)(?:の)?", after)
         or re.search(r"^\s*の(?:敵対国|同盟国|友好国)", after)
+        # 「イラン人17人を起訴」のような国籍付きの人数表現は実行主体側の記述で
+        # あり、被害国ではない。「日本人を標的」のような被害側の表現を巻き込まない
+        # よう、人数を伴う形だけを帰属文脈として扱う。
+        or re.search(r"^\s*人\s*\d+\s*人", after)
     ):
         return True
     if actor_pattern:
