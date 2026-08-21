@@ -1,0 +1,1243 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--unc7005",
+  "name": "UNC7005",
+  "status": "draft",
+  "created_at": "2026-08-21T01:25:25Z",
+  "updated_at": "2026-08-21T01:45:24Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "UNC7005",
+    "aliases": [
+      {
+        "name": "STORM-2945",
+        "vendor": "Microsoft",
+        "scope": "exact",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIGが原文で「UNC7005 (aka STORM-2945)」と明記した同一視である。ただしMicrosoftはStorm-2945を「Midnight Blizzardの運用サブクラスタ」として扱うのに対し、GTIGはUNC7005をICE RELIC(旧APT29)との関連をmoderate confidenceにとどめて別クラスタとして追跡しており、同じ指定子に対するクラスタ境界の評価がベンダー間で異なる。この差はprofiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。"
+      }
+    ],
+    "actor_types": [
+      "threat-cluster"
+    ],
+    "first_seen": {
+      "value": "2026-02-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-08-13T00:00:00Z",
+      "precision": "day",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "yes",
+    "description": "UNC7005はGoogle Threat Intelligence Group (GTIG)が2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。Microsoftの呼称ではSTORM-2945にあたる。app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。GTIGは「we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」と評価する一方、UNC6293とは「lower sophistication and poor operational security, infrastructure with divergent characteristics, and incorporation of malware」を理由に別クラスタとして追跡している。2026年7月に表面化した宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+    "analyst_notes": "first_seenは原文の「Since at least February 2026」および「a threat cluster identified in February 2026」からmonth精度で設定した。last_seenは「Between August 6 and August 13, 2026, UNC7005 sent targeted phishing emails」の終端をday精度で採用した。資料公開日2026-08-20は観測日へ流用していない。GTIG命名のクラスタ指定子を一級プロファイルとして持つ既存の前例(UNC1549、UNC3753、UNC4221、UNC5342、UNC6293)に従い、statusはdraftから開始する。"
+  },
+  "attribution": {
+    "countries": [
+      "Russia"
+    ],
+    "sponsor_type": "state",
+    "organizations": [],
+    "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」とhigh confidenceでロシア関連性を評価している。ICE RELIC(旧APT29)への接続はmoderate confidenceであり、具体的なロシア情報機関への帰属は行われていない。GTIG自身の表現は「suspected Russian」である。",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--gtig-going-with-the-flows-2026"
+    ],
+    "analyst_notes": "国レベルの帰属はGTIGがhigh confidenceで述べるが、sponsor_typeを含むattributionブロック全体としてはmediumとする。Microsoftが同一指定子(Storm-2945)をMidnight Blizzardのサブクラスタとして扱う点はスコープ評価の差であり、本プロファイルの帰属国とは矛盾しない。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "GTIGはUNC7005を「suspected Russian cyber espionage」クラスタの一つとして扱い、「individuals of interest to the Russian state」を標的とするhighly selectiveな作戦と説明している。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "インフォスティーラーとMaaSの利用は確認されているが、原文は金銭目的を述べていないため犯罪目的の動機は追加しない。"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--unc7005-ice-relic-connection",
+      "target_actor": "actor--apt29",
+      "relationship_type": "part-of",
+      "description": "GTIGは「Similarly we assess with moderate confidence that UNC7005 is another initial access cluster connected to ICE RELIC」「GTIG assesses with moderate confidence that UNC6293 and UNC7005 are related to a subcluster of ICE RELIC that we associate with initial access operations」と述べている。根拠として、学術・NGO・外交・防衛という標的業種と地域の重なり、および外交行事の招待やワインに関する特定の題材が2021年から2024年のICE RELICのフィッシング作戦で文書化されていることを挙げている。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "moderate confidenceの評価であり同一アクターの確定ではないため、APT29プロファイルへ統合せず関係として保持する(RULES.md 6条)。Microsoftは同一のインフラ群による活動をMidnight Blizzard(=APT29)のサブクラスタStorm-2945としてより強く帰属しており、両者の確度差はprofiles/apt29/claim-audit.jsonに記録した。"
+    },
+    {
+      "relationship_id": "relationship--unc7005-unc6293-overlap",
+      "target_actor": "actor--unc6293",
+      "relationship_type": "shares-targeting-with",
+      "description": "GTIGは「Although this group shares many high-level similarities with UNC6293, including targeting overlaps, we are tracking it separately」と述べる。2026年5月下旬の大規模フィッシング作戦で使われた攻撃者メールアドレスは、2025年6月のUNC6293の作戦で使われたものとほぼ同一であった。app passwordフィッシングの社会工学的手口も類似するが、UNC7005は1標的ごとに固有のapp password名を用いる点で異なる。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "原文が明示的に別クラスタとして扱うため、同一性を示す関係種別は用いない。"
+    }
+  ],
+  "diamond_model": {
+    "adversary": "UNC7005(Microsoft呼称: STORM-2945)。GTIGがmoderate confidenceでICE RELIC(旧APT29)へ接続する初期アクセスクラスタと評価するロシア関連の脅威クラスタ。UNC6293より練度と運用セキュリティが低いとされる。",
+    "capability": "app passwordフィッシング、MicrosoftおよびWhatsAppのデバイスコードフィッシング、OAuthフィッシング。マルウェアはGo製のENGINELIGHT、PowerShell製インフォスティーラーCHERRYPIE(別名ChocoShell)、およびMaaSのVIDARとATOMIC。着地ページでの端末フィンガープリントによる自動解析回避を行う。",
+    "infrastructure": "Microsoft認証リソース、実在の行事・団体(GLOBSEC、Finnish Operations Center)、WhatsAppを装う多数の攻撃者管理ドメイン。Googleクラウドプロジェクトを認証トークン窃取の受け皿として悪用する。宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラと結び付けられている。",
+    "victim": "ウクライナ、西欧、米国の学術関係者、外交関係者、非営利団体の職員。欧州の防衛産業に属するか関係する標的。ロシアと旧ソビエト諸国を専門とする米国の研究者。",
+    "socio_political": "GTIGはロシア国家にとって関心の対象となる個人を狙う諜報目的の活動と位置付け、3クラスタのロシア関連性をhigh confidenceで評価している。",
+    "analyst_notes": "GTIG「Going with the Flow(s)」(2026-08-20)の原文記述のみから構成した。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--enginelight",
+        "name": "ENGINELIGHT",
+        "aliases": [],
+        "types": [
+          "Go",
+          "backdoor"
+        ],
+        "description": "GTIGがENGINELIGHTと命名したGo製マルウェア。C2はstatistic-ms[.]liveで、2026年5月初旬の限定的なフィッシング作戦でbounce@chamber-ua.orgから送信された。",
+        "first_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIG命名の独自マルウェア。機能の詳細は原文に記載がない。"
+      },
+      {
+        "id": "malware--cherrypie",
+        "name": "CHERRYPIE",
+        "aliases": [
+          "ChocoShell"
+        ],
+        "types": [
+          "PowerShell",
+          "infostealer"
+        ],
+        "description": "PowerShell製インフォスティーラー。GTIGは「Samples of the CHERRYPIE PowerShell infostealer (also known as ChocoShell) contain numerous artifacts suggesting the malware is generated by a large language model (LLM)」と述べ、機能を説明する関数コメントやオフセット注記が多数含まれることを根拠に挙げている。GTIGはMaaSで購入したインフォスティーラーを基にしている可能性を疑っている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "ChocoShellはMicrosoftがCaptiveCrunchキャンペーンで用いた呼称であり、profiles/apt29のcapabilities.malwareにmalware--chocoshellとして既登録である。GTIGが同一マルウェアと明記しているためaliasとして記録した。原文は個別サンプルの観測日を記載していないため期間はunknownとした。"
+      },
+      {
+        "id": "malware--vidar",
+        "name": "VIDAR",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "infostealer",
+          "malware-as-a-service"
+        ],
+        "description": "MaaSとして運用されるインフォスティーラー。UNC7005が2026年5月下旬の作戦でWindows利用者へ配布した検体は難読化されたGoバイナリーで、C2は107.189.18[.]7。ブラウザーに保存された資格情報、決済情報、Cookie、住所等を平文でC2へ送信する。",
+        "first_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "VIDARは複数の攻撃者が利用するMaaSであり、本マルウェアの登録はUNC7005による利用の記録であって専有を意味しない。"
+      },
+      {
+        "id": "malware--atomic",
+        "name": "ATOMIC",
+        "aliases": [
+          "AtomicStealer"
+        ],
+        "types": [
+          "macOS",
+          "infostealer",
+          "malware-as-a-service"
+        ],
+        "description": "MaaSとして運用されるmacOS向けインフォスティーラー。UNC7005は2026年5月下旬の作戦で、User AgentがmacOSを示す標的へ配布した。ブラウザーの機微情報を標的とする。",
+        "first_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "ATOMICも共有MaaSであり、登録は利用の記録であって専有を意味しない。"
+      }
+    ],
+    "tools": [],
+    "infrastructure": [
+      {
+        "id": "infra--unc7005-microsoft-spoofing-domains",
+        "name": "Microsoft認証を模倣する攻撃者ドメイン群",
+        "aliases": [],
+        "types": [
+          "phishing-domain",
+          "c2"
+        ],
+        "description": "Microsoftの認証リソースを模倣する攻撃者管理ドメイン。2026年7月16日から23日にかけてOutlook Web Accessを題材とするowa-ms365[.]com、m365-owa[.]com、ms365-device[.]comがchikolimdrid@gmail.comで登録された。同一のメールアドレスは以前にms365-live[.]comの登録にも使われ、当該ドメインは104.194.159[.]150へ解決していた。この一群は宿泊施設のcaptive portal作戦のインフラへ結び付けられている。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "登録日はGTIGが明記した範囲のみを採用した。"
+      },
+      {
+        "id": "infra--unc7005-event-spoofing-domains",
+        "name": "行事・団体を装う攻撃者ドメイン群",
+        "aliases": [],
+        "types": [
+          "phishing-domain"
+        ],
+        "description": "実在の行事や団体を装う攻撃者管理ドメイン。GLOBSECフォーラムを装うglobsec[.]net、招待を装うmy-invite[.]org・shopinvite[.]org、WhatsAppを装うwa-connect[.]eu等、およびフィンランドのFinnish Operations Center (FOC)を装うfinishoperations[.]com等が含まれる。my-invite[.]orgは2026年4月に104.194.159[.]150へ解決していた。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-08-13T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "delivery_formats": [],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--unc7005-per-target-app-passwords",
+        "name": "標的ごとに固有のapp passwordを用いるフィッシング",
+        "aliases": [],
+        "types": [
+          "credential-access"
+        ],
+        "description": "app passwordフィッシングにおいて、観測されたほぼ全事例で標的ごとに固有のapp password名を用いる。名称は、標的が従事しているとされる活動の種類(安全なファイル共有等)や、なりすまし対象の組織名に合わせて構成される。",
+        "first_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--unc7005-device-code-phishing",
+        "name": "MicrosoftおよびWhatsAppのデバイスコードフィッシング",
+        "aliases": [],
+        "types": [
+          "credential-access"
+        ],
+        "description": "Microsoftアカウントに対するデバイスコードフィッシングと、WhatsAppアカウントを攻撃者管理端末へ連携させる手口を用いる。題材は標的の分野に関連する著名団体との通話招待や、外交行事・会議への招待である。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--unc7005-analysis-evasion",
+        "name": "着信端末のフィンガープリントによる自動解析回避",
+        "aliases": [],
+        "types": [
+          "defense-evasion"
+        ],
+        "description": "フィッシングページ閲覧時に画面解像度、タイムゾーン、言語、プラットフォーム、CPUコア数、メモリー量、タッチ点数を収集して/fingerprintへPOSTし、自動スキャナーによるアクセスを判別する。2026年6月には、登録ページに自動解析の検知・回避を試みるスクリプトを追加した。",
+        "first_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "VIDARとATOMICはMaaSとして複数の攻撃者が利用する共有マルウェアであり、本プロファイルへの登録はUNC7005による利用の記録である。CHERRYPIEはMicrosoftがChocoShellと呼ぶマルウェアと同一とGTIGが明記している。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--unc7005-app-password-phishing-2026",
+      "name": "UNC7005による標的別app passwordフィッシング",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2026-02-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "GTIGは、UNC7005が2026年2月以降、国家的な関心の対象となる個人へきわめて選別的なapp passwordフィッシングを行っていると報告した。社会工学的な手口はUNC6293と類似するが、観測されたほぼ全事例でapp passwordの名称が標的ごとに固有であり、標的が従事しているとされる活動の種類やなりすまし対象の組織名に合わせて構成される点が異なる。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "原文の「Since at least February 2026」からfirst_observedをmonth精度で設定し、終了時期の記述がないためlast_observedはunknownとした。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。原文の該当表現は「individuals of interest to the Russian state」である。ここでのロシアは攻撃者を後援する国家であって被害国ではないため、活動記述からの標的国自動抽出が帰属国を被害国として拾わないよう、説明文では国名を用いず「国家的な関心の対象となる個人」と表記している(RULES.md: 帰属国・インフラ所在国を標的国へ流用しない)。アクターの帰属国はattributionへロシアとして記録済みである。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc7005",
+          "name": "UNC7005",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--unc7005-device-code-phishing-2026",
+      "name": "UNC7005によるMicrosoft・WhatsAppデバイスコードフィッシング",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "UNC7005はMicrosoftアカウントとWhatsAppアカウントの双方に対してデバイスコードフィッシングを実施した。Microsoft向けは、実在の行事や団体を装う攻撃者管理ドメインから送信したメールに攻撃者サイトへのリンクを含める形で始まる。2026年4月下旬の「大使館招待」を題材とする作戦のサイト雛形は、2026年5月に実在のGLOBSECフォーラムを装う別作戦へ再利用された。閲覧時には標的端末のフィンガープリントを取得して自動スキャナーを判別する。登録手続きは詳細に作り込まれ、過去のICE RELIC関連フィッシングでも用いられたワインの選択という題材が含まれていた。2026年5月から6月にはWhatsAppを装い、安全な通話やチャット、文書共有への参加を口実に、標的のWhatsAppアカウントを攻撃者管理端末へ連携させた。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--unc7005-event-spoofing-domains"
+      ],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "first_observedは「a previous “embassy invite” themed operation in late April 2026」、last_observedは「In May and June 2026, UNC7005 conducted social engineering operations spoofing WhatsApp」からmonth精度で設定した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc7005",
+          "name": "UNC7005",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--unc7005-event-spoofing-domains"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--unc7005-hospitality-captive-portal-2026",
+      "name": "UNC7005インフラと宿泊施設captive portalリダイレクト作戦の結び付き",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "GTIGは2026年4月下旬から、Microsoftの認証リソースを模倣するUNC7005のインフラを追跡し、運用化されたドメインを順次Safe Browsingのブロックリストへ追加していた。2026年7月中旬以降、宿泊施設や会議施設のcaptive portalから当該インフラへ利用者がリダイレクトされる事象を観測している。GTIGはこのインフラ群を、2026年4月まで遡るUNC7005の他の認証系作戦およびマルウェア作戦へ直接結び付けた。captive portal作戦のドメインと結び付くドメインは、以前のデバイスコードフィッシング作戦で使われたUNC7005のドメインと同一IPへの解決を共有する。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--cherrypie"
+      ],
+      "infrastructure_refs": [
+        "infra--unc7005-microsoft-spoofing-domains"
+      ],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "first_observedは「In late April 2026, GTIG began tracking UNC7005 infrastructure」、last_observedは「in mid-July 2026, GTIG began observing users redirected」からmonth精度で設定した。同一のcaptive portal作戦はReliaQuest(2026-07-23)とMicrosoft(2026-07-31)が先に報告しており、Microsoftはこれを「Midnight BlizzardのサブクラスタStorm-2945」として報告している。当該Microsoft報告に基づく活動はprofiles/apt29にactivity--captivecrunch-travel-wifi-2026として既収録であり、本活動はGTIG側の観測と評価を記録するものである。両者のクラスタ境界の差はprofiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc7005",
+          "name": "UNC7005",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--cherrypie"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--unc7005-microsoft-spoofing-domains"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--unc7005-oauth-cloud-project-phishing-2026",
+      "name": "UNC7005によるFOC偽装のOAuthフィッシング",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "2026年8月初旬、UNC7005はクラウド基盤を用いたGoogleアカウントのOAuthフィッシングを開始した。2026年7月31日以降、防衛・安全保障市場を支援する実在の支援団体FOCを装うドメインを登録し、2026年8月6日から13日にかけて、欧州の防衛・安全保障分野に属するか関係する標的へ攻撃者管理ドメインへのリンクを含むフィッシングメールを送信した。「Get Access」または「Sign in With Google」を押した標的は正規のGoogle OAuthログイン画面へ誘導され、認証後に攻撃者が管理する未検証のテストモードのクラウドプロジェクトへリダイレクトされる。同じ時期に、正規のMicrosoft OAuth URLを標的へ直接送る、きわめて限定的な作戦も確認されている。",
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--unc7005-event-spoofing-domains"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--425a851d17c8543b0208"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--d365dee4c01deb7399a1"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "first_observedは「Beginning on July 31, 2026, UNC7005 registered domains」、last_observedは「Between August 6 and August 13, 2026」の終端からday精度で設定した。FOCの正式名称はFinnish Operations Centerである。原文はFOCを「supports Finnish companies in the defense and security markets, specifically in the context of the North Atlantic Treaty Organization (NATO)」と説明するが、これはなりすまし対象である団体自身の説明であり、被害国・被害地域の記述ではない。活動記述からの標的自動抽出がフィンランドやNATO加盟国を被害側として拾わないよう、説明文にはこれらを含めていない(RULES.md 1条5項: 不明な標的を推測で埋めない)。原文がUNC7005の標的として明示するのは「targets in or related to the European defense industry」である。活動名と説明文では正式名称ではなく略称FOCを用いている。正式名称に含まれる「Finnish」が標的国の自動抽出でフィンランドとして拾われるが、フィンランドはなりすまし対象の団体の所在国であって被害国ではないためである。原文が標的として述べるのは欧州の防衛産業であり、被害国としてフィンランドを名指ししてはいない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc7005",
+          "name": "UNC7005",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--425a851d17c8543b0208"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--unc7005-event-spoofing-domains"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--b94dc560a327b601965d"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--d365dee4c01deb7399a1"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-07-31T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-08-13T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--unc7005-summit-lure-infostealer-2026",
+      "name": "UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。",
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [
+        "malware--vidar",
+        "malware--atomic"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--9045691d65b283df2eec"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--e03d2994764dfa6e1bab"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "原文の「In late May 2026」からmonth精度で設定した。配布されたVIDAR・ATOMICはいずれもMaaSであり専有マルウェアではない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc7005",
+          "name": "UNC7005",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--atomic",
+            "malware--vidar"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--9045691d65b283df2eec"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--sector--e7608f51421ca8b1e297"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--e03d2994764dfa6e1bab"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-05-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-05-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--d365dee4c01deb7399a1",
+      "name": "被害事例: UNC7005によるFOC偽装のOAuthフィッシング",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "2026年8月初旬、UNC7005はクラウド基盤を用いたGoogleアカウントのOAuthフィッシングを開始した。2026年7月31日以降、防衛・安全保障市場を支援する実在の支援団体FOCを装うドメインを登録し、2026年8月6日から13日にかけて、欧州の防衛・安全保障分野に属するか関係する標的へ攻撃者管理ドメインへのリンクを含むフィッシングメールを送信した。「Get Access」または「Sign in With Google」を押した標的は正規のGoogle OAuthログイン画面へ誘導され、認証後に攻撃者が管理する未検証のテストモードのクラウドプロジェクトへリダイレクトされる。同じ時期に、正規のMicrosoft OAuth URLを標的へ直接送る、きわめて限定的な作戦も確認されている。",
+      "activity_refs": [
+        "activity--unc7005-oauth-cloud-project-phishing-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--425a851d17c8543b0208"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "クラウド／SaaS"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--e03d2994764dfa6e1bab",
+      "name": "被害事例: UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "2026年5月下旬、UNC7005はそれまでで最大規模のフィッシング波を実施した。標的は主に米国に拠点を置く著名な学術関係者、外交関係者、および旧ソビエト圏の地域研究を専門とする研究者であった。フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。決議の内容や問い合わせ先まで作り込まれた着地ページで「Summit Companion App」の導入を促し、User Agentに応じてWindows向けにはVIDAR、macOS向けにはATOMICを配布した。",
+      "activity_refs": [
+        "activity--unc7005-summit-lure-infostealer-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [
+        "malware--atomic",
+        "malware--vidar"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--9045691d65b283df2eec"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--a1acf81f466d818aabe8",
+        "name": "ウクライナ",
+        "description": "GTIGはUNC7005を「primarily targets academia, diplomatic, and nonprofit personnel across Ukraine, Western Europe, and the US」と記述し、2026年8月には「targets in or related to the European defense industry」へ範囲を広げたとしている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] クラスタ単位の標的記述は活動記述に含まれないため、curationとして補う。「Western Europe」は本リポジトリの地域語彙に対応する値がないため欧州とした。なりすまし対象であるFinnish Operations Centerの所在国フィンランドと、同団体の活動文脈であるNATOは被害側の記述ではないため標的に含めない。帰属国ロシアも標的国へ流用しない。"
+      },
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "GTIGはUNC7005を「primarily targets academia, diplomatic, and nonprofit personnel across Ukraine, Western Europe, and the US」と記述し、2026年8月には「targets in or related to the European defense industry」へ範囲を広げたとしている。",
+        "first_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] クラスタ単位の標的記述は活動記述に含まれないため、curationとして補う。「Western Europe」は本リポジトリの地域語彙に対応する値がないため欧州とした。なりすまし対象であるFinnish Operations Centerの所在国フィンランドと、同団体の活動文脈であるNATOは被害側の記述ではないため標的に含めない。帰属国ロシアも標的国へ流用しない。 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--4af56692ce85070ffc71",
+        "name": "欧州",
+        "description": "GTIGはUNC7005を「primarily targets academia, diplomatic, and nonprofit personnel across Ukraine, Western Europe, and the US」と記述し、2026年8月には「targets in or related to the European defense industry」へ範囲を広げたとしている。",
+        "first_observed": {
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-08-13T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] クラスタ単位の標的記述は活動記述に含まれないため、curationとして補う。「Western Europe」は本リポジトリの地域語彙に対応する値がないため欧州とした。なりすまし対象であるFinnish Operations Centerの所在国フィンランドと、同団体の活動文脈であるNATOは被害側の記述ではないため標的に含めない。帰属国ロシアも標的国へ流用しない。 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「UNC7005によるFOC偽装のOAuthフィッシング」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-07-31T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-08-13T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「UNC7005によるウクライナ決議サミットを装ったインフォスティーラー配布」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "標的国・地域・業種は、GTIG原文がUNC7005について明示した記述のみから収録する。3クラスタ合算の記述、帰属国、インフラ所在国は標的として扱わない。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "原文がUNC7005について明示するのは「academia, diplomatic, and nonprofit personnel across Ukraine, Western Europe, and the US」「targets in or related to the European defense industry」「prominent, mostly US based academics, diplomats, and researchers focused on Russia and former Soviet states」である。構造化はenrich_targeting_scope.pyによる活動記述からの導出に委ねる。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--425a851d17c8543b0208",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "2026年7月31日以降、防衛・安全保障市場を支援する実在の支援団体FOCを装うドメインを登録し、2026年8月6日から13日にかけて、欧州の防衛・安全保障分野に属するか関係する標的へ攻撃者管理ドメインへのリンクを含むフィッシングメールを送信した。",
+      "activity_refs": [
+        "activity--unc7005-oauth-cloud-project-phishing-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--9045691d65b283df2eec",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "フィッシングメールで配布したURLは、WindowsまたはmacOSからの閲覧時にウクライナ支援決議に関するサミットを装う着地ページへ誘導し、それ以外のOSでは互換性を理由に別OSへの切り替えを促すエラーを表示した。",
+      "activity_refs": [
+        "activity--unc7005-summit-lure-infostealer-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--gtig-going-with-the-flows-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+      "title": "Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-08-21T01:05:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "attribution",
+        "activity",
+        "targeting",
+        "ioc"
+      ],
+      "analyst_notes": "GTIGが直接観測した一次資料。クラスタ単位の標的記述を明示しているため、活動記述からの自動抽出では拾えない標的国・地域の根拠として使用する。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "UNC7005はMicrosoftがSTORM-2945として追跡するクラスタと同一である。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIGが「aka STORM-2945」と明記した同一視に基づく。ただし両社でクラスタ境界の評価が異なる点は未解決である。"
+      },
+      {
+        "statement": "UNC7005はICE RELIC(旧APT29)へ接続する初期アクセスクラスタである可能性があるが、確定はしていない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIGのmoderate confidence評価をそのまま反映する。"
+      },
+      {
+        "statement": "2026年7月に表面化した宿泊施設のcaptive portalリダイレクト作戦のインフラは、2026年4月まで遡るUNC7005の他の作戦と結び付いている。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIGが同一IPへの解決の共有と登録メールアドレスの共通性を根拠として直接示している。"
+      }
+    ],
+    "gaps": [
+      "原文は被害組織名を明記していないため、victim_casesを構造化できていない。",
+      "ENGINELIGHTの機能とCHERRYPIEの詳細な挙動は原文に記載がなく、TTPとして構造化できていない。",
+      "IOC表でAttribution列が空欄のATOMIC関連C2は、原文がUNC7005の作戦でATOMICを配布したと述べる一方で個別値の帰属を示していないため、disposition: candidateとして保持している。"
+    ],
+    "uncertainties": [
+      "MicrosoftはStorm-2945をMidnight Blizzard(=APT29)の運用サブクラスタとして報告するのに対し、GTIGはUNC7005とICE RELIC(旧APT29)の関連をmoderate confidenceにとどめ別クラスタとして追跡している。同一指定子に対するクラスタ境界の評価差であり、profiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。",
+      "GTIGはCHERRYPIEがMaaSで購入したインフォスティーラーを基にしている可能性を疑っており、独自開発とは断定していない。"
+    ],
+    "collection_notes": "2026-08-21の日次チェックで、tech-memo未収録の新規公開として一次情報源チェックから検知し、原文を取得して確認した。単一ベンダーの一次資料1本のみに基づくためstatusはdraftとする。",
+    "analyst_notes": "UNC1549、UNC3753、UNC4221、UNC5342、UNC6293と同様、未帰属クラスタ指定子を一級プロファイルとして保持する既存方針に従う。"
+  },
+  "free_text": {
+    "executive_summary": "UNC7005(Microsoft呼称: STORM-2945)はGTIGが2026年2月に特定した、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。app passwordフィッシング、デバイスコードフィッシング、OAuthフィッシングを組み合わせ、インフォスティーラーの配布も行う。2026年7月に表面化した宿泊施設のcaptive portalリダイレクト作戦のインフラも本クラスタへ結び付けられている。",
+    "history": "2026年2月にクラスタとして特定され、同月以降app passwordフィッシングを実施。4月下旬から大使館招待を題材とするデバイスコードフィッシングとMicrosoft認証を模倣するインフラの構築、5月にGLOBSECを装う作戦とウクライナ決議サミットを装うインフォスティーラー配布、5月から6月にWhatsAppを装う作戦、7月16日から23日にOWA題材ドメインの登録、7月31日以降Finnish Operations Centerを装うドメインの登録、8月6日から13日に欧州防衛産業向けのOAuthフィッシングを実施した。",
+    "capability_details": "マルウェアはGo製のENGINELIGHT、PowerShell製インフォスティーラーCHERRYPIE(別名ChocoShell)、MaaSのVIDARとATOMIC。GTIGはCHERRYPIEの検体にLLM生成を示唆する痕跡が多数含まれると述べている。",
+    "infrastructure_details": "攻撃者管理ドメインの登録には複数のフリーメールアドレスが用いられ、chikolimdrid@gmail.comは2026年7月のOWA題材ドメイン3件とms365-live[.]comの登録に共通する。ms365-live[.]comとmy-invite[.]orgはいずれも104.194.159[.]150へ解決していた。",
+    "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ、米国。標的地域=欧州。日本は確認時に個別国として保持する。\n\nウクライナ、西欧、米国の学術・外交・非営利分野の個人を主な標的とし、2026年8月には欧州の防衛産業に属するか関係する標的へ範囲を広げた。",
+    "additional_notes": "2026-08-21の日次チェックで、GTIG「Going with the Flow(s)」(2026-08-20)を唯一の一次資料として新規作成した。独立した一次資料が追加された時点でstatusの見直しを行う。"
+  }
+}

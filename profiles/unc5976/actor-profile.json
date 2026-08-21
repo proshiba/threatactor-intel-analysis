@@ -1,0 +1,635 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--unc5976",
+  "name": "UNC5976",
+  "status": "draft",
+  "created_at": "2026-08-21T01:25:25Z",
+  "updated_at": "2026-08-21T01:45:24Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "UNC5976",
+    "aliases": [],
+    "actor_types": [
+      "threat-cluster"
+    ],
+    "first_seen": {
+      "value": "2026-03-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-04-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "yes",
+    "description": "UNC5976はGoogle Threat Intelligence Group (GTIG)が2026年3月からOAuth関連活動の追跡を開始した、認証に重点を置くロシア関連の諜報クラスタである。GTIGは「We believe this cluster to be distinct from UNC6293 and UNC7005」と述べ、ICE RELIC(旧APT29)へ結び付く2クラスタとは別のものとして扱っている。ファイル共有を思わせるドメインとクラウドプロジェクトを組み合わせたOAuthフィッシングによる認証トークンの自動収集を主な手口とし、悪性のExcelプラグインHEADRUSHも用いる。",
+    "analyst_notes": "first_seenは原文の「GTIG began tracking OAuth related activity from UNC5976 ... in March 2026」、last_seenは「In April 2026, GTIG observed a HEADRUSH sample」からmonth精度で設定した。原文は「Within approximately three months of initial discovery and disruption by GTIG, UNC5976 created at least twelve new domains」とインフラ再構築の継続にも触れるが、具体的な月が明示されないためlast_seenへは反映していない。資料公開日2026-08-20は観測日へ流用していない。GTIG命名のクラスタ指定子を一級プロファイルとして持つ既存の前例(UNC1549、UNC3753、UNC4221、UNC5342、UNC6293)に従い、statusはdraftから開始する。"
+  },
+  "attribution": {
+    "countries": [
+      "Russia"
+    ],
+    "sponsor_type": "state",
+    "organizations": [],
+    "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」とhigh confidenceでロシア関連性を評価している。UNC5976については「a suspected Russian cyber espionage cluster with an authentication focus」と記述し、ICE RELIC系の2クラスタとは区別したうえで「potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と述べるにとどまり、具体的な機関への帰属は行っていない。",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--gtig-going-with-the-flows-2026"
+    ],
+    "analyst_notes": "国レベルの帰属はGTIGがhigh confidenceで述べるが、sponsor_typeを含むattributionブロック全体としてはmediumとする。「alternative Russian intelligence services」への整合は可能性の指摘であり、organizationsへは反映しない。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "GTIGはUNC5976を「a suspected Russian cyber espionage cluster with an authentication focus」と説明し、認証トークンの窃取によるアカウント侵害を目的とする活動と位置付けている。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "一次資料の明示記述に基づく。金銭目的の記述は原文にない。"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--unc5976-unc6293-unc7005-distinct",
+      "target_actor": "actor--unc7005",
+      "relationship_type": "related-to",
+      "description": "GTIGはUNC5976について「We believe this cluster to be distinct from UNC6293 and UNC7005」「UNC5976 remains distinct from the UNC6293 and UNC7005 clusters, potentially reflecting differing strategic mandates and potential alignment with alternative Russian intelligence services」と明示的に別クラスタとしている。相違点として、事後侵害活動に住宅用プロキシーではなく専用インフラを用いること、およびICE RELIC関連クラスタよりマルウェアとツールの利用が顕著であることを挙げている。共通点は、ロシア関連性と認証フロー悪用への注力である。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "同一性や協力関係を示す関係ではなく、同一資料で並置され明示的に区別されたクラスタであることを記録する。将来の誤統合を防ぐための記録であり、related-toを用いる(RULES.md 6条・13条)。"
+    }
+  ],
+  "diamond_model": {
+    "adversary": "UNC5976。GTIGが2026年3月から追跡する、認証に重点を置くロシア関連の諜報クラスタ。UNC6293およびUNC7005とは別クラスタとされ、異なるロシア情報機関との整合の可能性が指摘されている。",
+    "capability": "偽ファイル共有ページとクラウドプロジェクトを組み合わせたOAuthトークン収集の自動化。悪性Excelプラグイン HEADRUSH からHTAダウンローダーへ至る感染連鎖。事後侵害活動には住宅用プロキシーではなく専用インフラを用いる。",
+    "infrastructure": "ファイル共有を思わせる名称の購入ドメインと、対応する攻撃者管理のクラウドプロジェクト。無効化後およそ3か月で少なくとも12件の新規ドメインを再構築しており、Google以外の事業者への移行が進んでいると評価されている。",
+    "victim": "軍、航空宇宙、防衛産業基盤、NGO・シンクタンク。地理的にはウクライナとアルメニアへの偏りが指摘される。HEADRUSHの配布ではウクライナの研究機関を装い、ウクライナの航空宇宙・画像関連企業が標的となった可能性がある。",
+    "socio_political": "GTIGは3クラスタのロシア関連性をhigh confidenceで評価し、UNC5976については異なる戦略的任務と、別のロシア情報機関との整合の可能性を指摘している。",
+    "analyst_notes": "GTIG「Going with the Flow(s)」(2026-08-20)の原文記述のみから構成した。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--headrush",
+        "name": "HEADRUSH",
+        "aliases": [],
+        "types": [
+          "Excel",
+          "plugin",
+          "downloader"
+        ],
+        "description": "GTIGがHEADRUSHと命名した悪性のExcelプラグイン。2026年4月に確認された検体は最終的にHTML Application (HTA)ダウンローダーへ到達する。GTIGは当時、感染連鎖の全容を特定できなかったと述べている。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIG命名の独自マルウェア。"
+      }
+    ],
+    "tools": [],
+    "infrastructure": [
+      {
+        "id": "infra--unc5976-file-sharing-phishing-domains",
+        "name": "ファイル共有を装うOAuthフィッシングドメインとクラウドプロジェクト",
+        "aliases": [],
+        "types": [
+          "phishing-domain",
+          "cloud-project"
+        ],
+        "description": "UNC5976はファイル共有を思わせる名称のドメインを購入し、対応するクラウドプロジェクトを作成する。ドメインは偽のファイル共有ページを提供し、数秒後にログインダイアログを表示する。標的が認証すると、認証トークンをURLから取得して保存する悪性スクリプトを設置したクラウドプロジェクトのURLへリダイレクトされる。GTIGによる初回の発見と無効化からおよそ3か月のうちに、少なくとも12件の新規ドメインと関連インフラが作成された。GTIGは、UNC5976がフィッシングインフラの一部をGoogle以外の事業者へ移行しつつあると評価している。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "原文は12件の新規ドメインの個別値を列挙していないため、IOCとして収録できるのはIOC表に掲載された2件のみである。"
+      }
+    ],
+    "delivery_formats": [],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--unc5976-oauth-token-harvesting",
+        "name": "クラウド基盤を悪用したOAuthトークン収集の自動化",
+        "aliases": [],
+        "types": [
+          "credential-access"
+        ],
+        "description": "正規のOAuthログイン画面へ誘導したうえで、攻撃者が管理するクラウドプロジェクトへリダイレクトし、URLから認証トークンを取得して運用者が後から回収できるよう保存する。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--unc5976-dedicated-post-compromise-infrastructure",
+        "name": "事後侵害活動への専用インフラの使用",
+        "aliases": [],
+        "types": [
+          "operational-security"
+        ],
+        "description": "GTIGは「UNC5976 uses dedicated infrastructure for post-compromise activity rather than residential proxies」と述べ、ICE RELIC関連クラスタとの運用上の相違点として挙げている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "観測時期の記載がないため期間はunknownとした。"
+      }
+    ],
+    "analyst_notes": "GTIGは「UNC5976 has a much heavier malware and tooling footprint than the ICE RELIC-linked clusters」と述べるが、本資料で具体名が示されたマルウェアはHEADRUSHのみである。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--unc5976-headrush-excel-plugin-2026",
+      "name": "UNC5976によるHEADRUSH Excelプラグインの配布",
+      "activity_type": "malware-campaign",
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "2026年4月、GTIGはUNC5976が悪性のExcelプラグインHEADRUSHを配布する事例を確認した。確認された検体は最終的にHTML Application (HTA)ダウンローダーへ到達する。配布には、ウクライナの研究機関を装うドメインが用いられた。GTIGは、ウクライナの航空宇宙・画像関連企業が標的となった可能性があるとし、当時は感染連鎖の全容を特定できなかったと述べている。",
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39"
+      ],
+      "malware_refs": [
+        "malware--headrush"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--64ea35238544ea80078e"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "原文の「In April 2026, GTIG observed a HEADRUSH sample」からmonth精度で設定した。標的企業は「may have targeted」と可能性にとどまる記述のため、被害事例としては構造化せず記述中に留保付きで残した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5976",
+          "name": "UNC5976",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--headrush"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--64ea35238544ea80078e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--unc5976-oauth-cloud-token-harvesting-2026",
+      "name": "UNC5976による偽ファイル共有ページを用いたOAuthトークン窃取",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "GTIGは2026年3月からUNC5976のOAuth関連活動の追跡を開始した。UNC5976はファイル共有を思わせる名称のドメインを購入し、対応するクラウドプロジェクトを作成したうえで、偽のファイル共有ページを設置する。標的がページを数秒閲覧するとログインダイアログが表示され、「Continue with Google」を押すと正規のGoogle OAuthログイン画面へ誘導される。認証後は攻撃者が管理するクラウドプロジェクトのURLへリダイレクトされ、そこに設置された悪性スクリプトがURLから認証トークンを取得して運用者が後から回収できるよう保存する。GTIGによる初回の発見と無効化からおよそ3か月のうちに少なくとも12件の新規ドメインと関連インフラが作成され、GTIGはこれらのクラウドプロジェクトの無効化とフィッシング活動の妨害を行った。GTIGは現在、UNC5976がフィッシングインフラの一部をGoogle以外の事業者へ移行しつつあると評価している。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--unc5976-file-sharing-phishing-domains"
+      ],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--afdf3cb80ab11953526e"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "first_observedは原文の「GTIG began tracking OAuth related activity from UNC5976 ... in March 2026」からmonth精度で設定した。「Within approximately three months」は相対表現で終端の月が確定できないため、last_observedはunknownとした。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc5976",
+          "name": "UNC5976",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--unc5976-file-sharing-phishing-domains"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--afdf3cb80ab11953526e"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--64ea35238544ea80078e",
+      "name": "被害事例: UNC5976によるHEADRUSH Excelプラグインの配布",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "2026年4月、GTIGはUNC5976が悪性のExcelプラグインHEADRUSHを配布する事例を確認した。確認された検体は最終的にHTML Application (HTA)ダウンローダーへ到達する。配布には、ウクライナの研究機関を装うドメインが用いられた。GTIGは、ウクライナの航空宇宙・画像関連企業が標的となった可能性があるとし、当時は感染連鎖の全容を特定できなかったと述べている。",
+      "activity_refs": [
+        "activity--unc5976-headrush-excel-plugin-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39"
+      ],
+      "malware_refs": [
+        "malware--headrush"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--afdf3cb80ab11953526e",
+      "name": "被害事例: UNC5976による偽ファイル共有ページを用いたOAuthトークン窃取",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "GTIGは2026年3月からUNC5976のOAuth関連活動の追跡を開始した。UNC5976はファイル共有を思わせる名称のドメインを購入し、対応するクラウドプロジェクトを作成したうえで、偽のファイル共有ページを設置する。標的がページを数秒閲覧するとログインダイアログが表示され、「Continue with Google」を押すと正規のGoogle OAuthログイン画面へ誘導される。認証後は攻撃者が管理するクラウドプロジェクトのURLへリダイレクトされ、そこに設置された悪性スクリプトがURLから認証トークンを取得して運用者が後から回収できるよう保存する。GTIGによる初回の発見と無効化からおよそ3か月のうちに少なくとも12件の新規ドメインと関連インフラが作成され、GTIGはこれらのクラウドプロジェクトの無効化とフィッシング活動の妨害を行った。GTIGは現在、UNC5976がフィッシングインフラの一部をGoogle以外の事業者へ移行しつつあると評価している。",
+      "activity_refs": [
+        "activity--unc5976-oauth-cloud-token-harvesting-2026"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "クラウド／SaaS"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "UNC5976による偽ファイル共有ページを用いたOAuthトークン窃取"
+        },
+        {
+          "impact_type": "credential-theft",
+          "description": "UNC5976による偽ファイル共有ページを用いたOAuthトークン窃取"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-going-with-the-flows-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--31c38bdcbda84be33d7e",
+        "name": "アルメニア",
+        "description": "GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] クラスタ単位の標的記述は活動記述に含まれないため、curationとして補う。帰属国ロシアは標的国へ流用しない。"
+      },
+      {
+        "id": "target--activity-rule--country--36f1b9323d5faab92f39",
+        "name": "ウクライナ",
+        "description": "GTIGはUNC5976について「Much of the group's geographic targeting has centered on Ukraine and Armenia」と記述し、「Its operational focus is primarily centered on the military, aerospace, defense industrial base, and NGOs/think tanks」としている。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] クラスタ単位の標的記述は活動記述に含まれないため、curationとして補う。帰属国ロシアは標的国へ流用しない。 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [],
+    "sectors": [],
+    "roles": [],
+    "selection_logic": "標的国・地域・業種は、GTIG原文がUNC5976について明示した記述のみから収録する。3クラスタ合算の記述、帰属国、インフラ所在国は標的として扱わない。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "原文がUNC5976の配布事例について明示するのは、ウクライナの研究機関を装うドメインの使用と、ウクライナの航空宇宙・画像関連企業が標的となった可能性(may have targeted)である。構造化はenrich_targeting_scope.pyによる活動記述からの導出に委ねる。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [],
+  "sources": [
+    {
+      "source_id": "source--gtig-going-with-the-flows-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+      "title": "Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-08-21T01:05:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "attribution",
+        "activity",
+        "targeting",
+        "ioc"
+      ],
+      "analyst_notes": "GTIGが直接観測した一次資料。クラスタ単位の標的記述を明示しているため、活動記述からの自動抽出では拾えない標的国・地域の根拠として使用する。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "UNC5976はUNC6293およびUNC7005とは別クラスタであり、ICE RELIC(旧APT29)へは結び付けられていない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIGが明示的に区別している。将来の誤統合を防ぐため関係として記録した。"
+      },
+      {
+        "statement": "UNC5976は無効化後も短期間でインフラを再構築する運用能力を持つ。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "GTIGによる初回の発見と無効化からおよそ3か月で少なくとも12件の新規ドメインが作成されたという直接観測に基づく。"
+      }
+    ],
+    "gaps": [
+      "原文は被害組織名を明記していないため、victim_casesを構造化できていない。",
+      "GTIGは「a much heavier malware and tooling footprint」と述べるが、本資料で具体名が示されたマルウェアはHEADRUSHのみで、ツールの具体名は示されていない。",
+      "再構築された12件以上のドメインの個別値は原文に列挙されておらず、IOCとして収録できていない。"
+    ],
+    "uncertainties": [
+      "GTIGは「potential alignment with alternative Russian intelligence services」と可能性を述べるにとどまり、具体的な機関は特定していない。",
+      "HEADRUSHの配布におけるウクライナの航空宇宙・画像関連企業への攻撃は「may have targeted」であり確定していない。"
+    ],
+    "collection_notes": "2026-08-21の日次チェックで、tech-memo未収録の新規公開として一次情報源チェックから検知し、原文を取得して確認した。単一ベンダーの一次資料1本のみに基づくためstatusはdraftとする。",
+    "analyst_notes": "UNC1549、UNC3753、UNC4221、UNC5342、UNC6293と同様、未帰属クラスタ指定子を一級プロファイルとして保持する既存方針に従う。"
+  },
+  "free_text": {
+    "executive_summary": "UNC5976はGTIGが2026年3月から追跡する、認証に重点を置くロシア関連の諜報クラスタである。ファイル共有を装うドメインとクラウドプロジェクトを組み合わせたOAuthフィッシングで認証トークンを自動収集し、悪性Excelプラグイン HEADRUSH も用いる。GTIGはUNC6293・UNC7005とは別クラスタと評価している。",
+    "history": "2026年3月にGTIGがOAuth関連活動の追跡を開始し、無効化後およそ3か月で少なくとも12件の新規ドメインが再構築された。2026年4月にはHEADRUSH検体の配布が確認された。",
+    "capability_details": "OAuthフィッシングでは、正規のGoogle OAuthログイン画面を経由させたうえで攻撃者管理のクラウドプロジェクトへリダイレクトし、URLから認証トークンを取得して保存する。HEADRUSHは悪性のExcelプラグインで、最終的にHTAダウンローダーへ到達する。",
+    "infrastructure_details": "購入ドメインは多くがファイル共有に関連する名称を用いる。GTIGは、フィッシングインフラの一部がGoogle以外の事業者へ移行しつつあると評価している。",
+    "targeting_details": "構造化ターゲット監査: 標的国=アルメニア、ウクライナ。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nHEADRUSHの配布ではウクライナの研究機関を装うドメインが用いられ、ウクライナの航空宇宙・画像関連企業が標的となった可能性がある。",
+    "additional_notes": "2026-08-21の日次チェックで、GTIG「Going with the Flow(s)」(2026-08-20)を唯一の一次資料として新規作成した。独立した一次資料が追加された時点でstatusの見直しを行う。"
+  }
+}

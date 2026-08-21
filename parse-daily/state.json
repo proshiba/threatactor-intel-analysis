@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "836c268d0fb747b2060f25aa7b772727ee29c440",
-  "last_scanned_date": "2026-08-18",
+  "last_scanned_commit": "d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d",
+  "last_scanned_date": "2026-08-20",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1459,6 +1459,134 @@
           "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
           "latest_relevant_publication": "2026-08-17",
           "result": "今回追加で確認した政府一次資料(catalogVersion 2026.08.17)。CVE-2026-12569(PTC Windchill/FlexPLM)をdateAdded 2026-06-25・knownRansomwareCampaignUse: Known として収録しているが、Cl0pを含むアクター名の記載はない。CVE-2026-59310/59309/47301/69414はKEV未収録。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-08-21T01:40:00Z",
+      "window": {
+        "since": "2026-08-18",
+        "until": null
+      },
+      "source_commit": "d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d",
+      "statistics": {
+        "news_files": 3,
+        "articles": 34,
+        "review_records": 1,
+        "approved_records": 1,
+        "rejected_records": 0,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 42,
+        "materialization_window": "queueは2026-08-18以降で再生成した。tech-memo側の「観点1・2の交差」は0件で、新規言及はsilent-librarian 1件のみだった。pendingが0となり2026-08-20分までレビューを完了したためlast_scanned_dateを2026-08-20へ進めた。本日の主要な検知はtech-memo経由ではなく一次情報源チェックによるもので、GTIG(2026-08-20)とCisco Talos(2026-08-20)の未収録公開を検知した。"
+      },
+      "applied": [
+        {
+          "actor": "silent-librarian",
+          "name": "Mabna Instituteによる学術データ・知的財産の窃取(米司法省S2追起訴)",
+          "source": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+          "decision": "一次資料(米司法省 Office of Public Affairs)の原文を確認。WebFetchはHTTP 401のためUser-Agent付きcurlでHTTP 200・全文取得した。ページ上の日付は「Tuesday, August 18, 2026」で、tech-memo日次ファイル日付2026-08-20とは異なる。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、原文が「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute, an Iran-based company that, since at least 2013, has conducted a coordinated campaign of cyber intrusions」とMabna Instituteを実行主体として明記し、かつ「Nine of the 17 defendants charged in the S2 indictment were previously charged in a 7-count indictment announced in March 2018」と2018年3月起訴の再掲ではない新たな追起訴であることが確認できるため、過去言及ではないと判断した。MITRE ATT&CK G0122のSilent Librarian記述自体がこのDOJ事件を引用しており、Mabna Instituteは既にaliasへ登録済みである。ただしDOJは組織名「Mabna Institute」のみを用い、Silent LibrarianおよびCobalt Dickensは原文に現れず、alias scopeもexactではないためconfidenceはmediumとした。活動期間は原文の「The campaign started in approximately 2013, continued through at least December 2017」からfirst_observed=2013(year)・last_observed=2017-12(month)を採用し、公開日は観測日へ流用していない。activity_typeの自動分類はHBO恐喝への言及に反応してransomware-extortionを返すため、レビュー判断としてcyber-espionageを明示指定した(この指定を再現可能にするため、review-decisions.jsonのactivity_typeをbuild_review_queue.pyとdaily_materializer.pyが読むよう最小限の対応を加えた)。法執行資料のためIOC・artifact・capability候補はいずれも存在しない。"
+        }
+      ],
+      "rejected": [],
+      "pending": [],
+      "new_profiles": [
+        {
+          "slug": "unc7005",
+          "name": "UNC7005 (aka STORM-2945)",
+          "source": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "decision": "GTIG(2026-08-20)を唯一の一次資料としてstatus: draftで新規作成した。既存679プロファイルにUNC7005・STORM-2945の名称は存在しなかった。UNC1549、UNC3753、UNC4221、UNC5342、UNC6293の前例に従い、GTIG命名のクラスタ指定子を一級プロファイルとして保持する。活動5件(app passwordフィッシング、デバイスコードフィッシング、サミット偽装インフォスティーラー配布、FOC偽装OAuthフィッシング、captive portal作戦インフラ)、マルウェア4件(ENGINELIGHT、CHERRYPIE、VIDAR、ATOMIC)、IOC 43件を収録した。IOC表のAttribution列が空欄のATOMIC関連C2 4件はdisposition: candidateとした。"
+        },
+        {
+          "slug": "unc5976",
+          "name": "UNC5976",
+          "source": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "decision": "GTIG(2026-08-20)を唯一の一次資料としてstatus: draftで新規作成した。GTIGが「We believe this cluster to be distinct from UNC6293 and UNC7005」と明示的に区別しているため、既存クラスタへ寄せずに独立プロファイルとした。活動2件(偽ファイル共有ページによるOAuthトークン窃取、HEADRUSH配布)、マルウェア1件(HEADRUSH)、IOC 3件を収録した。"
+        }
+      ],
+      "alias_updates": [
+        {
+          "actor": "apt29",
+          "alias": "ICE RELIC",
+          "decision": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記したベンダー呼称の変更。scope: exact / confidence: highでaliasへ追加した。帰属の変更ではない。GTIG以外のベンダーによる採用状況は未確認。"
+        },
+        {
+          "actor": "apt29",
+          "alias": "Storm-2945",
+          "decision": "追加しない。GTIGがSTORM-2945をUNC7005として別クラスタで追跡し、ICE RELIC(=APT29)への接続をmoderate confidenceにとどめているため、APT29のaliasとしては確定できない。判断はclaim-audit.jsonへ記録した。"
+        },
+        {
+          "actor": "apt29",
+          "alias": "malware--chocoshell / CHERRYPIE",
+          "decision": "GTIGが「CHERRYPIE PowerShell infostealer (also known as ChocoShell)」と明記したためmalware aliasへ追加した。マルウェアの同一性とアクター帰属の確度は分離して扱う。"
+        }
+      ],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--uat-10147",
+          "action": "added",
+          "note": "status: tracking。Cisco Talos「UAT-10147: Chinese-speaking adversary integrates agentic AI into post-compromise operations」および「UAT-10147 deploys SPECTRE」(いずれも2026-08-20)。tech-memo未収録で一次情報源チェックのみで検知した。UATはTalosの未帰属クラスタ指定子であり、原文は名前付きグループへ帰属していない。Gh0stCringe、QuasarRAT、Noodle RAT等の共有ツール一致だけで既存プロファイルへ寄せない。一次資料が同一ベンダーの同日公開2本のみのため昇格閾値未達。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "UNC7005 / STORM-2945",
+          "observations": 0,
+          "note": "IOC CSVにもdaily-news本文にも現れず、一次情報源チェックでのみ検知した。profiles/unc7005として新規作成済み。"
+        },
+        {
+          "name": "UNC5976",
+          "observations": 0,
+          "note": "IOC CSVにもdaily-news本文にも現れず、一次情報源チェックでのみ検知した。profiles/unc5976として新規作成済み。"
+        },
+        {
+          "name": "UAT-10147",
+          "observations": 0,
+          "note": "IOC CSVにもdaily-news本文にも現れず、一次情報源チェックでのみ検知した。未帰属のためunknown-cluster--uat-10147として台帳へ記録した。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "cutoff後のアクター別一次情報なし。「Hunting MacSync Stealer infrastructure through behavioral pivots」(2026-08-18)はtech-memoの2026-08-20分に収録済みで、IOC CSVのactor列は全てunknown、名前付きアクターへの帰属もない。2026-08-19の公開はアナリスト評価に関する広報記事。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "新規1件。「Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia」(2026-08-20)。tech-memo未収録で本チェックでのみ検知した。一覧ページは公開日を表示しないため、原文のメタタグ published_time 2026-08-20T20:50:16+0000 とJSON-LD datePublished 2026-08-20 で確認した。既存のprofiles/unc6293へ活動2件とIOC 2件を追加し、UNC7005とUNC5976を新規作成、profiles/apt29へICE RELIC alias・ChocoShell=CHERRYPIE alias・サブクラスタ関係2件を追加した。Microsoft(2026-07-31)とのクラスタ境界の評価差はprofiles/apt29/claim-audit.jsonへpartially-supportedとして記録した。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後のアクター別一次情報なし。「Identity Abuse Through Trusted Communication Channels」(2026-08-20)の原文を確認したところ、APT29への言及は自社の過去記事「When 'Hi, This Is IT' Comes Through Microsoft Teams」への後方参照、Contagious InterviewへのはFireblocksの評価の引用であり、Unit 42自身の新規観測でも観測日の記載でもない。historical-referenceのため採用しない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "新規2件。「UAT-10147: Chinese-speaking adversary integrates agentic AI into post-compromise operations」と「UAT-10147 deploys SPECTRE: A cross-platform implant with Linux rootkit and BYOVD capabilities」(いずれも2026-08-20)。tech-memo未収録で本チェックでのみ検知した。未帰属のためunknown-cluster--uat-10147へtrackingで追加した。同日の「Is Cyber missing the Marque?」と2026-08-19の「Describing attacks with crime script analysis」は独自のアクター研究ではない。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規なし。最新は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で前回チェックから変化なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後のアクター別一次情報なし。「The Model Is the Malware」(2026-08-13)はAI研究で、名前付き脅威アクターの活動報告ではない。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-14",
+          "result": "cutoff後の新規なし。RSS(securelist.com/feed/)で最新がHoneyMyte/CoolClient(2026-08-14 09:00:14 UTC)であることを確認した。一覧ページの表示日付は2026-08-12だがRSSの公開日時を優先する。反映済み。"
         }
       ]
     }

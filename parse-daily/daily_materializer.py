@@ -163,6 +163,9 @@ def activity_bounds(record: dict[str, Any]) -> tuple[dict[str, Any], dict[str, A
 
 
 def activity_type_for(record: dict[str, Any]) -> str:
+    reviewed = record.get("activity_type")
+    if isinstance(reviewed, str) and reviewed:
+        return reviewed
     text = (
         f"{record['activity'].get('title', '')} "
         f"{record['activity'].get('summary', '')}"

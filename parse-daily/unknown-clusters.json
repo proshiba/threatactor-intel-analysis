@@ -1077,6 +1077,144 @@
         "解消済み(2026-08-19)。ReliaQuestの一次ブログ「Clop Returns with Custom Implant in Mass-Extortion Campaign」(2026-08-18)を直接取得し、帰属根拠とIOCを原文で確認した。2026-08-18時点で未取得だったX投稿は、同一調査の告知であり内容は本ブログに含まれると判断する。Ransom-ISACの記事は引き続き未取得で、原文中の恐喝メール画像の出典として参照されているのみである。"
       ],
       "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、当該記事のIOCは「IOC情報なし」であり、review-queue にはレコードが生成されていない。「反証が見つからなかった」ではなく「ReliaQuestが明示的に帰属を未確定としている」状態である点を記録する。 2026-08-19の日次チェックで、tech-memo daily-news 2026-08-19 経由でReliaQuestの一次ブログを検知し、原文確認のうえ観測を追加した。帰属評価はself-claimed-vendor-unconfirmed から attributed-by-vendor へ更新したが、昇格閾値は未達のため status は tracking のまま据え置く。Cl0pを独立プロファイルへ昇格させるか profiles/ta505 の alias として扱うかの判断は引き続き保留であり、利用者の指示を待つ。"
+    },
+    {
+      "cluster_id": "unknown-cluster--uat-10147",
+      "primary_name": "UAT-10147",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-21",
+      "last_seen": "2026-08-21",
+      "detected_via": "一次情報源チェック（Cisco Talos 公開一覧）。tech-memo daily-news には未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-intrusion-cybercrime",
+        "notes": "UAT-10147 は Cisco Talos の未帰属クラスタ指定子（UAT = unattributed threat）である。Talos は「a Chinese-speaking cybercrime group, tracked as UAT-10147」「a highly capable Chinese-speaking intrusion actor」と中国語話者による運用を述べ、動機については「Talos assesses with moderate-to-high confidence that UAT-10147 is among an emerging class of financially motivated intrusion operators leveraging agentic AI systems」と評価するにとどまり、名前付きグループへの帰属は行っていない。中国語話者・中国語文字列・中国を含む標的国は運用言語と被害範囲の指標であり帰属根拠にしない。Gh0stCringe、QuasarRAT、Noodle RAT、Metasploit/Meterpreter、GodPotato/JuicyPotato/EfsPotato/RustPotato はいずれも複数アクターが利用する共有ツールであり、既存プロファイルとのツール一致だけで寄せ付けない。既存 679 プロファイルに UAT-10147、SPECTRE、Specter、SeoEngineHandler の名称は存在しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-21",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/uat-10147-chinese-speaking-adversary-integrates-agentic-ai-into-post-compromise-operations/",
+          "title": "UAT-10147: Chinese-speaking adversary integrates agentic AI into post-compromise operations",
+          "published_at": "2026-08-20",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "インターネットに公開された Windows / Linux Web サーバー。Talos の調査では被害サーバーはブラジル、ボリビア、中国、カナダ、ベトナムに所在し、政府、大学、メディア、技術、ゲーム業界の組織に属する。C2 サーバーのオープンディレクトリから約 170,000 件の URL を収めた標的リストを確認しており、攻撃者はこれを 1 万件ずつ 17 ファイルへ分割していた。",
+          "malware": [
+            "BadIIS",
+            "SPECTRE",
+            "Gh0stCringe",
+            "QuasarRAT",
+            "Noodle RAT",
+            "Meterpreter"
+          ],
+          "tools": [
+            "Metasploit Framework",
+            "ysoserial",
+            "PentestGPT",
+            "DeepAudit",
+            "EfsPotato",
+            "badsecrets",
+            "certutil",
+            "appcmd"
+          ],
+          "activity_period": "原文は「In early 2026, Cisco Talos discovered」とのみ述べ、攻撃観測期間の開始日・終了日を明示していない。公開日 2026-08-20 は reported_at 相当であり観測日へ流用しない。",
+          "summary": "公開済み脆弱性を用いた大規模な初期侵入と、AI 支援による事後侵害作業の自動化。悪用が確認された脆弱性は CVE-2022-27925（Zimbra Collaboration Suite の未認証 RCE）、CVE-2021-23758（AjaxPro のデシリアライゼーション RCE）、CVE-2021-29441 / CVE-2021-29442（Nacos の任意コード実行）、CVE-2019-18935（Telerik UI for ASP.NET AJAX の .NET JSON デシリアライゼーション）。Linux 側のローカル権限昇格には CVE-2022-0995、CVE-2021-3156（Baron Samedit）、CVE-2015-5287、CVE-2015-3246、CVE-2010-3904、CVE-2022-0847（Dirty Pipe）を使用する。Windows 側では back.txt / back.bat から certutil で EfsPotato（prcc1.rar）、bai.bat、QuasarRAT（svchosts.exe）を取得し、Windows Defender の除外パスへ System32\\inetsrv と SysWOW64\\inetsrv を追加してから BadIIS を配置、「Google Chrome Start」という名称の計画タスクで永続化し、Administrators と Remote Desktop Users に属する不正ローカルアカウントを作成する。AI 支援の具体的な証跡として、ASP.NET ViewState デシリアライゼーション RCE の手順書、check_paths.py・deploy_implant.py・deploy_shell.py・exfil.py の 4 本の Python スクリプト、および webhook.site へのコールバックを記録した findings log を C2 から回収している。SEO 詐欺とデータ窃取による金銭目的の活動。",
+          "iocs": [
+            {
+              "type": "ipv4",
+              "value": "139.180.197[.]150",
+              "role": "download-staging-server",
+              "note": "オープンディレクトリを持つダウンロードサーバー。ポート 54321 で sss.ashx を配布。"
+            },
+            {
+              "type": "domain",
+              "value": "adminapi.tippusoni[.]in",
+              "role": "payload-delivery",
+              "note": "certutil で dll.zip（BadIIS）と user.txt を取得する配布元。"
+            }
+          ],
+          "detection": {
+            "clamav": [
+              "Py.Loader.Tool-10060293-1",
+              "Py.Loader.Tool-10060293-2",
+              "Win.Malware.Generic-10060228-0",
+              "Win.Loader.Downloader-10060287-1"
+            ],
+            "snort": [
+              "66696",
+              "66697"
+            ]
+          },
+          "verified_by_analyst": "原文を確認済み（帰属記述、公開日時 Thursday, August 20, 2026 06:00、被害国、悪用 CVE、IOC 値を直接確認）。記事末尾の IOC 一覧は Talos の GitHub リポジトリへのリンクで提供されており、本セッションの GitHub アクセスは proshiba/threatactor-intel-analysis に限定されているため取得していない。本台帳へは原文本文中に明示された攻撃者インフラ 2 件のみを収録した。"
+        },
+        {
+          "observed_on": "2026-08-21",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/uat-10147-deploys-spectre-a-cross-platform-implant-with-linux-rootkit-and-byovd-capabilities/",
+          "title": "UAT-10147 deploys SPECTRE: A cross-platform implant with Linux rootkit and BYOVD capabilities",
+          "published_at": "2026-08-20",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "IIS および Linux サーバー。ASHX SEO engine の設定はベトナムの利用者を明示的に標的とし、C2 ドメインに「vn[.]xyz」サフィックスを用い、ベトナムの検索エンジン「Cốc Cốc」のクローラーを対象に設定している。",
+          "malware": [
+            "SPECTRE",
+            "Specter (Linux kernel rootkit)",
+            "BadIIS",
+            "ASHX SEO engine (SeoEngineHandler)",
+            "Gh0stCringe",
+            "QuasarRAT",
+            "Noodle RAT",
+            "Meterpreter"
+          ],
+          "tools": [
+            "GodPotato",
+            "JuicyPotato",
+            "EfsPotato",
+            "RustPotato",
+            "RTCore64.sys"
+          ],
+          "activity_period": "原文は攻撃観測期間を明示していない。BadIIS の PDB パスに含まれる「2025-11-21」は開発成果物の日付であり攻撃観測日ではないため期間へ流用しない。公開日 2026-08-20 は reported_at 相当。",
+          "summary": "C 言語で書かれたクロスプラットフォームバックドア SPECTRE の解析。Windows 版は Havoc フレームワークを基にした独自拡張で、PEB ハッシュウォークによる実行時 API 解決と xorshift32 PRNG による文字列暗号化、重み付けアンチサンドボックス採点（50 点以上で自己終了）を備える。C2 通信は /api/v1/register と /api/v1/output への HTTP POST で、一部の版は NTFS 代替データストリーム C:\\Windows\\System32\\drivers\\etc\\hosts:cache から C2 設定を読み込む。45 個のコマンドのうち 21 個は暗号化されている。BYOVD による EDR 無効化では MSI の RTCore64.sys 等の既知の脆弱ドライバーを C2 から取得して一時カーネルサービスとして導入し、13 種の Windows バージョン向けオフセット表から PspCreateProcessNotifyRoutine、PspCreateThreadNotifyRoutine、PspLoadImageNotifyRoutine を特定して EDR コールバックをリンクリストから外す。Linux 側は acpi_pad.ko を装うカーネルモジュール Specter を hardware-monitor.service（Before=sysinit.target）で永続化し、syscall テーブルの改変ではなく ftrace の FTRACE_OPS_FL_IPMODIFY で 6 つの syscall ハンドラーをフックする。Talos は SPECTRE と Specter の双方に AI 支援開発の痕跡があると medium confidence で評価している。",
+          "detection": {
+            "clamav": [
+              "Win.Malware.Generic-10060235-0",
+              "Win.Malware.Generic-10060218-0",
+              "Win.Malware.Generic-9883082-0",
+              "Win.Malware.BadPotato-10060230-0",
+              "Win.Exploit.Marte-10033857-0",
+              "Unix.Rootkit.Malware-10060258-0",
+              "Win.Tool.GodPotato-10019688-1",
+              "Unix.Rootkit.Spectre-10060260-0",
+              "Unix.Trojan.Backdoor-6678692-0",
+              "Win.Malware.Generic-10060252-0",
+              "Win.Malware.Ulise-10056576-0",
+              "Win.Malware.Generic-10060220-0",
+              "Win.Malware.BadIIS-10059985-0",
+              "Win.Tool.juicypotato-10041758-0",
+              "Unix.Backdoor.Msfvenom-10012672-0",
+              "Win.Loader. BadiisSet-10060291-1",
+              "Asp.Rootkit.Badiis-10060290-1"
+            ],
+            "snort": [
+              "66688",
+              "66689",
+              "66690",
+              "301548"
+            ]
+          },
+          "verified_by_analyst": "原文を確認済み（帰属記述、公開日、SPECTRE / Specter の技術詳細、「vn[.]xyz」がサフィックスであって単独の IOC 値ではないことを直接確認）。「vn[.]xyz」は具体的なドメイン値ではないため IOC として収録しない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Talos は BadIIS 検体の PDB パス「C:\\Users\\Administrator\\Desktop\\2025-11-21 (x神订制全站劫持按浏览器语言跳转)\\dll\\Release\\demo.pdb」等から、SEO 詐欺関連のコンポーネントを「x神」(xshen) に medium confidence で関連付けている。xshen はTalos の過去記事で言及された BadIIS の MaaS 提供者と見られるが、原文は UAT-10147 と xshen を同一視しておらず、既存プロファイルにも xshen の名称は存在しない。xshen 自体を独立クラスタとして起こすかは、一次資料を追加で確認した時点で判断する。",
+        "deploy_shell.py に含まれるローカルパス「C:\\Users\\dajiba\\Desktop\\phantom-v2\\data\\arsenal\\webshells\\sss.ashx」から運用者の利用者名「dajiba」が判明している。運用者識別子であり帰属には用いない。",
+        "QuasarRAT の Campaign ID にベトナム人への蔑称（越南老逼）が設定され、SeoEngineHandler もベトナム向けに構成されているが、Talos はこれを標的傾向の示唆として述べるにとどまる。標的国としてのベトナムは被害サーバーの所在で裏付けられているが、他 4 か国と同列に扱う。",
+        "現時点で一次資料は Cisco Talos の同日公開 2 本のみであり、発行元が同一のためpromotion_policy の「独立した一次資料 2 本以上」を満たさない。政府・CERT・法執行機関の言及、または他ベンダーの独立報告が得られた時点でprofiles/uat-10147 への昇格を検討する。"
+      ],
+      "analyst_notes": "2026-08-21 の日次チェックで、tech-memo 未収録の新規公開として一次情報源チェックのみで検知した。レビューキューには対応レコードが存在しない。同日公開の 2 本は同一クラスタを扱う連続記事であり、1 クラスタに 2 観測として記録する。"
     }
   ],
   "excluded_name_collisions": [

@@ -7,33 +7,47 @@
       "spec_version": "2.1",
       "id": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-08-21T01:45:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "UNC6293",
       "aliases": [],
-      "description": "UNC6293の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
-      "goals": [],
-      "external_references": [],
+      "description": "UNC6293はGoogle Threat Intelligence Group (GTIG)が追跡する、認証フローの悪用に重点を置くロシア関連の脅威クラスタである。GTIGはUNC6293を「a sub cluster of ICE RELIC (formerly APT29) responsible for initial access operations」とmoderate confidenceで評価している。主な手口は、米国務省(US State Department)の職員を装ってapp passwordを設定させ2要素認証を回避するフィッシングと、正規の認証フローを悪用するOAuthフィッシングである。1回あたりの標的は5名未満と小規模で、囮の主題は外交や今後の会議・会合に偏る。",
+      "first_seen": "2025-06-01T00:00:00Z",
+      "last_seen": "2026-06-01T00:00:00Z",
+      "goals": [
+        "GTIGはUNC6293を「suspected Russian cyber espionage」クラスタの一つとして扱い、ロシアにとって関心の対象となる個人のアカウント侵害を目的とする初期アクセス活動と説明している。"
+      ],
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
       "x_profile_id": "actor--unc6293",
       "x_alias_assessments": [],
       "x_attribution": {
-        "countries": [],
-        "sponsor_type": "unknown",
+        "countries": [
+          "Russia"
+        ],
+        "sponsor_type": "state",
         "organizations": [],
-        "assessment": "",
-        "confidence": "unknown",
-        "evidence_refs": [],
-        "analyst_notes": ""
+        "assessment": "GTIGは「GTIG assesses with high confidence that these three threat clusters - UNC6293, UNC7005, and UNC5976 - possess a Russian nexus, based on high-level targeting patterns, phishing themes, and shared operational techniques」と、UNC6293を含む3クラスタのロシア関連性をhigh confidenceで評価している。一方で個別のロシア情報機関への帰属は行っておらず、UNC6293とICE RELIC(旧APT29)の関係は「moderate confidence」にとどまる。GTIG自身の表現も「suspected Russian cyber espionage threat clusters」である。本プロファイルでは国レベルの帰属をロシアとして採用し、スポンサー種別と具体的な機関帰属は確定していないものとして扱う。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "国レベルのロシア関連性はGTIGがhigh confidenceで述べているが、sponsor_typeを含むattributionブロック全体の確度としてはmediumとする。ICE RELIC経由の機関帰属(SVR等)は本資料からは確定できないためorganizationsは空のままとする。"
       },
       "x_free_text": {
-        "executive_summary": "UNC6293の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
-        "history": "",
-        "capability_details": "",
-        "infrastructure_details": "",
+        "executive_summary": "UNC6293はGTIGが追跡するロシア関連の脅威クラスタで、米国務省職員を装ったapp passwordフィッシングとOAuthフィッシングにより、ロシアに批判的な著名個人のアカウントを侵害する初期アクセス活動を行う。GTIGはmoderate confidenceでICE RELIC(旧APT29)のサブクラスタと評価している。",
+        "history": "2025年6月にapp passwordフィッシングキャンペーンとして初めて報告され(Citizen Labも同時期に報告)、2025年10月には同一の画面写真を含むPDF囮文書を再利用しつつ、app passwordの送信先をメールから認証フォームへ変更した。2025年12月にはVolexityが外交を題材とする囮を報告している。2026年6月にはOAuthフィッシングを取り入れた。",
+        "capability_details": "固有マルウェアは報告されていない。攻撃はいずれも正規の認証フロー(app password、OAuth)の悪用による資格情報・トークンの取得に依存する。",
+        "infrastructure_details": "GTIGは、以前の分析時点より多くのUNC6293管理インフラを追跡できるようになったとしつつ、その規模は他のロシア諜報活動と比べて依然として限定的であると述べている。",
         "targeting_details": "構造化ターゲット監査: 現時点で根拠付きの標的国・地域を構造化できていない。追加収集が必要。",
-        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-08-21の日次チェックでGTIG「Going with the Flow(s)」(2026-08-20)を反映し、本プロファイルは初めて日付を持つ活動を得た。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
@@ -119,6 +133,446 @@
       }
     },
     {
+      "type": "infrastructure",
+      "spec_version": "2.1",
+      "id": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6293の認証フィッシングドメイン",
+      "description": "米国務省を装う認証フォームやOAuthフィッシングページを設置した攻撃者管理ドメイン。GTIGのIOC表はdosportal[.]appとforeignrelations[.]usをUNC6293へ帰属し、いずれもPhishing domainと説明している。foreignrelations[.]usは2026年6月のOAuthフィッシングで「verification code」を要求するページとして図示されている。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_profile_object_id": "infra--unc6293-auth-phishing-domains",
+      "x_confidence": "high",
+      "x_analyst_notes": "原文はドメインの登録日・稼働期間を明記していないため期間はunknownとした。",
+      "infrastructure_types": [
+        "phishing-domain"
+      ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--1018f8eb-b97d-4a36-9734-4a3da7ca6a29",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6293による国務省を装ったapp passwordフィッシング",
+      "description": "GTIGは、UNC6293が国務省の職員を装い、標的にapp passwordを設定させて2要素認証を回避するフィッシングを継続していると報告した。2025年6月に確認された初期の活動では、ms.state.govという名称のapp passwordを設定させる手順を画面写真付きのPDF囮文書で提示し、設定した値をメールで返信させていた。2025年10月にGTIGが確認した活動では、同じ画面写真とms.state.govの記載を含むPDF囮文書が使われた一方、app passwordの送信先はメールではなく正規に見えるサイト上の認証フォームへ変更されていた。標的は当該国の体制に批判的な立場をとる著名個人で、1回あたりの標的は5名未満と小規模である。囮に用いられるアプリケーション名と主題は外交、および今後の会議や会合に偏る。",
+      "first_seen": "2025-06-01T00:00:00Z",
+      "last_seen": "2025-10-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_profile_object_id": "activity--unc6293-app-password-phishing-2025-2026",
+      "x_confidence": "high",
+      "x_analyst_notes": "first_observedは原文の「the exact same screenshots as observed in June 2025」、last_observedは「in October 2025, GTIG observed」という観測記述からmonth精度で設定した。「initially reported in June 2025」は報告時期の記述だが、同じ2025年6月が観測時期としても明記されているため観測日として採用できる。資料公開日2026-08-20はreported_atへ分離した。被害組織名は原文に記載がないためvictim_refsは空とし、target_refsはenrich_targeting_scope.pyの構造化に委ねる。ttp_refsはenrich_activity_intelligence.pyの抽出に委ねる。なりすまし対象の正式名称は米国務省(US State Department)である。活動名と説明文では「国務省」と表記している。なりすまし対象は攻撃者が装う組織であって被害組織ではなく、その所在国を標的国として自動抽出させないためである(RULES.md 1条5項・OSINT_RULES.md)。GTIG原文はUNC6293について被害国・被害業種を名指ししていない。",
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6293",
+          "name": "UNC6293",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--unc6293-auth-phishing-domains"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-10-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--2d831579-9a47-4a64-9ae3-14bb9e396beb",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "UNC6293によるOAuthフィッシングへの手口拡張",
+      "description": "2026年6月、GTIGはUNC6293が国務省を装う手口を維持したまま、OAuthフィッシングを取り入れたことを確認した。標的が外部プロバイダーで正規のログインを行った後、完全なURLまたは「verification code」を共有するよう求め、提供された検証コードによって攻撃者が当該アカウントへのアクセス権を得る。GTIGは検証コードを要求するフィッシングページをforeignrelations[.]us上で確認している。",
+      "first_seen": "2026-06-01T00:00:00Z",
+      "last_seen": "2026-06-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "external_id": "source--gtig-going-with-the-flows-2026"
+        }
+      ],
+      "x_profile_object_id": "activity--unc6293-oauth-phishing-2026",
+      "x_confidence": "high",
+      "x_analyst_notes": "原文の「In June 2026, GTIG observed OAuth phishing」という観測記述からfirst_observed・last_observedをmonth精度で設定した。終了時期は明記されないが、単月の観測記述のため同月をlast_observedとした。なりすまし対象の正式名称は米国務省(US State Department)である。活動名と説明文では「国務省」と表記している。なりすまし対象は攻撃者が装う組織であって被害組織ではなく、その所在国を標的国として自動抽出させないためである(RULES.md 1条5項・OSINT_RULES.md)。GTIG原文はUNC6293について被害国・被害業種を名指ししていない。",
+      "x_reported_at": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6293",
+          "name": "UNC6293",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--unc6293-auth-phishing-domains"
+          ]
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-06-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30ac8dd0-098b-42e5-a7b8-aa7cf7d30079",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "target_ref": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "description": "UNC6293 uses UNC6293の認証フィッシングドメイン.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3423f1a7-e370-4b09-b10b-5eb45a5f1b76",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--1018f8eb-b97d-4a36-9734-4a3da7ca6a29",
+      "target_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "description": "UNC6293による国務省を装ったapp passwordフィッシング is attributed or linked to UNC6293.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c484392b-9dd6-449b-823c-0dabd3d67703",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:45:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--1018f8eb-b97d-4a36-9734-4a3da7ca6a29",
+      "target_ref": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "description": "UNC6293による国務省を装ったapp passwordフィッシング uses infra--unc6293-auth-phishing-domains.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--99e658b3-e166-418c-80ac-84978d19a303",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--2d831579-9a47-4a64-9ae3-14bb9e396beb",
+      "target_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "description": "UNC6293によるOAuthフィッシングへの手口拡張 is attributed or linked to UNC6293.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0617aacb-bd87-4b69-9e8f-e5849e55c6a0",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--2d831579-9a47-4a64-9ae3-14bb9e396beb",
+      "target_ref": "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+      "description": "UNC6293によるOAuthフィッシングへの手口拡張 uses infra--unc6293-auth-phishing-domains.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--bc760fd5-eaae-4af2-a53e-99c67e30b793",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: foreignrelations.us",
+      "pattern": "[domain-name:value = 'foreignrelations.us']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--unc6293-oauth-phishing-2026"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f5136deec6470024cd941dbbd3c5689cf32e6f3cca38fd18035e604e787169c9",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "source_id": "source--gtig-going-with-the-flows-2026",
+          "source_path": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia#iocs",
+            "row": null
+          },
+          "campaign_refs": [
+            "activity--unc6293-oauth-phishing-2026"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "GTIG「Going with the Flow(s)」(2026-08-20)のNetwork Indicators表に掲載。",
+          "analyst_notes": "原文のIOC表がAttribution: UNC6293 / Other Notes: Phishing domain と記載し、さらにFigure 2のキャプションが「UNC6293 requesting “verification code” on a phishing page, at foreignrelations[.]us」として2026年6月のOAuthフィッシングと明示的に結び付けているため、当該活動へ参照を付与した。原文はIOC個別の観測日を記載していないためobserved_atはunknownとし、公開日はsource_published_atへ分離した。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9b36837c-ab58-4659-94d6-8ffbdd7213cb",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bc760fd5-eaae-4af2-a53e-99c67e30b793",
+      "target_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e605d115-b879-4990-9bf5-bafe45c33dcc",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: dosportal.app",
+      "pattern": "[domain-name:value = 'dosportal.app']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6c8dcebe676e4d44d043aacb8e8069a304da45b61e3e1da8c6bd41d246c56782",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "source_id": "source--gtig-going-with-the-flows-2026",
+          "source_path": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia",
+          "source_location": {
+            "repository": null,
+            "commit": null,
+            "path": "https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia#iocs",
+            "row": null
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "high",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "primary-source-ioc-table",
+          "context_excerpt": "GTIG「Going with the Flow(s)」(2026-08-20)のNetwork Indicators表に掲載。",
+          "analyst_notes": "原文のIOC表がAttribution: UNC6293 / Other Notes: Phishing domain と記載する。ただし本文中で特定の作戦と結び付ける記述がないため、campaign_refsは付与しない(RULES.md 7条・OSINT_RULES.md)。観測日の記載もないためobserved_atはunknownとした。"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c41e030a-ab91-4337-80d5-3cf73ecbdbd1",
+      "created": "2026-08-21T01:36:26Z",
+      "modified": "2026-08-21T01:36:26Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e605d115-b879-4990-9bf5-bafe45c33dcc",
+      "target_ref": "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--3b5ca3af-8e61-4df8-89a3-69f020ad8c3c",
@@ -140,18 +594,23 @@
       "spec_version": "2.1",
       "id": "report--fa9979b4-cc0c-4179-a190-5b99052f3b82",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-08-21T01:45:24Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "UNC6293 Threat Actor Profile",
-      "description": "UNC6293の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "description": "UNC6293はGTIGが追跡するロシア関連の脅威クラスタで、米国務省職員を装ったapp passwordフィッシングとOAuthフィッシングにより、ロシアに批判的な著名個人のアカウントを侵害する初期アクセス活動を行う。GTIGはmoderate confidenceでICE RELIC(旧APT29)のサブクラスタと評価している。",
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-07-29T23:12:01Z",
+      "published": "2026-08-21T01:45:24Z",
       "object_refs": [
-        "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1"
+        "intrusion-set--51e92ca2-4108-4203-9254-08e423485ba1",
+        "infrastructure--63877be3-bb08-4d35-b4ae-ff050939032a",
+        "campaign--1018f8eb-b97d-4a36-9734-4a3da7ca6a29",
+        "campaign--2d831579-9a47-4a64-9ae3-14bb9e396beb",
+        "indicator--bc760fd5-eaae-4af2-a53e-99c67e30b793",
+        "indicator--e605d115-b879-4990-9bf5-bafe45c33dcc"
       ],
       "x_schema_version": "1.2.0"
     }
