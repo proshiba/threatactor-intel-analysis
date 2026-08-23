@@ -699,7 +699,7 @@
       ],
       "status": "tracking",
       "first_seen": "2026-08-13",
-      "last_seen": "2026-08-13",
+      "last_seen": "2026-08-20",
       "detected_via": "一次情報源(securelist.ru)の公開一覧の直接確認。securelist.com には未掲載で、tech-memo daily-news にも未収録。",
       "attribution": {
         "state": "unattributed",
@@ -723,15 +723,39 @@
           ],
           "summary": "「ЗаЩИТа」「Братское сердце」「Защитники Отечества」の3財団を騙る偽の寄付アプリを餌にしたキャンペーン。Rust/Tauri製のドロッパーが認証フォームと商品カタログを表示する裏で、Still Toolkitを復号・実行する。Still SyncはTelegramのセッションデータとアカウントアクセスを窃取し、Still Audioは音声区間検出付きの秘匿録音を行う。いずれもRust製の新規実装。",
           "verified_by_analyst": "原文を確認(アクセス日 2026-08-13)。記事は2024年11月の活動、2026年2月のStarlinkと慈善を題材にした政府職員向けキャンペーン、2026年7月のBusySnakeスティーラーを用いた活動を先行事例として参照している。"
+        },
+        {
+          "observed_on": "2026-08-22",
+          "publisher": "Kaspersky (Securelist ロシア語版)",
+          "url": "https://securelist.ru/tr/armored-likho-campaigns-with-busysnake-rat-and-kharon-rat/116658/",
+          "title": "Armored Likho: новые ключи к старым дверям. Как группа адаптирует инструменты, сохраняя почерк",
+          "published_at": "2026-08-20",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は攻撃の観測期間を明示していない。公開日 2026-08-20 は reported_at 相当であり観測日へ流用しない。第1段階ローダーの配布に用いられた GitHub リポジトリ foxxy-lgtm/officeupdt は本文で言及されるが、期間を示す日付の記載はない。",
+          "targets": "本記事に標的の国・業種・被害組織の記載はない。HTA ローダーのコメントがウクライナ語である点のみ記載があり、これは開発者の使用言語の指標であって標的国の根拠にしない。",
+          "malware": [
+            "BusySnake RAT",
+            "Kharon RAT"
+          ],
+          "tools": [
+            "AdaptixC2",
+            "GitLab CI/CD variables (C2 チャネルとして悪用)",
+            "GitHub private repository (ペイロード配布)",
+            "Telegram Bot API (C2 チャネルとして悪用)"
+          ],
+          "summary": "未報告の BusySnake RAT 3世代と、オープンソースの Kharon RAT を用いた新規キャンペーンの報告。BusySnake RAT は Python 実装(C2 は Telegram bot)、Python 実装(C2 を GitLab の CI/CD 変数へ変更し PING_/CMD_/RESULT_{HOSTNAME} 変数で双方向通信)、Go 実装(AMSI/ETW のメモリパッチとアンチサンドボックスを内蔵)の順に発展している。Windows/Linux/macOS に対応し、永続化はそれぞれ計画タスク(TelegramBot / OneDriveHelper)、cron、launchd エージェント(com.telegrambot.plist / com.onedrive.helper.plist)を用いる。Kharon RAT は ChaCha20 で暗号化された PIC 形式で配布され、サーバー側は AdaptixC2 フレームワークへ統合される。配布は HTA ローダー(new text document.hta)または BAT スクリプトから開始し、第2段階ローダー(C++)が raw.githubusercontent.com のプライベートリポジトリ foxxy-lgtm/officeupdt から update.bin を取得して復号・実行する。C2 は 103.6.169[.]79、kalkulator[.]store、wtfdomain[.]xyz。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-22)。JSON-LD の datePublished 2026-08-20T10:00:51+00:00 で公開日を確認した。securelist.com には同一スラグの記事が存在せず(接続リセット/未掲載)、securelist.com の RSS 最新は 2026-08-21 の Android head unit 記事であるため、本記事はロシア語版のみの公開と判断した。2026-08-21 の日次チェックは securelist.com の RSS のみを確認しており、本記事は取りこぼしである。原文は Armored Likho を実行主体として一貫して記述しているが、後援国・他の Likho 系クラスタとの関係は述べていない。"
         }
       ],
       "related_profiles": [],
       "unresolved_questions": [
         "参照されている先行キャンペーン(2024年11月、2026年2月、2026年7月)はいずれもKaspersky系統の報告であり、独立した一次資料は1系統のみ。",
         "alias「Eagle Werewolf」の命名主体が記事本文に明記されていない。scopeを判断できないためexactとは扱わない。",
-        "Kaspersky命名のLikho系クラスタ(Awaken Likho、Sticky Werewolf等)との関係が記載されていない。標的国がロシアで一致する既存プロファイルがあるが、標的の重複は帰属根拠にならない。"
+        "Kaspersky命名のLikho系クラスタ(Awaken Likho、Sticky Werewolf等)との関係が記載されていない。標的国がロシアで一致する既存プロファイルがあるが、標的の重複は帰属根拠にならない。",
+        "2026-08-20 の第2観測を追加しても一次資料は Kaspersky 単独系統のままであり、昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。Kharon RAT と AdaptixC2 は公開されたオープンソース実装であり、他アクターも利用しうるためツール一致を帰属根拠にしない。"
       ],
-      "analyst_notes": "単一ベンダー(Kaspersky)の系統のみで昇格閾値未達。継続観察。2026-08-13の日次チェックにおける一次情報源の公開一覧確認で検知した。parse-daily/ROUTINE.md が指摘する通り securelist.ru のみで公開された事例であり、securelist.com だけを見ていると取りこぼす。"
+      "analyst_notes": "単一ベンダー(Kaspersky)の系統のみで昇格閾値未達。継続観察。2026-08-13の日次チェックにおける一次情報源の公開一覧確認で検知した。parse-daily/ROUTINE.md が指摘する通り securelist.ru のみで公開された事例であり、securelist.com だけを見ていると取りこぼす。 2026-08-22 の日次チェックで securelist.ru の公開一覧から第2観測を追加した。前日 2026-08-21 のチェックが securelist.com のみを確認して本記事を取りこぼしていたため、securelist.ru を毎回確認する運用を再確認する。"
     },
     {
       "cluster_id": "unknown-cluster--city-forum",
@@ -1215,6 +1239,50 @@
         "現時点で一次資料は Cisco Talos の同日公開 2 本のみであり、発行元が同一のためpromotion_policy の「独立した一次資料 2 本以上」を満たさない。政府・CERT・法執行機関の言及、または他ベンダーの独立報告が得られた時点でprofiles/uat-10147 への昇格を検討する。"
       ],
       "analyst_notes": "2026-08-21 の日次チェックで、tech-memo 未収録の新規公開として一次情報源チェックのみで検知した。レビューキューには対応レコードが存在しない。同日公開の 2 本は同一クラスタを扱う連続記事であり、1 クラスタに 2 観測として記録する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--moyu-group",
+      "primary_name": "MoYu Group",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-22",
+      "last_seen": "2026-08-22",
+      "detected_via": "一次情報源チェック（Kaspersky Securelist 公開一覧）。tech-memo daily-news には未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-cybercrime",
+        "notes": "MoYu Group はベンダー命名のサイバー犯罪グループ名であり、国家の後援や所在国への帰属は原文にない。Kaspersky は「We attribute this activity, with high confidence, to the MoYu Group, an actor linked to the BADBOX botnet」と本キャンペーンを MoYu Group へ帰属している。帰属根拠は、第2段階ローダーが生成するスレッド名 mosdk-host-loader と、TV セットトップボックスへ配布された com.abc.nexus 内のサービス名 AdmoyuService の命名一致、および Nokia Deepfield Emergency Response Team が同時期に独立して同定したインフラの重複である。動機は広告不正とプロキシボットネットの構築で、金銭目的。「an actor linked to the BADBOX botnet」「one of the actors linked to the BADBOX malware platform」という表現であり、BADBOX 運用者全体と MoYu Group を同一視しない。既存 673 プロファイルに MoYu Group、BADBOX、JarService、zhima の名称でのアクターは存在しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-22",
+          "publisher": "Kaspersky (Securelist)",
+          "url": "https://securelist.com/android-head-unit-malware/121106/",
+          "title": "The invisible passenger in your car",
+          "published_at": "2026-08-21",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は「While monitoring Android threats in June 2026, we discovered a new piece of Android malware」と発見時期のみを述べ、攻撃の観測期間を明示していない。IOC 節の JarService 配布 URL には /upgrade/2024-11-07/、/upgrade/2025-06-10/、/upgrade/2026-06-08/ のパス日付が含まれるが、これは配信基盤側のディレクトリ名であり攻撃観測日として確定できない。公開日 2026-08-21 は reported_at 相当であり観測日へ流用しない。",
+          "targets": "DoFun 製 Android ベース車載ヘッドユニットの利用者。原文は感染が「worldwide」に及ぶとするのみで、個別の国・業種・被害組織の記載はない。Kaspersky はベンダーへ配布経路を通知し、ベンダーは修正済みと回答している。",
+          "malware": [
+            "JarService",
+            "zhima"
+          ],
+          "tools": [
+            "TWCore (ヘッドユニット純正のアナリティクス／更新用システムアプリ。正規機能を悪用)"
+          ],
+          "summary": "車載ヘッドユニット固有の感染チェーンを持つマルウェアの初の公開事例。正規システムアプリ TWCore の更新機能を悪用し、cardoor[.]cn 上の MQTT ブローカーが送る installNotExists フラグ付きメッセージによって、端末に存在しないアプリを無断でインストールできる状態を利用する。第1段階は UI を持たないドロッパー JarService、第2段階はローダー(C2 へ implant 情報を POST し次段を取得)、第3段階は clicker とリバースプロキシモジュール zhima のローダーで、90分ごとに /cpc/api/task へ端末情報を送信して設定・コマンドを受け取る。最終目的は広告不正とプロキシボットネットの構築。zhima の管理画面 admin.uipoxy[.]com は住宅用プロキシ販売事業者 PXYEDGE・ProxyForU と認証 API の構造が一致しており、Kaspersky はこれらのサービスが MoYu Group と関係すると評価している。",
+          "verified_by_analyst": "原文を確認(アクセス日 2026-08-22)。JSON-LD の datePublished 2026-08-21T08:00:29+00:00 で公開日を確認した。ロシア語版 securelist.ru/android-head-unit-malware/116567/ が同日公開されており内容は同一。帰属記述は Key findings と Attribution 節の双方で確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Kaspersky が帰属根拠として参照する HUMAN の BADBOX/PEACHPIT 研究と、Nokia Deepfield Emergency Response Team による独立同定は、いずれも本記事内の引用であり原文を未確認である。昇格閾値(独立した一次資料2本以上)の判定はこれらの原文を確認してから行う。",
+        "標的地理が「worldwide」のみで個別国の記載がなく、被害規模を示す数値も本記事にはない。",
+        "BADBOX ボットネットおよび BADBOX 2.0 の運用者全体と MoYu Group の関係範囲(部分集合なのか協力関係なのか)は原文が「one of the actors linked to」と述べるにとどまり確定できない。",
+        "profiles/play/actor-profile.json の sources[27] に 「cybercrime/botnet/BADBOX/HUMAN_Report_BADBOX-and-PEACHPIT.pdf」というパス文字列があるが、これは資料ファイル名であって Play と BADBOX/MoYu Group の関係を示すものではない。文字列検索で誤って関連付けないこと。"
+      ],
+      "analyst_notes": "2026-08-22 の日次チェックにおける一次情報源の公開一覧確認で検知した。tech-memo daily-news には未収録で、レビューキューにも対応レコードが存在しない。単一ベンダー(Kaspersky)の初報のみのため昇格閾値未達。MoYu Group はアクター指定子として原文で確立しているため、運用者が未命名の unknown-cluster--shai-hulud-2 等とは異なり、独立一次資料が揃えばプロファイル昇格の対象となりうる。"
     }
   ],
   "excluded_name_collisions": [
