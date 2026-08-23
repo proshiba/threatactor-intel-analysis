@@ -1243,17 +1243,44 @@
     {
       "cluster_id": "unknown-cluster--moyu-group",
       "primary_name": "MoYu Group",
-      "aliases": [],
+      "aliases": [
+        {
+          "name": "IpMoYu",
+          "scope": "narrower",
+          "vendor": "HUMAN（MoYu Groupが販売する住宅用プロキシサービス名。運用主体そのものの別称ではないためnarrower）"
+        }
+      ],
       "status": "tracking",
       "first_seen": "2026-08-22",
-      "last_seen": "2026-08-22",
+      "last_seen": "2026-08-23",
       "detected_via": "一次情報源チェック（Kaspersky Securelist 公開一覧）。tech-memo daily-news には未収録。",
       "attribution": {
         "state": "unattributed",
         "actor_type": "financially-motivated-cybercrime",
-        "notes": "MoYu Group はベンダー命名のサイバー犯罪グループ名であり、国家の後援や所在国への帰属は原文にない。Kaspersky は「We attribute this activity, with high confidence, to the MoYu Group, an actor linked to the BADBOX botnet」と本キャンペーンを MoYu Group へ帰属している。帰属根拠は、第2段階ローダーが生成するスレッド名 mosdk-host-loader と、TV セットトップボックスへ配布された com.abc.nexus 内のサービス名 AdmoyuService の命名一致、および Nokia Deepfield Emergency Response Team が同時期に独立して同定したインフラの重複である。動機は広告不正とプロキシボットネットの構築で、金銭目的。「an actor linked to the BADBOX botnet」「one of the actors linked to the BADBOX malware platform」という表現であり、BADBOX 運用者全体と MoYu Group を同一視しない。既存 673 プロファイルに MoYu Group、BADBOX、JarService、zhima の名称でのアクターは存在しない。"
+        "notes": "MoYu Group はベンダー命名のサイバー犯罪グループ名であり、国家の後援や所在国への帰属は原文にない。Kaspersky は「We attribute this activity, with high confidence, to the MoYu Group, an actor linked to the BADBOX botnet」と本キャンペーンを MoYu Group へ帰属している。帰属根拠は、第2段階ローダーが生成するスレッド名 mosdk-host-loader と、TV セットトップボックスへ配布された com.abc.nexus 内のサービス名 AdmoyuService の命名一致、および Nokia Deepfield Emergency Response Team が同時期に独立して同定したインフラの重複である。動機は広告不正とプロキシボットネットの構築で、金銭目的。「an actor linked to the BADBOX botnet」「one of the actors linked to the BADBOX malware platform」という表現であり、BADBOX 運用者全体と MoYu Group を同一視しない。既存 673 プロファイルに MoYu Group、BADBOX、JarService、zhima の名称でのアクターは存在しない。\n2026-08-23更新。Kasperskyが帰属根拠として引用するNokia Deepfield ERTの報告（2026-07-11）の原文を直接取得して確認した。同報告はKasperskyとは独立にMoYuのzhima住宅用プロキシを追跡しており、独立した一次資料は2本となった。ただし両者ともMoYu Groupという呼称自体はHUMANのBADBOX 2.0調査に依拠しており、呼称の定義範囲はHUMAN由来である。Nokia Deepfieldは「The proxy is the part we follow here; it is not the whole of BADBOX 2.0, or even the whole of MoYu」と追跡範囲を明示的に限定しており、BADBOX 2.0全体とMoYu Groupを同一視しない点はKasperskyの記述と一致する。"
       },
       "observations": [
+        {
+          "observed_on": "2026-08-23",
+          "publisher": "Nokia Deepfield Emergency Response Team (ERT)",
+          "url": "https://github.com/deepfield/public-research/blob/main/ipmoyu/report.md",
+          "title": "Open sesame: inside MoYu's \"zhima\" proxy and the TV it runs on",
+          "published_at": "2026-07-11",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は攻撃の観測期間を明示していない。第1段階ローダー host.dex (com.xgw.f) に2025年6月付の記載があり、task.mymoyu[.]shop のpassive DNSが2024〜2025年にかけてZenlayerのIPへ解決していたと述べるにとどまる。公開日2026-07-11は reported_at 相当であり観測日へ流用しない。",
+          "targets": "廉価なAndroid TVボックス。グレーマーケットのIPTVアプリ（com.android.tigertv、com.android.tigersport、com.android.mioplus、com.android.miosport、com.android.vo_vivo、com.android.vo_fixture）をサイドロードした一般家庭の回線。原文に個別の国・業種・被害組織の記載はない。",
+          "malware": [
+            "zhima",
+            "host.dex (com.xgw.f 第1段階ローダー)"
+          ],
+          "tools": [
+            "Zenlayer (AS21859) 上の共用C2ホスト",
+            "Alibaba OSS バケット（ローダー記述子のフォールバック取得先）"
+          ],
+          "summary": "IPTVアプリ自体にはペイロードが含まれず、サーバー側の判定を経て後からzhima住宅用プロキシモジュールを取得する多段構成。既知のBADBOXインジケーター一覧に未掲載だった約20件のクライアントプルドメインを、既公開のBADBOX apex（ad3g[.]com、moyu88[.]xyz、ziyemy[.]shop）と同一のZenlayer専用ホストを根拠にクラスタへ紐付けている。zhimaのビルドsh65からsh66への更新で、一部の経路のみ脆弱性が修正され他経路には未適用である点も指摘している。第1段階ローダーは task.mymoyu[.]shop/cpc/api/client/active へ通信し、その解決先128.14.207[.]14／128.14.202[.]210はKaspersky報告のzhima C2 128.14.210[.]58と同一のZenlayerレンジ帯に属する。",
+          "verified_by_analyst": "原文（raw markdown）を直接取得して確認した（アクセス日 2026-08-23）。原文冒頭に「First published: 2026-07-11」の記載がある。Kasperskyが帰属根拠として引用する「researchers from the Nokia Deepfield Emergency Response Team」の実体がこの報告であり、Kasperskyとは独立にMoYuのzhimaプロキシを追跡している。ただし本報告もMoYu Groupという呼称自体はHUMANのBADBOX 2.0調査に依拠しており（「the group HUMAN associates with the IpMoYu residential-proxy service in the BADBOX 2.0 operation」）、呼称の定義範囲はHUMAN由来である。原文は「We make no claim that Lorikazz and MoYu are one operator」とUnit 42のLorikazz（Kimwolf/AISURUと重複）との同一視を明確に否定している。また「The proxy is the part we follow here; it is not the whole of BADBOX 2.0, or even the whole of MoYu」と自らの追跡範囲を限定している。"
+        },
         {
           "observed_on": "2026-08-22",
           "publisher": "Kaspersky (Securelist)",
@@ -1277,12 +1304,14 @@
       ],
       "related_profiles": [],
       "unresolved_questions": [
-        "Kaspersky が帰属根拠として参照する HUMAN の BADBOX/PEACHPIT 研究と、Nokia Deepfield Emergency Response Team による独立同定は、いずれも本記事内の引用であり原文を未確認である。昇格閾値(独立した一次資料2本以上)の判定はこれらの原文を確認してから行う。",
+        "Kasperskyが帰属根拠として参照するうち、Nokia Deepfield ERTによる独立同定は2026-08-23に原文を確認済み（observations へ追加）。HUMANのBADBOX/PEACHPIT研究は未確認のまま。HUMANの公開ページ（https://www.humansecurity.com/learn/blog/satori-threat-intelligence-disruption-badbox-2-0/）はHTTP 200を返すが5,891バイトのJSシェルのみで本文を取得できなかった。MoYu Groupという呼称の定義範囲がHUMAN由来であるため、scope確定には同社原文の確認が必要である。",
         "標的地理が「worldwide」のみで個別国の記載がなく、被害規模を示す数値も本記事にはない。",
         "BADBOX ボットネットおよび BADBOX 2.0 の運用者全体と MoYu Group の関係範囲(部分集合なのか協力関係なのか)は原文が「one of the actors linked to」と述べるにとどまり確定できない。",
-        "profiles/play/actor-profile.json の sources[27] に 「cybercrime/botnet/BADBOX/HUMAN_Report_BADBOX-and-PEACHPIT.pdf」というパス文字列があるが、これは資料ファイル名であって Play と BADBOX/MoYu Group の関係を示すものではない。文字列検索で誤って関連付けないこと。"
+        "profiles/play/actor-profile.json の sources[27] に 「cybercrime/botnet/BADBOX/HUMAN_Report_BADBOX-and-PEACHPIT.pdf」というパス文字列があるが、これは資料ファイル名であって Play と BADBOX/MoYu Group の関係を示すものではない。文字列検索で誤って関連付けないこと。",
+        "Nokia Deepfield ERTが参照するFBIの2025年6月PSA（https://www.ic3.gov/PSA/2025/PSA250605）はBADBOX 2.0を扱うが、当該PSAがMoYu Groupを名指ししているかは未確認。政府機関による言及の有無は昇格閾値の判定を左右するため要確認。",
+        "Nokia Deepfield ERTはUnit 42のLorikazz（Kimwolf/AISURUと重複するTorベースのプロキシボットネット）とMoYuの同一視を明確に否定している。両者を結び付けないこと。またVo1d（XLab）はKasperskyの検出名にHEUR:Trojan.AndroidOS.Vo1d.*として現れ、Nokia DeepfieldもThreatFoxのタグ付けとして言及するが、いずれも関係を主張していないため帰属根拠にしない。"
       ],
-      "analyst_notes": "2026-08-22 の日次チェックにおける一次情報源の公開一覧確認で検知した。tech-memo daily-news には未収録で、レビューキューにも対応レコードが存在しない。単一ベンダー(Kaspersky)の初報のみのため昇格閾値未達。MoYu Group はアクター指定子として原文で確立しているため、運用者が未命名の unknown-cluster--shai-hulud-2 等とは異なり、独立一次資料が揃えばプロファイル昇格の対象となりうる。"
+      "analyst_notes": "2026-08-22 の日次チェックにおける一次情報源の公開一覧確認で検知した。tech-memo daily-news には未収録で、レビューキューにも対応レコードが存在しない。単一ベンダー(Kaspersky)の初報のみのため昇格閾値未達。MoYu Group はアクター指定子として原文で確立しているため、運用者が未命名の unknown-cluster--shai-hulud-2 等とは異なり、独立一次資料が揃えばプロファイル昇格の対象となりうる。 2026-08-23の日次チェックで、前日の unresolved_questions が保留としていたNokia Deepfield ERTの原文を確認し第2観測として追加した。独立した一次資料は件数上2本となり昇格閾値を満たすが、呼称の定義範囲がHUMAN由来で未確定のため status は tracking のまま据え置き、昇格の可否は提案に留める。"
     }
   ],
   "excluded_name_collisions": [
@@ -1311,5 +1340,5 @@
       "reason": "記事中の「Night Dragon」はFlying Eagleの後継として2026-06-23に導入された新興Android RATプラットフォームの名称であり、既存プロファイルの脅威アクターとは無関係な同名別エンティティ。原文で確認済み。追跡対象としない。ただしプラットフォーム名としての「Night Dragon」は今後も日次キューで既存プロファイルへ誤一致する見込み。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。"
 }
