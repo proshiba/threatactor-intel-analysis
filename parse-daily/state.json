@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d",
-  "last_scanned_date": "2026-08-20",
+  "last_scanned_commit": "95dda1b85fc518d223a44e3294f9557f72392d0a",
+  "last_scanned_date": "2026-08-21",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1589,6 +1589,128 @@
           "result": "cutoff後の新規なし。RSS(securelist.com/feed/)で最新がHoneyMyte/CoolClient(2026-08-14 09:00:14 UTC)であることを確認した。一覧ページの表示日付は2026-08-12だがRSSの公開日時を優先する。反映済み。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-22T01:30:00Z",
+      "window": {
+        "since": "2026-08-20",
+        "until": null
+      },
+      "source_commit": "95dda1b85fc518d223a44e3294f9557f72392d0a",
+      "statistics": {
+        "news_files": 2,
+        "articles": 24,
+        "review_records": 1,
+        "approved_records": 1,
+        "rejected_records": 0,
+        "pending_records": 0,
+        "applied_records": 0,
+        "unmatched_actor_values": 82,
+        "materialization_window": "queueは2026-08-20以降で再生成した。唯一のレコードであるsilent-librarian(Mabna Institute/米司法省S2追起訴)は2026-08-21の増分で既にapprovedかつprofiles/silent-librarianへ反映済みであり、本増分での新規適用は0件である。pendingが0件で2026-08-21分までレビューを完了したためlast_scanned_dateを2026-08-21へ進めた。tech-memo側の新規は20260821.mdのUAT-10147/SPECTREのみで、これは前日の一次情報源チェックで既に台帳へ収録済みである。本日の検知はいずれもtech-memo経由ではなく一次情報源チェックによるもので、Kaspersky Securelist(2026-08-21)とsecurelist.ru(2026-08-20)の未収録公開2件を検知した。"
+      },
+      "applied": [],
+      "rejected": [
+        {
+          "actor": "(帰属なし)",
+          "name": "Connecting the Dots: Securing the Overlooked Corners of the Software Development Lifecycle (SDLC) Supply Chain",
+          "source": "https://unit42.paloaltonetworks.com/sdlc-supply-chain/",
+          "decision": "原文を確認(公開日2026-08-21)。ChainDrop、XZ Utils(CVE-2024-3094)、Axios、Shai-Huludへの言及はいずれも自社および他社の過去研究への後方参照であり、Unit 42自身の新規観測でも観測日の記載でもない。名前付きアクターへの帰属も行っていない。SDLC防御の啓発記事のため採用しない。"
+        },
+        {
+          "actor": "(帰属なし)",
+          "name": "Rustサプライチェーン攻撃(arrayref / internment / append-only-vec)",
+          "source": "https://www.stepsecurity.io/blog/arrayref-rust-crate-supply-chain-attack",
+          "decision": "tech-memo 20260821.md 収録。要約・原文いずれも「攻撃者の国籍や具体的なグループ帰属は記事内では不明」としており、名前付きアクターも未命名クラスタ指定子も存在しない。台帳へ追加できる実体の輪郭がないためunknown-clusters.jsonへも登録せず、レビューキュー側のIOC観測として保持するにとどめる。"
+        },
+        {
+          "actor": "(帰属なし)",
+          "name": "Geedge(积至)とMESA：GFWリークデータの調査",
+          "source": "https://kfhsgw.hateblo.jp/entry/2026/01/20/164830",
+          "decision": "tech-memo 20260821.md 収録。中国のGreat Firewall関連企業・研究機関・人物の関係整理であり、侵入活動やキャンペーンの報告ではない。検閲インフラのベンダーは脅威アクタークラスタではないため採用しない。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--moyu-group",
+          "action": "added",
+          "note": "status: tracking。Kaspersky Securelist「The invisible passenger in your car」(2026-08-21)。tech-memo未収録で一次情報源チェックのみで検知した。原文が「We attribute this activity, with high confidence, to the MoYu Group, an actor linked to the BADBOX botnet」とMoYu Groupを実行主体として明示している。既存673プロファイルにMoYu Group・BADBOX・JarService・zhimaの名称でのアクターは存在せず、台帳にも未登録の新規名である。帰属根拠として引用されるHUMANの先行研究とNokia Deepfield ERTの独立同定は本記事内の引用にとどまり原文未確認のため、昇格閾値(独立した一次資料2本以上)は満たしたと扱わずtrackingで開始する。profiles/play/actor-profile.jsonのsources[27]にBADBOXを含むファイルパスがあるが資料ファイル名の一致であり関係を示さない旨を台帳へ明記した。"
+        },
+        {
+          "cluster_id": "unknown-cluster--armored-likho",
+          "action": "observation-added",
+          "note": "Kaspersky Securelist ロシア語版「Armored Likho: новые ключи к старым дверям」(2026-08-20)を第2観測として追加し、last_seenを2026-08-20へ更新した。securelist.comには同一スラグの記事がなくロシア語版のみの公開である。2026-08-21のチェックはsecurelist.comのRSSのみを確認しており本記事は取りこぼしであった。内容は未報告のBusySnake RAT 3世代(Python+Telegram → Python+GitLab CI/CD変数 → Go実装)とオープンソースKharon RAT(AdaptixC2連携)を用いた新規キャンペーン。一次資料はKaspersky単独系統のままであり昇格閾値は依然未達。Kharon RATとAdaptixC2は公開実装のためツール一致を帰属根拠にしない。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "MoYu Group",
+          "observations": 0,
+          "note": "IOC CSVにもdaily-news本文にも現れず、一次情報源チェックでのみ検知した。未帰属のためunknown-cluster--moyu-groupとして台帳へ記録した。"
+        },
+        {
+          "name": "CameraSwarm",
+          "observations": 8,
+          "note": "tech-memo 20260820.mdのHunt.io記事「Operation CameraSwarm」。原文が「攻撃者の具体的な帰属は不明」としているキャンペーン名で、既存プロファイルにも台帳にもexcluded_name_collisionsにも存在しない。2026-08-20分は既にレビュー完了扱いのため、意図的な除外か記録漏れかを本増分では確定できない。台帳への追加可否は利用者の判断を待つ。"
+        },
+        {
+          "name": "China-nexus actor (medium confidence)",
+          "observations": 16,
+          "note": "IOC CSVのactor列に現れる記述子であってアクター名ではない。AGENT.mdの「low confidence、suspected、possible、複合名、unknownは自動承認しない」に該当し、台帳へも登録しない。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "cutoff後のアクター別一次情報なし。RSS(feed/)で最新が「Microsoft named a Leader in the Frost Radar」(2026-08-19、広報記事)であることを確認した。「Hunting MacSync Stealer infrastructure through behavioral pivots」(2026-08-18)は前回チェックで評価済み。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。一覧ページの最上位に出る「Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access」は原文のdatePublishedが2026-05-11であり新規公開ではない(一覧の並びが時系列順でないため原文の日付で確認した)。次点の「Staying Ahead of Adversarial AI Through Agentic Source Code Review」は2026-08-18でアクター研究ではない。「Distinct Clusters Target Individuals of Interest to Russia」(2026-08-20)は前回増分で反映済み。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-21",
+          "result": "新規1件あるが不採用。「Connecting the Dots: Securing the Overlooked Corners of the Software Development Lifecycle (SDLC) Supply Chain」(2026-08-21)の原文を確認したところ、ChainDrop・XZ Utils・Axios・Shai-Huludへの言及は全て過去研究への後方参照であり、新規観測でも帰属でもない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。RSSで最新が「Is Cyber missing the Marque?」(2026-08-20、アクター研究ではない)であることを確認した。UAT-10147の2本(いずれも2026-08-20)は前回増分でunknown-cluster--uat-10147へ収録済みで、本日tech-memo 20260821.mdにも収録されたが台帳の既存観測と同一URLのため重複追加しない。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規なし。最新のeset-research記事は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で前回チェックから変化なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。最新は「The Model Is the Malware」(2026-08-13)でAI研究であり名前付き脅威アクターの活動報告ではない。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-21",
+          "result": "新規1件。「The invisible passenger in your car」(2026-08-21)。tech-memo未収録で本チェックでのみ検知した。RSSの公開日時とJSON-LDのdatePublished 2026-08-21T08:00:29+00:00で公開日を確認した。原文がMoYu Groupへhigh confidenceで帰属しているため、unknown-cluster--moyu-groupとして台帳へtrackingで追加した。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "新規1件。「Armored Likho: новые ключи к старым дверям」(2026-08-20)。securelist.comには同一スラグの記事が存在せずロシア語版のみの公開である。前回2026-08-21のチェックはsecurelist.comのRSSのみを確認しており、本記事は取りこぼしであった。unknown-cluster--armored-likhoへ第2観測として追加した。同日の「Невидимый пассажир вашего автомобиля」(2026-08-21)はsecurelist.com版と同一内容。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -1622,5 +1744,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-18増分では、前回pendingで据え置いたdarkhotel(APT-C-06)の一次資料を今回取得できたため採用し、IOC 5件とartifact 9件を原文から直接収録した。pendingは0件となり2026-08-18分までレビューを完了した。未帰属クラスタはJWR、CVE-2026-59310悪用の中国系侵入セット、Cl0pのWindchill恐喝キャンペーンの3件を新規追加し、ChainDrop(shai-hulud-2)へ独立した一次資料2本の観測を追加した。Cl0pは既存679プロファイルに名称が存在せず、名前一致でもIOC actor一致でも検知されない構造的な検知漏れである。証拠が公式ATT&CK(Clop=malware S0611/使用グループTA505)、ETDA・MISP(運用者=FIN11)、業界報道(Cl0p=恐喝グループ)の三方向に分かれるため、プロファイル昇格の可否は判断を保留し利用者の指示を待つ。一次情報源チェックにCISA KEVを追加した(ランサムウェア悪用CVEの政府側裏付けを取るため)。actor_profile/scripts の enrich 系スクリプトは --actor 無指定で全679プロファイルを走査すると集合反復順に依存した並び替えが発生し、実質的な変更がない294プロファイルが差分として出る。本増分では過去コミットの前例に従い --actor で対象アクターへ限定して実行した。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-18増分では、前回pendingで据え置いたdarkhotel(APT-C-06)の一次資料を今回取得できたため採用し、IOC 5件とartifact 9件を原文から直接収録した。pendingは0件となり2026-08-18分までレビューを完了した。未帰属クラスタはJWR、CVE-2026-59310悪用の中国系侵入セット、Cl0pのWindchill恐喝キャンペーンの3件を新規追加し、ChainDrop(shai-hulud-2)へ独立した一次資料2本の観測を追加した。Cl0pは既存679プロファイルに名称が存在せず、名前一致でもIOC actor一致でも検知されない構造的な検知漏れである。証拠が公式ATT&CK(Clop=malware S0611/使用グループTA505)、ETDA・MISP(運用者=FIN11)、業界報道(Cl0p=恐喝グループ)の三方向に分かれるため、プロファイル昇格の可否は判断を保留し利用者の指示を待つ。一次情報源チェックにCISA KEVを追加した(ランサムウェア悪用CVEの政府側裏付けを取るため)。actor_profile/scripts の enrich 系スクリプトは --actor 無指定で全679プロファイルを走査すると集合反復順に依存した並び替えが発生し、実質的な変更がない294プロファイルが差分として出る。本増分では過去コミットの前例に従い --actor で対象アクターへ限定して実行した。 2026-08-22増分では、tech-memo側の新規はUAT-10147/SPECTRE(前日に台帳収録済み)のみでレビューキューのpendingは0件だった。検知はいずれも一次情報源チェックによるもので、Kaspersky Securelistの「The invisible passenger in your car」(2026-08-21)からMoYu Groupを新規クラスタとして台帳へ追加し、securelist.ruのみで公開されたArmored Likhoの新規キャンペーン(2026-08-20)を第2観測として追加した。後者は前日のチェックがsecurelist.comのRSSのみを確認していたための取りこぼしであり、securelist.comとsecurelist.ruを毎回別個に確認する必要が再確認された。CameraSwarm(tech-memo 20260820、Hunt.io)は既存プロファイル・台帳・excluded_name_collisionsのいずれにも存在せず、2026-08-20分が既にレビュー完了扱いであるため意図的な除外か記録漏れかを確定できない。扱いは利用者の判断を待つ。"
 }
