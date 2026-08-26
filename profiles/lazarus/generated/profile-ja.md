@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lazarus`
 - 状態: draft
-- 更新日時: 2026-08-12T01:52:00Z
+- 更新日時: 2026-08-25T22:34:54Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -232,7 +232,7 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | イスラエル | 活動「Operation Dream Job」の記述で標的として明示された国・地域。 | 2019-09-01T04:00:00.000Z | 2020-08-01T04:00:00.000Z | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 活動「Operation Dream Job」の記述で標的として明示された国・地域。 | 2019-09-01T04:00:00.000Z | 2026-07 | 中 | `source--actor-mapping-workbook`, `source--daily-4d983faef4e4520ecf67`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | インド | 活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された国・地域。 | 2019-09-01T04:00:00.000Z | 2026-07 | 中 | `source--actor-mapping-workbook`, `source--daily-4d983faef4e4520ecf67`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | エクアドル | 構造化OSINTの被害国フィールドでLazarus Groupの標的・被害国としてエクアドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オランダ | 構造化OSINTの被害国フィールドでLazarus Groupの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オーストラリア | 活動「Operation Dream Job」の記述で標的として明示された国・地域。 | 2019-09-01T04:00:00.000Z | 2020-08-01T04:00:00.000Z | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
@@ -256,7 +256,7 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 | countries | 南アフリカ | 構造化OSINTの被害国フィールドでLazarus Groupの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 台湾 | 米財務省は、Lazarus Groupのサブグループと位置付けるBluenoroffが、台湾の銀行に対する作戦を成功させたとの報道を記載している。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--treasury-dprk-groups-2019` |
 | countries | 日本 | 警察庁・FBI・DC3は、Lazarus Groupの一部とされるTraderTraitorが日本の暗号資産事業者DMM Bitcoinから約482億円相当を窃取したと共同で注意喚起している。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-a1586f5913a0f7b699d4`, `source--npa-tradertraitor-dmm-2025`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 活動「Operation Dream Job」の記述で標的として明示された国・地域。 | 2019-09-01T04:00:00.000Z | 2024-12 | 中 | `source--actor-mapping-workbook`, `source--daily-3dc1e11040f649fe0198`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 米国 | 活動「Lazarus Group、Marstech1 JavaScriptインプラントを用いた開発者への標的型攻撃を展開」の記述で標的として明示された国・地域。 | 2019-09-01T04:00:00.000Z | 2024-12 | 中 | `source--actor-mapping-workbook`, `source--daily-3dc1e11040f649fe0198`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | 英国 | 米財務省は、Lazarus Groupが関与したWannaCry 2.0の公表被害者として英国National Health Service（NHS）を挙げている。 | 2017 | 2017 | 高 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--treasury-dprk-groups-2019` |
 | countries | 韓国 | 米財務省は、Lazarus Groupのサブグループと位置付けるBluenoroffが、韓国の銀行に対する作戦を成功させたとの報道を記載している。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--treasury-dprk-groups-2019` |
 | countries | 香港 | 構造化OSINTの被害国フィールドでLazarus Groupの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
@@ -274,7 +274,7 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 | sectors | 暗号資産・Web3 | 活動「Lazarusグループ、偽のLinkedInプロフィールでWeb3開発者を標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-d283ed55a07cbcd2e6dd` |
 | sectors | IT・ソフトウェア | 活動「Lazarusグループ、偽のLinkedInプロフィールでWeb3開発者を標的に」の記述で標的として明示された産業。 | 2024-12 | 2024-12 | 中 | `source--daily-3dc1e11040f649fe0198`, `source--daily-c3c1bed9ae86f29d432f`, `source--daily-d283ed55a07cbcd2e6dd` |
 | sectors | 運輸・航空・海運 | 活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された産業。 | 2026 | 2026-07 | 中 | `source--daily-4d983faef4e4520ecf67` |
-| sectors | 防衛・軍事 | 活動「Operation Dream Job」の記述で標的として明示された産業。 | 2019-09-01T04:00:00.000Z | 2026-07 | 中 | `source--daily-4d983faef4e4520ecf67`, `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | 活動「夢を打ち砕く：求人がゼロデイ攻撃へ変わるとき」の記述で標的として明示された産業。 | 2019-09-01T04:00:00.000Z | 2026-07 | 中 | `source--daily-4d983faef4e4520ecf67`, `source--mitre-attack-19-1` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Government | Targeting text indicates the Government sector. | 2019-09-01T04:00:00.000Z | 2020-08-01T04:00:00.000Z | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
 | sectors | Manufacturing | Targeting text indicates the Manufacturing sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |

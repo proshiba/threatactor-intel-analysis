@@ -4,7 +4,7 @@
   "name": "Kimsuky",
   "status": "review",
   "created_at": "2026-07-25T00:00:00Z",
-  "updated_at": "2026-08-12T01:52:00Z",
+  "updated_at": "2026-08-25T22:34:54Z",
   "languages": [
     "ja"
   ],
@@ -2642,6 +2642,127 @@
       }
     },
     {
+      "activity_id": "activity--daily-8b8c4c1cb83de0464c0b",
+      "name": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。 LNK実行後はVBEとPowerShellを展開し、15分間隔のタスクでC2から命令を取得して、システム情報、Outlook／Thunderbirdメール、キー入力を窃取する。 攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。 Gmailの送受信メールと添付ファイルを自動窃取する悪意あるChrome拡張機能も導入され、コードには生成AI利用を示唆する韓国語コメントなどが多数存在した。 攻撃基盤は短期間でC2をローテーションし、侵害した韓国の正規サーバーや日本の無料ホスティングも悪用して追跡を困難にしていた。",
+      "target_refs": [
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--south-korea"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--cloud-code-hosting"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+        "ttp--activity-rule--fd4f1b806dc0ccedc354"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--9afc3575df0624a5afbb"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-540b98540d06df59f254"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--8b8c4c1cb83de0464c0bffb0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: ENKI WhiteHatの原文を確認した(公開2026-08-20、アクセス2026-08-25)。Executive Summaryと1. Overviewの双方でKimsukyを実行主体として明記しており、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。Attribution節の根拠は、2025年のKimsuky AnyDeskキャンペーンとの実行フロー・C2配布ファイル名・保存パス(%appdata%\\microsoft\\windows\\)・default_an.<拡張子>/service.conf/system.confの一致、および韓独共同サイバーセキュリティ勧告に記載されたGmail窃取Chrome拡張手口との一致である。IOC 46件(MD5 26/URL 14/IPv4 5/domain 1)は全て原文へ逐語で存在することを照合済み。正規配布元のdl.google.com(chromeremotedesktophost.msi)とremotedesktop.google.comは攻撃者インフラではないためIOCに含まれていないことも確認した。帰属根拠が単一ベンダーによる過去活動との類似・再利用であるため確度はmediumとする。活動期間は原文が明示した2026年上半期を月精度で保存し、公開日2026-08-20とtech-memo日次ファイル日付2026-08-25はreported_atとして分離する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--kimsuky",
+          "name": "Kimsuky",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": [
+            "org--63rd-research-center",
+            "org--dprk-rgb"
+          ]
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+            "ttp--activity-rule--fd4f1b806dc0ccedc354"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--cloud-code-hosting"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--f35cd09db0a72555b38a",
+            "target--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--9afc3575df0624a5afbb"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-06-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Command And Control",
+            "Initial Access"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--f35cd09db0a72555b38a",
+              "target--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-540b98540d06df59f254"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-968ad7154a8169f32bbc",
       "name": "Kimsukyは寛容なDMARCポリシーを利用してメールを偽装",
       "activity_type": "phishing-campaign",
@@ -4372,20 +4493,21 @@
         "name": "日本",
         "description": "活動「日本、北朝鮮のKimsukyハッカーに関連する攻撃を警告」の記述で標的として明示された国・地域。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-01-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-06-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-00bf22365ce019ee25a6",
+          "source--daily-540b98540d06df59f254",
           "source--daily-d930e3ca01c519bf5740",
           "source--target-audit-etda-threat-group-cards"
         ],
@@ -4425,10 +4547,10 @@
           "basis": "source-reporting"
         },
         "last_observed": {
-          "value": "2026-04-01T00:00:00Z",
+          "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
           "precision": "month",
           "status": "known",
-          "basis": "Enki報告: 2026年4月まで; activity-period"
+          "value": "2026-06-01T00:00:00Z"
         },
         "confidence": "high",
         "evidence_refs": [
@@ -4436,6 +4558,7 @@
           "source--daily-01bbfa4ce1d271e9e220",
           "source--daily-0477636fe03aea54224d",
           "source--daily-444c87a0051642065f55",
+          "source--daily-540b98540d06df59f254",
           "source--daily-a5ca98841868974d600b",
           "source--daily-b9be11e58ab6c82617ab",
           "source--daily-f05f4888998c8f53f5ca",
@@ -4515,6 +4638,7 @@
           "source--daily-0477636fe03aea54224d",
           "source--daily-07ef6046e1668f840b3a",
           "source--daily-444c87a0051642065f55",
+          "source--daily-540b98540d06df59f254",
           "source--daily-a5ca98841868974d600b",
           "source--daily-b9be11e58ab6c82617ab",
           "source--daily-d930e3ca01c519bf5740",
@@ -4670,7 +4794,7 @@
       {
         "id": "target--activity-rule--sector--b94dc560a327b601965d",
         "name": "防衛・軍事",
-        "description": "活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された産業。",
+        "description": "活動「2026年第1四半期 DPRK Operation Kimsuky 分析」の記述で標的として明示された産業。",
         "first_observed": {
           "value": "2026-01-01T00:00:00Z",
           "precision": "month",
@@ -5270,6 +5394,35 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-303f2ea1899dc2bdab19"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+      "tactic": "Command And Control",
+      "technique_id": "T1219.002",
+      "technique_name": "Remote Desktop Software",
+      "observed_behavior": "攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。",
+      "activity_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-540b98540d06df59f254"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -5881,6 +6034,35 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-d289a4c2f4400dbffb6f"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--fd4f1b806dc0ccedc354",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。",
+      "activity_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-540b98540d06df59f254"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -6518,6 +6700,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260811.md; source commit: 967228fd1ffbba0fdfb3bf8d73983f85296d7668; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-540b98540d06df59f254",
+      "path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+      "title": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+      "publisher": "enki.co.kr",
+      "published_at": {
+        "value": "2026-08-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260825.md; source commit: c5fd1d66b0808d236baeb0aea132482742feef7f; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-5d4c990e46241ee39e8d",
@@ -7786,6 +7986,60 @@
       "confidence": "high",
       "evidence_refs": [
         "source--fbi-kimsuky-quishing-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--9afc3575df0624a5afbb",
+      "name": "被害事例: 北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。 LNK実行後はVBEとPowerShellを展開し、15分間隔のタスクでC2から命令を取得して、システム情報、Outlook／Thunderbirdメール、キー入力を窃取する。 攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。 Gmailの送受信メールと添付ファイルを自動窃取する悪意あるChrome拡張機能も導入され、コードには生成AI利用を示唆する韓国語コメントなどが多数存在した。 攻撃基盤は短期間でC2をローテーションし、侵害した韓国の正規サーバーや日本の無料ホスティングも悪用して追跡を困難にしていた。",
+      "activity_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--south-korea"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+        "ttp--activity-rule--fd4f1b806dc0ccedc354"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Gmailの送受信メールと添付ファイルを自動窃取する悪意あるChrome拡張機能も導入され、コードには生成AI利用を示唆する韓国語コメントなどが多数存在した。"
+        }
+      ],
+      "first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-540b98540d06df59f254"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
