@@ -352,8 +352,8 @@
       "aliases": [],
       "status": "tracking",
       "first_seen": "2026-07-30",
-      "last_seen": "2026-07-31",
-      "detected_via": "tech-memo daily-news 2026-07-30 / 2026-07-31",
+      "last_seen": "2026-08-26",
+      "detected_via": "tech-memo daily-news 2026-07-30 / 2026-07-31 / 2026-08-25",
       "attribution": {
         "state": "self-attributed",
         "actor_type": "financially-motivated-extortion-group",
@@ -381,6 +381,19 @@
           "targets": "住宅向けセキュリティ企業(Brinks Home)",
           "summary": "ShinyHuntersがMicrosoft Entraへの音声フィッシング経由の侵入とSalesforce顧客データ110万行超の窃取を主張。被害者側は調査中。",
           "verified_by_analyst": "tech-memo要約に基づく(一次ソース未確認)。攻撃者の主張と被害者確認を分離して扱うこと。"
+        },
+        {
+          "observed_on": "2026-08-26",
+          "publisher": "ReliaQuest（二次: BleepingComputer）",
+          "url": "https://reliaquest.com/blog/threat-spotlight-social-engineering-attempt-against-reliaquest-what-we-found/",
+          "title": "Threat Spotlight: Social Engineering Attempt Against ReliaQuest — What We Found",
+          "published_at": "2026-08-23",
+          "source_type": "victim-disclosure",
+          "reliability": "victim-statement",
+          "targets": "セキュリティベンダー(ReliaQuest)の従業員",
+          "activity_period": "原文は攻撃の発生日を2026-08-22と明示している。公開日2026-08-23は reported_at 相当であり観測日へ流用しない。",
+          "summary": "攻撃者はReliaQuestのセキュリティ担当者を名指しで装って複数従業員へ電話し、1時間以内に登録・破棄された類似ドメイン上の偽SSOページへ誘導した。1名が認証情報を入力しMFAプッシュを承認したため、閲覧のみ可能なID基盤ダッシュボードのセッションを1件取得されたが、デバイストラストにより業務アプリ・システムへの到達は阻止され、顧客データへのアクセスはなかった。tech-memo経由のBleepingComputer記事はフィッシングドメインを reliaquest[.]claims としているが、ReliaQuest原文はドメイン名を記載していない。",
+          "verified_by_analyst": "原文を確認した（アクセス日 2026-08-26、公開日 2026-08-23）。重要: ReliaQuest自身はこの侵入未遂をShinyHuntersを含むいかなる名前付きアクターへも帰属していない。ShinyHunters帰属はShinyHunters側の犯行主張と、それを報じたBleepingComputerによるものであり、被害者側の確認ではない。攻撃者の主張と被害者確認を分離して扱う。手口（ヘルプデスク／セキュリティ担当者を装うビッシング → 偽SSO → MFA承認 → IdP到達）は本クラスタの既存2観測と一致する。"
         }
       ],
       "related_profiles": [
@@ -391,7 +404,8 @@
         }
       ],
       "unresolved_questions": [
-        "独立した観測2件(業界ISACと被害企業)があり昇格閾値に近い。プロファイル新規作成の判断を利用者へ提案する。"
+        "独立した観測3件(業界ISAC、被害企業2社)があり昇格閾値に近い。プロファイル新規作成の判断を利用者へ提案する。",
+        "ReliaQuest観測は被害者側がShinyHuntersへ帰属していない。昇格時にこの1件を本クラスタの活動として数えるかは、犯行主張のみを根拠とする活動の扱いを決めてから判断する。"
       ],
       "analyst_notes": "命名済みの著名アクターにプロファイルが無いケース。"
     },
@@ -1369,6 +1383,103 @@
         "既存の unknown-cluster--shai-hulud-2（ChainDrop）とは別のキャンペーンとして扱っている。両者を結び付ける一次資料の記載はない。"
       ],
       "analyst_notes": "2026-08-23の日次チェックで検知。observations は1本のみで昇格閾値は未達。\n本エントリの登録可否は当初判断が分かれていた。2026-08-22のチェック（コミット 0e43fdd7）は「原文が帰属不明と明記し、アクター指定子も存在しないため台帳へも登録しない」として不登録と判断していたが、2026-08-23に利用者が登録と決定した。以後この論点は再検討しない。\n登録の根拠は次の2点である。(1) 台帳には unknown-cluster--hollowgraph、unknown-cluster--shai-hulud-2、unknown-cluster--jwr、unknown-cluster--octlurk-silklurk、unknown-cluster--operation-talked 等、運用者が未命名のキャンペーン単位のエントリが既に複数存在し、アクター指定子の不在は登録の障壁として一貫運用されていない。(2) 本件は daily_check.py が実際に apt38 と unc1069 へ名前一致させており、AGENT.md が「将来の誤統合を防ぐ記録であり、省略しない」と定める explicitly-refuted の記録対象そのものである。台帳へ載せない場合、この2件の誤一致は毎回ゼロから再検討されることになる。\n運用者が未命名のキャンペーン単位クラスタを台帳へ登録してよい、という判断の先例として参照できる。"
+    },
+    {
+      "cluster_id": "unknown-cluster--anonymousteam",
+      "primary_name": "AnonyMousTeam",
+      "aliases": [
+        {
+          "name": "AnonyMousKIT",
+          "scope": "narrower",
+          "vendor": "SOCRadar（AnonyMousTeam が開発・販売するPhaaSプラットフォームの名称。運用主体そのものの別称ではないためnarrower）"
+        }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-08-26",
+      "last_seen": "2026-08-26",
+      "detected_via": "tech-memo daily-news 2026-08-26。daily_check.py の unmatched_actor_values に「AnonyMousTeam」が観測28件で現れ、既存673プロファイルにも本台帳にも excluded_name_collisions にも存在しない新規名であることを確認した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "phishing-as-a-service-cybercrime",
+        "notes": "AnonyMousTeam はベンダー命名ではなく、Telegram の販売広告に現れる販売者ハンドル「Owner OF AnonyMousTeam」に由来する自称である。SOCRadar は既知の名前付き脅威アクターへ帰属しておらず、確立されたAPTエコシステムへの所属も特定していない。動機は盗難Appleデバイスの転売を成立させるためのパスコード・Apple Account窃取であり金銭目的。実体はPhaaS開発・販売業者であり、実際の被害者接触は多数の再販業者・オペレーターが行うため、AnonyMousTeam を個々の攻撃の実行主体と同一視しない。既存673プロファイルに AnonyMousTeam、AnonyMousKIT の名称でのアクターは存在しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-26",
+          "publisher": "SOCRadar",
+          "url": "https://socradar.io/blog/anonymouskit-ai-phaas-supply-chain/",
+          "title": "AnonyMousKIT: AI PhaaS Supply Chain",
+          "published_at": "2026-08-24",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文はパネルのコードベース初観測を2024年2月とし、パネルログ上の運用が収集最終日（2026年8月）まで継続していると述べている。AI音声通話200件は2025年8月〜2026年5月の観測。公開日2026-08-24は reported_at 相当であり観測日へ流用しない。",
+          "targets": "盗難・紛失したiPhoneの所有者。30バックエンド系統の送信6,092件の内訳は南アフリカ1,735、インドネシア653、イタリア263、インド167、ケニア138、ブラジル131、フランス108、英国97、ナイジェリア72。AI音声通話は90%がブラジル向け。原文に被害組織・業種の記載はない。",
+          "malware": [],
+          "tools": [
+            "AnonyMousKIT（クレジット従量課金のAI搭載PhaaSパネル）",
+            "AI音声エージェント（Apple Supportの担当者「Alice」を名乗る）",
+            "Find My / Apple ID を偽装するフィッシングページ（Apple Account認証情報と2FAコードを取得）"
+          ],
+          "summary": "盗難iPhoneのActivation Lock解除に必要な端末パスコードとApple Accountを窃取することに特化したPhaaS。盗難端末の「紛失モード」に表示される連絡先情報を起点に、メール・SMS・WhatsApp・音声通話で所有者へ接触する。AI音声エージェントが端末モデルやIMEIなど実在の情報を提示してApple Supportを装い、被害者から端末パスコードを聞き出す。規模はキットファミリ全体で506ドメイン・168ストアフロントブランド、うち30系統のバックエンドが42ドメイン（41が稼働確認）で運用されている。開発者は underc0deapple[@]gmail[.]com のハンドルを使用し、AnonyMousKIT・Cluster B ストアフロント・UKT など複数の再販ブランドが同一コードベースを配備する分散型サプライチェーンを形成している。",
+          "verified_by_analyst": "原文を確認した（アクセス日 2026-08-26、原文表記の公開日 Aug 24, 2026）。tech-memo 20260826.md 収録のBleepingComputer記事の一次ソースにあたる。運用者名「AnonyMousTeam」がベンダー命名ではなくTelegram広告上の販売者ハンドル由来である点、SOCRadarが既知アクターへ帰属していない点を原文で確認した。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "一次資料はSOCRadar単独の1本のみで昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。",
+        "PhaaSの開発・販売業者を脅威アクタークラスタとして扱うか、キット名 AnonyMousKIT をマルウェア／ツールとして扱い運用者側を別途追跡するかは、既存プロファイルの粒度方針に照らして判断が必要。",
+        "再販ブランド（Cluster B ストアフロント、UKT 等）を同一クラスタに含めるかは、原文が同一コードベースの配備としか述べていないため未確定。"
+      ],
+      "analyst_notes": "犯罪サービス提供者（PhaaS開発・販売）であり、国家背景アクターではない。実際の被害者接触は再販業者が行うため、個別の攻撃事案を AnonyMousTeam の活動として直接帰属しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--hermes-openclaw-asia-gov",
+      "primary_name": "Hermes／OpenClaw マルチエージェントAIフレームワークによる対アジア政府機関侵入活動の運用者（未命名）",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-26",
+      "last_seen": "2026-08-26",
+      "detected_via": "tech-memo daily-news 2026-08-26。daily_check.py は本記事URL中の「in-asia」を hellsing-apt の alias「Asia」へ名前一致させたが、これは excluded_name_collisions 登録済みのURL文字列衝突であり本キャンペーンとは無関係である。記事自体は既存プロファイルへ一致しない独立キャンペーンとして本台帳へ記録する。",
+      "attribution": {
+        "state": "withheld-by-source",
+        "actor_type": "cyber-espionage",
+        "notes": "Dream は運用者を特定していないのではなく、責任ある開示方針として意図的に公表していない。原文は「Dream follows responsible disclosure practices. Impacted organizations were notified prior of our findings to publication and given time to remediate and we avoid identifying the targeted entities or the operator behind this framework.」と述べる。したがって unattributed（帰属不能）ではなく withheld-by-source（資料側が非公表）として区別する。言語的手掛かりは「Linguistic analysis of the operational documentation — which code-switches between Simplified Chinese in internal status reports and Traditional Chinese in target-facing analysis — points to a Chinese-language operator.」に留まり、中国語話者という評価であって国家・グループへの帰属ではない。AGENT.md に従い、言語的痕跡を帰属根拠にしない。原文は国家の後援にも一切言及していないため、actor_type は既存語彙の cyber-espionage に留め、state-sponsored / state-linked 系の語を用いない。原文はキャンペーンにも運用者にもコードネームを与えていないため、フレームワークのワークスペース識別子 .hermes / .openclaw をクラスタ名の手掛かりとして用いる。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-26",
+          "publisher": "Dream Research Labs",
+          "url": "https://dreamgroup.com/blog/inside-a-multi-agent-ai-framework-used-to-compromise-government-entities-in-asia",
+          "title": "Inside a Multi-Agent AI Framework Used to Compromise Government Entities in Asia",
+          "published_at": "2026-08-12",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は「Across 12 documented attack waves conducted over approximately four days (July 1-4, 2026)」と観測期間を明示している。first_observed 2026-07-01、last_observed 2026-07-04。公開日2026-08-12は reported_at 相当であり観測日へ流用しない。tech-memo 収録日 2026-08-26 とも分離する。",
+          "targets": "アジアの政府機関。原子力安全機関、政府メールシステム、エネルギー企業7社超。責任ある開示方針により原文は被害組織名も対象国も明示していない。",
+          "malware": [],
+          "tools": [
+            "Hermes（ワークスペース識別子 .hermes のエージェント基盤）",
+            "OpenClaw（ワークスペース識別子 .openclaw のエージェント基盤）",
+            "OCRによるCAPTCHA突破",
+            "Bayesian評価による標的優先順位付け"
+          ],
+          "summary": "最大8エージェントを並列稼働させるマルチエージェントAI攻撃基盤が、約4日間・12波にわたりアジアの政府システム21件を自律的に探索・侵害した。認証不要API、デバッグ用認証バックドア、JWT署名検証不備を自律的に発見・悪用し、OCRでCAPTCHAを突破のうえ予測可能なパスワードによるスプレーで政府職員85アカウントを侵害、うち84アカウントでSSO経由の横展開に成功した。窃取された情報は人事記録2,564件超、完全なユーザーデータベース、SSOクライアントシークレット7件、内部DB認証情報6件。Bayesian評価による標的優先順位付け、脆弱性情報の自律調査、複数エージェントによる再検証と自己修正を備え、人手をほぼ介さず攻撃手法を適応させていた。",
+          "verified_by_analyst": "原文を確認した（アクセス日 2026-08-26、原文表記の公開日 August 12, 2026）。運用者名の非公表が資料側の方針である旨、言語的手掛かりの範囲、攻撃期間 July 1-4, 2026、Hermes と OpenClaw がワークスペース識別子 .hermes / .openclaw に対応するエージェント基盤である旨をいずれも逐語で確認した。キャンペーン名・運用者コードネームは原文に存在しない。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "hellsing-apt",
+          "relation": "explicitly-refuted",
+          "note": "daily_check.py が alias「Asia」で本記事URLの文字列「in-asia」へ一致させたレコード daily-record--1f65059cdf04cfe45f15077b は名称衝突である。「Asia」は excluded_name_collisions に登録済みで、記事本文に Hellsing APT の言及はない。将来の誤統合を防ぐため記録する。"
+        }
+      ],
+      "unresolved_questions": [
+        "一次資料はDream単独の1本のみで昇格閾値は未達。運用者名が資料側で非公表のため、他ベンダーの独立報告と同一キャンペーンかどうかの照合はインフラ・TTPで行う必要がある。",
+        "Hermes と OpenClaw が攻撃者の自作基盤か公開実装の流用かを原文は明示していない。公開実装であればツール一致を帰属根拠にできない。",
+        "被害国が非公表のため、既存の対アジア政府機関スパイ活動クラスタとの重複有無を現時点で判定できない。"
+      ],
+      "analyst_notes": "運用者が未命名のキャンペーン単位クラスタ。unknown-cluster--project-cav3rn、unknown-cluster--jwr 等、フレームワーク名でクラスタを立てる既存の前例に従う。attribution.state は本エントリで初めて withheld-by-source を用いる。既存エントリが使う unattributed（資料が帰属できていない）と、資料が帰属情報を保持しつつ非公表とする状態を区別するためであり、後者は将来の追加開示で解決し得る。"
     }
   ],
   "excluded_name_collisions": [
