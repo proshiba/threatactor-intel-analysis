@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--head-mare`
 - 状態: draft
-- 更新日時: 2026-08-12T01:51:58Z
+- 更新日時: 2026-08-25T22:34:54Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -128,7 +128,7 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん | infrastructure-operation | 2026-07 | 不明 | 2026-08-10 | target--head-mare--country--russia, target--head-mare--sector--energy, target--head-mare--sector--instrumentation, target--head-mare--sector--software-development | malware--phantomcore, malware--phantomgraph | ttp--activity-rule--209e363ca5019e2456f9, ttp--head-mare-t1003-001-lsass, ttp--head-mare-t1102-onedrive, ttp--head-mare-t1190-trueconf, ttp--head-mare-t1195-002-installer, ttp--head-mare-t1505-003-webshell, ttp--head-mare-t1572-ssh | victim--activity-rule--2e3159757028597a3b7a, victim--head-mare-trueconf-2026 | ハクティビスト集団Head Mareは、未更新のTrueConf Serverに存在する2件の脆弱性を連鎖させ、認証なしでSYSTEM権限のコード実行を実現した。 攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。 正規のTrueConf ClientインストーラーをPhantomCore入りの未署名版へ差し替え、接続した組織内ユーザーへ更新として配布した。 別のPhantomGraphバックドアはMicrosoft OneDriveをC2として命令を取得し、LSASSメモリダンプや偵察、リバースSSHトンネルを実行した。 Head Mareはロシアの計測機器、電子、運輸、エネルギー、IT、ソフトウェア開発分野を標的に複数の活動中キャンペーンを展開している。 | 高 | `source--daily-fff05927bf91551e1b96` |
+| ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん | infrastructure-operation | 2026-07 | 不明 | 2026-08-10 | target--head-mare--country--russia, target--head-mare--sector--energy, target--head-mare--sector--instrumentation, target--head-mare--sector--software-development | malware--phantomcore, malware--phantomgraph | ttp--activity-rule--209e363ca5019e2456f9, ttp--head-mare-t1003-001-lsass, ttp--head-mare-t1102-onedrive, ttp--head-mare-t1190-trueconf, ttp--head-mare-t1195-002-installer, ttp--head-mare-t1505-003-webshell, ttp--head-mare-t1572-ssh | victim--activity-rule--2e3159757028597a3b7a, victim--head-mare-trueconf-2026 | ハクティビスト集団Head Mareは、未更新のTrueConf Serverに存在する2件の脆弱性を連鎖させ、認証なしでSYSTEM権限のコード実行を実現した。 攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。 正規のTrueConf ClientインストーラーをPhantomCore入りの未署名版へ差し替え、接続した組織内ユーザーへ更新として配布した。 別のPhantomGraphバックドアはMicrosoft OneDriveをC2として命令を取得し、LSASSメモリダンプや偵察、リバースSSHトンネルを実行した。 Head Mareはロシアの計測機器、電子、運輸、エネルギー、IT、ソフトウェア開発分野を標的に複数の活動中キャンペーンを展開している。 | 高 | `source--cisa-kev-trueconf-2026`, `source--daily-fff05927bf91551e1b96`, `source--trueconf-advisory-2026` |
 | ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 | hacktivism-ransomware | 2023 | 不明 | 2024-09-02 | target--head-mare--country--russia | malware--phantomdl, malware--phantomcore, malware--lockbit, malware--babuk | ttp--activity-rule--3ea0a3504b02e6bc8bbe, ttp--activity-rule--b0ab12e48afcc3ea04d5, ttp--activity-rule--e731ad0e92c25775432b, ttp--head-mare-t1203-winrar, ttp--head-mare-t1486-ransomware | victim--activity-rule--4a3bbced4c7828f97e61, victim--head-mare-russia-belarus-2024 | Kasperskyは、2023年に出現したハクティビスト集団Head Mareが、ロシアとベラルーシの組織へ最大限の被害を与えることを目的に活動していると報告した。侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。侵害後はSliver、Mimikatz、ngrok、rsockstunを併用し、Windows環境ではLockBit、Linux/ESXi環境ではBabukのランサムウェアを展開する。資料には身代金要求の記載もあるが、Kasperskyは主たる目的を金銭ではなく被害の最大化と評価している。 | 高 | `source--kaspersky-head-mare-2024` |
 
 ### 活動別ダイヤモンドモデル
@@ -145,8 +145,8 @@ Aliasなし
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | ベラルーシ | 2024年のKaspersky資料が標的国として明示している。 | 2023 | 不明 | 高 | `source--kaspersky-head-mare-2024` |
-| countries | ロシア | 一次資料が標的国として明示している。 | 2023 | 2026-07 | 高 | `source--daily-fff05927bf91551e1b96`, `source--kaspersky-head-mare-2024`, `source--kaspersky-head-mare-trueconf-2026` |
-| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-fff05927bf91551e1b96`, `source--kaspersky-head-mare-2024`, `source--kaspersky-head-mare-trueconf-2026` |
+| countries | ロシア | 一次資料が標的国として明示している。 | 2023 | 2026-07 | 高 | `source--cisa-kev-trueconf-2026`, `source--daily-fff05927bf91551e1b96`, `source--kaspersky-head-mare-2024`, `source--kaspersky-head-mare-trueconf-2026`, `source--trueconf-advisory-2026` |
+| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--cisa-kev-trueconf-2026`, `source--daily-fff05927bf91551e1b96`, `source--kaspersky-head-mare-2024`, `source--kaspersky-head-mare-trueconf-2026`, `source--trueconf-advisory-2026` |
 | sectors | 電子 | 2026年資料が標的分野として明示。 | 不明 | 不明 | 高 | `source--kaspersky-head-mare-trueconf-2026` |
 | sectors | エネルギー | 2024年・2026年資料が標的分野として明示。 | 不明 | 不明 | 高 | `source--kaspersky-head-mare-2024`, `source--kaspersky-head-mare-trueconf-2026` |
 | sectors | エンターテインメント | 2024年資料が標的分野として明示。 | 不明 | 不明 | 高 | `source--kaspersky-head-mare-2024` |
@@ -163,7 +163,7 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん | 非公開 | aggregate | multiple-organizations | reported | target--head-mare--country--russia, target--head-mare--sector--energy, target--head-mare--sector--instrumentation, target--head-mare--sector--software-development | malware--phantomcore, malware--phantomgraph | ttp--activity-rule--209e363ca5019e2456f9, ttp--head-mare-t1003-001-lsass, ttp--head-mare-t1102-onedrive, ttp--head-mare-t1190-trueconf, ttp--head-mare-t1195-002-installer, ttp--head-mare-t1505-003-webshell, ttp--head-mare-t1572-ssh | サーバー |  | 2026-07 | 不明 | 2026-08-10 | 高 | `source--daily-fff05927bf91551e1b96` |
+| 被害事例: ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん | 非公開 | aggregate | multiple-organizations | reported | target--head-mare--country--russia, target--head-mare--sector--energy, target--head-mare--sector--instrumentation, target--head-mare--sector--software-development | malware--phantomcore, malware--phantomgraph | ttp--activity-rule--209e363ca5019e2456f9, ttp--head-mare-t1003-001-lsass, ttp--head-mare-t1102-onedrive, ttp--head-mare-t1190-trueconf, ttp--head-mare-t1195-002-installer, ttp--head-mare-t1505-003-webshell, ttp--head-mare-t1572-ssh | サーバー |  | 2026-07 | 不明 | 2026-08-10 | 高 | `source--cisa-kev-trueconf-2026`, `source--daily-fff05927bf91551e1b96`, `source--trueconf-advisory-2026` |
 | 被害事例: ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 | 非公開 | aggregate | multiple-organizations | reported | target--head-mare--country--russia | malware--babuk, malware--lockbit, malware--phantomcore, malware--phantomdl | ttp--activity-rule--3ea0a3504b02e6bc8bbe, ttp--activity-rule--b0ab12e48afcc3ea04d5, ttp--activity-rule--e731ad0e92c25775432b, ttp--head-mare-t1203-winrar, ttp--head-mare-t1486-ransomware | メール／メールアカウント | encryption: ロシア・ベラルーシ企業を標的とするHead Mareのフィッシングとランサムウェア展開 | 2023 | 不明 | 2024-09-02 | 高 | `source--kaspersky-head-mare-2024` |
 | ロシア・ベラルーシの複数分野組織(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--phantomdl, malware--phantomcore, malware--lockbit, malware--babuk | ttp--head-mare-t1203-winrar, ttp--head-mare-t1486-ransomware | Windows端末, Linux/ESXiホスト | encryption: LockBitおよびBabukによるファイル暗号化。<br>disruption: 被害最大化を目的とした業務妨害。 | 2023 | 不明 | 2024-09-02 | 高 | `source--kaspersky-head-mare-2024` |
 | TrueConf Serverを運用するロシア組織(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--phantomcore, malware--phantomgraph | ttp--head-mare-t1190-trueconf, ttp--head-mare-t1195-002-installer, ttp--head-mare-t1003-001-lsass | TrueConf Server, TrueConf Client利用端末 | supply-chain: 正規クライアントインストーラーがバックドア入り未署名版へ差し替えられた。<br>credential-theft: PhantomGraphによるLSASSメモリダンプ。<br>data-theft: Webシェル経由のデータベースアクセスと遠隔操作。 | 2026-07 | 不明 | 2026-08-07 | 高 | `source--kaspersky-head-mare-trueconf-2026` |
@@ -172,7 +172,7 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Persistence | T1505.003 | Web Shell | 攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。 |  | activity--daily-183fbfb9487ebc5f1327 | 2026-07 | 不明 | 中 | `source--daily-fff05927bf91551e1b96` |
+| Persistence | T1505.003 | Web Shell | 攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。 |  | activity--daily-183fbfb9487ebc5f1327 | 2026-07 | 不明 | 中 | `source--cisa-kev-trueconf-2026`, `source--daily-fff05927bf91551e1b96`, `source--trueconf-advisory-2026` |
 | Credential Access | T1003 | OS Credential Dumping | 侵害後はSliver、Mimikatz、ngrok、rsockstunを併用し、Windows環境ではLockBit、Linux/ESXi環境ではBabukのランサムウェアを展開する。 | malware--babuk, malware--lockbit | activity--head-mare-russia-belarus-2024 | 2023 | 不明 | 中 | `source--kaspersky-head-mare-2024` |
 | Collection | T1560.001 | Archive via Utility | 侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。 | malware--phantomcore, malware--phantomdl | activity--head-mare-russia-belarus-2024 | 2023 | 不明 | 中 | `source--kaspersky-head-mare-2024` |
 | Initial Access | T1566.001 | Spearphishing Attachment | 侵入はフィッシングメールに添付したRARアーカイブでCVE-2023-38831(WinRAR)を悪用し、独自マルウェアPhantomDLとPhantomCoreを配布する。 | malware--phantomcore, malware--phantomdl | activity--head-mare-russia-belarus-2024 | 2023 | 不明 | 中 | `source--kaspersky-head-mare-2024` |
@@ -217,10 +217,12 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
+| source--cisa-kev-trueconf-2026 | CISA Known Exploited Vulnerabilities Catalog: CVE-2026-72529 / CVE-2026-72530 (TrueConf Server) | CISA | 2026-08-20 | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | government-advisory | TLP:CLEAR | 高 |
 | source--daily-fff05927bf91551e1b96 | ハッカーがTrueConfを侵害し、クライアントインストーラーをバックドア入りに改ざん | securelist.ru | 2026-08-10 | https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/ | osint-report | TLP:CLEAR | 中 |
 | source--kaspersky-head-mare-2024 | Head Mare: adventures of a unicorn in Russia and Belarus | Kaspersky (Securelist) | 2024-09-02 | https://securelist.com/head-mare-hacktivists/113555/ | vendor-research-report | TLP:CLEAR | 高 |
 | source--kaspersky-head-mare-trueconf-2026 | APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph участникам ВКС | Kaspersky (Securelist RU) | 2026-08-07 | https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/ | vendor-research-report | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--trueconf-advisory-2026 | TrueConf Security fixes, updates and advisories (CVE-2026-72529 / CVE-2026-72530) | TrueConf | 2026-06-11 | https://trueconf.com/blog/news/security-fixes-updates-and-advisories | vendor-advisory | TLP:CLEAR | 高 |
 
 ## 自由記述
 

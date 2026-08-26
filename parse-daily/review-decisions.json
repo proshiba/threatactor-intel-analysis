@@ -418,6 +418,10 @@
     "review_notes": "原文(Microsoft Security Blog)を確認。「高信頼度をもって北朝鮮国家アクターSapphire Sleetに帰属する」と明記。@mastraスコープ140超のnpmパッケージ侵害、タイポスクワット依存easy-day-jsのpostinstall実行。標的は暗号資産・VC・ブロックチェーン。Sapphire Sleet→apt38はoverlapping aliasのため手動確認の上で対応付け(PR #17の前例)。",
     "review_status": "approved"
   },
+  "apt38|https://www.wiz.io/blog/rust-supply-chain-attack-on-arrayref-significant-overlap-with-dprk-campaigns": {
+    "review_notes": "不採用。alias「Sapphire Sleet」(scope: overlapping)による一致。Wiz原文を2026-08-23に確認済みで、Sapphire Sleetは先行のMastraキャンペーンの帰属先として言及されているだけであり、arrayrefキャンペーンの実行主体ではない。原文の帰属記述は「The arrayref infrastructure substantially overlaps with operations attributed to recent North Korean actors」に留まる。AGENT.mdの通りC2エンドポイントパス・SSL issuer・ホスティングレンジの重複は帰属根拠にしない。運用者は未命名のためunknown-cluster--arrayref-rust-cratesへ記録済みで、同台帳のrelated_profilesへexplicitly-refutedとして保持している。",
+    "review_status": "rejected"
+  },
   "apt41|https://blog.talosintelligence.com/chinese-hacking-group-apt41-compromised-taiwanese-government-affiliated-research-institute-with-shadowpad-and-cobaltstrike-2/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: 中国のハッカーグループAPT41、台湾政府関連の研究所をShadowPadとCobalt Strikeで攻撃",
@@ -731,6 +735,10 @@
     "review_notes": "原文(Chromium security docs)を確認したが、Earth Luscaへの言及はない。Google ChromeのAI活用バグ修正に関する記事で、「CHROMIUM」語との重複一致による名称衝突。不採用。",
     "review_status": "rejected"
   },
+  "earth-lusca|https://www.gendigital.com/blog/insights/research/wordlistloader-delivering-amatera-via-clearfake-campaigns": {
+    "review_notes": "不採用。alias「CHROMIUM」(scope: overlapping)による一致。Gen Digital原文(公開2026-08-18)を確認したところ、CHROMIUMはAmateraがv20_master_keyを探索する際のApplication-Bound Encryption回避を説明する文脈のブラウザーエンジン名であり、アクターaliasではない。記事はWordlistLoader/Amatera/ClearFakeの運用者をいかなる名前付きアクターにも帰属していない。unknown-clusters.jsonのexcluded_name_collisionsへ記録した。",
+    "review_status": "rejected"
+  },
   "earth-lusca|https://www.jamf.com/blog/amnesia-stealer-macos-infostealer-clickfix/": {
     "review_status": "rejected",
     "confidence": "low",
@@ -890,6 +898,10 @@
     "review_notes": "一次資料(Kaspersky Securelist RU, 2026-08-07公開)を原文で確認。記事表題が「APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph」であり、Head Mareを実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)の連鎖悪用、locale.phpのWebシェル置換、正規クライアントインストーラーのPhantomCore入り未署名版への差し替え、PhantomGraphによるOneDrive C2・LSASSダンプ・リバースSSHトンネルを新規活動として採用する。一次資料は攻撃観測期間を明示せず調査・発見時期として2026年7月を示すのみのため、first_observedはprecision: month / status: inferredで保持し、last_observedはunknownとする。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-10はreported_atとして分離する。Head Mareは本レコードの採用に合わせて新規プロファイルへ昇格した(Kaspersky 2024-09-02の初報と本報の2本を原文確認)。",
     "review_status": "approved"
   },
+  "head-mare|https://trueconf.com/blog/news/security-fixes-updates-and-advisories#CVE-2026-72529_Missing_Authentication": {
+    "review_notes": "不採用。CISA KEVカタログ(catalogVersion 2026.08.24)を原典で確認したところ、CVE-2026-72529とCVE-2026-72530はいずれもdateAdded 2026-08-20で登録されているが、どちらのエントリもHead Mareを名指ししていない。一次URLのTrueConf advisory(公開2026-06-11)にも脅威アクター名とITW悪用の記載はない。本キャンペーン自体はKaspersky Securelist RU(2026-08-07)を原典としてactivity--daily-183fbfb9487ebc5f1327へ登録済みであり、本レコードを承認すると同一活動の重複登録になる。新情報であるCVE採番と政府機関によるITW悪用確認は、既存activityへsource--cisa-kev-trueconf-2026とsource--trueconf-advisory-2026を追加する形で反映した。KEVの是正期限はCVE-2026-72530が2026-09-03、CVE-2026-72529が2026-08-23であり、tech-memo要約の「2026年9月3日まで」は前者のみを指す点に注意する。",
+    "review_status": "rejected"
+  },
   "hellsing-apt|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
     "confidence": "low",
     "review_notes": "原文(Check Point Research)にHellsing APTへの言及なし。プロファイルのalias「Asia」が記事本文の地域語(Southeast Asia)に機械的一致した名称衝突。過去の同種ケース(UNODC報告書、Kaspersky OctLurk/SilkLurk記事)と同様のパターンで不採用。",
@@ -903,6 +915,10 @@
   "hellsing-apt|https://www.dreamgroup.com/blog/inside-a-multi-agent-ai-framework-used-to-compromise-government-entities-in-asia": {
     "confidence": "low",
     "review_notes": "URL文字列断片との名称衝突。matched_termは「Asia」で、記事はDream Research Labsが報告したマルチエージェントAI攻撃基盤によるアジアの政府機関侵害であり、Hellsing APTへの言及はない。原文でも名前付きアクターへの帰属はなく、実行主体はHermesとOpenClawベースの自律エージェント基盤として記述されている。unknown-clusters.jsonのexcluded_name_collisionsに同一パターン(matched_profile: hellsing-apt / matched_term: Asia)が既登録である。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia": {
+    "review_notes": "不採用。alias「Asia」による一致で、根拠文は一次URL文字列中の「northeast-asia」である。ENKI原文にHellsing APTの言及はなく、記事はKimsukyの活動を扱っている。地域名との文字列衝突のためunknown-clusters.jsonのexcluded_name_collisionsへ記録した。",
     "review_status": "rejected"
   },
   "hellsing-apt|https://www.unodc.org/roseap/uploads/documents/Publications/2026/TOCTA_South-East_Asia_2026.pdf": {
@@ -1141,6 +1157,25 @@
   "kimsuky|https://www.databreachtoday.com/kimsuky-uses-permissive-dmarc-policies-to-spoof-emails-a-24857": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Kimsukyは寛容なDMARCポリシーを利用してメールを偽装",
+    "review_status": "approved"
+  },
+  "kimsuky|https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      }
+    },
+    "confidence": "medium",
+    "review_notes": "ENKI WhiteHatの原文を確認した(公開2026-08-20、アクセス2026-08-25)。Executive Summaryと1. Overviewの双方でKimsukyを実行主体として明記しており、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。Attribution節の根拠は、2025年のKimsuky AnyDeskキャンペーンとの実行フロー・C2配布ファイル名・保存パス(%appdata%\\microsoft\\windows\\)・default_an.<拡張子>/service.conf/system.confの一致、および韓独共同サイバーセキュリティ勧告に記載されたGmail窃取Chrome拡張手口との一致である。IOC 46件(MD5 26/URL 14/IPv4 5/domain 1)は全て原文へ逐語で存在することを照合済み。正規配布元のdl.google.com(chromeremotedesktophost.msi)とremotedesktop.google.comは攻撃者インフラではないためIOCに含まれていないことも確認した。帰属根拠が単一ベンダーによる過去活動との類似・再利用であるため確度はmediumとする。活動期間は原文が明示した2026年上半期を月精度で保存し、公開日2026-08-20とtech-memo日次ファイル日付2026-08-25はreported_atとして分離する。",
     "review_status": "approved"
   },
   "kimsuky|https://www.enki.co.kr/en/media-center/blog/kimsuky-s-advanced-attack-techniques-jsonping-webex-spoofing-and-a-new-httpspy-variant": {
@@ -2180,6 +2215,10 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は Axios 事案に関連する北朝鮮系脅威アクター UNC1069 と結び付けられており、ソーシャルエンジニアリングでメンテナーをだまして悪性版を公開したと記載されている。",
     "review_status": "approved"
+  },
+  "unc1069|https://www.wiz.io/blog/rust-supply-chain-attack-on-arrayref-significant-overlap-with-dprk-campaigns": {
+    "review_notes": "不採用。canonical nameのexact一致だが、根拠文はIOC CSVの説明「被害者からC2通信が報告されUNC1069のaxios npm攻撃でも確認された関連インフラ」であり、UNC1069をarrayrefキャンペーンの実行主体としていない。Wiz原文でも23.254.167[.]216はUNC1069のaxios npm攻撃で確認済みのIPとして参照されるのみである。インフラの共用を帰属根拠にしない方針に従い不採用とする。unknown-cluster--arrayref-rust-cratesへexplicitly-refutedとして記録済み。",
+    "review_status": "rejected"
   },
   "unc1549|https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/": {
     "activity_period": {

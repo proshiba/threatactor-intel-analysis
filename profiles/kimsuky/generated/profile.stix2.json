@@ -3735,6 +3735,113 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+      "description": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。 LNK実行後はVBEとPowerShellを展開し、15分間隔のタスクでC2から命令を取得して、システム情報、Outlook／Thunderbirdメール、キー入力を窃取する。 攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。 Gmailの送受信メールと添付ファイルを自動窃取する悪意あるChrome拡張機能も導入され、コードには生成AI利用を示唆する韓国語コメントなどが多数存在した。 攻撃基盤は短期間でC2をローテーションし、侵害した韓国の正規サーバーや日本の無料ホスティングも悪用して追跡を困難にしていた。",
+      "first_seen": "2026-01-01T00:00:00Z",
+      "last_seen": "2026-06-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-8b8c4c1cb83de0464c0b",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--8b8c4c1cb83de0464c0bffb0 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: ENKI WhiteHatの原文を確認した(公開2026-08-20、アクセス2026-08-25)。Executive Summaryと1. Overviewの双方でKimsukyを実行主体として明記しており、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。Attribution節の根拠は、2025年のKimsuky AnyDeskキャンペーンとの実行フロー・C2配布ファイル名・保存パス(%appdata%\\microsoft\\windows\\)・default_an.<拡張子>/service.conf/system.confの一致、および韓独共同サイバーセキュリティ勧告に記載されたGmail窃取Chrome拡張手口との一致である。IOC 46件(MD5 26/URL 14/IPv4 5/domain 1)は全て原文へ逐語で存在することを照合済み。正規配布元のdl.google.com(chromeremotedesktophost.msi)とremotedesktop.google.comは攻撃者インフラではないためIOCに含まれていないことも確認した。帰属根拠が単一ベンダーによる過去活動との類似・再利用であるため確度はmediumとする。活動期間は原文が明示した2026年上半期を月精度で保存し、公開日2026-08-20とtech-memo日次ファイル日付2026-08-25はreported_atとして分離する。",
+      "x_reported_at": {
+        "value": "2026-08-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--kimsuky",
+          "name": "Kimsuky",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": [
+            "org--63rd-research-center",
+            "org--dprk-rgb"
+          ]
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+            "ttp--activity-rule--fd4f1b806dc0ccedc354"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--cloud-code-hosting"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--f35cd09db0a72555b38a",
+            "target--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--9afc3575df0624a5afbb"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-01-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-06-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Command And Control",
+            "Initial Access"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--f35cd09db0a72555b38a",
+              "target--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-540b98540d06df59f254"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--d4571919-b73e-4995-90ec-940915a08b5a",
       "created": "2026-07-27T11:04:32Z",
       "modified": "2026-07-30T12:43:04Z",
@@ -5296,7 +5403,7 @@
       "spec_version": "2.1",
       "id": "identity--8c3b720e-d886-4ecb-8a16-ffbe5653aada",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-08-25T22:28:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5308,6 +5415,11 @@
           "source_name": "thehackernews.com",
           "description": "Local source: https://thehackernews.com/2025/04/kimsuky-exploits-bluekeep-rdp.html",
           "external_id": "source--daily-00bf22365ce019ee25a6"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -5355,7 +5467,7 @@
       "spec_version": "2.1",
       "id": "identity--e30f416b-9f3d-4f61-b1ae-254dda3c363f",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-08-25T22:28:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5382,6 +5494,11 @@
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
           "external_id": "source--daily-444c87a0051642065f55"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
         },
         {
           "source_name": "thehackernews.com",
@@ -5471,7 +5588,7 @@
       "spec_version": "2.1",
       "id": "identity--77c49dda-2a0c-46a2-a31f-3d424af1b3dd",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-08-25T22:28:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5503,6 +5620,11 @@
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/north-korean-hackers-exploit-vpn-update-flaw-to-install-malware/",
           "external_id": "source--daily-444c87a0051642065f55"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
         },
         {
           "source_name": "thehackernews.com",
@@ -5720,13 +5842,13 @@
       "spec_version": "2.1",
       "id": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-08-12T01:51:48Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "防衛・軍事",
       "identity_class": "organization",
-      "description": "活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された産業。",
+      "description": "活動「2026年第1四半期 DPRK Operation Kimsuky 分析」の記述で標的として明示された産業。",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -6531,6 +6653,69 @@
         "basis": "earliest-evidence-source-published-at"
       },
       "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--57c78aec-3166-4391-98bc-0030c1a6b579",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+      "identity_class": "organization",
+      "description": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。 LNK実行後はVBEとPowerShellを展開し、15分間隔のタスクでC2から命令を取得して、システム情報、Outlook／Thunderbirdメール、キー入力を窃取する。 攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。 Gmailの送受信メールと添付ファイルを自動窃取する悪意あるChrome拡張機能も導入され、コードには生成AI利用を示唆する韓国語コメントなどが多数存在した。 攻撃基盤は短期間でC2をローテーションし、侵害した韓国の正規サーバーや日本の無料ホスティングも悪用して追跡を困難にしていた。",
+      "external_references": [
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--9afc3575df0624a5afbb",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--south-korea"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+        "ttp--activity-rule--fd4f1b806dc0ccedc354"
+      ],
+      "x_affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Gmailの送受信メールと添付ファイルを自動窃取する悪意あるChrome拡張機能も導入され、コードには生成AI利用を示唆する韓国語コメントなどが多数存在した。"
+        }
+      ],
+      "x_first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "x_reported_at": {
+        "value": "2026-08-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -7873,6 +8058,51 @@
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
+      "id": "attack-pattern--24d18a31-da09-405e-82c0-4dc009a7bbfa",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Remote Desktop Software",
+      "description": "攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1219.002",
+          "url": "https://attack.mitre.org/techniques/T1219/002/"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--5c96d9562d68fe5dc3fc",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
       "id": "attack-pattern--cd0676cd-25cd-4dd9-849b-ae0bfcb3f5e7",
       "created": "2026-07-29T15:20:23Z",
       "modified": "2026-07-29T15:20:23Z",
@@ -8813,6 +9043,51 @@
         "precision": "unknown",
         "status": "unknown",
         "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--dcc329e4-b2ab-4a5e-954f-c7c8da421cc8",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Spearphishing Link",
+      "description": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.002",
+          "url": "https://attack.mitre.org/techniques/T1566/002/"
+        },
+        {
+          "source_name": "enki.co.kr",
+          "description": "Local source: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "external_id": "source--daily-540b98540d06df59f254"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--fd4f1b806dc0ccedc354",
+      "x_tactic": "Initial Access",
+      "x_activity_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "basis": "ENKI報告: 「We identified several Kimsuky spear phishing campaigns against South Korean and Japanese targets in the first half of 2026.」として2026年上半期を明示; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-01-01T00:00:00Z"
+      },
+      "x_last_observed": {
+        "basis": "ENKI報告: 同上。原文が示す上半期の上限として2026年6月。個別事案の日付は原文に記載がない; activity-period",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-06-01T00:00:00Z"
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
@@ -11251,6 +11526,111 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--c68ed8fc-3029-4920-8bbc-152941f3f9f3",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 is attributed or linked to Kimsuky.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d64c5fdc-d7cc-4070-9656-7180a10df4e6",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "infrastructure--b8554336-8ce7-44aa-8b8c-1e1e3aecb414",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 uses infra--cloud-code-hosting.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30a42cb6-565c-4382-874d-1d05a71a4843",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "identity--8c3b720e-d886-4ecb-8a16-ffbe5653aada",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 targets target--activity-rule--country--f35cd09db0a72555b38a.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4ba78eea-d822-4be0-b9c6-05917a75b46f",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "identity--e30f416b-9f3d-4f61-b1ae-254dda3c363f",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 targets target--south-korea.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--72ec426d-023b-4fcc-ab6b-9f358dc1e55c",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "attack-pattern--24d18a31-da09-405e-82c0-4dc009a7bbfa",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 uses ttp--activity-rule--5c96d9562d68fe5dc3fc.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fa6c9cd8-87c1-46ae-852e-dcb8988c856c",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "attack-pattern--dcc329e4-b2ab-4a5e-954f-c7c8da421cc8",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 uses ttp--activity-rule--fd4f1b806dc0ccedc354.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0f265295-1820-47a9-8147-df6914a095bd",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
+      "target_ref": "identity--57c78aec-3166-4391-98bc-0030c1a6b579",
+      "description": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部 affected victim--activity-rule--9afc3575df0624a5afbb.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--9ae8df7a-56f6-451c-aa98-d5d757bb31cb",
       "created": "2026-07-27T11:04:32Z",
       "modified": "2026-07-27T11:04:32Z",
@@ -12601,6 +12981,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--fb9d4789-9e25-4ff8-b54d-36c953302175",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "attack-pattern--24d18a31-da09-405e-82c0-4dc009a7bbfa",
+      "description": "攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--b13be854-3e4d-4401-a89a-0d154363d3c7",
       "created": "2026-07-29T15:20:23Z",
       "modified": "2026-07-29T15:20:23Z",
@@ -12911,6 +13306,21 @@
       "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
       "target_ref": "attack-pattern--f3a402a2-7af4-4884-b0f9-df92ca1d91ba",
       "description": "従来はLNK→PowerShell→BATの比較的単純な流れだったが、最近はLNK→PowerShell→デコイ/XML/PS1/VBS生成へ変化し、中間段階が多段化した。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--39316b27-9e4a-4890-ad89-e9762270ca09",
+      "created": "2026-08-25T22:28:51Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "attack-pattern--dcc329e4-b2ab-4a5e-954f-c7c8da421cc8",
+      "description": "ENKI WhiteHatは2026年前半、日本と韓国を標的にOneDrive共有リンクと悪意あるLNKを配布するKimsukyのスピアフィッシング攻撃を確認した。",
       "x_confidence": "medium"
     },
     {
@@ -101454,6 +101864,3901 @@
       "x_confidence": "medium"
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ece9b321-515f-4703-b2b3-42312a5dd44c",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.77.242.187",
+      "pattern": "[ipv4-addr:value = '103.77.242.187']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2d43d3350fbe147f397bddd2151afb431e9544f5a29753f3989c580843f804ff",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 115
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.77.242.187",
+          "context_excerpt": "AI generated. C2 delivering the decoy PDF and VBE payload and receiving exfiltrated system information.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9adc3aec-485b-4eee-a650-f94231443eba",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ece9b321-515f-4703-b2b3-42312a5dd44c",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b901d8ce-5950-472a-95d7-ac636ba191f7",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 160.187.147.119",
+      "pattern": "[ipv4-addr:value = '160.187.147.119']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7ce2a0f3b04601a6dee6b91d836b94e867e99ee86c3174ea0620dd1f3e6ed599",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 116
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "160.187.147.119",
+          "context_excerpt": "AI generated. C2 for malicious LNK files and for distributing the AnyDesk related components.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--609b4773-76da-4833-833c-79a8fb321fb0",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b901d8ce-5950-472a-95d7-ac636ba191f7",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1ec6c1b0-2984-40b9-8bd5-6e427b2b3ef9",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 84.247.145.65",
+      "pattern": "[ipv4-addr:value = '84.247.145.65']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:247a2643d5c85d56a1f0ad1dab796548dcb432736d71cea7acea40c77e598364",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 117
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "84.247.145.65",
+          "context_excerpt": "AI generated. C2 contacted by an LNK file used in a Japanese-language decoy campaign.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6a444dba-672a-4f8d-9692-a689028f33c8",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1ec6c1b0-2984-40b9-8bd5-6e427b2b3ef9",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--393b3612-2fbd-4e03-9f08-94f63b999b27",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 210.183.177.217",
+      "pattern": "[ipv4-addr:value = '210.183.177.217']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7e73b2c43e03f694e224d22226cc822c8ad5f2f1ea90ae09a19a7563591b697f",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 118
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "210.183.177.217",
+          "context_excerpt": "AI generated. Compromised legitimate Korean server reused as C2 for the SDD_2026 themed LNK files.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5c824866-d54b-4c15-8818-118215a8546d",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--393b3612-2fbd-4e03-9f08-94f63b999b27",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--eee6fa34-ef28-4e8a-8170-0ad8a38a6a1e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.249.117.183",
+      "pattern": "[ipv4-addr:value = '103.249.117.183']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:126f2e0e0e547550e6bcbc9c67220d1ba3e1bc15ae56d648576253f12f2f5329",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 119
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "103.249.117.183",
+          "context_excerpt": "AI generated. C2 hosting the Chrome Remote Desktop installation batch file and receiving its results.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bf9d57bb-710c-4789-ba7d-c00079162d78",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--eee6fa34-ef28-4e8a-8170-0ad8a38a6a1e",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--103f6d87-e067-4cc7-9199-d5c359c2e9c7",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:28:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://1drv.ms/u/c/2c732f3239360d98/IQDihidlH5aGTK-prrMLTrBIAcbEYFb4_w7HUbeFeiZU6Go?e=wpzaBO",
+      "pattern": "[url:value = 'https://1drv.ms/u/c/2c732f3239360d98/IQDihidlH5aGTK-prrMLTrBIAcbEYFb4_w7HUbeFeiZU6Go?e=wpzaBO']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "phishing"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:cd435e65dda2e46c13d4b49427ec3eb0ff5ad1e03d7bab6ad53be6caf0107cbc",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 120
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "phishing"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://1drv.ms/u/c/2c732f3239360d98/IQDihidlH5aGTK-prrMLTrBIAcbEYFb4_w7HUbeFeiZU6Go?e=wpzaBO",
+          "context_excerpt": "AI generated. OneDrive share URL abused to deliver the malicious archive to spearphishing targets.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a7c15d39-5e2e-4599-bada-7db3fd9b8076",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.77.242.187/JINF.pdf",
+      "pattern": "[url:value = 'http://103.77.242.187/JINF.pdf']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a1189fc1bd1d2b163d9997d6199b0e03abd9fab2bdf715b5720c6dadfccbe00f",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 121
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.77.242.187/JINF.pdf",
+          "context_excerpt": "AI generated. Retrieval URL for the Japanese-language decoy PDF shown after LNK execution.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a832d064-22aa-43ad-91d9-046db96dd14c",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a7c15d39-5e2e-4599-bada-7db3fd9b8076",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--41d214cb-805b-4cc3-bc1f-88486e8ebe93",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.77.242.187/logo.png",
+      "pattern": "[url:value = 'http://103.77.242.187/logo.png']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:257bb17b1555fcba9b593565ddb765cf9d4e5581b1735383c0c1c76b286905e8",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 122
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.77.242.187/logo.png",
+          "context_excerpt": "AI generated. Retrieval URL for the initial VBE payload disguised as a PNG image.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e83fafb9-988d-410c-9e0b-5adba4ed805b",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--41d214cb-805b-4cc3-bc1f-88486e8ebe93",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--67f4818e-1750-47bc-90fd-0d764d95effe",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.77.242.187/view.php?type=apple&seed=<MAC_Address",
+      "pattern": "[url:value = 'http://103.77.242.187/view.php?type=apple&seed=<MAC_Address']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:82eebaff620e032f73f4f1fa8ddab4fe81ce368555beaed58193ee420853ef91",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 123
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.77.242.187/view.php?type=apple&seed=<MAC_Address>",
+          "context_excerpt": "AI generated. C2 URL returning the PowerShell script to execute, keyed by the victim MAC address.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--354bda2d-0c82-41e2-8c42-37c66002afd8",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--67f4818e-1750-47bc-90fd-0d764d95effe",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ba30b407-0ab8-4384-9f4f-15442ce84755",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.77.242.187/receive.php",
+      "pattern": "[url:value = 'http://103.77.242.187/receive.php']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5c0fc053918e20e0801f532d6b1791251e28a8b2e3715f9276e4c6a4168a5924",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 124
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.77.242.187/receive.php",
+          "context_excerpt": "AI generated. Exfiltration endpoint receiving Base64 encoded system and security product information.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e9973704-df7a-4110-a834-b56736c5a370",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ba30b407-0ab8-4384-9f4f-15442ce84755",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cdaa4523-36af-40f3-86f1-07ce97d7e36b",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.249.117.183/1.bat",
+      "pattern": "[url:value = 'http://103.249.117.183/1.bat']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b0b33daa250cf7cfc9c22168f493898f55f6cc29d479d3549f932cbfd6c5e4da",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 125
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.249.117.183/1.bat",
+          "context_excerpt": "AI generated. Retrieval URL for the batch file that binds Chrome Remote Desktop to the attacker account.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e9793501-0690-4572-a002-040ce7a6b555",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--cdaa4523-36af-40f3-86f1-07ce97d7e36b",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--60c867c8-55d4-4c28-97d4-d151100ba797",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://103.249.117.183/receive.php",
+      "pattern": "[url:value = 'http://103.249.117.183/receive.php']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:be9f85f58b785183c77b3b052ca6244f3ec68ddeecbd96d28084017a16a9a5fe",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 126
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://103.249.117.183/receive.php",
+          "context_excerpt": "AI generated. Endpoint receiving the results of the Chrome Remote Desktop installation.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f4743e9a-e22a-437f-a2e2-bf067f8a81c1",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--60c867c8-55d4-4c28-97d4-d151100ba797",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b88e04c2-daf0-40b2-b6ec-970851e672d0",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://160.187.147.119/any/app.vmd",
+      "pattern": "[url:value = 'http://160.187.147.119/any/app.vmd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4a5bd3d4a20e03cb5cc0af8e103372ed034186f483ab9d1af7fa448fccfcd05a",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 127
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://160.187.147.119/any/app.vmd",
+          "context_excerpt": "AI generated. Distribution URL for the AnyDesk installation VBScript.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--80c04d69-6f4e-47b8-ab08-24c3cbe8e340",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b88e04c2-daf0-40b2-b6ec-970851e672d0",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--282c8190-abc3-488d-89de-16d355777f37",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://160.187.147.119/any/mnfst.vmd",
+      "pattern": "[url:value = 'http://160.187.147.119/any/mnfst.vmd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:81415504ae6edbd945e991f8d8552c9e91d6283cfe776177155099314ffe4c5a",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 128
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://160.187.147.119/any/mnfst.vmd",
+          "context_excerpt": "AI generated. Distribution URL for the PowerShell script that runs and hides AnyDesk.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--63ec7c6f-8eeb-4a0c-9047-8d3158a93b8b",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--282c8190-abc3-488d-89de-16d355777f37",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a4138f02-316a-44ee-94f5-0312086a9c63",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://160.187.147.119/any/attach.vmd",
+      "pattern": "[url:value = 'http://160.187.147.119/any/attach.vmd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7b0505f72ffcf61cde1ca8147e62c8e17a9d4ddc8ee6cfefff72ee288975c6ed",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 129
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://160.187.147.119/any/attach.vmd",
+          "context_excerpt": "AI generated. Distribution URL for the legitimate AnyDesk executable used in the attack.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7ef695d3-6cb1-4f24-a9e2-e7fd12233411",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a4138f02-316a-44ee-94f5-0312086a9c63",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--17537091-6cf7-4fc9-9c23-7e4e9c5ac6c2",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://160.187.147.119/any/sch.vmd",
+      "pattern": "[url:value = 'http://160.187.147.119/any/sch.vmd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6760a6fb23f4cce97fa5c9da0d79eb4566ecf6805729fa0607d0e8f15bf51ee3",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 130
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://160.187.147.119/any/sch.vmd",
+          "context_excerpt": "AI generated. Distribution URL for the AnyDesk certificate, password and salt data.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ac3eaa40-c455-4cd0-a41f-d0ab5ea80f9e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--17537091-6cf7-4fc9-9c23-7e4e9c5ac6c2",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0d93f393-623a-4ecc-bf28-9981d0f3b296",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://160.187.147.119/any/vpost.vmd",
+      "pattern": "[url:value = 'http://160.187.147.119/any/vpost.vmd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:17d35c29a5cf831049be51914cd3b489556c91bf1d24690e4cff91e8465c19a4",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 131
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://160.187.147.119/any/vpost.vmd",
+          "context_excerpt": "AI generated. Distribution URL for the AnyDesk connection information.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--be83cfb6-5ff0-436b-ac30-8148e67e992e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0d93f393-623a-4ecc-bf28-9981d0f3b296",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--601dad6e-01c0-46f5-a919-650a2aee0b00",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: http://160.187.147.119/any/bimage.vmd",
+      "pattern": "[url:value = 'http://160.187.147.119/any/bimage.vmd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c6676019b96c97b66364e6e4afe3dff536d412ca9817816a3d56afdee58ca8e5",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 132
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "http://160.187.147.119/any/bimage.vmd",
+          "context_excerpt": "AI generated. Distribution URL for the scheduled task XML used to persist AnyDesk.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ce072e94-3eff-4fcf-aaff-dd1480db4918",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--601dad6e-01c0-46f5-a919-650a2aee0b00",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d1bcf5a9-3e3b-40cf-aee4-ac2a33a8cafd",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://sweet-iki-4263.holy.jp/gmail.php",
+      "pattern": "[url:value = 'https://sweet-iki-4263.holy.jp/gmail.php']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:bfb877cbf9b24dd56b5efeb31c32442e9093be1ff94a0d2ec7d4f21d216a8913",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 133
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "https://sweet-iki-4263.holy.jp/gmail.php",
+          "context_excerpt": "AI generated. C2 endpoint to which the malicious Chrome extension sends Gmail bodies and attachments.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--be4db4a7-a9d9-4da1-ae77-e8815e27f6f4",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d1bcf5a9-3e3b-40cf-aee4-ac2a33a8cafd",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a90b8bcd-1a90-4f20-baff-423c09d36f0e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: sweet-iki-4263.holy.jp",
+      "pattern": "[domain-name:value = 'sweet-iki-4263.holy.jp']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:162f17c002ca4803f61d8c64852438d095792f6343e3169a7070d24459432fe4",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 134
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "sweet-iki-4263.holy.jp",
+          "context_excerpt": "AI generated. Japanese free hosting host used to receive Gmail data stolen by the malicious Chrome extension.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--01967521-1dff-4394-871b-6acc1e3e47e7",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a90b8bcd-1a90-4f20-baff-423c09d36f0e",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ffc165be-6966-4311-a58e-10500dc69a0e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 8de25f181d32417fc34b2a77d2f4804b",
+      "pattern": "[file:hashes.'MD5' = '8de25f181d32417fc34b2a77d2f4804b']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:48e3c907b2ea5b144bd74100bf4fc4803d41cead01af73897b5c828c28391382",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 135
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "8de25f181d32417fc34b2a77d2f4804b",
+          "context_excerpt": "AI generated. MD5 of the spearphishing email used for initial access.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e4ec0a77-f495-4c80-8118-a1d028900f30",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ffc165be-6966-4311-a58e-10500dc69a0e",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--560bf9c1-78f3-4304-b1b1-29e4b729a162",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 95d049f184c02aa756b361c2dacb354d",
+      "pattern": "[file:hashes.'MD5' = '95d049f184c02aa756b361c2dacb354d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e4ac16eb99164bbc761b7f1c9ff627f8756228386db5226d9de2f5a888d140a1",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 136
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "95d049f184c02aa756b361c2dacb354d",
+          "context_excerpt": "AI generated. MD5 of a ZIP archive delivered through the OneDrive share link.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--069fb736-b292-4ab1-a165-b573e6534f58",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--560bf9c1-78f3-4304-b1b1-29e4b729a162",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--91fb7da9-dca4-499a-9fab-32e99425b872",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: cac69a696fc155717dabe641f22db0c9",
+      "pattern": "[file:hashes.'MD5' = 'cac69a696fc155717dabe641f22db0c9']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5952198d9b1f9b1bb7d66a727d2ff5f17953b341bbb9dc2023b305ee0b28ecb1",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 137
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "cac69a696fc155717dabe641f22db0c9",
+          "context_excerpt": "AI generated. MD5 of the malicious LNK contained in the delivered ZIP archive.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e95e34f5-9a84-4713-9a7d-700c55db7f73",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--91fb7da9-dca4-499a-9fab-32e99425b872",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--dcb573af-177c-4e6e-a036-566d7e2bd223",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 18e33961d2007c89311f7754313292b3",
+      "pattern": "[file:hashes.'MD5' = '18e33961d2007c89311f7754313292b3']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b068a1c6648f8aacbcb684776759476a1fe1dab590f88a2a35669a65163506b0",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 138
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "18e33961d2007c89311f7754313292b3",
+          "context_excerpt": "AI generated. MD5 of the pattern.zip archive delivered in the campaign.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f4ab3e18-e2ad-406c-a49f-13a3132a38ad",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--dcb573af-177c-4e6e-a036-566d7e2bd223",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b5349802-7707-48e6-96aa-fa0beb584446",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: e7da02737751f2f171aed28694b9554e",
+      "pattern": "[file:hashes.'MD5' = 'e7da02737751f2f171aed28694b9554e']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d298e391dd9f8c4d14edb722da2e4f3c459585e3e4db45d4dfffddf37c357998",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 139
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "e7da02737751f2f171aed28694b9554e",
+          "context_excerpt": "AI generated. MD5 of a malicious LNK disguised as a PDF document.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cb786f6d-ecc8-46a2-867c-b07f9ff380af",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b5349802-7707-48e6-96aa-fa0beb584446",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--233a1d54-59c5-41a6-8245-6f4cb66a1aa9",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 300f7b8ff182c8c69a0c499cdda6f8b8",
+      "pattern": "[file:hashes.'MD5' = '300f7b8ff182c8c69a0c499cdda6f8b8']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d1614514c902b631be289b38cf93cc67055795add183678ad4c20511cfa00701",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 140
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "300f7b8ff182c8c69a0c499cdda6f8b8",
+          "context_excerpt": "AI generated. MD5 of a ZIP archive using a geopolitical decoy theme.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a40bff46-90ca-4ac6-b4ed-9649da51ae66",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--233a1d54-59c5-41a6-8245-6f4cb66a1aa9",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--afb3cbb8-b9c2-4bdc-bbbb-1ebbe470caa0",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: a2191f29f58b9f0cb576b7459ed6680d",
+      "pattern": "[file:hashes.'MD5' = 'a2191f29f58b9f0cb576b7459ed6680d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:43d12cc5158a4fa7fcb4834d644e039b3a5d161c409c9b7451b53e93fb9699a9",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 141
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "a2191f29f58b9f0cb576b7459ed6680d",
+          "context_excerpt": "AI generated. MD5 of the malicious LNK contained in the geopolitical decoy archive.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--156d84e4-3d2d-4658-893b-0094d3d2cdc6",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--afb3cbb8-b9c2-4bdc-bbbb-1ebbe470caa0",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--57b082d5-6180-4b67-809d-381afe4ed388",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 94ed14ef07ac7504a3983ace8d894aae",
+      "pattern": "[file:hashes.'MD5' = '94ed14ef07ac7504a3983ace8d894aae']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a10a8f24704bd7de1467340dfd9705ff72c72e5aab8ddafd3eb0561348559bf4",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 142
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "94ed14ef07ac7504a3983ace8d894aae",
+          "context_excerpt": "AI generated. MD5 of the SDD_2026.zip archive used as a conference themed lure.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a20cff38-2d7d-42c3-aa9e-fcd28920964f",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--57b082d5-6180-4b67-809d-381afe4ed388",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2d66352e-ded9-481e-aa7a-47b0ba158320",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 5b49177d14f073bd7abf4c94688ebd84",
+      "pattern": "[file:hashes.'MD5' = '5b49177d14f073bd7abf4c94688ebd84']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b384edabb8527ad06b168859015f64998e385d4df742ad7b0c5d87910538e330",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 143
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "5b49177d14f073bd7abf4c94688ebd84",
+          "context_excerpt": "AI generated. MD5 of a malicious LNK in the SDD_2026 conference themed archive.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0616f4ff-56da-4d4e-9f7d-670c4f2dccf5",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2d66352e-ded9-481e-aa7a-47b0ba158320",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ed7ae3b2-742b-4a44-bcd3-e6be24b28036",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 4c5474238c4b2ec2ca0698902c084624",
+      "pattern": "[file:hashes.'MD5' = '4c5474238c4b2ec2ca0698902c084624']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:72a97d4ae0937cb7fee60b3423e0725ee5e3c7308578bf9a69d8f8ea108d8cb7",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 144
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "4c5474238c4b2ec2ca0698902c084624",
+          "context_excerpt": "AI generated. MD5 of a second malicious LNK in the SDD_2026 conference themed archive.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--72bc92ed-37f1-4585-a01b-6dd6fba74c3a",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ed7ae3b2-742b-4a44-bcd3-e6be24b28036",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--be32a0b0-e481-4211-9f07-b290d095661e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 7c6ac06ccfa7648a4a8cc916c14d9f67",
+      "pattern": "[file:hashes.'MD5' = '7c6ac06ccfa7648a4a8cc916c14d9f67']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f8e001613150be38f126df330c92d3019c8d56af29d4719490fe4ef0bfc46d89",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 145
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "7c6ac06ccfa7648a4a8cc916c14d9f67",
+          "context_excerpt": "AI generated. MD5 of the decoy PDF displayed to the victim after LNK execution.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e0ec9583-c4c8-494f-8f94-ccfa520f50e9",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--be32a0b0-e481-4211-9f07-b290d095661e",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--35a1603e-9469-4428-b1c0-3ed31009f40e",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 77a7dfdc7bd74cc47ac3f4f8e019936c",
+      "pattern": "[file:hashes.'MD5' = '77a7dfdc7bd74cc47ac3f4f8e019936c']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:cb50ac5016b631ce1c0ad6dcbbd3305f80b34a9b7206d6119f988a35d8a7bc44",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 146
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "77a7dfdc7bd74cc47ac3f4f8e019936c",
+          "context_excerpt": "AI generated. MD5 of the VBE initial payload disguised as logo.png.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b37295c5-0364-4bf2-ac0e-2c68d6252756",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--35a1603e-9469-4428-b1c0-3ed31009f40e",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3e39ce00-3d22-43fc-acc9-45007cb97ad0",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: d7dbce5d25aa483d9c5ec1223ed6bf6e",
+      "pattern": "[file:hashes.'MD5' = 'd7dbce5d25aa483d9c5ec1223ed6bf6e']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:9629c7a980e9eac6bed867e717b7c5fef6d7740340bb6ce40d038fb2627871a4",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 147
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "d7dbce5d25aa483d9c5ec1223ed6bf6e",
+          "context_excerpt": "AI generated. MD5 of the PowerShell script that collects Thunderbird mail data.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1c11dc80-0339-4548-9e8e-54e412165f90",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3e39ce00-3d22-43fc-acc9-45007cb97ad0",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--56f62878-c416-4778-a5fa-ff42073347dd",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: e8aaa4f579e6be788929d3548b31bf6d",
+      "pattern": "[file:hashes.'MD5' = 'e8aaa4f579e6be788929d3548b31bf6d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:094dc348c1ef953e3cf3bdd2a0ceb2aed60a1c8eaed80a53c06d77b7a860608d",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 148
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "e8aaa4f579e6be788929d3548b31bf6d",
+          "context_excerpt": "AI generated. MD5 of the PowerShell script that collects Outlook mail data.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5f67102f-f1e0-427e-9c85-2b6336ecc6ec",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--56f62878-c416-4778-a5fa-ff42073347dd",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f2a6413a-7cbd-469e-a850-fee94953da8c",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 5727c0ff18c58b80bca5ce80575996bd",
+      "pattern": "[file:hashes.'MD5' = '5727c0ff18c58b80bca5ce80575996bd']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8117360e03c5459b54100046e8da38db9ea74a2ab0aab2fd0bb0457c55615dec",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 149
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "5727c0ff18c58b80bca5ce80575996bd",
+          "context_excerpt": "AI generated. MD5 of the PowerShell script that installs Chrome Remote Desktop.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fc3ed351-c2df-413c-a5d9-2e138fa336e6",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f2a6413a-7cbd-469e-a850-fee94953da8c",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6d96c2fa-797a-4c79-8241-e56e2b390fba",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 633e672cce390d75f44f2e2357dec7b3",
+      "pattern": "[file:hashes.'MD5' = '633e672cce390d75f44f2e2357dec7b3']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5b5117f53a62b5be317dc3b1324b51a94ac37e018c388a57bddbc241db9ebbb9",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 150
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "633e672cce390d75f44f2e2357dec7b3",
+          "context_excerpt": "AI generated. MD5 of the 1.bat file binding Chrome Remote Desktop to the attacker account.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c608b6c2-b6ca-4d1b-80ca-adbe4c27590d",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6d96c2fa-797a-4c79-8241-e56e2b390fba",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6b66542b-9ad9-4e04-9044-f994aa7e0a32",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 0210f46648d4e36a98c2c0fae404f36d",
+      "pattern": "[file:hashes.'MD5' = '0210f46648d4e36a98c2c0fae404f36d']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e2feabcc2225b8900f0dbadcc9af9cd148317e9cf8a7ed0c04da266fa1c61f26",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 151
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "0210f46648d4e36a98c2c0fae404f36d",
+          "context_excerpt": "AI generated. MD5 of background.js from the malicious Gmail stealing Chrome extension.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--70c34945-afc2-4d51-9521-83723b117aba",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6b66542b-9ad9-4e04-9044-f994aa7e0a32",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3c9077a3-e961-4634-8e5c-26db376c016c",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 3ad9fbfad7ffb569b1aa24d4588edc60",
+      "pattern": "[file:hashes.'MD5' = '3ad9fbfad7ffb569b1aa24d4588edc60']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2bf2a27688da91d3681a0ffa5bda39dc82f553e2f811b67e9cbfec46d84abb46",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 152
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "3ad9fbfad7ffb569b1aa24d4588edc60",
+          "context_excerpt": "AI generated. MD5 of content.js from the malicious Gmail stealing Chrome extension.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bdda37bc-ca4c-4d7e-be61-0d8e137fe416",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3c9077a3-e961-4634-8e5c-26db376c016c",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7e1d52d0-79cf-429d-a54f-82e6e58a6d71",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: f6f7a94c11ea0ee01cbbe674cfac7851",
+      "pattern": "[file:hashes.'MD5' = 'f6f7a94c11ea0ee01cbbe674cfac7851']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:27328eeb03e6460e1283f67cf38d1f84807cd5d3e8afde4be422895271b647b3",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 153
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "f6f7a94c11ea0ee01cbbe674cfac7851",
+          "context_excerpt": "AI generated. MD5 of manifest.json from the malicious Gmail stealing Chrome extension.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fd4fbf97-3ac0-41f6-b953-1a32e5595ffc",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--7e1d52d0-79cf-429d-a54f-82e6e58a6d71",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--16da1e22-09ad-4c4d-a7c5-7d50bd89b9ad",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 54089d9cf9c7d5ff9abbae88437f66a8",
+      "pattern": "[file:hashes.'MD5' = '54089d9cf9c7d5ff9abbae88437f66a8']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:061581015c866190e685c1c33ac56ad9d656902434b7dfaf8f98856604ae000f",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 154
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "54089d9cf9c7d5ff9abbae88437f66a8",
+          "context_excerpt": "AI generated. MD5 of the batch file that installs AnyDesk for attacker remote access.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3adeb42c-b5c0-4801-8235-c7c2e4bc2ad9",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--16da1e22-09ad-4c4d-a7c5-7d50bd89b9ad",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a6db5492-007f-4d58-987a-815da6d78d7a",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 51e1876c971c76d9664ad198af8a5b61",
+      "pattern": "[file:hashes.'MD5' = '51e1876c971c76d9664ad198af8a5b61']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:ae8f5f74384e4973dd3038c071c87dcaf095fa7db56b846633800ee66b708575",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 155
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "51e1876c971c76d9664ad198af8a5b61",
+          "context_excerpt": "AI generated. MD5 of app.vmd, the AnyDesk installation VBScript.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3c2ff746-a915-460d-81a7-71b6bf72ecda",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a6db5492-007f-4d58-987a-815da6d78d7a",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3d25c15e-4b34-477a-b8a4-65e62fc0d0ea",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: c08ea73bac08ea4f4665e9e0b0fdd2a8",
+      "pattern": "[file:hashes.'MD5' = 'c08ea73bac08ea4f4665e9e0b0fdd2a8']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:498fe3ced4f7f33ad484759a5fbdf7cfa65dd359a0f8263b348ab4112ebcd574",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 156
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "c08ea73bac08ea4f4665e9e0b0fdd2a8",
+          "context_excerpt": "AI generated. MD5 of mnfst.vmd, the PowerShell script running and hiding AnyDesk.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5b89c30c-fce8-47d1-8d6a-174887321f2c",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3d25c15e-4b34-477a-b8a4-65e62fc0d0ea",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ba3ef75b-3ee1-4e4d-877f-2f8e5b537045",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: eb80f7bddb699784baa9fbf2941eaf4a",
+      "pattern": "[file:hashes.'MD5' = 'eb80f7bddb699784baa9fbf2941eaf4a']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "abusefile"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4441fa8b74d4a8f8703f72c311cf4a5869826564b8665dd11d06c655df450e00",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 157
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "abusefile"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "eb80f7bddb699784baa9fbf2941eaf4a",
+          "context_excerpt": "AI generated. MD5 of attach.vmd, the legitimate AnyDesk executable staged by the attacker.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--31d09f5d-2788-48dd-b644-4e2e4557fdb6",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ba3ef75b-3ee1-4e4d-877f-2f8e5b537045",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b9d604f4-d386-4072-b566-7ee10b0749b7",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: c774b3980151881d9d546710126b5ded",
+      "pattern": "[file:hashes.'MD5' = 'c774b3980151881d9d546710126b5ded']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:5c8d6d0bc77b800af31b86ec7bb0f063d9356e1a7ba2102683172dc8267b1e07",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 158
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "c774b3980151881d9d546710126b5ded",
+          "context_excerpt": "AI generated. MD5 of sch.vmd carrying AnyDesk certificate, password and salt data.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cc753696-2baf-4c17-bcdc-a97b82726072",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b9d604f4-d386-4072-b566-7ee10b0749b7",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--12d4137c-d1a1-435a-869f-db709f9de378",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: f3620e42e9c726c65ea7e14e3bf35464",
+      "pattern": "[file:hashes.'MD5' = 'f3620e42e9c726c65ea7e14e3bf35464']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2fff065c8c8cdc5aab9ee75c39db2d811df2c9eb263da42bc002cb947637098c",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 159
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "f3620e42e9c726c65ea7e14e3bf35464",
+          "context_excerpt": "AI generated. MD5 of vpost.vmd carrying the AnyDesk connection information.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--49a3a35d-91d7-48f5-a0ec-21f77ff4c769",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--12d4137c-d1a1-435a-869f-db709f9de378",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6f3827d4-87bf-420e-8949-8c169cf66084",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 8e4410c65ca11664561e1b6036209122",
+      "pattern": "[file:hashes.'MD5' = '8e4410c65ca11664561e1b6036209122']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-08-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-8b8c4c1cb83de0464c0b"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:571c06c0343ca42c23d6a4c67d86da919dabb91a8a1ea9ae81c853960b6fb48b",
+          "observed_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-08-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-540b98540d06df59f254",
+          "source_path": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+            "path": "daily-news/iocs/2026_07-09/20260825.csv",
+            "row": 160
+          },
+          "campaign_refs": [
+            "activity--daily-8b8c4c1cb83de0464c0b"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "8e4410c65ca11664561e1b6036209122",
+          "context_excerpt": "AI generated. MD5 of bimage.vmd, the scheduled task XML used for AnyDesk persistence.",
+          "analyst_notes": "actor field: Kimsuky; actor_attribute: north-korea; reference: https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e3012030-3967-4e3f-89fe-ba431a6b16e8",
+      "created": "2026-08-25T22:27:23Z",
+      "modified": "2026-08-25T22:27:23Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6f3827d4-87bf-420e-8949-8c169cf66084",
+      "target_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--658d5373-5339-4227-a553-e0e15f25cda1",
@@ -101475,7 +105780,7 @@
       "spec_version": "2.1",
       "id": "report--ea182dd8-320c-4b91-9e51-fd5af5e3ea5a",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-08-12T01:52:00Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -101484,7 +105789,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-12T01:52:00Z",
+      "published": "2026-08-25T22:34:54Z",
       "object_refs": [
         "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
         "malware--94c3f7a5-7318-42e8-a08f-7ad133376cc4",
@@ -101518,6 +105823,7 @@
         "campaign--9cc3399d-415e-46c8-8022-949a11a17400",
         "campaign--3bb7e954-e1ca-465c-8079-3c2114c7d4ef",
         "campaign--5d0c3a6d-f4c2-41b4-bc4e-280e4e701a68",
+        "campaign--9f5c4468-eded-4e63-a7af-ee084d6857b8",
         "campaign--d4571919-b73e-4995-90ec-940915a08b5a",
         "campaign--68a2138f-3b1a-4f8f-818e-54f129d06b4e",
         "campaign--7122c6ca-1ce2-4e70-89f9-07c754393d22",
@@ -101569,6 +105875,7 @@
         "identity--c26a047c-f4b5-4ad3-8440-d738ae929f14",
         "identity--f89bb66e-bbb2-42ac-81d7-aa2c0568fdbf",
         "identity--19d6033a-29ec-4fee-bc42-77027749306d",
+        "identity--57c78aec-3166-4391-98bc-0030c1a6b579",
         "identity--90fd4871-d5de-4296-acdd-ab614f9e85f8",
         "identity--b81f9eb7-490a-4a85-8af9-b157cf9b4a4e",
         "identity--bdff3191-9d52-4583-a9ea-5af2e83c23d0",
@@ -101595,6 +105902,7 @@
         "attack-pattern--2121171b-6c21-47d2-9d7b-162f7edeec89",
         "attack-pattern--2c097113-0202-4f30-8f87-d6527ef9ae38",
         "attack-pattern--bbc6a066-2019-4c67-9834-81074c20d016",
+        "attack-pattern--24d18a31-da09-405e-82c0-4dc009a7bbfa",
         "attack-pattern--cd0676cd-25cd-4dd9-849b-ae0bfcb3f5e7",
         "attack-pattern--acc02214-26e3-4112-b3f1-3f6880a75290",
         "attack-pattern--b9cdd860-7a12-4346-89c0-3f230e7c69bd",
@@ -101616,6 +105924,7 @@
         "attack-pattern--04f70157-a544-43d4-b24f-05068f3f713b",
         "attack-pattern--340620f3-5d12-4944-a5dc-b1582c583f09",
         "attack-pattern--f3a402a2-7af4-4884-b0f9-df92ca1d91ba",
+        "attack-pattern--dcc329e4-b2ab-4a5e-954f-c7c8da421cc8",
         "attack-pattern--9c843dae-ad94-44b3-8bb6-850b1e06c691",
         "attack-pattern--49a7b39e-7982-42de-8dcf-f282cbb59000",
         "attack-pattern--1ba65ba6-d28a-46ed-a3f6-3db49a63bea3",
@@ -102673,7 +106982,53 @@
         "indicator--d34e7307-5091-462a-a1fe-033b65125368",
         "indicator--d104cfa2-4cbc-41f6-afc7-aa0b5753e211",
         "indicator--91501f8f-f5f4-4fa8-8581-0a4b8aa182bb",
-        "indicator--23b1a52a-c4d8-4898-bd9d-1f85a699e8a7"
+        "indicator--23b1a52a-c4d8-4898-bd9d-1f85a699e8a7",
+        "indicator--ece9b321-515f-4703-b2b3-42312a5dd44c",
+        "indicator--b901d8ce-5950-472a-95d7-ac636ba191f7",
+        "indicator--1ec6c1b0-2984-40b9-8bd5-6e427b2b3ef9",
+        "indicator--393b3612-2fbd-4e03-9f08-94f63b999b27",
+        "indicator--eee6fa34-ef28-4e8a-8170-0ad8a38a6a1e",
+        "indicator--103f6d87-e067-4cc7-9199-d5c359c2e9c7",
+        "indicator--a7c15d39-5e2e-4599-bada-7db3fd9b8076",
+        "indicator--41d214cb-805b-4cc3-bc1f-88486e8ebe93",
+        "indicator--67f4818e-1750-47bc-90fd-0d764d95effe",
+        "indicator--ba30b407-0ab8-4384-9f4f-15442ce84755",
+        "indicator--cdaa4523-36af-40f3-86f1-07ce97d7e36b",
+        "indicator--60c867c8-55d4-4c28-97d4-d151100ba797",
+        "indicator--b88e04c2-daf0-40b2-b6ec-970851e672d0",
+        "indicator--282c8190-abc3-488d-89de-16d355777f37",
+        "indicator--a4138f02-316a-44ee-94f5-0312086a9c63",
+        "indicator--17537091-6cf7-4fc9-9c23-7e4e9c5ac6c2",
+        "indicator--0d93f393-623a-4ecc-bf28-9981d0f3b296",
+        "indicator--601dad6e-01c0-46f5-a919-650a2aee0b00",
+        "indicator--d1bcf5a9-3e3b-40cf-aee4-ac2a33a8cafd",
+        "indicator--a90b8bcd-1a90-4f20-baff-423c09d36f0e",
+        "indicator--ffc165be-6966-4311-a58e-10500dc69a0e",
+        "indicator--560bf9c1-78f3-4304-b1b1-29e4b729a162",
+        "indicator--91fb7da9-dca4-499a-9fab-32e99425b872",
+        "indicator--dcb573af-177c-4e6e-a036-566d7e2bd223",
+        "indicator--b5349802-7707-48e6-96aa-fa0beb584446",
+        "indicator--233a1d54-59c5-41a6-8245-6f4cb66a1aa9",
+        "indicator--afb3cbb8-b9c2-4bdc-bbbb-1ebbe470caa0",
+        "indicator--57b082d5-6180-4b67-809d-381afe4ed388",
+        "indicator--2d66352e-ded9-481e-aa7a-47b0ba158320",
+        "indicator--ed7ae3b2-742b-4a44-bcd3-e6be24b28036",
+        "indicator--be32a0b0-e481-4211-9f07-b290d095661e",
+        "indicator--35a1603e-9469-4428-b1c0-3ed31009f40e",
+        "indicator--3e39ce00-3d22-43fc-acc9-45007cb97ad0",
+        "indicator--56f62878-c416-4778-a5fa-ff42073347dd",
+        "indicator--f2a6413a-7cbd-469e-a850-fee94953da8c",
+        "indicator--6d96c2fa-797a-4c79-8241-e56e2b390fba",
+        "indicator--6b66542b-9ad9-4e04-9044-f994aa7e0a32",
+        "indicator--3c9077a3-e961-4634-8e5c-26db376c016c",
+        "indicator--7e1d52d0-79cf-429d-a54f-82e6e58a6d71",
+        "indicator--16da1e22-09ad-4c4d-a7c5-7d50bd89b9ad",
+        "indicator--a6db5492-007f-4d58-987a-815da6d78d7a",
+        "indicator--3d25c15e-4b34-477a-b8a4-65e62fc0d0ea",
+        "indicator--ba3ef75b-3ee1-4e4d-877f-2f8e5b537045",
+        "indicator--b9d604f4-d386-4072-b566-7ee10b0749b7",
+        "indicator--12d4137c-d1a1-435a-869f-db709f9de378",
+        "indicator--6f3827d4-87bf-420e-8949-8c169cf66084"
       ],
       "x_schema_version": "1.2.0"
     }

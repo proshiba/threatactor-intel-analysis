@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--awaken-likho`
 - 状態: draft
-- 更新日時: 2026-08-10T07:33:16Z
+- 更新日時: 2026-08-25T22:28:49Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -138,8 +138,8 @@ Kasperskyは2021年7月から追跡している。2024年6〜8月のキャンペ
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | ベラルーシ | 2026年資料が標的国として明示している。 | 2026-01 | 2026-07 | 高 | `source--kaspersky-awaken-likho-tokenbuoy-2026` |
-| countries | ロシア | 両資料が標的国として明示している。 | 2021-07 | 2026-07 | 高 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
-| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
+| countries | ロシア | 両資料が標的国として明示している。 | 2021-07 | 2026-07 | 高 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東欧 | ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026`, `source--target-audit-etda-threat-group-cards` |
 | sectors | 政府・行政 | 活動「MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン」の記述で標的として明示された産業。 | 2024-06 | 2026-07 | 中 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
 | sectors | 製造・産業 | 活動「MeshAgentを用いたロシア政府機関・産業企業への遠隔操作キャンペーン」の記述で標的として明示された産業。 | 2024-06 | 2024-08 | 中 | `source--kaspersky-awaken-likho-2024` |
 | sectors | 政府機関 | 両資料が標的分野として明示している。 | 不明 | 不明 | 高 | `source--kaspersky-awaken-likho-2024`, `source--kaspersky-awaken-likho-tokenbuoy-2026` |
@@ -206,6 +206,7 @@ Kasperskyは2021年7月から追跡している。2024年6〜8月のキャンペ
 | source--kaspersky-awaken-likho-tokenbuoy-2026 | Awaken Likho окончательно меняет почерк: переход на собственные бэкдоры TokenBuoy и TokenBuoySH | Kaspersky (Securelist RU) | 2026-08-07 | https://securelist.ru/awaken-likho-tokenbuoy/116536/ | vendor-research-report | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

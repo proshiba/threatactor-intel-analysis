@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "95dda1b85fc518d223a44e3294f9557f72392d0a",
-  "last_scanned_date": "2026-08-21",
+  "last_scanned_commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+  "last_scanned_date": "2026-08-25",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1709,6 +1709,148 @@
           "url": "https://securelist.ru/",
           "latest_relevant_publication": "2026-08-20",
           "result": "新規1件。「Armored Likho: новые ключи к старым дверям」(2026-08-20)。securelist.comには同一スラグの記事が存在せずロシア語版のみの公開である。前回2026-08-21のチェックはsecurelist.comのRSSのみを確認しており、本記事は取りこぼしであった。unknown-cluster--armored-likhoへ第2観測として追加した。同日の「Невидимый пассажир вашего автомобиля」(2026-08-21)はsecurelist.com版と同一内容。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-08-25T22:40:00Z",
+      "window": {
+        "since": "2026-08-21",
+        "until": "2026-08-25"
+      },
+      "source_commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
+      "statistics": {
+        "news_files": 4,
+        "articles": 33,
+        "review_records": 6,
+        "approved_records": 1,
+        "rejected_records": 5,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 100,
+        "materialization_window": "queueは2026-08-21以降2026-08-25以前で生成した。sync_daily.py実行時にtech-memoがc5fd1d66へ進み20260826.mdが出現したが、当日分は未レビューのため--until 2026-08-25で範囲を限定し、last_scanned_dateも2026-08-25までとした。承認1件(kimsuky/ENKI WhiteHat)をprofiles/kimsukyへ反映しIOC 46件を取り込んだ。head-mareのCISA KEVレコードは同一キャンペーンが既にactivity--daily-183fbfb9487ebc5f1327として登録済みのため不採用とし、CVE採番と政府によるITW悪用確認だけを既存activityのSourceとして追加した。enrich_activity_intelligence.py/enrich_targeting_scope.pyは全681プロファイルを走査し、awaken-likho・gunra・jewelbug・lazarusの4件で過去分の再導出(affected_assets補完、activity名変更への追随、ETDA出典のevidence_refs追加)が発生した。残る292プロファイルはtargets配列の並び順とupdated_atだけの差分で意味的変更がないため、差分を読める形に保つ目的でHEADへ戻した。"
+      },
+      "applied": [
+        {
+          "actor": "kimsuky",
+          "name": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+          "source": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "decision": "承認。ENKI WhiteHat原文(公開2026-08-20)を確認し、Executive Summaryと1. Overviewの双方がKimsukyを実行主体として明記していることを確認した。activity--daily-8b8c4c1cb83de0464c0bとして登録し、活動期間は原文が明示した2026年上半期を月精度(2026-01〜2026-06)で保存、公開日2026-08-20とtech-memo日次日付2026-08-25はreported_atとして分離した。確度は単一ベンダーによる過去活動との類似・再利用に基づく帰属のためmedium。IOC 46件(MD5 26/URL 14/IPv4 5/domain 1)は全て原文へ逐語で存在することを照合済み。うち1drv.msの共有URL 1件はAGENT.mdの一般サービス規則に従いdisposition: candidateへ降格した。正規配布元のdl.google.comとremotedesktop.google.comはIOCに含まれていない。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "head-mare",
+          "name": "CISA、実際に悪用されているTrueConf Serverの脆弱性を修正するよう米連邦機関へ命令",
+          "source": "https://trueconf.com/blog/news/security-fixes-updates-and-advisories#CVE-2026-72529_Missing_Authentication",
+          "decision": "不採用。CISA KEVカタログ(catalogVersion 2026.08.24)とTrueConf公式アドバイザリ(公開2026-06-11)の双方を原典で確認したが、いずれもHead Mareを名指ししていない。本キャンペーンはKaspersky Securelist RU(2026-08-07)を原典としてactivity--daily-183fbfb9487ebc5f1327へ登録済みで、承認すると重複登録になる。新情報のCVE-2026-72529/CVE-2026-72530採番と政府によるITW悪用確認はsource--cisa-kev-trueconf-2026とsource--trueconf-advisory-2026として既存activityのevidence_refsへ追加した。KEV是正期限はCVE-2026-72529が2026-08-23、CVE-2026-72530が2026-09-03。"
+        },
+        {
+          "actor": "apt38",
+          "name": "Rustサプライチェーン攻撃：arrayrefに北朝鮮関連キャンペーンとの顕著なインフラ重複",
+          "source": "https://www.wiz.io/blog/rust-supply-chain-attack-on-arrayref-significant-overlap-with-dprk-campaigns",
+          "decision": "不採用。alias「Sapphire Sleet」(scope: overlapping)による一致。2026-08-23の原文確認どおりSapphire Sleetは先行のMastraキャンペーンの帰属先としてのみ言及されており、本キャンペーンの実行主体ではない。unknown-cluster--arrayref-rust-cratesへexplicitly-refutedとして記録済み。"
+        },
+        {
+          "actor": "unc1069",
+          "name": "Rustサプライチェーン攻撃：arrayrefに北朝鮮関連キャンペーンとの顕著なインフラ重複",
+          "source": "https://www.wiz.io/blog/rust-supply-chain-attack-on-arrayref-significant-overlap-with-dprk-campaigns",
+          "decision": "不採用。canonical nameのexact一致だが、根拠はIOC CSVの説明文にあるインフラ共用の記述のみで、UNC1069を実行主体としていない。unknown-cluster--arrayref-rust-cratesへexplicitly-refutedとして記録済み。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "WordlistLoaderがClearFakeキャンペーンを通じてAmateraを配布",
+          "source": "https://www.gendigital.com/blog/insights/research/wordlistloader-delivering-amatera-via-clearfake-campaigns",
+          "decision": "不採用。alias「CHROMIUM」との名称衝突。原文(公開2026-08-18)を全文走査し「actor」0件、「attribution」0件、「Earth Lusca」0件、「Chromium」1件(ブラウザーエンジンの説明)であることを確認した。excluded_name_collisionsへ記録し、未命名の運用者はunknown-cluster--wordlistloader-clearfakeへtrackingで追加した。"
+        },
+        {
+          "actor": "hellsing-apt",
+          "name": "北東アジアを狙うKimsukyによる正規リモート制御ツール悪用攻撃の内部",
+          "source": "https://www.enki.co.kr/en/media-center/blog/inside-kimsuky-s-abuse-of-legitimate-remote-control-tools-across-northeast-asia",
+          "decision": "不採用。alias「Asia」と一次ソースURL文字列(northeast-asia)との衝突。原文にHellsing APTの言及はない。excluded_name_collisionsへ記録した。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--wordlistloader-clearfake",
+          "action": "added",
+          "note": "status: tracking。Gen Threat Labs「WordlistLoader Delivering Amatera via ClearFake Campaigns」(公開2026-08-18、JSON-LD datePublished 2026-08-18T15:03:25Z)。原文に脅威アクター名の記載自体がなく運用者は未命名。related_profilesへearth-lusca(CHROMIUM衝突)をexplicitly-refutedとして残した。単一ベンダーの初報のため昇格閾値は未達。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "MoYu Group",
+          "observations": 41,
+          "note": "unknown-cluster--moyu-groupに独立した一次資料2本(Nokia Deepfield ERT 2026-07-11、Kaspersky Securelist 2026-08-21)が揃い、promotion_thresholdを満たした。プロファイル昇格(status: draft)の検討対象として利用者の判断を待つ。本増分では昇格していない。"
+        },
+        {
+          "name": "UAT-10147",
+          "observations": 58,
+          "note": "unknown-cluster--uat-10147へ収録済み。観測2本はいずれもCisco Talosの同日公開(2026-08-20)で単一ベンダー初報のため昇格閾値は未達。"
+        },
+        {
+          "name": "ShinyHunters",
+          "observations": 1,
+          "note": "unknown-cluster--shinyhuntersへ収録済み。本増分で新規の一次資料はない。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "cutoff後の新規なし。一覧ページで最新が「Microsoft named a Leader in the Frost Radar」(2026-08-19、広報記事)であることを確認した。脅威インテリジェンス分類の最新は「Hunting MacSync Stealer infrastructure through behavioral pivots」(2026-08-18)で前回チェック時から変化なし。RSS(feed/)は403のため一覧ページで確認した。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。一覧が時系列順でないため原文のdatePublishedで確認した。最上位の「GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation...」はdatePublished 2026-05-11で新規公開ではなく、TeamPCP(UNC6780)の記述を含むが既にprofiles/teampcpへ収録済み。「Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia」(2026-08-20、UNC6293/UNC7005/UNC5976)は前回増分で反映済み。RSSエンドポイントはHTMLを返すため使用しない。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-21",
+          "result": "cutoff後の新規なし。RSSで最新が「Connecting the Dots: Securing the Overlooked Corners of the SDLC Supply Chain」(2026-08-21)であることを確認した。本記事は前回チェックで原文確認のうえ不採用済み。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。RSSは403のため一覧ページで確認し、最新が「Is Cyber missing the Marque?」(2026-08-20、Threat Source newsletter)であることを確認した。UAT-10147の2本(2026-08-20)は収録済み。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規なし。RSS全100件を走査し、eset-research配下の最新が「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)であることを確認した。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。最新は「The Model Is the Malware | What Four Agentic Intrusions Tell Defenders」(2026-08-13)でAI研究であり名前付き脅威アクターの活動報告ではない。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-21",
+          "result": "cutoff後の新規なし。RSSで最新が「The invisible passenger in your car」(2026-08-21)であることを確認した。同記事は前回増分でunknown-cluster--moyu-groupへ収録済み。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-21",
+          "result": "cutoff後の新規なし。前回の取りこぼしを踏まえ本増分でもRSSを確認し、最新が「Невидимый пассажир вашего автомобиля」(2026-08-21、securelist.com版と同一内容)であることを確認した。ロシア語版のみの未収録公開は検知されなかった。"
+        },
+        {
+          "publisher": "CISA (Known Exploited Vulnerabilities Catalog)",
+          "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "head-mareレコードの裏取りのため今回追加で確認した。JSONフィード(catalogVersion 2026.08.24)でCVE-2026-72529/CVE-2026-72530がいずれもdateAdded 2026-08-20で登録されていることを確認した。両エントリともHead Mareを含む脅威アクター名は記載していない。source--cisa-kev-trueconf-2026としてprofiles/head-mareへ追加した。"
         }
       ]
     }

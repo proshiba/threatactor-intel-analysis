@@ -414,7 +414,7 @@
       "spec_version": "2.1",
       "id": "campaign--75673d8e-fa45-41b8-a08b-8ad5e1d6d477",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-12T01:51:58Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -423,14 +423,24 @@
       "first_seen": "2026-07-01T00:00:00Z",
       "external_references": [
         {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
           "source_name": "securelist.ru",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
           "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
         }
       ],
       "x_profile_object_id": "activity--daily-183fbfb9487ebc5f1327",
       "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--183fbfb9487ebc5f1327949d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Kaspersky Securelist RU, 2026-08-07公開)を原文で確認。記事表題が「APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph」であり、Head Mareを実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)の連鎖悪用、locale.phpのWebシェル置換、正規クライアントインストーラーのPhantomCore入り未署名版への差し替え、PhantomGraphによるOneDrive C2・LSASSダンプ・リバースSSHトンネルを新規活動として採用する。一次資料は攻撃観測期間を明示せず調査・発見時期として2026年7月を示すのみのため、first_observedはprecision: month / status: inferredで保持し、last_observedはunknownとする。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-10はreported_atとして分離する。Head Mareは本レコードの採用に合わせて新規プロファイルへ昇格した(Kaspersky 2024-09-02の初報と本報の2本を原文確認)。",
+      "x_analyst_notes": "日次収集レコード daily-record--183fbfb9487ebc5f1327949d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 一次資料(Kaspersky Securelist RU, 2026-08-07公開)を原文で確認。記事表題が「APT-группировка Head Mare использует уязвимости в необновленном сервере TrueConf для доставки вредоносного ПО PhantomCore и PhantomGraph」であり、Head Mareを実行主体として明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)の連鎖悪用、locale.phpのWebシェル置換、正規クライアントインストーラーのPhantomCore入り未署名版への差し替え、PhantomGraphによるOneDrive C2・LSASSダンプ・リバースSSHトンネルを新規活動として採用する。一次資料は攻撃観測期間を明示せず調査・発見時期として2026年7月を示すのみのため、first_observedはprecision: month / status: inferredで保持し、last_observedはunknownとする。記事公開日2026-08-07とtech-memo日次ファイル日付2026-08-10はreported_atとして分離する。Head Mareは本レコードの採用に合わせて新規プロファイルへ昇格した(Kaspersky 2024-09-02の初報と本報の2本を原文確認)。\nCVE採番と政府確認(2026-08-25追記): 本活動が悪用した未更新TrueConf Serverの脆弱性2件(KLCERT-26-057/058)はCVE-2026-72529(認証欠如、CVSS 9.8)およびCVE-2026-72530(コード生成管理不備によるサンドボックス脱出、CVSS 9.0)として採番され、CISAが2026-08-20に実際の悪用を確認済みとしてKEVカタログへ追加した(是正期限 CVE-2026-72529: 2026-08-23、CVE-2026-72530: 2026-09-03)。KEVエントリとTrueConf公式アドバイザリはいずれもHead Mareを名指ししていないため、帰属根拠はKaspersky Securelist RU(2026-08-07)のままとする。本追記は日次レコード daily-record--8dc1376be22b7b2e6bddf5de(不採用)の確認過程で得た情報であり、同一活動の重複登録を避けるため新規Activityではなく既存Activityの出典として保存した。",
       "x_reported_at": {
         "value": "2026-08-10T00:00:00Z",
         "precision": "day",
@@ -515,8 +525,10 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--cisa-kev-trueconf-2026",
           "source--daily-fff05927bf91551e1b96",
-          "source--kaspersky-head-mare-trueconf-2026"
+          "source--kaspersky-head-mare-trueconf-2026",
+          "source--trueconf-advisory-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -656,7 +668,7 @@
       "spec_version": "2.1",
       "id": "identity--30da54b6-5701-4f95-9ccd-d71f57dba4eb",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -664,6 +676,11 @@
       "identity_class": "organization",
       "description": "一次資料が標的国として明示している。",
       "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
         {
           "source_name": "securelist.ru",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
@@ -678,6 +695,11 @@
           "source_name": "Kaspersky (Securelist RU)",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
           "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
         }
       ],
       "x_target_category": "countries",
@@ -688,7 +710,7 @@
       "spec_version": "2.1",
       "id": "identity--3b9f9ce7-ff96-4833-80b2-93c69f327a16",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -696,6 +718,11 @@
       "identity_class": "organization",
       "description": "ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
       "external_references": [
+        {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
         {
           "source_name": "securelist.ru",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
@@ -710,6 +737,11 @@
           "source_name": "Kaspersky (Securelist RU)",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
           "external_id": "source--kaspersky-head-mare-trueconf-2026"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
         }
       ],
       "x_target_category": "regions",
@@ -928,7 +960,7 @@
       "spec_version": "2.1",
       "id": "identity--e7f0a86c-3e98-49de-974b-114449772da9",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -937,9 +969,19 @@
       "description": "ハクティビスト集団Head Mareは、未更新のTrueConf Serverに存在する2件の脆弱性を連鎖させ、認証なしでSYSTEM権限のコード実行を実現した。 攻撃者はTrueConfサーバー上のlocale.phpをWebシェルへ置換し、データベースへのアクセスや継続的な遠隔操作を可能にした。 正規のTrueConf ClientインストーラーをPhantomCore入りの未署名版へ差し替え、接続した組織内ユーザーへ更新として配布した。 別のPhantomGraphバックドアはMicrosoft OneDriveをC2として命令を取得し、LSASSメモリダンプや偵察、リバースSSHトンネルを実行した。 Head Mareはロシアの計測機器、電子、運輸、エネルギー、IT、ソフトウェア開発分野を標的に複数の活動中キャンペーンを展開している。",
       "external_references": [
         {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
           "source_name": "securelist.ru",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
           "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
         }
       ],
       "x_profile_object_id": "victim--activity-rule--2e3159757028597a3b7a",
@@ -1205,7 +1247,7 @@
       "spec_version": "2.1",
       "id": "attack-pattern--05961014-ab2f-496f-a8a1-7ccaf3c9f694",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1218,9 +1260,19 @@
           "url": "https://attack.mitre.org/techniques/T1505/003/"
         },
         {
+          "source_name": "CISA",
+          "description": "Local source: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "external_id": "source--cisa-kev-trueconf-2026"
+        },
+        {
           "source_name": "securelist.ru",
           "description": "Local source: https://securelist.ru/tr/head-mare-targets-trueconf-server-with-phantomcore/116557/",
           "external_id": "source--daily-fff05927bf91551e1b96"
+        },
+        {
+          "source_name": "TrueConf",
+          "description": "Local source: https://trueconf.com/blog/news/security-fixes-updates-and-advisories",
+          "external_id": "source--trueconf-advisory-2026"
         }
       ],
       "x_profile_object_id": "ttp--activity-rule--209e363ca5019e2456f9",
@@ -5754,7 +5806,7 @@
       "spec_version": "2.1",
       "id": "report--992961fc-b53e-4835-ba0f-90215d275827",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-12T01:51:58Z",
+      "modified": "2026-08-25T22:34:54Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5763,7 +5815,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-12T01:51:58Z",
+      "published": "2026-08-25T22:34:54Z",
       "object_refs": [
         "intrusion-set--bc786f2e-5078-402e-91fc-69ed8343d8d2",
         "malware--735b1a23-0a49-4ed6-a6b3-0ff1c5ff9c66",
