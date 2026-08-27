@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "c5fd1d66b0808d236baeb0aea132482742feef7f",
-  "last_scanned_date": "2026-08-25",
+  "last_scanned_commit": "1ee48cb064541825445d1b6cfbf52f2eb61aebcb",
+  "last_scanned_date": "2026-08-27",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1853,6 +1853,103 @@
           "result": "head-mareレコードの裏取りのため今回追加で確認した。JSONフィード(catalogVersion 2026.08.24)でCVE-2026-72529/CVE-2026-72530がいずれもdateAdded 2026-08-20で登録されていることを確認した。両エントリともHead Mareを含む脅威アクター名は記載していない。source--cisa-kev-trueconf-2026としてprofiles/head-mareへ追加した。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-08-27T03:30:00Z",
+      "window": {
+        "since": "2026-08-25",
+        "until": "2026-08-27"
+      },
+      "source_commit": "1ee48cb064541825445d1b6cfbf52f2eb61aebcb",
+      "statistics": {
+        "news_files": 3,
+        "articles": 34,
+        "review_records": 6,
+        "approved_records": 2,
+        "rejected_records": 4,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 29,
+        "materialization_window": "queueは2026-08-25以降2026-08-27以前で生成した。承認2件のうちkimsuky/ENKIは2026-08-25増分で反映済みのため、apply_review_queue.pyは--actor unc1549へ限定した。限定しない再実行は、既に反映済みのactivity--daily-8b8c4c1cb83de0464c0bからenrich由来のttp_refs/victim_refs/target_refsを一旦削除し、source--daily-540b98540d06df59f254のsource commitをc5fd1d66から1ee48cb0へ書き換える不要な差分を生むことを確認したため採用しなかった。unc1549へGroup-IB報告をactivity--daily-cf787599b4873ec991bdとして登録し、IOC 91件(domain 58/ipv4 27/md5 2/sha1 2/sha256 2)を取り込んだ。うち86件が新規指標で、aecert.org・neexportfolio.com・neexportfolio.azurewebsites.net・neexportfolio.eastus.cloudapp.azure.com・172.86.98.113の5件は既存のactivity--mirage-kitten-middle-east-africa-2026と同一値のため、第2のObservationとcampaign_refとして追加した。IOC CSVのactor列が複合表記「Tortoiseshell (Mirage Kitten / UNC1549 / Nimbus Manticore)」であるため、config.jsonへactor_value_aliasesを新設しUNC1549へ明示対応付けした(daily_common.pyのActorRegistry.exactのみが参照し、本文の名前一致には使わない)。enrich_activity_intelligence.py/enrich_targeting_scope.pyは全681プロファイルの走査でも意味的変更がunc1549の1件だけであることを確認したうえで、差分を読める形に保つため他294プロファイルの並び順・updated_atのみの変更はHEADへ戻し、レポート成果物は--actor unc1549で再生成した。"
+      },
+      "applied": [
+        {
+          "actor": "unc1549",
+          "name": "Tortoiseshell：新たなツールセットと運用インフラを公開",
+          "source": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "decision": "承認。Group-IB原文(公開2026-08-26)を確認し、「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」として当該アクターを新規インフラ・ツールセットの実行主体としていることを確認した。Nimbus Manticoreはexact alias。帰属根拠はKaspersky Securelist報告(2026-07-28)の既知IOC(172.86.98.113、aecert.org)からのピボットで、当該5件が既に本プロファイルへ登録済みであることから独立ベンダー2社のインフラ一致を確認した。activity--daily-cf787599b4873ec991bdとして登録し、活動期間は原文が観測日もキャンペーン期間も示さないためunknown、コンパイル時刻(2018-09-26、2021-08-19)は観測日へ流用していない。公開日2026-08-26とtech-memo日次日付2026-08-27はreported_atとして分離した。確度は単一ベンダーのインフラピボットとコード類似に基づく帰属で被害組織の直接観測がないためmedium。IOC 91件は全て原文へ逐語で存在することを照合済みで、一般サービス・被害組織の正規URLは含まれない。capabilityはTWOSTROKEのみ承認(原文の検体解析記述で直接利用を確認)。国名風サブドメインは原文が用途未確定としているため標的国を導出せず、claim--groupib-new-infrastructure-targetingへunresolvedとして記録した。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "tortoiseshell",
+          "name": "Tortoiseshell：新たなツールセットと運用インフラを公開",
+          "source": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "decision": "不採用(クラスタ境界の未確定)。記事タイトルのexact名一致だが、profiles/tortoiseshellはMITRE ATT&CK G1012 CURIUM(別名 CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten、典拠 Symantec Tortoiseshell 2019)であり、Group-IBが併記する別名群(Mirage Kitten / UNC1549 / Nimbus Manticore)と一致しない。Group-IB原文はCURIUM系の別名に一切言及していない。活動はprofiles/unc1549のみへ登録し、Group-IBによる同一視はprofiles/unc1549のactor.aliasesへ「Tortoiseshell」をscope: overlappingで追加して保持した。両プロファイルの統合可否はclaim--groupib-tortoiseshell-unc1549-boundaryへunresolvedとして記録し、MITRE側の別名群との対応を示す独立した一次資料が得られた時点で再判断する。"
+        },
+        {
+          "actor": "hellsing-apt",
+          "name": "アジアの政府機関侵害に使用されたマルチエージェントAIフレームワークの内部",
+          "source": "https://dreamgroup.com/blog/inside-a-multi-agent-ai-framework-used-to-compromise-government-entities-in-asia",
+          "decision": "不採用。alias「Asia」と一次ソースURL文字列「...-in-asia」の衝突。記事にHellsing APTの言及はない。同一URLは既にunknown-clusters.jsonのexcluded_name_collisionsへ登録済みで、実体側はunknown-cluster--hermes-openclaw-asia-govとして台帳に記録されている。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-26",
+          "result": "新規1件あるが不採用。「When AI Infrastructure Becomes the Target: Securing Gateways and Control Points」(2026-08-26)の原文を確認したところ、LiteLLM・RAGFlow・Kestraを狙う3事例の自社テレメトリー報告で、Storm-####を含む名前付きアクターへの帰属は一切ない。RSS(feed/)は403のため一覧ページで確認した。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。一覧が時系列順でないため原文のdatePublishedで確認した(最上位のGTIG AI Threat Tracker=2026-05-11、Staying Ahead of Adversarial AI=2026-08-18、Distinct Clusters Target Individuals of Interest to Russia=2026-08-20)。いずれも既評価。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-25",
+          "result": "新規1件あるが不採用。「The State of AI-Enabled Malware August 2026」(2026-08-25)の原文を確認したところ、FunkSec、Oyster、Rhadamanthys等のマルウェアファミリー分析であり、脅威グループ・APT指定子・国家関与アクターへの帰属はない。Rhadamanthys節の言及は自社過去研究への後方参照。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後のアクター別一次情報なし。2026-08-26「Choose your fighter: Balancing competing requirements to select models for your AI SOC」と2026-08-25「The safety penalty: Reclaiming operational sovereignty in the age of AI」はいずれも独自のアクター研究ではない。UAT-10147の2本(2026-08-20)は反映済み。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規なし。最新は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で前回チェックから変化なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。最新は「The Model Is the Malware」(2026-08-13)でAI研究であり名前付き脅威アクターの活動報告ではない。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-21",
+          "result": "cutoff後のアクター別一次情報なし。RSS(securelist.com/feed/)で最新が「Exploits and vulnerabilities in Q2 2026」(2026-08-26 10:00:04 UTC)であることを確認したが、四半期の脆弱性統計であり名前付きアクターの活動報告ではない。「The invisible passenger in your car」(2026-08-21、MoYu Group)は反映済み。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。RSSで最新が「Эксплойты и уязвимости во втором квартале 2026 года」(2026-08-26)であることを確認した。securelist.com版と同一内容。Armored Likho(2026-08-20)は反映済み。"
+        },
+        {
+          "publisher": "Group-IB (tech-memo経由で検知)",
+          "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+          "latest_relevant_publication": "2026-08-26",
+          "result": "新規1件を採用。7サイトの定例確認対象外だが、tech-memo 20260827.mdに収録されていたため原文を確認しprofiles/unc1549へ反映した。IOC 91件は原文のIOCセクションへ逐語で存在することを機械照合した。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -1886,5 +1983,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-18増分では、前回pendingで据え置いたdarkhotel(APT-C-06)の一次資料を今回取得できたため採用し、IOC 5件とartifact 9件を原文から直接収録した。pendingは0件となり2026-08-18分までレビューを完了した。未帰属クラスタはJWR、CVE-2026-59310悪用の中国系侵入セット、Cl0pのWindchill恐喝キャンペーンの3件を新規追加し、ChainDrop(shai-hulud-2)へ独立した一次資料2本の観測を追加した。Cl0pは既存679プロファイルに名称が存在せず、名前一致でもIOC actor一致でも検知されない構造的な検知漏れである。証拠が公式ATT&CK(Clop=malware S0611/使用グループTA505)、ETDA・MISP(運用者=FIN11)、業界報道(Cl0p=恐喝グループ)の三方向に分かれるため、プロファイル昇格の可否は判断を保留し利用者の指示を待つ。一次情報源チェックにCISA KEVを追加した(ランサムウェア悪用CVEの政府側裏付けを取るため)。actor_profile/scripts の enrich 系スクリプトは --actor 無指定で全679プロファイルを走査すると集合反復順に依存した並び替えが発生し、実質的な変更がない294プロファイルが差分として出る。本増分では過去コミットの前例に従い --actor で対象アクターへ限定して実行した。 2026-08-22増分では、tech-memo側の新規はUAT-10147/SPECTRE(前日に台帳収録済み)のみでレビューキューのpendingは0件だった。検知はいずれも一次情報源チェックによるもので、Kaspersky Securelistの「The invisible passenger in your car」(2026-08-21)からMoYu Groupを新規クラスタとして台帳へ追加し、securelist.ruのみで公開されたArmored Likhoの新規キャンペーン(2026-08-20)を第2観測として追加した。後者は前日のチェックがsecurelist.comのRSSのみを確認していたための取りこぼしであり、securelist.comとsecurelist.ruを毎回別個に確認する必要が再確認された。CameraSwarm(tech-memo 20260820、Hunt.io)は既存プロファイル・台帳・excluded_name_collisionsのいずれにも存在せず、2026-08-20分が既にレビュー完了扱いであるため意図的な除外か記録漏れかを確定できない。扱いは利用者の判断を待つ。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-18増分では、前回pendingで据え置いたdarkhotel(APT-C-06)の一次資料を今回取得できたため採用し、IOC 5件とartifact 9件を原文から直接収録した。pendingは0件となり2026-08-18分までレビューを完了した。未帰属クラスタはJWR、CVE-2026-59310悪用の中国系侵入セット、Cl0pのWindchill恐喝キャンペーンの3件を新規追加し、ChainDrop(shai-hulud-2)へ独立した一次資料2本の観測を追加した。Cl0pは既存679プロファイルに名称が存在せず、名前一致でもIOC actor一致でも検知されない構造的な検知漏れである。証拠が公式ATT&CK(Clop=malware S0611/使用グループTA505)、ETDA・MISP(運用者=FIN11)、業界報道(Cl0p=恐喝グループ)の三方向に分かれるため、プロファイル昇格の可否は判断を保留し利用者の指示を待つ。一次情報源チェックにCISA KEVを追加した(ランサムウェア悪用CVEの政府側裏付けを取るため)。actor_profile/scripts の enrich 系スクリプトは --actor 無指定で全679プロファイルを走査すると集合反復順に依存した並び替えが発生し、実質的な変更がない294プロファイルが差分として出る。本増分では過去コミットの前例に従い --actor で対象アクターへ限定して実行した。 2026-08-22増分では、tech-memo側の新規はUAT-10147/SPECTRE(前日に台帳収録済み)のみでレビューキューのpendingは0件だった。検知はいずれも一次情報源チェックによるもので、Kaspersky Securelistの「The invisible passenger in your car」(2026-08-21)からMoYu Groupを新規クラスタとして台帳へ追加し、securelist.ruのみで公開されたArmored Likhoの新規キャンペーン(2026-08-20)を第2観測として追加した。後者は前日のチェックがsecurelist.comのRSSのみを確認していたための取りこぼしであり、securelist.comとsecurelist.ruを毎回別個に確認する必要が再確認された。CameraSwarm(tech-memo 20260820、Hunt.io)は既存プロファイル・台帳・excluded_name_collisionsのいずれにも存在せず、2026-08-20分が既にレビュー完了扱いであるため意図的な除外か記録漏れかを確定できない。扱いは利用者の判断を待つ。 2026-08-27増分では、tech-memo新規分と一次情報源7サイト(Securelistはロシア語版も)を再監査し、Group-IBのTortoiseshell報告のみをprofiles/unc1549へ反映した。Group-IBはTortoiseshellをMirage Kitten/UNC1549/Nimbus Manticoreと同一視するが、profiles/tortoiseshellの実体はMITRE ATT&CK G1012 CURIUM系で別名群が重ならないため統合せず、UNC1549側へscope: overlappingの別名として記録し、境界評価はclaim-audit.jsonへunresolvedとして残した。"
 }

@@ -375,6 +375,10 @@ class ActorRegistry:
                     ActorMatch(slug, canonical, term, scope, confidence, "registry")
                 )
         self.terms = candidates
+        self.value_aliases = {
+            normalized_name(source): normalized_name(target)
+            for source, target in config.get("actor_value_aliases", {}).items()
+        }
         safe_terms = {
             resolved.term.casefold().strip()
             for values in candidates.values()
@@ -413,6 +417,7 @@ class ActorRegistry:
 
     def exact(self, value: str, reason: str) -> list[ActorMatch]:
         key = normalized_name(strip_actor_qualifiers(value))
+        key = self.value_aliases.get(key, key)
         matches = self.terms.get(key, [])
         best = self._resolve(matches)
         if not best:

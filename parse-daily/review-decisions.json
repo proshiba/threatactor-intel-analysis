@@ -902,6 +902,10 @@
     "review_notes": "不採用。CISA KEVカタログ(catalogVersion 2026.08.24)を原典で確認したところ、CVE-2026-72529とCVE-2026-72530はいずれもdateAdded 2026-08-20で登録されているが、どちらのエントリもHead Mareを名指ししていない。一次URLのTrueConf advisory(公開2026-06-11)にも脅威アクター名とITW悪用の記載はない。本キャンペーン自体はKaspersky Securelist RU(2026-08-07)を原典としてactivity--daily-183fbfb9487ebc5f1327へ登録済みであり、本レコードを承認すると同一活動の重複登録になる。新情報であるCVE採番と政府機関によるITW悪用確認は、既存activityへsource--cisa-kev-trueconf-2026とsource--trueconf-advisory-2026を追加する形で反映した。KEVの是正期限はCVE-2026-72530が2026-09-03、CVE-2026-72529が2026-08-23であり、tech-memo要約の「2026年9月3日まで」は前者のみを指す点に注意する。",
     "review_status": "rejected"
   },
+  "hellsing-apt|https://dreamgroup.com/blog/inside-a-multi-agent-ai-framework-used-to-compromise-government-entities-in-asia": {
+    "review_notes": "不採用。alias「Asia」による一致で、根拠文は一次ソースURL文字列中の「...-in-asia」である。記事はDream Research LabsによるマルチエージェントAI攻撃基盤の分析であり、Hellsing APTへの言及はない。同一URLは既にparse-daily/unknown-clusters.jsonのexcluded_name_collisionsへ登録済みで、実体側はunknown-cluster--hermes-openclaw-asia-govとして台帳に記録されている。地域名との文字列衝突のため再検討しない。",
+    "review_status": "rejected"
+  },
   "hellsing-apt|https://research.checkpoint.com/2026/silver-dragon-targets-organizations-in-southeast-asia-and-europe/": {
     "confidence": "low",
     "review_notes": "原文(Check Point Research)にHellsing APTへの言及なし。プロファイルのalias「Asia」が記事本文の地域語(Southeast Asia)に機械的一致した名称衝突。過去の同種ケース(UNODC報告書、Kaspersky OctLurk/SilkLurk記事)と同様のパターンで不採用。",
@@ -2113,6 +2117,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: ロシアのハッカーグループToddyCat、先進的ツールを用いて大規模データ窃盗",
     "review_status": "approved"
   },
+  "tortoiseshell|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/": {
+    "confidence": "low",
+    "review_notes": "不採用(クラスタ境界の未確定による保留)。記事タイトルのexact名一致でstrong-subjectと判定されたが、profiles/tortoiseshellはMITRE ATT&CK G1012 CURIUM(別名 CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten、典拠はSymantec Tortoiseshell 2019)であり、Group-IBが同一視する別名群(Mirage Kitten / UNC1549 / Nimbus Manticore)と一致しない。Group-IB原文はこれら3別名のみを併記し、CURIUM・TA456・Crimson Sandstorm・Yellow Liderc・Imperial Kittenには一切言及しない。同一記事をprofiles/unc1549とprofiles/tortoiseshellの双方へ登録すると重複登録かつクラスタ統合の既成事実化になるため、活動はprofiles/unc1549のみへ登録する。Group-IBによる同一視の主張自体は失わせないよう、profiles/unc1549のactor.aliasesへ「Tortoiseshell」をscope: overlappingで追加し、両プロファイルの境界評価はprofiles/unc1549/claim-audit.jsonへunresolvedとして記録した。統合可否はMITRE側の別名群との対応を示す独立した一次資料が得られた時点で再判断する。",
+    "review_status": "rejected"
+  },
   "transparent-tribe|https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/": {
     "review_status": "rejected",
     "confidence": "low",
@@ -2249,6 +2258,32 @@
   "unc1549|https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScreening Serpens、別名UNC1549、Smoke Sandstorm、Iranian Dream Jobで、イラン情報目的に沿うサイバースパイ集団とされる。",
+    "review_status": "approved"
+  },
+  "unc1549|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "TWOSTROKE",
+        "review_notes": "承認。Group-IBが本文で検体を直接解析し、DLLサーチオーダーハイジャックによる実行、シェル・ファイルコマンド実行、ファイル送受信、メモリー内DLL実行、偵察の各機能を記載している。GTIGが2025年後半に報告したTWOSTROKEとの類似から当該アクターによる継続利用と評価されており、固有名である。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "Group-IB原文(公開2026-08-26、アクセス2026-08-27)を確認して承認。原文は「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」と明記し、記事全体で当該アクターを新規インフラ・ツールセットの実行主体として扱っている。Nimbus Manticoreはunc1549プロファイルのexact aliasであり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。帰属根拠はKaspersky Securelist報告(2026-07-28)の既知IOCからのピボットで、原文は「The first sample discovery comes from investigating a known C2 IP (172[.]86[.]98[.]113) from the abovementioned Securelist report」「The third discovery comes as a result of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続する専用リバースSSHトンネルツールと、TWOSTROKEのC++亜種、およびlocat[.]sbs配下の国名風サブドメイン群からなる新規インフラである。確度は、単一ベンダーによるインフラピボットとコード類似に基づく帰属で被害組織の直接観測がないためmediumとする。活動期間は原文が観測日もキャンペーン期間も示さないためunknownとし、記載のコンパイル時刻(2018-09-26、2021-08-19)はOSINT_RULESに従い観測日へ流用しない。公開日2026-08-26とtech-memo日次ファイル日付2026-08-27はreported_atとして分離する。国名風サブドメインは原文が「The actual use of this infrastructure is still not clear at the time of this report since no related samples were identified so far」として用途未確定としているため、標的国・標的分野の根拠には用いない。IOC CSVのactor列は複合表記「Tortoiseshell (Mirage Kitten / UNC1549 / Nimbus Manticore)」であり、parse-daily/config.jsonのactor_value_aliasesでUNC1549へ明示対応付けした上で取り込む。複合表記のためis_safe_structured_matchでは自動承認されず、本判断で個別承認する。",
     "review_status": "approved"
   },
   "unc2286|https://www.bleepingcomputer.com/news/security/salt-typhoon-uses-jumbledpath-malware-to-spy-on-us-telecom-networks/": {

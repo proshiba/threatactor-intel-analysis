@@ -4,7 +4,7 @@
   "name": "UNC1549",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-08-07T10:35:28Z",
+  "updated_at": "2026-08-27T03:19:36Z",
   "languages": [
     "ja"
   ],
@@ -40,6 +40,16 @@
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "KasperskyはUNC1549の別名として明示している。ベンダーごとの追跡範囲が完全に一致するとは限らないため、確度はmediumとする。"
+      },
+      {
+        "name": "Tortoiseshell",
+        "vendor": "Group-IB",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2f8e0aeaa133b750f976"
+        ],
+        "analyst_notes": "Group-IBは「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」としてUNC1549と同一視している。ただしprofiles/tortoiseshellはMITRE ATT&CK G1012 CURIUM(別名 CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten、典拠はSymantec Tortoiseshell 2019)であり、Group-IBはこれらの別名に言及していない。ベンダー間で追跡範囲が一致しない可能性があるためscopeはexactではなくoverlappingとし、両プロファイルの統合は行わない。境界評価はclaim-audit.jsonのclaim--groupib-tortoiseshell-unc1549-boundaryへ記録した。"
       }
     ],
     "actor_types": [
@@ -59,7 +69,7 @@
     },
     "active": "unknown",
     "description": "UNC1549は、航空宇宙、航空、防衛、通信などを対象に情報収集を行う脅威クラスタである。KasperskyはMirage Kitten、Smoke Sandstorm、Nimbus Manticoreの別名で追跡し、2026年にNightLedger、ArcBridge、BridgeHeadからなる新しいツールセットを確認した。",
-    "analyst_notes": "別名はKasperskyの2026年7月28日付調査に基づく。TA455など、他資料だけで同一性が示唆される別プロファイルは今回統合していない。"
+    "analyst_notes": "別名Mirage Kitten、Smoke Sandstorm、Nimbus ManticoreはKasperskyの2026年7月28日付調査に基づく。TortoiseshellはGroup-IBの2026年8月26日付調査に基づくoverlapping別名で、MITRE ATT&CK G1012 CURIUM系のprofiles/tortoiseshellとは別プロファイルとして維持する。TA455など、他資料だけで同一性が示唆される別プロファイルは今回統合していない。"
   },
   "attribution": {
     "countries": [
@@ -163,6 +173,32 @@
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "EgyptおよびPakistanで、侵害後のアクセス維持・通信中継に使われた。"
+      },
+      {
+        "id": "malware--daily-126c8af714f49766e231",
+        "name": "TWOSTROKE",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "Group-IBが2026年8月26日付調査で解析したC++バックドア。DLLサーチオーダーハイジャックで実行され、シェルコマンドとファイルコマンドの実行、ファイルの送受信、メモリー内DLL実行、偵察を遠隔操作できる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2f8e0aeaa133b750f976"
+        ],
+        "analyst_notes": "IOC CSVのmalware列の値を、Group-IB原文の検体解析記述で直接利用を確認したうえで承認した。原文は「Analysis of the sample shows similarities to TWOSTROKE backdoor previously reported by GTIG in late 2025, this indicates continued use of this backdoor by the TA」と述べ、GTIGが2025年後半に報告した同名バックドアの継続利用と評価している。検体のコンパイル時刻2018-09-26は観測日ではないため期間へ流用しない。"
       },
       {
         "id": "malware--daily-8bf720ef2de5aceeae08",
@@ -448,6 +484,110 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-96ac11961cae303bc9fd"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-cf787599b4873ec991bd",
+      "name": "Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。",
+      "target_refs": [
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--daily-126c8af714f49766e231"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--a1b1f24e4aa40c393238"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-2f8e0aeaa133b750f976"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--cf787599b4873ec991bd75ae から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Group-IB原文(公開2026-08-26、アクセス2026-08-27)を確認して承認。原文は「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」と明記し、記事全体で当該アクターを新規インフラ・ツールセットの実行主体として扱っている。Nimbus Manticoreはunc1549プロファイルのexact aliasであり、同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。帰属根拠はKaspersky Securelist報告(2026-07-28)の既知IOCからのピボットで、原文は「The first sample discovery comes from investigating a known C2 IP (172[.]86[.]98[.]113) from the abovementioned Securelist report」「The third discovery comes as a result of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続する専用リバースSSHトンネルツールと、TWOSTROKEのC++亜種、およびlocat[.]sbs配下の国名風サブドメイン群からなる新規インフラである。確度は、単一ベンダーによるインフラピボットとコード類似に基づく帰属で被害組織の直接観測がないためmediumとする。活動期間は原文が観測日もキャンペーン期間も示さないためunknownとし、記載のコンパイル時刻(2018-09-26、2021-08-19)はOSINT_RULESに従い観測日へ流用しない。公開日2026-08-26とtech-memo日次ファイル日付2026-08-27はreported_atとして分離する。国名風サブドメインは原文が「The actual use of this infrastructure is still not clear at the time of this report since no related samples were identified so far」として用途未確定としているため、標的国・標的分野の根拠には用いない。IOC CSVのactor列は複合表記「Tortoiseshell (Mirage Kitten / UNC1549 / Nimbus Manticore)」であり、parse-daily/config.jsonのactor_value_aliasesでUNC1549へ明示対応付けした上で取り込む。複合表記のためis_safe_structured_matchでは自動承認されず、本判断で個別承認する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1549",
+          "name": "UNC1549",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": [
+            "organization--irgc-cec"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-126c8af714f49766e231"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a1b1f24e4aa40c393238"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "not-stated",
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "last_observed": {
+            "basis": "not-stated",
+            "precision": "unknown",
+            "status": "unknown",
+            "value": null
+          },
+          "reported_at": {
+            "value": "2026-08-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-2f8e0aeaa133b750f976"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -1055,6 +1195,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-2f8e0aeaa133b750f976",
           "source--daily-96ac11961cae303bc9fd",
           "source--daily-d9794d16b217472dc38d",
           "source--kaspersky-mirage-kitten-2026",
@@ -1090,7 +1231,7 @@
       {
         "id": "target--targeting-audit--region--13f9cf21464b4deacca3",
         "name": "欧州",
-        "description": "活動「高速かつ激しい――イラン紛争中のNimbus Manticore作戦」の記述で標的地域として欧州が明示されている。",
+        "description": "活動「Tortoiseshell：新たなツールセットと運用インフラを公開」の記述で標的地域として欧州が明示されている。",
         "first_observed": {
           "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
           "precision": "month",
@@ -1105,6 +1246,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-2f8e0aeaa133b750f976",
           "source--daily-d9794d16b217472dc38d",
           "source--target-audit-etda-threat-group-cards"
         ],
@@ -1244,6 +1386,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-2f8e0aeaa133b750f976",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": ""
@@ -1656,6 +1799,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
+    },
+    {
+      "source_id": "source--daily-2f8e0aeaa133b750f976",
+      "path": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
+      "title": "Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "publisher": "group-ib.com",
+      "published_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260827.md; source commit: 1ee48cb064541825445d1b6cfbf52f2eb61aebcb; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-96ac11961cae303bc9fd",
@@ -2148,6 +2309,53 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-d9794d16b217472dc38d"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--a1b1f24e4aa40c393238",
+      "name": "被害事例: Tortoiseshell：新たなツールセットと運用インフラを公開",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。",
+      "activity_refs": [
+        "activity--daily-cf787599b4873ec991bd"
+      ],
+      "target_refs": [
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--daily-126c8af714f49766e231"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "サーバー",
+        "エンドポイント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "last_observed": {
+        "basis": "not-stated",
+        "precision": "unknown",
+        "status": "unknown",
+        "value": null
+      },
+      "reported_at": {
+        "value": "2026-08-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-2f8e0aeaa133b750f976"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     }
