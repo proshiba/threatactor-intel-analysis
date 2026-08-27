@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "actor_ref": "actor--unc1549",
-  "generated_at": "2026-07-29T14:19:39Z",
+  "generated_at": "2026-08-27T03:16:25Z",
   "status_values": [
     "supported",
     "partially-supported",
@@ -10,8 +10,9 @@
     "superseded"
   ],
   "counts": {
-    "unresolved": 1,
-    "supported": 16
+    "partially-supported": 1,
+    "supported": 16,
+    "unresolved": 3
   },
   "claims": [
     {
@@ -264,6 +265,49 @@
       "verification_rationale": "Evidence tier=knowledge-base; activity-level context may still be incomplete.",
       "counterevidence": [],
       "reviewed_at": "2026-07-29T14:19:39Z"
+    },
+    {
+      "claim_id": "claim--groupib-tortoiseshell-alias",
+      "category": "alias",
+      "subject": "tortoiseshell",
+      "statement": "Tortoiseshell is associated with UNC1549 with scope overlapping.",
+      "verification_status": "partially-supported",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-2f8e0aeaa133b750f976"
+      ],
+      "verification_rationale": "Group-IB原文(公開2026-08-26)が「Group-IB tracks this group as Tortoiseshell (also known as Mirage Kitten, UNC1549, and Nimbus Manticore)」と明記している。単独ベンダーによる同一視であり、Group-IBはMITRE ATT&CK G1012 CURIUM系の別名(CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten)には言及していないため、追跡範囲の一致は確認できない。scopeはoverlappingとして保持する。",
+      "counterevidence": [],
+      "reviewed_at": "2026-08-27T03:16:25Z"
+    },
+    {
+      "claim_id": "claim--groupib-tortoiseshell-unc1549-boundary",
+      "category": "relationship",
+      "subject": "tortoiseshell",
+      "statement": "Group-IB's Tortoiseshell and MITRE ATT&CK G1012 CURIUM (profiles/tortoiseshell) refer to the same cluster as UNC1549.",
+      "verification_status": "unresolved",
+      "confidence": "low",
+      "evidence_refs": [
+        "source--daily-2f8e0aeaa133b750f976",
+        "source--kaspersky-mirage-kitten-2026"
+      ],
+      "verification_rationale": "Group-IBはTortoiseshellをMirage Kitten / UNC1549 / Nimbus Manticoreと同一視するが、profiles/tortoiseshellの実体はMITRE ATT&CK G1012 CURIUM(典拠 Symantec Tortoiseshell 2019、別名 CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten)であり、両者の別名群は重ならない。Group-IBの新規インフラはKaspersky Securelist報告の既知IOC(172.86.98.113、aecert.org)からのピボットで発見されており、UNC1549側との接続は確認できるが、CURIUM系別名群との対応を示す一次資料は得られていない。両プロファイルは統合せず独立に保持し、UNC1549側へoverlapping別名として記録するに留める。MITRE側の別名群との対応を示す独立した一次資料が得られた時点で再判断する。",
+      "counterevidence": [],
+      "reviewed_at": "2026-08-27T03:16:25Z"
+    },
+    {
+      "claim_id": "claim--groupib-new-infrastructure-targeting",
+      "category": "targeting",
+      "subject": "activity--daily-cf787599b4873ec991bd",
+      "statement": "The new locat[.]sbs / tiktok-u[.]sbs infrastructure was used against the countries and sectors implied by its subdomain names.",
+      "verification_status": "unresolved",
+      "confidence": "low",
+      "evidence_refs": [
+        "source--daily-2f8e0aeaa133b750f976"
+      ],
+      "verification_rationale": "Group-IB原文は国名風サブドメイン(uae1-14、sau1-3、uk1-2、bel1、can2、au1、jp2ほか)について「The actual use of this infrastructure is still not clear at the time of this report since no related samples were identified so far」と明記し、被害組織も確認されたと述べていない。したがって本活動から標的国は導出しない。活動へ紐づくtarget--sector--governmentと集約被害事例victim--activity-rule--a1b1f24e4aa40c393238は、原文の「defence, aerospace, IT service providers, and military organisations」というアクター全体の継続的な標的傾向の記述に由来するものであり、本インフラでの侵害確認を意味しない。",
+      "counterevidence": [],
+      "reviewed_at": "2026-08-27T03:16:25Z"
     }
   ]
 }
