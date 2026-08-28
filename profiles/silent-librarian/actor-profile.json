@@ -4,7 +4,7 @@
   "name": "Silent Librarian",
   "status": "draft",
   "created_at": "2026-07-25T11:08:02Z",
-  "updated_at": "2026-08-21T01:45:24Z",
+  "updated_at": "2026-08-28T15:27:20Z",
   "languages": [
     "ja"
   ],
@@ -117,19 +117,19 @@
   "activities": [
     {
       "activity_id": "activity--daily-4d15dec07641eea42e80",
-      "name": "米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
-      "activity_type": "cyber-espionage",
+      "name": "米国、Mabna Institute所属とされるイラン人17人を追起訴",
+      "activity_type": "law-enforcement-action",
       "first_observed": {
-        "basis": "source-stated",
-        "precision": "year",
+        "value": "2026-08-18T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "value": "2013-01-01T00:00:00Z"
+        "basis": "source-stated"
       },
       "last_observed": {
-        "basis": "source-stated",
-        "precision": "month",
+        "value": "2026-08-18T00:00:00Z",
+        "precision": "day",
         "status": "known",
-        "value": "2017-12-01T00:00:00Z"
+        "basis": "source-stated"
       },
       "reported_at": {
         "value": "2026-08-20T00:00:00Z",
@@ -137,24 +137,111 @@
         "status": "known",
         "basis": "daily-news-file-date"
       },
-      "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
+      "description": "米司法省は2026年8月18日、Mabna Instituteに所属するとされるイラン人17人を対象とする14件の訴因からなる追起訴状(superseding S2 indictment)を開封した。うち9人は2018年3月に公表された7訴因の起訴状で既に訴追されており、本件で8人が追加された。米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定している。対象となった犯行期間そのものは activity--silent-librarian-mabna-campaign-2013-2017 に分離した。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ac0aab951821b27df384",
+        "source--doj-mabna-institute-indictment-2026"
+      ],
+      "analyst_notes": "RULES.md 4.3に基づき法執行イベントとして再分類した(2026-08-28)。再分類前はactivity_type: cyber-espionage、活動期間2013〜2017-12として登録されていたが、本レコードが記述するのは起訴という措置であり攻撃活動ではない。4.3-1に従いfirst_observed/last_observedには起訴状の開封日2026-08-18を入れ、犯行期間2013年〜2017年12月は新設した攻撃活動側へ移した。4.3-3に従いtarget_refs・victim_refs・ttp_refsは空にし、被害範囲の記述は犯行活動側とdescriptionに残した。再分類前は本レコードのreported_at 2026-08-20がdaily_check.pyのlatest_activityで採用され、実際の観測が2017年に終わっているにもかかわらず「過去365日に活動があったアクター」に入り続けていた。reported_atはtech-memo日次ファイルの日付2026-08-20であり、DOJ原文の公開日2026-08-18とは別に保持する。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--silent-librarian",
+          "name": "Silent Librarian",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-08-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-08-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "law-enforcement-action",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--silent-librarian-mabna-campaign-2013-2017",
+      "name": "Mabna Instituteによる学術・知的財産窃取キャンペーン",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2013-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2017-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "Mabna Instituteに所属するとされるイラン人17人が、2013年頃から2017年12月まで継続した協調的なサイバー侵入キャンペーンを実行した。米国内144大学、国外178大学、米国内私企業42社以上、国外私企業11社以上、米連邦および州政府機関5機関以上、NGO 2団体を標的とし、世界中の教授10万件超のアカウントを狙って約8,000件の侵害に成功した。窃取したのは論文、学位論文、電子書籍、研究資料等31.5TB超で、米国内大学の調達費用に換算して34億ドル超と評価されている。窃取データはMegapaper.irおよびGigapaper.irを通じてイラン国内へ販売された。標的国には米国のほか、オーストラリア、カナダ、中国、日本、イスラエル、英国、トルコ、スイス、香港等が含まれる。",
       "target_refs": [
+        "target--activity-rule--country--9e0b33ddb91d0135fb82",
         "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
         "target--activity-rule--sector--e7608f51421ca8b1e297",
-        "target--country--united-states",
-        "target--sector--government"
+        "target--country--united-states"
       ],
       "malware_refs": [],
       "infrastructure_refs": [],
       "ttp_refs": [],
       "victim_refs": [
-        "victim--activity-rule--a3fd052f21deca13b807"
+        "victim--activity-rule--b5da905da954ea14cd81"
       ],
-      "confidence": "medium",
-      "evidence_refs": [
-        "source--daily-ac0aab951821b27df384"
-      ],
-      "analyst_notes": "日次収集レコード daily-record--4d15dec07641eea42e809f27 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 一次資料(米司法省 Office of Public Affairs のプレスリリース)の原文を確認した。WebFetchはHTTP 401のためUser-Agent付きcurlでHTTP 200・全文取得した。ページ上の日付表記は「Tuesday, August 18, 2026」であり、tech-memo日次ファイルの日付2026-08-20とは異なるため、公開日は2026-08-18としてreported_atへ分離する。検知時のassessmentはalias scopeがoverlappingであることによるscope-review-requiredだったが、次の理由で採用可と判断した。(1)原文が「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute, an Iran-based company that, since at least 2013, has conducted a coordinated campaign of cyber intrusions」とMabna Instituteを実行主体として明記している。(2)原文が「Nine of the 17 defendants charged in the S2 indictment were previously charged in a 7-count indictment announced in March 2018」と述べ、2018年3月起訴の再掲ではなく8名を追加した新たな追起訴であることが確認できるため、過去言及(historical-reference)には該当しない。(3)MITRE ATT&CK G0122のSilent Librarian記述自体がこのDOJ事件(DOJ Iran Indictments March 2018)を引用してクラスタを定義しており、本プロファイルのaliasにMabna Instituteが既に登録されている。ただしDOJは組織名「Mabna Institute」のみを用い、ベンダー呼称であるSilent LibrarianおよびCobalt Dickensは原文に一切現れない。プロファイル側のalias scopeもexactではなくoverlappingであり、Silent LibrarianはMabna Institute所属者による活動クラスタを指す呼称でMabna Institute社そのものと同一ではないため、confidenceはhighではなくmediumとする。活動期間は原文が「The campaign started in approximately 2013, continued through at least December 2017」と明示しているため、first_observed=2013(precision: year)・last_observed=2017-12(precision: month)をsource-statedで採用し、公開日2026-08-18は観測日へ流用しない。被害範囲は原文が米国内144大学・国外178大学・米国内私企業42社以上・国外私企業11社以上・米連邦および州政府機関5機関以上・NGO 2団体、教授アカウント10万件超を標的として約8,000件を侵害、31.5TB超の窃取、米国内大学の調達費用として34億ドル超と明記している。窃取データはMegapaper.ir・Gigapaper.irを通じてイラン国内へ販売された。HBOへの約600万ドル相当Bitcoin恐喝はMesriが別途 17 Cr. 689 (AJN) で訴追済みの事件として言及されている。法執行資料のためIOCおよびartifactの記載はなく、レコード側のiocs/artifactsは空のままとする。capability候補も生成されていない。activity_typeの自動分類は要約中のHBO恐喝への言及(「恐喝」)に反応してransomware-extortionを返すが、原文の主題はIRGCの指示による学術データ・知的財産の窃取であり分類が実態と合わないため、レビュー判断としてcyber-espionageを明示的に指定する。",
       "diamond_model": {
         "adversary": {
           "actor_ref": "actor--silent-librarian",
@@ -173,45 +260,43 @@
         },
         "victim": {
           "target_refs": [
+            "target--activity-rule--country--9e0b33ddb91d0135fb82",
             "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
             "target--activity-rule--sector--e7608f51421ca8b1e297",
-            "target--country--united-states",
-            "target--sector--government"
+            "target--country--united-states"
           ],
           "victim_refs": [
-            "victim--activity-rule--a3fd052f21deca13b807"
+            "victim--activity-rule--b5da905da954ea14cd81"
           ]
         },
         "meta_features": {
           "first_observed": {
-            "basis": "source-stated",
+            "value": "2013-01-01T00:00:00Z",
             "precision": "year",
             "status": "known",
-            "value": "2013-01-01T00:00:00Z"
+            "basis": "source-stated"
           },
           "last_observed": {
-            "basis": "source-stated",
+            "value": "2017-12-01T00:00:00Z",
             "precision": "month",
             "status": "known",
-            "value": "2017-12-01T00:00:00Z"
+            "basis": "source-stated"
           },
           "reported_at": {
-            "value": "2026-08-20T00:00:00Z",
+            "value": "2026-08-18T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-news-file-date"
+            "basis": "source-publication"
           },
           "activity_type": "cyber-espionage",
           "phases": [],
-          "results": [
-            "data-theft",
-            "financial-loss"
-          ],
+          "results": [],
           "direction": {
             "source_countries": [
               "Iran"
             ],
             "target_country_refs": [
+              "target--activity-rule--country--9e0b33ddb91d0135fb82",
               "target--country--united-states"
             ],
             "target_region_refs": []
@@ -219,10 +304,17 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-ac0aab951821b27df384"
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--doj-mabna-institute-indictment-2026",
+        "source--daily-ac0aab951821b27df384"
+      ],
+      "analyst_notes": "RULES.md 4.3への再分類にあたり、法執行イベント(起訴)から犯行活動を分離して新設した(2026-08-28)。活動期間は原文の「The campaign started in approximately 2013, continued through at least December 2017」に基づきsource-statedで採用し、起訴日2026-08-18は観測日へ流用せずreported_atへ分離した。confidenceは、DOJが組織名「Mabna Institute」のみを用い、ベンダー呼称であるSilent LibrarianおよびCobalt Dickensが原文に現れないこと、本プロファイルのalias scopeがexactではなくoverlappingであることからmediumとする。"
     }
   ],
   "targets": {
@@ -230,156 +322,193 @@
       {
         "id": "target--targeting-audit--country--e7084fef4177f9b23a95",
         "name": "イスラエル",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてイスラエルが記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+      },
+      {
+        "id": "target--activity-rule--country--9e0b33ddb91d0135fb82",
+        "name": "イラン",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       },
       {
         "id": "target--targeting-audit--country--42764034c781851b889f",
         "name": "オーストラリア",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてオーストラリアが記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--d9f978f84a549da4b764",
         "name": "カナダ",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてカナダが記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--67d3981557fb4133c615",
         "name": "スイス",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてスイスが記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--f1cc76254d68493352af",
         "name": "トルコ",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてトルコが記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--95bf2ae5a8ccc092cda5",
         "name": "中国",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として中国が記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--77791de1d599ea843762",
         "name": "日本",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として日本が記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--country--united-states",
@@ -401,6 +530,7 @@
         "evidence_refs": [
           "source--actor-mapping-workbook",
           "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
@@ -408,53 +538,57 @@
       {
         "id": "target--targeting-audit--country--6f998a442bee251bb4f4",
         "name": "英国",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として英国が記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--53870d8099d50293e177",
         "name": "香港",
-        "description": "構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として香港が記録されている。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2013-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2017-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
     "regions": [
       {
         "id": "target--targeting-audit--region--6c6dd8c8c9d7dba36867",
         "name": "中東",
-        "description": "イスラエル、トルコで確認された標的・被害事例を中東として集約した地域表示。",
+        "description": "イスラエル、イラン、トルコで確認された標的・被害事例を中東として集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -469,6 +603,8 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -493,6 +629,7 @@
         "evidence_refs": [
           "source--actor-mapping-workbook",
           "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -515,6 +652,8 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -537,6 +676,8 @@
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -546,44 +687,46 @@
       {
         "id": "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
         "name": "非営利・市民社会",
-        "description": "活動「米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴」の記述で標的として明示された産業。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的として明示された産業。",
         "first_observed": {
-          "basis": "source-stated; activity-period",
+          "value": "2013-01-01T00:00:00Z",
           "precision": "year",
           "status": "known",
-          "value": "2013-01-01T00:00:00Z"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "basis": "source-stated; activity-period",
+          "value": "2017-12-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "value": "2017-12-01T00:00:00Z"
+          "basis": "source-stated; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-ac0aab951821b27df384"
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
         "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
         "name": "教育・研究",
-        "description": "活動「米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴」の記述で標的として明示された産業。",
+        "description": "活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的として明示された産業。",
         "first_observed": {
-          "basis": "source-stated; activity-period",
+          "value": "2013-01-01T00:00:00Z",
           "precision": "year",
           "status": "known",
-          "value": "2013-01-01T00:00:00Z"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "basis": "source-stated; activity-period",
+          "value": "2017-12-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "value": "2017-12-01T00:00:00Z"
+          "basis": "source-stated; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-ac0aab951821b27df384"
+          "source--daily-ac0aab951821b27df384",
+          "source--doj-mabna-institute-indictment-2026"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
@@ -1007,6 +1150,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260820.md; source commit: d9a67a7e42f4e65ad1afb8ae9bb5d793b9c7bf7d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--doj-mabna-institute-indictment-2026",
+      "path": "https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary",
+      "title": "17 Iranians Charged with Conducting Massive Cyber Theft Campaign on Behalf of the Islamic Revolutionary Guard Corps and Other Iranian Entities",
+      "publisher": "U.S. Department of Justice, Office of Public Affairs",
+      "published_at": {
+        "value": "2026-08-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "en",
+      "source_type": "law-enforcement-release",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-28、curlで取得)。ページ上の日付表記は「Tuesday, August 18, 2026」。「A 14-count superseding (S2) indictment was unsealed today charging 17 members of the Mabna Institute」として起訴状の開封日を公開日と同日に置く。犯行期間は「The campaign started in approximately 2013, continued through at least December 2017」と明記する。日次収集経由のsource--daily-ac0aab951821b27df384はtech-memo日次ファイルの日付2026-08-20をpublished_atに持つため、実際の公開日2026-08-18を持つ本sourceを別途登録した。"
+    },
+    {
       "source_id": "source--mitre-attack-19-1",
       "path": "actor_profile/reference/attack-index.json",
       "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
@@ -1253,61 +1414,53 @@
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、オーストラリア、カナダ、スイス、トルコ、中国、日本、米国、英国、香港。標的地域=中東、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\n144 universities in the United States, 176 foreign universities in 21 countries, five federal and state government agencies in the United States, 36 private companies in the United States, 11 foreign private companies, and two international non-governmental organizations",
+    "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、イラン、オーストラリア、カナダ、スイス、トルコ、中国、日本、米国、英国、香港。標的地域=中東、北米、東アジア、欧州。日本は確認時に個別国として保持する。\n\n144 universities in the United States, 176 foreign universities in 21 countries, five federal and state government agencies in the United States, 36 private companies in the United States, 11 foreign private companies, and two international non-governmental organizations",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
     {
-      "victim_case_id": "victim--activity-rule--a3fd052f21deca13b807",
-      "name": "被害事例: 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴",
+      "victim_case_id": "victim--activity-rule--b5da905da954ea14cd81",
+      "name": "被害事例: Mabna Instituteによる学術・知的財産窃取キャンペーン",
       "victim_name": null,
       "disclosure_status": "aggregate",
       "victim_type": "multiple-organizations",
       "case_status": "reported",
-      "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。",
+      "description": "Mabna Instituteに所属するとされるイラン人17人が、2013年頃から2017年12月まで継続した協調的なサイバー侵入キャンペーンを実行した。米国内144大学、国外178大学、米国内私企業42社以上、国外私企業11社以上、米連邦および州政府機関5機関以上、NGO 2団体を標的とし、世界中の教授10万件超のアカウントを狙って約8,000件の侵害に成功した。窃取したのは論文、学位論文、電子書籍、研究資料等31.5TB超で、米国内大学の調達費用に換算して34億ドル超と評価されている。窃取データはMegapaper.irおよびGigapaper.irを通じてイラン国内へ販売された。標的国には米国のほか、オーストラリア、カナダ、中国、日本、イスラエル、英国、トルコ、スイス、香港等が含まれる。",
       "activity_refs": [
-        "activity--daily-4d15dec07641eea42e80"
+        "activity--silent-librarian-mabna-campaign-2013-2017"
       ],
       "target_refs": [
+        "target--activity-rule--country--9e0b33ddb91d0135fb82",
         "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
         "target--activity-rule--sector--e7608f51421ca8b1e297",
-        "target--country--united-states",
-        "target--sector--government"
+        "target--country--united-states"
       ],
       "malware_refs": [],
       "ttp_refs": [],
       "affected_assets": [],
-      "impacts": [
-        {
-          "impact_type": "data-theft",
-          "description": "米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。"
-        },
-        {
-          "impact_type": "financial-loss",
-          "description": "侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。"
-        }
-      ],
+      "impacts": [],
       "first_observed": {
-        "basis": "source-stated",
+        "value": "2013-01-01T00:00:00Z",
         "precision": "year",
         "status": "known",
-        "value": "2013-01-01T00:00:00Z"
+        "basis": "source-stated"
       },
       "last_observed": {
-        "basis": "source-stated",
+        "value": "2017-12-01T00:00:00Z",
         "precision": "month",
         "status": "known",
-        "value": "2017-12-01T00:00:00Z"
+        "basis": "source-stated"
       },
       "reported_at": {
-        "value": "2026-08-20T00:00:00Z",
+        "value": "2026-08-18T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "daily-news-file-date"
+        "basis": "source-publication"
       },
       "confidence": "medium",
       "evidence_refs": [
-        "source--daily-ac0aab951821b27df384"
+        "source--daily-ac0aab951821b27df384",
+        "source--doj-mabna-institute-indictment-2026"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     }

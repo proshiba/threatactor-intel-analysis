@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--silent-librarian`
 - 状態: draft
-- 更新日時: 2026-08-21T01:45:24Z
+- 更新日時: 2026-08-28T15:27:20Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -111,13 +111,15 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | cyber-espionage | 2013 | 2017-12 | 2026-08-20 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--country--united-states, target--sector--government |  |  | victim--activity-rule--a3fd052f21deca13b807 | 米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。 攻撃は2013年頃から行われ、世界中の教授10万以上のアカウントを標的とし、約8,000アカウントの侵害に成功したとされる。 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 被害には178大学、少なくとも53社、2つのNGO、米国の少なくとも10州政府機関が含まれ、HBOへの600万ドル相当Bitcoinの恐喝も報告された。 米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定し、米当局は引き続き関係者を追跡している。 | 中 | `source--daily-ac0aab951821b27df384` |
+| 米国、Mabna Institute所属とされるイラン人17人を追起訴 | law-enforcement-action | 2026-08-18 | 2026-08-18 | 2026-08-20 |  |  |  |  | 米司法省は2026年8月18日、Mabna Instituteに所属するとされるイラン人17人を対象とする14件の訴因からなる追起訴状(superseding S2 indictment)を開封した。うち9人は2018年3月に公表された7訴因の起訴状で既に訴追されており、本件で8人が追加された。米国務省は17人のうち5人の所在につながる情報へ最大1,000万ドルの報奨金を設定している。対象となった犯行期間そのものは activity--silent-librarian-mabna-campaign-2013-2017 に分離した。 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026` |
+| Mabna Instituteによる学術・知的財産窃取キャンペーン | cyber-espionage | 2013 | 2017-12 | 2026-08-18 | target--activity-rule--country--9e0b33ddb91d0135fb82, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--country--united-states |  |  | victim--activity-rule--b5da905da954ea14cd81 | Mabna Instituteに所属するとされるイラン人17人が、2013年頃から2017年12月まで継続した協調的なサイバー侵入キャンペーンを実行した。米国内144大学、国外178大学、米国内私企業42社以上、国外私企業11社以上、米連邦および州政府機関5機関以上、NGO 2団体を標的とし、世界中の教授10万件超のアカウントを狙って約8,000件の侵害に成功した。窃取したのは論文、学位論文、電子書籍、研究資料等31.5TB超で、米国内大学の調達費用に換算して34億ドル超と評価されている。窃取データはMegapaper.irおよびGigapaper.irを通じてイラン国内へ販売された。標的国には米国のほか、オーストラリア、カナダ、中国、日本、イスラエル、英国、トルコ、スイス、香港等が含まれる。 | 中 | `source--doj-mabna-institute-indictment-2026`, `source--daily-ac0aab951821b27df384` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | Silent Librarian | 情報なし | 情報なし | 情報なし | 非営利・市民社会, 教育・研究, 米国, Government | 被害事例: 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | 中 |
+| 米国、Mabna Institute所属とされるイラン人17人を追起訴 | Silent Librarian | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+| Mabna Instituteによる学術・知的財産窃取キャンペーン | Silent Librarian | 情報なし | 情報なし | 情報なし | イラン, 非営利・市民社会, 教育・研究, 米国 | 被害事例: Mabna Instituteによる学術・知的財産窃取キャンペーン | 中 |
 
 
 
@@ -125,22 +127,23 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | イスラエル | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スイス | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | Targeting text mentions united states. | 2013 | 2017-12 | 中 | `source--actor-mapping-workbook`, `source--daily-ac0aab951821b27df384`, `source--target-audit-etda-threat-group-cards` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 香港 | 構造化OSINTの被害国フィールドでSilent Librarianの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | イスラエル、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-ac0aab951821b27df384`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東アジア | 中国、日本、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | スイス、トルコ、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| sectors | 非営利・市民社会 | 活動「米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴」の記述で標的として明示された産業。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384` |
-| sectors | 教育・研究 | 活動「米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴」の記述で標的として明示された産業。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384` |
+| countries | イスラエル | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | イラン | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的として明示された国・地域。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026` |
+| countries | オーストラリア | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | スイス | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | トルコ | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | 中国 | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | Targeting text mentions united states. | 2013 | 2017-12 | 中 | `source--actor-mapping-workbook`, `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的・被害国として明示されている。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | イスラエル、イラン、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 中国、日本、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | スイス、トルコ、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 非営利・市民社会 | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的として明示された産業。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026` |
+| sectors | 教育・研究 | 活動「Mabna Instituteによる学術・知的財産窃取キャンペーン」の記述で標的として明示された産業。 | 2013 | 2017-12 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026` |
 | sectors | Government | Targeting text indicates the Government sector. | 2013 | 2017-12 | 中 | `source--actor-mapping-workbook`, `source--daily-ac0aab951821b27df384`, `source--mitre-attack-19-1` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
@@ -149,7 +152,7 @@ The repository mapping workbook places this actor in the Iran worksheet.
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--country--united-states, target--sector--government |  |  |  | data-theft: 米司法省は、ハッキング請負企業Mabna Instituteに所属するとされるイラン人17人を、米国組織から長年データを窃取したとして起訴した。<br>financial-loss: 侵害したアカウントから論文、学位論文、電子書籍、研究資料など31.5TBを窃取し、その価値は約34億ドルと評価されている。 | 2013 | 2017-12 | 2026-08-20 | 中 | `source--daily-ac0aab951821b27df384` |
+| 被害事例: Mabna Instituteによる学術・知的財産窃取キャンペーン | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--9e0b33ddb91d0135fb82, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--e7608f51421ca8b1e297, target--country--united-states |  |  |  |  | 2013 | 2017-12 | 2026-08-18 | 中 | `source--daily-ac0aab951821b27df384`, `source--doj-mabna-institute-indictment-2026` |
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -196,6 +199,7 @@ The repository mapping workbook places this actor in the Iran worksheet.
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-ac0aab951821b27df384 | 米国、34億ドル相当の知的財産窃取に関与したイラン人ハッカーを起訴 | justice.gov | 2026-08-20 | https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary | osint-report | TLP:CLEAR | 中 |
+| source--doj-mabna-institute-indictment-2026 | 17 Iranians Charged with Conducting Massive Cyber Theft Campaign on Behalf of the Islamic Revolutionary Guard Corps and Other Iranian Entities | U.S. Department of Justice, Office of Public Affairs | 2026-08-18 | https://www.justice.gov/opa/pr/17-iranians-charged-conducting-massive-cyber-theft-campaign-behalf-islamic-revolutionary | law-enforcement-release | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |

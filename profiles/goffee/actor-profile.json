@@ -1,0 +1,1847 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--goffee",
+  "name": "GOFFEE",
+  "status": "draft",
+  "created_at": "2026-08-28T15:18:13Z",
+  "updated_at": "2026-08-28T15:25:24Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "GOFFEE",
+    "aliases": [
+      {
+        "name": "Paper Werewolf",
+        "vendor": "BI.ZONE",
+        "scope": "exact",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "Kaspersky原文が「GOFFEE (также известная как Paper Werewolf)」と同一視している。呼称自体はBI.ZONEのもの。BI.ZONE側の原文はHTTP 403で取得できず、BI.ZONEがGOFFEEと同一視しているかを直接確認できていないため、scopeはexactとしつつconfidenceはmediumに留める。"
+      }
+    ],
+    "actor_types": [
+      "threat-group",
+      "espionage"
+    ],
+    "first_seen": {
+      "value": "2022-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-04-01T00:00:00Z",
+      "precision": "range",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "yes",
+    "description": "少なくとも2022年初頭からロシア国内の組織を標的とする、サイバースパイ活動を主目的としたAPTグループ。標的型フィッシングを主要な初期侵入手段とし、Mythicフレームワークの非公開改変エージェント(PowerTaskel)とPowerShell製ローダ(PowerModul)を中核に、2026年にはバイナリ型RATのWarpRATとPowerTaskel v2へ移行した。少数の標的に絞った計画的な作戦、被害環境への長期滞留、キャンペーンごとのインフラ刷新、ツールセットの頻繁な更新を特徴とする。",
+    "analyst_notes": "first_seenは原文の「как минимум с начала 2022 года」に基づく下限であり、活動開始時期の確定ではない。last_seenは2026-07-29公開の資料が被害を「во втором квартале 2026 года」と四半期で述べるため、四半期の開始月へ正規化しprecisionをrangeとした。Kasperskyは本グループを「Киберпреступная APT-группа」と表現するが、国家の関与や後援組織を示す一次資料は確認できていない。"
+  },
+  "attribution": {
+    "countries": [],
+    "sponsor_type": "unknown",
+    "organizations": [],
+    "assessment": "確認した3本の一次資料はいずれも攻撃元の国家、後援組織、実行者の国籍を述べていない。標的がロシアおよびCIS諸国に偏ることから対立側の関与を推測する余地はあるが、資料に記載がないため帰属は未評価とする。",
+    "confidence": "unknown",
+    "evidence_refs": [
+      "source--securelist-goffee-new-attacks-2025",
+      "source--securelist-goffee-container-attacks-2026-07",
+      "source--securelist-goffee-warprat-2026-08"
+    ],
+    "analyst_notes": "標的国から攻撃元を逆算しない。帰属国が判明していないため、targets側の国も攻撃元として扱わない(RULES.md 4.1)。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "原文が「Основная мотивация группы — кибершпионаж」と明記する。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "type": "financial",
+      "description": "原文は、侵害済み環境へ任意のマルウェアを展開できる能力から、恐喝・資金窃取・秘密裏のマイニングといった目的も果たしうると述べる。実際にこれらを実行した観測は記載されていない。",
+      "confidence": "low",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": "原文は可能性の指摘に留まり、観測された動機ではない。確度をlowとし、実行の裏付けが得られるまで引き上げない。"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--goffee-heartlesssoul-shared-operators",
+      "target_actor": "HeartlessSoul",
+      "relationship_type": "suspected-shared-operators",
+      "description": "Kasperskyは「Со средней степенью уверенности можно заключить, что за этими двумя группами стоят одни и те же атакующие, однако их инструментарий существенно различается」として、GOFFEEとHeartlessSoulの背後に同一の攻撃者がいると中程度の確度で評価する。ツールセットは大きく異なるとしており、同一クラスタの断定ではない。",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": "HeartlessSoulはリポジトリ内にプロファイルが存在しない。同記事への登場やIOC共有ではなく、一次資料が運用主体の同一性を明示しているため関係として記録する(AGENT.md アクター間関係)。"
+    }
+  ],
+  "diamond_model": {
+    "adversary": "少なくとも2022年初頭から活動するAPTグループ。Kasperskyが「Киберпреступная APT-группа」と表現するが、国家の後援や実行者の国籍を示す一次資料はない。BI.ZONEはPaper Werewolfとして追跡する。",
+    "capability": "Mythicフレームワークの非公開改変エージェント(PowerTaskel、PowerTaskel v2)、PowerShellローダPowerModul、バイナリRAT WarpRAT、データ窃取のFlashFileGrabber、IISモジュールOwowaを運用する。攻撃準備の一部を自動化しており、AIの利用が指摘されている。",
+    "infrastructure": "キャンペーンごとにインフラを刷新する。2026年3月のキャンペーンではntp・ssl・time・sync系の語を組み合わせた.onlineドメインを多数運用し、WarpRATとPowerTaskel v2が共通のC2を共有していた。",
+    "victim": "ロシア国内の組織が一貫した中心。2026年にベラルーシへ拡大し、CIS諸国と欧州でも事例が確認されている。産業はキャンペーンごとに変動する。",
+    "socio_political": "主動機はサイバースパイ活動。ロシアおよび周辺国の政府機関と基幹産業に関心が偏る。",
+    "analyst_notes": "アクター全体のダイヤモンドモデルであり、活動単位のモデルとは別物である(RULES.md 4.1)。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--powertaskel",
+        "name": "PowerTaskel",
+        "description": "Mythicフレームワーク用の非公開改変PowerShellエージェント。コマンド実行と偵察に用いる。2026年にはより小型のPowerTaskel v2へ更新された。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "原文は2026年2月をPowerTaskel(v1)の最終検知として述べ、v2を後継として扱う。"
+      },
+      {
+        "id": "malware--powertaskel-v2",
+        "name": "PowerTaskel v2",
+        "description": "PowerTaskelの後継となる小型のPowerShell製Mythicエージェント。WarpRATと共通のC2インフラを用いることが確認され、同一グループへの帰属根拠となった。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--warprat",
+        "name": "WarpRAT",
+        "description": "バイナリ型のリモートアクセストロイ。C2ポート、SSL利用、スリープ間隔、buildId、アンチVM等をJSON設定として保持する。キャンペーンごとに多数の検体が作成されている。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--powermodul",
+        "name": "PowerModul",
+        "description": "PowerShell製のダウンローダ/ローダ。二次ペイロードを配信し、USBワーム経由でも拡散する。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--flashfilegrabber",
+        "name": "FlashFileGrabber",
+        "description": "リムーバブルメディア上のファイルを窃取するデータスティーラ。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "malware--owowa",
+        "name": "Owowa",
+        "description": "認証情報窃取を目的とする悪性IISモジュール。2022〜2023年の活動で使用された。",
+        "first_observed": {
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": "使用時期は原文の2022〜2023年という記述に基づく概略であり、月単位の観測日ではない。"
+      }
+    ],
+    "tools": [
+      {
+        "id": "tool--mythic",
+        "name": "Mythic",
+        "description": "公開のペンテスト用C2フレームワーク。GOFFEEは非公開の改変エージェントをWindows版・Linux版ともに運用する。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--inno-setup",
+        "name": "Inno Setup",
+        "description": "正規のインストーラ作成ツール。2026年3月のキャンペーンでは、WarpRATとおとりPDFを同梱するドロッパーの作成に転用された(バージョン6.7.0 Unicode)。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "tool--lolbins",
+        "name": "certutil / curl / wget / mshta / PowerShell",
+        "description": "環境常設の正規ユーティリティ。ペイロード取得とスクリプト実行に利用する。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07"
+        ],
+        "analyst_notes": "2026年第2四半期の資料が列挙するLiving-off-the-Landユーティリティ。"
+      }
+    ],
+    "infrastructure": [],
+    "delivery_formats": [
+      {
+        "id": "delivery--spearphishing-pdf-link",
+        "name": "悪性リンク入りPDF",
+        "description": "Acrobat Reader更新通知を装ったPDFに「更新をインストール」ボタンを配置し、ZIPアーカイブの取得先へ誘導する。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--rar-patched-executable",
+        "name": "パッチ済み実行ファイル入りRAR",
+        "description": "explorer.exe、xpsrchvw.exe等の正規実行ファイルにシェルコードを埋め込み、RARアーカイブで配布する。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--office-macro",
+        "name": "悪性VBAマクロ入りOffice文書",
+        "description": "RARアーカイブに同梱したOffice文書のVBAマクロから感染連鎖を開始する。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "delivery--remote-template-injection",
+        "name": "リモートテンプレートインジェクション",
+        "description": "SMBおよびWebDAV経由でリモートテンプレートを読み込ませ、マクロを実行する。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--ai-assisted-preparation",
+        "name": "AIを用いた攻撃準備の自動化",
+        "description": "原文は、グループが攻撃準備において自動化手段を用いており、その一部がAIを基盤とするものだと述べる。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "原文は「в том числе на базе ИИ」と述べるのみで、具体的な手法・製品名は示していない。"
+      },
+      {
+        "id": "opcap--infrastructure-rotation",
+        "name": "キャンペーン単位のインフラ刷新",
+        "description": "原文は、実質的にキャンペーンごとにインフラを変更すると述べる。",
+        "first_observed": {
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "Mythicは公開のペンテストフレームワークでありGOFFEE固有のマルウェアではないためtoolsへ置く。Inno Setupは正規ソフトの転用であり同様にtoolsとする。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--goffee-container-attacks-2026-q2",
+      "name": "リモートテンプレートインジェクションによるロシア・ベラルーシの技術系組織への攻撃",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "2026年第2四半期、GOFFEEの被害は引き続きロシア国内の組織が中心で、この四半期では主に技術セクターの企業が対象となった。原文はまた、それまで標的圏になかったベラルーシへ本格的に攻撃を開始したと述べる。初期侵入はOffice文書の悪性マクロを用い、SMBおよびWebDAV経由のリモートテンプレートインジェクションでテンプレートを取得させる。実行にはmshta.exeを用い、certutil、curl、wget、PowerShellといった環境常設ユーティリティでペイロードを取得する。Mythicエージェントはコンテナ環境を含むWindows版とLinux版の双方が確認されている。",
+      "target_refs": [
+        "target--country--belarus",
+        "target--country--russia",
+        "target--sector--technology"
+      ],
+      "malware_refs": [
+        "malware--powertaskel"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--0d2f7d98a5d694134f2a",
+        "ttp--goffee-t1059-001-powershell",
+        "ttp--goffee-t1105-ingress-tool-transfer",
+        "ttp--goffee-t1218-005-mshta",
+        "ttp--goffee-t1221-template-injection",
+        "ttp--goffee-t1566-001-spearphishing-attachment"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--979270edb5bbdece0fd6"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--powermodul",
+            "malware--powertaskel",
+            "malware--powertaskel-v2"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--0d2f7d98a5d694134f2a",
+            "ttp--goffee-t1059-001-powershell",
+            "ttp--goffee-t1105-ingress-tool-transfer",
+            "ttp--goffee-t1218-005-mshta",
+            "ttp--goffee-t1221-template-injection",
+            "ttp--goffee-t1566-001-spearphishing-attachment"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--belarus",
+            "target--country--russia",
+            "target--sector--technology"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--979270edb5bbdece0fd6"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "range",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "range",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-07-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Command And Control",
+            "command-and-control",
+            "defense-evasion",
+            "execution",
+            "initial-access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country--belarus",
+              "target--country--russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": "原文は被害時期を「во втором квартале 2026 года」と四半期で述べるため、四半期の開始月2026-04へ正規化しprecisionをrangeとした。日単位の観測日は示されていない。公開日2026-07-29はreported_atへ分離した。本活動のIOC(ドメイン27件、IPv4 4件、ハッシュ70件超)は本作業では未取込。"
+    },
+    {
+      "activity_id": "activity--goffee-powermodul-2024",
+      "name": "PowerModulとPowerTaskelによるロシア国内組織への標的型フィッシング",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "2024年7月から12月にかけて、GOFFEEはロシア国内の組織に対する標的型フィッシングを継続した。RARアーカイブにシェルコードを埋め込んだパッチ済みのexplorer.exe・xpsrchvw.exeを同梱する方式と、悪性VBAマクロ入りOffice文書を同梱する方式の2系統を用いた。新たな実装としてPowerShell製ローダのPowerModulを投入し、リムーバブルメディアからファイルを窃取するFlashFileGrabberと、PowerModulをUSB経由で拡散するワームを併用した。横展開には自己構成型シェルコードであるバイナリ版Mythicエージェントを用いている。標的はメディア、通信、建設、政府機関、エネルギー企業。",
+      "target_refs": [
+        "target--country--russia",
+        "target--sector--construction",
+        "target--sector--energy",
+        "target--sector--government",
+        "target--sector--media",
+        "target--sector--telecommunications"
+      ],
+      "malware_refs": [
+        "malware--powermodul",
+        "malware--powertaskel",
+        "malware--flashfilegrabber"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--29aaf71e9c80a41431e8",
+        "ttp--activity-rule--f83f205a8b5bd0c44eb7",
+        "ttp--goffee-t1059-001-powershell",
+        "ttp--goffee-t1091-removable-media",
+        "ttp--goffee-t1566-001-spearphishing-attachment"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--3d96ab3e9b4c36cc32c3"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--flashfilegrabber",
+            "malware--powermodul",
+            "malware--powertaskel",
+            "malware--powertaskel-v2"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--29aaf71e9c80a41431e8",
+            "ttp--activity-rule--f83f205a8b5bd0c44eb7",
+            "ttp--goffee-t1059-001-powershell",
+            "ttp--goffee-t1091-removable-media",
+            "ttp--goffee-t1566-001-spearphishing-attachment"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--russia",
+            "target--sector--construction",
+            "target--sector--energy",
+            "target--sector--government",
+            "target--sector--media",
+            "target--sector--telecommunications"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--3d96ab3e9b4c36cc32c3"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2024-12-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-04-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Collection",
+            "Execution",
+            "execution",
+            "initial-access",
+            "lateral-movement"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country--russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025"
+      ],
+      "analyst_notes": "活動期間は原文が明示する2024年7月〜12月をsource-statedで採用した。公開日2025-04-10はreported_atへ分離し、観測日へ流用していない。2022〜2023年のOwowa使用は本活動の期間外であり、capabilities側に期間を分けて記録した。"
+    },
+    {
+      "activity_id": "activity--goffee-warprat-2026-03",
+      "name": "WarpRATとPowerTaskel v2を配布する2026年3月のフィッシングキャンペーン",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "2026年3月、GOFFEEはAcrobat Readerの更新通知を装ったPDFを添付したフィッシングメールを配信した。PDF内の「更新をインストール」ボタンからAdobe_Reader_RU.zipを取得させ、Inno Setup 6.7.0で作成されたドロッパーがWarpRAT本体(adbp.exe)とおとりのPDF文書を展開する。おとり文書は高純度化学製品の需要照会を装ったロシア語の公式文書である。WarpRATはJSON形式の設定でC2ポート443、SSL利用、アンチVMを指定し、軽量な代替ペイロードとしてPowerShell製のPowerTaskel v2が用意されている。両者は共通のC2インフラで結び付けられ、高い確度で同一グループに帰属された。Kasperskyのテレメトリでは、本キャンペーンの被害組織は100を超え、本文では約120組織とされる。標的は機械工学、製造、政府セクターが中心で、ロシア国内に加えCIS諸国で複数、EUで散発的な事例が確認されている。",
+      "target_refs": [
+        "target--country--russia",
+        "target--region--cis",
+        "target--region--europe",
+        "target--sector--government",
+        "target--sector--manufacturing"
+      ],
+      "malware_refs": [
+        "malware--warprat",
+        "malware--powertaskel-v2"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--d647d878053fb68bdda0",
+        "ttp--goffee-t1059-001-powershell",
+        "ttp--goffee-t1566-002-spearphishing-link"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--245c3bfbf40a31ce330d",
+        "victim--goffee-warprat-2026-03-aggregate"
+      ],
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--powermodul",
+            "malware--powertaskel",
+            "malware--powertaskel-v2",
+            "malware--warprat"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--d647d878053fb68bdda0",
+            "ttp--goffee-t1059-001-powershell",
+            "ttp--goffee-t1566-002-spearphishing-link"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--russia",
+            "target--region--cis",
+            "target--region--europe",
+            "target--sector--government",
+            "target--sector--manufacturing"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--245c3bfbf40a31ce330d",
+            "victim--goffee-warprat-2026-03-aggregate"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Initial Access",
+            "execution",
+            "initial-access"
+          ],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country--russia"
+            ],
+            "target_region_refs": [
+              "target--region--cis",
+              "target--region--europe"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": "活動期間は原文が明示する2026年3月をsource-statedで採用した。公開日2026-08-28はreported_atへ分離し、観測日へ流用していない。被害組織数は原文の「превысило 100 организаций」および約120組織という記述に基づく集約値であり、個別被害組織は公表されていない。"
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--245c3bfbf40a31ce330d",
+      "name": "被害事例: WarpRATとPowerTaskel v2を配布する2026年3月のフィッシングキャンペーン",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "2026年3月、GOFFEEはAcrobat Readerの更新通知を装ったPDFを添付したフィッシングメールを配信した。PDF内の「更新をインストール」ボタンからAdobe_Reader_RU.zipを取得させ、Inno Setup 6.7.0で作成されたドロッパーがWarpRAT本体(adbp.exe)とおとりのPDF文書を展開する。おとり文書は高純度化学製品の需要照会を装ったロシア語の公式文書である。WarpRATはJSON形式の設定でC2ポート443、SSL利用、アンチVMを指定し、軽量な代替ペイロードとしてPowerShell製のPowerTaskel v2が用意されている。両者は共通のC2インフラで結び付けられ、高い確度で同一グループに帰属された。Kasperskyのテレメトリでは、本キャンペーンの被害組織は100を超え、本文では約120組織とされる。標的は機械工学、製造、政府セクターが中心で、ロシア国内に加えCIS諸国で複数、EUで散発的な事例が確認されている。",
+      "activity_refs": [
+        "activity--goffee-warprat-2026-03"
+      ],
+      "target_refs": [
+        "target--country--russia",
+        "target--region--cis",
+        "target--region--europe",
+        "target--sector--government",
+        "target--sector--manufacturing"
+      ],
+      "malware_refs": [
+        "malware--powertaskel-v2",
+        "malware--warprat"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--d647d878053fb68bdda0",
+        "ttp--goffee-t1059-001-powershell",
+        "ttp--goffee-t1566-002-spearphishing-link"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--3d96ab3e9b4c36cc32c3",
+      "name": "被害事例: PowerModulとPowerTaskelによるロシア国内組織への標的型フィッシング",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "2024年7月から12月にかけて、GOFFEEはロシア国内の組織に対する標的型フィッシングを継続した。RARアーカイブにシェルコードを埋め込んだパッチ済みのexplorer.exe・xpsrchvw.exeを同梱する方式と、悪性VBAマクロ入りOffice文書を同梱する方式の2系統を用いた。新たな実装としてPowerShell製ローダのPowerModulを投入し、リムーバブルメディアからファイルを窃取するFlashFileGrabberと、PowerModulをUSB経由で拡散するワームを併用した。横展開には自己構成型シェルコードであるバイナリ版Mythicエージェントを用いている。標的はメディア、通信、建設、政府機関、エネルギー企業。",
+      "activity_refs": [
+        "activity--goffee-powermodul-2024"
+      ],
+      "target_refs": [
+        "target--country--russia",
+        "target--sector--construction",
+        "target--sector--energy",
+        "target--sector--government",
+        "target--sector--media",
+        "target--sector--telecommunications"
+      ],
+      "malware_refs": [
+        "malware--flashfilegrabber",
+        "malware--powermodul",
+        "malware--powertaskel"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--29aaf71e9c80a41431e8",
+        "ttp--activity-rule--f83f205a8b5bd0c44eb7",
+        "ttp--goffee-t1059-001-powershell",
+        "ttp--goffee-t1091-removable-media",
+        "ttp--goffee-t1566-001-spearphishing-attachment"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "新たな実装としてPowerShell製ローダのPowerModulを投入し、リムーバブルメディアからファイルを窃取するFlashFileGrabberと、PowerModulをUSB経由で拡散するワームを併用した。"
+        }
+      ],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--979270edb5bbdece0fd6",
+      "name": "被害事例: リモートテンプレートインジェクションによるロシア・ベラルーシの技術系組織への攻撃",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "2026年第2四半期、GOFFEEの被害は引き続きロシア国内の組織が中心で、この四半期では主に技術セクターの企業が対象となった。原文はまた、それまで標的圏になかったベラルーシへ активно 攻撃を開始したと述べる。初期侵入はOffice文書の悪性マクロを用い、SMBおよびWebDAV経由のリモートテンプレートインジェクションでテンプレートを取得させる。実行にはmshta.exeを用い、certutil、curl、wget、PowerShellといった環境常設ユーティリティでペイロードを取得する。Mythicエージェントはコンテナ環境を含むWindows版とLinux版の双方が確認されている。",
+      "activity_refs": [
+        "activity--goffee-container-attacks-2026-q2"
+      ],
+      "target_refs": [
+        "target--country--belarus",
+        "target--country--russia",
+        "target--sector--technology"
+      ],
+      "malware_refs": [
+        "malware--powertaskel"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--0d2f7d98a5d694134f2a",
+        "ttp--goffee-t1059-001-powershell",
+        "ttp--goffee-t1105-ingress-tool-transfer",
+        "ttp--goffee-t1218-005-mshta",
+        "ttp--goffee-t1221-template-injection",
+        "ttp--goffee-t1566-001-spearphishing-attachment"
+      ],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--goffee-warprat-2026-03-aggregate",
+      "name": "被害事例: 2026年3月キャンペーンの被害組織(集約)",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "organization",
+      "case_status": "reported",
+      "activity_refs": [
+        "activity--goffee-warprat-2026-03"
+      ],
+      "target_refs": [],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "サイバースパイ活動を目的とした侵害。原文は具体的な被害内容を示していない。"
+        }
+      ],
+      "description": "Kasperskyのテレメトリにおいて、2026年3月のWarpRAT/PowerTaskel v2キャンペーンの被害組織は100を超え、本文では約120組織とされる。ロシア国内が中心で、CIS諸国で複数、EUで散発的な事例が確認されている。個別の被害組織名は公表されていない。",
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": "ベンダーのテレメトリに基づく集計であり、被害組織による確認ではないためcase_statusはreported。複数組織の統計を単一の架空被害者へ変換せずaggregateとして保持する(RULES.md 4.2)。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--country--belarus",
+        "name": "ベラルーシ",
+        "description": "2026年第2四半期の資料が、それまで標的圏になかったベラルーシへ攻撃を開始したと述べる。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--country--russia",
+        "name": "ロシア",
+        "description": "3本の一次資料すべてが、主たる被害組織をロシア国内の組織と明記する。",
+        "first_observed": {
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--f0bb2760b5d1c03ac0a1",
+        "name": "東欧",
+        "description": "ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--region--europe",
+        "name": "欧州",
+        "description": "2026年3月のキャンペーンで、EU域内において散発的な事例が確認されている。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "low",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "原文は「единичные случаи」と述べるに留まり、国名も件数も示していない。"
+      },
+      {
+        "id": "target--region--cis",
+        "name": "独立国家共同体（CIS）",
+        "description": "2026年3月のキャンペーンで、ロシア国外のCIS諸国において複数の被害が確認されている。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "原文は国名を個別に列挙していないため、地域としてのみ記録する。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--sector--construction",
+        "name": "建設",
+        "description": "2024年の活動で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--energy",
+        "name": "エネルギー",
+        "description": "2024年の活動で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--government",
+        "name": "政府・行政",
+        "description": "2024年および2026年3月の活動で標的として明示された。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--manufacturing",
+        "name": "製造・産業",
+        "description": "2026年3月のキャンペーンで標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--media",
+        "name": "メディア",
+        "description": "2024年の活動で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--technology",
+        "name": "技術",
+        "description": "2026年第2四半期の主たる標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-04-01T00:00:00Z",
+          "precision": "range",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--sector--telecommunications",
+        "name": "通信",
+        "description": "2024年の活動で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "roles": [],
+    "selection_logic": "少数の標的に絞った計画的な作戦を特徴とし、産業構成はキャンペーンごとに変化する。2024年はメディア・通信・建設・政府・エネルギー、2026年第2四半期は技術セクター、2026年3月は製造・産業・政府が中心であった。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "帰属国が未評価であるため、標的国を攻撃元の推定に用いない。CIS諸国と欧州は原文が国名を挙げていないため地域としてのみ保持する。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--0d2f7d98a5d694134f2a",
+      "tactic": "Command And Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "実行にはmshta.exeを用い、certutil、curl、wget、PowerShellといった環境常設ユーティリティでペイロードを取得する。",
+      "activity_refs": [
+        "activity--goffee-container-attacks-2026-q2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--29aaf71e9c80a41431e8",
+      "tactic": "Execution",
+      "technique_id": "T1059.005",
+      "technique_name": "Visual Basic",
+      "observed_behavior": "RARアーカイブにシェルコードを埋め込んだパッチ済みのexplorer.exe・xpsrchvw.exeを同梱する方式と、悪性VBAマクロ入りOffice文書を同梱する方式の2系統を用いた。",
+      "activity_refs": [
+        "activity--goffee-powermodul-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--d647d878053fb68bdda0",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.001",
+      "technique_name": "Spearphishing Attachment",
+      "observed_behavior": "WarpRATとPowerTaskel v2を配布する2026年3月のフィッシングキャンペーン 2026年3月、GOFFEEはAcrobat Readerの更新通知を装ったPDFを添付したフィッシングメールを配信した。",
+      "activity_refs": [
+        "activity--goffee-warprat-2026-03"
+      ],
+      "malware_refs": [
+        "malware--powertaskel",
+        "malware--powertaskel-v2",
+        "malware--warprat"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--f83f205a8b5bd0c44eb7",
+      "tactic": "Collection",
+      "technique_id": "T1560.001",
+      "technique_name": "Archive via Utility",
+      "observed_behavior": "RARアーカイブにシェルコードを埋め込んだパッチ済みのexplorer.exe・xpsrchvw.exeを同梱する方式と、悪性VBAマクロ入りOffice文書を同梱する方式の2系統を用いた。",
+      "activity_refs": [
+        "activity--goffee-powermodul-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee-t1059-001-powershell",
+      "tactic": "execution",
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "observed_behavior": "Mythicの非公開改変エージェントPowerTaskelおよびローダPowerModulをPowerShellで実行する。",
+      "activity_refs": [
+        "activity--goffee-powermodul-2024",
+        "activity--goffee-container-attacks-2026-q2",
+        "activity--goffee-warprat-2026-03"
+      ],
+      "malware_refs": [
+        "malware--powertaskel",
+        "malware--powertaskel-v2",
+        "malware--powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025",
+        "source--securelist-goffee-container-attacks-2026-07",
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--goffee-t1091-removable-media",
+      "tactic": "lateral-movement",
+      "technique_id": "T1091",
+      "technique_name": "Replication Through Removable Media",
+      "observed_behavior": "USBワームによりPowerModulをリムーバブルメディア経由で拡散し、FlashFileGrabberで同メディア上のファイルを窃取する。",
+      "activity_refs": [
+        "activity--goffee-powermodul-2024"
+      ],
+      "malware_refs": [
+        "malware--powermodul",
+        "malware--flashfilegrabber"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--goffee-t1105-ingress-tool-transfer",
+      "tactic": "command-and-control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "certutil、curl、wget等の環境常設ユーティリティで追加ペイロードを取得する。",
+      "activity_refs": [
+        "activity--goffee-container-attacks-2026-q2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--goffee-t1218-005-mshta",
+      "tactic": "defense-evasion",
+      "technique_id": "T1218.005",
+      "technique_name": "Mshta",
+      "observed_behavior": "mshta.exeを用いてスクリプトを実行する。",
+      "activity_refs": [
+        "activity--goffee-container-attacks-2026-q2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--goffee-t1221-template-injection",
+      "tactic": "defense-evasion",
+      "technique_id": "T1221",
+      "technique_name": "Template Injection",
+      "observed_behavior": "SMBおよびWebDAV経由でリモートテンプレートを読み込ませ、マクロ実行につなげる。",
+      "activity_refs": [
+        "activity--goffee-container-attacks-2026-q2"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--goffee-t1505-004-iis-components",
+      "tactic": "persistence",
+      "technique_id": "T1505.004",
+      "technique_name": "IIS Components",
+      "observed_behavior": "悪性IISモジュールOwowaを設置し、認証情報を窃取する。",
+      "activity_refs": [],
+      "malware_refs": [
+        "malware--owowa"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2023-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025"
+      ],
+      "analyst_notes": "2022〜2023年の活動として記述されるが、対応するActivityを本作業では作成していないためactivity_refsは空とする。"
+    },
+    {
+      "ttp_id": "ttp--goffee-t1566-001-spearphishing-attachment",
+      "tactic": "initial-access",
+      "technique_id": "T1566.001",
+      "technique_name": "Spearphishing Attachment",
+      "observed_behavior": "RARアーカイブにシェルコードを埋め込んだパッチ済み実行ファイル、または悪性VBAマクロ入りOffice文書を添付して配信する。",
+      "activity_refs": [
+        "activity--goffee-powermodul-2024",
+        "activity--goffee-container-attacks-2026-q2"
+      ],
+      "malware_refs": [
+        "malware--powermodul",
+        "malware--powertaskel"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-04-01T00:00:00Z",
+        "precision": "range",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-new-attacks-2025",
+        "source--securelist-goffee-container-attacks-2026-07"
+      ],
+      "analyst_notes": ""
+    },
+    {
+      "ttp_id": "ttp--goffee-t1566-002-spearphishing-link",
+      "tactic": "initial-access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "Acrobat Reader更新通知を装ったPDF内のボタンから、ZIPアーカイブの配布URLへ誘導する。",
+      "activity_refs": [
+        "activity--goffee-warprat-2026-03"
+      ],
+      "malware_refs": [
+        "malware--warprat"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--securelist-goffee-warprat-2026-08"
+      ],
+      "analyst_notes": ""
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--securelist-goffee-new-attacks-2025",
+      "path": "https://securelist.com/goffee-apt-new-attacks/116139/",
+      "title": "Goffee’s recent attacks: new tools and techniques",
+      "publisher": "Kaspersky (Securelist / GReAT)",
+      "published_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "en",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-28、著者 Oleg Kupreev)。2024年7月〜12月のキャンペーンを扱い、標的をロシア国内のメディア・通信・建設・政府機関・エネルギー企業と明記する。PowerModul、PowerTaskel、FlashFileGrabber、USBワーム、Owowa、バイナリ版Mythicエージェントを記載する。"
+    },
+    {
+      "source_id": "source--securelist-goffee-container-attacks-2026-07",
+      "path": "https://securelist.ru/tr/goffee-new-ttps-and-container-attacks/116431/",
+      "title": "GOFFEE расширяет свои TTP и осваивает контейнеры",
+      "publisher": "Kaspersky (Securelist / GReAT)",
+      "published_at": {
+        "value": "2026-07-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "ru",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-28)。2026年第2四半期の被害を扱い、「Жертвами группы, как и прежде, остаются преимущественно организации в Российской Федерации — во втором квартале 2026 года это были главным образом компании технологического сектора」と記載する。「группа GOFFEE начала активно атаковать цели в Беларуси, которая ранее на карте ее целей не значилась」としてベラルーシを新たな標的国として挙げる。SMB/WebDAV経由のリモートテンプレートインジェクションを初期侵入に用いる。IOCはドメイン27件、IPv4 4件、ハッシュ70件超。本作業では未取込。"
+    },
+    {
+      "source_id": "source--securelist-goffee-warprat-2026-08",
+      "path": "https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/",
+      "title": "APT-группа GOFFEE продолжает атаки на организации в РФ, распространяя два бэкдора через целевой фишинг",
+      "publisher": "Kaspersky (Securelist / GReAT)",
+      "published_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "language": "ru",
+      "source_type": "vendor-research-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-28)。「Киберпреступная APT-группа GOFFEE (также известная как Paper Werewolf) совершает атаки на организации в РФ как минимум с начала 2022 года」と明記する。2026年3月のフィッシングキャンペーンを扱い、被害は100組織超(本文中で約120組織)、WarpRATとPowerTaskel v2を共通C2で結び付けて同一グループへ帰属している。IOCはWarpRAT MD5 15件、PowerTaskel v2 MD5 14件、悪性ドメイン18件で本作業で取り込んだ。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "GOFFEEは少なくとも2022年初頭から継続してロシア国内の組織を標的とするサイバースパイ目的のAPTグループであり、2026年時点でも活動を継続している。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "3本の一次資料が一貫して同じ標的圏と継続性を示す。"
+      },
+      {
+        "statement": "同グループはMythicフレームワークの非公開改変エージェントを中核に据えつつ、キャンペーンごとにツールセットとインフラを更新している。2026年にはPowerTaskelからPowerTaskel v2とバイナリRAT WarpRATへ移行した。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--securelist-goffee-new-attacks-2025",
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "WarpRATとPowerTaskel v2の同一グループへの帰属は共通C2に基づく。"
+      },
+      {
+        "statement": "標的圏は2026年に拡大しており、ベラルーシが新たに加わったほか、CIS諸国と欧州でも事例が確認されている。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-container-attacks-2026-07",
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "欧州の事例は原文が「единичные случаи」と述べるに留まり、国名も件数も示されていない。"
+      },
+      {
+        "statement": "GOFFEEとHeartlessSoulの背後に同一の攻撃者がいる可能性がある。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--securelist-goffee-warprat-2026-08"
+        ],
+        "analyst_notes": "Kaspersky自身が中程度の確度と述べ、ツールセットは大きく異なるとしている。同一クラスタとして統合しない。"
+      }
+    ],
+    "gaps": [
+      "攻撃元の国家、後援組織、実行者の国籍を示す一次資料が確認できていない。",
+      "BI.ZONEのPaper Werewolf報告はHTTP 403で取得できず、BI.ZONE側がGOFFEEと同一視しているかを直接確認できていない。別名の裏付けはKaspersky側の記述のみ。",
+      "2025-04-10および2026-07-29の資料が公開するIOC(後者はドメイン27件、IPv4 4件、ハッシュ70件超)は本作業では未取込。取り込んだのは2026-08-28資料の47件のみ。",
+      "2022〜2023年のOwowa使用について、対応するActivityを作成していない。",
+      "個別の被害組織名は3本の資料いずれも公表しておらず、被害事例は集約値のみ。"
+    ],
+    "uncertainties": [
+      "Paper WerewolfとGOFFEEのクラスタ境界。Kasperskyは同一視するが、BI.ZONE側の定義範囲を一次資料で確認できていない。",
+      "HeartlessSoulとの運用主体の同一性。Kasperskyは中程度の確度と明示している。",
+      "資金窃取・恐喝・マイニングといった動機は原文が可能性として述べるに留まり、実行された観測はない。"
+    ],
+    "collection_notes": "確認した一次資料はKaspersky Securelistの3本(2025-04-10 英語版、2026-07-29 ロシア語版、2026-08-28 ロシア語版)。いずれもcurlで原文HTMLを取得して確認した。2026-08-28資料のIOCはHTML中のopentip.kaspersky.comリンクから機械抽出し、表示値とhref中の値が一致することを照合したうえで取り込んだ(MD5 29件、ドメイン18件)。BI.ZONE(bi.zone、bi-zone.medium.com)はいずれもHTTP 403で取得できなかった。MISP threat-actorギャラリーにGOFFEEの記載があるが、参照先はSecurelistであり独立した一次資料としては数えていない。",
+    "analyst_notes": "本プロファイルはstatus: draftとして新規作成した。昇格根拠はKaspersky(GOFFEE)とBI.ZONE(Paper Werewolf)による独立した追跡だが、原文を確認できたのはKasperskyの3本のみである。"
+  },
+  "free_text": {
+    "executive_summary": "GOFFEE(別名 Paper Werewolf)は、少なくとも2022年初頭からロシア国内の組織を標的とするサイバースパイ目的のAPTグループである。標的型フィッシングを主要な初期侵入手段とし、Mythicフレームワークの非公開改変エージェントを中核に据える。2024年はPowerModulとFlashFileGrabber、USBワームを併用し、2026年第2四半期にはSMB/WebDAV経由のリモートテンプレートインジェクションへ移行、同年3月のキャンペーンではバイナリRATのWarpRATとPowerTaskel v2を配布して100組織超を侵害した。",
+    "history": "2022〜2023年: 悪性IISモジュールOwowaによる認証情報窃取。2024年7月〜12月: パッチ済み実行ファイルおよびVBAマクロ入りOffice文書をRARで配布し、PowerModulを投入。2026年第2四半期: 標的をベラルーシへ拡大し、技術セクターを中心に攻撃。2026年3月: WarpRATとPowerTaskel v2を配布するキャンペーン(2026-08-28に公開)。",
+    "capability_details": "PowerTaskelはMythic用の非公開改変PowerShellエージェントで、2026年により小型のv2へ更新された。WarpRATはC2ポート、SSL利用、スリープ間隔、buildId、アンチVM等をJSON設定として保持するバイナリRATで、キャンペーンごとに多数の検体が作成されている。PowerModulはPowerShell製のダウンローダで、USBワーム経由でも拡散した。",
+    "infrastructure_details": "キャンペーン単位でインフラを刷新する。2026年3月のキャンペーンではntpsum[.]online、ntpluck[.]online等、NTP・SSL・時刻同期を思わせる語を用いた.onlineドメインを多用した。WarpRATとPowerTaskel v2が共通のC2を共有していたことが、両者を同一グループへ帰属する根拠となった。",
+    "targeting_details": "構造化ターゲット監査: 標的国=ベラルーシ、ロシア。標的地域=東欧、欧州、独立国家共同体（CIS）。日本は確認時に個別国として保持する。\n\nロシア国内の組織が一貫した中心。2026年第2四半期にベラルーシが新たに加わり、2026年3月のキャンペーンではCIS諸国で複数、EUで散発的な事例が確認された。産業はキャンペーンごとに変動し、メディア、通信、建設、政府機関、エネルギー、技術、機械工学・製造にわたる。",
+    "additional_notes": "本プロファイルは2026-08-28の日次チェックで、securelist.ruのみに掲載された新規報告を契機に作成した。定期確認の情報源にsecurelist.ruが含まれていなかったため検知が遅れる構造的な取りこぼしがあり、ROUTINE.mdの8情報源との差異として記録している。"
+  }
+}
