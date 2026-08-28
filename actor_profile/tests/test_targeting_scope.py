@@ -57,6 +57,65 @@ class TargetingScopeTests(unittest.TestCase):
             "free_text": {"targeting_details": ""},
         }
 
+    def _arrest_profile(self, activity_type: str) -> dict:
+        profile = self.profile("TeamPCP", "teampcp")
+        profile["activities"] = [
+            {
+                "activity_id": "activity--test-arrest",
+                "name": "TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕",
+                "description": (
+                    "オーストラリア当局は、長期にわたるソフトウェアサプライチェーン攻撃で"
+                    "知られるTeamPCPのメンバーとみられる男性2人を逮捕した。"
+                    "同グループはオーストラリアの組織を含む被害を広げてきた。"
+                ),
+                "activity_type": activity_type,
+                "target_refs": [],
+                "malware_refs": [],
+                "ttp_refs": [],
+                "victim_refs": [],
+                "evidence_refs": ["source--test"],
+            }
+        ]
+        return profile
+
+    def test_law_enforcement_activity_does_not_add_arrest_country_as_target(
+        self,
+    ) -> None:
+        """摘発が行われた国を標的国として取り込まない（RULES.md 4.3-3）。"""
+        profile = self._arrest_profile("law-enforcement-action")
+
+        process_profile(
+            profile,
+            slug="teampcp",
+            geography=self.geography,
+            compiled_rules=self.rules,
+            group=None,
+            crosscheck=None,
+            dataset_indexes={},
+            curation=None,
+        )
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertNotIn("オーストラリア", countries)
+
+    def test_same_text_as_attack_activity_still_adds_country(self) -> None:
+        """除外は活動種別によるものであり、本文の抑制ではないことを示す対照。"""
+        profile = self._arrest_profile("intrusion")
+
+        process_profile(
+            profile,
+            slug="teampcp",
+            geography=self.geography,
+            compiled_rules=self.rules,
+            group=None,
+            crosscheck=None,
+            dataset_indexes={},
+            curation=None,
+        )
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("オーストラリア", countries)
+
     def test_structured_value_classifies_country_region_and_not_organization(
         self,
     ) -> None:

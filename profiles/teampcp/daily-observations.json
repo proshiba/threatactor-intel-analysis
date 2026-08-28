@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--teampcp",
-  "updated_at": "2026-08-12T01:50:04Z",
+  "updated_at": "2026-08-28T14:33:51Z",
   "records": [
     {
       "record_id": "daily-record--5aa545c901df820c7aa23b26",
@@ -523,6 +523,67 @@
         }
       },
       "source_commit": "967228fd1ffbba0fdfb3bf8d73983f85296d7668"
+    },
+    {
+      "record_id": "daily-record--ce8b97809d1846139fdb4993",
+      "review_status": "approved",
+      "suggested_action": "review",
+      "actor": {
+        "slug": "teampcp",
+        "canonical_name": "TeamPCP",
+        "matched_term": "TeamPCP",
+        "scope": "exact",
+        "match_confidence": "high",
+        "reason": "news-title",
+        "raw_value": "TeamPCP"
+      },
+      "activity": {
+        "title": "TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕",
+        "summary": "オーストラリア当局は、長期にわたるソフトウェアサプライチェーン攻撃で知られるTeamPCPのメンバーとみられる21歳と23歳の男性2人を逮捕した。 TeamPCPはオープンソース開発者の認証情報を盗み、Shai-Huludワームなどで人気パッケージへ悪性コードを混入し、被害組織を連鎖的に拡大してきた。 同グループはLiteLLM侵害で2,500組織超からクラウドキーなどを収集し、GitHubでは少なくとも3,800リポジトリの侵害を主張している。 記事はTeamPCPを単一の統制された集団ではなく、複数の犯罪グループや個人が協力する緩やかなコミュニティとして描き、金銭・破壊・注目・思想が動機として混在するとしている。 OSINT調査や過去のアカウント・IP・ドメイン利用の痕跡から21歳の被疑者の実生活上の身元が結び付けられ、2人は合計14件のサイバー犯罪容疑に直面している。",
+        "news_date": "2026-08-28",
+        "news_url": "https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635",
+        "primary_url": "https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635",
+        "activity_reference": "https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635",
+        "news_path": "daily-news/news/2026_07-09/20260828.md"
+      },
+      "confidence": "high",
+      "iocs": [],
+      "artifacts": [],
+      "sources": [
+        {
+          "url": "https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635",
+          "source_path": "daily-news/news/2026_07-09/20260828.md",
+          "source_type": "primary-report"
+        }
+      ],
+      "capability_decisions": [],
+      "review_notes": "採用（法執行イベント）。RULES.md 4.3に従い、攻撃活動ではなく法執行イベントとして登録する。一次資料はオーストラリア連邦警察(AFP)の公式発表 https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global (公開2026-08-27)を原文確認した。AFPは「TeamPCP」を名指しし、両名を 「principal participants in the activities of the cybercrime syndicate」と記載する。措置日は令状執行・逮捕・起訴がいずれも2026-08-26、パース治安判事裁判所への出廷が2026-08-27。AFP・FBI・西オーストラリア州警察(WAPF)の合同捜査で、捜査開始は2026年4月。罪状はCottesloeの21歳が計8件(コンピュータ犯罪目的のデータ所持、重大犯罪を意図したデータの無権限改変4件、データ供給、3LA命令不遵守、10万豪ドル以上の犯罪収益取扱い)、Mandurahの23歳が計6件。KrebsOnSecurity(2026-08-27)は21歳をRuben Ian Thomson(別名Ellis、BulkDMT、Express)としTeamPCPの主導者と位置付け、23歳をMichael Gaebler(@pcpcasper)としているが、AFP公式発表は「principal participants」までで「leader」の語は用いていない。主導者としての位置付けはKrebsの調査報道に基づく判断であり、公的機関の認定ではないことを区別する。activity_typeはlaw-enforcement-actionをレビュー判断として明示指定する。自動分類は要約中の「侵害」に反応してintrusionを返し、enrich_activity_intelligence.pyのhas_case_signalが被害事例を自動生成してしまうため。活動期間はRULES.md 4.3-1に従い措置日2026-08-26をfirst_observed/last_observedへsource-statedで入れる。記事が述べるLiteLLM侵害(2026-03)およびGitHub 3,800リポジトリ(2026-05)は既存のactivity--teampcp-oss-supply-chain-2026等が扱う犯行期間であり、本活動の期間へ流用しない。IOC・artifact・TTP・被害事例は起こさない(RULES.md 4.3-3)。AFP発表とKrebs記事のいずれにも指標の記載がなく、罪状数や被害組織数から被害事例を合成しない。reported_atはtech-memo日次ファイルの日付2026-08-28だが、AFP発表とKrebs記事の公開日はいずれも2026-08-27であり、報告日と措置日の双方から分離して保持する。actor.activeはyesを維持する(RULES.md 4.3-5)。AFPは捜査continuingと明記し、Krebsは対象者が2026年3月にTeamPCPでの活動をやめ別人物が主導権を引き継いだと述べており、いずれの資料も組織の解散・活動停止を示していない。confidenceは法執行機関の公式発表がアクター名を明示している点からhighとする。",
+      "activity_claim": {
+        "assessment": "non-operational",
+        "actor_role": "unknown",
+        "match_location": "title",
+        "evidence_text": "TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕",
+        "reasons": [
+          "タイトルの主題が逮捕・起訴・制裁等であり攻撃活動ではない"
+        ],
+        "suggested_confidence": "low"
+      },
+      "activity_type": "law-enforcement-action",
+      "activity_period": {
+        "first_observed": {
+          "basis": "source-stated",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-26T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "source-stated",
+          "precision": "day",
+          "status": "known",
+          "value": "2026-08-26T00:00:00Z"
+        }
+      },
+      "source_commit": "ceac0db854df6fa7f8e99ae4235f7ec138ea6028"
     }
   ]
 }

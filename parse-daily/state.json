@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "1ee48cb064541825445d1b6cfbf52f2eb61aebcb",
-  "last_scanned_date": "2026-08-27",
+  "last_scanned_commit": "ceac0db854df6fa7f8e99ae4235f7ec138ea6028",
+  "last_scanned_date": "2026-08-28",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -1948,6 +1948,90 @@
           "url": "https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/",
           "latest_relevant_publication": "2026-08-26",
           "result": "新規1件を採用。7サイトの定例確認対象外だが、tech-memo 20260827.mdに収録されていたため原文を確認しprofiles/unc1549へ反映した。IOC 91件は原文のIOCセクションへ逐語で存在することを機械照合した。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-08-28T14:40:00Z",
+      "window": {
+        "since": "2026-08-27",
+        "until": "2026-08-28"
+      },
+      "source_commit": "ceac0db854df6fa7f8e99ae4235f7ec138ea6028",
+      "statistics": {
+        "news_files": 2,
+        "articles": 19,
+        "review_records": 3,
+        "approved_records": 2,
+        "rejected_records": 1,
+        "pending_records": 0,
+        "applied_records": 1,
+        "unmatched_actor_values": 0,
+        "materialization_window": "queueは2026-08-27以降2026-08-28以前で生成した。承認2件のうちunc1549は前回スキャンで反映済みのため、apply_review_queue.pyは--actor teampcpへ限定した。teampcpの逮捕記事は本作業でRULES.md 4.3として新設した法執行・妨害イベントの規則で採用し、activity--daily-ce8b97809d1846139fdbとして登録した。IOC・artifact・capability・TTP・被害事例はいずれも0件で、activity_typeにlaw-enforcement-actionを明示指定している。初回のenrich実行では、enrich_activity_intelligence.pyのhas_case_signalが要約中の「侵害」に反応して被害事例victim--activity-rule--d15ff4305ebfc8110561を自動生成し、enrich_targeting_scope.pyが摘発地であるオーストラリアを標的国として追加したため、両スクリプトへ非攻撃活動種別の除外を実装し(common.NON_OPERATIONAL_ACTIVITY_TYPES)、再実行して両方が除去されることを確認した。daily_check.pyのlatest_activityからも同種別を除外し、teampcpの最終活動が2026-08-08のまま維持されることを確認した。回帰テストをparse-daily/tests/test_daily.py、actor_profile/tests/test_activity_intelligence.py、actor_profile/tests/test_targeting_scope.pyへ追加した(全66→72件 OK)。全690プロファイルのvalidate_profile.pyはerrors=0。"
+      },
+      "applied": [
+        {
+          "actor": "teampcp",
+          "name": "TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕",
+          "source": "https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635",
+          "decision": "採用（法執行イベント、RULES.md 4.3）。一次資料はAFP公式発表(2026-08-27公開)を原文確認し、「TeamPCP」の名指しと、両名を「principal participants in the activities of the cybercrime syndicate」とする記載を確認した。措置日は令状執行・逮捕・起訴が2026-08-26、出廷が2026-08-27。AFP・FBI・WAPFの合同捜査で捜査開始は2026年4月、捜査は継続中。KrebsOnSecurity(2026-08-27)は21歳のRuben Ian Thomson(別名Ellis)をTeamPCPの主導者と位置付けるが、AFPは主導者とは認定していないため区別して記録した。first_observed/last_observedには措置日2026-08-26をsource-statedで入れ、犯行期間(LiteLLM 2026-03、GitHub 2026-05)は既存の攻撃活動が扱うため流用しない。reported_atはtech-memo日次日付2026-08-28として分離した。IOC・TTP・被害事例は起こさない。actor.activeはyesを維持した(AFPが捜査継続中と明記し、Krebsが後継者による運用継続を報じているため)。AFP公式発表をsource--afp-teampcp-arrests-2026として追加し、assessment.key_judgmentsとuncertaintiesへ逮捕後の継続性の未確認を記録した。"
+        }
+      ],
+      "rejected": [],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-08-27",
+          "result": "新規1件あるが不採用。「What's new in Microsoft Security: August 2026」(2026-08-27)の原文を確認したところ、Defender Experts・Entra・Intune・Purview等の製品アップデート告知であり、名前付きアクターへの帰属はない。脅威研究の最新は2026-08-26のAI基盤記事で前回スキャンで評価済み。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "cutoff後の新規なし。一覧が時系列順でなく日付も表示されないため原文で確認した(最上位のGTIG AI Threat Tracker=2026-05-11、Distinct Clusters Target Individuals of Interest to Russia=2026-08-20)。いずれも既評価で、後者はunc6293/unc7005/unc5976へ反映済み。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-25",
+          "result": "cutoff後の新規なし。「The State of AI-Enabled Malware August 2026」(2026-08-25)は前回スキャンで評価済み(アクター帰属なし)。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-20",
+          "result": "新規2件あるが不採用。「Sorry, I can't help with that」(2026-08-27)は66種のLLM構成を評価する自社AI研究で、ToxicPanda・BadBox・NovaCookiesは他誌ヘッドライン欄の引用であり自社のアクター研究ではない。「JavaScript obfuscation: From party trick to phishing kit」(2026-08-27)は難読化技法の解説で名前付きアクターの記載がない(いずれも原文確認)。UAT-10147の2本(2026-08-20)はunknown-clusters.jsonへ記録済み。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規なし。最新は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で前回チェックから変化なし。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。最新は「The Model Is the Malware」(2026-08-13)でAI研究であり名前付き脅威アクターの活動報告ではない。前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-26",
+          "result": "cutoff後のアクター別一次情報なし。最新は「Exploits and vulnerabilities in Q2 2026」(2026-08-26)で四半期統計。Head Mare TrueConf(2026-08-11)、HoneyMyte CoolClient・Armored Likho(2026-08-12)はいずれも反映済み・台帳記録済み。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-08-28",
+          "result": "新規1件。未反映。「APT-группа GOFFEE продолжает атаки на организации в РФ, распространяя два бэкдора через целевой фишинг」(https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/、2026-08-28)の原文を確認した。GOFFEE(別名Paper Werewolf)を実行主体として明記し、WarpRATとPowerTaskel v2の2つのバックドアを標的型フィッシングで配布、ロシア国内約120組織(機械工学・製造・政府)を中心にCIS諸国とEUの一部へ拡大、観測は2026年3月、活動は少なくとも2022年初頭から、と記載する。IOCはWarpRAT MD5 15件、PowerTaskel v2ハッシュ14件、悪性ドメイン18件。既存プロファイルにGOFFEE/Paper Werewolfは存在せず、unknown-clusters.jsonにも未登録のため新規プロファイル候補として報告する。本ルーチンの実行プロンプトにsecurelist.ruが含まれていなかったため、ROUTINE.mdの8情報源との差異として併せて報告する。"
+        },
+        {
+          "publisher": "Australian Federal Police (tech-memo経由で検知)",
+          "url": "https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global",
+          "latest_relevant_publication": "2026-08-27",
+          "result": "新規1件を採用。7サイトの定例確認対象外だが、tech-memo 20260828.mdのKrebsOnSecurity記事の一次資料として遡り、原文を確認してprofiles/teampcpへ法執行イベントとして反映した。法執行資料のためIOCの記載はない。"
         }
       ]
     }

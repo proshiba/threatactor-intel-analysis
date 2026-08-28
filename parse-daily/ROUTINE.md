@@ -78,7 +78,12 @@ securelist.ru には securelist.com へ出ないロシア語圏アクターの�
 
 activity_claim.assessment が strong-subject / attributed-subject でも自動承認の
 確定ではありません。evidence_text がアクターを実行主体としていること、同名製品・
-別クラスタ・法執行記事・過去言及でないかを原文で確認してください。
+別クラスタ・過去言及でないかを原文で確認してください。
+
+逮捕・起訴・制裁・テイクダウンを扱う記事（assessment が non-operational）は
+不採用にせず、actor_profile/RULES.md 4.3 の法執行・妨害イベントとして扱います。
+攻撃活動としては採用せず、activity_type を law-enforcement-action または
+disruption-operation として提案してください。
 
 ## 4. 未帰属クラスタの記録
 

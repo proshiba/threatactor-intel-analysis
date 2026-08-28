@@ -422,6 +422,45 @@ class DailyCheckTests(unittest.TestCase):
         self.assertEqual(point.date().isoformat(), "2026-07-20")
         self.assertEqual(basis, "activity.reported_at")
 
+    def test_law_enforcement_activity_is_not_counted_as_recent_activity(self) -> None:
+        """逮捕・起訴は攻撃活動ではないため直近活動に数えない（RULES.md 4.3-2）。"""
+        profile = {
+            "activities": [
+                {
+                    "activity_type": "law-enforcement-action",
+                    "first_observed": known_point("2026-08-26T00:00:00Z"),
+                    "last_observed": known_point("2026-08-26T00:00:00Z"),
+                    "reported_at": known_point("2026-08-28T00:00:00Z"),
+                },
+                {
+                    "activity_type": "intrusion",
+                    "first_observed": UNKNOWN_POINT,
+                    "last_observed": UNKNOWN_POINT,
+                    "reported_at": known_point("2026-08-08T00:00:00Z"),
+                },
+            ],
+            "actor": {"last_seen": UNKNOWN_POINT},
+        }
+        point, basis = latest_activity(profile)
+        self.assertEqual(point.date().isoformat(), "2026-08-08")
+        self.assertEqual(basis, "activity.reported_at")
+
+    def test_profile_with_only_law_enforcement_activity_has_no_recent_activity(
+        self,
+    ) -> None:
+        profile = {
+            "activities": [
+                {
+                    "activity_type": "disruption-operation",
+                    "first_observed": known_point("2026-08-26T00:00:00Z"),
+                    "last_observed": known_point("2026-08-26T00:00:00Z"),
+                    "reported_at": known_point("2026-08-28T00:00:00Z"),
+                }
+            ],
+            "actor": {"last_seen": UNKNOWN_POINT},
+        }
+        self.assertEqual(latest_activity(profile), (None, ""))
+
     def test_newest_signal_wins_across_fields(self) -> None:
         profile = {
             "activities": [

@@ -47,6 +47,14 @@ CLAIM_PRIORITY = {
     "forecast": 10,
 }
 
+# 攻撃活動ではない活動種別（RULES.md 4.3）。逮捕・起訴・制裁・テイクダウンは
+# 資料の公開が新しいだけで、アクターが最近攻撃した根拠にはならない。
+# 観点1の「直近に活動があったアクター」から除外する。
+NON_OPERATIONAL_ACTIVITY_TYPES = {
+    "law-enforcement-action",
+    "disruption-operation",
+}
+
 
 def load_json(path: Path):
     with path.open(encoding="utf-8") as handle:
@@ -71,10 +79,16 @@ def latest_activity(profile: dict) -> tuple[datetime | None, str]:
 
     攻撃期間が不明でも reported_at は残っている（RULES.md 4.）ため、
     期間・報告日の両方を見て一番新しいものを採る。
+
+    ただし法執行・妨害イベント（RULES.md 4.3）は攻撃活動ではないため除外する。
+    含めると、逮捕・起訴が報じられたアクターほど「直近に活動あり」の上位へ
+    来てしまい、観点1の意味が反転する。
     """
     best: datetime | None = None
     basis = ""
     for activity in profile.get("activities") or []:
+        if activity.get("activity_type") in NON_OPERATIONAL_ACTIVITY_TYPES:
+            continue
         for key in ("last_observed", "first_observed", "reported_at"):
             point = parse_point(activity.get(key))
             if point and (best is None or point > best):

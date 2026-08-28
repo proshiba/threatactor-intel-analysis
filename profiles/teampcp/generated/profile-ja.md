@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teampcp`
 - 状態: draft
-- 更新日時: 2026-08-12T01:51:50Z
+- 更新日時: 2026-08-28T14:33:51Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -125,6 +125,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | infrastructure-operation | 2020 | 2026-04 | 2026-08-08 |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | victim--activity-rule--829e65b1ac18ce5ea420, victim--teampcp-exposed-cloud-services | Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。 | 高 | `source--daily-48f251212f832ab9b6df` |
 | GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 |  | malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
+| TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕 | law-enforcement-action | 2026-08-26 | 2026-08-26 | 2026-08-28 |  |  |  |  | オーストラリア当局は、長期にわたるソフトウェアサプライチェーン攻撃で知られるTeamPCPのメンバーとみられる21歳と23歳の男性2人を逮捕した。 TeamPCPはオープンソース開発者の認証情報を盗み、Shai-Huludワームなどで人気パッケージへ悪性コードを混入し、被害組織を連鎖的に拡大してきた。 同グループはLiteLLM侵害で2,500組織超からクラウドキーなどを収集し、GitHubでは少なくとも3,800リポジトリの侵害を主張している。 記事はTeamPCPを単一の統制された集団ではなく、複数の犯罪グループや個人が協力する緩やかなコミュニティとして描き、金銭・破壊・注目・思想が動機として混在するとしている。 OSINT調査や過去のアカウント・IP・ドメイン利用の痕跡から21歳の被疑者の実生活上の身元が結び付けられ、2人は合計14件のサイバー犯罪容疑に直面している。 | 高 | `source--daily-5f29477c00e2513160e8` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -132,6 +133,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 |---|---|---|---|---|---|---|---|
 | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | TeamPCP | ShadowRay 2.0 ペイロード | T1059.004 Unix Shell, T1190 Exploit Public-Facing Application, T1486 Data Encrypted for Impact | masscan.cloud / natalstatus.org 基盤 | 情報なし | 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及, インターネットへ露出したRay/Docker/Redis/React環境(集約) | 高 |
 | GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 | TeamPCP | SANDCLOCK | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | masscan.cloud / natalstatus.org 基盤 | 情報なし | 被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
+| TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕 | TeamPCP | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 
 2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。
 
@@ -198,6 +200,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--daily-48f251212f832ab9b6df | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | oligo.security | 2026-08-08 | https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020 | osint-report | TLP:CLEAR | 中 |
+| source--daily-5f29477c00e2513160e8 | TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕 | krebsonsecurity.com | 2026-08-28 | https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635 | osint-report | TLP:CLEAR | 中 |
 | source--gtig-ai-threat-tracker-2026-05 | GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access | Google Threat Intelligence Group | 2026-05-11 | https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access | vendor-research-report | TLP:CLEAR | 高 |
 | source--oligo-teampcp-2026 | New Intelligence Links TeamPCP to ShadowRay 2.0 and Traces Activity Back to 2020 | Oligo Security | 2026-08-05 | https://www.oligo.security/blog/new-intelligence-links-teampcp-to-shadowray-2-0-and-traces-activity-back-to-2020 | vendor-research-report | TLP:CLEAR | 高 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |

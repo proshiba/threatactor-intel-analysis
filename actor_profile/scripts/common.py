@@ -17,6 +17,15 @@ CONFIDENCE = {"high", "medium", "low", "unknown"}
 TIME_PRECISIONS = {"second", "day", "month", "year", "range", "unknown"}
 TIME_STATUSES = {"known", "inferred", "unknown"}
 
+# 攻撃活動ではない活動種別（RULES.md 4.3）。逮捕・起訴・制裁・テイクダウンは
+# アクターを対象とする措置であって、アクターによる攻撃ではない。
+# 標的・TTP・被害事例の自動導出と期間集計から除外する。除外しないと、
+# 摘発が行われた国が標的国として、罪状の記述が被害事例として取り込まれる。
+NON_OPERATIONAL_ACTIVITY_TYPES = {
+    "law-enforcement-action",
+    "disruption-operation",
+}
+
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")

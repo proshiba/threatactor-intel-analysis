@@ -17,6 +17,7 @@ sys.path.insert(0, str(SCRIPTS))
 from common import unknown_time  # noqa: E402
 from enrich_activity_intelligence import (  # noqa: E402
     add_rule_ttps,
+    enrich_profile,
     add_targets,
     add_victim_case,
     add_mitre_group_targets,
@@ -90,6 +91,41 @@ class ActivityIntelligenceTests(unittest.TestCase):
             "evidence_refs": ["source--test"],
             "analyst_notes": "",
         }
+
+    def test_law_enforcement_activity_does_not_generate_victim_case(self) -> None:
+        """逮捕・起訴の記事から被害事例とTTPを合成しない（RULES.md 4.3-3）。"""
+        profile = self.profile("TeamPCP")
+        profile["activities"] = [
+            self.activity(
+                "TeamPCPのメンバーとされるハッカー2人、オーストラリアで逮捕",
+                "オーストラリア連邦警察は、サプライチェーン攻撃で組織を侵害したとして"
+                "TeamPCPの主要関与者2名を逮捕・起訴した。",
+                activity_type="law-enforcement-action",
+            )
+        ]
+
+        enrich_profile(profile, self.rules, self.attack, None)
+
+        self.assertEqual(profile["victim_cases"], [])
+        self.assertEqual(profile["activities"][0]["victim_refs"], [])
+        self.assertEqual(profile["activities"][0]["ttp_refs"], [])
+        self.assertEqual(profile["activities"][0]["target_refs"], [])
+
+    def test_same_text_as_attack_activity_still_generates_victim_case(self) -> None:
+        """除外は活動種別によるものであり、本文の抑制ではないことを示す対照。"""
+        profile = self.profile("TeamPCP")
+        profile["activities"] = [
+            self.activity(
+                "TeamPCPがサプライチェーン攻撃で組織を侵害",
+                "オーストラリア連邦警察は、サプライチェーン攻撃で組織を侵害したとして"
+                "TeamPCPの主要関与者2名を逮捕・起訴した。",
+                activity_type="intrusion",
+            )
+        ]
+
+        enrich_profile(profile, self.rules, self.attack, None)
+
+        self.assertNotEqual(profile["victim_cases"], [])
 
     def test_multi_actor_article_does_not_mix_following_actor_behavior(self) -> None:
         profile = self.profile("Kimsuky", ["TA427"])

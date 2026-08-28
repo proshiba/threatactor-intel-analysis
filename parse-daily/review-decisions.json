@@ -2084,6 +2084,26 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。",
     "review_status": "approved"
   },
+  "teampcp|https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "source-stated",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-26T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "source-stated",
+        "precision": "day",
+        "status": "known",
+        "value": "2026-08-26T00:00:00Z"
+      }
+    },
+    "activity_type": "law-enforcement-action",
+    "confidence": "high",
+    "review_notes": "採用（法執行イベント）。RULES.md 4.3に従い、攻撃活動ではなく法執行イベントとして登録する。一次資料はオーストラリア連邦警察(AFP)の公式発表 https://www.afp.gov.au/news-centre/media-release/two-wa-men-charged-following-afp-fbi-wapf-disruption-alleged-global (公開2026-08-27)を原文確認した。AFPは「TeamPCP」を名指しし、両名を 「principal participants in the activities of the cybercrime syndicate」と記載する。措置日は令状執行・逮捕・起訴がいずれも2026-08-26、パース治安判事裁判所への出廷が2026-08-27。AFP・FBI・西オーストラリア州警察(WAPF)の合同捜査で、捜査開始は2026年4月。罪状はCottesloeの21歳が計8件(コンピュータ犯罪目的のデータ所持、重大犯罪を意図したデータの無権限改変4件、データ供給、3LA命令不遵守、10万豪ドル以上の犯罪収益取扱い)、Mandurahの23歳が計6件。KrebsOnSecurity(2026-08-27)は21歳をRuben Ian Thomson(別名Ellis、BulkDMT、Express)としTeamPCPの主導者と位置付け、23歳をMichael Gaebler(@pcpcasper)としているが、AFP公式発表は「principal participants」までで「leader」の語は用いていない。主導者としての位置付けはKrebsの調査報道に基づく判断であり、公的機関の認定ではないことを区別する。activity_typeはlaw-enforcement-actionをレビュー判断として明示指定する。自動分類は要約中の「侵害」に反応してintrusionを返し、enrich_activity_intelligence.pyのhas_case_signalが被害事例を自動生成してしまうため。活動期間はRULES.md 4.3-1に従い措置日2026-08-26をfirst_observed/last_observedへsource-statedで入れる。記事が述べるLiteLLM侵害(2026-03)およびGitHub 3,800リポジトリ(2026-05)は既存のactivity--teampcp-oss-supply-chain-2026等が扱う犯行期間であり、本活動の期間へ流用しない。IOC・artifact・TTP・被害事例は起こさない(RULES.md 4.3-3)。AFP発表とKrebs記事のいずれにも指標の記載がなく、罪状数や被害組織数から被害事例を合成しない。reported_atはtech-memo日次ファイルの日付2026-08-28だが、AFP発表とKrebs記事の公開日はいずれも2026-08-27であり、報告日と措置日の双方から分離して保持する。actor.activeはyesを維持する(RULES.md 4.3-5)。AFPは捜査continuingと明記し、Krebsは対象者が2026年3月にTeamPCPでの活動をやめ別人物が主導権を引き継いだと述べており、いずれの資料も組織の解散・活動停止を示していない。confidenceは法執行機関の公式発表がアクター名を明示している点からhighとする。",
+    "review_status": "approved"
+  },
   "teampcp|https://www.cloudsek.com/blog/ai-supply-chain-breach-2500-companies-434000-cicd-pipelines": {
     "review_notes": "一次資料(CloudSEK、2026-08-11公開)の原文を確認した。CloudSEKは「In March 2026, the threat actor group TeamPCP orchestrated what is believed to be the largest supply chain attack targeting AI infrastructure by compromising LiteLLM.」と記載する一方、「Public reporting attributes the broader campaign to the financially motivated cluster TeamPCP.」として帰属根拠を他社の公開報告に置いており、CloudSEK自身は攻撃の実行を直接観測していない。攻撃時期は2026年3月で、既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、LiteLLMとBerriAIを明記、SANDCLOCKを紐付け済み)が既に網羅しており、新規活動ではない。キューの assessment も candidate で「名前一致はあるが実行主体を示す表現が不足している」であり、これと整合する。したがって新規レコードとしては不採用とする。本記事の固有情報は2,500社超・約43万4,000件のCI/CDパイプラインという露出規模だが、CloudSEK自身が「潜在的露出であり全社の侵害を意味しない」と留保しているため、既存の victim case へ確定値として書き込むことはしない。二次的な露出推計の扱いを決めたうえで別途反映する。",
     "review_status": "rejected"

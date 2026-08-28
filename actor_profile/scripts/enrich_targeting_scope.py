@@ -22,7 +22,14 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
-from common import load_json, stable_digest, unknown_time, utc_now, write_json_atomic
+from common import (
+    NON_OPERATIONAL_ACTIVITY_TYPES,
+    load_json,
+    stable_digest,
+    unknown_time,
+    utc_now,
+    write_json_atomic,
+)
 from activity_diamond import materialize_profile_diamonds
 from enrich_activity_intelligence import (
     actor_attribution_context,
@@ -600,6 +607,10 @@ def collect_activities(
     regions: dict[str, dict[str, Any]],
 ) -> None:
     for activity in profile.get("activities", []):
+        # 法執行・妨害イベントは攻撃活動ではない（RULES.md 4.3-3）。
+        # 摘発・起訴が行われた国を標的国として取り込まない。
+        if activity.get("activity_type") in NON_OPERATIONAL_ACTIVITY_TYPES:
+            continue
         text = " ".join(
             value
             for value in [activity.get("name", ""), activity.get("description", "")]

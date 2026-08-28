@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from common import (
+    NON_OPERATIONAL_ACTIVITY_TYPES,
     load_json,
     stable_digest,
     unknown_time,
@@ -1358,6 +1359,10 @@ def enrich_profile(
     for activity in profile.get("activities", []):
         activity.setdefault("ttp_refs", [])
         activity.setdefault("victim_refs", [])
+        # 法執行・妨害イベントは攻撃活動ではない（RULES.md 4.3-3）。
+        # 罪状や捜査の記述から標的・TTP・被害事例を導出しない。
+        if activity.get("activity_type") in NON_OPERATIONAL_ACTIVITY_TYPES:
+            continue
         enrich_explicit_activity_period(profile, activity, rules)
         add_targets(profile, activity, rules)
         add_rule_ttps(profile, activity, rules, attack)

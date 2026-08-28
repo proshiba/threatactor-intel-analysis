@@ -23,7 +23,12 @@
    `activity_claim.assessment`が`strong-subject`または`attributed-subject`でも
    自動承認の確定ではない。
    `evidence_text`がアクターを実行主体としていること、同名製品・別クラスタ・
-   法執行・過去事例でないことを確認する。
+   過去事例でないことを確認する。
+   法執行・妨害イベント（逮捕、起訴、制裁、テイクダウン）は不採用にせず、
+   `actor_profile/RULES.md`4.3の規則で採用する。攻撃活動としては採用しない。
+   `activity_type`に`law-enforcement-action`または`disruption-operation`を
+   レビュー判断として明示し、自動分類に任せない。自動分類は要約中の「侵害」
+   「攻撃」に反応して`intrusion`等を返し、被害事例の自動生成まで誘発する。
 5. 採用するレコードだけ`review_status: approved`へ変更し、判断理由を
    `review_notes`へ日本語で記載する。不採用は`rejected`と理由を残す。継続利用する
    判断は`review-decisions.json`にも保存し、再生成可能にする。
@@ -68,6 +73,11 @@
   ある候補を表す。どちらも帰属確定を意味せず、類似・重複・後継・一般的な関連は
   含めない。`scope-review-required`、`name-collision`、`attribution-uncertain`、
   `historical-reference`、`non-operational`は一括承認しない。
+- `non-operational`は「採用しない」ではなく「攻撃活動として採用しない」を意味する。
+  逮捕・起訴・制裁・テイクダウンを扱うレコードは、実行主体の確認ではなく、
+  当該アクターを対象とする措置であることを一次資料で確認したうえでRULES.md 4.3の
+  法執行・妨害イベントとして採用する。措置の対象が別クラスタ、同名の無関係な人物、
+  または被害組織側である場合は`rejected`とする。
 - 既存プロファイルにない名前は無理に近いアクターへ寄せず、
   `unmatched_actor_values`へ残す。新規プロファイル作成は別のレビュー対象とする。
 - 未帰属だが将来いずれかのアクターへつながり得るクラスタは
