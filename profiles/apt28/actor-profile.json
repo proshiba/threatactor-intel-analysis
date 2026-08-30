@@ -4,7 +4,7 @@
   "name": "APT28",
   "status": "review",
   "created_at": "2026-07-25T09:00:03Z",
-  "updated_at": "2026-08-07T10:35:22Z",
+  "updated_at": "2026-08-30T07:47:19Z",
   "languages": [
     "ja"
   ],
@@ -180,6 +180,16 @@
           "source--actor-mapping-workbook"
         ],
         "analyst_notes": "Workbook Russia row 3; mapping requires review."
+      },
+      {
+        "name": "BlueDelta",
+        "vendor": "Recorded Future",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-6bb5f30d0037bd12215d"
+        ],
+        "analyst_notes": "Recorded Future Insikt Groupは「Insikt Group assesses with moderate confidence that this activity was conducted by BlueDelta (which overlaps with APT28, Fancy Bear, and Forest Blizzard), a Russian state-sponsored threat group attributed to the Main Directorate of the General Staff of the Armed Forces of the Russian Federation (GRU).」として、BlueDeltaをAPT28・Fancy Bear・Forest Blizzardと重複するクラスタと位置付けている。原文の表現は「overlaps with」であり同一クラスタの断定ではないため、scopeはexactではなくoverlappingとする。confidenceは原文自身がmoderate confidenceと明示しているためmedium。"
       }
     ],
     "actor_types": [
@@ -383,6 +393,32 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--daily-a2706b008c9d9f2ded81",
+        "name": "HOOKEDGE",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "APT28との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-09-01T00:00:00Z"
+        },
+        "last_observed": {
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-6bb5f30d0037bd12215d"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
       {
         "id": "malware--dealerschoice",
@@ -2487,6 +2523,117 @@
       }
     },
     {
+      "activity_id": "activity--daily-87271a4abec0bfc4e18f",
+      "name": "BlueDelta、防衛・外交組織をHOOKEDGEで標的化",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-09-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Recorded FutureのInsikt Groupは、2025年9月末から2026年4月初旬にBlueDeltaがルーマニア、スペイン、トルコの政府・外交・防衛関連組織を狙った攻撃を確認した。 攻撃では外交テーマなどのマクロ有効Word文書をスピアフィッシングで送り、軽量なWindowsバッチ型バックドア「HOOKEDGE」を展開して永続化した。 HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 Insikt Groupはコード、TTP、インフラ、標的傾向から、中程度の確度でロシアGRU系BlueDelta（APT28／Fancy Bear／Forest Blizzard）の活動と評価している。",
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--country--romania",
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--daily-a2706b008c9d9f2ded81"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--8d86f0d5dccd6738b121"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-6bb5f30d0037bd12215d"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--87271a4abec0bfc4e18fc1f2 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Recorded Future Insikt Group原文(アクセス2026-08-30)を確認して承認。原文は「Insikt Group assesses with moderate confidence that this activity was conducted by BlueDelta (which overlaps with APT28, Fancy Bear, and Forest Blizzard), a Russian state-sponsored threat group attributed to the Main Directorate of the General Staff of the Armed Forces of the Russian Federation (GRU).」と述べ、当該活動の実行主体をBlueDeltaとしている。queueの判定は本文の名前一致由来でcandidateだが、原文で実行主体表現を確認したため採用する。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。帰属根拠はHOOKEDGEとHEADLACEのコード・トレードクラフト重複、一貫したインフラパターン、ロシアの情報収集要求と整合する標的傾向であり、原文自身がmoderate confidenceと明示している。BlueDeltaはAPT28の別名として本プロファイルへ未登録であったため、原文の「overlaps with」に合わせscope: overlappingでactor.aliasesへ追加した(exactとは断定しない)。標的はルーマニア・スペイン・トルコの政府・外交・防衛製造。活動期間はExecutive Summaryが2025年9月末〜2026年4月初旬とする一方、本文は2026年7月のキャンペーンにも言及しており、記述が一致しないため原文が明示する最大範囲として2025年9月〜2026年7月を採用し、この不一致をactivity_periodのbasisへ残す。公開日はページ本文にもHTMLメタデータにも記載がなく確定できないため、published_atはtech-memo日次ファイルの日付2026-08-29をbasis: daily-news-file-dateとして保持し、観測日へは流用しない。IOC 56件(url 30/sha256 26)は全てAppendix Aに逐語で存在することを照合済みで、CSV側の28個のwebhook.site UUIDと26個のSHA256は原文の集合と過不足なく一致した。webhook[.]siteは正規サービスだが、採用したのは攻撃者固有のUUIDトークンを含む完全URLのみでベアドメインは含まず、被害組織の正規URLやサンプル値も含まれない。IOC CSVのactor列が複合表記「BlueDelta (APT28/Fancy Bear/Forest Blizzard)」であるため、UNC1549の前例に倣いconfig.jsonのactor_value_aliasesでAPT28へ明示対応付けした(daily_common.pyのActorRegistry.exactのみが参照し、本文の名前一致には使わない)。確度は単一ベンダーによるmoderate confidenceの帰属で被害組織の直接観測がないためmedium。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt28",
+          "name": "APT28",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-a2706b008c9d9f2ded81"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--country--romania",
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--8d86f0d5dccd6738b121"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+            "precision": "month",
+            "status": "known",
+            "value": "2025-09-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-07-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-08-29T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--country--romania"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-6bb5f30d0037bd12215d"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--daily-b7e3b94cdb35a0a7696b",
       "name": "政府のウェブメール、XSS脆弱性を悪用したグローバルスパイ活動で侵害される",
       "activity_type": "cyber-espionage",
@@ -4092,24 +4239,25 @@
       {
         "id": "target--targeting-audit--country--26a12be8931da14e6e50",
         "name": "スペイン",
-        "description": "構造化OSINTの被害国フィールドでAPT28の標的・被害国としてスペインが記録されている。",
+        "description": "活動「BlueDelta、防衛・外交組織をHOOKEDGEで標的化」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-09-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-6bb5f30d0037bd12215d",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--7b463848ceb22278e7ed",
@@ -4227,20 +4375,21 @@
         "name": "トルコ",
         "description": "Targeting text mentions turkey.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-09-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
         ],
@@ -4617,20 +4766,21 @@
         "name": "ルーマニア",
         "description": "Targeting text mentions romania.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-09-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
@@ -4954,6 +5104,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
         ],
@@ -5028,6 +5179,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-0f31344d55ee8f1d9bd2",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--target-audit-etda-threat-group-cards"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -5121,6 +5273,7 @@
           "source--daily-0f31344d55ee8f1d9bd2",
           "source--daily-46653690978a5163e9ec",
           "source--daily-4a00e2733e94c16c2bcd",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--daily-7aa505bacba82f6edc63",
           "source--daily-80bc2958ff74558cec03",
           "source--daily-ddc816726b2dc0d3951a",
@@ -5154,6 +5307,7 @@
           "source--daily-0f31344d55ee8f1d9bd2",
           "source--daily-46653690978a5163e9ec",
           "source--daily-4a00e2733e94c16c2bcd",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--daily-7aa505bacba82f6edc63",
           "source--daily-80bc2958ff74558cec03",
           "source--daily-bc559406ecce56eed6a1",
@@ -5195,20 +5349,21 @@
         "name": "防衛・軍事",
         "description": "活動「フランス、ロシアのAPT28による12件のサイバー攻撃を非難」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2025-09-01T00:00:00Z"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用; activity-period",
+          "precision": "month",
+          "status": "known",
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--daily-239915c4cbbd5198fbc4"
+          "source--daily-239915c4cbbd5198fbc4",
+          "source--daily-6bb5f30d0037bd12215d"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
@@ -5311,16 +5466,17 @@
           "basis": "activity-description-explicit-period; activity-period"
         },
         "last_observed": {
-          "value": "2025-11-01T00:00:00Z",
+          "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用; activity-period",
           "precision": "month",
           "status": "known",
-          "basis": "activity-description-explicit-period; activity-period"
+          "value": "2026-07-01T00:00:00Z"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
           "source--daily-239915c4cbbd5198fbc4",
           "source--daily-46653690978a5163e9ec",
+          "source--daily-6bb5f30d0037bd12215d",
           "source--daily-7aa505bacba82f6edc63",
           "source--daily-bc559406ecce56eed6a1",
           "source--daily-ddc816726b2dc0d3951a",
@@ -11284,6 +11440,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_01-03/20260311.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-6bb5f30d0037bd12215d",
+      "path": "https://www.recordedfuture.com/research/bluedelta-targets-with-hookedge",
+      "title": "BlueDelta、防衛・外交組織をHOOKEDGEで標的化",
+      "publisher": "recordedfuture.com",
+      "published_at": {
+        "value": "2026-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260829.md; source commit: beb150f06f8bd7f82231e4e1f7d3c6c85403d6f1; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-7aa505bacba82f6edc63",
       "path": "https://www.bleepingcomputer.com/news/security/poland-says-russian-military-hackers-target-its-govt-networks/",
       "title": "ポーランド、ロシアの軍事ハッカーによる政府ネットワークの標的行為を主張",
@@ -12214,6 +12388,61 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-e4e1690a6e0a90a04bc2"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--8d86f0d5dccd6738b121",
+      "name": "被害事例: BlueDelta、防衛・外交組織をHOOKEDGEで標的化",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Recorded FutureのInsikt Groupは、2025年9月末から2026年4月初旬にBlueDeltaがルーマニア、スペイン、トルコの政府・外交・防衛関連組織を狙った攻撃を確認した。 攻撃では外交テーマなどのマクロ有効Word文書をスピアフィッシングで送り、軽量なWindowsバッチ型バックドア「HOOKEDGE」を展開して永続化した。 HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。 高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。 Insikt Groupはコード、TTP、インフラ、標的傾向から、中程度の確度でロシアGRU系BlueDelta（APT28／Fancy Bear／Forest Blizzard）の活動と評価している。",
+      "activity_refs": [
+        "activity--daily-87271a4abec0bfc4e18f"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--country--romania",
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--daily-a2706b008c9d9f2ded81"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "HOOKEDGEは正規サービスwebhook[.]siteをC2、ペイロード配布、データ窃取に利用し、Microsoft Edge経由の通信で通常のWebトラフィックへの偽装を図る。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "高価値と判断した標的にはビーコン間隔を短縮した第2段階HOOKEDGEを投入し、より迅速なコマンド実行と情報収集を行う階層型の運用が確認された。"
+        }
+      ],
+      "first_observed": {
+        "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-09-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      },
+      "reported_at": {
+        "value": "2026-08-29T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-6bb5f30d0037bd12215d"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

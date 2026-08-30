@@ -207,6 +207,32 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: ロシアのAPT28軍事ハッカー、ウクライナ政府攻撃でZimbraの欠陥を悪用",
     "review_status": "approved"
   },
+  "apt28|https://www.recordedfuture.com/research/bluedelta-targets-with-hookedge": {
+    "activity_period": {
+      "first_observed": {
+        "basis": "Recorded Future: 「Between late September 2025 and early April 2026, BlueDelta conducted a series of initial access campaigns against defense manufacturing and diplomatic organizations in Romania, Spain, and Türkiye.」。late September 2025を2025年9月へ正規化",
+        "precision": "month",
+        "status": "known",
+        "value": "2025-09-01T00:00:00Z"
+      },
+      "last_observed": {
+        "basis": "Recorded Future: 「In July 2026 campaigns, BlueDelta removed the document-open canary — previously, a consistent feature used to capture victim IP addresses at the moment of document opening — from observed HOOKEDGE samples.」。Executive Summaryのキャンペーン期間はearly April 2026までだが、本文が2026年7月のキャンペーン観測に言及しているため、原文が明示する最終観測月として2026年7月を採用",
+        "precision": "month",
+        "status": "known",
+        "value": "2026-07-01T00:00:00Z"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "HOOKEDGE",
+        "review_notes": "承認。Recorded Futureが本文で検体を直接解析し、マクロ有効Word文書から展開されるバッチスクリプト型バックドアとして、webhook[.]siteをC2・ペイロード配布・データ窃取に利用すること、headless Microsoft Edge経由で通信して通常のWebトラフィックへ紛れること、スケジュールタスクで永続化することを記載している。固有名であり、HEADLACEとのコード・トレードクラフト重複を当該アクターによる利用の根拠としている。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "Recorded Future Insikt Group原文(アクセス2026-08-30)を確認して承認。原文は「Insikt Group assesses with moderate confidence that this activity was conducted by BlueDelta (which overlaps with APT28, Fancy Bear, and Forest Blizzard), a Russian state-sponsored threat group attributed to the Main Directorate of the General Staff of the Armed Forces of the Russian Federation (GRU).」と述べ、当該活動の実行主体をBlueDeltaとしている。queueの判定は本文の名前一致由来でcandidateだが、原文で実行主体表現を確認したため採用する。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。帰属根拠はHOOKEDGEとHEADLACEのコード・トレードクラフト重複、一貫したインフラパターン、ロシアの情報収集要求と整合する標的傾向であり、原文自身がmoderate confidenceと明示している。BlueDeltaはAPT28の別名として本プロファイルへ未登録であったため、原文の「overlaps with」に合わせscope: overlappingでactor.aliasesへ追加した(exactとは断定しない)。標的はルーマニア・スペイン・トルコの政府・外交・防衛製造。活動期間はExecutive Summaryが2025年9月末〜2026年4月初旬とする一方、本文は2026年7月のキャンペーンにも言及しており、記述が一致しないため原文が明示する最大範囲として2025年9月〜2026年7月を採用し、この不一致をactivity_periodのbasisへ残す。公開日はページ本文にもHTMLメタデータにも記載がなく確定できないため、published_atはtech-memo日次ファイルの日付2026-08-29をbasis: daily-news-file-dateとして保持し、観測日へは流用しない。IOC 56件(url 30/sha256 26)は全てAppendix Aに逐語で存在することを照合済みで、CSV側の28個のwebhook.site UUIDと26個のSHA256は原文の集合と過不足なく一致した。webhook[.]siteは正規サービスだが、採用したのは攻撃者固有のUUIDトークンを含む完全URLのみでベアドメインは含まず、被害組織の正規URLやサンプル値も含まれない。IOC CSVのactor列が複合表記「BlueDelta (APT28/Fancy Bear/Forest Blizzard)」であるため、UNC1549の前例に倣いconfig.jsonのactor_value_aliasesでAPT28へ明示対応付けした(daily_common.pyのActorRegistry.exactのみが参照し、本文の名前一致には使わない)。確度は単一ベンダーによるmoderate confidenceの帰属で被害組織の直接観測がないためmedium。",
+    "review_status": "approved"
+  },
   "apt29|https://thehackernews.com/2024/12/apt29-hackers-target-high-value-victims.html": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: APT29ハッカー、高価値の被害者を狙いRDPサーバーとPyRDPを悪用",
@@ -2083,6 +2109,14 @@
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Recorded FutureはTAG-100を「RedNovember」と命名、MicrosoftはStorm-2077として追跡。",
     "review_status": "approved"
+  },
+  "teampcp|https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/": {
+    "review_notes": "不採用。KrebsOnSecurity原文(公開2026-08-27)を確認したところ、記事はオーストラリア連邦警察による被疑者2名の逮捕を報じるものであり、新規の攻撃活動の報告ではない。判断規則上、逮捕・起訴・制裁を主題とする法執行記事は活動として登録しない。同記事から抽出されたIOC 9件も攻撃インフラではなく、被疑者の身元特定に用いられたOSINT痕跡である。原文は211.27.196.111について「one of them — 211.27.196.111 — for several years was used as a private file server by a family in Perth with the last name of Thomson.」と述べ、ithomson.direct.quickconnect.to・kthomson0061.direct.quickconnect.to・joshuawthomson39.myqnapcloud.comは同一住居のNAS(Synology/QNAP)のリモートアクセス用ホスト名、thomsonfamily.net.au・securecomputing.au・rubenthomson.comは家族名義のドメインである。いずれも攻撃者が運用したインフラではなく私人の生活痕跡であり、IOC採用基準を満たさないため取り込まない。TeamPCPの既存プロファイルと活動には変更を加えない。",
+    "review_status": "rejected"
+  },
+  "teampcp|https://krebsonsecurity.com/2026/08/two-alleged-teampcp-hackers-arrested-in-australia/#more-73635": {
+    "review_notes": "不採用。KrebsOnSecurity原文(公開2026-08-27)を確認したところ、記事はオーストラリア連邦警察による被疑者2名の逮捕を報じるものであり、新規の攻撃活動の報告ではない。判断規則上、逮捕・起訴・制裁を主題とする法執行記事は活動として登録しない。同記事から抽出されたIOC 9件も攻撃インフラではなく、被疑者の身元特定に用いられたOSINT痕跡である。原文は211.27.196.111について「one of them — 211.27.196.111 — for several years was used as a private file server by a family in Perth with the last name of Thomson.」と述べ、ithomson.direct.quickconnect.to・kthomson0061.direct.quickconnect.to・joshuawthomson39.myqnapcloud.comは同一住居のNAS(Synology/QNAP)のリモートアクセス用ホスト名、thomsonfamily.net.au・securecomputing.au・rubenthomson.comは家族名義のドメインである。いずれも攻撃者が運用したインフラではなく私人の生活痕跡であり、IOC採用基準を満たさないため取り込まない。TeamPCPの既存プロファイルと活動には変更を加えない。",
+    "review_status": "rejected"
   },
   "teampcp|https://www.cloudsek.com/blog/ai-supply-chain-breach-2500-companies-434000-cicd-pipelines": {
     "review_notes": "一次資料(CloudSEK、2026-08-11公開)の原文を確認した。CloudSEKは「In March 2026, the threat actor group TeamPCP orchestrated what is believed to be the largest supply chain attack targeting AI infrastructure by compromising LiteLLM.」と記載する一方、「Public reporting attributes the broader campaign to the financially motivated cluster TeamPCP.」として帰属根拠を他社の公開報告に置いており、CloudSEK自身は攻撃の実行を直接観測していない。攻撃時期は2026年3月で、既存の activity--teampcp-oss-supply-chain-2026(2026-02〜03、LiteLLMとBerriAIを明記、SANDCLOCKを紐付け済み)が既に網羅しており、新規活動ではない。キューの assessment も candidate で「名前一致はあるが実行主体を示す表現が不足している」であり、これと整合する。したがって新規レコードとしては不採用とする。本記事の固有情報は2,500社超・約43万4,000件のCI/CDパイプラインという露出規模だが、CloudSEK自身が「潜在的露出であり全社の侵害を意味しない」と留保しているため、既存の victim case へ確定値として書き込むことはしない。二次的な露出推計の扱いを決めたうえで別途反映する。",
