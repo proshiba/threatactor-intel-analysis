@@ -379,6 +379,58 @@
       "analyst_notes": "2026-08-18の日次チェックで検知した。tech-memo daily-news 2026-08-18 に収録されているが、IOC CSVのactor列が全て unknown のため review-queue にはレコードが生成されていない。"
     },
     {
+      "cluster_id": "unknown-cluster--fulcrumsec",
+      "primary_name": "FulcrumSec",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-03-04",
+      "last_seen": "2026-08-31",
+      "detected_via": "tech-memo daily-news 2026-08-31。daily_check.py の unmatched_actor_values には現れない。当該記事にIOCが無くIOC CSVのactor列へ値が載らないため、構造化フィールド由来の未一致名検知では捕捉できず、新規日のニュース本文を直接確認して検知した。既存690プロファイル、本台帳のclusters、excluded_name_collisions のいずれにも存在しない新規名である。tech-memo 2026-03-04 に既出。",
+      "attribution": {
+        "state": "self-attributed",
+        "actor_type": "financially-motivated-data-extortion-group",
+        "notes": "BleepingComputerは「FulcrumSec is a financially motivated data-extortion group active since 2025 that focuses on stealing sensitive corporate data and threatening to publish it rather than encrypting victims' systems.」と記載する。暗号化型ランサムウェアではなくデータ窃取と公開脅迫に特化する。国家帰属・所在国・他の名前付きグループ(ShinyHunters、Scattered Spider、Cl0p等)との関連は、確認したいずれの原文にも記載がない。帰属根拠は攻撃者自身の犯行主張であり、被害組織2社(LexisNexis Legal & Professional、Manchester Airports Group)はいずれも侵害の事実は認めているがFulcrumSecを名指ししていない。攻撃者の主張と被害者確認を分離して扱う。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-03-04",
+          "publisher": "BleepingComputer（被害者コメント: LexisNexis Legal & Professional）",
+          "url": "https://www.bleepingcomputer.com/news/security/lexisnexis-confirms-data-breach-as-hackers-leak-stolen-files/",
+          "title": "LexisNexis confirms data breach as hackers leak stolen files",
+          "published_at": "2026-03-03",
+          "source_type": "secondary-report",
+          "reliability": "journalist-verified-claim",
+          "targets": "法務・規制・ビジネス情報の分析企業 LexisNexis Legal & Professional(米国)。攻撃者は約40万件のクラウド利用者プロファイルを取得し、うち118件が米国政府職員、連邦判事・法務書記官、米司法省弁護士、米SEC職員の .gov アドレスであると主張する。被害者側は流出範囲を旧データ中心と説明している。",
+          "activity_period": "攻撃者は2026年2月24日にAWS基盤へ侵入したと主張する(原文「on February 24 they gained access to the company's AWS infrastructure」)。被害者側は侵入時期を明示していない。公開日2026-03-03は reported_at 相当であり観測日へ流用しない。",
+          "malware": [],
+          "summary": "FulcrumSecが地下フォーラム等でLexisNexis L&Pから窃取したとする約2GBのファイルを公開した。攻撃者は未パッチのReactフロントエンドアプリのReact2Shell脆弱性を悪用してAWS基盤へ到達し、2.04GBの構造化データを持ち出したと主張する。LexisNexisは限定的な台数のサーバーへの不正アクセスを認めたうえで、対象は主に2020年以前の旧データであり、SSN・運転免許証番号・金融情報・有効なパスワード・顧客の検索クエリは含まれないとしている。攻撃者はLexisNexisへ接触したが交渉に応じられなかったと述べている。",
+          "verified_by_analyst": "原文を確認した(WebFetchは403のためcurlで取得、アクセス日2026-08-31、原文HTMLの datePublished は 2026-03-03T10:40:48-05:00)。LexisNexis L&PはBleepingComputerに対し侵害を認めているが、FulcrumSecへの帰属は行っていない。攻撃者の主張(侵入経路、窃取件数、.govアドレス118件)には被害者側・第三者による確認がない。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。"
+        },
+        {
+          "observed_on": "2026-08-31",
+          "publisher": "BleepingComputer（被害組織公式声明: Manchester Airports Group）",
+          "url": "https://www.bleepingcomputer.com/news/security/fulcrumsec-claims-manchester-airports-hack-theft-of-86-gb-of-data/",
+          "title": "FulcrumSec claims Manchester Airports hack, theft of 86 GB of data",
+          "published_at": "2026-08-30",
+          "source_type": "secondary-report",
+          "reliability": "journalist-verified-claim",
+          "targets": "英国最大の空港運営事業者 Manchester Airports Group(Manchester、London Stansted、East Midlands の3空港)。対象は駐車場・ラウンジ・Fast Trackの予約と空港内Wi-Fi登録に関する顧客データ。MAG広報は Manchester Evening News に対し約870万人が影響を受けたと述べている。",
+          "activity_period": "原文は攻撃の実施時期を明示していない。MAG公式声明の日付2026-08-27は公表日であり観測日へ流用しない。公開日2026-08-30も reported_at 相当である。攻撃者は窃取データに2026年内の今後の旅行に関する約20万件が含まれると主張する。",
+          "malware": [],
+          "summary": "FulcrumSecがMAG侵害の犯行を主張し、約86GBのデータを窃取したとBleepingComputerへ説明した。攻撃者は空港固有のIterable API認証情報がクライアント側JavaScriptに露出していたためアクセスできたと主張する。BleepingComputerは提供サンプル中の1レコードを実際のManchester Airport購入履歴と照合して真正性を確認したが、総量86GB、侵入経路、約20万件という件数は独立検証できていない。サンプルにはFast Track購入履歴、予約・到着予定時刻、利用ターミナル、支払額、購入参照番号、総支出額、IPアドレス、概位置、デバイス情報が含まれ、決済カード・銀行口座情報は確認されなかった。攻撃者は身代金を要求しMAGは支払いを拒否したと報じられている。攻撃者はデータ公開を予告しつつ、実害の可能性から一部の秘匿・墨消しを検討しているとする。",
+          "verified_by_analyst": "原文を確認した(WebFetchは403のためcurlで取得、アクセス日2026-08-31、原文HTMLの datePublished は 2026-08-30T11:00:21-04:00)。一次ソースであるMAG公式声明 https://www.manchesterairport.co.uk/help/data-security-incident/ (2026-08-27)も取得して確認したが、侵害の事実と対象データ種別を述べるのみで、FulcrumSecを含むいかなるアクターも名指ししていない(本文に FulcrumSec の文字列なし)。帰属は攻撃者の主張とBleepingComputerによるサンプル照合に基づく。tech-memo 20260831.md の収集ログも記事・一次ソース双方に技術的インジケーターが無いことを記録しており no_ioc_found と一致する。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "一次資料が実質BleepingComputerの単一系統であり、昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関による言及)は未達。被害組織の公式声明2件はいずれもFulcrumSecを名指ししていないため、独立した帰属根拠として数えない。",
+        "BleepingComputerが過去の主張先として挙げる Novo Nordisk、Global Schools Group、Avnet の3件は当該記事の記述のみで、各事案の一次資料を未確認。活動開始時期「active since 2025」も同記事の記述に依存する。",
+        "LexisNexis事案で主張されたReact2Shell脆弱性の悪用と、MAG事案で主張されたクライアント側JavaScriptへの Iterable API認証情報露出は、いずれも攻撃者の主張であり被害者側・第三者による技術的確認がない。2事案が同一運用主体であることの技術的裏付け(インフラ・ツール・TTPの重複)も公開されていない。",
+        "両事案ともIOCが公開されておらず、指標による将来観測との突合ができない。"
+      ],
+      "analyst_notes": "IOCを伴わない記事は IOC CSV の actor 列に現れないため、構造化フィールド由来の未一致名検知だけでは新規アクター名を取りこぼす。本件はその実例であり、日次チェックでは新規日のニュース本文も併せて確認する。"
+    },
+    {
       "cluster_id": "unknown-cluster--hermes-openclaw-asia-gov",
       "primary_name": "Hermes／OpenClaw マルチエージェントAIフレームワークによる対アジア政府機関侵入活動の運用者（未命名）",
       "aliases": [],
@@ -930,8 +982,8 @@
       "aliases": [],
       "status": "tracking",
       "first_seen": "2026-07-30",
-      "last_seen": "2026-08-26",
-      "detected_via": "tech-memo daily-news 2026-07-30 / 2026-07-31 / 2026-08-25",
+      "last_seen": "2026-08-29",
+      "detected_via": "tech-memo daily-news 2026-07-30 / 2026-07-31 / 2026-08-25 / 2026-08-29",
       "attribution": {
         "state": "self-attributed",
         "actor_type": "financially-motivated-extortion-group",
@@ -972,6 +1024,19 @@
           "activity_period": "原文は攻撃の発生日を2026-08-22と明示している。公開日2026-08-23は reported_at 相当であり観測日へ流用しない。",
           "summary": "攻撃者はReliaQuestのセキュリティ担当者を名指しで装って複数従業員へ電話し、1時間以内に登録・破棄された類似ドメイン上の偽SSOページへ誘導した。1名が認証情報を入力しMFAプッシュを承認したため、閲覧のみ可能なID基盤ダッシュボードのセッションを1件取得されたが、デバイストラストにより業務アプリ・システムへの到達は阻止され、顧客データへのアクセスはなかった。tech-memo経由のBleepingComputer記事はフィッシングドメインを reliaquest[.]claims としているが、ReliaQuest原文はドメイン名を記載していない。",
           "verified_by_analyst": "原文を確認した（アクセス日 2026-08-26、公開日 2026-08-23）。重要: ReliaQuest自身はこの侵入未遂をShinyHuntersを含むいかなる名前付きアクターへも帰属していない。ShinyHunters帰属はShinyHunters側の犯行主張と、それを報じたBleepingComputerによるものであり、被害者側の確認ではない。攻撃者の主張と被害者確認を分離して扱う。手口（ヘルプデスク／セキュリティ担当者を装うビッシング → 偽SSO → MFA承認 → IdP到達）は本クラスタの既存2観測と一致する。"
+        },
+        {
+          "observed_on": "2026-08-29",
+          "publisher": "McKesson Corporation（SEC Form 8-K）（二次: BleepingComputer）",
+          "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765326000247/mck-20260825.htm",
+          "title": "McKesson Corporation, Form 8-K (date of earliest event reported: August 25, 2026)",
+          "published_at": "2026-08-25",
+          "source_type": "victim-disclosure",
+          "reliability": "victim-statement",
+          "targets": "医薬品流通大手 McKesson Corporation(米国)。ShinyHuntersはSnowflakeから患者関連レコード約2億8,400万件を取得したと主張するが、McKessonは内容を確認していない。",
+          "activity_period": "ShinyHuntersは2026年8月21日〜25日の4日間で約1TBを窃取したと主張する。McKessonは2026年8月25日にインシデントを発見したとのみ記載し、攻撃期間を明示していない。8-Kの事象日・提出日を観測日へ流用しない。",
+          "summary": "McKessonはサイバーセキュリティインシデントの発生を公表した。ShinyHuntersは複数従業員へのボイスフィッシングで Okta SSO を侵害し、Salesforce および Snowflake 環境へアクセスして約1TBを窃取、55,236,150ドルの身代金を要求したと BleepingComputer へ主張している。窃取データには氏名、住所、生年月日、SSN、患者ID、医療記録番号、処方・薬剤・疾病情報が含まれるとするが、BleepingComputerは独自検証していない。ビッシングに使用されたとされるドメインは mckesson[.]claims。",
+          "verified_by_analyst": "SEC提出書類の原文を確認した(curlでHTTP 200を取得、アクセス日2026-08-31)。重要: 当該8-Kは Item 1.05(Material Cybersecurity Incidents)ではなく Item 7.01(Regulation FD Disclosure)による開示であり、「the company has not determined that the incident is material」と明記している。原文はインシデントの発生と調査が初期段階であることを述べるのみで、ShinyHuntersを含むいかなるアクターも名指ししておらず(本文に ShinyHunters の文字列なし)、サードパーティアプリケーションへの不正アクセス、データ流出、窃取規模、身代金要求のいずれにも言及していない。これらはすべてShinyHunters側の犯行主張とBleepingComputerの報道による。手口(ヘルプデスク／IT担当者を装うビッシング → IdP侵害 → SaaS環境からのデータ窃取 → 恐喝)は本クラスタの既存3観測と一致する。攻撃者の主張と被害者確認を分離して扱う。"
         }
       ],
       "related_profiles": [
@@ -982,7 +1047,7 @@
         }
       ],
       "unresolved_questions": [
-        "独立した観測3件(業界ISAC、被害企業2社)があり昇格閾値に近い。プロファイル新規作成の判断を利用者へ提案する。",
+        "独立した観測4件(業界ISAC1件、被害企業3社)があり、台帳の昇格閾値(独立した一次資料2本以上)に到達している。プロファイル新規作成の判断を利用者へ提案する。ただし被害企業3社の開示はいずれもShinyHuntersを名指ししておらず、帰属は攻撃者の犯行主張と報道に依存する点を昇格時に明記する。",
         "ReliaQuest観測は被害者側がShinyHuntersへ帰属していない。昇格時にこの1件を本クラスタの活動として数えるかは、犯行主張のみを根拠とする活動の扱いを決めてから判断する。"
       ],
       "analyst_notes": "命名済みの著名アクターにプロファイルが無いケース。"
@@ -1163,6 +1228,52 @@
         "Chaosランサムウェアの運営者がBlackSuit/Royal（Conti系譜）の元メンバーと関連するとの分析があるが、これはRaaS運営者側の話であり、アフィリエイトであるSTAC4749の帰属とは分離して扱う必要がある。"
       ],
       "analyst_notes": "日次キューではBlackByteとMuddyWaterへの誤マッチとして現れたが、記事の実際の主体はこのクラスタである。両プロファイルへの反映は行わない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--terminalfix",
+      "primary_name": "TerminalFix (キャンペーン名。運用者の呼称は未確立)",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-08-31",
+      "last_seen": "2026-08-31",
+      "detected_via": "tech-memo daily-news 2026-08-31。日次チェックの未一致名として観測15件で検知した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "intrusion-set",
+        "notes": "Microsoft Threat Intelligenceは「Microsoft Threat Intelligence has observed a TerminalFix campaign, a variant of ClickFix, targeting organizations across multiple industries.」とのみ記載し、Storm-####、Blizzard／Typhoon／Sandstorm 等のMicrosoft命名アクターを含め、名前付きアクターへの帰属も国家帰属も一切行っていない。原文中の「threat actors」は緩和策セクションの一般的表現であり、特定主体を指さない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-08-31",
+          "publisher": "Microsoft Threat Intelligence",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/08/28/terminalfix-campaign-deploys-reverse-tunnel-through-multistage-intrusion/",
+          "title": "TerminalFix campaign deploys a reverse tunnel through multistage intrusion",
+          "published_at": "2026-08-28",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "原文は「organizations across multiple industries」とのみ記載し、業種・地域・被害組織名のいずれも特定していない。",
+          "activity_period": "原文は攻撃の観測期間を明示していない。公開日2026-08-28は reported_at 相当であり観測日へ流用しない。IOC CSVのdate列2026-08-28も個別の観測日ではなく一次ソースの公開日を採用した値であり(tech-memo 20260831.md 収集ログに明記)、期間集計へ用いない。",
+          "malware": [
+            "TerminalFix（Python製カスタムリバーストンネルインプラント。原文はキャンペーン名として使用し、検体へ別名を与えていない）"
+          ],
+          "tools": [
+            "LockScreenContentServer.exe（正規バイナリ。DLLサイドローディングの担体）",
+            "悪性 dui70.dll（サイドロードされるローダー。SHA256 9検体）",
+            "PNG画像へのステガノグラフィによるペイロード秘匿",
+            "pythonw.exe（インプラントの非表示実行）",
+            "attrib（マルウェアディレクトリの隠蔽 [T1564.001]）"
+          ],
+          "summary": "改ざん済みWebサイト上の偽Cloudflare Turnstile CAPTCHAで悪意あるPowerShellをコピー実行させるClickFix亜種。従来のClickFixがWindows Runダイアログへ誘導するのに対し、TerminalFixはWindows Terminal／PowerShellへ誘導することで複数行スクリプトの実行成功率を高める。実行後は正規バイナリと悪性dui70.dllを含むZIPを取得してDLLサイドローディングを行い、PNG画像内へステガノグラフィで隠したペイロードを展開する。Registry Runキーと60分間隔のスケジュールタスクで二重に永続化し、ドメイン信頼関係・Domain Admin・ADユーザー description・サーバーへのping sweep を含む広範な偵察を実施したうえで、Python製リバーストンネルインプラントを gitnow[.]dev:443 へTLS WebSocketで接続させる。インプラントはSOCKS5形式のアドレス解析により被害端末を内部ネットワークへの中継点(ピボット)へ変える。単一のインフォスティーラー配布で完結する従来のClickFix亜種とは異なり、ネットワークレベルのプロキシアクセス確立を目的とする点が特徴である。",
+          "verified_by_analyst": "原文を確認した(curlでHTTP 200を取得、アクセス日2026-08-31、原文表記 Research / August 28 / 16 min read)。重要: 原文全文を機械的に走査し、Storm-####、Blizzard、Typhoon、Sandstorm を含む名前付きアクター指定子が1件も出現しないこと、帰属を述べる記述が存在しないことを確認した。Microsoftは「Microsoft did not observe the downstream actions described below in the analyzed chain.」として、権限昇格・セキュリティ無効化・情報窃取・ランサムウェア展開までは今回の解析対象で未観測と明記している。同名製品・別クラスタ・法執行記事・過去言及のいずれでもない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "単一ベンダー(Microsoft)の初報のみで、独立した一次資料も政府・CERT・法執行機関の言及もなく昇格閾値は未達。",
+        "運用者の呼称が存在せず、クラスタ名はルアー手法に由来するキャンペーン名に依存する。ClickFixとその亜種は相互に無関係な多数の攻撃者が用いる汎用手法であるため、TerminalFix という名称の一致だけを根拠に将来の観測を同一運用主体へ結び付けない。同一性の判断にはインフラまたは検体の重複を要する。",
+        "Microsoftが解析チェーンで後続段階を未観測としているため、最終目的(スパイ活動か、ランサムウェア等の金銭目的か、初期アクセス販売か)が未確定。actor_type は intrusion-set に留め、動機を確定しない。"
+      ],
+      "analyst_notes": "2026-08-30の日次チェックでMicrosoft原文にアクター帰属が無いことを理由にレビューキューへのレコード化を不採用としたが(state.json の external_source_checks に記録)、台帳への記録が漏れていた。2026-08-31のチェックで原文をHTTP 200で再取得し帰属記述の不在を再確認したうえで登録する。運用者が未命名のキャンペーン単位クラスタを、アクター指定子の不在を理由に不登録としない方針(本台帳 analyst_notes、2026-08-23)に従う。"
     },
     {
       "cluster_id": "unknown-cluster--the-gentlemen-affiliate",
@@ -1577,5 +1688,5 @@
       "reason": "記事中の「Night Dragon」はFlying Eagleの後継として2026-06-23に導入された新興Android RATプラットフォームの名称であり、既存プロファイルの脅威アクターとは無関係な同名別エンティティ。原文で確認済み。追跡対象としない。ただしプラットフォーム名としての「Night Dragon」は今後も日次キューで既存プロファイルへ誤一致する見込み。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。"
 }
