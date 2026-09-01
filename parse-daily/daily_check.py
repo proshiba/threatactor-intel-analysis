@@ -166,6 +166,7 @@ def build_report(days: int, since: str | None) -> dict:
         key=lambda entry: (not entry["in_recent_set"], entry["priority"], entry["name"]),
     )
     unmatched = queue.get("unmatched_actor_values") or []
+    name_candidates = queue.get("unmatched_name_candidates") or []
 
     return {
         "schema_version": "1.0.0",
@@ -186,10 +187,12 @@ def build_report(days: int, since: str | None) -> dict:
             "mentioned_recent_actors": sum(1 for e in mentioned if e["in_recent_set"]),
             "records": len(records),
             "unmatched_actor_values": len(unmatched),
+            "unmatched_name_candidates": len(name_candidates),
             **(queue.get("statistics") or {}),
         },
         "mentioned_actors": mentioned,
         "unmatched_actor_values": unmatched,
+        "unmatched_name_candidates": name_candidates,
         "recent_actors": recent,
     }
 
@@ -208,7 +211,11 @@ def render_markdown(report: dict, top: int) -> str:
         f"- 新規ウィンドウで言及されたアクター: **{stats['mentioned_actors']}** 件"
         f"（うち直近活動あり: {stats['mentioned_recent_actors']} 件）",
         f"- レビュー待ちレコード: **{stats.get('records', 0)}** 件",
-        f"- 既存プロファイルに一致しない名前: **{stats['unmatched_actor_values']}** 件",
+        # unmatched_actor_values は queue 側で観測数の合計に上書きされるため、名称数と区別して表示する
+        f"- 既存プロファイルに一致しないIOC actor値: **{stats['unmatched_actor_values']}** 観測"
+        f"（{len(report['unmatched_actor_values'])} 名称）",
+        f"- 本文から抽出した未登録のアクター名候補: "
+        f"**{len(report['unmatched_name_candidates'])}** 件",
         "",
     ]
 
@@ -241,13 +248,30 @@ def render_markdown(report: dict, top: int) -> str:
         lines.append("")
 
     if report["unmatched_actor_values"]:
-        lines += ["## 既存プロファイルに一致しない名前", "",
+        lines += ["## 既存プロファイルに一致しない名前（IOC CSVのactor列）", "",
                   "新規プロファイル作成の検討対象です（自動では作成しません）。", ""]
         for value in report["unmatched_actor_values"][:top]:
             if isinstance(value, dict):
                 lines.append(f"- {value.get('value')}（観測 {value.get('observations', '?')} 件）")
             else:
                 lines.append(f"- {value}")
+        lines.append("")
+
+    if report["unmatched_name_candidates"]:
+        lines += ["## 本文から抽出した未登録のアクター名候補", "",
+                  "IOCを伴わない記事はIOC CSVのactor列に現れないため、本文の実行主体表現からも"
+                  "名前を抽出しています。発見用途であり、被害組織名・製品名・ベンダー名を含みます。"
+                  "原文を確認したうえで、`parse-daily/unknown-clusters.json` との照合と"
+                  "新規プロファイル作成の要否を判断してください（自動承認しません）。", ""]
+        for candidate in report["unmatched_name_candidates"][:top]:
+            sources = candidate.get("sources") or []
+            lines.append(f"- **{candidate.get('value')}**（記事 {candidate.get('articles', '?')} 件）")
+            for source in sources[:2]:
+                lines.append(
+                    f"  - {source.get('news_date')} {source.get('title')} / {source.get('primary_url')}"
+                )
+        if len(report["unmatched_name_candidates"]) > top:
+            lines.append(f"- ほか {len(report['unmatched_name_candidates']) - top} 件")
         lines.append("")
 
     lines += [f"## 直近{window['recent_days']}日に活動があったアクター（上位{top}件）", "",

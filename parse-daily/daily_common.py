@@ -74,6 +74,34 @@ HISTORICAL_CONTEXT_RE = re.compile(
     re.IGNORECASE,
 )
 
+# 本文からの未登録アクター名の抽出。
+# IOC CSVのactor列を持たない記事（IOCが公開されていない記事）は
+# unmatched_actor_values に現れないため、発見用途の第2チャンネルとして本文を走査する。
+# 日本語は語間に空白を置かないため、実行主体を表す日本語の指示語に直接続くラテン文字列は
+# 名称として一意に切り出せる。この性質を使って、実行主体を指す位置に現れた名前だけを拾う。
+_CANDIDATE_NAME = r"(?P<name>[A-Z][A-Za-z0-9]*(?:[ ._-][A-Z0-9][A-Za-z0-9]*){0,3})"
+# 直後が日本語の助詞・句読点であること。名称の右端を確定させ、後続の別語を巻き込まない。
+_CANDIDATE_TAIL = r"(?=[はがをにへでとやのも、。）」』・]|$)"
+_ACTOR_DESIGNATOR = (
+    r"(?:攻撃者は|脅威アクター|グループ|集団|アクター|ギャング|チーム|"
+    r"オペレーター|アフィリエイト|運営者|運用者)"
+)
+NAME_CANDIDATE_PATTERNS = (
+    # 「データ恐喝グループFulcrumSecは」「脅威アクターFulcrumSecが」「攻撃者はFulcrumSecで」
+    re.compile(_ACTOR_DESIGNATOR + _CANDIDATE_NAME + _CANDIDATE_TAIL),
+    # 「攻撃はShinyHuntersによるものとみられ」
+    re.compile(
+        r"(?:攻撃|侵害|犯行|キャンペーン|作戦)(?:は|を|の実行は)"
+        + _CANDIDATE_NAME
+        + r"(?=による|が|は)"
+    ),
+    # 「Zestixを名乗る」「Zestixと自称する」
+    re.compile(_CANDIDATE_NAME + r"(?=を名乗る|と名乗る|と自称)"),
+    re.compile(r"(?:自称|通称)" + _CANDIDATE_NAME + _CANDIDATE_TAIL),
+)
+CVE_ID_RE = re.compile(r"^CVE-\d{4}-\d+$", re.IGNORECASE)
+MINIMUM_NAME_CANDIDATE_LENGTH = 3
+
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -465,6 +493,32 @@ class ActorRegistry:
                 if key and key not in {"unknown", "na", "none"} and key in lookup:
                     refs.append(lookup[key])
         return sorted(set(refs))
+
+
+def name_candidates(
+    article: dict[str, Any], registry: "ActorRegistry", ignored: Iterable[str]
+) -> list[str]:
+    """記事本文から、既存プロファイルに一致しないアクター名候補を抽出する。
+
+    IOC CSVのactor列を経由しない発見用途のチャンネルである。AGENT.md の
+    「ニュース本文の名前一致は発見用途に限り、自動承認しない」に従い、
+    レコードは生成せず名前だけを報告する。既にレジストリへ登録済みの名前は
+    ActorRegistry.mentions() が扱うため除外する。
+    """
+    ignored_keys = {value.casefold() for value in ignored}
+    text = f"{article.get('title') or ''}\n{article.get('body') or ''}"
+    found: dict[str, str] = {}
+    for pattern in NAME_CANDIDATE_PATTERNS:
+        for match in pattern.finditer(text):
+            value = match.group("name").strip(" ._-")
+            if len(value) < MINIMUM_NAME_CANDIDATE_LENGTH:
+                continue
+            if CVE_ID_RE.match(value) or value.casefold() in ignored_keys:
+                continue
+            if normalized_name(value) in registry.terms:
+                continue
+            found.setdefault(normalized_name(value), value)
+    return sorted(found.values())
 
 
 def article_summary(body: str) -> str:

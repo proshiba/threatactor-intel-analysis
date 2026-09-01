@@ -86,6 +86,16 @@ activity_claim.assessment が strong-subject / attributed-subject でも自動�
 parse-daily/unknown-clusters.json を照合してください。判断規則は
 parse-daily/AGENT.md の「アクター照合」に従います。
 
+日次チェックは未一致の名前を2系統で報告します。どちらも確認してください。
+
+- 「既存プロファイルに一致しない名前（IOC CSVのactor列）」: 構造化フィールド由来
+- 「本文から抽出した未登録のアクター名候補」: 記事本文の実行主体表現由来
+
+後者はIOCが公開されていない記事を拾うための系統です。2026-08-31 の走査では、
+FulcrumSec による Manchester Airports Group 侵害の記事に IOC が無く IOC CSV の
+actor 列に現れなかったため、前者だけでは検知できませんでした。被害組織名・製品名・
+ベンダー名が混じるので、原文を確認してから判断してください。
+
 - clusters に既出なら observations へ観測を追加し、last_seen を更新します
 - excluded_name_collisions に記録済みの名称衝突は再検討しません
 - どちらにも無く、原文で実体が確認できたクラスタは status: tracking で追加します

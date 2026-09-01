@@ -27,6 +27,7 @@ from daily_common import (  # noqa: E402
     assess_activity_claim,
     date_from_path,
     is_safe_structured_match,
+    name_candidates,
     parse_news_file,
     read_ioc_csv,
     write_json_if_changed,
@@ -116,6 +117,66 @@ class DailyCommonTests(unittest.TestCase):
             self.assertFalse(
                 is_safe_structured_match("Kimsuky (low confidence)", matches[0])
             )
+
+    def registry_with(self, *names: str) -> ActorRegistry:
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        root = Path(directory.name)
+        for name in names:
+            slug = name.lower().replace(" ", "-")
+            (root / slug).mkdir()
+            (root / slug / "actor-profile.json").write_text(
+                json.dumps(profile(name, [])), encoding="utf-8"
+            )
+        return ActorRegistry(root, CONFIG)
+
+    def test_name_candidate_is_extracted_from_body_without_iocs(self) -> None:
+        """IOCを伴わない記事はIOC CSVのactor列に現れないため、本文から名前を拾う。"""
+        article = {
+            "title": "FulcrumSec、Manchester Airportsへの侵害と86GBのデータ窃取を主張",
+            "body": (
+                "- 要約\n"
+                "    - データ恐喝グループFulcrumSecはManchester Airports Group（MAG）への"
+                "侵害を主張し、約86GBのデータを窃取したとBleepingComputerへ説明した。\n"
+                "- IOCの列挙\n"
+                "    - IOC情報なし\n"
+                "- その他\n"
+                "    - 攻撃者は2025年から活動する金銭目的のデータ恐喝グループFulcrumSecで、"
+                "暗号化より機密データ窃取と公開脅迫を重視する。\n"
+            ),
+        }
+        found = name_candidates(article, self.registry_with("APT28"), [])
+        self.assertIn("FulcrumSec", found)
+        # 実行主体の位置に現れない被害組織名・ベンダー名は拾わない
+        self.assertNotIn("Manchester Airports Group", found)
+        self.assertNotIn("BleepingComputer", found)
+
+    def test_name_candidate_skips_registered_actors_and_ignored_values(self) -> None:
+        article = {
+            "title": "",
+            "body": (
+                "- その他\n"
+                "    - 攻撃者は恐喝グループShinyHuntersで、Microsoft Teamsを悪用した。\n"
+                "    - 脅威アクターAPT28が関与したとみられる。\n"
+            ),
+        }
+        registry = self.registry_with("APT28", "ShinyHunters")
+        # 登録済みの名前は ActorRegistry.mentions() が扱うため、候補には出さない
+        self.assertEqual(name_candidates(article, registry, []), [])
+        # 未登録でも、設定の除外リストにある製品名は候補にしない
+        found = name_candidates(article, self.registry_with("APT28"), ["Microsoft Teams"])
+        self.assertEqual(found, ["ShinyHunters"])
+
+    def test_name_candidate_rejects_cve_ids_and_short_tokens(self) -> None:
+        article = {
+            "title": "",
+            "body": (
+                "- その他\n"
+                "    - 攻撃グループCVE-2026-59310を悪用したとされる。\n"
+                "    - 攻撃者はABで、詳細は不明。\n"
+            ),
+        }
+        self.assertEqual(name_candidates(article, self.registry_with("APT28"), []), [])
 
     def test_read_structured_ioc_csv(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
