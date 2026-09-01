@@ -59,7 +59,10 @@ python3 parse-daily/validate_daily.py \
 既存プロファイルへ帰属できないクラスタは`unknown-clusters.json`へ記録します。
 `review-decisions.json`はキーにアクターslugを要求するため未帰属クラスタを保持できず、
 別台帳としています。日次チェックで未一致の名前を見つけたら、新規プロファイル作成や
-既存プロファイルへの寄せ付けより先にこの台帳を照合します。実体のあるクラスタは
+既存プロファイルへの寄せ付けより先にこの台帳を照合します。未一致の名前は、IOC CSVの
+`actor`列由来の`unmatched_actor_values`と、記事本文の実行主体表現由来の
+`unmatched_name_candidates`の2系統で報告されます。後者はIOCが公開されていない記事を
+拾うための系統で、被害組織名・製品名・ベンダー名が混じるため発見用途に限ります。実体のあるクラスタは
 `clusters`へ観測を積み、文字列断片による名称衝突は`excluded_name_collisions`へ
 除外理由を残して再検討を避けます。台帳は`profiles/`配下ではないためUIには出ません。
 独立した一次資料が2本以上集まった時点で`profiles/<slug>/`への昇格を検討します。

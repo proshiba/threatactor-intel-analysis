@@ -19,6 +19,7 @@ from daily_common import (
     is_file_like,
     is_safe_structured_match,
     load_json,
+    name_candidates,
     parse_news_file,
     qualifier_confidence,
     read_ioc_csv,
@@ -30,6 +31,9 @@ from daily_common import (
 
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent
+
+# 名前候補ごとに保持する記事コンテキストの上限。queueの肥大化を防ぐ。
+NAME_CANDIDATE_CONTEXT_LIMIT = 5
 
 
 def git_commit(source_root: Path) -> str:
@@ -226,6 +230,25 @@ def main() -> int:
         value.casefold() for value in config["matching"].get("ignored_actor_values", [])
     }
 
+    # IOCを伴わない記事はIOC CSVのactor列に現れず unmatched_actor_values で検知できない。
+    # 発見用途の第2チャンネルとして、本文から未登録のアクター名候補を収集する。
+    ignored_names = config["matching"].get("ignored_name_candidates", [])
+    name_candidate_counts: Counter[str] = Counter()
+    name_candidate_articles: dict[str, list[dict[str, str]]] = {}
+    for article in articles:
+        for value in name_candidates(article, registry, ignored_names):
+            name_candidate_counts[value] += 1
+            context = name_candidate_articles.setdefault(value, [])
+            if len(context) < NAME_CANDIDATE_CONTEXT_LIMIT:
+                context.append(
+                    {
+                        "news_date": article.get("news_date") or "",
+                        "news_path": article.get("news_path") or "",
+                        "title": article.get("title") or "",
+                        "primary_url": article.get("primary_url") or "",
+                    }
+                )
+
     for path in sorted(iocs_root.rglob("*.csv")):
         file_date = date_from_path(path)
         if not in_range(file_date, args.since, args.until):
@@ -419,12 +442,22 @@ def main() -> int:
             "ioc_observations": sum(len(item["iocs"]) for item in ordered),
             "artifact_candidates": sum(len(item["artifacts"]) for item in ordered),
             "unmatched_actor_values": sum(unmatched_actor_values.values()),
+            "unmatched_name_candidates": len(name_candidate_counts),
             "parse_errors": len(parse_errors),
             "decision_issues": decision_issue_count,
         },
         "unmatched_actor_values": [
             {"value": value, "observations": count}
             for value, count in unmatched_actor_values.most_common()
+        ],
+        "unmatched_name_candidates": [
+            {
+                "value": value,
+                "articles": count,
+                "detected_via": "news-body",
+                "sources": name_candidate_articles.get(value, []),
+            }
+            for value, count in name_candidate_counts.most_common()
         ],
         "parse_errors": parse_errors,
         "decision_issues": decision_issues,
