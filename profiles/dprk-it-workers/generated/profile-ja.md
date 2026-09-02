@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--dprk-it-workers`
 - 状態: draft
-- 更新日時: 2026-08-19T04:07:00Z
+- 更新日時: 2026-09-02T12:58:02Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| Famous Chollima | CrowdStrike | exact | 中 | `source--daily-10f083232dfd566dc4f9` | CrowdStrikeのFAMOUS CHOLLIMAは、北朝鮮政権へ賃金を送金するための不正就労(リモートITワーカー)を中核とする追跡名であり、本プロファイル「DPRK IT Worker Schemes」が対象とするクラスタと実質的に同一の範囲を指す。したがってscopeはexactとする。profiles/contagious-interview 側にも同名aliasが登録されているが、そちらはscope: broaderであり、「FAMOUS CHOLLIMAはContagious Interview(偽求人面接によるマルウェア配布キャンペーン)より広い」ことを表す記録である。ここでexactを与えることで、日次キューのActorRegistryは複数プロファイル一致の場合に一意なexact一致を優先し、「Famous Chollima」の言及を本プロファイルへ解決する。運用上の振り分け基準: リモートITワーカーの不正就労・身元詐称・賃金送金を主題とする資料は本プロファイルへ、偽の採用面接やコーディング課題を用いたマルウェア配布を主題とする資料はcontagious-interviewへ割り当てる。CrowdStrikeが同一名の下にContagious Interview系の活動も併せて整理する場合がある点は、両プロファイルのalias注記として残す。exactは日次キューでの解決先を一意に定めるためのモデリング上の判断であり、個々の資料についてはAGENT.mdに従い原文で実行主体を確認したうえでレコードを採否する。 根拠資料: Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」(2026-08-26)は「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」と記し、本プロファイルの対象とFAMOUS CHOLLIMAを同義に用いている。 |
 
 ## 帰属
 
@@ -112,6 +114,7 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 北朝鮮（DPRK）リモートワーカー調査から得られた知見 | reported-activity | 不明 | 不明 | 2026-09-01 |  |  |  |  | Huntressは2026年、複数組織の調査を支援し、偽造・盗用した身元を使って正規従業員として採用された可能性が高い北朝鮮系リモートワーカー5人を特定した。 医療分野の3人はAstrill VPN、IPRoyal Proxy、WorkTitans B.V.などを利用し、位置情報を隠蔽していたほか、勤務時間や偽造身分証にも共通する異常が確認された。 金融分野ではPiKVMを使ったハードウェアレベルの遠隔操作、Guermok USBキャプチャカード、盗用・加工した顔写真など、過去のDPRK ITワーカー活動と重なる痕跡を確認した。 別の事例では、盗用した身元情報、Toffeeshare、VDO Ninja、音声・画面記録用Chrome拡張などを利用し、不正に雇用を得ていた可能性が高いと評価された。 Huntressは単一IOCだけではDPRK関与を証明できないため、端末、認証、ブラウザ、クラウド、勤務時間、身分証メタデータなど複数の兆候を組み合わせる必要があるとしている。 | 中 | `source--daily-10f083232dfd566dc4f9` |
 | 偽DeFiスタートアップBallena Azul LTDへのITワーカー3名の採用と内部観測 | cyber-espionage | 不明 | 不明 | 2026-08-10 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--dprk-it-workers--sector--cryptocurrency, target--dprk-it-workers--sector--information-technology |  | ttp--dprk-it-workers-anyrun2-t1078, ttp--dprk-it-workers-anyrun2-t1090, ttp--dprk-it-workers-anyrun2-t1219, ttp--dprk-it-workers-anyrun2-t1585, ttp--dprk-it-workers-anyrun2-t1656 | victim--activity-rule--53b06986d70b4343e693 | ANY.RUNの研究者が偽のDeFi企業Ballena Azul LTD(Blue Whale LTD)を設立し、北朝鮮関連Famous Chollimaと疑われるITワーカー3名(Angelo Espree、Jack Anderson、Lucas Theo)を実際に採用して、内部から業務活動を観測した調査報告。第1弾に続く第2弾にあたる。ITワーカーは偽造・窃取した身分証明書、SSN、銀行口座を用いてリモート採用に応募し、正規従業員として組織内部へ入り込もうとしていた。採用後はGoogle Remote Desktop、AnyDesk、AstrillVPN、VPSを利用してVDIへ接続し、ChatGPTをコーディングと技術的な質問への回答に、Google Geminiを身分証明書を含む文書の偽造に、ライブ翻訳ツールを面接時の受け答えに利用していた。ANY.RUNはFamous Chollimaの目的を短期的な侵入ではなく、従業員として長期間アクセスし、ソースコード、知的財産、業務プロセスへ接触しながら給与を北朝鮮へ還流することであると評価している。調査では北朝鮮が運用するVPS、AstrillVPNの出口ノード、暗号資産ウォレットが特定され、複数のITワーカーが連携して運用している実態が示された。 | 高 | `source--anyrun-it-workers-part-two-2026` |
 | NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 | financial-fraud | 不明 | 不明 | 2026-03-18 | target--dprk-it-workers--region--north-america, target--dprk-it-workers--region--western-europe, target--dprk-it-workers--sector--information-technology, target--dprk-it-workers--sector--web-agency |  | ttp--activity-rule--c8e6994beb392d81aac5, ttp--dprk-it-workers-flare-nkitw-t1078, ttp--dprk-it-workers-flare-nkitw-t1219, ttp--dprk-it-workers-flare-nkitw-t1583-003, ttp--dprk-it-workers-flare-nkitw-t1585-001, ttp--dprk-it-workers-flare-nkitw-t1585-002, ttp--dprk-it-workers-flare-nkitw-t1586, ttp--dprk-it-workers-flare-nkitw-t1593-002, ttp--dprk-it-workers-flare-nkitw-t1656 | victim--activity-rule--a31956aff1a38158c5d9 | FlareとIBM X-Forceが共同で実施した、北朝鮮IT労働者(North Korean IT Worker、NKITW)エコシステムの日常運用に関する調査報告。原文は「does not focus on a specific incident or cluster of activity」と明記しており、特定の侵害事案ではなく、内部スプレッドシート、内部共有スライド、IP Messengerログ、Google Translate履歴、ブラウザ履歴といった一次資料から運用実態そのものを解明したものである。<br><br>組織構造として、NKITWエコシステムはRecruiter(候補者の選別と初回面接の録画)、Facilitator(ペルソナ作成、就職獲得、新規要員のオンボーディング、協力者との接続)、IT Worker(実務)、Collaborator／Broker(西側の身元提供者・アカウント売買)の4つの役割で構成されると評価している。FacilitatorとIT Workerの職掌は重複し、厳密には分離できない。採用面接では「C Digital LLC」というステルス期のスタートアップを名乗り、候補者へ米国の身元(profiles)を貸与すると説明する。候補者自身がDPRKのための就労と認識しているかは確認できていない。<br><br>身分偽装は、Protonmail等の捨てアドレスを起点にGmailを取得し、LinkedIn、GitHub、Upwork等へ偽プロフィールを作成する流れで行われる。顔写真は逆画像検索を避けるためAI編集され、履歴書テンプレートの改変、企業のメールアドレス書式調査に基づく偽の前職照会状の作成、偽装身分の国籍に合わせたGoogle Voice番号の使用が確認されている。フルタイム就労では本人確認と給与振込が障壁となるため、LinkedInやGitHubで勧誘した西側協力者に薬物検査、バックグラウンドチェック、I-9書類、社給端末の受領、銀行・税務情報の提供を代行させ、協力者の実機へAnyDesk等でリモート接続して就労する。フリーランス就労では検証済みアカウントを違法フォーラムやブローカーから購入する。<br><br>就労維持の局面では、Google TranslateとChatGPTが恒常的に使用される。Jiraチケットの翻訳、ChatGPTへの解法照会、回答の翻訳、Slackの翻訳、GitHubへのPull Request提出という循環が数週間から数か月続く。翻訳履歴の多くが英語から韓国語への方向であり、英語で下書きした文面を韓国語へ戻して意味を自己検証していると評価されている。最終的に成果や意思疎通の問題から解雇に至り、協力者経由での端末返送と最終給与の受領を経て、新しい身分で同じ工程を繰り返す。<br><br>内部基盤としては、北朝鮮側が運用する管理用Webプラットフォーム「RB Site」(内部アドレス 192.168.109.2、machine_info、network_reports、payment、blocked_urls等の画面)と「NetkeyRegister」(内部アドレス 172.20.100.7:8000)が特定された。FlareはRBをKorea Ryonbong General Corporationの略と中確度で評価している。端末にはDPRK製VPNのNetKey(4.1／5.0／5.1)またはOConnect(5.3／5.5／5.7／5.9.3／6.0.0)が導入され、実行パスに「STN Corp」「rb corp」が現れる。バージョンの連続性から、5.2前後でNetKeyがOConnectへ改称された可能性が高いと評価されている。内部連絡にはサーバー不要のIP Messengerが使われる。<br><br>帰属について原文は、軍需工業部、国防省、科学教育部、偵察総局など複数の政府機関・党組織・フロント企業がそれぞれITワーカーを展開しており、個々のワーカーを特定部署へ確度高く帰属させることは困難であるとしている。最優先の動機は、獲得した給与を当局へ還流させることである。原文はさらに、一部のチームがデータの持ち出しや恐喝、暗号資産の窃取にも関与すると記載している。 | 高 | `source--flare-ibm-xforce-nkitw-2026` |
 
@@ -119,6 +122,7 @@ Aliasなし
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| 北朝鮮（DPRK）リモートワーカー調査から得られた知見 | DPRK IT Worker Schemes | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 偽DeFiスタートアップBallena Azul LTDへのITワーカー3名の採用と内部観測 | DPRK IT Worker Schemes | 情報なし | T1078 Valid Accounts, T1090 Proxy, T1219 Remote Access Tools, T1585 Establish Accounts, T1656 Impersonation | 情報なし | 金融, 暗号資産・DeFi, リモート採用を行うIT・ソフトウェア開発企業 | 被害事例: 偽DeFiスタートアップBallena Azul LTDへのITワーカー3名の採用と内部観測 | 高 |
 | NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 | DPRK IT Worker Schemes | 情報なし | T1219.002 Remote Desktop Software, T1078 Valid Accounts, T1219 Remote Access Software, T1583.003 Acquire Infrastructure: Virtual Private Server, T1585.001 Establish Accounts: Social Media Accounts, T1585.002 Establish Accounts: Email Accounts, T1586 Compromise Accounts, T1593.002 Search Open Websites/Domains: Search Engines, T1656 Impersonation | 情報なし | 北米, 西欧, リモート採用を行うIT・ソフトウェア開発企業, 受託開発を行うWebエージェンシーとそのクライアント | 被害事例: NKITWエコシステムの内部運用実態(役割分担・身分偽装・RB Site／NetKey／OConnect)の解明 | 高 |
 
@@ -213,15 +217,16 @@ Aliasなし
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--anyrun-it-workers-part-two-2026 | Smile, You're on Camera! Part 2: Hiring Lazarus APT IT Workers at a Fake DeFi Startup | ANY.RUN | 2026-08-10 | https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/ | primary-report | TLP:CLEAR | 高 |
+| source--daily-10f083232dfd566dc4f9 | 北朝鮮（DPRK）リモートワーカー調査から得られた知見 | huntress.com | 2026-09-01 | https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation | osint-report | TLP:CLEAR | 中 |
+| source--dprk-it-workers--15da1b5bbfbc5250 | Smile, You’re on Camera  A Live Stream from Inside Lazarus Group’s IT Workers Scheme |  | 不明 | CyberMerceNary/ITWorker/Smile, You’re on Camera_ A Live Stream from Inside Lazarus Group’s IT Workers Scheme.pdf | report | TLP:CLEAR | 中 |
+| source--dprk-it-workers--769f09c40948bde0 | readme |  | 不明 | CyberMerceNary/ITWorker/readme.md | repository-notes | TLP:CLEAR | 中 |
 | source--dprk-it-workers--94775915798a421c | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
+| source--dprk-it-workers--a08fdc503ef8f9a4 | JOINT CSA DPRK SOCIAL ENGINEERING |  | 不明 | CyberMerceNary/ITWorker/JOINT_CSA_DPRK_SOCIAL_ENGINEERING.pdf | report | TLP:CLEAR | 中 |
 | source--dprk-it-workers--b57b6250dea995f1 | DeceptiveDevelopment and North Korean IT workers from primitive crypto theft to sophisticated AI based deception |  | 不明 | CyberMerceNary/ITWorker/DeceptiveDevelopment-and-North-Korean-IT-workers-from-primitive-crypto-theft-to-sophisticated-AI-based-deception.pdf | report | TLP:CLEAR | 中 |
 | source--dprk-it-workers--bc62b8e29937a263 | Inside the ScamNorth Korea’s IT Worker Threat |  | 不明 | CyberMerceNary/ITWorker/Inside the ScamNorth Korea’s IT Worker Threat.pdf | report | TLP:CLEAR | 中 |
-| source--dprk-it-workers--a08fdc503ef8f9a4 | JOINT CSA DPRK SOCIAL ENGINEERING |  | 不明 | CyberMerceNary/ITWorker/JOINT_CSA_DPRK_SOCIAL_ENGINEERING.pdf | report | TLP:CLEAR | 中 |
 | source--dprk-it-workers--e7356e8e649de477 | OFSI Advisory on North Korean IT Workers |  | 不明 | CyberMerceNary/ITWorker/OFSI_Advisory_on_North_Korean_IT_Workers.pdf | report | TLP:CLEAR | 中 |
-| source--dprk-it-workers--15da1b5bbfbc5250 | Smile, You’re on Camera  A Live Stream from Inside Lazarus Group’s IT Workers Scheme |  | 不明 | CyberMerceNary/ITWorker/Smile, You’re on Camera_ A Live Stream from Inside Lazarus Group’s IT Workers Scheme.pdf | report | TLP:CLEAR | 中 |
 | source--dprk-it-workers--eb29460df938ef81 | north korean scammers are posing as it freelancers here's how you can protect your business |  | 不明 | CyberMerceNary/ITWorker/north-korean-scammers-are-posing-as-it-freelancers_-here's-how-you-can-protect-your-business.pdf | report | TLP:CLEAR | 中 |
-| source--dprk-it-workers--769f09c40948bde0 | readme |  | 不明 | CyberMerceNary/ITWorker/readme.md | repository-notes | TLP:CLEAR | 中 |
-| source--anyrun-it-workers-part-two-2026 | Smile, You're on Camera! Part 2: Hiring Lazarus APT IT Workers at a Fake DeFi Startup | ANY.RUN | 2026-08-10 | https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/ | primary-report | TLP:CLEAR | 高 |
 | source--flare-ibm-xforce-nkitw-2026 | Inside the North Korean Infiltrator Threat | Flare Research and IBM X-Force | 2026-03-18T13:00:34Z | https://flare.io/learn/resources/north-korean-infiltrator-threat | primary-report | TLP:CLEAR | 高 |
 
 ## 自由記述

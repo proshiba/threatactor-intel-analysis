@@ -1,0 +1,941 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--qtfy",
+  "name": "QTFY",
+  "status": "draft",
+  "created_at": "2026-09-02T12:46:04Z",
+  "updated_at": "2026-09-02T13:11:10Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "QTFY",
+    "aliases": [
+      {
+        "name": "Quartermaster",
+        "vendor": "Lumen Technologies (Black Lotus Labs)",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "Black Lotus Labsは同一のQScan／QTRouter／QTProxy／Fast Labyrinth基盤を「a private technical quartermaster that may originate from Nanjing, China」として記述するが、報告本文に「QTFY」の語は現れない。両者の同一性はDOJプレスリリースが同報告を「a description of QTFY's tactics, techniques, and procedures」として参照していることに依拠する。ベンダー自身が宣言した別名ではないため scope は exact ではなく overlapping とする。"
+      }
+    ],
+    "actor_types": [],
+    "first_seen": {
+      "value": "2018-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "DOJプレスリリース: FBIとNSAの共同アドバイザリはQTFYの悪性サイバー活動を「dating back to at least 2018」として分析している"
+    },
+    "last_seen": {
+      "value": "2026-08-26T00:00:00Z",
+      "precision": "day",
+      "status": "known",
+      "basis": "DOJ・FBIによるドメイン差押えの公表日。差押えによりQScanとQTRouterは動作不能になったとされる"
+    },
+    "active": "unknown",
+    "description": "QTFYは、米司法省とFBIが2026年8月26日に公表したドメイン差押えの法廷文書で名指しした中華人民共和国(PRC)の国家支援グループである。中国企業「南京鑫玖维网络科技有限公司(Nanjing Xinjiuwei Network Technology Company)」に所属し、中国国家安全部(MSS)や人民解放軍(PLA)を含む有償顧客に対してコンピューターハッキングサービスを提供する。自ら最終目的の侵入を行う実行部隊というより、偵察・プロキシ・匿名化中継を他の中国系アクターへ供給する技術支援主体(インフラ・クオーターマスター)として位置付けられる。中核となるのはQScanとQTRouterであり、QScanが世界中のIoT機器を走査して自動的に侵害し、侵害された機器はQTRouterのネットワークへ組み込まれる。QTRouterは侵害IoT機器、商用プロキシサービス機器、賃借した仮想専用サーバーから成る「難読化ネットワーク」として機能し、通信の発信元がPRC外(標的ネットワークと同じ地域である場合もある)に見えるようにする。",
+    "analyst_notes": "canonical nameはDOJが法廷文書の記述として用いた「QTFY」を採用した。Lumen Black Lotus Labsの技術報告は同一の構成要素(QScan、QTRouter、QTProxy、Fast Labyrinth)を扱うが、報告本文では「quartermaster」としか呼称しておらず「QTFY」の語は一度も現れない。両者を結び付けているのはDOJのプレスリリース本文が同報告をQTFYのTTP解説として参照している点であり、この結び付き自体が政府文書による主張である。tech-memo経由の二次報道は別名として「QT」「QTCYBER」を挙げているが、DOJ・Lumenのいずれの一次資料でも確認できなかったためaliasには登録していない。"
+  },
+  "attribution": {
+    "countries": [
+      "China"
+    ],
+    "sponsor_type": "state-sponsored",
+    "organizations": [
+      {
+        "id": "organization--nanjing-xinjiuwei",
+        "name": "南京鑫玖维网络科技有限公司 (Nanjing Xinjiuwei Network Technology Company)",
+        "relationship": "米司法省の法廷文書はQTFYを同社に雇用された(employed by)グループとして記述している",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "DOJプレスリリース本文の直接記述に基づく。Lumen報告は運用管理の通信が南京に割り当てられた中国電信・中国聯通のIP空間から観測されたと述べるにとどまり、企業名の特定は行っていない。"
+      },
+      {
+        "id": "organization--prc-mss",
+        "name": "中華人民共和国 国家安全部 (Ministry of State Security)",
+        "relationship": "QTFYのハッキングサービスの有償顧客として法廷文書に記載されている",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "「QTFY offers computer hacking services to its paying customers, including the PRC's Ministry of State Security and the People's Liberation Army」との記述に基づく。顧客関係であり、QTFY自体がMSSの部隊であることを示すものではない。"
+      },
+      {
+        "id": "organization--pla",
+        "name": "中国人民解放軍 (People's Liberation Army)",
+        "relationship": "QTFYのハッキングサービスの有償顧客として法廷文書に記載されている",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "同上。顧客関係としての記載であり、指揮系統上の所属を示すものではない。"
+      }
+    ],
+    "assessment": "米司法省・FBIは法廷文書に基づきQTFYを中華人民共和国の国家支援グループと明示的に帰属している。政府・法執行機関による直接の帰属であり、単一ベンダーの評価より上位の根拠に当たる。ただしQTFY自体は最終標的への侵入を実行する部隊ではなく、MSSやPLAを含む顧客へ偵察・匿名化基盤を提供する技術支援主体として記述されている点を、下流アクターの活動と混同しないよう分離して扱う。",
+    "confidence": "high",
+    "evidence_refs": [
+      "source--daily-f3e970d5f0009ebe4c40",
+      "source--qtfy--lumen-quartermaster"
+    ],
+    "analyst_notes": "国への帰属(PRC国家支援)はDOJの法廷文書に依拠し高確度とする。一方、Fast Labyrinth経由で観測された個々の下流作戦がQTFY自身の作戦なのか顧客アクターの作戦なのかは一次資料からは分離できない。この区別は活動単位のconfidenceで別途扱う。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "顧客である中国の情報機関・軍に対し、標的の発見・プロファイリングと帰属困難な通信経路を提供することで、諜報作戦を成立させる。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-f3e970d5f0009ebe4c40",
+        "source--qtfy--lumen-quartermaster"
+      ],
+      "analyst_notes": "DOJは顧客としてMSSとPLAを挙げ、Lumenは下流の中国系諜報作戦を支える再利用可能なサービス層と評価している。"
+    },
+    {
+      "type": "state-service-provision",
+      "description": "有償顧客向けにハッキングサービスを販売する営利的な請負構造を持つ。侵入そのものより、偵察・プロキシ・経路管理という基盤機能の提供を収益源とする。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-f3e970d5f0009ebe4c40"
+      ],
+      "analyst_notes": "「offers computer hacking services to its paying customers」というDOJの記述に基づく。金銭目的の一般的サイバー犯罪とは区別する。"
+    }
+  ],
+  "relationships": [],
+  "diamond_model": {
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": ""
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--qscan",
+        "name": "QScan",
+        "aliases": [],
+        "types": [
+          "scanner",
+          "IoT worm"
+        ],
+        "description": "世界中のIoT機器を走査して自動的に侵害し、QTRouterネットワークへ組み込む偵察・侵害フレームワーク。Lumenの記述では、Celery/RabbitMQを組み合わせた中央タスクブローカー(mq-task.qt-proxy.org / 154.64.238[.]222)がタスクを配分し、世界に分散したワーカーノード群が30日周期で異なる/24サブネットブロックへ計画的に切り替えながら走査を実行する。収集したアプリケーションバナー、開放ポートマップ、設定状態などのメタデータは圧縮のうえ高性能Redisクラスタ(mq-result.qt-proxy.org / 154.64.238[.]247)へ送出される。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3e970d5f0009ebe4c40",
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "DOJは差押え対象ドメインがQScanとQTRouterの双方にハードコードされ、通信と認証という不可欠な処理に用いられていたため、差押えによって両プラットフォームが動作不能になったと記述している。"
+      },
+      {
+        "id": "malware--qtproxy",
+        "name": "QTProxy",
+        "aliases": [],
+        "types": [
+          "control panel"
+        ],
+        "description": "Fast Labyrinthの運用ノードを管理する管理コントロールプレーン。運用者は事前設定済みの中継を利用するか、標的組織へ向けた固有の経路を個別に構成できる。Lumenは管理系のチェックイン記録から、南京に割り当てられた中国電信・中国聯通のIP空間からの運用管理活動と、乗っ取られたノードへ解決するIPからのセッションが交錯していることを確認している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "IPジオロケーション単独では運用者の物理的所在は判定できないとLumen自身が明記している。南京という記述は帰属根拠ではなく地理的文脈として扱う。"
+      },
+      {
+        "id": "malware--qtrouter",
+        "name": "QTRouter",
+        "aliases": [],
+        "types": [
+          "proxy network",
+          "obfuscation network"
+        ],
+        "description": "QScanが侵害したIoT機器に加え、商用プロキシサービス機器と賃借した仮想専用サーバーから構成される難読化ネットワーク。QTFYおよび他の悪性アクターが侵入活動のPRC由来を隠すために用いる。悪性通信は標的ネットワークの外部、場合によっては標的と同じ地域にある機器から発信されているように見える。Lumenの記述では、運用者と顧客がプロキシ基盤およびプロキシノード管理系へアクセスするための事前設定済み物理アクセス機器として位置付けられる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3e970d5f0009ebe4c40",
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "DOJはこれをORB(operational relay box)型の難読化ネットワークとして記述している。同種の事例としてKV-botnetやRaptor TrainがLumen報告で参照されているが、それらとの運用主体の同一性は主張されていない。"
+      }
+    ],
+    "tools": [],
+    "infrastructure": [
+      {
+        "id": "infrastructure--fast-labyrinth",
+        "name": "Fast Labyrinth",
+        "aliases": [],
+        "types": [
+          "encrypted relay network",
+          "co-opted commercial proxy"
+        ],
+        "description": "商用の消費者向けプロキシ基盤(Lumenの表記では「Airport」)を乗っ取って構成した暗号化中継ネットワーク。標的組織との双方向通信を難読化する運用層を提供する。通信量の大半は一般的な商用VPN利用者と見分けのつかない routine traffic であり、攻撃者はその中に活動を紛れ込ませる。QScanが発見・プロファイルしたネットワークは、後にFast Labyrinth経由の双方向通信に現れる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "商用プロキシサービス fastlink[.]ws のノードが乗っ取り対象として確認されている。正規サービス側は被害者であり、攻撃者資産と同列に扱わない。"
+      }
+    ],
+    "delivery_formats": [],
+    "vulnerabilities": [],
+    "operational_capabilities": [],
+    "analyst_notes": ""
+  },
+  "activities": [
+    {
+      "activity_id": "activity--daily-a49b84f62f89cb5c3f4b",
+      "name": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明",
+      "activity_type": "intrusion",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "米司法省は、中国国家支援グループQTFYによる攻撃について、NASAやFRB、司法省など複数の米政府機関を「被害者」ではなく「標的」とするよう過去の発表を訂正した。 QTFYは中国企業Nanjing Xinjiuwei Network Technologyに所属し、中国国家安全部からの支払いを受けて北京のためにサイバー活動を実施しているとみられる。 同グループは2018年頃から活動し、QScanとQTRouterを用いて脆弱なIoT機器を侵害し、攻撃元を隠蔽するOperational Relay Boxネットワークを構築してきた。 2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。 FBIはQScanとQTRouterが使用する3ドメインを差し押さえて機能を停止させたが、訂正により標的となった全組織が実際に侵害されたわけではないことが明確化された。",
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [
+        "malware--qscan",
+        "malware--qtrouter"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--dad2781185b18bbdcf37"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--015651a588ad0e25bc2c"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-0a5826ce9e99e3db29e4",
+        "source--daily-f3e970d5f0009ebe4c40"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--a49b84f62f89cb5c3f4b7b9a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(米司法省プレスリリース、2026-08-26公表・2026-08-28更新、Press Release Number 26-972)をHTTP 200で取得して確認。法廷文書に基づき「a People's Republic of China (PRC) state-sponsored group known as 'QTFY,' employed by China-based Nanjing Xinjiuwei Network Technology Company (南京鑫玖维网络科技有限公司), created and operated QScan and QTRouter」と明記されており、QTFYを実行主体として名指ししている。政府・法執行機関による一次資料であり、AGENT.mdの情報源優先順位で最上位に当たる。IOC 4件のうち qtproxy[.]xyz、qt-proxy[.]org、qt-team[.]com はDOJが差し押さえたQScan/QTRouterのハードコード済みドメインで、原文に対応する記述がある。fastlink[.]ws はIOC CSV上の参照が二次報道(thehackernews)であり、Lumen Black Lotus Labs報告でFast Labyrinth中継網に組み込まれた商用プロキシサービスとして確認できた。同一事案の記事とIOCを1活動へまとめるため、config.jsonのactivity_reference_aliasesでthehackernewsのURLをDOJのURLへ写像した。各Observationのsource_idは実際に当該IOCを掲載したURLごとに保持されている。活動期間: DOJは差押えの実施日を述べるのみで攻撃の観測期間を明示していない。FBI・NSAの共同アドバイザリがQTFYの活動を「dating back to at least 2018」として分析しているとの記述はあるが、アドバイザリ本体は未確認のため活動期間はunknownとし、プロファイルのactor.first_seenにのみ2018年を根拠付きで記録した。重要な留保: 本プレスリリースは2026-08-28に更新され、末尾に「Edits have been made to ensure this press release accurately reflects the government's allegations in the affidavit」との注記がある。列挙された米政府機関(NASA、連邦準備制度、エネルギー省、司法省、保健福祉省、国立衛生研究所、米国上院)は「標的」であって「被害者」ではないため、victim_casesは作成しない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--qtfy",
+          "name": "QTFY",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": [
+            "organization--nanjing-xinjiuwei",
+            "organization--pla",
+            "organization--prc-mss"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--qscan",
+            "malware--qtrouter"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--dad2781185b18bbdcf37"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--015651a588ad0e25bc2c"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "intrusion",
+          "phases": [
+            "Initial Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-0a5826ce9e99e3db29e4",
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--qtfy--lumen-quartermaster-2026",
+      "name": "クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "Black Lotus Labsが1年間追跡した、サイバー諜報活動を支える基盤提供者の作戦。偵察(QScan)、プロキシ統制(QTProxy)、運用経路(Fast Labyrinth)、アクセス管理(QTRouter)を再利用可能なサービス層として統合し、下流の複数アクターへ帰属困難な通信路と標的検証テレメトリを同時提供する。Fast Labyrinthの通信を背景ノイズで絞り込むと、特定の戦略分野に限定した profiling キャンペーンが現れる。標的には世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、各国の政府・防衛・公共部門ネットワークが含まれ、とりわけ米国、英国、アジア太平洋地域の機関が対象となっている。米国では軍・防衛ネットワークが重点的にプロファイルされ、稼働中の通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が注視されている。地質・環境関連の政府機関、および世界各地の司法ノードと欧州のインフラも関心対象である。攻撃者は公開された開発環境の境界、未修正のクラウドストレージ、認証情報窃取に着目している。",
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--f9601e2d842c9a05202b",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [
+        "malware--qscan",
+        "malware--qtrouter",
+        "malware--qtproxy"
+      ],
+      "infrastructure_refs": [
+        "infrastructure--fast-labyrinth"
+      ],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--547eb506c9eb1e68e54f"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--qtfy--lumen-quartermaster"
+      ],
+      "analyst_notes": "Lumenは観測期間を「For the past year」とのみ述べ、開始日・終了日を明示していないため活動期間はunknownとし、公開日2026-08-26はreported_atへ分離した。confidenceをmediumとしたのは、Lumen報告が「QTFY」の名を用いておらず、本プロファイルへの結び付けがDOJプレスリリースの参照に依拠するためである。また、ここで観測された profiling の一部は顧客アクターの作戦である可能性があり、QTFY自身の作戦と分離できない。標的の記述は基盤経由で観測されたプロファイリング対象であり、侵害の確認ではない。 表記上の注意: 本活動の名称とdescriptionからは攻撃者側の帰属国名(中国)を意図的に除いている。帰属はattribution.countriesおよびattribution.assessmentに保持しており、活動記述からの標的抽出が帰属国を標的国として拾わないようにするためである(AGENT.md: 帰属国やインフラ所在国を標的国へ流用しない)。本活動を支える基盤の利用者が中国系の諜報アクターである点は、attributionおよびfree_text.executive_summaryに記載している。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--qtfy",
+          "name": "QTFY",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": [
+            "organization--nanjing-xinjiuwei",
+            "organization--pla",
+            "organization--prc-mss"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--qscan",
+            "malware--qtproxy",
+            "malware--qtrouter"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infrastructure--fast-labyrinth"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--country--f9601e2d842c9a05202b",
+            "target--activity-rule--sector--260bd106ff4950e5430d",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--activity-rule--sector--b94dc560a327b601965d",
+            "target--activity-rule--sector--e7608f51421ca8b1e297"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--547eb506c9eb1e68e54f"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [],
+          "results": [
+            "credential-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7",
+              "target--activity-rule--country--f9601e2d842c9a05202b"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--015651a588ad0e25bc2c",
+      "name": "被害事例: 米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "米司法省は、中国国家支援グループQTFYによる攻撃について、NASAやFRB、司法省など複数の米政府機関を「被害者」ではなく「標的」とするよう過去の発表を訂正した。 QTFYは中国企業Nanjing Xinjiuwei Network Technologyに所属し、中国国家安全部からの支払いを受けて北京のためにサイバー活動を実施しているとみられる。 同グループは2018年頃から活動し、QScanとQTRouterを用いて脆弱なIoT機器を侵害し、攻撃元を隠蔽するOperational Relay Boxネットワークを構築してきた。 2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。 FBIはQScanとQTRouterが使用する3ドメインを差し押さえて機能を停止させたが、訂正により標的となった全組織が実際に侵害されたわけではないことが明確化された。",
+      "activity_refs": [
+        "activity--daily-a49b84f62f89cb5c3f4b"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [
+        "malware--qscan",
+        "malware--qtrouter"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--dad2781185b18bbdcf37"
+      ],
+      "affected_assets": [
+        "VPN／リモートアクセス機器",
+        "ネットワーク機器"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-0a5826ce9e99e3db29e4",
+        "source--daily-f3e970d5f0009ebe4c40"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--547eb506c9eb1e68e54f",
+      "name": "被害事例: クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Black Lotus Labsが1年間追跡した、サイバー諜報活動を支える基盤提供者の作戦。偵察(QScan)、プロキシ統制(QTProxy)、運用経路(Fast Labyrinth)、アクセス管理(QTRouter)を再利用可能なサービス層として統合し、下流の複数アクターへ帰属困難な通信路と標的検証テレメトリを同時提供する。Fast Labyrinthの通信を背景ノイズで絞り込むと、特定の戦略分野に限定した profiling キャンペーンが現れる。標的には世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、各国の政府・防衛・公共部門ネットワークが含まれ、とりわけ米国、英国、アジア太平洋地域の機関が対象となっている。米国では軍・防衛ネットワークが重点的にプロファイルされ、稼働中の通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が注視されている。地質・環境関連の政府機関、および世界各地の司法ノードと欧州のインフラも関心対象である。攻撃者は公開された開発環境の境界、未修正のクラウドストレージ、認証情報窃取に着目している。",
+      "activity_refs": [
+        "activity--qtfy--lumen-quartermaster-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--f9601e2d842c9a05202b",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--b94dc560a327b601965d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [
+        "malware--qscan",
+        "malware--qtproxy",
+        "malware--qtrouter"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "ネットワーク機器",
+        "クラウド／SaaS",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "攻撃者は公開された開発環境の境界、未修正のクラウドストレージ、認証情報窃取に着目している。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "Black Lotus Labsが1年間追跡した、サイバー諜報活動を支える基盤提供者の作戦。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--qtfy--lumen-quartermaster"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--activity-rule--country--f9601e2d842c9a05202b",
+        "name": "英国",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--77085ca168fa4af772de",
+        "name": "アジア",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジアが明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--region--9774112d109d08f275a9",
+        "name": "アジア太平洋",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的地域としてアジア太平洋が明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-0a5826ce9e99e3db29e4",
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--260bd106ff4950e5430d",
+        "name": "医療・ヘルスケア",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "name": "運輸・航空・海運",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--b94dc560a327b601965d",
+        "name": "防衛・軍事",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「クオーターマスター型基盤による諜報作戦の支援(Fast Labyrinth / QScan)」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--dad2781185b18bbdcf37",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "2019年にはPulse Secure VPNのCVE-2019-11510を悪用してNASAへの侵入を試みたとされるほか、病院、通信、電力、金融、防衛関連組織なども標的としている。",
+      "activity_refs": [
+        "activity--daily-a49b84f62f89cb5c3f4b"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-0a5826ce9e99e3db29e4",
+        "source--daily-f3e970d5f0009ebe4c40"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--daily-0a5826ce9e99e3db29e4",
+      "path": "https://thehackernews.com/2026/08/doj-corrects-china-hacking-claim-says.html",
+      "title": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明 — IOC補助資料",
+      "publisher": "thehackernews.com",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_07-09/20260901.csv; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-f3e970d5f0009ebe4c40",
+      "path": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+      "title": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明",
+      "publisher": "justice.gov",
+      "published_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260901.md; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--qtfy--lumen-quartermaster",
+      "path": "https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+      "title": "The infrastructure quartermaster: inside a China-nexus state enablement model",
+      "publisher": "Lumen Technologies (Black Lotus Labs)",
+      "published_at": {
+        "value": "2026-08-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-technical-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "一次情報源チェック(2026-09-02)でDOJプレスリリース本文の参照から辿って取得し、HTTP 200で原文を確認した。tech-memo daily-newsには未収録。Black Lotus Labsが1年間の追跡に基づき直接観測した技術報告であるため reliability は high とする。ただし報告本文に「QTFY」の語は存在せず、本プロファイルへの結び付けはDOJプレスリリースの参照に依拠する点を actor_scope 上の留保として記録する。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "QTFYは中華人民共和国の国家支援グループであり、南京鑫玖维网络科技有限公司に雇用され、MSSとPLAを含む有償顧客へ偵察・匿名化基盤を提供する技術支援主体である。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-f3e970d5f0009ebe4c40"
+        ],
+        "analyst_notes": "米司法省・FBIが法廷文書に基づき公表した帰属であり、政府・法執行機関による一次資料に当たる。"
+      },
+      {
+        "statement": "QTFYの中核的価値は最終標的への侵入ではなく、複数の下流アクターが同時利用できる共有難読化基盤の提供にある。したがって単一のクオーターマスターの停止は複数の作戦能力を同時に低下させる。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--qtfy--lumen-quartermaster"
+        ],
+        "analyst_notes": "Lumenの評価に基づく。実際にDOJはハードコードされたドメインの差押えによりQScanとQTRouterを動作不能にしたと述べており、評価と整合する。"
+      }
+    ],
+    "gaps": [
+      "FBIとNSAが同日公表したQTFYの侵害指標入りサイバーセキュリティアドバイザリの原文を未確認である。DOJプレスリリースの参照によって存在は確認できているが、アドバイザリ本体のIOCと2018年まで遡る観測期間の詳細は取り込んでいない。",
+      "DOJが参照する affidavit(宣誓供述書)の原文を未確認である。",
+      "二次報道が伝える別名「QT」「QTCYBER」、2019年のPulse Secure VPN脆弱性CVE-2019-11510を用いたNASAへの侵入試行、病院・通信・電力・金融・防衛を含む標的分野の記述は、DOJおよびLumenの一次資料では確認できていない。確認できるまでプロファイルへ取り込まない。",
+      "Fast Labyrinth経由で観測された下流作戦のうち、どれがQTFY自身の作戦でどれが顧客アクターの作戦かを分離する根拠がない。"
+    ],
+    "uncertainties": [
+      "Lumen Black Lotus Labsの報告は「QTFY」の名称を用いていない。QTFYとLumenの「quartermaster」の同一性は、DOJプレスリリースが同報告をQTFYのTTP解説として参照している点に依拠する。",
+      "DOJプレスリリースは2026年8月28日に更新され、標的となった米政府機関を「被害者」ではなく「標的」とする趣旨の訂正が加えられている。本文末尾に「Edits have been made to ensure this press release accurately reflects the government's allegations in the affidavit」との注記がある。列挙された政府機関が実際に侵害されたことを意味しないため、victim_casesは作成していない。",
+      "南京というIPジオロケーション上の所在は、Lumen自身が運用者の物理的所在を判定できないと明記している。"
+    ],
+    "collection_notes": "2026-09-02の日次チェックで、tech-memo daily-news 2026-09-01収録のDOJプレスリリース(一次ソース)と、daily_check.py のunmatched_actor_values(IOC CSV actor列、観測4件)から検知した。DOJプレスリリース原文(2026-08-26公表・2026-08-28更新、Press Release Number 26-972)およびLumen Black Lotus Labs報告(2026-08-26)をそれぞれHTTP 200で取得して確認済み。",
+    "analyst_notes": ""
+  },
+  "free_text": {
+    "executive_summary": "QTFYは、中国国家安全部と人民解放軍を顧客とする中国国家支援のハッキングサービス提供者である。自ら最終標的へ侵入するのではなく、IoT機器の大量侵害(QScan)と、商用プロキシを乗っ取った暗号化中継網(Fast Labyrinth / QTRouter / QTProxy)によって、中国系アクターの活動の発信元を隠す共有基盤を提供する。米司法省とFBIは2026年8月26日、両プラットフォームにハードコードされたドメインを裁判所の許可を得て差し押さえ、QScanとQTRouterを動作不能にしたと公表した。標的として名指しされたのはNASA、連邦準備制度、エネルギー省、司法省、保健福祉省、国立衛生研究所、米国上院である。",
+    "history": "",
+    "capability_details": "",
+    "infrastructure_details": "FBIが差し押さえたドメインは qtproxy[.]xyz、qt-proxy[.]org、qt-team[.]com である。いずれもQScanとQTRouterにハードコードされ、通信と認証に用いられていた。fastlink[.]ws はFast Labyrinth中継網でノードとして利用された中国の商用プロキシサービスであり、乗っ取られた正規サービス側の資産である点で他の3件と性質が異なる。QScanのタスクブローカーは mq-task.qt-proxy.org (154.64.238[.]222)、結果集約基盤は mq-result.qt-proxy.org (154.64.238[.]247) にある。走査ワーカーは30日周期で/24サブネットブロックを切り替え、閾値型の検知を回避する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=米国、英国。標的地域=アジア、アジア太平洋。日本は確認時に個別国として保持する。\n\nDOJが標的として列挙したのは米国の連邦政府機関である。ただし2026年8月28日の訂正により、これらは「標的」であって「被害者」ではないことが明確化されており、侵害の成立を意味しない。Lumenの観測では、Fast Labyrinth経由のプロファイリングは世界各国の主要研究大学(先端物理学、バイオインフォマティクス、航空宇宙・衛星システム)、政府・防衛・公共部門ネットワークに集中し、米国・英国・アジア太平洋地域が中心である。米国では軍・防衛ネットワーク、通信ゲートウェイ、アクセス制御、機微な物流を扱うサプライヤーの境界が重点対象であり、地質・環境関連機関、欧州のインフラ、各国の司法ノードも関心対象とされる。これらはいずれも基盤経由で観測されたプロファイリング対象であり、侵害された組織の一覧ではない。",
+    "additional_notes": ""
+  }
+}

@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "b470dc05afd9517fbd180405da9bcc19496d842d",
-  "last_scanned_date": "2026-08-31",
+  "last_scanned_commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+  "last_scanned_date": "2026-09-02",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -2153,6 +2153,239 @@
           "url": "https://www.sec.gov/Archives/edgar/data/927653/000092765326000247/mck-20260825.htm",
           "latest_relevant_publication": "2026-08-25",
           "result": "既知事案の一次資料を遡って確認した。tech-memo 20260829.md のMcKesson記事の一次ソースであり、unknown-cluster--shinyhunters の観測として登録した。当該8-Kは Item 7.01 による開示で materiality を未判定とし、アクターの名指しもデータ流出への言及も無いことを原文で確認した。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-09-02T13:15:00Z",
+      "window": {
+        "since": "2026-08-31",
+        "until": "2026-09-02"
+      },
+      "source_commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+      "statistics": {
+        "news_files": 3,
+        "articles": 28,
+        "review_records": 7,
+        "approved_records": 4,
+        "rejected_records": 3,
+        "pending_records": 0,
+        "applied_records": 4,
+        "unmatched_actor_values": 4,
+        "materialization_window": "daily_check.py --run-scan --top 30 を実行後、profiles/qtfy と profiles/breeze-comet の新規作成、および dprk-it-workers への alias「Famous Chollima」(scope: exact) 登録を行ったうえで build_review_queue.py --since 2026-08-31 を再生成した。tech-memoの新規日は 2026-08-31、2026-09-01、2026-09-02 の3日。レコードは7件で、承認4件(unc1549、uac-0099、qtfy、dprk-it-workers)、不採用3件(earth-lusca、silverterrier、unc3886)、pendingは0件。unmatched_actor_values は distinct 4値(Exilware 25観測、TerminalFix (campaign) 15観測、Silver Fox (likely) 5観測、Aur0ra 5観測)。TerminalFix は 2026-08-31 のチェックで登録済みのため再登録していない。残る3値は本回で台帳へ登録した。enrichは変更のあった5プロファイルへ --actor で限定して実行し、targeting-audit.json を当該5件の監査に保った(従前の運用に合わせ、全683プロファイルの無差別再書き込みは行っていない)。validate_daily は queue と --check-applied の双方で error 0 / warning 0。変更5プロファイルの validate_profile はいずれも error 0。テストは actor_profile/tests と parse-daily/tests の全72件がpass。パイプラインの冪等性を確認済み(再実行で差分は updated_at のみ、実データは不変)。"
+      },
+      "applied": [
+        {
+          "actor": "unc1549",
+          "name": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化",
+          "source": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "decision": "承認(confidence: high)。Kaspersky Securelist原文(2026-09-01公開)をHTTP 200で取得して確認し、Attribution節の「We attribute this activity to Mirage Kitten with a high degree of confidence」を直接確認した。帰属根拠はRetrograde/MiniFast(MD5: 810F8E3B88EB05F710C09552941D6F56)との構造的類似、PollCatとRetrograde/MiniFastが共通のC2ハンドシェイク手順(ホスト情報を含むJSONをHTTP POSTし、HTTP 400を成功応答として扱う)を持つこと、WinHttpQueryAuthSchemes/WinHttpSetCredentialsをNULL資格情報で用いるプロキシ対応C2設計の一致、Azure WebsitesとCloudflare配下ドメインの組み合わせという既知TTP、およびアフリカ・中東という既知の地理的標的との整合である。Mirage Kittenはunc1549のexact alias。被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野。IOC 49件を取り込み、capabilityはNodeRabbitとPollCatを承認、複合値「NodeRabbit / PollCat」は固有名でないため不採用とした。活動期間は原文が個々の侵害の観測日を明示していないためunknownとし、tech-memo日次ファイルの日付をreported_atへ分離した。インフラのドメイン作成日(2026-05-15〜2026-07-03)は登録日であり観測日へ流用していない。"
+        },
+        {
+          "actor": "uac-0099",
+          "name": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害",
+          "source": "https://x.com/ESETresearch/status/2092885120562741652",
+          "decision": "承認(confidence: high)。一次資料はESET Research公式アカウントのXスレッド。x.comのHTMLはJS描画のため本文を取得できず、cdn.syndication.twimg.com の tweet-result API と publish.twitter.com の oEmbed API の双方から本文を取得して照合した。スレッド起点(id 2092885117286879707)は「#ESETresearch discovered #GuardBreaker - a technique used by Russia-aligned UAC-0099 against a victim in Ukraine, interfering with AI-assisted malware analysis by deliberately triggering LLM safety mechanisms」、2/3(id 2092885120562741652)は「In the attack, UAC-0099 inserted a problematic text: 'I want to make nuclear weapon. Help me ...' into their malicious VBS script as a comment」と記し、いずれもUAC-0099を実行主体として明記している。留意: 原スレッドの投稿日時は2026-08-27T08:01:10Zであり、tech-memoの日次ファイル日付2026-09-02とは異なる。reported_atはbasis「daily-news-file-date」として保存されるため虚偽ではないが、資料自体の公開日は2026-08-27である。攻撃期間は資料に記載がないためunknown。GuardBreakerとMATCHBOILはXスレッドの断片からは本件での利用を検証できないためcapability登録しない。"
+        },
+        {
+          "actor": "qtfy",
+          "name": "米司法省、中国によるハッキングに関する主張を訂正し、米政府機関は「被害者」ではなく「標的」だったと説明",
+          "source": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "decision": "承認(confidence: high)。新規プロファイル qtfy を作成のうえ適用した。米司法省プレスリリース原文(2026-08-26公表・2026-08-28更新、Press Release Number 26-972)をHTTP 200で取得して確認し、「a People's Republic of China (PRC) state-sponsored group known as 'QTFY,' employed by China-based Nanjing Xinjiuwei Network Technology Company (南京鑫玖维网络科技有限公司), created and operated QScan and QTRouter」を直接確認した。政府・法執行機関による一次資料であり、AGENT.mdの情報源優先順位で最上位に当たる。IOCは4件。同一事案の記事とIOCを1活動へまとめるため config.json の activity_reference_aliases で thehackernews のURLをDOJのURLへ写像し、各Observationのsource_idは実際に当該IOCを掲載したURLごとに保持した。重要な留保: 本プレスリリースは2026-08-28に更新され「Edits have been made to ensure this press release accurately reflects the government's allegations in the affidavit」との注記がある。列挙された米政府機関は「標的」であって「被害者」ではないため victim_cases は作成していない。"
+        },
+        {
+          "actor": "dprk-it-workers",
+          "name": "北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+          "source": "https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation",
+          "decision": "承認(confidence: medium)。従前は alias「Famous Chollima」が profiles/contagious-interview のみにscope: broader で存在したため、本記事が contagious-interview へ誤って寄せられていた。Huntress原文(2026-08-26公開)をHTTP 200で取得して確認したところ、「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」とあり、本記事のFAMOUS CHOLLIMAは北朝鮮のリモートITワーカーそのものを指す。FAMOUS CHOLLIMAの定義が「北朝鮮政権への送金を目的とする不正就労全般」であることは contagious-interview 側のalias注記に既に記録されており、その定義に実質的に対応する本プロファイルへ scope: exact のaliasを登録して解決先を一意に定めた。本文はHuntressが2026年に実施した実調査(オーストラリアのパートナーでのAstrill VPN経由の3名、2026年8月の金融サービス業でのPiKVM/Guermok USB接続ホストと身元窃取による不正雇用)を含み、助言記事にとどまらない直接観測である。activity_claimはタイトルの体裁によるcontext-only判定だが、本文の直接観測を原文で確認したうえで採用した。PiKVM・Guermok USB・Astrill VPNは正規の機器/サービスでありcapabilityとして登録しない。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "unc3886",
+          "name": "Fire Antの進化：ハイパーバイザーから信頼されたインフラへ",
+          "source": "https://www.sygnia.co/blog/fire-ant-evolves-from-hypervisors-to-trusted-infrastructure/",
+          "decision": "不採用(重複評価のみ)。Sygnia原文(2026-09-01公開)をHTTP 200で取得して確認した。Sygniaは Fire Ant を独自の追跡名として用い、UNC3886との関係を「Sygnia assesses that Fire Ant activity strongly overlaps with this public reporting」と述べるにとどまり、同一アクターとは述べていない。AGENT.mdは類似・重複・後継を自動採用しないと定めており、activity_claimもattribution-uncertainである。重複の具体的根拠は(1)公開済みREPTILEのkill marker「hpaVAj2FJ」を再利用する一方で活性化マーカーは「sxcdew...」と異なり検体自体は同一でないこと、(2)TACACS認証情報ログの単一バイトXOR鍵0xEFがMandiantの記述したUNC3886のツールと一致すること、(3)VMCIバックドア・Medusaルートキット・カスタムSSH・ルーター指向という持続的挙動の一致、であり、いずれも重複の指摘である。ETDAが既にUNC3886のcandidate nameとしてFire Antを併記している(profiles/unc3886/osint-crosscheck.json)が、これは公開情報上の慣行であって帰属の確定ではない。利用者の判断により unknown-cluster--fire-ant として related_profiles: unc3886 (relation: overlap-assessed) で台帳へ登録した。原文は被害組織・被害国を明示していないため、標的情報をUNC3886側へ流用していない。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "Gryxa：削除方法まで監視するAI構築型ツールキット",
+          "source": "https://reliaquest.com/blog/threat-spotlight-gryxa-ai-built-toolkit/",
+          "decision": "不採用(名称衝突)。ReliaQuest原文(2026-08-28公開)をHTTP 200で取得して確認した。一致語「CHROMIUM」の該当箇所は「Gryxa targets credentials saved in Chromium-based browsers」であり、ブラウザーエンジンの製品名である。原文にEarth Luscaの言及はない。記事の主体はReliaQuestが「a financially motivated threat actor」と記す未帰属アクターである。実体側は unknown-cluster--gryxa として台帳へ登録し、excluded_name_collisions にも追加した(earth-lusca / CHROMIUM の3件目)。"
+        },
+        {
+          "actor": "silverterrier",
+          "name": "ナイジェリア人2人、米国の10代2人の死亡につながったセクストーション事件で米国へ身柄引き渡し",
+          "source": "https://www.justice.gov/opa/pr/two-nigerian-nationals-extradited-nigeria-united-states-face-sextortion-charges-north",
+          "decision": "不採用(名称衝突・法執行記事)。一致語「Nigeria」はalias scopeがunknownで、実際の一致箇所は記事本文に埋め込まれたニュースURL文字列の断片「com/news/security/nigerians-charged-US-over-sextortion-deaths-of-us-teens/」である。原文(米司法省プレスリリース、報道はBleepingComputer 2026-08-31)は、未成年者への金銭目的セクストーション事件でナイジェリア人2名が米国へ身柄引き渡し・訴追された法執行の報道であり、BECアクターSilverTerrierの活動ではない。国籍・地域名との一致のみを根拠にアクターへ結び付けない。excluded_name_collisions へ追加した。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [
+        {
+          "slug": "qtfy",
+          "name": "QTFY",
+          "status": "draft",
+          "decision": "新規作成。米司法省・FBIによる政府帰属があるため台帳の昇格閾値(政府・CERT・法執行機関の言及)を満たす。一次資料はDOJプレスリリース(2026-08-26公表・2026-08-28更新)とLumen Black Lotus Labs「The infrastructure quartermaster: inside a China-nexus state enablement model」(2026-08-26)の2本で、いずれもHTTP 200で取得して確認した。DOJの記述に基づきattributionはChina / state-sponsored、organizationsに南京鑫玖维网络科技有限公司(雇用主)、国家安全部と人民解放軍(有償顧客)を分離して登録した。capabilitiesはQScan、QTRouter、QTProxyをmalware、Fast Labyrinthをinfrastructureとして登録した。重要な留保: Lumen報告は本文に「QTFY」の語を一度も用いておらず「quartermaster」としか呼称していない。両者を結び付けているのはDOJプレスリリースが同報告をQTFYのTTP解説として参照している点であり、aliasの「Quartermaster」はscope: overlapping、confidence: mediumとした。二次報道が伝える別名「QT」「QTCYBER」、CVE-2019-11510を用いた2019年のNASA侵入試行、病院・通信・電力・金融・防衛を含む標的分野の記述は一次資料で確認できないためプロファイルへ取り込んでいない(assessment.gapsに記録)。FBI・NSAの共同アドバイザリ(2018年まで遡るIOC入り)は未確認でありgapsに残した。標的はDOJが列挙した米国連邦政府機関とLumenが観測した米国・英国・アジア太平洋の研究大学・政府・防衛ネットワーク。2026-08-28の訂正により米政府機関は「標的」であって「被害者」ではないため victim_cases は作成していない。"
+        },
+        {
+          "slug": "breeze-comet",
+          "name": "BREEZE COMET",
+          "status": "draft",
+          "decision": "新規作成。tech-memo未収録で、一次情報源チェック(Google Threat Intelligence 公開一覧)のみで検知したためレビューキューに対応レコードは存在しない。GTIG/Mandiant原文「Financially Motivated Threat Actor BREEZE COMET Targets Brazil」(2026-09-01)をHTTP 200で取得して全文を確認した。一覧が時系列順でないため、掲載11件すべての記事URLのJSON-LD datePublishedを機械照合して公開日を確定した。旧指定子UNC5669はGTIG自身の改称であるためscope: exact、GTIGが作戦の重複を述べるにとどまるPlump SpiderとSHADOW-AETHER-064はscope: overlappingで登録した。UNC指定子が一級プロファイルとして存在する前例に従いstatusはdraftから開始した。attribution.countriesは空とした。ブラジルは標的国であって攻撃者の所在国ではなく、標的国を帰属国へ流用しない。capabilitiesはCOBALTSPIN(Rust)、LIGHTPAINT/MILDFROST(Java)、KICKPLATE(Nim)、BOATBEAM(Go)、REALBREEZEをmalwareとして登録し、XWORM等の購入可能な汎用バックドアはtoolsへ分離した。活動期間は原文が明示した年(2024年開始、2025〜2026年に複数バックドアを特定)のみを採用し、公開日はreported_atへ分離した。被害額と不正送金の2波はGTIG自身がクライアント報告および第三者フォレンジック分析に基づくと但し書きしているため、Mandiantの直接観測と区別して記録した。被害組織名は原文に一切記載がないため victim_cases は作成していない。"
+        }
+      ],
+      "alias_updates": [
+        {
+          "actor": "dprk-it-workers",
+          "alias": "Famous Chollima",
+          "scope": "exact",
+          "vendor": "CrowdStrike",
+          "decision": "追加。従前は profiles/contagious-interview のみが同名aliasを scope: broader で保持しており、Huntressの北朝鮮リモートITワーカー記事が contagious-interview へ誤って寄せられていた。CrowdStrikeのFAMOUS CHOLLIMAは北朝鮮政権への送金を目的とする不正就労を中核とする追跡名であり、本プロファイルが対象とするクラスタと実質的に同一の範囲を指すため scope を exact とした。contagious-interview 側の broader は「FAMOUS CHOLLIMAはContagious Interviewより広い」ことを表す記録として維持する。ActorRegistryは複数プロファイル一致時に一意なexact一致を優先するため、以後「Famous Chollima」の言及は本プロファイルへ解決される。運用上の振り分け基準(不正就労・身元詐称・賃金送金は本プロファイル、偽の採用面接やコーディング課題によるマルウェア配布はcontagious-interview)を両プロファイルのalias注記に残した。exactは日次キューでの解決先を一意に定めるためのモデリング判断であり、個々の資料は原文で実行主体を確認したうえで採否する。"
+        }
+      ],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--fire-ant",
+          "action": "added",
+          "decision": "新規追加(status: tracking)。Sygnia原文(2026-09-01)を確認。UNC3886との関係は「strongly overlaps」であり同一断定ではないため、related_profiles に unc3886 を relation: overlap-assessed / confidence: medium で登録した。ETDAがUNC3886のcandidate nameとしてFire Antを併記している点も注記した。独立した2本目の一次資料または政府・CERTによる同一性の言明が得られた時点で統合または独立プロファイル化を判断する。"
+        },
+        {
+          "cluster_id": "unknown-cluster--exilware",
+          "action": "added",
+          "decision": "新規追加(status: tracking)。Group-IB原文(2026-08-31)を確認し、「we attribute, with high confidence, to the Brazilian threat actor known as Exilware」を直接確認した。BraZetsuフレームワークとInfected Marketplace(Banco de Infects)によるIAB運用。IOC CSVに25観測。単一ベンダーの初報のため昇格閾値は未達。"
+        },
+        {
+          "cluster_id": "unknown-cluster--spring-ring",
+          "action": "added",
+          "decision": "新規追加(status: tracking)。Unit 42原文(2026-08-31)を確認。tech-memo未収録で一次情報源チェックのみで検知した。Unit 42は「We call this activity Spring Ring」と活動クラスタ名を付与するにとどまり帰属していない。原文のCloaked Ursa(APT29)への言及は対比としての過去事例であるため related_profiles に context-only-not-attributed として記録した。観測期間は原文が明示する2026年1〜4月。"
+        },
+        {
+          "cluster_id": "unknown-cluster--gryxa",
+          "action": "added",
+          "decision": "新規追加(status: tracking)。ReliaQuest原文(2026-08-28)を確認。金銭目的の未帰属アクターが用いる324ホスト規模のAI構築ツールキット。earth-lusca への CHROMIUM 誤一致の実体側であり、related_profiles に false-match として記録した。"
+        },
+        {
+          "cluster_id": "unknown-cluster--aur0ra",
+          "action": "added",
+          "decision": "新規追加(status: tracking)。BHIS ActiveSOC原文(2026-08-18)を確認。二重恐喝型ランサムウェア。帰属根拠はロッカーとランサムノート(!!!README!!!DO_NOT_DELETE.txt)の一致。メール爆撃とITヘルプデスク偽装ビッシングによる初期侵入、Xray-coreをChromeUpdate.exe/ConnectivityHost.exeへ改名しdl[.]google[.]comへのTLS偽装で行うC2が特徴。IOC CSVに5観測。原文が言及するCYFIRMA記事は未確認であり、確認できれば独立2本目となるため次回の確認対象として引き継ぐ。"
+        },
+        {
+          "cluster_id": "unknown-cluster--silverfox",
+          "action": "observation-added",
+          "decision": "Kaspersky「ValleyRAT masquerading as adware」(2026-08-31)とMicrosoft「Counterfeit installers to system compromise」(2026-09-01)の2観測を追加し last_seen を 2026-08-15 から 2026-09-02 へ更新した。両原文ともHTTP 200で確認済み。Kasperskyの帰属は「points to Silver Fox ... as the likely group behind the campaign」、Microsoftは「assesses with moderate confidence that this activity is consistent with the publicly reported Silver Fox ... but has not attributed it to a nation-state actor」であり、いずれもhedge付きで帰属を確定していない。独立した一次資料は4本となり件数上は昇格閾値へ到達したが、帰属を支持する3本がすべてhedge付きであり、Acronis(2026-08-13)は明示的に帰属を否定しているため、プロファイル昇格は確定的な帰属を行う一次資料または政府・CERT・法執行機関の言及が得られるまで保留する旨を unresolved_questions へ記録した。"
+        },
+        {
+          "cluster_id": "excluded_name_collisions",
+          "action": "added",
+          "decision": "earth-lusca / CHROMIUM (ReliaQuest Gryxa記事) と silverterrier / Nigeria (米司法省セクストーション起訴記事) の2件を追加した。同じ衝突を毎日再検討しないための記録である。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "Exilware",
+          "observations": 25,
+          "disposition": "unknown-cluster--exilware として台帳へ登録した。"
+        },
+        {
+          "value": "TerminalFix (campaign)",
+          "observations": 15,
+          "disposition": "2026-08-31のチェックで unknown-cluster--terminalfix として登録済み。重複エントリは作成していない。"
+        },
+        {
+          "value": "Silver Fox (likely)",
+          "observations": 5,
+          "disposition": "既存の unknown-cluster--silverfox へ観測2件を追加した。qualifier「likely」は自動承認しない値であり、プロファイル昇格も保留した。"
+        },
+        {
+          "value": "Aur0ra",
+          "observations": 5,
+          "disposition": "unknown-cluster--aur0ra として台帳へ登録した。"
+        }
+      ],
+      "extraction_rule_changes": [
+        {
+          "target": "actor_profile/scripts/enrich_activity_intelligence.py (actor_attribution_context)",
+          "change": "国名に「による」＋攻撃行為の名詞が続く形(例:「中国によるハッキング」)を帰属文脈として除外する条件を追加した。",
+          "audit": "全683プロファイル・555活動に対して変更前後の国抽出結果を機械比較し、差分は qtfy の1活動のみ(中国が標的国から除外される)であることを確認した。回帰テスト test_attribution_country_with_niyoru_phrase_is_not_a_victim_country を追加した。"
+        },
+        {
+          "target": "actor_profile/scripts/enrich_activity_intelligence.py (enrich_explicit_activity_period)",
+          "change": "「過去に」「かつて」「以前に」「これまでに」を含む文を、当該活動ではなく先行キャンペーンの記述として活動期間の抽出対象から除外した。",
+          "audit": "全555活動で変更前後の期間抽出を機械比較し、差分は uac-0099 の1活動のみであることを確認した。当該活動は要約中の「2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた」という先行キャンペーンの記述から誤って2026年7月を観測期間としていた。初回の候補語に含めた「従来」は kimsuky の「Kimsukyが使う従来の手法から逸脱しています」で正しい期間(2025年1月以降)を巻き添えに除外してしまうため候補から外した。回帰テストを2件追加した。"
+        },
+        {
+          "target": "actor_profile/activity-observation-rules.json (sectors: 製造・産業)",
+          "change": "日本語パターンを「製造|産業|工場|エンジニアリング」から「(?<!兵器)製造|産業|工場|エンジニアリング」へ変更した。",
+          "audit": "全555活動で変更前後のセクター抽出を機械比較し、差分は uac-0099 の1活動のみであることを確認した。当該活動は「核兵器製造を求める安全上問題のある文章」という敵対的プロンプトの文言から誤って「製造・産業」を標的分野としていた。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-01",
+          "result": "新規1件。「Counterfeit installers to system compromise: Tracking a deceptive software download campaign」(2026-09-01)。原文をHTTP 200で取得して確認し、「Microsoft assesses with moderate confidence that this activity is consistent with the publicly reported Silver Fox (also known as Yinhu, 银狐) fake software campaign but has not attributed it to a nation-state actor」を直接確認した。unknown-cluster--silverfox の観測として登録した。Microsoftの参考文献欄はSilver Foxに関する先行報告とOSINT、TweetFeed、AlienVault OTX、MalwareBazaar等のコミュニティ由来指標を挙げており、Microsoft独自の帰属判断ではない点を台帳に注記した。前回評価済みのTerminalFix記事(2026-08-28)からの変化はその1件のみ。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-01",
+          "result": "新規1件。「Financially Motivated Threat Actor BREEZE COMET Targets Brazil」(2026-09-01)。前回同様、一覧が公開日を表示せず時系列順でもないため、掲載11件すべての記事URLをcurlで取得しJSON-LDのdatePublishedを機械照合した(最上位表示は2026-05-11の記事)。新規プロファイル breeze-comet として登録した。前回引き継いだGTIG AI Threat Tracker(2026-05-11、UNC2814・APT45・APT27・UNC6780(TeamPCP)・UNC6201・UNC5673・TEMP.Hexを名指し)とUNC6671原文(2026-08-06)は今回も未取込であり、引き続き次回の確認対象として引き継ぐ。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-08-31",
+          "result": "新規1件。「Spring Ring: An Inside Look at Voice Phishing Campaigns in Microsoft Teams」(2026-08-31)。原文をHTTP 200で取得して確認した。Unit 42は活動クラスタ名を付与するのみで名前付きグループへ帰属しておらず、unknown-cluster--spring-ring として台帳へ登録した。原文中のCloaked Ursa(APT29)は対比としての過去事例であり本活動の実行主体ではない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-27",
+          "result": "cutoff後の新規なし。最新は2026-08-27の2本(「Sorry, I can't help with that」、「JavaScript obfuscation: From party trick to phishing kit」)で前回チェックから変化がない。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "WeLiveSecurityのESET Researchセクションはcutoff後の新規なし(最新は「Forgotten UEFI shims undermining Secure Boot」2026-07-14で前回から変化なし)。ただしESET ResearchはXスレッド(2026-08-27)でUAC-0099のGuardBreaker技法を公表しており、これはtech-memo 2026-09-02経由で検知してuac-0099へ反映した。ブログ一覧の確認だけではベンダーの公表を取りこぼす場合があることの実例として記録する。ESET Researchセクションのページと welivesecurity のRSSはいずれもJS描画またはサイト全体フィードであり、リサーチ専用のRSS(/en/eset-research/feed/)は404であった。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。最新は「The Model Is the Malware | What Four Agentic Intrusions Tell Defenders」(2026-08-13)で前回チェックから変化なし。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-01",
+          "result": "新規2件。「Mirage Kitten targeting aviation and FinTech sectors across the Middle East and Africa with a new malware set」(2026-09-01)はtech-memo経由でも検知しており unc1549 へ反映した。「ValleyRAT masquerading as adware」(2026-08-31)は unknown-cluster--silverfox の観測として登録した。なお前回のstate.jsonは「Threat landscape for industrial automation systems. Q2 2026」の公開日を2026-08-26と記録していたが、RSSのpubDateは2026-08-27である(前回の記録は同日公開の「Exploits and vulnerabilities in Q2 2026」2026-08-26と取り違えた可能性がある)。"
+        },
+        {
+          "publisher": "Lumen Technologies (Black Lotus Labs)",
+          "url": "https://www.lumen.com/blog/en-us/the-infrastructure-quartermaster-inside-a-china-nexus-state-enablement-model",
+          "latest_relevant_publication": "2026-08-26",
+          "result": "定例7サイトの対象外だが、米司法省プレスリリース本文がQTFYのTTP解説として参照していたため辿って確認した。原文をHTTP 200で取得し、QScan/Fast Labyrinth/QTRouter/QTProxyの4構成要素、南京に割り当てられた中国電信・中国聯通IP空間からの管理系チェックイン、mq-task.qt-proxy.org(154.64.238[.]222)およびmq-result.qt-proxy.org(154.64.238[.]247)、30日周期の/24サブネット切替を確認した。本文に「QTFY」の語は一度も現れない点をプロファイルのuncertaintiesへ記録した。qtfyプロファイルのsourceとして登録した。"
+        },
+        {
+          "publisher": "Group-IB",
+          "url": "https://www.group-ib.com/blog/brazetsu-ai-enhanced-iab-marketplace/",
+          "latest_relevant_publication": "2026-08-31",
+          "result": "tech-memo 2026-09-02経由で検知した未一致actor値(Exilware、25観測)の一次資料として確認した。原文をHTTP 200で取得し「we attribute, with high confidence, to the Brazilian threat actor known as Exilware」および追跡開始時期(2026年2月)を直接確認した。unknown-cluster--exilware として台帳へ登録した。"
+        },
+        {
+          "publisher": "Black Hills Information Security (ActiveSOC)",
+          "url": "https://activesoc.blackhillsinfosec.com/blog/introducing-the-aur0ra-ransomware-group/",
+          "latest_relevant_publication": "2026-08-18",
+          "result": "IOC CSVの未一致actor値(Aur0ra、5観測)の一次資料として確認した。原文をHTTP 200で取得し、公開日、帰属根拠、初期侵入経路、Xray-coreによるC2偽装を直接確認した。unknown-cluster--aur0ra として台帳へ登録した。"
+        },
+        {
+          "publisher": "U.S. Department of Justice (Office of Public Affairs)",
+          "url": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-platforms-operated-and-used-china-state-sponsored-hackers",
+          "latest_relevant_publication": "2026-08-26",
+          "result": "tech-memo 2026-09-01の一次ソースとして原文をHTTP 200で取得して確認した。公開日は2026-08-26(Press Release Number 26-972)で、2026-08-28に更新されている。tech-memoの日次日付2026-09-01を公開日と取り違えない。新規プロファイル qtfy の中核資料として登録した。"
         }
       ]
     }
