@@ -120,6 +120,23 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("台湾", countries)
         self.assertNotIn("中国", countries)
 
+    def test_attribution_country_with_niyoru_phrase_is_not_a_victim_country(
+        self,
+    ) -> None:
+        profile = self.profile("QTFY")
+        activity = self.activity(
+            "米司法省、中国によるハッキングに関する主張を訂正し、"
+            "米政府機関は「被害者」ではなく「標的」だったと説明",
+            "米司法省とFBIは、中国国家支援グループQTFYが運用したQScanと"
+            "QTRouterのドメインを差し押さえ、米国の重要インフラが標的とされたと発表した。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("米国", countries)
+        self.assertNotIn("中国", countries)
+
     def test_nationality_of_perpetrators_is_not_a_victim_country(self) -> None:
         profile = self.profile("Silent Librarian")
         activity = self.activity(
@@ -248,6 +265,43 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertEqual(
             activity["last_observed"]["value"],
             "2024-07-01T00:00:00Z",
+        )
+
+    def test_prior_campaign_sentence_is_not_used_as_activity_period(self) -> None:
+        profile = self.profile("UAC-0099")
+        activity = self.activity(
+            "UAC-0099、マルウェアにAI解析を妨害するプロンプトを埋め込み",
+            (
+                "UAC-0099は悪性VBSスクリプトのコメントへ安全上問題のある文章を"
+                "埋め込み、LLMの安全機構を作動させて解析を拒否させた。"
+                "UAC-0099は過去に交通・エネルギー分野を標的としており、"
+                "2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを"
+                "展開していた。"
+            ),
+        )
+
+        changed = enrich_explicit_activity_period(profile, activity, self.rules)
+
+        self.assertFalse(changed)
+        self.assertIsNone(activity["first_observed"]["value"])
+        self.assertIsNone(activity["last_observed"]["value"])
+
+    def test_conventional_technique_wording_does_not_block_period(self) -> None:
+        profile = self.profile("Kimsuky")
+        activity = self.activity(
+            "PowerShellを悪用する新手法",
+            (
+                "この手法は、2025年1月以降、限定的な攻撃で観測されており、"
+                "Kimsukyが使う従来の手法から逸脱しています。"
+            ),
+        )
+
+        changed = enrich_explicit_activity_period(profile, activity, self.rules)
+
+        self.assertTrue(changed)
+        self.assertEqual(
+            activity["first_observed"]["value"],
+            "2025-01-01T00:00:00Z",
         )
 
     def test_month_pair_activity_period_is_structured(self) -> None:
