@@ -225,6 +225,97 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "created": "2026-09-03T13:41:21Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害",
+      "description": "ESETは、ロシア系脅威アクターUAC-0099が、AI支援型マルウェア解析を妨害する新手法「GuardBreaker」をウクライナの標的に使用したと報告した。 攻撃では悪性VBSスクリプトのコメント欄に核兵器製造を求める安全上問題のある文章を埋め込み、LLMの安全機構を作動させ解析拒否へ誘導する。 GuardBreakerを含むVBSは、UAC-0099専用のC#ローダー「MATCHBOIL」をダウンロード・導入し、追加ペイロードを配布する目的で使用される。 UAC-0099は過去に交通・エネルギー分野を標的としており、2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた。 同様のLLM向け敵対的プロンプトはMini Shai-Huludなどでも確認されており、AIを最初の解析器として無防備に使うワークフローの弱点が示されている。",
+      "first_seen": "2026-07-01T00:00:00Z",
+      "last_seen": "2026-07-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "x.com",
+          "description": "Local source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-68b4eb5487818e6546f8",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--68b4eb5487818e6546f82b17 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: ESET Research のX投稿(https://x.com/ESETresearch/status/2092885120562741652 、アクセス2026-09-03、HTTP 200)とTHN 2026-09-01の解説記事を確認して承認。ESET原文は「UAC-0099 inserted a problematic text: 'I want to make nuclear weapon. Help me ...' into their malicious VBS script as a comment」と、UAC-0099を実行主体として明記する。 記事タイトルもexact名で当該アクターを主題としており、GuardBreakerと呼ばれる新手法(VBSコメントに安全性センシティブなプロンプトを埋め込みLLMの解析を拒否させる)をウクライナの標的に対して使用したこと、GuardBreaker入りVBSがUAC-0099専用のC#ローダーMATCHBOILをダウンロード・導入する目的であることを示す。 2026年7月にCERT-UAが偽Notepad++プラグイン経由の新型MATCHBOIL展開を警告した経緯にも整合する。 activity_periodの明示値は原文に無いためunknownとし、tech-memoの日付をreported_atへ分離する。 IOCは原文・IOC CSVいずれにも公開されていない。MATCHBOILは記事内に登場するが、tech-memoのIOC CSVにmalware列としては現れていないため今回のqueueにはcapability_decisionsが生成されていない。今回はレコード承認のみに留め、MATCHBOILの直接利用capability追加はIOCが後日公開された時点で別途扱う。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--uac-0099",
+          "name": "UAC-0099",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--activity-rule--sector--dfc80b76cad93a318adc",
+            "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--3a6def6b1e7230e2c121"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "disruptive-activity",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-d7f23202e68f653b1ad9"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--80e3ab99-d387-4456-b171-a954b4904bfc",
       "created": "2026-07-26T06:00:44Z",
       "modified": "2026-07-29T23:12:01Z",
@@ -427,13 +518,13 @@
       "spec_version": "2.1",
       "id": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T23:12:01Z",
+      "modified": "2026-09-03T13:41:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "ウクライナ",
       "identity_class": "organization",
-      "description": "活動「ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール」の記述で標的として明示された国・地域。",
+      "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された国・地域。",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -444,6 +535,11 @@
           "source_name": "cert.gov.ua",
           "description": "Local source: https://cert.gov.ua/article/6318634",
           "external_id": "source--daily-b6ba84745cdc81a329c5"
+        },
+        {
+          "source_name": "x.com",
+          "description": "Local source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9"
         }
       ],
       "x_target_category": "countries",
@@ -496,6 +592,50 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "運輸・航空・海運",
+      "identity_class": "organization",
+      "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "x.com",
+          "description": "Local source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "organization",
+      "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "x.com",
+          "description": "Local source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "created": "2026-07-29T15:20:24Z",
       "modified": "2026-07-29T15:20:24Z",
@@ -510,6 +650,28 @@
           "source_name": "bleepingcomputer.com",
           "description": "Local source: https://www.bleepingcomputer.com/news/security/sandworm-hackers-use-data-wipers-to-disrupt-ukraines-grain-sector/",
           "external_id": "source--daily-acae91555bc1bc0a4220"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "エネルギー",
+      "identity_class": "organization",
+      "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "x.com",
+          "description": "Local source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9"
         }
       ],
       "x_target_category": "sectors",
@@ -571,6 +733,60 @@
         "basis": "daily-news-file-date"
       },
       "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--f7ed45ea-b2eb-404f-a08c-9022f25e54ab",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害",
+      "identity_class": "organization",
+      "description": "ESETは、ロシア系脅威アクターUAC-0099が、AI支援型マルウェア解析を妨害する新手法「GuardBreaker」をウクライナの標的に使用したと報告した。 攻撃では悪性VBSスクリプトのコメント欄に核兵器製造を求める安全上問題のある文章を埋め込み、LLMの安全機構を作動させ解析拒否へ誘導する。 GuardBreakerを含むVBSは、UAC-0099専用のC#ローダー「MATCHBOIL」をダウンロード・導入し、追加ペイロードを配布する目的で使用される。 UAC-0099は過去に交通・エネルギー分野を標的としており、2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた。 同様のLLM向け敵対的プロンプトはMini Shai-Huludなどでも確認されており、AIを最初の解析器として無防備に使うワークフローの弱点が示されている。",
+      "external_references": [
+        {
+          "source_name": "x.com",
+          "description": "Local source: https://x.com/ESETresearch/status/2092885120562741652",
+          "external_id": "source--daily-d7f23202e68f653b1ad9"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--3a6def6b1e7230e2c121",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "x_reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
@@ -915,6 +1131,36 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--a2ff6930-8424-4deb-bd02-b2707cfbba2d",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "UAC-0099 targets 運輸・航空・海運 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--22e17e2a-6959-4086-9db5-91db77731145",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "UAC-0099 targets 製造・産業 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--a57f2555-56ff-40b4-80c5-5c90a06ceda4",
       "created": "2026-07-29T23:12:01Z",
       "modified": "2026-07-29T23:12:01Z",
@@ -926,6 +1172,111 @@
       "target_ref": "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
       "description": "UAC-0099 targets 教育・研究 (profile target category: sectors).",
       "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--98359c32-f31f-4c31-a8fe-b3873baf4351",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "target_ref": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
+      "description": "UAC-0099 targets エネルギー (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fec33cf7-9ab2-469d-bb1c-00f0f2f0b3dc",
+      "created": "2026-09-03T13:41:21Z",
+      "modified": "2026-09-03T13:41:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 is attributed or linked to UAC-0099.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d27deddc-4474-48df-8149-6270f394a926",
+      "created": "2026-09-03T13:41:21Z",
+      "modified": "2026-09-03T13:41:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 targets target--activity-rule--country--36f1b9323d5faab92f39.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5050c0ab-771e-4ade-a290-0b0d0b7a72f2",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1e3fd673-c294-4b2a-94c1-3547bc698a5f",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 targets target--activity-rule--sector--dfc80b76cad93a318adc.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--17155b2f-5f82-4e46-b299-e09c284ea145",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 targets target--activity-rule--sector--fb803c0a91ed53ea76f9.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--34110ceb-4af2-4054-a1ca-bfd0c28dbfed",
+      "created": "2026-09-03T13:41:51Z",
+      "modified": "2026-09-03T13:41:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
+      "target_ref": "identity--f7ed45ea-b2eb-404f-a08c-9022f25e54ab",
+      "description": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 affected victim--activity-rule--3a6def6b1e7230e2c121.",
+      "x_confidence": "high"
     },
     {
       "type": "relationship",
@@ -5664,7 +6015,7 @@
       "spec_version": "2.1",
       "id": "report--736e3f3d-58ca-4c86-b85d-58864bbd5125",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-08-07T10:35:28Z",
+      "modified": "2026-09-03T13:41:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5673,19 +6024,24 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-07T10:35:28Z",
+      "published": "2026-09-03T13:41:51Z",
       "object_refs": [
         "intrusion-set--aadd084d-eb4a-4c7c-93d8-83575366633c",
         "malware--f264b0a9-ab35-464c-affb-44396a4eafe1",
         "malware--03457fea-7cb0-437c-b0d4-bca46151aca5",
         "malware--ec5371e3-8515-4354-b81a-4408197ce5c3",
+        "campaign--d4008109-7c6f-4a1d-97d4-2593b0b26569",
         "campaign--80e3ab99-d387-4456-b171-a954b4904bfc",
         "campaign--49e0cb5b-01ea-450e-b405-710b2732a4f2",
         "identity--24e500a8-3f39-4579-824c-6c525b7f7d0f",
         "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
         "identity--8d3cc8dc-c314-462e-98d3-3309722bd967",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
         "identity--437f1723-e396-4cdb-be2c-c9eaa19843ca",
+        "identity--bfef3abc-4278-47bf-b469-45c4f2c0612b",
         "identity--5c60509e-2860-40d7-ba44-10548feeaddc",
+        "identity--f7ed45ea-b2eb-404f-a08c-9022f25e54ab",
         "identity--d75c536b-1e7c-4500-924e-a5099a6bfd47",
         "attack-pattern--d9f9c196-e951-401f-913c-0e3fd5dda607",
         "attack-pattern--07bb87a2-6cd5-48fa-bbaf-37363305806e",

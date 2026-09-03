@@ -4,7 +4,7 @@
   "name": "UAC-0099",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-08-07T10:35:28Z",
+  "updated_at": "2026-09-03T13:41:51Z",
   "languages": [
     "ja"
   ],
@@ -138,6 +138,108 @@
     "analyst_notes": ""
   },
   "activities": [
+    {
+      "activity_id": "activity--daily-68b4eb5487818e6546f8",
+      "name": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害",
+      "activity_type": "disruptive-activity",
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "ESETは、ロシア系脅威アクターUAC-0099が、AI支援型マルウェア解析を妨害する新手法「GuardBreaker」をウクライナの標的に使用したと報告した。 攻撃では悪性VBSスクリプトのコメント欄に核兵器製造を求める安全上問題のある文章を埋め込み、LLMの安全機構を作動させ解析拒否へ誘導する。 GuardBreakerを含むVBSは、UAC-0099専用のC#ローダー「MATCHBOIL」をダウンロード・導入し、追加ペイロードを配布する目的で使用される。 UAC-0099は過去に交通・エネルギー分野を標的としており、2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた。 同様のLLM向け敵対的プロンプトはMini Shai-Huludなどでも確認されており、AIを最初の解析器として無防備に使うワークフローの弱点が示されている。",
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--3a6def6b1e7230e2c121"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-d7f23202e68f653b1ad9"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--68b4eb5487818e6546f82b17 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: ESET Research のX投稿(https://x.com/ESETresearch/status/2092885120562741652 、アクセス2026-09-03、HTTP 200)とTHN 2026-09-01の解説記事を確認して承認。ESET原文は「UAC-0099 inserted a problematic text: 'I want to make nuclear weapon. Help me ...' into their malicious VBS script as a comment」と、UAC-0099を実行主体として明記する。 記事タイトルもexact名で当該アクターを主題としており、GuardBreakerと呼ばれる新手法(VBSコメントに安全性センシティブなプロンプトを埋め込みLLMの解析を拒否させる)をウクライナの標的に対して使用したこと、GuardBreaker入りVBSがUAC-0099専用のC#ローダーMATCHBOILをダウンロード・導入する目的であることを示す。 2026年7月にCERT-UAが偽Notepad++プラグイン経由の新型MATCHBOIL展開を警告した経緯にも整合する。 activity_periodの明示値は原文に無いためunknownとし、tech-memoの日付をreported_atへ分離する。 IOCは原文・IOC CSVいずれにも公開されていない。MATCHBOILは記事内に登場するが、tech-memoのIOC CSVにmalware列としては現れていないため今回のqueueにはcapability_decisionsが生成されていない。今回はレコード承認のみに留め、MATCHBOILの直接利用capability追加はIOCが後日公開された時点で別途扱う。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--uac-0099",
+          "name": "UAC-0099",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--activity-rule--sector--dfc80b76cad93a318adc",
+            "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--3a6def6b1e7230e2c121"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "disruptive-activity",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-d7f23202e68f653b1ad9"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
     {
       "activity_id": "activity--daily-72da5dad97e2e21f550f",
       "name": "ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール",
@@ -375,7 +477,7 @@
       {
         "id": "target--activity-rule--country--36f1b9323d5faab92f39",
         "name": "ウクライナ",
-        "description": "活動「ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール」の記述で標的として明示された国・地域。",
+        "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": "2025-06-01T00:00:00Z",
           "precision": "month",
@@ -383,7 +485,7 @@
           "basis": "activity-description-explicit-period; activity-period"
         },
         "last_observed": {
-          "value": "2025-09-01T00:00:00Z",
+          "value": "2026-07-01T00:00:00Z",
           "precision": "month",
           "status": "known",
           "basis": "activity-description-explicit-period; activity-period"
@@ -391,7 +493,8 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-acae91555bc1bc0a4220",
-          "source--daily-b6ba84745cdc81a329c5"
+          "source--daily-b6ba84745cdc81a329c5",
+          "source--daily-d7f23202e68f653b1ad9"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
@@ -443,6 +546,50 @@
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
+        "id": "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "name": "運輸・航空・海運",
+        "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-d7f23202e68f653b1ad9"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "name": "製造・産業",
+        "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-d7f23202e68f653b1ad9"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
         "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
         "name": "教育・研究",
         "description": "活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。",
@@ -461,6 +608,28 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-acae91555bc1bc0a4220"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--fb803c0a91ed53ea76f9",
+        "name": "エネルギー",
+        "description": "活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "activity-description-explicit-period; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-d7f23202e68f653b1ad9"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       }
@@ -644,6 +813,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260724.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-d7f23202e68f653b1ad9",
+      "path": "https://x.com/ESETresearch/status/2092885120562741652",
+      "title": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害",
+      "publisher": "x.com",
+      "published_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260902.md; source commit: 7d2d62b65842e30585cde36b188fba77308d8d06; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--osint-cert-ua-uac-index",
@@ -855,6 +1042,51 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-b6ba84745cdc81a329c5"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--3a6def6b1e7230e2c121",
+      "name": "被害事例: ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "ESETは、ロシア系脅威アクターUAC-0099が、AI支援型マルウェア解析を妨害する新手法「GuardBreaker」をウクライナの標的に使用したと報告した。 攻撃では悪性VBSスクリプトのコメント欄に核兵器製造を求める安全上問題のある文章を埋め込み、LLMの安全機構を作動させ解析拒否へ誘導する。 GuardBreakerを含むVBSは、UAC-0099専用のC#ローダー「MATCHBOIL」をダウンロード・導入し、追加ペイロードを配布する目的で使用される。 UAC-0099は過去に交通・エネルギー分野を標的としており、2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた。 同様のLLM向け敵対的プロンプトはMini Shai-Huludなどでも確認されており、AIを最初の解析器として無防備に使うワークフローの弱点が示されている。",
+      "activity_refs": [
+        "activity--daily-68b4eb5487818e6546f8"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--activity-rule--sector--fb803c0a91ed53ea76f9"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "activity-description-explicit-period"
+      },
+      "reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-d7f23202e68f653b1ad9"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

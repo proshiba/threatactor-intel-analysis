@@ -4,7 +4,7 @@
   "name": "UNC1549",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-08-27T03:19:36Z",
+  "updated_at": "2026-09-03T13:41:51Z",
   "languages": [
     "ja"
   ],
@@ -175,6 +175,32 @@
         "analyst_notes": "EgyptおよびPakistanで、侵害後のアクセス維持・通信中継に使われた。"
       },
       {
+        "id": "malware--daily-05c4e283c192f549b723",
+        "name": "NodeRabbit",
+        "aliases": [],
+        "types": [
+          "RAT"
+        ],
+        "description": "UNC1549との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-eac188700be16a552143"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
+      },
+      {
         "id": "malware--daily-126c8af714f49766e231",
         "name": "TWOSTROKE",
         "aliases": [],
@@ -223,6 +249,32 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-d9794d16b217472dc38d"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
+      },
+      {
+        "id": "malware--daily-ad254c5697623cd6428f",
+        "name": "PollCat",
+        "aliases": [],
+        "types": [
+          "RAT"
+        ],
+        "description": "UNC1549との直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-eac188700be16a552143"
         ],
         "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
@@ -374,6 +426,127 @@
     "analyst_notes": "新規マルウェア名、C2基盤、配布手法、運用上の特徴を分離して構造化した。"
   },
   "activities": [
+    {
+      "activity_id": "activity--daily-2af1a13746c92e9b94dd",
+      "name": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Kasperskyは、Mirage KittenがNode.js製「NodeRabbit」とJavaScript製「PollCat」という未報告のクロスプラットフォームRATを使用する攻撃を確認した。 攻撃者はLinkedInなどで採用担当者を装い、トロイ化したコーディング課題を送付して、Windows・Linux・macOSの開発者端末へマルウェアを感染させる。 NodeRabbitは任意コマンド・ファイル操作・プロセス制御に加え、最新版では偽VS Code拡張機能やGit hookを利用した開発者ワークフロー経由の永続化も備える。 PollCatもコマンド実行、ファイル送受信、JavaScript実行、システム・セキュリティ製品偵察などを行い、Azure WebsitesなどをC2として悪用する。 被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。",
+      "target_refs": [
+        "target--country--egypt",
+        "target--country--ethiopia",
+        "target--region--africa",
+        "target--sector--aerospace",
+        "target--sector--aviation"
+      ],
+      "malware_refs": [
+        "malware--daily-05c4e283c192f549b723",
+        "malware--daily-ad254c5697623cd6428f"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--590d0a5c1af14161be04"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-eac188700be16a552143"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--2af1a13746c92e9b94dd2acc から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: Kaspersky Securelist原文(2026-09-01、アクセス2026-09-03、HTTP 200)を確認して承認。Attribution節に「We attribute this activity to Mirage Kitten with a high degree of confidence」と明記されており、NodeRabbit RATと同社が過去に文書化したRetrograde/MiniFast系DLLバックドアとのC2ハンドシェイク・socketIdセッション確立ロジック、host registration本体、コマンド取得、beacon timing(120000ms間隔・5000msジッター・60000ms再試行)、コマンドIDセット、curl.exe経由NTLM/Negotiate委譲による企業プロキシ認証といった構造的類似を根拠として提示している。Mirage KittenはUNC1549のKaspersky別名(scope: exact)としてprofiles/unc1549に登録済み。被害はエジプト・エチオピア・アフガニスタンのFinTechと航空・航空宇宙分野で、LinkedInなど求人プラットフォームで採用担当者を装ったトロイ化コーディング課題ZIPをS3から配布する初期侵入経路。攻撃期間の明示値は原文に無く(登録者がドメイン作成日として2026-05-15〜2026-07-03を挙げているが攻撃観測日そのものではない)、activity_periodはunknownとして扱い、tech-memoの日付をreported_atへ分離する。NodeRabbitとPollCatは同社が独立したソースコードを直接解析した固有マルウェア名でcapabilityへ採用する。IOC CSVの「NodeRabbit / PollCat」合成表記は単一の名前付きツールではないため個別capabilityとしては採用しない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1549",
+          "name": "UNC1549",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": [
+            "organization--irgc-cec"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-05c4e283c192f549b723",
+            "malware--daily-ad254c5697623cd6428f"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--egypt",
+            "target--country--ethiopia",
+            "target--region--africa",
+            "target--sector--aerospace",
+            "target--sector--aviation"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--590d0a5c1af14161be04"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [
+              "target--country--egypt",
+              "target--country--ethiopia"
+            ],
+            "target_region_refs": [
+              "target--region--africa"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-eac188700be16a552143"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
     {
       "activity_id": "activity--daily-6b2a23bcddd9757abbb0",
       "name": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
@@ -879,6 +1052,28 @@
   "targets": {
     "countries": [
       {
+        "id": "target--targeting-audit--country--dfe4685c3d850f100942",
+        "name": "アフガニスタン",
+        "description": "活動「Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-eac188700be16a552143"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
         "id": "target--targeting-audit--country--1d21569d1d3f9ade5d30",
         "name": "アラブ首長国連邦",
         "description": "活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的・被害国として明示されている。",
@@ -987,6 +1182,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "報告公開日を標的化時期として扱わない。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
@@ -1010,6 +1206,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "報告公開日を標的化時期として扱わない。 [targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
@@ -1172,6 +1369,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
@@ -1207,7 +1405,7 @@
       {
         "id": "target--targeting-audit--region--5b080d8e528025530815",
         "name": "南アジア",
-        "description": "インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+        "description": "アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -1223,6 +1421,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026",
           "source--target-audit-etda-threat-group-cards"
         ],
@@ -1294,6 +1493,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026",
           "source--unc1549--c47ef662fbdb6d88"
         ],
@@ -1318,6 +1518,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-d9794d16b217472dc38d",
+          "source--daily-eac188700be16a552143",
           "source--kaspersky-mirage-kitten-2026",
           "source--unc1549--c47ef662fbdb6d88"
         ],
@@ -1855,6 +2056,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_04-06/20260527.md; source commit: 153b082489afea8d247b3e646cb25c96e25b5601; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-eac188700be16a552143",
+      "path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+      "title": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化",
+      "publisher": "securelist.com",
+      "published_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260902.md; source commit: 7d2d62b65842e30585cde36b188fba77308d8d06; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--kaspersky-mirage-kitten-2026",
       "path": "https://securelist.com/mirage-kitten-new-tools/120811/",
       "url": "https://securelist.com/mirage-kitten-new-tools/120811/",
@@ -2139,7 +2358,7 @@
     "history": "2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。",
     "capability_details": "NightLedgerはDLL検索順序ハイジャックで起動するWindowsバックドアで、偵察、プロセス実行・列挙、ファイル操作、画面取得、DLLロード、アップロード等に対応する。ArcBridgeはDNS/TCPを、BridgeHeadはSOCKS5をWebSocketで中継し、両者とも企業プロキシを考慮する。",
     "infrastructure_details": "HTTPSおよびWebSocketを用い、Azure App Service、Cloudflare配下のホスト、標的に合わせた名称の独自ドメインを組み合わせる。IOCはiocs.json、通信パス、mutex、設定マーカー、User-Agent等はartifacts.csvに保存する。",
-    "targeting_details": "構造化ターゲット監査: 標的国=アラブ首長国連邦、アルバニア、イスラエル、インド、エジプト、エチオピア、タンザニア、トルコ、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
+    "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アラブ首長国連邦、アルバニア、イスラエル、インド、エジプト、エチオピア、タンザニア、トルコ、パキスタン、ブルキナファソ、ヨルダン、米国。標的地域=アフリカ、中東、南アジア、欧州。日本は確認時に個別国として保持する。\n\n主な標的は航空宇宙、航空、防衛、通信で、2026年報告ではEgypt、Pakistan、Jordan、Tanzania、Ethiopia、Burkina Fasoの政府・民間組織や金融分野も挙げられた。採用・ビデオ会議を装う標的型誘導を用いる。",
     "additional_notes": "Kasperskyが明示した別名はexactとして保持するが確度はmediumとし、他ベンダーの追跡名を根拠なく統合しない。IOCの観測日は不明のまま保持する。"
   },
   "victim_cases": [
@@ -2264,6 +2483,63 @@
       "confidence": "high",
       "evidence_refs": [
         "source--kaspersky-mirage-kitten-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--590d0a5c1af14161be04",
+      "name": "被害事例: Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Kasperskyは、Mirage KittenがNode.js製「NodeRabbit」とJavaScript製「PollCat」という未報告のクロスプラットフォームRATを使用する攻撃を確認した。 攻撃者はLinkedInなどで採用担当者を装い、トロイ化したコーディング課題を送付して、Windows・Linux・macOSの開発者端末へマルウェアを感染させる。 NodeRabbitは任意コマンド・ファイル操作・プロセス制御に加え、最新版では偽VS Code拡張機能やGit hookを利用した開発者ワークフロー経由の永続化も備える。 PollCatもコマンド実行、ファイル送受信、JavaScript実行、システム・セキュリティ製品偵察などを行い、Azure WebsitesなどをC2として悪用する。 被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。",
+      "activity_refs": [
+        "activity--daily-2af1a13746c92e9b94dd"
+      ],
+      "target_refs": [
+        "target--country--egypt",
+        "target--country--ethiopia",
+        "target--region--africa",
+        "target--sector--aerospace",
+        "target--sector--aviation"
+      ],
+      "malware_refs": [
+        "malware--daily-05c4e283c192f549b723",
+        "malware--daily-ad254c5697623cd6428f"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "エンドポイント",
+        "クラウド／SaaS"
+      ],
+      "impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-eac188700be16a552143"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
