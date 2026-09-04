@@ -133,6 +133,23 @@ def explicit_point(
     }
 
 
+# 「過去に」「かつて」「以前に」「これまでに」を含む文は、当該活動ではなく同じ
+# アクターの先行キャンペーンを説明していることが多い。そこに現れる年月を本活動の
+# 観測期間として構造化すると、過去1年・過去3年の集計が実態より広くなる。
+# 「従来の手法」のように時期を指さない語は対象にしない。
+PRIOR_ACTIVITY_MARKER = re.compile(r"(?:過去に|かつて|以前[には]|これまでに)")
+SENTENCE_BOUNDARY = re.compile(r"(?<=[。\n])")
+
+
+def mask_prior_activity_sentences(text: str) -> str:
+    """Blank out sentences that describe the actor's earlier, separate activity."""
+
+    return "".join(
+        "" if PRIOR_ACTIVITY_MARKER.search(sentence) else sentence
+        for sentence in SENTENCE_BOUNDARY.split(text)
+    )
+
+
 def enrich_explicit_activity_period(
     profile: dict[str, Any],
     activity: dict[str, Any],
@@ -143,7 +160,9 @@ def enrich_explicit_activity_period(
         activity.get("last_observed")
     ):
         return False
-    text = activity_text(profile, activity, rules)
+    text = mask_prior_activity_sentences(
+        activity_text(profile, activity, rules)
+    )
     first: dict[str, Any] | None = None
     last: dict[str, Any] | None = None
 
@@ -590,6 +609,15 @@ def actor_attribution_context(
         or re.search(actor_terms, after)
         or re.search(japanese_terms, after)
         or re.search(r"^\s*(?:系|関連|関与|支援)(?:の)?", after)
+        # 「中国によるハッキング」「ロシアによるサイバー攻撃」のように、
+        # 国名に「による」＋攻撃行為の名詞が続く形は実行主体側の帰属表現で
+        # あり被害国ではない。「日本への攻撃」のような被害側の助詞とは
+        # 形が異なるため、被害国の抽出を巻き込まない。
+        or re.search(
+            r"^\s*による(?:サイバー)?"
+            r"(?:ハッキング|攻撃|侵害|諜報|スパイ活動|作戦|活動|犯行|工作)",
+            after,
+        )
         or re.search(r"^\s*の(?:敵対国|同盟国|友好国)", after)
         # 「イラン人17人を起訴」のような国籍付きの人数表現は実行主体側の記述で
         # あり、被害国ではない。「日本人を標的」のような被害側の表現を巻き込まない

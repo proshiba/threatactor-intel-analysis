@@ -7,19 +7,32 @@
       "spec_version": "2.1",
       "id": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-08-19T04:07:00Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "DPRK IT Worker Schemes",
-      "aliases": [],
+      "aliases": [
+        "Famous Chollima"
+      ],
       "description": "DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専用資料8件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [
         "Financially motivated intrusion or fraud."
       ],
       "external_references": [],
       "x_profile_id": "actor--dprk-it-workers",
-      "x_alias_assessments": [],
+      "x_alias_assessments": [
+        {
+          "name": "Famous Chollima",
+          "vendor": "CrowdStrike",
+          "scope": "exact",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-10f083232dfd566dc4f9"
+          ],
+          "analyst_notes": "CrowdStrikeのFAMOUS CHOLLIMAは、北朝鮮政権へ賃金を送金するための不正就労(リモートITワーカー)を中核とする追跡名であり、本プロファイル「DPRK IT Worker Schemes」が対象とするクラスタと実質的に同一の範囲を指す。したがってscopeはexactとする。profiles/contagious-interview 側にも同名aliasが登録されているが、そちらはscope: broaderであり、「FAMOUS CHOLLIMAはContagious Interview(偽求人面接によるマルウェア配布キャンペーン)より広い」ことを表す記録である。ここでexactを与えることで、日次キューのActorRegistryは複数プロファイル一致の場合に一意なexact一致を優先し、「Famous Chollima」の言及を本プロファイルへ解決する。運用上の振り分け基準: リモートITワーカーの不正就労・身元詐称・賃金送金を主題とする資料は本プロファイルへ、偽の採用面接やコーディング課題を用いたマルウェア配布を主題とする資料はcontagious-interviewへ割り当てる。CrowdStrikeが同一名の下にContagious Interview系の活動も併せて整理する場合がある点は、両プロファイルのalias注記として残す。exactは日次キューでの解決先を一意に定めるためのモデリング上の判断であり、個々の資料についてはAGENT.mdに従い原文で実行主体を確認したうえでレコードを採否する。 根拠資料: Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」(2026-08-26)は「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」と記し、本プロファイルの対象とFAMOUS CHOLLIMAを同義に用いている。"
+        }
+      ],
       "x_attribution": {
         "countries": [],
         "sponsor_type": "unknown",
@@ -216,6 +229,86 @@
       "tool_types": [
         "legitimate-software"
       ]
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--e66d2a0c-e76d-43f1-9490-5f94b09ce10f",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+      "description": "Huntressは2026年、複数組織の調査を支援し、偽造・盗用した身元を使って正規従業員として採用された可能性が高い北朝鮮系リモートワーカー5人を特定した。 医療分野の3人はAstrill VPN、IPRoyal Proxy、WorkTitans B.V.などを利用し、位置情報を隠蔽していたほか、勤務時間や偽造身分証にも共通する異常が確認された。 金融分野ではPiKVMを使ったハードウェアレベルの遠隔操作、Guermok USBキャプチャカード、盗用・加工した顔写真など、過去のDPRK ITワーカー活動と重なる痕跡を確認した。 別の事例では、盗用した身元情報、Toffeeshare、VDO Ninja、音声・画面記録用Chrome拡張などを利用し、不正に雇用を得ていた可能性が高いと評価された。 Huntressは単一IOCだけではDPRK関与を証明できないため、端末、認証、ブラウザ、クラウド、勤務時間、身分証メタデータなど複数の兆候を組み合わせる必要があるとしている。",
+      "external_references": [
+        {
+          "source_name": "huntress.com",
+          "description": "Local source: https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation",
+          "external_id": "source--daily-10f083232dfd566dc4f9"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-4f4f7399bd666d3fcdbd",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--4f4f7399bd666d3fcdbd74a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: context-only。 レビュー: 原文(Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」、2026-08-26公開)をHTTP 200で取得して確認。冒頭に「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」とあり、本記事におけるFAMOUS CHOLLIMAは北朝鮮のリモートITワーカーそのものを指す。本文はHuntressが2026年に実施した複数の実調査を記述しており、助言記事にとどまらない直接観測を含む。具体的には、(1)オーストラリアのパートナーからの通報で、中国人を装った3名の従業員がAstrill VPN経由で繰り返し認証していた事案について6か月分のUnified Audit Logs、Exchange・SharePoint・サインイン等のイベント、ITDR認証記録を分析した事例、(2)2026年8月の金融サービス業の事案で、PiKVMおよびGuermok USB機器を接続したホストを対象に脅威ハンティングを行い、入社13日目の営業・マーケティング担当として登録された利用者が既存の身元を窃取または借用して不正に雇用を得たと判断した事例、である。PiKVM V4 Miniの接続はRealtek Audio Universal Serviceのイベント(2026-07-31、Huntress展開の約7日前)およびイベントID 6416で確認されている。activity_claimはcontext-only(タイトルが活動を主題としない体裁)だが、これはタイトルの体裁に基づく機械判定であり、本文が実行主体による具体的な不正就労活動を直接記述していることを原文で確認したうえで採用する。アクター照合について: 「Famous Chollima」はprofiles/contagious-interviewにもscope: broaderのaliasとして存在したため複数プロファイル一致となり、従前は本記事がcontagious-interviewへ誤って寄せられていた。FAMOUS CHOLLIMAの定義は北朝鮮政権への送金を目的とする不正就労全般であり、偽求人面接によるマルウェア配布キャンペーンであるContagious Interviewより広いという整理はcontagious-interview側のalias注記に既に記録されている。今回、当該定義に実質的に対応する本プロファイルへ scope: exact のaliasを登録し、解決先を一意に定めた。活動期間: 原文は個別事案の観測日を部分的にしか示さないため活動期間はunknownとし、tech-memo日次ファイルの日付(2026-09-01)をreported_atへ分離する。原文の公開日は2026-08-26である。PiKVM、Guermok USB、Astrill VPNは不正就労の運用に用いられた正規の機器・サービスであり、攻撃者専有のマルウェアではないためcapabilityとして登録しない。",
+      "x_reported_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--dprk-it-workers",
+          "name": "DPRK IT Worker Schemes",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "reported-activity",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-10f083232dfd566dc4f9"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
     },
     {
       "type": "campaign",
@@ -2445,6 +2538,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--6ce14787-691f-48a6-9886-e94f7d829181",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--e66d2a0c-e76d-43f1-9490-5f94b09ce10f",
+      "target_ref": "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
+      "description": "北朝鮮（DPRK）リモートワーカー調査から得られた知見 is attributed or linked to DPRK IT Worker Schemes.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--6623eba7-64ca-4593-9227-c18980481148",
       "created": "2026-08-13T11:03:44Z",
       "modified": "2026-08-13T11:03:44Z",
@@ -3361,8 +3469,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3b869447-df5d-4687-94fa-45160c1aca1d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3420,8 +3528,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--32b75c18-79ba-4c0d-8617-7402bdd12928",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3435,8 +3543,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7bebb69d-689c-40cd-9d10-f739ac6a014b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3444,7 +3552,7 @@
       "pattern": "[domain-name:value = 'api.ipify.org']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3494,8 +3602,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f459f032-e1ca-4940-9975-4c8dc5e30f1a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3509,8 +3617,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--54a1998e-2ea9-46ee-9d9f-c437874a38a1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3568,8 +3676,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--dd6945fa-1ff5-4990-9659-d3839c92b6c5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3583,8 +3691,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ee67e4b3-62b3-4db6-a56c-d185cfe92156",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3592,7 +3700,7 @@
       "pattern": "[domain-name:value = 'boho.or.kr']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3642,8 +3750,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--48777f87-5f3f-44bf-b69f-df5c1e34c1fe",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3657,8 +3765,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b35b11fa-2bd3-4d92-9521-b202fa20d42f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3666,7 +3774,7 @@
       "pattern": "[domain-name:value = 'dc3.mil']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3716,8 +3824,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ba52d2d6-28a3-465b-8882-4344476d3c84",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3731,8 +3839,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--2635b3be-b6ef-4814-a0cf-76f44c589c27",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3740,7 +3848,7 @@
       "pattern": "[domain-name:value = 'ecrm.police.go.kr']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3790,8 +3898,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9c7be0f8-fdb5-407b-9121-b80c507e394a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3805,8 +3913,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--622af1ea-7854-4266-bcd2-c7a26f69eaab",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3814,7 +3922,7 @@
       "pattern": "[domain-name:value = 'ffmepg.sh']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3864,8 +3972,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--c27e8ccf-9f73-4da1-a953-9bca858f1a84",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3879,8 +3987,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--035ca552-6b48-425b-b53c-7b0537492e92",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3888,7 +3996,7 @@
       "pattern": "[domain-name:value = 'ffmpeg.sh']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -3968,8 +4076,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b33ced25-3876-48d9-9622-04b4218ff734",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3983,8 +4091,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--27060e66-6b79-452b-a8c0-5ba13832f850",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3992,7 +4100,7 @@
       "pattern": "[domain-name:value = 'hisolution.io']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4072,8 +4180,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--07bf6252-d68c-434e-8d54-96dcfd57e4e4",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4087,8 +4195,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4ad59a66-99ae-41d3-b684-0b3e2d581e60",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4146,8 +4254,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9c64457f-541f-4a9f-a173-d382956154c7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4161,8 +4269,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7fd19159-c948-4cea-a5ca-32bb3ea64744",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4170,7 +4278,7 @@
       "pattern": "[domain-name:value = 'levels.fyi']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4220,8 +4328,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--bc28db28-32f1-48ac-870b-11dbfabce130",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4235,8 +4343,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d2dbaa56-7f5d-4d6d-b355-6cec8edc4401",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4244,7 +4352,7 @@
       "pattern": "[domain-name:value = 'nvidia-release.org']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4294,8 +4402,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7fc57646-cb7d-4dc9-bdf1-17feccf5994c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4309,8 +4417,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--be99b6f3-5c91-44b9-b005-c7fe96edd6f6",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4368,8 +4476,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--648307cc-6382-4659-a5d0-7d3d0c845e40",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4383,8 +4491,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--de2cc831-386a-4f5c-b4e2-f7ae92f8767c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4392,7 +4500,7 @@
       "pattern": "[domain-name:value = 'release.org']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4442,8 +4550,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b6212c83-1920-4982-b8b5-40e13984095c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4457,8 +4565,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4068625b-1cce-456a-a767-96a2904bef15",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4546,8 +4654,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e5d7d9ec-59f4-4fe9-a45e-c51ff05efd1a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4561,8 +4669,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a8c0096e-faca-41bf-beee-9254f052db6f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4620,8 +4728,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d3a84772-c69f-42b4-8c37-27d42a095423",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4635,8 +4743,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d6c3b09d-70cf-422e-b424-3b6caad6365d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4694,8 +4802,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6ace7a4e-4108-4be5-80fc-f71e845ef121",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4709,8 +4817,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9c629c9c-048d-477c-b540-d07defb9348c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4718,7 +4826,7 @@
       "pattern": "[domain-name:value = 'vcamservice.sh']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4768,8 +4876,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d5be628-1198-4430-a960-08ab8cd935a1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4783,8 +4891,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--61f95662-489b-4d6d-9a4a-41ded69ea1f4",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4792,7 +4900,7 @@
       "pattern": "[domain-name:value = 'www.nis.go.kr']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4842,8 +4950,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--489a3745-ae2c-4c49-87d9-deeb6aaaafcb",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4857,8 +4965,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--40394de9-3397-42ed-be07-43cd7846d47e",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4916,8 +5024,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--97d366c6-cbe8-4bd0-b62c-98436164dcfa",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4931,8 +5039,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1c1c47f2-b4e1-4d83-aa8a-c00d94bfd272",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4940,7 +5048,7 @@
       "pattern": "[domain-name:value = 'xmrpool.eu']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -4990,8 +5098,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--312be09a-cef2-4456-92f8-d937166d03cf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5005,8 +5113,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7d6acfc0-c13a-410f-9ca1-ea66cd76f7b7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5014,7 +5122,7 @@
       "pattern": "[domain-name:value = 'xyzkoreas.news']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5064,8 +5172,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f20d7627-3bcf-4d6e-a753-f6139a3e9bf9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5079,8 +5187,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--afb14ed6-5e62-4213-9b51-05604c3427fb",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5088,7 +5196,7 @@
       "pattern": "[email-addr:value = 'eliteengineer0523@gmail.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5138,8 +5246,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--460d7af7-1d7c-489b-bfa5-048d848b5a96",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5153,8 +5261,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--be78a7e8-1368-46eb-a8bb-ee2f3d4003b7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5162,7 +5270,7 @@
       "pattern": "[email-addr:value = 'hisolutions.soft@gmail.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5212,8 +5320,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0ae4ef32-06d7-4426-8e68-bae2e42417eb",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5227,8 +5335,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--02f2bb5f-d4a6-4838-a819-1a92197725ae",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5236,7 +5344,7 @@
       "pattern": "[email-addr:value = 'hundredup2023@gmail.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5286,8 +5394,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b7f44bf5-d1b4-45e9-8731-f4b065feb53b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5301,8 +5409,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e088cc0b-fc13-4620-8a70-697216a5e2bc",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5310,7 +5418,7 @@
       "pattern": "[email-addr:value = 'johndoe@abccompany.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5360,8 +5468,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cf9e99f1-38f5-46cf-8624-956eede0b9f0",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5375,8 +5483,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--98d1d78b-1497-424e-8b06-b201233af3d0",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5384,7 +5492,7 @@
       "pattern": "[email-addr:value = 'johndoe@abccompany.live']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5434,8 +5542,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--9702adc7-5714-46ca-bec5-1119b011e94d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5449,8 +5557,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--24d19e2c-c575-4c12-9c8f-43cca74e0b69",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5458,7 +5566,7 @@
       "pattern": "[email-addr:value = 'trevorgreer9312@gmail.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5508,8 +5616,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a1e1f199-1386-42b5-bb99-10a98767933d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5523,8 +5631,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--8d1a8ddd-cec0-45d2-8b80-29d823a92073",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5532,7 +5640,7 @@
       "pattern": "[email-addr:value = 'vision.founder1004@gmail.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5582,8 +5690,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cba783ea-131f-4309-b2c2-12c8a68072cb",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5597,8 +5705,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ee5093ed-e1b5-4ceb-bafc-25cd92bebbb4",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5606,7 +5714,7 @@
       "pattern": "[ipv4-addr:value = '103.15.29.45']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5656,8 +5764,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b2dad611-fe98-493a-9320-2396343b8318",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5671,8 +5779,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--2d120e73-8a43-4d7e-b55f-b2fcb4debd46",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5680,7 +5788,7 @@
       "pattern": "[ipv4-addr:value = '103.51.141.152']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5730,8 +5838,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--38ef28ac-6c4f-402c-9f9e-a587416ba614",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5745,8 +5853,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--24f56ad2-e6f9-479c-aab0-77ebec1e31ee",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5754,7 +5862,7 @@
       "pattern": "[ipv4-addr:value = '103.51.141.153']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5804,8 +5912,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--38040fcb-edfc-458f-a51e-e1d186ffdb9b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5819,8 +5927,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9cd69cce-c8e0-4e64-ba9e-d7476ba7544c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5878,8 +5986,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7ba5cbad-f0ed-46bf-b7a9-08117b122924",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5893,8 +6001,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b74460ff-5fd2-4abc-b4e1-55205f5c17ea",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5902,7 +6010,7 @@
       "pattern": "[ipv4-addr:value = '147.124.197.138']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -5952,8 +6060,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--ba2c2836-ab33-41df-86b2-9ac8680cd302",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5967,8 +6075,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--68136957-1159-4da3-9b80-218a37efffaf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5976,7 +6084,7 @@
       "pattern": "[ipv4-addr:value = '147.124.197.149']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6026,8 +6134,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fd68bb65-5d48-48ee-ad58-3ea912a891d2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6041,8 +6149,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--fad84b6c-e979-4997-9056-9ceb481f5073",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6050,7 +6158,7 @@
       "pattern": "[ipv4-addr:value = '147.124.212.125']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6100,8 +6208,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--022c3ba7-cfff-4b38-bf9a-7a3c656057ee",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6115,8 +6223,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--89c4e286-acb6-4d9b-be7f-75056d9b8b66",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6174,8 +6282,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--61657775-68b5-4b55-a931-56a35a9bc723",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6189,8 +6297,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--81136630-125a-4e6c-8576-0cd5312abfa9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6198,7 +6306,7 @@
       "pattern": "[ipv4-addr:value = '147.124.214.129']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6248,8 +6356,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a8cabce5-1708-42da-93ce-af1c9c34e1bc",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6263,8 +6371,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e0fc03b8-4c8d-47d5-8b09-75c40dbe2f90",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6272,7 +6380,7 @@
       "pattern": "[ipv4-addr:value = '147.124.214.131']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6322,8 +6430,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7dc12ff5-8edd-49d8-88a1-bdcc938c80aa",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6337,8 +6445,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6cfc3ff3-b0ad-48fd-8783-31f08e69ef6b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6346,7 +6454,7 @@
       "pattern": "[ipv4-addr:value = '147.124.214.237']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6396,8 +6504,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--36f204de-267d-4e9f-9ab9-9460b4c3f401",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6411,8 +6519,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ecf07d09-62e8-41b6-8f1c-2a30ca988d68",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6420,7 +6528,7 @@
       "pattern": "[ipv4-addr:value = '154.205.155.71']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6470,8 +6578,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--2b674db4-f09e-4b7d-bb4f-bc1ce43f4ea9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6485,8 +6593,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a7dc4d1e-b3dd-423c-90b3-b3c76406cbb2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6494,7 +6602,7 @@
       "pattern": "[ipv4-addr:value = '165.140.86.227']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6544,8 +6652,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5b4bf5d2-841b-4480-9faf-1545646c3672",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6559,8 +6667,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1a140232-b323-4449-b7a1-4e3100b5573b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6568,7 +6676,7 @@
       "pattern": "[ipv4-addr:value = '180.235.135.180']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6618,8 +6726,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--08dd6e89-54d1-4f52-8ec5-7d156fd8ce63",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6633,8 +6741,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--20e5cb82-bc0e-4491-8a86-af2dd29d25aa",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6642,7 +6750,7 @@
       "pattern": "[ipv4-addr:value = '180.235.135.184']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6692,8 +6800,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3af54f26-3f0a-44f4-80f8-dee99e4e90fa",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6707,8 +6815,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--34da1dfa-0a7c-41e5-8b90-c2db390170c8",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6766,8 +6874,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1f0c5510-4d8a-41e6-a388-c2caf3cceea1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6781,8 +6889,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--423468fb-7936-4276-9e51-1ae57be90364",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6790,7 +6898,7 @@
       "pattern": "[ipv4-addr:value = '202.53.148.16']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6840,8 +6948,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--630f9ce5-fbf6-4302-b55c-97a1cf058eee",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6855,8 +6963,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9c4272f4-3778-402a-b4cd-0628fa8b5eea",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6864,7 +6972,7 @@
       "pattern": "[ipv4-addr:value = '202.53.148.32']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6914,8 +7022,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6765eaeb-48a1-4983-89ae-50d28a85be18",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6929,8 +7037,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5c9e1c4d-b4bc-4485-aa9a-3354929a38cf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -6938,7 +7046,7 @@
       "pattern": "[ipv4-addr:value = '23.106.70.154']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -6988,8 +7096,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--cacabdc4-688d-4dc6-9bf2-b9b545de6d74",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7003,8 +7111,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--888d6c7c-b7bf-414d-bd05-723fe1887b57",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7012,7 +7120,7 @@
       "pattern": "[ipv4-addr:value = '38.92.47.151']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7062,8 +7170,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--fc03fe53-5c46-44a4-a446-c7c0fdff11b5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7077,8 +7185,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--43d5ea60-1a94-4279-8c23-cd1bbe59533d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7086,7 +7194,7 @@
       "pattern": "[ipv4-addr:value = '38.92.47.85']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7136,8 +7244,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6d3ce87d-25fe-40b4-a79e-3dbc574590b0",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7151,8 +7259,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--0ba7ea78-934c-4804-b7b0-c752e61ee7b8",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7160,7 +7268,7 @@
       "pattern": "[ipv4-addr:value = '38.92.47.91']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7210,8 +7318,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--40587307-13fc-403d-9f33-49d7faa4df2b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7225,8 +7333,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--43656351-1e58-4acc-acc0-928b79b767aa",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7234,7 +7342,7 @@
       "pattern": "[ipv4-addr:value = '45.43.11.201']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7284,8 +7392,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3eaeb80f-cc6a-454d-a3f5-0a2749759583",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7299,8 +7407,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5bcc3e15-d2a4-4774-8549-551cf4c76fa8",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7308,7 +7416,7 @@
       "pattern": "[ipv4-addr:value = '45.59.163.56']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7358,8 +7466,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a457d0b2-d250-43d4-beb8-015c7f55ad66",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7373,8 +7481,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--69f46a01-95c9-40a6-8b53-442cf706d1fe",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7382,7 +7490,7 @@
       "pattern": "[ipv4-addr:value = '66.235.168.232']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7432,8 +7540,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--61e3e932-f4f4-4d8d-ace4-2ec9ba173458",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7447,8 +7555,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b114ddd0-2c09-474f-9c55-647aec19a6ae",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7456,7 +7564,7 @@
       "pattern": "[ipv4-addr:value = '66.235.168.238']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7506,8 +7614,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f6361b76-c07e-4b25-9ad5-b592abcf78d1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7521,8 +7629,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--75cab666-4957-4e0e-bb8a-618976f97982",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7530,7 +7638,7 @@
       "pattern": "[ipv4-addr:value = '66.235.175.109']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7580,8 +7688,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0d3f6812-288d-4d0a-aede-09cb0c29340a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7595,8 +7703,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ef55ade9-6835-4b0c-a50c-205e1e00766f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7604,7 +7712,7 @@
       "pattern": "[ipv4-addr:value = '67.203.7.163']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7654,8 +7762,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6519b3b4-2716-4e0a-b674-efe73b5695c5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7669,8 +7777,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d548eff8-5684-4642-b89f-6d2279e521a2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7678,7 +7786,7 @@
       "pattern": "[ipv4-addr:value = '67.203.7.200']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7728,8 +7836,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--256ce2c5-dfd9-45f8-8fef-db967a225fef",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7743,8 +7851,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a1b65334-2e9f-4c40-a0b8-ae21d4c4fa58",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7752,7 +7860,7 @@
       "pattern": "[ipv4-addr:value = '67.203.7.205']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7802,8 +7910,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--15bdcac1-5249-4ab0-a432-6d194edd2af2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7817,8 +7925,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--11dd7f23-324d-4679-8666-0aa1b7b54e27",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7826,7 +7934,7 @@
       "pattern": "[ipv4-addr:value = '86.104.74.51']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7876,8 +7984,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b9fb39c5-7dac-474a-b150-b8b28384f7dd",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7891,8 +7999,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--2011c123-5022-49c2-827d-fed0c209991b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7900,7 +8008,7 @@
       "pattern": "[file:hashes.'SHA-1' = '6565a8a71fe576b13ab13baa0b241bd0968750b0']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -7950,8 +8058,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--50dc4af8-0ef2-4931-85dd-bfcc2c972a82",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7965,8 +8073,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a2d43605-bbcb-45b7-ba3c-67a1332768b7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7974,7 +8082,7 @@
       "pattern": "[file:hashes.'SHA-256' = '0621d37818c35e2557fdd8a729e50ea662ba518df8ca61a44cc3add5c6deb3cd']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8024,8 +8132,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--b96554db-c02b-4b11-8685-cbf163e912b3",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8039,8 +8147,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3159bd84-d114-478c-b789-d443053b6573",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8048,7 +8156,7 @@
       "pattern": "[file:hashes.'SHA-256' = '07183a60ebcb02546c53e82d92da3ddcf447d7a1438496c4437ec06b4d9eb287']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8098,8 +8206,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--e1274e77-aede-422b-8953-e1a442f815f2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8113,8 +8221,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5049a1be-e74a-417f-bff5-0f467ade4319",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8122,7 +8230,7 @@
       "pattern": "[file:hashes.'SHA-256' = '10f86be3e564f2e463e45420eb5f9fbdb14f7427eac665cd9cc7901efbc4cc59']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8172,8 +8280,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--246bc215-cfd9-4e7a-88b2-f0a4b923aee6",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8187,8 +8295,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--62bd72b9-b099-423e-b99b-e8a0e2396a13",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8196,7 +8304,7 @@
       "pattern": "[file:hashes.'SHA-256' = '4e0034e2bd5a30db795b73991ab659bda6781af2a52297ad61cae8e14bf05f79']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8246,8 +8354,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f02e8444-2c41-4bfa-858f-e2eb10fe199f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8261,8 +8369,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ff75de40-2020-447f-bfb9-809c20a92951",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8270,7 +8378,7 @@
       "pattern": "[file:hashes.'SHA-256' = '7846a0a0aa90871f0503c430cc03488194ea7840196b3f7c9404e0a536dbb15e']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8320,8 +8428,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--87b5106d-681a-4a67-af0e-b423f0d12ddd",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8335,8 +8443,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--2fcb59ab-06f9-498c-9626-2a34aec7f97f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8344,7 +8452,7 @@
       "pattern": "[file:hashes.'SHA-256' = '8de446957ce96826628c88da9fd4e7ff9d6327d8004afc4e9e86d59e7d6948dc']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8394,8 +8502,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--de2983fc-a6ed-489a-a149-1cc1842018f1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8409,8 +8517,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--0f26e22d-7b5c-496d-a9f7-ff52527a38f3",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8418,7 +8526,7 @@
       "pattern": "[file:hashes.'SHA-256' = 'cde5afd20b7bb5c9457b68e02c13094125025fb974df425020361303dc6fcdfc']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8468,8 +8576,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d86a19a-d6e3-4353-8f70-6a7dd8f5e8ee",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8483,8 +8591,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--afdf1f6d-7703-4cb5-9d1d-57ca102d28c0",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8492,7 +8600,7 @@
       "pattern": "[file:hashes.'SHA-256' = 'd0a5b9dc988834cc930624661e6e7dd1943d480d75594fff0f4bc39d229c5999']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8542,8 +8650,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a2289b3b-c24c-421e-9e2f-aa3c73c4fb03",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8557,8 +8665,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7ec91aed-c52c-4df2-a084-f743a71d0445",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8566,7 +8674,7 @@
       "pattern": "[file:hashes.'SHA-256' = 'd5c0b89e1dfbe9f5e5b2c3f745af895a36adf772f0b72a22052ae6dfa045cea6']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8616,8 +8724,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--55f13e05-e73d-44d2-8017-21904b0e1930",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8631,8 +8739,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--c54de7e6-edeb-4b5e-ab75-1fdbfc8f252b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8640,7 +8748,7 @@
       "pattern": "[url:value = 'http://dx.doi.org/10.48550/arXiv.2505.21725']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8690,8 +8798,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5a514b32-e1f6-4dda-876e-f8e6dfcf6f77",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8705,8 +8813,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d86dd95e-735b-4cd2-9ef0-e1c36e77e1c0",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8764,8 +8872,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93c2cc53-4148-4322-9fc1-69494056e374",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8779,8 +8887,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--57f62e8e-4bf0-46f2-9b02-004b979d3cdb",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8788,7 +8896,7 @@
       "pattern": "[url:value = 'https://api.nvidia-release.org/nvidia-']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -8838,8 +8946,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--88673473-0008-45c8-83f2-f02f65bf0faf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8853,8 +8961,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9bb93f4a-9a54-4c4d-8d0f-37ca1d501380",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8912,8 +9020,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6beb190e-ea3e-4f22-846a-a9e24ee56933",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8971,8 +9079,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--a061d3ec-f796-494e-8eec-40f996c25c7f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8986,8 +9094,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--348cf00b-32e8-4d8d-b864-f6e77a2e5846",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9045,8 +9153,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--93a8b928-bfdb-40ed-bc6f-9cb988d1716c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9060,8 +9168,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--03d8ff32-ba2b-47a3-a1f5-376ab792ad64",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9119,8 +9227,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--6308e2fe-8a20-43b1-ab83-160cbd41c271",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9134,8 +9242,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--2008f713-208b-484c-afb3-c960b72a2dda",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9193,8 +9301,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a90d149a-a8aa-4bd1-ba38-85543f6a35d9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9252,8 +9360,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--680b2b2a-1cc1-40ac-80e0-ed8274490261",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9267,8 +9375,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--0b60c096-51ff-490c-91f8-63d1d8978536",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9326,8 +9434,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4fcb9ca1-151f-49e0-9f83-fe513374654c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9385,8 +9493,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--845d4ad2-e23f-41d6-ba63-0c54e2ed9b31",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9444,8 +9552,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--fc427851-4f27-4158-bf45-a4c86a6e8873",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9503,8 +9611,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--bb855644-c6fe-4010-b4d9-9304ca43c5a1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9562,8 +9670,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--71a7e8d8-47dc-4e74-a47a-07247a4acb5a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9577,8 +9685,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--813d30e1-89a5-45e1-bc19-01b6739b3331",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9636,8 +9744,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--03f3ef9a-5993-4ff4-a64b-387a0b95b5cb",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9651,8 +9759,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ff1c847f-f04f-4958-b2aa-6eb5b35b90ee",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9710,8 +9818,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--64b9438a-3c2c-45e6-8c50-09f39ef514d5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9769,8 +9877,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7e86acde-752a-4bc2-b612-f5edf5ef9e88",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9828,8 +9936,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f8282c3a-3973-4a26-b913-ab5b4ef06d8d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9887,8 +9995,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--68b63044-7d8d-446b-88be-002ec3b645bc",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -9946,8 +10054,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--495f17b0-cda4-45ff-ac5b-0aedd213b60b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10005,8 +10113,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--79235bf2-8fd9-479e-a277-d3b3d6ec13c3",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10020,8 +10128,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ff81ea14-8070-4f99-bf26-7d9d5738de61",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10079,8 +10187,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--8f1acb0c-68db-4660-a2b9-384a42e3ccc2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10094,8 +10202,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f71fec4d-15d3-48b5-8750-edcc963680b5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10153,8 +10261,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--f0f2cec9-04f1-421e-bdae-f740027f2835",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10212,8 +10320,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--bba1f35b-a501-4b7d-873c-4fcaecbf551f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10271,8 +10379,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--169e5ef3-8386-402d-bb55-fbeda16aeca9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10330,8 +10438,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--62dd90a6-21a8-44ef-bfa0-4c688af87102",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10339,7 +10447,7 @@
       "pattern": "[url:value = 'https://isis-online.org/uploads/isis-reports/documents/North_Korea_PoE_sanctions_analysis_report_July_1_Final.pdf']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -10389,8 +10497,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--14257cee-110f-42d5-83a2-8607943502a7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10448,8 +10556,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--0089e681-4ece-487a-a90c-ece24caaf1e1",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10463,8 +10571,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a383b197-b67c-40af-bb67-c72fe90b649d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10472,7 +10580,7 @@
       "pattern": "[url:value = 'https://jp.security.ntt/tech_blog/en-contagious-interview-ottercookie']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -10522,8 +10630,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--7488e70c-488d-45fc-96a9-3877a2dfd772",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10537,8 +10645,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1ac7bd98-a043-4404-b7b0-903c67766b47",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10596,8 +10704,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d7f42ffe-69bf-4655-adcb-d9a156823c6e",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10611,8 +10719,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7248484d-d61e-45b6-ae49-641a539f14df",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10670,8 +10778,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a68aa7b0-1689-49a7-933f-a528ce0c394f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10729,8 +10837,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--13975535-ea70-4052-92f2-b705cd344b19",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10788,8 +10896,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b39a9839-fbf4-42e1-a0bd-f222e497bcc4",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10847,8 +10955,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5ea8480a-8532-498f-b433-0ebfe1edc813",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10862,8 +10970,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--68202243-524f-4bf5-adbe-2f3bee1e6ffe",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10871,7 +10979,7 @@
       "pattern": "[url:value = 'https://nodejs.org/en']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -10921,8 +11029,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3c8267c4-0ea7-4533-98bf-f9d4145ee9d7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10936,8 +11044,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e60c2ee1-1ad4-4245-9f10-ed5c71330d9c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10995,8 +11103,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4412de37-cffa-420a-8594-d76e892e647d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11054,8 +11162,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--df37aecd-6aa7-4db4-9f0f-cac2c6c837ff",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11063,7 +11171,7 @@
       "pattern": "[url:value = 'https://reports.dtexsystems.com/DTEX-Exposing%2BDPRK%2BCyber%2BSyndicate%2Band%2BHidden%2BIT%2BWorkforce.pdf']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -11113,8 +11221,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--c8a7383b-213f-454d-923d-d5dd32596b9a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11122,7 +11230,7 @@
       "pattern": "[url:value = 'https://reports.dtexsystems.com/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -11172,8 +11280,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--64643ae5-4704-4e94-a2ca-a004d207f43c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11187,8 +11295,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--a563c214-301d-4a31-8f3a-b5b4fd4ee169",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11246,8 +11354,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e4e9dd45-e0b4-4b94-a109-946f8a420033",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11305,8 +11413,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b2533e24-9800-46b9-bff6-23a0f456dc04",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11364,8 +11472,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--56fa8724-e14c-454b-ad42-3e8c0c22e97b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11379,8 +11487,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--77278748-21a5-4c9d-8ce9-6bc15225b7ff",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11388,7 +11496,7 @@
       "pattern": "[url:value = 'https://t.me/2AurfGZWxZo0MDgx']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -11438,8 +11546,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3d54f295-93ea-4da5-a5a3-33c75b6f9ad9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11453,8 +11561,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3a4511bc-5127-4470-ab76-c1060ab37fe8",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11512,8 +11620,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1d2d9121-8f70-4cfb-ab99-7f66acff00b7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11527,8 +11635,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--13046c5e-a9aa-4724-8d73-326cb779d8cf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11586,8 +11694,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--0a17dd88-0bb6-4ad8-9bac-0eead23c379f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11645,8 +11753,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--3373b22b-34d1-4f3e-b044-ca67988a7d56",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11660,8 +11768,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--ca82942c-4033-4f6d-8420-688fc8ca4179",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11719,8 +11827,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--830667d9-40bb-40aa-97c1-35a66a39226a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11734,8 +11842,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4a4fd400-8db7-43f6-990c-a4e992c9d006",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11793,8 +11901,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--38eff52b-e7b4-40a0-a7dd-19a6c89d6287",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11808,8 +11916,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--23e92ba9-89c9-46ab-a667-1e0d4e4fe816",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11867,8 +11975,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--265b04a8-0e51-4219-b65a-07e3ad81de75",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11882,8 +11990,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--46457703-72dc-4306-ae44-29159338863f",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11941,8 +12049,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--eb35a3cb-ee6b-49e7-8d0c-2b8eb0482a16",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11956,8 +12064,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--339aadaa-3a7f-41d6-a2a4-daa50e2a269e",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12015,8 +12123,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b4d32047-8b18-4cbb-b878-1e09d2c54163",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12074,8 +12182,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9a26b984-8786-41d0-a84c-88dea8753453",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12133,8 +12241,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9901045e-18f0-4fa4-9b55-0fb0cb10032a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12192,8 +12300,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--efb7f440-be28-427c-b268-cfd6bc82f739",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12207,8 +12315,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--0c636174-d648-45ed-9f00-15da8c60ffad",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12296,8 +12404,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--518775da-e4bc-4f72-bb5b-8e4759d37d91",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12311,8 +12419,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--814c2f18-38d3-4857-b60a-1be20c0cd9a2",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12370,8 +12478,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--555e5ce1-00fa-499f-8442-389967cb59aa",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12385,8 +12493,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--db31b7f4-189b-4432-9365-ed0b9621c7d9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12474,8 +12582,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--88357087-b73c-47de-8c96-44ef27fca2f5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12489,8 +12597,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--583122c3-9ea2-4eb3-8cd6-36ee889dfb4d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12548,8 +12656,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--cee89e5a-ff8e-4d47-a5ae-f91ceec31210",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12557,7 +12665,7 @@
       "pattern": "[url:value = 'https://www.gov.il/BlobFolder/reports/alert_1813/en/ALERT-CERT-IL-W-1814.pdf']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -12607,8 +12715,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9abf9e71-9cc9-44ee-bc5e-0a76ebc8a414",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12666,8 +12774,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--838467a2-c9f0-45c3-b595-faadeecfe53d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12725,8 +12833,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--9eaa37df-91fc-4568-8312-fa472ee1271a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12784,8 +12892,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d9e00ed9-d2c1-42c7-b1e1-e67930d2bfa9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12843,8 +12951,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--16180339-2733-4119-80b5-a0bdf5408c65",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12902,8 +13010,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--323bd8b4-933f-43d9-99fc-62a61434cd8d",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -12961,8 +13069,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--99cbae27-18b5-4a76-9e0e-ac352f71bdda",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13020,8 +13128,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--79313ad1-1063-43c0-8f9c-534a9b51227a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13035,8 +13143,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e54b8795-ad3b-437e-9dd1-fc9761faf63e",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13094,8 +13202,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--03850bc8-bf13-4ce1-a021-4ff659fb29e5",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13153,8 +13261,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--34f8bb52-8ede-4b89-beae-19f814c341b9",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13168,8 +13276,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--fc72240b-03db-49ac-829a-ef169ebcbb51",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13227,8 +13335,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--374941cf-7dc3-498b-ac19-12a3a0393f06",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13286,8 +13394,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--f723711d-9e32-4268-b248-b387ba36d549",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13301,8 +13409,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5869833f-3d5a-4ed9-8cb1-bd4ed0559b0e",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13360,8 +13468,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6e795917-ba22-4bf4-acaa-92f0563183cf",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13419,8 +13527,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--be421229-923b-4d78-bb2c-7217feafecb7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13428,7 +13536,7 @@
       "pattern": "[url:value = 'https://www.securitycouncilreport.org/atf/cf/%257B65BFCF9B-6D27-4E9C-8CD3-CF6E4FF96FF9%257D/N2323869.pdf']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -13478,8 +13586,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--448f69ed-677a-4bfe-a53a-5ac539fd5887",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13487,7 +13595,7 @@
       "pattern": "[url:value = 'https://www.silentpush.com/blog/lazarus-bybit']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -13537,8 +13645,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--acc0a663-7102-4252-9c6b-01232d4e77ad",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13552,8 +13660,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--b272e048-f860-49cd-a918-c1f594bc304c",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13611,8 +13719,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--8b8473b1-9a42-4401-b3f1-17714ab1eb83",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13670,8 +13778,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--d87b8f19-db1b-4bdb-8710-366736da3fc7",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13685,8 +13793,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--142f57de-6e2c-4ea0-ba7f-7cb2e47c3fef",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13744,8 +13852,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6026f14d-d69a-433c-98d8-440c5f204d45",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13803,8 +13911,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--1d0de6cd-8be3-4df1-a539-b0aded2d3e4a",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13862,8 +13970,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--e51cb182-7ca0-484f-90d8-7c3800a3b89b",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13871,7 +13979,7 @@
       "pattern": "[url:value = 'https://www.willo.video/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T15:22:57Z",
+      "valid_from": "2026-07-25T09:03:53Z",
       "indicator_types": [
         "malicious-activity"
       ],
@@ -13921,8 +14029,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--180e1ddb-9e3b-4b3a-abde-fc286c05f740",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-07-25T15:22:57Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -13936,8 +14044,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--3ca05073-58c0-43ba-9baa-6dcd1665aed3",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14006,8 +14114,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--42721bb9-7e72-4217-aff5-dcc1af659e15",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14021,8 +14129,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--d61c4b19-95ab-4c63-aeba-25b1032e59af",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14091,8 +14199,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--58ed7702-69ec-4057-a3a9-caae7f5ada41",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14106,8 +14214,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--4e2d5105-71bf-4e37-a01a-dff2820246d3",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14176,8 +14284,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--5ecefd89-14bf-45c6-8dc4-f91c16e177b9",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14191,8 +14299,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--5d45ac5a-d8f7-4503-ad75-d7149e7f89d9",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14261,8 +14369,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--4596179f-cf77-419e-a085-76a0b0872d7e",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14276,8 +14384,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--6dec80b3-e0cf-4e4e-a2e1-7d206153ff14",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14346,8 +14454,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--7e981d7a-1ff1-4ae8-8869-93743d7ce6d6",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14416,8 +14524,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--dab607b3-625f-4254-b6ed-c27d154fd39d",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14486,8 +14594,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--80b93e72-2b41-4d71-9b84-7e768326c6b2",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14556,8 +14664,8 @@
       "type": "indicator",
       "spec_version": "2.1",
       "id": "indicator--c0803a84-2821-45d4-813e-db060e8ab604",
-      "created": "2026-08-13T11:03:44Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14626,8 +14734,8 @@
       "type": "note",
       "spec_version": "2.1",
       "id": "note--f138d2f6-e179-4c65-8628-a49f95986b66",
-      "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-08-13T11:03:44Z",
+      "created": "2026-09-02T12:58:02Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14644,7 +14752,7 @@
       "spec_version": "2.1",
       "id": "report--4866b070-ed64-4a8c-adcd-7d4f48f7b9e4",
       "created": "2026-07-25T15:22:57Z",
-      "modified": "2026-08-19T04:07:00Z",
+      "modified": "2026-09-02T12:58:02Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -14653,7 +14761,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-19T04:07:00Z",
+      "published": "2026-09-02T12:58:02Z",
       "object_refs": [
         "intrusion-set--5d749327-3ad0-4321-8360-c48d4a5c7534",
         "tool--4cd7a435-8992-44e3-8eb2-58133f327b95",
@@ -14661,6 +14769,7 @@
         "tool--d61d5ff4-8882-4a37-804d-a1caf102336f",
         "tool--d4de0719-53d2-45ca-af90-0491bb5df1d1",
         "tool--15683e80-c92a-4d04-9c76-905a2c378707",
+        "campaign--e66d2a0c-e76d-43f1-9490-5f94b09ce10f",
         "campaign--ae35d91d-b6a7-436f-b925-70420acbc2db",
         "campaign--9c7022e5-d3e5-4c69-8465-8de17cd1ebb5",
         "identity--e0d3ce4e-ef38-4c30-9894-b3d2082a5239",

@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--unc1549",
-  "updated_at": "2026-09-03T13:41:22Z",
+  "updated_at": "2026-09-02T12:58:02Z",
   "records": [
     {
       "record_id": "daily-record--2af1a13746c92e9b94dd2acc",
@@ -1072,23 +1072,20 @@
         {
           "name": "NodeRabbit",
           "status": "approved",
-          "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
-          "review_notes": "承認。KasperskyがNode.js製クロスプラットフォームRATとして独立解析し、3系統の亜種、C2エンドポイント(/api/rabbit/checkin、/api/rabbit/task、/api/rabbit/result)、AES-256-GCM暗号化ペイロード形式、11コマンドセット、macOS/Linux/Windowsそれぞれの永続化機構を詳細に記述している。Mirage Kittenの新規ツールセットとして高確度で帰属されている。"
+          "reason": "Kasperskyが本活動で直接分析したNode.js製クロスプラットフォームRAT。3つの亜種をアフガニスタン・エジプト・エチオピアの各システムから回収し、コード系統の共有を確認している。固有名。"
         },
         {
           "name": "NodeRabbit / PollCat",
           "status": "rejected",
-          "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
-          "review_notes": "不採用。tech-memoのIOC CSV malware列で2種のマルウェア名がスラッシュ区切りで1セルに記入されているだけの合成表記であり、単一の名前付きツールではない。NodeRabbitとPollCatをそれぞれ個別capabilityとして承認しているため、合成表記の重複capability化は避ける。"
+          "reason": "IOC CSVのmalware列で2つのマルウェア名を1セルに併記した複合値であり、単一の固有マルウェア名ではない。個別名のNodeRabbitとPollCatをそれぞれ承認済み。"
         },
         {
           "name": "PollCat",
           "status": "approved",
-          "reason": "malware列の値。一次資料で直接利用を確認する必要がある。",
-          "review_notes": "承認。Kasperskyが難読化JavaScript製クロスプラットフォームRATとして独立解析し、22コマンドセット、/gate/hello・/gate/fetch・/gate/submitのC2エンドポイント、Retrograde/MiniFastネイティブDLLバックドアとのハンドシェイク・socketIdセッション確立・beacon timing・コマンドIDの構造的類似(REQUEST_ELEVATION 0xB0・PERSIST 0xB1の共有)を根拠として同じ運用主体への帰属を主張している。"
+          "reason": "同一調査で発見された難読化JavaScript製のクロスプラットフォームRAT。22コマンド(うち3つは未実装)を宣言し、/beacon、/gate/hello、/gate/fetch、/gate/submit、/vault/ 等のC2エンドポイントを持つ。固有名。"
         }
       ],
-      "review_notes": "Kaspersky Securelist原文(2026-09-01、アクセス2026-09-03、HTTP 200)を確認して承認。Attribution節に「We attribute this activity to Mirage Kitten with a high degree of confidence」と明記されており、NodeRabbit RATと同社が過去に文書化したRetrograde/MiniFast系DLLバックドアとのC2ハンドシェイク・socketIdセッション確立ロジック、host registration本体、コマンド取得、beacon timing(120000ms間隔・5000msジッター・60000ms再試行)、コマンドIDセット、curl.exe経由NTLM/Negotiate委譲による企業プロキシ認証といった構造的類似を根拠として提示している。Mirage KittenはUNC1549のKaspersky別名(scope: exact)としてprofiles/unc1549に登録済み。被害はエジプト・エチオピア・アフガニスタンのFinTechと航空・航空宇宙分野で、LinkedInなど求人プラットフォームで採用担当者を装ったトロイ化コーディング課題ZIPをS3から配布する初期侵入経路。攻撃期間の明示値は原文に無く(登録者がドメイン作成日として2026-05-15〜2026-07-03を挙げているが攻撃観測日そのものではない)、activity_periodはunknownとして扱い、tech-memoの日付をreported_atへ分離する。NodeRabbitとPollCatは同社が独立したソースコードを直接解析した固有マルウェア名でcapabilityへ採用する。IOC CSVの「NodeRabbit / PollCat」合成表記は単一の名前付きツールではないため個別capabilityとしては採用しない。",
+      "review_notes": "原文(Kaspersky Securelist、2026-09-01公開)をHTTP 200で取得して確認。Attribution節に「We attribute this activity to Mirage Kitten with a high degree of confidence」と明記され、根拠としてRetrograde/MiniFast(MD5: 810F8E3B88EB05F710C09552941D6F56)との構造的類似、PollCatとRetrograde/MiniFastが共通のC2ハンドシェイク手順(ホスト情報を含むJSONをHTTP POSTし、HTTP 400を成功応答として扱う)を持つこと、WinHttpQueryAuthSchemes/WinHttpSetCredentialsをNULL資格情報で用いるプロキシ対応C2設計の一致、Azure WebsitesとCloudflare配下ドメインの組み合わせという既知TTP、およびアフリカ・中東という既知の地理的標的との整合が挙げられている。Mirage Kittenはunc1549のexact alias(canonical: UNC1549、別名Smoke Sandstorm、Nimbus Manticore)であり、原文サイドバーもこの対応を明示している。被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野。初期アクセスはLinkedIn等の求人プラットフォームで採用担当者を装い、トロイ化したコーディング課題(Front-Technical-Challenge.zip、MD5: 1EA83E4E4592B01E4ACAB63EB867BEE5)をAmazon S3から配布する。課題内にはトロイ化npmパッケージ colorized_terminal / pretty-log (いずれもv2.1.0)が同梱され、node_modules/.cache/.320697f1/index.js のインプラントを分離プロセスとして起動する。悪性VS Code拡張とgit hook注入による永続化も確認された。活動期間: 原文は個々の侵害の観測日を明示していないため活動期間はunknownとし、tech-memo日次ファイルの日付(2026-09-02)をreported_atへ分離する。インフラのドメイン作成日(2026-05-15〜2026-07-03)は登録日であって攻撃観測日ではないため活動期間へ流用しない。",
       "activity_claim": {
         "assessment": "structured-actor-field",
         "actor_role": "operator",
@@ -1099,7 +1096,7 @@
         ],
         "suggested_confidence": "medium"
       },
-      "source_commit": "7d2d62b65842e30585cde36b188fba77308d8d06"
+      "source_commit": "2c4df2305340447525dfd7169eb919a5c99f1d65"
     },
     {
       "record_id": "daily-record--6b2a23bcddd9757abbb019a5",

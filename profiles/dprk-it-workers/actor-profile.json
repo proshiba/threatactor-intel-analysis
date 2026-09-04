@@ -4,13 +4,24 @@
   "name": "DPRK IT Worker Schemes",
   "status": "draft",
   "created_at": "2026-07-25T09:03:53Z",
-  "updated_at": "2026-08-19T04:07:00Z",
+  "updated_at": "2026-09-02T12:58:02Z",
   "languages": [
     "ja"
   ],
   "actor": {
     "canonical_name": "DPRK IT Worker Schemes",
-    "aliases": [],
+    "aliases": [
+      {
+        "name": "Famous Chollima",
+        "vendor": "CrowdStrike",
+        "scope": "exact",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-10f083232dfd566dc4f9"
+        ],
+        "analyst_notes": "CrowdStrikeのFAMOUS CHOLLIMAは、北朝鮮政権へ賃金を送金するための不正就労(リモートITワーカー)を中核とする追跡名であり、本プロファイル「DPRK IT Worker Schemes」が対象とするクラスタと実質的に同一の範囲を指す。したがってscopeはexactとする。profiles/contagious-interview 側にも同名aliasが登録されているが、そちらはscope: broaderであり、「FAMOUS CHOLLIMAはContagious Interview(偽求人面接によるマルウェア配布キャンペーン)より広い」ことを表す記録である。ここでexactを与えることで、日次キューのActorRegistryは複数プロファイル一致の場合に一意なexact一致を優先し、「Famous Chollima」の言及を本プロファイルへ解決する。運用上の振り分け基準: リモートITワーカーの不正就労・身元詐称・賃金送金を主題とする資料は本プロファイルへ、偽の採用面接やコーディング課題を用いたマルウェア配布を主題とする資料はcontagious-interviewへ割り当てる。CrowdStrikeが同一名の下にContagious Interview系の活動も併せて整理する場合がある点は、両プロファイルのalias注記として残す。exactは日次キューでの解決先を一意に定めるためのモデリング上の判断であり、個々の資料についてはAGENT.mdに従い原文で実行主体を確認したうえでレコードを採否する。 根拠資料: Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」(2026-08-26)は「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」と記し、本プロファイルの対象とFAMOUS CHOLLIMAを同義に用いている。"
+      }
+    ],
     "actor_types": [
       "state-sponsored-ecosystem",
       "financially-motivated"
@@ -201,6 +212,92 @@
     "analyst_notes": ""
   },
   "activities": [
+    {
+      "activity_id": "activity--daily-4f4f7399bd666d3fcdbd",
+      "name": "北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Huntressは2026年、複数組織の調査を支援し、偽造・盗用した身元を使って正規従業員として採用された可能性が高い北朝鮮系リモートワーカー5人を特定した。 医療分野の3人はAstrill VPN、IPRoyal Proxy、WorkTitans B.V.などを利用し、位置情報を隠蔽していたほか、勤務時間や偽造身分証にも共通する異常が確認された。 金融分野ではPiKVMを使ったハードウェアレベルの遠隔操作、Guermok USBキャプチャカード、盗用・加工した顔写真など、過去のDPRK ITワーカー活動と重なる痕跡を確認した。 別の事例では、盗用した身元情報、Toffeeshare、VDO Ninja、音声・画面記録用Chrome拡張などを利用し、不正に雇用を得ていた可能性が高いと評価された。 Huntressは単一IOCだけではDPRK関与を証明できないため、端末、認証、ブラウザ、クラウド、勤務時間、身分証メタデータなど複数の兆候を組み合わせる必要があるとしている。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-10f083232dfd566dc4f9"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--4f4f7399bd666d3fcdbd74a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: context-only。 レビュー: 原文(Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」、2026-08-26公開)をHTTP 200で取得して確認。冒頭に「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」とあり、本記事におけるFAMOUS CHOLLIMAは北朝鮮のリモートITワーカーそのものを指す。本文はHuntressが2026年に実施した複数の実調査を記述しており、助言記事にとどまらない直接観測を含む。具体的には、(1)オーストラリアのパートナーからの通報で、中国人を装った3名の従業員がAstrill VPN経由で繰り返し認証していた事案について6か月分のUnified Audit Logs、Exchange・SharePoint・サインイン等のイベント、ITDR認証記録を分析した事例、(2)2026年8月の金融サービス業の事案で、PiKVMおよびGuermok USB機器を接続したホストを対象に脅威ハンティングを行い、入社13日目の営業・マーケティング担当として登録された利用者が既存の身元を窃取または借用して不正に雇用を得たと判断した事例、である。PiKVM V4 Miniの接続はRealtek Audio Universal Serviceのイベント(2026-07-31、Huntress展開の約7日前)およびイベントID 6416で確認されている。activity_claimはcontext-only(タイトルが活動を主題としない体裁)だが、これはタイトルの体裁に基づく機械判定であり、本文が実行主体による具体的な不正就労活動を直接記述していることを原文で確認したうえで採用する。アクター照合について: 「Famous Chollima」はprofiles/contagious-interviewにもscope: broaderのaliasとして存在したため複数プロファイル一致となり、従前は本記事がcontagious-interviewへ誤って寄せられていた。FAMOUS CHOLLIMAの定義は北朝鮮政権への送金を目的とする不正就労全般であり、偽求人面接によるマルウェア配布キャンペーンであるContagious Interviewより広いという整理はcontagious-interview側のalias注記に既に記録されている。今回、当該定義に実質的に対応する本プロファイルへ scope: exact のaliasを登録し、解決先を一意に定めた。活動期間: 原文は個別事案の観測日を部分的にしか示さないため活動期間はunknownとし、tech-memo日次ファイルの日付(2026-09-01)をreported_atへ分離する。原文の公開日は2026-08-26である。PiKVM、Guermok USB、Astrill VPNは不正就労の運用に用いられた正規の機器・サービスであり、攻撃者専有のマルウェアではないためcapabilityとして登録しない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--dprk-it-workers",
+          "name": "DPRK IT Worker Schemes",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "reported-activity",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-10f083232dfd566dc4f9"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
     {
       "activity_id": "activity--dprk-it-workers-ballena-azul-2026",
       "name": "偽DeFiスタートアップBallena Azul LTDへのITワーカー3名の採用と内部観測",
@@ -1614,9 +1711,106 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--anyrun-it-workers-part-two-2026",
+      "path": "https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/",
+      "url": "https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/",
+      "title": "Smile, You're on Camera! Part 2: Hiring Lazarus APT IT Workers at a Fake DeFi Startup",
+      "publisher": "ANY.RUN",
+      "published_at": {
+        "value": "2026-08-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": {
+        "value": "2026-08-13T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "analyst-access"
+      },
+      "language": "en",
+      "source_type": "primary-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "原文を確認(アクセス日 2026-08-13)。研究者自身が偽企業を設立して当該人物を実際に採用し、内部から観測した直接観測報告である。第1弾「Smile, You're on Camera: A Live Stream from Inside Lazarus Group's IT Workers Scheme」は本プロファイルへPDFとして既収載(source--dprk-it-workers--15da1b5bbfbc5250)。"
+    },
+    {
+      "source_id": "source--daily-10f083232dfd566dc4f9",
+      "path": "https://www.huntress.com/blog/huntress-dprk-remote-worker-investigation",
+      "title": "北朝鮮（DPRK）リモートワーカー調査から得られた知見",
+      "publisher": "huntress.com",
+      "published_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260901.md; source commit: 2c4df2305340447525dfd7169eb919a5c99f1d65; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--dprk-it-workers--15da1b5bbfbc5250",
+      "path": "CyberMerceNary/ITWorker/Smile, You’re on Camera_ A Live Stream from Inside Lazarus Group’s IT Workers Scheme.pdf",
+      "title": "Smile, You’re on Camera  A Live Stream from Inside Lazarus Group’s IT Workers Scheme",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--dprk-it-workers--769f09c40948bde0",
+      "path": "CyberMerceNary/ITWorker/readme.md",
+      "title": "readme",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "repository-notes",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
       "source_id": "source--dprk-it-workers--94775915798a421c",
       "path": "CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf",
       "title": "DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce",
+      "publisher": "",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--dprk-it-workers--a08fdc503ef8f9a4",
+      "path": "CyberMerceNary/ITWorker/JOINT_CSA_DPRK_SOCIAL_ENGINEERING.pdf",
+      "title": "JOINT CSA DPRK SOCIAL ENGINEERING",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -1668,45 +1862,9 @@
       "analyst_notes": "Repository source; publication metadata requires review."
     },
     {
-      "source_id": "source--dprk-it-workers--a08fdc503ef8f9a4",
-      "path": "CyberMerceNary/ITWorker/JOINT_CSA_DPRK_SOCIAL_ENGINEERING.pdf",
-      "title": "JOINT CSA DPRK SOCIAL ENGINEERING",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
       "source_id": "source--dprk-it-workers--e7356e8e649de477",
       "path": "CyberMerceNary/ITWorker/OFSI_Advisory_on_North_Korean_IT_Workers.pdf",
       "title": "OFSI Advisory on North Korean IT Workers",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--dprk-it-workers--15da1b5bbfbc5250",
-      "path": "CyberMerceNary/ITWorker/Smile, You’re on Camera_ A Live Stream from Inside Lazarus Group’s IT Workers Scheme.pdf",
-      "title": "Smile, You’re on Camera  A Live Stream from Inside Lazarus Group’s IT Workers Scheme",
       "publisher": "",
       "published_at": {
         "value": null,
@@ -1738,49 +1896,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--dprk-it-workers--769f09c40948bde0",
-      "path": "CyberMerceNary/ITWorker/readme.md",
-      "title": "readme",
-      "publisher": "",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "language": "unknown",
-      "source_type": "repository-notes",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--anyrun-it-workers-part-two-2026",
-      "path": "https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/",
-      "url": "https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/",
-      "title": "Smile, You're on Camera! Part 2: Hiring Lazarus APT IT Workers at a Fake DeFi Startup",
-      "publisher": "ANY.RUN",
-      "published_at": {
-        "value": "2026-08-10T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-stated"
-      },
-      "accessed_at": {
-        "value": "2026-08-13T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "analyst-access"
-      },
-      "language": "en",
-      "source_type": "primary-report",
-      "tlp": "TLP:CLEAR",
-      "reliability": "high",
-      "sha256": null,
-      "analyst_notes": "原文を確認(アクセス日 2026-08-13)。研究者自身が偽企業を設立して当該人物を実際に採用し、内部から観測した直接観測報告である。第1弾「Smile, You're on Camera: A Live Stream from Inside Lazarus Group's IT Workers Scheme」は本プロファイルへPDFとして既収載(source--dprk-it-workers--15da1b5bbfbc5250)。"
     },
     {
       "source_id": "source--flare-ibm-xforce-nkitw-2026",

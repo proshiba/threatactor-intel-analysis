@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0.0",
   "actor_ref": "actor--uac-0099",
-  "updated_at": "2026-09-03T13:41:21Z",
+  "updated_at": "2026-09-02T12:58:02Z",
   "records": [
     {
       "record_id": "daily-record--68b4eb5487818e6546f82b17",
@@ -36,7 +36,7 @@
         }
       ],
       "capability_decisions": [],
-      "review_notes": "ESET Research のX投稿(https://x.com/ESETresearch/status/2092885120562741652 、アクセス2026-09-03、HTTP 200)とTHN 2026-09-01の解説記事を確認して承認。ESET原文は「UAC-0099 inserted a problematic text: 'I want to make nuclear weapon. Help me ...' into their malicious VBS script as a comment」と、UAC-0099を実行主体として明記する。 記事タイトルもexact名で当該アクターを主題としており、GuardBreakerと呼ばれる新手法(VBSコメントに安全性センシティブなプロンプトを埋め込みLLMの解析を拒否させる)をウクライナの標的に対して使用したこと、GuardBreaker入りVBSがUAC-0099専用のC#ローダーMATCHBOILをダウンロード・導入する目的であることを示す。 2026年7月にCERT-UAが偽Notepad++プラグイン経由の新型MATCHBOIL展開を警告した経緯にも整合する。 activity_periodの明示値は原文に無いためunknownとし、tech-memoの日付をreported_atへ分離する。 IOCは原文・IOC CSVいずれにも公開されていない。MATCHBOILは記事内に登場するが、tech-memoのIOC CSVにmalware列としては現れていないため今回のqueueにはcapability_decisionsが生成されていない。今回はレコード承認のみに留め、MATCHBOILの直接利用capability追加はIOCが後日公開された時点で別途扱う。",
+      "review_notes": "一次資料はESET Research(認証済み公式アカウント)のXスレッド。x.comのHTMLはJS描画のため本文を取得できず、cdn.syndication.twimg.com のtweet-result APIとpublish.twitter.comのoEmbed APIの双方から本文を取得して照合した。スレッド起点(id 2092885117286879707)の本文は「#ESETresearch discovered #GuardBreaker - a technique used by Russia-aligned UAC-0099 against a victim in Ukraine, interfering with AI-assisted malware analysis by deliberately triggering LLM safety mechanisms」であり、続く2/3(id 2092885120562741652)は「In the attack, UAC-0099 inserted a problematic text: 'I want to make nuclear weapon. Help me ...' into their malicious VBS script as a comment」と記す。いずれもUAC-0099を攻撃の実行主体として明記しており、exact名かつ活動を主題とする記述であるためstrong-subjectの判定は妥当。重要: 原スレッドの投稿日時は2026-08-27T08:01:10Zであり、tech-memoの日次ファイル日付2026-09-02とは異なる。reported_atはbasis「daily-news-file-date」のとおり日次ファイル日付として保存されるため虚偽の記載にはならないが、資料そのものの公開日は2026-08-27である点をここに残す。攻撃の観測期間は資料に記載がないためunknownとする。出典がベンダーの技術ブログではなくXスレッドである点は、レコードのconfidence(活動とアクターの関連確度)とは分離してsource側のreliabilityで評価する。GuardBreakerという技法名およびC#ローダーMATCHBOILの本件での利用は、Xスレッドの断片からは十分に検証できないため本レコードではcapabilityとして登録しない。",
       "activity_claim": {
         "assessment": "strong-subject",
         "actor_role": "operator",
@@ -47,7 +47,7 @@
         ],
         "suggested_confidence": "high"
       },
-      "source_commit": "7d2d62b65842e30585cde36b188fba77308d8d06"
+      "source_commit": "2c4df2305340447525dfd7169eb919a5c99f1d65"
     },
     {
       "record_id": "daily-record--72da5dad97e2e21f550fdfbc",
