@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-13T00:00:00Z",
+  "generated_at": "2026-09-04T00:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -266,6 +266,92 @@
         "17か月にわたり単一IPを使い続けている点が、通常の商用スキャンサービスとの区別を難しくしている。攻撃活動と調査目的スキャンの切り分けが未解決。"
       ],
       "analyst_notes": "単一ベンダーの初報のみで昇格閾値未達。継続観察。2026-08-13の日次チェックで未一致名(観測13件)として検知した。"
+    },
+    {
+      "cluster_id": "unknown-cluster--cl-cri-1131",
+      "primary_name": "CL-CRI-1131",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-04",
+      "last_seen": "2026-09-04",
+      "detected_via": "一次情報源チェック(Palo Alto Networks Unit 42 公開一覧)。tech-memo daily-news には未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-intrusion-set",
+        "notes": "Unit 42 は「We track the activity in this cluster as CL-CRI-1131」と活動クラスタ識別子を付与するにとどまり、名前付きグループへの帰属を行っていない。CL-CRI 接頭辞は Unit 42 の cybercrime 系未命名クラスタの表記。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-04",
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/ai-tool-use-targeting-latam-orgs/",
+          "title": "Attackers Expose Ongoing AI Tool Use Targeting Organizations in Latin America",
+          "published_at": "2026-09-03",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "メキシコの運輸事業者、メキシコおよびエクアドルの連邦省庁・自治体水道事業者。",
+          "malware": [],
+          "tools": [
+            "LotL(環境寄生)手法",
+            "反復的なバッチスクリプト",
+            "自己ホスト型 NextChat インスタンス",
+            "Go製 SOCKS5 プロキシ"
+          ],
+          "activity_period": "原文は「two ongoing, multi-stage network intrusion and data-exfiltration campaigns」と継続中の作戦とするが、明示的な観測期間の記載を確認できていない。公開日2026-09-03を観測日へ流用しない。",
+          "summary": "中南米の運輸組織および政府機関・水道事業者を標的とする多段階の侵入・データ持ち出し作戦。運用者はLotL手法に依拠し、反復的なバッチスクリプトで機微データを加工・持ち出す。運用インフラ上に NextChat を自己ホストしており、Unit 42 は「Given the initial failures to extract data from the host combined with the NextChat interface on this backend, we assess that the attackers relied on LLMs to generate the required workaround scripts」として、商用LLMによる回避スクリプト生成への依存を評価している。CL-CRI-1163 とは SOCKS5 中継インフラが重複する。",
+          "verified_by_analyst": "原文をHTTP 200で取得して確認済み(JSON-LD datePublished 2026-09-03)。クラスタ識別子の付与文、標的、NextChat とLLM依存に関する評価文を原文で直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Unit 42 単独の初報であり昇格閾値は未達。",
+        "CL-CRI-1163 とはインフラと手法が重複するが、Unit 42 は地理的焦点が異なるとして別クラスタとして追跡している。統合しない。",
+        "原文における個々の侵害の観測期間が未確認。"
+      ],
+      "analyst_notes": "tech-memo daily-news 未収録のため、レビューキューには対応レコードが存在しない。AI/LLM の利用は手口の記述であり帰属根拠ではない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--cl-cri-1163",
+      "primary_name": "CL-CRI-1163",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-04",
+      "last_seen": "2026-09-04",
+      "detected_via": "一次情報源チェック(Palo Alto Networks Unit 42 公開一覧)。tech-memo daily-news には未収録。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-intrusion-set",
+        "notes": "Unit 42 は「We track the activity in this cluster as CL-CRI-1163」と活動クラスタ識別子を付与するにとどまり、名前付きグループへの帰属を行っていない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-04",
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/ai-tool-use-targeting-latam-orgs/",
+          "title": "Attackers Expose Ongoing AI Tool Use Targeting Organizations in Latin America",
+          "published_at": "2026-09-03",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "ブラジルの金融セクター。原文は脆弱なWebサーバーを狙う求人テーマのフィッシングキャンペーンに関する既報の標的拡大と述べる。",
+          "malware": [
+            "カスタムRAT(原文は名称を付していない)"
+          ],
+          "tools": [
+            "Go製 SOCKS5 プロキシ",
+            "トンネリングツール"
+          ],
+          "activity_period": "原文は継続中の作戦とするが、明示的な観測期間の記載を確認できていない。公開日2026-09-03を観測日へ流用しない。",
+          "summary": "ブラジル金融セクターを標的とする多段階の侵入・データ持ち出し作戦。求人テーマのフィッシングと脆弱なWebサーバーの侵害を組み合わせる既報キャンペーンの拡大形。カスタムRATとトンネリングツールを併用し、Go製のSOCKS5プロキシは反復的な連番ファイル名(exploit_creative.py、exploit_careful.py、rce_focused.py と同型の命名慣行)からAI支援開発が示唆されるとする。CL-CRI-1131 とは SOCKS5 中継インフラが重複する。",
+          "verified_by_analyst": "原文をHTTP 200で取得して確認済み(JSON-LD datePublished 2026-09-03)。クラスタ識別子の付与文、標的、SOCKS5プロキシとAI支援開発の示唆に関する記述を原文で直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Unit 42 単独の初報であり昇格閾値は未達。",
+        "CL-CRI-1131 とはインフラと手法が重複するが、Unit 42 は別クラスタとして追跡している。統合しない。",
+        "原文が言及する「previously reported targeting」の既報がどれを指すか未特定。"
+      ],
+      "analyst_notes": "tech-memo daily-news 未収録のため、レビューキューには対応レコードが存在しない。"
     },
     {
       "cluster_id": "unknown-cluster--clop-windchill",
@@ -561,6 +647,106 @@
         "両事案ともIOCが公開されておらず、指標による将来観測との突合ができない。"
       ],
       "analyst_notes": "IOCを伴わない記事は IOC CSV の actor 列に現れないため、構造化フィールド由来の未一致名検知だけでは新規アクター名を取りこぼす。本件はその実例であり、日次チェックでは新規日のニュース本文も併せて確認する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gambling-goblin",
+      "primary_name": "Gambling Goblin",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-04",
+      "last_seen": "2026-09-04",
+      "detected_via": "tech-memo daily-news 2026-09-04。IOC CSVのactor列「Gambling Goblin (linked to Earth Berberoka, medium to high confidence)」124観測、および本文抽出の未登録名候補として検知した。レビューキューでは earth-berberoka への誤一致レコードとして現れ、当該レコードは不採用とした。",
+      "attribution": {
+        "state": "overlap-assessed-by-vendor",
+        "actor_type": "financially-motivated-cybercrime",
+        "notes": "Check Point Research が本活動の実行主体として新規に命名したクラスタ。原文は「We dubbed this group Gambling Goblin: a Chinese-speaking cybercrime cluster connected to a previously documented group, Earth Berberoka」と述べ、Attribution節で「We assess with medium-to-high confidence that Gambling Goblin is tied to Earth Berberoka」と評価する。medium-to-high confidence の結び付き評価であって同一クラスタの断定ではないため、earth-berberoka プロファイルへ統合しない。中国語話者。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-04",
+          "publisher": "Check Point Research",
+          "url": "https://research.checkpoint.com/2026/gaming-the-system-how-a-chinese-speaking-actor-turned-brazilian-government-sites-into-an-seo-weapon/",
+          "title": "Gaming the system: how a Chinese-speaking actor turned Brazilian government sites into an SEO weapon",
+          "published_at": "2026-09-02",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "ブラジルの政府機関・教育機関が中心。原文は並行してベトナム語・スペイン語・英語圏向けのフィッシング網も確認したと述べる。",
+          "malware": [
+            "DownPro",
+            "AlphaAgent",
+            "oRAT"
+          ],
+          "tools": [
+            "悪性Apacheモジュール(リバースプロキシ)",
+            "3snake派生の認証情報窃取ツール",
+            "SSHブルートフォーサー",
+            "プラグイン方式の偵察エージェント"
+          ],
+          "activity_period": "原文は「Since mid-2025, Check Point Research has tracked a sustained campaign against Brazilian organizations」と述べ、2025年中盤以降の継続的活動とする。公開日2026-09-02は reported_at 相当であり観測日へ流用しない。",
+          "summary": "侵害したWebサーバーへ自前コンパイルの悪性Apacheモジュールを導入し、正規ドメインの特定パスへの訪問者を攻撃者管理下のフィッシングページへ透過的にリバースプロキシする。元サイトのセキュリティヘッダーは除去され、注入コンテンツが制約なく実行される。フィッシングページはGoogle Play、Microsoft Store、Amazon等の正規アプリストアを装いつつ、実体はオンラインギャンブル・スポーツ賭博へ誘導する。高評価の .gov.br ドメインを多数連鎖させて検索順位を操作し、検索トラフィックを大規模に横取りする。侵害後はDownPro、AlphaAgent、oRAT等の難読化された広範なLinuxツール群を用いる。設定変更ひとつでマルウェア直接配布へ転用しうる点を原文はエスカレーションリスクとして指摘している。",
+          "attribution_basis": "原文Attribution節が挙げる3点の重複: (1) oRATが2022年にEarth Berberokaへ紐付けられており、解析された亜種が同じ orat/cmd/agent コードベースとREST形式のオペレータルートを共有する。(2) 回収したAlphaAgent検体の1つが、Earth Berberokaへ従来帰属されていたツール群と同一アーカイブでアップロードされていた。(3) Trend Microが報告したEarth Berberokaのドメイン github[.]wiki と同型の github[.]la / gitlab[.]bet というlookalikeドメイン、および多数のC2が同一のAmazon ASN(AS16509)上にある。加えてギャンブル業界への注力と中国語文字列(二言語のフラグ説明、中国語コメント、中国語ページ資産)がオペレータの指紋として一致するとする。",
+          "verified_by_analyst": "原文をHTTP 200で取得して確認済み(JSON-LD datePublished 2026-09-02T10:16:16+00:00)。命名文、Attribution節の medium-to-high confidence の文言、および3つの重複根拠を原文で直接確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "earth-berberoka",
+          "relation": "overlap-assessed",
+          "confidence": "medium-to-high",
+          "basis": "Check Point Research の Attribution and links to prior work 節による評価。oRATのコードベース共有、AlphaAgent検体の同梱アーカイブ、lookalikeドメインとAS16509の一致。",
+          "notes": "同一クラスタの断定ではないため統合しない。earth-berberoka プロファイルの既存alias「Gambling Puppet」および「GamblingPuppet」と、本クラスタの「Gambling Goblin」は別名称であり混同しないこと。CPRはEarth Berberokaを Trend Micro が2022年に初報したクラスタとして参照している。"
+        }
+      ],
+      "unresolved_questions": [
+        "Check Point 単独の初報であり昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "Earth Berberoka との関係が同一クラスタなのか、共通ツールを使う別クラスタなのかは原文からは確定できない。第2の一次資料が出るまで統合しない。",
+        "ベトナム語・スペイン語・英語圏の並行フィッシング網が同一運用者によるものか、模倣・転売によるものかは原文に記載がない。"
+      ],
+      "analyst_notes": "IOC CSVのactor列の値は「Gambling Goblin (linked to Earth Berberoka, medium to high confidence)」という複合名であり、AGENT.mdの規定により複合名は自動承認しない。IOC 124観測は tech-memo CSV(20260904)側に保持されている。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gold-sherwood",
+      "primary_name": "GOLD SHERWOOD",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-04",
+      "last_seen": "2026-09-04",
+      "detected_via": "tech-memo daily-news 2026-09-04。IOC CSVのactor列「GOLD SHERWOOD」36観測が既存プロファイルへ一致せず unmatched_actor_values に現れた。",
+      "attribution": {
+        "state": "attributed-by-vendor",
+        "actor_type": "ransomware-double-extortion",
+        "notes": "Secureworks Counter Threat Unit (CTU) の呼称。The Gentlemen ransomware-as-a-service スキームの運営者。原文は「Counter Threat Unit (CTU) researchers identified a consistent post-exploitation playbook used in The Gentlemen ransomware-as-a-service (RaaS) scheme, operated by a threat group that CTU researchers track as GOLD SHERWOOD」と述べる。既存の unknown-cluster--the-gentlemen-affiliate は同じRaaSの「アフィリエイト側」の記録であり、本エントリは「運営者側」である。両者を混同しないこと。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-04",
+          "publisher": "Sophos (Secureworks Counter Threat Unit)",
+          "url": "https://www.sophos.com/en-gb/blog/ungentlemanly-behavior-insights-into-a-ransomware-operation",
+          "title": "Ungentlemanly behavior: Insights into a ransomware operation",
+          "published_at": "unknown",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "原文は幅広い業種にまたがるとし、個社名・国名の網羅的な明示はない。",
+          "malware": [
+            "The Gentlemen (ransomware)"
+          ],
+          "tools": [
+            "GentleKiller (BYOVD方式のEDR無効化ツール)",
+            "Rclone"
+          ],
+          "activity_period": "原文は GOLD SHERWOOD が The Gentlemen RaaS の運用を mid-2025 に開始し、2025年9月に RAMP フォーラムへアフィリエイト募集(90/10の分配)を掲示したと述べる。個々の侵害の観測日は本エントリでは未確定。公開日およびtech-memo日次ファイル日付(2026-09-04)を観測日へ流用しない。",
+          "summary": "The Gentlemen RaaS の運営者に関する CTU の分析。二重恐喝モデルで mid-2025 に運用開始、2025年9月に RAMP アンダーグラウンドフォーラムへ 90/10 の分配率でアフィリエイトを募集する広告を掲出した。侵入後のプレイブックとして、脆弱なファイアウォール(CVE-2024-55591)の悪用および多要素認証のないVPNへの窃取・総当たり資格情報による初期アクセス、net1 localgroup administrators / net group \"domain admins\" 等のネイティブコマンドによる権限確認、BYOVD方式の自製EDR無効化ツール GentleKiller と PowerShell の Defender 除外設定による防御回避、Rclone を主たる手段とするデータ持ち出し、が挙げられている。",
+          "verified_by_analyst": "原文の直接取得は Sophos 側が curl を遮断するため失敗した(HTTP/2 INTERNAL_ERROR および HTTP/1.1 Empty reply、リトライ4回いずれも不成立)。WebFetch によるページ全文取得で2回照会し、GOLD SHERWOOD の呼称・CTU による追跡・The Gentlemen RaaS の運営者であること・mid-2025 の運用開始・RAMP の 90/10 広告の各文言が両回で一致することを確認した。公開日はページ上に表示が確認できず unknown とした(IOC CSVの収集日は2026-09-04)。要約経由の取得であるため、被害件数等の数値と個別IOCは本エントリへ採用していない。次回、取得手段を変えて原文を再確認すること。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Sophos/Secureworks 単独の初報であり昇格閾値は未達。",
+        "既存の unknown-cluster--the-gentlemen-affiliate(Hunt.io 2026-08-06、EtherRAT)との関係。RaaS運営者(本エントリ)とアフィリエイト(当該エントリ)は分離して扱う。両者を結び付ける一次資料はまだない。",
+        "原文の公開日が未確定。IOC CSVの収集日 2026-09-04 は公開日ではない。",
+        "原文の直接取得ができておらず、IOC 36観測(tech-memo CSV 20260904側に保持)の個別値は台帳へ取り込んでいない。"
+      ],
+      "analyst_notes": "The Gentlemen はランサムウェア/RaaSスキームの名称であり、GOLD SHERWOOD はその運営グループの呼称である。IOC CSVでは actor=GOLD SHERWOOD / malware=The Gentlemen として分離されており、この分離を台帳でも維持する。"
     },
     {
       "cluster_id": "unknown-cluster--gryxa",
@@ -1961,7 +2147,13 @@
       "matched_term": "Nigeria",
       "article": "https://www.justice.gov/opa/pr/two-nigerian-nationals-extradited-nigeria-united-states-face-sextortion-charges-north",
       "reason": "記事本文に埋め込まれたニュースURL文字列の断片「com/news/security/nigerians-charged-US-over-sextortion-deaths-of-us-teens/」との衝突。記事(tech-memo 2026-09-01収録、一次ソースは米司法省プレスリリース、報道はBleepingComputer 2026-08-31)は、未成年者への金銭目的セクストーション事件でナイジェリア人2名が米国へ身柄引き渡し・訴追された法執行の報道であり、BECアクター SilverTerrier の活動ではない。原文に SilverTerrier の言及は存在しない。国籍・地域名との一致のみを根拠にアクターへ結び付けない。追跡対象としない。"
+    },
+    {
+      "matched_profile": "sea-turtle",
+      "matched_term": "SILICON",
+      "article": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-n9k-s1-rce-EH8dEtr",
+      "reason": "記事本文中の製品名との衝突。該当箇所は「Silicon One ASIC搭載のNexus 9000シリーズ10機種」で、CiscoのASIC製品 Silicon One を指す。記事はCVE-2026-20212(CVSS 9.8)のRCE脆弱性とその修正を扱うベンダーアドバイザリであり、Sea Turtle の活動ではない。追跡対象としない。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。"
 }

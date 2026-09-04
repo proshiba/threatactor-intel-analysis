@@ -93,6 +93,11 @@
     "review_notes": "原文(Huntress, 2026-08-12公開)を確認。記事はこの侵害を主題とし、実行主体をAkiraランサムウェアのアフィリエイトと明記している。MFA未設定で外部公開されたSonicWall SSL VPNへのパスワードスプレー後に有効な認証情報でログインし、約2時間後にRDPでドメインコントローラーへ到達、PowerShellでActive Directoryを列挙、WinRARで書庫化してs5cmdで攻撃者管理のS3バケットへ窃取した。AnyDeskを遠隔操作兼C2として導入後、Safe Mode with Networkingで再起動してHuntress EDRとMicrosoft Defenderのリアルタイム保護を無効化しakira.exeを実行したが、Safe Modeの制限された仮想メモリでメモリ不足となり暗号化に失敗、通常モード復帰後にDefenderがペイロードを隔離した。暗号化は失敗したがデータ窃取は成立している。Huntress自身がEDRで直接観測した一次資料であり、同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもない。活動期間は原文が2026-08-04 03:45 UTC〜2026-08-05 08:12 UTCと明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-08-14)はreported_atとして分離する。",
     "review_status": "approved"
   },
+  "akira|https://www.security.com/threat-intelligence/node-js-returns-ransomware": {
+    "confidence": "low",
+    "review_notes": "不採用(実行主体でない)。Symantec原文(security.com、tech-memo 2026-09-04収録)をHTTP 200で取得して確認した。Akiraの出現は本文2箇所のみで、いずれも同一文「Some of the attacks involved ModeloRAT, which is believed to be developed by an initial access broker called Woodgnat (aka KongTuke), which has been publicly linked to attacks involving multiple ransomware families, including Qilin, Interlock, Rhysida, Akira, 8Base, Black Basta and Embargo.」である。すなわちAkiraは、本キャンペーンで使われたModeloRATの開発元とされるIAB Woodgnat(KongTuke)に「publicly linked」なランサムウェアファミリの列挙に並ぶだけであり、Node.js濫用侵入の実行主体ではない。記事全体で attribution/attributed の語は0回、名前付きグループへの帰属は一切行われておらず、実行主体は「attackers」「the same attackers」と記述されるのみである。activity_claimはstrong-subjectだが、これはtech-memo要約の日本語文が当該の列挙を一文へ圧縮した結果の誤検知であり、AGENT.mdの「類似・重複・後継・一般的な関連は含めない」に該当する。原文で確認できた本活動の実体は、2026年2月以降のNode.js濫用の再流行、アジアの技術企業(2026-03-23〜06)と米国FinTech企業(2026-05-06〜07-23)への同一攻撃者による侵入、ClickFixによる初期アクセス、AdaptixC2/Cobalt Strike、EtherHiding、およびZscalerが命名したRust製バックドアC2Looper(C2 45.158.196[.]23:8888の一致)であり、いずれもAkiraへ帰属されていない。",
+    "review_status": "rejected"
+  },
   "akira|https://www.suspectfile.com/akira-ransomware-when-paying-isnt-enough-to-stay-anonymous/": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Akiraランサムウェア：支払いだけでは匿名性を保てない",
@@ -580,6 +585,11 @@
   },
   "blackbyte|https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-222a": {
     "review_notes": "根拠文が「GunraはContiの流出ソースコードを基にしたとみられ」であり、BlackByteのcatalog alias「Conti」(scope: overlapping)経由の誤一致。原文(共同勧告 AA26-222A, FBI/CISA/DC3/NSA/USSS/韓国国家警察庁, 2026-08-10公開)を確認したところ「Gunra first emerged in April 2025 as a sophisticated double-extortion ransomware variant derived from the leaked Conti ransomware source code.」「Gunra ransomware appears to be based on, or significantly influenced by, the Conti ransomware source code leaked in 2022.」とあり、いずれもランサムウェアのコード系譜に関する記述であってアクターの同一性を示すものではない。勧告本文にBlackByteへの言及はない。GunraはBlackByteの活動ではないため不採用とし、Gunra自体は別途新規プロファイルとして昇格する。",
+    "review_status": "rejected"
+  },
+  "blackbyte|https://www.security.com/threat-intelligence/node-js-returns-ransomware": {
+    "confidence": "low",
+    "review_notes": "不採用(名称スコープと実行主体の二重の不成立)。一致語は「Black Basta」でblackbyteプロファイルのalias scopeはoverlappingであり、原文にBlackByteの語は0回出現する(確認済み)。加えて出現箇所はakiraと同一文のIAB Woodgnat(KongTuke)に「publicly linked」なランサムウェアファミリの列挙であり、本キャンペーンの実行主体ではない。AGENT.mdはoverlapping scopeの一致を手動確認対象とし、活動の実行主体でない言及を採用しないと定めている。Black BastaをBlackByteプロファイルの活動として扱う根拠は原文にない。",
     "review_status": "rejected"
   },
   "blackbyte|https://www.sophos.com/en-us/blog/chaos-in-teams-vishing": {
@@ -1924,6 +1934,11 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はトルコ支援のサイバースパイグループMarbled Dust（別名：Sea Turtle、SILICON、UNC1326）であり、ヨーロッパと中東を標的とし、電気通信およびIT企業、政府機関、およびトルコ政府に反対する組織に焦点を当てている。",
     "review_status": "approved"
   },
+  "sea-turtle|https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-n9k-s1-rce-EH8dEtr": {
+    "confidence": "low",
+    "review_notes": "不採用(製品名との名称衝突)。一致語「SILICON」は sea-turtle プロファイルのalias(scope: overlapping)だが、記事中の該当箇所は「Silicon One ASIC搭載のNexus 9000シリーズ10機種」というCiscoのASIC製品名 Silicon One である。記事はCVE-2026-20212(CVSS 9.8)のRCE脆弱性とその修正を扱うベンダーアドバイザリであり、脅威アクターの活動報告ではない。Cisco自身が2026-09-02時点で悪用を確認していないと明記している。config.json の matching.unsafe_prose_aliases に SILICON は登録済みでactivity_claimもname-collisionと判定されるが、当該設定はレコード生成自体を抑止せず判定を下げるだけであるため、再検討を避ける目的で本決定を保存し、parse-daily/unknown-clusters.json の excluded_name_collisions にも記録した。",
+    "review_status": "rejected"
+  },
   "sidewinder|https://thehackernews.com/2025/03/sidewinder-apt-targets-maritime-nuclear.html": {
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: SideWinder APT、アジア、中東、アフリカの海事、原子力、ITセクターを標的に",
@@ -2747,5 +2762,10 @@
     "confidence": "low",
     "review_notes": "不採用(重複評価のみ)。原文(Sygnia「Fire Ant Evolves: From Hypervisors to Trusted Infrastructure」、2026-09-01公開)をHTTP 200で取得して確認した。記事の主体はSygniaが独自の追跡名として用いる「Fire Ant」であり、UNC3886との関係は「Public reporting from Mandiant and Google Cloud describes UNC3886 as a China-nexus espionage cluster ... Sygnia assesses that Fire Ant activity strongly overlaps with this public reporting」と記されるにとどまる。同一アクターであるとは述べていない。AGENT.mdは「類似・重複・後継・一般的な関連は含めない」と定めており、activity_claimの判定もattribution-uncertain(一致箇所が推測・類似・関連のみを示している)である。重複の具体的根拠として原文が挙げるのは、(1)公開済みREPTILEのkill marker「hpaVAj2FJ」を再利用する一方で主たる活性化マーカーは「sxcdew...」と異なり検体自体はREPTILEと同一ではないこと、(2)TACACS認証情報ログの単一バイトXOR鍵0xEFがMandiantの記述したUNC3886のツールと一致すること、(3)VMCIベースのバックドア、Medusaルートキット、カスタムSSH、ルーター指向の作戦という持続的挙動の一致、である。いずれも重複の指摘であって同一断定ではない。なおETDA Threat Group Cardsは既にUNC3886のエントリにFire Antをcandidate nameとして併記しており(profiles/unc3886/osint-crosscheck.json)、公開情報上の結び付き自体は広く共有されているが、これはベンダー横断の慣行であって帰属の確定ではない。利用者の判断により、UNC3886プロファイルへの活動反映は行わず、unknown-cluster--fire-ant として related_profiles: unc3886 (relation: overlap-assessed, confidence: medium) で台帳へ登録した。独立した2本目の一次資料、または政府・CERTによる同一性の言明が得られた時点で統合または独立プロファイル化を判断する。原文は被害組織・被害国を明示していないため、標的情報をUNC3886側へ流用してはならない。",
     "capability_decisions": []
+  },
+  "earth-berberoka|https://research.checkpoint.com/2026/gaming-the-system-how-a-chinese-speaking-actor-turned-brazilian-government-sites-into-an-seo-weapon/": {
+    "confidence": "low",
+    "review_notes": "不採用(実行主体は別クラスタ、帰属は未確定)。Check Point Research原文(JSON-LD datePublished 2026-09-02T10:16:16+00:00)をHTTP 200で取得して確認した。原文は実行主体を新規に命名しており、Key Pointsで「We dubbed this group Gambling Goblin: a Chinese-speaking cybercrime cluster connected to a previously documented group, Earth Berberoka」、Attribution and links to prior work節で「We assess with medium-to-high confidence that Gambling Goblin is tied to Earth Berberoka - a Chinese-speaking threat cluster first documented by Trend Micro in 2022」と述べる。すなわちEarth Berberokaは本活動の実行主体ではなく、medium-to-high confidenceの結び付き評価の相手方である。CPRが挙げる根拠は(1)oRATが2022年にEarth Berberokaへ紐付けられており、解析した亜種が同じ orat/cmd/agent コードベースとREST形式のオペレータルートを共有すること、(2)回収したAlphaAgent検体の1つが、Earth Berberokaへ従来帰属されていたツール群と同一アーカイブでアップロードされていたこと、(3)Trend Microが報告したEarth Berberokaのドメイン github[.]wiki と同型の github[.]la / gitlab[.]bet というlookalikeドメイン、および同一のAmazon ASN(AS16509)、の3点であり、いずれも重複の指摘である。AGENT.mdは類似・重複・後継・一般的な関連を活動レコードへ含めないと定めているため、Earth Berberokaの活動としては採用しない。実行主体のGambling Goblinは既存プロファイルに存在しない名称であり、単一ベンダー初報で昇格閾値未達のため parse-daily/unknown-clusters.json の unknown-cluster--gambling-goblin へ登録し、related_profiles へ earth-berberoka を linked-medium-to-high として記録した。なお earth-berberoka プロファイルの既存alias「Gambling Puppet」と本件の「Gambling Goblin」は別名称であり、混同しないこと。",
+    "review_status": "rejected"
   }
 }
