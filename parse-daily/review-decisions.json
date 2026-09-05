@@ -2767,5 +2767,20 @@
     "confidence": "low",
     "review_notes": "不採用(実行主体は別クラスタ、帰属は未確定)。Check Point Research原文(JSON-LD datePublished 2026-09-02T10:16:16+00:00)をHTTP 200で取得して確認した。原文は実行主体を新規に命名しており、Key Pointsで「We dubbed this group Gambling Goblin: a Chinese-speaking cybercrime cluster connected to a previously documented group, Earth Berberoka」、Attribution and links to prior work節で「We assess with medium-to-high confidence that Gambling Goblin is tied to Earth Berberoka - a Chinese-speaking threat cluster first documented by Trend Micro in 2022」と述べる。すなわちEarth Berberokaは本活動の実行主体ではなく、medium-to-high confidenceの結び付き評価の相手方である。CPRが挙げる根拠は(1)oRATが2022年にEarth Berberokaへ紐付けられており、解析した亜種が同じ orat/cmd/agent コードベースとREST形式のオペレータルートを共有すること、(2)回収したAlphaAgent検体の1つが、Earth Berberokaへ従来帰属されていたツール群と同一アーカイブでアップロードされていたこと、(3)Trend Microが報告したEarth Berberokaのドメイン github[.]wiki と同型の github[.]la / gitlab[.]bet というlookalikeドメイン、および同一のAmazon ASN(AS16509)、の3点であり、いずれも重複の指摘である。AGENT.mdは類似・重複・後継・一般的な関連を活動レコードへ含めないと定めているため、Earth Berberokaの活動としては採用しない。実行主体のGambling Goblinは既存プロファイルに存在しない名称であり、単一ベンダー初報で昇格閾値未達のため parse-daily/unknown-clusters.json の unknown-cluster--gambling-goblin へ登録し、related_profiles へ earth-berberoka を linked-medium-to-high として記録した。なお earth-berberoka プロファイルの既存alias「Gambling Puppet」と本件の「Gambling Goblin」は別名称であり、混同しないこと。",
     "review_status": "rejected"
+  },
+  "akira|https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html": {
+    "confidence": "low",
+    "review_notes": "不採用(統計上の列挙であり個別活動の報告でない)。Trend Micro原文(trendmicro.com/ja_jp、tech-memo 2026-09-05収録)をHTTP 200で取得して確認した。Akiraの出現は本文1箇所のみで、Ransomware.liveのリークサイト集計を述べる文「これらの分野に対して最も活発な3つのグループであるAkira、Qilin、Playは、対象範囲内の全被害者の約30%を占めています」である。すなわちAkiraはリークサイト掲載件数の統計における上位グループとして列挙されるにとどまり、本記事が主題とする個別の侵入・キャンペーンの実行主体として記述されていない。記事は産業・エネルギー分野を狙うアンダーグラウンド経済(初期アクセス売買、OT/SCADA到達性のプレミアム化、ICS/SCADA教材の海賊版流通、ハクティビストとの境界接近)の実態調査であり、新規の攻撃活動、観測期間、標的組織、IOC、TTPをAkiraへ結び付ける記述はない。activity_claimはhistorical-referenceであり、AGENT.mdの「一致箇所が記事主題ではなく過去事例・一般的利用の説明である」に該当する。akiraプロファイルの既知の最終活動2026-08-14を更新する根拠にはならない。",
+    "review_status": "rejected"
+  },
+  "earth-lusca|https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html": {
+    "confidence": "low",
+    "review_notes": "不採用(製品名との名称衝突)。一致語「CHROMIUM」はearth-luscaプロファイルのalias(scope: overlapping)であり、config.jsonのunsafe_prose_aliasesにも登録済みの一般語衝突である。出現箇所はtech-memo本文の「Microsoft Edge、Brave、Opera、VivaldiなどChromiumベースのブラウザも、修正版が提供され次第更新する」で、ブラウザ基盤の製品名を指す。一次ソースであるChrome Releases原文をHTTP 200で取得して確認したところ、「Earth Lusca」の出現は0回、「Chromium」も0回、「actor」も0回であり、脅威アクターの記載自体が存在しない。記事の実体はV8のType Confusion脆弱性CVE-2026-85046(実環境で悪用)の修正告知であり、Googleは悪用の詳細を非公開としていて攻撃者の帰属を行っていない。excluded_name_collisionsに同種のChrome/Chromium衝突を記録済みの方針を踏襲する。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia": {
+    "confidence": "low",
+    "review_notes": "不採用(URL文字列中の地域名との衝突、かつ原文は完全に未帰属)。一致語「Asia」はhellsing-aptのalias(scope: unknown、match_confidence: medium)で、config.jsonのunsafe_prose_aliasesにも登録済みである。一致箇所はtech-memo本文に埋め込まれた一次ソースURL断片「io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia」であり、記事本文の実行主体表現ではない。Hunt.io原文をHTTP 200で取得して確認したところ「Hellsing」の出現は0回である。加えて原文は「attribut」の語が0回、「tracked as」「we assess」も0回で、名前付きグループへの帰属を一切行っていない(実行主体は中国語話者のオペレーターとして記述され、繰り返し現れるハンドル「Nie」のみが手掛かり)。既存のexcluded_name_collisionsにも同種のURL断片「-asia」「in-asia」衝突を2件記録済みであり、同じ方針で不採用とする。なお原文が扱う活動自体(AIエージェント基盤SecFlow、独自インプラントSecBox、Webシェル GLUTTON)は未帰属クラスタとして別途unknown-clusters.jsonへ登録する。",
+    "review_status": "rejected"
   }
 }
