@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "3d865240024e66da6c6a3434f7c1a50d7f1c7783",
-  "last_scanned_date": "2026-09-04",
+  "last_scanned_commit": "7c5b1324df430008e8536ba9e6b681bd752181dc",
+  "last_scanned_date": "2026-09-05",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -2712,6 +2712,136 @@
           "result": "定例の7情報源には含まれないが、IOC CSVのactor列「GOLD SHERWOOD」36観測が未一致となったため追跡確認した。原文の直接取得はSophos側がcurlを遮断するため不成立(HTTP/2 INTERNAL_ERROR、HTTP/1.1 Empty reply、リトライ4回)。WebFetchによる全文取得で2回照会し、「Counter Threat Unit (CTU) researchers identified a consistent post-exploitation playbook used in The Gentlemen ransomware-as-a-service (RaaS) scheme, operated by a threat group that CTU researchers track as GOLD SHERWOOD」「GOLD SHERWOOD began operating The Gentlemen RaaS scheme in mid-2025」およびRAMPフォーラムの90/10アフィリエイト募集の各文言が両回で一致することを確認した。unknown-cluster--gold-sherwood として登録。ページ上に公開日表示を確認できず published_at は unknown とした。要約経由の取得であるため被害件数等の数値と個別IOCは台帳へ採用していない。次回、取得手段を変えて原文を再確認すること。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-09-07T09:45:00Z",
+      "window": {
+        "since": "2026-09-04",
+        "until": "2026-09-05"
+      },
+      "source_commit": "7c5b1324df430008e8536ba9e6b681bd752181dc",
+      "statistics": {
+        "news_files": 2,
+        "articles": 23,
+        "review_records": 7,
+        "approved_records": 0,
+        "rejected_records": 7,
+        "pending_records": 0,
+        "applied_records": 0,
+        "unmatched_actor_values": 206,
+        "materialization_window": "daily_check.py --run-scan --top 30 を 2026-09-06 に実行し、tech-memoの新規日 2026-09-05 を走査した(cache commit 7c5b1324)。queueは --since 2026-09-04 で生成され、レコード7件のうち4件は 2026-09-04 のチェックで不採用済み、本回の新規pendingは3件で、いずれも原文確認のうえ不採用とした。承認レコードは0件のため profiles/ 配下の変更はなく、apply_review_queue.py は dry-run のみ実行して approved_records 0 を確認した(--apply は対象がないため実行していない)。判断は review-decisions.json へ保存済みで、build_review_queue.py --since 2026-09-04 の再実行により pending 0 / approved 0 / decision_issues 0 が再現することを確認した。validate_daily は queue と --check-applied の双方で error 0 / warning 0。テストは parse-daily/tests 18件と actor_profile/tests 54件の計72件がpass。"
+      },
+      "applied": [],
+      "rejected": [
+        {
+          "actor": "akira",
+          "name": "産業インフラを標的とする犯罪経済の全体像",
+          "source": "https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html",
+          "decision": "不採用(実行主体でない、統計記述への言及)。Trend Micro原文をHTTP 200で取得して確認した。本文中に Akira は1回しか現れず、該当箇所は「Ransomware.liveのリークサイトデータによると…これらの分野に対して最も活発な3つのグループであるAkira、Qilin、Playは、対象範囲内の全被害者の約30%を占めています」という2024年1月〜2026年6月の掲載件数の集計記述である。記事の主題は産業インフラへの侵入アクセスの売買経済であり、特定の侵害・キャンペーンの報告ではない。原文に帰属記述は0件。activity_claim は historical-reference であり、集計統計への名前の登場を活動レコード化しない。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "Google、攻撃で悪用されている新たなChromeゼロデイ脆弱性を警告",
+          "source": "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html",
+          "decision": "不採用(名称衝突)。一致語は alias「CHROMIUM」(scope: overlapping)で、該当箇所は「Microsoft Edge、Brave、Opera、VivaldiなどChromiumベースのブラウザも、修正版が提供され次第更新する。」というブラウザエンジン名である。記事はChrome V8のCVE-2026-85046修正版公開を扱うベンダーアナウンスで、Googleは悪用の詳細を非公開としており帰属は行われていない。excluded_name_collisions へ追加した(earth-lusca/CHROMIUM の同型事例はこれで4件目)。"
+        },
+        {
+          "actor": "hellsing-apt",
+          "name": "中国語話者の攻撃者、AIエージェントを利用してアジアの政府・教育システムを標的化",
+          "source": "https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia",
+          "decision": "不採用(URL文字列の名称衝突)。一致語は alias「Asia」で、一致箇所は一次ソースURL文字列の断片「deepseek-asia」である。原文をHTTP 200で取得し全文抽出して Hellsing 0回・APT 0回・attribut 0回を機械照合で確認した。実体は未命名の中国語話者オペレーターであり unknown-cluster--nie-secflow として台帳へ登録した。excluded_name_collisions へ追加した(hellsing-apt/Asia の同型事例はこれで4件目)。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--toy-ghouls",
+          "change": "観測追加・別名追加・last_seen更新",
+          "basis": "Kaspersky GERT「Angry Birds: Toy Ghouls' new toys」(datePublished 2026-09-04T10:00:05Z)を一次情報源の公開一覧チェックで検知した。tech-memo daily-news 未収録。前回チェック(2026-09-04T02:10Z)の約8時間後の公開のため前回は未検出である。原文は Toy Ghouls を実行主体として明記し、新別名 Feral Wolf を提示、2026年7月上旬に初のカスタムバックドア(mqtt-bird-agent 0.1.0 / matrix-bird-agent 0.1.0)使用を確認したと述べる。C2は公開HiveMQ MQTTブローカーとElement/Matrix、配布はWinRM(Evil-WinRM、WinRM-fs)。last_seen を検知日である 2026-09-06 へ更新した。一次資料は2本になったが両方とも Kaspersky であり独立2ベンダーではないため昇格閾値は未達。"
+        },
+        {
+          "cluster_id": "unknown-cluster--nie-secflow",
+          "change": "新規追加",
+          "basis": "Hunt.io 2026-09-03(TLP:AMBERで関係各国CERTへ事前開示のうえ公開留保)。SecFlow で Claude／Qwen／DeepSeek を専門ワーカーとして切り替えるマルチAIエージェント基盤を用い、台湾KMT党史館・インドネシア外務省・豊台区政府環境・大学キャンパスカードシステム等を標的とした未帰属の中国語話者オペレーター。原文は帰属を行っておらず(attribut 0回)、ハンドル「Nie」がSOCKS認証情報・GLUTTONビルドパス・niestools[.]com ドメイン群にまたがって反復する点のみが結節点である。IOC CSVのactor列「Nie」46観測が unmatched_actor_values に現れた。unknown-cluster--hermes-openclaw-asia-gov とは基盤名もインフラも異なり相互の関連付けを述べる一次資料がないため統合しない。単一ベンダー初報のため昇格閾値未達。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "Nie",
+          "observations": 46,
+          "disposition": "unknown-cluster--nie-secflow として新規登録した。単一語かつ一般的な中国語姓でもあるため、名称一致だけで他資料と結合しない。"
+        },
+        {
+          "value": "Gambling Goblin (linked to Earth Berberoka, medium to high confidence)",
+          "observations": 124,
+          "disposition": "unknown-cluster--gambling-goblin に既登録(2026-09-04)。複合名のため自動承認しない。"
+        },
+        {
+          "value": "GOLD SHERWOOD",
+          "observations": 36,
+          "disposition": "unknown-cluster--gold-sherwood に既登録(2026-09-04)。"
+        }
+      ],
+      "unmatched_name_candidates_flagged": [
+        {
+          "value": "Shellshock",
+          "articles": 1,
+          "disposition": "本文抽出の未登録名候補。CVE-2014-6271 の脆弱性通称でありアクター名ではないため、台帳へ登録せず config.json の matching.ignored_name_candidates へ追加して以後の再検討を止めた。"
+        },
+        {
+          "value": "Gambling Goblin",
+          "articles": 1,
+          "disposition": "unknown-cluster--gambling-goblin に既登録(2026-09-04)。2026-09-04 の記事が --since 2026-09-04 のウィンドウに再度含まれたための再掲であり、新規検知ではない。"
+        }
+      ],
+      "extraction_rule_changes": "activity_claim の判定ロジックおよび actor_profile/activity-observation-rules.json は変更していない。config.json の matching.ignored_name_candidates へ「Shellshock」を追加した。本文抽出の未登録名候補のうち、脆弱性通称として確定したものを抑止する既存運用に従う(先例: Coder)。",
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-02",
+          "result": "アクター報告の新規なし。cutoff後の新規は2026-09-04「How to secure edge AI in customer-owned environments」1件のみで、顧客所有環境におけるAI資産の検証を扱う製品ガイダンスであり脅威アクターの活動報告ではない(公開一覧の Latest posts で日付・要約を確認)。09-03 ASCII smuggling(技法研究)と 09-02 Impersonating IT support(Storm-番号・クラスタ名・帰属記述が一切なく完全に未帰属)は前回評価済みで、判断に変更はない。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-01",
+          "result": "cutoff後の新規なし。前回同様、一覧が公開日を表示せず時系列順でもないため、掲載11件すべての記事URLをcurlで取得しJSON-LDのdatePublishedを機械照合した(2026-05-11〜2026-09-01)。最新は既取込の「Financially Motivated Threat Actor BREEZE COMET Targets Brazil」(2026-09-01)。一覧先頭に表示される「AI vulnerability exploitation initial access」は datePublished 2026-05-11 で、前回から引き継いでいる GTIG AI Threat Tracker と同一である。当該記事(UNC2814・APT45・APT27・UNC6780(TeamPCP)・UNC6201・UNC5673・TEMP.Hexを名指し)と UNC6671 原文(2026-08-06)は今回も未取込であり、引き続き次回の確認対象として引き継ぐ。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-03",
+          "result": "新規なし。最新は「Attackers Expose Ongoing AI Tool Use Targeting Organizations in Latin America」(datePublished 2026-09-03T10:00:58+00:00)で、前回のチェックで CL-CRI-1131 と CL-CRI-1163 として台帳登録済み。その次の「An AI-Assisted Cyber Attack: Inside a Unit 42 Investigation」(2026-09-02)も前回評価済みで、判断に変更はない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-09-03",
+          "result": "脅威アクターに関する新規なし。最新は2026-09-03「The story behind the intelligence」で、前回原文を確認したとおり Threat Source ニュースレターであり活動報告・IOC・アクター帰属を含まない。技術報告の最新は UAT-10147 の2本(2026-08-20)で、いずれも既取込。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "新規なし。公開一覧の先頭は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で、これはUEFI Secure Boot回避の脆弱性研究でありアクター活動報告ではない。アクター報告の最新は Gamaredon(2026-06-25)で既取込。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "新規なし。最新は「The Model is the Malware: What Four Agentic Intrusions Tell Defenders」(datePublished 2026-08-13T13:00:40+00:00)。cutoff後の公開はない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-04",
+          "result": "新規1件あり。「Angry Birds: Toy Ghouls' new toys」(Kaspersky GERT、datePublished 2026-09-04T10:00:05+00:00)を原文をHTTP 200で取得して確認した。Toy Ghouls を実行主体として明記し、新別名 Feral Wolf を提示、2026年7月上旬に初のカスタムバックドア mqtt-bird-agent 0.1.0(公開HiveMQ MQTTブローカーをC2)と matrix-bird-agent 0.1.0(Element/MatrixをC2)の使用を確認したと述べる。tech-memo daily-news 未収録で、前回チェック(2026-09-04T02:10Z)の約8時間後の公開のため前回は未検出。unknown-cluster--toy-ghouls へ観測を追加した。次点の「Mirage Kitten targeting aviation and FinTech sectors across the Middle East and Africa」(datePublished 2026-09-01T07:00:26+00:00)は前回チェック時点で公開済みであり、cutoff後の新規ではない。"
+        }
+      ],
+      "analyst_notes": "本回の走査対象は tech-memo の新規日 2026-09-05 のみで、承認レコードは0件のため profiles/ 配下の変更はない。成果は2点で、いずれもレビューキュー由来ではなく台帳側の更新である。(1) 一次情報源の公開一覧チェックで Securelist の Toy Ghouls 第2報を検知した。前回チェックの約8時間後の公開であり、公開一覧チェックの cutoff を「前回チェックの実行時刻」ではなく「前回チェックで確認できた最新公開日」に置いていることで拾えた事例である。(2) IOC CSV の actor 列に現れた未一致名「Nie」(46観測)から unknown-cluster--nie-secflow を新規登録した。レビューキュー側では同記事は hellsing-apt の alias「Asia」への URL 文字列衝突としてしか現れず、実体側は unmatched_actor_values を経由しないと検知できない。名称衝突レコードの不採用判断だけで処理を終えると実体を取りこぼす構造であり、AGENT.md の unmatched_actor_values 照合と unknown-clusters.json 台帳の役割分担が機能した事例として記録する。earth-lusca/CHROMIUM と hellsing-apt/Asia はいずれも4件目の同型衝突であり、両 alias は再発が続いている。"
     }
   ],
   "full_history_activity_audit": {

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-04T00:00:00Z",
+  "generated_at": "2026-09-07T00:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -1050,6 +1050,61 @@
       "analyst_notes": "単一ベンダーの初報のみで昇格閾値未達。継続観察。「Myxa VPN」は日次チェックで86観測の未一致名として上がるが、アクター指定子ではないためプロファイル化しない。本台帳へ記録することで、次回以降の走査で同じ判断を繰り返さないようにする。"
     },
     {
+      "cluster_id": "unknown-cluster--nie-secflow",
+      "primary_name": "Nie（SecFlow マルチAIエージェント基盤を用いる中国語話者オペレーター）",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-05",
+      "last_seen": "2026-09-05",
+      "detected_via": "tech-memo daily-news 2026-09-05。IOC CSVのactor列「Nie」46観測が既存プロファイルへ一致せず unmatched_actor_values に現れた。daily_check.py は同記事URL中の「deepseek-asia」を hellsing-apt の alias「Asia」へ名前一致させたが、これは excluded_name_collisions 登録済みのURL文字列衝突であり本キャンペーンとは無関係である。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Hunt.io は実行主体へコードネームを与えておらず、既知APTへの帰属も行っていない（原文に attribution/attributed の語は0回、APT の語も0回）。唯一の結節点はハンドル「Nie」であり、原文は「Across the campaign, the handle \"Nie\" kept recurring.」と述べ、SOCKSプロキシ 103.45.65[.]93 の認証ユーザー名、GLUTTON MCPバイナリにハードコードされたビルドパス C:\\Users\\nie\\...、および niestools[.]com ドメイン群にまたがる反復を根拠とする。中国語話者という評価に留まり、国家・機関への帰属ではない。AGENT.md に従い言語的痕跡を帰属根拠にせず、state-sponsored 系の語も用いない。原文はキャンペーンにも運用者にもコードネームを与えていないため、オペレーターのハンドルとオーケストレーション基盤名 SecFlow をクラスタ名の手掛かりとして用いる。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-05",
+          "publisher": "Hunt.io",
+          "url": "https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia",
+          "title": "Chinese-Speaking Operator Uses AI Agents to Target Government and Education Systems Across Asia",
+          "published_at": "2026-09-03",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は攻撃の観測期間を明示していない。示されるのは5つのオープンディレクトリの AttackCapture 取得日（2026-05-15 / 2026-06-11 / 2026-07-24 / 2026-08-04 / 2026-08-04）であり、これはインフラの取得日であって攻撃観測日そのものではない。したがって攻撃期間は unknown とし、公開日2026-09-03は reported_at 相当として分離する。tech-memo 収録日 2026-09-05 とも分離する。なお原文は TLP:AMBER で関係各国のCERTへ事前開示のうえ2026-09-03まで公開を留保したと明記しており、公開日と観測日の乖離は明確である。",
+          "targets": "6か国・約12分野。台湾の中国国民党（KMT）党史館および台湾政府システム、インドネシア外務省、中国本土の政府・教育系（最も深刻な侵害は豊台区政府環境）、ベトナム・ダナンの産業／商業ホスト。分野は政府、政治、教育、領事、医療、産業、商業、技術、消費者システムにまたがる。原文は責任ある開示に基づき一部の被害組織名を伏せている。",
+          "malware": [
+            "SecBox（Windows／Linux インプラント）",
+            "GLUTTON（ステガノグラフィー対応Webシェル生成MCP）"
+          ],
+          "tools": [
+            "SecFlow（Claude／Qwen／DeepSeek を専門ワーカーとして切り替えるオーケストレーション基盤）",
+            "偽MySQLデシリアライズサーバー",
+            "認証付きSOCKS5中継・SSHジャンプホスト",
+            "Cloudflare Tunnel（trycloudflare.com）を用いた短命C2リダイレクタ"
+          ],
+          "summary": "SecFlow が偵察・エクスプロイト・収集・レポートを専門AIワーカーへ分割し、タスクインターフェースを変えずに Claude／Qwen／DeepSeek のプロファイルを切り替えて実行するマルチエージェント攻撃基盤。共有SOCKSエンドポイント 103.45.65[.]93:35888 を軸に、コード・ファイル内容検索で120件が一致し5つのオープンディレクトリ（AIオーケストレーションホスト、Java/CAS エクスプロイト用ワークスペース、偽MySQLデシリアライズサービス、Shellshock・認証情報テストノード、ペイロード配布ストア）が同一キャンペーンとして結び付けられた。悪用・準備されたCVEは Shellshock、Spring4Shell、Ghostcat、Shiro、Log4Shell(CVE-2021-44228)、Grafana、Nexus(CVE-2024-4956)、Nacos(CVE-2021-29441) 関連の8件で、公開PoC・盗難認証情報・Webシェルと組み合わせて用いられた。確認された侵害は、豊台区政府環境でのコマンド実行・LSASS/レジストリハイブ窃取・OAアカウント822件取得・健康／行政文書へのアクセス・Windowsインプラント展開、中国の教育AIプラットフォームのデータアクセス、大学キャンパスカードシステムのroot DBおよびGrafana管理者アクセス。台湾KMT党史館に対しては /gs32/kmt/index.htm への Shellshock ペイロードが用いられた。原文は、誤ったShiro侵害判定がAIワーカー間の共有コンテキストで引き継がれ、27回超の失敗後も無効な後続タスクが続いた点をAI運用の脆さとして指摘している。",
+          "attribution_basis": "原文は帰属を行っていない。クラスタ内の結合根拠は、共有SOCKSエンドポイント 103.45.65[.]93 への120件のファイル内容一致、SecFlow と GLUTTON の共通アーティファクト、再利用アカウント、偽MySQLサーバーとペイロードホスト間の直接的な第2ステージ供給関係、およびハンドル「Nie」のプロキシ認証情報・ビルドパス・niestools[.]com ドメインファミリにまたがる反復である。",
+          "verified_by_analyst": "原文をHTTP 200で取得して全文を抽出し確認した（ページ表示の公開日 Published on Sep 3, 2026、開示注記に「held publication until September 3, 2026」）。Hellsing 0回、APT 0回、attribut 0回を機械照合で確認し、既知アクターへの帰属が存在しないことを確認した。ハンドル Nie の反復、SecFlow のモデル切替、5ディレクトリの AttackCapture 取得日表、確認された侵害の内訳をいずれも逐語で確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "hellsing-apt",
+          "relation": "explicitly-refuted",
+          "note": "daily_check.py が alias「Asia」で本記事の一次ソースURL文字列「deepseek-asia」へ一致させたレコード daily-record--c6e3d7bec100e952afd418d7 は名称衝突である。「Asia」は excluded_name_collisions に登録済みで、原文に Hellsing APT の言及は0回。将来の誤統合を防ぐため記録する。"
+        }
+      ],
+      "unresolved_questions": [
+        "Hunt.io 単独の初報であり昇格閾値（独立した一次資料2本以上、または政府・CERT・法執行機関の言及）は未達。ただし原文は TLP:AMBER で関係各国のCERTへ事前開示済みと述べており、各国CERTからの公開言及が出れば閾値に達し得る。",
+        "原文冒頭が参照する自社の2026年7月報告（Claude Code と DeepSeek を4か国の侵入へ組み込んだ中国語話者オペレーター）との関係。原文は「This is a second, separate campaign with different infrastructure, tooling, and targets」と明示的に別キャンペーンとするが、同一運用者かどうかは述べていない。当該7月報告は本台帳に未登録であり、次回に原文を確認して要否を判断する。",
+        "unknown-cluster--hermes-openclaw-asia-gov（Dream Research Labs、対アジア政府機関のマルチエージェントAI基盤、2026-07-01〜07-04）との異同。いずれも中国語話者・対アジア政府機関・マルチエージェントAIという点で表面的に重なるが、基盤名（SecFlow／SecBox／GLUTTON 対 Hermes／OpenClaw）もインフラも異なり、hunt.io 原文に Hermes/OpenClaw の言及は0回である。相互の関連付けを述べる一次資料はないため統合しない。",
+        "攻撃の観測期間が原文に明示されていない。AttackCapture 取得日はインフラ取得日であり攻撃観測日ではない。",
+        "「Nie」が個人ハンドルか共有アカウント名かは原文からは確定できない。IOC CSV の actor 列は「Nie」46観測として tech-memo 側（20260905）に保持されている。"
+      ],
+      "analyst_notes": "運用者が未命名のキャンペーン単位クラスタ。unknown-cluster--project-cav3rn、unknown-cluster--jwr、unknown-cluster--hermes-openclaw-asia-gov 等、フレームワーク名・ハンドルでクラスタを立てる既存の前例に従う。IOC CSV の actor 列に現れた「Nie」は単一語かつ一般的な中国語姓でもあるため、名称一致だけで他資料と結合しない。結合はインフラ（103.45.65[.]93、niestools[.]com ファミリ）とツール（SecFlow／SecBox／GLUTTON）で行う。"
+    },
+    {
       "cluster_id": "unknown-cluster--octlurk-silklurk",
       "primary_name": "OctLurk / SilkLurk operator (未命名)",
       "aliases": [],
@@ -1776,11 +1831,16 @@
           "name": "Laboo.boo",
           "scope": "unknown",
           "vendor": "Kaspersky"
+        },
+        {
+          "name": "Feral Wolf",
+          "scope": "unknown",
+          "vendor": "Kaspersky"
         }
       ],
       "status": "tracking",
       "first_seen": "2026-07-31",
-      "last_seen": "2026-07-31",
+      "last_seen": "2026-09-06",
       "detected_via": "一次情報源チェック（Kaspersky Securelist）。tech-memo daily-news には未掲載。",
       "attribution": {
         "state": "unattributed",
@@ -1806,6 +1866,28 @@
           ],
           "summary": "従来はRedAlert、LockBit、Babuk等のサードパーティ製暗号化トロイを利用していたが、独自開発のGenieLockerへ移行。Windows/Linux/ESXi対応。フォレンジックではデータ持ち出しの痕跡が確認されず、二重恐喝モデルは採用していない。",
           "verified_by_analyst": "原文を確認。Toy Ghoulsを実行主体として明記。"
+        },
+        {
+          "observed_on": "2026-09-06",
+          "publisher": "Kaspersky GERT (Securelist)",
+          "url": "https://securelist.com/toy-ghouls-new-hivemq-and-element-backdoors/121270/",
+          "title": "Angry Birds: Toy Ghouls' new toys",
+          "published_at": "2026-09-04",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は「In early July 2026, we observed the group using a custom backdoor for the first time.」と述べ、カスタムバックドアの初確認を2026年7月上旬とする。グループ自体の活動は「targeting Russian organizations since 2025」。公開日2026-09-04は reported_at 相当であり観測日へ流用しない。",
+          "targets": "ロシアの組織。本記事は個別の被害組織名・業種を明示していない（GenieLocker報告時点では製造業中心）。",
+          "malware": [
+            "mqtt-bird-agent 0.1.0",
+            "matrix-bird-agent 0.1.0",
+            "GenieLocker"
+          ],
+          "tools": [
+            "Evil-WinRM",
+            "WinRM-fs"
+          ],
+          "summary": "Toy Ghouls が2026年7月上旬に初めて独自のカスタムバックドアを使用したことをKaspersky GERTが確認した。バックドアは2版あり、いずれも名称に「bird」を含む。mqtt-bird-agent 0.1.0 は公開MQTTブローカー broker.hivemq.com（無料枠、同時100接続・月10GB）に攻撃者自身のクラスタを作成してC2とし、matrix-bird-agent 0.1.0 は Element/Matrix のホームサーバーとルームをC2とする。配布は WinRM 経由で、Evil-WinRM と WinRM-fs を用いる。--install/install オプションでWindowsサービスとして永続化する。設定ファイル config.toml は ChaCha20-Poly1305 で部分暗号化され、鍵は HKLM\\Software\\Microsoft\\Cryptography\\MachineGuid から導出されるため初回実行後は当該端末へバインドされる。Element版は初回実行後に設定ファイルを削除し、HKLM\\Software\\synapse\\Config\\SealedConfig へ格納する。両版とも起動時に http://ip-api.com/json へGETし公開IPと国を取得する。",
+          "verified_by_analyst": "原文をHTTP 200で取得して確認した（JSON-LD datePublished 2026-09-04T10:00:05+00:00、dateModified 2026-09-04T09:02:19+00:00）。「We continue tracking the activity of Toy Ghouls (also known as Bearlyfy, Laboo.boo, and Feral Wolf), a financially motivated group that has been targeting Russian organizations since 2025.」を逐語で確認し、Toy Ghouls が実行主体として明記されていること、および別名 Feral Wolf が新たに提示されたことを確認した。tech-memo daily-news には未収録で、一次情報源の公開一覧チェックで検知した。前回チェック(2026-09-04T02:10Z)の約8時間後に公開されたため前回は未検出である。"
         }
       ],
       "related_profiles": [
@@ -1816,7 +1898,9 @@
         }
       ],
       "unresolved_questions": [
-        "Bearlyfy / Labuib / Laboo.boo の各別名がどのベンダーの命名で、既存プロファイルのいずれかと重複しないか未確認。"
+        "Bearlyfy / Labuib / Laboo.boo の各別名がどのベンダーの命名で、既存プロファイルのいずれかと重複しないか未確認。",
+        "本記事で新たに提示された別名 Feral Wolf がどのベンダーの命名か、および既存プロファイルのいずれかと重複しないかは未確認。profiles/ 配下に Feral Wolf / Toy Ghouls / Bearlyfy / Laboo.boo に一致する名称は存在しない。",
+        "一次資料は2本になったが、いずれも Kaspersky（GenieLocker報告は Securelist、本報告は Kaspersky GERT）であり、独立した2ベンダーではないため昇格閾値は未達のまま。"
       ],
       "analyst_notes": "tech-memo経由ではなく一次情報源の公開一覧チェックで発見した新規クラスタ。"
     },
@@ -2153,7 +2237,19 @@
       "matched_term": "SILICON",
       "article": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-n9k-s1-rce-EH8dEtr",
       "reason": "記事本文中の製品名との衝突。該当箇所は「Silicon One ASIC搭載のNexus 9000シリーズ10機種」で、CiscoのASIC製品 Silicon One を指す。記事はCVE-2026-20212(CVSS 9.8)のRCE脆弱性とその修正を扱うベンダーアドバイザリであり、Sea Turtle の活動ではない。追跡対象としない。"
+    },
+    {
+      "matched_profile": "earth-lusca",
+      "matched_term": "CHROMIUM",
+      "article": "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html",
+      "reason": "記事本文中の製品名との衝突。該当箇所は「Microsoft Edge、Brave、Opera、VivaldiなどChromiumベースのブラウザも、修正版が提供され次第更新する。」で、ブラウザエンジン名を指す。記事(tech-memo 2026-09-05収録)はChrome V8のType Confusion脆弱性 CVE-2026-85046 の修正版公開を扱うベンダーアナウンスであり、Googleは悪用の詳細を非公開としていかなるアクターへの帰属も行っていない。Earth Lusca の活動ではない。追跡対象としない。"
+    },
+    {
+      "matched_profile": "hellsing-apt",
+      "matched_term": "Asia",
+      "article": "https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia",
+      "reason": "一次ソースURL文字列中の地域名（deepseek-asia）との衝突。原文をHTTP 200で取得して全文を抽出したところ Hellsing の語は0回、APT の語も0回で、既知APTへの帰属記述自体が存在しない。記事の実体は未命名の中国語話者オペレーターによるSecFlow/AIエージェント活用キャンペーンであり、unknown-cluster--nie-secflow として台帳へ登録済み。追跡対象としない。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。 2026-09-07の日次チェック反映で2件を扱った。Toy Ghouls へ Kaspersky GERT の第2報「Angry Birds: Toy Ghouls' new toys」(2026-09-04公開、tech-memo 未収録)の観測を追加し、新別名 Feral Wolf と初のカスタムバックドア mqtt-bird-agent／matrix-bird-agent を記録して last_seen を検知日である 2026-09-06 へ更新した。一次資料は2本になったが両方とも Kaspersky であり独立2ベンダーではないため昇格閾値は未達である。新規クラスタ unknown-cluster--nie-secflow を追加した(Hunt.io 2026-09-03。SecFlow で Claude／Qwen／DeepSeek を切り替えるマルチAIエージェント基盤を用い、台湾KMT党史館・インドネシア外務省・豊台区政府等を標的とした未帰属の中国語話者オペレーター。IOC CSVのactor列「Nie」46観測が未一致名として現れた)。hermes-openclaw-asia-gov とは基盤名もインフラも異なるため統合していない。名称衝突として earth-lusca/CHROMIUM(Chrome CVE-2026-85046 のリリースノート)と hellsing-apt/Asia(hunt.io 記事URLの deepseek-asia)を excluded_name_collisions へ追加した。いずれも同一プロファイル・同一aliasの衝突が既に3件ずつ記録されている再発事例である。本文抽出の未登録名候補「Shellshock」は脆弱性名でありアクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。"
 }
