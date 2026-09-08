@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "3d865240024e66da6c6a3434f7c1a50d7f1c7783",
-  "last_scanned_date": "2026-09-04",
+  "last_scanned_commit": "fa3dac21f950d37a009d2c79dea9698de2825c05",
+  "last_scanned_date": "2026-09-08",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -2712,6 +2712,190 @@
           "result": "定例の7情報源には含まれないが、IOC CSVのactor列「GOLD SHERWOOD」36観測が未一致となったため追跡確認した。原文の直接取得はSophos側がcurlを遮断するため不成立(HTTP/2 INTERNAL_ERROR、HTTP/1.1 Empty reply、リトライ4回)。WebFetchによる全文取得で2回照会し、「Counter Threat Unit (CTU) researchers identified a consistent post-exploitation playbook used in The Gentlemen ransomware-as-a-service (RaaS) scheme, operated by a threat group that CTU researchers track as GOLD SHERWOOD」「GOLD SHERWOOD began operating The Gentlemen RaaS scheme in mid-2025」およびRAMPフォーラムの90/10アフィリエイト募集の各文言が両回で一致することを確認した。unknown-cluster--gold-sherwood として登録。ページ上に公開日表示を確認できず published_at は unknown とした。要約経由の取得であるため被害件数等の数値と個別IOCは台帳へ採用していない。次回、取得手段を変えて原文を再確認すること。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-09-08T02:05:00Z",
+      "window": {
+        "since": "2026-09-04",
+        "until": "2026-09-08"
+      },
+      "source_commit": "fa3dac21f950d37a009d2c79dea9698de2825c05",
+      "statistics": {
+        "news_files": 4,
+        "articles": 36,
+        "review_records": 11,
+        "approved_records": 0,
+        "rejected_records": 11,
+        "pending_records": 0,
+        "applied_records": 0,
+        "unmatched_actor_values": 3,
+        "materialization_window": "daily_check.py --run-scan --top 30 を実行し、tech-memoの新規日 2026-09-05、2026-09-07、2026-09-08 を走査した(ウィンドウは 2026-09-04 以降で、2026-09-04 分は前回チェックで判断済み)。レコード11件のうち4件は 2026-09-04 分の既決(不採用)で、本回の新規pendingは7件。7件すべてを原文確認のうえ不採用とし、承認・適用は0件である。profiles/ 配下の変更はなく、apply_review_queue.py は dry-run のみ実行して approved_records 0 を確認した(承認レコードがないため --apply は実行していない)。判断は review-decisions.json へ保存済みで、build_review_queue.py --since 2026-09-04 の再実行で decision_issues 0、pending 0 を確認した。validate_daily は queue と --check-applied の双方で error 0 / warning 0。テストは parse-daily/tests 18件と actor_profile/tests 54件の計72件がpass。"
+      },
+      "applied": [],
+      "rejected": [
+        {
+          "actor": "apt37",
+          "name": "北朝鮮APT：TedバックドアとcurlRATが韓国のメディア・自動車業界を標的化",
+          "source": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+          "decision": "不採用(実行主体でない・第三者タグ付けを帰属に流用しない)。原文をHTTP 200で取得して確認した(JSON-LD datePublished 2026-09-03T18:55:36Z)。Rapid7の帰属表明は「attributed with medium confidence to DPRK APTs」「allows medium confidence attribution to DPRK APT」であり、名前付きクラスタへは帰属していない。原文中のAPT37全5箇所を機械抽出して確認したところ、(1)「the list of C2s hardcoded is associated to APT37 by ThreatFox and maltrail」というThreatFox/maltrailという第三者フィードのタグ付けの引用、(2)手口の先行事例 Operation Code on Toast の引き合い、(3)Lazarusとの組織的差異(MSS対RGB、Mandiant評価)の背景説明、のいずれかであり実行主体表現ではなかった。activity_claim は candidate であり、名前一致に対して実行主体表現が不足するという機械判定と原文確認の結論が一致した事例である。"
+        },
+        {
+          "actor": "kimsuky",
+          "name": "北朝鮮APT：TedバックドアとcurlRATが韓国のメディア・自動車業界を標的化",
+          "source": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+          "decision": "不採用(推測に留まり実行主体でない)。原文のKimsuky全2箇所はいずれも初期侵入経路の推測で、「Either surface represents a plausible initial access vector consistent with documented Kimsuky tradecraft」に続き、直前に「the artifacts do not suffice to establish a timeline nor how the initial access was performed」、直後に「The specific entry point and any associated exploitation remain unconfirmed」と明記されている。手口の類似事例としての参照であり本侵害の実行主体ではない。"
+        },
+        {
+          "actor": "akira",
+          "name": "産業インフラを標的とする犯罪経済の全体像",
+          "source": "https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html",
+          "decision": "不採用(統計的・一般的言及)。Trend Micro原文をHTTP 200で取得して確認した。Akiraの出現は本文1箇所のみで「最も活発な3つのグループであるAkira、Qilin、Playは、対象範囲内の全被害者の約30%を占めています」というRansomware.liveのリークサイト掲載データの集計である。記事主題は産業インフラ向け初期アクセスの地下売買経済であり、Akiraを実行主体とする侵害の記述・観測期間・IOCのいずれも存在しない。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "Google、攻撃で悪用されている新たなChromeゼロデイ脆弱性を警告 / PEEP：Chrome拡張機能を装うブラウザRAT",
+          "source": "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html, https://socradar.io/blog/peep-browser-rat-chrome-extension/",
+          "decision": "不採用(名称衝突・2件)。いずれも alias「CHROMIUM」(scope: overlapping)とブラウザーエンジン製品名の衝突である。前者はChrome V8のゼロデイ CVE-2026-85046 の修正告知で脅威アクターの活動報告ではなく、後者はRedExt派生のブラウザRAT「PEEP」のツール解析で、原文自身が実際の被害組織や不正展開の規模は確認されていないと述べる。両記事とも Earth Lusca の言及はない。unknown-clusters.json の excluded_name_collisions へ2件を追記した。"
+        },
+        {
+          "actor": "hellsing-apt",
+          "name": "中国語話者の攻撃者、AIエージェントを利用してアジアの政府・教育システムを標的化 / ロシア・北朝鮮間の新たな道路検問所、ハサンで建設が進展",
+          "source": "https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia, https://nkinternet.com/2026/09/06/new-russia-north-korea-road-checkpoint-takes-shape-at-khasan/",
+          "decision": "不採用(名称衝突・2件)。いずれも alias「Asia」との衝突である。前者は一次ソースURL文字列の断片(deepseek-asia)、後者は本文中のメディア名「Radio Free Asia」の一部で、後者はそもそもロシア・北朝鮮国境の道路検問所建設を報じる非サイバー分野の記事である。両記事とも Hellsing APT の言及はない。excluded_name_collisions へ2件を追記した。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--toy-ghouls",
+          "change": "観測追加・別名修正・別名追加",
+          "basis": "Kaspersky GERT 2026-09-04「Angry Birds: Toy Ghouls' new toys」。tech-memo未掲載で、securelist.com / securelist.ru の一次情報源チェックのみで検知した。カスタムバックドア mqtt-bird-agent 0.1.0(HiveMQ MQTTをC2)と matrix-bird-agent 0.1.0(Element/MatrixをC2)を2026年7月初旬に初観測、WinRM(Evil-WinRM / WinRM-fs)で配布、Windowsサービスで永続化。別名「Feral Wolf」を追加し、登録時の綴り誤り「Labuib」を原文どおり「Labubu」へ修正した。C2候補のうち broker.hivemq.com と ip-api.com は原文が正規リソースと明記するためIOC候補から除外した。一次資料2本はいずれもKasperskyであり「独立した一次資料が2本以上」を満たさないため昇格しない。"
+        },
+        {
+          "cluster_id": "unknown-cluster--ted-curlrat-dprk",
+          "change": "新規追加",
+          "basis": "Rapid7 2026-09-03。韓国のメディア・自動車業界を標的とし、HAProxy 2.8.12へ組み込まれる ted backdoor と Linux向け curlRAT を用いる未帰属クラスタ。Rapid7の帰属は medium confidence の DPRK APT に留まる。related_profiles へ apt37(third-party-feed-tag-only)、lazarus(campaign-overlap-not-attributed)、kimsuky(tradecraft-similarity-only)を、将来の誤統合を防ぐ記録として分離して残した。活動期間はVirusTotal初出も最古コンパイル可能日も観測日ではないためunknownとした。単一ベンダー初報のため昇格閾値未達。"
+        },
+        {
+          "cluster_id": "unknown-cluster--bigbear-2-0",
+          "change": "新規追加",
+          "basis": "CloudSEK (TRIAD) 2026-09-07。Evilginx2をリブランドしたMicrosoft 365向けPhaaS基盤。tech-memoはBleepingComputerの二次報道で一次ソースを「CloudSEK(URL不明)」としていたため、CloudSEK原文を特定してHTTP 200で取得し、JSON-LD datePublished と運用者別名「General Boss」の記述、Diamond Model節の「cybercriminal rather than state-sponsored」評価を確認した。プラットフォーム名と運用者ハンドルを別名として scope: narrower で分離した。単一ベンダー初報のため昇格閾値未達。"
+        },
+        {
+          "cluster_id": "unknown-cluster--secflow-ai-operator",
+          "change": "新規追加",
+          "basis": "Hunt.io 2026-09-05。SecFlow上で複数の商用LLMを専門AIワーカーとして連携させ、アジアの政府・教育・産業組織を攻撃した中国語話者クラスタ。SecBoxインプラントとステガノグラフィーを用いるWebシェルGLUTTONを使用。Hunt.ioはクラスタ名を付与していない。related_profiles へ hellsing-apt を name-collision-do-not-merge として記録した。原文の全文再確認は次回の宿題として unresolved_questions に残した。単一ベンダー初報のため昇格閾値未達。"
+        },
+        {
+          "cluster_id": "excluded_name_collisions",
+          "change": "4件追記",
+          "basis": "earth-lusca×CHROMIUM 2件(Chromeゼロデイ告知、SOCRadar PEEP)と hellsing-apt×Asia 2件(Hunt.io SecFlow のURL断片、Radio Free Asia のメディア名)。いずれも既登録の同型衝突であり、AGENT.mdの「excluded_name_collisions に記録済みの名称衝突は再検討しない」に従って記事URLのみ追記した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "BigBear 2.0 (General Boss)",
+          "observations": 48,
+          "disposition": "unknown-cluster--bigbear-2-0 として登録。PhaaSプラットフォーム名と運用者ハンドルの複合名であるためAGENT.mdの規定により自動承認しない。"
+        },
+        {
+          "value": "Nie",
+          "observations": 46,
+          "disposition": "アクター名ではない。tech-memoのIOC説明欄が「複数ワークスペースで共通利用された認証付きSOCKS5中継でNieというユーザー名も使用」(103[.]45[.]65[.]93)と記載しており、中継サーバー上のユーザー名である。プロファイル化も別名登録も行わない。当該キャンペーン自体は unknown-cluster--secflow-ai-operator として登録した。"
+        },
+        {
+          "value": "DPRK APT (medium confidence)",
+          "observations": 24,
+          "disposition": "unknown-cluster--ted-curlrat-dprk として登録。確度表現を含む複合名であり、既存のDPRK系プロファイル(apt37、kimsuky、lazarus等)のいずれへも寄せない。"
+        },
+        {
+          "value": "Gambling Goblin (linked to Earth Berberoka, medium to high confidence)",
+          "observations": 124,
+          "disposition": "2026-09-04のチェックで unknown-cluster--gambling-goblin として登録済みのため再登録しない。"
+        },
+        {
+          "value": "GOLD SHERWOOD",
+          "observations": 36,
+          "disposition": "2026-09-04のチェックで unknown-cluster--gold-sherwood として登録済みのため再登録しない。"
+        },
+        {
+          "value": "Shellshock",
+          "observations": 0,
+          "disposition": "本文抽出の未登録名候補。2014年のbash脆弱性の通称であり、Hunt.io記事では悪用されたCVEの1つとして列挙されているだけでアクター名ではない。config.json の matching.ignored_name_candidates へ追加して以後の再検討を止めた。"
+        },
+        {
+          "value": "MikroTik RouterOS",
+          "observations": 0,
+          "disposition": "本文抽出の未登録名候補。ネットワーク機器の製品名でありアクター名ではない。config.json の matching.ignored_name_candidates へ追加して以後の再検討を止めた。"
+        }
+      ],
+      "extraction_rule_changes": [
+        "config.json の matching.ignored_name_candidates へ「Shellshock」と「MikroTik RouterOS」を追加した。本文抽出の未登録名候補のうち、脆弱性通称および製品名として確定したものを抑止する既存運用(2026-09-04の「Coder」)に従う。activity_claim の判定ロジックおよび actor_profile/activity-observation-rules.json は変更していない。"
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-02",
+          "result": "cutoff後のアクター関連の新規なし。RSS(/feed/、HTTP 200)で機械照合した。前回チェック以降の新規は「How to secure edge AI in customer-owned environments」(2026-09-04)1件のみで、顧客所有環境におけるエッジAIの保護に関するガイダンス記事であり活動報告・IOC・アクター帰属を含まない。アクター関連の最新は前回評価済みの「Impersonating IT support」(2026-09-02、完全に未帰属)。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-01",
+          "result": "cutoff後の新規なし。前回同様、一覧が公開日を表示せず時系列順でもないため、掲載11件すべての記事URLをcurlで取得しJSON-LDのdatePublishedを機械照合した(全件HTTP 200)。最新は既取込の「Financially Motivated Threat Actor BREEZE COMET Targets Brazil」(2026-09-01)で、掲載記事の顔ぶれも前回から変化がない。前回引き継いだ GTIG AI Threat Tracker(2026-05-11、UNC2814・APT45・APT27・UNC6780(TeamPCP)・UNC6201・UNC5673・TEMP.Hexを名指し)と UNC6671 原文(2026-08-06)は今回も未取込であり、引き続き次回の確認対象として引き継ぐ。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-03",
+          "result": "cutoff後の新規なし。RSS(HTTP 200)で機械照合した。最新は前回評価済みの「Attackers Expose Ongoing AI Tool Use Targeting Organizations in Latin America」(2026-09-03、CL-CRI-1131 / CL-CRI-1163 として台帳登録済み)。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-08-27",
+          "result": "cutoff後の新規なし。RSS(HTTP 200)で機械照合した。最新投稿は前回評価済みの「The story behind the intelligence」(2026-09-03、Threat Sourceニュースレターでアクター報告ではない)で、技術報告の最新は2026-08-27の2本のまま変化がない。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "cutoff後の新規なし。前回記録の手順どおりサイト全体フィード https://www.welivesecurity.com/en/rss/feed/ をHTTP 200で取得し、100件のitemのpubDateとlinkのパスから eset-research 配下の記事を機械照合した。research配下の最新は「Forgotten UEFI shims undermining Secure Boot」(2026-07-14)で前回から変化なし。ESET ResearchはXスレッド等ブログ外でも公表するため、フィード確認だけでは取りこぼす場合がある点は引き続き有効。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "cutoff後の新規なし。RSS(HTTP 200)で機械照合した。最新は「The Model Is the Malware | What Four Agentic Intrusions Tell Defenders」(2026-08-13)で前回チェックから変化がない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-04",
+          "result": "新規1件。「Angry Birds: Toy Ghouls' new toys」(Kaspersky GERT)。RSS(HTTP 200)で pubDate Fri, 04 Sep 2026 10:00:05 +0000 を確認し、原文もHTTP 200で取得して JSON-LD datePublished 2026-09-04T10:00:05+00:00 と冒頭の実行主体表現「We continue tracking the activity of Toy Ghouls (also known as Bearlyfy, Laboo.boo, and Feral Wolf), a financially motivated group that has been targeting Russian organizations since 2025」を直接確認した。tech-memo daily-news には未掲載。既存の unknown-cluster--toy-ghouls へ観測を追加した。なおHTMLの公開一覧を要約経由で読むと本記事の日付が「August 4」と誤って読み取られたのに対し、RSSのpubDateでは2026-09-04と判明した。日付の新規性判定は一覧の見た目ではなくRSSまたはJSON-LDで機械照合すること。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-09-04",
+          "result": "cutoff後の .ru 固有の新規なし。RSS(HTTP 200)で機械照合した。最新は .com と同一内容の「У меня тоже есть птички: новые инструменты группировки Toy Ghouls」(2026-09-04)。次点の「APT-группа GOFFEE...」(2026-08-28)は前回チェックで評価済み。"
+        },
+        {
+          "publisher": "CloudSEK (定例8情報源外・tech-memo経由の追跡確認)",
+          "url": "https://www.cloudsek.com/blog/tracking-bigbear-2-0-evilginx2-phishing-campaign",
+          "latest_relevant_publication": "2026-09-07",
+          "result": "定例の情報源には含まれないが、IOC CSVのactor列「BigBear 2.0 (General Boss)」48観測が未一致となったため追跡確認した。tech-memoの一次ソース欄が「CloudSEK(URL不明)」であったためCloudSEK側の原文URLを特定し、HTTP 200で取得して JSON-LD datePublished 2026-09-07T17:19:27Z、運用者別名「General Boss」、Diamond Model節のAdversary Profile Summaryを直接確認した。unknown-cluster--bigbear-2-0 として登録。"
+        },
+        {
+          "publisher": "Rapid7 (定例8情報源外・tech-memo経由の原文確認)",
+          "url": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+          "latest_relevant_publication": "2026-09-03",
+          "result": "観点1・2の交差で最優先確認対象となった記事の原文確認。HTTP 200で取得し JSON-LD datePublished 2026-09-03T18:55:36.107Z を確認した(tech-memo収録は2026-09-08で、公開から5日遅れ)。APT37全5箇所とKimsuky全2箇所を機械抽出して文脈を逐一確認し、いずれも実行主体表現ではないことを確認したうえで両レコードを不採用とした。unknown-cluster--ted-curlrat-dprk として登録。"
+        }
+      ]
     }
   ],
   "full_history_activity_audit": {
@@ -2745,5 +2929,5 @@
     },
     "analyst_notes": "攻撃期間と報告日を分離し、tech-memo日付をreported_atとして保持。exact名の直接的な実行主体記述または当該活動への明示的帰属を採用し、一般語alias、別クラスタとの重複、類似・後継、法執行、過去言及は自動採用していない。"
   },
-  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-18増分では、前回pendingで据え置いたdarkhotel(APT-C-06)の一次資料を今回取得できたため採用し、IOC 5件とartifact 9件を原文から直接収録した。pendingは0件となり2026-08-18分までレビューを完了した。未帰属クラスタはJWR、CVE-2026-59310悪用の中国系侵入セット、Cl0pのWindchill恐喝キャンペーンの3件を新規追加し、ChainDrop(shai-hulud-2)へ独立した一次資料2本の観測を追加した。Cl0pは既存679プロファイルに名称が存在せず、名前一致でもIOC actor一致でも検知されない構造的な検知漏れである。証拠が公式ATT&CK(Clop=malware S0611/使用グループTA505)、ETDA・MISP(運用者=FIN11)、業界報道(Cl0p=恐喝グループ)の三方向に分かれるため、プロファイル昇格の可否は判断を保留し利用者の指示を待つ。一次情報源チェックにCISA KEVを追加した(ランサムウェア悪用CVEの政府側裏付けを取るため)。actor_profile/scripts の enrich 系スクリプトは --actor 無指定で全679プロファイルを走査すると集合反復順に依存した並び替えが発生し、実質的な変更がない294プロファイルが差分として出る。本増分では過去コミットの前例に従い --actor で対象アクターへ限定して実行した。 2026-08-22増分では、tech-memo側の新規はUAT-10147/SPECTRE(前日に台帳収録済み)のみでレビューキューのpendingは0件だった。検知はいずれも一次情報源チェックによるもので、Kaspersky Securelistの「The invisible passenger in your car」(2026-08-21)からMoYu Groupを新規クラスタとして台帳へ追加し、securelist.ruのみで公開されたArmored Likhoの新規キャンペーン(2026-08-20)を第2観測として追加した。後者は前日のチェックがsecurelist.comのRSSのみを確認していたための取りこぼしであり、securelist.comとsecurelist.ruを毎回別個に確認する必要が再確認された。CameraSwarm(tech-memo 20260820、Hunt.io)は既存プロファイル・台帳・excluded_name_collisionsのいずれにも存在せず、2026-08-20分が既にレビュー完了扱いであるため意図的な除外か記録漏れかを確定できない。扱いは利用者の判断を待つ。 2026-08-27増分では、tech-memo新規分と一次情報源7サイト(Securelistはロシア語版も)を再監査し、Group-IBのTortoiseshell報告のみをprofiles/unc1549へ反映した。Group-IBはTortoiseshellをMirage Kitten/UNC1549/Nimbus Manticoreと同一視するが、profiles/tortoiseshellの実体はMITRE ATT&CK G1012 CURIUM系で別名群が重ならないため統合せず、UNC1549側へscope: overlappingの別名として記録し、境界評価はclaim-audit.jsonへunresolvedとして残した。 2026-08-30増分では、tech-memo新規分(2026-08-27〜2026-08-29)と一次情報源7サイトの公開一覧を再監査し、Recorded FutureのBlueDelta/HOOKEDGE報告をprofiles/apt28へ反映してBlueDelta別名をscope: overlappingで追加した。TeamPCPの逮捕報道と、そこから抽出された被疑者特定用のOSINT痕跡9件は、法執行記事およびIOC採用基準の不充足として不採用とした。structured-actor-fieldかつsuggested_action: approveの候補でも原文照合で不採用になる事例として記録している。 2026-08-31増分では、tech-memoの新規日2026-08-31(3記事)と一次情報源7サイトの公開一覧を再監査し、既存プロファイルへ反映すべき新規レコードは0件だった。review-queueの1件は前回反映済みレコードの境界再生成であり、apply_review_queue.pyは実行していない。未帰属クラスタはFulcrumSec(データ恐喝グループ。LexisNexisとManchester Airports Groupの2観測)とTerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)の2件を新規追加し、ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加した。後2者は2026-08-30のチェックで台帳への反映が漏れていた分である。FulcrumSecはIOCを伴わない記事であるためIOC CSVのactor列に現れず、unmatched_actor_valuesによる未一致名検知では捕捉できなかった。IOCを伴わない記事の新規アクター名を取りこぼさないよう、以後は新規日のニュース本文も併せて確認する。Google Threat Intelligenceの一覧は時系列順ではなく、最上位に2026-05-11公開の記事が固定表示されるため、掲載記事のdatePublishedを個別に取得して新規性を判定した。 2026-09-03増分ではtech-memo新規4日分と一次情報源公開一覧を再監査し、UNC1549のKaspersky 2026-09-01「Mirage Kitten targeting aviation and FinTech…」(NodeRabbit・PollCat)とUAC-0099のESET Research X投稿(GuardBreaker/MATCHBOIL)を原文HTTP 200確認のうえ承認した(高確度)。他のpending 4件(UNC3886/Fire Ant、Contagious Interview/FAMOUS CHOLLIMA、Earth Lusca/CHROMIUM衝突、SilverTerrier法執行記事)は原文確認で不採用。GTIG 2026-09-01「BREEZE COMET Targets Brazil」(旧UNC5669、Plump Spider/SHADOW-AETHER-064重複)はtech-memo未掲載の新規プロファイル候補として提案に留めた。Microsoft 2026-09-01 Silver Fox整合キャンペーン、QTFY(DOJ差押え)、Exilware/BraZetsu、Aur0raも新規候補として抽出済み(反映は保留)。"
+  "analyst_notes": "v2監査済み。BirdCallの3レコードを1活動・3出典へ統合。Chaos、Pegasus、JDY、汎用名PowerShell RATは当該資料から直接利用Capabilityと断定できないため除外。承認済み判断はreview-decisions.jsonと各daily-observations.jsonに保存。2026-07-27増分では既存アクターへ安全に反映できる新規情報は0件。全履歴の活動再監査では攻撃期間不明の活動もreported_atと分離して保持し、保留候補は判定理由別の件数をfull_history_activity_auditへ記録した。2026-07-29増分ではtech-memoの新規記事・IOCと主要OSINT一次情報を再監査し、UNC1549の新規活動のみを反映した。 2026-08-10増分では、tech-memo新規分と一次情報源の公開一覧を再監査し、Head Mare、TeamPCP、Awaken Likhoの3件を新規プロファイルへ昇格、Turlaへ未取込だったGTIGのSTOCKSTAY報告を反映した。wel1dropperキャンペーンは帰属が限定表現に留まるため未帰属クラスタ台帳へ記録した。確認対象にsecurelist.ruを追加した(securelist.comへ出ないロシア語圏アクター記事の取りこぼしを検知したため)。 2026-08-12増分では、tech-memo新規分7レコードを主張単位でレビューし、Lazarus(Operation Dream Job、CVE-2026-68820ゼロデイ)・Kimsuky(Operation GitPower)・Storm-1175(StormEncryptor)の3件を採用、誤一致4件を原文確認のうえ不採用とした。CERT Polskaのポーランドエネルギー事案は一次資料に帰属記述が存在しないためSandwormへ帰属していない。Gunraを共同勧告AA26-222Aに基づき新規プロファイルへ昇格し、Contagious InterviewへFamous Chollima aliasを追加、Project CAV3RNを未帰属クラスタ台帳へ記録した。 2026-08-13増分では、tech-memo 2026-08-12〜08-13分の6レコードを主張単位でレビューし、新規採用は0件、不採用5件(前回判断の再現1件を含む)とした。CERT-UAの2記事を原文確認してUAC-0145を新規プロファイルへ昇格し、Sandworm Teamへは記載せずpart-of関係で結び付けた。ANY.RUNのITワーカー調査第2弾はContagious Interviewのスコープ外と判断し、DPRK IT Worker Schemesへ記録した。一次情報源8サイトの公開一覧確認では、securelist.ruのみで公開されたArmored Likhoを検知し台帳へ追加した。 2026-08-18増分では、前回pendingで据え置いたdarkhotel(APT-C-06)の一次資料を今回取得できたため採用し、IOC 5件とartifact 9件を原文から直接収録した。pendingは0件となり2026-08-18分までレビューを完了した。未帰属クラスタはJWR、CVE-2026-59310悪用の中国系侵入セット、Cl0pのWindchill恐喝キャンペーンの3件を新規追加し、ChainDrop(shai-hulud-2)へ独立した一次資料2本の観測を追加した。Cl0pは既存679プロファイルに名称が存在せず、名前一致でもIOC actor一致でも検知されない構造的な検知漏れである。証拠が公式ATT&CK(Clop=malware S0611/使用グループTA505)、ETDA・MISP(運用者=FIN11)、業界報道(Cl0p=恐喝グループ)の三方向に分かれるため、プロファイル昇格の可否は判断を保留し利用者の指示を待つ。一次情報源チェックにCISA KEVを追加した(ランサムウェア悪用CVEの政府側裏付けを取るため)。actor_profile/scripts の enrich 系スクリプトは --actor 無指定で全679プロファイルを走査すると集合反復順に依存した並び替えが発生し、実質的な変更がない294プロファイルが差分として出る。本増分では過去コミットの前例に従い --actor で対象アクターへ限定して実行した。 2026-08-22増分では、tech-memo側の新規はUAT-10147/SPECTRE(前日に台帳収録済み)のみでレビューキューのpendingは0件だった。検知はいずれも一次情報源チェックによるもので、Kaspersky Securelistの「The invisible passenger in your car」(2026-08-21)からMoYu Groupを新規クラスタとして台帳へ追加し、securelist.ruのみで公開されたArmored Likhoの新規キャンペーン(2026-08-20)を第2観測として追加した。後者は前日のチェックがsecurelist.comのRSSのみを確認していたための取りこぼしであり、securelist.comとsecurelist.ruを毎回別個に確認する必要が再確認された。CameraSwarm(tech-memo 20260820、Hunt.io)は既存プロファイル・台帳・excluded_name_collisionsのいずれにも存在せず、2026-08-20分が既にレビュー完了扱いであるため意図的な除外か記録漏れかを確定できない。扱いは利用者の判断を待つ。 2026-08-27増分では、tech-memo新規分と一次情報源7サイト(Securelistはロシア語版も)を再監査し、Group-IBのTortoiseshell報告のみをprofiles/unc1549へ反映した。Group-IBはTortoiseshellをMirage Kitten/UNC1549/Nimbus Manticoreと同一視するが、profiles/tortoiseshellの実体はMITRE ATT&CK G1012 CURIUM系で別名群が重ならないため統合せず、UNC1549側へscope: overlappingの別名として記録し、境界評価はclaim-audit.jsonへunresolvedとして残した。 2026-08-30増分では、tech-memo新規分(2026-08-27〜2026-08-29)と一次情報源7サイトの公開一覧を再監査し、Recorded FutureのBlueDelta/HOOKEDGE報告をprofiles/apt28へ反映してBlueDelta別名をscope: overlappingで追加した。TeamPCPの逮捕報道と、そこから抽出された被疑者特定用のOSINT痕跡9件は、法執行記事およびIOC採用基準の不充足として不採用とした。structured-actor-fieldかつsuggested_action: approveの候補でも原文照合で不採用になる事例として記録している。 2026-08-31増分では、tech-memoの新規日2026-08-31(3記事)と一次情報源7サイトの公開一覧を再監査し、既存プロファイルへ反映すべき新規レコードは0件だった。review-queueの1件は前回反映済みレコードの境界再生成であり、apply_review_queue.pyは実行していない。未帰属クラスタはFulcrumSec(データ恐喝グループ。LexisNexisとManchester Airports Groupの2観測)とTerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)の2件を新規追加し、ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加した。後2者は2026-08-30のチェックで台帳への反映が漏れていた分である。FulcrumSecはIOCを伴わない記事であるためIOC CSVのactor列に現れず、unmatched_actor_valuesによる未一致名検知では捕捉できなかった。IOCを伴わない記事の新規アクター名を取りこぼさないよう、以後は新規日のニュース本文も併せて確認する。Google Threat Intelligenceの一覧は時系列順ではなく、最上位に2026-05-11公開の記事が固定表示されるため、掲載記事のdatePublishedを個別に取得して新規性を判定した。 2026-09-03増分ではtech-memo新規4日分と一次情報源公開一覧を再監査し、UNC1549のKaspersky 2026-09-01「Mirage Kitten targeting aviation and FinTech…」(NodeRabbit・PollCat)とUAC-0099のESET Research X投稿(GuardBreaker/MATCHBOIL)を原文HTTP 200確認のうえ承認した(高確度)。他のpending 4件(UNC3886/Fire Ant、Contagious Interview/FAMOUS CHOLLIMA、Earth Lusca/CHROMIUM衝突、SilverTerrier法執行記事)は原文確認で不採用。GTIG 2026-09-01「BREEZE COMET Targets Brazil」(旧UNC5669、Plump Spider/SHADOW-AETHER-064重複)はtech-memo未掲載の新規プロファイル候補として提案に留めた。Microsoft 2026-09-01 Silver Fox整合キャンペーン、QTFY(DOJ差押え)、Exilware/BraZetsu、Aur0raも新規候補として抽出済み(反映は保留)。 2026-09-08増分では、tech-memo新規3日分(2026-09-05/07/08、36記事)と一次情報源8サイトの公開一覧を再監査し、既存プロファイルへ反映すべき新規レコードは0件だった。pending 7件はすべて原文確認のうえ不採用としている。最優先だった観点1・2の交差はRapid7「ted backdoor / curlRAT」(2026-09-03)のAPT37(candidate)とKimsuky(attribution-uncertain)で、原文のRapid7の帰属は medium confidence の DPRK APT に留まり、APT37はThreatFox/maltrailという第三者フィードのタグ付けと過去作戦の引き合いとして、Kimsukyは未確認の初期侵入経路の推測としてのみ現れるため、いずれも実行主体ではないと判断した。第三者脅威フィードのタグ付けをベンダー帰属へ格上げしない判断の記録として台帳へ残している。一次情報源チェックではKaspersky GERT「Angry Birds: Toy Ghouls' new toys」(2026-09-04)がtech-memo未掲載の新規公開として見つかり、既存の unknown-cluster--toy-ghouls へカスタムバックドア mqtt-bird-agent / matrix-bird-agent(HiveMQ MQTTとElement/MatrixをC2に悪用)の観測を追加し、別名 Feral Wolf の追加と Labuib→Labubu の綴り訂正を行った。同一ベンダーの2本目であるため昇格閾値は未達である。未帰属クラスタは ted-curlrat-dprk、bigbear-2-0、secflow-ai-operator の3件を新規追加した。IOC CSVのactor列「Nie」46観測はアクター名ではなく中継サーバー上のユーザー名であり、unmatched_actor_values の値をそのまま新規プロファイル候補として扱わない事例として記録した。Securelistの公開一覧をHTMLの見た目で読むと Toy Ghouls 記事の日付を「August 4」と誤読したのに対し、RSSのpubDateでは2026-09-04であった。新規性判定は一覧の見た目ではなくRSSまたはJSON-LDで機械照合する。"
 }

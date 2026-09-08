@@ -2767,5 +2767,40 @@
     "confidence": "low",
     "review_notes": "不採用(実行主体は別クラスタ、帰属は未確定)。Check Point Research原文(JSON-LD datePublished 2026-09-02T10:16:16+00:00)をHTTP 200で取得して確認した。原文は実行主体を新規に命名しており、Key Pointsで「We dubbed this group Gambling Goblin: a Chinese-speaking cybercrime cluster connected to a previously documented group, Earth Berberoka」、Attribution and links to prior work節で「We assess with medium-to-high confidence that Gambling Goblin is tied to Earth Berberoka - a Chinese-speaking threat cluster first documented by Trend Micro in 2022」と述べる。すなわちEarth Berberokaは本活動の実行主体ではなく、medium-to-high confidenceの結び付き評価の相手方である。CPRが挙げる根拠は(1)oRATが2022年にEarth Berberokaへ紐付けられており、解析した亜種が同じ orat/cmd/agent コードベースとREST形式のオペレータルートを共有すること、(2)回収したAlphaAgent検体の1つが、Earth Berberokaへ従来帰属されていたツール群と同一アーカイブでアップロードされていたこと、(3)Trend Microが報告したEarth Berberokaのドメイン github[.]wiki と同型の github[.]la / gitlab[.]bet というlookalikeドメイン、および同一のAmazon ASN(AS16509)、の3点であり、いずれも重複の指摘である。AGENT.mdは類似・重複・後継・一般的な関連を活動レコードへ含めないと定めているため、Earth Berberokaの活動としては採用しない。実行主体のGambling Goblinは既存プロファイルに存在しない名称であり、単一ベンダー初報で昇格閾値未達のため parse-daily/unknown-clusters.json の unknown-cluster--gambling-goblin へ登録し、related_profiles へ earth-berberoka を linked-medium-to-high として記録した。なお earth-berberoka プロファイルの既存alias「Gambling Puppet」と本件の「Gambling Goblin」は別名称であり、混同しないこと。",
     "review_status": "rejected"
+  },
+  "akira|https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html": {
+    "confidence": "low",
+    "review_notes": "不採用(過去言及・統計的言及)。Trend Micro原文(ja_jp、tech-memo 2026-09-05収録)をHTTP 200で取得して確認した。本文中のAkiraの出現は1箇所のみで、「これらの分野に対して最も活発な3つのグループであるAkira、Qilin、Playは、対象範囲内の全被害者の約30%を占めています」である。これはRansomware.liveのリークサイト掲載データを集計したランドスケープ統計であり、Trend Micro自身が観測した個別の侵入活動の報告ではない。記事の主題は産業インフラ向け初期アクセスの地下売買経済であって特定アクターの活動ではなく、Akiraを実行主体とする侵害・キャンペーンの記述、観測期間、IOCのいずれも存在しない(記事のIOC欄も「IOC情報なし」)。AGENT.mdの「一致箇所が記事主題ではなく過去事例・一般的利用の説明である」に該当するためactivityは作成しない。",
+    "review_status": "rejected"
+  },
+  "earth-lusca|https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html": {
+    "confidence": "low",
+    "review_notes": "不採用(名称衝突)。一致語は earth-lusca の alias「CHROMIUM」(scope: overlapping)で、該当箇所は「Microsoft Edge、Brave、Opera、VivaldiなどChromiumベースのブラウザも、修正版が提供され次第更新する」というブラウザーエンジンの製品名である。記事はGoogleによるChrome V8のゼロデイ CVE-2026-85046(Type Confusion)の修正告知であり、脅威アクターの活動報告ではない。Googleは悪用の詳細を非公開としており、名前付きグループへの帰属も存在しない。unknown-clusters.json の excluded_name_collisions に earth-lusca×CHROMIUM の同型衝突が既に登録済みであり、同じ扱いとする。",
+    "review_status": "rejected"
+  },
+  "earth-lusca|https://socradar.io/blog/peep-browser-rat-chrome-extension/": {
+    "confidence": "low",
+    "review_notes": "不採用(名称衝突)。一致語は earth-lusca の alias「CHROMIUM」(scope: overlapping)で、該当箇所は「Chromium向け侵害後ツール『PEEP』」というブラウザーエンジンの製品名である。記事はSOCRadarによるブラウザRAT「PEEP」(RedExt派生、Secure PreferencesのHMAC偽造、Enterprise Force-Install、Native Messaging経由のOS操作)のツール解析であり、原文でも実際の被害組織や不正展開の規模は確認されていないと明記されている。実行主体の命名も帰属も存在せず、Earth Lusca の言及もない。excluded_name_collisions の同型衝突として扱う。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia": {
+    "confidence": "low",
+    "review_notes": "不採用(名称衝突)。一致語は hellsing-apt の alias「Asia」で、一致箇所は一次ソースURL文字列の断片(secflow-claude-qwen-deepseek-asia)である。記事はHunt.ioによる中国語話者オペレータのSecFlow(Claude/Qwen/DeepSeekをAIワーカーとして連携)を用いたアジアの政府・教育・産業組織への攻撃キャンペーンの分析であり、Hellsing APT の言及は存在しない。excluded_name_collisions に hellsing-apt×Asia の同型衝突(URL中の地域名)が既に2件登録済みであり、同じ扱いとする。なお本キャンペーン自体は実行主体が命名されていない未帰属クラスタであり、unknown-cluster--secflow-ai-operator として台帳へ別途記録した。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://nkinternet.com/2026/09/06/new-russia-north-korea-road-checkpoint-takes-shape-at-khasan/": {
+    "confidence": "low",
+    "review_notes": "不採用(名称衝突)。一致語は hellsing-apt の alias「Asia」で、該当箇所は「Radio Free Asia による最近の報道」というメディア名の一部である。記事はロシア・北朝鮮国境ハサンの道路検問所・税関施設の建設状況を写真から報じた非サイバー分野の記事であり、サイバー攻撃活動もアクター帰属も含まない。excluded_name_collisions の同型衝突として扱う。",
+    "review_status": "rejected"
+  },
+  "apt37|https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/": {
+    "confidence": "low",
+    "review_notes": "不採用(実行主体でない・第三者タグ付けを帰属に流用しない)。Rapid7原文をHTTP 200で取得して確認した(JSON-LD datePublished 2026-09-03T18:55:36Z。tech-memoは2026-09-08収録)。原文でAPT37は5箇所に出現するがいずれも本活動の実行主体ではない。(1)「The toolkit is attributed with medium confidence to DPRK APTs, given that ... the list of C2s hardcoded is associated to APT37 by ThreatFox and maltrail」および「The list of C2s hardcoded is associated with APT37 by ThreatFox and maltrail」は、Rapid7自身の帰属判断ではなくThreatFox/maltrailという第三者のC2タグ付けの引用である。(2)「the watering-hole model already documented in the Operation Code on Toast (APT37) and Operation Synchole (Lazarus)」は手口の先行事例としての引き合いである。(3)「APT37 and Lazarus Group are distinct North Korean state-sponsored threat clusters assessed by Mandiant to operate under different DPRK agencies — APT37 under the Ministry of State Security, Lazarus under the Reconnaissance General Bureau」は両クラスタの組織的差異を説明する背景記述である。Rapid7の帰属表明は一貫して「medium confidence attribution to DPRK APT」であり、名前付きクラスタへは帰属していない。OSINT_RULES.mdの「帰属変更は単独ベンダーの名称変更と政府帰属を分離する」およびAGENT.mdの「類似・重複・後継・一般的な関連は含めない」に従い、APT37プロファイルへの活動追加は行わない。本活動(ted backdoor / curlRAT、韓国のメディア・自動車業界)は unknown-cluster--ted-curlrat-dprk として台帳へ記録した。",
+    "review_status": "rejected"
+  },
+  "kimsuky|https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/": {
+    "confidence": "low",
+    "review_notes": "不採用(推測に留まり実行主体でない)。Rapid7原文をHTTP 200で取得して確認した。Kimsukyの出現は2箇所で、いずれも同一段落の初期侵入経路に関する推測である。「Either surface represents a plausible initial access vector consistent with documented Kimsuky tradecraft. Since the beginning of 2026 Kimsuky has been observed exploiting RCE vulnerabilities in externally accessible mail servers to compromise South Korean groupware vendors, while Groupware web portals represent the kind of exposed authenticated application that DPRK-nexus actors have repeatedly targeted」であり、直前に「the artifacts do not suffice to establish a timeline nor how the initial access was performed」、直後に「The specific entry point and any associated exploitation remain unconfirmed」と明記されている。すなわちKimsukyは手口の類似事例として参照されているだけで、本侵害の実行主体としては特定されていない。AGENT.mdの「一致箇所が推測・類似・関連のみを示している」に該当するため活動レコードとしない。",
+    "review_status": "rejected"
   }
 }
