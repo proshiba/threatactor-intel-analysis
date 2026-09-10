@@ -13,6 +13,7 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
 import daily_check  # noqa: E402
+from build_review_queue import apply_decision  # noqa: E402
 from daily_check import latest_activity  # noqa: E402
 
 UNKNOWN_POINT = {"value": None, "precision": "unknown", "status": "unknown", "basis": "not-stated"}
@@ -535,6 +536,68 @@ class DailyCheckTests(unittest.TestCase):
         self.assertEqual(names[0], "active-actor")
         self.assertTrue(report["mentioned_actors"][0]["in_recent_set"])
         self.assertEqual(report["statistics"]["mentioned_recent_actors"], 1)
+
+
+class ApplyDecisionTests(unittest.TestCase):
+    """保存済み判断の適用と、ウィンドウ走査での未一致の扱い。"""
+
+    @staticmethod
+    def _record() -> dict:
+        return {
+            "actor": {"slug": "unc1549"},
+            "activity": {"activity_reference": "https://example.test/report"},
+            "review_status": "pending",
+            "capability_decisions": [
+                {"name": "NodeRabbit / PollCat", "status": "pending", "reason": ""}
+            ],
+            "artifacts": [],
+        }
+
+    @staticmethod
+    def _decisions() -> dict:
+        return {
+            "unc1549|https://example.test/report": {
+                "review_status": "approved",
+                "capability_decisions": [
+                    {"name": "NodeRabbit", "status": "approved"},
+                    {"name": "PollCat", "status": "approved"},
+                    {"name": "NodeRabbit / PollCat", "status": "rejected"},
+                ],
+            }
+        }
+
+    def test_full_history_reports_capability_without_candidate(self) -> None:
+        record = self._record()
+        apply_decision(record, self._decisions())
+        self.assertEqual(record["review_status"], "approved")
+        # 複合値の判断はレコード側の候補へ適用される
+        self.assertEqual(record["capability_decisions"][0]["status"], "rejected")
+        # 個別名の判断は対応先がないため全履歴走査では課題として報告する
+        self.assertEqual(
+            record["decision_issues"],
+            [
+                "Capability判断の対象が入力に存在しない: noderabbit",
+                "Capability判断の対象が入力に存在しない: pollcat",
+            ],
+        )
+
+    def test_windowed_scan_does_not_report_capability_without_candidate(self) -> None:
+        """ウィンドウ走査では、既に適用済みの判断が当該ウィンドウの入力に
+        現れないことが正常に起こるため decision_issues を立てない。"""
+        record = self._record()
+        apply_decision(record, self._decisions(), report_unmatched=False)
+        self.assertEqual(record["review_status"], "approved")
+        self.assertEqual(record["capability_decisions"][0]["status"], "rejected")
+        self.assertNotIn("decision_issues", record)
+
+    def test_windowed_scan_does_not_report_artifact_without_candidate(self) -> None:
+        record = self._record()
+        decisions = self._decisions()
+        decisions["unc1549|https://example.test/report"]["approved_artifacts"] = [
+            {"artifact_type": "file-name", "value": "absent.exe"}
+        ]
+        apply_decision(record, decisions, report_unmatched=False)
+        self.assertNotIn("decision_issues", record)
 
 
 if __name__ == "__main__":

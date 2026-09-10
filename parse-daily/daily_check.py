@@ -210,7 +210,10 @@ def render_markdown(report: dict, top: int) -> str:
         f"- 直近に活動があったアクター: **{stats['recent_actors']}** 件",
         f"- 新規ウィンドウで言及されたアクター: **{stats['mentioned_actors']}** 件"
         f"（うち直近活動あり: {stats['mentioned_recent_actors']} 件）",
-        f"- レビュー待ちレコード: **{stats.get('records', 0)}** 件",
+        # records は当該ウィンドウの全レコード数であり、未判断の件数ではない。
+        # 実際に判断が必要なのは pending だけなので、両方を分けて表示する。
+        f"- レビューキューのレコード: **{stats.get('records', 0)}** 件"
+        f"（未判断 {stats.get('pending', 0)} 件 / 承認済み {stats.get('approved', 0)} 件）",
         # unmatched_actor_values は queue 側で観測数の合計に上書きされるため、名称数と区別して表示する
         f"- 既存プロファイルに一致しないIOC actor値: **{stats['unmatched_actor_values']}** 観測"
         f"（{len(report['unmatched_actor_values'])} 名称）",

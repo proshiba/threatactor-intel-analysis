@@ -137,7 +137,19 @@ def add_capability_candidate(record: dict[str, Any], raw_value: str) -> None:
             existing.add(key)
 
 
-def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
+def apply_decision(
+    record: dict[str, Any],
+    decisions: dict[str, Any],
+    report_unmatched: bool = True,
+) -> None:
+    """保存済みの判断をレコードへ適用する。
+
+    ``report_unmatched`` が偽のときは、判断の対象がレコード側に存在しないことを
+    ``decision_issues`` へ記録しない。ウィンドウ付き走査では、過去に承認済みの
+    候補が当該ウィンドウの入力に現れないことが正常に起こるためである。例えば
+    同じ一次資料を後日のIOC CSVが再掲する際にmalware列の表記が複合値へ変わると、
+    個別名で保存した判断は再生成後のレコードに対応先を持たない。
+    """
     key = f"{record['actor']['slug']}|{record['activity']['activity_reference']}"
     decision = decisions.get(key)
     if not decision:
@@ -157,10 +169,11 @@ def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
         if override:
             item.update(override)
             matched_capabilities.add(item["name"].casefold())
-    for name in sorted(capability_overrides.keys() - matched_capabilities):
-        record.setdefault("decision_issues", []).append(
-            f"Capability判断の対象が入力に存在しない: {name}"
-        )
+    if report_unmatched:
+        for name in sorted(capability_overrides.keys() - matched_capabilities):
+            record.setdefault("decision_issues", []).append(
+                f"Capability判断の対象が入力に存在しない: {name}"
+            )
     approved_artifacts = {
         (item["artifact_type"], item["value"])
         for item in decision.get("approved_artifacts", [])
@@ -173,10 +186,11 @@ def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
             matched_artifacts.add(artifact_key)
         else:
             item["review_status"] = item.get("review_status", "pending")
-    for artifact_type, value in sorted(approved_artifacts - matched_artifacts):
-        record.setdefault("decision_issues", []).append(
-            f"artifact判断の対象が入力に存在しない: {artifact_type}={value}"
-        )
+    if report_unmatched:
+        for artifact_type, value in sorted(approved_artifacts - matched_artifacts):
+            record.setdefault("decision_issues", []).append(
+                f"artifact判断の対象が入力に存在しない: {artifact_type}={value}"
+            )
 
 
 def main() -> int:
@@ -387,8 +401,9 @@ def main() -> int:
                 ),
             }
 
+    full_history = not args.since and not args.until
     for record in records.values():
-        apply_decision(record, decisions)
+        apply_decision(record, decisions, report_unmatched=full_history)
         record["sources"].sort(key=lambda item: (item["url"], item["source_path"]))
         record["capability_decisions"].sort(key=lambda item: item["name"].casefold())
     record_decision_keys = {
@@ -400,7 +415,7 @@ def main() -> int:
             f"入力に対応する活動がないreview decision: {key}"
             for key in sorted(set(decisions) - record_decision_keys)
         ]
-        if not args.since and not args.until
+        if full_history
         else []
     )
 
