@@ -2729,7 +2729,7 @@
         "pending_records": 0,
         "applied_records": 0,
         "unmatched_actor_values": 291,
-        "materialization_window": "daily_check.py --run-scan --top 30 は build_review_queue.py の exit 1 で停止した。原因は review-decisions.json の unc1549 レコード(daily-record--2af1a13746c92e9b94dd2acc)に NodeRabbit と PollCat の個別 capability 判断が保存されている一方、本ウィンドウでは新しいIOC CSV(daily-news/iocs/2026_07-09/20260910.csv)が malware 列を複合値「NodeRabbit / PollCat」1セルでしか持たず、個別候補が再生成されないため decision_issues=2 となったことである。データ破損ではなくウィンドウ由来の不整合であり、build_review_queue.py の apply_decision へ report_unmatched 引数を追加し、--since/--until 付きの走査では未一致の capability/artifact 判断を decision_issues に数えないよう修正した(全履歴走査での検出は従来どおり)。回帰テスト3件を parse-daily/tests/test_daily.py へ追加した。修正後は exit 0、pending 0、decision_issues 0。 レビューはtech-memoキュー13件をすべて不採用とし、加えて unc6240 へ alias「ShinyHunters」を登録した結果あらたに生成された3件も不採用とした(計16件、既存4件と合わせて rejected 20)。承認済み1件(unc1549)は2026-09-02のチェックで適用済みであり本回の新規適用は0件。apply_review_queue.py は dry-run のみ実行し、承認済み1件が既存適用と一致すること(record 1件、IOC 49観測)を確認した。--apply は新規適用対象がないため実行していない。 プロファイル変更を伴うため migrate_activity_model.py --apply、enrich_activity_intelligence.py --apply、enrich_targeting_scope.py --apply、materialize_activity_diamonds.py --apply を順に実行した(diamondsは差分0で、2つのenrichから自動実行済み)。パイプラインの冪等性は連続2回実行で差分が一致することを確認した。validate_daily は queue と --check-applied の双方で error 0 / warning 0。683プロファイルの validate_profile で error 0。テストは actor_profile/tests 54件と parse-daily/tests 21件の計75件がpass。実質編集した7プロファイルの Markdown/STIX を再生成し、ui/build_data.py と ui/build_portal_index.py を実行した。"
+        "materialization_window": "daily_check.py --run-scan --top 30 は build_review_queue.py の exit 1 で停止した。原因は review-decisions.json の unc1549 レコード(daily-record--2af1a13746c92e9b94dd2acc)に NodeRabbit と PollCat の個別 capability 判断が保存されている一方、本ウィンドウでは新しいIOC CSV(daily-news/iocs/2026_07-09/20260910.csv)が malware 列を複合値「NodeRabbit / PollCat」1セルでしか持たず、個別候補が再生成されないため decision_issues=2 となったことである。データ破損ではなくウィンドウ由来の不整合であり、build_review_queue.py の apply_decision へ report_unmatched 引数を追加し、--since/--until 付きの走査では未一致の capability/artifact 判断を decision_issues に数えないよう修正した(全履歴走査での検出は従来どおり)。回帰テスト3件を parse-daily/tests/test_daily.py へ追加した。修正後は exit 0、pending 0、decision_issues 0。 レビューはtech-memoキュー13件をすべて不採用とし、加えて unc6240 へ alias「ShinyHunters」を登録した結果あらたに生成された3件も不採用とした(計16件、既存4件と合わせて rejected 20)。承認済み1件(unc1549)は2026-09-02のチェックで適用済みであり本回の新規適用は0件。apply_review_queue.py は dry-run のみ実行し、承認済み1件が既存適用と一致すること(record 1件、IOC 49観測)を確認した。--apply は新規適用対象がないため実行していない。 プロファイル変更を伴うため migrate_activity_model.py --apply、enrich_activity_intelligence.py --apply、enrich_targeting_scope.py --apply、materialize_activity_diamonds.py --apply を順に実行した(diamondsは差分0で、2つのenrichから自動実行済み)。パイプラインの冪等性は連続2回実行で差分が一致することを確認した。validate_daily は queue と --check-applied の双方で error 0 / warning 0。683プロファイルの validate_profile で error 0。テストは actor_profile/tests 54件と parse-daily/tests 21件の計75件がpass。実質編集した7プロファイルの Markdown/STIX を再生成し、ui/build_data.py と ui/build_portal_index.py を実行した。 2026-09-10追加作業: 利用者の指示により UNC6508 と UNC5792 を profiles/ へ昇格させた。昇格作業の過程で、当日の台帳登録時には「単一ベンダーのみ」と評価していた2件がいずれも追加の一次資料を持つことが判明した。UNC6508は actor_profile/reference/osint/misp-threat-actor.json 経由でGTIGの2026-06-15技術報告へ、UNC5792は profiles/unc4221 の既存sourceからFBI・CISA共同PSA(2026-06-26)へ辿り着いた。後者は政府・法執行機関による言及であり単独で昇格閾値を満たす。新規クラスタの登録時には当日の一次情報源だけでなく参照データセットと既存プロファイルのsource群も照合する必要がある。両プロファイルとも validate_profile で error 0 / warning 0。685プロファイル全体でも error 0。enrichment パイプラインを再実行し、標的は活動記述から導出された(unc6508: 米国・カナダ／北米／医療・ヘルスケア・教育研究、unc5792: 米国・ウクライナ／政府・行政・メディア報道)。帰属国(中国・ロシア)が標的国へ混入していないことを確認した。なお enrichment スクリプトは内容が同一でも updated_at を更新するため、本作業では内容差分のない296プロファイルのタイムスタンプのみの変更を差し戻し、実質的な変更だけをコミットしている。"
       },
       "applied": [],
       "rejected": [
@@ -2831,7 +2831,20 @@
         }
       ],
       "pending": [],
-      "new_profiles": [],
+      "new_profiles": [
+        {
+          "slug": "unc6508",
+          "name": "UNC6508",
+          "status": "draft",
+          "basis": "利用者の指示により unknown-cluster--unc6508 から昇格。昇格作業で actor_profile/reference/osint/misp-threat-actor.json のUNC6508エントリからGTIGの技術報告(2026-06-15 https://cloud.google.com/blog/topics/threat-intelligence/prc-targets-us-medical-research)を辿り原文確認した。同報告は「GTIG attributes this activity to UNC6508 with high confidence.」と帰属し、活動期間2023年9月〜2025年11月、初期侵入としてのREDCapサーバー悪用、バックドアINFINITEREDの構成要素、ATT&CK対応、IOCを記載する。活動2件(REDCap悪用による北米の医学・防衛研究機関への長期諜報、専有AI研究の窃取とローカルLLM展開)、malware 1件、運用能力3件を登録した。一次資料2本はいずれもGTIGで同一ベンダーであり、台帳の昇格閾値を厳密には満たさない点を assessment.uncertainties に明記している。"
+        },
+        {
+          "slug": "unc5792",
+          "name": "UNC5792",
+          "status": "draft",
+          "basis": "利用者の指示により unknown-cluster--unc5792 から昇格。昇格作業で profiles/unc4221 の既存活動が参照する source--daily-2e312afd1a9ab081a613 からFBI・CISA共同PSA(I-062626-PSA、2026-06-26 https://www.ic3.gov/PSA/2026/PSA260626)を辿り原文確認した。同PSAは「To date, this activity has been publicly tracked as UNC5792 and UNC4221.」と述べ、政府・法執行機関による言及として台帳の昇格閾値を単独で満たす。活動2件(Signalバックアップ復旧キーを狙うサポート偽装フィッシング、AIを組み込んだTelegramチャンネル監視)、tool 1件を登録した。PSAが両指定子を同一活動の追跡名として併記しているため profiles/unc4221 とは統合せず、relationships へ taxonomy-overlaps-with / scope: unknown として記録した。"
+        }
+      ],
       "alias_updates": [
         {
           "slug": "unc6240",
@@ -2915,13 +2928,13 @@
         },
         {
           "cluster_id": "unknown-cluster--unc6508",
-          "change": "新規追加",
-          "basis": "GTIG 2026-09-08。PRC系諜報アクター。北米の学術・医療・軍事研究機関の専有AI研究を標的とし、侵害クラウドへローカルLLM基盤を展開。単一ベンダーのため昇格閾値未達。"
+          "change": "新規追加後、同日に profiles/unc6508 へ昇格し status を merged とした",
+          "basis": "GTIG 2026-09-08。PRC系諜報アクター。北米の学術・医療・軍事研究機関の専有AI研究を標的とし、侵害クラウドへローカルLLM基盤を展開。単一ベンダーのため昇格閾値未達。 昇格後は status: merged、統合先 unc6508、統合日 2026-09-10 を残している。"
         },
         {
           "cluster_id": "unknown-cluster--unc5792",
-          "change": "新規追加",
-          "basis": "GTIG 2026-09-08。ロシア拠点。AIを組み込んだ自動監視ボットでTelegramチャンネルを解析。単一ベンダーのため昇格閾値未達。"
+          "change": "新規追加後、同日に profiles/unc5792 へ昇格し status を merged とした",
+          "basis": "GTIG 2026-09-08。ロシア拠点。AIを組み込んだ自動監視ボットでTelegramチャンネルを解析。単一ベンダーのため昇格閾値未達。 昇格後は status: merged、統合先 unc5792、統合日 2026-09-10 を残している。"
         },
         {
           "cluster_id": "unknown-cluster--toy-ghouls",
