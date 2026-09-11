@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teampcp`
 - 状態: draft
-- 更新日時: 2026-08-12T01:51:50Z
+- 更新日時: 2026-09-10T16:10:19Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -89,6 +89,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 |---|---|---|---|---|---|---|
 | malware--sandclock | SANDCLOCK | ビルド環境からAWSキーとGitHubトークンを窃取する資格情報スティーラー。侵害したGitHub Actionsワークフローへ埋め込まれる。 | 2026-02 | 不明 | 高 | `source--gtig-ai-threat-tracker-2026-05` |
 | malware--shadowray-2-0-payloads | ShadowRay 2.0 ペイロード | 侵害したRay等のAI基盤を自己増殖型ボットネット化するペイロード群。第1段階はndt.shなどのシェルスクリプトで、リバースシェルと追加バイナリを取得する。 | 2025-06 | 不明 | 高 | `source--oligo-teampcp-2026` |
+| malware--dustmaker | DUSTMAKER | UNC6780(TeamPCP)が用いる資格情報スティーラー。CI/CD環境で動作していることを検知するとGitHub ActionsランナーのプロセスメモリからOIDCトークンを抽出し、そのトークンでtrusted publisherとして自らを認可して、有効なSLSA Build 3の署名付き証明を伴う改ざん版パッケージを公開する。正当な署名を持つため、AIコーディングエージェントの自動信頼チェックを通過する。AIツール向けの資格情報収集や、隠しディレクトリによる防御回避を含む複数のAI関連機能を実装する。 | 不明 | 不明 | 高 | `source--gtig-adversarial-ai-2026` |
 
 ### ツール
 
@@ -124,14 +125,14 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | infrastructure-operation | 2020 | 2026-04 | 2026-08-08 |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | victim--activity-rule--829e65b1ac18ce5ea420, victim--teampcp-exposed-cloud-services | Oligo Securityは、ShadowRay 2.0でAI基盤を自己増殖型ボットネット化した攻撃主体をTeamPCPと評価し、活動を少なくとも2020年まで遡った。 TA-NATALSTATUS、IronErn、TeamPCPの間でドメイン、C2、マルウェア配置パス、ステージング手法などが重複し、継続的な運用基盤が確認された。 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 2025年には侵害したRayクラスタへ長期間リバースシェルを維持し、GitLabのIronErn関連アカウントも同一IPから管理されていた。 OligoはTeamPCPを既存活動の継続または再ブランドと評価するが、同一運用者、密接な協力関係、共有基盤のどれかまでは断定していない。 | 高 | `source--daily-48f251212f832ab9b6df` |
-| GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 |  | malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
+| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | supply-chain-cybercrime | 2026-02 | 2026-03 | 2026-05-11 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | victim--activity-rule--36589755fc4094ee8555, victim--teampcp-oss-projects-2026 | TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | TeamPCP | ShadowRay 2.0 ペイロード | T1059.004 Unix Shell, T1190 Exploit Public-Facing Application, T1486 Data Encrypted for Impact | masscan.cloud / natalstatus.org 基盤 | 情報なし | 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及, インターネットへ露出したRay/Docker/Redis/React環境(集約) | 高 |
-| GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 | TeamPCP | SANDCLOCK | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | masscan.cloud / natalstatus.org 基盤 | 情報なし | 被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
+| GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | TeamPCP | DUSTMAKER, SANDCLOCK | T1195.002 Compromise Software Supply Chain, T1552.001 Credentials In Files | masscan.cloud / natalstatus.org 基盤 | IT・ソフトウェア | 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害, Trivy / Checkmarx / LiteLLM / BerriAI | 高 |
 
 2025年後半にTeamPCPとして公然化した。2026年2月から3月にかけてTrivy、Checkmarx、LiteLLM、BerriAIのサプライチェーン侵害に関与したと表明し、2026年8月にOligoがTA-NATALSTATUSおよびIronErnとの連続性と2020年までの遡及を報告した。
 
@@ -140,6 +141,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | regions | 全世界 | 一次資料は特定国を標的条件として挙げず、インターネットへ露出したサービスとオープンソース配布網を対象としている。 | 不明 | 不明 | 中 | `source--oligo-teampcp-2026`, `source--gtig-ai-threat-tracker-2026-05` |
+| sectors | IT・ソフトウェア | 活動「GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害」の記述で標的として明示された産業。 | 2026-02 | 2026-03 | 中 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 | sectors | クラウド・AI基盤運用 | Ray、Kubernetes、Docker、Redisなどの運用環境が侵害対象として明示されている。 | 不明 | 不明 | 高 | `source--oligo-teampcp-2026`, `source--sentinellabs-pcpjack-2026` |
 | sectors | フィンテック | Oligo資料がフィンテックアプリケーションを標的技術・分野として挙げている。 | 不明 | 不明 | 中 | `source--oligo-teampcp-2026` |
 | sectors | オープンソースソフトウェア | Trivy、Checkmarx、LiteLLM、BerriAIなどの配布網が侵害対象として明示されている。 | 不明 | 不明 | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
@@ -150,7 +152,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 | 非公開 | aggregate | multiple-organizations | reported |  | malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | エンドポイント, クラウド／SaaS, 開発環境／ソースコード | credential-theft: 初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。<br>encryption: 窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 2026-02 | 2026-03 | 2026-05-11 | 高 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
+| 被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--dustmaker, malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | サーバー, エンドポイント, クラウド／SaaS, 開発環境／ソースコード | credential-theft: 初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。<br>encryption: 窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。 | 2026-02 | 2026-03 | 2026-05-11 | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
 | 被害事例: 新たなインテリジェンスがTeamPCPとShadowRay 2.0を関連付け、活動を2020年まで遡及 | 非公開 | anonymous | unknown | reported |  |  | ttp--teampcp-t1059-004-ndt-sh, ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1486-ransomware | エンドポイント, 開発環境／ソースコード | supply-chain: 攻撃者はRay、Docker、Redis、Reactなどの公開サービスを自動・ワーム型で侵害し、2026年にはGitHubやGitLabを狙うサプライチェーン攻撃へ拡大した。 | 2020 | 2026-04 | 2026-08-08 | 高 | `source--daily-48f251212f832ab9b6df` |
 | インターネットへ露出したRay/Docker/Redis/React環境(集約) | 非公開 | aggregate | multiple-organizations | reported |  | malware--shadowray-2-0-payloads | ttp--teampcp-t1190-exposed-services, ttp--teampcp-t1059-004-ndt-sh | Rayクラスタ, Redisサーバー, Dockerホスト, Kubernetes環境 | account-compromise: 侵害環境へのリバースシェルによる長期的な支配。<br>credential-theft: クラウド資格情報の窃取。<br>encryption: ランサムウェア展開による暗号化。 | 2020 | 2026-04 | 2026-08-05 | 高 | `source--oligo-teampcp-2026` |
 | Trivy、Checkmarx、LiteLLM、BerriAI | Trivy / Checkmarx / LiteLLM / BerriAI | named | multiple-organizations | reported |  | malware--sandclock | ttp--teampcp-t1195-002-oss-supply-chain, ttp--teampcp-t1552-001-build-secrets | GitHubリポジトリ, GitHub Actionsワークフロー, PyPIパッケージ | supply-chain: オープンソース配布物とCIワークフローの汚染。<br>credential-theft: ビルド環境からのAWSキーとGitHubトークンの窃取。 | 2026-02 | 2026-03 | 2026-05-11 | 中 | `source--gtig-ai-threat-tracker-2026-05`, `source--sentinellabs-pcpjack-2026` |
@@ -192,6 +194,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 - Trivy侵害の時期はSentinelLabsが2026年2月、GTIGが2026年3月下旬の犯行表明としており、侵害日と表明日のどちらを指すかで記述が異なる。両論を残す。
 - PCPCatとTeamPCPの対応関係が一次資料で説明されていない。
 - tech-memoのIOC CSVでShai-HuludのIOCにactor=TeamPCPが付与されているが、この帰属は一次資料で確認できていないため本プロファイルへ取り込んでいない。
+- GTIG 2026-09-08 は本アクターのOSSサプライチェーン侵害が「Since March 2026」継続していると述べるが、観測終了日を明示していない。activity--teampcp-oss-supply-chain-2026 の last_observed は初報に基づく2026年3月のままであり、2026年4月以降の継続期間は一次資料で確定していない。
 
 ## 出典
 
@@ -203,6 +206,7 @@ TeamPCP(GTIG命名 UNC6780)は金銭目的のサイバー犯罪グループで�
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--sentinellabs-pcpjack-2026 | PCPJack \| Cloud Worm Evicts TeamPCP and Steals Credentials at Scale | SentinelOne (SentinelLabs) | 2026-05-07 | https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/ | vendor-research-report | TLP:CLEAR | 高 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

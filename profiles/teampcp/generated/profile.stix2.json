@@ -280,6 +280,33 @@
       "aliases": []
     },
     {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
+      "created": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-10T16:10:19Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DUSTMAKER",
+      "description": "UNC6780(TeamPCP)が用いる資格情報スティーラー。CI/CD環境で動作していることを検知するとGitHub ActionsランナーのプロセスメモリからOIDCトークンを抽出し、そのトークンでtrusted publisherとして自らを認可して、有効なSLSA Build 3の署名付き証明を伴う改ざん版パッケージを公開する。正当な署名を持つため、AIコーディングエージェントの自動信頼チェックを通過する。AIツール向けの資格情報収集や、隠しディレクトリによる防御回避を含む複数のAI関連機能を実装する。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        }
+      ],
+      "x_profile_object_id": "malware--dustmaker",
+      "x_confidence": "high",
+      "x_analyst_notes": "GTIG原文(2026-09-08)が機能を直接記述している。原文は個別検体の初回観測日を示していないため観測期間はunknownとし、公開日を流用しない。",
+      "is_family": true,
+      "malware_types": [
+        "credential stealer"
+      ],
+      "aliases": []
+    },
+    {
       "type": "infrastructure",
       "spec_version": "2.1",
       "id": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
@@ -415,15 +442,20 @@
       "spec_version": "2.1",
       "id": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
-      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "name": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。",
       "first_seen": "2026-02-01T00:00:00Z",
       "last_seen": "2026-03-01T00:00:00Z",
       "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
         {
           "source_name": "Google Threat Intelligence Group",
           "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
@@ -437,7 +469,7 @@
       ],
       "x_profile_object_id": "activity--teampcp-oss-supply-chain-2026",
       "x_confidence": "high",
-      "x_analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。",
+      "x_analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。 2026-09-10追記: GTIGの後継報告(2026-09-08、source--gtig-adversarial-ai-2026)を原文確認し、同一作戦の継続として本活動へ統合した(AGENT.md: 同一活動の記事・IOC一覧は1活動へまとめる)。新規情報はnpmとDocker Hubへの対象拡大、MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp)と公式リポジトリ(azure-functions-mcp-extension)への直接注入、DUSTMAKERによるGitHub ActionsランナーのOIDCトークン窃取とSLSA Build 3署名付きパッケージ公開、およびLAPSUSブランドを用いる恐喝アクターへのアクセス引き渡し事案である。last_observedは更新していない。原文の「Since March 2026」は活動の起点を示す表現であって観測終了日を示さず、OSINT_RULESに従い公開日(2026-09-08)を観測日へ流用しないためである。reported_atは初報(2026-05-11)のまま保持し、後継報告の公開日はsource側のpublished_atで分離して保存する。",
       "x_reported_at": {
         "value": "2026-05-11T00:00:00Z",
         "precision": "day",
@@ -453,6 +485,7 @@
         },
         "capability": {
           "malware_refs": [
+            "malware--dustmaker",
             "malware--sandclock"
           ],
           "ttp_refs": [
@@ -466,7 +499,9 @@
           ]
         },
         "victim": {
-          "target_refs": [],
+          "target_refs": [
+            "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          ],
           "victim_refs": [
             "victim--activity-rule--36589755fc4094ee8555",
             "victim--teampcp-oss-projects-2026"
@@ -509,6 +544,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--gtig-adversarial-ai-2026",
           "source--gtig-ai-threat-tracker-2026-05",
           "source--sentinellabs-pcpjack-2026"
         ],
@@ -540,6 +576,38 @@
         }
       ],
       "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "created": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-10T16:10:19Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "IT・ソフトウェア",
+      "identity_class": "organization",
+      "description": "活動「GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+          "external_id": "source--gtig-ai-threat-tracker-2026-05"
+        },
+        {
+          "source_name": "SentinelOne (SentinelLabs)",
+          "description": "Local source: https://www.sentinelone.com/labs/cloud-worm-evicts-teampcp-and-steals-credentials-at-scale/",
+          "external_id": "source--sentinellabs-pcpjack-2026"
+        }
+      ],
+      "x_target_category": "sectors",
       "x_confidence": "medium"
     },
     {
@@ -623,14 +691,19 @@
       "spec_version": "2.1",
       "id": "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "name": "被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害",
       "identity_class": "organization",
-      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。",
       "external_references": [
+        {
+          "source_name": "Google Threat Intelligence Group",
+          "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+          "external_id": "source--gtig-adversarial-ai-2026"
+        },
         {
           "source_name": "Google Threat Intelligence Group",
           "description": "Local source: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
@@ -646,8 +719,11 @@
       "x_disclosure_status": "aggregate",
       "x_victim_type": "multiple-organizations",
       "x_case_status": "reported",
-      "x_target_refs": [],
+      "x_target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "x_malware_refs": [
+        "malware--dustmaker",
         "malware--sandclock"
       ],
       "x_ttp_refs": [
@@ -655,6 +731,7 @@
         "ttp--teampcp-t1552-001-build-secrets"
       ],
       "x_affected_assets": [
+        "サーバー",
         "エンドポイント",
         "クラウド／SaaS",
         "開発環境／ソースコード"
@@ -1167,6 +1244,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--9e207950-7af3-4c03-8fef-320480afe715",
+      "created": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-10T16:10:19Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
+      "description": "TeamPCP uses DUSTMAKER.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--00bdb7ca-86d7-45ef-b28b-72f36b4b68ca",
       "created": "2026-08-10T07:26:12Z",
       "modified": "2026-08-10T07:26:12Z",
@@ -1192,6 +1284,21 @@
       "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
       "target_ref": "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
       "description": "TeamPCP targets 全世界 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f8dc784e-c523-4984-870c-e891225e46f6",
+      "created": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-10T16:10:19Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
+      "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "description": "TeamPCP targets IT・ソフトウェア (profile target category: sectors).",
       "x_confidence": "medium"
     },
     {
@@ -1334,14 +1441,29 @@
       "spec_version": "2.1",
       "id": "relationship--a3cd563c-aee3-479c-a4a7-b2708198783b",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "attributed-to",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 is attributed or linked to TeamPCP.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 is attributed or linked to TeamPCP.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5a6cf06d-80ad-4950-b271-96cdf6252149",
+      "created": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-10T16:10:19Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses malware--dustmaker.",
       "x_confidence": "high"
     },
     {
@@ -1349,14 +1471,14 @@
       "spec_version": "2.1",
       "id": "relationship--fc17149b-6ec3-44d0-9c56-b4b7b3cb5c60",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses malware--sandclock.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses malware--sandclock.",
       "x_confidence": "high"
     },
     {
@@ -1364,14 +1486,29 @@
       "spec_version": "2.1",
       "id": "relationship--a8f01f7a-1c9b-4345-ae81-14607a849430",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses infra--masscan-cloud.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses infra--masscan-cloud.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9e07657e-5237-4e40-95db-78218ff6956a",
+      "created": "2026-09-10T16:10:19Z",
+      "modified": "2026-09-10T16:10:19Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
+      "target_ref": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 targets target--activity-rule--sector--932f4928d5e1ec28e2df.",
       "x_confidence": "high"
     },
     {
@@ -1379,14 +1516,14 @@
       "spec_version": "2.1",
       "id": "relationship--710c6ce8-691c-4476-b9c4-c54fe826c399",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "attack-pattern--7e653732-20ab-4d97-95f5-3f2c1f33679b",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1195-002-oss-supply-chain.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1195-002-oss-supply-chain.",
       "x_confidence": "high"
     },
     {
@@ -1394,14 +1531,14 @@
       "spec_version": "2.1",
       "id": "relationship--f46ea036-eaef-4f98-a889-dafb531fb933",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "attack-pattern--ff6815d2-6467-4822-9b8b-c49dfad207e1",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1552-001-build-secrets.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 uses ttp--teampcp-t1552-001-build-secrets.",
       "x_confidence": "high"
     },
     {
@@ -1409,14 +1546,14 @@
       "spec_version": "2.1",
       "id": "relationship--0f9f9271-5f82-4c00-8959-52cef761e897",
       "created": "2026-08-10T07:28:34Z",
-      "modified": "2026-08-10T07:28:34Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "identity--f3ec8c51-1bc3-4526-9b9c-dfd8198ff70d",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 affected victim--activity-rule--36589755fc4094ee8555.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 affected victim--activity-rule--36589755fc4094ee8555.",
       "x_confidence": "high"
     },
     {
@@ -1424,14 +1561,14 @@
       "spec_version": "2.1",
       "id": "relationship--8f9c04b2-860f-4ea3-a529-e031181c8cf4",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-10T07:26:12Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
       "source_ref": "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
       "target_ref": "identity--53c83473-89a2-4a99-be26-64123ac90cb7",
-      "description": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害 affected victim--teampcp-oss-projects-2026.",
+      "description": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害 affected victim--teampcp-oss-projects-2026.",
       "x_confidence": "high"
     },
     {
@@ -3486,7 +3623,7 @@
       "spec_version": "2.1",
       "id": "report--d1dcd276-3e72-4de8-91ac-208726e53c0a",
       "created": "2026-08-10T07:26:12Z",
-      "modified": "2026-08-12T01:51:50Z",
+      "modified": "2026-09-10T16:10:19Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3495,15 +3632,17 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-12T01:51:50Z",
+      "published": "2026-09-10T16:10:19Z",
       "object_refs": [
         "intrusion-set--2528c85c-5be4-4aed-a804-eee7a3c87742",
         "malware--8c8b4e5c-0e48-46dd-9bbb-233a239bc08a",
         "malware--baa3c926-afaa-48a7-ba1b-4d737082a88c",
+        "malware--df343f1c-04fb-4359-a2b8-8a3c2196e7b9",
         "infrastructure--d6dbcd09-2fbe-468b-811f-33930e4c247c",
         "campaign--0ec41851-6eb8-4a9b-a6cf-534d3a283583",
         "campaign--3a38d3ed-2880-4d6e-a3da-d7a53d4fa88f",
         "identity--7b64bf87-9196-4b82-ad51-d836767b3d8d",
+        "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
         "identity--006eebbb-ad54-4d66-a49e-cd8dd21dfde2",
         "identity--1030b0ff-7222-4145-9b5e-d95b55982327",
         "identity--3f5fd8ae-2238-4ebc-8bfc-8ad21d599764",

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1069`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-10T16:00:55Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ UNC1069の標準化プロファイル。リポジトリ内の専用資料1件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| MIDNIGHT NEPTUNE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | GTIG原文の「MIDNIGHT NEPTUNE, financially motivated North Korea-nexus threat clusters formerly tracked as UNC1069」に基づく。UNC1069はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。原文が「threat clusters」と複数形で述べる点は、MIDNIGHT NEPTUNEが複数クラスタを束ねる可能性を示すため analyst_notes として残す。 |
 
 ## 帰属
 
@@ -182,6 +184,7 @@ Aliasなし
 | source--unc1069--84dd08998dd65094 | advances in threat actor usage of ai tools en |  | 不明 | AISecurity/2025/advances-in-threat-actor-usage-of-ai-tools-en.pdf | report | TLP:CLEAR | 中 |
 | source--unc1069--a8ecf781c48045b5 | eset apt activity report q4 2025 q1 2026 |  | 2025 | summary/2026/eset-apt-activity-report-q4-2025-q1-2026.pdf | report | TLP:CLEAR | 中 |
 | source--unc1069--e5ffd49d89d7dcfd | unc1069 |  | 不明 | actor_profile/evidence/unc1069.csv | structured-data | TLP:CLEAR | 中 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

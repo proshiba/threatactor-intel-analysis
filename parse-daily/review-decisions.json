@@ -2767,5 +2767,85 @@
     "confidence": "low",
     "review_notes": "不採用(実行主体は別クラスタ、帰属は未確定)。Check Point Research原文(JSON-LD datePublished 2026-09-02T10:16:16+00:00)をHTTP 200で取得して確認した。原文は実行主体を新規に命名しており、Key Pointsで「We dubbed this group Gambling Goblin: a Chinese-speaking cybercrime cluster connected to a previously documented group, Earth Berberoka」、Attribution and links to prior work節で「We assess with medium-to-high confidence that Gambling Goblin is tied to Earth Berberoka - a Chinese-speaking threat cluster first documented by Trend Micro in 2022」と述べる。すなわちEarth Berberokaは本活動の実行主体ではなく、medium-to-high confidenceの結び付き評価の相手方である。CPRが挙げる根拠は(1)oRATが2022年にEarth Berberokaへ紐付けられており、解析した亜種が同じ orat/cmd/agent コードベースとREST形式のオペレータルートを共有すること、(2)回収したAlphaAgent検体の1つが、Earth Berberokaへ従来帰属されていたツール群と同一アーカイブでアップロードされていたこと、(3)Trend Microが報告したEarth Berberokaのドメイン github[.]wiki と同型の github[.]la / gitlab[.]bet というlookalikeドメイン、および同一のAmazon ASN(AS16509)、の3点であり、いずれも重複の指摘である。AGENT.mdは類似・重複・後継・一般的な関連を活動レコードへ含めないと定めているため、Earth Berberokaの活動としては採用しない。実行主体のGambling Goblinは既存プロファイルに存在しない名称であり、単一ベンダー初報で昇格閾値未達のため parse-daily/unknown-clusters.json の unknown-cluster--gambling-goblin へ登録し、related_profiles へ earth-berberoka を linked-medium-to-high として記録した。なお earth-berberoka プロファイルの既存alias「Gambling Puppet」と本件の「Gambling Goblin」は別名称であり、混同しないこと。",
     "review_status": "rejected"
+  },
+  "apt37|https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/": {
+    "confidence": "low",
+    "review_notes": "不採用(実行主体でない・類似性の指摘のみ)。Rapid7原文をHTTP 200で取得して確認した。APT37の出現は「the usage of simple xor-based encryption, custom substitution cipher...is associated to APT37」「list of C2s hardcoded is associated with APT37」「Operation Code on Toast (APT37)」の3箇所で、いずれも暗号方式・C2インフラ・既知作戦との類似を述べる比較参照であり、本キャンペーンの実行主体としての記述ではない。原文の帰属は「medium confidence to DPRK APTs」にとどまり、名前付きグループへの帰属は行われていない。activity_claim は candidate(名前一致はあるが実行主体を示す表現が不足)であり、この評価は原文と一致する。実体はTedバックドアとcurlRATを用いる未帰属のDPRKクラスタであり、unknown-clusters.json へ登録した(unknown-cluster--ted-curlrat)。",
+    "review_status": "rejected"
+  },
+  "kimsuky|https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/": {
+    "confidence": "low",
+    "review_notes": "不採用(推測・類似の言及のみ)。同一のRapid7原文を確認した。Kimsukyの出現は「consistent with documented Kimsuky tradecraft」「Kimsuky has been observed exploiting RCE vulnerabilities in externally accessible mail servers」であり、一般的なtradecraftとの整合を述べるにとどまる。tech-memo要約も「Kimsuky型の初期侵入や具体的CVE利用は可能性として示されるのみで未確認」と明記しており、初期侵入経路は原文でも確定していない。帰属は「medium confidence to DPRK APTs」であり実行主体はKimsukyと特定されていない。",
+    "review_status": "rejected"
+  },
+  "apt38|https://www.sekoia.com/blog/beyond-lazarus-organization-of-dprk-cyber-capabilities": {
+    "confidence": "low",
+    "review_notes": "不採用(新規活動の報告ではない・分類論)。Sekoia原文(2026-09-07公開)を確認した。本稿はDPRKサイバー能力の組織構造の解説であり、観測日を伴う新規攻撃キャンペーンの報告ではない。APT38の記述は「APT38 was identified and associated with financially-motivated operations likely conducted by the 110th Research Institute」「Currently, APT38 has likely splitted in two sub-clusters that we associate with CryptoCore and Jade Sleet」の2点で、いずれも組織帰属と分類の再編であり活動観測ではない。一致語「TEMP.Hermit」はapt38プロファイルのalias(scope: overlapping)であり、原文でもLazarus傘下6サブクラスタ(TEMP.Hermit、Citrine Sleet、CryptoCore、Jade Sleet、Moonstone Sleet、Famous Chollima)の一つとして列挙されるにとどまる。activity_claim の scope-review-required は妥当。なお本稿の分類は単独ベンダーによる再編であり、OSINT_RULESの「帰属変更は単独ベンダーの名称変更と政府帰属を分離する」に従い、activityレコードとしては採用せずalias・関係のレビュー材料として扱う。",
+    "review_status": "rejected"
+  },
+  "contagious-interview|https://www.sekoia.com/blog/beyond-lazarus-organization-of-dprk-cyber-capabilities": {
+    "confidence": "low",
+    "review_notes": "不採用(活動主題でない・インフラ重複の付随言及)。同一のSekoia原文を確認した。Contagious Interviewの出現はAnnex 2のインフラ一覧における「DPRK偽IT労働者が使用した出口ノードでContagious Interventionとの重複が確認されたIP」という注記と、Recorded Future/SentinelOneの命名として引用される2箇所であり、観測日を伴う新規活動の記述はない。IPの重複指摘はクラスタ間の関連可能性を示すにとどまり、本稿を当該アクターの活動報告とは扱えない。activity_claim の context-only は妥当。",
+    "review_status": "rejected"
+  },
+  "unc1549|https://blog.polyswarm.io/the-job-offer-has-claws-mirage-kitten-deploys-noderabbit-and-pollcat": {
+    "confidence": "medium",
+    "review_notes": "不採用(二次要約であり既適用活動の重複)。PolySwarm原文(2026-09-08公開)をHTTP 200で取得して確認した。本稿はPolySwarm独自の調査ではなくKaspersky Securelistの二次要約であり、本文が「Kaspersky discovered the activity while investigating Mirage Kitten infections and identified an initial NodeRabbit sample on a system in Afghanistan.」と明記し、原典 https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/ へ明示的にリンクしている。当該Securelist原典(2026-09-01公開)は2026-09-02のチェックで既に承認・適用済みであり、NodeRabbit・PollCatのcapabilityも個別承認済みである。したがって新規活動レコードとしては採用しない。activity_claim は structured-actor-field(IOC CSVの構造化actor列)だが、構造化フィールドの一致は原典の重複掲載を意味するにとどまる。OSINT_RULESの情報源優先順位に従い、二次要約より原典を正とする。なお本稿が掲載するSHA-256 2件は、必要であればAGENT.mdの「各Observationのsource_idは実際にそのIOCを掲載したURLごとに保持する」に従い既存活動へ追加観測として付与できるが、活動自体の新規作成には当たらない。",
+    "review_status": "rejected"
+  },
+  "tortoiseshell|https://blog.polyswarm.io/the-job-offer-has-claws-mirage-kitten-deploys-noderabbit-and-pollcat": {
+    "confidence": "low",
+    "review_notes": "不採用(別クラスタとの名称一致)。同一のPolySwarm原文を確認した。本稿の「Tortoiseshell has been publicly linked to Iran's Islamic Revolutionary Guard Corps (IRGC).」における Tortoiseshell は、Group-IB が UNC1549/Mirage Kitten を指して用いる呼称であり、profiles/tortoiseshell が表すクラスタ(MITRE ATT&CK G1012 CURIUM。別名 CURIUM / Crimson Sandstorm / TA456 / Yellow Liderc / Imperial Kitten、典拠は Symantec Tortoiseshell 2019)とは異なる。この対応関係は既に profiles/unc1549 の alias「Tortoiseshell」(vendor: Group-IB、scope: overlapping)へ analyst_notes 付きで記録済みであり、本件で新たな変更は不要である。根拠文自体も「Tortoiseshellとの関連はあるが、全活動がIRGC直接運用とは確認されていない」と関連の記述にとどまり実行主体表現ではない。",
+    "review_status": "rejected"
+  },
+  "akira|https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html": {
+    "confidence": "low",
+    "review_notes": "不採用(過去事例・一般的言及)。根拠文は「金銭目的ではAkira、Qilin、Playなどが主要勢力で、地政学系では親ロシアのZ-PentestやNoName057(16)、親イランのHandala、CyberAv3ngersなどが挙げられている。」であり、産業インフラを狙う犯罪経済の全体像を論じる中で主要勢力を列挙したものである。本稿は2024年1月〜2026年6月の地下フォーラム・マーケット調査であって特定インシデントの報告ではなく、Akiraを実行主体とする新規活動の記述はない。activity_claim の historical-reference は妥当。",
+    "review_status": "rejected"
+  },
+  "earth-lusca|https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html": {
+    "confidence": "low",
+    "review_notes": "不採用(製品名との名称衝突)。一致語「CHROMIUM」は earth-lusca の alias(scope: overlapping)だが、根拠文は「Microsoft Edge、Brave、Opera、VivaldiなどChromiumベースのブラウザも、修正版が提供され次第更新する。」であり、ブラウザエンジン Chromium を指す。本稿はGoogleのChrome安定版リリースノート(ゼロデイ修正の告知)であって脅威アクターの活動報告ではない。config.json の matching.unsafe_prose_aliases による name-collision 判定は正しく機能している。",
+    "review_status": "rejected"
+  },
+  "earth-lusca|https://socradar.io/blog/peep-browser-rat-chrome-extension/": {
+    "confidence": "low",
+    "review_notes": "不採用(製品名との名称衝突)。一致語「CHROMIUM」は根拠文「SOCRadarは「Smart Bookmarks」拡張機能を装うChromium向け侵害後ツール「PEEP」を分析し、Chrome／Edgeを永続的な遠隔操作基盤へ変える機能を確認した。」のとおりブラウザエンジンを指す。本稿はブラウザRAT「PEEP」のマルウェア解析であり、実行主体の命名・帰属は行われていない。earth-lusca の活動ではない。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia": {
+    "confidence": "low",
+    "review_notes": "不採用(地理語との名称衝突)。一致語は「Asia」(hellsing-apt の alias、scope: unknown、match_confidence: medium)であり、根拠として抽出された文字列は記事URLのスラッグ末尾「...deepseek-asia」である。地域名であってアクター参照ではない。本稿は中国語話者の攻撃者がAIエージェントを用いてアジアの政府・教育システムを標的化したという内容で、Hellsing APTとは無関係である。「Asia」は既に config.json の matching.unsafe_prose_aliases に登録済みであり、その効果で activity_claim は name-collision へ下がっている。ただしこの設定はレコード生成自体を抑止しないため、再検討を避ける目的で本判断と unknown-clusters.json の excluded_name_collisions の双方へ記録した。",
+    "review_status": "rejected"
+  },
+  "hellsing-apt|https://nkinternet.com/2026/09/06/new-russia-north-korea-road-checkpoint-takes-shape-at-khasan/": {
+    "confidence": "low",
+    "review_notes": "不採用(報道機関名との名称衝突)。一致語「Asia」の出現箇所は根拠文「北朝鮮側とロシア側の橋および保安施設の進捗については、Radio Free Asiaによる最近の報道も参考情報として紹介されている。」であり、放送局名 Radio Free Asia の一部である。本稿はハサンの道路検問所建設に関する地政学記事でサイバー活動の報告ではない。「Asia」は既に config.json の matching.unsafe_prose_aliases に登録済みである。再検討を避けるため unknown-clusters.json の excluded_name_collisions へも記録した。",
+    "review_status": "rejected"
+  },
+  "oceanlotus|https://kinryu.sh/": {
+    "confidence": "low",
+    "review_notes": "不採用(地理語との名称衝突・攻撃者不明)。一致語は「Vietnam」(oceanlotus の alias、scope: unknown)であり、抽出された文字列は記事URLのスラッグ「...220-million-traveler-records-exposed-in-vietnam-linked-apis-leak/」である。国名であってアクター参照ではない。本稿はKinryū Labsによる報告で、ベトナム関連のAPIS Elasticsearchが設定不備で到達可能だった大規模データ露出事案である。tech-memo要約も「脆弱性悪用ではなく設定不備による大規模データ露出であり、悪意ある第三者が実際にデータを取得・販売・恐喝した証拠は記事時点では確認されていない。」「攻撃者の情報は不明。」と明記しており、そもそも攻撃活動として帰属できる主体が存在しない。「Vietnam」は既に config.json の matching.unsafe_prose_aliases に登録済みである。再検討を避けるため unknown-clusters.json の excluded_name_collisions へも記録した。",
+    "review_status": "rejected"
+  },
+  "qtfy|https://media.defense.gov/2026/Aug/26/2003986916/-1/-1/0/JCSA_CHINA_QTFY_MALICIOUS_SYSTEMS.PDF": {
+    "confidence": "low",
+    "review_notes": "不採用(新規活動でなく企業エコシステム分析・既存帰属に包含)。記事本体はNatto Thoughtsの分析(https://www.nattothoughts.com/p/widening-the-circle-of-chinese-hacker)で、tech-memoが一次ソースとしてFBI・NSA・CNMF共同勧告(JCSA、2026-08-26)を挙げたためactivity_referenceがJCSAのPDFになっている。内容はXJW(南京鑫玖維網絡科技)関連企業ELEXの顧客リストとLexbellのPLA契約という企業間関係の分析であり、観測日を伴う新規攻撃キャンペーンの報告ではない。activity_claim の context-only は妥当。QTFYのXJWへの帰属、MSS・PLAとの関係は既に profiles/qtfy の attribution.organizations へDOJ法廷文書(source--daily-f3e970d5f0009ebe4c40、confidence: high)を根拠として記録済みであり、政府・法執行機関による帰属として既存記述が本稿より上位の根拠に当たる。ELEX・Lexbellは二次分析による周辺企業であり、アクタープロファイルの帰属主体としては採用しない。",
+    "review_status": "rejected"
+  },
+  "unc6240|https://trezor.io/blog/news/recent-customer-data-exposed-in-shipping-provider-incident": {
+    "confidence": "low",
+    "review_notes": "不採用(実行主体でない・恐喝メール受領の言及のみ)。本稿はTrezorによる委託先ShipMonkの侵害に関する被害者側の開示であり、影響人数が約8万1,000人へ拡大したことを伝える。ShinyHuntersの出現は「ShipMonkの侵害ではサードパーティ分析基盤Metabaseの重大なSQLインジェクション脆弱性が悪用されたと通知され、同社にはShinyHuntersから恐喝メールも届いている。」の1文のみで、侵入の実行主体としてではなく恐喝メールの送信元として言及される。侵入自体はMetabaseのSQLインジェクション悪用とされ、Trezorも ShipMonk も実行主体を帰属していない。恐喝メールの受領は攻撃者側の主張であって侵入の帰属ではないため、活動レコードとして採用しない。activity_claim の scope-review-required は alias「ShinyHunters」の scope が overlapping であることに由来するが、本件は scope 以前に実行主体表現が成立していない。",
+    "review_status": "rejected"
+  },
+  "unc6240|https://blog.mathspace.co/mathspace-data-breach-what-happened-and-what-affected-users-should-know/": {
+    "confidence": "low",
+    "review_notes": "不採用(記事自身が帰属を否定)。本稿はMathspaceによる被害者側の開示で、自己ホスト型Metabaseの重大脆弱性を悪用され、2026-08-10から不正アクセス、2026-08-27に豪州データベースから約107万人分がダウンロードされたと説明する。根拠文は「記事では同時期のMetabase侵害群とShinyHuntersとの関連が紹介されるが、Mathspace侵害自体を同グループへ帰属してはいない。」であり、記事自身が本件の帰属を明示的に否定している。同時期に同一製品の脆弱性を悪用した侵害が複数あることは、運用者の同一性の根拠にならない(AGENT.md: 同じ記事への登場やIOC共有だけで関係を追加しない)。",
+    "review_status": "rejected"
+  },
+  "unc6240|https://www.bleepingcomputer.com/news/security/shinyhunters-hackers-claim-breach-of-florida-david-dmv-database/": {
+    "confidence": "low",
+    "review_notes": "不採用(犯行主張のみ・第三者確認なし。方針未決のため保留的不採用)。本稿はShinyHuntersがフロリダ州道路安全・自動車局の「DAVID」への侵入と20万件超の運転者記録の窃取を主張したと伝える。実行主体としての記述はあるが、帰属根拠は攻撃者自身の主張とスクリーンショットのみで、FLHSMVおよびFBIからの確認回答は記事時点で得られていない。本リポジトリでは犯行主張のみを根拠とする活動の扱い方針が未決であり、この未解決点は profiles/unc6240 の assessment.uncertainties および parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters(status: merged)へ記録済みである。方針が決まるまでは採用せず、決定後に本判断を再検討する。なお本レコードは2026-09-10のチェックで unc6240 へ alias「ShinyHunters」を登録したことにより新たに生成されたものであり、それ以前は unmatched_name_candidates として現れていた。",
+    "review_status": "rejected"
   }
 }
