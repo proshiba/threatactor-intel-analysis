@@ -413,11 +413,6 @@
     "review_notes": "原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
     "review_status": "approved"
   },
-  "apt38|https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md": {
-    "confidence": "high",
-    "review_notes": "Arctic Wolf記事(bluenoroff-uses-clickfix-…)のIOC付録。config.jsonのactivity_reference_aliasesで本体記事の活動へ集約し、出典は個別Sourceとして保持する。判断根拠は本体記事の決定を参照。",
-    "review_status": "approved"
-  },
   "apt38|https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/": {
     "capability_decisions": [
       {
@@ -659,9 +654,9 @@
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃",
     "review_status": "approved"
   },
-  "contagious-interview|https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/": {
-    "review_notes": "一致は IOC CSV の actor 列「Famous Chollima」経由で、Contagious Interview の alias scope は broader である。一次資料(ANY.RUN、2026-08-10公開)の原文を確認したところ、主題は偽求人面接によるマルウェア配布ではなく、北朝鮮ITワーカーによる不正就労そのものであった。原文は「One of the many divisions operating under the Lazarus umbrella is Famous Chollima. Their goal is simple: get hired by Western companies.」「Unlike a traditional intrusion, their objective is not to compromise an organization for a few hours or days, but to become a part of it.」と記載する。Contagious Interview プロファイルのalias 注記が「FAMOUS CHOLLIMA の定義は北朝鮮へ送金するための不正就労(IT worker)全般であり、偽求人面接によるマルウェア配布キャンペーンより広い」として scope を broader としている通り、本記事は broader 側にのみ該当する。Contagious Interview の活動としては不採用とし、既存の DPRK IT Worker Schemes プロファイル(activity--dprk-it-workers-ballena-azul-2026)へ記録した。IOC 9件のうち5件は AstrillVPN の出口ノードで商用VPNの共用インフラであるため、DPRK運用VPS 3件および INVESTSTROY-NET の1件と分離し、candidate として保留した。",
-    "review_status": "rejected"
+  "dprk-it-workers|https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(反映済みのため重複)。本記事は以前 Contagious Interview の候補として検知され、一次資料(ANY.RUN、2026-08-10公開)の原文確認により Contagious Interview の活動としては不採用とし、DPRK IT Worker Schemes プロファイルへ activity--dprk-it-workers-ballena-azul-2026 (偽DeFiスタートアップBallena Azul LTDへのITワーカー3名の採用と内部観測、出典 source--anyrun-it-workers-part-two-2026) として手動で反映済みである。原文は「One of the many divisions operating under the Lazarus umbrella is Famous Chollima. Their goal is simple: get hired by Western companies.」と記載し、主題は偽求人面接によるマルウェア配布ではなく北朝鮮ITワーカーによる不正就労そのものであるため、現在は検知側も本記事を dprk-it-workers へ割り当てる。旧キー contagious-interview|<同URL> は現在の入力に対応する活動を持たない孤立キーとなり build_review_queue.py が decision_issues を報告していたため、判断内容を本キーへ引き継いで解消した。既存活動と同一内容であり二重反映となるため、本レコードは採用しない。IOC 9件のうち5件は AstrillVPN の出口ノードで商用VPNの共用インフラであるため、DPRK運用VPS 3件および INVESTSTROY-NET の1件と分離して candidate 保留とした判断も引き継ぐ。"
   },
   "contagious-interview|https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique": {
     "confidence": "medium",
