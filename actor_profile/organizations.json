@@ -1,0 +1,429 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-14T15:00:00Z",
+  "purpose": "攻撃に関与する組織（民間企業、政府機関、軍部隊）を組織側から一意に管理する台帳の手入力部分。profiles/<slug>/actor-profile.json の attribution.organizations から機械的に導出できる関係は actor_profile/build_organizations.py が集約するため、ここには導出できない属性（organization_type、country、profile_slug、レジストリ固有の出典、未解決点）と、まだどのプロファイルからも参照されていない組織だけを持つ。両者を合成した完成物が actor_profile/organizations.json である。",
+  "id_policy": "organization_id は organization--<英数小文字とハイフン> とする。既存プロファイルには org--<name> 形式と organization--<name> 形式が混在しており、build_organizations.py が organization-- へ正規化したうえで元の表記を legacy_ids へ残す。profiles/ 側の表記統一は別途の移行作業とし、本レジストリはどちらの表記からも引けるようにしておく。",
+  "organization_type_vocabulary": {
+    "commercial-contractor": "攻撃能力を受託開発・提供する民間企業。顧客は政府機関であることが多い。i-Soon、南京鑫玖维などが該当する。",
+    "commercial-spyware-vendor": "商用スパイウェア・侵入ソフトウェアを販売する民間企業。NSO Group、Candiru、Cytrox、Intellexa などが該当する。",
+    "influence-operations-vendor": "影響工作・世論操作を商用サービスとして請け負う民間企業。侵入能力を伴わない場合がある。",
+    "digital-forensics-vendor": "端末解析・データ抽出製品を販売する民間企業。攻撃主体ではないが濫用の文脈で追跡対象となる。",
+    "government-agency": "政府機関（情報機関、省庁）。",
+    "military-unit": "軍または軍傘下の部隊・司令部。",
+    "unknown": "一次資料から組織の性質を確定できないもの。"
+  },
+  "status_vocabulary": {
+    "tracking": "一次資料で実体を確認し追跡している。",
+    "profiled": "当該組織自体が profiles/<slug>/actor-profile.json として存在する。profile_slug を参照。",
+    "planned": "調査対象として登録したが未調査。主張を一切含まない。記述を追加する前に一次資料の確認が必要。",
+    "refuted": "一次資料が関与を否定した。削除せず理由を残す。"
+  },
+  "counts": {
+    "organizations": 15,
+    "from_profiles": 8,
+    "curated_only": 7,
+    "with_profile": 5
+  },
+  "organizations": [
+    {
+      "organization_id": "organization--63rd-research-center",
+      "primary_name": "63rd Research Center",
+      "also_known_as": [],
+      "organization_type": "government-agency",
+      "country": "KP",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "org--63rd-research-center"
+      ],
+      "related_actors": [
+        {
+          "slug": "kimsuky",
+          "relation": "administratively-subordinate-to",
+          "confidence": "high",
+          "name_as_written": "63rd Research Center",
+          "evidence_refs": [
+            "source--dmarc-2024"
+          ],
+          "analyst_notes": "2024年共同勧告の記載。"
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [],
+      "analyst_notes": "既存ID表記は org--63rd-research-center。RGB傘下の組織だが、本レジストリは組織間の階層関係をまだ表現していない。"
+    },
+    {
+      "organization_id": "organization--bbs-bilisim",
+      "primary_name": "BBS Bilisim Teknolojileri",
+      "also_known_as": [],
+      "organization_type": "influence-operations-vendor",
+      "country": "TR",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [
+        "unknown-cluster--gtg-84005"
+      ],
+      "sources": [
+        {
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "published_at": "2026-09",
+          "source_type": "primary-report",
+          "note": "イスタンブール所在の技術企業として、商用の選挙操作プラットフォーム GTG-84005 と結び付けられている。2026-09-14 の日次チェックで原文を確認した。"
+        }
+      ],
+      "unresolved_questions": [
+        "Anthropic 単独の初報であり、独立した一次資料による裏付けがない。",
+        "マレーシア以外の顧客・作戦の有無は原文からは判断できない。",
+        "実在する企業であるため、記述は Anthropic の主張である旨を明示して扱う。断定的な評価を加えない。"
+      ],
+      "analyst_notes": "侵入型アクターではなく影響工作の請負事業者である。GTG-84005 は parse-daily/unknown-clusters.json 側に未帰属クラスタとして登録済みで、本レジストリはその企業実体側の記録である。"
+    },
+    {
+      "organization_id": "organization--candiru",
+      "primary_name": "Candiru",
+      "also_known_as": [],
+      "organization_type": "commercial-spyware-vendor",
+      "country": null,
+      "status": "profiled",
+      "profile_slug": "candiru",
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "profiles/candiru は雛形状態で実質的な記述がない。"
+      ],
+      "analyst_notes": "actor_types は private-sector-offensive。"
+    },
+    {
+      "organization_id": "organization--cellebrite",
+      "primary_name": "Cellebrite",
+      "also_known_as": [],
+      "organization_type": "digital-forensics-vendor",
+      "country": null,
+      "status": "profiled",
+      "profile_slug": "cellebrite",
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "profiles/cellebrite は雛形状態で実質的な記述がない。",
+        "actor_types が surveillance-vendor 単独で、他の商用ベンダー4社の private-sector-offensive と揃っていない。語彙統制の対象。"
+      ],
+      "analyst_notes": "端末解析製品ベンダーであり攻撃実行主体ではない。濫用の文脈で追跡する組織として登録する。"
+    },
+    {
+      "organization_id": "organization--cytrox",
+      "primary_name": "Cytrox",
+      "also_known_as": [],
+      "organization_type": "commercial-spyware-vendor",
+      "country": null,
+      "status": "profiled",
+      "profile_slug": "cytrox",
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "profiles/cytrox は雛形状態で実質的な記述がない。",
+        "Intellexa との企業間関係（Cytrox は Intellexa アライアンスの構成企業として報じられている）は本レジストリでは未記録。組織間関係の表現方法を決めてから追加する。"
+      ],
+      "analyst_notes": "actor_types は private-sector-offensive。"
+    },
+    {
+      "organization_id": "organization--dprk-rgb",
+      "primary_name": "Reconnaissance General Bureau",
+      "also_known_as": [
+        "RGB",
+        "偵察総局"
+      ],
+      "organization_type": "government-agency",
+      "country": "KP",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "org--dprk-rgb"
+      ],
+      "related_actors": [
+        {
+          "slug": "kimsuky",
+          "relation": "subordinate-to",
+          "confidence": "high",
+          "name_as_written": "Reconnaissance General Bureau",
+          "evidence_refs": [
+            "source--joint-csa-2023",
+            "source--dmarc-2024"
+          ],
+          "analyst_notes": ""
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "profiles/ 配下の北朝鮮系アクターは多数あるが、attribution.organizations で RGB を明示しているのは kimsuky のみである。他プロファイルの本文に記述があっても構造化されていないため、組織側からの逆引きは現状 kimsuky しか返らない。"
+      ],
+      "analyst_notes": "既存ID表記は org--dprk-rgb。"
+    },
+    {
+      "organization_id": "organization--i-soon",
+      "primary_name": "i-Soon",
+      "also_known_as": [
+        "安洵信息",
+        "Anxun Information Technology"
+      ],
+      "organization_type": "commercial-contractor",
+      "country": "CN",
+      "status": "planned",
+      "profile_slug": null,
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "未調査。本エントリは調査対象として枠を確保したものであり、関与・帰属に関するいかなる主張も含まない。",
+        "記述を追加する前に、一次資料（流出文書そのもの、政府・法執行機関の発表、直接観測したベンダー報告）を確認すること。二次報道の要約を根拠にしない。",
+        "profiles/ にも actor_profile/actor-census.json(714件) にも i-Soon および安洵信息の名称は存在しない。関与が確認された既存アクターとの対応付けは調査後に related_actors へ追加する。"
+      ],
+      "analyst_notes": "利用者が今後の調査対象として指定した組織。status: planned は「枠のみ確保、主張なし」を意味する。調査着手までこの状態を維持する。"
+    },
+    {
+      "organization_id": "organization--intellexa",
+      "primary_name": "Intellexa",
+      "also_known_as": [],
+      "organization_type": "commercial-spyware-vendor",
+      "country": null,
+      "status": "profiled",
+      "profile_slug": "intellexa",
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "profiles/intellexa は雛形状態で実質的な記述がない。"
+      ],
+      "analyst_notes": "actor_types は private-sector-offensive。"
+    },
+    {
+      "organization_id": "organization--irgc-cec",
+      "primary_name": "Islamic Revolutionary Guard Corps Cyber Electronic Command",
+      "also_known_as": [
+        "IRGC-CEC"
+      ],
+      "organization_type": "military-unit",
+      "country": "IR",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "organization--irgc-cec"
+      ],
+      "related_actors": [
+        {
+          "slug": "unc1549",
+          "relation": "米国政府の評価として活動の整合性が報告されている",
+          "confidence": "medium",
+          "name_as_written": "Islamic Revolutionary Guard Corps Cyber Electronic Command",
+          "evidence_refs": [
+            "source--unc1549--5ad26a22b1f5c730"
+          ],
+          "analyst_notes": "Dragos報告内の米国政府評価に基づく。組織による個別作戦の直接指揮を示すものではない。"
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [],
+      "analyst_notes": ""
+    },
+    {
+      "organization_id": "organization--nanjing-xinjiuwei",
+      "primary_name": "南京鑫玖维网络科技有限公司 (Nanjing Xinjiuwei Network Technology Company)",
+      "also_known_as": [
+        "XJW"
+      ],
+      "organization_type": "commercial-contractor",
+      "country": "CN",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "organization--nanjing-xinjiuwei"
+      ],
+      "related_actors": [
+        {
+          "slug": "qtfy",
+          "relation": "米司法省の法廷文書はQTFYを同社に雇用された(employed by)グループとして記述している",
+          "confidence": "high",
+          "name_as_written": "南京鑫玖维网络科技有限公司 (Nanjing Xinjiuwei Network Technology Company)",
+          "evidence_refs": [
+            "source--daily-f3e970d5f0009ebe4c40"
+          ],
+          "analyst_notes": "DOJプレスリリース本文の直接記述に基づく。Lumen報告は運用管理の通信が南京に割り当てられた中国電信・中国聯通のIP空間から観測されたと述べるにとどまり、企業名の特定は行っていない。"
+        }
+      ],
+      "related_clusters": [],
+      "sources": [
+        {
+          "publisher": "米司法省 (DOJ)",
+          "url": "https://media.defense.gov/2026/Aug/26/2003986916/-1/-1/0/JCSA_CHINA_QTFY_MALICIOUS_SYSTEMS.PDF",
+          "published_at": "2026-08-26",
+          "source_type": "government",
+          "note": "profiles/qtfy が source--daily-f3e970d5f0009ebe4c40 として参照する法廷文書・共同勧告。QTFYを同社に雇用されたグループとして記述する。"
+        }
+      ],
+      "unresolved_questions": [
+        "tech-memo 2026-09-10 収録の Natto Thoughts 分析は関連企業 ELEX の情報機関顧客リストと Lexbell の PLA 契約に言及するが、当該レコードは「新規活動ではなく企業エコシステム分析」として不採用となっており、ELEX・Lexbell は本レジストリに未登録である。企業間関係として登録すべきかは要判断。"
+      ],
+      "analyst_notes": "攻撃を実行する民間受託企業の典型例であり、i-Soon と同じ類型として扱う。"
+    },
+    {
+      "organization_id": "organization--nso-group",
+      "primary_name": "NSO Group",
+      "also_known_as": [],
+      "organization_type": "commercial-spyware-vendor",
+      "country": null,
+      "status": "profiled",
+      "profile_slug": "nso-group",
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [
+        "profiles/nso-group は actor_types のみが入った雛形で、description・attribution.countries・activities がいずれも空である。本レジストリの country を埋める前にプロファイル側の調査が必要。"
+      ],
+      "analyst_notes": "組織そのものが脅威アクターとして profiles/ に存在する類型。actor_types は private-sector-offensive。"
+    },
+    {
+      "organization_id": "organization--pla",
+      "primary_name": "中国人民解放軍 (People's Liberation Army)",
+      "also_known_as": [
+        "PLA"
+      ],
+      "organization_type": "military-unit",
+      "country": "CN",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "organization--pla"
+      ],
+      "related_actors": [
+        {
+          "slug": "qtfy",
+          "relation": "QTFYのハッキングサービスの有償顧客として法廷文書に記載されている",
+          "confidence": "high",
+          "name_as_written": "中国人民解放軍 (People's Liberation Army)",
+          "evidence_refs": [
+            "source--daily-f3e970d5f0009ebe4c40"
+          ],
+          "analyst_notes": "同上。顧客関係としての記載であり、指揮系統上の所属を示すものではない。"
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [],
+      "analyst_notes": "profiles/qtfy では顧客関係として記録されている。"
+    },
+    {
+      "organization_id": "organization--prc-mss",
+      "primary_name": "中華人民共和国 国家安全部 (Ministry of State Security)",
+      "also_known_as": [
+        "MSS"
+      ],
+      "organization_type": "government-agency",
+      "country": "CN",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "organization--prc-mss"
+      ],
+      "related_actors": [
+        {
+          "slug": "qtfy",
+          "relation": "QTFYのハッキングサービスの有償顧客として法廷文書に記載されている",
+          "confidence": "high",
+          "name_as_written": "中華人民共和国 国家安全部 (Ministry of State Security)",
+          "evidence_refs": [
+            "source--daily-f3e970d5f0009ebe4c40"
+          ],
+          "analyst_notes": "「QTFY offers computer hacking services to its paying customers, including the PRC's Ministry of State Security and the People's Liberation Army」との記述に基づく。顧客関係であり、QTFY自体がMSSの部隊であることを示すものではない。"
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [],
+      "analyst_notes": "profiles/qtfy では顧客関係として記録されている。顧客関係は指揮系統上の所属を意味しないため、関与アクターの帰属先として流用しない。"
+    },
+    {
+      "organization_id": "organization--syria-air-force-intelligence",
+      "primary_name": "Syrian Air Force Intelligence",
+      "also_known_as": [],
+      "organization_type": "government-agency",
+      "country": "SY",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "org--syria-air-force-intelligence"
+      ],
+      "related_actors": [
+        {
+          "slug": "apt-c-27",
+          "relation": "subsumed-into",
+          "confidence": "high",
+          "name_as_written": "Syrian Air Force Intelligence",
+          "evidence_refs": [
+            "source--meta-syria-hackers-2021"
+          ],
+          "analyst_notes": "Meta observed the 2021 activity and distinguishes the units associated with APT-C-27 and APT-C-37."
+        },
+        {
+          "slug": "apt-c-37",
+          "relation": "linked-to-separate-unit-within",
+          "confidence": "high",
+          "name_as_written": "Syrian Air Force Intelligence",
+          "evidence_refs": [
+            "source--meta-syria-hackers-2021"
+          ],
+          "analyst_notes": "Meta observed the 2021 activity and distinguishes the units associated with APT-C-27 and APT-C-37."
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [],
+      "analyst_notes": "既存ID表記は org--syria-air-force-intelligence。apt-c-27 と apt-c-37 の2アクターが同一組織を参照する既存の唯一の例であり、組織側から逆引きする必要性を示す事例である。"
+    },
+    {
+      "organization_id": "organization--taiwan-icefcom",
+      "primary_name": "Information Communication Electronic Force Command",
+      "also_known_as": [
+        "ICEFCOM"
+      ],
+      "organization_type": "military-unit",
+      "country": "TW",
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [
+        "org--taiwan-icefcom"
+      ],
+      "related_actors": [
+        {
+          "slug": "apt-c-01",
+          "relation": "claimed-subordinate-to",
+          "confidence": "medium",
+          "name_as_written": "Information Communication Electronic Force Command",
+          "evidence_refs": [
+            "source--cfr-taiwan-offensive-cyber-2022",
+            "source--apt-c-01--c225ad868f45dc7c"
+          ],
+          "analyst_notes": "This organizational link is asserted in Chinese public reporting and has not been publicly confirmed by Taiwan."
+        }
+      ],
+      "related_clusters": [],
+      "sources": [],
+      "unresolved_questions": [],
+      "analyst_notes": "既存ID表記は org--taiwan-icefcom。profiles/apt-c-01 の記録は中国側公開報道の主張であり台湾当局の確認は得られていない。confidence は medium。"
+    }
+  ],
+  "analyst_notes": "2026-09-14 に新設した。攻撃に関与する組織を、脅威アクターのプロファイル属性としてではなく組織側から一意に管理するための台帳である。新設の理由は3点ある。(1) 組織は複数のアクターに関与しうるが、attribution.organizations はアクター単位の属性であるため組織側からの逆引きができない。apt-c-27 と apt-c-37 が同一の Syrian Air Force Intelligence を参照する既存例があり、i-Soon のように流出資料が多数のクラスタへ結び付く組織では必須となる。(2) 組織IDの表記が org--<name> と organization--<name> に割れており、正規化の受け皿が必要だった。(3) BBS Bilisim Teknolojileri のように、企業そのものが実体でありながら侵入型アクターのプロファイル様式に収まらない対象が出てきた。本台帳は profiles/ 配下ではないため ui/build_data.py と ui/build_portal_index.py のどちらからも読まれずUIには出ない。UIへ出すには当該組織を profiles/<slug>/actor-profile.json として昇格させる必要があり、NSO Group、Candiru、Cytrox、Intellexa、Cellebrite が既にその形で存在する（いずれも雛形状態）。organizations.json は build_organizations.py が本ファイルと profiles/ から合成する生成物であり、直接編集しない。"
+}
