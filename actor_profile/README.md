@@ -22,6 +22,45 @@ profiles/<actor-slug>/
 自由記述は`free_text`、分析上の留保は`assessment`、各構造化項目固有の補足は
 `analyst_notes`に保存します。構造化できないことを理由に情報を捨てません。
 
+## 関与組織レジストリ
+
+攻撃に関与する組織（民間受託企業、商用スパイウェアベンダー、政府機関、軍部隊）は
+`actor_profile/organizations.json`で組織側から一意に管理します。
+
+```text
+actor_profile/
+├── curated-organizations.json  # 手入力部分（種別、国、profile_slug、固有の出典）
+├── build_organizations.py      # profiles/ の attribution.organizations を集約
+└── organizations.json          # 生成物。直接編集しない
+```
+
+```bash
+python3 actor_profile/build_organizations.py          # 差分確認
+python3 actor_profile/build_organizations.py --apply  # 書き出し
+```
+
+`attribution.organizations`はアクター単位の属性のため、組織側から関与アクターを
+逆引きできません。1組織が複数アクターに関与する例は既に存在し（`apt-c-27`と
+`apt-c-37`がいずれもSyrian Air Force Intelligenceを参照）、i-Soonのように流出資料が
+多数のクラスタへ結び付く対象では逆引きが必須になります。レジストリはこれを補います。
+
+組織の扱いは3通りに分かれます。
+
+- **組織自体が脅威アクター**: `profiles/<slug>/actor-profile.json`を作成し、
+  レジストリ側は`status: profiled`と`profile_slug`で参照します。NSO Group、Candiru、
+  Cytrox、Intellexa、Cellebriteが該当します（いずれも現状は雛形）。
+- **アクターの関与組織**: レジストリに`status: tracking`で登録し、関係は
+  各プロファイルの`attribution.organizations`側に残します。
+- **未調査の調査対象**: `status: planned`で枠だけ確保します。主張を一切含めず、
+  記述の追加前に一次資料を確認します。
+
+組織IDは`organization--<name>`へ正規化します。既存プロファイルには`org--<name>`形式が
+残っているため、`build_organizations.py`が正規化したうえで元の表記を`legacy_ids`へ
+保存します。`profiles/`側の表記統一は未実施です。
+
+本レジストリは`profiles/`配下ではないため、`ui/build_data.py`と
+`ui/build_portal_index.py`のどちらからも読まれずUIには出ません。
+
 ## 基本コマンド
 
 ```bash
