@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-14T00:00:00Z",
+  "generated_at": "2026-09-14T14:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -842,6 +842,49 @@
       "analyst_notes": "2026-09-02の日次チェックで検知。earth-lusca への誤一致レコードは不採用とし、実体側を本台帳へ登録した。"
     },
     {
+      "cluster_id": "unknown-cluster--gtg-10007",
+      "primary_name": "GTG-10007",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "tech-memo daily-news 2026-09-12「ハッカーがClaudeを悪用し、180万件のAndroidアプリからシークレットを抽出」。daily_check.py の unmatched_name_candidates に記事本文由来で「GTG-10007」が現れた。IOCを伴わないため IOC CSV の actor 列には現れず、本文抽出系統でのみ検知された。既存673プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-nexus-espionage",
+        "notes": "Anthropic は中国語話者の運用者による持続的な諜報活動として GTG-10007 を定義し、運用者は中国湖南省長沙市に所在する可能性が高いとする。既知の命名アクターへの対応付けは与えられていない。Anthropic 自身の GTG 指定子による未帰属クラスタである。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "title": "Anthropic 脅威インテリジェンスレポート 2026年9月",
+          "published_at": "2026-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "教育、小売、エネルギー、テクノロジー、医療、金融、製造、政府機関にまたがる約50組織。中東・欧州・東南アジアに重点。",
+          "malware": [
+            "独自マルウェア(名称の記載なし)"
+          ],
+          "tools": [
+            "Claude"
+          ],
+          "activity_period": "レポート全体の対象期間は2025年12月〜2026年8月だが、GTG-10007 固有の観測日・期間は原文に明示されていないため流用しない。未確定。",
+          "summary": "脆弱性研究とエクスプロイト開発を伴う持続的な諜報活動。Claude を自律的なワークフローとして用い、バイナリのリバースエンジニアリング、エクスプロイト開発、偵察、情報収集を実行した。タスクを並列のサブエージェントへ分解する「agent swarms」型の運用が特徴とされる。セキュリティ製品のリバースエンジニアリングも行った。",
+          "attribution_basis": "Anthropic 自身の GTG 指定子による未帰属クラスタ。言語と所在地の推定のみで、既知アクターへの帰属はない。",
+          "verified_by_analyst": "原文をHTTP 200で取得し、クラスタ定義、標的の業種・地域、Claude の悪用態様を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Anthropic 単独の初報であり昇格閾値は未達。",
+        "中国系の既知アクター(APT41、Silk Typhoon 等)との重複の有無は原文からは判断できない。",
+        "使用された独自マルウェアの名称・ファミリが原文に示されていない。"
+      ],
+      "analyst_notes": "IOCを伴わない記事のため IOC CSV の actor 列には現れず、本文抽出系統でのみ拾えた事例である。AGENT.md が unmatched_name_candidates を別建てで残す理由の実例として記録しておく。"
+    },
+    {
       "cluster_id": "unknown-cluster--gtg-50014-frkoo",
       "primary_name": "GTG-50014 (frkoo)",
       "aliases": [
@@ -898,6 +941,188 @@
         "同レポートが挙げる他の GTG-500xx 系クラスタ(GTG-50020、GTG-50021、GTG-50029)との関係は不明。"
       ],
       "analyst_notes": "IOC CSVのactor列「GTG-50014 (ShinyHunters affiliate)」は複合名であり、AGENT.mdの規定により自動承認しない。IOC 33観測は tech-memo CSV(20260912)側に保持されている。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gtg-50020",
+      "primary_name": "GTG-50020",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "tech-memo daily-news 2026-09-12。IOC CSV の actor 列「GTG-50020」8観測。既存673プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-cybercrime",
+        "notes": "Anthropic はロシア語話者の金銭目的アクターと位置付ける。既知の命名アクターへの対応付けは与えられていない。ホテル予約・フィンテック基盤への侵入を歴史的に行ってきた同一のtradecraftをAI産業へ転用したとされる。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "title": "Anthropic 脅威インテリジェンスレポート 2026年9月",
+          "published_at": "2026-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "従来はホテル予約プラットフォームとフィンテック企業。転用後は4日間で約30社のAI企業。",
+          "malware": [],
+          "tools": [
+            "Claude",
+            "独自のコンテナ化ペンテスト基盤",
+            "ローカルモデルゲートウェイ"
+          ],
+          "activity_period": "原文は本クラスタについて2026年5月〜6月を挙げている。ただし個別侵害の観測日は示されていない。",
+          "summary": "ホテル予約・フィンテック基盤への侵入で用いてきた手口をAI産業へ転用し、4日間で約30社のAI企業を標的とした。Claude を偵察、エクスプロイト用パイプラインの開発、不正アカウント量産の自動化、KYC回避手法の開発に用いた。独自のコンテナ化ペンテスト基盤とローカルモデルゲートウェイを運用した。",
+          "attribution_basis": "Anthropic 自身の GTG 指定子による未帰属クラスタ。",
+          "verified_by_analyst": "原文をHTTP 200で取得し、クラスタ定義、標的の転換、観測期間、Claude の悪用態様を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Anthropic 単独の初報であり昇格閾値は未達。",
+        "同レポートの他の GTG-500xx 系クラスタ(GTG-50014、GTG-50021、GTG-50029)との関係は原文に記載がない。",
+        "従来標的であったホテル予約・フィンテック侵入が既知の命名アクターの活動と重なるかは不明。"
+      ],
+      "analyst_notes": "AI企業そのものをサプライチェーンとして狙う事例として記録する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gtg-50021",
+      "primary_name": "GTG-50021",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "tech-memo daily-news 2026-09-12。IOC CSV の actor 列「GTG-50021」7観測。既存673プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-cybercrime",
+        "notes": "Anthropic はロシア語およびウクライナ語話者の集団と位置付ける。既知の命名アクターへの対応付けは与えられていない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "title": "Anthropic 脅威インテリジェンスレポート 2026年9月",
+          "published_at": "2026-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "安価な Claude 利用を求める利用者。",
+          "malware": [
+            "認証情報窃取ツール(名称の記載なし)"
+          ],
+          "tools": [
+            "Claude",
+            "不正なプロキシ基盤"
+          ],
+          "activity_period": "レポート全体の対象期間は2025年12月〜2026年8月だが、GTG-50021 固有の観測日・期間は原文に明示されていないため流用しない。未確定。",
+          "summary": "Claude への安価なアクセスを謳う偽のAIリセラー事業を運営し、利用者へ認証情報窃取ツールを導入させた。通信を競合モデルへプロキシしつつ、Anthropic の認証情報を窃取していた。",
+          "attribution_basis": "Anthropic 自身の GTG 指定子による未帰属クラスタ。",
+          "verified_by_analyst": "原文をHTTP 200で取得し、偽リセラー事業の記述と認証情報窃取の態様を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Anthropic 単独の初報であり昇格閾値は未達。",
+        "原文に観測期間の明示がなく、活動が継続中かは不明。",
+        "同レポートの他の GTG-500xx 系クラスタとの関係は原文に記載がない。"
+      ],
+      "analyst_notes": "被害者はAIサービス利用者であり、侵害対象は企業ネットワークではなく利用者の認証情報である。従来のアクタープロファイルの標的モデルに収まりにくい類型として記録する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gtg-50029",
+      "primary_name": "GTG-50029",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "tech-memo daily-news 2026-09-12。IOC CSV の actor 列「GTG-50029」22観測。既存673プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "hacktivist",
+        "notes": "Anthropic はフランス語話者の単独アクターと位置付ける。既知の命名アクターへの対応付けは与えられていない。単独の個人であるため、集団を前提とするプロファイル昇格の可否は別途検討を要する。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "title": "Anthropic 脅威インテリジェンスレポート 2026年9月",
+          "published_at": "2026-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "欧州の政党、メディア、シンクタンク、SaaS事業者。追跡対象42エンティティのうち14件へのアクセスを獲得した。",
+          "malware": [],
+          "tools": [
+            "Claude",
+            "独自のRust製スキャナ",
+            "fafsearch(晒し目的の検索基盤)",
+            "Webシェル",
+            "ブラウザ攻撃用C2"
+          ],
+          "activity_period": "原文は2026年春の活動とし、インフラの日付から2026年2月〜7月とされる。個別侵害の観測日は示されていない。",
+          "summary": "独自のRust製スキャナとAI支援のエクスプロイトにより、欧州の政党・メディア・シンクタンク・SaaS事業者を標的とした。Claude をエクスプロイトの開発・デバッグ、偵察エージェント、ツール作成、および個人情報を集約したドシエの生成に用いた。窃取情報を晒す目的の検索基盤 fafsearch を運営した。",
+          "attribution_basis": "Anthropic 自身の GTG 指定子による未帰属クラスタ。",
+          "verified_by_analyst": "原文をHTTP 200で取得し、単独アクターである旨、標的、観測期間、fafsearch を含むツール群を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Anthropic 単独の初報であり昇格閾値は未達。",
+        "単独の個人であり、既存台帳・プロファイルが前提とする集団型クラスタとは性質が異なる。昇格の可否は別途判断する。",
+        "欧州の既知ハクティビスト集団との関係は原文に記載がない。"
+      ],
+      "analyst_notes": "IOC観測22件は本レポート由来のクラスタとしては GTG-50014 に次いで多い。ドシエ生成と晒し基盤の運営という動機面はハクティビズムに整合するが、原文は動機を明示的に断定していない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--gtg-84005",
+      "primary_name": "GTG-84005",
+      "aliases": [
+        {
+          "name": "BBS Bilisim Teknolojileri",
+          "scope": "narrower",
+          "vendor": "Anthropic(基盤を提供するイスタンブール所在の企業名。運用主体そのものの別称ではないため narrower)"
+        }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "tech-memo daily-news 2026-09-12。IOC CSV の actor 列「GTG-84005 (BBS Bilisim Teknolojileri)」9観測。複合名のため自動一致せずunmatched_actor_values に留まる。既存673プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "commercial-influence-as-a-service",
+        "notes": "Anthropic は商用の選挙操作プラットフォームと位置付け、イスタンブール所在の技術企業 BBS Bilisim Teknolojileri と結び付けている。サイバー侵入ではなく影響工作の請負であり、侵入型アクターのプロファイル様式とは性質が異なる。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Anthropic",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "title": "Anthropic 脅威インテリジェンスレポート 2026年9月",
+          "published_at": "2026-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "マレーシア。222の連邦議会選挙区にわたる選挙区単位の有権者ターゲティング。",
+          "malware": [],
+          "tools": [
+            "Claude",
+            "独自ダッシュボード",
+            "偽アカウント管理基盤",
+            "合成ニュース生成パイプライン"
+          ],
+          "activity_period": "原文は2026年5月以降としている。個別の作戦実施日は示されていない。",
+          "summary": "「military-grade, AI-driven, real-time political operations ecosystem」を謳う商用の選挙操作プラットフォーム。Claude を有権者ターゲティングシステムの開発、検知回避ロジックを備えた偽アカウント網の構築、合成ニュースの書き換え、捏造ドシエの作成に用いた。",
+          "attribution_basis": "Anthropic 自身の GTG 指定子。実在企業 BBS Bilisim Teknolojileri との結び付けは Anthropic の記述による。",
+          "verified_by_analyst": "原文をHTTP 200で取得し、プラットフォームの定義、企業名、標的国と選挙区数、Claude の悪用態様を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Anthropic 単独の初報であり昇格閾値は未達。",
+        "影響工作の請負事業者であり侵入型アクターではない。actor-profile.json の様式へ昇格させるべきかは別途判断する。",
+        "BBS Bilisim Teknolojileri の他の顧客・作戦の有無は原文からは判断できない。"
+      ],
+      "analyst_notes": "実在する企業名を含むため、昇格や記述の際は当該企業への断定的な評価を避け、Anthropic の記述であることを明示して扱う。"
     },
     {
       "cluster_id": "unknown-cluster--hacking-cat",
@@ -2305,6 +2530,156 @@
       "analyst_notes": "2026-08-21 の日次チェックで、tech-memo 未収録の新規公開として一次情報源チェックのみで検知した。レビューキューには対応レコードが存在しない。同日公開の 2 本は同一クラスタを扱う連続記事であり、1 クラスタに 2 観測として記録する。"
     },
     {
+      "cluster_id": "unknown-cluster--uat-11823",
+      "primary_name": "UAT-11823",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "ROUTINE.md の一次情報源チェックで Cisco Talos の公開一覧をRSSで機械照合して検知した。tech-memo は本報告を 2026-09-11 に BleepingComputer の二次要約として収録しており、IOC CSV(daily-news/iocs/2026_07-09/20260911.csv)の actor 列に当該指定子が現れるが、既存673プロファイルに一致せず unmatched_actor_values に留まっていた。2026-09-12 の走査では Talos の確認範囲が 2026-09-08 までで本稿(2026-09-09公開)を取りこぼしている。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-nexus-espionage",
+        "notes": "Talos は「Talos attributes this cluster of activity to UAT-11823, an advanced persistent threat (APT) actor, with high confidence.」として高い確度でAPTと位置付ける。Sandworm との関係は「UAT-11823 overlaps in tooling with the Sandworm APT actor」というツール面の重複に留まり、展開された Cyclops Blink も「previously attributed to Sandworm」という過去の帰属の引用である。AGENT.md の「一次資料が組織関係・協力・部分重複・ツール共有を明示した場合に関係種別とスコープを分離して追加する」に従い、ツール重複としてのみ記録し profiles/sandworm へ統合しない。帰属国は Talos 自身が明示しておらず、IOC CSV の actor_attribute 列「russia」は tech-memo 側のAI生成値であり一次資料の記述ではない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/fmc-ongoing-exploitation/",
+          "title": "Active exploitation of Cisco Secure Firewall Management Center vulnerabilities",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "Cisco Secure Firewall Management Center(FMC)を運用する組織。Talos は被害業種・地域を特定していない。",
+          "malware": [
+            "Cyclops Blink"
+          ],
+          "tools": [
+            "Netcat リバースシェル"
+          ],
+          "exploited_vulnerabilities": [
+            "CVE-2026-20079",
+            "CVE-2026-20316"
+          ],
+          "activity_period": "Talos は個別侵害の観測日・観測期間を明示していない。IOC CSV の date 列 2026-09-09 は 公開日であり収集日であって攻撃観測日ではないため、AGENT.md の規定により活動期間へ流用しない。活動期間は未確定。",
+          "summary": "CVE-2026-20079(認証バイパス、CVSS 10.0)と CVE-2026-20316(静的認証情報、CVSS 5.3)を悪用して Cisco Secure FMC へ侵入し、Netcat ベースのリバースシェルを構築して設定情報を窃取したうえで ELF 実装のバックドア Cyclops Blink を展開した。",
+          "attribution_basis": "Talos 自身の未帰属クラスタ指定子。APT であることは high confidence だが、既知の命名アクターへの帰属は行われていない。",
+          "verified_by_analyst": "Talos 原文を取得し、high confidence の帰属文言、Sandworm とのツール重複の記述、悪用CVEとCyclops Blinkの展開を直接確認した。tech-memo の IOC CSV に C2 3件・スキャン元1件・Cyclops Blink の SHA256 1件が収録されていることも確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "sandworm",
+          "relation": "tooling-overlap-not-attributed",
+          "confidence": "low",
+          "basis": "「UAT-11823 overlaps in tooling with the Sandworm APT actor」および Cyclops Blink が「previously attributed to Sandworm, a Russian APT actor」であること。",
+          "notes": "ツール共有の明示であって同一クラスタの主張ではない。Cyclops Blink は過去に公開され解析済みのインプラントであり、第三者による再利用を否定できない。統合しない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Talos 単独の初報であり昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "Sandworm との重複がクラスタの同一性を示すのか、公開済みインプラントの再利用に留まるのかは原文からは確定できない。",
+        "標的の業種・地域および個別侵害の観測日が原文に示されていない。",
+        "同一CVEを悪用する UAT-12197・UAT-11988 との関係は原文に記載がない。"
+      ],
+      "analyst_notes": "IOC CSV の actor_attribute「russia」と malware「Cyclops Blink」はいずれも author「AI agent」・confidence「medium」のAI生成値である。帰属国は一次資料の記述ではないため、プロファイル昇格時に帰属国としてそのまま採用しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--uat-11988",
+      "primary_name": "UAT-11988",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "ROUTINE.md の一次情報源チェックで Cisco Talos の公開一覧をRSSで機械照合して検知した。tech-memo は本報告を 2026-09-11 に BleepingComputer の二次要約として収録しており、IOC CSV(daily-news/iocs/2026_07-09/20260911.csv)の actor 列に当該指定子が現れるが、既存673プロファイルに一致せず unmatched_actor_values に留まっていた。2026-09-12 の走査では Talos の確認範囲が 2026-09-08 までで本稿(2026-09-09公開)を取りこぼしている。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "ransomware-affiliate",
+        "notes": "Talos は「we assess with high confidence is a ransomware operator」とし、TTPが 「consistent with those of Qilin ransomware affiliates」であると述べる。Qilin アフィリエイトとの整合性の指摘であって、特定のアフィリエイトへの帰属ではない。Qilin 自体のプロファイルは既存673件に存在しないため、既存プロファイルへの寄せ付けは行わない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/fmc-ongoing-exploitation/",
+          "title": "Active exploitation of Cisco Secure Firewall Management Center vulnerabilities",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "Cisco Secure FMC を運用する組織および配下の内部ネットワーク・エンドポイント。Talos は被害業種・地域を特定していない。",
+          "malware": [
+            "Qilin"
+          ],
+          "tools": [
+            "SOCKS5 プロキシ",
+            "リバースSSHトンネル",
+            "impacket",
+            "Invoke-TheHash"
+          ],
+          "exploited_vulnerabilities": [
+            "CVE-2026-20316"
+          ],
+          "activity_period": "Talos は個別侵害の観測日・観測期間を明示していない。IOC CSV の date 列 2026-09-09 は 公開日であり収集日であって攻撃観測日ではないため、AGENT.md の規定により活動期間へ流用しない。活動期間は未確定。",
+          "summary": "CVE-2026-20316 の静的認証情報を用いて FMC へ侵入し、SOCKS5 プロキシとリバースSSHトンネルで足場を維持しながら内部ネットワークを偵察した。impacket と Invoke-TheHash で横展開と認証情報窃取を行い、エンドポイントへ Qilin ランサムウェアを展開した。",
+          "attribution_basis": "Talos 自身の未帰属クラスタ指定子。ランサムウェア運用者であることは high confidence、Qilin アフィリエイトとの関係はTTPの整合性に基づく評価。",
+          "verified_by_analyst": "Talos 原文を取得し、ransomware operator の評価文言、Qilin アフィリエイトとのTTP整合の記述、悪用CVEと使用ツールを直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Talos 単独の初報であり昇格閾値は未達。",
+        "Qilin アフィリエイトのいずれに該当するか、あるいは独立した運用者かは原文からは確定できない。",
+        "個別侵害の観測日および被害組織が原文に示されていない。"
+      ],
+      "analyst_notes": "Qilin はランサムウェア系統の名称であり、既存プロファイルに Qilin のアクターは存在しない。本クラスタを Qilin 本体と同一視しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--uat-12197",
+      "primary_name": "UAT-12197",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-14",
+      "last_seen": "2026-09-14",
+      "detected_via": "ROUTINE.md の一次情報源チェックで Cisco Talos の公開一覧をRSSで機械照合して検知した。tech-memo は本報告を 2026-09-11 に BleepingComputer の二次要約として収録しており、IOC CSV(daily-news/iocs/2026_07-09/20260911.csv)の actor 列に当該指定子が現れるが、既存673プロファイルに一致せず unmatched_actor_values に留まっていた。2026-09-12 の走査では Talos の確認範囲が 2026-09-08 までで本稿(2026-09-09公開)を取りこぼしている。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "unknown",
+        "notes": "Talos は本クラスタについて動機・帰属・確度のいずれも明示していない。CVE-2026-20079 の悪用に関与した3クラスタのひとつとして指定子のみを与えている。同一CVEを悪用する UAT-11823 との関係も原文に記載がない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-14",
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/fmc-ongoing-exploitation/",
+          "title": "Active exploitation of Cisco Secure Firewall Management Center vulnerabilities",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "Cisco Secure FMC を運用する組織。Talos は被害業種・地域を特定していない。",
+          "malware": [],
+          "tools": [
+            "JSP Webシェル(home.jsp)",
+            "cmd.jar(JAR形式のコマンド実行ツール)"
+          ],
+          "exploited_vulnerabilities": [
+            "CVE-2026-20079"
+          ],
+          "activity_period": "Talos は個別侵害の観測日・観測期間を明示していない。IOC CSV の date 列 2026-09-09 は 公開日であり収集日であって攻撃観測日ではないため、AGENT.md の規定により活動期間へ流用しない。活動期間は未確定。",
+          "summary": "CVE-2026-20079 を悪用して FMC 上に JSP ベースの Webシェルと悪意ある JAR (cmd.jar)を配置し、内部データベースから利用者の認証情報を窃取した。",
+          "attribution_basis": "Talos 自身の未帰属クラスタ指定子。帰属・動機の評価は与えられていない。",
+          "verified_by_analyst": "Talos 原文を取得し、本クラスタに帰属文言・確度表現・標的情報がいずれも与えられていないことを確認した。tech-memo の IOC CSV に home.jsp と cmd.jar の SHA256 が各1件収録されていることも確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Talos 単独の初報であり昇格閾値は未達。原文は帰属も動機も与えていない。",
+        "同一CVEを悪用する UAT-11823 と同一の活動群かどうかは原文からは判断できない。",
+        "標的・観測日・被害規模がいずれも原文に示されていない。"
+      ],
+      "analyst_notes": "3クラスタのうち最も情報が乏しい。IOCは2件のSHA256のみで、C2やインフラの記載がない。実体の輪郭が薄いため、追加の一次資料が出るまでは status: tracking に留める。"
+    },
+    {
       "cluster_id": "unknown-cluster--unc5792",
       "primary_name": "UNC5792",
       "aliases": [],
@@ -2782,7 +3157,19 @@
       "matched_term": "Vietnam",
       "article": "https://kinryu.sh/",
       "reason": "国名。一致箇所は記事URLのスラッグ「...vietnam-linked-apis-leak/」。記事はAPIS Elasticsearchの設定不備による大規模データ露出で、原文・要約とも「攻撃者の情報は不明」と明記し帰属できる主体が存在しない。追跡対象としない。"
+    },
+    {
+      "matched_profile": "anonymous",
+      "matched_term": "Anonymous",
+      "article": "https://www.wiz.io/blog/artifactory-under-attack-in-the-wild-exploitation-of-cve-2026-42016-cve-2026-4201",
+      "reason": "JFrog Artifactory の組み込み低権限ユーザー名 anonymous との衝突。根拠文は「The escalated token kept the anonymous username but carried admin authority」で、CVE-2026-42018 が漏洩させる内部 anonymous ユーザーのトークンを指す。Wiz は本侵害をいかなる命名アクターにも帰属しておらず、ハクティビスト集団 Anonymous とは無関係。追跡対象としない。"
+    },
+    {
+      "matched_profile": "earth-lusca",
+      "matched_term": "CHROMIUM",
+      "article": "https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou",
+      "reason": "ブラウザエンジン Chromium との衝突。根拠文は Sogou 入力メソッドの描画プロセス SGWebRender.exe が CEF(Chromium Embedded Framework)を用い、古くサンドボックス化されていない Chromium が弱点の一つであるという記述。本記事の実行主体は UNC3569 であり Earth Lusca ではない。追跡対象としない。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。 2026-09-10の日次チェックで6件を追加した。CL-CRI-1171(Unit 42 2026-09-09。PPI型感染サービス。tech-memo未収録)、Ted / curlRAT ツールキット(Rapid7 2026-09-04。運用者未命名。apt37/kimsukyのレコードは類似言及のみで不採用とし実体を台帳へ登録)、Storm-3121 と Storm-3032(Microsoft 2026-09-09。tech-memo未収録。既存の unc6240 / unc6671 の恐喝ブランド生態系と接続するが同一性は未確認)、UNC6508 と UNC5792(GTIG 2026-09-08)。unknown-cluster--shinyhunters は profiles/unc6240 へ統合し status を merged とした。GTIG原文が「UNC6240 (also known as ShinyHunters)」と明示しており、本台帳が提案していた新規プロファイル作成は実行すれば unc6240 の重複を生んでいた。既存プロファイルに一致しない名前を見つけた際は canonical name だけでなくベンダー別名の対応付けを一次資料で確認する。unknown-cluster--city-forum の related_profiles が実在しない slug「shinyhunters」を指していたため unc6240 へ修正した。Toy Ghouls へ第2観測(Securelist 2026-09-04)と別名 Feral Wolf を追加した。GTIG 2026-09-08 は tech-memo が BleepingComputer の二次要約で収録しており、当該要約は12アクターのうち UNC5792 のみに言及していた。二次要約経由の収録は原文のアクター名を取りこぼすため、一次情報源の公開一覧チェックを継続する。 2026-09-10の追加作業で UNC6508 と UNC5792 を利用者の判断により profiles/ へ昇格させ、台帳エントリは status: merged として保持した。昇格作業の過程で、当日の登録時には「単一ベンダーのみ」と評価していた2件が、いずれも追加の一次資料を持つことが判明した。UNC6508は actor_profile/reference/osint/misp-threat-actor.json 経由でGTIGの2026-06-15技術報告へ、UNC5792は profiles/unc4221 の既存活動が参照するFBI・CISA共同PSA(2026-06-26)へ辿り着いた。後者は政府・法執行機関による言及であり、単独で昇格閾値を満たす。新規クラスタを台帳へ登録する際は、当日の一次情報源だけでなく、actor_profile/reference/osint 配下の参照データセットと既存プロファイルの source 群も照合する。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。 2026-09-10の日次チェックで6件を追加した。CL-CRI-1171(Unit 42 2026-09-09。PPI型感染サービス。tech-memo未収録)、Ted / curlRAT ツールキット(Rapid7 2026-09-04。運用者未命名。apt37/kimsukyのレコードは類似言及のみで不採用とし実体を台帳へ登録)、Storm-3121 と Storm-3032(Microsoft 2026-09-09。tech-memo未収録。既存の unc6240 / unc6671 の恐喝ブランド生態系と接続するが同一性は未確認)、UNC6508 と UNC5792(GTIG 2026-09-08)。unknown-cluster--shinyhunters は profiles/unc6240 へ統合し status を merged とした。GTIG原文が「UNC6240 (also known as ShinyHunters)」と明示しており、本台帳が提案していた新規プロファイル作成は実行すれば unc6240 の重複を生んでいた。既存プロファイルに一致しない名前を見つけた際は canonical name だけでなくベンダー別名の対応付けを一次資料で確認する。unknown-cluster--city-forum の related_profiles が実在しない slug「shinyhunters」を指していたため unc6240 へ修正した。Toy Ghouls へ第2観測(Securelist 2026-09-04)と別名 Feral Wolf を追加した。GTIG 2026-09-08 は tech-memo が BleepingComputer の二次要約で収録しており、当該要約は12アクターのうち UNC5792 のみに言及していた。二次要約経由の収録は原文のアクター名を取りこぼすため、一次情報源の公開一覧チェックを継続する。 2026-09-10の追加作業で UNC6508 と UNC5792 を利用者の判断により profiles/ へ昇格させ、台帳エントリは status: merged として保持した。昇格作業の過程で、当日の登録時には「単一ベンダーのみ」と評価していた2件が、いずれも追加の一次資料を持つことが判明した。UNC6508は actor_profile/reference/osint/misp-threat-actor.json 経由でGTIGの2026-06-15技術報告へ、UNC5792は profiles/unc4221 の既存活動が参照するFBI・CISA共同PSA(2026-06-26)へ辿り着いた。後者は政府・法執行機関による言及であり、単独で昇格閾値を満たす。新規クラスタを台帳へ登録する際は、当日の一次情報源だけでなく、actor_profile/reference/osint 配下の参照データセットと既存プロファイルの source 群も照合する。 2026-09-14の日次チェックで、一次情報源チェックのRSS機械照合により Cisco Talos の2026-09-09公開「Active exploitation of Cisco Secure Firewall Management Center vulnerabilities」を検知し、UAT-11823・UAT-11988・UAT-12197 を追加した。本稿は tech-memo に2026-09-11の二次要約として収録されIOC CSV にも actor 値が存在したが、2026-09-12の走査では Talos の確認範囲が2026-09-08までで取りこぼしていた。一覧ページの目視では公開日の取りこぼしが生じるため、RSSによる機械照合を継続する。あわせて Anthropic 脅威インテリジェンスレポート2026年9月の残る未登録クラスタ(GTG-10007、GTG-50020、GTG-50021、GTG-50029、GTG-84005)を追加した。GTG-20006 は apt29 の活動として反映済み、GTG-50014 は2026-09-14に登録済みのため対象外とした。"
 }
