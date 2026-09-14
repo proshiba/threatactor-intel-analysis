@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-04T00:00:00Z",
+  "generated_at": "2026-09-14T00:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -798,6 +798,59 @@
       "analyst_notes": "2026-09-02の日次チェックで検知。earth-lusca への誤一致レコードは不採用とし、実体側を本台帳へ登録した。"
     },
     {
+      "cluster_id": "unknown-cluster--hacking-cat",
+      "primary_name": "Hacking Cat",
+      "aliases": [
+        {
+          "name": "Хакерский кiт",
+          "scope": "exact",
+          "vendor": "Kaspersky(原文の露語表記)"
+        }
+      ],
+      "status": "tracking",
+      "first_seen": "2026-09-13",
+      "last_seen": "2026-09-13",
+      "detected_via": "ROUTINE.md の一次情報源チェックで securelist.ru の公開一覧を確認して検知した。tech-memo daily-news には本報告が収録されておらず、securelist.com にも対応する英語版がない。既存673プロファイル、本台帳、excluded_name_collisions のいずれにも存在しない新規名であることを確認した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "hacktivist",
+        "notes": "Kaspersky は「Hacking Cat (Хакерский кiт) — группировка хактивистов, атакующая организации в Российской Федерации.」としてロシア連邦の組織を攻撃するハクティビスト集団と定義する。自称由来の名称で、番号付きAPT指定子への対応付けは与えられていない。インフラ重複から「Thor」との歴史的関連の可能性が示唆されるが、原文自身が推測に留めている。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-13",
+          "publisher": "Kaspersky (Securelist.ru)",
+          "url": "https://securelist.ru/tr/hacking-cat/117062/",
+          "title": "Распутывая клубок: разбираем инструментарий группировки Hacking Cat",
+          "published_at": "2026-09-11",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "ロシア連邦の組織。原文は「множество секторов экономики」(経済の多数のセクター)とし、個別業種は列挙していない。",
+          "malware": [
+            "Gorilla RAT",
+            "Monkey Ransomware",
+            "ClearWater",
+            "Nemo Wiper",
+            "Hydra Ransomware"
+          ],
+          "tools": [
+            "Cobalt Strike"
+          ],
+          "activity_period": "Telegramチャネルの開設は2024年2月。2025年夏頃までは改ざんとデータ漏洩の公開が中心で、以降は暗号化・破壊型へ移行したとする。解析対象は2026年中頃までの活動。個別侵害の観測日は原文に明示がないため、活動期間としては未確定。",
+          "summary": "Telegramチャネルで戦果を公開するハクティビスト集団。Go/WebSocket実装の Gorilla RAT を遠隔操作に用い、Rust・.NET・C++・Golang の4系統の亜種を持つ Monkey Ransomware で暗号化を行う。親ウクライナ系ハクティビストの間で広く使われる ClearWater、新規のデータ破壊ツール Nemo Wiper、Monkey に類似し試験段階とされる Hydra Ransomware も確認されている。2025年には Cobalt Strike を使用した。",
+          "attribution_basis": "Kaspersky は Gorilla RAT と Monkey Ransomware について「мы с высокой уверенностью относим именно к арсеналу Hacking Cat, поскольку оно встречалось только в атаках этой группировки」として、当該集団の攻撃でのみ観測されたことを根拠に高い確度で本集団の武器庫と位置付ける。",
+          "verified_by_analyst": "securelist.ru の公開一覧から原文へ到達し、集団の定義文、協力関係の記述、高確度の帰属文言、ツール群を直接確認した。securelist.com 側には対応する英語版が見当たらない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Kaspersky 単独の初報であり昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "原文は Cyber Anarchy Squad および Ukrainian Cyber Alliance との協力を明示する(「Hacking Cat активно сотрудничает с другими хактивистами, такими как Cyber Anarchy Squad и Ukrainian Cyber Alliance」)。協力関係であって同一クラスタの主張ではないため、いずれのプロファイルへも統合しない。両者のプロファイル有無と関係追加の要否は別途検討する。",
+        "インフラ重複による「Thor」との関連は原文が推測に留めており、追跡対象として残す。"
+      ],
+      "analyst_notes": "ROUTINE.md が指摘するとおり securelist.ru には securelist.com へ出ないロシア語圏アクターの記事が載る。本件はスケジュール側のプロンプトに securelist.ru が含まれていなかったために取りこぼしかけた事例であり、ROUTINE.md の一次情報源一覧に合わせてプロンプトを更新する必要がある。"
+    },
+    {
       "cluster_id": "unknown-cluster--hermes-openclaw-asia-gov",
       "primary_name": "Hermes／OpenClaw マルチエージェントAIフレームワークによる対アジア政府機関侵入活動の運用者（未命名）",
       "aliases": [],
@@ -1349,7 +1402,7 @@
       "aliases": [],
       "status": "tracking",
       "first_seen": "2026-07-30",
-      "last_seen": "2026-08-29",
+      "last_seen": "2026-09-13",
       "detected_via": "tech-memo daily-news 2026-07-30 / 2026-07-31 / 2026-08-25 / 2026-08-29",
       "attribution": {
         "state": "self-attributed",
@@ -1404,6 +1457,24 @@
           "activity_period": "ShinyHuntersは2026年8月21日〜25日の4日間で約1TBを窃取したと主張する。McKessonは2026年8月25日にインシデントを発見したとのみ記載し、攻撃期間を明示していない。8-Kの事象日・提出日を観測日へ流用しない。",
           "summary": "McKessonはサイバーセキュリティインシデントの発生を公表した。ShinyHuntersは複数従業員へのボイスフィッシングで Okta SSO を侵害し、Salesforce および Snowflake 環境へアクセスして約1TBを窃取、55,236,150ドルの身代金を要求したと BleepingComputer へ主張している。窃取データには氏名、住所、生年月日、SSN、患者ID、医療記録番号、処方・薬剤・疾病情報が含まれるとするが、BleepingComputerは独自検証していない。ビッシングに使用されたとされるドメインは mckesson[.]claims。",
           "verified_by_analyst": "SEC提出書類の原文を確認した(curlでHTTP 200を取得、アクセス日2026-08-31)。重要: 当該8-Kは Item 1.05(Material Cybersecurity Incidents)ではなく Item 7.01(Regulation FD Disclosure)による開示であり、「the company has not determined that the incident is material」と明記している。原文はインシデントの発生と調査が初期段階であることを述べるのみで、ShinyHuntersを含むいかなるアクターも名指ししておらず(本文に ShinyHunters の文字列なし)、サードパーティアプリケーションへの不正アクセス、データ流出、窃取規模、身代金要求のいずれにも言及していない。これらはすべてShinyHunters側の犯行主張とBleepingComputerの報道による。手口(ヘルプデスク／IT担当者を装うビッシング → IdP侵害 → SaaS環境からのデータ窃取 → 恐喝)は本クラスタの既存3観測と一致する。攻撃者の主張と被害者確認を分離して扱う。"
+        },
+        {
+          "observed_on": "2026-09-13",
+          "publisher": "BleepingComputer(一次情報はフロリダ州高速道路安全自動車局 FLHSMV の公式声明)",
+          "url": "https://www.bleepingcomputer.com/news/security/florida-confirms-dmv-database-breached-via-stolen-police-account/",
+          "title": "Florida confirms DMV database breached via stolen police account",
+          "published_at": "2026-09-11",
+          "source_type": "secondary-report",
+          "reliability": "secondary-with-official-statement",
+          "targets": "米フロリダ州の運転免許情報データベース DAVID。",
+          "malware": [],
+          "tools": [
+            "窃取した正規資格情報(Plant City警察署職員のアカウント)"
+          ],
+          "activity_period": "FLHSMV は「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」として2026-09-04の覚知を公表。ShinyHunters 側は2026-09-03からレコードの取得を開始したと主張する。侵害の実行期間は公式には示されていない。",
+          "summary": "FLHSMV は、Plant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものを悪用され、DAVIDデータベースが侵害されたことを公式に確認した。「The data breach was quickly mitigated and no further breach has occurred or is ongoing.」としている。",
+          "attribution_basis": "重要: FLHSMV は「international cybercriminal organization」とのみ述べ、ShinyHunters を名指ししていない。ShinyHunters の名は同集団自身が20万件超の運転免許記録を窃取したと主張したことに基づく自称であり、州当局はその主張も件数も確認していない(「FLHSMV has not disclosed how many records were accessed or stolen during the breach and has not confirmed ShinyHunters' claim that more than 200,000 records were taken」)。したがって本観測は政府機関による当該クラスタへの帰属言及には当たらず、昇格根拠として数えない。",
+          "verified_by_analyst": "原文をHTTP 200で取得し、FLHSMV声明の引用文、資格情報窃取の経路、ShinyHunters の主張が自称であって州の確認ではない点を直接確認した。"
         }
       ],
       "related_profiles": [
@@ -1415,9 +1486,10 @@
       ],
       "unresolved_questions": [
         "独立した観測4件(業界ISAC1件、被害企業3社)があり、台帳の昇格閾値(独立した一次資料2本以上)に到達している。プロファイル新規作成の判断を利用者へ提案する。ただし被害企業3社の開示はいずれもShinyHuntersを名指ししておらず、帰属は攻撃者の犯行主張と報道に依存する点を昇格時に明記する。",
-        "ReliaQuest観測は被害者側がShinyHuntersへ帰属していない。昇格時にこの1件を本クラスタの活動として数えるかは、犯行主張のみを根拠とする活動の扱いを決めてから判断する。"
+        "ReliaQuest観測は被害者側がShinyHuntersへ帰属していない。昇格時にこの1件を本クラスタの活動として数えるかは、犯行主張のみを根拠とする活動の扱いを決めてから判断する。",
+        "フロリダ州DAVID侵害について、FLHSMV は実行主体を「international cybercriminal organization」とのみ表現し ShinyHunters を名指ししていない。自称と公式確認を分離したまま追跡する。"
       ],
-      "analyst_notes": "命名済みの著名アクターにプロファイルが無いケース。"
+      "analyst_notes": "命名済みの著名アクターにプロファイルが無いケース。 2026-09-14の走査で、unmatched_name_candidates が本名称を2記事から抽出した。うち AdaptHealth の通知(adapthealth.com、2026-08-14付、2026-06-05の侵害)は原文を確認したところ脅威アクター名を一切記載しておらず、ShinyHunters の観測には当たらない誤検知であった。tech-memo 側の要約(「7月のサイバー攻撃で410万人」)も通知原文の記載(6月5日の侵害、人数の記載なし)と一致しないため、当該記事を本クラスタの根拠に用いない。"
     },
     {
       "cluster_id": "unknown-cluster--silver-dragon",
@@ -1677,6 +1749,66 @@
         "Chaosランサムウェアの運営者がBlackSuit/Royal（Conti系譜）の元メンバーと関連するとの分析があるが、これはRaaS運営者側の話であり、アフィリエイトであるSTAC4749の帰属とは分離して扱う必要がある。"
       ],
       "analyst_notes": "日次キューではBlackByteとMuddyWaterへの誤マッチとして現れたが、記事の実際の主体はこのクラスタである。両プロファイルへの反映は行わない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--ted-backdoor-curlrat-dprk",
+      "primary_name": "Ted backdoor / curlRAT を用いる北朝鮮系クラスタ",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-08",
+      "last_seen": "2026-09-08",
+      "detected_via": "tech-memo daily-news 2026-09-08「北朝鮮APT：TedバックドアとcurlRATが韓国のメディア・自動車業界を標的化」。レビューキューでは apt37(candidate)と kimsuky(attribution-uncertain)へ一致したが、いずれも実行主体としての記述がないため不採用とした。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-sponsored-espionage",
+        "notes": "Rapid7 の帰属は「attribution with medium confidence to DPRK APTs」であり、特定アクターへの帰属ではない。APT37 とは C2インフラの重複(ThreatFox と maltrail が当該C2群を APT37 に紐付けている)および Operation Code on Toast との手口類似(地域グループウェアの標的化、Naver静的コンテンツドメインの模倣、単純なXOR・換字暗号、water-hole型配布)が指摘されるに留まる。Kimsuky については「Either surface represents a plausible initial access vector consistent with documented Kimsuky tradecraft」として初期侵入手段の可能性の比較対象に挙がるだけである。インフラ重複と手口類似は帰属の確定ではないため、いずれのプロファイルへも寄せ付けない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-08",
+          "publisher": "Rapid7",
+          "url": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+          "title": "DPRK APTs: Ted Backdoor and curlRAT Target South Korean Media and Automotive Sectors",
+          "published_at": "2026-09-04",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "韓国のメディアおよび自動車業界。",
+          "malware": [
+            "Ted Backdoor",
+            "curlRAT"
+          ],
+          "tools": [
+            "SSH keylogger",
+            "トロイ化システムバイナリを配置するstager(crond、agetty、atd、polkitd)"
+          ],
+          "activity_period": "原文はキャンペーンが2025年前半に遡る可能性を述べ、VirusTotalへの最初のアップロードは2025年中頃とする。いずれも断定的な観測日ではないため活動期間としては未確定。公開日2026-09-04は観測日へ流用しない。",
+          "summary": "Ted Backdoor は HAProxy のプラグインとして動作し、HTTP通信の傍受、トラフィック記録、Cookie窃取、悪性スクリプト注入、コマンド実行を行う。curlRAT はリバースシェル、コマンド実行、ファイル操作、システム偵察、HAProxyの死活監視を備える。侵害したグループウェア基盤を経由する water-hole 型の配布を用いる。",
+          "attribution_basis": "Rapid7 の明示的な帰属は DPRK APTs への medium confidence のみ。根拠として韓国セクターの標的化、暗号方式、water-hole配布モデル、APT37に紐付くC2インフラを挙げる。",
+          "verified_by_analyst": "Rapid7原文(2026-09-04公開)をHTTP 200で取得し、帰属文言・APT37およびKimsukyへの言及箇所・マルウェア機能・標的を直接確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "apt37",
+          "relation": "infrastructure-overlap",
+          "confidence": "low",
+          "basis": "ThreatFox と maltrail が当該キャンペーンのハードコードC2群を APT37 に紐付けている点、および Operation Code on Toast との手口類似。",
+          "notes": "Rapid7 は APT37 を実行主体として記述していない。統合しない。"
+        },
+        {
+          "slug": "kimsuky",
+          "relation": "tradecraft-similarity",
+          "confidence": "low",
+          "basis": "初期侵入手段として Kimsuky の既知手口(外部公開メールサーバーのRCE悪用による韓国グループウェアベンダーの侵害)と整合する可能性を原文が指摘している。",
+          "notes": "可能性の指摘に留まり未確認であると原文自身が述べている。統合しない。"
+        }
+      ],
+      "unresolved_questions": [
+        "Rapid7 単独の初報であり昇格閾値は未達。",
+        "APT37 へのC2紐付けは第三者データベース(ThreatFox、maltrail)由来であり、一次資料による帰属ではない。",
+        "初期侵入経路が未確認であると原文が明記している。"
+      ],
+      "analyst_notes": "レビューキューの apt37 レコードと kimsuky レコードはいずれも不採用として review-decisions.json に記録済み。"
     },
     {
       "cluster_id": "unknown-cluster--terminalfix",
@@ -1957,6 +2089,169 @@
         "現時点で一次資料は Cisco Talos の同日公開 2 本のみであり、発行元が同一のためpromotion_policy の「独立した一次資料 2 本以上」を満たさない。政府・CERT・法執行機関の言及、または他ベンダーの独立報告が得られた時点でprofiles/uat-10147 への昇格を検討する。"
       ],
       "analyst_notes": "2026-08-21 の日次チェックで、tech-memo 未収録の新規公開として一次情報源チェックのみで検知した。レビューキューには対応レコードが存在しない。同日公開の 2 本は同一クラスタを扱う連続記事であり、1 クラスタに 2 観測として記録する。"
+    },
+    {
+      "cluster_id": "unknown-cluster--unk-doublecheck",
+      "primary_name": "UNK_DoubleCheck",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-11",
+      "last_seen": "2026-09-11",
+      "detected_via": "tech-memo daily-news 2026-09-11「新たな『BlueMoon』キットがWindowsとChromeのゼロデイ脆弱性を悪用」。daily_check.py の unmatched_actor_values に本クラスタ名が現れ、既存プロファイルにも本台帳にもexcluded_name_collisions にも存在しない新規名であることを確認した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-aligned-espionage",
+        "notes": "BlueMoon は CVE-2026-85046(Chrome V8 type confusion)、CVE-2026-87491(V8サンドボックス脱出)、CVE-2026-85880(Windowsカーネル権限昇格) を連鎖させる攻撃キットで、複数の国家連携クラスタが短期間に採用した。同キットを使う TA412(JungleBamboo / Violet Typhoon / APT31)は violet-typhoon プロファイルへ活動として反映済みである。キットの共有は運用者の同一性を意味しないため、本クラスタをTA412 へ寄せ付けない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-11",
+          "publisher": "Proofpoint",
+          "url": "https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "title": "Once in a BlueMoon: Multiple State-Aligned Threat Actors Rapidly Adopt Novel Exploit",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "ベトナムの製造業企業。",
+          "malware": [],
+          "tools": [
+            "BlueMoon exploit kit",
+            "curl(ローダー取得)"
+          ],
+          "activity_period": "原文は2026年9月2日以降の観測と記す。公開日2026-09-09は観測日へ流用しない。",
+          "summary": "BlueMoon エクスプロイトキットを用いてベトナムの製造業を標的とした諜報活動。",
+          "attribution_basis": "Proofpoint は本クラスタを既知の命名アクターへ帰属させておらず、UNK_ 接頭辞の未帰属クラスタとして扱っている。",
+          "verified_by_analyst": "Proofpoint原文(2026-09-09公開)をHTTP 200で取得し、クラスタ名・観測日・標的の記述を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Proofpoint 単独の初報であり昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "BlueMoon キットの入手経路(共通の供給元か、個別開発か)は原文に記載がない。"
+      ],
+      "analyst_notes": "レビューキューではレコードを生成していない。IOC CSVのactor列に本クラスタ名が現れるが、既存プロファイルへ一致しないため unmatched_actor_values に留まる。"
+    },
+    {
+      "cluster_id": "unknown-cluster--unk-latenight",
+      "primary_name": "UNK_LateNight",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-11",
+      "last_seen": "2026-09-11",
+      "detected_via": "tech-memo daily-news 2026-09-11「新たな『BlueMoon』キットがWindowsとChromeのゼロデイ脆弱性を悪用」。daily_check.py の unmatched_actor_values に本クラスタ名が現れ、既存プロファイルにも本台帳にもexcluded_name_collisions にも存在しない新規名であることを確認した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-aligned-espionage",
+        "notes": "ShadowPad の使用は中国語話者クラスタ間で広く共有されるため、帰属の根拠にはならない。BlueMoon は CVE-2026-85046(Chrome V8 type confusion)、CVE-2026-87491(V8サンドボックス脱出)、CVE-2026-85880(Windowsカーネル権限昇格) を連鎖させる攻撃キットで、複数の国家連携クラスタが短期間に採用した。同キットを使う TA412(JungleBamboo / Violet Typhoon / APT31)は violet-typhoon プロファイルへ活動として反映済みである。キットの共有は運用者の同一性を意味しないため、本クラスタをTA412 へ寄せ付けない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-11",
+          "publisher": "Proofpoint",
+          "url": "https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "title": "Once in a BlueMoon: Multiple State-Aligned Threat Actors Rapidly Adopt Novel Exploit",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "米国の複数の航空宇宙企業(防衛産業基盤)。",
+          "malware": [],
+          "tools": [
+            "BlueMoon exploit kit",
+            "curl(ローダー取得)"
+          ],
+          "activity_period": "原文は2026年9月2日以降の観測と記す。公開日2026-09-09は観測日へ流用しない。",
+          "summary": "BlueMoon エクスプロイトキットを用いて米航空宇宙・防衛産業を標的とし、侵害後に ShadowPad を展開した。ShadowPad は複数の中国語話者クラスタが共有するバックドアであり、単独では運用者を特定しない。",
+          "attribution_basis": "Proofpoint は本クラスタを既知の命名アクターへ帰属させておらず、UNK_ 接頭辞の未帰属クラスタとして扱っている。",
+          "verified_by_analyst": "Proofpoint原文(2026-09-09公開)をHTTP 200で取得し、クラスタ名・観測日・標的の記述を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Proofpoint 単独の初報であり昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "BlueMoon キットの入手経路(共通の供給元か、個別開発か)は原文に記載がない。"
+      ],
+      "analyst_notes": "レビューキューではレコードを生成していない。IOC CSVのactor列に本クラスタ名が現れるが、既存プロファイルへ一致しないため unmatched_actor_values に留まる。"
+    },
+    {
+      "cluster_id": "unknown-cluster--unk-quietracket",
+      "primary_name": "UNK_QuietRacket",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-11",
+      "last_seen": "2026-09-11",
+      "detected_via": "tech-memo daily-news 2026-09-11「新たな『BlueMoon』キットがWindowsとChromeのゼロデイ脆弱性を悪用」。daily_check.py の unmatched_actor_values に本クラスタ名が現れ、既存プロファイルにも本台帳にもexcluded_name_collisions にも存在しない新規名であることを確認した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-aligned-espionage",
+        "notes": "BlueMoon は CVE-2026-85046(Chrome V8 type confusion)、CVE-2026-87491(V8サンドボックス脱出)、CVE-2026-85880(Windowsカーネル権限昇格) を連鎖させる攻撃キットで、複数の国家連携クラスタが短期間に採用した。同キットを使う TA412(JungleBamboo / Violet Typhoon / APT31)は violet-typhoon プロファイルへ活動として反映済みである。キットの共有は運用者の同一性を意味しないため、本クラスタをTA412 へ寄せ付けない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-11",
+          "publisher": "Proofpoint",
+          "url": "https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "title": "Once in a BlueMoon: Multiple State-Aligned Threat Actors Rapidly Adopt Novel Exploit",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "インドネシアおよびシンガポールの政府機関、コンサルティング、金融セクター。",
+          "malware": [],
+          "tools": [
+            "BlueMoon exploit kit",
+            "curl(ローダー取得)"
+          ],
+          "activity_period": "原文は2026年9月3日以降の観測と記す。公開日2026-09-09は観測日へ流用しない。",
+          "summary": "BlueMoon エクスプロイトキットを用いて東南アジアの政府・コンサル・金融を標的とした諜報活動。",
+          "attribution_basis": "Proofpoint は本クラスタを既知の命名アクターへ帰属させておらず、UNK_ 接頭辞の未帰属クラスタとして扱っている。",
+          "verified_by_analyst": "Proofpoint原文(2026-09-09公開)をHTTP 200で取得し、クラスタ名・観測日・標的の記述を直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Proofpoint 単独の初報であり昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "BlueMoon キットの入手経路(共通の供給元か、個別開発か)は原文に記載がない。"
+      ],
+      "analyst_notes": "レビューキューではレコードを生成していない。IOC CSVのactor列に本クラスタ名が現れるが、既存プロファイルへ一致しないため unmatched_actor_values に留まる。"
+    },
+    {
+      "cluster_id": "unknown-cluster--uta0560",
+      "primary_name": "UTA0560",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-11",
+      "last_seen": "2026-09-11",
+      "detected_via": "tech-memo daily-news 2026-09-11「新たな『BlueMoon』キットがWindowsとChromeのゼロデイ脆弱性を悪用」。IOC CSVのactor列に9観測。Volexity の命名で、Proofpoint 側の記事には現れない。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "state-aligned-espionage",
+        "notes": "Volexity は中国系の複数アクターによる0-day連鎖として報告し、UTA0560 と JungleBamboo を別クラスタとして並記している。JungleBamboo については「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」と明記する一方、UTA0560 には既知アクターとの対応付けを与えていない。BlueMoon は CVE-2026-85046(Chrome V8 type confusion)、CVE-2026-87491(V8サンドボックス脱出)、CVE-2026-85880(Windowsカーネル権限昇格) を連鎖させる攻撃キットで、複数の国家連携クラスタが短期間に採用した。同キットを使う TA412(JungleBamboo / Violet Typhoon / APT31)は violet-typhoon プロファイルへ活動として反映済みである。キットの共有は運用者の同一性を意味しないため、本クラスタをTA412 へ寄せ付けない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-11",
+          "publisher": "Volexity",
+          "url": "https://www.volexity.com/blog/2026/09/09/mind-the-patch-gap-multiple-chinese-threat-actors-chain-0-day-exploits-in-chrome-windows/",
+          "title": "Mind the Patch Gap: Multiple Chinese Threat Actors Chain 0-day Exploits in Chrome, Windows",
+          "published_at": "2026-09-09",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "targets": "複数の非政府組織(NGO)。",
+          "malware": [],
+          "tools": [
+            "BlueMoon exploit kit"
+          ],
+          "activity_period": "原文は2026年9月1日の観測と記す。公開日2026-09-09は観測日へ流用しない。",
+          "summary": "Chrome と Windows の0-day 3件(CVE-2026-85046(Chrome V8 type confusion)、CVE-2026-87491(V8サンドボックス脱出)、CVE-2026-85880(Windowsカーネル権限昇格))を連鎖させ、複数のNGOを標的とした。",
+          "attribution_basis": "Volexity は UTA0560 を自社の未帰属クラスタ指定子として用い、既知の命名アクターへの対応付けを示していない。",
+          "verified_by_analyst": "Volexity原文(2026-09-09公開)をHTTP 200で取得し、クラスタ名・観測日・標的・CVEを直接確認した。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Volexity 単独の初報であり昇格閾値は未達。",
+        "Proofpoint が報告した UNK_LateNight / UNK_DoubleCheck / UNK_QuietRacket のいずれかと同一クラスタである可能性があるが、両ベンダーとも対応関係を示していない。"
+      ],
+      "analyst_notes": "tech-memo の要約は UTA0560 を攻撃主体の一覧へ含めているが、その根拠は Volexity 側の報告であり Proofpoint 記事には現れない。二次報道(BleepingComputer)が両者を統合して記述している点に留意する。"
     },
     {
       "cluster_id": "unknown-cluster--void-blizzard",

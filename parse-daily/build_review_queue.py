@@ -137,7 +137,19 @@ def add_capability_candidate(record: dict[str, Any], raw_value: str) -> None:
             existing.add(key)
 
 
-def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
+def apply_decision(
+    record: dict[str, Any],
+    decisions: dict[str, Any],
+    report_missing_targets: bool = True,
+) -> None:
+    """保存済みの判断をレコードへ適用する。
+
+    `report_missing_targets` が False の場合、判断の対象が入力に無いことを
+    decision_issues へ記録しない。走査窓を切ったビルドでは、同じ
+    activity_reference が窓の内外にまたがる日付で再出現したときに、窓外の
+    記事だけが寄与した候補が欠けるためである。これは判断の取り残しではなく
+    入力を絞ったことによる欠落なので、全履歴ビルドでのみ報告する。
+    """
     key = f"{record['actor']['slug']}|{record['activity']['activity_reference']}"
     decision = decisions.get(key)
     if not decision:
@@ -147,6 +159,13 @@ def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
             record[field] = decision[field]
     if "activity_period" in decision:
         record["activity_period"] = decision["activity_period"]
+    # 記事見出しが同じ資料内の別クラスタの作戦を指している場合、そのままでは
+    # 活動名が誤りになる。原文を確認したレビューでのみ表示名を差し替える。
+    # activity ID と record ID は activity_reference から生成するため影響しない。
+    overrides = decision.get("activity_overrides") or {}
+    for field in ("title", "summary"):
+        if field in overrides:
+            record["activity"][field] = overrides[field]
     capability_overrides = {
         item["name"].casefold(): item
         for item in decision.get("capability_decisions", [])
@@ -157,10 +176,11 @@ def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
         if override:
             item.update(override)
             matched_capabilities.add(item["name"].casefold())
-    for name in sorted(capability_overrides.keys() - matched_capabilities):
-        record.setdefault("decision_issues", []).append(
-            f"Capability判断の対象が入力に存在しない: {name}"
-        )
+    if report_missing_targets:
+        for name in sorted(capability_overrides.keys() - matched_capabilities):
+            record.setdefault("decision_issues", []).append(
+                f"Capability判断の対象が入力に存在しない: {name}"
+            )
     approved_artifacts = {
         (item["artifact_type"], item["value"])
         for item in decision.get("approved_artifacts", [])
@@ -173,10 +193,11 @@ def apply_decision(record: dict[str, Any], decisions: dict[str, Any]) -> None:
             matched_artifacts.add(artifact_key)
         else:
             item["review_status"] = item.get("review_status", "pending")
-    for artifact_type, value in sorted(approved_artifacts - matched_artifacts):
-        record.setdefault("decision_issues", []).append(
-            f"artifact判断の対象が入力に存在しない: {artifact_type}={value}"
-        )
+    if report_missing_targets:
+        for artifact_type, value in sorted(approved_artifacts - matched_artifacts):
+            record.setdefault("decision_issues", []).append(
+                f"artifact判断の対象が入力に存在しない: {artifact_type}={value}"
+            )
 
 
 def main() -> int:
@@ -337,18 +358,29 @@ def main() -> int:
             records[key]["iocs"].append(item)
             add_capability_candidate(records[key], row["malware"])
 
-    structured_keys = {
-        (record["actor"]["slug"], record["activity"]["activity_reference"].rstrip("/"))
+    records_by_reference = {
+        (record["actor"]["slug"], record["activity"]["activity_reference"].rstrip("/")): record
         for record in records.values()
     }
     for article in articles:
         for match in registry.mentions(article["title"], article["body"]):
-            primary = reference_aliases.get(article["primary_url"], article["primary_url"])
-            if (match.slug, primary.rstrip("/")) in structured_keys:
+            raw_primary = article["primary_url"]
+            primary = reference_aliases.get(raw_primary, raw_primary)
+            existing = records_by_reference.get((match.slug, primary.rstrip("/")))
+            if existing is not None:
+                # activity_reference_aliases で既存の活動へ集約した記事でも、
+                # その記事自身のURLは出典として残す。集約は活動をまとめるため
+                # のもので、資料を捨てるためのものではない。
+                if raw_primary and raw_primary != primary:
+                    aliased_source = source_entry(
+                        raw_primary, article["news_path"], "primary-report"
+                    )
+                    # 集約先の記事とは日付も見出しも異なるため、出典側に自分の値を持たせる
+                    aliased_source["news_date"] = article["news_date"]
+                    aliased_source["title"] = article["title"]
+                    add_unique_source(existing, aliased_source)
                 continue
             key = (match.slug, primary)
-            if key in records:
-                continue
             records[key] = {
                 "record_id": record_id(*key),
                 "review_status": "pending",
@@ -386,9 +418,11 @@ def main() -> int:
                     config,
                 ),
             }
+            records_by_reference[(match.slug, primary.rstrip("/"))] = records[key]
 
+    full_history = not args.since and not args.until
     for record in records.values():
-        apply_decision(record, decisions)
+        apply_decision(record, decisions, report_missing_targets=full_history)
         record["sources"].sort(key=lambda item: (item["url"], item["source_path"]))
         record["capability_decisions"].sort(key=lambda item: item["name"].casefold())
     record_decision_keys = {
@@ -400,7 +434,7 @@ def main() -> int:
             f"入力に対応する活動がないreview decision: {key}"
             for key in sorted(set(decisions) - record_decision_keys)
         ]
-        if not args.since and not args.until
+        if full_history
         else []
     )
 

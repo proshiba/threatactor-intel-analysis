@@ -2762,5 +2762,102 @@
     "confidence": "low",
     "review_notes": "不採用(実行主体は別クラスタ、帰属は未確定)。Check Point Research原文(JSON-LD datePublished 2026-09-02T10:16:16+00:00)をHTTP 200で取得して確認した。原文は実行主体を新規に命名しており、Key Pointsで「We dubbed this group Gambling Goblin: a Chinese-speaking cybercrime cluster connected to a previously documented group, Earth Berberoka」、Attribution and links to prior work節で「We assess with medium-to-high confidence that Gambling Goblin is tied to Earth Berberoka - a Chinese-speaking threat cluster first documented by Trend Micro in 2022」と述べる。すなわちEarth Berberokaは本活動の実行主体ではなく、medium-to-high confidenceの結び付き評価の相手方である。CPRが挙げる根拠は(1)oRATが2022年にEarth Berberokaへ紐付けられており、解析した亜種が同じ orat/cmd/agent コードベースとREST形式のオペレータルートを共有すること、(2)回収したAlphaAgent検体の1つが、Earth Berberokaへ従来帰属されていたツール群と同一アーカイブでアップロードされていたこと、(3)Trend Microが報告したEarth Berberokaのドメイン github[.]wiki と同型の github[.]la / gitlab[.]bet というlookalikeドメイン、および同一のAmazon ASN(AS16509)、の3点であり、いずれも重複の指摘である。AGENT.mdは類似・重複・後継・一般的な関連を活動レコードへ含めないと定めているため、Earth Berberokaの活動としては採用しない。実行主体のGambling Goblinは既存プロファイルに存在しない名称であり、単一ベンダー初報で昇格閾値未達のため parse-daily/unknown-clusters.json の unknown-cluster--gambling-goblin へ登録し、related_profiles へ earth-berberoka を linked-medium-to-high として記録した。なお earth-berberoka プロファイルの既存alias「Gambling Puppet」と本件の「Gambling Goblin」は別名称であり、混同しないこと。",
     "review_status": "rejected"
+  },
+  "violet-typhoon|https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      }
+    },
+    "review_notes": "採用。独立した一次資料2本が当該アクターを実行主体として明記している。Proofpoint(2026-09-09公開)は「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」と記載し、Volexity(2026-09-09公開)も「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」として同一クラスターを指し、2026-09-01の初回メールと2026-09-02の2回目の標的型キャンペーンを観測している。Violet Typhoon は本プロファイルの canonical name であり、APT31 は scope: overlapping の別名として登録済みで、2025-11-24 の APT31 活動を既に採用した前例と整合する。BlueMoon は Chrome の CVE-2026-85046(V8 type confusion)、CVE-2026-87491(V8 sandbox escape)、Windows の CVE-2026-85880(カーネル権限昇格)を連鎖させる攻撃キットで、成功後は Chrome の親プロセスへコードを注入し curl でローダーを取得する。標的は Proofpoint によれば米国のNGO、鉱業、現物商品取引企業。活動期間は両資料が明示した観測日のみを採り、記事公開日および tech-memo 日次ファイルの日付は流用していない。同キットを用いた UNK_LateNight(米航空宇宙・防衛、ShadowPad)、UNK_DoubleCheck(ベトナム製造業)、UNK_QuietRacket(インドネシア・シンガポールの政府/コンサル/金融)、UTA0560(NGO、Volexity観測)は本アクターへの帰属が示されていないため取り込まず、unknown-clusters.json へ記録した。記事見出しはキット側を主題としているが、当該アクターが参加したキャンペーンそのものを指しており別クラスターの作戦ではないため activity_overrides は用いていない。"
+  },
+  "apt29|https://www.anthropic.com/threat-intelligence-report-september-2026": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_overrides": {
+      "title": "GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+      "summary": "Anthropic は、Claude を悪用して侵入の全段階を自動化した諜報クラスター GTG-20006 を確認・阻止した。原文は「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と記載する。Windows・Android・iOS 向けマルウェアの開発と配備、フィッシング、永続化、C2、情報窃取にClaude を利用し、ウクライナの政府・軍・外交機関を中心に20以上の組織を標的とした。ドローン製造業者へのサプライチェーン窃取、ホテルWi-Fi侵害(CaptiveCrunch)による資格情報窃取、ヘッドレスブラウザを用いた WhatsApp アカウント乗っ取り、30万件超の国民ID記録と企業登記情報の持ち出し、外交・政府機関に対する Microsoft 365 トークン窃取が報告されている。"
+    },
+    "review_notes": "採用。一次資料(Anthropic 脅威インテリジェンスレポート 2026-09)の原文を確認した。GTG-20006 について「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と明記されている。Midnight Blizzard は本プロファイルの alias(vendor: MITRE ATT&CK, scope: overlapping)であり、断定的な同一視ではないため confidence は medium とする。帰属表現も独自の高確度判定ではなく公開報告との整合を述べるものである。活動期間: 原文には GTG-20006 固有の観測日・期間の記載がない。レポート全体の対象期間である2025年12月〜2026年8月は本クラスター固有の観測期間として明示されていないため活動期間へ流用せず、unknown とし tech-memo 日次ファイルの日付を reported_at へ分離する。activity_overrides: tech-memo の記事見出しと要約は同一レポート内の別クラスター(ShinyHunters 関連の frkoo による180万件のAndroid APK からのシークレット探索)を主題としており、そのまま活動名にすると APT29 の活動として誤りになる。原文を確認したうえで当該クラスターの記述へ差し替えた。activity ID と record ID は activity_reference から生成されるため影響しない。IOC: 原文のIOC付録を確認し、ドメイン33件・IP14件・ハッシュ2件の計49件がいずれも攻撃者管理のインフラとして掲載されていることを確認した(ms365-live[.]com、m365-owa[.]com、owa-ms365[.]com 等のMicrosoft 365 を騙るフィッシング基盤を含む)。IOC CSV の actor 列は複合値 「GTG-20006 (Midnight Blizzard)」であり自動一致しないため、BlueDelta(APT28)および Tortoiseshell 複合値(UNC1549)の前例に従い config.json の actor_value_aliases へ対応付けた。競合の保持: 本文の CaptiveCrunch は、既に APT29 プロファイルへ Storm-2945 帰属の活動(2026-07-31 reported_at)として適用済みである。Anthropic は同手法を GTG-20006 の活動として記述しており帰属が競合するため、既存活動を上書きせず claim-audit.json へ両論とスコープを残す。"
+  },
+  "kimsuky|https://asec.ahnlab.com/jp/95367/": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "review_notes": "採用。一次資料(AhnLab ASEC、2026-09-11公開)の原文を確認した。記事見出しと本文とも Kimsuky を当該攻撃の実行主体として扱い、「アンラボは、こうしたコードおよび動作上の類似性を基に、今回の悪性 LNK についても Kimsuky グループと関連していると判断した」と記載する。帰属根拠がコードおよび動作上の類似性であり独自の高確度判定ではないため confidence は medium とする。手口は「[ロイヤルホテルソウル] 水産食材の購入依頼書.LNK」という購買依頼書を装った悪性LNKの配布で、termsvc.ps1、poc.js、ping_.js を用い、C2に Backblaze B2 API、外部IP確認に api.ipify.org を利用する。標的は韓国国内の利用者。同じ AhnLab ASEC の Kimsuky 報告は asec.ahnlab.com/en/93151/ および asec.ahnlab.com/jp/94655/ で既に採用済みであり、判断基準は同一である。活動期間: 原文に観測日の明示がないため unknown とし、tech-memo 日次ファイルの日付を reported_at へ分離する。IOCはtech-memoのIOC CSVに当該記事由来の行がないため取り込まない。"
+  },
+  "apt37|https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(実行主体として確定していない)。Rapid7原文(2026-09-04公開)を確認した。帰属は「attribution with medium confidence to DPRK APTs」であり、特定アクターへの帰属ではない。APT37 への言及は「the list of C2s hardcoded is associated to APT37 by ThreatFox and maltrail」および Operation Code on Toast との手口類似の指摘に留まり、本キャンペーンの実行主体としては記述されていない。AGENT.md の通り類似・重複・一般的な関連は採用しない。Ted backdoor(HAProxyプラグイン)と curlRAT を用いる本クラスターは未帰属として unknown-clusters.json へ status: tracking で記録した。単一ベンダーの初報であり昇格はしない。"
+  },
+  "kimsuky|https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(実行主体でない)。Rapid7原文(2026-09-04公開)を確認した。Kimsuky への言及は「Either surface represents a plausible initial access vector consistent with documented Kimsuky tradecraft」および過去にKimsukyが韓国のグループウェアベンダーを侵害した事例の紹介に限られ、初期侵入手段の可能性を示す比較対象としてのみ現れる。本キャンペーンの実行主体としての記述はない。帰属は DPRK APTs への medium confidence に留まるため、未帰属クラスターとして台帳へ記録した。"
+  },
+  "apt38|https://www.sekoia.com/blog/beyond-lazarus-organization-of-dprk-cyber-capabilities": {
+    "review_status": "rejected",
+    "review_notes": "不採用(新規活動なし)。Sekoia原文(2026-09-07公開)を確認した。本稿は北朝鮮のサイバー組織構造の分析であり、RGB→GRIB、MSS→NIA の改称と旧Lazarus傘下6クラスターへの細分化を整理したものである。TEMP.Hermit はサブクラスター分解図の中に一度現れるだけで、個別の分析記述はない。新規の侵入活動も観測日も記載されておらず(言及される事案は Sony Pictures 2014、Bangladesh Bank 2016、WannaCry 2017、Bybit 2025 といった既知の過去事例)、活動として採用できる主張がない。一致語 TEMP.Hermit は scope: overlapping であり、この点でも自動採用の対象ではない。"
+  },
+  "contagious-interview|https://www.sekoia.com/blog/beyond-lazarus-organization-of-dprk-cyber-capabilities": {
+    "review_status": "rejected",
+    "review_notes": "不採用(新規活動なし)。Sekoia原文(2026-09-07公開)を確認した。上記のとおり組織構造の分析であり新規の侵入活動も観測日もない。Contagious Interview への言及は、偽ITワーカーと攻撃チームがVPN出口ノードを共用する点(「fake IT workers and offensive teams often share the same VPN exit nodes」)に関するもので、IOC説明中の重複指摘に留まる。実行主体としての新規活動の記述ではない。"
+  },
+  "qtfy|https://media.defense.gov/2026/Aug/26/2003986916/-1/-1/0/JCSA_CHINA_QTFY_MALICIOUS_SYSTEMS.PDF": {
+    "review_status": "rejected",
+    "review_notes": "不採用(新規活動なし)。tech-memo が記事本体として収録しているのは Natto Thoughts の分析(nattothoughts.com/p/widening-the-circle-of-chinese-hacker、2026-09-09公開、著者 Eugenio Benincasa)で、原文を確認した。内容は QTFY を取り巻く企業エコシステム(ELEX の情報機関顧客リスト、Lexbell のPLA関連契約、XJW との関係)の分析であり、新規の侵入活動も観測日も記載されていない。QTFY の活動記述は「Since at least 2018, QTFY has allegedly developed malicious tooling, traded malware and exploits within freelance hacking networks, established and maintained an obfuscation botnet, and targeted a wide range of U.S. government and critical-infrastructure networks.」という概括で、2026年8月のFBI・NSA・CNMF共同勧告の再掲である。当該勧告はQTFYプロファイル作成時に反映済み。一次ソースとして記載された media.defense.gov のPDFはHTTP 403で取得できず、勧告本文の直接確認はできていない(未取得の一次ソースとして記録する)。ELEX・Lexbell との関係は活動ではなく組織関係の情報であり、一次資料が組織関係を明示した場合の関係追加として別途検討する。"
+  },
+  "unc1549|https://blog.polyswarm.io/the-job-offer-has-claws-mirage-kitten-deploys-noderabbit-and-pollcat": {
+    "review_status": "rejected",
+    "review_notes": "不採用(二次まとめかつ既反映)。PolySwarm原文(2026-09-08公開)を確認した。本稿は Kaspersky の調査をまとめた二次記事で、「Kaspersky discovered the activity」と明記し Securelist のmirage-kitten-new-backdoors-noderabbit-pollcat/121244/ へリンクしている。その Securelist 報告は既に承認済みで、NodeRabbit と PollCat を含めて UNC1549 プロファイルへ適用済みである。OSINT_RULES.md の優先順位に従い原典側を正とし、本レコードは重複として採用しない。"
+  },
+  "tortoiseshell|https://blog.polyswarm.io/the-job-offer-has-claws-mirage-kitten-deploys-noderabbit-and-pollcat": {
+    "review_status": "rejected",
+    "review_notes": "不採用(実行主体でない)。PolySwarm原文(2026-09-08公開)を確認した。本稿の実行主体は「Iran-linked threat actor Mirage Kitten is targeting software engineers through fake recruiter personas and trojanized coding challenges.」のとおり Mirage Kitten(UNC1549)であり、Tortoiseshell への言及は「Tortoiseshell has been publicly linked to Iran's Islamic Revolutionary Guard Corps (IRGC).」の1文のみで、IRGCとの関連を説明する文脈に限られる。本キャンペーンの実行主体ではない。"
+  },
+  "akira|https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html": {
+    "review_status": "rejected",
+    "review_notes": "不採用(過去・一般言及)。重要インフラを標的とする犯罪経済の俯瞰記事であり、Akira は「金銭目的ではAkira、Qilin、Playなどが主要勢力」という主要勢力の列挙として現れるだけである。特定の攻撃活動、観測日、被害組織のいずれも Akira に結び付けて記述されておらず、活動として採用できる主張がない。"
+  },
+  "earth-lusca|https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_01882797386.html": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突)。一致語 CHROMIUM は Chromium ベースのブラウザという製品名であり、アクターの別名としての出現ではない。本文の該当箇所は「Microsoft Edge、Brave、Opera、VivaldiなどChromiumベースのブラウザも、修正版が提供され次第更新する」である。unknown-clusters.json の excluded_name_collisions に earth-lusca / CHROMIUM として登録済みの名称衝突であり、再検討しない。"
+  },
+  "earth-lusca|https://socradar.io/blog/peep-browser-rat-chrome-extension/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突)。一致語 CHROMIUM は「Chromium向け侵害後ツール PEEP」という製品名としての出現であり、アクターの別名ではない。excluded_name_collisions 登録済みの名称衝突。"
+  },
+  "hellsing-apt|https://hunt.io/blog/chinese-operator-secflow-claude-qwen-deepseek-asia": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突)。一致語 Asia は地名であり、アクター Hellsing APT の別名としての出現ではない。excluded_name_collisions に hellsing-apt / Asia として登録済みの名称衝突であり、再検討しない。"
+  },
+  "hellsing-apt|https://nkinternet.com/2026/09/06/new-russia-north-korea-road-checkpoint-takes-shape-at-khasan/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突かつサイバー活動の記事でない)。一致語 Asia は Radio Free Asia という報道機関名の一部としての出現である。記事自体もロシア・北朝鮮間の道路検問所建設に関する内容で、サイバー活動を扱っていない。excluded_name_collisions 登録済みの名称衝突。"
+  },
+  "oceanlotus|https://kinryu.sh/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突)。一致語 Vietnam は国名であり、アクターの別名としての出現ではない。記事はベトナム関連APIの設定不備による旅行者記録の露出であり、攻撃者による侵害活動ではなく、OceanLotus を実行主体とする記述もない。"
+  },
+  "anonymous|https://www.wiz.io/blog/artifactory-under-attack-in-the-wild-exploitation-of-cve-2026-42016-cve-2026-4201": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突)。一致語 Anonymous は JFrog Artifactory の内部 anonymous ユーザーという製品仕様上のアカウント名としての出現である。該当箇所は「攻撃者は内部anonymousユーザーのJWTを取得後、その低権限トークンを管理者権限へ昇格させ」であり、攻撃者側の名称ではない。"
+  },
+  "blackbyte|https://www.justice.gov/opa/pr/ukrainian-national-sentenced-four-years-prison-wire-fraud-conspiracy-connection-conti": {
+    "review_status": "rejected",
+    "review_notes": "不採用(法執行記事かつ実行主体でない)。米司法省の量刑発表であり、対象は Conti のメンバー個人である。BlackByte は「Contiは2022年に活動を停止した後、BlackCat、Black Basta、Hive、BlackByte、Karakurt など複数のランサムウェア集団へ分裂した」という分裂先の列挙として現れるだけで、本件の実行主体ではない。一致語 Conti は scope: overlapping であり、この点でも自動採用の対象ではない。"
+  },
+  "karakurt|https://www.justice.gov/opa/pr/ukrainian-national-sentenced-four-years-prison-wire-fraud-conspiracy-connection-conti": {
+    "review_status": "rejected",
+    "review_notes": "不採用(法執行記事かつ実行主体でない)。上記と同じ量刑発表で、Karakurt は Conti の分裂先の列挙として現れるだけである。本件の実行主体ではなく、Karakurt 自身の新規活動の記述もない。"
   }
 }

@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "3d865240024e66da6c6a3434f7c1a50d7f1c7783",
-  "last_scanned_date": "2026-09-04",
+  "last_scanned_commit": "88493d0e556961643cd3ca0771db6cb92f3a329a",
+  "last_scanned_date": "2026-09-12",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -2710,6 +2710,245 @@
           "url": "https://www.sophos.com/en-gb/blog/ungentlemanly-behavior-insights-into-a-ransomware-operation",
           "latest_relevant_publication": "unknown",
           "result": "定例の7情報源には含まれないが、IOC CSVのactor列「GOLD SHERWOOD」36観測が未一致となったため追跡確認した。原文の直接取得はSophos側がcurlを遮断するため不成立(HTTP/2 INTERNAL_ERROR、HTTP/1.1 Empty reply、リトライ4回)。WebFetchによる全文取得で2回照会し、「Counter Threat Unit (CTU) researchers identified a consistent post-exploitation playbook used in The Gentlemen ransomware-as-a-service (RaaS) scheme, operated by a threat group that CTU researchers track as GOLD SHERWOOD」「GOLD SHERWOOD began operating The Gentlemen RaaS scheme in mid-2025」およびRAMPフォーラムの90/10アフィリエイト募集の各文言が両回で一致することを確認した。unknown-cluster--gold-sherwood として登録。ページ上に公開日表示を確認できず published_at は unknown とした。要約経由の取得であるため被害件数等の数値と個別IOCは台帳へ採用していない。次回、取得手段を変えて原文を再確認すること。"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-09-14T11:30:00Z",
+      "window": {
+        "since": "2026-09-02",
+        "until": "2026-09-12"
+      },
+      "source_commit": "88493d0e556961643cd3ca0771db6cb92f3a329a",
+      "statistics": {
+        "news_files": 10,
+        "articles": 100,
+        "review_records": 25,
+        "approved_records": 5,
+        "rejected_records": 20,
+        "pending_records": 0,
+        "applied_records": 3,
+        "unmatched_actor_values": 522,
+        "materialization_window": "前回走査(2026-09-04)以降が滞留していたため、既知良好境界である 2026-09-02 を起点に走査した。daily_check.py --run-scan が2つの原因で中断していたため、まず両方を解消した。(1) review-decisions.json の孤立キー2件(apt38の付録URL、contagious-interview の any.run 記事)を削除・再キー化し、全履歴ビルドの decision_issues を0にした。(2) build_review_queue.py の apply_decision が、走査窓を切ったビルドでも「判断対象が入力に存在しない」を decision_issues として報告していた。最上位の孤立決定チェックには --since/--until 時の除外があるが、capability/artifact の対象欠落チェックには同じ除外がなかった。同一 activity_reference が窓の内外にまたがる日付で再出現すると誤検知になるため(UNC1549/Mirage Kitten: 09-02の記事が NodeRabbit と PollCat を個別に寄与し、09-10のIOC CSVは複合値のみを寄与する)、全履歴ビルドでのみ報告するよう修正し回帰テストを追加した。新規レコード19件を主張単位でレビューし、採用3件・不採用16件とした。既存の承認済み2件(uac-0099、unc1549)は再適用で内容一致を確認した。queue validator と --check-applied はいずれも error 0 / warning 0。テストは parse-daily 21件と actor_profile 54件の計75件が pass。enrich_targeting_scope は291プロファイルで updated_at だけを更新したため、差分を読める状態に保つ目的で実質変更のないファイルは戻した。"
+      },
+      "applied": [
+        {
+          "actor": "violet-typhoon",
+          "name": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用",
+          "source": "https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "decision": "採用(confidence: high)。独立した一次資料2本が実行主体として明記。Proofpoint(2026-09-09)は「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」、Volexity(2026-09-09)は「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」と記載する。活動期間は両資料の明示観測日のみを採用(first 2026-08-28 / last 2026-09-02)。CVE-2026-85046、CVE-2026-87491、CVE-2026-85880 の連鎖。標的は米NGO・鉱業・現物商品取引。"
+        },
+        {
+          "actor": "apt29",
+          "name": "GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+          "source": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "decision": "採用(confidence: medium)。原文は「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と記載。Midnight Blizzard は scope: overlapping の別名であり断定的同一視ではないため medium とした。原文にGTG-20006固有の観測日がないため活動期間は unknown とし、レポート全体の対象期間(2025-12〜2026-08)は流用していない。IOC付録を原文で確認し、攻撃者管理のドメイン33件・IP14件・ハッシュ2件の計49件を取り込んだ。IOC CSVの複合値「GTG-20006 (Midnight Blizzard)」は config.json の actor_value_aliases で対応付けた(BlueDelta/APT28、Tortoiseshell複合値/UNC1549 の前例に従う)。tech-memoの記事見出しと要約は同一レポート内の別クラスタ(ShinyHunters関連frkooのAndroid APK探索)を主題としていたため、新設した activity_overrides で当該クラスタの記述へ差し替えた。CaptiveCrunch の帰属が Storm-2945(Microsoft)と競合するため、既存活動を上書きせずclaim-audit.json へ unresolved として両論を記録した。"
+        },
+        {
+          "actor": "kimsuky",
+          "name": "またKimsuky？今度は水産食材の購入依頼書を装う",
+          "source": "https://asec.ahnlab.com/jp/95367/",
+          "decision": "採用(confidence: medium)。AhnLab ASEC原文(2026-09-11)は「アンラボは、こうしたコードおよび動作上の類似性を基に、今回の悪性 LNK についても Kimsuky グループと関連していると判断した」と記載する。類似性ベースの帰属であるため medium。水産食材の購入依頼書を装う悪性LNK(termsvc.ps1、poc.js、ping_.js、C2に Backblaze B2 API)で韓国国内の利用者を標的とする。観測日の明示がないため活動期間は unknown。"
+        },
+        {
+          "actor": "uac-0099",
+          "name": "ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害(既存活動への一次資料追加)",
+          "source": "https://www.welivesecurity.com/en/business-security/guardbreaker-derailing-ai-assisted-malware-analysis-code-comment/",
+          "decision": "既存活動 activity--daily-68b4eb5487818e6546f8 への出典追加。従来この活動の出典は ESET Research のXスレッドのみだったが、同一キャンペーンの技術記事(WeLiveSecurity、2026-09-10公開)が公開された。新規活動として二重に作らず、config.json の activity_reference_aliases で既存活動へ集約した。原文は「the Russia-aligned group UAC-0099 used in the early stages of an attack against a target in Ukraine」と実行主体を明記し、GuardBreaker をプロンプトインジェクションの単純な試みと説明し、本グループ専用のローダー MATCHBOIL を挙げている。集約した記事の出典が集約先の日付・見出しを引き継いでしまう不具合を修正し、出典側に自分の news_date と title を持たせるようにした。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "apt37",
+          "name": "北朝鮮APT：TedバックドアとcurlRATが韓国のメディア・自動車業界を標的化",
+          "source": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+          "decision": "不採用(実行主体として確定していない)。帰属は「attribution with medium confidence to DPRK APTs」で特定アクターへの帰属ではない。APT37への言及はThreatFox/maltrailによるC2紐付けとOperation Code on Toastとの手口類似に留まる。未帰属クラスタとして台帳へ記録。"
+        },
+        {
+          "actor": "kimsuky",
+          "name": "北朝鮮APT：TedバックドアとcurlRATが韓国のメディア・自動車業界を標的化",
+          "source": "https://www.rapid7.com/blog/post/tr-dprk-apts-ted-backdoor-curlrat-target-south-korean-media-automotive-sectors/",
+          "decision": "不採用(実行主体でない)。「Either surface represents a plausible initial access vector consistent with documented Kimsuky tradecraft」として初期侵入手段の可能性の比較対象に挙がるのみ。"
+        },
+        {
+          "actor": "apt38",
+          "name": "Lazarusを超えて：北朝鮮のサイバー能力の組織構造",
+          "source": "https://www.sekoia.com/blog/beyond-lazarus-organization-of-dprk-cyber-capabilities",
+          "decision": "不採用(新規活動なし)。組織構造の分析であり新規侵入活動も観測日もない。TEMP.Hermitはサブクラスター分解図に一度現れるのみ。一致語のscopeもoverlapping。"
+        },
+        {
+          "actor": "contagious-interview",
+          "name": "Lazarusを超えて：北朝鮮のサイバー能力の組織構造",
+          "source": "https://www.sekoia.com/blog/beyond-lazarus-organization-of-dprk-cyber-capabilities",
+          "decision": "不採用(新規活動なし)。言及は「fake IT workers and offensive teams often share the same VPN exit nodes」というIOC説明中の重複指摘に留まる。"
+        },
+        {
+          "actor": "qtfy",
+          "name": "中国ハッカー集団QTFYの関係網を拡大して捉える",
+          "source": "https://www.nattothoughts.com/p/widening-the-circle-of-chinese-hacker",
+          "decision": "不採用(新規活動なし)。ELEX・Lexbell・XJWの企業エコシステム分析。QTFYの活動記述は2026年8月のFBI・NSA・CNMF共同勧告の再掲で、当該勧告はプロファイル作成時に反映済み。一次ソースとして記載された media.defense.gov のPDFはHTTP 403で取得できず未確認。"
+        },
+        {
+          "actor": "unc1549",
+          "name": "「その求人には爪がある」：Mirage KittenがNodeRabbitとPollCatを展開",
+          "source": "https://blog.polyswarm.io/the-job-offer-has-claws-mirage-kitten-deploys-noderabbit-and-pollcat",
+          "decision": "不採用(二次まとめかつ既反映)。「Kaspersky discovered the activity」と明記しSecurelist原典へリンクする二次記事。原典は承認・適用済み。"
+        },
+        {
+          "actor": "tortoiseshell",
+          "name": "「その求人には爪がある」：Mirage KittenがNodeRabbitとPollCatを展開",
+          "source": "https://blog.polyswarm.io/the-job-offer-has-claws-mirage-kitten-deploys-noderabbit-and-pollcat",
+          "decision": "不採用(実行主体でない)。実行主体はMirage Kitten。Tortoiseshellへの言及は「Tortoiseshell has been publicly linked to Iran's Islamic Revolutionary Guard Corps (IRGC).」の1文のみ。"
+        },
+        {
+          "actor": "akira",
+          "name": "産業インフラを標的とする犯罪経済の全体像",
+          "source": "https://www.trendmicro.com/ja_jp/research/26/i/mapping-the-criminal-economy-targeting-critical-infrastructure.html",
+          "decision": "不採用(過去・一般言及)。主要勢力の列挙に並ぶのみで、特定の攻撃活動も観測日も被害組織もAkiraに結び付いていない。"
+        },
+        {
+          "actor": "blackbyte",
+          "name": "Contiランサムウェア集団のメンバーに禁錮4年の判決",
+          "source": "https://www.justice.gov/opa/pr/ukrainian-national-sentenced-four-years-prison-wire-fraud-conspiracy-connection-conti",
+          "decision": "不採用(法執行記事かつ実行主体でない)。Conti分裂先の列挙として現れるのみ。一致語Contiのscopeもoverlapping。"
+        },
+        {
+          "actor": "karakurt",
+          "name": "Contiランサムウェア集団のメンバーに禁錮4年の判決",
+          "source": "https://www.justice.gov/opa/pr/ukrainian-national-sentenced-four-years-prison-wire-fraud-conspiracy-connection-conti",
+          "decision": "不採用(法執行記事かつ実行主体でない)。Conti分裂先の列挙として現れるのみ。"
+        },
+        {
+          "actor": "earth-lusca",
+          "name": "Chromeゼロデイ警告 / PEEPブラウザRAT(2件)",
+          "source": "https://socradar.io/blog/peep-browser-rat-chrome-extension/",
+          "decision": "不採用(名称衝突)。一致語CHROMIUMはChromiumベースのブラウザという製品名。excluded_name_collisions 登録済み。"
+        },
+        {
+          "actor": "hellsing-apt",
+          "name": "AIエージェント悪用記事 / ハサン検問所記事(2件)",
+          "source": "https://nkinternet.com/2026/09/06/new-russia-north-korea-road-checkpoint-takes-shape-at-khasan/",
+          "decision": "不採用(名称衝突)。一致語Asiaは地名およびRadio Free Asiaという報道機関名の一部。excluded_name_collisions 登録済み。"
+        },
+        {
+          "actor": "oceanlotus",
+          "name": "ベトナム関連APIの漏えい",
+          "source": "https://kinryu.sh/",
+          "decision": "不採用(名称衝突)。一致語Vietnamは国名。設定不備による露出であり攻撃活動ではない。"
+        },
+        {
+          "actor": "anonymous",
+          "name": "Artifactoryの脆弱性連鎖悪用",
+          "source": "https://www.wiz.io/blog/artifactory-under-attack-in-the-wild-exploitation-of-cve-2026-42016-cve-2026-4201",
+          "decision": "不採用(名称衝突)。一致語AnonymousはJFrog Artifactoryの内部anonymousユーザーという製品仕様上のアカウント名。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--unk-latenight",
+          "action": "added",
+          "basis": "Proofpoint(2026-09-09)。BlueMoon利用、米航空宇宙・防衛産業、ShadowPad展開、2026-09-02以降。単独初報のため昇格せず。"
+        },
+        {
+          "cluster_id": "unknown-cluster--unk-doublecheck",
+          "action": "added",
+          "basis": "Proofpoint(2026-09-09)。BlueMoon利用、ベトナム製造業、2026-09-02以降。"
+        },
+        {
+          "cluster_id": "unknown-cluster--unk-quietracket",
+          "action": "added",
+          "basis": "Proofpoint(2026-09-09)。BlueMoon利用、インドネシア・シンガポールの政府/コンサル/金融、2026-09-03以降。"
+        },
+        {
+          "cluster_id": "unknown-cluster--uta0560",
+          "action": "added",
+          "basis": "Volexity(2026-09-09)。BlueMoon利用、NGO標的、2026-09-01観測。Proofpoint記事には現れずVolexity命名。"
+        },
+        {
+          "cluster_id": "unknown-cluster--ted-backdoor-curlrat-dprk",
+          "action": "added",
+          "basis": "Rapid7(2026-09-04)。DPRK APTsへのmedium confidence帰属に留まるため、apt37・kimsukyへ寄せずrelated_profilesとして重複・類似のみ記録。"
+        },
+        {
+          "cluster_id": "unknown-cluster--hacking-cat",
+          "action": "added",
+          "basis": "Kaspersky securelist.ru(2026-09-11)。tech-memo未収載かつsecurelist.comにも英語版なし。ROUTINE.mdの一次情報源チェックで検知。ロシア連邦の組織を標的とするハクティビスト集団。Gorilla RAT、Monkey Ransomware、Nemo Wiper等。"
+        },
+        {
+          "cluster_id": "unknown-cluster--shinyhunters",
+          "action": "observation-added",
+          "basis": "フロリダ州DAVID侵害(FLHSMV公式確認、2026-09-04覚知)。ただしFLHSMVは実行主体を「international cybercriminal organization」とのみ表現しShinyHuntersを名指ししていないため、政府機関による帰属言及としては数えない。AdaptHealthの通知は原文にアクター名の記載がなく誤検知として除外。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        "BigBear 2.0 (General Boss)(48観測)",
+        "GTG-50014 (ShinyHunters affiliate)(33観測)",
+        "GTG-50029(22観測)",
+        "Storm-3121 / Storm-3032(15観測)",
+        "GTG-84005 (BBS Bilisim Teknolojileri)(9観測)",
+        "GTG-50020(8観測)",
+        "GTG-50021(7観測)",
+        "UAT-11823(5観測)",
+        "UAT-12197(2観測)",
+        "UAT-11988(1観測)"
+      ],
+      "extraction_rule_changes": [
+        "build_review_queue.py: apply_decision の capability/artifact 対象欠落チェックを全履歴ビルド限定にした(report_missing_targets)。窓付きビルドでの誤検知を解消。回帰テスト2件を追加。",
+        "build_review_queue.py: review-decisions.json の activity_overrides(title / summary)を追加。1本の資料が複数クラスタを扱い見出しが当該アクター以外の作戦を指す場合のみ使用する。activity ID と record ID は activity_reference 由来のため影響しない。AGENT.md 手順5に規定を追記。",
+        "build_review_queue.py / daily_materializer.py: activity_reference_aliases で既存活動へ集約した記事の出典が捨てられていた不具合を修正し、記事自身のURLをSourceとして保持するようにした。あわせて集約した出典が集約先の news_date と title を引き継いでしまう問題を直し、出典側の値を優先するようにした。",
+        "config.json: actor_value_aliases に「GTG-20006 (Midnight Blizzard)」→ APT29 を追加。activity_reference_aliases に WeLiveSecurity の GuardBreaker 記事 → ESET Research の X スレッドを追加。"
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-10",
+          "result": "該当なし。9月の公開5件(AI悪用のBEC対策、Defenderでの検知、クラウドWebアプリの脅威マトリクス、passkeyを装う社会工学、ASCII smuggling)はいずれも命名アクター(Typhoon/Blizzard/Sleet/Sandstorm)を含まず、特定の侵入キャンペーンの報告でもない。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "未取得",
+          "result": "該当なし(既反映)。一覧に現れる命名アクター記事はBREEZE COMET、UNC6671、ロシア関連の分散クラスタ(Going with the Flow(s))で、いずれも既にプロファイルまたは台帳へ反映済み。一覧ページに公開日が表示されないため、日付は個別記事を開かないと確認できない。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-10",
+          "result": "該当なし。9月の公開3件(SPIFFE/SPIREのID詐称、PPIネットワークのマルウェア解析、中南米を狙うAIツール悪用)はいずれもCL-STA/CL-CRI等の命名クラスタを含まない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-09-08",
+          "result": "該当なし(追跡アクターなし)。ClickFix(Google Visualization APIをC2に悪用)とClearFake(WebDAV経由でAmatera stealer、ZigCryptoStealer、NetSupport Managerを配布)はいずれも未帰属キャンペーン。ClearFakeは unknown-cluster--wordlistloader-clearfake の観測追記候補として残す。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-09-10",
+          "result": "一覧ページの表示は2026-07-14までで止まっており、9月の公開が出てこない。UAC-0099のGuardBreaker記事(2026-09-10)は /en/business-security/ 配下にあり本一覧には現れない。ESETは研究記事がeset-research以外のセクションへ載ることがあるため、この一覧だけでは取りこぼす。当該記事はtech-memo経由で検知し既存活動へ出典として反映した。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "該当なし。9月の新規公開なし。最新は「The Model Is the Malware」(2026-08-13)。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-08-31",
+          "result": "該当なし(既反映)。9月の新規公開なし。最新の命名アクター記事はMirage Kitten(NodeRabbit/PollCat、2026-08-31)で、UNC1549へ反映済み。"
+        },
+        {
+          "publisher": "Kaspersky Securelist(ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-09-11",
+          "result": "新規1件、台帳へ追加。「Распутывая клубок: разбираем инструментарий группировки Hacking Cat」(2026-09-11)はtech-memoに収録されておらず、securelist.comにも対応する英語版がない。ロシア連邦の組織を攻撃するハクティビスト集団Hacking Catの武器庫(Gorilla RAT、Monkey Ransomware、ClearWater、Nemo Wiper、Hydra Ransomware)を解析した一次報告で、既存673プロファイルにも台帳にも存在しない新規名だった。unknown-cluster--hacking-cat として status: tracking で追加した。ROUTINE.mdが警告するとおり .ru のみで公開される事例であり、スケジュール側のプロンプトには securelist.ru が含まれていないため、プロンプトの更新が必要である。"
         }
       ]
     }

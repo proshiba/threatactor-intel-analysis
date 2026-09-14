@@ -77,13 +77,16 @@ def source_items(record: dict[str, Any], queue: dict[str, Any]) -> list[dict[str
         if url in seen:
             continue
         seen.add(url)
-        result.append(
-            {
-                "url": url,
-                "source_path": path,
-                "source_type": item.get("source_type", "osint-report"),
-            }
-        )
+        entry = {
+            "url": url,
+            "source_path": path,
+            "source_type": item.get("source_type", "osint-report"),
+        }
+        # 別の記事から集約した出典は、その記事自身の日付と見出しを保持する
+        for field in ("news_date", "title"):
+            if item.get(field):
+                entry[field] = item[field]
+        result.append(entry)
     return sorted(result, key=lambda item: item["url"])
 
 
@@ -124,8 +127,11 @@ def profile_source(
 ) -> dict[str, Any]:
     activity = record["activity"]
     primary = source["url"]
+    # 集約した出典は自分の日付と見出しを持つ。無い場合だけ活動側の値を使う。
+    news_date = source.get("news_date") or activity.get("news_date")
+    title = source.get("title") or activity["title"]
     published = (
-        time_point(activity.get("news_date"), "daily-news-file-date")
+        time_point(news_date, "daily-news-file-date")
         if source["source_type"] == "primary-report"
         else dict(UNKNOWN_TIME)
     )
@@ -133,9 +139,9 @@ def profile_source(
         "source_id": source_id_for_value(primary),
         "path": primary,
         "title": (
-            activity["title"]
+            title
             if source["source_type"] == "primary-report"
-            else f"{activity['title']} — IOC補助資料"
+            else f"{title} — IOC補助資料"
         ),
         "publisher": source_publisher(primary),
         "published_at": published,

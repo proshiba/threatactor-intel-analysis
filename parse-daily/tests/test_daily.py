@@ -13,6 +13,7 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
 import daily_check  # noqa: E402
+from build_review_queue import apply_decision  # noqa: E402
 from daily_check import latest_activity  # noqa: E402
 
 UNKNOWN_POINT = {"value": None, "precision": "unknown", "status": "unknown", "basis": "not-stated"}
@@ -535,6 +536,54 @@ class DailyCheckTests(unittest.TestCase):
         self.assertEqual(names[0], "active-actor")
         self.assertTrue(report["mentioned_actors"][0]["in_recent_set"])
         self.assertEqual(report["statistics"]["mentioned_recent_actors"], 1)
+
+
+class ApplyDecisionMissingTargetTest(unittest.TestCase):
+    """窓付きビルドで判断対象が欠けても decision_issues にしないこと。"""
+
+    def _record(self) -> dict:
+        return {
+            "actor": {"slug": "unc1549"},
+            "activity": {"activity_reference": "https://example.test/report/"},
+            "capability_decisions": [{"name": "NodeRabbit / PollCat"}],
+            "artifacts": [],
+        }
+
+    def _decisions(self) -> dict:
+        return {
+            "unc1549|https://example.test/report/": {
+                "review_status": "approved",
+                "capability_decisions": [
+                    {"name": "NodeRabbit", "status": "approved"},
+                    {"name": "PollCat", "status": "approved"},
+                ],
+                "approved_artifacts": [{"artifact_type": "file-name", "value": "task.zip"}],
+            }
+        }
+
+    def test_full_history_reports_missing_targets(self):
+        record = self._record()
+        apply_decision(record, self._decisions())
+        self.assertEqual(len(record.get("decision_issues", [])), 3)
+
+    def test_activity_overrides_replace_display_fields_only(self):
+        record = self._record()
+        record["activity"].update({"title": "別クラスタの見出し", "summary": "別クラスタの要約"})
+        decisions = self._decisions()
+        key = "unc1549|https://example.test/report/"
+        decisions[key]["activity_overrides"] = {"title": "正しい活動名", "summary": "正しい要約"}
+        apply_decision(record, decisions, report_missing_targets=False)
+        self.assertEqual(record["activity"]["title"], "正しい活動名")
+        self.assertEqual(record["activity"]["summary"], "正しい要約")
+        # IDの生成元である activity_reference は変わらない
+        self.assertEqual(record["activity"]["activity_reference"], "https://example.test/report/")
+
+    def test_windowed_build_does_not_report_missing_targets(self):
+        record = self._record()
+        apply_decision(record, self._decisions(), report_missing_targets=False)
+        self.assertEqual(record.get("decision_issues", []), [])
+        # 判断そのものは窓付きでも適用される
+        self.assertEqual(record["review_status"], "approved")
 
 
 if __name__ == "__main__":
