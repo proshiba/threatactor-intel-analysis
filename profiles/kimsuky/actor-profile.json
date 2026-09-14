@@ -4,7 +4,7 @@
   "name": "Kimsuky",
   "status": "review",
   "created_at": "2026-07-25T00:00:00Z",
-  "updated_at": "2026-09-10T16:11:26Z",
+  "updated_at": "2026-09-14T13:26:50Z",
   "languages": [
     "ja"
   ],
@@ -907,6 +907,122 @@
           "source--browser-advisory-2023",
           "source--joint-csa-2023",
           "source--operation-newton"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-0ba9f1cf5447b3f22da4",
+      "name": "またKimsuky？今度は水産食材の購入依頼書を装う",
+      "activity_type": "reported-activity",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "AhnLabは、韓国国内のユーザーを標的に、水産食材の購入依頼書を装った悪性LNKファイルが配布されていることを確認した。 LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。 termsvc.ps1はOS、タイムゾーン、グローバルIP、ユーザー・ドメイン、プロセス、コンピューター名などの感染端末情報を収集する。 収集情報はBackblaze B2へ送信され、同サービスをC&Cとして利用して追加コマンドを取得・実行した後、関連ファイルを削除して痕跡を減らす。 PowerShell構文、LNK内部データの抽出方法、タスク登録などが過去の攻撃と類似しており、AhnLabは今回の活動をKimsukyと関連すると判断した。",
+      "target_refs": [
+        "target--south-korea"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--3a9a5683cbb2d30c608c",
+        "ttp--activity-rule--6a6097cb7c35cf869e77",
+        "ttp--activity-rule--aed8cb1679e336255a93"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--b702fb8c8d0005882475"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ad51c0d6f2257de0c711"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--0ba9f1cf5447b3f22da478ae から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: context-only。 レビュー: 採用。一次資料(AhnLab ASEC、2026-09-11公開)の原文を確認した。記事見出しと本文とも Kimsuky を当該攻撃の実行主体として扱い、「アンラボは、こうしたコードおよび動作上の類似性を基に、今回の悪性 LNK についても Kimsuky グループと関連していると判断した」と記載する。帰属根拠がコードおよび動作上の類似性であり独自の高確度判定ではないため confidence は medium とする。手口は「[ロイヤルホテルソウル] 水産食材の購入依頼書.LNK」という購買依頼書を装った悪性LNKの配布で、termsvc.ps1、poc.js、ping_.js を用い、C2に Backblaze B2 API、外部IP確認に api.ipify.org を利用する。標的は韓国国内の利用者。同じ AhnLab ASEC の Kimsuky 報告は asec.ahnlab.com/en/93151/ および asec.ahnlab.com/jp/94655/ で既に採用済みであり、判断基準は同一である。活動期間: 原文に観測日の明示がないため unknown とし、tech-memo 日次ファイルの日付を reported_at へ分離する。IOCはtech-memoのIOC CSVに当該記事由来の行がないため取り込まない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--kimsuky",
+          "name": "Kimsuky",
+          "attribution_countries": [
+            "North Korea"
+          ],
+          "organization_refs": [
+            "org--63rd-research-center",
+            "org--dprk-rgb"
+          ]
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--3a9a5683cbb2d30c608c",
+            "ttp--activity-rule--6a6097cb7c35cf869e77",
+            "ttp--activity-rule--aed8cb1679e336255a93"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--b702fb8c8d0005882475"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "reported-activity",
+          "phases": [
+            "Discovery",
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "North Korea"
+            ],
+            "target_country_refs": [
+              "target--south-korea"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-ad51c0d6f2257de0c711"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -4560,6 +4676,7 @@
           "source--daily-444c87a0051642065f55",
           "source--daily-540b98540d06df59f254",
           "source--daily-a5ca98841868974d600b",
+          "source--daily-ad51c0d6f2257de0c711",
           "source--daily-b9be11e58ab6c82617ab",
           "source--daily-f05f4888998c8f53f5ca",
           "source--joint-csa-2023",
@@ -4640,6 +4757,7 @@
           "source--daily-444c87a0051642065f55",
           "source--daily-540b98540d06df59f254",
           "source--daily-a5ca98841868974d600b",
+          "source--daily-ad51c0d6f2257de0c711",
           "source--daily-b9be11e58ab6c82617ab",
           "source--daily-d930e3ca01c519bf5740",
           "source--daily-f05f4888998c8f53f5ca",
@@ -4794,7 +4912,7 @@
       {
         "id": "target--activity-rule--sector--b94dc560a327b601965d",
         "name": "防衛・軍事",
-        "description": "活動「2026年第1四半期 DPRK Operation Kimsuky 分析」の記述で標的として明示された産業。",
+        "description": "活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された産業。",
         "first_observed": {
           "value": "2026-01-01T00:00:00Z",
           "precision": "month",
@@ -5251,6 +5369,35 @@
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
+      "ttp_id": "ttp--activity-rule--3a9a5683cbb2d30c608c",
+      "tactic": "Discovery",
+      "technique_id": "T1057",
+      "technique_name": "Process Discovery",
+      "observed_behavior": "termsvc.ps1はOS、タイムゾーン、グローバルIP、ユーザー・ドメイン、プロセス、コンピューター名などの感染端末情報を収集する。",
+      "activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ad51c0d6f2257de0c711"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
       "ttp_id": "ttp--activity-rule--4397bb55001837fdcfcf",
       "tactic": "Execution",
       "technique_id": "T1059.006",
@@ -5423,6 +5570,35 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-540b98540d06df59f254"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--6a6097cb7c35cf869e77",
+      "tactic": "Execution",
+      "technique_id": "T1204.002",
+      "technique_name": "Malicious File",
+      "observed_behavior": "AhnLabは、韓国国内のユーザーを標的に、水産食材の購入依頼書を装った悪性LNKファイルが配布されていることを確認した。 LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。",
+      "activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ad51c0d6f2257de0c711"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -5744,6 +5920,35 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-66a67b66f7f04fd72d52"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--aed8cb1679e336255a93",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "technique_id": "T1053.005",
+      "technique_name": "Scheduled Task",
+      "observed_behavior": "LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。",
+      "activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ad51c0d6f2257de0c711"
       ],
       "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
@@ -6844,6 +7049,24 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_04-06/20240511.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-ad51c0d6f2257de0c711",
+      "path": "https://asec.ahnlab.com/jp/95367/",
+      "title": "またKimsuky？今度は水産食材の購入依頼書を装う",
+      "publisher": "asec.ahnlab.com",
+      "published_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260912.md; source commit: 8e64d5882c84098b89e28b886966f339bba05b68; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
       "source_id": "source--daily-b859524205edbc7c576c",
@@ -8175,6 +8398,54 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-a5ca98841868974d600b"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--b702fb8c8d0005882475",
+      "name": "被害事例: またKimsuky？今度は水産食材の購入依頼書を装う",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "AhnLabは、韓国国内のユーザーを標的に、水産食材の購入依頼書を装った悪性LNKファイルが配布されていることを確認した。 LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。 termsvc.ps1はOS、タイムゾーン、グローバルIP、ユーザー・ドメイン、プロセス、コンピューター名などの感染端末情報を収集する。 収集情報はBackblaze B2へ送信され、同サービスをC&Cとして利用して追加コマンドを取得・実行した後、関連ファイルを削除して痕跡を減らす。 PowerShell構文、LNK内部データの抽出方法、タスク登録などが過去の攻撃と類似しており、AhnLabは今回の活動をKimsukyと関連すると判断した。",
+      "activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
+      ],
+      "target_refs": [
+        "target--south-korea"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--3a9a5683cbb2d30c608c",
+        "ttp--activity-rule--6a6097cb7c35cf869e77",
+        "ttp--activity-rule--aed8cb1679e336255a93"
+      ],
+      "affected_assets": [
+        "エンドポイント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-ad51c0d6f2257de0c711"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },

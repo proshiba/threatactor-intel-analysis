@@ -413,11 +413,6 @@
     "review_notes": "原文(AWS Security Blog)を確認。本文はSAPPHIRE SLEET / STARDUST CHOLLIMA / BlueNoroff / CageyChameleon / Alluring Piscesの名で北朝鮮関連アクターを指し、APT38表記そのものは登場しない。SAPPHIRE SLEETはプロファイル上APT38のalias(vendor: MITRE ATT&CK, scope: overlapping)として既に登録済みであり、npm/PyPIオープンソースサプライチェーン攻撃という手口はSAPPHIRE SLEETの既知の資金窃取型TTPと整合する。ただしscope: overlappingのため断定的な同一視ではなく、activity_periodは資料発行日をreported_atとして分離しunknownとする。",
     "review_status": "approved"
   },
-  "apt38|https://raw.githubusercontent.com/rtkwlf/wolf-tools/main/threat-intelligence/bluenoroff-fake-zoom-clickfix/Bluenoroff_Appendix_items.md": {
-    "confidence": "high",
-    "review_notes": "Arctic Wolf記事(bluenoroff-uses-clickfix-…)のIOC付録。config.jsonのactivity_reference_aliasesで本体記事の活動へ集約し、出典は個別Sourceとして保持する。判断根拠は本体記事の決定を参照。",
-    "review_status": "approved"
-  },
   "apt38|https://www.jumpsec.com/guides/inside-a-dprk-bluenoroff-clickfix-kit/": {
     "capability_decisions": [
       {
@@ -658,10 +653,6 @@
     "confidence": "high",
     "review_notes": "tech-memo全履歴再監査: 記事タイトルで当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: Confuciusハッカーが新たなWooperStealerとAnondoorマルウェアでパキスタンを攻撃",
     "review_status": "approved"
-  },
-  "contagious-interview|https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/": {
-    "review_notes": "一致は IOC CSV の actor 列「Famous Chollima」経由で、Contagious Interview の alias scope は broader である。一次資料(ANY.RUN、2026-08-10公開)の原文を確認したところ、主題は偽求人面接によるマルウェア配布ではなく、北朝鮮ITワーカーによる不正就労そのものであった。原文は「One of the many divisions operating under the Lazarus umbrella is Famous Chollima. Their goal is simple: get hired by Western companies.」「Unlike a traditional intrusion, their objective is not to compromise an organization for a few hours or days, but to become a part of it.」と記載する。Contagious Interview プロファイルのalias 注記が「FAMOUS CHOLLIMA の定義は北朝鮮へ送金するための不正就労(IT worker)全般であり、偽求人面接によるマルウェア配布キャンペーンより広い」として scope を broader としている通り、本記事は broader 側にのみ該当する。Contagious Interview の活動としては不採用とし、既存の DPRK IT Worker Schemes プロファイル(activity--dprk-it-workers-ballena-azul-2026)へ記録した。IOC 9件のうち5件は AstrillVPN の出口ノードで商用VPNの共用インフラであるため、DPRK運用VPS 3件および INVESTSTROY-NET の1件と分離し、candidate として保留した。",
-    "review_status": "rejected"
   },
   "contagious-interview|https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique": {
     "confidence": "medium",
@@ -2847,5 +2838,74 @@
     "confidence": "low",
     "review_notes": "不採用(犯行主張のみ・第三者確認なし。方針未決のため保留的不採用)。本稿はShinyHuntersがフロリダ州道路安全・自動車局の「DAVID」への侵入と20万件超の運転者記録の窃取を主張したと伝える。実行主体としての記述はあるが、帰属根拠は攻撃者自身の主張とスクリーンショットのみで、FLHSMVおよびFBIからの確認回答は記事時点で得られていない。本リポジトリでは犯行主張のみを根拠とする活動の扱い方針が未決であり、この未解決点は profiles/unc6240 の assessment.uncertainties および parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters(status: merged)へ記録済みである。方針が決まるまでは採用せず、決定後に本判断を再検討する。なお本レコードは2026-09-10のチェックで unc6240 へ alias「ShinyHunters」を登録したことにより新たに生成されたものであり、それ以前は unmatched_name_candidates として現れていた。",
     "review_status": "rejected"
+  },
+  "anonymous|https://www.wiz.io/blog/artifactory-under-attack-in-the-wild-exploitation-of-cve-2026-42016-cve-2026-4201": {
+    "review_status": "rejected",
+    "review_notes": "不採用(名称衝突)。一致語 Anonymous は JFrog Artifactory の内部 anonymous ユーザーという製品仕様上のアカウント名としての出現である。該当箇所は「攻撃者は内部anonymousユーザーのJWTを取得後、その低権限トークンを管理者権限へ昇格させ」であり、攻撃者側の名称ではない。"
+  },
+  "apt29|https://www.anthropic.com/threat-intelligence-report-september-2026": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "activity_overrides": {
+      "title": "GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+      "summary": "Anthropic は、Claude を悪用して侵入の全段階を自動化した諜報クラスター GTG-20006 を確認・阻止した。原文は「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と記載する。Windows・Android・iOS 向けマルウェアの開発と配備、フィッシング、永続化、C2、情報窃取にClaude を利用し、ウクライナの政府・軍・外交機関を中心に20以上の組織を標的とした。ドローン製造業者へのサプライチェーン窃取、ホテルWi-Fi侵害(CaptiveCrunch)による資格情報窃取、ヘッドレスブラウザを用いた WhatsApp アカウント乗っ取り、30万件超の国民ID記録と企業登記情報の持ち出し、外交・政府機関に対する Microsoft 365 トークン窃取が報告されている。"
+    },
+    "review_notes": "採用。一次資料(Anthropic 脅威インテリジェンスレポート 2026-09)の原文を確認した。GTG-20006 について「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と明記されている。Midnight Blizzard は本プロファイルの alias(vendor: MITRE ATT&CK, scope: overlapping)であり、断定的な同一視ではないため confidence は medium とする。帰属表現も独自の高確度判定ではなく公開報告との整合を述べるものである。活動期間: 原文には GTG-20006 固有の観測日・期間の記載がない。レポート全体の対象期間である2025年12月〜2026年8月は本クラスター固有の観測期間として明示されていないため活動期間へ流用せず、unknown とし tech-memo 日次ファイルの日付を reported_at へ分離する。activity_overrides: tech-memo の記事見出しと要約は同一レポート内の別クラスター(ShinyHunters 関連の frkoo による180万件のAndroid APK からのシークレット探索)を主題としており、そのまま活動名にすると APT29 の活動として誤りになる。原文を確認したうえで当該クラスターの記述へ差し替えた。activity ID と record ID は activity_reference から生成されるため影響しない。IOC: 原文のIOC付録を確認し、ドメイン33件・IP14件・ハッシュ2件の計49件がいずれも攻撃者管理のインフラとして掲載されていることを確認した(ms365-live[.]com、m365-owa[.]com、owa-ms365[.]com 等のMicrosoft 365 を騙るフィッシング基盤を含む)。IOC CSV の actor 列は複合値 「GTG-20006 (Midnight Blizzard)」であり自動一致しないため、BlueDelta(APT28)および Tortoiseshell 複合値(UNC1549)の前例に従い config.json の actor_value_aliases へ対応付けた。競合の保持: 本文の CaptiveCrunch は、既に APT29 プロファイルへ Storm-2945 帰属の活動(2026-07-31 reported_at)として適用済みである。Anthropic は同手法を GTG-20006 の活動として記述しており帰属が競合するため、既存活動を上書きせず claim-audit.json へ両論とスコープを残す。"
+  },
+  "blackbyte|https://www.justice.gov/opa/pr/ukrainian-national-sentenced-four-years-prison-wire-fraud-conspiracy-connection-conti": {
+    "review_status": "rejected",
+    "review_notes": "不採用(法執行記事かつ実行主体でない)。米司法省の量刑発表であり、対象は Conti のメンバー個人である。BlackByte は「Contiは2022年に活動を停止した後、BlackCat、Black Basta、Hive、BlackByte、Karakurt など複数のランサムウェア集団へ分裂した」という分裂先の列挙として現れるだけで、本件の実行主体ではない。一致語 Conti は scope: overlapping であり、この点でも自動採用の対象ではない。"
+  },
+  "dprk-it-workers|https://any.run/cybersecurity-blog/lazarus-group-it-workers-investigation-part-two/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(反映済みのため重複)。本記事は以前 Contagious Interview の候補として検知され、一次資料(ANY.RUN、2026-08-10公開)の原文確認により Contagious Interview の活動としては不採用とし、DPRK IT Worker Schemes プロファイルへ activity--dprk-it-workers-ballena-azul-2026 (偽DeFiスタートアップBallena Azul LTDへのITワーカー3名の採用と内部観測、出典 source--anyrun-it-workers-part-two-2026) として手動で反映済みである。原文は「One of the many divisions operating under the Lazarus umbrella is Famous Chollima. Their goal is simple: get hired by Western companies.」と記載し、主題は偽求人面接によるマルウェア配布ではなく北朝鮮ITワーカーによる不正就労そのものであるため、現在は検知側も本記事を dprk-it-workers へ割り当てる。旧キー contagious-interview|<同URL> は現在の入力に対応する活動を持たない孤立キーとなり build_review_queue.py が decision_issues を報告していたため、判断内容を本キーへ引き継いで解消した。既存活動と同一内容であり二重反映となるため、本レコードは採用しない。IOC 9件のうち5件は AstrillVPN の出口ノードで商用VPNの共用インフラであるため、DPRK運用VPS 3件および INVESTSTROY-NET の1件と分離して candidate 保留とした判断も引き継ぐ。"
+  },
+  "karakurt|https://www.justice.gov/opa/pr/ukrainian-national-sentenced-four-years-prison-wire-fraud-conspiracy-connection-conti": {
+    "review_status": "rejected",
+    "review_notes": "不採用(法執行記事かつ実行主体でない)。上記と同じ量刑発表で、Karakurt は Conti の分裂先の列挙として現れるだけである。本件の実行主体ではなく、Karakurt 自身の新規活動の記述もない。"
+  },
+  "kimsuky|https://asec.ahnlab.com/jp/95367/": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "review_notes": "採用。一次資料(AhnLab ASEC、2026-09-11公開)の原文を確認した。記事見出しと本文とも Kimsuky を当該攻撃の実行主体として扱い、「アンラボは、こうしたコードおよび動作上の類似性を基に、今回の悪性 LNK についても Kimsuky グループと関連していると判断した」と記載する。帰属根拠がコードおよび動作上の類似性であり独自の高確度判定ではないため confidence は medium とする。手口は「[ロイヤルホテルソウル] 水産食材の購入依頼書.LNK」という購買依頼書を装った悪性LNKの配布で、termsvc.ps1、poc.js、ping_.js を用い、C2に Backblaze B2 API、外部IP確認に api.ipify.org を利用する。標的は韓国国内の利用者。同じ AhnLab ASEC の Kimsuky 報告は asec.ahnlab.com/en/93151/ および asec.ahnlab.com/jp/94655/ で既に採用済みであり、判断基準は同一である。活動期間: 原文に観測日の明示がないため unknown とし、tech-memo 日次ファイルの日付を reported_at へ分離する。IOCはtech-memoのIOC CSVに当該記事由来の行がないため取り込まない。"
+  },
+  "violet-typhoon|https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit": {
+    "review_status": "approved",
+    "confidence": "high",
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      }
+    },
+    "review_notes": "採用。独立した一次資料2本が当該アクターを実行主体として明記している。Proofpoint(2026-09-09公開)は「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」と記載し、Volexity(2026-09-09公開)も「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」として同一クラスターを指し、2026-09-01の初回メールと2026-09-02の2回目の標的型キャンペーンを観測している。Violet Typhoon は本プロファイルの canonical name であり、APT31 は scope: overlapping の別名として登録済みで、2025-11-24 の APT31 活動を既に採用した前例と整合する。BlueMoon は Chrome の CVE-2026-85046(V8 type confusion)、CVE-2026-87491(V8 sandbox escape)、Windows の CVE-2026-85880(カーネル権限昇格)を連鎖させる攻撃キットで、成功後は Chrome の親プロセスへコードを注入し curl でローダーを取得する。標的は Proofpoint によれば米国のNGO、鉱業、現物商品取引企業。活動期間は両資料が明示した観測日のみを採り、記事公開日および tech-memo 日次ファイルの日付は流用していない。同キットを用いた UNK_LateNight(米航空宇宙・防衛、ShadowPad)、UNK_DoubleCheck(ベトナム製造業)、UNK_QuietRacket(インドネシア・シンガポールの政府/コンサル/金融)、UTA0560(NGO、Volexity観測)は本アクターへの帰属が示されていないため取り込まず、unknown-clusters.json へ記録した。記事見出しはキット側を主題としているが、当該アクターが参加したキャンペーンそのものを指しており別クラスターの作戦ではないため activity_overrides は用いていない。"
+  },
+  "unc5792|https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai": {
+    "review_status": "rejected",
+    "review_notes": "不採用(既反映)。GTIG原文(2026-09-08)の当該内容は、UNC5792 プロファイルへ手動で activity--unc5792--ai-telegram-monitoring(AIを組み込んだ自動ボットによるTelegramチャンネル監視、出典 source--gtig-adversarial-ai-2026)として反映済みである。本レコードは UNC5792 のプロファイル昇格後に同じ一次資料から再生成されたもので、取り込むと同一活動の二重登録になる。またtech-memoが収録している記事見出し「攻撃者、広範な認証情報窃取のためAIフレームワークを構築」は BleepingComputer による原文全体(12アクター)の二次要約であり、UNC5792 単独の活動名としても適切でない。"
+  },
+  "unc6240|https://adapthealth.com/blogs/notices/adapthealth-notice-of-cybersecurity-incident-1": {
+    "review_status": "rejected",
+    "review_notes": "不採用(原文にアクター名の記載がない)。一致は本文抽出の名前候補経由。AdaptHealth の通知原文(2026-08-14付)を確認したところ、脅威アクター名は一切記載されていない。通知は2026-06-05の攻撃・2026-06-15の発見とし、影響人数の記載もない。tech-memo の要約「7月のサイバー攻撃で410万人」は通知原文の記載と一致せず、ShinyHunters/UNC6240 を当該侵害へ結び付ける根拠は原文にない。"
+  },
+  "unc6240|https://x.com/flhsmv/status/2098239548660514979": {
+    "review_status": "rejected",
+    "review_notes": "不採用(実行主体が公式には帰属されていない)。ただし先行判断の未解決点を一段進める情報を含むため記録する。フロリダ州高速道路安全自動車局(FLHSMV)は2026-09-11に侵害を公式に確認し、「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」「The data breach was quickly mitigated and no further breach has occurred or is ongoing.」と述べ、経路はPlant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものの悪用と説明した。すなわち侵害の事実そのものは政府機関により確認された。一方でFLHSMVは実行主体を「international cybercriminal organization」とのみ表現し、ShinyHunters を名指ししていない。件数についても、ShinyHunters が主張する20万件超を州当局は確認していない(「FLHSMV has not disclosed how many records were accessed or stolen during the breach and has not confirmed ShinyHunters' claim that more than 200,000 records were taken」)。先行の判断 unc6240|.../shinyhunters-hackers-claim-breach-of-florida-david-dmv-database/ は「犯行主張のみ・第三者確認なし」を不採用理由としていたが、確認されたのは侵害の発生であって帰属ではない。したがって犯行主張のみを根拠とする活動の扱いという未決の方針は解消しておらず、本レコードも採用しない。profiles/unc6240 の assessment.uncertainties に記録済みの未解決点へ、この公式確認の事実を追記した。"
+  },
+  "unc6240|https://www.anthropic.com/threat-intelligence-report-september-2026": {
+    "review_status": "rejected",
+    "review_notes": "不採用(本体でなくsuspected affiliate)。Anthropic原文を確認した。当該クラスタの記述は「We identified and disrupted multiple clusters of financially motivated cybercrime activity conducted by operators suspected to be affiliates of the ShinyHunters collective.」であり、オペレータ「frkoo」(GTG-50014)は ShinyHunters collective の affiliate と疑われる別クラスタとして扱われている。AGENT.md の通り suspected は自動承認せず、affiliate は当該アクター本体の活動ではない。GTG-50014 は未帰属クラスタとして parse-daily/unknown-clusters.json へ記録した。なお本レポートの別クラスタ GTG-20006 は APT29 の活動として別レコードで採用している。"
+  },
+  "unc6240|https://www.microsoft.com/en-us/security/blog/2026/09/09/passkey-themed-social-engineering-leads-identity-cloud-compromise/": {
+    "review_status": "rejected",
+    "review_notes": "不採用(実行主体でない)。Microsoft原文(2026-09-09)を確認した。本稿の主題は初期アクセス側のクラスタであり、「Storm-3121 conducts initial access activity leading to ShinyHunters and Falcon extortion.」と記載される。ShinyHunters は初期アクセスを受け取る下流の恐喝ブランドとして言及されるだけで、記述されているパスキー装いの社会工学からクラウドデータ窃取までの侵入活動の実行主体ではない。活動は2026年5月以降観測とされる。Storm-3121 と Storm-3032 は unknown-clusters.json へ登録済み。Storm-3121 から ShinyHunters への受け渡しは一次資料が明示する運用関係だが、関係の追加は活動の採用とは別に判断する。"
   }
 }

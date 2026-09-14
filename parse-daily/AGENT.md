@@ -27,6 +27,12 @@
 5. 採用するレコードだけ`review_status: approved`へ変更し、判断理由を
    `review_notes`へ日本語で記載する。不採用は`rejected`と理由を残す。継続利用する
    判断は`review-decisions.json`にも保存し、再生成可能にする。
+   活動名と説明はtech-memoの記事見出し・要約をそのまま使う。1本の資料が複数の
+   クラスターを扱い、見出しが当該アクター以外の作戦を指している場合だけ、
+   `review-decisions.json`の`activity_overrides`（`title`、`summary`）で
+   差し替える。原文を確認したうえで行い、差し替えた理由を`review_notes`へ残す。
+   activity IDとrecord IDは`activity_reference`から生成するため、表示名の
+   差し替えでは作り直されない。
 6. `capability_decisions`は候補ごとに`approved`、`rejected`、
    `related-only`を判断する。`pending`を残したレコードは承認済みにできない。
 7. artifact候補はレコード承認と別に確認し、値そのものが原文で確認できた項目だけ

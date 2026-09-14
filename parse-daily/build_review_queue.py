@@ -159,6 +159,13 @@ def apply_decision(
             record[field] = decision[field]
     if "activity_period" in decision:
         record["activity_period"] = decision["activity_period"]
+    # 記事見出しが同じ資料内の別クラスタの作戦を指している場合、そのままでは
+    # 活動名が誤りになる。原文を確認したレビューでのみ表示名を差し替える。
+    # activity ID と record ID は activity_reference から生成するため影響しない。
+    overrides = decision.get("activity_overrides") or {}
+    for field in ("title", "summary"):
+        if field in overrides:
+            record["activity"][field] = overrides[field]
     capability_overrides = {
         item["name"].casefold(): item
         for item in decision.get("capability_decisions", [])
@@ -351,18 +358,29 @@ def main() -> int:
             records[key]["iocs"].append(item)
             add_capability_candidate(records[key], row["malware"])
 
-    structured_keys = {
-        (record["actor"]["slug"], record["activity"]["activity_reference"].rstrip("/"))
+    records_by_reference = {
+        (record["actor"]["slug"], record["activity"]["activity_reference"].rstrip("/")): record
         for record in records.values()
     }
     for article in articles:
         for match in registry.mentions(article["title"], article["body"]):
-            primary = reference_aliases.get(article["primary_url"], article["primary_url"])
-            if (match.slug, primary.rstrip("/")) in structured_keys:
+            raw_primary = article["primary_url"]
+            primary = reference_aliases.get(raw_primary, raw_primary)
+            existing = records_by_reference.get((match.slug, primary.rstrip("/")))
+            if existing is not None:
+                # activity_reference_aliases で既存の活動へ集約した記事でも、
+                # その記事自身のURLは出典として残す。集約は活動をまとめるため
+                # のもので、資料を捨てるためのものではない。
+                if raw_primary and raw_primary != primary:
+                    aliased_source = source_entry(
+                        raw_primary, article["news_path"], "primary-report"
+                    )
+                    # 集約先の記事とは日付も見出しも異なるため、出典側に自分の値を持たせる
+                    aliased_source["news_date"] = article["news_date"]
+                    aliased_source["title"] = article["title"]
+                    add_unique_source(existing, aliased_source)
                 continue
             key = (match.slug, primary)
-            if key in records:
-                continue
             records[key] = {
                 "record_id": record_id(*key),
                 "review_status": "pending",
@@ -400,6 +418,7 @@ def main() -> int:
                     config,
                 ),
             }
+            records_by_reference[(match.slug, primary.rstrip("/"))] = records[key]
 
     full_history = not args.since and not args.until
     for record in records.values():

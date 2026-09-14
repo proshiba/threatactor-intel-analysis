@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1549`
 - 状態: draft
-- 更新日時: 2026-09-02T13:11:10Z
+- 更新日時: 2026-09-14T13:26:30Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -126,21 +126,21 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | cyber-espionage | 不明 | 不明 | 2026-09-02 | target--country--egypt, target--country--ethiopia, target--region--africa, target--sector--aerospace, target--sector--aviation | malware--daily-05c4e283c192f549b723, malware--daily-ad254c5697623cd6428f |  | victim--activity-rule--590d0a5c1af14161be04 | Kasperskyは、Mirage KittenがNode.js製「NodeRabbit」とJavaScript製「PollCat」という未報告のクロスプラットフォームRATを使用する攻撃を確認した。 攻撃者はLinkedInなどで採用担当者を装い、トロイ化したコーディング課題を送付して、Windows・Linux・macOSの開発者端末へマルウェアを感染させる。 NodeRabbitは任意コマンド・ファイル操作・プロセス制御に加え、最新版では偽VS Code拡張機能やGit hookを利用した開発者ワークフロー経由の永続化も備える。 PollCatもコマンド実行、ファイル送受信、JavaScript実行、システム・セキュリティ製品偵察などを行い、Azure WebsitesなどをC2として悪用する。 被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。 | 高 | `source--daily-eac188700be16a552143` |
-| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | cyber-espionage | 2026-02 | 2026-04 | 2026-05-25 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--904728608f27c39df0df |  | ttp--activity-rule--58d557d2679ee65b66a5 | victim--activity-rule--071152112a80d6125133 | Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | cyber-espionage | 不明 | 不明 | 2026-09-02 | target--country--egypt, target--country--ethiopia, target--region--africa, target--targeting-audit--country--dfe4685c3d850f100942 | malware--daily-05c4e283c192f549b723, malware--daily-ad254c5697623cd6428f |  |  | Kasperskyは、Mirage KittenがNode.js製「NodeRabbit」とJavaScript製「PollCat」という未報告のクロスプラットフォームRATを使用する攻撃を確認した。 攻撃者はLinkedInなどで採用担当者を装い、トロイ化したコーディング課題を送付して、Windows・Linux・macOSの開発者端末へマルウェアを感染させる。 NodeRabbitは任意コマンド・ファイル操作・プロセス制御に加え、最新版では偽VS Code拡張機能やGit hookを利用した開発者ワークフロー経由の永続化も備える。 PollCatもコマンド実行、ファイル送受信、JavaScript実行、システム・セキュリティ製品偵察などを行い、Azure WebsitesなどをC2として悪用する。 被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。 | 高 | `source--daily-eac188700be16a552143` |
 | Tortoiseshell：新たなツールセットと運用インフラを公開 | infrastructure-operation | 不明 | 不明 | 2026-08-27 | target--sector--government | malware--daily-126c8af714f49766e231 |  | victim--activity-rule--a1b1f24e4aa40c393238 | Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。 | 中 | `source--daily-2f8e0aeaa133b750f976` |
-| 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | phishing-campaign | 2026-02 | 2026-04 | 2026-05-27 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--sector--aviation | malware--daily-8bf720ef2de5aceeae08 |  | victim--activity-rule--8ea4f5b021a437bbcf9d | IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。 | 高 | `source--daily-d9794d16b217472dc38d` |
 | Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | cyber-espionage | 不明 | 不明 | 2026-07-28 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--country--burkina-faso, target--country--egypt, target--country--ethiopia, target--country--jordan, target--country--pakistan, target--country--tanzania, target--sector--aerospace, target--sector--aviation, target--sector--defense, target--sector--financial-services, target--sector--government, target--sector--telecommunications | malware--nightledger, malware--arcbridge, malware--bridgehead | ttp--activity-rule--543c54c03eee4074488f, ttp--activity-rule--64e01cb31f20cb632f2c, ttp--activity-rule--eee5857560ca39325182, ttp--t1057--nightledger, ttp--t1071-001--mirage-kitten-2026, ttp--t1082--nightledger, ttp--t1090--bridgehead, ttp--t1113--nightledger, ttp--t1566-002--mirage-kitten-2026, ttp--t1574-001--nightledger | victim--activity-rule--15a1bbc4304a95fa57dc | Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | cyber-espionage | 2026-02 | 2026-04 | 2026-05-25 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--904728608f27c39df0df |  | ttp--activity-rule--58d557d2679ee65b66a5 | victim--activity-rule--071152112a80d6125133 | Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | phishing-campaign | 2026-02 | 2026-04 | 2026-05-27 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--sector--aviation | malware--daily-8bf720ef2de5aceeae08 |  | victim--activity-rule--8ea4f5b021a437bbcf9d | IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。 | 高 | `source--daily-d9794d16b217472dc38d` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | UNC1549 | NodeRabbit, PollCat | 情報なし | 情報なし | エジプト, エチオピア, アフリカ, Aerospace, Aviation | 被害事例: Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | 高 |
-| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | UNC1549 | 情報なし | T1574.001 DLL | 情報なし | 米国, イスラエル | 被害事例: イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | 中 |
+| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | UNC1549 | NodeRabbit, PollCat | 情報なし | 情報なし | エジプト, エチオピア, アフリカ, Aerospace, Aviation, アフガニスタン | 被害事例: Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | 高 |
 | Tortoiseshell：新たなツールセットと運用インフラを公開 | UNC1549 | TWOSTROKE | 情報なし | 情報なし | Government | 被害事例: Tortoiseshell：新たなツールセットと運用インフラを公開 | 中 |
-| 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | UNC1549 | MiniFast | 情報なし | 情報なし | 米国, Aviation | 被害事例: 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | 高 |
 | Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | UNC1549 | ArcBridge, BridgeHead, NightLedger | T1574.001 DLL, T1057 Process Discovery, T1083 File and Directory Discovery, T1057 Process Discovery, T1071.001 Web Protocols, T1082 System Information Discovery, T1090 Proxy, T1113 Screen Capture, T1566.002 Spearphishing Link, T1574.001 DLL | Cloud-hosted HTTPS/WebSocket C2 | 金融, ブルキナファソ, エジプト, エチオピア, ヨルダン, パキスタン, タンザニア, Aerospace, Aviation, Defense, Financial Services, Government, Telecommunications | 被害事例: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | 高 |
+| イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | UNC1549 | 情報なし | T1574.001 DLL | 情報なし | 米国, イスラエル | 被害事例: イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | 中 |
+| 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | UNC1549 | MiniFast | 情報なし | 情報なし | 米国, Aviation | 被害事例: 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | 高 |
 
 2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。
 
@@ -204,7 +204,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 ## IOC／artifact概要
 
 - IOC値: 215件
-- IOC観測: 223件
+- IOC観測: 272件
 - 複数攻撃で観測: 8件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 30件（`artifacts.csv`）

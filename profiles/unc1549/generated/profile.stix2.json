@@ -524,7 +524,7 @@
       "spec_version": "2.1",
       "id": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
       "created": "2026-09-02T12:58:02Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -573,7 +573,8 @@
             "target--country--ethiopia",
             "target--region--africa",
             "target--sector--aerospace",
-            "target--sector--aviation"
+            "target--sector--aviation",
+            "target--targeting-audit--country--dfe4685c3d850f100942"
           ],
           "victim_refs": [
             "victim--activity-rule--590d0a5c1af14161be04"
@@ -609,7 +610,8 @@
             ],
             "target_country_refs": [
               "target--country--egypt",
-              "target--country--ethiopia"
+              "target--country--ethiopia",
+              "target--targeting-audit--country--dfe4685c3d850f100942"
             ],
             "target_region_refs": [
               "target--region--africa"
@@ -619,109 +621,6 @@
         "confidence": "high",
         "evidence_refs": [
           "source--daily-eac188700be16a552143"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
-      "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
-      "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-04-01T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "unit42.paloaltonetworks.com",
-          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
-          "external_id": "source--daily-96ac11961cae303bc9fd"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-6b2a23bcddd9757abbb0",
-      "x_confidence": "medium",
-      "x_analyst_notes": "日次収集レコード daily-record--6b2a23bcddd9757abbb019a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScreening Serpens、別名UNC1549、Smoke Sandstorm、Iranian Dream Jobで、イラン情報目的に沿うサイバースパイ集団とされる。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
-      "x_reported_at": {
-        "value": "2026-05-25T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--unc1549",
-          "name": "UNC1549",
-          "attribution_countries": [
-            "Iran"
-          ],
-          "organization_refs": [
-            "organization--irgc-cec"
-          ]
-        },
-        "capability": {
-          "malware_refs": [],
-          "ttp_refs": [
-            "ttp--activity-rule--58d557d2679ee65b66a5"
-          ]
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [
-            "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "target--activity-rule--country--904728608f27c39df0df"
-          ],
-          "victim_refs": [
-            "victim--activity-rule--071152112a80d6125133"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "value": "2026-02-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "last_observed": {
-            "value": "2026-04-01T00:00:00Z",
-            "precision": "month",
-            "status": "known",
-            "basis": "activity-description-explicit-period"
-          },
-          "reported_at": {
-            "value": "2026-05-25T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "cyber-espionage",
-          "phases": [
-            "Execution",
-            "Stealth"
-          ],
-          "results": [
-            "data-theft"
-          ],
-          "direction": {
-            "source_countries": [
-              "Iran"
-            ],
-            "target_country_refs": [
-              "target--activity-rule--country--6604ad21c713b8dfd8c7",
-              "target--activity-rule--country--904728608f27c39df0df"
-            ],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-96ac11961cae303bc9fd"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -814,103 +713,6 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-2f8e0aeaa133b750f976"
-        ],
-        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
-      }
-    },
-    {
-      "type": "campaign",
-      "spec_version": "2.1",
-      "id": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
-      "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦",
-      "description": "IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。",
-      "first_seen": "2026-02-01T00:00:00Z",
-      "last_seen": "2026-04-01T00:00:00Z",
-      "external_references": [
-        {
-          "source_name": "research.checkpoint.com",
-          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
-          "external_id": "source--daily-d9794d16b217472dc38d"
-        }
-      ],
-      "x_profile_object_id": "activity--daily-fbebead95e73f527d5d5",
-      "x_confidence": "high",
-      "x_analyst_notes": "日次収集レコード daily-record--fbebead95e73f527d5d57ccf から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Check Point Research)を確認。Nimbus Manticore(IRGC関連、Google追跡名UNC1549)を実行主体として明記し、2026年2〜4月の防衛・航空・通信分野(欧州・中東・イスラエル・UAE、米国航空へ拡大)への攻撃を直接分析。Nimbus Manticoreはunc1549プロファイルのexact alias。SEOポイズニングと新型バックドアMiniFastを初観測。",
-      "x_reported_at": {
-        "value": "2026-05-27T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "daily-news-file-date"
-      },
-      "x_diamond_model": {
-        "adversary": {
-          "actor_ref": "actor--unc1549",
-          "name": "UNC1549",
-          "attribution_countries": [
-            "Iran"
-          ],
-          "organization_refs": [
-            "organization--irgc-cec"
-          ]
-        },
-        "capability": {
-          "malware_refs": [
-            "malware--daily-8bf720ef2de5aceeae08"
-          ],
-          "ttp_refs": []
-        },
-        "infrastructure": {
-          "infrastructure_refs": []
-        },
-        "victim": {
-          "target_refs": [
-            "target--activity-rule--country--6604ad21c713b8dfd8c7",
-            "target--sector--aviation"
-          ],
-          "victim_refs": [
-            "victim--activity-rule--8ea4f5b021a437bbcf9d"
-          ]
-        },
-        "meta_features": {
-          "first_observed": {
-            "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
-            "precision": "month",
-            "status": "known",
-            "value": "2026-02-01T00:00:00Z"
-          },
-          "last_observed": {
-            "basis": "Check Point: 2026年4月まで観測",
-            "precision": "month",
-            "status": "known",
-            "value": "2026-04-01T00:00:00Z"
-          },
-          "reported_at": {
-            "value": "2026-05-27T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "activity_type": "phishing-campaign",
-          "phases": [],
-          "results": [],
-          "direction": {
-            "source_countries": [
-              "Iran"
-            ],
-            "target_country_refs": [
-              "target--activity-rule--country--6604ad21c713b8dfd8c7"
-            ],
-            "target_region_refs": []
-          }
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--daily-d9794d16b217472dc38d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -1047,6 +849,206 @@
         "evidence_refs": [
           "source--kaspersky-mirage-kitten-2026",
           "source--mitre-attack-19-1"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡",
+      "description": "Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "unit42.paloaltonetworks.com",
+          "description": "Local source: https://unit42.paloaltonetworks.com/tracking-iran-apt-screening-serpens/?utm_campaign=u42+research_screening-serpens-iran-apt&utm_source=twitter&utm_medium=social&utm_content=1779461416",
+          "external_id": "source--daily-96ac11961cae303bc9fd"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-6b2a23bcddd9757abbb0",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--6b2a23bcddd9757abbb019a5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者はScreening Serpens、別名UNC1549、Smoke Sandstorm、Iranian Dream Jobで、イラン情報目的に沿うサイバースパイ集団とされる。 [activity-rule-v1] 活動記述に明示された攻撃期間を構造化。資料発行日・ニュース日付・IOC収集日は使用していない。",
+      "x_reported_at": {
+        "value": "2026-05-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1549",
+          "name": "UNC1549",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": [
+            "organization--irgc-cec"
+          ]
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--58d557d2679ee65b66a5"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--country--904728608f27c39df0df"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--071152112a80d6125133"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-02-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "last_observed": {
+            "value": "2026-04-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "activity-description-explicit-period"
+          },
+          "reported_at": {
+            "value": "2026-05-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Execution",
+            "Stealth"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7",
+              "target--activity-rule--country--904728608f27c39df0df"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-96ac11961cae303bc9fd"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "created": "2026-08-07T10:34:22Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦",
+      "description": "IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。",
+      "first_seen": "2026-02-01T00:00:00Z",
+      "last_seen": "2026-04-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "description": "Local source: https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/",
+          "external_id": "source--daily-d9794d16b217472dc38d"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-fbebead95e73f527d5d5",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--fbebead95e73f527d5d57ccf から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Check Point Research)を確認。Nimbus Manticore(IRGC関連、Google追跡名UNC1549)を実行主体として明記し、2026年2〜4月の防衛・航空・通信分野(欧州・中東・イスラエル・UAE、米国航空へ拡大)への攻撃を直接分析。Nimbus Manticoreはunc1549プロファイルのexact alias。SEOポイズニングと新型バックドアMiniFastを初観測。",
+      "x_reported_at": {
+        "value": "2026-05-27T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc1549",
+          "name": "UNC1549",
+          "attribution_countries": [
+            "Iran"
+          ],
+          "organization_refs": [
+            "organization--irgc-cec"
+          ]
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-8bf720ef2de5aceeae08"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--sector--aviation"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--8ea4f5b021a437bbcf9d"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "basis": "Check Point: 2026年2月から(Operation Epic Furyと連動)",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-02-01T00:00:00Z"
+          },
+          "last_observed": {
+            "basis": "Check Point: 2026年4月まで観測",
+            "precision": "month",
+            "status": "known",
+            "value": "2026-04-01T00:00:00Z"
+          },
+          "reported_at": {
+            "value": "2026-05-27T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "Iran"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-d9794d16b217472dc38d"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -3190,122 +3192,17 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--1ba38eab-b326-4aad-813d-dd79eb49b599",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "id": "relationship--c295a1a0-9a5d-4e4b-a641-447685c3eb26",
+      "created": "2026-09-14T13:26:30Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
       "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
-      "target_ref": "identity--a786f38c-0e04-4a9c-8161-cd9162ec17e6",
-      "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--sector--aerospace.",
+      "target_ref": "identity--64b2c669-16d4-4c62-a1f1-c3b45e47106f",
+      "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--targeting-audit--country--dfe4685c3d850f100942.",
       "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--51783427-e878-489d-abac-1f1cd0d97bc6",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
-      "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
-      "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 targets target--sector--aviation.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--3efa3872-6da6-4bf6-bc4b-1ce4a3b4fd11",
-      "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
-      "target_ref": "identity--0a3c0ec0-f32f-4521-b91b-de138f122114",
-      "description": "Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 affected victim--activity-rule--590d0a5c1af14161be04.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8ccb51e1-38b7-4cd8-ba0f-e2e1219518bb",
-      "created": "2026-07-27T11:04:37Z",
-      "modified": "2026-07-27T11:04:37Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
-      "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
-      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 is attributed or linked to UNC1549.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--991ad744-3146-461e-bfbd-b8fdaea17b9d",
-      "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
-      "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
-      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2fc64ec9-55a1-4235-b1d1-46240fdab2ef",
-      "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-07-29T15:20:24Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
-      "target_ref": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
-      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--activity-rule--country--904728608f27c39df0df.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e2a08719-fc0c-428e-85f9-0ad20947c2cc",
-      "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
-      "target_ref": "attack-pattern--b6efb3cf-8d5d-4629-aebf-ea4176cf7f4b",
-      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 uses ttp--activity-rule--58d557d2679ee65b66a5.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--341ce6bd-25e2-4de1-9ccb-72cfeb9eb45f",
-      "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
-      "target_ref": "identity--56046d96-a3cb-449d-bdfa-37a6d342b2c5",
-      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 affected victim--activity-rule--071152112a80d6125133.",
-      "x_confidence": "medium"
     },
     {
       "type": "relationship",
@@ -3366,81 +3263,6 @@
       "target_ref": "identity--1398bd13-7f7b-425c-af2d-95cb0ecdd1a2",
       "description": "Tortoiseshell：新たなツールセットと運用インフラを公開 affected victim--activity-rule--a1b1f24e4aa40c393238.",
       "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--d4ae033b-42af-4010-ae1a-9e22633b01f5",
-      "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:34:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "attributed-to",
-      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
-      "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
-      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 is attributed or linked to UNC1549.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7d7c851b-d9ba-4c7e-932e-fe3a8edb4fbb",
-      "created": "2026-08-07T10:34:22Z",
-      "modified": "2026-08-07T10:34:22Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "uses",
-      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
-      "target_ref": "malware--2c07f586-c8cc-4474-bdad-59836f85273d",
-      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 uses malware--daily-8bf720ef2de5aceeae08.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--a5a9b219-24c9-4b7d-98e6-90abad7f8e45",
-      "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
-      "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
-      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--80564406-5719-4ef7-b556-857711e5f3ca",
-      "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
-      "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
-      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--sector--aviation.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--9eaa6c73-ccad-4233-bf53-f0ec6cef249c",
-      "created": "2026-08-07T10:35:28Z",
-      "modified": "2026-08-07T10:35:28Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
-      "target_ref": "identity--e5780c24-96c2-43b1-a5be-ddd4815d0ab2",
-      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 affected victim--activity-rule--8ea4f5b021a437bbcf9d.",
-      "x_confidence": "high"
     },
     {
       "type": "relationship",
@@ -3875,6 +3697,156 @@
       "source_ref": "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
       "target_ref": "identity--fe4f341c-64cf-462f-a431-097cb21d7d03",
       "description": "Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 affected victim--activity-rule--15a1bbc4304a95fa57dc.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8ccb51e1-38b7-4cd8-ba0f-e2e1219518bb",
+      "created": "2026-07-27T11:04:37Z",
+      "modified": "2026-07-27T11:04:37Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 is attributed or linked to UNC1549.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--991ad744-3146-461e-bfbd-b8fdaea17b9d",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2fc64ec9-55a1-4235-b1d1-46240fdab2ef",
+      "created": "2026-07-29T15:20:24Z",
+      "modified": "2026-07-29T15:20:24Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "identity--c3122472-b1af-4a47-b53c-f6762a8e9636",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 targets target--activity-rule--country--904728608f27c39df0df.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e2a08719-fc0c-428e-85f9-0ad20947c2cc",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "attack-pattern--b6efb3cf-8d5d-4629-aebf-ea4176cf7f4b",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 uses ttp--activity-rule--58d557d2679ee65b66a5.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--341ce6bd-25e2-4de1-9ccb-72cfeb9eb45f",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+      "target_ref": "identity--56046d96-a3cb-449d-bdfa-37a6d342b2c5",
+      "description": "イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 affected victim--activity-rule--071152112a80d6125133.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d4ae033b-42af-4010-ae1a-9e22633b01f5",
+      "created": "2026-08-07T10:34:22Z",
+      "modified": "2026-08-07T10:34:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 is attributed or linked to UNC1549.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7d7c851b-d9ba-4c7e-932e-fe3a8edb4fbb",
+      "created": "2026-08-07T10:34:22Z",
+      "modified": "2026-08-07T10:34:22Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "malware--2c07f586-c8cc-4474-bdad-59836f85273d",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 uses malware--daily-8bf720ef2de5aceeae08.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a5a9b219-24c9-4b7d-98e6-90abad7f8e45",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--80564406-5719-4ef7-b556-857711e5f3ca",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "identity--12165e08-78eb-486c-8641-ced292ed0481",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 targets target--sector--aviation.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9eaa6c73-ccad-4233-bf53-f0ec6cef249c",
+      "created": "2026-08-07T10:35:28Z",
+      "modified": "2026-08-07T10:35:28Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
+      "target_ref": "identity--e5780c24-96c2-43b1-a5be-ddd4815d0ab2",
+      "description": "高速かつ激しい――イラン紛争中のNimbus Manticore作戦 affected victim--activity-rule--8ea4f5b021a437bbcf9d.",
       "x_confidence": "high"
     },
     {
@@ -18733,7 +18705,7 @@
       "spec_version": "2.1",
       "id": "indicator--fbd9fdc9-1bab-43e1-b2bd-fd64e39cae54",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18747,7 +18719,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -18777,7 +18749,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 32
           },
@@ -18795,6 +18767,43 @@
           "raw_value": "cbaaf0900a13f28e380f49adecec932c",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:3313f87d03430ce1740336799494ff91110114dbfec09370e5073ad9bd87720a",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 45
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "cbaaf0900a13f28e380f49adecec932c",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -18818,7 +18827,7 @@
       "spec_version": "2.1",
       "id": "indicator--b0c92105-e1bb-4446-917c-7a2529a76bcd",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18832,7 +18841,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -18862,7 +18871,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 33
           },
@@ -18880,6 +18889,43 @@
           "raw_value": "1ea83e4e4592b01e4acab63eb867bee5",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:26886f45acce582620d3474dd5a02759cec049cae606be74b45c44a046bf45ff",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 46
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "1ea83e4e4592b01e4acab63eb867bee5",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -18903,7 +18949,7 @@
       "spec_version": "2.1",
       "id": "indicator--77714aeb-b00f-4081-a1de-ba62f53eb06c",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18917,7 +18963,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -18947,7 +18993,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 34
           },
@@ -18965,6 +19011,43 @@
           "raw_value": "366515822d5ac1cc500711ef57a2e32e",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:3ed2b9b21e5ffb2a97f9ce6e6abe7abad9d03504dee9af9957d2036c0a2e22c4",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 47
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "366515822d5ac1cc500711ef57a2e32e",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -18988,7 +19071,7 @@
       "spec_version": "2.1",
       "id": "indicator--2e69545a-309a-489a-8469-24b84b66e46c",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19002,7 +19085,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19032,7 +19115,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 35
           },
@@ -19050,6 +19133,43 @@
           "raw_value": "cf449f1992c2819e62ac44a0b06ac2e7",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:7898a0e077b4a7ebaabbf565c0044f30b84136a6ca6641899b3827e81fc79885",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 48
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "cf449f1992c2819e62ac44a0b06ac2e7",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19073,7 +19193,7 @@
       "spec_version": "2.1",
       "id": "indicator--57d66a1e-f478-49c7-b493-854e466b15db",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19087,7 +19207,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19117,7 +19237,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 36
           },
@@ -19135,6 +19255,43 @@
           "raw_value": "e95a4366686e3f786ea3c056fab5b0da",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:d3b449d1cb7d9ec23eaac19568dc2e4f9f9f234bfbdf882aa10f4b56b76e5335",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 49
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "e95a4366686e3f786ea3c056fab5b0da",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19158,7 +19315,7 @@
       "spec_version": "2.1",
       "id": "indicator--aa21bfa5-9fd1-4446-9295-a7b4d69463e7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19172,7 +19329,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19202,7 +19359,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 37
           },
@@ -19220,6 +19377,43 @@
           "raw_value": "de5af16a3757ef700b01dc34d67079ae",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:34eb938a3fb902d64345a141bad672cb05353de33b5e4b191289910e82f6d984",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 50
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "de5af16a3757ef700b01dc34d67079ae",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19243,7 +19437,7 @@
       "spec_version": "2.1",
       "id": "indicator--6d8fc053-d3de-425e-b724-71468d80f858",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19257,7 +19451,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19287,7 +19481,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 38
           },
@@ -19305,6 +19499,43 @@
           "raw_value": "be086789568441d0d7e4679aee51f566",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:a6fa81a93256d09b2506117aa8e31ebb6a578c28e92514bd8dd9dad382caadaa",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 51
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "be086789568441d0d7e4679aee51f566",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19328,7 +19559,7 @@
       "spec_version": "2.1",
       "id": "indicator--4816c73c-1819-4589-a67b-54380c8bd97c",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19342,7 +19573,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19372,7 +19603,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 39
           },
@@ -19390,6 +19621,43 @@
           "raw_value": "e259c5edf158aac4cfe14f77ddd0b196",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:96053ad7ee832b01c484793b8cb849589c85b4d32ff4b7cc7e3cd062fb556051",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 52
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "e259c5edf158aac4cfe14f77ddd0b196",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19413,7 +19681,7 @@
       "spec_version": "2.1",
       "id": "indicator--c6379b2c-e122-4482-8d6f-ecb824ee62f6",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19427,7 +19695,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19457,7 +19725,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 40
           },
@@ -19475,6 +19743,43 @@
           "raw_value": "291ac3abe73c5158e59a437b75d5f0aa",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:2648c980409d5467625b18e602c73d510158d8bbd5504220bc5e21158011779f",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 53
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "291ac3abe73c5158e59a437b75d5f0aa",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19498,7 +19803,7 @@
       "spec_version": "2.1",
       "id": "indicator--0edff31e-f5e1-4677-8079-269c9180cbb7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19512,7 +19817,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19542,7 +19847,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 41
           },
@@ -19560,6 +19865,43 @@
           "raw_value": "0962f56d7ec69f4f2a0162dcbe22116b",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:42b5b7aa0abf40ac29272fafa587b143f9da8b16483248c5f21f414eda595b4a",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 54
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "0962f56d7ec69f4f2a0162dcbe22116b",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19583,7 +19925,7 @@
       "spec_version": "2.1",
       "id": "indicator--cccc9399-f643-4bc6-8060-df55dadb527b",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19597,7 +19939,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19627,7 +19969,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 42
           },
@@ -19645,6 +19987,43 @@
           "raw_value": "795e053a990a1569ffdcb57f48f6d085",
           "context_excerpt": "AI generated. MD5 of a trojanized coding-challenge archive sent to targeted developers.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:722a2894150f5b5e85ec1e9950b3994aaa3f83d24d17487a03ae7a43390d13d0",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 55
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "795e053a990a1569ffdcb57f48f6d085",
+          "context_excerpt": "AI generated. MD5 hash listed in the IOC section of the primary report on NodeRabbit and PollCat.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19668,7 +20047,7 @@
       "spec_version": "2.1",
       "id": "indicator--7f8a8495-5407-4fe6-b284-bc1d5ec03908",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19682,7 +20061,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19714,7 +20093,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 43
           },
@@ -19734,6 +20113,43 @@
           "raw_value": "naturalapplication.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:3d74b612e6f85a15307be8cb7aa1b33e74bfb8087f3f5c19a83a218d211a1291",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 56
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "naturalapplication.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19757,7 +20173,7 @@
       "spec_version": "2.1",
       "id": "indicator--3fb0a119-25a2-440b-84ee-744c6a6b83e4",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19771,7 +20187,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19803,7 +20219,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 44
           },
@@ -19823,6 +20239,43 @@
           "raw_value": "retaildemo.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:1e1712a5c60282a59015b23a47739ab2a460ab15a80ac3e33fc6dfcf3ce99ae8",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 57
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "retaildemo.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19846,7 +20299,7 @@
       "spec_version": "2.1",
       "id": "indicator--eea48212-0201-4699-b5ab-f4158034a1fe",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19860,7 +20313,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19892,7 +20345,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 45
           },
@@ -19912,6 +20365,43 @@
           "raw_value": "tubitak.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:2e98336ce3aad4cf3082d1cd8870604d618e3599cf6ec1de382b33606b154661",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 58
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "tubitak.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -19935,7 +20425,7 @@
       "spec_version": "2.1",
       "id": "indicator--96657160-54e8-43c0-9f44-5b965bc6d67b",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -19949,7 +20439,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -19981,7 +20471,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 46
           },
@@ -20001,6 +20491,43 @@
           "raw_value": "rgbteller.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:eacaa1ae74627eb26f2f135712d42eee5ec4f3bac6909715991e98f616c64bde",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 59
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "rgbteller.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20024,7 +20551,7 @@
       "spec_version": "2.1",
       "id": "indicator--eedf5ff9-4943-4421-8351-fd77cf5c26e1",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20038,7 +20565,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20070,7 +20597,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 47
           },
@@ -20090,6 +20617,43 @@
           "raw_value": "wslwebui.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:cbae35ffdd8e4c1c0746793d7f52d97a98bcbb854621b4fa8cd44275ebee47c5",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 60
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "wslwebui.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20113,7 +20677,7 @@
       "spec_version": "2.1",
       "id": "indicator--06b29177-065c-41a1-8a9d-0b362b3a8262",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20127,7 +20691,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20159,7 +20723,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 48
           },
@@ -20179,6 +20743,43 @@
           "raw_value": "plugplay.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:230e342f5d382309dcfe21ecaefcd2ea8a123125009c60fd30e5354ef8ebdec0",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 61
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "plugplay.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20202,7 +20803,7 @@
       "spec_version": "2.1",
       "id": "indicator--7ab1fb96-218f-4fa6-b333-8c38453e93d8",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20216,7 +20817,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20248,7 +20849,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 49
           },
@@ -20268,6 +20869,43 @@
           "raw_value": "crossdwm.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:9a4b71206da3d98dd252af3595ce44e88b3c4489afbf2ebdc00327b1752d99b8",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 62
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "crossdwm.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20291,7 +20929,7 @@
       "spec_version": "2.1",
       "id": "indicator--66558877-5bff-4e6f-8942-6c6c99cc000e",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20305,7 +20943,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20337,7 +20975,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 50
           },
@@ -20357,6 +20995,43 @@
           "raw_value": "wdisystem.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:fa4c5dd4f752a2beb8d5f0c70bf72b72c757fc3e7b696c0ddeeef45089ee0952",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 63
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "wdisystem.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20380,7 +21055,7 @@
       "spec_version": "2.1",
       "id": "indicator--a0a072f1-9980-43a3-915a-329d713d9cf7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20394,7 +21069,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20426,7 +21101,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 51
           },
@@ -20446,6 +21121,43 @@
           "raw_value": "wslmenus.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:52d1607cbe429da6cc5957f9ec95da8992731db8a38a2151b8736af7f9b249c8",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 64
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "wslmenus.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20469,7 +21181,7 @@
       "spec_version": "2.1",
       "id": "indicator--2b132fea-b024-46c9-ab14-3f7b0bc1b7db",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20483,7 +21195,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20515,7 +21227,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 52
           },
@@ -20535,6 +21247,43 @@
           "raw_value": "dnshnsdev.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:b9b74887d47da91259a52f0cebdeb7560dd75b9c67a958dd2a039653dbcbba47",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 65
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "dnshnsdev.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20558,7 +21307,7 @@
       "spec_version": "2.1",
       "id": "indicator--c8b23bfe-317c-44aa-993e-8cc57401ed07",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20572,7 +21321,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20604,7 +21353,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 53
           },
@@ -20624,6 +21373,43 @@
           "raw_value": "hpjumpsrv.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:5d5ff9deac294b47c8d716a32e8c081894691d22598bb6bdabbbf7bfdd15b235",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 66
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "hpjumpsrv.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20647,7 +21433,7 @@
       "spec_version": "2.1",
       "id": "indicator--f0c6f3b6-f70b-4609-b0f5-ca0cc12aba8d",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20661,7 +21447,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20693,7 +21479,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 54
           },
@@ -20713,6 +21499,43 @@
           "raw_value": "storview.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:3be30bbb8d77e55b31c45ddf09fcb922ee4e2964eaae34b3597c75340919d3e8",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 67
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "storview.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20736,7 +21559,7 @@
       "spec_version": "2.1",
       "id": "indicator--43e57153-5a6f-4e3e-b5d4-0b37438ef865",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20750,7 +21573,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20782,7 +21605,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 55
           },
@@ -20802,6 +21625,43 @@
           "raw_value": "kyrasey-f8hfexa5cqamh7fk.westeurope-01.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:e7f935acede27deefe09db1cc570c392f8487643fe03a3f6879b0f77f5bb3adc",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 68
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "kyrasey-f8hfexa5cqamh7fk.westeurope-01.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20825,7 +21685,7 @@
       "spec_version": "2.1",
       "id": "indicator--885d21e1-572c-48cf-ab8c-5ca74b9642f2",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20839,7 +21699,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20871,7 +21731,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 56
           },
@@ -20891,6 +21751,43 @@
           "raw_value": "greenyjsgfd.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:abd3fb3151caa9210c03b5958102321ca69be927bb4939ec96b10ee40174ef91",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 69
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "greenyjsgfd.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -20914,7 +21811,7 @@
       "spec_version": "2.1",
       "id": "indicator--da4930a3-966a-46cf-bc3e-fb1f3f8f2d14",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20928,7 +21825,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -20960,7 +21857,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 57
           },
@@ -20980,6 +21877,43 @@
           "raw_value": "helptellerbls.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:e8a368349d3c92aed318b4e412e387ca47d33c4cf6dbd0c495df280a87222d41",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 70
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "helptellerbls.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21003,7 +21937,7 @@
       "spec_version": "2.1",
       "id": "indicator--68990cce-f84b-4c5a-b835-604e7d4d45d2",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21017,7 +21951,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21049,7 +21983,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 58
           },
@@ -21069,6 +22003,43 @@
           "raw_value": "timedrv.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:5859d94e36ca39907a65ab95cf5457e26d7c8093fafac542d5e8ae22eb6a7149",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 71
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "timedrv.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21092,7 +22063,7 @@
       "spec_version": "2.1",
       "id": "indicator--ef2c2196-50b0-465e-99cc-967b7df25a8c",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21106,7 +22077,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21138,7 +22109,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 59
           },
@@ -21158,6 +22129,43 @@
           "raw_value": "userwellgtfs.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:51716a0c12c910663cd229ae43662ed94cd748dc78e2e945dcc445166d01fd42",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 72
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "userwellgtfs.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21181,7 +22189,7 @@
       "spec_version": "2.1",
       "id": "indicator--9d393830-28d5-462a-a16c-7d9443d0e13a",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21195,7 +22203,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21227,7 +22235,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 60
           },
@@ -21247,6 +22255,43 @@
           "raw_value": "hecowime-aqdphyd4bbdef6es.westeurope-01.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as NodeRabbit command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:31df39177d374d84ec6f16042a5535aa914323abd4013d88aa202c9529bfa8fd",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 73
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "hecowime-aqdphyd4bbdef6es.westeurope-01.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21270,7 +22315,7 @@
       "spec_version": "2.1",
       "id": "indicator--7a9569ad-0b45-420b-b31d-f579e424edd9",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21284,7 +22329,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21316,7 +22361,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 61
           },
@@ -21336,6 +22381,43 @@
           "raw_value": "gamebarapp.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as PollCat command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:e61cc8aaf699440e3016fe1b44dc95a6bc730d609103e8ee92dbf2ae95183c82",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 74
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "gamebarapp.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21359,7 +22441,7 @@
       "spec_version": "2.1",
       "id": "indicator--e0598753-144a-496a-861f-2517a8fcd2cf",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21373,7 +22455,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21405,7 +22487,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 62
           },
@@ -21425,6 +22507,43 @@
           "raw_value": "gamebarappinformation.azurewebsites.net",
           "context_excerpt": "AI generated. Azure Websites host abused as PollCat command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:26a0a39495a6ff90aaf6067081bb86872d4b624b47586bc75f0a89a9ddec3917",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 75
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "gamebarappinformation.azurewebsites.net",
+          "context_excerpt": "AI generated. Azure Websites subdomain used as C2 infrastructure in the fake recruiter campaign.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21448,7 +22567,7 @@
       "spec_version": "2.1",
       "id": "indicator--16e73a8d-062b-4a7e-b504-07beaea50c57",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21462,7 +22581,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21494,7 +22613,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 63
           },
@@ -21514,6 +22633,43 @@
           "raw_value": "healthcomfsdpower.com",
           "context_excerpt": "AI generated. Attacker-controlled domain used in the NodeRabbit command-and-control chain.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:91f529371109839ba52b41b8303ca23bbd0ad346b79bcb0a47b20a4416a5898f",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 76
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "healthcomfsdpower.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21537,7 +22693,7 @@
       "spec_version": "2.1",
       "id": "indicator--96a34356-ff7b-4a75-9202-3db3b448945a",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21551,7 +22707,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21583,7 +22739,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 64
           },
@@ -21603,6 +22759,43 @@
           "raw_value": "visitfinancedentists.com",
           "context_excerpt": "AI generated. Attacker-controlled domain used in the NodeRabbit command-and-control chain.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:5f12ed664fd31a25702812618af334c0298dd564d0bdf3d726fcf9fe1fff466f",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 77
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "visitfinancedentists.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21626,7 +22819,7 @@
       "spec_version": "2.1",
       "id": "indicator--1985aecc-0cd0-4ab8-9fda-919acf9410d3",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21640,7 +22833,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21672,7 +22865,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 65
           },
@@ -21692,6 +22885,43 @@
           "raw_value": "msmanagementgrp.com",
           "context_excerpt": "AI generated. Registered domain used as NodeRabbit related command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:50af8f7a63fa8b56535b26c4ea24cd2f2b3b1d151f2b29e9ca7a8142b1f8adb6",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 78
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "msmanagementgrp.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21715,7 +22945,7 @@
       "spec_version": "2.1",
       "id": "indicator--dbf1aa6d-8fb6-4396-a135-64d85a104be7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21729,7 +22959,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21761,7 +22991,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 66
           },
@@ -21781,6 +23011,43 @@
           "raw_value": "msmanagementgrpmedia.com",
           "context_excerpt": "AI generated. Registered domain used as NodeRabbit related command-and-control infrastructure.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:b73a8be73345745450268ded9e7294bb7fc7f189f12a8f1d40d7cb3561520119",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 79
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "msmanagementgrpmedia.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21804,7 +23071,7 @@
       "spec_version": "2.1",
       "id": "indicator--c4c6eb87-76b0-420e-8c0c-f29729311e1c",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21818,7 +23085,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21850,7 +23117,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 67
           },
@@ -21870,6 +23137,43 @@
           "raw_value": "lifespotify.com",
           "context_excerpt": "AI generated. Attacker-controlled domain used by PollCat for registration and command polling.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:674a6d1e58ed10247b5fa55fef2bd2e19b6db6eb71a84dc5f774d8fcef5fe48d",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 80
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "lifespotify.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21893,7 +23197,7 @@
       "spec_version": "2.1",
       "id": "indicator--fe5478e1-c7f4-40ef-afef-b1c2730ba85a",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21907,7 +23211,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -21939,7 +23243,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 68
           },
@@ -21959,6 +23263,43 @@
           "raw_value": "sahi-finance.com",
           "context_excerpt": "AI generated. Attacker-controlled domain used by PollCat for registration and command polling.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:cb5da03556067792c257f8bb1373057b015f31aa8cc8c6c2b3b34d9a1f8429c9",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 81
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "sahi-finance.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -21982,7 +23323,7 @@
       "spec_version": "2.1",
       "id": "indicator--645b971b-b216-4573-b033-37896cc151e9",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21996,7 +23337,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22026,7 +23367,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 69
           },
@@ -22044,6 +23385,43 @@
           "raw_value": "healthful-hub.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:731ba113bf3f67e117bdab7bf681e7587f15b517365d7e3beed6cc1ebd343e44",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 82
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "healthful-hub.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22067,7 +23445,7 @@
       "spec_version": "2.1",
       "id": "indicator--52b79a59-8ce5-4f4e-887b-2cdf655e6434",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22081,7 +23459,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22111,7 +23489,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 70
           },
@@ -22129,6 +23507,43 @@
           "raw_value": "neumedicahealthcare.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:3a4c4ea5f3842cf2104462253fcf4b09ef867578fcd793a8d9f48d0f9a760d92",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 83
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "neumedicahealthcare.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22152,7 +23567,7 @@
       "spec_version": "2.1",
       "id": "indicator--adcd3d99-7e8c-4ff9-9037-7be90d24ac53",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22166,7 +23581,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22196,7 +23611,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 71
           },
@@ -22214,6 +23629,43 @@
           "raw_value": "optimumhealthcredit.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:58b3fb79d6f82b49a06bf1a0fe563a9a63b159247c470b97f4ef8052debb611c",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 84
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "optimumhealthcredit.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22237,7 +23689,7 @@
       "spec_version": "2.1",
       "id": "indicator--3476ecff-7590-4016-9226-17cef2c152a0",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22251,7 +23703,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22281,7 +23733,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 72
           },
@@ -22299,6 +23751,43 @@
           "raw_value": "healthfullyrecipes.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:96de0bb3a557848a004205b4cc11198dd205ea0ba622dbefcacbe4de84667b77",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 85
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "healthfullyrecipes.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22322,7 +23811,7 @@
       "spec_version": "2.1",
       "id": "indicator--96fdf84d-ddb4-46f3-af04-c293dd553878",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22336,7 +23825,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22366,7 +23855,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 73
           },
@@ -22384,6 +23873,43 @@
           "raw_value": "refreshhealthandwellness.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:6208f2db1c0c6fcc07fcd19abe6e074e6718fe3fdb2e1c7ce33e9eeeb18e0ebf",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 86
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "refreshhealthandwellness.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22407,7 +23933,7 @@
       "spec_version": "2.1",
       "id": "indicator--f02a0d95-471f-447a-81d1-eb203c49a530",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22421,7 +23947,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22451,7 +23977,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 74
           },
@@ -22469,6 +23995,43 @@
           "raw_value": "healthvitalitycare.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:b068da080d4adf116ca0e9177cb22d899ad9aa5410bbcbcad250db89f725ea69",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 87
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "healthvitalitycare.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22492,7 +24055,7 @@
       "spec_version": "2.1",
       "id": "indicator--85191950-d280-4fc0-99d4-daa8ec7e17fb",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22506,7 +24069,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22536,7 +24099,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 75
           },
@@ -22554,6 +24117,43 @@
           "raw_value": "aceofspadesmanagement.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:ee53cdf40648a45e9f987c72b0792336956004ea1a1179a6317e2ef4fbd2f74e",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 88
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "aceofspadesmanagement.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22577,7 +24177,7 @@
       "spec_version": "2.1",
       "id": "indicator--dab377f3-70cc-4c62-a5e6-8be66738e655",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22591,7 +24191,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22621,7 +24221,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 76
           },
@@ -22639,6 +24239,43 @@
           "raw_value": "glmediaagency.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:958be20c3eb4a629454276654f967d0b4a7d199049461b6dd0701cf96a828cfb",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 89
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "glmediaagency.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22662,7 +24299,7 @@
       "spec_version": "2.1",
       "id": "indicator--a0188c37-de87-4e3d-ad3b-fedab711460a",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22676,7 +24313,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22706,7 +24343,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 77
           },
@@ -22724,6 +24361,43 @@
           "raw_value": "digimediaskill.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:b2521c9d764217c2860e5daf908de6b7c5fef596a4b0410fc6189181e968d614",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 90
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "digimediaskill.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22747,7 +24421,7 @@
       "spec_version": "2.1",
       "id": "indicator--0e4c53d4-6a1b-4f0f-ab37-9bcabadc9ea7",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22761,7 +24435,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22791,7 +24465,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 78
           },
@@ -22809,6 +24483,43 @@
           "raw_value": "healthyweightplan.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:87e7b6dcebfa1db5b0808f4ff4ae8f49cdeadcc12dbf2300e69bdd3e71ff8e3a",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 91
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "healthyweightplan.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22832,7 +24543,7 @@
       "spec_version": "2.1",
       "id": "indicator--e93df48b-5d7c-402d-ab9a-5c2dcbc31a00",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22846,7 +24557,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22876,7 +24587,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 79
           },
@@ -22894,6 +24605,43 @@
           "raw_value": "mens-health-online.com",
           "context_excerpt": "AI generated. Additional domain linked to the actor through infrastructure pattern analysis.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:22356f7cd6668fbca2fe66f15738df0928f8a9a98315e484c8f041efc1474bcc",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 92
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "mens-health-online.com",
+          "context_excerpt": "AI generated. Attacker controlled domain listed as C2 infrastructure in the primary report.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -22917,7 +24665,7 @@
       "spec_version": "2.1",
       "id": "indicator--b981bf1e-7b52-401c-9d3e-2b214e6239ce",
       "created": "2026-09-02T13:11:10Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -22931,7 +24679,7 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
+      "x_observation_count": 2,
       "x_campaign_count": 1,
       "x_seen_in_multiple_campaigns": false,
       "x_campaign_refs": [
@@ -22961,7 +24709,7 @@
           "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
           "source_location": {
             "repository": "proshiba/tech-memo",
-            "commit": "2c4df2305340447525dfd7169eb919a5c99f1d65",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
             "path": "daily-news/iocs/2026_07-09/20260902.csv",
             "row": 80
           },
@@ -22979,6 +24727,43 @@
           "raw_value": "oracle-challenge.s3.us-east-1.amazonaws.com",
           "context_excerpt": "AI generated. Amazon S3 host abused to distribute the trojanized coding-challenge archives.",
           "analyst_notes": "actor field: Mirage Kitten; actor_attribute: unknown; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
+        },
+        {
+          "observation_id": "observation--sha256:f5aa7133a1827410eb1d3b7e3cfcda4536cff6dcb883ff2ba74118f3b50d952d",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "source_id": "source--daily-eac188700be16a552143",
+          "source_path": "https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "8e64d5882c84098b89e28b886966f339bba05b68",
+            "path": "daily-news/iocs/2026_07-09/20260910.csv",
+            "row": 93
+          },
+          "campaign_refs": [
+            "activity--daily-2af1a13746c92e9b94dd"
+          ],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "oracle-challenge.s3.us-east-1.amazonaws.com",
+          "context_excerpt": "AI generated. Cloud storage bucket host used to stage the trojanized coding challenge archive.",
+          "analyst_notes": "actor field: Mirage Kitten; actor_attribute: iran; reference: https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/"
         }
       ]
     },
@@ -23019,7 +24804,7 @@
       "spec_version": "2.1",
       "id": "report--f77518ca-db4c-41e4-ae57-d7a34ce507be",
       "created": "2026-07-25T15:23:07Z",
-      "modified": "2026-09-02T13:11:10Z",
+      "modified": "2026-09-14T13:26:30Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -23028,7 +24813,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-02T13:11:10Z",
+      "published": "2026-09-14T13:26:30Z",
       "object_refs": [
         "intrusion-set--be25461c-cbcc-41bd-9087-c87cb82773cb",
         "malware--7cc285db-7c6c-4514-b562-e44499691376",
@@ -23040,10 +24825,10 @@
         "malware--ab1d85a7-3b01-44f0-a9b4-b042c088331b",
         "infrastructure--f2e9a9d1-39c0-4868-b052-9785ce6f09da",
         "campaign--26d62280-1ade-4b76-8b3e-3f63e3261ebc",
-        "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
         "campaign--818a2f94-c323-4a5d-8952-bf2342ac94c3",
-        "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
         "campaign--550b319a-8522-45ef-8cb5-808a11fe0196",
+        "campaign--5cb695e8-c80b-4c2c-8d7b-48528897e7e4",
+        "campaign--bb50ef30-8d0f-4c6d-b0ea-2932d51fcc0c",
         "identity--64b2c669-16d4-4c62-a1f1-c3b45e47106f",
         "identity--3eb2a2e8-00b7-44c5-b065-9829a24bf1ae",
         "identity--969bc0b1-e461-4201-939b-153ef251bdf3",

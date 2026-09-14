@@ -4,7 +4,7 @@
   "name": "APT29",
   "status": "review",
   "created_at": "2026-07-25T09:00:19Z",
-  "updated_at": "2026-09-10T16:11:23Z",
+  "updated_at": "2026-09-14T13:26:48Z",
   "languages": [
     "ja"
   ],
@@ -471,6 +471,37 @@
         "analyst_notes": ""
       },
       {
+        "id": "malware--chocoshell",
+        "name": "ChocoShell",
+        "aliases": [
+          "CHERRYPIE"
+        ],
+        "types": [
+          "Windows",
+          "PowerShell",
+          "infostealer"
+        ],
+        "description": "PowerShellベースのインフォスティーラー。ブラウザCookieとSSOトークンの窃取を標的とする。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-going-with-the-flows-2026",
+          "source--microsoft-captivecrunch-2026"
+        ],
+        "analyst_notes": "Storm-2945によるCaptiveCrunchキャンペーンで確認。個別の初回確認日は本文に明記されないためunknownとした。 GTIG(2026-08-20)は「Samples of the CHERRYPIE PowerShell infostealer (also known as ChocoShell)」と同一マルウェアであることを明記し、LLM生成を示唆する痕跡が多数含まれること、およびMaaSで購入したインフォスティーラーを基にしている可能性を述べている。GTIGは本マルウェアをUNC7005へ帰属しており、Microsoftの帰属(Midnight Blizzardのサブクラスタ Storm-2945)とはクラスタ境界の評価が異なる。差異はclaim-audit.jsonへ記録した。"
+      },
+      {
         "id": "malware--cloudduke",
         "name": "CloudDuke",
         "aliases": [
@@ -529,6 +560,33 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--cornflake",
+        "name": "CornFlake",
+        "aliases": [],
+        "types": [
+          "Windows",
+          "RAT"
+        ],
+        "description": "Go言語で書かれたWindows向けRAT。キーロギング、監視、資格情報窃取機能を備える。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--microsoft-captivecrunch-2026"
+        ],
+        "analyst_notes": "Storm-2945(Midnight Blizzardの運用サブクラスタ)によるCaptiveCrunchキャンペーンで確認。個別の初回確認日は本文に明記されないためunknownとした。"
       },
       {
         "id": "malware--cosmicduke",
@@ -1582,64 +1640,6 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
-      },
-      {
-        "id": "malware--cornflake",
-        "name": "CornFlake",
-        "aliases": [],
-        "types": [
-          "Windows",
-          "RAT"
-        ],
-        "description": "Go言語で書かれたWindows向けRAT。キーロギング、監視、資格情報窃取機能を備える。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--microsoft-captivecrunch-2026"
-        ],
-        "analyst_notes": "Storm-2945(Midnight Blizzardの運用サブクラスタ)によるCaptiveCrunchキャンペーンで確認。個別の初回確認日は本文に明記されないためunknownとした。"
-      },
-      {
-        "id": "malware--chocoshell",
-        "name": "ChocoShell",
-        "aliases": [
-          "CHERRYPIE"
-        ],
-        "types": [
-          "Windows",
-          "PowerShell",
-          "infostealer"
-        ],
-        "description": "PowerShellベースのインフォスティーラー。ブラウザCookieとSSOトークンの窃取を標的とする。",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--gtig-going-with-the-flows-2026",
-          "source--microsoft-captivecrunch-2026"
-        ],
-        "analyst_notes": "Storm-2945によるCaptiveCrunchキャンペーンで確認。個別の初回確認日は本文に明記されないためunknownとした。 GTIG(2026-08-20)は「Samples of the CHERRYPIE PowerShell infostealer (also known as ChocoShell)」と同一マルウェアであることを明記し、LLM生成を示唆する痕跡が多数含まれること、およびMaaSで購入したインフォスティーラーを基にしている可能性を述べている。GTIGは本マルウェアをUNC7005へ帰属しており、Microsoftの帰属(Midnight Blizzardのサブクラスタ Storm-2945)とはクラスタ境界の評価が異なる。差異はclaim-audit.jsonへ記録した。"
       }
     ],
     "tools": [
@@ -2744,6 +2744,112 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-285c0671deb0b6a74288"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--daily-6f3cf1424f54165adb62",
+      "name": "GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+      "activity_type": "phishing-campaign",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Anthropic は、Claude を悪用して侵入の全段階を自動化した諜報クラスター GTG-20006 を確認・阻止した。原文は「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と記載する。Windows・Android・iOS 向けマルウェアの開発と配備、フィッシング、永続化、C2、情報窃取にClaude を利用し、ウクライナの政府・軍・外交機関を中心に20以上の組織を標的とした。ドローン製造業者へのサプライチェーン窃取、ホテルWi-Fi侵害(CaptiveCrunch)による資格情報窃取、ヘッドレスブラウザを用いた WhatsApp アカウント乗っ取り、30万件超の国民ID記録と企業登記情報の持ち出し、外交・政府機関に対する Microsoft 365 トークン窃取が報告されている。",
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "target--sector--government"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--5c02f254caa1872e116a"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-d957d6c999575906f6dc"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--6f3cf1424f54165adb622907 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用。一次資料(Anthropic 脅威インテリジェンスレポート 2026-09)の原文を確認した。GTG-20006 について「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と明記されている。Midnight Blizzard は本プロファイルの alias(vendor: MITRE ATT&CK, scope: overlapping)であり、断定的な同一視ではないため confidence は medium とする。帰属表現も独自の高確度判定ではなく公開報告との整合を述べるものである。活動期間: 原文には GTG-20006 固有の観測日・期間の記載がない。レポート全体の対象期間である2025年12月〜2026年8月は本クラスター固有の観測期間として明示されていないため活動期間へ流用せず、unknown とし tech-memo 日次ファイルの日付を reported_at へ分離する。activity_overrides: tech-memo の記事見出しと要約は同一レポート内の別クラスター(ShinyHunters 関連の frkoo による180万件のAndroid APK からのシークレット探索)を主題としており、そのまま活動名にすると APT29 の活動として誤りになる。原文を確認したうえで当該クラスターの記述へ差し替えた。activity ID と record ID は activity_reference から生成されるため影響しない。IOC: 原文のIOC付録を確認し、ドメイン33件・IP14件・ハッシュ2件の計49件がいずれも攻撃者管理のインフラとして掲載されていることを確認した(ms365-live[.]com、m365-owa[.]com、owa-ms365[.]com 等のMicrosoft 365 を騙るフィッシング基盤を含む)。IOC CSV の actor 列は複合値 「GTG-20006 (Midnight Blizzard)」であり自動一致しないため、BlueDelta(APT28)および Tortoiseshell 複合値(UNC1549)の前例に従い config.json の actor_value_aliases へ対応付けた。競合の保持: 本文の CaptiveCrunch は、既に APT29 プロファイルへ Storm-2945 帰属の活動(2026-07-31 reported_at)として適用済みである。Anthropic は同手法を GTG-20006 の活動として記述しており帰属が競合するため、既存活動を上書きせず claim-audit.json へ両論とスコープを残す。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--apt29",
+          "name": "APT29",
+          "attribution_countries": [
+            "Russia"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--36f1b9323d5faab92f39",
+            "target--activity-rule--sector--570d54d1d21fab6540a9",
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--5c02f254caa1872e116a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [
+              "Russia"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--36f1b9323d5faab92f39"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-d957d6c999575906f6dc"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -4135,7 +4241,7 @@
       {
         "id": "target--activity-rule--country--36f1b9323d5faab92f39",
         "name": "ウクライナ",
-        "description": "活動「Amazonがデータ窃盗目的の不正なリモートデスクトップキャンペーンに使用されたドメインを差し押さえ」の記述で標的として明示された国・地域。",
+        "description": "活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された国・地域。",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -4152,6 +4258,7 @@
         "evidence_refs": [
           "source--daily-833e8d72019628e85850",
           "source--daily-b028cfa41afc98a11bc6",
+          "source--daily-d957d6c999575906f6dc",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
         ],
@@ -5472,6 +5579,7 @@
         "evidence_refs": [
           "source--daily-833e8d72019628e85850",
           "source--daily-b028cfa41afc98a11bc6",
+          "source--daily-d957d6c999575906f6dc",
           "source--target-audit-etda-threat-group-cards",
           "source--target-audit-misp-threat-actor"
         ],
@@ -5500,6 +5608,7 @@
           "source--daily-333754fe19b5747a8958",
           "source--daily-833e8d72019628e85850",
           "source--daily-b028cfa41afc98a11bc6",
+          "source--daily-d957d6c999575906f6dc",
           "source--microsoft-apt29-rdp-2024",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards",
@@ -5509,6 +5618,28 @@
       }
     ],
     "sectors": [
+      {
+        "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "name": "小売・ホスピタリティ",
+        "description": "活動「GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-d957d6c999575906f6dc"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
       {
         "id": "target--mitre-group--sector--15819db0d0d0ddf2c6b1",
         "name": "教育・研究",
@@ -5578,6 +5709,7 @@
           "source--daily-833e8d72019628e85850",
           "source--daily-9d15f8a2b79eddc0a96b",
           "source--daily-bef8400faee317cbc290",
+          "source--daily-d957d6c999575906f6dc",
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
@@ -13534,6 +13666,24 @@
       "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2024_10-12/20241023.md; source commit: cabf2f7b95ac54e2d4341f047f95401b7c9f555d; 出典信頼性はアクター帰属確度と分離して評価。"
     },
     {
+      "source_id": "source--daily-d957d6c999575906f6dc",
+      "path": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "title": "GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+      "publisher": "anthropic.com",
+      "published_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260912.md; source commit: 8e64d5882c84098b89e28b886966f339bba05b68; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-d9a038ea0c45c5f3cf8e",
       "path": "https://www.bleepingcomputer.com/news/security/amazon-disrupts-russian-apt29-hackers-targeting-microsoft-365/",
       "title": "Amazon、Microsoft 365を標的とするロシアのAPT29を妨害",
@@ -14138,6 +14288,58 @@
       "confidence": "high",
       "evidence_refs": [
         "source--daily-283705f15c8b352febf2"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--5c02f254caa1872e116a",
+      "name": "被害事例: GTG-20006(Midnight Blizzard)によるClaude悪用: 政府・防衛・外交機関20組織以上への諜報活動",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Anthropic は、Claude を悪用して侵入の全段階を自動化した諜報クラスター GTG-20006 を確認・阻止した。原文は「Our attribution is consistent with public reporting linking the actor to Midnight Blizzard」と記載する。Windows・Android・iOS 向けマルウェアの開発と配備、フィッシング、永続化、C2、情報窃取にClaude を利用し、ウクライナの政府・軍・外交機関を中心に20以上の組織を標的とした。ドローン製造業者へのサプライチェーン窃取、ホテルWi-Fi侵害(CaptiveCrunch)による資格情報窃取、ヘッドレスブラウザを用いた WhatsApp アカウント乗っ取り、30万件超の国民ID記録と企業登記情報の持ち出し、外交・政府機関に対する Microsoft 365 トークン窃取が報告されている。",
+      "activity_refs": [
+        "activity--daily-6f3cf1424f54165adb62"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--36f1b9323d5faab92f39",
+        "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "target--sector--government"
+      ],
+      "malware_refs": [],
+      "ttp_refs": [],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "モバイル端末"
+      ],
+      "impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "ドローン製造業者へのサプライチェーン窃取、ホテルWi-Fi侵害(CaptiveCrunch)による資格情報窃取、ヘッドレスブラウザを用いた WhatsApp アカウント乗っ取り、30万件超の国民ID記録と企業登記情報の持ち出し、外交・政府機関に対する Microsoft 365 トークン窃取が報告されている。"
+        }
+      ],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-d957d6c999575906f6dc"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
