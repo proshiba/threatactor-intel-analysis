@@ -4,7 +4,7 @@
   "name": "TeamPCP",
   "status": "draft",
   "created_at": "2026-08-10T02:40:00Z",
-  "updated_at": "2026-08-12T01:51:50Z",
+  "updated_at": "2026-09-10T16:10:19Z",
   "languages": [
     "ja"
   ],
@@ -159,6 +159,32 @@
           "source--oligo-teampcp-2026"
         ],
         "analyst_notes": "一次資料は個別IOCとマルウェア名の対応を明示していないため、キャンペーン単位の総称として登録する。"
+      },
+      {
+        "id": "malware--dustmaker",
+        "name": "DUSTMAKER",
+        "aliases": [],
+        "types": [
+          "credential stealer"
+        ],
+        "description": "UNC6780(TeamPCP)が用いる資格情報スティーラー。CI/CD環境で動作していることを検知するとGitHub ActionsランナーのプロセスメモリからOIDCトークンを抽出し、そのトークンでtrusted publisherとして自らを認可して、有効なSLSA Build 3の署名付き証明を伴う改ざん版パッケージを公開する。正当な署名を持つため、AIコーディングエージェントの自動信頼チェックを通過する。AIツール向けの資格情報収集や、隠しディレクトリによる防御回避を含む複数のAI関連機能を実装する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026"
+        ],
+        "analyst_notes": "GTIG原文(2026-09-08)が機能を直接記述している。原文は個別検体の初回観測日を示していないため観測期間はunknownとし、公開日を流用しない。"
       }
     ],
     "tools": [],
@@ -442,7 +468,7 @@
     },
     {
       "activity_id": "activity--teampcp-oss-supply-chain-2026",
-      "name": "GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "name": "GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害",
       "activity_type": "supply-chain-cybercrime",
       "first_observed": {
         "value": "2026-02-01T00:00:00Z",
@@ -456,15 +482,18 @@
         "status": "known",
         "basis": "source-stated"
       },
-      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。",
       "reported_at": {
         "value": "2026-05-11T00:00:00Z",
         "precision": "day",
         "status": "known",
         "basis": "source-publication"
       },
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [
+        "malware--dustmaker",
         "malware--sandclock"
       ],
       "infrastructure_refs": [
@@ -487,6 +516,7 @@
         },
         "capability": {
           "malware_refs": [
+            "malware--dustmaker",
             "malware--sandclock"
           ],
           "ttp_refs": [
@@ -500,7 +530,9 @@
           ]
         },
         "victim": {
-          "target_refs": [],
+          "target_refs": [
+            "target--activity-rule--sector--932f4928d5e1ec28e2df"
+          ],
           "victim_refs": [
             "victim--activity-rule--36589755fc4094ee8555",
             "victim--teampcp-oss-projects-2026"
@@ -543,6 +575,7 @@
         },
         "confidence": "high",
         "evidence_refs": [
+          "source--gtig-adversarial-ai-2026",
           "source--gtig-ai-threat-tracker-2026-05",
           "source--sentinellabs-pcpjack-2026"
         ],
@@ -550,26 +583,30 @@
       },
       "confidence": "high",
       "evidence_refs": [
+        "source--gtig-adversarial-ai-2026",
         "source--gtig-ai-threat-tracker-2026-05",
         "source--sentinellabs-pcpjack-2026"
       ],
-      "analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。"
+      "analyst_notes": "GTIG(2026-05-11)とSentinelLabs(2026-05-07)の原文確認に基づく。first_observedはSentinelLabsが記載するTrivy侵害の2026年2月、last_observedはGTIGが記載する犯行表明の2026年3月下旬を月精度で採用した。両資料で時期の記述が異なる点はuncertaintiesに残している。 2026-09-10追記: GTIGの後継報告(2026-09-08、source--gtig-adversarial-ai-2026)を原文確認し、同一作戦の継続として本活動へ統合した(AGENT.md: 同一活動の記事・IOC一覧は1活動へまとめる)。新規情報はnpmとDocker Hubへの対象拡大、MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp)と公式リポジトリ(azure-functions-mcp-extension)への直接注入、DUSTMAKERによるGitHub ActionsランナーのOIDCトークン窃取とSLSA Build 3署名付きパッケージ公開、およびLAPSUSブランドを用いる恐喝アクターへのアクセス引き渡し事案である。last_observedは更新していない。原文の「Since March 2026」は活動の起点を示す表現であって観測終了日を示さず、OSINT_RULESに従い公開日(2026-09-08)を観測日へ流用しないためである。reported_atは初報(2026-05-11)のまま保持し、後継報告の公開日はsource側のpublished_atで分離して保存する。"
     }
   ],
   "victim_cases": [
     {
       "victim_case_id": "victim--activity-rule--36589755fc4094ee8555",
-      "name": "被害事例: GitHub Actions・PyPIを経由したオープンソースサプライチェーン侵害",
+      "name": "被害事例: GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害",
       "victim_name": null,
       "disclosure_status": "aggregate",
       "victim_type": "multiple-organizations",
       "case_status": "reported",
-      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。",
+      "description": "TeamPCPはGitHubリポジトリと関連するGitHub Actionsを侵害し、Trivy脆弱性スキャナー、Checkmarx、LiteLLM、BerriAIを含む複数のサプライチェーン侵害に関与したと表明した。初期アクセスは侵害済みPyPIパッケージと悪意あるプルリクエストを経由し、ビルド環境からAWSキーとGitHubトークンを窃取するSANDCLOCK資格情報スティーラーを埋め込んだ。窃取した資格情報はランサムウェアやデータ恐喝グループとの提携で収益化されている。GTIGの後継報告(2026-09-08)は、2026年3月以降も大規模なOSSサプライチェーン侵害が継続し、対象エコシステムがPyPIに加えnpmとDocker Hubへ広がったと記載する。侵害後は資格情報スティーラーを展開して専有データと資格情報を取得し、データの直接売却またはランサムウェア・データ恐喝グループとの提携により収益化する。AIコーディングアシスタントを標的とする手口として、侵害した正規の開発者アカウントからPyPIへ正規MCPサーバーのトロイの木馬化フォーク(tiktoken_mcp等)を公開し、公式の組織GitHubリポジトリ(azure-functions-mcp-extension等)へ悪性コードを直接注入した。これらMCPツールと連携部分をバックドア化することで、資産がダウンロードまたはクローンされる際にペイロードと悪性ワークスペースフックが開発環境へ自動的に取り込まれる。資格情報スティーラーDUSTMAKERはCI/CD環境を検知するとGitHub Actionsランナーのプロセスメモリからoidcトークンを抽出し、trusted publisherとして有効なSLSA Build 3署名付き証明を伴う改ざん版パッケージを公開するため、AIコーディングエージェントの自動信頼チェックを通過する。Mandiantが対応した事案では、TeamPCPが初期アクセスを確立した後に別の脅威アクターへアクセスを引き渡し、引き渡し先がLAPSUSブランドを用いて身代金を要求した。TeamPCPが当該企業の専有AIリポジトリに対して悪性のGitHub Actionsワークフローを作成し、恐喝側がそのAIリポジトリの複製を持ち出した証跡が示されている。",
       "activity_refs": [
         "activity--teampcp-oss-supply-chain-2026"
       ],
-      "target_refs": [],
+      "target_refs": [
+        "target--activity-rule--sector--932f4928d5e1ec28e2df"
+      ],
       "malware_refs": [
+        "malware--dustmaker",
         "malware--sandclock"
       ],
       "ttp_refs": [
@@ -577,6 +614,7 @@
         "ttp--teampcp-t1552-001-build-secrets"
       ],
       "affected_assets": [
+        "サーバー",
         "エンドポイント",
         "クラウド／SaaS",
         "開発環境／ソースコード"
@@ -611,6 +649,7 @@
       },
       "confidence": "high",
       "evidence_refs": [
+        "source--gtig-adversarial-ai-2026",
         "source--gtig-ai-threat-tracker-2026-05",
         "source--sentinellabs-pcpjack-2026"
       ],
@@ -819,6 +858,30 @@
       }
     ],
     "sectors": [
+      {
+        "id": "target--activity-rule--sector--932f4928d5e1ec28e2df",
+        "name": "IT・ソフトウェア",
+        "description": "活動「GitHub Actions・PyPI・npm・Docker Hubを経由したオープンソースサプライチェーン侵害」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2026-02-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026",
+          "source--gtig-ai-threat-tracker-2026-05",
+          "source--sentinellabs-pcpjack-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
       {
         "id": "target--teampcp--sector--cloud-ai-infrastructure",
         "name": "クラウド・AI基盤運用",
@@ -1169,6 +1232,32 @@
       "reliability": "high",
       "sha256": null,
       "analyst_notes": "一次資料を原文で確認(アクセス日 2026-08-10)。TeamPCPを独立した攻撃グループとして扱い、Trivy侵害とVECTランサムウェアとの提携を記載している。PCPJack自体はTeamPCPではなくその基盤を排除する別主体である点に注意する。"
+    },
+    {
+      "source_id": "source--gtig-adversarial-ai-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-09-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-10T16:00:55Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "capability",
+        "targeting"
+      ],
+      "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。2026-05-11のGTIG AI Threat Tracker(source--gtig-ai-threat-tracker-2026-05)の後継報告であり、同一のOSSサプライチェーン作戦の継続を扱う。tech-memo daily-news は本稿を直接収録せずBleepingComputerの二次要約(UNC5792のみ言及)を経由していたため、一次情報源チェックで検知した。"
     }
   ],
   "assessment": {
@@ -1208,7 +1297,8 @@
     "uncertainties": [
       "Trivy侵害の時期はSentinelLabsが2026年2月、GTIGが2026年3月下旬の犯行表明としており、侵害日と表明日のどちらを指すかで記述が異なる。両論を残す。",
       "PCPCatとTeamPCPの対応関係が一次資料で説明されていない。",
-      "tech-memoのIOC CSVでShai-HuludのIOCにactor=TeamPCPが付与されているが、この帰属は一次資料で確認できていないため本プロファイルへ取り込んでいない。"
+      "tech-memoのIOC CSVでShai-HuludのIOCにactor=TeamPCPが付与されているが、この帰属は一次資料で確認できていないため本プロファイルへ取り込んでいない。",
+      "GTIG 2026-09-08 は本アクターのOSSサプライチェーン侵害が「Since March 2026」継続していると述べるが、観測終了日を明示していない。activity--teampcp-oss-supply-chain-2026 の last_observed は初報に基づく2026年3月のままであり、2026年4月以降の継続期間は一次資料で確定していない。"
     ],
     "collection_notes": "Oligo Security(2026-08-05)、SentinelLabs(2026-05-07)、Google Threat Intelligence Group(2026-05-11)の3本の独立した一次資料を原文で確認した。IOCはtech-memoの2026-08-08収集分(一次ソースはOligo記事)から取り込む。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-08-10T07:33:16Z; result=matched.",
     "analyst_notes": "プロファイル昇格は独立一次資料3本の確認と利用者承認に基づく。"

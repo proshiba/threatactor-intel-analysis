@@ -140,15 +140,15 @@ def add_capability_candidate(record: dict[str, Any], raw_value: str) -> None:
 def apply_decision(
     record: dict[str, Any],
     decisions: dict[str, Any],
-    report_missing_targets: bool = True,
+    report_unmatched: bool = True,
 ) -> None:
     """保存済みの判断をレコードへ適用する。
 
-    `report_missing_targets` が False の場合、判断の対象が入力に無いことを
-    decision_issues へ記録しない。走査窓を切ったビルドでは、同じ
-    activity_reference が窓の内外にまたがる日付で再出現したときに、窓外の
-    記事だけが寄与した候補が欠けるためである。これは判断の取り残しではなく
-    入力を絞ったことによる欠落なので、全履歴ビルドでのみ報告する。
+    ``report_unmatched`` が偽のときは、判断の対象がレコード側に存在しないことを
+    ``decision_issues`` へ記録しない。ウィンドウ付き走査では、過去に承認済みの
+    候補が当該ウィンドウの入力に現れないことが正常に起こるためである。例えば
+    同じ一次資料を後日のIOC CSVが再掲する際にmalware列の表記が複合値へ変わると、
+    個別名で保存した判断は再生成後のレコードに対応先を持たない。
     """
     key = f"{record['actor']['slug']}|{record['activity']['activity_reference']}"
     decision = decisions.get(key)
@@ -176,7 +176,7 @@ def apply_decision(
         if override:
             item.update(override)
             matched_capabilities.add(item["name"].casefold())
-    if report_missing_targets:
+    if report_unmatched:
         for name in sorted(capability_overrides.keys() - matched_capabilities):
             record.setdefault("decision_issues", []).append(
                 f"Capability判断の対象が入力に存在しない: {name}"
@@ -193,7 +193,7 @@ def apply_decision(
             matched_artifacts.add(artifact_key)
         else:
             item["review_status"] = item.get("review_status", "pending")
-    if report_missing_targets:
+    if report_unmatched:
         for artifact_type, value in sorted(approved_artifacts - matched_artifacts):
             record.setdefault("decision_issues", []).append(
                 f"artifact判断の対象が入力に存在しない: {artifact_type}={value}"
@@ -422,7 +422,7 @@ def main() -> int:
 
     full_history = not args.since and not args.until
     for record in records.values():
-        apply_decision(record, decisions, report_missing_targets=full_history)
+        apply_decision(record, decisions, report_unmatched=full_history)
         record["sources"].sort(key=lambda item: (item["url"], item["source_path"]))
         record["capability_decisions"].sort(key=lambda item: item["name"].casefold())
     record_decision_keys = {

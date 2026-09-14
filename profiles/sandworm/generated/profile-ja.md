@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sandworm`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-10T16:11:27Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -28,6 +28,7 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 | Seashell Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Telebots | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Voodoo Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| SANDWORM RELIC | Google Threat Intelligence Group | overlapping | 中 | `source--gtig-adversarial-ai-2026` | GTIG原文の「SANDWORM RELIC, the Russian cyber espionage group formerly known as FROZENBARENTS, SANDWORM, and APT44」に基づく。GTIG自身の改称ではあるが、本プロファイルのcanonical nameはMITRE ATT&CKのSandworm Team(G0034)であり、既存のAPT44・FROZENBARENTS別名もscope: overlappingとして登録されている。GTIGの追跡範囲とMITREのSandworm Teamの範囲が完全一致する保証がないため、既存別名と整合させscopeはoverlapping、confidenceはmediumとする。 |
 
 ## 帰属
 
@@ -476,6 +477,7 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0099`
 - 状態: draft
-- 更新日時: 2026-09-14T11:06:41Z
+- 更新日時: 2026-09-14T13:26:30Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -126,12 +126,12 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | ウクライナ | 活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された国・地域。 | 2025-06 | 2025-09 | 中 | `source--daily-81099d020901332dd638`, `source--daily-acae91555bc1bc0a4220`, `source--daily-b6ba84745cdc81a329c5`, `source--daily-d7f23202e68f653b1ad9` |
+| countries | ウクライナ | 活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された国・地域。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220`, `source--daily-b6ba84745cdc81a329c5`, `source--daily-d7f23202e68f653b1ad9` |
 | sectors | 政府・行政 | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
 | sectors | 農業・食品 | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
-| sectors | 運輸・航空・海運 | 活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-81099d020901332dd638`, `source--daily-d7f23202e68f653b1ad9` |
+| sectors | 運輸・航空・海運 | 活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-d7f23202e68f653b1ad9` |
 | sectors | 教育・研究 | 活動「Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害」の記述で標的として明示された産業。 | 2025-06 | 2025-09 | 中 | `source--daily-acae91555bc1bc0a4220` |
-| sectors | エネルギー | 活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-81099d020901332dd638`, `source--daily-d7f23202e68f653b1ad9` |
+| sectors | エネルギー | 活動「ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-d7f23202e68f653b1ad9` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -140,7 +140,7 @@ Aliasなし
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39 | malware--daily-0067ca7bc8c9a3dd3e9d, malware--daily-75ab18d562d78bfce191, malware--daily-8759c33e657f191deae0 | ttp--activity-rule--26fad87edd30aab65d0c, ttp--activity-rule--8235faa69f53cdff20b8 |  |  | 不明 | 不明 | 2026-07-24 | 中 | `source--daily-b6ba84745cdc81a329c5` |
-| 被害事例: ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  |  |  |  | 不明 | 不明 | 2026-09-02 | 高 | `source--daily-81099d020901332dd638`, `source--daily-d7f23202e68f653b1ad9` |
+| 被害事例: ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  |  |  |  | 不明 | 不明 | 2026-09-02 | 高 | `source--daily-d7f23202e68f653b1ad9` |
 | 被害事例: Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--598ee8d6d22873efc495, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--5178b790ed1002745052, ttp--activity-rule--ac677bbe93733e1f8ef3 |  | destruction: Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害<br>disruption: 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。 | 2025-06 | 2025-09 | 2025-11-07 | 中 | `source--daily-acae91555bc1bc0a4220` |
 
 ## MITRE ATT&CK Matrixデータ

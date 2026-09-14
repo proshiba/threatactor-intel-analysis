@@ -35,6 +35,7 @@ from daily_common import (  # noqa: E402
 )
 from daily_materializer import (  # noqa: E402
     activity_bounds,
+    profile_source,
     activity_entry,
     activity_id_for,
     build_ledger,
@@ -538,52 +539,134 @@ class DailyCheckTests(unittest.TestCase):
         self.assertEqual(report["statistics"]["mentioned_recent_actors"], 1)
 
 
-class ApplyDecisionMissingTargetTest(unittest.TestCase):
-    """窓付きビルドで判断対象が欠けても decision_issues にしないこと。"""
+class AliasedSourceTests(unittest.TestCase):
+    """activity_reference_aliases で既存活動へ集約した出典の扱い。"""
+
+    QUEUE = {"source": {"repository": "owner/repo", "commit": "abc"}}
 
     def _record(self) -> dict:
         return {
+            "activity": {
+                "title": "集約先の見出し",
+                "news_date": "2026-09-02",
+                "primary_url": "https://x.example/status/1",
+                "news_path": "daily-news/news/20260902.md",
+            },
+            "sources": [
+                {
+                    "url": "https://x.example/status/1",
+                    "source_path": "daily-news/news/20260902.md",
+                    "source_type": "primary-report",
+                },
+                {
+                    "url": "https://vendor.example/writeup",
+                    "source_path": "daily-news/news/20260912.md",
+                    "source_type": "primary-report",
+                    "news_date": "2026-09-12",
+                    "title": "集約した記事の見出し",
+                },
+            ],
+        }
+
+    def test_source_items_keeps_aliased_metadata(self) -> None:
+        items = source_items(self._record(), self.QUEUE)
+        aliased = next(i for i in items if i["url"] == "https://vendor.example/writeup")
+        self.assertEqual(aliased["news_date"], "2026-09-12")
+        self.assertEqual(aliased["title"], "集約した記事の見出し")
+
+    def test_profile_source_prefers_the_source_own_date_and_title(self) -> None:
+        record = self._record()
+        items = source_items(record, self.QUEUE)
+        by_url = {i["url"]: profile_source(record, i, self.QUEUE) for i in items}
+        aliased = by_url["https://vendor.example/writeup"]
+        # 集約先ではなく、その記事自身の日付と見出しを持つ
+        self.assertEqual(aliased["published_at"]["value"], "2026-09-12T00:00:00Z")
+        self.assertEqual(aliased["title"], "集約した記事の見出し")
+        # 集約先の出典は従来どおり活動側の値を使う
+        original = by_url["https://x.example/status/1"]
+        self.assertEqual(original["published_at"]["value"], "2026-09-02T00:00:00Z")
+        self.assertEqual(original["title"], "集約先の見出し")
+
+
+class ApplyDecisionTests(unittest.TestCase):
+    """保存済み判断の適用と、ウィンドウ走査での未一致の扱い。"""
+
+    @staticmethod
+    def _record() -> dict:
+        return {
             "actor": {"slug": "unc1549"},
-            "activity": {"activity_reference": "https://example.test/report/"},
-            "capability_decisions": [{"name": "NodeRabbit / PollCat"}],
+            "activity": {"activity_reference": "https://example.test/report"},
+            "review_status": "pending",
+            "capability_decisions": [
+                {"name": "NodeRabbit / PollCat", "status": "pending", "reason": ""}
+            ],
             "artifacts": [],
         }
 
-    def _decisions(self) -> dict:
+    @staticmethod
+    def _decisions() -> dict:
         return {
-            "unc1549|https://example.test/report/": {
+            "unc1549|https://example.test/report": {
                 "review_status": "approved",
                 "capability_decisions": [
                     {"name": "NodeRabbit", "status": "approved"},
                     {"name": "PollCat", "status": "approved"},
+                    {"name": "NodeRabbit / PollCat", "status": "rejected"},
                 ],
-                "approved_artifacts": [{"artifact_type": "file-name", "value": "task.zip"}],
             }
         }
 
-    def test_full_history_reports_missing_targets(self):
+    def test_full_history_reports_capability_without_candidate(self) -> None:
         record = self._record()
         apply_decision(record, self._decisions())
-        self.assertEqual(len(record.get("decision_issues", [])), 3)
+        self.assertEqual(record["review_status"], "approved")
+        # 複合値の判断はレコード側の候補へ適用される
+        self.assertEqual(record["capability_decisions"][0]["status"], "rejected")
+        # 個別名の判断は対応先がないため全履歴走査では課題として報告する
+        self.assertEqual(
+            record["decision_issues"],
+            [
+                "Capability判断の対象が入力に存在しない: noderabbit",
+                "Capability判断の対象が入力に存在しない: pollcat",
+            ],
+        )
 
-    def test_activity_overrides_replace_display_fields_only(self):
+    def test_windowed_scan_does_not_report_capability_without_candidate(self) -> None:
+        """ウィンドウ走査では、既に適用済みの判断が当該ウィンドウの入力に
+        現れないことが正常に起こるため decision_issues を立てない。"""
         record = self._record()
-        record["activity"].update({"title": "別クラスタの見出し", "summary": "別クラスタの要約"})
+        apply_decision(record, self._decisions(), report_unmatched=False)
+        self.assertEqual(record["review_status"], "approved")
+        self.assertEqual(record["capability_decisions"][0]["status"], "rejected")
+        self.assertNotIn("decision_issues", record)
+
+    def test_activity_overrides_replace_display_fields_only(self) -> None:
+        """見出しが同じ資料内の別クラスタの作戦を指す場合だけ表示名を差し替える。"""
+        record = self._record()
+        record["activity"].update(
+            {"title": "別クラスタの見出し", "summary": "別クラスタの要約"}
+        )
         decisions = self._decisions()
-        key = "unc1549|https://example.test/report/"
-        decisions[key]["activity_overrides"] = {"title": "正しい活動名", "summary": "正しい要約"}
-        apply_decision(record, decisions, report_missing_targets=False)
+        decisions["unc1549|https://example.test/report"]["activity_overrides"] = {
+            "title": "正しい活動名",
+            "summary": "正しい要約",
+        }
+        apply_decision(record, decisions, report_unmatched=False)
         self.assertEqual(record["activity"]["title"], "正しい活動名")
         self.assertEqual(record["activity"]["summary"], "正しい要約")
-        # IDの生成元である activity_reference は変わらない
-        self.assertEqual(record["activity"]["activity_reference"], "https://example.test/report/")
+        # activity ID と record ID の生成元は差し替えない
+        self.assertEqual(
+            record["activity"]["activity_reference"], "https://example.test/report"
+        )
 
-    def test_windowed_build_does_not_report_missing_targets(self):
+    def test_windowed_scan_does_not_report_artifact_without_candidate(self) -> None:
         record = self._record()
-        apply_decision(record, self._decisions(), report_missing_targets=False)
-        self.assertEqual(record.get("decision_issues", []), [])
-        # 判断そのものは窓付きでも適用される
-        self.assertEqual(record["review_status"], "approved")
+        decisions = self._decisions()
+        decisions["unc1549|https://example.test/report"]["approved_artifacts"] = [
+            {"artifact_type": "file-name", "value": "absent.exe"}
+        ]
+        apply_decision(record, decisions, report_unmatched=False)
+        self.assertNotIn("decision_issues", record)
 
 
 if __name__ == "__main__":

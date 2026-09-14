@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6240`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-10T16:00:55Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| ShinyHunters | Google Threat Intelligence Group | overlapping | 高 | `source--gtig-adversarial-ai-2026` | GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 |
 
 ## 帰属
 
@@ -155,6 +157,7 @@ TTPなし
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters は本プロファイルへ統合(merged)したが、同台帳が保持する観測4件(Health-ISAC 2026-07-30、Brinks Home 2026-07-31、ReliaQuest 2026-08-26、McKesson SEC Form 8-K 2026-08-29)は活動としては取り込んでいない。被害組織3社の開示はいずれもShinyHuntersを名指ししておらず、帰属が攻撃者の犯行主張と報道に依存するためである。犯行主張のみを根拠とする活動を本リポジトリでどう扱うかの方針が未決であり、方針決定後に観測単位で再判断する。
 
 ## 出典
 
@@ -166,6 +169,7 @@ TTPなし
 | source--unc6240--2c7acfc0f73ec191 | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
 | source--unc6240--ddfed6d1e692a60c | cybersecurity forecast 2026 en |  | 2026 | summary/2025/cybersecurity-forecast-2026-en.pdf | report | TLP:CLEAR | 中 |
 | source--unc6240--df2a78f9305a5534 | unc6240 |  | 不明 | actor_profile/evidence/unc6240.csv | structured-data | TLP:CLEAR | 中 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

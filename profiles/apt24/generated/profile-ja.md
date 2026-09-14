@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt24`
 - 状態: draft
-- 更新日時: 2026-07-29T23:11:59Z
+- 更新日時: 2026-09-10T16:11:23Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,10 @@ APT24の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| RAVINE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | GTIG原文の「RAVINE CASTLE, a PRC-nexus cyber espionage group previously known as COULEE, APT24」に基づく。APT24はMandiant/GTIG自身の指定子であり同一ベンダーによる改称であるためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24)に沿った改称であり帰属の変更ではない。 |
+| COULEE | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | 同一原文が「previously known as COULEE, APT24」としてCOULEEを旧称に挙げている。GTIG自身の旧指定子であるためscopeはexactとする。 |
 
 ## 帰属
 
@@ -166,6 +169,7 @@ Aliasなし
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

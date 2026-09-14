@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt42`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:54Z
+- 更新日時: 2026-09-10T16:11:24Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| CALANQUE ION | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。 |
 
 ## 帰属
 
@@ -257,6 +259,7 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

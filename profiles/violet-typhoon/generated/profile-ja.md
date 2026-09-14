@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--violet-typhoon`
 - 状態: draft
-- 更新日時: 2026-09-14T11:06:41Z
+- 更新日時: 2026-09-14T13:26:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -133,7 +133,7 @@ The repository mapping workbook places this actor in the China worksheet.
 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | ransomware-extortion | 不明 | 不明 | 2025-08-05 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | victim--activity-rule--9137916c1796c538b660 | Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。 | 中 | `source--daily-0e75e392e2685f601677` |
 | 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | intrusion | 不明 | 不明 | 2025-07-24 | target--country--united-states |  |  | victim--activity-rule--bfa1750b45d1967b2dd7 | Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
 | Op. Poisoned Hurricane | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | phishing-campaign | 2026-08-28 | 2026-09-02 | 2026-09-11 | target--targeting-audit--country--c0ce3061ef4892e0da92 |  |  |  | 複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。 | 高 | `source--daily-4f5ca8613b6408a00d37` |
+| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | phishing-campaign | 2026-08-28 | 2026-09-02 | 2026-09-11 |  |  |  |  | 複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。 | 高 | `source--daily-4f5ca8613b6408a00d37` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -143,7 +143,7 @@ The repository mapping workbook places this actor in the China worksheet.
 | ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | Violet Typhoon | 情報なし | 情報なし | 情報なし | 中国 | 被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 中 |
 | 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | Violet Typhoon | 情報なし | 情報なし | 情報なし | 米国 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 中 |
 | Op. Poisoned Hurricane | Violet Typhoon | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | Violet Typhoon | 情報なし | T1105 Ingress Tool Transfer | 情報なし | 運輸・航空・海運, 非営利・市民社会, 製造・産業, Defense, ベトナム | 被害事例: 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | 高 |
+| 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | Violet Typhoon | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 
 Op. Poisoned Hurricane
 
@@ -162,7 +162,6 @@ Op. Poisoned Hurricane
 | countries | フィンランド | レビュー済みアクターマッピングの標的欄に記録されたフィンランドを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
 | countries | フランス | Targeting text mentions france. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
 | countries | ブラジル | Targeting text mentions brazil. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ベトナム | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的・被害国として明示されている。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
 | countries | ベラルーシ | 構造化OSINTの被害国フィールドでViolet Typhoonの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | モンゴル | 構造化OSINTの被害国フィールドでViolet Typhoonの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ロシア | 活動「中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-627b32691a33594d7d9a`, `source--target-audit-etda-threat-group-cards` |
@@ -176,13 +175,9 @@ Op. Poisoned Hurricane
 | regions | 中東 | 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として中東が明示されている。 | 不明 | 不明 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
 | regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-c9fa26bbe8d21f50b441`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 東アジア | モンゴル、中国、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-0e75e392e2685f601677`, `source--target-audit-etda-threat-group-cards` |
-| regions | 東南アジア | タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-4f5ca8613b6408a00d37` |
 | regions | 東欧 | チェコ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-627b32691a33594d7d9a`, `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | 活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として欧州が明示されている。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-c9fa26bbe8d21f50b441`, `source--target-audit-etda-threat-group-cards` |
-| sectors | 運輸・航空・海運 | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
-| sectors | 非営利・市民社会 | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
-| sectors | 製造・産業 | 活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。 | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 2026-08-28 | 2026-09-02 | 中 | `source--actor-mapping-workbook`, `source--daily-4f5ca8613b6408a00d37` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -196,15 +191,12 @@ Op. Poisoned Hurricane
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--72caf60a2fbce4a1be7a |  |  | クラウド／SaaS | data-theft: Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。<br>espionage: 中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。 | 不明 | 不明 | 2025-11-24 | 中 | `source--daily-627b32691a33594d7d9a` |
-| 被害事例: 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--d406c8e5b7fa7aeff7d2, target--activity-rule--sector--dfc80b76cad93a318adc, target--sector--defense |  | ttp--activity-rule--a86dd406f18f33373746 |  | espionage: 複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 | 2026-08-28 | 2026-09-02 | 2026-09-11 | 高 | `source--daily-4f5ca8613b6408a00d37` |
 | 被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | サーバー | encryption: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 | 不明 | 不明 | 2025-08-05 | 中 | `source--daily-0e75e392e2685f601677` |
 | 被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 | 非公開 | anonymous | unknown | reported | target--country--united-states |  |  |  |  | 不明 | 不明 | 2025-07-24 | 中 | `source--daily-c9fa26bbe8d21f50b441` |
 
 ## MITRE ATT&CK Matrixデータ
 
-| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|
-| Command And Control | T1105 | Ingress Tool Transfer | 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 |  | activity--daily-8ce58d59eaf0a7bf846e | 2026-08-28 | 2026-09-02 | 中 | `source--daily-4f5ca8613b6408a00d37` |
+TTPなし
 
 ## IOC／artifact概要
 

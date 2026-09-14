@@ -1,0 +1,734 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--unc6508",
+  "name": "UNC6508",
+  "status": "draft",
+  "created_at": "2026-09-10T22:16:00Z",
+  "updated_at": "2026-09-10T22:21:38Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "UNC6508",
+    "aliases": [],
+    "actor_types": [
+      "threat-cluster"
+    ],
+    "first_seen": {
+      "value": "2023-09-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2025-11-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "likely",
+    "description": "中華人民共和国に連なる(PRC-nexus)諜報目的の脅威クラスタ。北米の医学研究機関、学術機関、軍関連衛生機関を標的とし、外部公開されたREDCap(Research Electronic Data Capture)サーバーの悪用を初期侵入とする。専有AI研究とモデルを重点的に狙う点が特徴で、侵害したクラウド環境へローカルのオープンウェイトモデルを展開して商用AI APIの監視を回避しつつ被害組織の計算資源を流用する活動も観測されている。",
+    "analyst_notes": "GTIGのUNC指定子。2026-09-10のチェックで parse-daily/unknown-clusters.json の unknown-cluster--unc6508 から昇格した。昇格判断は利用者の指示による。台帳の昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)に対し、確認できた一次資料はGTIGの2本(2026-06-15の技術報告と2026-09-08のAI脅威報告)で同一ベンダーである。この点は assessment.uncertainties に明記している。"
+  },
+  "attribution": {
+    "countries": [
+      "China"
+    ],
+    "sponsor_type": "state-sponsored",
+    "organizations": [],
+    "assessment": "GTIGは2026-06-15の報告で「GTIG attributes this activity to UNC6508 with high confidence.」と述べ、根拠としてキャンペーン間のインフラ重複、REDCapサーバー上でのINFINITEREDバックドアの一貫した使用、医学研究および防衛分野への特異的な標的選択を挙げている。動機については「We assess UNC6508 is an espionage motivated threat cluster, with priorities that align with historic PRC state-sponsored espionage trends and intelligence collection requirements.」として、PRCの国家支援型諜報の傾向および情報収集要求と優先度が整合すると評価する。特定の政府機関・企業への帰属は行われていない。",
+    "confidence": "high",
+    "evidence_refs": [
+      "source--gtig-unc6508-medical-research-2026",
+      "source--gtig-adversarial-ai-2026"
+    ],
+    "analyst_notes": "帰属は単一ベンダー(GTIG)の評価であり、政府による帰属や起訴・制裁資料は確認できていない。「priorities align with」はPRC国家支援型の傾向との整合を述べる表現であって、指揮系統上の所属の確定ではない。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "北米の医学研究・学術・軍関連衛生機関から、分子探索、臨床薬剤試験、公衆衛生政策、軍の即応性、人工知能、無人機システム、攻撃的サイバー計画に関する研究情報を継続的に収集する。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-unc6508-medical-research-2026"
+      ],
+      "analyst_notes": "GTIGは「We assess UNC6508 is an espionage motivated threat cluster, with priorities that align with historic PRC state-sponsored espionage trends and intelligence collection requirements.」と評価している。"
+    },
+    {
+      "type": "technology-acquisition",
+      "description": "専有AI研究とモデルの取得を明確な目標とする。侵害環境上にオープンウェイトモデルを展開し、商用AI APIの監視を回避しつつ被害組織の計算資源を流用する。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-adversarial-ai-2026"
+      ],
+      "analyst_notes": "GTIG 2026-09-08に基づく。ローカルLLM展開は原文が suspected と留保しているため確度はmediumとする。"
+    }
+  ],
+  "relationships": [],
+  "diamond_model": {
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": ""
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--infinitered",
+        "name": "INFINITERED",
+        "aliases": [],
+        "types": [
+          "backdoor",
+          "credential stealer",
+          "web shell"
+        ],
+        "description": "REDCapサーバーを対象とするPHP製の多機能バックドア。ドロッパーはREDCapのアップグレード処理へ介入し、GUID区切り子 b49e334d-9c01-463e-9bc5-00a6920fb66e を目印に新バージョンへコードを再注入して永続化する。資格情報ハーベスタはログインのPOSTから利用者名とパスワードを取得し、接頭辞 xc32038474a を持つセッションIDでREDCapデータベースへ暗号化して保存する。バックドア本体はHTTP Cookie「REDCAP-TOKEN」をC2チャネルとし、任意コマンド実行(00)、ファイルアップロード(02)、窃取資格情報の取得(03)と削除(04)、任意SQL実行(05)、任意ファイルのダウンロードに対応する。",
+        "first_observed": {
+          "value": "2023-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "first_observedは、原文が最初期の侵害(2023年9月)から約3か月後にINFINITEREDを展開したと述べる記述に基づき2023年12月を月精度で採用した。"
+      }
+    ],
+    "tools": [],
+    "infrastructure": [],
+    "delivery_formats": [],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--unc6508-obfuscation-network",
+        "name": "難読化ネットワークによる通信元の秘匿",
+        "description": "侵害済みルーター、レジデンシャルプロキシ、VPSを経由し、通信元IPを米国内に限定して地理的な異常検知を回避する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "原文のOpSec節に基づく。"
+      },
+      {
+        "id": "opcap--unc6508-dedicated-exfil-account",
+        "name": "持ち出し専用アカウントの分離運用",
+        "description": "自動化サービスで大量取得したGmailアカウントのうち1つをメール持ち出し専用に限定し、他用途と混在させない。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "原文のOpSec節に基づく。"
+      },
+      {
+        "id": "opcap--unc6508-downgrade-attack",
+        "name": "併存する旧バージョンを狙うダウングレード攻撃",
+        "description": "現行版と併存して稼働する脆弱な旧バージョンのREDCapを探索し、これを侵入面として利用する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "ATT&CK T1689 に対応する。"
+      }
+    ],
+    "analyst_notes": ""
+  },
+  "activities": [
+    {
+      "activity_id": "activity--unc6508--ai-research-theft-and-local-llm",
+      "name": "専有AI研究の窃取と侵害環境上でのローカルLLM基盤展開",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2026-09-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "GTIGは本クラスタが専有AI研究を特に標的とすると述べ、加えて侵害したクラウド環境へローカルLLM基盤を展開するUNC6508の疑いのある活動を観測したと記載する。ローカルに配置したオープンウェイトモデルを用いることで商用AI APIの監視を回避しつつ、被害組織の計算資源を流用する。本クラスタはAIツールの設定・利用方法の調査を継続しており、オープンモデルのローカル利用やAIモデル自体の脆弱性の研究にも及んでいる。",
+      "target_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-adversarial-ai-2026"
+      ],
+      "analyst_notes": "GTIG原文(2026-09-08)を確認して作成。原文がローカルLLM基盤の展開を「suspected UNC6508 activity」と留保付きで述べるため確度はmediumとする。個別侵害の観測日は原文に記載がないため活動期間はunknownとし、公開日2026-09-08はreported_atへ分離した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6508",
+          "name": "UNC6508",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2026-09-08T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--unc6508--redcap-medical-research-2023-2025",
+      "name": "REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2023-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "description": "約26か月にわたる諜報キャンペーン。外部公開されたREDCapサーバーを悪用し、現行版と併存する脆弱な旧バージョンを探索してダウングレード攻撃を可能にする。侵入後はWebシェル help.php を設置して永続化し、内部偵察と資格情報探索を行ったうえで、侵害から約3か月後にINFINITEREDを展開する。アップグレード処理へ介入して版更新をまたぐ永続化を確立し、トロイ化した認証ファイルで資格情報を収集してドメイン管理者アカウントへ横展開する。持ち出しはメールのコンテンツコンプライアンス規則「Patroit」を作成し、地政学政策、軍事戦略、先端技術、医学研究に関する正規表現に一致したメールを攻撃者管理のGmailアドレスへ密かにBCC転送する方式である。標的は米国とカナダの著名な臨床医療機関、主要な学術研究センター、軍関連衛生機関、専門職団体、保健規制機関で、研究分野は分子探索、臨床薬剤試験、公衆衛生政策、軍の即応性、人工知能、無人機システム、攻撃的サイバー計画に及ぶ。",
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [
+        "malware--infinitered"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--6908a18dbde1798c1adb",
+        "ttp--activity-rule--d4828060da1abc7a42ef"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--3e3b5dda438e2bf439b5"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-unc6508-medical-research-2026"
+      ],
+      "analyst_notes": "GTIG原文(2026-06-15)を確認して作成。活動期間は原文が明示する最初期の侵害2023年9月と、活動継続が観測された2025年11月を月精度で採用した。公開日2026-06-15はreported_atへ分離している。原文が掲載するIOC(SHA-256 7件、IP 1件、メールアドレス1件)とホスト指標(GUID区切り子、セッションID接頭辞)は本プロファイルのiocs.json/artifacts.csvへ未取込であり、assessment.gapsへ記載した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--unc6508",
+          "name": "UNC6508",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--infinitered"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--6908a18dbde1798c1adb",
+            "ttp--activity-rule--d4828060da1abc7a42ef"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7",
+            "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+            "target--activity-rule--sector--260bd106ff4950e5430d",
+            "target--activity-rule--sector--e7608f51421ca8b1e297"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--3e3b5dda438e2bf439b5"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2023-09-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2025-11-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-06-15T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Discovery",
+            "Persistence"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7",
+              "target--activity-rule--country--ee55e5e8faa5dd675d7b"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--3e3b5dda438e2bf439b5",
+      "name": "被害事例: REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "約26か月にわたる諜報キャンペーン。外部公開されたREDCapサーバーを悪用し、現行版と併存する脆弱な旧バージョンを探索してダウングレード攻撃を可能にする。侵入後はWebシェル help.php を設置して永続化し、内部偵察と資格情報探索を行ったうえで、侵害から約3か月後にINFINITEREDを展開する。アップグレード処理へ介入して版更新をまたぐ永続化を確立し、トロイ化した認証ファイルで資格情報を収集してドメイン管理者アカウントへ横展開する。持ち出しはメールのコンテンツコンプライアンス規則「Patroit」を作成し、地政学政策、軍事戦略、先端技術、医学研究に関する正規表現に一致したメールを攻撃者管理のGmailアドレスへ密かにBCC転送する方式である。標的は米国とカナダの著名な臨床医療機関、主要な学術研究センター、軍関連衛生機関、専門職団体、保健規制機関で、研究分野は分子探索、臨床薬剤試験、公衆衛生政策、軍の即応性、人工知能、無人機システム、攻撃的サイバー計画に及ぶ。",
+      "activity_refs": [
+        "activity--unc6508--redcap-medical-research-2023-2025"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+        "target--activity-rule--sector--260bd106ff4950e5430d",
+        "target--activity-rule--sector--e7608f51421ca8b1e297"
+      ],
+      "malware_refs": [
+        "malware--infinitered"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--6908a18dbde1798c1adb",
+        "ttp--activity-rule--d4828060da1abc7a42ef"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "サーバー"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2023-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-06-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--gtig-unc6508-medical-research-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--activity-rule--country--ee55e5e8faa5dd675d7b",
+        "name": "カナダ",
+        "description": "活動「REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2023-09-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--activity-rule--country--6604ad21c713b8dfd8c7",
+        "name": "米国",
+        "description": "活動「REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2023-09-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--8a2c1102279dd90c37e4",
+        "name": "北米",
+        "description": "活動「REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動」の記述で標的地域として北米が明示されている。",
+        "first_observed": {
+          "value": "2023-09-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--260bd106ff4950e5430d",
+        "name": "医療・ヘルスケア",
+        "description": "活動「REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2023-09-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--e7608f51421ca8b1e297",
+        "name": "教育・研究",
+        "description": "活動「REDCapサーバー悪用による北米の医学・防衛研究機関への長期諜報活動」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2023-09-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2025-11-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "[targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--6908a18dbde1798c1adb",
+      "tactic": "Discovery",
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "observed_behavior": "アップグレード処理へ介入して版更新をまたぐ永続化を確立し、トロイ化した認証ファイルで資格情報を収集してドメイン管理者アカウントへ横展開する。",
+      "activity_refs": [
+        "activity--unc6508--redcap-medical-research-2023-2025"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2023-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-unc6508-medical-research-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--d4828060da1abc7a42ef",
+      "tactic": "Persistence",
+      "technique_id": "T1505.003",
+      "technique_name": "Web Shell",
+      "observed_behavior": "侵入後はWebシェル help.php を設置して永続化し、内部偵察と資格情報探索を行ったうえで、侵害から約3か月後にINFINITEREDを展開する。",
+      "activity_refs": [
+        "activity--unc6508--redcap-medical-research-2023-2025"
+      ],
+      "malware_refs": [
+        "malware--infinitered"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2023-09-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2025-11-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--gtig-unc6508-medical-research-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--gtig-unc6508-medical-research-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/prc-targets-us-medical-research",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/prc-targets-us-medical-research",
+      "title": "Public and Private Medical Community Targeted by China-Nexus Threat Actor Pursuing Artificial Intelligence, Cyber, Medical, and National Defense Research",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-06-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-10T22:16:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "attribution",
+        "activity",
+        "capability",
+        "targeting",
+        "observable"
+      ],
+      "analyst_notes": "原文を確認。帰属文、活動期間、標的、INFINITEREDの構成要素、ATT&CK対応、IOCを直接記載している。検索結果スニペットは根拠に使用していない。本報告の存在は actor_profile/reference/osint/misp-threat-actor.json のUNC6508エントリから辿った。"
+    },
+    {
+      "source_id": "source--gtig-adversarial-ai-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-09-08T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-10T22:16:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "activity",
+        "targeting"
+      ],
+      "analyst_notes": "原文をHTTP 200で取得し、JSON-LDのdatePublished(2026-09-08)と本文該当箇所を機械照合して確認した。tech-memo daily-news は本稿をBleepingComputerの二次要約で収録しており、当該要約は本クラスタに言及していないため、一次情報源の公開一覧チェックで検知した。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "GTIGはインフラ重複、REDCapサーバー上でのINFINITEREDの一貫した使用、医学研究・防衛分野への特異的な標的選択を根拠に、本活動をUNC6508へ高確度で帰属している。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "単一ベンダーによる帰属であり、政府による帰属や起訴・制裁資料は確認できていない。"
+      },
+      {
+        "statement": "初期侵入が外部公開されたREDCapサーバーの悪用に依存しており、研究データ基盤そのものが侵入面になっている。アップグレード処理への介入により版更新をまたぐ永続化が成立する点が対処を難しくする。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unc6508-medical-research-2026"
+        ],
+        "analyst_notes": "原文が攻撃チェーンとINFINITEREDのドロッパー実装を具体的に記述している。"
+      },
+      {
+        "statement": "専有AI研究とモデルが明確な収集目標であり、侵害環境上でのローカルLLM展開は商用AI APIの監視回避と被害組織の計算資源流用を同時に達成する。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026"
+        ],
+        "analyst_notes": "GTIGがローカルLLM展開を suspected と留保しているため確度はmediumとする。"
+      }
+    ],
+    "gaps": [
+      "GTIG 2026-06-15 報告が掲載するIOC(SHA-256 7件、IP 23.169.65.49、メールアドレス BebitaBarefoot774@gmail.com)およびホスト指標(GUID区切り子 b49e334d-9c01-463e-9bc5-00a6920fb66e、セッションID接頭辞 xc32038474a)は、本プロファイルの iocs.json / artifacts.csv へ未取込である。取込にはAGENT.mdのIOC/artifact規則に沿った観測単位の登録が必要。",
+      "被害組織名は原文で匿名化されており、個別の被害事例を特定できていない。",
+      "2025年11月以降の活動継続状況は確認できていない。"
+    ],
+    "uncertainties": [
+      "確認できた一次資料はGTIGの2本(2026-06-15、2026-09-08)であり、いずれも同一ベンダーである。独立した別ベンダーまたは政府・CERT・法執行機関による本クラスタへの言及は得られていない。台帳の昇格閾値(独立した一次資料2本以上、または政府機関等の言及)を厳密には満たしていないが、利用者の判断でプロファイル化した。",
+      "ローカルLLM基盤の展開はGTIGが「suspected UNC6508 activity」と留保しており、本クラスタの活動と確定していない。",
+      "既存の他プロファイルとの重複の有無は未確認である。GTIGは本クラスタに旧称や他ベンダー別名を示していない。"
+    ],
+    "collection_notes": "一次資料2本(GTIG 2026-06-15、2026-09-08)を原文で確認。参照の起点は actor_profile/reference/osint/misp-threat-actor.json のUNC6508エントリと、2026-09-10の日次チェックにおける一次情報源の公開一覧確認。",
+    "analyst_notes": "parse-daily/unknown-clusters.json の unknown-cluster--unc6508 から昇格。台帳側は削除せず status: merged と統合先・統合日を残している。"
+  },
+  "free_text": {
+    "executive_summary": "UNC6508は、北米の医学研究機関・学術機関・軍関連衛生機関を狙うPRC系の諜報クラスタである。外部公開されたREDCapサーバーを侵入面とし、専用バックドアINFINITEREDでアップグレードをまたぐ永続化と資格情報収集を行い、メールのコンテンツコンプライアンス規則を悪用して関心分野のメールを外部へBCC転送する。収集目標には人工知能、無人機システム、攻撃的サイバー計画といった国防関連研究が含まれ、専有AI研究とモデルを重点的に狙う。侵害環境上にオープンウェイトモデルを展開して商用AI APIの監視を回避する手口も観測されている。",
+    "history": "GTIGは2026-06-15の報告で、2023年9月の最初期の侵害から2025年11月まで約26か月にわたる活動を記述した。2026-09-08のAI脅威報告では、専有AI研究の窃取という観点から本クラスタを再度取り上げている。",
+    "capability_details": "INFINITEREDはPHP製でREDCapの構造に密着している。ドロッパーはアップグレード処理へ介入し、GUID区切り子を目印に新バージョンへ再注入することで版更新に耐える永続化を実現する。資格情報ハーベスタはログインPOSTから資格情報を取得しREDCapデータベースへ暗号化保存する。バックドアはCookie「REDCAP-TOKEN」をC2チャネルとし、任意コマンド実行、ファイル授受、窃取資格情報の取得と削除、任意SQL実行に対応する。",
+    "infrastructure_details": "通信は侵害済みルーター、レジデンシャルプロキシ、VPSからなる難読化ネットワークを経由し、通信元IPは米国内に限定される。管理者ログインの発信元として侵害されたASUSルーター(23.169.65.49)が観測された。持ち出し先には自動化サービスで取得したGmailアカウントを専用に用いる。",
+    "targeting_details": "構造化ターゲット監査: 標的国=カナダ、米国。標的地域=北米。日本は確認時に個別国として保持する。\n\n標的は米国とカナダの臨床医療機関、学術研究センター、軍関連衛生機関、専門職団体、保健規制機関である。関心分野は分子探索、臨床薬剤試験、公衆衛生政策、軍の即応性、人工知能、無人機システム、攻撃的サイバー計画に及ぶ。メール転送規則の正規表現には地政学政策、軍事戦略、先端技術、医学研究の語に加え、2025年7月の中国広東省での流行に関連する「Chikungunya」が含まれていた。標的国は被害が確認された国のみを記載し、帰属国である中国は標的として扱わない。",
+    "additional_notes": "本プロファイルは2026-09-10の日次チェックで未帰属クラスタ台帳から昇格したものであり、status は draft から開始する。"
+  }
+}
