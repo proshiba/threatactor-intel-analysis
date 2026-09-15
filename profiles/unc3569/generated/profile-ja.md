@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc3569`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-15T22:14:22Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -78,7 +78,9 @@ Aliasなし
 
 ### マルウェア
 
-未確認
+| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
+|---|---|---|---|---|---|---|
+| malware--daily-92623c41cfe9d6459335 | GRAYRABBIT | UNC3569との直接的な利用関係が一次資料レビューで確認されたマルウェア。 | 不明 | 不明 | 中 | `source--daily-a44134da0f07029e3862` |
 
 ### ツール
 
@@ -104,12 +106,14 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 | cyber-espionage | 不明 | 不明 | 2026-09-14 |  | malware--daily-92623c41cfe9d6459335 |  |  | 中国系サイバー諜報グループUNC3569が、TencentのWindows向けSogou Input Methodの重大なRCE脆弱性CVE-2026-51990を実際の攻撃で悪用している。 攻撃はsgbiz: URIの引数検証不備、WebViewの任意URL読み込み、古くサンドボックス化されていないChromiumという3つの弱点を連鎖させる。 被害者が細工されたリンクをクリックするとSogouの正規プロセスが攻撃者管理ページを読み込み、古いChromiumの既知脆弱性を悪用してコード実行に至る。 攻撃成功後はGrayRabbitバックドアが導入され、プロセス実行、リバースシェル、ファイル送受信、端末情報収集、メモリ内プラグイン実行などが可能になる。 Tencentは2026年4月21日公開のSogou Input Method 16.3.0.3498で修正したが、内蔵ブラウザ自体は依然古く、サンドボックスなしで動作すると警告されている。 | 中 | `source--daily-a44134da0f07029e3862` |
 | 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | infrastructure-operation | 不明 | 不明 | 2026-01-28 | target--activity-rule--sector--210dddb39397dbe50e91 |  | ttp--activity-rule--d23ef70e9a6b6307bc52 | victim--activity-rule--b58e62cfdbc20134f3f1 | Trend Microは、中国関与APTがJScript製C2「PeckBirdy」を2023年から運用し、中国系ギャンブル業界やアジアの政府・企業を標的と指摘。 PeckBirdyはブラウザやMSHTA/WScript/Classic ASP/Node/.NETで動作し、LOLBinsを活用、既定はWebSocketでC2通信しAdobe FlashやCometも併用。 SHADOW-VOID-044は偽Chrome更新ページで感染させ、Cookie窃取やCVE-2020-16040悪用、Electron経由のバックドアやTCPリバースシェル等を展開。 SHADOW-EARTH-045は政府サイトにPeckBirdyリンクを注入し資格情報収集を狙い、MSHTAでの横展開も確認（フィリピンの教育機関も被害）。 インフラ解析でHOLODONUT/MKDOOR/NEXLOADやGRAYRABBIT等との関連、47[.]238[.]184[.]9がEarth Baxia/APT41に関連と示唆。 | 中 | `source--daily-c20a23c702af45ff32d4` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
+| ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 | UNC3569 | GRAYRABBIT | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | UNC3569 | 情報なし | T1555.003 Credentials from Web Browsers | 情報なし | 政府・行政 | 被害事例: 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | 中 |
 
 
@@ -138,8 +142,8 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 6件
+- IOC観測: 6件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
@@ -162,6 +166,7 @@ Aliasなし
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
+| source--daily-a44134da0f07029e3862 | ハッカー、Tencentアプリの脆弱性を悪用しGrayRabbitマルウェアを展開 | gendigital.com | 2026-09-14 | https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou | osint-report | TLP:CLEAR | 中 |
 | source--daily-c20a23c702af45ff32d4 | 中国関与ハッカー、2023年からJavaScript C2「PeckBirdy」を使用 | thehackernews.com | 2026-01-28 | https://thehackernews.com/2026/01/china-linked-hackers-have-used.html | osint-report | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--unc3569--295e739f4cdcf299 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |

@@ -2075,7 +2075,7 @@
       "spec_version": "2.1",
       "id": "campaign--f55060be-2e3a-4eb3-bbfe-175cf5e4be61",
       "created": "2026-09-14T13:26:29Z",
-      "modified": "2026-09-14T13:26:29Z",
+      "modified": "2026-09-15T22:14:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2111,14 +2111,22 @@
         },
         "capability": {
           "malware_refs": [],
-          "ttp_refs": []
+          "ttp_refs": [
+            "ttp--activity-rule--3a9a5683cbb2d30c608c",
+            "ttp--activity-rule--6a6097cb7c35cf869e77",
+            "ttp--activity-rule--aed8cb1679e336255a93"
+          ]
         },
         "infrastructure": {
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [],
-          "victim_refs": []
+          "target_refs": [
+            "target--south-korea"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--b702fb8c8d0005882475"
+          ]
         },
         "meta_features": {
           "first_observed": {
@@ -2140,13 +2148,20 @@
             "basis": "daily-news-file-date"
           },
           "activity_type": "reported-activity",
-          "phases": [],
+          "phases": [
+            "Discovery",
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
           "results": [],
           "direction": {
             "source_countries": [
               "North Korea"
             ],
-            "target_country_refs": [],
+            "target_country_refs": [
+              "target--south-korea"
+            ],
             "target_region_refs": []
           }
         },
@@ -5554,7 +5569,7 @@
       "spec_version": "2.1",
       "id": "identity--e30f416b-9f3d-4f61-b1ae-254dda3c363f",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-08-25T22:28:51Z",
+      "modified": "2026-09-15T22:14:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5591,6 +5606,11 @@
           "source_name": "thehackernews.com",
           "description": "Local source: https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
           "external_id": "source--daily-a5ca98841868974d600b"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -5675,7 +5695,7 @@
       "spec_version": "2.1",
       "id": "identity--77c49dda-2a0c-46a2-a31f-3d424af1b3dd",
       "created": "2026-07-29T23:12:00Z",
-      "modified": "2026-08-25T22:28:51Z",
+      "modified": "2026-09-15T22:14:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -5717,6 +5737,11 @@
           "source_name": "thehackernews.com",
           "description": "Local source: https://thehackernews.com/2024/05/north-korean-hackers-deploy-new-golang.html",
           "external_id": "source--daily-a5ca98841868974d600b"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
         },
         {
           "source_name": "bleepingcomputer.com",
@@ -5929,13 +5954,13 @@
       "spec_version": "2.1",
       "id": "identity--ccaa11fa-5d5f-4e8b-bace-136b46c5f9ed",
       "created": "2026-07-29T15:20:23Z",
-      "modified": "2026-08-25T22:34:54Z",
+      "modified": "2026-09-15T22:14:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "防衛・軍事",
       "identity_class": "organization",
-      "description": "活動「2026年第1四半期 DPRK Operation Kimsuky 分析」の記述で標的として明示された産業。",
+      "description": "活動「北朝鮮のハッキンググループが韓国の防衛請負業者を侵害」の記述で標的として明示された産業。",
       "external_references": [
         {
           "source_name": "bleepingcomputer.com",
@@ -6970,6 +6995,63 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--908453e0-d41d-4925-9426-82593d59708c",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: またKimsuky？今度は水産食材の購入依頼書を装う",
+      "identity_class": "organization",
+      "description": "AhnLabは、韓国国内のユーザーを標的に、水産食材の購入依頼書を装った悪性LNKファイルが配布されていることを確認した。 LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。 termsvc.ps1はOS、タイムゾーン、グローバルIP、ユーザー・ドメイン、プロセス、コンピューター名などの感染端末情報を収集する。 収集情報はBackblaze B2へ送信され、同サービスをC&Cとして利用して追加コマンドを取得・実行した後、関連ファイルを削除して痕跡を減らす。 PowerShell構文、LNK内部データの抽出方法、タスク登録などが過去の攻撃と類似しており、AhnLabは今回の活動をKimsukyと関連すると判断した。",
+      "external_references": [
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--b702fb8c8d0005882475",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--south-korea"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--3a9a5683cbb2d30c608c",
+        "ttp--activity-rule--6a6097cb7c35cf869e77",
+        "ttp--activity-rule--aed8cb1679e336255a93"
+      ],
+      "x_affected_assets": [
+        "エンドポイント"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2026-09-12T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--a921fc52-ae04-4d61-969c-26ba24b7de99",
       "created": "2026-08-07T10:34:15Z",
       "modified": "2026-08-07T10:34:15Z",
@@ -7918,6 +8000,51 @@
     {
       "type": "attack-pattern",
       "spec_version": "2.1",
+      "id": "attack-pattern--1ea0c18d-b7ad-4254-a6b0-a8f39b783196",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Process Discovery",
+      "description": "termsvc.ps1はOS、タイムゾーン、グローバルIP、ユーザー・ドメイン、プロセス、コンピューター名などの感染端末情報を収集する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1057",
+          "url": "https://attack.mitre.org/techniques/T1057/"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--3a9a5683cbb2d30c608c",
+      "x_tactic": "Discovery",
+      "x_activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
       "id": "attack-pattern--7365fa2f-3645-45e1-b713-a46d1cce65af",
       "created": "2026-07-29T15:20:23Z",
       "modified": "2026-07-29T15:20:23Z",
@@ -8183,6 +8310,51 @@
         "precision": "month",
         "status": "known",
         "value": "2026-06-01T00:00:00Z"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--df27ca9e-7e7e-4ec2-8c8c-95f9cc612bf1",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Malicious File",
+      "description": "AhnLabは、韓国国内のユーザーを標的に、水産食材の購入依頼書を装った悪性LNKファイルが配布されていることを確認した。 LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1204.002",
+          "url": "https://attack.mitre.org/techniques/T1204/002/"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--6a6097cb7c35cf869e77",
+      "x_tactic": "Execution",
+      "x_activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
       },
       "x_confidence": "medium",
       "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
@@ -8666,6 +8838,51 @@
       "x_tactic": "Stealth",
       "x_activity_refs": [
         "activity--daily-6bbe7ca259b014595e2a"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e1703a36-bd5a-405b-9e1b-fcce006a3b5e",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Scheduled Task",
+      "description": "LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1053.005",
+          "url": "https://attack.mitre.org/techniques/T1053/005/"
+        },
+        {
+          "source_name": "asec.ahnlab.com",
+          "description": "Local source: https://asec.ahnlab.com/jp/95367/",
+          "external_id": "source--daily-ad51c0d6f2257de0c711"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--aed8cb1679e336255a93",
+      "x_tactic": "Execution, Persistence, Privilege Escalation",
+      "x_activity_refs": [
+        "activity--daily-0ba9f1cf5447b3f22da4"
       ],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
@@ -13008,6 +13225,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--0d635dea-f2de-467e-9737-92ee3a8cba5d",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "attack-pattern--1ea0c18d-b7ad-4254-a6b0-a8f39b783196",
+      "description": "termsvc.ps1はOS、タイムゾーン、グローバルIP、ユーザー・ドメイン、プロセス、コンピューター名などの感染端末情報を収集する。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--1145675d-85ae-42bc-a475-800f4ab09085",
       "created": "2026-07-29T15:20:23Z",
       "modified": "2026-07-29T15:20:23Z",
@@ -13093,6 +13325,21 @@
       "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
       "target_ref": "attack-pattern--24d18a31-da09-405e-82c0-4dc009a7bbfa",
       "description": "攻撃者はChrome Remote DesktopとAnyDeskを正規ツールとして導入し、アンチウイルス検知を回避しながら複数の遠隔操作経路を確保した。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4c951f9a-5f54-4e6f-b811-83046bc3e20b",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "attack-pattern--df27ca9e-7e7e-4ec2-8c8c-95f9cc612bf1",
+      "description": "AhnLabは、韓国国内のユーザーを標的に、水産食材の購入依頼書を装った悪性LNKファイルが配布されていることを確認した。 LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。",
       "x_confidence": "medium"
     },
     {
@@ -13258,6 +13505,21 @@
       "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
       "target_ref": "attack-pattern--00a0e7fa-31a1-411d-9a6c-9f478fff285f",
       "description": "PowerShellとVBScriptを使用しWindowsシステムを感染させ、情報を窃取 このキャンペーンは、北朝鮮のKimsukyと関連があるとSecuronixが指摘 DropboxやGoogle Docsを利用し、C2通信を隠蔽 開始点はPDFファイルに偽装した悪意あるメール添付ファイル TruRatを含む複数のステージを持つ高度なマルウェア",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d510847e-428a-4e0f-bc74-de6bef359ae5",
+      "created": "2026-09-15T22:14:21Z",
+      "modified": "2026-09-15T22:14:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
+      "target_ref": "attack-pattern--e1703a36-bd5a-405b-9e1b-fcce006a3b5e",
+      "description": "LNK実行時には正常なHWP文書を表示する一方、PowerShellで悪性スクリプトを展開し、タスクスケジューラへ登録して約14分ごとに実行する。",
       "x_confidence": "medium"
     },
     {
@@ -105882,7 +106144,7 @@
       "spec_version": "2.1",
       "id": "report--ea182dd8-320c-4b91-9e51-fd5af5e3ea5a",
       "created": "2026-07-26T05:28:44Z",
-      "modified": "2026-09-14T13:26:29Z",
+      "modified": "2026-09-15T22:14:21Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -105891,7 +106153,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-14T13:26:29Z",
+      "published": "2026-09-15T22:14:21Z",
       "object_refs": [
         "intrusion-set--a3f711d1-9656-450d-882b-b8e6e32631cc",
         "malware--94c3f7a5-7318-42e8-a08f-7ad133376cc4",
@@ -105982,6 +106244,7 @@
         "identity--90fd4871-d5de-4296-acdd-ab614f9e85f8",
         "identity--b81f9eb7-490a-4a85-8af9-b157cf9b4a4e",
         "identity--bdff3191-9d52-4583-a9ea-5af2e83c23d0",
+        "identity--908453e0-d41d-4925-9426-82593d59708c",
         "identity--a921fc52-ae04-4d61-969c-26ba24b7de99",
         "identity--982aad52-5784-4600-a8b8-ffcb23d63a5e",
         "identity--e1ef89ea-23b3-4828-8e00-41b2f23cc86b",
@@ -106000,12 +106263,14 @@
         "attack-pattern--1b146e6f-7d0f-4d8b-9691-b96c75f47d26",
         "attack-pattern--d2688674-4a50-426a-a45f-9b1fa4c9001c",
         "attack-pattern--6f9a3df8-4f0c-403b-9200-8f8308ff30a7",
+        "attack-pattern--1ea0c18d-b7ad-4254-a6b0-a8f39b783196",
         "attack-pattern--7365fa2f-3645-45e1-b713-a46d1cce65af",
         "attack-pattern--8e6a61eb-b818-43fa-a627-885c968e6e3d",
         "attack-pattern--2121171b-6c21-47d2-9d7b-162f7edeec89",
         "attack-pattern--2c097113-0202-4f30-8f87-d6527ef9ae38",
         "attack-pattern--bbc6a066-2019-4c67-9834-81074c20d016",
         "attack-pattern--24d18a31-da09-405e-82c0-4dc009a7bbfa",
+        "attack-pattern--df27ca9e-7e7e-4ec2-8c8c-95f9cc612bf1",
         "attack-pattern--cd0676cd-25cd-4dd9-849b-ae0bfcb3f5e7",
         "attack-pattern--acc02214-26e3-4112-b3f1-3f6880a75290",
         "attack-pattern--b9cdd860-7a12-4346-89c0-3f230e7c69bd",
@@ -106017,6 +106282,7 @@
         "attack-pattern--0838f73c-c80c-4f57-a9d5-8e6cd0bd7c4f",
         "attack-pattern--4922475b-cdcd-4866-967b-d3c55f2a1086",
         "attack-pattern--00a0e7fa-31a1-411d-9a6c-9f478fff285f",
+        "attack-pattern--e1703a36-bd5a-405b-9e1b-fcce006a3b5e",
         "attack-pattern--c72d90be-d02d-4722-a0b2-128ad4438d39",
         "attack-pattern--daf69f6f-d12c-487b-a8fb-f4824be3016c",
         "attack-pattern--557df959-fa2f-4c84-a54d-cb156397b43b",

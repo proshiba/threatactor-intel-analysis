@@ -86,9 +86,19 @@ _ACTOR_DESIGNATOR = (
     r"(?:攻撃者は|脅威アクター|グループ|集団|アクター|ギャング|チーム|"
     r"オペレーター|アフィリエイト|運営者|運用者)"
 )
+# 鉤括弧で囲む表記では助詞を伴わない指示語が直前に来る（「〜の攻撃者「Red Heron」が」）。
+# 括弧が名称の両端を確定させるため、助詞なしの指示語でも切り出しは曖昧にならない。
+_ACTOR_DESIGNATOR_BARE = (
+    r"(?:攻撃者|脅威アクター|グループ|集団|アクター|ギャング|チーム|"
+    r"オペレーター|アフィリエイト|運営者|運用者)"
+)
+_BRACKETED_NAME = r"[「『]" + _CANDIDATE_NAME + r"[」』]"
 NAME_CANDIDATE_PATTERNS = (
     # 「データ恐喝グループFulcrumSecは」「脅威アクターFulcrumSecが」「攻撃者はFulcrumSecで」
     re.compile(_ACTOR_DESIGNATOR + _CANDIDATE_NAME + _CANDIDATE_TAIL),
+    # 「中国語話者の攻撃者「Red Heron」が」「ハクティビスト集団「Hacking Cat」は」
+    # 日本語記事は初出のアクター名を鉤括弧で囲むことが多く、この形は助詞直結の規則に掛からない。
+    re.compile(_ACTOR_DESIGNATOR_BARE + _BRACKETED_NAME),
     # 「攻撃はShinyHuntersによるものとみられ」
     re.compile(
         r"(?:攻撃|侵害|犯行|キャンペーン|作戦)(?:は|を|の実行は)"

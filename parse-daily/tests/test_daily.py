@@ -169,6 +169,28 @@ class DailyCommonTests(unittest.TestCase):
         found = name_candidates(article, self.registry_with("APT28"), ["Microsoft Teams"])
         self.assertEqual(found, ["ShinyHunters"])
 
+    def test_name_candidate_is_extracted_from_bracketed_name(self) -> None:
+        """初出のアクター名を鉤括弧で囲む記事を拾う（Red Heron の取りこぼし事例）。
+
+        当該日のIOC CSVが未作成で、かつ名前が鉤括弧内にあると、IOC actor列経路と
+        助詞直結の抽出規則のどちらにも掛からず検知できなかった。
+        """
+        article = {
+            "title": "Red Heron、GiteaのN-day脆弱性を悪用した多国籍攻撃で新たなLinuxルートキットを展開",
+            "body": (
+                "- 要約\n"
+                "    - Acronis TRUは、中国語話者の攻撃者「Red Heron」がGiteaのRCE脆弱性"
+                "CVE-2026-60004を公開後数日で武器化し、インターネット公開サーバーを攻撃したと報告した。\n"
+                "    - 攻撃では30以上の操作機能を持つLinuxインプラント「JITTERLY」と、"
+                "ファイル・プロセス・通信を隠蔽する新規ルートキット「SIXZUT」が使用された。\n"
+            ),
+        }
+        found = name_candidates(article, self.registry_with("APT28"), [])
+        self.assertIn("Red Heron", found)
+        # 指示語を伴わない鉤括弧はマルウェア名・ツール名を囲むため、実行主体として拾わない
+        self.assertNotIn("JITTERLY", found)
+        self.assertNotIn("SIXZUT", found)
+
     def test_name_candidate_rejects_cve_ids_and_short_tokens(self) -> None:
         article = {
             "title": "",
