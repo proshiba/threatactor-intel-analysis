@@ -1625,6 +1625,67 @@
       "analyst_notes": "単一ベンダー(Kaspersky GReAT)の系統のみで昇格閾値未達。継続観察。2026-08-12の日次チェックにおける一次情報源の公開一覧確認で検知した。"
     },
     {
+      "cluster_id": "unknown-cluster--red-heron",
+      "primary_name": "Red Heron",
+      "aliases": [],
+      "status": "tracking",
+      "first_seen": "2026-09-15",
+      "last_seen": "2026-09-15",
+      "detected_via": "tech-memo daily-news 2026-09-15 に収録されているが、走査時点(tech-memo commit 3103ff31)の daily_check.py --run-scan では検知できず、日次ニュース本文を人手で読んで発見した。原因は2つある。(1) 当該日のIOC CSV(daily-news/iocs/2026_07-09/20260915.csv)が走査時点でtech-memo側に未作成で、IOC CSVのactor列経路が働かなかった。(2) 本文の表記が「中国語話者の攻撃者「Red Heron」」であり、名前が鉤括弧内にあるため、日本語の指示語に助詞で直結するラテン文字列だけを拾う unmatched_name_candidates の抽出規則に掛からなかった。本走査で抽出規則へ鉤括弧表記を追加し、以後は(2)の経路で検知できることを確認した。なお当該IOC CSVはその後tech-memo側で作成され、actor列にもRed Heronが現れるようになったが、IOC CSVの作成は日次ニュースより遅れることがあるため、(2)の経路の欠落は独立した死角として残っていた。既存694プロファイル、actor-census.json、本台帳、excluded_name_collisions のいずれにも Red Heron / JITTERLY / SIXZUT は存在しないことを確認した。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "cyber-espionage",
+        "notes": "Acronis TRU は「TRU assesses with moderate confidence that Red Heron operates within a PRC-linked context, based on Simplified Chinese operational material, its classification of Taiwan as part of China, and targeting aligned with apparent strategic collection priorities.」として中国語話者・PRC関連の運用文脈を中程度の確度で評価する。同時に「We have not identified sufficient evidence linking Red Heron to a previously tracked threat group.」と既知グループとの関連を明示的に否定しているため、既存プロファイルへ寄せない。Red Heron は Acronis TRU による呼称(「which we track under the alias Red Heron」)であり、他ベンダーの命名体系との対応付けは与えられていない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-15",
+          "publisher": "Acronis Threat Research Unit (TRU)",
+          "url": "https://www.acronis.com/en/tru/posts/red-heron-exploits-gitea-n-day-flaw-in-multinational-campaign-exposing-new-linux-rootkit/",
+          "title": "Red Heron exploits Gitea n-day flaw in multinational campaign, exposing new Linux rootkit",
+          "published_at": "2026-09-13",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文が明示する観測日: CVE-2026-60004 は 2026-07-27 に Gitea 1.27.1 で修正され、翌 2026-07-28 にPoC付きアドバイザリが公開された。2026-07-30 までに7カ国1,386台の全スキャンを完了。2026-08-03 に台湾50件のサブセットへバッチ実行。2026-08-04 にステージングサーバーを発見し、同日さらに5件の被害が記録されている。よって観測できる活動期間は 2026-07-28〜2026-08-04。公開日 2026-09-13 は活動期間へ転用しない。",
+          "targets": "Giteaインスタンス1,386台を7カ国でスキャンし、台湾向け477台を別データセットで管理。簡体字ラベルで防衛、選挙、エネルギー、航空宇宙、通信、政府、研究を分類。侵害が確認された国はカナダ、アルゼンチン、台湾、米国、スリランカ。カタール拠点の標的でもリポジトリ窃取に成功している。別途、Gitea以外の10カ国18サイト(うち17サイトがJoomla稼働)へ --shell フラグ付きで実行した痕跡がある。",
+          "malware": [
+            "JITTERLY",
+            "SIXZUT"
+          ],
+          "tools": [
+            "Adaptix C2",
+            "FOFA",
+            "CVE-2026-60004 PoC (HORKimhab/CVE-2026-60004 のfork)"
+          ],
+          "summary": "Gitea の RCE 脆弱性 CVE-2026-60004 (CVSS 9.8、1.17〜1.27.0が影響) を、公開PoC出現から数日で自動化フレームワークへ発展させ、アカウント登録・脆弱サーバーの侵害・リポジトリ窃取・痕跡削除までを一括実行した。侵害後はソースコード窃取、認証情報収集、SSHによる永続化、バックドア展開、横展開へ進んでいる。台湾のSynology NAS上のGiteaを起点に、背後のProxmoxクラスタへroot権限で到達し3ノードへペイロードを配布、仮想マシンイメージ全体の持ち出しを試みた事例が本キャンペーン最深の横展開である。C++製ELFインプラント JITTERLY は Adaptix C2 のLinuxエージェントとプロトコル・設定項目・登録手順・コマンド構造が一致するが、Goではなく C++ で実装されている。JITTERLY に埋め込まれた新規ルートキット SIXZUT は、ファイル・プロセス・ネットワーク接続を隠蔽し、JITTERLY の終了を阻止して停止・削除されても再起動する。原文は SIXZUT について「We identified no previous public reporting on SIXZUT.」と記す。",
+          "attribution_basis": "簡体字の運用資料、台湾を中国の一部として扱う分類体系、標的選定が戦略的収集priorityと整合すること、公開ツールのみに依存するトレードクラフトを根拠に、「a Chinese-speaking operator or group operating in a PRC-linked operational context」へ moderate confidence で帰属している。特定の既知グループへの帰属は行っていない。",
+          "iocs": {
+            "domains": [
+              "s2.981666.xyz",
+              "981666.xyz",
+              "xcyoibfhuufz.com"
+            ],
+            "ipv4": [
+              "72.11.138.109"
+            ],
+            "sha256": [
+              "B441F793C87E54CB7E3F7205E25442AA19920D325CB6AF41D2AFDC8A0B5CF54F",
+              "28B132AD55BD310BB5CF3DDB4ACE580529AD735204A48CF388830D9039843D8E"
+            ]
+          },
+          "verified_by_analyst": "WebFetchは403のため、curlでHTTP 200を取得して原文を確認した。公開日 September 13, 2026、実行主体の明記、既知グループとの関連の否定、観測日、標的国、JITTERLY/SIXZUT の記述、IOC表の全項目を直接確認している。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Acronis TRU単独の初報であり、昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。プロファイルへは昇格しない。",
+        "JITTERLY は Adaptix C2 の Linux エージェントと機能が一致する C++ 実装であり、原文も「closely related to a previously reported but unattributed Linux sample」と記す。共通ツール由来の重複を既存アクターとの関連と誤読しないよう、他クラスタでの Adaptix C2 利用と区別して追跡する。",
+        "Gitea以外に10カ国18サイト(17サイトがJoomla)へ --shell 付きで実行した痕跡があるが、原文は「the available evidence is insufficient to determine which vulnerability was exploited」として悪用脆弱性を特定していない。",
+        "原文は Proxmox 列挙用アカウント pvenum02 の命名を medium-confidence で意図的と評価し、複数人の関与を示唆するが、組織的実体は未確定。"
+      ],
+      "analyst_notes": "IOC CSV未作成かつ本文で名前が鉤括弧に囲まれる記事は、現行の検知経路2系統のいずれにも掛からない構造的な死角だった。本走査で build_review_queue.py の名称候補抽出へ鉤括弧内のラテン文字列を追加し、同種の取りこぼしを塞いでいる。"
+    },
+    {
       "cluster_id": "unknown-cluster--rognar",
       "primary_name": "Rognar",
       "aliases": [

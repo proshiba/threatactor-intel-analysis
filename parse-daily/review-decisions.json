@@ -2907,5 +2907,22 @@
   "unc6240|https://www.microsoft.com/en-us/security/blog/2026/09/09/passkey-themed-social-engineering-leads-identity-cloud-compromise/": {
     "review_status": "rejected",
     "review_notes": "不採用(実行主体でない)。Microsoft原文(2026-09-09)を確認した。本稿の主題は初期アクセス側のクラスタであり、「Storm-3121 conducts initial access activity leading to ShinyHunters and Falcon extortion.」と記載される。ShinyHunters は初期アクセスを受け取る下流の恐喝ブランドとして言及されるだけで、記述されているパスキー装いの社会工学からクラウドデータ窃取までの侵入活動の実行主体ではない。活動は2026年5月以降観測とされる。Storm-3121 と Storm-3032 は unknown-clusters.json へ登録済み。Storm-3121 から ShinyHunters への受け渡しは一次資料が明示する運用関係だが、関係の追加は活動の採用とは別に判断する。"
+  },
+  "unc3569|https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou": {
+    "review_status": "approved",
+    "confidence": "medium",
+    "review_notes": "Gen Digital原文(2026-09-10公開、アクセス2026-09-15)を確認して承認。原文は「We observed this vulnerability actively exploited in the wild by the UNC3569 threat group to deploy the GRAYRABBIT backdoor through a crafted link.」と実行主体を明記する。exact名一致・IOC CSVの構造化actor列・原文の実行主体記述が揃い、同名製品、別クラスタ、法執行報道、過去事例への言及のいずれでもないことを原文で確認した。Tencent Sogou Input Method(Windows)のRCE脆弱性CVE-2026-51990を悪用し、sgbiz: URIの引数検証不備、WebViewの任意URL読み込み、古くサンドボックス化されていないChromium(CEF)の3点を連鎖させてGRAYRABBITバックドアを展開する。Tencentは2026-04-21公開の16.3.0.3498で修正。原文に攻撃の観測日の明示がないため活動期間はunknownとし、公開日2026-09-10はreported_atへ分離する。IOC CSVのobserved_date 2026-09-10は公開日と同一であり、活動期間へ転用していない。原文が言及するUNC3569とi-SOONの関係は「potential business relationships」と推測に留まるため、アクター間関係は追加しない。同じくRABBITFUR(proprietary downloader)は本活動での利用を原文が直接記述していないためCapabilityへ含めない。",
+    "capability_decisions": [
+      {
+        "name": "GRAYRABBIT",
+        "status": "approved",
+        "reason": "承認。Gen Digital原文が本活動の成果物として直接記述する。UNC3569が「to deploy the GRAYRABBIT backdoor through a crafted link」として展開し、「a first-stage implant」と位置付ける。プロセス実行、リバースシェル、ファイル送受信、端末情報収集、メモリ内プラグイン実行の機能を備え、C2はTCP/443でRC4暗号化通信を行う。固有名であり同名製品との衝突はない。"
+      }
+    ]
+  },
+  "earth-lusca|https://www.gendigital.com/blog/insights/research/one-click-backdoor-sogou": {
+    "review_status": "rejected",
+    "confidence": "low",
+    "review_notes": "不採用(名称衝突)。matched_termのCHROMIUMは、Sogou入力メソッドの描画プロセスが用いるChromium Embedded Framework(ブラウザエンジン)を指す。根拠文「攻撃はsgbiz: URIの引数検証不備、WebViewの任意URL読み込み、古くサンドボックス化されていないChromiumという3つの弱点を連鎖させる。」は脆弱性の構成要素の説明であり、実行主体の記述ではない。原文にEarth Luscaの言及は存在せず、実行主体はUNC3569と明記されている。本記事URLとCHROMIUMの組み合わせはunknown-clusters.jsonのexcluded_name_collisionsへ登録済みの既知衝突である。"
   }
 }
