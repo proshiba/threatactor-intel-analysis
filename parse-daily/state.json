@@ -3396,6 +3396,19 @@
           "action": "observation-added",
           "status": "tracking",
           "note": "CISA KEV カタログの当該エントリを直接確認し、「Known To Be Used in Ransomware Campaigns」が Known へ更新されたことを第2観測として追加した(Date Added 2026-08-18、Due Date 2026-08-21)。CISA は具体的なランサムウェア集団を公表していないため、QUIRSO が観測した Babuk 派生ランサムウェアと同一活動かは確定できない。原文が Babuk の使用を強い帰属根拠として扱うべきでないと警告している通り、KEV の記載を根拠に既存のランサムウェア系プロファイルへ寄せていない。本観測は台帳エントリの活動期間(2026-08-03〜2026-08-07)を変更しない。publisher が CISA であり QUIRSO とは独立した政府機関の言及にあたるが、KEV は当該侵入セットへの言及ではなく脆弱性の悪用状況の記載であるため、昇格閾値の「政府・CERT・法執行機関による言及」には算入していない。"
+        },
+        {
+          "cluster_id": "unknown-cluster--jeetbot",
+          "action": "added",
+          "status": "tracking",
+          "note": "Socket.dev「Malicious Twitch Browser Extension Exfiltrates OAuth Session Tokens」(2026-09-11公開、Kush Pandya)を原文確認して追加した。当初は判断保留としていたが、同日に利用者の判断で entity_type: organization として登録した(B案)。挙動の悪性は、プライバシーポリシーとの矛盾、ロシア語圏10チャンネルのハードコード除外(「controls, server-side, which host receives the token」)、v4.x系の能動収集から v85.x系の受動ロギングへの移行、の3点を根拠とする。特に特定言語圏の除外は設計上の過失では説明しにくく、意図的な挙動を示す。一方、被害者が同社自身のサービス利用者であり第三者組織への侵入ではないため侵入セットとしては扱わず、企業実体を actor_profile/curated-organizations.json の organization--jeetbot へ分離してrelated_organizations で相互参照した。活動期間は各版の配布時期が原文で不明のため unknown とし、公開日 2026-09-11 を reported_at へ分離した。Socket.dev 単独の初報のため昇格閾値は未達。"
+        },
+        {
+          "organization_id": "organization--jeetbot",
+          "action": "added",
+          "status": "tracking",
+          "registry": "actor_profile/curated-organizations.json",
+          "note": "unknown-cluster--jeetbot の企業実体側の記録。organization_type_vocabulary へ commercial-service-operator を新設した。既存語彙は受託型・影響工作・製品ベンダー・公的機関を想定しており、自社の一般利用者が被害者となる商用サービス事業者を表現できなかった。unknown は「一次資料から組織の性質を確定できないもの」であり、性質が判明している本件には当たらないため流用していない。country は null とした。Socket.dev の「Russian-language」は提供言語であって法人所在地ではなく、言語やインフラ所在地を国として計上しない原則に従った。原文が挙げる個人名は Socket.dev の主張であり当局の裏付けがないため、構造化フィールドとしては保持せず unresolved_questions に帰属元を明示して残した。actor_profile/build_organizations.py --apply で actor_profile/organizations.json を再生成した。"
         }
       ],
       "unmatched_actor_candidates_flagged": [
@@ -3403,7 +3416,7 @@
           "value": "JeetBot",
           "observations": 12,
           "source": "https://socket.dev/blog/malicious-twitch-browser-extension",
-          "note": "判断保留。Socket.dev(2026-09-11、Kush Pandya)の原文を確認した。Chrome/Firefox で3万件超インストールされた拡張機能「Twitch Enhanced Viewer | JeetBot」が、Twitch の OAuth セッショントークンを運用者のプロキシへ転送している。原文は、この挙動がデータ収集を行わないとする同拡張のプライバシーポリシーと矛盾すること、ロシア語圏の10チャンネルをハードコードで除外していることが「controls, server-side, which host receives the token」を示すこと、旧v4.x系は set-token エンドポイントへ重複排除付きで POST していたのに対し現行v85.x系は &auth= パラメータとして付加する形へ変化したことを指摘する。運用者はロシア語圏の商用 Twitch/Kick/VK-Live ボットサービス JeetBot で、原文は個人名 Popov Aleksandr Alekseevich と結び付けている。挙動としては無許可のセッショントークン持ち出しであり悪性と評価できるが、実体は侵入セットではなく実名に近い商業サービス事業者である。台帳へ group として登録するか、entity_type: organization として actor_profile/organizations.json と併用するかで扱いが変わるため、利用者の判断を待って次回走査で確定する。"
+          "note": "判断保留。Socket.dev(2026-09-11、Kush Pandya)の原文を確認した。Chrome/Firefox で3万件超インストールされた拡張機能「Twitch Enhanced Viewer | JeetBot」が、Twitch の OAuth セッショントークンを運用者のプロキシへ転送している。原文は、この挙動がデータ収集を行わないとする同拡張のプライバシーポリシーと矛盾すること、ロシア語圏の10チャンネルをハードコードで除外していることが「controls, server-side, which host receives the token」を示すこと、旧v4.x系は set-token エンドポイントへ重複排除付きで POST していたのに対し現行v85.x系は &auth= パラメータとして付加する形へ変化したことを指摘する。運用者はロシア語圏の商用 Twitch/Kick/VK-Live ボットサービス JeetBot で、原文は個人名 Popov Aleksandr Alekseevich と結び付けている。挙動としては無許可のセッショントークン持ち出しであり悪性と評価できるが、実体は侵入セットではなく実名に近い商業サービス事業者である。台帳へ group として登録するか、entity_type: organization として actor_profile/organizations.json と併用するかで扱いが変わるため、利用者の判断を待って次回走査で確定する。\n【同日追記】利用者の判断によりB案(entity_type: organization + actor_profile/curated-organizations.json への事業体登録)で確定した。unknown-cluster--jeetbot と organization--jeetbot を追加済みで、本項は保留ではない。"
         }
       ],
       "extraction_rule_changes": [],
