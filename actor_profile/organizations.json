@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-14T15:00:00Z",
+  "generated_at": "2026-09-16T04:10:00Z",
   "purpose": "攻撃に関与する組織（民間企業、政府機関、軍部隊）を組織側から一意に管理する台帳の手入力部分。profiles/<slug>/actor-profile.json の attribution.organizations から機械的に導出できる関係は actor_profile/build_organizations.py が集約するため、ここには導出できない属性（organization_type、country、profile_slug、レジストリ固有の出典、未解決点）と、まだどのプロファイルからも参照されていない組織だけを持つ。両者を合成した完成物が actor_profile/organizations.json である。",
   "id_policy": "organization_id は organization--<英数小文字とハイフン> とする。既存プロファイルには org--<name> 形式と organization--<name> 形式が混在しており、build_organizations.py が organization-- へ正規化したうえで元の表記を legacy_ids へ残す。profiles/ 側の表記統一は別途の移行作業とし、本レジストリはどちらの表記からも引けるようにしておく。",
   "organization_type_vocabulary": {
@@ -10,7 +10,8 @@
     "digital-forensics-vendor": "端末解析・データ抽出製品を販売する民間企業。攻撃主体ではないが濫用の文脈で追跡対象となる。",
     "government-agency": "政府機関（情報機関、省庁）。",
     "military-unit": "軍または軍傘下の部隊・司令部。",
-    "unknown": "一次資料から組織の性質を確定できないもの。"
+    "unknown": "一次資料から組織の性質を確定できないもの。",
+    "commercial-service-operator": "正規の商用サービスを一般利用者へ提供しながら、自社製品を通じて利用者の認証情報やセッションデータを無許可で持ち出す事業者。攻撃能力を第三者へ受託提供する commercial-contractor や commercial-spyware-vendor と異なり、被害者はその事業者自身の顧客・利用者である。公開の場で営業しており実体が秘匿されていない点も侵入型アクターと異なる。"
   },
   "status_vocabulary": {
     "tracking": "一次資料で実体を確認し追跡している。",
@@ -19,9 +20,9 @@
     "refuted": "一次資料が関与を否定した。削除せず理由を残す。"
   },
   "counts": {
-    "organizations": 15,
+    "organizations": 16,
     "from_profiles": 8,
-    "curated_only": 7,
+    "curated_only": 8,
     "with_profile": 5
   },
   "organizations": [
@@ -239,6 +240,38 @@
       "analyst_notes": ""
     },
     {
+      "organization_id": "organization--jeetbot",
+      "primary_name": "JeetBot",
+      "also_known_as": [
+        "Twitch Enhanced Viewer | JeetBot（同社が配布するブラウザ拡張機能の名称）"
+      ],
+      "organization_type": "commercial-service-operator",
+      "country": null,
+      "status": "tracking",
+      "profile_slug": null,
+      "legacy_ids": [],
+      "related_actors": [],
+      "related_clusters": [
+        "unknown-cluster--jeetbot"
+      ],
+      "sources": [
+        {
+          "publisher": "Socket.dev",
+          "url": "https://socket.dev/blog/malicious-twitch-browser-extension",
+          "published_at": "2026-09-11",
+          "source_type": "primary-report",
+          "note": "ロシア語圏向けの商用 Twitch / Kick / VK-Live ボットサービスとして記述されている。同社が配布するブラウザ拡張機能「Twitch Enhanced Viewer | JeetBot」(Chrome / Firefox、3万件超のインストール)が、利用者の Twitch OAuth セッショントークンを同社運営のプロキシへ転送していることを Socket.dev が解析した。2026-09-16 の日次チェックで原文を確認した。"
+        }
+      ],
+      "unresolved_questions": [
+        "所在国を確定していない。Socket.dev はサービスを「Russian-language」と記述するが、これは提供言語であって法人所在地ではない。言語やインフラ所在地を国として計上しないという本リポジトリの原則に従い country は null とする。法人登記情報が一次資料で確認できた時点で埋める。",
+        "Socket.dev は運用者を個人名 Popov Aleksandr Alekseevich と結び付けているが、これは Socket.dev の主張であり、司法手続や当局発表による裏付けはない。実在する個人であるため、断定的な評価を加えず主張の帰属元を明示して扱う。本リポジトリに個人を管理する台帳はなく、構造化フィールドとしては保持しない。",
+        "Socket.dev 単独の初報であり、独立した一次資料による裏付けがない。",
+        "商用サービスとしての実体（顧客数、収益規模、他サービスへの展開）は原文からは判断できない。"
+      ],
+      "analyst_notes": "侵入型アクターではなく、自社の一般利用者を被害者とする商用サービス事業者である。本レジストリ新設時の BBS Bilisim Teknolojileri と同じく、企業実体が実体でありながら侵入型アクターのプロファイル様式に収まらない類型にあたる。unknown-cluster--jeetbot が挙動側の記録であり、本エントリは事業体側の記録である。organization_type: commercial-service-operator は本エントリのために新設した語彙で、受託型の commercial-contractor / commercial-spyware-vendor とは被害者の位置が異なる。"
+    },
+    {
       "organization_id": "organization--nanjing-xinjiuwei",
       "primary_name": "南京鑫玖维网络科技有限公司 (Nanjing Xinjiuwei Network Technology Company)",
       "also_known_as": [
@@ -425,5 +458,5 @@
       "analyst_notes": "既存ID表記は org--taiwan-icefcom。profiles/apt-c-01 の記録は中国側公開報道の主張であり台湾当局の確認は得られていない。confidence は medium。"
     }
   ],
-  "analyst_notes": "2026-09-14 に新設した。攻撃に関与する組織を、脅威アクターのプロファイル属性としてではなく組織側から一意に管理するための台帳である。新設の理由は3点ある。(1) 組織は複数のアクターに関与しうるが、attribution.organizations はアクター単位の属性であるため組織側からの逆引きができない。apt-c-27 と apt-c-37 が同一の Syrian Air Force Intelligence を参照する既存例があり、i-Soon のように流出資料が多数のクラスタへ結び付く組織では必須となる。(2) 組織IDの表記が org--<name> と organization--<name> に割れており、正規化の受け皿が必要だった。(3) BBS Bilisim Teknolojileri のように、企業そのものが実体でありながら侵入型アクターのプロファイル様式に収まらない対象が出てきた。本台帳は profiles/ 配下ではないため ui/build_data.py と ui/build_portal_index.py のどちらからも読まれずUIには出ない。UIへ出すには当該組織を profiles/<slug>/actor-profile.json として昇格させる必要があり、NSO Group、Candiru、Cytrox、Intellexa、Cellebrite が既にその形で存在する（いずれも雛形状態）。organizations.json は build_organizations.py が本ファイルと profiles/ から合成する生成物であり、直接編集しない。"
+  "analyst_notes": "2026-09-14 に新設した。攻撃に関与する組織を、脅威アクターのプロファイル属性としてではなく組織側から一意に管理するための台帳である。新設の理由は3点ある。(1) 組織は複数のアクターに関与しうるが、attribution.organizations はアクター単位の属性であるため組織側からの逆引きができない。apt-c-27 と apt-c-37 が同一の Syrian Air Force Intelligence を参照する既存例があり、i-Soon のように流出資料が多数のクラスタへ結び付く組織では必須となる。(2) 組織IDの表記が org--<name> と organization--<name> に割れており、正規化の受け皿が必要だった。(3) BBS Bilisim Teknolojileri のように、企業そのものが実体でありながら侵入型アクターのプロファイル様式に収まらない対象が出てきた。本台帳は profiles/ 配下ではないため ui/build_data.py と ui/build_portal_index.py のどちらからも読まれずUIには出ない。UIへ出すには当該組織を profiles/<slug>/actor-profile.json として昇格させる必要があり、NSO Group、Candiru、Cytrox、Intellexa、Cellebrite が既にその形で存在する（いずれも雛形状態）。organizations.json は build_organizations.py が本ファイルと profiles/ から合成する生成物であり、直接編集しない。 2026-09-16に organization--jeetbot を追加し、organization_type_vocabulary へ commercial-service-operator を新設した。既存の語彙は受託型(commercial-contractor、commercial-spyware-vendor)、影響工作(influence-operations-vendor)、製品ベンダー(digital-forensics-vendor)、公的機関(government-agency、military-unit)を想定しており、「自社の一般利用者が被害者となる商用サービス事業者」を表現できなかった。unknown は「一次資料から組織の性質を確定できないもの」であり、性質が判明している本件には当たらないため流用しなかった。"
 }

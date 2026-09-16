@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "3103ff31ed16797fc5a2a76f7cf9d5e49a6e00f0",
-  "last_scanned_date": "2026-09-15",
+  "last_scanned_commit": "1bbf859c0dd176974962c4c00ed76a92df1be301",
+  "last_scanned_date": "2026-09-16",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -3335,6 +3335,136 @@
           "result": "新規1件、台帳へ追加。tech-memo daily-news 2026-09-15 経由で発見したが、daily_check.py --run-scan では検知できなかった。原因は(1)当該日のIOC CSVがtech-memo側に未作成でactor列経路が働かないこと、(2)本文の名前が鉤括弧内にあり名称候補の抽出規則に掛からないことの2点。WebFetchは403のためcurlでHTTP 200を取得し原文を確認した。unknown-cluster--red-heron として status: tracking で追加した。ROUTINE.md の一次情報源一覧に Acronis TRU は含まれていない。本件は一覧巡回ではなく tech-memo 経由で拾えた事例であり、一覧の追加要否は別途判断する。"
         }
       ]
+    },
+    {
+      "completed_at": "2026-09-16T02:55:00Z",
+      "window": {
+        "since": "2026-09-15",
+        "until": "2026-09-16"
+      },
+      "source_commit": "1bbf859c0dd176974962c4c00ed76a92df1be301",
+      "statistics": {
+        "news_files": 2,
+        "articles": 17,
+        "review_records": 1,
+        "approved_records": 0,
+        "rejected_records": 1,
+        "pending_records": 0,
+        "applied_records": 0,
+        "unmatched_actor_values": 330,
+        "materialization_window": "承認レコードが0件のため profiles/ への反映・再生成は行っていない。migrate_activity_model.py、enrich_activity_intelligence.py、enrich_targeting_scope.py、materialize_activity_diamonds.py、ui/build_data.py はいずれも実行対象がなく未実行である。本走査の成果は unknown-clusters.json への4クラスタ追加・1観測追加と、review-decisions.json への不採用判断1件の保存に限られる。"
+      },
+      "applied": [],
+      "rejected": [
+        {
+          "actor": "hellsing-apt",
+          "name": "BambooTokenマルウェア、MQTTを介してWindowsとLinuxシステムを制御",
+          "source": "https://www.lumen.com/blog/en-us/the-banana-stand-brokering-and-managing-infections-across-asia-using-mqtt",
+          "decision": "不採用(名称衝突)。一致語「Asia」は一次ソースURLのスラッグ断片「...brokering-and-managing-infections-across-asia-using-mqtt」であり、アクター参照ではない。activity_claim の assessment も name-collision であった。原文(Lumen Black Lotus Labs、2026-09-15公開)を確認したが Hellsing APT の言及はなく、同社は既知クラスタへの相関付けを明示的に否定している。Hellsing APT の alias「Asia」による URL 断片衝突は本台帳に既に3件記録されており、本件で4件目となる。config.json の matching.unsafe_prose_aliases に 「Asia」は登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json と excluded_name_collisions の双方へ保存した。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--heavygram-chosen-brick",
+          "action": "added",
+          "status": "tracking",
+          "note": "FBI FLASH「Deployment of Telegram C2 to Push Malware to Identified Targets」(https://www.ic3.gov/CSA/2026/260915.pdf) と 英NCSC/米FBI/蘭AIVD 合同アドバイザリ「Iranian Cyber Targeting of Dissidents, Activists and Journalists」(https://www.ic3.gov/CSA/2026/260915-2.pdf) の2資料を PDF 原文で確認して追加した(ともに2026-09-15公開)。FBI は「The FBI assesses MOIS cyber actors have deployed multiple versions of the malware to infect victim systems.」としてイラン情報省(MOIS)へ帰属するが、両資料とも命名済みグループ指定子を与えていない。反体制派・ジャーナリスト標的という被害者像が重なる Domestic Kitten、Sima、Charming Kitten へは寄せず台帳へ登録した。活動期間は FBI が「dating back to the Fall of 2023」、NCSC が「from at least 2025」と述べる範囲のみで、個々の観測日は与えられていない。公開日 2026-09-15 と IOC CSV の date 列(全行2026-09-15、公開日と同値)はいずれも活動期間へ転用していない。政府機関の言及という昇格閾値は満たしているが、アクター指定子が存在せず canonical name を決められないため昇格は保留し、利用者判断とした。"
+        },
+        {
+          "cluster_id": "unknown-cluster--vectra-nyxel",
+          "action": "added",
+          "status": "tracking",
+          "note": "SOCRadar「VectraRAT: Undocumented Full-Stack MaaS」(2026-09-14公開)を原文確認して追加した。原文は「The operator 'Vectra' is a rebrand of 'Nyxel', active since at least August 2022 with no prior public reporting.」と自称ブランドの改名を明示する。開発言語が中国語である示唆3点と、ロシア語圏フォーラム(HackForums、Exploit.in)での販売が併存し、原文は国籍を確定していない。開発言語の示唆を国家帰属や既存の中国系クラスタへの結び付けに用いていない。MaaS の開発・販売者であり、これを用いて侵入を実行する顧客とは別実体である点を unresolved_questions へ明記した。IOC 20観測。単独ベンダーの初報のため昇格閾値は未達。"
+        },
+        {
+          "cluster_id": "unknown-cluster--bambootoken",
+          "action": "added",
+          "status": "tracking",
+          "note": "Lumen Black Lotus Labs「The Banana Stand: Brokering and Managing Infections Across Asia Using MQTT」(2026-09-15公開)を原文確認して追加した。原文は「We are unable to correlate this malware framework to any publicly documented activity clusters and are labeling it as an emerging threat cluster.」と既知クラスタへの相関付けを明示的に否定している。中国との関連は検体アップロード元IP空間とテレメトリ所在にとどまるため、インフラ所在国を帰属根拠にも標的国にも流用していない。観測期間は原文が明示する 2023-02〜2026-07。記事にIOCの掲載がなく IOC CSV の actor 列経路では検知できないため、hellsing-apt への誤一致レコードの原文確認から実体へ到達した。MQTT を C2 に用いる点は Toy Ghouls と共通するが、プロトコルの共用を帰属根拠にしていない。単独ベンダーの初報のため昇格閾値は未達。"
+        },
+        {
+          "cluster_id": "unknown-cluster--pasteswitch",
+          "action": "added",
+          "status": "tracking",
+          "note": "ADAMnetworks「HBO Max ads exposed the PasteSwitch ClickFix operation」(2026-09-13公開)を原文確認して追加した。PasteSwitch はアクター指定子ではなくオペレーション呼称であり、原文は「We track that operation as PasteSwitch.」と手口そのものを名前にしたと説明する。運用者は未命名・未帰属で動機の類型も一次資料から確定できないため、attribution.state を unattributed、actor_type を unknown として「アクターとしては不明」という情報のまま登録した。unknown-cluster--arrayref-rust-crates の前例(運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない)に従っている。運用者が一次資料で同定されない限り profiles/ へ昇格させない方針を unresolved_questions へ明記した。観測期間は原文が明示する 2025-07-12 以降。IOC CSV に234観測があるが、大半が広告誘導先ドメインであり反映時に値単位の確認を要する。"
+        },
+        {
+          "cluster_id": "unknown-cluster--cve-2026-59310-vcenter",
+          "action": "observation-added",
+          "status": "tracking",
+          "note": "CISA KEV カタログの当該エントリを直接確認し、「Known To Be Used in Ransomware Campaigns」が Known へ更新されたことを第2観測として追加した(Date Added 2026-08-18、Due Date 2026-08-21)。CISA は具体的なランサムウェア集団を公表していないため、QUIRSO が観測した Babuk 派生ランサムウェアと同一活動かは確定できない。原文が Babuk の使用を強い帰属根拠として扱うべきでないと警告している通り、KEV の記載を根拠に既存のランサムウェア系プロファイルへ寄せていない。本観測は台帳エントリの活動期間(2026-08-03〜2026-08-07)を変更しない。publisher が CISA であり QUIRSO とは独立した政府機関の言及にあたるが、KEV は当該侵入セットへの言及ではなく脆弱性の悪用状況の記載であるため、昇格閾値の「政府・CERT・法執行機関による言及」には算入していない。"
+        },
+        {
+          "cluster_id": "unknown-cluster--jeetbot",
+          "action": "added",
+          "status": "tracking",
+          "note": "Socket.dev「Malicious Twitch Browser Extension Exfiltrates OAuth Session Tokens」(2026-09-11公開、Kush Pandya)を原文確認して追加した。当初は判断保留としていたが、同日に利用者の判断で entity_type: organization として登録した(B案)。挙動の悪性は、プライバシーポリシーとの矛盾、ロシア語圏10チャンネルのハードコード除外(「controls, server-side, which host receives the token」)、v4.x系の能動収集から v85.x系の受動ロギングへの移行、の3点を根拠とする。特に特定言語圏の除外は設計上の過失では説明しにくく、意図的な挙動を示す。一方、被害者が同社自身のサービス利用者であり第三者組織への侵入ではないため侵入セットとしては扱わず、企業実体を actor_profile/curated-organizations.json の organization--jeetbot へ分離してrelated_organizations で相互参照した。活動期間は各版の配布時期が原文で不明のため unknown とし、公開日 2026-09-11 を reported_at へ分離した。Socket.dev 単独の初報のため昇格閾値は未達。"
+        },
+        {
+          "organization_id": "organization--jeetbot",
+          "action": "added",
+          "status": "tracking",
+          "registry": "actor_profile/curated-organizations.json",
+          "note": "unknown-cluster--jeetbot の企業実体側の記録。organization_type_vocabulary へ commercial-service-operator を新設した。既存語彙は受託型・影響工作・製品ベンダー・公的機関を想定しており、自社の一般利用者が被害者となる商用サービス事業者を表現できなかった。unknown は「一次資料から組織の性質を確定できないもの」であり、性質が判明している本件には当たらないため流用していない。country は null とした。Socket.dev の「Russian-language」は提供言語であって法人所在地ではなく、言語やインフラ所在地を国として計上しない原則に従った。原文が挙げる個人名は Socket.dev の主張であり当局の裏付けがないため、構造化フィールドとしては保持せず unresolved_questions に帰属元を明示して残した。actor_profile/build_organizations.py --apply で actor_profile/organizations.json を再生成した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "JeetBot",
+          "observations": 12,
+          "source": "https://socket.dev/blog/malicious-twitch-browser-extension",
+          "note": "判断保留。Socket.dev(2026-09-11、Kush Pandya)の原文を確認した。Chrome/Firefox で3万件超インストールされた拡張機能「Twitch Enhanced Viewer | JeetBot」が、Twitch の OAuth セッショントークンを運用者のプロキシへ転送している。原文は、この挙動がデータ収集を行わないとする同拡張のプライバシーポリシーと矛盾すること、ロシア語圏の10チャンネルをハードコードで除外していることが「controls, server-side, which host receives the token」を示すこと、旧v4.x系は set-token エンドポイントへ重複排除付きで POST していたのに対し現行v85.x系は &auth= パラメータとして付加する形へ変化したことを指摘する。運用者はロシア語圏の商用 Twitch/Kick/VK-Live ボットサービス JeetBot で、原文は個人名 Popov Aleksandr Alekseevich と結び付けている。挙動としては無許可のセッショントークン持ち出しであり悪性と評価できるが、実体は侵入セットではなく実名に近い商業サービス事業者である。台帳へ group として登録するか、entity_type: organization として actor_profile/organizations.json と併用するかで扱いが変わるため、利用者の判断を待って次回走査で確定する。\n【同日追記】利用者の判断によりB案(entity_type: organization + actor_profile/curated-organizations.json への事業体登録)で確定した。unknown-cluster--jeetbot と organization--jeetbot を追加済みで、本項は保留ではない。"
+        }
+      ],
+      "extraction_rule_changes": [],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-10",
+          "result": "該当なし。前回走査以降の新規公開はない。一覧最上位は2026-09-10の2件(AI支援の経営者なりすましと請求書詐欺、DefenderでのAIテーマ攻撃検知)で、いずれも前回走査で確認済みかつ命名アクターを含まない。Typhoon/Blizzard/Sandstorm/Sleet/Storm-#### の命名を含む新規記事はない。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-14",
+          "result": "該当なし(既反映)。一覧の上位11件を確認した。命名アクターを含むのは BREEZE COMET(profiles/breeze-comet に2026-09-01反映済み)、UNC6671(台帳に2026-08-07登録済み)、「Going with the Flow(s)」(UNC5792/UNC6508。2026-09-08に profiles/ へ昇格済み)、「GTIG AI Threat Tracker」(GTG-系クラスタを2026-09-14に台帳登録済み)で、いずれも既に処理済みである。一覧ページに公開日が表示されないため、日付は個別記事を開かないと確認できない状態が続いている。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-14",
+          "result": "該当なし。前回走査以降の新規公開はない。最新は2026-09-14「Unmasking Cloud Identities: From Behavioral Clustering to Automated Detection」で、前回走査で確認済み。命名クラスタも帰属も含まない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-09-10",
+          "result": "該当なし。前回走査以降の新規公開はない。最新は2026-09-10の Threat Source ニュースレターで命名アクターを含まない。2026-09-09の FMC 悪用記事(UAT-11823/UAT-11988/UAT-12197)は前回走査で台帳登録済み。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-07-14",
+          "result": "該当なし。一覧1ページ目を公開日付きで確認したが、最新は2026-07-14「Forgotten UEFI shims undermining Secure Boot」で、前回走査から変化がない。ESET の2026年9月の発信(GuardBreaker 等)は /en/business-security/ 配下および X 経由であり、本一覧には現れない。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-08-13",
+          "result": "該当なし。前回走査以降の新規公開はない。最新は2026-08-13「The Model Is the Malware | What Four Agentic Intrusions Tell Defenders」。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-04",
+          "result": "該当なし。/all/ の一覧上位12件を公開日付きで確認した。最新は2026-09-04「Angry Birds: Toy Ghouls' new toys」で、台帳の unknown-cluster--toy-ghouls へ2026-09-10に第2観測として登録済み。2026-08-31「Mirage Kitten targeting aviation and FinTech」は config.json の actor_value_aliases 経由で UNC1549 へ対応付け済み、2026-08-12「APT group HoneyMyte upgrades CoolClient」は HoneyMyte が profiles/mustang-panda の別名として収録済みである。前回走査以降の新規公開はない。"
+        }
+      ],
+      "analyst_notes": "本走査で最も重要な検知は、政府・法執行機関による2資料(FBI FLASH と 英NCSC/米FBI/蘭AIVD 合同アドバイザリ、ともに2026-09-15公開)である。両資料の PDF 原文を取得して確認した結果、FBI FLASH に CHOSEN BRICK の語は1度も現れず(0回)、NCSC 合同アドバイザリに HEAVYGRAM の語も1度も現れない(0回)ことが判明した。tech-memo の日次要約は両者を「HEAVYGRAM／CHOSEN BRICK」と一体で扱っているが、これは二次要約による統合であり、一次資料は名称の等価性を述べていない。同日公開・同一の被害者像・Telegram を C2 とする点・偽装対象アプリ(Pictory、Telegram、KeePass、RunwayML)の一致・FBI が両資料に関与していることから同一活動を別名で扱っている可能性が高いが、片方が stage 1、他方が stage 2 を指している可能性も排除できないため、台帳では1クラスタとして登録したうえで名称の等価性を unresolved_questions に残した。二次要約が複数の一次資料を統合して提示する場合、名称の対応付けは必ず一次資料側で検証する。\n構造的な問題として、tech-memo の IOC CSV は日次ニュースより遅れて作成されることがある。2026-09-15分の CSV は前回走査時点で未作成だったため、PasteSwitch(234観測)と JeetBot(12観測)は本走査で初めて unmatched_actor_values に現れた。前回走査の Red Heron も同じ原因でIOC CSV 経路からは検知できていない。IOC CSV の actor 列経路は、last_scanned_date を前日に戻すか、走査窓を前日1日分だけ重ねて実行しないと取りこぼす。本走査の窓は 2026-09-15 起点であったため結果的に拾えている。\n承認レコードは0件のため profiles/ 配下は一切変更していない。state.json の last_scanned_date は、レビューと反映が完了した 2026-09-16 まで進めた。"
     }
   ],
   "full_history_activity_audit": {
