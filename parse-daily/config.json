@@ -142,5 +142,45 @@
     "phishing-site": "phishing",
     "malware": "payload",
     "related-file": "related-file"
+  },
+  "external_sources": {
+    "description": "tech-memo の daily-news に載らない新規公開を拾うために、日次チェックで公開一覧を巡回する一次情報源。daily_check.py がこの一覧を出力へ転記し、走査結果は state.json の incremental_scans[].external_source_checks へ同じ publisher / url で記録する。ルーチンのプロンプト側にも一覧を書くと版ずれが起きるため、この設定を唯一の正とする。",
+    "sources": [
+      {
+        "publisher": "Microsoft Security Blog",
+        "url": "https://www.microsoft.com/en-us/security/blog/"
+      },
+      {
+        "publisher": "Google Threat Intelligence",
+        "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+        "note": "一覧ページに公開日が表示されないため、日付は個別記事を開かないと確認できない。"
+      },
+      {
+        "publisher": "Palo Alto Networks Unit 42",
+        "url": "https://unit42.paloaltonetworks.com/"
+      },
+      {
+        "publisher": "Cisco Talos",
+        "url": "https://blog.talosintelligence.com/"
+      },
+      {
+        "publisher": "ESET Research",
+        "url": "https://www.welivesecurity.com/en/eset-research/",
+        "note": "研究記事が /en/business-security/ 等の別セクションへ載るため、この一覧だけでは捕捉できない公開がある。"
+      },
+      {
+        "publisher": "SentinelLabs",
+        "url": "https://www.sentinelone.com/labs/"
+      },
+      {
+        "publisher": "Kaspersky Securelist",
+        "url": "https://securelist.com/"
+      },
+      {
+        "publisher": "Kaspersky Securelist（ロシア語版）",
+        "url": "https://securelist.ru/",
+        "note": "securelist.com へ出ないロシア語圏アクターの記事が継続的に載るため、.com と両方を確認する。2026-08-10 の走査では Head Mare の TrueConf Server 侵害と Awaken Likho の TokenBuoy 移行がいずれも .ru のみで公開されていた。"
+      }
+    ]
   }
 }

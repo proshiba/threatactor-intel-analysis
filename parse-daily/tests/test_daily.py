@@ -560,6 +560,66 @@ class DailyCheckTests(unittest.TestCase):
         self.assertTrue(report["mentioned_actors"][0]["in_recent_set"])
         self.assertEqual(report["statistics"]["mentioned_recent_actors"], 1)
 
+    def test_external_sources_come_from_config_and_reach_the_report(self) -> None:
+        """巡回対象の一次情報源は config.json を正とし、走査出力へ必ず転記する。
+
+        ルーチンのプロンプトが古い版のままでも巡回対象が欠けないようにするための経路。
+        securelist.ru はプロンプト側の一覧から3走査連続で欠落していた実績があるため、
+        設定に載っている限り出力へ現れることを固定する。
+        """
+        config = {
+            "external_sources": {
+                "sources": [
+                    {"publisher": "Kaspersky Securelist", "url": "https://securelist.com/"},
+                    {
+                        "publisher": "Kaspersky Securelist（ロシア語版）",
+                        "url": "https://securelist.ru/",
+                        "note": ".com へ出ない記事が載る。",
+                    },
+                ]
+            }
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            config_path = Path(tmp) / "config.json"
+            config_path.write_text(json.dumps(config), encoding="utf-8")
+            queue_path = Path(tmp) / "review-queue.json"
+            queue_path.write_text(json.dumps({"records": []}), encoding="utf-8")
+            with mock.patch.object(daily_check, "CONFIG_PATH", config_path), \
+                 mock.patch.object(daily_check, "QUEUE_PATH", queue_path), \
+                 mock.patch.object(daily_check, "STATE_PATH", Path(tmp) / "missing.json"), \
+                 mock.patch.object(daily_check, "collect_recent_actors", return_value=[]):
+                report = daily_check.build_report(365, "2026-09-17")
+                markdown = daily_check.render_markdown(report, 30)
+
+        self.assertEqual(
+            [source["url"] for source in report["external_sources"]],
+            ["https://securelist.com/", "https://securelist.ru/"],
+        )
+        self.assertIn("https://securelist.ru/", markdown)
+        self.assertIn(".com へ出ない記事が載る。", markdown)
+
+    def test_external_sources_are_empty_when_config_is_missing(self) -> None:
+        """config.json が無くても走査自体は落とさない。"""
+        with tempfile.TemporaryDirectory() as tmp:
+            queue_path = Path(tmp) / "review-queue.json"
+            queue_path.write_text(json.dumps({"records": []}), encoding="utf-8")
+            with mock.patch.object(daily_check, "CONFIG_PATH", Path(tmp) / "missing.json"), \
+                 mock.patch.object(daily_check, "QUEUE_PATH", queue_path), \
+                 mock.patch.object(daily_check, "STATE_PATH", Path(tmp) / "missing.json"), \
+                 mock.patch.object(daily_check, "collect_recent_actors", return_value=[]):
+                report = daily_check.build_report(365, "2026-09-17")
+                markdown = daily_check.render_markdown(report, 30)
+
+        self.assertEqual(report["external_sources"], [])
+        self.assertNotIn("確認する一次情報源", markdown)
+
+    def test_shipped_config_lists_both_securelist_domains(self) -> None:
+        """同梱の config.json に .com と .ru の双方が載っていること。"""
+        sources = daily_check.collect_external_sources()
+        urls = [source["url"] for source in sources]
+        self.assertIn("https://securelist.com/", urls)
+        self.assertIn("https://securelist.ru/", urls)
+
 
 class AliasedSourceTests(unittest.TestCase):
     """activity_reference_aliases で既存活動へ集約した出典の扱い。"""

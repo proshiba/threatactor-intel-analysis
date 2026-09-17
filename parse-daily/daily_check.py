@@ -30,6 +30,7 @@ REPO_ROOT = BASE_DIR.parent
 PROFILES_DIR = REPO_ROOT / "profiles"
 STATE_PATH = BASE_DIR / "state.json"
 QUEUE_PATH = BASE_DIR / "output" / "review-queue.json"
+CONFIG_PATH = BASE_DIR / "config.json"
 OUT_JSON = BASE_DIR / "output" / "daily-check.json"
 
 # 自動採用してよい判定ではない。レビュー優先度の高い順に並べるためだけに使う。
@@ -123,6 +124,19 @@ def run_scan(since: str | None) -> list[str]:
     return log
 
 
+def collect_external_sources() -> list[dict]:
+    """巡回対象の一次情報源を config.json から読む。
+
+    tech-memo に載らない公開はこの巡回でしか拾えないため、一覧はルーチンの
+    プロンプトではなく config.json を唯一の正とし、走査のたびに出力へ転記する。
+    プロンプトが古い版のままでも巡回対象が欠けないようにするための経路である。
+    """
+    if not CONFIG_PATH.exists():
+        return []
+    config = load_json(CONFIG_PATH)
+    return (config.get("external_sources") or {}).get("sources") or []
+
+
 def build_report(days: int, since: str | None) -> dict:
     state = load_json(STATE_PATH) if STATE_PATH.exists() else {}
     queue = load_json(QUEUE_PATH) if QUEUE_PATH.exists() else {}
@@ -167,6 +181,7 @@ def build_report(days: int, since: str | None) -> dict:
     )
     unmatched = queue.get("unmatched_actor_values") or []
     name_candidates = queue.get("unmatched_name_candidates") or []
+    external_sources = collect_external_sources()
 
     return {
         "schema_version": "1.0.0",
@@ -193,6 +208,7 @@ def build_report(days: int, since: str | None) -> dict:
         "mentioned_actors": mentioned,
         "unmatched_actor_values": unmatched,
         "unmatched_name_candidates": name_candidates,
+        "external_sources": external_sources,
         "recent_actors": recent,
     }
 
@@ -275,6 +291,19 @@ def render_markdown(report: dict, top: int) -> str:
                 )
         if len(report["unmatched_name_candidates"]) > top:
             lines.append(f"- ほか {len(report['unmatched_name_candidates']) - top} 件")
+        lines.append("")
+
+    if report.get("external_sources"):
+        lines += ["## 確認する一次情報源（公開一覧を巡回する）", "",
+                  "tech-memo の daily-news に載らない新規公開はこの巡回でしか拾えません。"
+                  "検索結果のスニペットだけを根拠にせず、公開一覧と原文を確認してください"
+                  "（`actor_profile/OSINT_RULES.md`）。結果は publisher・URL・最新の関連公開日・判定の形式で"
+                  "整理し、`parse-daily/state.json` の `incremental_scans[].external_source_checks` と"
+                  "同じ形式で残してください。", ""]
+        for source in report["external_sources"]:
+            lines.append(f"- {source.get('publisher')} {source.get('url')}")
+            if source.get("note"):
+                lines.append(f"  - {source['note']}")
         lines.append("")
 
     lines += [f"## 直近{window['recent_days']}日に活動があったアクター（上位{top}件）", "",

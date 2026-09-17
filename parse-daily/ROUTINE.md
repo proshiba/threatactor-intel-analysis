@@ -23,6 +23,16 @@ Actions で回したい場合は、`daily_check.py` を実行して job summary 
 以下をそのまま貼り付けてください。新しいセッションで実行される前提の、
 文脈に依存しない内容にしてあります。
 
+プロンプトはルーチン設定側に保存されるため、この文書を更新してもルーチンには
+反映されません。**この節を書き換えたら、ルーチン設定のプロンプトも貼り直してください。**
+
+2026-09-17 時点で、実際に発火したプロンプトはこの節より古い版でした。
+securelist.ru と「4. 未帰属クラスタの記録」の節、台帳追記のコミット許可がいずれも
+欠けており、securelist.ru は3走査連続でエージェントが手動補完していました。
+同じずれを繰り返さないよう、版ずれしやすい一覧はプロンプトから外し、
+`config.json` の `external_sources` を唯一の正として `daily_check.py` の出力へ
+転記する方式に変更しています。プロンプトの記述量は今後も増やさないでください。
+
 ---
 
 ```text
@@ -49,27 +59,21 @@ last_scanned_date 以降を走査して、確認対象を抽出します。プ�
 
 ## 2. 一次情報源の確認
 
-tech-memo に載っていない新規公開がないか、次の一次情報源の公開一覧を確認してください。
+tech-memo に載っていない新規公開がないか、一次情報源の公開一覧を確認してください。
 直近に活動があったアクターに関する新しい一次情報を優先します。
 
-- Microsoft Security Blog https://www.microsoft.com/en-us/security/blog/
-- Google Threat Intelligence https://cloud.google.com/blog/topics/threat-intelligence
-- Palo Alto Networks Unit 42 https://unit42.paloaltonetworks.com/
-- Cisco Talos https://blog.talosintelligence.com/
-- ESET Research https://www.welivesecurity.com/en/eset-research/
-- SentinelLabs https://www.sentinelone.com/labs/
-- Kaspersky Securelist https://securelist.com/
-- Kaspersky Securelist（ロシア語版） https://securelist.ru/
-
-securelist.ru には securelist.com へ出ないロシア語圏アクターの記事が継続的に載ります。
-両方を確認してください。2026-08-10 の走査では、Head Mare の TrueConf Server 侵害
-（2026-08-07）と Awaken Likho の TokenBuoy 移行（2026-08-07）がいずれも .ru のみで公開され、
-.com だけを見ていた期間に取りこぼしていました。
+巡回対象は上記 daily_check.py の出力「確認する一次情報源」の節にすべて列挙されます。
+一覧の実体は parse-daily/config.json の external_sources で、そこが唯一の正です。
+このプロンプトには一覧を書きません。
 
 検索結果のスニペットだけを根拠にせず、公開一覧と原文を確認してください
 （actor_profile/OSINT_RULES.md）。結果は publisher・URL・最新の関連公開日・判定の
 形式で整理してください。parse-daily/state.json の incremental_scans[].external_source_checks
 と同じ形式です。
+
+出力の一覧に載っていない情報源から新規の一次資料を見つけた場合は、その publisher と URL も
+同じ形式で報告し、external_sources へ追加すべきかを提案してください。2026-09-15 の
+Acronis TRU（Red Heron）が該当例です。
 
 ## 3. レビュー
 
