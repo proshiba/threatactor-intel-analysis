@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-16T04:10:00Z",
+  "generated_at": "2026-09-17T01:45:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -1618,6 +1618,76 @@
       "analyst_notes": "単一ベンダーの初報のみで昇格閾値未達。継続観察。「Myxa VPN」は日次チェックで86観測の未一致名として上がるが、アクター指定子ではないためプロファイル化しない。本台帳へ記録することで、次回以降の走査で同じ判断を繰り返さないようにする。"
     },
     {
+      "cluster_id": "unknown-cluster--nighteagle",
+      "primary_name": "NightEagle",
+      "aliases": [
+        "APT-Q-95"
+      ],
+      "status": "tracking",
+      "entity_type": "group",
+      "first_seen": "2026-09-17",
+      "last_seen": "2026-09-17",
+      "detected_via": "2026-09-17 の日次チェックにおいて、一次情報源の公開一覧巡回(Kaspersky Securelist)で発見した。tech-memo daily-news には未掲載のため daily_check.py --run-scan では検知されず、IOC CSV の actor 列にも現れていない。本記事の公開は 2026-09-16T10:00:11Z(datePublished)であり、前回走査の完了時刻 2026-09-16T02:55:00Z より後であるため、前回走査の取りこぼしではない。既存694プロファイル、本台帳の clusters および excluded_name_collisions のいずれにも NightEagle / APT-Q-95 / GhostContainer は存在しないことを確認した。唯一 actor_profile/reference/osint/misp-threat-actor.json に NightEagle(synonym: APT-Q-95)のエントリが存在するが、これは MISP galaxy の集約参照データであって一次資料ではない。",
+      "attribution": {
+        "state": "unattributed-in-this-source",
+        "actor_type": "cyber-espionage",
+        "notes": "Kaspersky は本稿で国家帰属を一切行わず、「Over the past year, our Global Emergency Response Team (GERT) has investigated several incidents involving the NightEagle group (APT-Q-95). This group has been active since at least 2023 and originally focused on organizations in Asia. We have now identified attacks by the group targeting businesses in Russia.」と述べるにとどめる。既知グループとの関連付けも否定も行っていない。一方、参照データ misp-threat-actor.json の NightEagle エントリは QiAnXin 系の初報に基づき cfr-suspected-state-sponsor: US、cfr-suspected-victims: China、attribution-confidence: 25 として北米の国家支援アクターが中国を標的とした旨を記載しており、本稿のロシア標的の報告と標的像が逆になる。両者は競合する主張であり、いずれも確定として扱わない。プロファイルへ昇格する場合は claim-audit.json へ両論とスコープを残す。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-17",
+          "publisher": "Kaspersky GERT (Securelist)",
+          "url": "https://securelist.com/nighteagle-apt-ghostcontainer-and-tunneling/121323/",
+          "title": "NightEagle APT targets Russian organizations",
+          "published_at": "2026-09-16",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "不明(unknown)。原文が与える時間表現は「Over the past year」(GERT による複数インシデントの調査期間)と 「active since at least 2023」(グループの活動開始)の2つのみで、個々の侵害の観測日・期間は一切明示されていない。AGENT.md のとおり公開日 2026-09-16 を活動期間へ転用せず、reported_at として分離する。",
+          "targets": "ロシア所在の企業(businesses in Russia)。原文に被害組織名・業種の明示はない。従来の標的はアジアの組織であり、原文は「To expand the geographic scope of its targets, NightEagle is updating its methods and adopting new techniques for persistence and lateral movement.」として標的地理の拡大と評価している。",
+          "malware": [
+            "GhostContainer"
+          ],
+          "tools": [
+            "Neo-reGeorg トンネル(GhostContainer に内包)",
+            "ysoserial の GhostWebShell クラス(GhostContainer に内包)",
+            "Microsoft dev tunnels (*.devtunnels.ms 経由の RDP 3389 公開)",
+            "rdp2tcp (RDP 仮想チャネル上の TCP トンネリング)",
+            "Impacket atexec",
+            "netsh interface portproxy"
+          ],
+          "exploited_vulnerabilities": [
+            "CVE-2020-0688 (Microsoft Exchange)",
+            "CVE-2019-0708 (BlueKeep)"
+          ],
+          "summary": "初期侵入は窃取済みの正規資格情報による企業VPNへのログインで、接続元はロシア国内セグメントの Cloudflare WARP トンネル由来IPと欧州の仮想基盤事業者のIPであった。Microsoft Exchange サーバーへ .NET 製バックドア GhostContainer を配置する。配送手法は特定できていないが、Kaspersky は「We believe with a high degree of confidence that they applied a technique already familiar to us」として、ASP.NET 構成から Exchange の暗号鍵を抽出し VIEWSTATE を上書きしてペイロードを注入、メモリ上で起動する手法を高確度で推定している。GhostContainer は3クラスから成り、x-owa-urlpostdata ヘッダ経由でC2コマンドを受け取り、amsi.dll と ntdll.dll のアドレス上書きにより AMSI と Windows イベントログを回避し、仮想パス生成とソケット転送によるプロキシ機能を持つ。横展開では GitHub リポジトリ(mirror-js、browserthemes)へ正規ソフトを装った名称のZIPでツールを置き、adobe_32.exe、AdobeSync.exe、trueconf.exe、1cbroker.exe 等のファイル名で実行する。Microsoft dev tunnels で RDP を外部公開し rdp2tcp を併用することで、追加ポートを開かずに正規サービス経由の常時アクセスを維持する。rdp2tcp 使用時は RdpCoreTS/Operational ログのイベントID 132・148 にチャネル名 rdp2tcp が残る。Impacket atexec でスケジュールタスクを作成し netsh portproxy によるポート転送を設定する。権限昇格では CVE-2019-0708 (BlueKeep) を悪用してローカル管理者アカウントを作成した事例があり、非標準のフラグ組合せ(Forwardable, Proxiable, Renewable)の Kerberos チケット要求と DCSync によるドメインコントローラの侵害へ至っている。",
+          "attribution_basis": "原文に帰属根拠の記述はない。Kaspersky は NightEagle (APT-Q-95) という既存の呼称を用いるのみで、国籍・支援国・既知グループとの関係のいずれにも言及していない。",
+          "iocs": {
+            "md5": [
+              "1dcafb7f8448683281106b06dd22409a",
+              "1f3034b706c78b35d8e34044e68c693a",
+              "3ecd1cd627d0340c92901a478a7caad8",
+              "631fb131a56caf4ca0f287ed73e876ab",
+              "4aa9fb1bf9223dfcdac920759bc7a3c7"
+            ],
+            "urls": [
+              "https://github[.]com/mirror-js/mirror-js",
+              "https://github[.]com/browserthemes/resourcepack"
+            ],
+            "notes": "原文のIOC表はMD5とファイル名の対応のみで、ドメイン・IPの掲載はない。対応は AdobeSync.exe→1dcafb7f…、adobe_32.exe→1f3034b7…、App_Web_Container_1.dll→3ecd1cd6…および631fb131…、1c-office-plugin.exe / 1cbroker.exe / trueconf.exe→4aa9fb1b… である。ファイル名・実行コマンド(netsh の行)は AGENT.md に従い IOC ではなく artifact として扱う。"
+          },
+          "verified_by_analyst": "WebFetch の要約に加えて curl で HTTP 200 を取得し原文を直接確認した。datePublished 2026-09-16T10:00:11+00:00 / dateModified 2026-09-16T19:26:05+00:00、著者 Stanislav Larinsky (Kaspersky Security Services)、冒頭の帰属文、初期侵入・GhostContainer・トンネリング・横展開の各節、IOC表の全項目を確認している。ロシア語版 https://securelist.ru/nighteagle-apt-ghostcontainer-and-tunneling/117051/ が同日公開されていることも一覧で確認した(今回は .com / .ru 同日公開のため .ru 単独の取りこぼしはない)。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "昇格閾値の判断が未確定である。Kaspersky GERT 報告が独立した一次資料の1本目に当たる。NightEagle / APT-Q-95 の初報とされる QiAnXin(RedDrip)の2025年報告が2本目になり得るが、原文を未確認である。misp-threat-actor.json は集約参照データであり一次資料に数えない。昇格判断の前に QiAnXin 原文の確認を要する。",
+        "標的像が競合する。参照データ側は中国標的・US 支援の疑いを記載し、本稿はロシア標的を報告する。同一指定子が指す実体が同一かどうかは本稿からは確認できない。",
+        "GhostContainer は2025年に Kaspersky がアジアの政府機関事例として報告したバックドアと同名だが、当時の報告と本稿の NightEagle 帰属との関係は本稿に記述がなく、未確認である。",
+        "GhostContainer の構成要素(Neo-reGeorg、ysoserial、CVE-2020-0688 エクスプロイト)はいずれも GitHub 上の公開コードであり、原文も「All of these components are publicly available on GitHub.」と明記する。公開ツール由来の重複を他クラスタとの関連と誤読しないこと。"
+      ],
+      "analyst_notes": "tech-memo 未掲載かつ IOC CSV 未作成の一次資料は daily_check.py の検知経路2系統のいずれにも掛からない。2026-09-15 の Acronis / Red Heron に続く同型の事例であり、一次情報源の公開一覧巡回が唯一の検知経路として機能した。"
+    },
+    {
       "cluster_id": "unknown-cluster--octlurk-silklurk",
       "primary_name": "OctLurk / SilkLurk operator (未命名)",
       "aliases": [],
@@ -1919,6 +1989,91 @@
         "原文は Proxmox 列挙用アカウント pvenum02 の命名を medium-confidence で意図的と評価し、複数人の関与を示唆するが、組織的実体は未確定。"
       ],
       "analyst_notes": "IOC CSV未作成かつ本文で名前が鉤括弧に囲まれる記事は、現行の検知経路2系統のいずれにも掛からない構造的な死角だった。本走査で build_review_queue.py の名称候補抽出へ鉤括弧内のラテン文字列を追加し、同種の取りこぼしを塞いでいる。"
+    },
+    {
+      "cluster_id": "unknown-cluster--ref9334",
+      "primary_name": "REF9334",
+      "aliases": [],
+      "status": "tracking",
+      "entity_type": "group",
+      "first_seen": "2026-09-17",
+      "last_seen": "2026-09-17",
+      "detected_via": "2026-09-17 の日次チェックにおいて daily_check.py --run-scan の unmatched_actor_values として検知した。IOC CSV(daily-news/iocs/2026_07-09/20260917.csv)の actor 列「REF9334」173観測で、本走査の未照合値のうち最多である。同記事はレビューキューへ earth-lusca のレコードも生成したが、これは alias「CHROMIUM」がブラウザエンジン Chromium に機械的一致した名称衝突であり不採用とした(review-decisions.json に記録)。実体側が本エントリである。",
+      "attribution": {
+        "state": "unattributed",
+        "actor_type": "financially-motivated-banking-malware-operation",
+        "notes": "REF9334 は Elastic Security Labs の自社指定子である。原文は「Elastic Security Labs has tracked REF9334, a Brazilian banking malware operation, since May 2025.」と定義する。Elastic は運用者について「Several clues suggest that the actors are Portuguese-speaking and possibly based in Brazil, matching the campaign's geographic focus.」と評価し、ポルトガル語のドメイン名・ファイル名、QR拡張機能のLLM生成コードに残るポルトガル語コメント、サンパウロ勤務時間帯に集中する Ethereum トランザクションを根拠に挙げる。既知の命名グループへの帰属は行っておらず、否定もしていない。既存プロファイルへ寄せない。ツールキット名 KREMLIN はマルウェア作者の自称(Kr3mlin4rt1st)であり、原文は「though nothing about the operation is Russian」と明記する。名称からロシア関連と誤読しないこと。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-17",
+          "publisher": "Elastic Security Labs",
+          "url": "https://www.elastic.co/security-labs/threat-command/malicious-browser-extension-kremlin-banking-malware",
+          "title": "The extension you never installed: KREMLIN forges Chrome's own integrity checks to steal banking sessions",
+          "published_at": "2026-09-14",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文が明示する観測期間は 2025年6月〜2026年9月(継続中)である。Elastic の追跡開始は 2025年5月。最古の観測は「The earliest campaign we observed dates back to June 16, 2025, based on the first VirusTotal submission of the Internet Archive URL pointing to the JPEG file containing the RunPE module. The JPEG itself was submitted the following day, on June 17.」。7キャンペーンの内訳は Codecaudiog A(2025年6月)、Codecaudiog B(2025年6月)、Acrobat(2025年8月)、Framesync(2025年9月、原文は開始を2025-09-02と推定)、Donalurdesconfeitos to Cremeb(2025年12月〜2026年3月)、Cremeb(2026年4月)、Ethereum transition(2026年5月〜現在)。KREMLIN ローダー v1.33 のヘッダ日付は 2026-02-08、最初の悪性スマートコントラクトの展開は 2026-05-19。IOC CSV の date 列は 2025-06-16〜2026-09-02 の53種の日付に分散しており、公開日の複写ではなく指標ごとの日付である(Vectra/Nyxel の事例と異なり観測日として利用できる)。公開日 2026-09-14 は活動期間へ転用しない。",
+          "targets": "ブラジルの銀行利用者および金融機関。ルアーが詐称する銀行は Banco do Brasil、Caixa、Bradesco、Sicoob、C6 Bank、Inter、BTG、Safra、PagBank、PicPay、Santander、Mercado Pago の12行。被害規模は「we have observed 1,515 infected systems attempting to check into the network canary domain - 98.75% are from Brazil, confirming earlier reporting on victimology. The number of infected systems is accelerating rapidly, indicating this campaign was just beginning.」。Elastic Threat Command はキルスイッチ用ドメインを登録して1,500台超の感染を一時的に無害化している。",
+          "malware": [
+            "KREMLIN (C++製の拡張機能インストーラ、2.10MB、x64)",
+            "AVSync を騙る悪性 Chrome / Edge 拡張機能",
+            "PULSAR RAT (1.6.6 / 1.7.1 / 1.7.2 / 1.7.3 / 2.4.5)",
+            "REMCOS RAT (2026年5月以降の Ethereum transition キャンペーン)",
+            "DonutLoader"
+          ],
+          "tools": [
+            "JScript.Encode 難読化の多段 JavaScript ローダー",
+            "Node.js ローダー、LNK 起点の実行チェーン",
+            "RunPE モジュール(JPEG ステガノグラフィで archive.org へ格納)",
+            "Ethereum スマートコントラクト(C2設定の格納)",
+            "Cloudflare Workers (checkeligibitily.workers[.]dev)",
+            "PigSyscall 由来の間接シスコール実装",
+            "SystemFunction032 (RC4) によるZIP暗号化",
+            "SentinelOne 実行ファイルのサイドロード変種"
+          ],
+          "summary": "銀行の領収書・請求書・支払記録を装った JavaScript から始まり、JavaScript → PowerShell → RunPE → インストーラ → 拡張機能 という多段チェーンで Chrome・Edge へ利用者の承認なしに悪性拡張機能を導入する。中核の新規性は KREMLIN が Chromium の Secure Preferences を書き換えたうえで、必要な HMAC と App-Bound 暗号化ハッシュを再生成し、ブラウザ自身の整合性チェックを通過させる点にある(Web Store を経由しない)。導入される AVSync 偽装拡張機能は Cookie、セッショントークン、パスワード、閲覧履歴を窃取し、スクリーンショット取得と Web コンテンツ改ざんも行う。Chrome の OSCrypt および App-Bound 暗号鍵(v10/v20)をブラウザメモリから回収し、窃取DBを後から復号できるようにする。C2設定の配布は2026年5月以降 Ethereum スマートコントラクトの文字列変数(main、extension)へ移行し、ペイロードは archive.org の Radduxx アカウント(facebook-br@protonmail[.]com)に JPEG ステガノグラフィで格納される。Elastic は2025年9月時点のツールキットが当時 CHROMEBALLRAT と呼ばれていた可能性を PULSAR サンプル中のタグを根拠に「We assess that the toolkit may have been known as CHROMEBALLRAT at the time」と評価している。",
+          "attribution_basis": "ポルトガル語のドメイン名・ファイル名・コード内コメント、12のブラジル銀行への標的集中、サンパウロ勤務時間帯に集中する Ethereum トランザクション、ポルトガル語のルート名 testar_nova_versao とハードコードされたトークン MichelleMignon171(ブラジル人DJへの言及と推定)を根拠に、運用者をポルトガル語話者・ブラジル拠点の可能性が高いと評価する。国家帰属も既知グループへの帰属も行っていない。",
+          "iocs": {
+            "domains": [
+              "codecaudiog[.]site",
+              "codecvideowin[.]online",
+              "acrobat-updater[.]com",
+              "lojinhadoluiz[.]online",
+              "donalurdesconfeitos[.]site",
+              "marialurdes[.]site",
+              "harialurdes[.]site",
+              "cremeb[.]com",
+              "granderevolucao[.]store",
+              "volmira[.]site",
+              "zaviro[.]online",
+              "luizestrelhashapr[.]online"
+            ],
+            "ipv4": [
+              "185.221.23[.]133",
+              "144.172.112[.]239",
+              "45.90.13[.]210",
+              "37.16.74[.]100",
+              "37.16.74[.]34",
+              "178.92.162[.]38"
+            ],
+            "ethereum": [
+              "0xCD7360A83E5cdbBbbbcEB0e78748babA6740d07b (悪性スマートコントラクト)",
+              "0x5C32A09873be70a92fd8bB5A9fED7967dE06BdE6 (運用者ウォレット)"
+            ],
+            "notes": "完全なIOC一覧は Elastic が https://github.com/elastic/labs-releases/tree/main/indicators/kremlin で公開しており、tech-memo の IOC CSV 173行はこのリポジトリを reference として取り込んだものである(内訳: sha256 127、url 30、domain 10、ip 6 / malware 列は KREMLIN 161、PULSAR 10、REMCOS 1、N/A 1)。本エントリには原文本文とキャンペーン表に掲載された代表値のみを記録する。"
+          },
+          "verified_by_analyst": "curl で HTTP 200 を取得して原文を直接確認した。公開日 2026-09-14、著者 Cyril François / Andrew Pease、REF9334 の定義文、ポルトガル語話者・ブラジル拠点の評価、7キャンペーンの一覧表(期間・Customer ID・実行チェーン・ペイロード・インフラ)、1,515台/98.75%ブラジルの記述、CHROMEBALLRAT の評価、Ethereum スマートコントラクトと archive.org の悪用、代表IOCを確認している。本文全体を対象に既知グループへの帰属・除外の記述を検索したが、該当する記述は存在しない。"
+        }
+      ],
+      "related_profiles": [],
+      "unresolved_questions": [
+        "Elastic 単独の初報であり、昇格閾値(独立した一次資料2本以上、または政府・CERT・法執行機関の言及)は未達。",
+        "Elastic は既知の命名グループとの関連を肯定も否定もしていない。red-heron のように明示的な否定がある場合と異なり、本件は「記述がない」状態である。related_profiles へ explicitly-refuted を記録できる根拠はない。",
+        "原文は2025年9月時点のツールキット名を CHROMEBALLRAT だった可能性として示すのみで確定していない。CHROMEBALLRAT 名義の他社報告が存在する場合、同一実体かどうかは別途照合を要する。",
+        "PULSAR RAT と REMCOS RAT は他の犯罪クラスタでも広く用いられる公開/流通ツールである。これらの共用を他クラスタとの関連の根拠にしない。"
+      ],
+      "analyst_notes": "IOC CSV の date 列が指標ごとに分散した実日付であり、公開日の複写ではない点で Vectra/Nyxel や HEAVYGRAM の事例と異なる。将来プロファイルへ昇格させる場合、活動期間はこの日付分布と原文のキャンペーン表の双方から構成できる。"
     },
     {
       "cluster_id": "unknown-cluster--rognar",
