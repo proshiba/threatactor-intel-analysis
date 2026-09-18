@@ -74,8 +74,15 @@ def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def actor_types(origins: list[str]) -> list[str]:
-    if any(origin.casefold() in COUNTRY_ORIGINS for origin in origins):
-        return ["state-sponsored", "threat-cluster"]
+    """Return evidence-neutral actor types for census-generated entries.
+
+    ``origins`` may contain country or regional labels from source organization,
+    workbook placement, or collection context. Those labels are useful leads,
+    but they do not establish government sponsorship or control. Census
+    materialization therefore keeps the generated entry neutral. Supported
+    actor types are added later from actor-specific evidence.
+    """
+    _ = origins
     return ["threat-cluster"]
 
 
