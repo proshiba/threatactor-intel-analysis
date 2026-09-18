@@ -101,6 +101,11 @@ def unique_slug(name: str, mitre_id: str | None, used: set[str]) -> str:
     return candidate
 
 
+def identity_curation_rule(curation: dict[str, Any], canonical_name: str) -> dict[str, Any]:
+    """Return an analyst curation rule for a census identity, if present."""
+    return curation.get("identities", {}).get(normalized_name(canonical_name), {})
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=Path.cwd())
@@ -118,10 +123,17 @@ def main() -> int:
         type=Path,
         default=Path("actor_profile/actor-census-decisions.json"),
     )
+    parser.add_argument(
+        "--curation",
+        type=Path,
+        default=Path("actor_profile/actor-census-curation.json"),
+    )
     args = parser.parse_args()
 
     root = args.repository_root.resolve()
     census = load_json((root / args.census).resolve())
+    curation_path = (root / args.curation).resolve()
+    curation = load_json(curation_path) if curation_path.exists() else {"identities": {}}
     catalog_path = (root / args.catalog).resolve()
     catalog = load_json(catalog_path)
     # Rebuild generated census entries deterministically on repeated runs.
@@ -137,6 +149,30 @@ def main() -> int:
     rejected: list[dict[str, Any]] = []
     represented: list[dict[str, Any]] = []
     for item in census["actors"]:
+        rule = identity_curation_rule(curation, item["canonical_name"])
+        if rule.get("action") == "exclude":
+            rejected.append(
+                {
+                    "actor_id": item["actor_id"],
+                    "canonical_name": item["canonical_name"],
+                    "reason": "curated-non-actor-entity",
+                    "curation_reason": rule.get("reason", ""),
+                    "evidence_urls": rule.get("evidence_urls", []),
+                }
+            )
+            continue
+        if rule.get("action") == "merge":
+            represented.append(
+                {
+                    "actor_id": item["actor_id"],
+                    "canonical_name": item["canonical_name"],
+                    "catalog_slugs": [rule["target_slug"]],
+                    "reason": "curated-merge-into-existing-profile",
+                    "curation_reason": rule.get("reason", ""),
+                    "evidence_urls": rule.get("evidence_urls", []),
+                }
+            )
+            continue
         if not item.get("mentions"):
             rejected.append(
                 {
@@ -182,7 +218,16 @@ def main() -> int:
     evidence_root.mkdir(parents=True, exist_ok=True)
     added_entries: list[dict[str, Any]] = []
     for item in accepted:
-        slug = unique_slug(item["canonical_name"], item.get("mitre_group_id"), used_slugs)
+        rule = identity_curation_rule(curation, item["canonical_name"])
+        original_canonical_name = item["canonical_name"]
+        canonical_name = rule.get("canonical_name", original_canonical_name)
+        if rule.get("slug"):
+            slug = rule["slug"]
+            if slug in used_slugs:
+                raise ValueError(f"curated slug already exists: {slug}")
+            used_slugs.add(slug)
+        else:
+            slug = unique_slug(canonical_name, item.get("mitre_group_id"), used_slugs)
         relative_evidence = (Path(args.evidence_root) / f"{slug}.csv").as_posix()
         evidence_path = root / relative_evidence
         with evidence_path.open("w", encoding="utf-8", newline="") as stream:
@@ -215,18 +260,27 @@ def main() -> int:
         aliases = [
             alias
             for alias in item["aliases"]
-            if normalized_name(alias) != normalized_name(item["canonical_name"])
+            if normalized_name(alias) != normalized_name(original_canonical_name)
         ]
+        if "aliases" in rule:
+            aliases = list(rule["aliases"])
+        elif canonical_name != original_canonical_name:
+            aliases = list(dict.fromkeys([original_canonical_name, *aliases]))
         entry = {
             "slug": slug,
-            "name": item["canonical_name"],
+            "name": canonical_name,
             "aliases": aliases,
             "source_dirs": [relative_evidence],
             "reported_sources": original_sources,
             "census_actor_ids": item["actor_ids"],
-            "actor_types": actor_types(item["origins"]),
+            "actor_types": rule.get("actor_types", actor_types(item["origins"])),
             "profile_basis": "actor-scoped-census-evidence",
         }
+        if rule:
+            entry["curation"] = {
+                "reason": rule.get("reason", ""),
+                "evidence_urls": rule.get("evidence_urls", []),
+            }
         if item.get("mitre_group_id"):
             entry["mitre_group_id"] = item["mitre_group_id"]
         added_entries.append(entry)
@@ -254,6 +308,8 @@ def main() -> int:
             "cross_vendor_alias_overlap": "kept as separate identities unless already represented",
             "pattern_only_ids": VALID_DISCOVERED_ID.pattern,
             "ioc_scope": "actor-associated context excerpts only",
+            "curation_file": str(args.curation),
+            "curation_precedence": "analyst curation overrides automatic census materialization",
         },
         "represented": represented,
         "rejected": rejected,
