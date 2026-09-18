@@ -93,6 +93,19 @@ def text_contains_any(value: str, markers: Iterable[str]) -> bool:
     return any(marker.casefold() in text for marker in markers)
 
 
+def alias_source_metadata(
+    name: str,
+    mitre_group: dict[str, Any] | None,
+    reference_source_id: str,
+    workbook_source_id: str,
+) -> tuple[str, str, str]:
+    """Return vendor, confidence and evidence source for one alias."""
+    mitre_aliases = set(mitre_group.get("aliases", []) if mitre_group else [])
+    if name in mitre_aliases:
+        return "MITRE ATT&CK", "high", reference_source_id
+    return "catalog", "medium", workbook_source_id
+
+
 def derive_actor_types(
     actor: dict[str, Any], mitre_group: dict[str, Any] | None
 ) -> list[str]:
@@ -586,20 +599,19 @@ def create_profile(
         seen_alias_names.add(normalized_alias)
         alias_names.append(alias_name)
     profile["actor"]["aliases"] = []
-    mitre_aliases = set(mitre_group.get("aliases", []) if mitre_group else [])
     for name in alias_names:
         if normalized_name(name) == normalized_name(actor["name"]):
             continue
-        is_mitre_alias = name in mitre_aliases
+        vendor, confidence, evidence_source = alias_source_metadata(
+            name, mitre_group, reference_source_id, workbook_source_id
+        )
         profile["actor"]["aliases"].append(
             {
                 "name": name,
-                "vendor": "MITRE ATT&CK" if is_mitre_alias else "catalog",
+                "vendor": vendor,
                 "scope": "overlapping",
-                "confidence": "high" if is_mitre_alias else "medium",
-                "evidence_refs": [
-                    reference_source_id if is_mitre_alias else workbook_source_id
-                ],
+                "confidence": confidence,
+                "evidence_refs": [evidence_source],
                 "analyst_notes": "Alias scope must be reviewed before publication.",
             }
         )
