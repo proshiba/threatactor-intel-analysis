@@ -66,6 +66,8 @@ def build_record(slug: str, profile_dir: Path) -> tuple[dict, list] | None:
     if not profile_path.exists():
         return None
     profile = load_json(profile_path)
+    if profile.get("status") == "deprecated":
+        return None
     actor = profile.get("actor", {})
     attribution = profile.get("attribution", {})
     capabilities = profile.get("capabilities", {})
