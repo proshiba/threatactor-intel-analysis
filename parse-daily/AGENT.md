@@ -6,7 +6,8 @@
 - `daily-news/news`: 日次ニュース、要約、一次ソース、記事内IOC
 - `daily-news/iocs`: 一次ソースを再確認して作成したIOC CSVと収集ログ
 
-`actor_profile/RULES.md`と`actor_profile/OSINT_RULES.md`を上位規則とする。
+`actor_profile/RULES.md`、`actor_profile/GENERATION_RULES.md`、
+`actor_profile/OSINT_RULES.md`を上位規則とする。
 `actor-profile.json`がプロファイル本文の正規データであり、日次取込の監査台帳は
 `daily-observations.json`である。MarkdownとSTIXは生成物である。
 
@@ -69,7 +70,10 @@
 - ニュース本文の名前一致は発見用途に限り、自動承認しない。同名マルウェア、製品名、
   被害組織名、過去事例への言及でないか原文を確認する。
 - `activity_claim`は名前一致より厳しいレビュー補助である。`strong-subject`はexact名、
-  攻撃活動を主題とするタイトル、同一文の実行主体表現を満たす候補を表す。
+  攻撃活動を主題とするタイトル、同一文の実行主体表現を満たす候補を表す。ただし、
+  「Xのexploit/製品をYが使用」「Xが開発したツールが悪用された」のように、Xが
+  vendor/developer/provenanceとして現れるだけの文はoperator根拠ではない。製品・exploitの
+  開発元と実際の攻撃実行主体を必ず分離する。
   `attributed-subject`は当該の攻撃・侵害・キャンペーンへの明示的な帰属が同一文に
   ある候補を表す。どちらも帰属確定を意味せず、類似・重複・後継・一般的な関連は
   含めない。`scope-review-required`、`name-collision`、`attribution-uncertain`、
