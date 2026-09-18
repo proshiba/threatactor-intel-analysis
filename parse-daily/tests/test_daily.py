@@ -363,6 +363,38 @@ class DailyCommonTests(unittest.TestCase):
         )
         self.assertEqual(collision["assessment"], "name-collision")
 
+        vendor_title = assess_activity_claim(
+            ActorMatch(
+                "cellebrite",
+                "Cellebrite",
+                "Cellebrite",
+                "exact",
+                "high",
+                "news-title",
+            ),
+            "セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック",
+            "",
+            CONFIG,
+        )
+        self.assertEqual(vendor_title["assessment"], "context-only")
+        self.assertEqual(vendor_title["actor_role"], "unknown")
+
+        vendor_body = assess_activity_claim(
+            ActorMatch(
+                "cellebrite",
+                "Cellebrite",
+                "Cellebrite",
+                "exact",
+                "high",
+                "news-body",
+            ),
+            "Androidゼロデイを悪用した標的型攻撃",
+            "- Cellebriteが開発したゼロデイエクスプロイトチェーンの一部として、セルビア当局が押収端末のロック解除に悪用した。",
+            CONFIG,
+        )
+        self.assertEqual(vendor_body["assessment"], "context-only")
+        self.assertEqual(vendor_body["actor_role"], "unknown")
+
     def test_activity_keeps_unknown_period_and_separate_report_date(self) -> None:
         record = {
             "record_id": "daily-record--example",
