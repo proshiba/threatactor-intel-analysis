@@ -585,18 +585,24 @@ def create_profile(
             continue
         seen_alias_names.add(normalized_alias)
         alias_names.append(alias_name)
-    profile["actor"]["aliases"] = [
-        {
-            "name": name,
-            "vendor": "MITRE ATT&CK" if mitre_group and name in mitre_group.get("aliases", []) else "catalog",
-            "scope": "overlapping",
-            "confidence": "high" if mitre_group else "medium",
-            "evidence_refs": [reference_source_id if mitre_group else workbook_source_id],
-            "analyst_notes": "Alias scope must be reviewed before publication.",
-        }
-        for name in alias_names
-        if normalized_name(name) != normalized_name(actor["name"])
-    ]
+    profile["actor"]["aliases"] = []
+    mitre_aliases = set(mitre_group.get("aliases", []) if mitre_group else [])
+    for name in alias_names:
+        if normalized_name(name) == normalized_name(actor["name"]):
+            continue
+        is_mitre_alias = name in mitre_aliases
+        profile["actor"]["aliases"].append(
+            {
+                "name": name,
+                "vendor": "MITRE ATT&CK" if is_mitre_alias else "catalog",
+                "scope": "overlapping",
+                "confidence": "high" if is_mitre_alias else "medium",
+                "evidence_refs": [
+                    reference_source_id if is_mitre_alias else workbook_source_id
+                ],
+                "analyst_notes": "Alias scope must be reviewed before publication.",
+            }
+        )
 
     if workbook_record:
         mapped_names = actor_name_cells(workbook_record)
