@@ -1,0 +1,55 @@
+name: Regenerate corrected actor corpus
+
+on:
+  push:
+    branches:
+      - fix/regenerate-corrected-corpus-20260919
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: ${{ !contains(github.event.head_commit.message, '[generated]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run migration and rebuild collection
+        run: |
+          set -euxo pipefail
+          python3 actor_profile/scripts/materialize_actor_census.py
+          python3 actor_profile/scripts/migrate_generated_attribution.py --apply
+          python3 actor_profile/scripts/crosscheck_all_actors.py
+          python3 actor_profile/scripts/build_claim_audits.py
+          python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
+          python3 actor_profile/scripts/enrich_targeting_scope.py --apply
+          python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
+          python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+          python3 actor_profile/scripts/render_collection_index.py \
+            profiles/processing-summary.json \
+            actor_profile/corpus-catalog.json \
+            profiles/README.md
+          python3 ui/build_data.py
+          python3 ui/build_portal_index.py
+
+      - name: Commit regenerated outputs
+        run: |
+          set -euxo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add actor_profile profiles ui
+          if git diff --cached --quiet; then
+            echo "No regenerated changes"
+            exit 0
+          fi
+          git commit -m "[generated] refresh corrected actor corpus"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
