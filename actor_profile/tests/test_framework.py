@@ -14,7 +14,7 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
-from bootstrap_all_profiles import derive_actor_types, derive_motivations  # noqa: E402
+from bootstrap_all_profiles import alias_source_metadata, derive_actor_types, derive_motivations  # noqa: E402
 from materialize_actor_census import actor_types as census_actor_types  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
@@ -348,6 +348,21 @@ class GenerationGuardrailTests(unittest.TestCase):
     def test_country_origin_does_not_imply_state_sponsorship(self) -> None:
         self.assertEqual(census_actor_types(["Russia"]), ["threat-cluster"])
         self.assertEqual(census_actor_types(["China"]), ["threat-cluster"])
+
+    def test_catalog_alias_does_not_inherit_mitre_evidence(self) -> None:
+        group = {"aliases": ["Hecamede"]}
+        self.assertEqual(
+            alias_source_metadata(
+                "Hecamede", group, "source--mitre", "source--workbook"
+            ),
+            ("MITRE ATT&CK", "high", "source--mitre"),
+        )
+        self.assertEqual(
+            alias_source_metadata(
+                "Black Basta", group, "source--mitre", "source--workbook"
+            ),
+            ("catalog", "medium", "source--workbook"),
+        )
 
     def test_generated_state_flag_is_stripped_without_actor_specific_evidence(self) -> None:
         actor = {
