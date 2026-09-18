@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Analyst-reviewed overrides for identities that automatic corpus census materialization cannot classify safely by name/origin alone.",
+  "identities": {
+    "revil": {
+      "action": "exclude",
+      "reason": "REvil is a ransomware/RaaS software-brand entity in this corpus context. MITRE ATT&CK tracks REvil as Software S0496 and tracks GOLD SOUTHFIELD (G0115) as the financially motivated group that operates the REvil RaaS. Do not materialize REvil as an independent canonical actor from name mentions alone.",
+      "evidence_urls": [
+        "https://attack.mitre.org/software/S0496/",
+        "https://attack.mitre.org/groups/G0115/"
+      ]
+    },
+    "whitecompany": {
+      "action": "merge",
+      "target_slug": "white-company",
+      "reason": "The census identity 'White Company' and the existing 'The White Company' profile refer to Operation Shaheen and the same Pakistan government/military targeting. MITRE ATT&CK canonicalizes this actor as The White Company (G0089).",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0089/"
+      ]
+    },
+    "carberb": {
+      "action": "override",
+      "canonical_name": "Carberp",
+      "slug": "carberb",
+      "aliases": [
+        "Carberb"
+      ],
+      "actor_types": [
+        "financially-motivated",
+        "threat-cluster"
+      ],
+      "reason": "The corpus spelling 'Carberb' is retained only as a legacy alias. Group-IB identifies the Carberp hacking group as financially motivated and distinguishes the group from the Carberp banking Trojan used by multiple criminal groups.",
+      "evidence_urls": [
+        "https://www.group-ib.com/top-investigations/carberp-gang/"
+      ]
+    },
+    "fin8": {
+      "action": "override",
+      "aliases": [
+        "Syssphinx"
+      ],
+      "actor_types": [
+        "financially-motivated",
+        "threat-cluster"
+      ],
+      "reason": "MITRE ATT&CK explicitly describes FIN8 (G0061) as a financially motivated threat group; workbook placement in the Russia worksheet is not sponsorship evidence.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0061/"
+      ]
+    },
+    "blackbyte": {
+      "action": "override",
+      "aliases": [],
+      "actor_types": [
+        "threat-cluster"
+      ],
+      "reason": "MITRE ATT&CK describes BlackByte (G1043) as a ransomware threat actor. The corpus-derived names Black Basta, Conti, DEV-0569, Diavol, Quantum, Royal, Ryuk/FIN12 and Wizard Spider are separate actors/groups and must not be aliases of BlackByte.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G1043/"
+      ]
+    }
+  }
+}
