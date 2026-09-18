@@ -14,6 +14,8 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
+from bootstrap_all_profiles import derive_actor_types, derive_motivations  # noqa: E402
+from materialize_actor_census import actor_types as census_actor_types  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
@@ -340,6 +342,57 @@ class TimeTests(unittest.TestCase):
         self.assertEqual(point["status"], "unknown")
         self.assertIsNone(point["value"])
         self.assertEqual(point["basis"], "invalid-calendar-date:same-record")
+
+
+class GenerationGuardrailTests(unittest.TestCase):
+    def test_country_origin_does_not_imply_state_sponsorship(self) -> None:
+        self.assertEqual(census_actor_types(["Russia"]), ["threat-cluster"])
+        self.assertEqual(census_actor_types(["China"]), ["threat-cluster"])
+
+    def test_generated_state_flag_is_stripped_without_actor_specific_evidence(self) -> None:
+        actor = {
+            "actor_types": ["state-sponsored", "threat-cluster"],
+            "profile_basis": "actor-scoped-census-evidence",
+        }
+        self.assertEqual(derive_actor_types(actor, None), ["threat-cluster"])
+
+    def test_explicit_state_sponsorship_can_restore_state_type(self) -> None:
+        actor = {
+            "actor_types": ["state-sponsored", "threat-cluster"],
+            "profile_basis": "actor-scoped-census-evidence",
+        }
+        group = {"description": "Example is a state-sponsored threat group."}
+        self.assertIn("state-sponsored", derive_actor_types(actor, group))
+
+    def test_explicit_financial_description_does_not_become_state_sponsored(self) -> None:
+        actor = {
+            "actor_types": ["state-sponsored", "threat-cluster"],
+            "profile_basis": "actor-scoped-census-evidence",
+        }
+        group = {"description": "Example is a financially motivated threat group."}
+        derived = derive_actor_types(actor, group)
+        self.assertIn("financially-motivated", derived)
+        self.assertNotIn("state-sponsored", derived)
+
+    def test_state_sponsorship_does_not_imply_espionage(self) -> None:
+        group = {"description": "Example is a state-sponsored group known for disruptive attacks."}
+        motivations = derive_motivations(
+            ["state-sponsored", "threat-cluster"],
+            group,
+            "source--mitre",
+            "source--workbook",
+        )
+        self.assertNotIn("espionage", {item["type"] for item in motivations})
+
+    def test_espionage_requires_explicit_actor_text(self) -> None:
+        group = {"description": "Example conducts cyber espionage and intelligence collection."}
+        motivations = derive_motivations(
+            ["threat-cluster"],
+            group,
+            "source--mitre",
+            "source--workbook",
+        )
+        self.assertIn("espionage", {item["type"] for item in motivations})
 
 
 class CollectionTests(unittest.TestCase):
