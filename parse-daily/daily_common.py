@@ -422,6 +422,8 @@ class ActorRegistry:
         self.profiles: dict[str, dict[str, Any]] = {}
         for profile_path in sorted(profiles_root.glob("*/actor-profile.json")):
             profile = load_json(profile_path)
+            if profile.get("status") == "deprecated":
+                continue
             slug = profile_path.parent.name
             self.profiles[slug] = profile
             canonical = profile["actor"]["canonical_name"]
