@@ -1,0 +1,3094 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--goffee",
+  "name": "GOFFEE",
+  "status": "draft",
+  "created_at": "2026-09-18T02:20:00Z",
+  "updated_at": "2026-09-18T01:45:20Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "GOFFEE",
+    "aliases": [
+      {
+        "name": "Paper Werewolf",
+        "vendor": "BI.ZONE",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "両方向の明示がある。Kaspersky は「Киберпреступная APT-группа GOFFEE (также известная как Paper Werewolf)」と述べ、BI.ZONE は「the Paper Werewolf cluster (also known as GOFFEE)」と述べる。両社が同一の技術的特徴(UserCache.ini / UserCache.ini.hta / UserCacheHelper.lnk.js の組、HKCU\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows の LOAD 値による永続化、api/texts/<computer>_<user>_<serial> 形式のC2 URL、CountRuns/Interval/Module のXML応答)を独立に記述している点も整合する。"
+      }
+    ],
+    "actor_types": [
+      "threat-group",
+      "espionage"
+    ],
+    "first_seen": {
+      "value": "2022-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-03-01T00:00:00Z",
+      "precision": "month",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "yes",
+    "description": "GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、ロシア連邦の組織を標的とするサイバースパイ活動を主目的とする脅威グループである。Kaspersky は「Киберпреступная APT-группа GOFFEE (также известная как Paper Werewolf) совершает атаки на организации в РФ как минимум с начала 2022 года」として、少なくとも2022年初頭からの活動を報告する。特徴は、狭く選別した標的への周到な準備を伴う標的型フィッシング、被害インフラへの長期滞在、高い隠蔽性、キャンペーンごとに入れ替わる道具立てとインフラである。初期の武器は悪性IISモジュール Owowa(2022年5月〜2023年夏)であり、2023年初頭からPowerShell製の非公開Mythicエージェント PowerTaskel、2024年からは PowerModul とそのペイロード(FlashFileGrabber、USB Worm)、2026年には軽量な PowerTaskel v2 とバイナリRAT の WarpRAT(別名 EchoGather RAT)へ移行している。BI.ZONE は2022年以降で少なくとも7件のキャンペーンを記録し、諜報目的の達成後に被害インフラの動作を妨害した事例を1件確認している。",
+    "analyst_notes": "first_seen は Kaspersky の「как минимум с начала 2022 года」および「first came to our attention in early 2022」から year 精度とした。last_seen は Kaspersky が明示する「В марте 2026 года мы зафиксировали кампанию」から month 精度で 2026-03 を採用した。資料公開日(2026-08-28、2025-04-10、2024-12-25)はいずれも観測日へ流用していない。未帰属クラスタ台帳(parse-daily/unknown-clusters.json)からの昇格ではなく、2026-09-18 の日次チェックで securelist.ru の2026-08-28公開分を検知した際に、既存673プロファイルの canonical name / alias、および同台帳の clusters・excluded_name_collisions のいずれにもGOFFEE / Paper Werewolf が存在しないことを確認して新規作成した。昇格閾値(独立した一次資料2本以上)は Kaspersky(GReAT)と BI.ZONE Threat Intelligence の2社で満たしている。status は AGENT.md の前例に従い draft から開始する。"
+  },
+  "attribution": {
+    "countries": [],
+    "sponsor_type": "unknown",
+    "organizations": [],
+    "assessment": "3本の一次資料のいずれも GOFFEE / Paper Werewolf の出身国・後援関係を述べていない。Kaspersky は「Киберпреступная APT-группа」(サイバー犯罪的なAPTグループ)と表現し、本キャンペーンを過去の GOFFEE キャンペーンへ結び付ける帰属のみを「С высокой степенью уверенности」(高確度)で行う。その根拠は、GOFFEE へ既に帰属済みの WarpRAT 検体(0x0d1dd7a62f3ea0d0fbeea905a48ae8794f49319ee0c34f15a3a871899404bf05)と本キャンペーンの検体(7b3bd2903f30597499bf8dc717918bb3)の設定データ生成手続きのコード類似、過去の PowerTaskel 検体(29690F86D68F34009CC2D9C0D2E28EEA)と本キャンペーンの検体(F5194119A62590D7DDDC1F677FB470D0)のコード類似、および GOFFEE のキャンペーンに典型的な技術セット(標的型フィッシング、キャンペーンごとの専用ドメイン、C2 秘匿のためのリバースプロキシの多用、長期滞在、選別された被害者層)である。Kaspersky は2025年の報告でも同様に、PowerTaskel の使用、HTAとスクリプト群、パッチ適用済み explorer.exe とシェルコードの類似、被害者像の一致を根拠に 「we can attribute this campaign to GOFFEE with a high degree of confidence」と述べている。BI.ZONE も国家帰属を行わず、クラスタ名による追跡にとどめている。したがって本プロファイルは帰属国を空とし、sponsor_type を unknown とする。",
+    "confidence": "unknown",
+    "evidence_refs": [
+      "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+      "source--kaspersky-goffee-recent-attacks-2025",
+      "source--bizone-paper-werewolf-destructive-2024"
+    ],
+    "analyst_notes": "被害国であるロシア連邦を帰属国へ流用しない(RULES.md・AGENT.md: 帰属国・インフラ所在国と標的国の分離)。本アクターは被害側がロシアであり、攻撃側の国籍はいずれの一次資料にも記載がない。MITRE ATT&CK に GOFFEE / Paper Werewolf の公式グループエントリは存在せず(actor_profile/reference/attack-index.json の groups に該当なし)、公式帰属も存在しない。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "Kaspersky は「Основная мотивация группы — кибершпионаж」(本グループの主たる動機はサイバースパイ活動である)と明記する。BI.ZONE も Paper Werewolf を espionage cluster として扱う。",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "両社が独立に諜報目的と評価している。"
+    },
+    {
+      "type": "destruction",
+      "description": "BI.ZONE は「While primarily committed to cyber espionage, such clusters can ruin the operation of target infrastructures simply out of spite, once their primary goal is achieved」と述べ、PsExec 経由の cmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\\SOFTWARE /f' によるレジストリ破壊と再起動、および net user によるアカウントのパスワード変更で被害組織の運用を妨害した事例を1件記録している。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "BI.ZONE 単独の観測かつ「a case」と単数で述べられる1事例であるため medium とした。Kaspersky は破壊行為に言及していない。なお Kaspersky は「атакующие способны развернуть любое вредоносное ПО в скомпрометированной корпоративной среде, что потенциально позволяет им решать и другие задачи — такие как вымогательство, кража средств или скрытый майнинг」として恐喝・金銭窃取・マイニングの潜在的可能性に触れるが、これは能力に関する推論であり観測された動機ではないためfinancial 系の動機は追加しない。"
+    }
+  ],
+  "relationships": [],
+  "diamond_model": {
+    "adversary": "GOFFEE(BI.ZONE 呼称: Paper Werewolf)。少なくとも2022年初頭から活動する、ロシア連邦の組織を標的とする脅威グループ。いずれの一次資料も出身国・後援関係を述べていない。Kaspersky は過去に HeartlessSoul との関連を確認しており、両グループの背後に同一の攻撃者がいると中程度の確度で評価するが、道具立ては大きく異なるとしている。",
+    "capability": "自製マルウェア: 悪性IISモジュール Owowa、PowerShell製の非公開Mythicエージェント PowerTaskel とその後継 PowerTaskel v2、PowerShellダウンローダ PowerModul(BI.ZONE 呼称 PowerRAT に対応)、リムーバブルメディアからのファイル窃取 FlashFileGrabber/FlashFileGrabberOffline、リムーバブルメディア感染用 USB Worm、バイナリRAT の WarpRAT(別名 EchoGather RAT)、BI.ZONE が挙げる QwakMyAgent。既製品は Mythic フレームワークとその Poseidon エージェント、Chisel、PsExec、Gophish、Inno Setup。Kaspersky は攻撃準備に AI を含む自動化手段を用いると述べる。",
+    "infrastructure": "キャンペーンごとに入れ替える .online / .site / .com の短命ドメイン群と VPS。C2 の所在を隠すためにリバースプロキシサーバを多用する。WarpRAT は 443/TCP・TLS・POST を用い、sleepTime と anti-VM を設定で持つ。PowerModul は http://<C2>/api/texts/<computer>_<user>_<disk-serial> 形式で識別子をURLへ付与する。",
+    "victim": "ロシア連邦の組織が中心。Kaspersky の2026年の報告では約120の被害組織をロシア連邦で確認し、CIS諸国で数件、EUで単発の被害を確認している(EUへの攻撃は偶発的と評価)。業種は機械製造・製造業・政府部門(2026年)、マスメディアと通信・建設・政府機関・エネルギー(2024年後半)、政府・エネルギー・金融・メディアほか(BI.ZONE)。",
+    "socio_political": "諜報目的が主であり、達成後に被害インフラの運用を妨害した事例が1件ある。いずれの一次資料も国家との関係を述べていないため、地政学的な位置付けは未確定である。",
+    "analyst_notes": "Kaspersky Securelist(2026-08-28、ロシア語版のみ)、Kaspersky Securelist(2025-04-10)、BI.ZONE Threat Intelligence(2024-12-25)の原文記述のみから構成した。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--goffee-owowa",
+        "name": "Owowa",
+        "aliases": [],
+        "types": [
+          "IIS-module",
+          "credential-stealer"
+        ],
+        "description": "IIS へ導入する悪性モジュール。Kaspersky は「Starting in May 2022 and up until summer of 2023, GOFFEE deployed modified Owowa (malicious IIS module) in their attacks」と述べる。BI.ZONE は「a malicious IIS module Owowa that enables them to retrieve credentials during user authorization in the Outlook Web Access (OWA) service」とし、窃取データは HashSet としてメモリ上に保持されると説明する。特定のユーザー名をリクエストヘッダへ与えると、Base64 で符号化したデータ集合を返す、あるいは復号後のデータを削除して RSA 暗号化した Ok 文字列を返すモジュールが存在する。",
+        "first_observed": {
+          "value": "2022-05-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2023-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "inferred",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "Owowa 自体は GOFFEE 固有のマルウェアではなく既知の公開ファミリであり、原文も「modified Owowa」と述べる。last_observed は「up until summer of 2023」という範囲表現のため、月精度かつ status: inferred とした。"
+      },
+      {
+        "id": "malware--goffee-powertaskel",
+        "name": "PowerTaskel",
+        "aliases": [],
+        "types": [
+          "PowerShell",
+          "backdoor",
+          "mythic-agent"
+        ],
+        "description": "PowerShell で書かれた非公開の Mythic エージェント。Kaspersky は「We have dubbed the non-public PowerShell Mythic agent delivered via a mail-based infection chain since early 2023, as PowerTaskel」と述べる。機能は2つで、標的環境の情報を checkin メッセージとして C2 へ送ること、get_tasking 要求への応答として受け取った PowerShell スクリプトとコマンドを task として実行することである。要求のペイロードは PowerShell オブジェクトを XML へ直列化し、検体ごとに固有の1バイト鍵で XOR してから Base64 化する。Kaspersky は設定パラメータの命名と並び順から、公開の Medusa Mythic エージェント(元は Python)から派生した可能性が高いと評価する。",
+        "first_observed": {
+          "value": "2023-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "first_observed は「since early 2023」から year 精度とした。last_observed は Kaspersky が2025年報告の被害観測期間として明示する「from July 2024 to December 2024」の終端を用いた。PowerShell 固有の制約から機能が不足するため、グループは独自のバイナリ Mythic エージェントへ移行しつつあると原文は述べる。"
+      },
+      {
+        "id": "malware--goffee-powertaskel-v2",
+        "name": "PowerTaskel v2",
+        "aliases": [],
+        "types": [
+          "PowerShell",
+          "backdoor",
+          "mythic-agent"
+        ],
+        "description": "軽量な PowerShell 製 Mythic エージェント。Kaspersky は PowerTaskel の進化形と評価し、便宜的に PowerTaskel v2 と呼称している(「второй — легкий Mythic-агент на базе PowerShell, который, по нашей оценке, представляет собой эволюцию бэкдора PowerTaskel (мы условно назвали эту версию PowerTaskel v2)」)。get_tasking / post_response 形式で C2 と対話し、サーバはコマンド名だけでなく実行に必要なコード自体を送る。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "PowerTaskel v2 は Kaspersky の便宜的呼称であり確立した命名ではない。原文は「Изначально уверенно отнести этот бэкдор к GOFFEE не представлялось возможным (его применение фиксировалось в кампании MythicAcademic), однако обнаружение общей инфраструктуры С2-серверов позволило установить эту связь」と述べ、当初は MythicAcademic キャンペーンでの使用として観測され、C2 インフラの共有が判明して初めて GOFFEE へ結び付いたと明記している。MythicAcademic は本リポジトリに既存エントリがなく、GOFFEE と同一かも不明であるため別名として扱わない。"
+      },
+      {
+        "id": "malware--goffee-warprat",
+        "name": "WarpRAT",
+        "aliases": [
+          "EchoGather RAT"
+        ],
+        "types": [
+          "Windows",
+          "backdoor",
+          "remote-access-trojan"
+        ],
+        "description": "バイナリ形式のリモートアクセス型トロイの木馬。Kaspersky は「широко известный бинарный WarpRAT (известный также как EchoGather RAT)」と述べる。GOFFEE はキャンペーンごとに多数の検体を生成しており、2026年3月のキャンペーンの検体は C2 を ntpsum[.]online、C2_port を 443、useSSL を true、method を POST、sleepTime を 314(± 15 の揺らぎ)、useAntiVM を 1 とする設定を持っていた。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "EchoGather RAT は Kaspersky が原文で明示する別名である。GOFFEE への帰属は、既に GOFFEE へ帰属済みの検体との設定データ生成手続きのコード類似を根拠とする。「広く知られた」バイナリであり GOFFEE 専用ではない点に注意する。"
+      },
+      {
+        "id": "malware--goffee-powermodul",
+        "name": "PowerModul",
+        "aliases": [
+          "PowerRAT"
+        ],
+        "types": [
+          "PowerShell",
+          "downloader"
+        ],
+        "description": "追加の PowerShell スクリプトを C2 から受領して実行する PowerShell スクリプト。Kaspersky は初出を2024年初頭とし、当初は PowerTaskel を導入するための小さな部品と見なしていたが、独自プロトコル、異なるペイロード種別、PowerTaskel とは別の C2 を持つことから別ファミリへ分類したと述べる。C2 へは http://<C2>/api/texts/{computer_name}_{username}_{serial_number} の形式で識別子を付与して接続し、応答は Base64 符号化スクリプトを含む XML(Module、CountRuns、Interval)である。OfflineWorker() 関数は事前に埋め込まれた文字列を復号して実行し、FlashFileGrabber のコードを保持する事例が観測されている。ペイロードは PowerTaskel、FlashFileGrabber、USB Worm である。",
+        "first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "別名 PowerRAT は BI.ZONE 呼称として記録するが、両社とも名称の等価性を明言していない。同一と判断した根拠は、BI.ZONE が PowerRAT について記述する挙動が Kaspersky の PowerModul と一致することである: %USERPROFILE%\\UserCache.ini(PowerShell)と %USERPROFILE%\\UserCache.ini.hta の組、UserCacheHelper.lnk.js による起動、両ファイルへの Hidden 属性付与、hxxp://<C2>:80/api/texts/<victim_id>(victim_id は [computer name]_[username]_[serial number of the system disk])、CountRuns / Interval / Module を属性に持つ XML コマンド、Invoke-Expression による実行。名称の等価性は分析者評価であり scope を断定しない。競合が判明した場合は claim-audit.json へ記録する。"
+      },
+      {
+        "id": "malware--goffee-flashfilegrabber",
+        "name": "FlashFileGrabber",
+        "aliases": [
+          "FlashFileGrabberOffline"
+        ],
+        "types": [
+          "PowerShell",
+          "infostealer"
+        ],
+        "description": "リムーバブルメディアからファイルを窃取する道具。2種類が確認されている。FlashFileGrabberOffline は対象拡張子のファイルをローカルディスクへ複写し、%TEMP%\\CacheStore\\connect\\<VolumeSerialNumber>\\ 配下へ保存する。同階層の ftree.db に元ファイルの絶対パス、サイズ、最終アクセス日時と更新日時を保存し、%AppData%\\internal_profiles.db に当該メタデータの MD5 を保存して同一ファイルの重複複写を避ける。対象拡張子は .7z .conf .csv .doc .docx .dwg .heic .hgt .html .jpeg .jpg .kml .log .lrf .mdb .ods .odt .ovpn .pdf .png .pptx .ps1 .rar .rtf .scr .thm .txt .xlm .xls .xlsm .xlsx .xml .zip である。FlashFileGrabber は同等の機能に加え、収集したファイルを C2 へ送信できる。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "観測期間は Kaspersky が当該キャンペーンについて明示する「from July 2024 to December 2024」を用いた。FlashFileGrabberOffline は同一ファミリの変種であるため aliases へ収めた。"
+      },
+      {
+        "id": "malware--goffee-usb-worm",
+        "name": "USB Worm",
+        "aliases": [],
+        "types": [
+          "PowerShell",
+          "worm"
+        ],
+        "description": "リムーバブルメディアを PowerModul の複製で感染させる。元ファイルを拡張子を保ったままランダムな名前へ改名して Hidden 属性を与え、PowerModul を含む UserCache.ini を同じフォルダへ複写する。PowerModul 起動用の VBS とバッチファイル、および元の文書名を持つショートカットを隠しファイルとして作成し、ショートカットには元ファイルの拡張子に応じた shell32.dll のアイコンを割り当てて偽装する。ショートカットに置き換える文書は LastAccessTime の新しい順に最大5件へ制限される。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "「USB Worm」は Kaspersky が用いる記述的名称であり、独自のファミリ名ではない。"
+      },
+      {
+        "id": "malware--goffee-qwakmyagent",
+        "name": "QwakMyAgent",
+        "aliases": [],
+        "types": [
+          "mythic-agent"
+        ],
+        "description": "BI.ZONE が GOFFEE/Paper Werewolf の自製 Mythic フレームワーク用エージェントとして PowerTaskel と並べて挙げる名称。原文は「we suppose that it involves a Mythic framework agent developed by the adversaries, known as PowerTaskel and QwakMyAgent」と述べる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "low",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "BI.ZONE 自身が「we suppose」と推定表現で述べており、当該段階の検体は解析できていないと明記している(「As of the date of this article, the next stage was not available for research」)。観測日も機能の詳細も原文にないため confidence を low とし、期間は unknown のままとする。"
+      }
+    ],
+    "tools": [
+      {
+        "id": "tool--goffee-mythic",
+        "name": "Mythic",
+        "aliases": [],
+        "types": [
+          "post-exploitation-framework"
+        ],
+        "description": "公開のポストエクスプロイトフレームワーク。GOFFEE はこのフレームワーク向けの独自エージェント(PowerTaskel、PowerTaskel v2、バイナリ Mythic エージェント、BI.ZONE が挙げる QwakMyAgent)を開発して用いる。BI.ZONE は公開エージェント Poseidon の併用も記録している。",
+        "first_observed": {
+          "value": "2023-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "Mythic 自体は正規の公開ツールである。"
+      },
+      {
+        "id": "tool--goffee-chisel",
+        "name": "Chisel",
+        "aliases": [],
+        "types": [
+          "tunneling"
+        ],
+        "description": "被害 IT インフラへの冗長なアクセス経路を確保するために使用する公開トンネリングツール。BI.ZONE は mastc.exe client --tls-skip-verify -v https://[redacted]:49611 R:socks の実行を記録している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-25T00:00:00Z",
+          "precision": "day",
+          "status": "inferred",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "BI.ZONE は個々の実行日を明示していない。last_observed は資料が記述する時点までの観測であることを示す inferred とし、公開日を観測日として断定しない。"
+      },
+      {
+        "id": "tool--goffee-psexec",
+        "name": "PsExec",
+        "aliases": [],
+        "types": [
+          "remote-execution"
+        ],
+        "description": "遠隔システムでのコマンド実行に使用する。BI.ZONE は「They probably use PsExec to run commands in remote systems」とし、破壊的操作(レジストリ削除と再起動)およびアカウントのパスワード変更の実行手段として記録している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "BI.ZONE が「probably」と推定表現で述べているため medium とした。"
+      },
+      {
+        "id": "tool--goffee-gophish",
+        "name": "Gophish",
+        "aliases": [],
+        "types": [
+          "phishing-framework"
+        ],
+        "description": "フィッシング耐性試験用の公開フレームワーク。BI.ZONE は「the adversaries often apply the Gophish open-source framework to organize their mailings」と述べ、配信基盤として悪用されていることを記録している。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "正規の検証用ツールの悪用である。"
+      },
+      {
+        "id": "tool--goffee-inno-setup",
+        "name": "Inno Setup",
+        "aliases": [],
+        "types": [
+          "installer"
+        ],
+        "description": "正規のインストーラ作成ツール。2026年3月のキャンペーンでは Inno Setup 6.7.0 (Unicode) で作成したドロッパー Adobe_Acrobat_Reader_Plugin_ru.exe が、WarpRAT 本体(adbp.exe)、おとり PDF(「Требование.pdf」)、install_script.iss を内包していた。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "正規ツールの悪用であり、GOFFEE 固有の道具ではない。"
+      }
+    ],
+    "infrastructure": [
+      {
+        "id": "infra--goffee-per-campaign-domains",
+        "name": "キャンペーンごとに使い分ける短命ドメイン群",
+        "aliases": [],
+        "types": [
+          "c2",
+          "phishing-domain"
+        ],
+        "description": "Kaspersky は GOFFEE の典型的な技術セットとして「использование отдельных доменов для каждой кампании」(キャンペーンごとの専用ドメインの使用)を挙げる。2026年の報告が列挙する悪性ドメインは timemirror[.]online、bellwitch[.]online、timecheck[.]site、ntpcheck[.]online、ntpverify[.]online、timeget[.]online、timefetch[.]online、easytrns[.]com、ntpsync[.]online、syncheaven[.]online、syncpack[.]online、sslfix[.]online、sslchck[.]online、ntp[.]report、mysitte[.]online、sddfghj[.]com、ntpfix[.]online、sslvalid[.]online であり、配布に用いた ntpluck[.]online と WarpRAT 検体の C2 である ntpsum[.]online も本文中に現れる。NTP・時刻同期・SSL 検証を思わせる語を組み合わせた命名が目立つ。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "ドメイン個別の登録日・活動期間は原文に記載がないため、本文が明示する唯一のキャンペーン観測時期である2026年3月を月精度で用いた。BI.ZONE が挙げる disk-yanbex[.]ru と lobbyluxuries[.]com は別キャンペーンのものであり、個別値は iocs.json 側へ資料別に保持する。"
+      },
+      {
+        "id": "infra--goffee-reverse-proxy",
+        "name": "C2 秘匿のためのリバースプロキシ",
+        "aliases": [],
+        "types": [
+          "proxy"
+        ],
+        "description": "Kaspersky は GOFFEE のキャンペーンに典型的な特徴として「активное применение серверов обратного проксирования для сокрытия инфраструктуры командных центров」(C2 インフラを秘匿するためのリバースプロキシサーバの積極的な利用)を挙げる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "原文は具体的なホストや期間を示していない。"
+      },
+      {
+        "id": "infra--goffee-vps",
+        "name": "C2 とマルウェア配置に用いる VPS",
+        "aliases": [],
+        "types": [
+          "hosting"
+        ],
+        "description": "BI.ZONE は ATT&CK 対応表で「Paper Werewolf uses VPS to host C2 servers and malware」と記録し、ドメインの取得(「registers C2 server and malware domains」)およびペイロードの自社サーバ上への配置(「stores the payload on its servers」)も併せて挙げている。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "個別のホスティング事業者名は原文に記載がない。"
+      }
+    ],
+    "delivery_formats": [
+      {
+        "id": "delivery--goffee-rar-double-extension",
+        "name": "二重拡張子の実行ファイルを含む RAR 書庫",
+        "description": "文書を装った実行ファイルを RAR 書庫へ収める。ファイル名に .pdf.exe や .doc.exe のような二重拡張子を用いる場合がある。実体は Windows のシステムファイル(explorer.exe または xpsrchvw.exe)の一部コードを悪性シェルコードへ差し替えたもので、実行すると C2 からおとり文書を取得して開きつつ、難読化された Mythic エージェントが C2 と通信を開始する。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "Kaspersky が2025年報告で「the first infection scheme」として示した経路である。"
+      },
+      {
+        "id": "delivery--goffee-office-macro",
+        "name": "VBA マクロを含む Microsoft Office 文書",
+        "description": "RAR 書庫に収めた Word 文書のマクロをドロッパーとして用いる。文書を開くと文字化けした本文と「This document was created in an earlier version of Microsoft Office Word. For Microsoft Office Word to display the contents correctly, click 'Enable Content'」という警告画像が表示される。コンテンツの有効化でマクロが動作し、警告画像を隠して文字置換により本文を復元するとともに、HTA と PowerShell の2ファイルを作成して HTA のパスをレジストリへ書き込む。BI.ZONE は暗号化された文書本文が特殊文字をロシア語の文字へ置換することで復号される点、ペイロードの探索が DigitalRSASignature キー文字列の後から始まり、CHECKSUM 文字列で2分割された Base64 データである点を記録している。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "Kaspersky が2025年報告で「the second」として示した経路であり、BI.ZONE の記述と一致する。"
+      },
+      {
+        "id": "delivery--goffee-pdf-fake-update-link",
+        "name": "偽の更新通知を表示する PDF とダウンロードリンク",
+        "description": "2026年3月のキャンペーンで用いた経路。メールに添付した PDF の内部に、Acrobat Reader が古く更新が必要であるという体裁の偽のシステム通知を描画し、「Установить обновление」(更新をインストール)ボタンから攻撃者ドメインの長大なパスへ誘導する。遷移先では Adobe_Reader_RU.zip が配布され、内部の Inno Setup 製ドロッパーがWarpRAT(adbp.exe)とおとり PDF を展開する。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "Kaspersky は本経路を GOFFEE にとって新しい初期アクセス技法と位置付け(「Мы описали новую для них технику первоначального доступа」)、従来はマクロ付きテンプレートの遠隔読み込みまたは XLL 形式を用いていたと述べる。"
+      },
+      {
+        "id": "delivery--goffee-removable-media",
+        "name": "リムーバブルメディア経由の拡散",
+        "description": "USB Worm がリムーバブルメディア上の文書をショートカットへ置き換え、PowerModul を含む UserCache.ini を同梱して他端末へ拡散する。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "メール以外の唯一の拡散経路として記録されている。"
+      }
+    ],
+    "vulnerabilities": [],
+    "operational_capabilities": [
+      {
+        "id": "opcap--goffee-long-dwell",
+        "name": "被害インフラへの長期滞在と高い隠蔽性",
+        "description": "Kaspersky は GOFFEE の特徴として「хорошо спланированные операции, направленные на узкий круг целей, длительное присутствие в инфраструктуре жертвы, высокая скрытность и постоянно меняющийся арсенал утилит, техник, тактик и процедур」を挙げる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "opcap--goffee-ai-automation",
+        "name": "攻撃準備における AI を含む自動化の利用",
+        "description": "Kaspersky は「группа применяет средства автоматизации при подготовке атак, в том числе на базе ИИ」(本グループは攻撃準備に、AI を基盤とするものを含む自動化手段を用いる)と述べる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "原文は根拠となる具体的な観測(生成物の特徴、痕跡等)を示していないため medium とした。GTIG が CHERRYPIE(profiles/unc7005)について、また Cisco Talos が Qilin について行っているLLM 生成コードの評価とは独立の主張であり、相互に結び付ける一次資料はない。"
+      },
+      {
+        "id": "opcap--goffee-tooling-churn",
+        "name": "キャンペーンごとの道具立てとインフラの入れ替え",
+        "description": "Kaspersky は「частые изменения инфраструктуры (фактически для каждой кампании), использование целевого фишинга, обширный арсенал инструментов, его регулярное обновление или замена」を挙げ、継続的な監視なしには新規キャンペーンの検知が困難であると述べる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": ""
+      }
+    ],
+    "analyst_notes": "3本の一次資料が明示する記述のみを構造化した。PowerModul と PowerRAT の同一視は分析者評価であり、その根拠は当該エントリの analyst_notes に記載した。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--goffee-owowa-iis-2022-2023",
+      "name": "GOFFEEによる改変Owowa IISモジュールの設置",
+      "activity_type": "espionage-campaign",
+      "first_observed": {
+        "value": "2022-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2023-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "Kasperskyは、GOFFEEが2022年5月から2023年夏にかけて、改変したOwowa(悪性IISモジュール)を攻撃に用いていたと報告した。BI.ZONEは同モジュールがOutlook Web Accessの利用者認証時に資格情報を窃取し、窃取データをHashSetとしてメモリ上に保持すると説明している。特定のユーザー名をリクエストヘッダへ与えると、Base64で符号化したデータ集合を返すモジュール、および復号後のデータを削除してRSA暗号化したOk文字列を返すモジュールが確認されている。",
+      "target_refs": [],
+      "malware_refs": [
+        "malware--goffee-owowa"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--goffee--asymmetric-crypto",
+        "ttp--goffee--iis-components",
+        "ttp--goffee--web-portal-capture"
+      ],
+      "victim_refs": [],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025",
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "first_observedは「Starting in May 2022」から月精度で採用した。last_observedは「up until summer of 2023」という範囲表現のため2023-08を月精度かつstatus: inferredとした。資料公開日2025-04-10はreported_atへ分離している。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--goffee-owowa"
+          ],
+          "ttp_refs": [
+            "ttp--goffee--asymmetric-crypto",
+            "ttp--goffee--iis-components",
+            "ttp--goffee--web-portal-capture"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": []
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2022-05-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2023-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "inferred",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-04-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "espionage-campaign",
+          "phases": [
+            "Command and Control",
+            "Credential Access",
+            "Persistence"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--goffee-paper-werewolf-campaigns-2024",
+      "name": "Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為",
+      "activity_type": "espionage-campaign",
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-12-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "BI.ZONE Threat Intelligenceは、Paper Werewolf(別名GOFFEE)の活動急増を観測し、2022年以降で少なくとも7件のキャンペーンを記録した。被害組織には政府、エネルギー、金融、メディアほかが含まれる。攻撃者は著名な組織(大規模機関、規制当局、法執行機関)を装うフィッシングメールで悪性マクロ入りのWord文書を配布し、配信にはオープンソースのGophishフレームワークをしばしば用いた。文書は研究機関、自治体、電力系統会社などの文書を装っていた。マクロは復号したペイロードを%USERPROFILE%\\UserCache.ini(PowerShell)と%USERPROFILE%\\UserCache.ini.hta(HTA)へ書き出し、HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\WindowsNT\\CurrentVersion\\Windows\\LOADへHTAのパスを書き込んで永続化した。環境変数AZURE_RESOURCE_GROUP、ONEDRIVE_RESOURCE_GROUP、AZURE_DECODEへマルウェアを退避して秘匿する手口、および1×1ピクセル画像へのリンクによる開封監視も観測された。諜報目的の達成後に、PsExec経由でcmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\\SOFTWARE /f'を実行してレジストリを破壊し、net user [redacted] [redacted] /domainでアカウントのパスワードを変更して被害組織の職員によるインフラ操作を妨げた事例が1件確認されている。",
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--goffee--sector--energy",
+        "target--goffee--sector--finance"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul",
+        "malware--goffee-powertaskel",
+        "malware--goffee-owowa",
+        "malware--goffee-qwakmyagent"
+      ],
+      "infrastructure_refs": [
+        "infra--goffee-vps"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--7176b5924c70b79b0a53",
+        "ttp--goffee--acquire-domains",
+        "ttp--goffee--acquire-vps",
+        "ttp--goffee--data-destruction",
+        "ttp--goffee--deobfuscate",
+        "ttp--goffee--develop-malware",
+        "ttp--goffee--dynamic-api-resolution",
+        "ttp--goffee--embedded-payloads",
+        "ttp--goffee--encoded-file",
+        "ttp--goffee--fallback-channels",
+        "ttp--goffee--fileless-storage",
+        "ttp--goffee--hidden-files",
+        "ttp--goffee--ingress-tool-transfer",
+        "ttp--goffee--lateral-tool-transfer",
+        "ttp--goffee--obtain-tool",
+        "ttp--goffee--phishing",
+        "ttp--goffee--powershell",
+        "ttp--goffee--registry-run-keys",
+        "ttp--goffee--stage-upload-malware",
+        "ttp--goffee--system-info-discovery",
+        "ttp--goffee--system-owner-discovery",
+        "ttp--goffee--system-shutdown",
+        "ttp--goffee--user-execution",
+        "ttp--goffee--visual-basic",
+        "ttp--goffee--web-protocols"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--a99f98d19df0289fcaf0"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "first_observedは「at least seven campaigns since 2022」から年精度で採用した。終期を示す記述がないためlast_observedはunknownとした。資料公開日2024-12-25はreported_atへ分離しており、期間集計へ入れていない。破壊的行為は「a case」と単数で述べられる1事例である。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--goffee-owowa",
+            "malware--goffee-powermodul",
+            "malware--goffee-powertaskel",
+            "malware--goffee-qwakmyagent"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--7176b5924c70b79b0a53",
+            "ttp--goffee--acquire-domains",
+            "ttp--goffee--acquire-vps",
+            "ttp--goffee--data-destruction",
+            "ttp--goffee--deobfuscate",
+            "ttp--goffee--develop-malware",
+            "ttp--goffee--dynamic-api-resolution",
+            "ttp--goffee--embedded-payloads",
+            "ttp--goffee--encoded-file",
+            "ttp--goffee--fallback-channels",
+            "ttp--goffee--fileless-storage",
+            "ttp--goffee--hidden-files",
+            "ttp--goffee--ingress-tool-transfer",
+            "ttp--goffee--lateral-tool-transfer",
+            "ttp--goffee--obtain-tool",
+            "ttp--goffee--phishing",
+            "ttp--goffee--powershell",
+            "ttp--goffee--registry-run-keys",
+            "ttp--goffee--stage-upload-malware",
+            "ttp--goffee--system-info-discovery",
+            "ttp--goffee--system-owner-discovery",
+            "ttp--goffee--system-shutdown",
+            "ttp--goffee--user-execution",
+            "ttp--goffee--visual-basic",
+            "ttp--goffee--web-protocols"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--goffee-vps"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--5403aec9c83d6a925f61",
+            "target--goffee--sector--energy",
+            "target--goffee--sector--finance"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--a99f98d19df0289fcaf0"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2022-01-01T00:00:00Z",
+            "precision": "year",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2024-12-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "espionage-campaign",
+          "phases": [
+            "Command and Control",
+            "Defense Evasion",
+            "Discovery",
+            "Execution",
+            "Impact",
+            "Initial Access",
+            "Lateral Movement",
+            "Persistence",
+            "Resource Development"
+          ],
+          "results": [
+            "disruption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--goffee-powermodul-usb-worm-2024",
+      "name": "GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃",
+      "activity_type": "espionage-campaign",
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "Kasperskyは、2024年後半にGOFFEEがロシア連邦の組織へ標的型攻撃を継続し、PowerTaskelに加えて新たなインプラントPowerModulを投入したと報告した。初期感染は悪性添付付きのフィッシングメールで、同時期に2つの経路が併用された。1つは文書を装う実行ファイル(.pdf.exeや.doc.exeの二重拡張子を用いる場合がある)を収めたRAR書庫で、実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものであり、難読化されたMythicエージェントを内包して即座にC2と通信を開始する。もう1つはマクロをドロッパーとするMicrosoft Office文書で、HTAとPowerShellの2ファイルを作成し、HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\WindowsのLOAD値へHTAのパスを書き込んで自動起動させる。HTAはcmd.exeと出力リダイレクトでUserCacheHelper.lnk.jsを作成して実行し、そのJavaScriptがWMIのWin32_Process経由で非表示のPowerShellを起動してUserCache.ini(PowerModul)を読み込ませる。PowerModulのペイロードはPowerTaskel、FlashFileGrabber、USB Wormであった。横展開の局面ではPowerShellの制約を理由にPowerTaskelからバイナリMythicエージェントへ移行し、PowerTaskelがC2からエージェントを取得して自プロセスへ注入する。被害はロシア連邦に所在する組織で、マスメディアと通信、建設、政府機関、エネルギーの各分野にわたった。",
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--goffee--country--russia",
+        "target--goffee--sector--construction",
+        "target--goffee--sector--energy",
+        "target--goffee--sector--telecom"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul",
+        "malware--goffee-powertaskel",
+        "malware--goffee-flashfilegrabber",
+        "malware--goffee-usb-worm"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--22646f6aaf2520e13f75",
+        "ttp--activity-rule--73ede5bdd0635240e606",
+        "ttp--goffee--data-from-removable-media",
+        "ttp--goffee--double-file-extension",
+        "ttp--goffee--mshta",
+        "ttp--goffee--process-injection",
+        "ttp--goffee--removable-media-replication",
+        "ttp--goffee--spearphishing-attachment"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--9a954514c78337fd43b4"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "観測期間はKasperskyが明示する「observed activity spanning from July 2024 to December 2024」を月精度で採用した。資料公開日2025-04-10はreported_atへ分離している。Kasperskyは本キャンペーンのGOFFEEへの帰属を、PowerTaskelの使用、HTAとスクリプト群、パッチ適用済みexplorer.exeとシェルコードの類似、被害者像の一致を根拠に高確度と評価している。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--goffee-flashfilegrabber",
+            "malware--goffee-powermodul",
+            "malware--goffee-powertaskel",
+            "malware--goffee-usb-worm"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--22646f6aaf2520e13f75",
+            "ttp--activity-rule--73ede5bdd0635240e606",
+            "ttp--goffee--data-from-removable-media",
+            "ttp--goffee--double-file-extension",
+            "ttp--goffee--mshta",
+            "ttp--goffee--process-injection",
+            "ttp--goffee--removable-media-replication",
+            "ttp--goffee--spearphishing-attachment"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--activity-rule--sector--5403aec9c83d6a925f61",
+            "target--goffee--country--russia",
+            "target--goffee--sector--construction",
+            "target--goffee--sector--energy",
+            "target--goffee--sector--telecom"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--9a954514c78337fd43b4"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2024-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2024-12-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2025-04-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "espionage-campaign",
+          "phases": [
+            "Collection",
+            "Defense Evasion",
+            "Execution",
+            "Initial Access",
+            "Lateral Movement",
+            "Stealth"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--goffee--country--russia"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "activity_id": "activity--goffee-warprat-powertaskel-v2-2026",
+      "name": "GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布",
+      "activity_type": "espionage-campaign",
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "description": "Kasperskyは2026年3月、GOFFEEが悪性リンクを含むPDFを添付したメールを送るキャンペーンを観測した。PDFはAcrobat Readerが古く更新が必要であるという体裁の偽の通知を内部に描画し、「更新をインストール」ボタンからntpluck[.]onlineの長大なパスへ誘導する。遷移先ではAdobe_Reader_RU.zipが配布され、内部のInno Setup 6.7.0 (Unicode)製ドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが、WarpRAT本体のadbp.exe、おとりPDF「ОФИЦИАЛЬНЫЙ ЗАПРОС о предоставлении сведений о потребности в особочистой химической продукции」、およびinstall_script.issを展開する。インストールスクリプトはWarpRATを起動した直後におとりPDFを開く。当該WarpRAT検体はC2にntpsum[.]online、ポート443、TLS有効、POST、sleepTime 314(揺らぎ15)、anti-VM有効の設定を持ち、調査時点でC2が稼働していたためKasperskyは実際の通信を記録している。同キャンペーンではもう1つのバックドアとして軽量なPowerShell製Mythicエージェント(PowerTaskel v2)が展開され、get_tasking要求に対してサーバがコマンド名と実行コードの双方を送り、応答をpost_responseとして返す対話が確認された。",
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--goffee--country--russia",
+        "target--goffee--region--cis",
+        "target--goffee--region--europe",
+        "target--goffee--sector--manufacturing"
+      ],
+      "malware_refs": [
+        "malware--goffee-warprat",
+        "malware--goffee-powertaskel-v2"
+      ],
+      "infrastructure_refs": [
+        "infra--goffee-per-campaign-domains",
+        "infra--goffee-reverse-proxy"
+      ],
+      "ttp_refs": [
+        "ttp--goffee--encrypted-channel",
+        "ttp--goffee--proxy",
+        "ttp--goffee--sandbox-evasion",
+        "ttp--goffee--spearphishing-link",
+        "ttp--goffee--user-execution-installer"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--d86163e519a5c281599b"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "観測期間は原文が明示する「В марте 2026 года мы зафиксировали кампанию」から月精度で採用した。資料公開日2026-08-28はreported_atへ分離しており、期間集計へ入れていない。本活動の記述に現れる「РФ」「ロシア連邦」は被害側であり、攻撃者の帰属国ではない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--goffee",
+          "name": "GOFFEE",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--goffee-powertaskel-v2",
+            "malware--goffee-warprat"
+          ],
+          "ttp_refs": [
+            "ttp--goffee--encrypted-channel",
+            "ttp--goffee--proxy",
+            "ttp--goffee--sandbox-evasion",
+            "ttp--goffee--spearphishing-link",
+            "ttp--goffee--user-execution-installer"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": [
+            "infra--goffee-per-campaign-domains",
+            "infra--goffee-reverse-proxy"
+          ]
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91",
+            "target--goffee--country--russia",
+            "target--goffee--region--cis",
+            "target--goffee--region--europe",
+            "target--goffee--sector--manufacturing"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--d86163e519a5c281599b"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "last_observed": {
+            "value": "2026-03-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "reported_at": {
+            "value": "2026-08-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-stated"
+          },
+          "activity_type": "espionage-campaign",
+          "phases": [
+            "Command and Control",
+            "Defense Evasion",
+            "Execution",
+            "Initial Access"
+          ],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--goffee--country--russia"
+            ],
+            "target_region_refs": [
+              "target--goffee--region--cis",
+              "target--goffee--region--europe"
+            ]
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--9a954514c78337fd43b4",
+      "name": "被害事例: GOFFEEによるPowerModul・FlashFileGrabber・USB Wormを用いた2024年後半の標的型攻撃",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Kasperskyは、2024年後半にGOFFEEがロシア連邦の組織へ標的型攻撃を継続し、PowerTaskelに加えて新たなインプラントPowerModulを投入したと報告した。初期感染は悪性添付付きのフィッシングメールで、同時期に2つの経路が併用された。1つは文書を装う実行ファイル(.pdf.exeや.doc.exeの二重拡張子を用いる場合がある)を収めたRAR書庫で、実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものであり、難読化されたMythicエージェントを内包して即座にC2と通信を開始する。もう1つはマクロをドロッパーとするMicrosoft Office文書で、HTAとPowerShellの2ファイルを作成し、HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\WindowsのLOAD値へHTAのパスを書き込んで自動起動させる。HTAはcmd.exeと出力リダイレクトでUserCacheHelper.lnk.jsを作成して実行し、そのJavaScriptがWMIのWin32_Process経由で非表示のPowerShellを起動してUserCache.ini(PowerModul)を読み込ませる。PowerModulのペイロードはPowerTaskel、FlashFileGrabber、USB Wormであった。横展開の局面ではPowerShellの制約を理由にPowerTaskelからバイナリMythicエージェントへ移行し、PowerTaskelがC2からエージェントを取得して自プロセスへ注入する。被害はロシア連邦に所在する組織で、マスメディアと通信、建設、政府機関、エネルギーの各分野にわたった。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--goffee--country--russia",
+        "target--goffee--sector--construction",
+        "target--goffee--sector--energy"
+      ],
+      "malware_refs": [
+        "malware--goffee-flashfilegrabber",
+        "malware--goffee-powermodul",
+        "malware--goffee-powertaskel",
+        "malware--goffee-usb-worm"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--22646f6aaf2520e13f75",
+        "ttp--activity-rule--73ede5bdd0635240e606",
+        "ttp--goffee--data-from-removable-media",
+        "ttp--goffee--double-file-extension",
+        "ttp--goffee--mshta",
+        "ttp--goffee--process-injection",
+        "ttp--goffee--removable-media-replication",
+        "ttp--goffee--spearphishing-attachment"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--a99f98d19df0289fcaf0",
+      "name": "被害事例: Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "BI.ZONE Threat Intelligenceは、Paper Werewolf(別名GOFFEE)の活動急増を観測し、2022年以降で少なくとも7件のキャンペーンを記録した。被害組織には政府、エネルギー、金融、メディアほかが含まれる。攻撃者は著名な組織(大規模機関、規制当局、法執行機関)を装うフィッシングメールで悪性マクロ入りのWord文書を配布し、配信にはオープンソースのGophishフレームワークをしばしば用いた。文書は研究機関、自治体、電力系統会社などの文書を装っていた。マクロは復号したペイロードを%USERPROFILE%\\UserCache.ini(PowerShell)と%USERPROFILE%\\UserCache.ini.hta(HTA)へ書き出し、HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\WindowsNT\\CurrentVersion\\Windows\\LOADへHTAのパスを書き込んで永続化した。環境変数AZURE_RESOURCE_GROUP、ONEDRIVE_RESOURCE_GROUP、AZURE_DECODEへマルウェアを退避して秘匿する手口、および1×1ピクセル画像へのリンクによる開封監視も観測された。諜報目的の達成後に、PsExec経由でcmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\\SOFTWARE /f'を実行してレジストリを破壊し、net user [redacted] [redacted] /domainでアカウントのパスワードを変更して被害組織の職員によるインフラ操作を妨げた事例が1件確認されている。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "target--goffee--sector--energy",
+        "target--goffee--sector--finance"
+      ],
+      "malware_refs": [
+        "malware--goffee-owowa",
+        "malware--goffee-powermodul",
+        "malware--goffee-powertaskel",
+        "malware--goffee-qwakmyagent"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--7176b5924c70b79b0a53",
+        "ttp--goffee--acquire-domains",
+        "ttp--goffee--acquire-vps",
+        "ttp--goffee--data-destruction",
+        "ttp--goffee--deobfuscate",
+        "ttp--goffee--develop-malware",
+        "ttp--goffee--dynamic-api-resolution",
+        "ttp--goffee--embedded-payloads",
+        "ttp--goffee--encoded-file",
+        "ttp--goffee--fallback-channels",
+        "ttp--goffee--fileless-storage",
+        "ttp--goffee--hidden-files",
+        "ttp--goffee--ingress-tool-transfer",
+        "ttp--goffee--lateral-tool-transfer",
+        "ttp--goffee--obtain-tool",
+        "ttp--goffee--phishing",
+        "ttp--goffee--powershell",
+        "ttp--goffee--registry-run-keys",
+        "ttp--goffee--stage-upload-malware",
+        "ttp--goffee--system-info-discovery",
+        "ttp--goffee--system-owner-discovery",
+        "ttp--goffee--system-shutdown",
+        "ttp--goffee--user-execution",
+        "ttp--goffee--visual-basic",
+        "ttp--goffee--web-protocols"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント",
+        "クラウド／SaaS"
+      ],
+      "impacts": [
+        {
+          "impact_type": "disruption",
+          "description": "諜報目的の達成後に、PsExec経由でcmd.exe /c 'shutdown /r /f /t 5 && reg delete HKEY_LOCAL_MACHINE\\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\\SOFTWARE /f'を実行してレジストリを破壊し、net user [redacted] [redacted] /domainでアカウントのパスワードを変更して被害組織の職員によるインフラ操作を妨げた事例が1件確認されている。"
+        }
+      ],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "reported_at": {
+        "value": "2024-12-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--d86163e519a5c281599b",
+      "name": "被害事例: GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "Kasperskyは2026年3月、GOFFEEが悪性リンクを含むPDFを添付したメールを送るキャンペーンを観測した。PDFはAcrobat Readerが古く更新が必要であるという体裁の偽の通知を内部に描画し、「更新をインストール」ボタンからntpluck[.]onlineの長大なパスへ誘導する。遷移先ではAdobe_Reader_RU.zipが配布され、内部のInno Setup 6.7.0 (Unicode)製ドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが、WarpRAT本体のadbp.exe、おとりPDF「ОФИЦИАЛЬНЫЙ ЗАПРОС о предоставлении сведений о потребности в особочистой химической продукции」、およびinstall_script.issを展開する。インストールスクリプトはWarpRATを起動した直後におとりPDFを開く。当該WarpRAT検体はC2にntpsum[.]online、ポート443、TLS有効、POST、sleepTime 314(揺らぎ15)、anti-VM有効の設定を持ち、調査時点でC2が稼働していたためKasperskyは実際の通信を記録している。同キャンペーンではもう1つのバックドアとして軽量なPowerShell製Mythicエージェント(PowerTaskel v2)が展開され、get_tasking要求に対してサーバがコマンド名と実行コードの双方を送り、応答をpost_responseとして返す対話が確認された。",
+      "activity_refs": [
+        "activity--goffee-warprat-powertaskel-v2-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91",
+        "target--goffee--country--russia",
+        "target--goffee--region--cis",
+        "target--goffee--region--europe",
+        "target--goffee--sector--manufacturing"
+      ],
+      "malware_refs": [
+        "malware--goffee-powertaskel-v2",
+        "malware--goffee-warprat"
+      ],
+      "ttp_refs": [
+        "ttp--goffee--encrypted-channel",
+        "ttp--goffee--proxy",
+        "ttp--goffee--sandbox-evasion",
+        "ttp--goffee--spearphishing-link",
+        "ttp--goffee--user-execution-installer"
+      ],
+      "affected_assets": [
+        "メール／メールアカウント"
+      ],
+      "impacts": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "reported_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--goffee--country--russia",
+        "name": "ロシア",
+        "description": "Kasperskyは2025年の報告で「the identified targets of the malicious activities described in this article are located in Russia」とし、2026年の報告では「мы обнаружили около 120 жертв в Российской Федерации」として約120の被害組織をロシア連邦で確認したと述べる。被害の主たる所在をロシア連邦と判断した根拠として、スピアフィッシングのメールとおとりファイルのほとんどがロシア語であったという言語的手掛かりとテレメトリを挙げている。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "本アクターの被害国であり、帰属国ではない。いずれの一次資料も攻撃者の出身国を述べていない。期間はKasperskyが観測期間を明示する2つのキャンペーン(2024年7〜12月、2026年3月)の範囲を用いた。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--goffee--region--cis",
+        "name": "CIS諸国",
+        "description": "Kasperskyは2026年の報告で「несколько — в странах СНГ」として、CIS諸国でも数件の被害を確認したと述べる。個別の国名は原文に記載がない。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "原文が国名を特定していないため個別国へ展開しない。件数も「数件」としか示されていない。 CIS諸国は単一の国ではなく国家連合の呼称であるため、countries ではなく regions へ置く(regions に「NATO加盟国」を持つ既存の前例に倣う)。原文が国名を特定していないため個別国へ展開しない。"
+      },
+      {
+        "id": "target--goffee--region--europe",
+        "name": "欧州",
+        "description": "Kasperskyは2026年の報告で「единичные — в ЕС」としてEUで単発の被害を確認したが、「Атаки на цели в странах Евросоюза носят случайный характер」として、EU域内の標的への攻撃は偶発的な性質のものであると評価している。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "low",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "原文が意図的な標的選定ではなく偶発的と明記しているため confidence を low とした。GOFFEE の標的像を欧州へ広げる根拠として用いない。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "Kasperskyは2025年の報告で対象業種に「government entities」を挙げ、2026年の報告では「Большая часть целей принадлежала к машиностроению, производству и государственному сектору」として政府部門を主たる標的の1つとする。BI.ZONEも被害組織に政府機関を挙げ、GOFFEEのキャンペーンに典型的な被害者層としてKasperskyは「в основном это государственные учреждения и промышленные предприятия РФ」と述べる。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "3本の一次資料すべてが独立に挙げる業種である。手書きで作成した target--goffee--sector--government を本エントリへ統合した(語彙はリポジトリ既存の「政府・行政」へ揃える)。 [activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--activity-rule--sector--5403aec9c83d6a925f61",
+        "name": "メディア・報道",
+        "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。BI.ZONEも被害組織にメディアを挙げる。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "手書きで作成した target--goffee--sector--media-telecom を本エントリへ統合した。原文の「media and telecommunications」は本リポジトリの語彙では「メディア・報道」と「情報通信」に分かれるため、2エントリへ分割している。 [activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      },
+      {
+        "id": "target--goffee--sector--telecom",
+        "name": "情報通信",
+        "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "原文の「media and telecommunications」のうち通信側を本エントリとした。メディア側は target--activity-rule--sector--5403aec9c83d6a925f61(メディア・報道)である。"
+      },
+      {
+        "id": "target--goffee--sector--manufacturing",
+        "name": "製造・産業",
+        "description": "Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "機械製造(машиностроение)と製造業(производство)を1つの業種として集約した。語彙はリポジトリ既存の「製造・産業」へ揃えた。原文の機械製造(машиностроение)と製造業(производство)を本エントリへ集約している。"
+      },
+      {
+        "id": "target--goffee--sector--energy",
+        "name": "エネルギー",
+        "description": "Kasperskyは2025年の報告で対象業種に「energy companies」を挙げる。BI.ZONEも被害組織にエネルギー分野を挙げ、電力系統会社の文書を装ったおとりの使用を記録している。",
+        "first_observed": {
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated; activity-period"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024",
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "2社が独立に挙げる業種である。"
+      },
+      {
+        "id": "target--goffee--sector--construction",
+        "name": "建設",
+        "description": "Kasperskyは2025年の報告で対象業種に「construction」を挙げる。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": ""
+      },
+      {
+        "id": "target--goffee--sector--finance",
+        "name": "金融",
+        "description": "BI.ZONEは被害組織に金融分野を挙げる(「Among the victims are government, energy, financial, media, and other organizations」)。",
+        "first_observed": {
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "BI.ZONE単独の言及であり、個別のキャンペーンとの対応は原文に示されていないため medium とした。期間は同社が記述する「at least seven campaigns since 2022」の起点のみを用いた。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "Kasperskyは標的が狭く選別されていること(「направленные на узкий круг целей」「специально отобранный круг жертв」)をGOFFEEの特徴として繰り返し述べる。被害はロシア連邦の組織に集中し、2026年の報告は業種の中心を機械製造・製造業・政府部門とする。CIS諸国での被害は数件、EUでの被害は単発かつ偶発的と評価されている。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関など被害者が信頼しやすい実在組織の文書を模したものが用いられる。 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "被害国ロシアを攻撃者の帰属国へ流用していない。EUは原文が偶発的と明記しているため region として confidence: low で保持し、標的像の拡張には用いない。日本に関する記述は3本の一次資料のいずれにもない。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。 業種名は enrich_activity_intelligence.py が用いるリポジトリ既存の語彙へ揃え、重複して生成された「政府・公共機関」と「マスメディア・通信」を「政府・行政」「メディア・報道」「情報通信」へ統合・分割した。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--22646f6aaf2520e13f75",
+      "tactic": "Stealth",
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information",
+      "observed_behavior": "1つは文書を装う実行ファイル(.pdf.exeや.doc.exeの二重拡張子を用いる場合がある)を収めたRAR書庫で、実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものであり、難読化されたMythicエージェントを内包して即座にC2と通信を開始する。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--7176b5924c70b79b0a53",
+      "tactic": "Execution",
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "observed_behavior": "マクロは復号したペイロードを%USERPROFILE%\\UserCache.ini(PowerShell)と%USERPROFILE%\\UserCache.ini.hta(HTA)へ書き出し、HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\WindowsNT\\CurrentVersion\\Windows\\LOADへHTAのパスを書き込んで永続化した。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--73ede5bdd0635240e606",
+      "tactic": "Stealth",
+      "technique_id": "T1036",
+      "technique_name": "Masquerading",
+      "observed_behavior": "1つは文書を装う実行ファイル(.pdf.exeや.doc.exeの二重拡張子を用いる場合がある)を収めたRAR書庫で、実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものであり、難読化されたMythicエージェントを内包して即座にC2と通信を開始する。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--acquire-domains",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.001",
+      "technique_name": "Domains",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf registers C2 server and malware domains」として、C2サーバおよびマルウェア配布用ドメインの取得を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--goffee-vps"
+      ],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--acquire-vps",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.003",
+      "technique_name": "Virtual Private Server",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses VPS to host C2 servers and malware」として、C2サーバとマルウェアの設置にVPSを用いると記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--goffee-vps"
+      ],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--asymmetric-crypto",
+      "tactic": "Command and Control",
+      "technique_id": "T1573.002",
+      "technique_name": "Asymmetric Cryptography",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses the RSA algorithm to decrypt credentials intercepted by the malicious IIS Owowa module」として、Owowaが傍受した資格情報のRSAによる復号を記録している。",
+      "activity_refs": [
+        "activity--goffee-owowa-iis-2022-2023"
+      ],
+      "malware_refs": [
+        "malware--goffee-owowa"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2023-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--data-destruction",
+      "tactic": "Impact",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses the commands reg delete HKEY_LOCAL_MACHINE\\SYSTEM /f && reg delete HKEY_LOCAL_MACHINE\\SOFTWARE /f and PsExec to delete OS register keys」として、PsExec経由のレジストリキー削除を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。 破壊的行為は原文が「a case」と単数で述べる1事例に基づくため confidence を medium とした。"
+    },
+    {
+      "ttp_id": "ttp--goffee--data-from-removable-media",
+      "tactic": "Collection",
+      "technique_id": "T1025",
+      "technique_name": "Data from Removable Media",
+      "observed_behavior": "KasperskyはFlashFileGrabberが対象拡張子のファイルをリムーバブルメディアから%TEMP%\\CacheStore\\connect\\<VolumeSerialNumber>\\配下へ複写し、ftree.dbへメタデータを、%AppData%\\internal_profiles.dbへそのMD5を保存して重複複写を避けると報告している。FlashFileGrabberは収集したファイルをC2へ送信できる。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-flashfilegrabber"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--deobfuscate",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1140",
+      "technique_name": "Deobfuscate/Decode Files or Information",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf decrypts the payload in malicious documents using a VBA macro. Paper Werewolf decrypts and runs the malicious content of the environment variables in the compromised system」として、文書内ペイロードおよび環境変数に退避した内容の復号実行を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--develop-malware",
+      "tactic": "Resource Development",
+      "technique_id": "T1587.001",
+      "technique_name": "Malware",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses own crafted malware such as PowerTaskel」として、PowerTaskelをはじめとする自製マルウェアの開発を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powertaskel",
+        "malware--goffee-qwakmyagent"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--double-file-extension",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1036.007",
+      "technique_name": "Double File Extension",
+      "observed_behavior": "Kasperskyは「In some cases, the file name uses a double extension, such as '.pdf.exe' or '.doc.exe'」として、二重拡張子による文書偽装を報告している。実体はexplorer.exeまたはxpsrchvw.exeの一部コードを悪性シェルコードへ差し替えたものである。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--dynamic-api-resolution",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1027.007",
+      "technique_name": "Dynamic API Resolution",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf applies the Fowler-Noll-Vo algorithm to hash the names of WinAPI functions used in the malicious loader」として、悪性ローダーにおけるWinAPI関数名のFNVハッシュ化を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--embedded-payloads",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1027.009",
+      "technique_name": "Embedded Payloads",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses malicious documents to store the Base64-encoded payload」として、悪性文書内へのBase64符号化ペイロードの埋め込みを記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--encoded-file",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1027.013",
+      "technique_name": "Encrypted/Encoded File",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses Base-64-encrypted payloads and PowerRAT commands」として、ペイロードとコマンドのBase64符号化を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--encrypted-channel",
+      "tactic": "Command and Control",
+      "technique_id": "T1573",
+      "technique_name": "Encrypted Channel",
+      "observed_behavior": "Kasperskyが解析したWarpRAT検体の設定はC2_portを443、useSSLをtrue、methodをPOSTとし、sleepTimeを314(揺らぎ15)としていた。",
+      "activity_refs": [
+        "activity--goffee-warprat-powertaskel-v2-2026"
+      ],
+      "malware_refs": [
+        "malware--goffee-warprat"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--fallback-channels",
+      "tactic": "Command and Control",
+      "technique_id": "T1008",
+      "technique_name": "Fallback Channels",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses Chisel as a redundant access channel to the compromised IT infrastructure」として、Chiselによる冗長なアクセス経路の確保を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--fileless-storage",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1027.011",
+      "technique_name": "Fileless Storage",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses environment variables AZURE_RESOURCE_GROUP, ONEDRIVE_RESOURCE_GROUP, AZURE_DECODE to hide the malware in the compromised system」として、環境変数へのマルウェア退避を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--hidden-files",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1564.001",
+      "technique_name": "Hidden Files and Directories",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses PowerRAT which installs a Hidden attribute for the files UserCache.ini and UserCache.ini.hta」として、両ファイルへのHidden属性付与を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--iis-components",
+      "tactic": "Persistence",
+      "technique_id": "T1505.004",
+      "technique_name": "IIS Components",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf installs a malicious Owowa module on the IIS server」として、IISサーバへの悪性Owowaモジュール設置を記録している。",
+      "activity_refs": [
+        "activity--goffee-owowa-iis-2022-2023"
+      ],
+      "malware_refs": [
+        "malware--goffee-owowa"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2023-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--ingress-tool-transfer",
+      "tactic": "Command and Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses own loaders to deliver and launch the malware」として、自製ローダーによるマルウェアの搬入と起動を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--lateral-tool-transfer",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1570",
+      "technique_name": "Lateral Tool Transfer",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses PsExec to advance in the compromised IT infrastructure」として、PsExecによる横展開を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--mshta",
+      "tactic": "Execution",
+      "technique_id": "T1218.005",
+      "technique_name": "Mshta",
+      "observed_behavior": "KasperskyはマクロがHTAとPowerShellの2ファイルを作成し、HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\WindowsのLOAD値へHTAのパスを書き込むことで、当該利用者のログオン時に自動実行されると報告している。HTAはcmd.exeと出力リダイレクトでUserCacheHelper.lnk.jsを作成して実行し、そのJavaScriptがWMIのWin32_Process経由で非表示のPowerShellを起動する。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--obtain-tool",
+      "tactic": "Resource Development",
+      "technique_id": "T1588.002",
+      "technique_name": "Tool",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses tools such as Chisel, PsExec and Mythic, and a Mythic post-exploitation framework」として、Chisel、PsExec、Mythicの取得と利用を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--phishing",
+      "tactic": "Initial Access",
+      "technique_id": "T1566",
+      "technique_name": "Phishing",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf sends out phishing emails to distribute documents with a malicious macro」として、悪性マクロ入り文書をフィッシングメールで配布すると記録している。配信基盤にはオープンソースのGophishフレームワークがしばしば用いられた。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--powershell",
+      "tactic": "Execution",
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses PowerShell tools such as PowerRAT and PowerTaskel to run C2 commands from the compromised host」として、PowerShell製の道具によるC2コマンド実行を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul",
+        "malware--goffee-powertaskel"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--process-injection",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1055",
+      "technique_name": "Process Injection",
+      "observed_behavior": "Kasperskyは横展開の局面でPowerShellの制約を理由にPowerTaskelからバイナリMythicエージェントへ移行し、PowerTaskelがC2からエージェントを取得して自プロセスへ注入すると報告している。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powertaskel"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--proxy",
+      "tactic": "Command and Control",
+      "technique_id": "T1090",
+      "technique_name": "Proxy",
+      "observed_behavior": "KasperskyはGOFFEEのキャンペーンに典型的な特徴として「активное применение серверов обратного проксирования для сокрытия инфраструктуры командных центров」(C2インフラを秘匿するためのリバースプロキシサーバの積極的な利用)を挙げている。",
+      "activity_refs": [
+        "activity--goffee-warprat-powertaskel-v2-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--goffee-reverse-proxy"
+      ],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--registry-run-keys",
+      "tactic": "Persistence",
+      "technique_id": "T1547.001",
+      "technique_name": "Registry Run Keys / Startup Folder",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf gains persistence in the compromised system by using a registry parameter HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\WindowsNT\\CurrentVersion\\Windows\\LOAD, whereto the path to the file UserCache.ini.hta is written」として、LOAD値を用いた永続化を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--removable-media-replication",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1091",
+      "technique_name": "Replication Through Removable Media",
+      "observed_behavior": "KasperskyはUSB Wormがリムーバブルメディア上の文書を拡張子を保ったままランダムな名前へ改名してHidden属性を与え、PowerModulを含むUserCache.iniを同じフォルダへ複写すると報告している。起動用のVBSとバッチファイル、および元の文書名を持つショートカットを隠しファイルとして作成し、ショートカットにはshell32.dllのアイコンを割り当てて偽装する。置き換え対象はLastAccessTimeの新しい順に最大5件へ制限される。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-usb-worm",
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--sandbox-evasion",
+      "tactic": "Defense Evasion",
+      "technique_id": "T1497",
+      "technique_name": "Virtualization/Sandbox Evasion",
+      "observed_behavior": "Kasperskyが解析したWarpRAT検体の設定にはuseAntiVMが1として含まれ、Kaspersky Cloud Sandboxでの動的解析でも「проводит разведку окружения на наличие артефактов, связанных с выполнением в песочнице」としてサンドボックス実行の痕跡の探索が確認されている。",
+      "activity_refs": [
+        "activity--goffee-warprat-powertaskel-v2-2026"
+      ],
+      "malware_refs": [
+        "malware--goffee-warprat"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--spearphishing-attachment",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.001",
+      "technique_name": "Spearphishing Attachment",
+      "observed_behavior": "Kasperskyは2024年後半のキャンペーンについて「The starting point is typically a phishing email with a malicious attachment」と述べ、文書を装う実行ファイルを収めたRAR書庫、およびマクロ入りOffice文書を収めたRAR書庫の2経路が併用されたと報告している。",
+      "activity_refs": [
+        "activity--goffee-powermodul-usb-worm-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2024-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2024-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--spearphishing-link",
+      "tactic": "Initial Access",
+      "technique_id": "T1566.002",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "Kasperskyは2026年3月のキャンペーンについて、悪性リンクを含むPDFを添付したメールが送られ、PDF内部に描画された偽のAcrobat Reader更新通知のボタンからntpluck[.]onlineの長大なパスへ誘導されたと報告している。",
+      "activity_refs": [
+        "activity--goffee-warprat-powertaskel-v2-2026"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--goffee-per-campaign-domains"
+      ],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--stage-upload-malware",
+      "tactic": "Resource Development",
+      "technique_id": "T1608.001",
+      "technique_name": "Upload Malware",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf stores the payload on its servers」として、自ら管理するサーバ上へのペイロード配置を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [
+        "infra--goffee-vps"
+      ],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--system-info-discovery",
+      "tactic": "Discovery",
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses PowerRAT to retrieve the name of the compromised host, the serial number of the system disk」として、ホスト名とシステムディスクのシリアル番号の取得を記録している。Kasperskyも同様に、PowerModulがC2 URLへ computer_name、username、ディスクシリアル番号を連結した識別子を付与すると述べる。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024",
+        "source--kaspersky-goffee-recent-attacks-2025"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--system-owner-discovery",
+      "tactic": "Discovery",
+      "technique_id": "T1033",
+      "technique_name": "System Owner/User Discovery",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses PowerRAT to retrieve the compromised host username」として、利用者名の取得を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--system-shutdown",
+      "tactic": "Impact",
+      "technique_id": "T1529",
+      "technique_name": "System Shutdown/Reboot",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses the command cmd.exe /c shutdown /r /f /t 5 and PsExec to terminate the host's operation」として、PsExec経由の強制再起動を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。 破壊的行為は原文が「a case」と単数で述べる1事例に基づくため confidence を medium とした。"
+    },
+    {
+      "ttp_id": "ttp--goffee--user-execution",
+      "tactic": "Execution",
+      "technique_id": "T1204.002",
+      "technique_name": "Malicious File",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf targets its victims through malicious decoy documents from various companies and government agencies」として、実在企業・政府機関の文書を装ったおとりによる利用者実行の誘導を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--user-execution-installer",
+      "tactic": "Execution",
+      "technique_id": "T1204.002",
+      "technique_name": "Malicious File",
+      "observed_behavior": "Kasperskyは遷移先で配布されたAdobe_Reader_RU.zipの内部に、Inno Setup 6.7.0 (Unicode)で作成されたドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが収められ、WarpRAT本体のadbp.exeを起動した直後におとりPDFを開くと報告している。",
+      "activity_refs": [
+        "activity--goffee-warprat-powertaskel-v2-2026"
+      ],
+      "malware_refs": [
+        "malware--goffee-warprat"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2026-03-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+      ],
+      "analyst_notes": "[analyst-mapping] Kasperskyが本文で明示した行動を分析者がATT&CKへ対応付けた。資料公開日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--goffee--visual-basic",
+      "tactic": "Execution",
+      "technique_id": "T1059.005",
+      "technique_name": "Visual Basic",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf creates a VBA macro in documents and an HTA file that creates and executes a VBScript %USERPROFILE%\\UserCacheHelper.lnk.js to further run a PowerShell script %USERPROFILE%\\UserCache.ini」として、文書内VBAマクロとHTAによる多段実行を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [
+        "malware--goffee-powermodul"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--web-portal-capture",
+      "tactic": "Credential Access",
+      "technique_id": "T1056.003",
+      "technique_name": "Web Portal Capture",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf retrieves credentials during user authorization in the OWA service by using the malicious IIS Owawa module」として、Outlook Web Accessの認証時における資格情報の窃取を記録している。",
+      "activity_refs": [
+        "activity--goffee-owowa-iis-2022-2023"
+      ],
+      "malware_refs": [
+        "malware--goffee-owowa"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-05-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": "2023-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "inferred",
+        "basis": "source-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    },
+    {
+      "ttp_id": "ttp--goffee--web-protocols",
+      "tactic": "Command and Control",
+      "technique_id": "T1071.001",
+      "technique_name": "Web Protocols",
+      "observed_behavior": "BI.ZONEは「Paper Werewolf uses HTTP to communicate with the C2 servers and receive the payload」として、HTTPによるC2通信とペイロード取得を記録している。",
+      "activity_refs": [
+        "activity--goffee-paper-werewolf-campaigns-2024"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2022-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--bizone-paper-werewolf-destructive-2024"
+      ],
+      "analyst_notes": "[bizone-attack-table] BI.ZONEが原文のMITRE ATT&CK対応表で明示した技術と手順をそのまま構造化した。資料公開日は観測日として使用していない。期間は同社が述べる「at least seven campaigns since 2022」の起点のみを用い、終期は原文に記述がないためunknownとしている。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+      "path": "https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/",
+      "url": "https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/",
+      "title": "APT-группа GOFFEE продолжает атаки на организации в РФ, распространяя два бэкдора через целевой фишинг",
+      "publisher": "Kaspersky GReAT (Securelist ロシア語版)",
+      "published_at": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-18T01:45:00Z",
+      "language": "ru",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "attribution",
+        "activity",
+        "targeting",
+        "capability",
+        "ioc"
+      ],
+      "analyst_notes": "Kaspersky GReATが直接観測した一次資料。公開日はページ埋め込みの datePublished 「2026-08-28T09:00:02+00:00」で確認した。securelist.com には対応する英語版が存在せず、ロシア語版のみの公開である。本リポジトリの巡回対象に securelist.ru を加えたのは2026-09-14の走査からであり、2026-08-28公開の本稿は2026-09-18の日次チェックまで未検知のままだった。curlでHTTP 200を取得して原文を確認している。"
+    },
+    {
+      "source_id": "source--kaspersky-goffee-recent-attacks-2025",
+      "path": "https://securelist.com/goffee-apt-new-attacks/116139/",
+      "url": "https://securelist.com/goffee-apt-new-attacks/116139/",
+      "title": "GOFFEE's recent attacks: new tools and techniques",
+      "publisher": "Kaspersky GReAT (Securelist)",
+      "published_at": {
+        "value": "2025-04-10T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-18T01:45:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "attribution",
+        "activity",
+        "targeting",
+        "capability",
+        "ioc"
+      ],
+      "analyst_notes": "Kaspersky GReATが直接観測した一次資料。著者は Oleg Kupreev。公開日はページ埋め込みの datePublished 「2025-04-10T10:00:12+00:00」で確認した。PowerModul、FlashFileGrabber、USB Worm、PowerTaskel の各実装と、2024年7月〜12月の被害観測期間および業種を明示する。curlでHTTP 200を取得して原文を確認している。"
+    },
+    {
+      "source_id": "source--bizone-paper-werewolf-destructive-2024",
+      "path": "https://bi.zone/eng/expertise/blog/paper-werewolf-sovmeshchaet-kibershpionazh-s-destruktivnymi-deystviyami/",
+      "url": "https://bi.zone/eng/expertise/blog/paper-werewolf-sovmeshchaet-kibershpionazh-s-destruktivnymi-deystviyami/",
+      "title": "Espionage cluster Paper Werewolf engages in destructive behavior",
+      "publisher": "BI.ZONE Threat Intelligence",
+      "published_at": {
+        "value": "2024-12-25T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-18T01:45:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "capability",
+        "ttp",
+        "ioc"
+      ],
+      "analyst_notes": "BI.ZONE Threat Intelligenceが直接観測した一次資料であり、Kasperskyとは独立した2本目の一次情報源である。原文末尾にMITRE ATT&CKの技術と手順の対応表を持つため、本プロファイルのTTPの多くは同表の記述をそのまま構造化している。公開日には差異がある。本文の署名行の表示は「December 25, 2024」だが、ページ埋め込みの datePublished は「2024-12-18T09:09:18+03:00」である。表示日である2024-12-25を採用し、差異を本注記へ残す。いずれの日付も観測日へ流用していない。curlでHTTP 200を取得して原文を確認している。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "GOFFEE と BI.ZONE が追跡する Paper Werewolf は同一のクラスタである。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "両社が互いの名称を明示している(Kaspersky「GOFFEE (также известная как Paper Werewolf)」、BI.ZONE「the Paper Werewolf cluster (also known as GOFFEE)」)。加えて、UserCache.ini / UserCache.ini.hta / UserCacheHelper.lnk.js の組、LOAD レジストリ値による永続化、api/texts/<computer>_<user>_<serial> 形式の C2 URL、CountRuns / Interval / Module を属性とする XML 応答という技術的特徴が独立に一致する。"
+      },
+      {
+        "statement": "本アクターの主たる被害はロシア連邦の組織であり、主たる動機はサイバースパイ活動である。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "Kaspersky は2025年に「targeting exclusively entities located in the Russian Federation」、2026年に「約120の被害組織をロシア連邦で確認」と述べ、動機を「Основная мотивация группы — кибершпионаж」とする。BI.ZONE も espionage cluster として扱う。"
+      },
+      {
+        "statement": "本アクターの出身国・後援関係は、いずれの一次資料でも特定されていない。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+          "source--kaspersky-goffee-recent-attacks-2025",
+          "source--bizone-paper-werewolf-destructive-2024"
+        ],
+        "analyst_notes": "3本とも国家帰属を行っていない。MITRE ATT&CK にも公式グループエントリは存在しない。被害国であるロシア連邦を帰属国へ流用してはならない。"
+      },
+      {
+        "statement": "GOFFEE は道具立てを継続的に入れ替えており、2026年時点の主力は WarpRAT と PowerTaskel v2 である。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026",
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "Owowa(2022年5月〜2023年夏)、PowerTaskel(2023年初頭〜)、PowerModul とそのペイロード(2024年)、WarpRAT と PowerTaskel v2(2026年)という推移が2本の Kaspersky 報告から追える。"
+      }
+    ],
+    "gaps": [
+      "3本の一次資料はいずれも被害組織名を明示していないため、victim_cases を構造化できていない。",
+      "Kaspersky が2026年の報告で述べる「攻撃準備におけるAIを含む自動化の利用」は、根拠となる具体的な観測が原文に示されていない。",
+      "BI.ZONE が挙げる QwakMyAgent は、同社自身が当該段階の検体を解析できていないと明記しており、機能も観測日も不明である。",
+      "2022年から2024年前半までの個々のキャンペーンは、BI.ZONE が「at least seven campaigns since 2022」と件数のみを述べており、個別に構造化できていない。",
+      "Kaspersky が2026年の報告で言及する MythicAcademic キャンペーンの実体が不明であり、GOFFEE との関係も C2 インフラの共有以外は示されていない。",
+      "securelist.ru を巡回対象へ加えたのは2026-09-14の走査からであるため、2026-08-28より前にロシア語版のみで公開された GOFFEE 関連記事が未確認のまま残っている可能性がある。"
+    ],
+    "uncertainties": [
+      "Kaspersky は「Ранее мы установили связь этой группы с другой APT-группой — HeartlessSoul. Со средней степенью уверенности можно заключить, что за этими двумя группами стоят одни и те же атакующие, однако их инструментарий существенно различается」として、HeartlessSoul との背後の同一性を中程度の確度で評価している。HeartlessSoul は本リポジトリに既存プロファイルも未帰属クラスタ台帳のエントリも持たず、根拠となる過去の報告も本稿からは辿れない。確度が中程度にとどまり道具立ても大きく異なるとされるため、relationships へは登録せず本項へ両論として残す。",
+      "PowerModul(Kaspersky)と PowerRAT(BI.ZONE)の同一性は、両社とも明言していない分析者評価である。根拠は capabilities.malware の malware--goffee-powermodul の analyst_notes に記載した。競合する情報が出た場合は上書きせず claim-audit.json へ記録する。",
+      "WarpRAT は Kaspersky が「широко известный」(広く知られた)と述べるバイナリであり、別名 EchoGather RAT も本稿の記述のみを根拠としている。GOFFEE 専用のマルウェアではないため、WarpRAT の検出のみを GOFFEE への帰属根拠として用いない。",
+      "PowerTaskel v2 は当初 MythicAcademic キャンペーンでの使用として観測され、C2 インフラの共有が判明して初めて GOFFEE へ結び付いたと Kaspersky が明記している。MythicAcademic と GOFFEE の関係は本稿では解決されていない。",
+      "PowerTaskel / PowerModul / USB Worm の名称は profiles/anonymous の生成物にも現れるが、これは Kaspersky ICS CERT のハクティビスト TTP 総覧資料に含まれる一般的な技術記述からの取り込みであり、同プロファイルに GOFFEE 由来の IOC は存在しない(iocs.json は0件)。本プロファイルとの重複ではない。"
+    ],
+    "collection_notes": "2026-09-18 の日次チェックにおいて、一次情報源の公開一覧巡回で Kaspersky Securelist ロシア語版の2026-08-28公開分を検知した。tech-memo daily-news には未収録であり、IOC CSV の actor 列にも現れないため、daily_check.py --run-scan では検知されない取りこぼしであった。検知後、既存673プロファイルの canonical name / alias と parse-daily/unknown-clusters.json の clusters・excluded_name_collisions を照合し、GOFFEE / Paper Werewolf のエントリが存在しないことを確認した。昇格判断のため独立した一次情報源を探索し、Kaspersky Securelist(2025-04-10)と BI.ZONE Threat Intelligence(2024-12-25)の2本を特定して、いずれも curl で原文HTMLを取得して確認した。AGENT.md の昇格閾値(独立した一次資料2本以上)は Kaspersky と BI.ZONE の2社で満たしている。検索は発見用途にのみ用い、記述の根拠はすべて原文の本文表現である。",
+    "analyst_notes": "本プロファイルは3本の一次資料のみから構成しており、二次報道は採用していない。反証の探索範囲は上記3本と本リポジトリ内の既存データに限られる。「反証が見つからなかった」ことを「反証なし」とは扱わない。"
+  },
+  "free_text": {
+    "executive_summary": "GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭からロシア連邦の組織を標的とする脅威グループである。主たる動機はサイバースパイ活動であり、標的型フィッシングを一貫した初期アクセス手段として、被害インフラへ長期に滞在する。出身国と後援関係はいずれの一次資料でも特定されていない。道具立ての入れ替えが速く、悪性IISモジュール Owowa(2022年5月〜2023年夏)、PowerShell 製の非公開 Mythic エージェント PowerTaskel(2023年初頭〜)、PowerModul とそのペイロードである FlashFileGrabber・USB Worm(2024年)、バイナリRAT の WarpRAT と軽量な PowerTaskel v2(2026年)と推移している。Kaspersky は2026年の報告で約120の被害組織をロシア連邦で確認し、主たる業種を機械製造・製造業・政府部門としている。",
+    "history": "Kaspersky が本アクターを認知したのは2022年初頭である。2022年5月から2023年夏にかけては改変した Owowa を IIS へ設置し、Outlook Web Access の認証時に資格情報を窃取していた。2024年からはパッチを当てた explorer.exe をスピアフィッシングで配布する手口へ移行し、2024年後半には PowerTaskel に加えて PowerModul を投入した。同年12月、BI.ZONE は Paper Werewolf の活動急増を報告し、2022年以降で少なくとも7件のキャンペーンを記録するとともに、諜報目的の達成後に被害インフラの運用を妨害した事例を1件公表した。2026年3月には偽の Acrobat Reader 更新通知を描画した PDF から WarpRAT を配布する新しい初期アクセス手法が観測され、同時に PowerTaskel の進化形である PowerTaskel v2 の展開が確認された。",
+    "capability_details": "自製マルウェアは Owowa(改変)、PowerTaskel、PowerTaskel v2、PowerModul、FlashFileGrabber / FlashFileGrabberOffline、USB Worm、WarpRAT、および BI.ZONE が挙げる QwakMyAgent である。既製品としては Mythic フレームワークとその Poseidon エージェント、Chisel、PsExec、Gophish、Inno Setup を用いる。PowerTaskel は設定パラメータの命名と並び順から、公開の Medusa Mythic エージェントからの派生と評価されている。PowerShell の制約により機能が不足する局面では、PowerTaskel が C2 からバイナリ Mythic エージェントを取得し、自プロセスへ注入して横展開に用いる。PowerModul は独自プロトコル、独自のペイロード種別、PowerTaskel とは別の C2 を持つことから別ファミリへ分類されている。",
+    "infrastructure_details": "キャンペーンごとにドメインを使い分け、C2 の所在を隠すためにリバースプロキシサーバを多用する。2026年の報告が列挙するドメインは NTP・時刻同期・SSL 検証を思わせる語を組み合わせた命名が目立ち、timemirror[.]online、ntpcheck[.]online、sslfix[.]online、ntp[.]report などが含まれる。WarpRAT は 443/TCP・TLS・POST を用い、sleepTime と anti-VM を設定に持つ。PowerModul は http://<C2>/api/texts/<computer>_<user>_<disk-serial> の形式で被害端末の識別子を URL へ付与する。BI.ZONE は C2 とマルウェアの設置に VPS が用いられることを記録している。",
+    "targeting_details": "構造化ターゲット監査: 標的国=ロシア。標的地域=CIS諸国、欧州。日本は確認時に個別国として保持する。\n\n被害はロシア連邦の組織に集中する。Kaspersky は2025年の報告で被害の所在をロシアとし、業種をマスメディアと通信、建設、政府機関、エネルギーとした。2026年の報告では約120の被害組織をロシア連邦で、数件を CIS 諸国で、単発を EU で確認し、EU への攻撃は偶発的な性質のものと評価している。同報告は主たる業種を機械製造・製造業・政府部門とする。BI.ZONE は被害組織に政府、エネルギー、金融、メディアほかを挙げる。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関といった被害者が信頼しやすい実在組織の文書を模したものが用いられる。",
+    "additional_notes": "本プロファイルの被害国はロシア連邦であり、これを攻撃者の帰属国へ流用してはならない。3本の一次資料はいずれも攻撃者の出身国を述べていない。Kaspersky が中程度の確度で述べる HeartlessSoul との背後の同一性、および PowerModul と PowerRAT の名称対応は、いずれも未解決として assessment へ残している。"
+  }
+}
