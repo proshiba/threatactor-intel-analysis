@@ -1,18 +1,29 @@
 {
   "schema_version": "1.2.0",
   "profile_id": "actor--carberb",
-  "name": "Carberb",
+  "name": "Carberp",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-07-29T23:13:54Z",
+  "updated_at": "2026-09-18T23:00:00Z",
   "languages": [
     "ja"
   ],
   "actor": {
-    "canonical_name": "Carberb",
-    "aliases": [],
+    "canonical_name": "Carberp",
+    "aliases": [
+      {
+        "name": "Carberb",
+        "vendor": "legacy-corpus",
+        "scope": "unknown",
+        "confidence": "low",
+        "evidence_refs": [
+          "source--actor-mapping-workbook"
+        ],
+        "analyst_notes": "Legacy corpus spelling retained only for lookup compatibility; canonicalized to Carberp after actor-specific review."
+      }
+    ],
     "actor_types": [
-      "state-sponsored",
+      "financially-motivated",
       "threat-cluster"
     ],
     "first_seen": {
@@ -28,40 +39,38 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": ""
+    "description": "Group-IB describes Carberp as a financially motivated hacking group that operated a banking botnet, targeted financial institutions and banks, and used the Carberp banking Trojan for large-scale fraud.",
+    "analyst_notes": "Do not conflate the Carberp criminal group with the Carberp banking Trojan, which was also used by other criminal groups."
   },
   "attribution": {
-    "countries": [
-      "Russia"
-    ],
-    "sponsor_type": "state",
+    "countries": [],
+    "sponsor_type": "criminal",
     "organizations": [],
-    "assessment": "The repository mapping workbook places this actor in the Russia worksheet.",
-    "confidence": "medium",
+    "assessment": "Group-IB identifies Carberp as a criminal hacking group focused on financial theft; no state sponsorship is asserted.",
+    "confidence": "high",
     "evidence_refs": [
-      "source--actor-mapping-workbook"
+      "source--group-ib-carberp-gang"
     ],
-    "analyst_notes": "Workbook attribution is a secondary mapping and must be corroborated."
+    "analyst_notes": "Russian language and early targeting in Russia/CIS are contextual geography, not state sponsorship."
   },
   "motivations": [
     {
-      "type": "espionage",
-      "description": "State-sponsored intelligence collection or strategic operations.",
-      "confidence": "low",
+      "type": "financial-gain",
+      "description": "Group-IB lists the group's motivation as Financial and documents theft from banking customers.",
+      "confidence": "high",
       "evidence_refs": [
-        "source--actor-mapping-workbook"
+        "source--group-ib-carberp-gang"
       ],
-      "analyst_notes": "Inferred from catalog actor type; corroborate with actor-specific reporting."
+      "analyst_notes": "Actor-specific investigation."
     }
   ],
   "relationships": [],
   "diamond_model": {
-    "adversary": "",
-    "capability": "",
+    "adversary": "Group-IB describes Carberp as a financially motivated hacking group that operated a banking botnet, targeted financial institutions and banks, and used the Carberp banking Trojan for large-scale fraud.",
+    "capability": "Carberp banking Trojan / banking botnet operations",
     "infrastructure": "",
-    "victim": "USA",
-    "socio_political": "Russia",
+    "victim": "Financial sector and banks; Group-IB describes attacks as worldwide.",
+    "socio_political": "",
     "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
   },
   "capabilities": {
@@ -75,11 +84,12 @@
   },
   "activities": [],
   "targets": {
-    "countries": [
+    "countries": [],
+    "regions": [
       {
-        "id": "target--targeting-audit--country--2a63b97224b030716a4f",
-        "name": "米国",
-        "description": "レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。",
+        "id": "target--carberp--region--worldwide",
+        "name": "全世界",
+        "description": "Group-IB lists the geography of Carberp attacks as Worldwide.",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -92,18 +102,40 @@
           "status": "unknown",
           "basis": "not-stated"
         },
-        "confidence": "medium",
+        "confidence": "high",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--group-ib-carberp-gang"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
+        "analyst_notes": "Worldwide is source-stated; it does not imply every country was targeted."
       }
     ],
-    "regions": [],
-    "sectors": [],
+    "sectors": [
+      {
+        "id": "target--carberp--sector--finance",
+        "name": "金融",
+        "description": "Group-IB lists the financial sector and banks as Carberp targets.",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--group-ib-carberp-gang"
+        ],
+        "analyst_notes": "Actor-specific investigation."
+      }
+    ],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "Actor-specific Group-IB investigation only; geography is not reused as sponsorship evidence.",
+    "analyst_notes": "The prior United States-only target entry came from a community mapping workbook and was replaced by the source-stated worldwide scope."
   },
   "ttps": [],
   "sources": [
@@ -142,13 +174,40 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--group-ib-carberp-gang",
+      "path": "https://www.group-ib.com/top-investigations/carberp-gang/",
+      "url": "https://www.group-ib.com/top-investigations/carberp-gang/",
+      "title": "Carberp gang knocked down",
+      "publisher": "Group-IB",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "actor-specific-investigation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Actor-specific investigation used to correct entity name, criminal sponsorship classification, motivation, and target scope."
     }
   ],
   "assessment": {
-    "key_judgments": [],
+    "key_judgments": [
+      {
+        "statement": "Carberp is a financially motivated criminal hacking group; the legacy 'Carberb' spelling and Russia/state/espionage classification are not used as canonical attribution.",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--group-ib-carberp-gang"
+        ],
+        "analyst_notes": "Group-IB actor-specific investigation."
+      }
+    ],
     "gaps": [
-      "Unknown observation dates must not be replaced by publication dates.",
-      "Automatically mapped aliases, targets, and workbook software require analyst review."
+      "Unknown observation dates must not be replaced by publication dates."
     ],
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
@@ -157,12 +216,12 @@
     "analyst_notes": ""
   },
   "free_text": {
-    "executive_summary": "Carberbの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
-    "history": "",
-    "capability_details": "",
+    "executive_summary": "Carberpの標準化プロファイル。Group-IBのactor-specific調査に基づき、金融目的の犯罪グループとして整理する。",
+    "history": "Group-IBは2010〜2012年のCarberp gangの活動と、法執行機関による構成員の摘発を記録している。",
+    "capability_details": "Carberp banking Trojanを用いたbanking botnet、認証情報・電子署名鍵の窃取、不正送金。",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=米国。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nUSA",
-    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+    "targeting_details": "金融機関・銀行を標的とし、Group-IBは攻撃地理をWorldwideと記載している。",
+    "additional_notes": "Carberp groupとCarberp malwareを同一entityとして扱わない。Carberbは旧コーパス表記としてのみ保持する。"
   },
   "victim_cases": []
 }
