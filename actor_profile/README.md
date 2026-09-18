@@ -147,7 +147,16 @@ MITRE ATT&CKのactor、software、campaign、technique関係は
 資料本文にTechnique IDがある場合は、その資料もTTPの根拠へ追加します。
 
 全コーパス走査の根拠は`actor-census.json`、採用・統合・除外判断は
-`actor-census-decisions.json`に保存します。複数アクターを扱う年次報告書から
+`actor-census-decisions.json`に保存します。自動censusだけでは安全に判断できない
+entity種別、canonical名、重複統合、alias、actor typeの人手補正は
+`actor-census-curation.json`に保存します。curationは自動materializationより優先し、
+`exclude`（Actorとして生成しない）、`merge`（既存profileへ統合）、`override`
+（canonical名・slug・alias・actor typeの補正）を再生成時にも維持します。
+
+curationへ追加する場合は必ずactor-specificな根拠URLと理由を記録します。単なる
+名前一致やcountry/originだけを根拠にoverrideしてはいけません。
+
+複数アクターを扱う年次報告書から
 無関係なIOCを誤帰属させないため、新規プロファイルのIOC/artifact取込には
 `evidence/<actor-slug>.csv`のアクター周辺文脈だけを使います。原レポートのパスと
 ページ／行は同CSVと各プロファイルの`sources`に残します。
