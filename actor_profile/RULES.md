@@ -1,6 +1,6 @@
 # 脅威アクタープロファイル作成規約
 
-規約バージョン: 1.0.0
+規約バージョン: 1.1.0
 
 ## 1. 基本原則
 
@@ -478,3 +478,27 @@ taxonomyの`similar`関係は低信頼度の関係候補として保存する。
 
 Malpediaとの名前一致はマルウェアのカタログ存在だけを意味し、そのアクターが
 使用した証拠にはしない。
+
+
+## 14. 生成・エージェント用ガードレール
+
+自動生成、エージェント更新、日次取込、OSINT補完のすべてで次を必須とする。詳細と
+具体例は[GENERATION_RULES.md](GENERATION_RULES.md)を参照する。
+
+1. **地理情報から国家支援を推定しない。** 国別worksheet、origin、言語、IP所在地、
+   被害地域、インフラ所在地は`state-sponsored`、`sponsor_type: state`の根拠ではない。
+2. **国家支援から動機を推定しない。** `state-sponsored`であってもespionage、
+   disruption、destruction、financial gainなどは別主張であり、個別の証拠を要求する。
+3. **製品・ベンダーと攻撃実行主体を分離する。** 「X社の製品／exploitをYが使用した」
+   場合、原則としてadversaryはYでありXではない。X自身の攻撃実行を示す証拠が必要。
+4. **Actor、Organization、Software、Malware、Campaign/Operationを混同しない。**
+   同名ブランドが複数entity種別に存在する場合は、スコープを明記して別IDで保持する。
+5. **alias一致を同一性へ自動昇格しない。** canonical/aliasの重複はレビューキューへ送り、
+   `exact`はベンダー境界と原典を確認した場合だけ使用する。
+6. **低確度・未解決主張を高確度フィールドへ昇格しない。** `unresolved`、
+   `partially-supported`、単一の集約データセットだけの値は、追加根拠なしに
+   attributionやmotivationの確定値へ変換しない。
+7. **自動生成は保守的に失敗させる。** 根拠がなければ`unknown`または空配列を選び、
+   「もっともらしい補完」をしない。
+
+これらは品質上の必須条件であり、コード変更時は回帰テストを追加する。
