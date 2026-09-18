@@ -150,6 +150,11 @@ python3 -m unittest discover -s actor_profile/tests -v
 python3 -m unittest discover -s parse-daily/tests -v
 
 python3 actor_profile/scripts/materialize_actor_census.py
+
+# 旧生成ルールで既存profileへ入った地理由来のstate/espionage等だけを安全に移行
+python3 actor_profile/scripts/migrate_generated_attribution.py --apply
+
+# 新規profileをbootstrapする場合のみ使用（既存profileの一括overwriteは禁止）
 python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
 
 python3 actor_profile/scripts/build_claim_audits.py
