@@ -15,7 +15,7 @@ sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
 from bootstrap_all_profiles import alias_source_metadata, derive_actor_types, derive_motivations  # noqa: E402
-from materialize_actor_census import actor_types as census_actor_types  # noqa: E402
+from materialize_actor_census import actor_types as census_actor_types, identity_curation_rule  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
@@ -348,6 +348,22 @@ class GenerationGuardrailTests(unittest.TestCase):
     def test_country_origin_does_not_imply_state_sponsorship(self) -> None:
         self.assertEqual(census_actor_types(["Russia"]), ["threat-cluster"])
         self.assertEqual(census_actor_types(["China"]), ["threat-cluster"])
+    def test_identity_curation_rule_uses_normalized_name(self) -> None:
+        curation = {
+            "identities": {
+                "whitecompany": {"action": "merge", "target_slug": "white-company"},
+                "revil": {"action": "exclude"},
+            }
+        }
+        self.assertEqual(
+            identity_curation_rule(curation, "The White Company").get("action"),
+            None,
+        )
+        self.assertEqual(
+            identity_curation_rule(curation, "White Company")["target_slug"],
+            "white-company",
+        )
+        self.assertEqual(identity_curation_rule(curation, "REvil")["action"], "exclude")
 
     def test_catalog_alias_does_not_inherit_mitre_evidence(self) -> None:
         group = {"aliases": ["Hecamede"]}
