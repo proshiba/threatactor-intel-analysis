@@ -116,7 +116,19 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 
 4と5は候補生成・cross-checkには使えますが、それ単独で国家支援や動機を確定しません。
 
-## 9. Agent preflight checklist
+## 9. Census curation
+
+`actor-census.json`からの自動materializationでentity種別や重複を安全に解決できない場合は、
+`actor_profile/actor-census-curation.json`へ人手補正を記録します。
+
+- `exclude`: software/brand等をcanonical Actorとして生成しない
+- `merge`: census identityを既存profileへ統合する
+- `override`: canonical名、stable slug、alias、actor typeを根拠付きで補正する
+
+各ruleには`reason`と`evidence_urls`を必須とし、再生成時も自動推定よりcurationを優先します。
+既存profileのstable IDを維持する必要がある場合は`slug`を明示します。
+
+## 10. Agent preflight checklist
 
 プロファイルまたは生成コードを変更するエージェントは、commit前に次を確認します。
 
@@ -131,7 +143,7 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 - [ ] 回帰テストを追加または実行した
 - [ ] 生成物と集計を再生成した
 
-## 10. 変更後の推奨実行順
+## 11. 変更後の推奨実行順
 
 ```bash
 python3 -m unittest discover -s actor_profile/tests -v
