@@ -131,6 +131,17 @@ class DailyCommonTests(unittest.TestCase):
                 json.dumps(profile(name, [])), encoding="utf-8"
             )
         return ActorRegistry(root, CONFIG)
+    def test_registry_ignores_deprecated_profiles(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "revil").mkdir()
+            data = profile("REvil", [])
+            data["status"] = "deprecated"
+            (root / "revil" / "actor-profile.json").write_text(
+                json.dumps(data), encoding="utf-8"
+            )
+            registry = ActorRegistry(root, CONFIG)
+            self.assertEqual(registry.exact("REvil", "ioc-actor-field"), [])
 
     def test_name_candidate_is_extracted_from_body_without_iocs(self) -> None:
         """IOCを伴わない記事はIOC CSVのactor列に現れないため、本文から名前を拾う。"""
