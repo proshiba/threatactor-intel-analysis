@@ -256,6 +256,8 @@ def read_profile(slug: str) -> dict | None:
     if not profile_path.exists():
         return None
     profile = load_json(profile_path)
+    if profile.get("status") == "deprecated":
+        return None
 
     actor = profile.get("actor") or {}
     attribution = profile.get("attribution") or {}
