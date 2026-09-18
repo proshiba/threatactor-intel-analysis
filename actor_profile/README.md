@@ -109,6 +109,10 @@ ZIP、RAR、7z、実行ファイル、DLL、マルウェアサンプルは開き
 自動生成・エージェント更新時の禁止事項と判断手順は
 [GENERATION_RULES.md](GENERATION_RULES.md)を必ず併読してください。
 
+既存profileに旧生成ロジック由来のcountry→state→espionage推定が残っている場合は、
+`python3 actor_profile/scripts/migrate_generated_attribution.py --apply`を使用します。
+このmigrationは定型的な旧自動生成値だけを対象にし、手動attributionや日次Activity、IOC等は保持します。
+
 ## 全アクターの一括処理
 
 対象と統合・除外ルールは`corpus-catalog.json`で管理します。
