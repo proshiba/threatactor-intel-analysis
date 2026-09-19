@@ -1,0 +1,96 @@
+name: Rebuild catalog-scoped UI indexes
+
+on:
+  push:
+    branches:
+      - fix/regenerate-corrected-corpus-20260919
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-ui:
+    if: ${{ !contains(github.event.head_commit.message, '[generated]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild UI indexes
+        run: |
+          set -euxo pipefail
+          python3 ui/build_data.py
+          python3 ui/build_portal_index.py
+
+      - name: Verify active corpus and generated indexes
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          catalog = json.loads(Path('actor_profile/corpus-catalog.json').read_text(encoding='utf-8'))
+          active = {item['slug'] for item in catalog['actors']}
+          assert len(active) == 674, len(active)
+          assert 'revil' not in active
+          assert 'white-company-fefa7c0a' not in active
+
+          bad_state = []
+          bad_espionage = []
+          old_espionage = 'State-sponsored intelligence collection or strategic operations.'
+          for slug in sorted(active):
+              profile = json.loads((Path('profiles') / slug / 'actor-profile.json').read_text(encoding='utf-8'))
+              attribution = profile.get('attribution', {})
+              if (
+                  attribution.get('sponsor_type') == 'state'
+                  and attribution.get('confidence') == 'medium'
+                  and attribution.get('evidence_refs') == ['source--actor-mapping-workbook']
+                  and attribution.get('assessment', '').startswith('The repository mapping workbook places this actor in ')
+              ):
+                  bad_state.append(slug)
+              for item in profile.get('motivations', []):
+                  if (
+                      item.get('type') == 'espionage'
+                      and item.get('description') == old_espionage
+                      and item.get('evidence_refs') == ['source--actor-mapping-workbook']
+                  ):
+                      bad_espionage.append(slug)
+
+          assert not bad_state, bad_state
+          assert not bad_espionage, bad_espionage
+
+          actors_payload = json.loads(Path('ui/data/actors.json').read_text(encoding='utf-8'))
+          assert actors_payload['stats']['actors'] == 674, actors_payload['stats']['actors']
+          assert len(actors_payload['actors']) == 674, len(actors_payload['actors'])
+          ui_slugs = {item['slug'] for item in actors_payload['actors']}
+          assert ui_slugs == active, (len(ui_slugs), len(active), sorted(ui_slugs ^ active)[:20])
+
+          meta = json.loads(Path('ui/api/v1/meta.json').read_text(encoding='utf-8'))
+          assert meta['stats']['actor'] == 674, meta['stats']
+          search = json.loads(Path('ui/api/v1/search.json').read_text(encoding='utf-8'))
+          actor_entities = [item for item in search['entities'] if item.get('type') == 'actor']
+          assert len(actor_entities) == 674, len(actor_entities)
+
+          print('verified active catalog/UI/portal: 674 actors')
+          print('legacy geography-derived state attributions: 0')
+          print('legacy generated espionage motivations: 0')
+          PY
+
+      - name: Commit rebuilt UI indexes
+        run: |
+          set -euxo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ui
+          if git diff --cached --quiet; then
+            echo "No UI changes"
+            exit 0
+          fi
+          git commit -m "[generated] refresh catalog-scoped UI indexes"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
