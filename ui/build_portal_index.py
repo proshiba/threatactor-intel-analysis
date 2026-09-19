@@ -26,6 +26,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROFILES_DIR = REPO_ROOT / "profiles"
+CATALOG_PATH = REPO_ROOT / "actor_profile" / "corpus-catalog.json"
 REFERENCE_HOSTS_PATH = REPO_ROOT / "actor_profile" / "reference" / "reference-hosts.json"
 OUT_DIR = Path(__file__).resolve().parent / "api" / "v1"
 
@@ -654,7 +655,8 @@ def main() -> int:
         print(f"profiles directory not found: {PROFILES_DIR}", file=sys.stderr)
         return 1
 
-    slugs = sorted(p.name for p in PROFILES_DIR.iterdir() if p.is_dir())
+    catalog = load_json(CATALOG_PATH)
+    slugs = sorted(actor["slug"] for actor in catalog["actors"])
     with ProcessPoolExecutor() as pool:
         profiles = [p for p in pool.map(read_profile, slugs, chunksize=8) if p]
 
