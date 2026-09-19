@@ -79,7 +79,21 @@ cloud/CDN、hosting providerにも適用します。
 既存のGOLD SOUTHFIELDのようなoperator profileがある場合、software名とactor名を
 機械的に同一化してはいけません。
 
-## 6. Aliasと重複プロファイル
+## 6. Workbookからのalias抽出
+
+`APT Groups and Operations.xlsx`等のmapping workbookでは、alias候補として扱う列を
+**allowlist**する。`Common Name`、`Other Name(s)`、`Alias(es)`のような明示的な
+名前列だけを使用し、Country / Origin / Sponsor / Attribution / Comment / Description /
+Targets / Operation / Toolset / Malwareなどをaliasへ流用してはいけない。
+
+複数aliasを含む名前セルは`,`、`;`、改行、区切りとしての` / `で分割する。
+国名単体、帰属説明文、スポンサー説明文、地域説明などはaliasではない。
+
+既存profileのworkbook由来aliasを再構築する場合は
+`actor_profile/scripts/migrate_workbook_aliases.py --apply`を使用し、
+MITREや他のactor-specific source由来のaliasを保持する。
+
+## 7. Aliasと重複プロファイル
 
 canonical nameとaliasの正規化一致を検出したら、自動統合ではなくレビュー対象にします。
 
@@ -92,7 +106,7 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 
 先頭の`The`、空白、ハイフン、大小文字だけの差は重複候補として扱います。
 
-## 7. Claim auditからの昇格条件
+## 8. Claim auditからの昇格条件
 
 `unresolved`または`partially-supported`は「誤り」とは限りませんが、
 自動生成が確定的なattribution/motivation/exact aliasへ昇格させる根拠にはできません。
@@ -104,7 +118,7 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 - entity種別が一致する
 - contradictionが未解消ではない
 
-## 8. Source precedence
+## 9. Source precedence
 
 自動化の既定優先順位:
 
@@ -116,7 +130,7 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 
 4と5は候補生成・cross-checkには使えますが、それ単独で国家支援や動機を確定しません。
 
-## 9. Census curation
+## 10. Census curation
 
 `actor-census.json`からの自動materializationでentity種別や重複を安全に解決できない場合は、
 `actor_profile/actor-census-curation.json`へ人手補正を記録します。
@@ -128,7 +142,7 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 各ruleには`reason`と`evidence_urls`を必須とし、再生成時も自動推定よりcurationを優先します。
 既存profileのstable IDを維持する必要がある場合は`slug`を明示します。
 
-## 10. Agent preflight checklist
+## 11. Agent preflight checklist
 
 プロファイルまたは生成コードを変更するエージェントは、commit前に次を確認します。
 
@@ -143,7 +157,7 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 - [ ] 回帰テストを追加または実行した
 - [ ] 生成物と集計を再生成した
 
-## 11. 変更後の推奨実行順
+## 12. 変更後の推奨実行順
 
 ```bash
 python3 -m unittest discover -s actor_profile/tests -v
