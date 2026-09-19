@@ -1,0 +1,97 @@
+name: Regenerate entity boundaries
+
+on:
+  push:
+    branches:
+      - fix/entity-boundaries-20260919
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    if: ${{ !contains(github.event.head_commit.message, '[generated]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test curation and regenerate active corpus
+        run: |
+          set -euxo pipefail
+          python3 -m unittest discover -s actor_profile/tests -v
+          python3 -m unittest discover -s parse-daily/tests -v
+          python3 actor_profile/scripts/materialize_actor_census.py
+          python3 actor_profile/scripts/crosscheck_all_actors.py
+          python3 actor_profile/scripts/build_claim_audits.py
+          python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+          python3 actor_profile/scripts/render_collection_index.py \
+            profiles/processing-summary.json \
+            actor_profile/corpus-catalog.json \
+            profiles/README.md
+          python3 ui/build_data.py
+          python3 ui/build_portal_index.py
+
+      - name: Verify entity boundaries
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          catalog = json.loads(Path('actor_profile/corpus-catalog.json').read_text(encoding='utf-8'))
+          active = {item['slug'] for item in catalog['actors']}
+          assert len(active) == 674, len(active)
+          for slug in ('gravityrat', 'shamoon'):
+              assert slug not in active, slug
+          for slug in ('spacecobra', 'famous-chollima', 'greenbug', 'calypso', 'dprk-it-workers', 'contagious-interview'):
+              assert slug in active, slug
+
+          def profile(slug):
+              return json.loads((Path('profiles') / slug / 'actor-profile.json').read_text(encoding='utf-8'))
+
+          assert profile('gravityrat')['status'] == 'deprecated'
+          assert profile('shamoon')['status'] == 'deprecated'
+          assert {a['name'] for a in profile('calypso')['actor']['aliases']} == {'Bronze Medley', 'Red Lamassu'}
+          assert {a['name'] for a in profile('greenbug')['actor']['aliases']} == {'Volatile Kitten'}
+          assert 'GravityRAT' in {m['name'] for m in profile('spacecobra')['capabilities']['malware']}
+          assert 'Famous Chollima' not in {a['name'] for a in profile('dprk-it-workers')['actor']['aliases']}
+          assert 'Famous Chollima' not in {a['name'] for a in profile('contagious-interview')['actor']['aliases']}
+
+          famous_targets = {r['target_actor'] for r in profile('famous-chollima')['relationships']}
+          assert 'DPRK IT Worker Schemes' in famous_targets
+          assert 'Contagious Interview' in famous_targets
+
+          processing = json.loads(Path('profiles/processing-summary.json').read_text(encoding='utf-8'))
+          assert processing['actor_count'] == 674
+          assert processing['complete_count'] == 674
+          assert processing['error_count'] == 0
+
+          ui = json.loads(Path('ui/data/actors.json').read_text(encoding='utf-8'))
+          assert ui['stats']['actors'] == 674
+          ui_slugs = {item['slug'] for item in ui['actors']}
+          assert ui_slugs == active, sorted(ui_slugs ^ active)[:20]
+
+          meta = json.loads(Path('ui/api/v1/meta.json').read_text(encoding='utf-8'))
+          assert meta['stats']['actor'] == 674
+          print('verified entity boundaries and 674/674 active corpus')
+          PY
+
+      - name: Commit regenerated outputs
+        run: |
+          set -euxo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add actor_profile profiles ui
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+            exit 0
+          fi
+          git commit -m "[generated] regenerate corrected entity boundaries"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
