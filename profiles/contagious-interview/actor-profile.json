@@ -4,7 +4,7 @@
   "name": "Contagious Interview",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T00:54:53Z",
+  "updated_at": "2026-09-19T00:58:00Z",
   "languages": [
     "ja"
   ],
@@ -30,16 +30,6 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "Famous Chollima",
-        "vendor": "CrowdStrike",
-        "scope": "broader",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--crowdstrike-famous-chollima"
-        ],
-        "analyst_notes": "CrowdStrikeはFAMOUS CHOLLIMAのcommunity identifiersにContagious Interviewを挙げるが、同クラスタの定義は北朝鮮へ送金するための不正就労(IT worker)全般であり、偽求人面接によるマルウェア配布キャンペーンより広い。したがってscopeはbroaderとし、exactとは扱わない。日次チェックで未一致名(観測9件)として繰り返し検知されていたため登録した。"
       },
       {
         "name": "Gwisin Gang",
@@ -100,7 +90,7 @@
     },
     "active": "unknown",
     "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) is a North Korea–aligned threat group active since 2023. The group conducts both cyberespionage and financially motivated operations, including the theft of cryptocurrency and user credentials. [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. (Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Datadog Contagious Interview Tenacious Pungsan October 2024)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
-    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
+    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific. Famous Chollima is modeled as a separate actor; overlap is represented as a relationship rather than an alias."
   },
   "attribution": {
     "countries": [],
@@ -131,7 +121,31 @@
       "analyst_notes": "Derived from explicit MITRE ATT&CK actor description."
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--contagious-interview--overlaps--famous-chollima",
+      "target_actor": "Famous Chollima",
+      "relationship_type": "overlaps-with",
+      "description": "CrowdStrike's FAMOUS CHOLLIMA tracking includes community identifiers and activity that overlap with Contagious Interview, but the cluster scopes are not treated as exact identity.",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--crowdstrike-famous-chollima"
+      ],
+      "analyst_notes": "Replaces the former broader alias with an explicit cross-cluster relationship."
+    }
+  ],
   "diamond_model": {
     "adversary": "[Contagious Interview](https://attack.mitre.org/groups/G1052) is a North Korea–aligned threat group active since 2023. The group conducts both cyberespionage and financially motivated operations, including the theft of cryptocurrency and user credentials. [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. (Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Datadog Contagious Interview Tenacious Pungsan October 2024)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
     "capability": "InvisibleFerret, HexEval Loader, BeaverTail, XORIndex Loader",
