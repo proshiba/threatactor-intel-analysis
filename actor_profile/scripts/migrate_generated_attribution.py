@@ -217,8 +217,6 @@ def main() -> int:
     results: list[dict[str, Any]] = []
 
     for actor in catalog["actors"]:
-        if actor.get("profile_basis") != "actor-scoped-census-evidence":
-            continue
         profile_path = args.profiles_root / actor["slug"] / "actor-profile.json"
         if not profile_path.exists():
             continue
