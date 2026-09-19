@@ -16,6 +16,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROFILES_DIR = REPO_ROOT / "profiles"
+CATALOG_PATH = REPO_ROOT / "actor_profile" / "corpus-catalog.json"
 OUT_PATH = Path(__file__).resolve().parent / "data" / "actors.json"
 
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]*\)")
@@ -151,14 +152,19 @@ def main() -> int:
         print(f"profiles directory not found: {PROFILES_DIR}", file=sys.stderr)
         return 1
 
+    catalog = load_json(CATALOG_PATH)
+    active_slugs = sorted(actor["slug"] for actor in catalog["actors"])
+
     records = []
     raw_rels: dict[str, list] = {}
     errors = []
-    for profile_dir in sorted(PROFILES_DIR.iterdir()):
+    for slug in active_slugs:
+        profile_dir = PROFILES_DIR / slug
         if not profile_dir.is_dir():
+            errors.append(f"{slug}: profile directory missing")
             continue
         try:
-            result = build_record(profile_dir.name, profile_dir)
+            result = build_record(slug, profile_dir)
         except Exception as exc:  # noqa: BLE001 - report and continue
             errors.append(f"{profile_dir.name}: {exc}")
             continue
