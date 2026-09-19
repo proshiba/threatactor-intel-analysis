@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: entity-boundaries-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   regenerate:
     if: ${{ !contains(github.event.head_commit.message, '[generated]') }}
