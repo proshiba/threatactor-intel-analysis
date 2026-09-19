@@ -1,4 +1,4 @@
-name: Rebuild catalog-scoped UI indexes
+name: Finalize corrected active corpus
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  rebuild-ui:
+  finalize:
     if: ${{ !contains(github.event.head_commit.message, '[generated]') }}
     runs-on: ubuntu-latest
     steps:
@@ -23,9 +23,18 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Rebuild UI indexes
+      - name: Apply narrow migration and regenerate derived outputs
         run: |
           set -euxo pipefail
+          python3 -m unittest discover -s actor_profile/tests -v
+          python3 -m unittest discover -s parse-daily/tests -v
+          python3 actor_profile/scripts/migrate_generated_attribution.py --apply
+          python3 actor_profile/scripts/build_claim_audits.py
+          python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+          python3 actor_profile/scripts/render_collection_index.py \
+            profiles/processing-summary.json \
+            actor_profile/corpus-catalog.json \
+            profiles/README.md
           python3 ui/build_data.py
           python3 ui/build_portal_index.py
 
@@ -65,6 +74,11 @@ jobs:
           assert not bad_state, bad_state
           assert not bad_espionage, bad_espionage
 
+          processing = json.loads(Path('profiles/processing-summary.json').read_text(encoding='utf-8'))
+          assert processing['actor_count'] == 674, processing['actor_count']
+          assert processing['complete_count'] == 674, processing['complete_count']
+          assert processing['error_count'] == 0, processing['error_count']
+
           actors_payload = json.loads(Path('ui/data/actors.json').read_text(encoding='utf-8'))
           assert actors_payload['stats']['actors'] == 674, actors_payload['stats']['actors']
           assert len(actors_payload['actors']) == 674, len(actors_payload['actors'])
@@ -77,20 +91,20 @@ jobs:
           actor_entities = [item for item in search['entities'] if item.get('type') == 'actor']
           assert len(actor_entities) == 674, len(actor_entities)
 
-          print('verified active catalog/UI/portal: 674 actors')
+          print('verified active catalog/processing/UI/portal: 674 actors')
           print('legacy geography-derived state attributions: 0')
           print('legacy generated espionage motivations: 0')
           PY
 
-      - name: Commit rebuilt UI indexes
+      - name: Commit regenerated outputs
         run: |
           set -euxo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ui
+          git add actor_profile profiles ui
           if git diff --cached --quiet; then
-            echo "No UI changes"
+            echo "No generated changes"
             exit 0
           fi
-          git commit -m "[generated] refresh catalog-scoped UI indexes"
+          git commit -m "[generated] finalize corrected active corpus"
           git push origin "HEAD:${GITHUB_REF_NAME}"
