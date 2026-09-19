@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--peach-sandstorm`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,10 +21,6 @@ Peach Sandstormの標準化プロファイル。リポジトリ内の専用資�
 | APT33 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | HOLMIUM | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Refined Kitten | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Magic Hound | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 15; mapping requires review. |
-| Timberworm | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 15; mapping requires review. |
-| MAGNALLIUM | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 15; mapping requires review. |
-| Elfin | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 15; mapping requires review. |
 
 ## 帰属
 
@@ -58,37 +54,24 @@ Peach Sandstormの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | APT 33, Elfin, Magnallium | canonical-name | 高 | Iran | https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html<br>https://en.wikipedia.org/wiki/Elfin_Team<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+33%2C+Elfin%2C+Magnallium&n=1 |
-| etda-threat-group-cards | Magic Hound, APT 35, Cobalt Illusion, Charming Kitten | multiple-name-intersection | 高 | Iran | https://www.clearskysec.com/wp-content/uploads/2017/12/Charming_Kitten_2017.pdf<br>https://en.wikipedia.org/wiki/Charming_Kitten<br>https://vblocalhost.com/uploads/VB2021-Haeghebaert.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Peach Sandstorm | canonical-name | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT33 | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html<br>https://blog.trendmicro.com/trendlabs-security-intelligence/more-than-a-dozen-obfuscated-apt33-botnets-used-for-extreme-narrow-targeting/<br>https://www.brighttalk.com/webcast/10703/275683 |
-| misp-threat-actor | Rocket Kitten | single-alias-intersection | 中 | IR, Iran (Islamic Republic of) | https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/operation-woolen-goldfish-when-kittens-go-phishing<br>https://www.trendmicro.com/cloud-content/us/pdfs/security-intelligence/white-papers/wp-the-spy-kittens-are-back.pdf<br>http://www.clearskysec.com/thamar-reservoir/ |
-| misp-threat-actor | APT35 | single-alias-intersection | 中 | IR | https://www.fireeye.com/content/dam/collateral/en/mtrends-2018.pdf<br>https://attack.mitre.org/groups/G0059/<br>https://www.cfr.org/interactive/cyber-operations/magic-hound |
 | misp-microsoft-activity-group | Peach Sandstorm | canonical-name | 高 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Magic Hound - G0059 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0059<br>https://researchcenter.paloaltonetworks.com/2017/02/unit42-magic-hound-campaign-attacks-saudi-targets/ |
 | misp-mitre-enterprise-intrusion-set | APT33 - G0064 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0064<br>https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html<br>https://www.brighttalk.com/webcast/10703/275683 |
-| misp-mitre-intrusion-set | Magic Hound - G0059 | single-alias-intersection | 中 |  | http://www.clearskysec.com/wp-content/uploads/2017/12/Charming_Kitten_2017.pdf<br>https://attack.mitre.org/groups/G0059<br>https://blog.certfa.com/posts/charming-kitten-christmas-gift/ |
 | misp-mitre-intrusion-set | APT33 - G0064 | canonical-name | 高 |  | https://attack.mitre.org/groups/G0064<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://www.brighttalk.com/webcast/10703/275683 |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| Cleaver | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| CHRYSENE | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Charming Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Cleaver | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Clever Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Flying Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| OilRig | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

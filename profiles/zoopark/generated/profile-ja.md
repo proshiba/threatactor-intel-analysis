@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--zoopark`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:54Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,10 +16,7 @@ ZooParkの標準化プロファイル。リポジトリ内の専用資料2件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| APT-C-38 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 19; mapping requires review. |
-| Saber Lion | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 19; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -51,9 +48,9 @@ ZooParkの標準化プロファイル。リポジトリ内の専用資料2件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
@@ -61,11 +58,10 @@ ZooParkの標準化プロファイル。リポジトリ内の専用資料2件と
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | ZooPark | canonical-name | 高 |  | https://securelist.com/whos-who-in-the-zoo/85394/ |
-| misp-threat-actor | COBALT JUNO | single-alias-intersection | 中 |  | https://www.secureworks.com/research/threat-profiles/cobalt-juno |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
-| misp-360net | 军刀狮 - APT-C-38 | single-alias-intersection | 中 |  | https://apt.360.net/report/apts/30.html |
+| misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

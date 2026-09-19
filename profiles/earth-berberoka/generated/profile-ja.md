@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--earth-berberoka`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,8 +20,6 @@ Earth Berberokaの標準化プロファイル。リポジトリ内の専用資�
 |---|---|---|---|---|---|
 | Gambling Puppet | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | GamblingPuppet | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| GamblingPuppet, Gambling Puppet | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 113; mapping requires review. |
-| Emissary Panda, Iron Tiger | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 113; mapping requires review. |
 
 ## 帰属
 
@@ -53,7 +51,7 @@ Earth Berberokaの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

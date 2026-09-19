@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--elderwood`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,7 +23,6 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 | Hydraq | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | SIG22 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Sneaky Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Hydraq, SIG22, Elderwood, Elderwood Gang | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 20; mapping requires review. |
 
 ## 帰属
 
@@ -57,7 +56,7 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

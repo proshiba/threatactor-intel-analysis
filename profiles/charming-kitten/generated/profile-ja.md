@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--charming-kitten`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -26,10 +26,6 @@ Charming Kittenの標準化プロファイル。リポジトリ内の専用資�
 | Newscaster | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Phosphorus | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA453 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Cutting Kitten | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 3; mapping requires review. |
-| TG-2889 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 3; mapping requires review. |
-| Ghambar | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 3; mapping requires review. |
-| COBALT GYPSY | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 3; mapping requires review. |
 
 ## 帰属
 
@@ -65,35 +61,25 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Cutting Kitten, TG-2889 | multiple-name-intersection | 高 | Iran | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Cutting+Kitten%2C+TG-2889&n=1 |
 | etda-threat-group-cards | ITG18 | single-alias-intersection | 中 | Iran | https://securityintelligence.com/posts/new-research-exposes-iranian-threat-group-operations/<br>https://securityintelligence.com/posts/itg18-operational-security-errors-plague-iranian-threat-group/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=ITG18&n=1 |
 | etda-threat-group-cards | Magic Hound, APT 35, Cobalt Illusion, Charming Kitten | canonical-name | 高 | Iran | https://www.clearskysec.com/wp-content/uploads/2017/12/Charming_Kitten_2017.pdf<br>https://en.wikipedia.org/wiki/Charming_Kitten<br>https://vblocalhost.com/uploads/VB2021-Haeghebaert.pdf |
-| etda-threat-group-cards | OilRig, APT 34, Helix Kitten, Chrysene | single-alias-intersection | 中 | Iran | https://unit42.paloaltonetworks.com/unit42-striking-oil-closer-look-adversary-infrastructure/<br>https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-november-helix-kitten/<br>https://marcoramilli.com/2019/08/07/oilrig-the-techniques-evolution-over-time/ |
 | etda-threat-group-cards | Rocket Kitten, Newscaster, NewsBeef | single-alias-intersection | 中 | Iran | https://securelist.com/freezer-paper-around-free-meat/74503/<br>https://blog.checkpoint.com/wp-content/uploads/2015/11/rocket-kitten-report.pdf<br>https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp-the-spy-kittens-are-back.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | Hazel Sandstorm | single-alias-intersection | 中 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | microsoft-threat-actor-mapping | Mint Sandstorm | canonical-name | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | Cutting Kitten | single-alias-intersection | 中 | IR, Iran (Islamic Republic of) | https://www.cfr.org/interactive/cyber-operations/itsecteam<br>https://www.justice.gov/usao-sdny/file/835061/download |
 | misp-threat-actor | Charming Kitten | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://en.wikipedia.org/wiki/Operation_Newscaster<br>https://iranthreats.github.io/resources/macdownloader-macos-malware/<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2014/2014.05.28.NewsCaster_An_Iranian_Threat_Within_Social_Networks/file-2581720763-pdf.pdf |
-| misp-threat-actor | Cleaver | multiple-name-intersection | 高 | IR, Iran (Islamic Republic of) | https://www.secureworks.com/research/the-curious-case-of-mia-ash<br>https://www.cfr.org/interactive/cyber-operations/operation-cleaver<br>http://www.secureworks.com/cyber-threat-intelligence/threats/suspected-iran-based-hacker-group-creates-network-of-fake-linkedin-profiles/ |
-| misp-threat-actor | OilRig | single-alias-intersection | 中 | IR, Iran (Islamic Republic of) | https://blog.morphisec.com/iranian-fileless-cyberattack-on-israel-word-vulnerability<br>https://unit42.paloaltonetworks.com/unit42-striking-oil-closer-look-adversary-infrastructure/<br>https://unit42.paloaltonetworks.com/unit42-introducing-the-adversary-playbook-first-up-oilrig/ |
 | misp-threat-actor | APT35 | multiple-name-intersection | 高 | IR | https://www.fireeye.com/content/dam/collateral/en/mtrends-2018.pdf<br>https://attack.mitre.org/groups/G0059/<br>https://www.cfr.org/interactive/cyber-operations/magic-hound |
 | misp-threat-actor | TA453 | single-alias-intersection | 中 | IR | https://www.proofpoint.com/us/blog/threat-insight/ta453-refuses-be-bound-expectations<br>https://www.proofpoint.com/us/blog/threat-insight/badblood-ta453-targets-us-and-israeli-medical-research-personnel-credential |
-| misp-microsoft-activity-group | Hazel Sandstorm | single-alias-intersection | 中 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Mint Sandstorm | canonical-name | 高 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Cleaver - G0003 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0003<br>https://www.cylance.com/content/dam/cylance/pages/operation-cleaver/Cylance%20Operation%20Cleaver%20Report.pdf<br>http://www.secureworks.com/cyber-threat-intelligence/threats/suspected-iran-based-hacker-group-creates-network-of-fake-linkedin-profiles/ |
 | misp-mitre-enterprise-intrusion-set | Charming Kitten - G0058 | canonical-name | 高 |  | https://attack.mitre.org/wiki/Group/G0058<br>http://www.clearskysec.com/wp-content/uploads/2017/12/Charming%20Kitten%202017.pdf |
 | misp-mitre-enterprise-intrusion-set | Magic Hound - G0059 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0059<br>https://researchcenter.paloaltonetworks.com/2017/02/unit42-magic-hound-campaign-attacks-saudi-targets/ |
 | misp-mitre-intrusion-set | Charming Kitten - G0058 | canonical-name | 高 |  | http://www.clearskysec.com/wp-content/uploads/2017/12/Charming_Kitten_2017.pdf<br>https://attack.mitre.org/groups/G0058 |
 | misp-mitre-intrusion-set | Magic Hound - G0059 | mitre-external-id | 高 |  | http://www.clearskysec.com/wp-content/uploads/2017/12/Charming_Kitten_2017.pdf<br>https://attack.mitre.org/groups/G0059<br>https://blog.certfa.com/posts/charming-kitten-christmas-gift/ |
-| misp-mitre-intrusion-set | Cleaver - G0003 | single-alias-intersection | 中 |  | http://www.secureworks.com/cyber-threat-intelligence/threats/suspected-iran-based-hacker-group-creates-network-of-fake-linkedin-profiles/<br>https://attack.mitre.org/groups/G0003<br>https://www.cylance.com/content/dam/cylance/pages/operation-cleaver/Cylance_Operation_Cleaver_Report.pdf |
-| misp-mitre-intrusion-set | OilRig - G0049 | single-alias-intersection | 中 |  | http://researchcenter.paloaltonetworks.com/2016/05/the-oilrig-campaign-attacks-on-saudi-arabian-organizations-deliver-helminth-backdoor/<br>http://researchcenter.paloaltonetworks.com/2016/10/unit42-oilrig-malware-campaign-updates-toolset-and-expands-targets/<br>http://researchcenter.paloaltonetworks.com/2017/04/unit42-oilrig-actors-provide-glimpse-development-testing-efforts/ |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
@@ -101,14 +87,12 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | 対象 | 関係 | データセット | 確度 | 評価 |
 |---|---|---|---|---|
 | Cleaver | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Magic Hound | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | APT35 | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | APT42 | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | CHRYSENE | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Charming Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Cleaver | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Clever Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Cutting Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Flying Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | OilRig | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Rocket Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |

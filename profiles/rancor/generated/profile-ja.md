@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--rancor`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ Rancorの標準化プロファイル。リポジトリ内の専用資料1件とM
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| DragonOK | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 94; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -50,29 +48,24 @@ Rancorの標準化プロファイル。リポジトリ内の専用資料1件とM
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | DragonOK | single-alias-intersection | 中 | China | https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-quantum-entanglement.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=DragonOK&n=1 |
 | etda-threat-group-cards | Rancor | canonical-name | 高 | China | https://unit42.paloaltonetworks.com/unit42-rancor-targeted-attacks-south-east-asia-using-plaintee-ddkong-malware-families/<br>https://research.checkpoint.com/2019/rancor-the-year-of-the-phish/<br>https://unit42.paloaltonetworks.com/rancor-cyber-espionage-group-uses-new-custom-malware-to-attack-southeast-asia/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | DragonOK | single-alias-intersection | 中 | CN, China | https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-quantum-entanglement.pdf<br>https://attack.mitre.org/wiki/Groups<br>https://www.forcepoint.com/de/blog/x-labs/trojanized-adobe-installer-used-install-dragonok-s-new-custom-backdoor |
 | misp-threat-actor | RANCOR | canonical-name | 高 | CN, China | https://unit42.paloaltonetworks.com/unit42-rancor-targeted-attacks-south-east-asia-using-plaintee-ddkong-malware-families/<br>https://www.cfr.org/interactive/cyber-operations/rancor<br>https://attack.mitre.org/groups/G0075/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | DragonOK - G0017 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0017<br>https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-quantum-entanglement.pdf<br>http://researchcenter.paloaltonetworks.com/2015/04/unit-42-identifies-new-dragonok-backdoor-malware-deployed-against-japanese-targets/ |
-| misp-mitre-intrusion-set | DragonOK - G0017 | single-alias-intersection | 中 |  | http://researchcenter.paloaltonetworks.com/2015/04/unit-42-identifies-new-dragonok-backdoor-malware-deployed-against-japanese-targets/<br>https://attack.mitre.org/groups/G0017<br>https://web.archive.org/web/20210920193513/https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-quantum-entanglement.pdf |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | Rancor - G0075 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0075<br>https://researchcenter.paloaltonetworks.com/2018/06/unit42-rancor-targeted-attacks-south-east-asia-using-plaintee-ddkong-malware-families/ |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| Moafee | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

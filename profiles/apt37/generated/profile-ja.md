@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt37`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -24,10 +24,6 @@ APT37の標準化プロファイル。リポジトリ内の専用資料14件とM
 | Reaper | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Ricochet Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TEMP.Reaper | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Red Eyes | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 4; mapping requires review. |
-| Venus 121 <br>(금성121) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 4; mapping requires review. |
-| THALLIUM | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 4; mapping requires review. |
-| G0067 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 4; mapping requires review. |
 
 ## 帰属
 
@@ -63,30 +59,24 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Kimsuky, Velvet Chollima | single-alias-intersection | 中 | North Korea | https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/<br>https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/<br>https://us-cert.cisa.gov/ncas/alerts/aa20-301a |
 | etda-threat-group-cards | Reaper, APT 37, Ricochet Chollima, ScarCruft | canonical-name | 高 | North Korea | https://www2.fireeye.com/rs/848-DID-242/images/rpt_APT37.pdf<br>https://blog.talosintelligence.com/2018/01/korea-in-crosshairs.html<br>https://threatpost.com/scarcruft-apt-group-used-latest-flash-zero-day-in-two-dozen-attacks/118642/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | Emerald Sleet | single-alias-intersection | 中 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | Kimsuky | single-alias-intersection | 中 | KP, Korea (Democratic People's Republic of) | https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/<br>https://www.cfr.org/interactive/cyber-operations/kimsuky<br>https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT37 | canonical-name | 高 | KP, Korea (Democratic People's Republic of) | https://www.volexity.com/blog/2021/08/17/north-korean-apt-inkysquid-infects-victims-using-browser-exploits/<br>https://www.fireeye.com/blog/threat-research/2018/02/apt37-overlooked-north-korean-actor.html<br>https://www2.fireeye.com/rs/848-DID-242/images/rpt_APT37.pdf |
-| misp-microsoft-activity-group | Emerald Sleet | single-alias-intersection | 中 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | APT37 - G0067 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0067<br>https://www2.fireeye.com/rs/848-DID-242/images/rpt%20APT37.pdf<br>https://securelist.com/operation-daybreak/75100/ |
 | misp-mitre-intrusion-set | APT37 - G0067 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0067<br>https://blog.talosintelligence.com/2018/01/korea-in-crosshairs.html<br>https://securelist.com/operation-daybreak/75100/ |
-| misp-mitre-intrusion-set | Kimsuky - G0094 | single-alias-intersection | 中 |  | https://asert.arbornetworks.com/stolen-pencil-campaign-targets-academia/<br>https://attack.mitre.org/groups/G0094<br>https://blog.alyac.co.kr/2234 |
 | misp-360net | ScarCruft - APT-C-28 | single-alias-intersection | 中 | korea | https://apt.360.net/report/apts/79.html |
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| Opal Sleet | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Ruby Sleet | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

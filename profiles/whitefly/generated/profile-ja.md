@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--whitefly`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:54Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,11 +16,7 @@ Whiteflyの標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Mofang | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 32; mapping requires review. |
-| BRONZE WALKER | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 32; mapping requires review. |
-| Superman | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 32; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -56,20 +52,18 @@ Whiteflyの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Whitefly, Mofang | canonical-name | 高 |  | https://foxitsecurity.files.wordpress.com/2016/06/fox-it_mofang_threatreport_tlp-white.pdf<br>https://www.symantec.com/blogs/threat-intelligence/whitefly-espionage-singapore<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Whitefly%2C+Mofang&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | Mofang | multiple-name-intersection | 高 | CN, China | https://blog.fox-it.com/2016/06/15/mofang-a-politically-motivated-information-stealing-adversary/<br>https://www.cfr.org/interactive/cyber-operations/mofang<br>https://foxitsecurity.files.wordpress.com/2016/06/fox-it_mofang_threatreport_tlp-white.pdf |
 | misp-threat-actor | Whitefly | canonical-name | 高 |  | https://www.symantec.com/blogs/threat-intelligence/whitefly-espionage-singapore<br>https://www.reuters.com/article/us-singapore-cyberattack/cyberattack-on-singapore-health-database-steals-details-of-1-5-million-including-pm-idUSKBN1KA14J |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
-| misp-mitre-intrusion-set | Mofang - G0103 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0103<br>https://foxitsecurity.files.wordpress.com/2016/06/fox-it_mofang_threatreport_tlp-white.pdf |
 | misp-mitre-intrusion-set | Whitefly - G0107 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0107<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/whitefly-espionage-singapore |
 | misp-360net | 一致なし |  |  |  |  |
 

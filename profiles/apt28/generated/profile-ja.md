@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt28`
 - 状態: review
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -33,8 +33,6 @@ APT28の標準化プロファイル。リポジトリ内の専用資料30件とM
 | TG-4127 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Threat Group-4127 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Tsar Team | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| SIG40 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 3; mapping requires review. |
-| Grizzly Steppe | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 3; mapping requires review. |
 | BlueDelta | Recorded Future | overlapping | 中 | `source--daily-6bb5f30d0037bd12215d` | Recorded Future Insikt Groupは「Insikt Group assesses with moderate confidence that this activity was conducted by BlueDelta (which overlaps with APT28, Fancy Bear, and Forest Blizzard), a Russian state-sponsored threat group attributed to the Main Directorate of the General Staff of the Armed Forces of the Russian Federation (GRU).」として、BlueDeltaをAPT28・Fancy Bear・Forest Blizzardと重複するクラスタと位置付けている。原文の表現は「overlaps with」であり同一クラスタの断定ではないため、scopeはexactではなくoverlappingとする。confidenceは原文自身がmoderate confidenceと明示しているためmedium。 |
 
 ## 帰属
@@ -69,18 +67,16 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | APT 29, Cozy Bear, The Dukes | single-alias-intersection | 中 | Russia | https://www.f-secure.com/documents/996508/1030745/dukes_whitepaper.pdf<br>https://www.welivesecurity.com/2019/10/17/operation-ghost-dukes-never-left/<br>https://www.carbonblack.com/2020/03/26/the-dukes-of-moscow/ |
 | etda-threat-group-cards | Sofacy, APT 28, Fancy Bear, Sednit | canonical-name | 高 | Russia | https://securelist.com/sofacy-apt-hits-high-profile-targets-with-updated-toolset/72924/<br>http://download.bitdefender.com/resources/media/materials/white-papers/en/Bitdefender_In-depth_analysis_of_APT28%E2%80%93The_Political_Cyber-Espionage.pdf<br>https://securelist.com/a-slice-of-2017-sofacy-activity/83930/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Forest Blizzard | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT28 | canonical-name | 高 | RU, Russian Federation | https://attack.mitre.org/groups/G0007/<br>https://en.wikipedia.org/wiki/Fancy_Bear<br>https://en.wikipedia.org/wiki/Sofacy_Group |
-| misp-threat-actor | APT29 | single-alias-intersection | 中 | RU, Russian Federation | https://labsblog.f-secure.com/2015/09/17/the-dukes-7-years-of-russian-cyber-espionage/<br>https://www2.fireeye.com/rs/848-DID-242/images/rpt-apt29-hammertoss.pdf<br>https://www.us-cert.gov/sites/default/files/publications/AR-17-20045_Enhanced_Analysis_of_GRIZZLY_STEPPE_Activity.pdf |
 | misp-microsoft-activity-group | Forest Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | STRONTIUM | canonical-name | 高 | RU | https://blogs.technet.microsoft.com/mmpc/2016/11/01/our-commitment-to-our-customers-security/<br>http://download.microsoft.com/download/4/4/C/44CDEF0E-7924-4787-A56A-16261691ACE3/Microsoft_Security_Intelligence_Report_Volume_19_A_Profile_Of_A_Persistent_Adversary_English.pdf<br>https://blogs.technet.microsoft.com/mmpc/2015/11/16/microsoft-security-intelligence-report-strontium/ |
 | misp-mitre-enterprise-intrusion-set | APT28 - G0007 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0007<br>https://www.crowdstrike.com/blog/bears-midst-intrusion-democratic-national-committee/<br>https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/rpt-apt28.pdf |
@@ -89,9 +85,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| UNC2452 | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

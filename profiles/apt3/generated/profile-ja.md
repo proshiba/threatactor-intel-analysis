@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt3`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -24,9 +24,6 @@ APT3の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | TG-0110 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Threat Group-0110 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UPS Team | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| UPS | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 5; mapping requires review. |
-| Group 6 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 5; mapping requires review. |
-| Boyusec – the Guangzhou Boyu Information Technology Company, Ltd | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 5; mapping requires review. |
 
 ## 帰属
 
@@ -58,7 +55,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--strongpity`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,8 +19,6 @@ StrongPityの標準化プロファイル。リポジトリ内の専用資料1件
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | PROMETHIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| APT-C-41 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 17; mapping requires review. |
-| Possibly Turkey | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 17; mapping requires review. |
 
 ## 帰属
 
@@ -56,7 +54,7 @@ StrongPityの標準化プロファイル。リポジトリ内の専用資料1件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -70,7 +68,7 @@ StrongPityの標準化プロファイル。リポジトリ内の専用資料1件
 | misp-microsoft-activity-group | PROMETHIUM | single-alias-intersection | 中 |  | https://blogs.technet.microsoft.com/mmpc/2016/12/14/twin-zero-day-attacks-promethium-and-neodymium-target-individuals-in-europe/ |
 | misp-mitre-enterprise-intrusion-set | PROMETHIUM - G0056 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0056<br>https://blogs.technet.microsoft.com/mmpc/2016/12/14/twin-zero-day-attacks-promethium-and-neodymium-target-individuals-in-europe/<br>http://download.microsoft.com/download/E/B/0/EB0F50CC-989C-4B66-B7F6-68CD3DC90DE3/Microsoft%20Security%20Intelligence%20Report%20Volume%2021%20English.pdf |
 | misp-mitre-intrusion-set | PROMETHIUM - G0056 | mitre-external-id | 高 |  | http://download.microsoft.com/download/E/B/0/EB0F50CC-989C-4B66-B7F6-68CD3DC90DE3/Microsoft_Security_Intelligence_Report_Volume_21_English.pdf<br>https://attack.mitre.org/groups/G0056<br>https://blog.talosintelligence.com/2020/06/promethium-extends-with-strongpity3.html |
-| misp-360net | 蓝色魔眼 - APT-C-41 | single-alias-intersection | 中 | trq | https://apt.360.net/report/apts/158.html |
+| misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

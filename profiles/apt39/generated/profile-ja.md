@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt39`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,8 +21,6 @@ APT39の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | Chafer | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ITG07 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Remix Kitten | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Cadelle | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 8; mapping requires review. |
-| Rana | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 8; mapping requires review. |
 
 ## 帰属
 
@@ -56,17 +54,15 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Cadelle | single-alias-intersection | 中 | Iran | https://www.symantec.com/connect/blogs/iran-based-attackers-use-back-door-threats-spy-middle-eastern-targets<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Cadelle&n=1 |
 | etda-threat-group-cards | Chafer, APT 39 | canonical-name | 高 | Iran | https://www.fireeye.com/blog/threat-research/2019/01/apt39-iranian-cyber-espionage-group-focused-on-personal-information.html<br>https://www.symantec.com/connect/blogs/iran-based-attackers-use-back-door-threats-spy-middle-eastern-targets<br>https://securityintelligence.com/posts/observations-of-itg07-cyber-operations/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Burgundy Sandstorm | multiple-name-intersection | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | Cadelle | single-alias-intersection | 中 | IR | https://www.symantec.com/connect/blogs/iran-based-attackers-use-back-door-threats-spy-middle-eastern-targets |
 | misp-threat-actor | APT39 | canonical-name | 高 | IR | https://www.fireeye.com/blog/threat-research/2019/01/apt39-iranian-cyber-espionage-group-focused-on-personal-information.html<br>https://www.symantec.com/blogs/threat-intelligence/chafer-latest-attacks-reveal-heightened-ambitions<br>https://unit42.paloaltonetworks.com/new-python-based-payload-mechaflounder-used-by-chafer/ |
 | misp-microsoft-activity-group | Burgundy Sandstorm | multiple-name-intersection | 高 | IR, Iran | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |

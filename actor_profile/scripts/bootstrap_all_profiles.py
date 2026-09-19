@@ -300,30 +300,45 @@ def load_workbook_rows(path: Path) -> list[dict[str, Any]]:
     return records
 
 
+WORKBOOK_ACTOR_NAME_HEADERS = {
+    "common name",
+    "other name",
+    "other names",
+    "alias",
+    "aliases",
+}
+
+
+def split_workbook_actor_names(value: str) -> list[str]:
+    """Split only cells that are explicitly actor-name taxonomy fields."""
+    return unique(
+        item.strip().strip('"')
+        for item in re.split(r"[,;\n]|\s+/\s+", value)
+        if item.strip().strip('"')
+    )
+
+
 def actor_name_cells(record: dict[str, Any]) -> list[str]:
-    result = []
-    for header, value in zip(record["headers"], record["values"]):
-        if not header:
+    """Return actor names only from explicit naming columns.
+
+    Older code treated almost every non-operation/non-malware workbook column as
+    a possible alias. That promoted country/origin cells and descriptive prose
+    into actor aliases. Alias extraction must be allowlisted, not blocklisted.
+    """
+    result: list[str] = []
+    for header, value in record.get("fields", {}).items():
+        if not header or not value:
             continue
-        lower = header.lower()
-        if not value:
+        lower = header.casefold().strip()
+        if lower not in WORKBOOK_ACTOR_NAME_HEADERS:
             continue
-        if any(
-            marker in lower
-            for marker in (
-                "operation", "toolset", "malware", "targets", "modus",
-                "comment", "link",
-            )
-        ):
-            continue
-        if lower == "mitre att&ck":
-            continue
-        result.extend(
-            item.strip()
-            for item in re.split(r"\s+/\s+", value)
-            if item.strip()
-        )
-    return result
+        if lower == "common name":
+            name = value.strip().strip('"')
+            if name:
+                result.append(name)
+        else:
+            result.extend(split_workbook_actor_names(value))
+    return unique(result)
 
 
 def find_workbook_record(

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--oceanlotus`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,9 +23,6 @@ OceanLotusの標準化プロファイル。リポジトリ内の専用資料9件
 | BISMUTH | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Canvas Cyclone | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | SeaLotus | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| SectorF01 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 14; mapping requires review. |
-| CyberOne Security, CyberOne Technologies, Hành Tinh Company Limited, Planet and Diacauso | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 14; mapping requires review. |
-| Vietnam | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 14; mapping requires review. |
 
 ## 帰属
 
@@ -57,7 +54,7 @@ OceanLotusの標準化プロファイル。リポジトリ内の専用資料9件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

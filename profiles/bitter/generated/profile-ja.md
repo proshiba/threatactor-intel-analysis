@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--bitter`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,9 +19,6 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | T-APT-17 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| APT-C-08 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 63; mapping requires review. |
-| Manling Flower (Manlinghua) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 63; mapping requires review. |
-| offshore APT organization from South Asia | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 63; mapping requires review. |
 
 ## 帰属
 
@@ -55,7 +52,7 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -68,7 +65,7 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | BITTER - G1002 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1002<br>https://blog.talosintelligence.com/2022/05/bitter-apt-adds-bangladesh-to-their.html<br>https://www.forcepoint.com/blog/x-labs/bitter-targeted-attack-against-pakistan |
-| misp-360net | 蔓灵花 - APT-C-08 | single-alias-intersection | 中 | india | https://apt.360.net/report/apts/5.html |
+| misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

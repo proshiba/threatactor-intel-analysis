@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--molerats`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,10 +20,6 @@ Moleratsの標準化プロファイル。リポジトリ内の専用資料2件�
 |---|---|---|---|---|---|
 | Gaza Cybergang | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Operation Molerats | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Gaza Hacker Team | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 3; mapping requires review. |
-| ALUMINUM SARATOGA | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 3; mapping requires review. |
-| MITRE: G0021 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 3; mapping requires review. |
-| Gaza | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 3; mapping requires review. |
 
 ## 帰属
 
@@ -55,7 +51,7 @@ Moleratsの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

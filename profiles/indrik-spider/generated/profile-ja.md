@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--indrik-spider`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,10 +22,6 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 | Evil Corp | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Manatee Tempest | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC2165 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TA505 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 26; mapping requires review. |
-| SectorJ04 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 26; mapping requires review. |
-| GOLD TAHOE | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 26; mapping requires review. |
-| Russia | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 26; mapping requires review. |
 
 ## 帰属
 
@@ -60,35 +56,28 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Indrik Spider | canonical-name | 高 | Russia | https://www.crowdstrike.com/blog/big-game-hunting-the-evolution-of-indrik-spider-from-dridex-wire-fraud-to-bitpaymer-targeted-ransomware/<br>https://www.welivesecurity.com/2018/01/26/friedex-bitpaymer-ransomware-work-dridex-authors/<br>https://www.mcafee.com/blogs/other-blogs/mcafee-labs/spanish-mssp-targeted-by-bitpaymer-ransomware/ |
-| etda-threat-group-cards | TA505, Graceful Spider, Gold Evergreen | multiple-name-intersection | 高 | Russia | https://www.proofpoint.com/us/threat-insight/post/threat-actor-profile-ta505-dridex-globeimposter<br>https://www.secureworks.com/research/evolution-of-the-gold-evergreen-threat-group<br>https://krebsonsecurity.com/2019/12/inside-evil-corp-a-100m-cybercrime-menace/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Manatee Tempest | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | microsoft-threat-actor-mapping | Mustard Tempest | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| microsoft-threat-actor-mapping | Spandex Tempest | single-alias-intersection | 中 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | INDRIK SPIDER | canonical-name | 高 | RU | https://www.crowdstrike.com/blog/big-game-hunting-the-evolution-of-indrik-spider-from-dridex-wire-fraud-to-bitpaymer-targeted-ransomware/ |
-| misp-threat-actor | TA505 | multiple-name-intersection | 高 | RU | https://www.bleepingcomputer.com/news/security/ta505-group-adopts-new-servhelper-backdoor-and-flawedgrace-rat/<br>https://www.proofpoint.com/sites/default/files/ta505_timeline_final4_0.png<br>https://www.proofpoint.com/us/threat-insight/post/threat-actor-profile-ta505-dridex-globeimposter |
 | misp-threat-actor | Evil Corp | single-alias-intersection | 中 |  | https://krebsonsecurity.com/2019/12/inside-evil-corp-a-100m-cybercrime-menace/<br>https://en.wikipedia.org/wiki/Maksim_Yakubets<br>https://www.bbc.com/news/world-us-canada-53195749 |
-| misp-microsoft-activity-group | Lace Tempest | single-alias-intersection | 中 |  | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Manatee Tempest | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Mustard Tempest | canonical-name | 高 |  | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-microsoft-activity-group | Spandex Tempest | single-alias-intersection | 中 |  | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | Indrik Spider - G0119 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0119<br>https://cloud.google.com/blog/topics/threat-intelligence/unc2165-shifts-to-evade-sanctions/<br>https://home.treasury.gov/news/press-releases/sm845 |
-| misp-mitre-intrusion-set | TA505 - G0092 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0092<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://research.nccgroup.com/2020/11/18/ta505-a-brief-history-of-their-time/ |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
 | 対象 | 関係 | データセット | 確度 | 評価 |
 |---|---|---|---|---|
-| MONTY SPIDER | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Mustard Tempest | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 
 ### クロスチェック上の制約

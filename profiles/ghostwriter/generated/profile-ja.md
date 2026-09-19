@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ghostwriter`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,8 +19,6 @@ Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3�
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | UNC1151 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| TA445 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 82; mapping requires review. |
-| Belarus | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 82; mapping requires review. |
 
 ## 帰属
 
@@ -52,13 +50,13 @@ Ghostwriterの標準化プロファイル。リポジトリ内の専用資料3�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Operation Ghostwriter | multiple-name-intersection | 高 | Belarus | https://www.fireeye.com/content/dam/fireeye-www/blog/pdfs/Ghostwriter-Influence-Campaign.pdf<br>https://www.prevailion.com/diving-deep-into-unc1151s-infrastructure-ghostwriter-and-beyond/<br>https://www.mandiant.com/resources/unc1151-linked-to-belarus-government |
+| etda-threat-group-cards | Operation Ghostwriter | single-alias-intersection | 中 | Belarus | https://www.fireeye.com/content/dam/fireeye-www/blog/pdfs/Ghostwriter-Influence-Campaign.pdf<br>https://www.prevailion.com/diving-deep-into-unc1151s-infrastructure-ghostwriter-and-beyond/<br>https://www.mandiant.com/resources/unc1151-linked-to-belarus-government |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Ghostwriter | canonical-name | 高 | BY, Belarus | https://www.fireeye.com/blog/threat-research/2020/07/ghostwriter-influence-campaign.html<br>https://twitter.com/hatr/status/1377220336597483520<br>https://www.mandiant.com/resources/unc1151-linked-to-belarus-government |

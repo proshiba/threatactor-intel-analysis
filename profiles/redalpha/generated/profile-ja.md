@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--redalpha`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ RedAlphaの標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| DeepCliff, Red Dev 3 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 114; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -50,7 +48,7 @@ RedAlphaの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

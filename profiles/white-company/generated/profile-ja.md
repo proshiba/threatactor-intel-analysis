@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--white-company`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,13 +16,7 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Bahamut | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 64; mapping requires review. |
-| URPAGE | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 64; mapping requires review. |
-| EHDEVEL | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 64; mapping requires review. |
-| WINDSHIFT | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 64; mapping requires review. |
-| offshore APT organization from South Asia | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 64; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -56,25 +50,19 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Bahamut | single-alias-intersection | 中 |  | https://www.bellingcat.com/news/mena/2017/06/12/bahamut-pursuing-cyber-espionage-actor-middle-east/<br>https://www.blackberry.com/us/en/forms/enterprise/bahamut-report<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Bahamut&n=1 |
 | etda-threat-group-cards | The White Company | canonical-name | 高 |  | https://www.cylance.com/content/dam/cylance-web/en-us/resources/knowledge-center/resource-library/reports/WhiteCompanyOperationShaheenReport.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=The+White+Company&n=1 |
-| etda-threat-group-cards | Urpage | single-alias-intersection | 中 |  | https://blog.trendmicro.com/trendlabs-security-intelligence/the-urpage-connection-to-bahamut-confucius-and-patchwork/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Urpage&n=1 |
-| etda-threat-group-cards | WindShift | single-alias-intersection | 中 |  | https://unit42.paloaltonetworks.com/shifting-in-the-wind-windshift-attacks-target-middle-eastern-governments/<br>https://gsec.hitb.org/materials/sg2018/D1%20COMMSEC%20-%20In%20the%20Trails%20of%20WINDSHIFT%20APT%20-%20Taha%20Karim.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=WindShift&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | Bahamut | single-alias-intersection | 中 |  | https://www.bellingcat.com/news/mena/2017/06/12/bahamut-pursuing-cyber-espionage-actor-middle-east/<br>https://www.bellingcat.com/resources/case-studies/2017/10/27/bahamut-revisited-cyber-espionage-middle-east-south-asia/ |
-| misp-threat-actor | WindShift | single-alias-intersection | 中 |  | https://unit42.paloaltonetworks.com/shifting-in-the-wind-windshift-attacks-target-middle-eastern-governments/<br>https://gsec.hitb.org/materials/sg2018/D1%20COMMSEC%20-%20In%20the%20Trails%20of%20WINDSHIFT%20APT%20-%20Taha%20Karim.pdf<br>https://unit42.paloaltonetworks.com/atoms/windyphoenix/ |
-| misp-threat-actor | Urpage | single-alias-intersection | 中 |  | https://www.trendmicro.com/en_us/research/18/h/the-urpage-connection-to-bahamut-confucius-and-patchwork.html |
+| misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | The White Company - G0089 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0089<br>https://www.cylance.com/content/dam/cylance-web/en-us/resources/knowledge-center/resource-library/reports/WhiteCompanyOperationShaheenReport.pdf?_ga=2.161661948.1943296560.1555683782-1066572390.1555511517 |
-| misp-mitre-intrusion-set | Windshift - G0112 | multiple-name-intersection | 高 |  | https://attack.mitre.org/groups/G0112<br>https://objective-see.com/blog/blog_0x3B.html<br>https://objective-see.com/blog/blog_0x3D.html |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）

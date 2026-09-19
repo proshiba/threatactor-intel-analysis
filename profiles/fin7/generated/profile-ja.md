@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin7`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,8 +23,6 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | GOLD NIAGARA | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ITG14 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Sangria Tempest | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Carbanak | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 8; mapping requires review. |
-| Anunak | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 8; mapping requires review. |
 
 ## 帰属
 
@@ -61,7 +59,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -74,10 +72,9 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | misp-threat-actor | FIN7 | canonical-name | 高 | RU | https://en.wikipedia.org/wiki/Carbanak<br>https://app.box.com/s/p7qzcury97tuwk26694uutujwqmwqyhe<br>http://2014.zeronights.ru/assets/files/slides/ivanovb-zeronights.pdf |
 | misp-microsoft-activity-group | Sangria Tempest | canonical-name | 高 | UA | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | FIN7 - G0046 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0046<br>https://www.fireeye.com/blog/threat-research/2017/03/fin7%20spear%20phishing.html<br>https://www.fireeye.com/blog/threat-research/2017/04/fin7-phishing-lnk.html |
-| misp-mitre-enterprise-intrusion-set | Carbanak - G0008 | multiple-name-intersection | 高 |  | https://attack.mitre.org/wiki/Group/G0008<br>https://securelist.com/files/2015/02/Carbanak%20APT%20eng.pdf<br>https://www.fireeye.com/blog/threat-research/2017/04/fin7-phishing-lnk.html |
-| misp-mitre-intrusion-set | Carbanak - G0008 | multiple-name-intersection | 高 |  | https://attack.mitre.org/groups/G0008<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064518/Carbanak_APT_eng.pdf<br>https://www.europol.europa.eu/newsroom/news/mastermind-behind-eur-1-billion-cyber-bank-robbery-arrested-in-spain |
+| misp-mitre-enterprise-intrusion-set | Carbanak - G0008 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0008<br>https://securelist.com/files/2015/02/Carbanak%20APT%20eng.pdf<br>https://www.fireeye.com/blog/threat-research/2017/04/fin7-phishing-lnk.html |
 | misp-mitre-intrusion-set | FIN7 - G0046 | mitre-external-id | 高 |  | http://blog.morphisec.com/fin7-attacks-restaurant-industry<br>https://attack.mitre.org/groups/G0046<br>https://bi-zone.medium.com/from-pentest-to-apt-attack-cybercriminal-group-fin7-disguises-its-malware-as-an-ethical-hackers-c23c9a75e319 |
-| misp-360net | Carbanak - APT-C-11 | single-alias-intersection | 中 | Ukraine | https://apt.360.net/report/apts/68.html |
+| misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
