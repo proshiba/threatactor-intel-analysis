@@ -482,6 +482,36 @@ def relationship_candidates(
     )
 
 
+def ensure_progress_entry(
+    tracker: dict[str, Any],
+    tracker_by_slug: dict[str, dict[str, Any]],
+    *,
+    slug: str,
+    name: str,
+) -> dict[str, Any]:
+    """Return an OSINT progress entry, creating one for newly added actors."""
+    progress = tracker_by_slug.get(slug)
+    if progress is not None:
+        if not progress.get("name"):
+            progress["name"] = name
+        return progress
+
+    progress = {
+        "slug": slug,
+        "name": name,
+        "status": "not_started",
+        "queries": [],
+        "verified_sources": [],
+        "rejected_sources": [],
+        "claims_integrated": [],
+        "last_searched_at": None,
+        "analyst_notes": "",
+    }
+    tracker.setdefault("actors", []).append(progress)
+    tracker_by_slug[slug] = progress
+    return progress
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -536,6 +566,11 @@ def main() -> int:
 
     catalog = load_json(args.catalog)
     tracker = load_json(args.tracker)
+    active_slugs = {actor["slug"] for actor in catalog["actors"]}
+    tracker["actors"] = [
+        item for item in tracker.get("actors", [])
+        if item.get("slug") in active_slugs
+    ]
     tracker_by_slug = {item["slug"]: item for item in tracker["actors"]}
     actors_summary: list[dict[str, Any]] = []
     status_counts: Counter[str] = Counter()
@@ -706,7 +741,9 @@ def main() -> int:
             profile["updated_at"] = retrieved_at
             write_json_atomic(profile_path, profile)
 
-        progress = tracker_by_slug[slug]
+        progress = ensure_progress_entry(
+            tracker, tracker_by_slug, slug=slug, name=profile["name"]
+        )
         query = (
             f"{profile['name']} exact-name and alias cross-check in fixed "
             "MISP/MITRE/Microsoft/360 datasets"
@@ -765,6 +802,7 @@ def main() -> int:
             }
         )
 
+    tracker["actors"].sort(key=lambda item: item["slug"])
     tracker["updated_at"] = retrieved_at
     write_json_atomic(args.tracker.resolve(), tracker)
     summary = {
