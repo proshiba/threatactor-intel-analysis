@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ajax-security-team`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:49Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,9 +23,6 @@ Ajax Security Teamの標準化プロファイル。リポジトリ内の専用�
 | Operation Saffron Rose | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Operation Woolen-Goldfish | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Rocket Kitten | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TEMP.Beanie | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 16; mapping requires review. |
-| Saffron Rose | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 16; mapping requires review. |
-| Group 26 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 16; mapping requires review. |
 
 ## 帰属
 
@@ -59,14 +56,13 @@ Ajax Security Teamの標準化プロファイル。リポジトリ内の専用�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Flying Kitten, Ajax Security Team | canonical-name | 高 | Iran | https://www.crowdstrike.com/blog/cat-scratch-fever-crowdstrike-tracks-newly-reported-iranian-actor-flying-kitten/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Flying+Kitten%2C+Ajax+Security+Team&n=1 |
-| etda-threat-group-cards | Magic Hound, APT 35, Cobalt Illusion, Charming Kitten | single-alias-intersection | 中 | Iran | https://www.clearskysec.com/wp-content/uploads/2017/12/Charming_Kitten_2017.pdf<br>https://en.wikipedia.org/wiki/Charming_Kitten<br>https://vblocalhost.com/uploads/VB2021-Haeghebaert.pdf |
 | etda-threat-group-cards | Rocket Kitten, Newscaster, NewsBeef | single-alias-intersection | 中 | Iran | https://securelist.com/freezer-paper-around-free-meat/74503/<br>https://blog.checkpoint.com/wp-content/uploads/2015/11/rocket-kitten-report.pdf<br>https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp-the-spy-kittens-are-back.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--equation-group`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,10 +19,6 @@ Equation Groupの標準化プロファイル。リポジトリ内の専用資料
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Equation | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Tilded Team | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 4; mapping requires review. |
-| EQGRP | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 4; mapping requires review. |
-| Housefly | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 4; mapping requires review. |
-| Remsec | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 4; mapping requires review. |
 
 ## 帰属
 
@@ -54,7 +50,7 @@ Equation Groupの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

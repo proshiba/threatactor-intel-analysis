@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -35,7 +35,6 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | TEMP.Hex | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 |
 | TWILL TYPHOON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC6384 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TA416, RedDelta, Earth Preta (TrendMicro) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 60; mapping requires review. |
 
 ## 帰属
 
@@ -69,7 +68,7 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

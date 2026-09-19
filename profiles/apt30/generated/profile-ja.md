@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt30`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:49Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,12 +16,7 @@ APT30の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Naikon | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 13; mapping requires review. |
-| Lotus Panda | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 13; mapping requires review. |
-| PLA Unit 78020 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 13; mapping requires review. |
-| Thrip, Billbug | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 13; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -57,33 +52,26 @@ APT30の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | APT 30, Override Panda | canonical-name | 高 | China | https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+30%2C+Override+Panda&n=1 |
-| etda-threat-group-cards | Naikon, Lotus Panda | multiple-name-intersection | 高 | China | https://securelist.com/the-chronicles-of-the-hellsing-apt-the-empire-strikes-back/69567/<br>https://securelist.com/the-naikon-apt/69953/<br>https://exchange.xforce.ibmcloud.com/threat-group/guid:2f1962c4d7c0c994981c5bc363823c44 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Raspberry Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | Naikon | multiple-name-intersection | 高 | CN, China | https://securelist.com/analysis/publications/69953/the-naikon-apt/<br>https://www.fireeye.com/blog/threat-research/2014/03/spear-phishing-the-news-cycle-apt-actors-leverage-interest-in-the-disappearance-of-malaysian-flight-mh-370.html<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07205555/TheNaikonAPT-MsnMM1.pdf |
 | misp-threat-actor | APT30 | canonical-name | 高 | CN, China | https://attack.mitre.org/wiki/Group/G0013<br>https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf<br>https://www.mandiant.com/resources/insights/apt-groups |
-| misp-threat-actor | LOTUS PANDA | single-alias-intersection | 中 | CN, China | https://securelist.com/blog/research/70726/the-spring-dragon-apt/<br>https://securelist.com/spring-dragon-updated-activity/79067/<br>https://www.cfr.org/interactive/cyber-operations/lotus-blossom |
 | misp-microsoft-activity-group | Raspberry Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Naikon - G0019 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0019<br>https://securelist.com/files/2015/05/TheNaikonAPT-MsnMM1.pdf<br>http://cdn2.hubspot.net/hubfs/454298/Project%20CAMERASHY%20ThreatConnect%20Copyright%202015.pdf |
 | misp-mitre-enterprise-intrusion-set | APT30 - G0013 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0013<br>https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf<br>https://securelist.com/the-naikon-apt/69953/ |
 | misp-mitre-intrusion-set | APT30 - G0013 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0013<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2015/05/20081935/rpt-apt30.pdf<br>https://securelist.com/the-naikon-apt/69953/ |
-| misp-mitre-intrusion-set | Naikon - G0019 | single-alias-intersection | 中 |  | http://cdn2.hubspot.net/hubfs/454298/Project_CAMERASHY_ThreatConnect_Copyright_2015.pdf<br>https://attack.mitre.org/groups/G0019<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07205555/TheNaikonAPT-MsnMM1.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
 | 対象 | 関係 | データセット | 確度 | 評価 |
 |---|---|---|---|---|
-| APT30 | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Naikon | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Raspberry Typhoon | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 
 ### クロスチェック上の制約
 

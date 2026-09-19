@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--barium`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,11 +21,6 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 | BRONZE ATLAS | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TG-2633 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Winnti Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Winnti Group | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 11; mapping requires review. |
-| Wicked Panda | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 11; mapping requires review. |
-| APT41 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 11; mapping requires review. |
-| Winnti Umbrella, BARIUM, LEAD, RedEcho, Vanadinite, TAG-22 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 11; mapping requires review. |
-| Deep Panda, Wicked Spider | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 11; mapping requires review. |
 
 ## 帰属
 
@@ -62,7 +57,7 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -70,16 +65,14 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 |---|---|---|---|---|---|
 | etda-threat-group-cards | APT 41 | multiple-name-intersection | 高 | China | http://content.fireeye.com/apt41/rpt-apt41<br>https://arstechnica.com/information-technology/2018/05/researchers-link-a-decade-of-potent-hacks-to-chinese-intelligence-group/<br>https://www.kaspersky.com/about/press-releases/2019_operation-shadowhammer-new-supply-chain-attack |
 | etda-threat-group-cards | Barium | canonical-name | 高 | China | https://threatvector.cylance.com/en_us/home/digitally-signed-malware-targeting-gaming-companies.html<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Barium&n=1 |
-| etda-threat-group-cards | Winnti Group, Wicked Panda | multiple-name-intersection | 高 | China | https://blog.trendmicro.com/trendlabs-security-intelligence/pigs-malware-examining-possible-member-winnti-group/<br>https://securelist.com/winnti-more-than-just-a-game/37029/<br>https://401trg.com/burning-umbrella/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Brass Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| microsoft-threat-actor-mapping | Leopard Typhoon | multiple-name-intersection | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| microsoft-threat-actor-mapping | Leopard Typhoon | single-alias-intersection | 中 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT41 | canonical-name | 高 | CN, People's Republic of China | https://securelist.com/winnti-faq-more-than-just-a-game/57585/<br>https://securelist.com/winnti-more-than-just-a-game/37029/<br>http://williamshowalter.com/a-universal-windows-bootkit/ |
 | misp-microsoft-activity-group | BARIUM | canonical-name | 高 |  | https://blogs.technet.microsoft.com/mmpc/2017/01/25/detecting-threat-actors-in-recent-german-industrial-attacks-with-windows-defender-atp/ |
 | misp-microsoft-activity-group | Brass Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-microsoft-activity-group | Leopard Typhoon | multiple-name-intersection | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Winnti Group - G0044 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0044<br>https://kasperskycontenthub.com/wp-content/uploads/sites/43/vlpdfs/winnti-more-than-just-a-game-130410.pdf<br>https://securelist.com/games-are-over/70991/ |
-| misp-mitre-intrusion-set | Winnti Group - G0044 | single-alias-intersection | 中 |  | http://www.symantec.com/connect/blogs/suckfly-revealing-secret-life-your-code-signing-certificates<br>https://401trg.github.io/pages/burning-umbrella.html<br>https://attack.mitre.org/groups/G0044 |
+| misp-microsoft-activity-group | Leopard Typhoon | single-alias-intersection | 中 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | APT41 - G0096 | canonical-name | 高 |  | https://attack.mitre.org/groups/G0096<br>https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -87,8 +80,6 @@ BARIUMの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 | 対象 | 関係 | データセット | 確度 | 評価 |
 |---|---|---|---|---|
-| APT17 | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Axiom | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | APT17 | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 
 ### クロスチェック上の制約

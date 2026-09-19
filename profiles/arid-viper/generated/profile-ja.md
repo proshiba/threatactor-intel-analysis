@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--arid-viper`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -25,7 +25,6 @@ Arid Viperの標準化プロファイル。リポジトリ内の専用資料2件
 | Mantis | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TAG-63 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Two-tailed Scorpion | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Gaza | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 4; mapping requires review. |
 
 ## 帰属
 
@@ -57,7 +56,7 @@ Arid Viperの標準化プロファイル。リポジトリ内の専用資料2件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

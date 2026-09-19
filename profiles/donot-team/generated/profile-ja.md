@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--donot-team`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,7 +19,6 @@ Donot Teamの標準化プロファイル。リポジトリ内の専用資料3件
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | APT-C-35 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| SectorE02 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 55; mapping requires review. |
 
 ## 帰属
 
@@ -51,7 +50,7 @@ Donot Teamの標準化プロファイル。リポジトリ内の専用資料3件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

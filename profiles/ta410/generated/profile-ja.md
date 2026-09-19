@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta410`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:53Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ TA410の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| APT10 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 99; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -50,21 +48,19 @@ TA410の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | LookBack, TA410 | canonical-name | 高 |  | https://www.proofpoint.com/us/threat-insight/post/lookback-malware-targets-united-states-utilities-sector-phishing-attacks<br>https://www.welivesecurity.com/2022/04/27/lookback-ta410-umbrella-cyberespionage-ttps-activity/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=LookBack%2C+TA410&n=1 |
-| etda-threat-group-cards | Stone Panda, APT 10, menuPass | single-alias-intersection | 中 | China | https://intrusiontruth.wordpress.com/2018/08/15/apt10-was-managed-by-the-tianjin-bureau-of-the-chinese-ministry-of-state-security/<br>https://www.carbonblack.com/2019/02/25/defeating-compiler-level-obfuscations-used-in-apt10-malware/<br>https://adeo.com.tr/wp-content/uploads/2020/02/APT10_v1.2_public.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | Purple Typhoon | single-alias-intersection | 中 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | APT10 | single-alias-intersection | 中 | CN, China | https://unit42.paloaltonetworks.com/unit42-menupass-returns-new-malware-new-attacks-japanese-academics-organizations/<br>https://www.cfr.org/interactive/cyber-operations/apt-10<br>https://www.ncsc.gov.uk/content/files/protected_files/article_files/Joint%20report%20on%20publicly%20available%20hacking%20tools%20%28NCSC%29.pdf |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | TA410 | canonical-name | 高 |  | https://www.proofpoint.com/us/threat-insight/post/lookback-forges-ahead-continued-targeting-united-states-utilities-sector-reveals<br>https://www.proofpoint.com/us/threat-insight/post/lookback-malware-targets-united-states-utilities-sector-phishing-attacks<br>https://www.proofpoint.com/us/blog/threat-insight/ta410-group-behind-lookback-attacks-against-us-utilities-sector-returns-new |
-| misp-microsoft-activity-group | Purple Typhoon | single-alias-intersection | 中 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | menuPass - G0045 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0045<br>http://researchcenter.paloaltonetworks.com/2017/02/unit42-menupass-returns-new-malware-new-attacks-japanese-academics-organizations/<br>https://www.slideshare.net/CrowdStrike/crowd-casts-monthly-you-have-an-adversary-problem |
-| misp-mitre-intrusion-set | menuPass - G0045 | single-alias-intersection | 中 |  | http://researchcenter.paloaltonetworks.com/2017/02/unit42-menupass-returns-new-malware-new-attacks-japanese-academics-organizations/<br>http://web.archive.org/web/20220810112638/https:/www.accenture.com/t20180423T055005Z_w_/se-en/_acnmedia/PDF-76/Accenture-Hogfish-Threat-Analysis.pdf<br>https://attack.mitre.org/groups/G0045 |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）

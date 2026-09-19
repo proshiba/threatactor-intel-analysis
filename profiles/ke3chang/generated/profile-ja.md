@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ke3chang`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -34,8 +34,6 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | Social Network Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Vixen Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Winnti Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Mirage Team, Lurid, Social Network Team, Royal APT, Metushy, Winnti Umbrella, NICKEL, Playful Taurus, BackdoorDiplomacy | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 17; mapping requires review. |
-| Winnti | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 17; mapping requires review. |
 
 ## 帰属
 
@@ -75,7 +73,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -85,7 +83,6 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Nylon Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT15 | canonical-name | 高 | CN, China | https://www.fireeye.com/blog/threat-research/2014/09/forced-to-adapt-xslcmd-backdoor-now-on-os-x.html<br>http://arstechnica.com/security/2015/04/elite-cyber-crime-group-strikes-back-after-attack-by-rival-apt-gang/<br>https://github.com/nccgroup/Royal_APT |
-| misp-threat-actor | APT41 | single-alias-intersection | 中 | CN, People's Republic of China | https://securelist.com/winnti-faq-more-than-just-a-game/57585/<br>https://securelist.com/winnti-more-than-just-a-game/37029/<br>http://williamshowalter.com/a-universal-windows-bootkit/ |
 | misp-threat-actor | BackdoorDiplomacy | single-alias-intersection | 中 |  | https://www.welivesecurity.com/2021/06/10/backdoordiplomacy-upgrading-quarian-turian/ |
 | misp-threat-actor | GREF | single-alias-intersection | 中 | CN | https://www.welivesecurity.com/en/eset-research/badbazaar-espionage-tool-targets-android-users-trojanized-signal-telegram-apps/ |
 | misp-microsoft-activity-group | Nylon Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -96,9 +93,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| APT17 | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--hurricane-panda`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -24,7 +24,6 @@ Hurricane Pandaの標準化プロファイル。リポジトリ内の専用資�
 | TA412 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TEMP.Avengers | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Zirconium | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Zirconium, TA412 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 54; mapping requires review. |
 
 ## 帰属
 
@@ -59,7 +58,7 @@ Hurricane Pandaの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--threat-group-3390`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:53Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -30,8 +30,6 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 | TEMP.Hippo | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TG-3390 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ZipToken | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| ZipToken, Iron Tiger | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 49; mapping requires review. |
-| DEV-0322, Earth Berberoka | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 49; mapping requires review. |
 
 ## 帰属
 
@@ -63,7 +61,7 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

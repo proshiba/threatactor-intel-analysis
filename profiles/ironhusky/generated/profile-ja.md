@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ironhusky`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ IronHuskyの標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Vicious Panda | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 107; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -50,17 +48,15 @@ IronHuskyの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | IronHusky | canonical-name | 高 | China | https://securelist.com/apt-trends-report-q1-2018/85280/<br>https://securelist.com/mysterysnail-new-version/116226/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=IronHusky&n=1 |
-| etda-threat-group-cards | Vicious Panda | single-alias-intersection | 中 | China | https://research.checkpoint.com/2020/vicious-panda-the-covid-campaign/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Vicious+Panda&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | Vicious Panda | single-alias-intersection | 中 | CN | https://securelist.com/microcin-is-here/97353<br>https://securelist.com/a-simple-example-of-a-complex-cyberattack/82636<br>https://decoded.avast.io/luigicamastra/apt-group-planted-backdoors-targeting-high-profile-networks-in-central-asia |
 | misp-threat-actor | IronHusky | canonical-name | 高 | CN | https://securelist.com/mysterysnail-attacks-with-windows-zero-day/104509/<br>https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk175885 |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |

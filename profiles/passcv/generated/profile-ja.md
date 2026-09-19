@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--passcv`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,8 +21,6 @@ PassCVの標準化プロファイル。リポジトリ内の専用資料1件とM
 | China Cracking Group | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TG-3279 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Winnti Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Winnti Umbrella, China Cracking Group, | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 40; mapping requires review. |
-| Winnti | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 40; mapping requires review. |
 
 ## 帰属
 
@@ -59,7 +57,7 @@ PassCVの標準化プロファイル。リポジトリ内の専用資料1件とM
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -70,7 +68,6 @@ PassCVの標準化プロファイル。リポジトリ内の専用資料1件とM
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Leopard Typhoon | single-alias-intersection | 中 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | PassCV | canonical-name | 高 | CN | https://threatvector.cylance.com/en_us/home/digitally-signed-malware-targeting-gaming-companies.html |
-| misp-threat-actor | APT41 | single-alias-intersection | 中 | CN, People's Republic of China | https://securelist.com/winnti-faq-more-than-just-a-game/57585/<br>https://securelist.com/winnti-more-than-just-a-game/37029/<br>http://williamshowalter.com/a-universal-windows-bootkit/ |
 | misp-microsoft-activity-group | Leopard Typhoon | single-alias-intersection | 中 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -78,9 +75,7 @@ PassCVの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| APT17 | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

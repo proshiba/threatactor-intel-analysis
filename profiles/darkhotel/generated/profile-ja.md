@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--darkhotel`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,14 +20,6 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 |---|---|---|---|---|---|
 | DUBNIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Zigzag Hail | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Tardigrade Spider | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| Luder | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| Karba | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| Tapaoux | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| Nemim | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| Dubnium (Microsoft) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA), | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
-| Information on Chinese forum indicating group may have targeted CVE-2015-8651, most likely a South Korean actor | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 81; mapping requires review. |
 
 ## 帰属
 
@@ -61,7 +53,7 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -75,7 +67,7 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 | misp-microsoft-activity-group | Zigzag Hail | canonical-name | 高 | KR | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | Darkhotel - G0012 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0012<br>https://securelist.com/files/2014/11/darkhotel%20kl%2007.11.pdf |
 | misp-mitre-intrusion-set | Darkhotel - G0012 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070903/darkhotel_kl_07.11.pdf |
-| misp-360net | Darkhotel - APT-C-06 | multiple-name-intersection | 高 | southKorea | https://apt.360.net/report/apts/97.html<br>https://apt.360.net/report/apts/3.html |
+| misp-360net | Darkhotel - APT-C-06 | single-alias-intersection | 中 | southKorea | https://apt.360.net/report/apts/97.html<br>https://apt.360.net/report/apts/3.html |
 
 ### 関係性候補（未統合）
 

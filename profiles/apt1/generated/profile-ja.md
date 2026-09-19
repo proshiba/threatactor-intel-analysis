@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt1`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:49Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -29,7 +29,6 @@ APT1の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | ShadyRAT | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Shanghai Group | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TG-8223 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| GIF89a, ShadyRAT, Shanghai Group, Byzantine Candor | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
 
 ## 帰属
 
@@ -63,7 +62,7 @@ APT1の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

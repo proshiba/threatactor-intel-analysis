@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0026`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:53Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ UAC-0026の標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Scarab | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 111; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -50,7 +48,7 @@ UAC-0026の標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -59,7 +57,7 @@ UAC-0026の標準化プロファイル。リポジトリ内の専用資料1件�
 | etda-threat-group-cards | Scarab | canonical-name | 高 | China | https://web.archive.org/web/20150124025612/http:/www.symantec.com:80/connect/blogs/scarab-attackers-took-aim-select-russian-targets-2012<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Scarab&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | Scarab | single-alias-intersection | 中 | CN | https://web.archive.org/web/20150124025612/http://www.symantec.com:80/connect/blogs/scarab-attackers-took-aim-select-russian-targets-2012<br>https://www.sentinelone.com/labs/chinese-threat-actor-scarab-targeting-ukraine |
+| misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |

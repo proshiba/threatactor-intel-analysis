@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sunflower`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:12Z
+- 更新日時: 2026-09-19T00:54:52Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,8 +22,6 @@ SunFlowerの標準化プロファイル。リポジトリ内の専用資料1件�
 | Flowershop | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | MoonFlower | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | SIG17 / SIG18 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| SIG17 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Israel row 5; mapping requires review. |
-| SIG18 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Israel row 5; mapping requires review. |
 
 ## 帰属
 
@@ -55,7 +53,7 @@ SunFlowerの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

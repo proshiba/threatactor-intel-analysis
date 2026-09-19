@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta459`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:13Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ TA459の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| ?NetTraveler? | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 36; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -50,17 +48,15 @@ TA459の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | NetTraveler, APT 21, Hammer Panda | single-alias-intersection | 中 | China | https://www.kaspersky.com/about/press-releases/2013_kaspersky-lab-uncovers--operation-nettraveler--a-global-cyberespionage-campaign-targeting-government-affiliated-organizations-and-research-institutes<br>https://www.proofpoint.com/us/threat-insight/post/nettraveler-apt-targets-russian-european-interests<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=NetTraveler%2C+APT+21%2C+Hammer+Panda&n=1 |
 | etda-threat-group-cards | TA459 | canonical-name | 高 | China | https://www.proofpoint.com/us/threat-insight/post/apt-targets-financial-analysts<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=TA459&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | APT21 | single-alias-intersection | 中 | CN, China | https://securelist.com/blog/research/35936/nettraveler-is-running-red-star-apt-attacks-compromise-high-profile-victims/<br>https://www.cfr.org/interactive/cyber-operations/nettraveler<br>https://www.kaspersky.com/about/press-releases/2013_kaspersky-lab-uncovers--operation-nettraveler--a-global-cyberespionage-campaign-targeting-government-affiliated-organizations-and-research-institutes |
 | misp-threat-actor | TA459 | canonical-name | 高 | CN | https://www.proofpoint.com/us/threat-insight/post/apt-targets-financial-analysts<br>https://attack.mitre.org/groups/G0062/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | TA459 - G0062 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0062<br>https://www.proofpoint.com/us/threat-insight/post/apt-targets-financial-analysts |

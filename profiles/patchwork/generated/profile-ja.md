@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--patchwork`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,12 +23,6 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 | Hangover Group | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | MONSOON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Operation Hangover | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Capricorn Organisation | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 6; mapping requires review. |
-| APT-C-09 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 6; mapping requires review. |
-| Viceroy Tiger | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 6; mapping requires review. |
-| Mahaboo | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 6; mapping requires review. |
-| Neon, Confucius | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 6; mapping requires review. |
-| offshore APT organization from South Asia | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 6; mapping requires review. |
 
 ## 帰属
 
@@ -64,7 +58,7 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -74,7 +68,7 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 | etda-threat-group-cards | Patchwork, Dropping Elephant | canonical-name | 高 | India | https://s3-us-west-2.amazonaws.com/cymmetria-blog/public/Unveiling_Patchwork.pdf<br>https://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries<br>https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | VICEROY TIGER | multiple-name-intersection | 高 | IN | https://github.com/jack8daniels2/threat-INTel/blob/master/2013/Unveiling-an-Indian-Cyberattack-Infrastructure-appendixes.pdf<br>https://ti.360.net/blog/articles/latest-activity-of-apt-c-35/<br>https://www.netscout.com/blog/asert/donot-team-leverages-new-modular-malware-framework-south-asia |
+| misp-threat-actor | VICEROY TIGER | single-alias-intersection | 中 | IN | https://github.com/jack8daniels2/threat-INTel/blob/master/2013/Unveiling-an-Indian-Cyberattack-Infrastructure-appendixes.pdf<br>https://ti.360.net/blog/articles/latest-activity-of-apt-c-35/<br>https://www.netscout.com/blog/asert/donot-team-leverages-new-modular-malware-framework-south-asia |
 | misp-threat-actor | QUILTED TIGER | canonical-name | 高 | IN, India | https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=09308982-77bd-41e0-8269-f2cc9ce3266e&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments<br>https://www.forcepoint.com/blog/x-labs/monsoon-analysis-apt-campaign<br>https://www.cymmetria.com/patchwork-targeted-attack/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | Patchwork - G0040 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0040<br>https://s3-us-west-2.amazonaws.com/cymmetria-blog/public/Unveiling%20Patchwork.pdf<br>http://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries |

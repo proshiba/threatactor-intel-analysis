@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt34`
 - 状態: review
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -29,8 +29,6 @@ APT34の標準化プロファイル。リポジトリ内の専用資料2件とMI
 | ITG13 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | OilRig | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA452 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Twisted Kitten | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 11; mapping requires review. |
-| Chrysene | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Iran row 11; mapping requires review. |
 
 ## 帰属
 
@@ -64,7 +62,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -75,7 +73,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | microsoft-threat-actor-mapping | Hazel Sandstorm | canonical-name | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Cleaver | single-alias-intersection | 中 | IR, Iran (Islamic Republic of) | https://www.secureworks.com/research/the-curious-case-of-mia-ash<br>https://www.cfr.org/interactive/cyber-operations/operation-cleaver<br>http://www.secureworks.com/cyber-threat-intelligence/threats/suspected-iran-based-hacker-group-creates-network-of-fake-linkedin-profiles/ |
 | misp-threat-actor | OilRig | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://blog.morphisec.com/iranian-fileless-cyberattack-on-israel-word-vulnerability<br>https://unit42.paloaltonetworks.com/unit42-striking-oil-closer-look-adversary-infrastructure/<br>https://unit42.paloaltonetworks.com/unit42-introducing-the-adversary-playbook-first-up-oilrig/ |
-| misp-threat-actor | CHRYSENE | multiple-name-intersection | 高 | Unknown | https://dragos.com/adversaries.html<br>https://dragos.com/media/2017-Review-Industrial-Control-System-Threats.pdf<br>https://www.cfr.org/interactive/cyber-operations/chrysene |
+| misp-threat-actor | CHRYSENE | single-alias-intersection | 中 | Unknown | https://dragos.com/adversaries.html<br>https://dragos.com/media/2017-Review-Industrial-Control-System-Threats.pdf<br>https://www.cfr.org/interactive/cyber-operations/chrysene |
 | misp-microsoft-activity-group | Hazel Sandstorm | canonical-name | 高 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | APT34 - G0057 | canonical-name | 高 |  | https://attack.mitre.org/wiki/Group/G0057<br>https://www.fireeye.com/blog/threat-research/2017/12/targeted-attack-in-middle-east-by-apt34.html |
 | misp-mitre-enterprise-intrusion-set | OilRig - G0049 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0049<br>http://researchcenter.paloaltonetworks.com/2017/04/unit42-oilrig-actors-provide-glimpse-development-testing-efforts/<br>http://www.clearskysec.com/oilrig/ |

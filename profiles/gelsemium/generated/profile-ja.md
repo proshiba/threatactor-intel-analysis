@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gelsemium`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,9 +16,7 @@ Gelsemiumの標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Chimera | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Unknown row 37; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -54,20 +52,18 @@ Gelsemiumの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Chimera | single-alias-intersection | 中 | China | https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Chimera&n=1 |
 | etda-threat-group-cards | Gelsemium | canonical-name | 高 | China | https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf<br>https://www.venustech.com.cn/uploads/2018/08/231401512426.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Gelsemium&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Gelsemium | canonical-name | 高 |  | https://www.welivesecurity.com/2021/06/09/gelsemium-when-threat-actors-go-gardening/<br>https://www.venustech.com.cn/uploads/2018/08/231401512426.pdf<br>https://hitcon.org/2016/pacific/0composition/pdf/1202/1202%20R0%200930%20an%20intelligance-driven%20approach%20to%20cyber%20defense.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
-| misp-mitre-intrusion-set | Chimera - G0114 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0114<br>https://cycraft.com/download/CyCraft-Whitepaper-Chimera_V4.1.pdf<br>https://web.archive.org/web/20230218064220/https://research.nccgroup.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ |
 | misp-mitre-intrusion-set | Gelsemium - G0141 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0141<br>https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 

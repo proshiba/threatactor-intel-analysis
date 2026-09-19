@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lotus-blossom`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -26,7 +26,6 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 | Spring Dragon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ST Group | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Thrip | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| ST Group, Esile | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 14; mapping requires review. |
 
 ## 帰属
 
@@ -60,7 +59,7 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

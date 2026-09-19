@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt43`
 - 状態: review
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,12 +19,6 @@ APT43の標準化プロファイル。リポジトリ内の専用資料2件とMI
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Kimsuky | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Kimsuki | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 6; mapping requires review. |
-| Velvet Chollima | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 6; mapping requires review. |
-| Thallium | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 6; mapping requires review. |
-| CloudDragon | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 6; mapping requires review. |
-| TA406 (Proofpoint) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 6; mapping requires review. |
-| G0094 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 6; mapping requires review. |
 
 ## 帰属
 
@@ -59,7 +53,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -67,14 +61,12 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Kimsuky, Velvet Chollima | canonical-name | 高 | North Korea | https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/<br>https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/<br>https://us-cert.cisa.gov/ncas/alerts/aa20-301a |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | Emerald Sleet | multiple-name-intersection | 高 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| microsoft-threat-actor-mapping | Emerald Sleet | single-alias-intersection | 中 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | microsoft-threat-actor-mapping | Opal Sleet | canonical-name | 高 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| microsoft-threat-actor-mapping | Ruby Sleet | single-alias-intersection | 中 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Kimsuky | canonical-name | 高 | KP, Korea (Democratic People's Republic of) | https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/<br>https://www.cfr.org/interactive/cyber-operations/kimsuky<br>https://www.pwc.co.uk/issues/cyber-security-data-privacy/research/tracking-kimsuky-north-korea-based-cyber-espionage-group-part-2.html |
 | misp-threat-actor | APT43 | canonical-name | 高 |  | https://www.mandiant.com/resources/blog/apt43-north-korea-cybercrime-espionage<br>https://mandiant.widen.net/s/zvmfw5fnjs/apt43-report |
-| misp-microsoft-activity-group | Emerald Sleet | multiple-name-intersection | 高 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-microsoft-activity-group | Emerald Sleet | single-alias-intersection | 中 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Opal Sleet | canonical-name | 高 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-microsoft-activity-group | Ruby Sleet | single-alias-intersection | 中 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | Kimsuky - G0094 | canonical-name | 高 |  | https://asert.arbornetworks.com/stolen-pencil-campaign-targets-academia/<br>https://attack.mitre.org/groups/G0094<br>https://blog.alyac.co.kr/2234 |
 | misp-360net | 一致なし |  |  |  |  |

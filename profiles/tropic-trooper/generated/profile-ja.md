@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--tropic-trooper`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:53Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,7 +21,6 @@ Tropic Trooperの標準化プロファイル。リポジトリ内の専用資料
 | KeyBoy | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | KeyBoys | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Pirate Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Tropic Trooper & KeyBoy | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 65; mapping requires review. |
 
 ## 帰属
 
@@ -53,7 +52,7 @@ Tropic Trooperの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

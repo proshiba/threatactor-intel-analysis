@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--carbanak`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,9 +19,6 @@ Carbanakの標準化プロファイル。リポジトリ内の専用資料1件�
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Anunak | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Carbanak Group | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 57; mapping requires review. |
-| Carbon Spider | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 57; mapping requires review. |
-| Ukraine | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 57; mapping requires review. |
 
 ## 帰属
 
@@ -58,20 +55,19 @@ Carbanakの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Carbanak, Anunak | canonical-name | 高 | Ukraine | https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064518/Carbanak_APT_eng.pdf<br>https://www.group-ib.com/resources/threat-research/Anunak_APT_against_financial_institutions.pdf<br>https://www.bitdefender.com/files/News/CaseStudies/study/262/Bitdefender-WhitePaper-An-APT-Blueprint-Gaining-New-Visibility-into-Financial-Threats-interactive.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | Sangria Tempest | single-alias-intersection | 中 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | FIN7 | canonical-name | 高 | RU | https://en.wikipedia.org/wiki/Carbanak<br>https://app.box.com/s/p7qzcury97tuwk26694uutujwqmwqyhe<br>http://2014.zeronights.ru/assets/files/slides/ivanovb-zeronights.pdf |
-| misp-microsoft-activity-group | Sangria Tempest | single-alias-intersection | 中 | UA | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | Carbanak - G0008 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0008<br>https://securelist.com/files/2015/02/Carbanak%20APT%20eng.pdf<br>https://www.fireeye.com/blog/threat-research/2017/04/fin7-phishing-lnk.html |
 | misp-mitre-intrusion-set | Carbanak - G0008 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0008<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064518/Carbanak_APT_eng.pdf<br>https://www.europol.europa.eu/newsroom/news/mastermind-behind-eur-1-billion-cyber-bank-robbery-arrested-in-spain |
-| misp-mitre-intrusion-set | FIN7 - G0046 | single-alias-intersection | 中 |  | http://blog.morphisec.com/fin7-attacks-restaurant-industry<br>https://attack.mitre.org/groups/G0046<br>https://bi-zone.medium.com/from-pentest-to-apt-attack-cybercriminal-group-fin7-disguises-its-malware-as-an-ethical-hackers-c23c9a75e319 |
 | misp-360net | Carbanak - APT-C-11 | single-alias-intersection | 中 | Ukraine | https://apt.360.net/report/apts/68.html |
 
 ### 関係性候補（未統合）

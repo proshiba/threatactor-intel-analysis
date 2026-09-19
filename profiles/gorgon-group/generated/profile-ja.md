@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gorgon-group`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,7 +20,6 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 |---|---|---|---|---|---|
 | Aggah | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Subaat | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Pakistan | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 54; mapping requires review. |
 
 ## 帰属
 
@@ -52,7 +51,7 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

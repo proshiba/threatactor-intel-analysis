@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lamberts`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,11 +16,7 @@ Lambertsの標準化プロファイル。リポジトリ内の専用資料2件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| APT-C-39 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 5; mapping requires review. |
-| Rattlesnake | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 5; mapping requires review. |
-| Longhorn | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook NATO row 5; mapping requires review. |
+Aliasなし
 
 ## 帰属
 
@@ -52,21 +48,19 @@ Lambertsの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Longhorn, The Lamberts | multiple-name-intersection | 高 | USA | https://www.symantec.com/connect/blogs/longhorn-tools-used-cyberespionage-group-linked-vault-7<br>https://securelist.com/unraveling-the-lamberts-toolkit/77990/<br>http://blogs.360.cn/post/APT-C-39_CIA_EN.html |
-| etda-threat-group-cards | SideWinder, Rattlesnake | single-alias-intersection | 中 | India | https://securelist.com/apt-trends-report-q1-2018/85280/<br>https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/fireeye-sidewinder-targeted-attack.pdf<br>https://medium.com/@Sebdraven/apt-sidewinder-tricks-powershell-anti-forensics-and-execution-side-loading-5bc1a7e7c84c |
+| etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Longhorn | canonical-name | 高 | US, United States | https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=7ca2e331-2209-46a8-9e60-4cb83f9602de&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments<br>https://www.bleepingcomputer.com/news/security/longhorn-cyber-espionage-group-is-actually-the-cia/<br>https://www.cfr.org/interactive/cyber-operations/longhorn |
-| misp-threat-actor | RAZOR TIGER | single-alias-intersection | 中 | IN, India | https://securelist.com/apt-trends-report-q1-2018/85280/<br>https://blog.trendmicro.com/trendlabs-security-intelligence/first-active-attack-exploiting-cve-2019-2215-found-on-google-play-linked-to-sidewinder-apt-group/<br>https://otx.alienvault.com/pulse/5fd10760f9afb730d37c4742/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
-| misp-mitre-intrusion-set | Sidewinder - G0121 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0121<br>https://cdn-cybersecurity.att.com/docs/global-perspective-of-the-sidewinder-apt.pdf<br>https://cybleinc.com/2020/09/26/sidewinder-apt-targets-with-futuristic-tactics-and-techniques/ |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）

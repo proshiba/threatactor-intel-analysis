@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--calypso`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,13 +22,6 @@ Calypsoの標準化プロファイル。リポジトリ内の専用資料1件と
 | Links to Skyipot | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Mirage | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Pitty Tiger | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Comment Panda | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
-| PLA Unit 61398 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
-| TG-8223 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
-| APT1 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
-| BrownFox | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
-| Group 3 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
-| GIF89a, ShadyRAT, Shanghai Group, Byzantine Candor | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 3; mapping requires review. |
 
 ## 帰属
 
@@ -64,24 +57,24 @@ Calypsoの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Calypso | canonical-name | 高 | China | https://www.ptsecurity.com/ww-en/analytics/calypso-apt-2019/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Calypso&n=1 |
-| etda-threat-group-cards | Comment Crew, APT 1 | multiple-name-intersection | 高 | China | https://www.symantec.com/connect/blogs/apt1-qa-attacks-comment-crew<br>https://en.wikipedia.org/wiki/PLA_Unit_61398<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Comment+Crew%2C+APT+1&n=1 |
+| etda-threat-group-cards | Comment Crew, APT 1 | single-alias-intersection | 中 | China | https://www.symantec.com/connect/blogs/apt1-qa-attacks-comment-crew<br>https://en.wikipedia.org/wiki/PLA_Unit_61398<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Comment+Crew%2C+APT+1&n=1 |
 | etda-threat-group-cards | PittyTiger, Pitty Panda | single-alias-intersection | 中 | China | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=PittyTiger%2C+Pitty+Panda&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Nylon Typhoon | single-alias-intersection | 中 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | APT1 | multiple-name-intersection | 高 | CN, China | https://en.wikipedia.org/wiki/PLA_Unit_61398<br>http://intelreport.mandiant.com/Mandiant_APT1_Report.pdf<br>https://www.cfr.org/interactive/cyber-operations/pla-unit-61398 |
+| misp-threat-actor | APT1 | single-alias-intersection | 中 | CN, China | https://en.wikipedia.org/wiki/PLA_Unit_61398<br>http://intelreport.mandiant.com/Mandiant_APT1_Report.pdf<br>https://www.cfr.org/interactive/cyber-operations/pla-unit-61398 |
 | misp-threat-actor | APT15 | single-alias-intersection | 中 | CN, China | https://www.fireeye.com/blog/threat-research/2014/09/forced-to-adapt-xslcmd-backdoor-now-on-os-x.html<br>http://arstechnica.com/security/2015/04/elite-cyber-crime-group-strikes-back-after-attack-by-rival-apt-gang/<br>https://github.com/nccgroup/Royal_APT |
 | misp-threat-actor | Calypso | canonical-name | 高 | CN | https://www.ptsecurity.com/upload/corporate/ru-ru/analytics/calypso-apt-2019-rus.pdf<br>https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/<br>https://www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/red-lamassu-open-season.html |
 | misp-microsoft-activity-group | Nylon Typhoon | single-alias-intersection | 中 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | PittyTiger - G0011 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0011<br>http://blog.cassidiancybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
-| misp-mitre-enterprise-intrusion-set | APT1 - G0006 | multiple-name-intersection | 高 |  | https://attack.mitre.org/wiki/Group/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
-| misp-mitre-intrusion-set | APT1 - G0006 | multiple-name-intersection | 高 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
+| misp-mitre-enterprise-intrusion-set | APT1 - G0006 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
+| misp-mitre-intrusion-set | APT1 - G0006 | single-alias-intersection | 中 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
 | misp-mitre-intrusion-set | Ke3chang - G0004 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0004<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://research.nccgroup.com/2018/03/10/apt15-is-alive-and-strong-an-analysis-of-royalcli-and-royaldns/ |
 | misp-mitre-intrusion-set | PittyTiger - G0011 | single-alias-intersection | 中 |  | https://airbus-cyber-security.com/the-eye-of-the-tiger/<br>https://attack.mitre.org/groups/G0011<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
 | misp-360net | 一致なし |  |  |  |  |

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blind-eagle`
 - 状態: draft
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,7 +22,6 @@ Blind Eagleの標準化プロファイル。リポジトリ内の専用資料3�
 | APT-Q-98 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | AguilaCiega | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TAG-144 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| South America | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 62; mapping requires review. |
 
 ## 帰属
 
@@ -57,7 +56,7 @@ Blind Eagleの標準化プロファイル。リポジトリ内の専用資料3�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

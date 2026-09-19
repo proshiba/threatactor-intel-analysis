@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cyber-caliphate-army-cca`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:50Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,7 +20,6 @@ Cyber Caliphate Army (CCA)の標準化プロファイル。リポジトリ内の
 |---|---|---|---|---|---|
 | Islamic State Hacking Division | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | United Cyber Caliphate (UCC) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Syria/Irak (Islamic State) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Middle East row 7; mapping requires review. |
 
 ## 帰属
 
@@ -52,7 +51,7 @@ Cyber Caliphate Army (CCA)の標準化プロファイル。リポジトリ内の
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

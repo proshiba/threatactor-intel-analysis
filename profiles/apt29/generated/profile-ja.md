@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt29`
 - 状態: review
-- 更新日時: 2026-09-19T00:07:32Z
+- 更新日時: 2026-09-19T00:54:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,29 +19,16 @@ APT29の標準化プロファイル。リポジトリ内の専用資料19件とM
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Blue Kitsune | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Cozer | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | Cozy Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| CozyCar | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | CozyDuke | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Cranefly / | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | Dark Halo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Dukes | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| EuroAPT | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Fritillary | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Group 100 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| Hammer Toss | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | ICE RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-going-with-the-flows-2026` | GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 |
 | IRON HEMLOCK | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | IRON RITUAL | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Midnight Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Minidionis | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | NOBELIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | NobleBaron | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Office Monkeys | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| SeaDuke | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | SolarStorm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| StellarParticle | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
-| TEMP.Monkeys | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Russia row 4; mapping requires review. |
 | The Dukes | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC2452 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC3524 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -80,7 +67,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:00:13Z
+- 調査日時: 2026-09-19T00:54:53Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
