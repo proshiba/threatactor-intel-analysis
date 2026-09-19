@@ -4,14 +4,26 @@
   "name": "Greenbug",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T00:54:53Z",
+  "updated_at": "2026-09-19T00:58:00Z",
   "languages": [
     "ja"
   ],
   "actor": {
     "canonical_name": "Greenbug",
-    "aliases": [],
+    "aliases": [
+      {
+        "name": "Volatile Kitten",
+        "vendor": "CrowdStrike",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--crowdstrike-volatile-kitten"
+        ],
+        "analyst_notes": "CrowdStrike tracks VOLATILE KITTEN as an Iran-based actor/development team associated with Shamoon. ETDA Threat Group Cards maps Greenbug and Volatile Kitten together."
+      }
+    ],
     "actor_types": [
+      "state-sponsored",
       "threat-cluster"
     ],
     "first_seen": {
@@ -27,20 +39,59 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
+    "description": "Greenbug / Volatile Kitten is an Iran-linked threat cluster. CrowdStrike tracks VOLATILE KITTEN as a state-sponsored Iran-based development team associated with Shamoon; ETDA Threat Group Cards maps Greenbug and Volatile Kitten together.",
+    "analyst_notes": "Shamoon is modeled separately as malware; the old Shamoon actor entity is deprecated."
   },
   "attribution": {
-    "countries": [],
-    "sponsor_type": "unknown",
+    "countries": [
+      "Iran"
+    ],
+    "sponsor_type": "state-aligned",
     "organizations": [],
-    "assessment": "",
-    "confidence": "unknown",
-    "evidence_refs": [],
-    "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+    "assessment": "CrowdStrike describes VOLATILE KITTEN as an Iran-based state-sponsored adversary; ETDA maps Greenbug/Volatile Kitten and lists Iranian state sponsorship.",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--crowdstrike-volatile-kitten",
+      "source--osint-etda-threat-group-cards"
+    ],
+    "analyst_notes": "State-aligned is used conservatively because the vendor/aggregate sources describe sponsorship but cluster boundaries remain vendor-specific."
   },
-  "motivations": [],
-  "relationships": [],
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "ETDA Threat Group Cards describes Greenbug / Volatile Kitten as focused on information theft and espionage.",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--osint-etda-threat-group-cards"
+      ],
+      "analyst_notes": "Aggregated actor card; original vendor reporting remains authoritative."
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--greenbug--part-of--oilrig",
+      "target_actor": "OilRig",
+      "relationship_type": "part-of",
+      "description": "ETDA Threat Group Cards models Greenbug / Volatile Kitten as a subgroup of OilRig.",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--osint-etda-threat-group-cards"
+      ],
+      "analyst_notes": "Aggregation-derived relationship; retain vendor scope caveat."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "ISMdoor",
@@ -52,11 +103,15 @@
   "capabilities": {
     "malware": [
       {
-        "id": "malware--ismdoor",
-        "name": "ISMdoor",
-        "aliases": [],
-        "types": [],
-        "description": "The actor-mapping workbook lists this software or tool.",
+        "id": "malware--shamoon",
+        "name": "Shamoon",
+        "aliases": [
+          "Disttrack"
+        ],
+        "types": [
+          "wiper"
+        ],
+        "description": "CrowdStrike tracks VOLATILE KITTEN as a development team associated with Shamoon.",
         "first_observed": {
           "value": null,
           "precision": "unknown",
@@ -71,9 +126,9 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--crowdstrike-volatile-kitten"
         ],
-        "analyst_notes": ""
+        "analyst_notes": "Association does not mean every Shamoon deployment is Greenbug / Volatile Kitten activity."
       }
     ],
     "tools": [],
@@ -485,10 +540,39 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    {
+      "source_id": "source--crowdstrike-volatile-kitten",
+      "path": "https://www.crowdstrike.com/en-us/adversaries/volatile-kitten/",
+      "url": "https://www.crowdstrike.com/en-us/adversaries/volatile-kitten/",
+      "title": "Volatile Kitten Adversary Profile",
+      "publisher": "CrowdStrike",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "vendor-adversary-profile",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Used to separate VOLATILE KITTEN actor tracking from the Shamoon malware name."
     }
   ],
   "assessment": {
-    "key_judgments": [],
+    "key_judgments": [
+      {
+        "statement": "Greenbug and Volatile Kitten are retained as an overlapping actor cluster; Shamoon is treated as malware rather than an exact actor alias.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--crowdstrike-volatile-kitten",
+          "source--osint-etda-threat-group-cards"
+        ],
+        "analyst_notes": "Entity-boundary correction."
+      }
+    ],
     "gaps": [
       "Unknown observation dates must not be replaced by publication dates.",
       "Automatically mapped aliases, targets, and workbook software require analyst review."
@@ -500,12 +584,12 @@
     "analyst_notes": ""
   },
   "free_text": {
-    "executive_summary": "Greenbugの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+    "executive_summary": "Greenbug / Volatile Kittenをイラン系のActorクラスタとして追跡し、Shamoonはwiper malwareとして分離する。",
     "history": "",
     "capability_details": "ISMdoor",
     "infrastructure_details": "",
     "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、イラク、サウジアラビア、パキスタン、英国。標的地域=中東。日本は確認時に個別国として保持する。\n\nSaudi Arabia",
-    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: Volatile KittenをGreenbug側へ統合し、Shamoon actor entityをdeprecated化。"
   },
   "victim_cases": []
 }
