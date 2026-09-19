@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--platinum`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:52Z
+- 更新日時: 2026-09-19T00:07:32Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| DeadlyKiss | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| DeadlyKiss | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TwoForOne | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 10; mapping requires review. |
 | South East Asia | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook Others row 10; mapping requires review. |
 
@@ -33,9 +33,7 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 

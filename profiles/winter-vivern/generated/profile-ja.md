@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--winter-vivern`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:54Z
+- 更新日時: 2026-09-19T00:07:32Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -32,9 +32,7 @@ Winter Vivernの標準化プロファイル。リポジトリ内の専用資料2
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 

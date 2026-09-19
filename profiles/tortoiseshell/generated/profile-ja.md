@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--tortoiseshell`
 - 状態: draft
-- 更新日時: 2026-09-19T00:00:53Z
+- 更新日時: 2026-09-19T00:07:32Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -27,12 +27,12 @@ Tortoiseshellの標準化プロファイル。リポジトリ内の専用資料1
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Iran worksheet.
+未評価
 
-- 国: Iran
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
@@ -50,7 +50,7 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | Capability | IMAPLoader, Backdoor.Syskit, Poison Frog, Infostealer/Sha.exe/Sha432.exe, Infostealer/stereoversioncontrol.exe, get-logon-history.ps1 |
 | Infrastructure |  |
 | Victim | IT providers in Saudi Arabia |
-| Socio-political | Iran |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 

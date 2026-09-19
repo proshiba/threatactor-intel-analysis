@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--kimsuky`
 - 状態: review
-- 更新日時: 2026-09-19T00:00:51Z
+- 更新日時: 2026-09-19T00:07:32Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,12 +18,12 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Emerald Sleet | Microsoft | overlapping | 高 | `source--dmarc-2024`, `source--microsoft-actor-list` | 政府共同勧告は同一活動集合として扱うが、ベンダーの収集スコープ差を考慮する。 |
+| Emerald Sleet | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | 政府共同勧告は同一活動集合として扱うが、ベンダーの収集スコープ差を考慮する。 |
 | Thallium | Microsoft (legacy) | overlapping | 高 | `source--joint-csa-2023`, `source--microsoft-actor-list` |  |
-| Velvet Chollima | CrowdStrike | overlapping | 高 | `source--joint-csa-2023` |  |
-| Black Banshee | PwC | overlapping | 高 | `source--joint-csa-2023` |  |
-| APT43 | Mandiant | broader | 中 | `source--joint-csa-2023`, `source--dmarc-2024` | APT43にはKimsukyより広い活動スコープが含まれる可能性がある。 |
-| TA427 | Proofpoint | overlapping | 中 | `source--rapid7-2024` |  |
+| Velvet Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` |  |
+| Black Banshee | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` |  |
+| APT43 | MITRE ATT&CK | broader | 高 | `source--mitre-attack-19-1` | APT43にはKimsukyより広い活動スコープが含まれる可能性がある。 |
+| TA427 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` |  |
 | Sparkling Pisces | Palo Alto Networks | overlapping | 中 | `source--qax-2024` |  |
 
 ## 帰属
@@ -41,6 +41,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 |---|---|---|---|---|
 | strategic-espionage | 北朝鮮の政策・外交・軍事・核開発上の意思決定に役立つ情報を収集する。 | 高 | `source--joint-csa-2023`, `source--dmarc-2024` |  |
 | credential-and-mailbox-access | 認証情報とメールボックスを窃取し、信頼関係と連絡網を次の標的への足掛かりにする。 | 高 | `source--joint-csa-2023`, `source--rapid7-2024` |  |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 

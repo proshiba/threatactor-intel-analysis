@@ -1,6 +1,6 @@
 # Threat Actor Profile Collection
 
-Generated: 2026-09-19T00:01:33Z
+Generated: 2026-09-19T00:08:14Z
 
 同一スキーマで作成したアクター／脅威クラスターの一覧です。各ディレクトリの`actor-profile.json`が正規データで、MarkdownとSTIXは生成物です。
 
@@ -94,7 +94,7 @@ Generated: 2026-09-19T00:01:33Z
 | [BlueHornet](bluehornet/generated/profile-ja.md) | 1 | 2 | 0 | 0 | 0 | 0 | 12 | 0 | 25 |
 | [Bohrium](bohrium/generated/profile-ja.md) | 1 | 1 | 0 | 0 | 0 | 0 | 18 | 0 | 37 |
 | [Boson Spider](boson-spider/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 1 | 1 | 6 | 0 | 12 |
-| [Buhtrap](buhtrap/generated/profile-ja.md) | 1 | 1 | 6 | 0 | 3 | 3 | 0 | 0 | 7 |
+| [Buhtrap](buhtrap/generated/profile-ja.md) | 1 | 1 | 6 | 0 | 3 | 3 | 0 | 0 | 8 |
 | [Callisto Group](callisto/generated/profile-ja.md) | 4 | 4 | 1 | 25 | 79 | 98 | 1 | 0 | 104 |
 | [Calypso](calypso/generated/profile-ja.md) | 1 | 11 | 2 | 3 | 1 | 1 | 55 | 0 | 119 |
 | [Candiru](candiru/generated/profile-ja.md) | 3 | 0 | 0 | 5 | 133 | 153 | 2 | 0 | 158 |
@@ -481,7 +481,7 @@ Generated: 2026-09-19T00:01:33Z
 | [BRONZE BUTLER](tick/generated/profile-ja.md) | 3 | 2 | 24 | 41 | 84 | 104 | 93 | 0 | 333 |
 | [ToddyCat](toddycat/generated/profile-ja.md) | 1 | 0 | 9 | 32 | 1 | 1 | 15 | 0 | 32 |
 | [Tonto Team](tonto-team/generated/profile-ja.md) | 1 | 6 | 7 | 15 | 0 | 0 | 45 | 0 | 89 |
-| [Tortoiseshell](tortoiseshell/generated/profile-ja.md) | 1 | 6 | 6 | 19 | 2 | 2 | 0 | 0 | 6 |
+| [Tortoiseshell](tortoiseshell/generated/profile-ja.md) | 1 | 6 | 6 | 19 | 2 | 2 | 0 | 0 | 7 |
 | [Toxic Panda](toxic-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
 | [Tracer KItten](tracer-kitten/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 11 |
 | [Transparent Tribe](transparent-tribe/generated/profile-ja.md) | 4 | 8 | 7 | 51 | 423 | 498 | 72 | 0 | 645 |
