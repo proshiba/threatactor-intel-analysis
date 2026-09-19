@@ -84,6 +84,8 @@ IOCはファイルハッシュ、IPアドレス、ドメイン、URLなどです
 - [プロファイル一覧](profiles/README.md)
 - [フレームワークの利用方法](actor_profile/README.md)
 - [データ作成・品質管理ルール](actor_profile/RULES.md)
+- [生成・エージェント用ガードレール](actor_profile/GENERATION_RULES.md)
+- [エージェント作業規則](AGENTS.md)
 - [OSINT調査ルール](actor_profile/OSINT_RULES.md)
 - [日次ニュース取込](parse-daily/README.md)
 - [日次取込エージェント規則](parse-daily/AGENT.md)

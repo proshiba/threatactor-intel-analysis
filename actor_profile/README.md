@@ -46,9 +46,12 @@ python3 actor_profile/build_organizations.py --apply  # 書き出し
 
 組織の扱いは3通りに分かれます。
 
-- **組織自体が脅威アクター**: `profiles/<slug>/actor-profile.json`を作成し、
-  レジストリ側は`status: profiled`と`profile_slug`で参照します。NSO Group、Candiru、
-  Cytrox、Intellexa、Cellebriteが該当します（いずれも現状は雛形）。
+- **組織自体を攻撃主体／商用攻撃事業者としてプロファイルする場合**:
+  `profiles/<slug>/actor-profile.json`を作成し、レジストリ側は`status: profiled`と
+  `profile_slug`で参照します。ただし会社・製品ベンダーというentityと、顧客や政府機関が
+  実行する個別侵入活動は分離します。製品が攻撃で使われたという事実だけで、開発会社を
+  adversaryへ置いてはいけません。Cellebriteのような端末解析ベンダーは特にこの区別を
+  必須とします。
 - **アクターの関与組織**: レジストリに`status: tracking`で登録し、関係は
   各プロファイルの`attribution.organizations`側に残します。
 - **未調査の調査対象**: `status: planned`で枠だけ確保します。主張を一切含めず、
@@ -103,6 +106,8 @@ python3 actor_profile/scripts/validate_profile.py \
 ZIP、RAR、7z、実行ファイル、DLL、マルウェアサンプルは開きません。
 
 詳細な規約は[RULES.md](RULES.md)を参照してください。
+自動生成・エージェント更新時の禁止事項と判断手順は
+[GENERATION_RULES.md](GENERATION_RULES.md)を必ず併読してください。
 
 ## 全アクターの一括処理
 

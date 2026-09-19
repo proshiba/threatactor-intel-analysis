@@ -72,6 +72,130 @@ def normalized_name(value: str) -> str:
     return re.sub(r"[^a-z0-9]", "", value.lower())
 
 
+STATE_SPONSORSHIP_MARKERS = (
+    "state-sponsored",
+    "state sponsored",
+    "state-backed",
+    "state backed",
+)
+FINANCIAL_MOTIVATION_MARKERS = (
+    "financially motivated",
+    "financially-motivated",
+)
+ESPIONAGE_MARKERS = (
+    "espionage",
+    "intelligence collection",
+)
+
+
+def text_contains_any(value: str, markers: Iterable[str]) -> bool:
+    text = value.casefold()
+    return any(marker.casefold() in text for marker in markers)
+
+
+def alias_source_metadata(
+    name: str,
+    mitre_group: dict[str, Any] | None,
+    reference_source_id: str,
+    workbook_source_id: str,
+) -> tuple[str, str, str]:
+    """Return vendor, confidence and evidence source for one alias."""
+    mitre_aliases = set(mitre_group.get("aliases", []) if mitre_group else [])
+    if name in mitre_aliases:
+        return "MITRE ATT&CK", "high", reference_source_id
+    return "catalog", "medium", workbook_source_id
+
+
+def derive_actor_types(
+    actor: dict[str, Any], mitre_group: dict[str, Any] | None
+) -> list[str]:
+    """Derive actor types without promoting geography into sponsorship.
+
+    Census-generated catalog entries historically inherited ``state-sponsored``
+    from country/origin labels. Strip that generated inference and only add it
+    back when actor-specific evidence explicitly states sponsorship.
+    """
+    types = set(actor.get("actor_types", []))
+    if actor.get("profile_basis") == "actor-scoped-census-evidence":
+        types.discard("state-sponsored")
+
+    description = (mitre_group or {}).get("description", "")
+    if text_contains_any(description, STATE_SPONSORSHIP_MARKERS):
+        types.add("state-sponsored")
+    if text_contains_any(description, FINANCIAL_MOTIVATION_MARKERS):
+        types.add("financially-motivated")
+    if not types:
+        types.add("threat-cluster")
+    return sorted(types)
+
+
+def derive_motivations(
+    actor_types: Iterable[str],
+    mitre_group: dict[str, Any] | None,
+    reference_source_id: str,
+    workbook_source_id: str,
+) -> list[dict[str, Any]]:
+    """Create motivations only from explicit evidence or scoped actor types.
+
+    State sponsorship does not imply espionage. Espionage therefore requires
+    actor-specific text that explicitly describes espionage or intelligence
+    collection.
+    """
+    result: list[dict[str, Any]] = []
+    types = set(actor_types)
+    description = (mitre_group or {}).get("description", "")
+
+    if text_contains_any(description, ESPIONAGE_MARKERS):
+        result.append(
+            {
+                "type": "espionage",
+                "description": "Actor-specific reporting explicitly describes espionage or intelligence collection.",
+                "confidence": "high",
+                "evidence_refs": [reference_source_id],
+                "analyst_notes": "Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship.",
+            }
+        )
+
+    if "financially-motivated" in types or "business-email-compromise" in types:
+        explicit = text_contains_any(description, FINANCIAL_MOTIVATION_MARKERS)
+        result.append(
+            {
+                "type": "financial-gain",
+                "description": "Financially motivated intrusion or fraud.",
+                "confidence": "high" if explicit else "low",
+                "evidence_refs": [reference_source_id if explicit else workbook_source_id],
+                "analyst_notes": (
+                    "Derived from explicit MITRE ATT&CK actor description."
+                    if explicit
+                    else "Derived from a scoped actor type; corroborate with actor-specific reporting."
+                ),
+            }
+        )
+
+    if "hacktivist-collective" in types:
+        result.append(
+            {
+                "type": "ideological",
+                "description": "Ideological or political hacktivism.",
+                "confidence": "low",
+                "evidence_refs": [workbook_source_id],
+                "analyst_notes": "Derived from a scoped actor type; corroborate with actor-specific reporting.",
+            }
+        )
+
+    if "private-sector-offensive" in types or "surveillance-vendor" in types:
+        result.append(
+            {
+                "type": "commercial",
+                "description": "Commercial offensive-security or surveillance operations.",
+                "confidence": "low",
+                "evidence_refs": [workbook_source_id],
+                "analyst_notes": "Commercial role does not by itself identify the operator of a customer-run intrusion.",
+            }
+        )
+    return result
+
+
 def unique(values: Iterable[str]) -> list[str]:
     return list(dict.fromkeys(value.strip() for value in values if value and value.strip()))
 
@@ -367,7 +491,8 @@ def create_profile(
         return value
 
     profile = replace(profile)
-    profile["actor"]["actor_types"] = actor.get("actor_types", [])
+    # Actor types are finalized after actor-scoped reference data is loaded.
+    profile["actor"]["actor_types"] = []
 
     reference_source_id = "source--mitre-attack-19-1"
     workbook_source_id = "source--actor-mapping-workbook"
@@ -448,6 +573,7 @@ def create_profile(
     profile["sources"] = all_sources
 
     mitre_group = attack["groups"].get(actor.get("mitre_group_id", ""))
+    profile["actor"]["actor_types"] = derive_actor_types(actor, mitre_group)
     if mitre_group:
         profile["actor"]["canonical_name"] = actor["name"]
         profile["actor"]["description"] = mitre_group.get("description", "")
@@ -472,18 +598,23 @@ def create_profile(
             continue
         seen_alias_names.add(normalized_alias)
         alias_names.append(alias_name)
-    profile["actor"]["aliases"] = [
-        {
-            "name": name,
-            "vendor": "MITRE ATT&CK" if mitre_group and name in mitre_group.get("aliases", []) else "catalog",
-            "scope": "overlapping",
-            "confidence": "high" if mitre_group else "medium",
-            "evidence_refs": [reference_source_id if mitre_group else workbook_source_id],
-            "analyst_notes": "Alias scope must be reviewed before publication.",
-        }
-        for name in alias_names
-        if normalized_name(name) != normalized_name(actor["name"])
-    ]
+    profile["actor"]["aliases"] = []
+    for name in alias_names:
+        if normalized_name(name) == normalized_name(actor["name"]):
+            continue
+        vendor, confidence, evidence_source = alias_source_metadata(
+            name, mitre_group, reference_source_id, workbook_source_id
+        )
+        profile["actor"]["aliases"].append(
+            {
+                "name": name,
+                "vendor": vendor,
+                "scope": "overlapping",
+                "confidence": confidence,
+                "evidence_refs": [evidence_source],
+                "analyst_notes": "Alias scope must be reviewed before publication.",
+            }
+        )
 
     if workbook_record:
         mapped_names = actor_name_cells(workbook_record)
@@ -506,37 +637,47 @@ def create_profile(
             "China", "Russia", "North Korea", "Iran", "Israel"
         }:
             country = workbook_record["sheet"]
-            profile["attribution"].update(
-                {
-                    "countries": [country],
-                    "sponsor_type": "state" if country != "Israel" or "private-sector-offensive" not in actor.get("actor_types", []) else "private-sector-offensive",
-                    "assessment": f"The repository mapping workbook places this actor in the {country} worksheet.",
-                    "confidence": "medium",
-                    "evidence_refs": [workbook_source_id],
-                    "analyst_notes": "Workbook attribution is a secondary mapping and must be corroborated.",
-                }
+            mitre_description = (mitre_group or {}).get("description", "")
+            explicit_state_sponsorship = text_contains_any(
+                mitre_description, STATE_SPONSORSHIP_MARKERS
             )
+            if (
+                "state-sponsored" in profile["actor"]["actor_types"]
+                and explicit_state_sponsorship
+            ):
+                profile["attribution"].update(
+                    {
+                        "countries": [country],
+                        "sponsor_type": "state",
+                        "assessment": (
+                            f"MITRE ATT&CK explicitly describes the actor as state-sponsored/backed; "
+                            f"the repository mapping workbook places the actor in the {country} worksheet."
+                        ),
+                        "confidence": "medium",
+                        "evidence_refs": [reference_source_id, workbook_source_id],
+                        "analyst_notes": (
+                            "State sponsorship is supported by actor-specific reporting. "
+                            "The workbook worksheet is used only as a geographic lead."
+                        ),
+                    }
+                )
+            else:
+                note = (
+                    f"Workbook worksheet '{country}' is retained only as a geographic/collection lead. "
+                    "Worksheet placement does not establish actor origin, government sponsorship, "
+                    "state control, or motivation."
+                )
+                existing_notes = profile["attribution"].get("analyst_notes", "").strip()
+                profile["attribution"]["analyst_notes"] = (
+                    f"{existing_notes} {note}".strip()
+                )
 
-    motivation_types = []
-    types = set(actor.get("actor_types", []))
-    if "state-sponsored" in types:
-        motivation_types.append(("espionage", "State-sponsored intelligence collection or strategic operations."))
-    if "financially-motivated" in types or "business-email-compromise" in types:
-        motivation_types.append(("financial-gain", "Financially motivated intrusion or fraud."))
-    if "hacktivist-collective" in types:
-        motivation_types.append(("ideological", "Ideological or political hacktivism."))
-    if "private-sector-offensive" in types or "surveillance-vendor" in types:
-        motivation_types.append(("commercial", "Commercial offensive-security or surveillance operations."))
-    profile["motivations"] = [
-        {
-            "type": kind,
-            "description": description,
-            "confidence": "low",
-            "evidence_refs": [workbook_source_id],
-            "analyst_notes": "Inferred from catalog actor type; corroborate with actor-specific reporting.",
-        }
-        for kind, description in motivation_types
-    ]
+    profile["motivations"] = derive_motivations(
+        profile["actor"]["actor_types"],
+        mitre_group,
+        reference_source_id,
+        workbook_source_id,
+    )
 
     software_items: list[dict[str, Any]] = []
     if mitre_group:

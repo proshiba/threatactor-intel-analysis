@@ -289,6 +289,29 @@ def has_explicit_activity_attribution(excerpt: str, term: str) -> bool:
     return any(re.search(pattern, excerpt, flags=re.IGNORECASE) for pattern in patterns)
 
 
+def has_non_operator_product_context(excerpt: str, term: str) -> bool:
+    """Detect vendor/product wording that does not establish operator identity.
+
+    A vendor or actor name attached possessively to an exploit, product, tool,
+    malware, or platform can describe provenance rather than who conducted the
+    intrusion.  This check intentionally runs before title-based strong-subject
+    classification.
+    """
+    term_re = re.escape(term)
+    capability = (
+        r"(?:製品|ツール|ソフトウェア|マルウェア|スパイウェア|"
+        r"エクスプロイト(?:チェーン)?|ゼロデイ(?:攻撃|エクスプロイト)?|"
+        r"product|tool|software|malware|spyware|exploit(?: chain)?|platform)"
+    )
+    patterns = (
+        rf"{term_re}(?:社)?の.{{0,56}}{capability}.{{0,56}}(?:使用|利用|悪用|used|abused|deployed)",
+        rf"{term_re}(?:社)?(?:が|は).{{0,40}}(?:開発|提供|販売|製造).{{0,96}}(?:使用|利用|悪用|used|abused|deployed)",
+        rf"{capability}.{{0,56}}(?:developed|made|provided|sold) by.{{0,24}}{term_re}.{{0,56}}(?:used|abused|deployed)",
+        rf"{term_re}(?:'s)?.{{0,56}}{capability}.{{0,56}}(?:used|abused|deployed) by",
+    )
+    return any(re.search(pattern, excerpt, flags=re.IGNORECASE) for pattern in patterns)
+
+
 def assess_activity_claim(
     match: "ActorMatch",
     title: str,
@@ -321,6 +344,9 @@ def assess_activity_claim(
     elif not ACTIVITY_ACTION_RE.search(title):
         assessment = "context-only"
         reasons.append("タイトルが攻撃・キャンペーン等の活動を主題としていない")
+    elif has_non_operator_product_context(title, match.term):
+        assessment = "context-only"
+        reasons.append("名称が製品・exploit等の開発元/所有元として現れ、攻撃実行主体を示していない")
     elif location == "title":
         assessment = "strong-subject"
         reasons.append("exact名が活動を主題とする記事タイトルに明記されている")
@@ -340,6 +366,9 @@ def assess_activity_claim(
     elif HISTORICAL_CONTEXT_RE.search(excerpt):
         assessment = "historical-reference"
         reasons.append("一致箇所が記事主題ではなく過去事例・一般的利用の説明である")
+    elif has_non_operator_product_context(excerpt, match.term):
+        assessment = "context-only"
+        reasons.append("一致箇所が製品・exploit等の開発元/所有元を示すだけで、攻撃実行主体を示していない")
     elif re.search(r"(?:予想|見込|想定|expected to)", excerpt, flags=re.IGNORECASE):
         assessment = "forecast"
         reasons.append("一致箇所が観測済み活動ではなく将来予測である")
@@ -393,6 +422,8 @@ class ActorRegistry:
         self.profiles: dict[str, dict[str, Any]] = {}
         for profile_path in sorted(profiles_root.glob("*/actor-profile.json")):
             profile = load_json(profile_path)
+            if profile.get("status") == "deprecated":
+                continue
             slug = profile_path.parent.name
             self.profiles[slug] = profile
             canonical = profile["actor"]["canonical_name"]

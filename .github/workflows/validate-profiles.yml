@@ -1,0 +1,33 @@
+name: Validate actor profiles
+
+on:
+  pull_request:
+    paths:
+      - "actor_profile/**"
+      - "parse-daily/**"
+      - "profiles/**"
+      - "AGENTS.md"
+      - "README.md"
+      - ".github/workflows/validate-profiles.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run actor profile unit tests
+        run: python3 -m unittest discover -s actor_profile/tests -v
+
+      - name: Run daily ingestion unit tests
+        run: python3 -m unittest discover -s parse-daily/tests -v

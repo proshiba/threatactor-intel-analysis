@@ -131,6 +131,17 @@ class DailyCommonTests(unittest.TestCase):
                 json.dumps(profile(name, [])), encoding="utf-8"
             )
         return ActorRegistry(root, CONFIG)
+    def test_registry_ignores_deprecated_profiles(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "revil").mkdir()
+            data = profile("REvil", [])
+            data["status"] = "deprecated"
+            (root / "revil" / "actor-profile.json").write_text(
+                json.dumps(data), encoding="utf-8"
+            )
+            registry = ActorRegistry(root, CONFIG)
+            self.assertEqual(registry.exact("REvil", "ioc-actor-field"), [])
 
     def test_name_candidate_is_extracted_from_body_without_iocs(self) -> None:
         """IOCを伴わない記事はIOC CSVのactor列に現れないため、本文から名前を拾う。"""
@@ -362,6 +373,38 @@ class DailyCommonTests(unittest.TestCase):
             CONFIG,
         )
         self.assertEqual(collision["assessment"], "name-collision")
+
+        vendor_title = assess_activity_claim(
+            ActorMatch(
+                "cellebrite",
+                "Cellebrite",
+                "Cellebrite",
+                "exact",
+                "high",
+                "news-title",
+            ),
+            "セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック",
+            "",
+            CONFIG,
+        )
+        self.assertEqual(vendor_title["assessment"], "context-only")
+        self.assertEqual(vendor_title["actor_role"], "unknown")
+
+        vendor_body = assess_activity_claim(
+            ActorMatch(
+                "cellebrite",
+                "Cellebrite",
+                "Cellebrite",
+                "exact",
+                "high",
+                "news-body",
+            ),
+            "Androidゼロデイを悪用した標的型攻撃",
+            "- Cellebriteが開発したゼロデイエクスプロイトチェーンの一部として、セルビア当局が押収端末のロック解除に悪用した。",
+            CONFIG,
+        )
+        self.assertEqual(vendor_body["assessment"], "context-only")
+        self.assertEqual(vendor_body["actor_role"], "unknown")
 
     def test_activity_keeps_unknown_period_and_separate_report_date(self) -> None:
         record = {
