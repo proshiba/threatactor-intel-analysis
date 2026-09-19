@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin13`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-09-19T00:00:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -31,7 +31,9 @@ FIN13の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## モチベーション
 
-未評価
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description. |
 
 ## 他アクターとの関係
 
@@ -50,7 +52,7 @@ FIN13の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

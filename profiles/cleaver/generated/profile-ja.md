@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cleaver`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:54Z
+- 更新日時: 2026-09-19T00:00:50Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -26,12 +26,12 @@ Cleaverの標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Iran worksheet.
+未評価
 
-- 国: Iran
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
@@ -49,12 +49,12 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | Capability | TinyZBot, Net Crawler, PupyRAT, Mimikatz, PsExec |
 | Infrastructure |  |
 | Victim | This threat actor targets governments and private sector entities for espionage and sabotage purposes. It is believed to be responsible for compromising U.S. Navy computers at the Navy Marine Corps Intranet in San Diego, the U.S. energy company Calpine Corporation, Saudi Aramco, Pemex, Qatar Airways, and Korean Air |
-| Socio-political | Iran |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

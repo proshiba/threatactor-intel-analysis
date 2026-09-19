@@ -1,18 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-07-25T11:09:52Z",
+  "generated_at": "2026-09-19T00:00:12Z",
   "counts": {
     "census_identities": 714,
-    "existing_profile_identities": 76,
-    "new_profile_entries": 604,
-    "rejected_candidates": 29,
-    "catalog_actor_count": 673
+    "existing_profile_identities": 77,
+    "new_profile_entries": 602,
+    "rejected_candidates": 30,
+    "catalog_actor_count": 674
   },
   "policy": {
     "exact_canonical_name_duplicates": "merged",
     "cross_vendor_alias_overlap": "kept as separate identities unless already represented",
     "pattern_only_ids": "^(?:APT[- ]?\\d{1,3}|UNC\\d{3,4}|UNG\\d{3,4}|UTG\\d{3,4}|FIN\\d{1,4}|TA\\d{3,4}|UAC-\\d{4}|DEV-\\d{4}|TAG-\\d{2,4}|Storm-\\d{4}|CL-STA-\\d{4})$",
-    "ioc_scope": "actor-associated context excerpts only"
+    "ioc_scope": "actor-associated context excerpts only",
+    "curation_file": "actor_profile/actor-census-curation.json",
+    "curation_precedence": "analyst curation overrides automatic census materialization"
   },
   "represented": [
     {
@@ -627,6 +629,18 @@
         "zoopark"
       ],
       "reason": "represented-by-existing-profile"
+    },
+    {
+      "actor_id": "actor-census--sha256:d8c779c8891bc8b986bb9f4c89d830e7b8b2aed04f01718ae46dd7f85d10b4df",
+      "canonical_name": "White Company",
+      "catalog_slugs": [
+        "white-company"
+      ],
+      "reason": "curated-merge-into-existing-profile",
+      "curation_reason": "The census identity 'White Company' and the existing 'The White Company' profile refer to Operation Shaheen and the same Pakistan government/military targeting. MITRE ATT&CK canonicalizes this actor as The White Company (G0089).",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0089/"
+      ]
     }
   ],
   "rejected": [
@@ -714,6 +728,16 @@
       "actor_id": "actor-census--mitre:G0116",
       "canonical_name": "Operation Wocao",
       "reason": "reference-only-no-corpus-mention"
+    },
+    {
+      "actor_id": "actor-census--sha256:2d61777194b3faa08fdfd5a2fd0fb7d54fcd2d28d24eae9ddc550f498ba8a3f6",
+      "canonical_name": "Revil",
+      "reason": "curated-non-actor-entity",
+      "curation_reason": "REvil is a ransomware/RaaS software-brand entity in this corpus context. MITRE ATT&CK tracks REvil as Software S0496 and tracks GOLD SOUTHFIELD (G0115) as the financially motivated group that operates the REvil RaaS. Do not materialize REvil as an independent canonical actor from name mentions alone.",
+      "evidence_urls": [
+        "https://attack.mitre.org/software/S0496/",
+        "https://attack.mitre.org/groups/G0115/"
+      ]
     },
     {
       "actor_id": "actor-census--sha256:0dd44fd0e4eb475237581134c946ccc6e117396014de1dac54c7ec9f3d60a3e1",
@@ -1302,7 +1326,7 @@
     },
     {
       "slug": "carberb",
-      "name": "Carberb",
+      "name": "Carberp",
       "census_actor_ids": [
         "actor-census--sha256:74486327512fbcafd26aa0336920ab1a4442c4174c1934287bc87eb1b1deed1c"
       ],
@@ -3003,15 +3027,6 @@
       ],
       "reported_source_count": 7,
       "evidence_path": "actor_profile/evidence/redfoxtrot.csv"
-    },
-    {
-      "slug": "revil",
-      "name": "Revil",
-      "census_actor_ids": [
-        "actor-census--sha256:2d61777194b3faa08fdfd5a2fd0fb7d54fcd2d28d24eae9ddc550f498ba8a3f6"
-      ],
-      "reported_source_count": 40,
-      "evidence_path": "actor_profile/evidence/revil.csv"
     },
     {
       "slug": "roaming-mantis",
@@ -6081,15 +6096,6 @@
       ],
       "reported_source_count": 1,
       "evidence_path": "actor_profile/evidence/water-galura.csv"
-    },
-    {
-      "slug": "white-company-fefa7c0a",
-      "name": "White Company",
-      "census_actor_ids": [
-        "actor-census--sha256:d8c779c8891bc8b986bb9f4c89d830e7b8b2aed04f01718ae46dd7f85d10b4df"
-      ],
-      "reported_source_count": 3,
-      "evidence_path": "actor_profile/evidence/white-company-fefa7c0a.csv"
     },
     {
       "slug": "whitefly",

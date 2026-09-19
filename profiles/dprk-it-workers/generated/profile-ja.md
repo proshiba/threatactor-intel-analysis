@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--dprk-it-workers`
 - 状態: draft
-- 更新日時: 2026-09-02T12:58:02Z
+- 更新日時: 2026-09-19T00:00:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -51,8 +51,8 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 
 ## OSINTクロスチェック
 
-- 判定: `no-match`
-- 調査日時: 2026-07-25T14:07:08Z
+- 判定: `possible-match`
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -61,7 +61,7 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-threat-actor | WageMole | single-alias-intersection | 中 | KP | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://unit42.paloaltonetworks.com/fake-north-korean-it-worker-activity-cluster/<br>https://www.trendmicro.com/en_us/research/25/d/russian-infrastructure-north-korean-cybercrime.html |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -228,6 +228,7 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 | source--dprk-it-workers--e7356e8e649de477 | OFSI Advisory on North Korean IT Workers |  | 不明 | CyberMerceNary/ITWorker/OFSI_Advisory_on_North_Korean_IT_Workers.pdf | report | TLP:CLEAR | 中 |
 | source--dprk-it-workers--eb29460df938ef81 | north korean scammers are posing as it freelancers here's how you can protect your business |  | 不明 | CyberMerceNary/ITWorker/north-korean-scammers-are-posing-as-it-freelancers_-here's-how-you-can-protect-your-business.pdf | report | TLP:CLEAR | 中 |
 | source--flare-ibm-xforce-nkitw-2026 | Inside the North Korean Infiltrator Threat | Flare Research and IBM X-Force | 2026-03-18T13:00:34Z | https://flare.io/learn/resources/north-korean-infiltrator-threat | primary-report | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

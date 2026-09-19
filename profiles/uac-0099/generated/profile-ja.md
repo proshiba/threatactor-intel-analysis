@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0099`
 - 状態: draft
-- 更新日時: 2026-09-15T22:14:22Z
+- 更新日時: 2026-09-19T00:00:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -108,7 +108,7 @@ Aliasなし
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 | disruptive-activity | 不明 | 不明 | 2026-09-02 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  |  |  | ESETは、ロシア系脅威アクターUAC-0099が、AI支援型マルウェア解析を妨害する新手法「GuardBreaker」をウクライナの標的に使用したと報告した。 攻撃では悪性VBSスクリプトのコメント欄に核兵器製造を求める安全上問題のある文章を埋め込み、LLMの安全機構を作動させ解析拒否へ誘導する。 GuardBreakerを含むVBSは、UAC-0099専用のC#ローダー「MATCHBOIL」をダウンロード・導入し、追加ペイロードを配布する目的で使用される。 UAC-0099は過去に交通・エネルギー分野を標的としており、2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた。 同様のLLM向け敵対的プロンプトはMini Shai-Huludなどでも確認されており、AIを最初の解析器として無防備に使うワークフローの弱点が示されている。 | 高 | `source--daily-81099d020901332dd638`, `source--daily-d7f23202e68f653b1ad9` |
+| ロシア系UAC-0099、マルウェアに「核兵器」プロンプトを埋め込みAI解析を妨害 | disruptive-activity | 不明 | 不明 | 2026-09-02 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9 |  |  | victim--activity-rule--3a6def6b1e7230e2c121 | ESETは、ロシア系脅威アクターUAC-0099が、AI支援型マルウェア解析を妨害する新手法「GuardBreaker」をウクライナの標的に使用したと報告した。 攻撃では悪性VBSスクリプトのコメント欄に核兵器製造を求める安全上問題のある文章を埋め込み、LLMの安全機構を作動させ解析拒否へ誘導する。 GuardBreakerを含むVBSは、UAC-0099専用のC#ローダー「MATCHBOIL」をダウンロード・導入し、追加ペイロードを配布する目的で使用される。 UAC-0099は過去に交通・エネルギー分野を標的としており、2026年7月には偽Notepad++プラグインを用いて新型MATCHBOILを展開していた。 同様のLLM向け敵対的プロンプトはMini Shai-Huludなどでも確認されており、AIを最初の解析器として無防備に使うワークフローの弱点が示されている。 | 高 | `source--daily-81099d020901332dd638`, `source--daily-d7f23202e68f653b1ad9` |
 | ハッカーがNotepad++プラグインを悪用し、密かにマルウェアをインストール | malware-campaign | 不明 | 不明 | 2026-07-24 | target--activity-rule--country--36f1b9323d5faab92f39 | malware--daily-0067ca7bc8c9a3dd3e9d, malware--daily-75ab18d562d78bfce191, malware--daily-8759c33e657f191deae0 | ttp--activity-rule--26fad87edd30aab65d0c, ttp--activity-rule--8235faa69f53cdff20b8 | victim--activity-rule--32a83d51aade8f9e290c | ウクライナのCERT-UAは、正規のNotepad++と悪性プラグイン「LunchPoke」を含むアーカイブを配布し、永続性を確保する攻撃を確認した。 UAC-0099はPDFを装うVBSスクリプトからEvernote.zipを取得させ、Notepad++の通常のプラグイン読込機能で悪性NppExport.dllを実行する。 LunchPokeはスケジュールタスクを作成し、BurnyBearとMatchBoil V2ローダーを展開して、追加プログラムの取得と実行を可能にする。 BurnyBearは起動に失敗した場合、ホストのRAMとCPUを枯渇させる攻撃を行う代替機能も備えている。 本攻撃はNotepad++のサプライチェーン侵害ではなく、正規アプリケーションと悪性ファイルを一緒に配布して信頼を悪用する手法である。 | 中 | `source--daily-b6ba84745cdc81a329c5` |
 | Sandwormハッカーがデータワイパーでウクライナの穀物セクターを妨害 | disruptive-activity | 2025-06 | 2025-09 | 2025-11-07 | target--activity-rule--country--36f1b9323d5faab92f39, target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--598ee8d6d22873efc495, target--activity-rule--sector--e7608f51421ca8b1e297 |  | ttp--activity-rule--5178b790ed1002745052, ttp--activity-rule--ac677bbe93733e1f8ef3 | victim--activity-rule--f9da9dc6b868f567f3c8 | ロシア支援のSandworm（APT44）が教育・政府・物流・穀物輸出などを狙い、複数のデータワイパーを投入したとESETが報告。 攻撃は2025年6月と9月に確認され、ファイルやパーティション等を破壊して復旧困難な混乱を引き起こす破壊活動が目的。 穀物輸出は同国の主要収入源であり、標的化はウクライナの戦時経済を弱体化させる狙いと分析されている。 4月には大学でZeroLotやStingも使用。Stingは「goulash」にちなんだ名前のスケジュールタスク経由で実行、初期侵入はUAC-0099が関与。 防御策としてオフラインバックアップ、強力なEDR/侵入防止、ソフト更新の徹底が有効とされる。 | 中 | `source--daily-acae91555bc1bc0a4220` |
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt38`
 - 状態: draft
-- 更新日時: 2026-08-07T10:35:22Z
+- 更新日時: 2026-09-19T00:00:50Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,30 +21,28 @@ APT38の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | BeagleBoyz | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Bluenoroff | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | COPERNICIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| COPERNICIUM (Microsoft) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| ElectricFish | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Genie Spider | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| COPERNICIUM (Microsoft) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| ElectricFish | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Genie Spider | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | NICKEL GLADSTONE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Sapphire Sleet | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Stardust Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TA444 (Proofpoint) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TEMP.Hermit | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| TA444 (Proofpoint) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| TEMP.Hermit | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | G0082 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook North Korea row 9; mapping requires review. |
 
 ## 帰属
 
-The repository mapping workbook places this actor in the North Korea worksheet.
+Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.
 
 - 国: North Korea
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -65,7 +63,7 @@ The repository mapping workbook places this actor in the North Korea worksheet.
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

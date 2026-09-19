@@ -4,7 +4,7 @@
   "name": "UNC1549",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-15T22:14:51Z",
+  "updated_at": "2026-09-19T00:00:53Z",
   "languages": [
     "ja"
   ],
@@ -1137,7 +1137,8 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-96ac11961cae303bc9fd",
-          "source--target-audit-etda-threat-group-cards"
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-threat-actor"
         ],
         "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
@@ -1344,9 +1345,10 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-96ac11961cae303bc9fd",
-          "source--daily-d9794d16b217472dc38d"
+          "source--daily-d9794d16b217472dc38d",
+          "source--target-audit-misp-threat-actor"
         ],
-        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
     "regions": [
@@ -1398,6 +1400,7 @@
           "source--daily-d9794d16b217472dc38d",
           "source--kaspersky-mirage-kitten-2026",
           "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-threat-actor",
           "source--unc1549--c47ef662fbdb6d88"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
@@ -1447,9 +1450,10 @@
         "evidence_refs": [
           "source--daily-2f8e0aeaa133b750f976",
           "source--daily-d9794d16b217472dc38d",
-          "source--target-audit-etda-threat-group-cards"
+          "source--target-audit-etda-threat-group-cards",
+          "source--target-audit-misp-threat-actor"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       }
     ],
     "sectors": [
@@ -2320,6 +2324,57 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
+    },
+    {
+      "source_id": "source--osint-misp-mitre-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-19T00:00:13Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "c053ac5606be5035a164421e5053c8e04ac243533287678aa7c2603473c406c3",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=40. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--target-audit-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor victim geography fields",
+      "publisher": "MISP Project / Council on Foreign Relations",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
     }
   ],
   "assessment": {
@@ -2350,7 +2405,7 @@
       "ベンダーごとに追跡するクラスタ範囲が異なる可能性がある。",
       "既存資料が示すイラン系・IRGC-CEC整合性は帰属評価であり、今回報告された個々の侵害に対する指揮関係を直接証明しない。"
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc1549.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-07-25T14:07:08Z; result=matched.\n2026-07-29 daily OSINT: Kaspersky Securelist本文・IOC一覧を直接確認し、actor_profile/evidence/unc1549-kaspersky-2026-07-28.csvへ構造化した。",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc1549.csv\n2026-07-29 daily OSINT: Kaspersky Securelist本文・IOC一覧を直接確認し、actor_profile/evidence/unc1549-kaspersky-2026-07-28.csvへ構造化した。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T00:00:13Z; result=matched.",
     "analyst_notes": "Operation Talked（SOCRadar、2026-07-29）はUAC-0056/UAC-0114とのTTP重複のみを示し、UNC1549とは無関係である。重複のみの情報を既存アクターへ同一視しない方針を継続する。"
   },
   "free_text": {

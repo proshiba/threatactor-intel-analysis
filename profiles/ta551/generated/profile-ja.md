@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta551`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-19T00:00:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,18 +23,18 @@ TA551の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Russia worksheet.
+未評価
 
-- 国: Russia
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description. |
 
 ## 他アクターとの関係
 
@@ -48,12 +48,12 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | Capability | Ursnif, IcedID, Valak, QakBot, Sliver |
 | Infrastructure |  |
 | Victim |  |
-| Socio-political | Russia |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

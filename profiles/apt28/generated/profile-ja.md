@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt28`
 - 状態: review
-- 更新日時: 2026-08-30T07:47:19Z
+- 更新日時: 2026-09-19T00:00:49Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -71,7 +71,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

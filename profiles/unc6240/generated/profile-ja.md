@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6240`
 - 状態: draft
-- 更新日時: 2026-09-10T16:00:55Z
+- 更新日時: 2026-09-19T00:00:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -49,17 +49,17 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## OSINTクロスチェック
 
-- 判定: `no-match`
-- 調査日時: 2026-07-25T14:07:08Z
+- 判定: `possible-match`
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | 一致なし |  |  |  |  |
+| etda-threat-group-cards | ShinyHunters | single-alias-intersection | 中 |  | https://www.zerofox.com/blog/shinyhunters-breach/<br>https://www.bleepingcomputer.com/news/security/hacker-group-floods-dark-web-with-data-stolen-from-11-companies/<br>https://www.zdnet.com/article/a-hacker-group-is-selling-more-than-73-million-user-records-on-the-dark-web/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-threat-actor | ShinyHunters | single-alias-intersection | 中 |  | https://cyberwarzone.com/shinyhunters-22-year-old-member-pleads-guilty-to-cyber-extortion-causing-6-million-in-damage/<br>https://www.bitdefender.com/blog/hotforsecurity/pizza-hut-australia-leaks-one-million-customers-details-claims-shinyhunters-hacking-group/<br>https://www.justice.gov/usao-wdwa/pr/alleged-french-cybercriminal-appear-seattle-indictment-conspiracy-computer-intrusion |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -158,6 +158,7 @@ TTPなし
 
 - Vendor cluster boundaries may differ from the canonical name used here.
 - parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters は本プロファイルへ統合(merged)したが、同台帳が保持する観測4件(Health-ISAC 2026-07-30、Brinks Home 2026-07-31、ReliaQuest 2026-08-26、McKesson SEC Form 8-K 2026-08-29)は活動としては取り込んでいない。被害組織3社の開示はいずれもShinyHuntersを名指ししておらず、帰属が攻撃者の犯行主張と報道に依存するためである。犯行主張のみを根拠とする活動を本リポジトリでどう扱うかの方針が未決であり、方針決定後に観測単位で再判断する。
+- 2026-09-14の走査で、フロリダ州DAVIDデータベース侵害について州当局の公式確認が得られた。フロリダ州高速道路安全自動車局(FLHSMV)は2026-09-11に「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」と公表し、Plant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものを悪用された経路も示した。ただしFLHSMVは実行主体を「international cybercriminal organization」とのみ表現してShinyHuntersを名指しせず、同集団が主張する20万件超という件数も確認していない。すなわち確認されたのは侵害の発生であって帰属ではないため、犯行主張のみを根拠とする活動の扱いという上記の未決方針は解消していない。関連レコード(unc6240|https://x.com/flhsmv/status/2098239548660514979)は不採用として判断理由を保存している。
 
 ## 出典
 
@@ -170,6 +171,8 @@ TTPなし
 | source--unc6240--ddfed6d1e692a60c | cybersecurity forecast 2026 en |  | 2026 | summary/2025/cybersecurity-forecast-2026-en.pdf | report | TLP:CLEAR | 中 |
 | source--unc6240--df2a78f9305a5534 | unc6240 |  | 不明 | actor_profile/evidence/unc6240.csv | structured-data | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--menupass`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-09-19T00:00:51Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,33 +21,31 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 | APT10 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | BRONZE RIVERSIDE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Cicada | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Cloud Hopper | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Cloud Hopper | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | CVNX | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| DEV-0401 | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| DEV-0401 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | HOGFISH | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| MenuPass Team | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| MenuPass Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | POTASSIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Red Apollo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Stone Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TA429 | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TALONITE | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| TA429 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| TALONITE | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Red Apollo, CVNX, POTASSIUM, Cloud Hopper, Hogfish, TA429, Cicada, TALONITE, DEV-0401 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 71; mapping requires review. |
 | Compromise & Persistence: BUGJUICE, SOGU, SNUGRIDE, Group 27 | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 71; mapping requires review. |
 
 ## 帰属
 
-The repository mapping workbook places this actor in the China worksheet.
+未評価
 
-- 国: China
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -64,12 +62,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | Capability | RedLeaves, Ecipekac, EvilGrab, SNUGRIDE, FYAnti, HUI Loader, PlugX, P8RAT, SodaMaster, Cobalt Strike, PoisonIvy, ChChes, UPPERCUT, IEChecker, Quasar, Trochilus, UPPERCUT (aka ANEL), StoneNetLoader, Net, certutil, PowerSploit, Impacket, pwdump, Mimikatz, Ping, cmd, esentutl, QuasarRAT, AdFind, PsExec |
 | Infrastructure |  |
 | Victim | Healthcare; Pharma, Defense, Aerospace, Government, MSP, |
-| Socio-political | China |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

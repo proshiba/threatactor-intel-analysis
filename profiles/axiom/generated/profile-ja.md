@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--axiom`
 - 状態: draft
-- 更新日時: 2026-07-29T23:11:59Z
+- 更新日時: 2026-09-19T00:00:50Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,29 +18,29 @@ Axiomの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT17 | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Deputy Dog (iDefense) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Dogfish (iDefense) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| APT17 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Deputy Dog (iDefense) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Dogfish (iDefense) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Group 72 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Tailgater Team | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Winnti Umbrella | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Tailgater Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Winnti Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Dogfish (iDefense), Deputy Dog (iDefense), Winnti Umbrella | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 10; mapping requires review. |
 | Shell Crew, Hidden Lynx, Axiom | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 10; mapping requires review. |
 
 ## 帰属
 
-The repository mapping workbook places this actor in the China worksheet.
+未評価
 
-- 国: China
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -62,12 +62,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | Capability | PlugX, Hydraq, gh0st RAT, Derusbi, Hikit, PoisonIvy, ZxShell, Zox, Winnti, Deputy Dog, HTRAN, HDRoot, Fscan, Timestomper |
 | Infrastructure |  |
 | Victim |  |
-| Socio-political | China |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
