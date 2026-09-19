@@ -4,24 +4,13 @@
   "name": "DPRK IT Worker Schemes",
   "status": "draft",
   "created_at": "2026-07-25T09:03:53Z",
-  "updated_at": "2026-09-19T00:54:53Z",
+  "updated_at": "2026-09-19T00:58:00Z",
   "languages": [
     "ja"
   ],
   "actor": {
     "canonical_name": "DPRK IT Worker Schemes",
-    "aliases": [
-      {
-        "name": "Famous Chollima",
-        "vendor": "CrowdStrike",
-        "scope": "exact",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--daily-10f083232dfd566dc4f9"
-        ],
-        "analyst_notes": "CrowdStrikeのFAMOUS CHOLLIMAは、北朝鮮政権へ賃金を送金するための不正就労(リモートITワーカー)を中核とする追跡名であり、本プロファイル「DPRK IT Worker Schemes」が対象とするクラスタと実質的に同一の範囲を指す。したがってscopeはexactとする。profiles/contagious-interview 側にも同名aliasが登録されているが、そちらはscope: broaderであり、「FAMOUS CHOLLIMAはContagious Interview(偽求人面接によるマルウェア配布キャンペーン)より広い」ことを表す記録である。ここでexactを与えることで、日次キューのActorRegistryは複数プロファイル一致の場合に一意なexact一致を優先し、「Famous Chollima」の言及を本プロファイルへ解決する。運用上の振り分け基準: リモートITワーカーの不正就労・身元詐称・賃金送金を主題とする資料は本プロファイルへ、偽の採用面接やコーディング課題を用いたマルウェア配布を主題とする資料はcontagious-interviewへ割り当てる。CrowdStrikeが同一名の下にContagious Interview系の活動も併せて整理する場合がある点は、両プロファイルのalias注記として残す。exactは日次キューでの解決先を一意に定めるためのモデリング上の判断であり、個々の資料についてはAGENT.mdに従い原文で実行主体を確認したうえでレコードを採否する。 根拠資料: Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」(2026-08-26)は「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」と記し、本プロファイルの対象とFAMOUS CHOLLIMAを同義に用いている。"
-      }
-    ],
+    "aliases": [],
     "actor_types": [
       "financially-motivated",
       "state-sponsored-ecosystem"
@@ -39,30 +28,59 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
+    "description": "A repository-level ecosystem profile for DPRK remote IT worker revenue-generation schemes. It represents the broader scheme/ecosystem described by U.S. law enforcement and is not an exact synonym for any single vendor-named adversary.",
+    "analyst_notes": "FAMOUS CHOLLIMA is modeled as a separate CrowdStrike-named adversary. This profile remains the broader DPRK IT worker scheme/ecosystem."
   },
   "attribution": {
-    "countries": [],
-    "sponsor_type": "unknown",
+    "countries": [
+      "North Korea"
+    ],
+    "sponsor_type": "state",
     "organizations": [],
-    "assessment": "",
-    "confidence": "unknown",
-    "evidence_refs": [],
-    "analyst_notes": ""
+    "assessment": "U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-generation schemes supporting the regime and WMD programs.",
+    "confidence": "high",
+    "evidence_refs": [
+      "source--doj-dprk-it-worker-schemes-2025"
+    ],
+    "analyst_notes": "This attribution applies to the broader scheme/ecosystem, not every vendor-specific cluster name."
   },
   "motivations": [
     {
       "type": "financial-gain",
-      "description": "Financially motivated intrusion or fraud.",
-      "confidence": "low",
+      "description": "The schemes fraudulently obtain remote employment to generate revenue for the DPRK government.",
+      "confidence": "high",
       "evidence_refs": [
-        "source--actor-mapping-workbook"
+        "source--doj-dprk-it-worker-schemes-2025"
       ],
-      "analyst_notes": "Inferred from catalog actor type; corroborate with actor-specific reporting."
+      "analyst_notes": "Government law-enforcement reporting."
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--dprk-it-workers--related-to--famous-chollima",
+      "target_actor": "Famous Chollima",
+      "relationship_type": "related-to",
+      "description": "FAMOUS CHOLLIMA is modeled as a CrowdStrike-named adversary conducting DPRK IT worker infiltration activity within the broader ecosystem represented by this profile.",
+      "confidence": "high",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--crowdstrike-famous-chollima-2026",
+        "source--doj-dprk-it-worker-schemes-2025"
+      ],
+      "analyst_notes": "Vendor-specific actor cluster is separated from the broad government scheme."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
@@ -1947,17 +1965,56 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--doj-dprk-it-worker-schemes-2025",
+      "path": "https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote",
+      "url": "https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote",
+      "title": "Justice Department Announces Coordinated, Nationwide Actions to Combat North Korean Remote IT Workers' Illicit Revenue Generation Schemes",
+      "publisher": "U.S. Department of Justice",
+      "published_at": {
+        "value": "2025-06-30T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "government-law-enforcement",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Used to model the broader DPRK IT worker scheme/ecosystem and its state revenue-generation purpose."
+    },
+    {
+      "source_id": "source--crowdstrike-famous-chollima-2026",
+      "path": "https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-technology-threat-landscape-report/",
+      "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-technology-threat-landscape-report/",
+      "title": "CrowdStrike 2026 Technology Threat Landscape Report",
+      "publisher": "CrowdStrike",
+      "published_at": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "CrowdStrike treats FAMOUS CHOLLIMA as a named DPRK-nexus adversary conducting IT worker infiltration."
     }
   ],
   "assessment": {
     "key_judgments": [
       {
-        "statement": "DPRK ITワーカーはリモート採用を通じて正規従業員として企業内部へ入り込み、生成AIを身分偽造・コーディング・面接時の翻訳へ活用している。",
+        "statement": "DPRK IT Worker Schemes is a broad ecosystem/scheme profile, not an exact alias of the CrowdStrike actor FAMOUS CHOLLIMA.",
         "confidence": "high",
         "evidence_refs": [
-          "source--anyrun-it-workers-part-two-2026"
+          "source--doj-dprk-it-worker-schemes-2025",
+          "source--crowdstrike-famous-chollima-2026"
         ],
-        "analyst_notes": "ANY.RUNが偽企業を設立して3名を実際に採用し、内部から直接観測した報告に基づく。"
+        "analyst_notes": "Entity-scope correction."
       }
     ],
     "gaps": [
@@ -1971,12 +2028,12 @@
     "analyst_notes": ""
   },
   "free_text": {
-    "executive_summary": "DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専用資料8件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+    "executive_summary": "北朝鮮のリモートITワーカーによる不正就労・収益獲得スキーム全体を表すecosystem profile。FAMOUS CHOLLIMAは別のvendor-specific Actorとして分離する。",
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
     "targeting_details": "構造化ターゲット監査: 標的国=個別国なし。標的地域=北米、西欧。日本は確認時に個別国として保持する。",
-    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: Famous Chollima exact aliasを削除し、独立Actorとのrelated-to関係へ変更。"
   },
   "victim_cases": [
     {
