@@ -77,14 +77,12 @@ class WorkbookAliasBoundaryTests(unittest.TestCase):
                 "Country": "Pakistan",
             },
         }
-        result = migrate_aliases(profile, actor, record)
+        result = migrate_aliases(profile, actor)
         self.assertTrue(result["changed"])
         self.assertEqual(result["removed"], ["Pakistan"])
         names = [item["name"] for item in profile["actor"]["aliases"]]
-        self.assertEqual(
-            names,
-            ["Trusted Alias", "Workbook Alias A", "Workbook Alias B"],
-        )
+        self.assertEqual(names, ["Trusted Alias"])
+        self.assertEqual(result["added"], [])
 
 
 if __name__ == "__main__":
