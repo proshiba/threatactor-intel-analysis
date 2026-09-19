@@ -2,9 +2,9 @@
   "schema_version": "1.2.0",
   "profile_id": "actor--gravityrat",
   "name": "GravityRAT",
-  "status": "draft",
+  "status": "deprecated",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T00:54:52Z",
+  "updated_at": "2026-09-19T00:57:00Z",
   "languages": [
     "ja"
   ],
@@ -12,7 +12,7 @@
     "canonical_name": "GravityRAT",
     "aliases": [],
     "actor_types": [
-      "threat-cluster"
+      "deprecated-software-entity"
     ],
     "first_seen": {
       "value": null,
@@ -27,14 +27,14 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": "2026-09 workbook-alias migration: workbook-only aliases were removed because the source workbook is not retained in this repository. MITRE, catalog, and actor-specific aliases were kept. Future workbook ingestion uses explicit actor-name columns only."
+    "description": "Deprecated legacy actor profile. GravityRAT is malware (MITRE ATT&CK S0237), not a canonical threat actor. ESET tracks the otherwise-unknown actor behind GravityRAT as SpaceCobra.",
+    "analyst_notes": "Retained only for legacy actor--gravityrat references. New actor attribution should use SpaceCobra where the ESET tracking scope is supported, and GravityRAT should be modeled as malware."
   },
   "attribution": {
     "countries": [],
     "sponsor_type": "unknown",
     "organizations": [],
-    "assessment": "",
+    "assessment": "Deprecated entity conflation; no actor attribution is asserted for the GravityRAT software name.",
     "confidence": "unknown",
     "evidence_refs": [],
     "analyst_notes": ""
@@ -45,9 +45,9 @@
     "adversary": "",
     "capability": "",
     "infrastructure": "",
-    "victim": "India",
+    "victim": "",
     "socio_political": "",
-    "analyst_notes": "Bootstrap model; infrastructure and campaign-level pivots require report review."
+    "analyst_notes": "Deprecated software/actor conflation."
   },
   "capabilities": {
     "malware": [],
@@ -56,39 +56,16 @@
     "delivery_formats": [],
     "vulnerabilities": [],
     "operational_capabilities": [],
-    "analyst_notes": ""
+    "analyst_notes": "Use GravityRAT as a malware capability under an actor profile such as SpaceCobra when source scope supports it."
   },
   "activities": [],
   "targets": {
-    "countries": [
-      {
-        "id": "target--country--india",
-        "name": "インド",
-        "description": "Targeting text mentions india.",
-        "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
-        },
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Automatically structured from target text; review scope and granularity. [targeting-scope-audit-v1] 既存の標的専用自由記述から構造化。"
-      }
-    ],
+    "countries": [],
     "regions": [],
     "sectors": [],
     "roles": [],
-    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
-    "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
+    "selection_logic": "Deprecated legacy actor profile.",
+    "analyst_notes": ""
   },
   "ttps": [],
   "sources": [
@@ -127,27 +104,72 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
+    },
+    {
+      "source_id": "source--mitre-gravityrat-s0237",
+      "path": "https://attack.mitre.org/software/S0237/",
+      "url": "https://attack.mitre.org/software/S0237/",
+      "title": "GravityRAT, Software S0237",
+      "publisher": "MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "MITRE models GravityRAT as malware."
+    },
+    {
+      "source_id": "source--eset-spacecobra-gravityrat-2023",
+      "path": "https://www.welivesecurity.com/2023/06/15/android-gravityrat-goes-after-whatsapp-backups/",
+      "url": "https://www.welivesecurity.com/2023/06/15/android-gravityrat-goes-after-whatsapp-backups/",
+      "title": "Android GravityRAT goes after WhatsApp backups",
+      "publisher": "ESET",
+      "published_at": {
+        "value": "2023-06-15T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "ESET states that the actor behind GravityRAT remains unknown and tracks the group as SpaceCobra."
     }
   ],
   "assessment": {
-    "key_judgments": [],
-    "gaps": [
-      "Unknown observation dates must not be replaced by publication dates.",
-      "Automatically mapped aliases, targets, and workbook software require analyst review."
+    "key_judgments": [
+      {
+        "statement": "GravityRAT is malware rather than a canonical actor; the legacy actor profile is deprecated.",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-gravityrat-s0237",
+          "source--eset-spacecobra-gravityrat-2023"
+        ],
+        "analyst_notes": "Entity-type correction."
+      }
     ],
+    "gaps": [],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "Historical reporting may use malware names metonymically for operators; source scope must be checked before actor attribution."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/gravityrat.csv",
+    "collection_notes": "Removed from the active corpus catalog by actor-census-curation.json.",
     "analyst_notes": ""
   },
   "free_text": {
-    "executive_summary": "GravityRATの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+    "executive_summary": "GravityRATはMalwareとして扱い、旧actor profileはdeprecatedとする。ESETが追跡するGravityRAT運用主体はSpaceCobraとして別profile化する。",
     "history": "",
     "capability_details": "",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=インド。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\nIndia",
-    "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+    "targeting_details": "",
+    "additional_notes": "actor--gravityratは既存参照互換性のため保持するが、新規Actor帰属には使用しない。"
   },
   "victim_cases": []
 }

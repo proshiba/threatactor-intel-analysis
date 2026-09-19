@@ -7,39 +7,70 @@
       "spec_version": "2.1",
       "id": "intrusion-set--96a3c31a-2b69-4b14-9e20-af8543d6ee75",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-09-19T00:54:53Z",
+      "modified": "2026-09-19T01:10:23Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Greenbug",
-      "aliases": [],
-      "description": "Greenbugの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
-      "goals": [],
-      "external_references": [],
+      "aliases": [
+        "Volatile Kitten"
+      ],
+      "description": "Greenbug / Volatile Kitten is an Iran-linked threat cluster. CrowdStrike tracks VOLATILE KITTEN as a state-sponsored Iran-based development team associated with Shamoon; ETDA Threat Group Cards maps Greenbug and Volatile Kitten together.",
+      "goals": [
+        "ETDA Threat Group Cards describes Greenbug / Volatile Kitten as focused on information theft and espionage."
+      ],
+      "external_references": [
+        {
+          "source_name": "CrowdStrike",
+          "description": "Local source: https://www.crowdstrike.com/en-us/adversaries/volatile-kitten/",
+          "external_id": "source--crowdstrike-volatile-kitten"
+        },
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--osint-etda-threat-group-cards"
+        }
+      ],
       "x_profile_id": "actor--greenbug",
-      "x_alias_assessments": [],
+      "x_alias_assessments": [
+        {
+          "name": "Volatile Kitten",
+          "vendor": "CrowdStrike",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--crowdstrike-volatile-kitten"
+          ],
+          "analyst_notes": "CrowdStrike tracks VOLATILE KITTEN as an Iran-based actor/development team associated with Shamoon. ETDA Threat Group Cards maps Greenbug and Volatile Kitten together."
+        }
+      ],
       "x_attribution": {
-        "countries": [],
-        "sponsor_type": "unknown",
+        "countries": [
+          "Iran"
+        ],
+        "sponsor_type": "state-aligned",
         "organizations": [],
-        "assessment": "",
-        "confidence": "unknown",
-        "evidence_refs": [],
-        "analyst_notes": "Removed legacy state attribution generated solely from community-workbook geography. Country/origin is not sponsorship evidence."
+        "assessment": "CrowdStrike describes VOLATILE KITTEN as an Iran-based state-sponsored adversary; ETDA maps Greenbug/Volatile Kitten and lists Iranian state sponsorship.",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--crowdstrike-volatile-kitten",
+          "source--osint-etda-threat-group-cards"
+        ],
+        "analyst_notes": "State-aligned is used conservatively because the vendor/aggregate sources describe sponsorship but cluster boundaries remain vendor-specific."
       },
       "x_free_text": {
-        "executive_summary": "Greenbugの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+        "executive_summary": "Greenbug / Volatile Kittenをイラン系のActorクラスタとして追跡し、Shamoonはwiper malwareとして分離する。",
         "history": "",
         "capability_details": "ISMdoor",
         "infrastructure_details": "",
         "targeting_details": "構造化ターゲット監査: 標的国=イスラエル、イラク、サウジアラビア、パキスタン、英国。標的地域=中東。日本は確認時に個別国として保持する。\n\nSaudi Arabia",
-        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
+        "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: Volatile KittenをGreenbug側へ統合し、Shamoon actor entityをdeprecated化。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--greenbug",
         "actor_name": "Greenbug",
-        "searched_at": "2026-09-19T00:54:53Z",
+        "searched_at": "2026-09-19T01:10:23Z",
         "search_scope": {
           "datasets": [
             "etda-threat-group-cards",
@@ -53,7 +84,8 @@
             "misp-malpedia"
           ],
           "name_inputs": [
-            "Greenbug"
+            "Greenbug",
+            "Volatile Kitten"
           ],
           "mitre_group_id": null
         },
@@ -69,6 +101,11 @@
                   "normalized": "greenbug",
                   "profile_value": "Greenbug",
                   "dataset_value": "Greenbug"
+                },
+                {
+                  "normalized": "volatilekitten",
+                  "profile_value": "Volatile Kitten",
+                  "dataset_value": "Volatile Kitten"
                 }
               ],
               "match_basis": "canonical-name",
@@ -263,17 +300,36 @@
         },
         "malware_catalog_matches": [
           {
-            "profile_malware_id": "malware--ismdoor",
-            "profile_name": "ISMdoor",
-            "entry_uuid": "e09d8dd6-6857-4607-a0ba-9c8d2a66083b",
-            "entry_value": "ISMDoor",
+            "profile_malware_id": "malware--shamoon",
+            "profile_name": "Shamoon",
+            "entry_uuid": "25d03501-1fe0-4d5e-bc75-c00fbdaa83df",
+            "entry_value": "DistTrack",
             "refs": [
-              "https://malpedia.caad.fkie.fraunhofer.de/details/win.ismdoor",
-              "http://www.clearskysec.com/greenbug/",
-              "https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/greenbug-espionage-telco-south-asia",
+              "https://malpedia.caad.fkie.fraunhofer.de/details/win.disttrack",
+              "https://afyonluoglu.org/PublicWebFiles/Reports-TR/2017%20FireEye%20M-Trends%20Report.pdf",
               "https://www.symantec.com/connect/blogs/greenbug-cyberespionage-group-targeting-middle-east-possible-links-shamoon",
+              "https://symantec.broadcom.com/hubfs/Attacks-Against-Critical_Infrastructrure.pdf",
               "https://web.archive.org/web/20190331181353/https://www.symantec.com/connect/blogs/greenbug-cyberespionage-group-targeting-middle-east-possible-links-shamoon",
-              "https://unit42.paloaltonetworks.com/atoms/evasive-serpens/"
+              "https://www.fortinet.com/blog/threat-research/the-increasing-wiper-malware-threat",
+              "https://symantec-blogs.broadcom.com/blogs/threat-intelligence/shamoon-destructive-threat-re-emerges-new-sting-its-tail",
+              "https://www.crowdstrike.com/blog/the-anatomy-of-wiper-malware-part-1/",
+              "https://content.fireeye.com/m-trends/rpt-m-trends-2017",
+              "https://www.crowdstrike.com/blog/the-anatomy-of-wiper-malware-part-3/",
+              "https://malwareindepth.com/shamoon-2012/",
+              "http://researchcenter.paloaltonetworks.com/2017/03/unit42-shamoon-2-delivering-disttrack/",
+              "https://www.zdnet.com/article/fbi-warns-about-ongoing-attacks-against-software-supply-chain-companies/",
+              "http://www.vinransomware.com/blog/detailed-threat-analysis-of-shamoon-2-0-malware",
+              "http://researchcenter.paloaltonetworks.com/2016/11/unit42-shamoon-2-return-disttrack-wiper/?adbsc=social68389776&adbid=804134348374970368&adbpl=tw&adbpr=4487645412",
+              "https://unit42.paloaltonetworks.com/shamoon-3-targets-oil-gas-organization/",
+              "https://web.archive.org/web/20120818235442/https://www.symantec.com/connect/blogs/shamoon-attacks",
+              "https://resources.cylera.com/hubfs/Cylera%20Labs/Cylera%20Labs%20Kwampirs%20Shamoon%20Technical%20Report.pdf",
+              "https://securelist.com/shamoon-the-wiper-copycats-at-work/",
+              "https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=5758557d-6e3a-4174-90f3-fa92a712ecd9&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments",
+              "https://ti.qianxin.com/uploads/2020/02/13/cb78386a082f465f259b37dae5df4884.pdf",
+              "https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=ad6f8259-2bb4-4f7f-b8e1-710b35a4cbed&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments",
+              "https://unit42.paloaltonetworks.com/unit42-second-wave-shamoon-2-attacks-identified/",
+              "http://contagiodump.blogspot.com/2012/08/shamoon-or-disttracka-samples.html",
+              "https://www.codeandsec.com/Sophisticated-CyberWeapon-Shamoon-2-Malware-Analysis"
             ],
             "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
           }
@@ -389,7 +445,9 @@
           }
         ],
         "country_comparison": {
-          "profile_values": [],
+          "profile_values": [
+            "iran"
+          ],
           "external_values": [
             "iran",
             "unknown"
@@ -416,29 +474,31 @@
     {
       "type": "malware",
       "spec_version": "2.1",
-      "id": "malware--c41e41a7-ac70-4a31-8fc3-f085e10b8640",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "id": "malware--49d00feb-2a00-424e-8d94-cb47defe2cf2",
+      "created": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-19T01:10:23Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "ISMdoor",
-      "description": "The actor-mapping workbook lists this software or tool.",
+      "name": "Shamoon",
+      "description": "CrowdStrike tracks VOLATILE KITTEN as a development team associated with Shamoon.",
       "external_references": [
         {
-          "source_name": "Florian Roth and community contributors",
-          "description": "Local source: APT Groups and Operations.xlsx",
-          "external_id": "source--actor-mapping-workbook"
+          "source_name": "CrowdStrike",
+          "description": "Local source: https://www.crowdstrike.com/en-us/adversaries/volatile-kitten/",
+          "external_id": "source--crowdstrike-volatile-kitten"
         }
       ],
-      "x_profile_object_id": "malware--ismdoor",
+      "x_profile_object_id": "malware--shamoon",
       "x_confidence": "medium",
-      "x_analyst_notes": "",
+      "x_analyst_notes": "Association does not mean every Shamoon deployment is Greenbug / Volatile Kitten activity.",
       "is_family": true,
       "malware_types": [
-        "unknown"
+        "wiper"
       ],
-      "aliases": []
+      "aliases": [
+        "Disttrack"
+      ]
     },
     {
       "type": "identity",
@@ -580,16 +640,16 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--95b09c71-f7b1-44db-8d16-6dcdc27379f4",
-      "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-07-25T15:22:58Z",
+      "id": "relationship--1b2bb697-213e-47f3-a66c-0731b51db402",
+      "created": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-19T01:10:23Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
       "source_ref": "intrusion-set--96a3c31a-2b69-4b14-9e20-af8543d6ee75",
-      "target_ref": "malware--c41e41a7-ac70-4a31-8fc3-f085e10b8640",
-      "description": "Greenbug uses ISMdoor.",
+      "target_ref": "malware--49d00feb-2a00-424e-8d94-cb47defe2cf2",
+      "description": "Greenbug uses Shamoon.",
       "x_confidence": "medium"
     },
     {
@@ -763,19 +823,19 @@
       "spec_version": "2.1",
       "id": "report--ea8d9e3e-f30c-463b-b90d-f4fd930f7a2a",
       "created": "2026-07-25T15:22:58Z",
-      "modified": "2026-09-19T00:54:53Z",
+      "modified": "2026-09-19T01:10:23Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Greenbug Threat Actor Profile",
-      "description": "Greenbugの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
+      "description": "Greenbug / Volatile Kittenをイラン系のActorクラスタとして追跡し、Shamoonはwiper malwareとして分離する。",
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T00:54:53Z",
+      "published": "2026-09-19T01:10:23Z",
       "object_refs": [
         "intrusion-set--96a3c31a-2b69-4b14-9e20-af8543d6ee75",
-        "malware--c41e41a7-ac70-4a31-8fc3-f085e10b8640",
+        "malware--49d00feb-2a00-424e-8d94-cb47defe2cf2",
         "identity--a795e6e0-946e-479c-b96f-aaf0fb2002e7",
         "identity--55d1e041-d0bb-4eb7-a0db-5a85453d5a52",
         "identity--73b5543c-e1a2-4b6a-8fdc-e35b4ad2927b",

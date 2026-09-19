@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--calypso`
 - 状態: draft
-- 更新日時: 2026-09-19T00:54:53Z
+- 更新日時: 2026-09-19T01:10:23Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,31 +18,27 @@ Calypsoの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Comment Crew | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Links to Skyipot | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Mirage | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Pitty Tiger | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Bronze Medley | SecureWorks | overlapping | 中 | `source--osint-etda-threat-group-cards` | ETDA Threat Group Cards maps Bronze Medley (SecureWorks) to Calypso (Positive Technologies). |
+| Red Lamassu | Lumen Black Lotus Labs | exact | 中 | `source--daily-350d930382dd3ed9f923` | Lumen reporting cited in the reviewed daily activity describes the cluster as Calypso, aka Red Lamassu. |
 
 ## 帰属
 
-未評価
+ETDA Threat Group Cards lists Calypso as China-linked. This geographic attribution is kept separate from any state-sponsorship claim.
 
-- 国: 不明
+- 国: China
 - スポンサー種別: unknown
-- 確度: 不明
-- 証拠: なし
+- 確度: 中
+- 証拠: `source--osint-etda-threat-group-cards`
 
 ## モチベーション
 
-未評価
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| espionage | ETDA describes the group's motivation as information theft and espionage. | 中 | `source--osint-etda-threat-group-cards` | Aggregated actor card. |
 
 ## 他アクターとの関係
 
-| 対象 | 関係 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|
-| APT1 | overlaps-with | 共有alias: Comment Crew | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| Ke3chang | overlaps-with | 共有alias: Mirage | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| PittyTiger | overlaps-with | 共有alias: Pitty Tiger, PittyTiger | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+確認された関係なし
 
 ## ダイヤモンドモデル
 
@@ -57,26 +53,19 @@ Calypsoの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:54:53Z
+- 調査日時: 2026-09-19T01:10:23Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: あり
+- 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | Calypso | canonical-name | 高 | China | https://www.ptsecurity.com/ww-en/analytics/calypso-apt-2019/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Calypso&n=1 |
-| etda-threat-group-cards | Comment Crew, APT 1 | single-alias-intersection | 中 | China | https://www.symantec.com/connect/blogs/apt1-qa-attacks-comment-crew<br>https://en.wikipedia.org/wiki/PLA_Unit_61398<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Comment+Crew%2C+APT+1&n=1 |
-| etda-threat-group-cards | PittyTiger, Pitty Panda | single-alias-intersection | 中 | China | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=PittyTiger%2C+Pitty+Panda&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | Nylon Typhoon | single-alias-intersection | 中 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | APT1 | single-alias-intersection | 中 | CN, China | https://en.wikipedia.org/wiki/PLA_Unit_61398<br>http://intelreport.mandiant.com/Mandiant_APT1_Report.pdf<br>https://www.cfr.org/interactive/cyber-operations/pla-unit-61398 |
-| misp-threat-actor | APT15 | single-alias-intersection | 中 | CN, China | https://www.fireeye.com/blog/threat-research/2014/09/forced-to-adapt-xslcmd-backdoor-now-on-os-x.html<br>http://arstechnica.com/security/2015/04/elite-cyber-crime-group-strikes-back-after-attack-by-rival-apt-gang/<br>https://github.com/nccgroup/Royal_APT |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Calypso | canonical-name | 高 | CN | https://www.ptsecurity.com/upload/corporate/ru-ru/analytics/calypso-apt-2019-rus.pdf<br>https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/<br>https://www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/red-lamassu-open-season.html |
-| misp-microsoft-activity-group | Nylon Typhoon | single-alias-intersection | 中 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | PittyTiger - G0011 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0011<br>http://blog.cassidiancybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
-| misp-mitre-enterprise-intrusion-set | APT1 - G0006 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
-| misp-mitre-intrusion-set | APT1 - G0006 | single-alias-intersection | 中 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
-| misp-mitre-intrusion-set | Ke3chang - G0004 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0004<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://research.nccgroup.com/2018/03/10/apt15-is-alive-and-strong-an-analysis-of-royalcli-and-royaldns/ |
-| misp-mitre-intrusion-set | PittyTiger - G0011 | single-alias-intersection | 中 |  | https://airbus-cyber-security.com/the-eye-of-the-tiger/<br>https://attack.mitre.org/groups/G0011<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
@@ -94,10 +83,7 @@ Calypsoの標準化プロファイル。リポジトリ内の専用資料1件と
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--biscuit-and-many-others | BISCUIT and many others | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--webc2 | WEBC2 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -124,16 +110,14 @@ Calypsoの標準化プロファイル。リポジトリ内の専用資料1件と
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | cyber-espionage | 不明 | 不明 | 2026-05-22 | target--activity-rule--sector--97fa6f38a056d42117be |  | ttp--activity-rule--20b1bae9b0c6bca32748, ttp--activity-rule--7f1ef34595aa281d7470, ttp--activity-rule--b2ce07fcea1c942aa118 | victim--activity-rule--72a9b284ae5c1aa7f781 | 中国系サイバースパイ活動が、Linux向けShowboatとWindows向けJFMBackdoorで通信事業者を標的化。 活動は少なくとも2022年半ばから続き、アジア太平洋と中東の組織を狙い、Calypso(別名、Red Lamassu)に帰属。 攻撃者は複数の通信事業者風ドメインを用意し、標的組織になりすますインフラを使用していた。 Showboatはモジュール式のフレームワークで、侵害後の永続化、情報収集、ファイル転送、プロセス隠蔽、SOCKS5プロキシ機能を備える。 JFMBackdoorは多機能な諜報用マルウェアで、DLLサイドローディングで読み込まれ、リバースシェル、ファイル操作、画面取得、痕跡削除などが可能。 | 中 | `source--daily-350d930382dd3ed9f923` |
-| GhostNet | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
 | 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | Calypso | 情報なし | T1090 Proxy, T1083 File and Directory Discovery, T1574.001 DLL | 情報なし | 情報通信 | 被害事例: 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | 中 |
-| GhostNet | Calypso | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
-GhostNet
+
 
 ## ターゲット
 
@@ -204,7 +188,9 @@ GhostNet
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| Calypso is retained as a separate espionage cluster with Bronze Medley and Red Lamassu as scoped cross-vendor names; APT1/Comment Crew, Mirage, and Pitty Tiger are not treated as aliases. | 中 | `source--osint-etda-threat-group-cards`, `source--daily-350d930382dd3ed9f923` | Corrected after alias/entity review. |
 
 ### 情報ギャップ
 
@@ -249,4 +235,4 @@ GhostNet
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: removed APT1/Comment Crew, Mirage, Pitty Tiger alias contamination and workbook-only GhostNet/software mappings.

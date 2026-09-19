@@ -2,12 +2,12 @@
 
 - プロファイルID: `actor--dprk-it-workers`
 - 状態: draft
-- 更新日時: 2026-09-19T00:54:53Z
+- 更新日時: 2026-09-19T00:58:00Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専用資料8件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+北朝鮮のリモートITワーカーによる不正就労・収益獲得スキーム全体を表すecosystem profile。FAMOUS CHOLLIMAは別のvendor-specific Actorとして分離する。
 
 ## アクター名とAlias
 
@@ -16,28 +16,28 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Famous Chollima | CrowdStrike | exact | 中 | `source--daily-10f083232dfd566dc4f9` | CrowdStrikeのFAMOUS CHOLLIMAは、北朝鮮政権へ賃金を送金するための不正就労(リモートITワーカー)を中核とする追跡名であり、本プロファイル「DPRK IT Worker Schemes」が対象とするクラスタと実質的に同一の範囲を指す。したがってscopeはexactとする。profiles/contagious-interview 側にも同名aliasが登録されているが、そちらはscope: broaderであり、「FAMOUS CHOLLIMAはContagious Interview(偽求人面接によるマルウェア配布キャンペーン)より広い」ことを表す記録である。ここでexactを与えることで、日次キューのActorRegistryは複数プロファイル一致の場合に一意なexact一致を優先し、「Famous Chollima」の言及を本プロファイルへ解決する。運用上の振り分け基準: リモートITワーカーの不正就労・身元詐称・賃金送金を主題とする資料は本プロファイルへ、偽の採用面接やコーディング課題を用いたマルウェア配布を主題とする資料はcontagious-interviewへ割り当てる。CrowdStrikeが同一名の下にContagious Interview系の活動も併せて整理する場合がある点は、両プロファイルのalias注記として残す。exactは日次キューでの解決先を一意に定めるためのモデリング上の判断であり、個々の資料についてはAGENT.mdに従い原文で実行主体を確認したうえでレコードを採否する。 根拠資料: Huntress「Insights into Suspected DPRK Workers: Red Flags to Look Out For」(2026-08-26)は「North Korean (DPRK) remote IT workers (sometimes referred to as FAMOUS CHOLLIMA)」と記し、本プロファイルの対象とFAMOUS CHOLLIMAを同義に用いている。 |
+Aliasなし
 
 ## 帰属
 
-未評価
+U.S. DOJ describes the remote IT worker schemes as DPRK government revenue-generation schemes supporting the regime and WMD programs.
 
-- 国: 不明
-- スポンサー種別: unknown
-- 確度: 不明
-- 証拠: なし
+- 国: North Korea
+- スポンサー種別: state
+- 確度: 高
+- 証拠: `source--doj-dprk-it-worker-schemes-2025`
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| financial-gain | Financially motivated intrusion or fraud. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| financial-gain | The schemes fraudulently obtain remote employment to generate revenue for the DPRK government. | 高 | `source--doj-dprk-it-worker-schemes-2025` | Government law-enforcement reporting. |
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| Famous Chollima | related-to | FAMOUS CHOLLIMA is modeled as a CrowdStrike-named adversary conducting DPRK IT worker infiltration activity within the broader ecosystem represented by this profile. | 高 | `source--crowdstrike-famous-chollima-2026`, `source--doj-dprk-it-worker-schemes-2025` |
 
 ## ダイヤモンドモデル
 
@@ -51,8 +51,8 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 
 ## OSINTクロスチェック
 
-- 判定: `possible-match`
-- 調査日時: 2026-09-19T00:54:53Z
+- 判定: `no-match`
+- 調査日時: 2026-09-19T01:10:23Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -61,7 +61,7 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | WageMole | single-alias-intersection | 中 | KP | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://unit42.paloaltonetworks.com/fake-north-korean-it-worker-activity-cluster/<br>https://www.trendmicro.com/en_us/research/25/d/russian-infrastructure-north-korean-cybercrime.html |
+| misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -201,7 +201,7 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 
 | 判断 | 確度 | 証拠 | 補足 |
 |---|---|---|---|
-| DPRK ITワーカーはリモート採用を通じて正規従業員として企業内部へ入り込み、生成AIを身分偽造・コーディング・面接時の翻訳へ活用している。 | 高 | `source--anyrun-it-workers-part-two-2026` | ANY.RUNが偽企業を設立して3名を実際に採用し、内部から直接観測した報告に基づく。 |
+| DPRK IT Worker Schemes is a broad ecosystem/scheme profile, not an exact alias of the CrowdStrike actor FAMOUS CHOLLIMA. | 高 | `source--doj-dprk-it-worker-schemes-2025`, `source--crowdstrike-famous-chollima-2026` | Entity-scope correction. |
 
 ### 情報ギャップ
 
@@ -229,7 +229,9 @@ DPRK IT Worker Schemesの標準化プロファイル。リポジトリ内の専�
 | source--dprk-it-workers--eb29460df938ef81 | north korean scammers are posing as it freelancers here's how you can protect your business |  | 不明 | CyberMerceNary/ITWorker/north-korean-scammers-are-posing-as-it-freelancers_-here's-how-you-can-protect-your-business.pdf | report | TLP:CLEAR | 中 |
 | source--flare-ibm-xforce-nkitw-2026 | Inside the North Korean Infiltrator Threat | Flare Research and IBM X-Force | 2026-03-18T13:00:34Z | https://flare.io/learn/resources/north-korean-infiltrator-threat | primary-report | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--doj-dprk-it-worker-schemes-2025 | Justice Department Announces Coordinated, Nationwide Actions to Combat North Korean Remote IT Workers' Illicit Revenue Generation Schemes | U.S. Department of Justice | 2025-06-30 | https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote | government-law-enforcement | TLP:CLEAR | 高 |
+| source--crowdstrike-famous-chollima-2026 | CrowdStrike 2026 Technology Threat Landscape Report | CrowdStrike | 2026-06-09 | https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-technology-threat-landscape-report/ | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: Famous Chollima exact aliasを削除し、独立Actorとのrelated-to関係へ変更。

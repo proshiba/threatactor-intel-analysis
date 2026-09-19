@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt3`
 - 状態: draft
-- 更新日時: 2026-09-19T00:54:53Z
+- 更新日時: 2026-09-19T01:10:23Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,7 +55,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:54:53Z
+- 調査日時: 2026-09-19T01:10:23Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

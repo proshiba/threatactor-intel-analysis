@@ -79,6 +79,18 @@ cloud/CDN、hosting providerにも適用します。
 既存のGOLD SOUTHFIELDのようなoperator profileがある場合、software名とactor名を
 機械的に同一化してはいけません。
 
+
+### Entity境界の追加ルール
+
+- MITRE ATT&CKでSoftware/Malwareとして管理される名称を、名前一致だけでcanonical Actorにしてはいけない。
+  例: GravityRAT(S0237)、Shamoon(S0140)。Operator/clusterは別entityとして追跡する。
+- Malware名が歴史的にoperatorの通称として使われる場合も、softwareとactorの両スコープを
+  同一profileへ混在させず、legacy profileはdeprecated化し、根拠のあるActor名へ分離する。
+- 広域scheme/ecosystemとvendor-specific named adversaryをexact aliasにしない。
+  DPRK IT Worker Schemesのような上位ecosystemとFAMOUS CHOLLIMAのようなvendor追跡Actorは
+  `related-to` / `overlaps-with`等のrelationshipで結ぶ。
+- `actor-census-curation.json`の`exclude`/`override`を使い、次回census materializationで
+  software名や誤aliasが再びcanonical Actorへ戻らないようにする。
 ## 6. Workbookからのalias抽出
 
 `APT Groups and Operations.xlsx`等のmapping workbookでは、alias候補として扱う列を

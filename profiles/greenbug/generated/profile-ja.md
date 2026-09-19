@@ -2,12 +2,12 @@
 
 - プロファイルID: `actor--greenbug`
 - 状態: draft
-- 更新日時: 2026-09-19T00:54:53Z
+- 更新日時: 2026-09-19T01:10:23Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-Greenbugの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+Greenbug / Volatile Kittenをイラン系のActorクラスタとして追跡し、Shamoonはwiper malwareとして分離する。
 
 ## アクター名とAlias
 
@@ -16,24 +16,30 @@ Greenbugの標準化プロファイル。リポジトリ内の専用資料1件�
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| Volatile Kitten | CrowdStrike | overlapping | 高 | `source--crowdstrike-volatile-kitten` | CrowdStrike tracks VOLATILE KITTEN as an Iran-based actor/development team associated with Shamoon. ETDA Threat Group Cards maps Greenbug and Volatile Kitten together. |
 
 ## 帰属
 
-未評価
+CrowdStrike describes VOLATILE KITTEN as an Iran-based state-sponsored adversary; ETDA maps Greenbug/Volatile Kitten and lists Iranian state sponsorship.
 
-- 国: 不明
-- スポンサー種別: unknown
-- 確度: 不明
-- 証拠: なし
+- 国: Iran
+- スポンサー種別: state-aligned
+- 確度: 中
+- 証拠: `source--crowdstrike-volatile-kitten`, `source--osint-etda-threat-group-cards`
 
 ## モチベーション
 
-未評価
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| espionage | ETDA Threat Group Cards describes Greenbug / Volatile Kitten as focused on information theft and espionage. | 中 | `source--osint-etda-threat-group-cards` | Aggregated actor card; original vendor reporting remains authoritative. |
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| OilRig | part-of | ETDA Threat Group Cards models Greenbug / Volatile Kitten as a subgroup of OilRig. | 中 | `source--osint-etda-threat-group-cards` |
 
 ## ダイヤモンドモデル
 
@@ -48,7 +54,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:54:53Z
+- 調査日時: 2026-09-19T01:10:23Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -91,7 +97,7 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--ismdoor | ISMdoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--shamoon | Shamoon | CrowdStrike tracks VOLATILE KITTEN as a development team associated with Shamoon. | 不明 | 不明 | 中 | `source--crowdstrike-volatile-kitten` |
 
 ### ツール
 
@@ -154,7 +160,9 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| Greenbug and Volatile Kitten are retained as an overlapping actor cluster; Shamoon is treated as malware rather than an exact actor alias. | 中 | `source--crowdstrike-volatile-kitten`, `source--osint-etda-threat-group-cards` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
@@ -182,7 +190,8 @@ TTPなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--crowdstrike-volatile-kitten | Volatile Kitten Adversary Profile | CrowdStrike | 不明 | https://www.crowdstrike.com/en-us/adversaries/volatile-kitten/ | vendor-adversary-profile | TLP:CLEAR | 高 |
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 entity review: Volatile KittenをGreenbug側へ統合し、Shamoon actor entityをdeprecated化。

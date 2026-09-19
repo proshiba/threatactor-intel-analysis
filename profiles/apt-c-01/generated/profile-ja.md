@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt-c-01`
 - 状態: draft
-- 更新日時: 2026-09-19T00:54:53Z
+- 更新日時: 2026-09-19T01:10:23Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T00:54:53Z
+- 調査日時: 2026-09-19T01:10:23Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
