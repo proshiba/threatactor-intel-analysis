@@ -4,7 +4,7 @@
   "name": "GOFFEE",
   "status": "draft",
   "created_at": "2026-09-18T02:20:00Z",
-  "updated_at": "2026-09-18T01:45:20Z",
+  "updated_at": "2026-09-19T00:00:42Z",
   "languages": [
     "ja"
   ],
@@ -1142,7 +1142,6 @@
       },
       "description": "Kasperskyは2026年3月、GOFFEEが悪性リンクを含むPDFを添付したメールを送るキャンペーンを観測した。PDFはAcrobat Readerが古く更新が必要であるという体裁の偽の通知を内部に描画し、「更新をインストール」ボタンからntpluck[.]onlineの長大なパスへ誘導する。遷移先ではAdobe_Reader_RU.zipが配布され、内部のInno Setup 6.7.0 (Unicode)製ドロッパーAdobe_Acrobat_Reader_Plugin_ru.exeが、WarpRAT本体のadbp.exe、おとりPDF「ОФИЦИАЛЬНЫЙ ЗАПРОС о предоставлении сведений о потребности в особочистой химической продукции」、およびinstall_script.issを展開する。インストールスクリプトはWarpRATを起動した直後におとりPDFを開く。当該WarpRAT検体はC2にntpsum[.]online、ポート443、TLS有効、POST、sleepTime 314(揺らぎ15)、anti-VM有効の設定を持ち、調査時点でC2が稼働していたためKasperskyは実際の通信を記録している。同キャンペーンではもう1つのバックドアとして軽量なPowerShell製Mythicエージェント(PowerTaskel v2)が展開され、get_tasking要求に対してサーバがコマンド名と実行コードの双方を送り、応答をpost_responseとして返す対話が確認された。",
       "target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91",
         "target--goffee--country--russia",
         "target--goffee--region--cis",
         "target--goffee--region--europe",
@@ -1199,7 +1198,6 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91",
             "target--goffee--country--russia",
             "target--goffee--region--cis",
             "target--goffee--region--europe",
@@ -1272,7 +1270,8 @@
         "target--activity-rule--sector--5403aec9c83d6a925f61",
         "target--goffee--country--russia",
         "target--goffee--sector--construction",
-        "target--goffee--sector--energy"
+        "target--goffee--sector--energy",
+        "target--goffee--sector--telecom"
       ],
       "malware_refs": [
         "malware--goffee-flashfilegrabber",
@@ -1414,7 +1413,6 @@
         "activity--goffee-warprat-powertaskel-v2-2026"
       ],
       "target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91",
         "target--goffee--country--russia",
         "target--goffee--region--cis",
         "target--goffee--region--europe",
@@ -1537,54 +1535,53 @@
       {
         "id": "target--activity-rule--sector--210dddb39397dbe50e91",
         "name": "政府・行政",
-        "description": "Kasperskyは2025年の報告で対象業種に「government entities」を挙げ、2026年の報告では「Большая часть целей принадлежала к машиностроению, производству и государственному сектору」として政府部門を主たる標的の1つとする。BI.ZONEも被害組織に政府機関を挙げ、GOFFEEのキャンペーンに典型的な被害者層としてKasperskyは「в основном это государственные учреждения и промышленные предприятия РФ」と述べる。",
+        "description": "活動「Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": "2024-07-01T00:00:00Z",
-          "precision": "month",
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
-          "value": "2026-03-01T00:00:00Z",
+          "value": "2024-12-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-stated; activity-period"
         },
-        "confidence": "high",
+        "confidence": "medium",
         "evidence_refs": [
           "source--bizone-paper-werewolf-destructive-2024",
-          "source--kaspersky-goffee-recent-attacks-2025",
-          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+          "source--kaspersky-goffee-recent-attacks-2025"
         ],
-        "analyst_notes": "3本の一次資料すべてが独立に挙げる業種である。手書きで作成した target--goffee--sector--government を本エントリへ統合した(語彙はリポジトリ既存の「政府・行政」へ揃える)。 [activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
         "id": "target--activity-rule--sector--5403aec9c83d6a925f61",
         "name": "メディア・報道",
-        "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。BI.ZONEも被害組織にメディアを挙げる。",
+        "description": "活動「Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為」の記述で標的として明示された産業。",
         "first_observed": {
-          "value": "2024-07-01T00:00:00Z",
-          "precision": "month",
+          "value": "2022-01-01T00:00:00Z",
+          "precision": "year",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-stated; activity-period"
         },
         "last_observed": {
           "value": "2024-12-01T00:00:00Z",
           "precision": "month",
           "status": "known",
-          "basis": "source-stated"
+          "basis": "source-stated; activity-period"
         },
-        "confidence": "high",
+        "confidence": "medium",
         "evidence_refs": [
           "source--bizone-paper-werewolf-destructive-2024",
           "source--kaspersky-goffee-recent-attacks-2025"
         ],
-        "analyst_notes": "手書きで作成した target--goffee--sector--media-telecom を本エントリへ統合した。原文の「media and telecommunications」は本リポジトリの語彙では「メディア・報道」と「情報通信」に分かれるため、2エントリへ分割している。 [activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
       },
       {
-        "id": "target--goffee--sector--telecom",
-        "name": "情報通信",
-        "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。",
+        "id": "target--goffee--sector--construction",
+        "name": "建設",
+        "description": "Kasperskyは2025年の報告で対象業種に「construction」を挙げる。",
         "first_observed": {
           "value": "2024-07-01T00:00:00Z",
           "precision": "month",
@@ -1601,29 +1598,7 @@
         "evidence_refs": [
           "source--kaspersky-goffee-recent-attacks-2025"
         ],
-        "analyst_notes": "原文の「media and telecommunications」のうち通信側を本エントリとした。メディア側は target--activity-rule--sector--5403aec9c83d6a925f61(メディア・報道)である。"
-      },
-      {
-        "id": "target--goffee--sector--manufacturing",
-        "name": "製造・産業",
-        "description": "Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。",
-        "first_observed": {
-          "value": "2026-03-01T00:00:00Z",
-          "precision": "month",
-          "status": "known",
-          "basis": "source-stated"
-        },
-        "last_observed": {
-          "value": "2026-03-01T00:00:00Z",
-          "precision": "month",
-          "status": "known",
-          "basis": "source-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
-        ],
-        "analyst_notes": "機械製造(машиностроение)と製造業(производство)を1つの業種として集約した。語彙はリポジトリ既存の「製造・産業」へ揃えた。原文の機械製造(машиностроение)と製造業(производство)を本エントリへ集約している。"
+        "analyst_notes": ""
       },
       {
         "id": "target--goffee--sector--energy",
@@ -1649,28 +1624,6 @@
         "analyst_notes": "2社が独立に挙げる業種である。"
       },
       {
-        "id": "target--goffee--sector--construction",
-        "name": "建設",
-        "description": "Kasperskyは2025年の報告で対象業種に「construction」を挙げる。",
-        "first_observed": {
-          "value": "2024-07-01T00:00:00Z",
-          "precision": "month",
-          "status": "known",
-          "basis": "source-stated"
-        },
-        "last_observed": {
-          "value": "2024-12-01T00:00:00Z",
-          "precision": "month",
-          "status": "known",
-          "basis": "source-stated"
-        },
-        "confidence": "high",
-        "evidence_refs": [
-          "source--kaspersky-goffee-recent-attacks-2025"
-        ],
-        "analyst_notes": ""
-      },
-      {
         "id": "target--goffee--sector--finance",
         "name": "金融",
         "description": "BI.ZONEは被害組織に金融分野を挙げる(「Among the victims are government, energy, financial, media, and other organizations」)。",
@@ -1691,6 +1644,50 @@
           "source--bizone-paper-werewolf-destructive-2024"
         ],
         "analyst_notes": "BI.ZONE単独の言及であり、個別のキャンペーンとの対応は原文に示されていないため medium とした。期間は同社が記述する「at least seven campaigns since 2022」の起点のみを用いた。"
+      },
+      {
+        "id": "target--goffee--sector--manufacturing",
+        "name": "製造・産業",
+        "description": "Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。",
+        "first_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2026-03-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        ],
+        "analyst_notes": "機械製造(машиностроение)と製造業(производство)を1つの業種として集約した。語彙はリポジトリ既存の「製造・産業」へ揃えた。原文の機械製造(машиностроение)と製造業(производство)を本エントリへ集約している。"
+      },
+      {
+        "id": "target--goffee--sector--telecom",
+        "name": "情報通信",
+        "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。",
+        "first_observed": {
+          "value": "2024-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "last_observed": {
+          "value": "2024-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "source-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--kaspersky-goffee-recent-attacks-2025"
+        ],
+        "analyst_notes": "原文の「media and telecommunications」のうち通信側を本エントリとした。メディア側は target--activity-rule--sector--5403aec9c83d6a925f61(メディア・報道)である。"
       }
     ],
     "roles": [],

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fox-kitten`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:54Z
+- 更新日時: 2026-09-19T00:00:51Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,26 +20,24 @@ Fox Kittenの標準化プロファイル。リポジトリ内の専用資料1件
 |---|---|---|---|---|---|
 | Lemon Sandstorm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Parisite | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Pay2key | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Pay2key | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Pioneer Kitten | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| PioneerKitten. | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| PioneerKitten. | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | RUBIDIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC757 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Iran worksheet.
+未評価
 
-- 国: Iran
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -53,12 +51,12 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | Capability | SystemBC, China Chopper, Pay2Key, SSHNET, Juicy Potato, Port, STSRCHECK, LPManager, Invoke-SMBClient, Invoke-SMBEnum, Invoke-SMBExec, Invoke-TheHash, Invoke-WMIExec, SOCKET-Based Backdoor, Pay2Key ransomware, FRPC, ngrok, PsExec |
 | Infrastructure |  |
 | Victim | IT, Telecommunication, Oil and Gas, Aviation, Government, and Security sectors around the world. |
-| Socio-political | Iran |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

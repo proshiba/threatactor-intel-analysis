@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cyber-fighters-of-izz-ad-din-al-qassam`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:54Z
+- 更新日時: 2026-09-19T00:00:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,18 +22,16 @@ Cyber fighters of Izz Ad-Din Al Qassamの標準化プロファイル。リポジ
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Iran worksheet.
+未評価
 
-- 国: Iran
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -47,12 +45,12 @@ The repository mapping workbook places this actor in the Iran worksheet.
 | Capability |  |
 | Infrastructure |  |
 | Victim | The websites of Bank of America, JPMorgan Chase, Wells Fargo, and other U.S. financial institutions suffered simultaneous outages due to a coordinated denial of service cyberattack in September 2012. Attackers flooded bank servers with junk traffic, preventing users from online banking. An Iranian group called Izz ad-Din al-Qassam Cyber Fighters initially claimed responsibility for the incident. At the time, the media reported that U.S. intelligence believed the denial of service was in response to U.S. imposed economic sanctions to counter Iran's nuclear program. Seven Iranian individuals linked to the Islamic Revolutionary Guard Corps were eventually indicted by the U.S. Department of Justice in 2016 for their involvement in the incident. |
-| Socio-political | Iran |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blackbyte`
 - 状態: draft
-- 更新日時: 2026-07-29T23:11:59Z
+- 更新日時: 2026-09-19T00:00:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,30 +18,20 @@ BlackByteの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Black Basta | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Conti | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| DEV-0569 | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Diavol | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Hecamede | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Quantum | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Royal | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Ryuk (as FIN12) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Wizard Spider (DEV-0193) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Hecamede | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | MITRE ATT&CK lists Hecamede as an Associated Group. This is retained as overlapping rather than exact identity. |
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Russia worksheet.
+No state sponsor is asserted by the actor-specific MITRE ATT&CK description used here.
 
-- 国: Russia
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -52,15 +42,15 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | 要素 | 内容 |
 |---|---|
 | Adversary | [BlackByte](https://attack.mitre.org/groups/G1043) is a ransomware threat actor operating since at least 2021. [BlackByte](https://attack.mitre.org/groups/G1043) is associated with several versions of ransomware also labeled [BlackByte Ransomware](https://attack.mitre.org/software/S1180). [BlackByte](https://attack.mitre.org/groups/G1043) ransomware operations initially used a common encryption key allowing for the development of a universal decryptor, but subsequent versions such as [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) use more robust encryption mechanisms. [BlackByte](https://attack.mitre.org/groups/G1043) is notable for operations targeting critical infrastructure entities among other targets across North America.(Citation: FBI BlackByte 2022)(Citation: Picus BlackByte 2022)(Citation: Symantec BlackByte 2022)(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) |
-| Capability | BlackByte 2.0 Ransomware, Exbyte, BlackByte Ransomware, Cobalt Strike, BATLOADER, Royal Ransomware, Ursnif, Gozi, Vidar Stealer & Cobals Strike as well as legitimate synchro remote monitoring and management (RMM) tools., Arp, Mimikatz, AdFind, PsExec |
+| Capability | BlackByte 2.0 Ransomware, BlackByte Ransomware, Cobalt Strike, Exbyte, Arp, Mimikatz, AdFind, PsExec |
 | Infrastructure |  |
 | Victim | Healthcare, manifacturing, professional, scientific, technical services, wholesale, education |
-| Socio-political | Russia |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -69,7 +59,7 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | DEV-0569 | single-alias-intersection | 中 |  | https://www.microsoft.com/en-us/security/blog/2022/11/17/dev-0569-finds-new-ways-to-deliver-royal-ransomware-various-payloads/ |
+| misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | BlackByte - G1043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1043<br>https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/<br>https://www.ic3.gov/CSA/2022/220211.pdf |
@@ -92,15 +82,10 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--batloader | BATLOADER | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--blackbyte-2-0-ransomware | BlackByte 2.0 Ransomware | [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) is a replacement for [BlackByte Ransomware](https://attack.mitre.org/software/S1180). Unlike [BlackByte Ransomware](https://attack.mitre.org/software/S1180), [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) does not have a common key for victim decryption. [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) remains uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations.(Citation: Microsoft BlackByte 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--blackbyte-ransomware | BlackByte Ransomware | [BlackByte Ransomware](https://attack.mitre.org/software/S1180) is uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations. [BlackByte Ransomware](https://attack.mitre.org/software/S1180) used a common key for infections, allowing for the creation of a universal decryptor.(Citation: Trustwave BlackByte 2021)(Citation: FBI BlackByte 2022) [BlackByte Ransomware](https://attack.mitre.org/software/S1180) was replaced in [BlackByte](https://attack.mitre.org/groups/G1043) operations by [BlackByte 2.0 Ransomware](https://attack.mitre.org/software/S1181) by 2023.(Citation: Microsoft BlackByte 2023)(Citation: Cisco BlackByte 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--cobalt-strike | Cobalt Strike | [Cobalt Strike](https://attack.mitre.org/software/S0154) is a commercial, full-featured, remote access tool that bills itself as “adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors”. Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.(Citation: cobaltstrike manual)<br><br>In addition to its own capabilities, [Cobalt Strike](https://attack.mitre.org/software/S0154) leverages the capabilities of other well-known tools such as Metasploit and [Mimikatz](https://attack.mitre.org/software/S0002).(Citation: cobaltstrike manual) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--exbyte | Exbyte | [Exbyte](https://attack.mitre.org/software/S1179) is an exfiltration tool written in Go that is uniquely associated with [BlackByte](https://attack.mitre.org/groups/G1043) operations. Observed since 2022, [Exbyte](https://attack.mitre.org/software/S1179) transfers collected files to online file sharing and hosting services.(Citation: Symantec BlackByte 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--gozi | Gozi | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--royal-ransomware | Royal Ransomware | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--ursnif | Ursnif | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--vidar-stealer-cobals-strike-as-well-as-legitimate-synchro-remote-monitoring-and-management-rmm-tools | Vidar Stealer & Cobals Strike as well as legitimate synchro remote monitoring and management (RMM) tools. | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -131,17 +116,15 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| BazarCall Campaign | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | BlackByteが新たな脆弱性を活用し攻撃を継続 | reported-activity | 不明 | 不明 | 2024-08-29 |  |  |  |  | BlackByteが新たな脆弱性を活用し攻撃を継続 | 高 | `source--daily-41c3c863b2f45c7b4624` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| BazarCall Campaign | BlackByte | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | BlackByteが新たな脆弱性を活用し攻撃を継続 | BlackByte | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
 
-BazarCall Campaign
+
 
 ## ターゲット
 
@@ -219,7 +202,9 @@ BazarCall Campaign
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| BlackByte is treated as a ransomware threat actor; catalog-only names and workbook-only capabilities without actor-specific support were removed from the canonical profile. | 高 | `source--mitre-attack-19-1` | Corrected during repository-wide attribution review. |
 
 ### 情報ギャップ
 
@@ -389,4 +374,4 @@ BazarCall Campaign
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 review: removed workbook-only alias/activity/software contamination and geography-derived state sponsorship. Hecamede remains as the MITRE Associated Group.

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1549`
 - 状態: draft
-- 更新日時: 2026-09-15T22:14:22Z
+- 更新日時: 2026-09-19T00:00:53Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,24 +55,32 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: なし
+- 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
 | etda-threat-group-cards | TA455, Smoke Sandstorm | canonical-name | 高 | Iran | https://www.microsoft.com/en-us/security/security-insider/smoke-sandstorm<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+TA455%2C+Smoke+Sandstorm&n=1 |
+| etda-threat-group-cards | Tortoiseshell, Imperial Kitten | single-alias-intersection | 中 | Iran | https://www.symantec.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain<br>https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Tortoiseshell%2C+Imperial+Kitten&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Crimson Sandstorm | single-alias-intersection | 中 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | microsoft-threat-actor-mapping | Smoke Sandstorm | canonical-name | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | Tortoiseshell | multiple-name-intersection | 高 | IR, Iran (Islamic Republic of) | https://www.symantec.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain<br>https://www.darkreading.com/threat-intelligence/iranian-government-hackers-target-us-veterans/d/d-id/1335897<br>https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-october |
+| misp-threat-actor | Bohrium | single-alias-intersection | 中 | IR | https://twitter.com/CyberAmyHB/status/1532398956918890500 |
 | misp-threat-actor | UNC1549 | canonical-name | 高 | IR | https://www.mandiant.com/resources/blog/suspected-iranian-unc1549-targets-israel-middle-east<br>https://research.checkpoint.com/2025/nimbus-manticore-deploys-new-malware-targeting-europe<br>https://blog.checkpoint.com/research/iranian-threat-actor-nimbus-manticore-expands-campaigns-into-europe-with-advanced-malware-and-fake-job-lures/ |
+| misp-microsoft-activity-group | Crimson Sandstorm | single-alias-intersection | 中 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Smoke Sandstorm | canonical-name | 高 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
-| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | CURIUM - G1012 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
-候補なし
+| 対象 | 関係 | データセット | 確度 | 評価 |
+|---|---|---|---|---|
+| Bohrium | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+| Tortoiseshell | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 
 ### クロスチェック上の制約
 
@@ -126,21 +134,21 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | cyber-espionage | 不明 | 不明 | 2026-09-02 | target--country--egypt, target--country--ethiopia, target--region--africa, target--targeting-audit--country--dfe4685c3d850f100942 | malware--daily-05c4e283c192f549b723, malware--daily-ad254c5697623cd6428f |  |  | Kasperskyは、Mirage KittenがNode.js製「NodeRabbit」とJavaScript製「PollCat」という未報告のクロスプラットフォームRATを使用する攻撃を確認した。 攻撃者はLinkedInなどで採用担当者を装い、トロイ化したコーディング課題を送付して、Windows・Linux・macOSの開発者端末へマルウェアを感染させる。 NodeRabbitは任意コマンド・ファイル操作・プロセス制御に加え、最新版では偽VS Code拡張機能やGit hookを利用した開発者ワークフロー経由の永続化も備える。 PollCatもコマンド実行、ファイル送受信、JavaScript実行、システム・セキュリティ製品偵察などを行い、Azure WebsitesなどをC2として悪用する。 被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。 | 高 | `source--daily-eac188700be16a552143` |
-| Tortoiseshell：新たなツールセットと運用インフラを公開 | infrastructure-operation | 不明 | 不明 | 2026-08-27 | target--sector--government | malware--daily-126c8af714f49766e231 |  | victim--activity-rule--a1b1f24e4aa40c393238 | Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。 | 中 | `source--daily-2f8e0aeaa133b750f976` |
-| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | cyber-espionage | 不明 | 不明 | 2026-07-28 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--country--burkina-faso, target--country--egypt, target--country--ethiopia, target--country--jordan, target--country--pakistan, target--country--tanzania, target--sector--aerospace, target--sector--aviation, target--sector--defense, target--sector--financial-services, target--sector--government, target--sector--telecommunications | malware--nightledger, malware--arcbridge, malware--bridgehead | ttp--activity-rule--543c54c03eee4074488f, ttp--activity-rule--64e01cb31f20cb632f2c, ttp--activity-rule--eee5857560ca39325182, ttp--t1057--nightledger, ttp--t1071-001--mirage-kitten-2026, ttp--t1082--nightledger, ttp--t1090--bridgehead, ttp--t1113--nightledger, ttp--t1566-002--mirage-kitten-2026, ttp--t1574-001--nightledger | victim--activity-rule--15a1bbc4304a95fa57dc | Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | 高 | `source--kaspersky-mirage-kitten-2026` |
+| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | cyber-espionage | 不明 | 不明 | 2026-09-02 | target--country--egypt, target--country--ethiopia, target--region--africa, target--sector--aerospace, target--sector--aviation | malware--daily-05c4e283c192f549b723, malware--daily-ad254c5697623cd6428f |  | victim--activity-rule--590d0a5c1af14161be04 | Kasperskyは、Mirage KittenがNode.js製「NodeRabbit」とJavaScript製「PollCat」という未報告のクロスプラットフォームRATを使用する攻撃を確認した。 攻撃者はLinkedInなどで採用担当者を装い、トロイ化したコーディング課題を送付して、Windows・Linux・macOSの開発者端末へマルウェアを感染させる。 NodeRabbitは任意コマンド・ファイル操作・プロセス制御に加え、最新版では偽VS Code拡張機能やGit hookを利用した開発者ワークフロー経由の永続化も備える。 PollCatもコマンド実行、ファイル送受信、JavaScript実行、システム・セキュリティ製品偵察などを行い、Azure WebsitesなどをC2として悪用する。 被害はエジプト、エチオピア、アフガニスタンのFinTech・航空・航空宇宙分野で確認され、Kasperskyは高い確度でMirage Kittenのサイバー諜報活動と帰属した。 | 高 | `source--daily-eac188700be16a552143` |
 | イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | cyber-espionage | 2026-02 | 2026-04 | 2026-05-25 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--country--904728608f27c39df0df |  | ttp--activity-rule--58d557d2679ee65b66a5 | victim--activity-rule--071152112a80d6125133 | Unit 42は、イラン系APTのScreening Serpensによる2026年2月〜4月の攻撃活動を観測した。 攻撃は米国、イスラエル、UAE、中東の複数組織を標的にした可能性があり、技術職を狙う採用・会議ルアーが使われた。 同グループはMiniUpdateとMiniJunk V2という2系統のRATを展開し、DLLサイドローディングで感染を開始した。 MiniUpdateではAppDomainManagerハイジャックを使い、.NETのETWや署名検証を無効化して検出回避を強化した。 RATはC2通信、コマンド実行、DLLのメモリ内実行、プロセス操作、ファイル窃取、永続化などの機能を持つ。 | 中 | `source--daily-96ac11961cae303bc9fd` |
+| Tortoiseshell：新たなツールセットと運用インフラを公開 | infrastructure-operation | 不明 | 不明 | 2026-08-27 | target--sector--government | malware--daily-126c8af714f49766e231 |  | victim--activity-rule--a1b1f24e4aa40c393238 | Group-IBは、イラン関連APT「Tortoiseshell」の既知IOCを起点に調査し、新たな攻撃インフラ、SSHトンネルツール、TWOSTROKE亜種を発見した。 リバースSSHツールは正規wtsapi32.dllを偽装し、侵害端末から攻撃者サーバーへSSH接続して内部ネットワークへのリバーストンネルを確立する。 TWOSTROKEはDLLサーチオーダーハイジャックで実行され、シェルコマンド、ファイル送受信、メモリー内DLL実行、偵察などを遠隔操作できる。 新たなインフラは中東・欧州を中心に多数の国名風サブドメインを持つが、Group-IBはこれら全ての具体的な用途や標的を断定していない。 Tortoiseshellは防衛、航空宇宙、IT、軍事、政府関連組織を狙う活動を継続し、地理的範囲と攻撃能力の双方を拡大していると評価された。 | 中 | `source--daily-2f8e0aeaa133b750f976` |
 | 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | phishing-campaign | 2026-02 | 2026-04 | 2026-05-27 | target--activity-rule--country--6604ad21c713b8dfd8c7, target--sector--aviation | malware--daily-8bf720ef2de5aceeae08 |  | victim--activity-rule--8ea4f5b021a437bbcf9d | IRGC関連のNimbus Manticoreは、Operation Epic Fury中に活動を再開し、新手法と能力向上を示した。 攻撃は航空・ソフトウェア分野の組織になりすましたルアーを使い、米国、欧州、中東の標的を狙った。 初めてSEOポイズニングが観測され、偽のSQL DeveloperダウンロードサイトでMiniFastを配布した。 新型バックドアMiniFastはAI支援開発の痕跡があり、長期潜伏と遠隔コマンド実行を目的としている。 ZoomインストーラーやAppDomain Hijackingを悪用し、正規のシステム活動に紛れて感染と永続化を行った。 | 高 | `source--daily-d9794d16b217472dc38d` |
+| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | cyber-espionage | 不明 | 不明 | 2026-07-28 | target--activity-rule--sector--4221b5fbb827488c6eaa, target--country--burkina-faso, target--country--egypt, target--country--ethiopia, target--country--jordan, target--country--pakistan, target--country--tanzania, target--sector--aerospace, target--sector--aviation, target--sector--defense, target--sector--financial-services, target--sector--government, target--sector--telecommunications | malware--nightledger, malware--arcbridge, malware--bridgehead | ttp--activity-rule--543c54c03eee4074488f, ttp--activity-rule--64e01cb31f20cb632f2c, ttp--activity-rule--eee5857560ca39325182, ttp--t1057--nightledger, ttp--t1071-001--mirage-kitten-2026, ttp--t1082--nightledger, ttp--t1090--bridgehead, ttp--t1113--nightledger, ttp--t1566-002--mirage-kitten-2026, ttp--t1574-001--nightledger | victim--activity-rule--15a1bbc4304a95fa57dc | Kasperskyは、Mirage Kitten（UNC1549）が中東・アフリカの航空宇宙、航空、防衛、通信、政府、金融分野を標的にした活動を報告した。EgyptとPakistanでは、採用・ビデオ会議を装う標的型誘導の後、BridgeHeadを侵害後のトンネラーとして展開した。新たに確認されたツールセットはNightLedger、ArcBridge、BridgeHeadで、HTTPS/WebSocket C2、SOCKS5中継、DLL検索順序ハイジャック、偵察、プロセス実行、ファイル操作、画面取得などを行う。 | 高 | `source--kaspersky-mirage-kitten-2026` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | UNC1549 | NodeRabbit, PollCat | 情報なし | 情報なし | エジプト, エチオピア, アフリカ, Aerospace, Aviation, アフガニスタン | 被害事例: Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | 高 |
-| Tortoiseshell：新たなツールセットと運用インフラを公開 | UNC1549 | TWOSTROKE | 情報なし | 情報なし | Government | 被害事例: Tortoiseshell：新たなツールセットと運用インフラを公開 | 中 |
-| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | UNC1549 | ArcBridge, BridgeHead, NightLedger | T1574.001 DLL, T1057 Process Discovery, T1083 File and Directory Discovery, T1057 Process Discovery, T1071.001 Web Protocols, T1082 System Information Discovery, T1090 Proxy, T1113 Screen Capture, T1566.002 Spearphishing Link, T1574.001 DLL | Cloud-hosted HTTPS/WebSocket C2 | 金融, ブルキナファソ, エジプト, エチオピア, ヨルダン, パキスタン, タンザニア, Aerospace, Aviation, Defense, Financial Services, Government, Telecommunications | 被害事例: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | 高 |
+| Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | UNC1549 | NodeRabbit, PollCat | 情報なし | 情報なし | エジプト, エチオピア, アフリカ, Aerospace, Aviation | 被害事例: Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | 高 |
 | イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | UNC1549 | 情報なし | T1574.001 DLL | 情報なし | 米国, イスラエル | 被害事例: イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡 | 中 |
+| Tortoiseshell：新たなツールセットと運用インフラを公開 | UNC1549 | TWOSTROKE | 情報なし | 情報なし | Government | 被害事例: Tortoiseshell：新たなツールセットと運用インフラを公開 | 中 |
 | 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | UNC1549 | MiniFast | 情報なし | 情報なし | 米国, Aviation | 被害事例: 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | 高 |
+| Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | UNC1549 | ArcBridge, BridgeHead, NightLedger | T1574.001 DLL, T1057 Process Discovery, T1083 File and Directory Discovery, T1057 Process Discovery, T1071.001 Web Protocols, T1082 System Information Discovery, T1090 Proxy, T1113 Screen Capture, T1566.002 Spearphishing Link, T1574.001 DLL | Cloud-hosted HTTPS/WebSocket C2 | 金融, ブルキナファソ, エジプト, エチオピア, ヨルダン, パキスタン, タンザニア, Aerospace, Aviation, Defense, Financial Services, Government, Telecommunications | 被害事例: Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動 | 高 |
 
 2026年2月〜4月にはUnit 42がScreening Serpens名義の活動を報告した。Kasperskyは2026年4月にArcBridgeを中東の活動から初めて特定し、7月28日にMiddle EastおよびAfricaでのMirage Kitten活動としてNightLedger、ArcBridge、BridgeHeadを公開した。活動全体の開始・終了日は明記されていない。
 
@@ -151,7 +159,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | countries | アフガニスタン | 活動「Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-eac188700be16a552143` |
 | countries | アラブ首長国連邦 | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的・被害国として明示されている。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--target-audit-etda-threat-group-cards` |
 | countries | アルバニア | 構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてアルバニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イスラエル | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | インド | 構造化OSINTの被害国フィールドでUNC1549の標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | エジプト | BridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-eac188700be16a552143`, `source--kaspersky-mirage-kitten-2026` |
 | countries | エチオピア | 通信分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-eac188700be16a552143`, `source--kaspersky-mirage-kitten-2026` |
@@ -160,11 +168,11 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | countries | パキスタン | 航空宇宙・航空分野でBridgeHeadを含む侵害後活動が確認された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
 | countries | ブルキナファソ | 金融分野の被害組織が報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
 | countries | ヨルダン | 中小組織または政府関連組織を含む標的地域として報告された。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--kaspersky-mirage-kitten-2026` |
-| countries | 米国 | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--daily-d9794d16b217472dc38d` |
+| countries | 米国 | 活動「イラン系APT「Screening Serpens」の2026年サイバースパイキャンペーンを追跡」の記述で標的として明示された国・地域。 | 2026-02 | 2026-04 | 中 | `source--daily-96ac11961cae303bc9fd`, `source--daily-d9794d16b217472dc38d`, `source--target-audit-misp-threat-actor` |
 | regions | アフリカ | 2026年報告で活動範囲の拡大が確認された地域。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--daily-eac188700be16a552143`, `source--kaspersky-mirage-kitten-2026` |
-| regions | 中東 | 継続的な重点標的地域として報告された。 | 2026-02 | 2026-04 | 高 | `source--actor-mapping-workbook`, `source--daily-2f8e0aeaa133b750f976`, `source--daily-96ac11961cae303bc9fd`, `source--daily-d9794d16b217472dc38d`, `source--kaspersky-mirage-kitten-2026`, `source--target-audit-etda-threat-group-cards`, `source--unc1549--c47ef662fbdb6d88` |
+| regions | 中東 | 継続的な重点標的地域として報告された。 | 2026-02 | 2026-04 | 高 | `source--actor-mapping-workbook`, `source--daily-2f8e0aeaa133b750f976`, `source--daily-96ac11961cae303bc9fd`, `source--daily-d9794d16b217472dc38d`, `source--kaspersky-mirage-kitten-2026`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor`, `source--unc1549--c47ef662fbdb6d88` |
 | regions | 南アジア | アフガニスタン、インド、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-eac188700be16a552143`, `source--kaspersky-mirage-kitten-2026`, `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | 活動「Tortoiseshell：新たなツールセットと運用インフラを公開」の記述で標的地域として欧州が明示されている。 | 2026-02 | 2026-04 | 中 | `source--daily-2f8e0aeaa133b750f976`, `source--daily-d9794d16b217472dc38d`, `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | 活動「Tortoiseshell：新たなツールセットと運用インフラを公開」の記述で標的地域として欧州が明示されている。 | 2026-02 | 2026-04 | 中 | `source--daily-2f8e0aeaa133b750f976`, `source--daily-d9794d16b217472dc38d`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 金融 | 活動「Mirage Kittenによる中東・アフリカの航空宇宙、防衛、通信分野へのサイバースパイ活動」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--kaspersky-mirage-kitten-2026` |
 | sectors | Aerospace | 主要な情報収集標的分野。 | 不明 | 不明 | 高 | `source--daily-eac188700be16a552143`, `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
 | sectors | Aviation | 主要な情報収集標的分野。 | 2026-02 | 2026-04 | 高 | `source--daily-d9794d16b217472dc38d`, `source--daily-eac188700be16a552143`, `source--kaspersky-mirage-kitten-2026`, `source--unc1549--c47ef662fbdb6d88` |
@@ -247,6 +255,8 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | source--unc1549--5ad26a22b1f5c730 | Dragos 2026 OT Cybersecurity Report A Year in Review |  | 2026 | OT/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf | report | TLP:CLEAR | 中 |
 | source--unc1549--9829507d9159174b | eset apt activity report q2 2025 q3 2025 |  | 2025 | summary/2025/eset-apt-activity-report-q2-2025-q3-2025.pdf | report | TLP:CLEAR | 中 |
 | source--unc1549--c47ef662fbdb6d88 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

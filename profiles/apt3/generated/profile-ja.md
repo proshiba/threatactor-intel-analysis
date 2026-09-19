@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt3`
 - 状態: draft
-- 更新日時: 2026-07-29T23:13:53Z
+- 更新日時: 2026-09-19T00:07:32Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -30,18 +30,16 @@ APT3の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 ## 帰属
 
-The repository mapping workbook places this actor in the China worksheet.
+Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community workbook country placement is retained only as a geographic lead.
 
 - 国: China
 - スポンサー種別: state
 - 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 証拠: `source--mitre-attack-19-1`, `source--actor-mapping-workbook`
 
 ## モチベーション
 
-| 種別 | 説明 | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+未評価
 
 ## 他アクターとの関係
 
@@ -60,7 +58,7 @@ The repository mapping workbook places this actor in the China worksheet.
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

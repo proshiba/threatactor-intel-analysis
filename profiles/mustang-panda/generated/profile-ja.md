@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
-- 更新日時: 2026-09-10T16:11:26Z
+- 更新日時: 2026-09-19T00:00:52Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,35 +22,35 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | CAMARO DRAGON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ClumsyToad | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | EARTH PRETA | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Earth Preta (TrendMicro) | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Earth Preta (TrendMicro) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | FIREANT | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | HIVE0154 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| HoneyMyte | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Luminous Moth | catalog | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| HoneyMyte | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Luminous Moth | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Red Lich | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | RedDelta | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | STATELY TAURUS | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TANTALUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TEMP.Hex | MITRE ATT&CK | overlapping | 中 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 |
+| TEMP.Hex | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 |
 | TWILL TYPHOON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC6384 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA416, RedDelta, Earth Preta (TrendMicro) | actor-mapping-workbook | unknown | 中 | `source--actor-mapping-workbook` | Workbook China row 60; mapping requires review. |
 
 ## 帰属
 
-The repository mapping workbook places this actor in the China worksheet.
+未評価
 
-- 国: China
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -64,12 +64,12 @@ The repository mapping workbook places this actor in the China worksheet.
 | Capability | RCSession, PAKLOG, TONESHELL, BOOKWORM, STATICPLUGIN, PUBLOAD, CANONSTAGER, CLAIMLOADER, China Chopper, SplatDropper, PlugX, CorKLOG, Cobalt Strike, PoisonIvy, HIUPAN, StarProxy, ShadowPad, SplatCloak, ORat, Nmap, Wmiexec, China Chopper web shell, Impacket, Mimikatz, NBTscan, AdFind, Wevtutil |
 | Infrastructure |  |
 | Victim | Mining sector in Mongolia, private individuals \|=\| gathering geo-political and economic intelligence, NGOs, political & law enforcement org in South and East Asia |
-| Socio-political | China |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

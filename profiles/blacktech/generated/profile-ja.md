@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blacktech`
 - 状態: draft
-- 更新日時: 2026-08-01T23:18:25Z
+- 更新日時: 2026-09-19T00:07:32Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -35,7 +35,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -54,7 +54,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -122,7 +122,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | infrastructure-operation | 不明 | 不明 | 2024-05-18 |  | malware--waterbear |  |  | 中国関連のBlackTechハッカーグループがDeuterbear RATを使用 DeuterbearはWaterbearから進化したマルウェアで、Asia-Pacific地域を標的 二段階の感染戦術を採用し、持続性を確立 Waterbear RATモジュールは攻撃者が制御するインフラストラクチャから2回取得 1回目: Waterbear ダウンローダーをダウンロードし動かす 2回目: ダウンロード済みのWaterbearから新たなWaterbearをダウンロードして実行 | 中 | `source--daily-718b90e4e11c27f888d6` |
 | BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | infrastructure-operation | 不明 | 不明 | 2024-04-20 | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | victim--activity-rule--a880b3c2a984d91381dc | BlackTechがアジア太平洋地域の技術、研究、政府部門を攻撃。 新しいバックドア「Deuterbear」を使用し、偽装技術を駆使。 このグループは中国に関連しており、2007年から活動を続けている。 ルーターファームウェアを改変し、侵害活動を隠蔽。 ネットワーク内での持続的なアクセスを目指し、C2サーバーと通信。 | 高 | `source--daily-1dfee7d2a70ba1432540` |
-| APTグループが使用するBlueShell亜種の分析 | disruptive-activity | 不明 | 不明 | 2026-08-01 |  | malware--daily-b09eb7de4094c12dd639 |  |  | IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。 | 高 | `source--daily-2a35db86e8f078946ab5` |
+| APTグループが使用するBlueShell亜種の分析 | disruptive-activity | 不明 | 不明 | 2026-08-01 |  | malware--daily-b09eb7de4094c12dd639 | ttp--activity-rule--053c40a51e41a666f966 | victim--activity-rule--09f2709e41fc6ff19fd5 | IIJは、BlackTechなどのAPTグループが侵入後の活動で使用する、Go言語製RAT「BlueShell」のLinux向け亜種を分析した。 攻撃者はSSHなどで横展開した端末へドロッパーを設置し、BlueShell本体を一時ファイルとして実行後に削除して解析を妨害する。 亜種はカーネルワーカープロセスを装い、被害組織のプロキシを経由してC2へ接続し、証明書のCommon Nameも検証する。 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 2024年以降の検体では設定のXOR暗号化やプロキシ対応が追加されており、攻撃者が継続的に機能を改良している可能性がある。 | 高 | `source--daily-2a35db86e8f078946ab5` |
 | PLEAD | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Shrouded Crossbow | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | Waterbear | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
@@ -133,7 +133,7 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 |---|---|---|---|---|---|---|---|
 | 中国関連のハッカー、二段階感染戦術を採用しDeuterbear RATを展開 | BlackTech | Waterbear | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | BlackTech | 情報なし | 情報なし | 情報なし | 政府・行政 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 高 |
-| APTグループが使用するBlueShell亜種の分析 | BlackTech | BlueShell | 情報なし | 情報なし | 情報なし | 情報なし | 高 |
+| APTグループが使用するBlueShell亜種の分析 | BlackTech | BlueShell | T1090 Proxy | 情報なし | 情報なし | 被害事例: APTグループが使用するBlueShell亜種の分析 | 高 |
 | PLEAD | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | Shrouded Crossbow | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | Waterbear | BlackTech | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
@@ -160,12 +160,14 @@ PLEAD; Shrouded Crossbow; Waterbear
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: APTグループが使用するBlueShell亜種の分析 | 非公開 | aggregate | multiple-organizations | reported |  | malware--daily-b09eb7de4094c12dd639 | ttp--activity-rule--053c40a51e41a666f966 | エンドポイント |  | 不明 | 不明 | 2026-08-01 | 高 | `source--daily-2a35db86e8f078946ab5` |
 | 被害事例: BlackTech: テクノロジー、研究、政府部門を標的にした新しいツール「Deuterbear」 | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--210dddb39397dbe50e91 |  |  | サーバー, ネットワーク機器 |  | 不明 | 不明 | 2024-04-20 | 高 | `source--daily-1dfee7d2a70ba1432540` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Command And Control | T1090 | Proxy | 感染端末の情報を送信した後、ファイルの送受信、リモートシェル、SOCKS5プロキシなどの遠隔操作機能を提供する。 |  | activity--daily-9d44006d7db8843dc445 | 不明 | 不明 | 中 | `source--daily-2a35db86e8f078946ab5` |
 | Lateral Movement | T1021.001 | Remote Desktop Protocol | ) products. Common methods of persistence on a host include NetCat shells, modifying the victim registry [T1112] to enable the remote desktop protocol (RDP) [T1021.001], and secure shell (SSH) [T1021.004]. The actors have also used SNScan for enumeration [TA0007], and a local file transfer protocol (FTP) server [T1071.002] to move data through the victim network. For additional examples of malicious cyber actors living off the land, see Peo |  |  | 不明 | 不明 | 中 | `source--blacktech--24eb19b60ca5a2a3` |
 | Lateral Movement | T1021.004 | SSH | [BlackTech](https://attack.mitre.org/groups/G0098) has used Putty for remote access.(Citation: Symantec Palmerworm Sep 2020) |  |  | 不明 | 不明 | 高 | `source--blacktech--24eb19b60ca5a2a3`, `source--mitre-attack-19-1` |
 | Stealth | T1036.002 | Right-to-Left Override | [BlackTech](https://attack.mitre.org/groups/G0098) has used right-to-left-override to obfuscate the filenames of malicious e-mail attachments.(Citation: TrendMicro BlackTech June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |

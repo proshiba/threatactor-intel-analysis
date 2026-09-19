@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin8`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-09-19T00:00:51Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,18 +22,18 @@ FIN8の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 ## 帰属
 
-The repository mapping workbook places this actor in the Russia worksheet.
+No state sponsor is asserted by the actor-specific MITRE ATT&CK description used here.
 
-- 国: Russia
-- スポンサー種別: state
-- 確度: 中
-- 証拠: `source--actor-mapping-workbook`
+- 国: 不明
+- スポンサー種別: unknown
+- 確度: 不明
+- 証拠: なし
 
 ## モチベーション
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | State-sponsored intelligence collection or strategic operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| financial-gain | MITRE ATT&CK describes FIN8 as a financially motivated threat group. | 高 | `source--mitre-attack-19-1` | Actor-specific evidence; not inferred from geography. |
 
 ## 他アクターとの関係
 
@@ -47,12 +47,12 @@ The repository mapping workbook places this actor in the Russia worksheet.
 | Capability | Sardonic, BADHATCH, Ragnar Locker, PUNCHBUGGY, PUNCHTRACK, PowerSniff, ShellTea, PoSlurp, Net, Impacket, dsquery, Nltest, Ping, PsExec |
 | Infrastructure |  |
 | Victim | Hotel-Entertainment Industry, POS malware attack |
-| Socio-political | Russia |
+| Socio-political |  |
 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -209,7 +209,9 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| FIN8 is treated as a financially motivated threat group; the prior Russia/state/espionage classification was an unsupported generation artifact. | 高 | `source--mitre-attack-19-1` | Corrected during repository-wide attribution review. |
 
 ### 情報ギャップ
 
@@ -249,4 +251,4 @@ The repository mapping workbook places this actor in the Russia worksheet.
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。 2026-09 review: removed geography-derived state sponsorship and espionage motivation; MITRE G0061 explicitly describes FIN8 as financially motivated.

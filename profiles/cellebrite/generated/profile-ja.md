@@ -2,12 +2,12 @@
 
 - プロファイルID: `actor--cellebrite`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:00Z
+- 更新日時: 2026-09-19T00:00:50Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-Cellebriteの標準化プロファイル。リポジトリ内の専用資料2件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+Cellebriteはデジタルフォレンジック／端末アクセス技術のベンダーとして追跡する。顧客・政府機関がCellebrite製品を使用した事例を、Cellebrite自身の攻撃活動としては扱わない。
 
 ## アクター名とAlias
 
@@ -31,7 +31,7 @@ Aliasなし
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| commercial | Commercial offensive-security or surveillance operations. | 低 | `source--actor-mapping-workbook` | Inferred from catalog actor type; corroborate with actor-specific reporting. |
+| commercial | Commercial digital-forensics and device-access technology vendor. | 高 | `source--cellebrite--90a6ad972f6fa9a4` | Commercial vendor role only; this is not an assertion that Cellebrite operated the reviewed Serbian intrusions. |
 
 ## 他アクターとの関係
 
@@ -42,7 +42,7 @@ Aliasなし
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability |  |
+| Capability | Commercial device-access / digital-forensics technology. |
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-07-25T14:07:08Z
+- 調査日時: 2026-09-19T00:00:13Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -104,35 +104,23 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Google、攻撃で悪用されたAndroidゼロデイを含む60以上の脆弱性を修正 | reported-activity | 不明 | 不明 | 2025-04-08 |  |  |  |  | Googleは2025年4月のAndroidセキュリティアップデートで62件の脆弱性を修正。 修正された中には、攻撃で悪用された2件のゼロデイ脆弱性が含まれる。 1つ目はLinuxカーネルのUSBオーディオドライバにおける高リスクの特権昇格脆弱性（CVE-2024-53197）。 2つ目はAndroidカーネルの情報漏洩脆弱性（CVE-2024-53150）。 CVE-2024-53197は、イスラエルのデジタルフォレンジック企業Cellebriteが開発したゼロデイエクスプロイトチェーンの一部として、セルビア当局が押収したAndroidデバイスのロック解除に悪用された。 | 中 | `source--daily-a2ace93812b6d990cbcf` |
-| セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック | cyber-espionage | 不明 | 不明 | 2025-03-01 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  |  | victim--activity-rule--8c900bbe6c6c673f6f72 | セルビア当局が、イスラエルのデジタルフォレンジック企業Cellebriteが開発したAndroidのゼロデイ攻撃を使用し、学生活動家のデバイスをアンロックし、スパイウェアのインストールを試みたと報告。 2024年半ば、Amnesty Internationalのセキュリティラボが影響を受けたデバイスのログをフォレンジック調査中に、この攻撃の使用を発見。 GoogleのThreat Analysis Group（TAG）は、Amnestyからの情報を受け取り、LinuxカーネルのUSBドライバにある3つのゼロデイ脆弱性を特定。 これらの脆弱性は、CVE-2024-53104（USBビデオクラスの脆弱性）などで、Androidデバイスのセキュリティを危険にさらす可能性がある。 CVE-2024-53104 (USBビデオクラスのエクスプロイト) CVE-2024-53197 (ALSA USBサウンドドライバのエクスプロイト) | 高 | `source--daily-beb73f1716914fd50808` |
-| Google、標的型攻撃で悪用されたAndroidゼロデイ脆弱性を修正 | reported-activity | 不明 | 不明 | 2025-03-05 |  |  |  |  | Googleは2025年3月のAndroidセキュリティアップデートで、43件の脆弱性を修正し、その中には標的型攻撃で悪用された2つのゼロデイ脆弱性が含まれています。 1つ目のゼロデイ脆弱性（CVE-2024-50302）は、Linuxカーネルのヒューマンインターフェースデバイスドライバーにおける高深刻度の情報漏洩の脆弱性で、イスラエルのデジタルフォレンジック企業Cellebriteが開発したエクスプロイトチェーンの一部として、押収されたデバイスのロック解除に使用されました。 2つ目のゼロデイ脆弱性（CVE-2024-43093）は、Androidフレームワークの特権昇格の脆弱性で、ローカルの攻撃者が不正なUnicode正規化を悪用して、機密ディレクトリにアクセスできます。 Googleはこれらの脆弱性に関する修正を1月にOEMパートナーと共有し、3月のセキュリティアップデートで一般ユーザー向けに提供しました。 | 中 | `source--daily-5968af3fdd75f2b8e823` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Google、攻撃で悪用されたAndroidゼロデイを含む60以上の脆弱性を修正 | Cellebrite | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック | Cellebrite | 情報なし | 情報なし | 情報なし | 非営利・市民社会 | 被害事例: セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック | 高 |
-| Google、標的型攻撃で悪用されたAndroidゼロデイ脆弱性を修正 | Cellebrite | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
 
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | 非営利・市民社会 | 活動「セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-beb73f1716914fd50808` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: No victim targeting is assigned to Cellebrite from customer-operated use of its products. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: セルビア警察、Cellebriteのゼロデイ攻撃を使用してAndroid携帯をアンロック | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  |  | モバイル端末 |  | 不明 | 不明 | 2025-03-01 | 高 | `source--daily-beb73f1716914fd50808` |
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
@@ -148,7 +136,9 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| The reviewed Serbian device-access incidents are not Cellebrite-operated intrusions; Cellebrite is the product/exploit vendor in those reports. | 高 | `source--cellebrite--90a6ad972f6fa9a4` | Corrected after actor/vendor/operator role review. |
 
 ### 情報ギャップ
 
@@ -157,14 +147,13 @@ TTPなし
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
-| source--cellebrite--90a6ad972f6fa9a4 | Amnesty Cellebrite |  | 不明 | Cellebrite/Amnesty-Cellebrite.pdf | report | TLP:CLEAR | 中 |
+| source--cellebrite--90a6ad972f6fa9a4 | Amnesty reporting on Cellebrite product misuse in Serbia | Amnesty International | 不明 | Cellebrite/Amnesty-Cellebrite.pdf | report | TLP:CLEAR | 高 |
 | source--cellebrite--d3efba9fe5ded235 | readme |  | 不明 | Cellebrite/readme.md | repository-notes | TLP:CLEAR | 中 |
 | source--daily-5968af3fdd75f2b8e823 | Google、標的型攻撃で悪用されたAndroidゼロデイ脆弱性を修正 | bleepingcomputer.com | 2025-03-05 | https://www.bleepingcomputer.com/news/security/google-fixes-android-zero-days-exploited-in-targeted-attacks/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-a2ace93812b6d990cbcf | Google、攻撃で悪用されたAndroidゼロデイを含む60以上の脆弱性を修正 | bleepingcomputer.com | 2025-04-08 | https://www.bleepingcomputer.com/news/security/google-fixes-android-zero-days-exploited-in-attacks-60-other-flaws/ | osint-report | TLP:CLEAR | 中 |
@@ -172,4 +161,4 @@ TTPなし
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+2026-09 correctness reviewでセルビア当局による製品利用3件をCellebriteのActivityから除外した。
