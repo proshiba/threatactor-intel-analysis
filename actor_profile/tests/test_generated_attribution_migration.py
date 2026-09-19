@@ -110,6 +110,26 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
             ["source--mitre-attack-19-1"],
         )
 
+    def test_old_generated_espionage_is_removed_from_non_census_profile(self) -> None:
+        profile = base_profile()
+        profile["attribution"] = {
+            "countries": [],
+            "sponsor_type": "unknown",
+            "organizations": [],
+            "assessment": "",
+            "confidence": "unknown",
+            "evidence_refs": [],
+            "analyst_notes": "",
+        }
+        actor = {
+            "slug": "existing-actor",
+            "actor_types": ["state-sponsored"],
+        }
+        report = migrate_profile(profile, actor, None)
+        self.assertTrue(report["generated_espionage_removed"])
+        self.assertEqual(profile["actor"]["actor_types"], ["state-sponsored"])
+        self.assertEqual(profile["motivations"], [])
+
     def test_manual_attribution_is_not_cleared(self) -> None:
         profile = base_profile()
         profile["attribution"].update(
