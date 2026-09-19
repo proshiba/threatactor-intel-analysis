@@ -89,9 +89,11 @@ Targets / Operation / Toolset / Malwareなどをaliasへ流用してはいけな
 複数aliasを含む名前セルは`,`、`;`、改行、区切りとしての` / `で分割する。
 国名単体、帰属説明文、スポンサー説明文、地域説明などはaliasではない。
 
-既存profileのworkbook由来aliasを再構築する場合は
+元Workbookは本リポジトリに保持しないため、既存profileの補正では
 `actor_profile/scripts/migrate_workbook_aliases.py --apply`を使用し、
-MITREや他のactor-specific source由来のaliasを保持する。
+`actor-mapping-workbook`だけを根拠とするaliasを除去する。MITRE、catalog、
+actor-specific source由来のaliasは保持する。元Workbookを利用できる生成環境では、
+上記allowlist列だけからaliasを再抽出する。
 
 ## 7. Aliasと重複プロファイル
 
