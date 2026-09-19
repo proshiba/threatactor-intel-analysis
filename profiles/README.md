@@ -1,18 +1,18 @@
 # Threat Actor Profile Collection
 
-Generated: 2026-09-19T00:55:32Z
+Generated: 2026-09-19T01:11:06Z
 
 同一スキーマで作成したアクター／脅威クラスターの一覧です。各ディレクトリの`actor-profile.json`が正規データで、MarkdownとSTIXは生成物です。
 
 ## 集計
 
 - プロファイル: 674
-- 処理資料: 968
+- 処理資料: 966
 - IOC: 13896（観測イベント: 16240）
-- 非IOC artifact観測: 17347
-- Alias: 700
-- マルウェア／ツール: 1892
-- TTP: 6113
+- 非IOC artifact観測: 17286
+- Alias: 696
+- マルウェア／ツール: 1890
+- TTP: 6112
 - 検証エラー: 0
 
 警告は主に、資料に観測日がない、または自動抽出値がcandidateであることを示します。不明値を推測で埋めず、レビュー対象として保持しています。
@@ -96,7 +96,7 @@ Generated: 2026-09-19T00:55:32Z
 | [Boson Spider](boson-spider/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 1 | 1 | 6 | 0 | 12 |
 | [Buhtrap](buhtrap/generated/profile-ja.md) | 1 | 0 | 6 | 0 | 3 | 3 | 0 | 0 | 7 |
 | [Callisto Group](callisto/generated/profile-ja.md) | 4 | 4 | 1 | 25 | 79 | 98 | 1 | 0 | 104 |
-| [Calypso](calypso/generated/profile-ja.md) | 1 | 4 | 2 | 3 | 1 | 1 | 55 | 0 | 112 |
+| [Calypso](calypso/generated/profile-ja.md) | 1 | 2 | 0 | 3 | 1 | 1 | 55 | 0 | 111 |
 | [Candiru](candiru/generated/profile-ja.md) | 3 | 0 | 0 | 5 | 133 | 153 | 2 | 0 | 158 |
 | [Carbanak](carbanak/generated/profile-ja.md) | 1 | 1 | 18 | 9 | 0 | 0 | 0 | 0 | 1 |
 | [Carberp](carberb/generated/profile-ja.md) | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
@@ -112,7 +112,7 @@ Generated: 2026-09-19T00:55:32Z
 | [Clever Kitten](clever-kitten/generated/profile-ja.md) | 1 | 1 | 2 | 0 | 0 | 0 | 22 | 0 | 45 |
 | [Cobalt Group](cobalt-group/generated/profile-ja.md) | 1 | 4 | 6 | 34 | 0 | 0 | 36 | 0 | 68 |
 | [Confucius](confucius/generated/profile-ja.md) | 2 | 1 | 1 | 21 | 59 | 81 | 64 | 0 | 245 |
-| [Contagious Interview](contagious-interview/generated/profile-ja.md) | 2 | 7 | 4 | 61 | 4 | 4 | 64 | 0 | 138 |
+| [Contagious Interview](contagious-interview/generated/profile-ja.md) | 2 | 6 | 4 | 61 | 4 | 4 | 64 | 0 | 138 |
 | [CopyKittens](copykittens/generated/profile-ja.md) | 1 | 3 | 9 | 8 | 16 | 16 | 29 | 0 | 84 |
 | [Corsair Jackal](corsair-jackal/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
 | [CostaRicto](costaricto/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
@@ -153,7 +153,7 @@ Generated: 2026-09-19T00:55:32Z
 | [Dextorous Spider](dextorous-spider/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [Domestic Kitten](domestic-kitten/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 16 | 0 | 32 |
 | [Donot Team](donot-team/generated/profile-ja.md) | 3 | 1 | 2 | 0 | 24 | 37 | 25 | 0 | 82 |
-| [DPRK IT Worker Schemes](dprk-it-workers/generated/profile-ja.md) | 9 | 1 | 5 | 36 | 159 | 164 | 63 | 0 | 255 |
+| [DPRK IT Worker Schemes](dprk-it-workers/generated/profile-ja.md) | 9 | 0 | 5 | 36 | 159 | 164 | 63 | 0 | 254 |
 | [Dragonfly](dragonfly/generated/profile-ja.md) | 1 | 16 | 25 | 56 | 2 | 2 | 98 | 0 | 197 |
 | [DragonOK](dragonok/generated/profile-ja.md) | 1 | 1 | 6 | 0 | 0 | 0 | 25 | 0 | 41 |
 | [DragonSpark](dragonspark/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 15 |
@@ -175,6 +175,7 @@ Generated: 2026-09-19T00:55:32Z
 | [EvilPost](evilpost/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 0 | 0 | 5 | 0 | 6 |
 | [EXOTIC LILY](exotic-lily/generated/profile-ja.md) | 1 | 0 | 2 | 15 | 0 | 0 | 3 | 0 | 7 |
 | [Extreme Jackal](extreme-jackal/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 1 | 1 | 15 | 0 | 29 |
+| [Famous Chollima](famous-chollima/generated/profile-ja.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Ferocious Kitten](ferocious-kitten/generated/profile-ja.md) | 1 | 0 | 2 | 6 | 0 | 0 | 8 | 0 | 12 |
 | [FIN10](fin10/generated/profile-ja.md) | 1 | 0 | 1 | 11 | 0 | 0 | 27 | 0 | 55 |
 | [FIN1125](fin1125/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
@@ -207,8 +208,7 @@ Generated: 2026-09-19T00:55:32Z
 | [Golden Chickens](golden-chickens/generated/profile-ja.md) | 1 | 0 | 0 | 2 | 0 | 0 | 12 | 0 | 26 |
 | [Gorgon Group](gorgon-group/generated/profile-ja.md) | 1 | 2 | 6 | 16 | 2 | 2 | 30 | 0 | 56 |
 | [GOSSIPGIRL](gossipgirl/generated/profile-ja.md) | 1 | 0 | 5 | 0 | 0 | 0 | 6 | 0 | 13 |
-| [GravityRAT](gravityrat/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 3 |
-| [Greenbug](greenbug/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 1 | 1 | 25 | 0 | 50 |
+| [Greenbug](greenbug/generated/profile-ja.md) | 1 | 1 | 1 | 0 | 1 | 1 | 25 | 0 | 49 |
 | [GreyEnergy Group](greyenergy-group/generated/profile-ja.md) | 1 | 0 | 3 | 0 | 0 | 0 | 2 | 0 | 3 |
 | [Group 27](group-27/generated/profile-ja.md) | 1 | 0 | 4 | 0 | 0 | 0 | 18 | 0 | 34 |
 | [Group5](group5/generated/profile-ja.md) | 1 | 0 | 2 | 4 | 0 | 0 | 22 | 0 | 42 |
@@ -331,7 +331,6 @@ Generated: 2026-09-19T00:55:32Z
 | [Scattered Spider](scattered-spider/generated/profile-ja.md) | 1 | 4 | 11 | 97 | 0 | 0 | 128 | 0 | 260 |
 | [Sea Turtle](sea-turtle/generated/profile-ja.md) | 1 | 4 | 10 | 27 | 2 | 2 | 1 | 0 | 5 |
 | [SectorJ04](sectorj04/generated/profile-ja.md) | 1 | 0 | 6 | 0 | 0 | 0 | 7 | 0 | 12 |
-| [Shamoon](shamoon/generated/profile-ja.md) | 1 | 1 | 1 | 1 | 0 | 0 | 59 | 0 | 108 |
 | [Shark Spider](shark-spider/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 1 | 1 | 5 | 0 | 10 |
 | [Sharpshooter](sharpshooter/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 11 | 0 | 21 |
 | [Shifty Jackal](shifty-jackal/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 1 | 1 | 2 | 0 | 4 |
@@ -348,6 +347,7 @@ Generated: 2026-09-19T00:55:32Z
 | [Snake Wine](snake-wine/generated/profile-ja.md) | 1 | 0 | 2 | 0 | 0 | 0 | 16 | 0 | 33 |
 | [Snowglobe](snowglobe/generated/profile-ja.md) | 1 | 1 | 7 | 0 | 0 | 0 | 19 | 0 | 37 |
 | [Sowbug](sowbug/generated/profile-ja.md) | 1 | 0 | 2 | 9 | 0 | 0 | 17 | 0 | 35 |
+| [SpaceCobra](spacecobra/generated/profile-ja.md) | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Sparkling Goblin](sparkling-goblin/generated/profile-ja.md) | 1 | 0 | 2 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [Spicy Panda](spicy-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [Spiral](spiral/generated/profile-ja.md) | 1 | 0 | 2 | 0 | 0 | 0 | 6 | 0 | 13 |
