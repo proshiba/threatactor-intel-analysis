@@ -1027,6 +1027,11 @@
     "review_notes": "原文(Kaspersky securelist.ru)を確認。Cloud Atlasを実行主体として2025年後半〜2026年初頭のロシア・ベラルーシの政府・外交機関への攻撃を直接分析。Cloud AtlasはInception(inceptionプロファイル)のoverlapping aliasで、両名は同一クラスタとして各ベンダーが対応付けており手動確認の上で採用。VBCloud/PowerShower/PowerCloudと公開ツール(SSH逆トンネル、ReverseSocks、Tor)の併用を明記。",
     "review_status": "approved"
   },
+  "indigozebra|https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure": {
+    "confidence": "low",
+    "review_notes": "原文(Hunt.io, 2026-09-16公開)を確認。記事の主題はBitdefenderがSilkParasiteとして報告したSpiceRAT/NodeEdgeRAT/NomadRATのC2インフラ解析であり、IndigoZebraへの言及は \"The infrastructure examined here shares additional characteristics with IndigoZebra (also referred to as Speccom by ESET)\" というインフラ特性の類似指摘にとどまる。SilkParasiteをIndigoZebraへ帰属させる記述はなく、IndigoZebraを実行主体とする記述でもないため不採用とする。SilkParasiteは未帰属クラスタとしてparse-daily/unknown-clusters.jsonへ記録し、IndigoZebraとの関係は今後の一次資料で帰属が確定した場合に再検討する。",
+    "review_status": "rejected"
+  },
   "ironhusky|https://www.bleepingcomputer.com/news/security/chinese-hackers-target-russian-govt-with-upgraded-rat-malware/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。",
@@ -2170,6 +2175,37 @@
   "transparent-tribe|https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。",
+    "review_status": "approved"
+  },
+  "transparent-tribe|https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and": {
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "RUSTYSHADE",
+        "status": "approved",
+        "review_notes": "承認。原文がOperation RapidRustで展開された新型Rust製バックドアとして命名・解析し、攻撃者管理の非公開GitHubリポジトリをC2に用いAES-256-GCMで通信を暗号化すると記載している。IOC付録でもDriverInstaller.exeのハッシュをRUSTYSHADEとして掲載している。"
+      },
+      {
+        "name": "RUSTYMOVE",
+        "status": "approved",
+        "review_notes": "承認。原文がOperation RapidRustで展開されたコンポーネントとして命名・解析し、USB等のリムーバブルメディアへ悪性ファイルを複製して隔離ネットワークへの到達を狙うと記載している。IOC付録でAutomata-20.exeのハッシュをRUSTYMOVEとして掲載している。"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "原文(Zscaler ThreatLabz, 2026-09-16公開)を確認。記事はOperation RapidRustを主題とし、実行主体を \"the Pakistan-nexus threat actor APT36\" と同一文で明記している。標的はインドとアフガニスタンの政府・防衛組織、展開マルウェアはRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCH。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもなく、APT36はvendor/developerではなく攻撃実行主体として記述されている。活動期間は原文が2026-08-20〜2026-09-01と明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-09-19)はreported_atとして分離する。confidenceはmediumとする。原文は \"Transparent Tribe\" を用いずAPT36のみで呼称しており、本プロファイルのAPT36 aliasはMITRE ATT&CK由来でscopeがoverlappingであるため、ベンダークラスタ境界の不確実性が残る。この一致をexact identityへ昇格させず、alias scopeはoverlappingのまま維持する。IOC22件(MD5/SHA1/SHA256各4組、ドメイン3件、URL7件)は原文のIOC付録と値およびマルウェア対応を突き合わせ、全件一致を確認した。",
     "review_status": "approved"
   },
   "turla|https://www.bleepingcomputer.com/news/security/russian-cyber-spies-hide-behind-other-hackers-to-target-ukraine/": {

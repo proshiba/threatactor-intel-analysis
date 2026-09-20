@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "1bbf859c0dd176974962c4c00ed76a92df1be301",
-  "last_scanned_date": "2026-09-16",
+  "last_scanned_commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+  "last_scanned_date": "2026-09-19",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -3465,6 +3465,169 @@
         }
       ],
       "analyst_notes": "本走査で最も重要な検知は、政府・法執行機関による2資料(FBI FLASH と 英NCSC/米FBI/蘭AIVD 合同アドバイザリ、ともに2026-09-15公開)である。両資料の PDF 原文を取得して確認した結果、FBI FLASH に CHOSEN BRICK の語は1度も現れず(0回)、NCSC 合同アドバイザリに HEAVYGRAM の語も1度も現れない(0回)ことが判明した。tech-memo の日次要約は両者を「HEAVYGRAM／CHOSEN BRICK」と一体で扱っているが、これは二次要約による統合であり、一次資料は名称の等価性を述べていない。同日公開・同一の被害者像・Telegram を C2 とする点・偽装対象アプリ(Pictory、Telegram、KeePass、RunwayML)の一致・FBI が両資料に関与していることから同一活動を別名で扱っている可能性が高いが、片方が stage 1、他方が stage 2 を指している可能性も排除できないため、台帳では1クラスタとして登録したうえで名称の等価性を unresolved_questions に残した。二次要約が複数の一次資料を統合して提示する場合、名称の対応付けは必ず一次資料側で検証する。\n構造的な問題として、tech-memo の IOC CSV は日次ニュースより遅れて作成されることがある。2026-09-15分の CSV は前回走査時点で未作成だったため、PasteSwitch(234観測)と JeetBot(12観測)は本走査で初めて unmatched_actor_values に現れた。前回走査の Red Heron も同じ原因でIOC CSV 経路からは検知できていない。IOC CSV の actor 列経路は、last_scanned_date を前日に戻すか、走査窓を前日1日分だけ重ねて実行しないと取りこぼす。本走査の窓は 2026-09-15 起点であったため結果的に拾えている。\n承認レコードは0件のため profiles/ 配下は一切変更していない。state.json の last_scanned_date は、レビューと反映が完了した 2026-09-16 まで進めた。"
+    },
+    {
+      "completed_at": "2026-09-20T07:20:00Z",
+      "window": {
+        "since": "2026-09-16",
+        "until": "2026-09-19"
+      },
+      "source_commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+      "statistics": {
+        "news_files": 4,
+        "articles": 40,
+        "review_records": 6,
+        "approved_records": 1,
+        "rejected_records": 5,
+        "pending_records": 0,
+        "applied_records": 1,
+        "ioc_observations": 22,
+        "unmatched_actor_values": 398,
+        "materialization_window": "承認1件(transparent-tribe)を apply_review_queue.py --apply で反映した。migrate_activity_model.py --apply は全688プロファイルを走査し変更0件。enrich_activity_intelligence.py、enrich_targeting_scope.py、materialize_activity_diamonds.py は --actor で transparent-tribe、unc4899、contagious-interview に限定して実行した。全件実行では targets 配列の並び順だけが変わる差分が約300プロファイルに発生し、本走査の内容と無関係な大規模差分になるため GENERATION_RULES.md 12 に従って分離した。ui/build_data.py と ui/build_portal_index.py は全件で再生成した。"
+      },
+      "applied": [
+        {
+          "actor": "transparent-tribe",
+          "name": "Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+          "source": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
+          "decision": "採用(confidence: medium)。原文(Zscaler ThreatLabz, 2026-09-16公開)を確認し、実行主体が同一文で \"the Pakistan-nexus threat actor APT36\" と明記されていること、vendor/developer としての言及ではないことを確認した。IOC 22件は原文のIOC付録と値およびマルウェア対応を突き合わせて全件一致を確認した。活動期間は原文明示の 2026-08-20〜2026-09-01 を activity_period へ設定し、tech-memo日次ファイルの日付 2026-09-19 は reported_at として分離した。capability_decisions は RUSTYSHADE と RUSTYMOVE をいずれも承認した(原文で命名・解析されIOC付録にも対応がある)。PSNATCH と BASHNATCH は IOC CSV の malware 列に現れず候補に挙がらなかったため今回は未登録である。alias scope は overlapping のまま維持し exact identity へ昇格させていない。queue validator の warning non-exact-approved は本判断に対する既知の想定内警告である。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "indigozebra",
+          "name": "SilkParasiteインフラ：中央アジアのエネルギー・政府機関を標的とするSpiceRATサーバー",
+          "source": "https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure",
+          "decision": "不採用(帰属未確定)。原文(Hunt.io, 2026-09-16公開)を確認した。IndigoZebra への言及は \"The infrastructure examined here shares additional characteristics with IndigoZebra (also referred to as Speccom by ESET)\" というインフラ特性の類似指摘にとどまり、SilkParasite を IndigoZebra へ帰属させる記述も IndigoZebra を実行主体とする記述もない。SilkParasite は unknown-clusters.json へ新規クラスタとして登録し、IndigoZebra は related_profiles の similarity-only-not-attributed として記録した。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [],
+      "alias_updates": [
+        {
+          "actor": "unc4899",
+          "aliases": [
+            "TraderTraitor",
+            "PUKCHONG",
+            "Jade Sleet"
+          ],
+          "scope": "overlapping",
+          "confidence": "medium",
+          "source": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "notes": "SentinelLabs(2026-09-18)が \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載していることを根拠に登録した。単一ベンダーの呼称並記でありベンダークラスタ境界を原典で確認できていないため scope は overlapping とした。同報告の侵害(インドのITサービス事業者、FLATROOF/ROOFDECK、観測 2026-03-18〜2026-06-01)をactivity として取り込んだ。国家支援と Lazarus subgroup の評価は単一ベンダー記述のため attribution / relationships へは昇格させず assessment.uncertainties へ保持した。"
+        },
+        {
+          "actor": "contagious-interview",
+          "aliases": [
+            "WaterPlum"
+          ],
+          "scope": "overlapping",
+          "confidence": "medium",
+          "source": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "notes": "警察庁・NCO・FBI・DC3・ASD/ACSC・BND・BfV の共同注意喚起(2026-09-18)が「北朝鮮を背景とするサイバー攻撃グループ「WaterPlum」（ウォータープラム）（関連名称： Contagious Interview）」と記載していることを根拠に登録した。「関連名称」は同一性の断定ではないため scope は overlapping とした。同資料の攻撃活動(2025年12月頃〜2026年7月、100以上の国と地域で3万台以上の感染、7千件以上の暗号資産ウォレット情報窃取)を activity として、OtterCookie / OtterCandy / StoatWaffle を malware として取り込んだ。「朝鮮労働党中央委員会軍需工業部313総局が中心的な役割」という国家支援・組織帰属の評価は、対象が WaterPlum であり本プロファイルとの関係が原文上「関連名称」にとどまるため、source scope と主張 scope が一致しない。GENERATION_RULES.md 8 に従い attribution へは昇格させず assessment.uncertainties へ保持した。"
+        }
+      ],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--famous-sparrow",
+          "action": "added",
+          "notes": "ESET Research(2026-09-17)の SparroWock 記事を一次情報源巡回で検知して登録した。IOC CSV の actor 列に FamousSparrow として23観測が蓄積していながらプロファイル・台帳のいずれにも未登録だった。related_profiles へ salt-typhoon を explicitly-refuted として記録した。根拠は ESET の \"FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.\" である。昇格閾値は未充足(独立した一次資料は ESET の1本のみ)。"
+        },
+        {
+          "cluster_id": "unknown-cluster--silkparasite",
+          "action": "added",
+          "notes": "IOC CSV の actor 列に114観測が現れたことから登録した。命名元 Bitdefender(2026-08-19)と Hunt.io(2026-09-16)の原文を確認した。Bitdefender は中確度の China-nexus 評価にとどまり既存アクターへの帰属は行っていない。related_profiles へ indigozebra を similarity-only-not-attributed、hellsing-apt を false-match として記録した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "name": "REF9334",
+          "observations": 173,
+          "status": "既に unknown-cluster--ref9334 として台帳に登録済み(last_seen 2026-09-17)。"
+        },
+        {
+          "name": "SilkParasite",
+          "observations": 114,
+          "status": "本走査で unknown-cluster--silkparasite として台帳へ追加した。"
+        },
+        {
+          "name": "Government of Iran cyber actors",
+          "observations": 58,
+          "status": "国家主体の総称であり単一クラスタ指定子ではない。プロファイル化の対象としない。"
+        },
+        {
+          "name": "FamousSparrow",
+          "observations": 23,
+          "status": "本走査で unknown-cluster--famous-sparrow として台帳へ追加した。"
+        },
+        {
+          "name": "Vectra (formerly Nyxel)",
+          "observations": 20,
+          "status": "既に unknown-cluster--vectra-nyxel として台帳に登録済み(last_seen 2026-09-16)。"
+        },
+        {
+          "name": "NightEagle (APT-Q-95)",
+          "observations": 10,
+          "status": "既に unknown-cluster--nighteagle として台帳に登録済み(last_seen 2026-09-17)。"
+        },
+        {
+          "name": "WaterPlum",
+          "observations": 0,
+          "status": "IOC CSV ではなく記事本文の未登録アクター名候補として抽出された。警察庁等の共同注意喚起の原文を確認し、profiles/contagious-interview の alias として登録した。"
+        }
+      ],
+      "extraction_rule_changes": [],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし。前回走査(2026-09-16)以降の新規公開は2026-09-17の2件(Security fundamentals that materially reduce risk、Microsoft Defender の実データに基づくメールセキュリティ)で、いずれも命名アクターを含まない。Typhoon/Blizzard/Sandstorm/Sleet/Storm-#### の命名を含む新規記事はない。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-14",
+          "result": "該当なし(既反映)。一覧上位11件を確認した。命名アクターを含むのは BREEZE COMET、UNC6671、「Going with the Flow(s)」(UNC5792/UNC6508)、「GTIG AI Threat Tracker」(GTG-系)で、いずれも既に処理済みである。前回走査以降の新規公開はない。一覧ページに公開日が表示されない状態が続いている。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-14",
+          "result": "該当なし。前回走査以降の新規公開は2026-09-18(AWS AgentCore Harness のprompt injection)、2026-09-17(Inside the Modern SOC)、2026-09-16(Atomic macOS (AMOS) Stealer Activity)の3件で、いずれも命名アクターも CL-/TGR- クラスタも含まない。命名クラスタを含む最新は2026-09-09の CL-CRI-1171 で前回走査までに確認済み。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし(既反映)。2026-09-17 の「Ransomware incidents in Japan in the first half of 2026: Investigation of The Gentlemen's infrastructure and evidence of Qilin's AI use」が新規公開だが、tech-memo daily-news に 2026-09-18 付で掲載済みであり、The Gentlemen と Qilin はいずれも unknown-clusters.json に登録済み(last_seen 2026-09-18)である。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当あり。2026-09-17「Beware the SparroWock: The backdoor that bites, the commands that catch」が新規公開。FamousSparrow による中南米政府機関への諜報活動と新型バックドア SparroWocky を報告する。tech-memo daily-news には2026-09-18付で掲載されているが、FamousSparrow が既存プロファイルの canonical name / alias のいずれにも未登録のためレビューキューにレコードが生成されず、本巡回が唯一の検知経路として機能した。unknown-cluster--famous-sparrow として台帳へ登録した。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-09-18",
+          "result": "該当あり。2026-09-18「Don't Call Us, We'll Call Your APIs | TraderTraitor Backdoors Resurface on Victim With No Crypto Ties」が新規公開。tech-memo daily-news には未掲載であり、本巡回でのみ検知できた。profiles/unc4899 へ alias と activity を反映した。2026-09-16「Agents at Large」は命名アクターを含まない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし(既反映)。/all/ の一覧上位12件を公開日付きで確認した。前回走査以降の新規は2026-09-17「The Odyssey and trojans again: MovieReaper...」(命名APTなし。unknown-cluster--moviereaper に登録済み)と2026-09-11「NightEagle targets Russian companies」(unknown-cluster--nighteagle に登録済み)である。"
+        },
+        {
+          "publisher": "Kaspersky Securelist (ロシア語版)",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-09-16",
+          "result": "該当なし(既反映)。2026-09-16「NightEagle в инфраструктуре российских компаний」と2026-09-11「Распутывая клубок: разбираем инструментарий группировки Hacking Cat」がいずれも台帳登録済み(nighteagle: last_seen 2026-09-17、hacking-cat: last_seen 2026-09-13)である。今回は .ru 単独公開の取りこぼしはない。"
+        }
+      ],
+      "analyst_notes": "上流(origin/main)が 2026-09-19 に workbook alias 境界の移行(PR #51)と entity 境界の是正(PR #52)を取り込んでおり、本走査前に ddf0f6af から 087ffc01 へ追従した。この移行により hellsing-apt の alias「Asia」と sidewinder の alias「India」が除去され、2026-09-19 時点の走査で name-collision として挙がっていた2件のレコードが構造的に発生しなくなった。レビューキューは9レコード(未判断4)から6レコード(未判断2)へ減少している。また tech-memo 側で 2026-09-19 分の IOC CSV が収集されたため、Transparent Tribe のレコードは news-title 由来の scope-review-required から IOC actor 列由来の structured-actor-field へ格上げされ、IOC 22件が付随するようになった。本走査では tech-memo 経路で検知できない一次資料が2本見つかった(ESET の FamousSparrow、SentinelLabs の TraderTraitor)ほか、tech-memo に掲載されていながら名称未登録のためにレコード化されなかった政府共同注意喚起(警察庁等の WaterPlum)が1本あった。後者は daily_check.py の「本文から抽出した未登録のアクター名候補」に現れており、この出力を毎回原文まで確認する運用の有効性を示している。unmatched_actor_values の上位名称(FamousSparrow 23観測、SilkParasite 114観測)が台帳未登録のまま蓄積していたため、上位名称と unknown-clusters.json の突き合わせを日次手順へ組み込む必要がある。"
     }
   ],
   "full_history_activity_audit": {
