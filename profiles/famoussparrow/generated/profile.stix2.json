@@ -1,0 +1,3054 @@
+{
+  "type": "bundle",
+  "id": "bundle--5177e7c2-2ada-4631-a33c-fb74584555d0",
+  "objects": [
+    {
+      "type": "intrusion-set",
+      "spec_version": "2.1",
+      "id": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:40:49Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FamousSparrow",
+      "aliases": [],
+      "description": "ESETが2021年9月の初報で命名した中国関連(China-aligned)のサイバースパイ活動グループ。ESETは少なくとも2019年から活動していると評価する。初報時点ではProxyLogon脆弱性を悪用して世界各国のホテルを標的とすることで知られたが、その後は政府機関、国際機関、業界団体、エンジニアリング企業、法律事務所も標的としている。独自バックドア SparrowDoor の唯一の既知の利用者であり、2025年8月以降は新型のC++製モジュール型バックドア SparroWocky へ移行している。2025年7月以降はラテンアメリカの政府機関へ標的を集中させ、ESETのテレメトリでは2025年半ばから2026年にかけて記録された標的の90%が同地域に所在する。",
+      "first_seen": "2019-01-01T00:00:00Z",
+      "last_seen": "2026-01-01T00:00:00Z",
+      "goals": [
+        "政府機関、国際機関、業界団体、エンジニアリング企業、法律事務所に対する情報収集。2025年7月以降はラテンアメリカの政府機関に集中しており、ESETは米国の同地域への関与に対する中国の反応を反映した標的選択である可能性が高いと評価する。"
+      ],
+      "external_references": [
+        {
+          "source_name": "ESET Research",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "external_id": "source--eset-famoussparrow-sparrowocky-2026"
+        },
+        {
+          "source_name": "ESET Research",
+          "description": "Local source: https://www.welivesecurity.com/2021/09/23/famoussparrow-suspicious-hotel-guest/",
+          "external_id": "source--eset-famoussparrow-2021"
+        }
+      ],
+      "x_profile_id": "actor--famoussparrow",
+      "x_alias_assessments": [],
+      "x_attribution": {
+        "countries": [
+          "China"
+        ],
+        "sponsor_type": "state-aligned",
+        "organizations": [],
+        "assessment": "ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage group believed to have been active since at least 2019.」と述べ、中国関連のサイバースパイ活動グループと評価する。最新キャンペーンとSparroWockyバックドアのFamousSparrowへの帰属は「we attribute the latest campaign and the SparroWocky backdoor to FamousSparrow with high confidence」として高確度で行われ、根拠は(1)SparroWockyを用いた初期の攻撃の一部で、FamousSparrow専用のSparrowDoorによって展開されていたこと、(2)被害者像が従来の標的と一致すること、(3)以前SparrowDoorで標的とされた同一組織群への展開試行が記録されていること、の3点である。ESETはラテンアメリカへの標的集中について「likely reflects China's reaction to various recent US initiatives in the region」と地政学的な解釈を示すが、支援組織や指揮系統は名指ししていない。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--eset-famoussparrow-sparrowocky-2026",
+          "source--eset-famoussparrow-2021"
+        ],
+        "analyst_notes": "「China-aligned」は単一ベンダー(ESET)による整合性評価であり、政府による帰属、起訴、制裁資料は確認できていない。支援機関の特定もないため sponsor_type は state ではなく state-aligned とした。被害国(ラテンアメリカ諸国)や標的地域を帰属国へ流用していない。"
+      },
+      "x_free_text": {
+        "executive_summary": "FamousSparrowはESETが2021年に命名した中国関連のサイバースパイ活動グループである。2025年8月以降、専有バックドア SparrowDoor から新型の SparroWocky へ移行し、ラテンアメリカの政府機関を集中的に標的としている。",
+        "history": "2021年9月にESETが初報を公開し、ProxyLogon悪用によるホテル・政府・民間企業への攻撃を記述した。2022年以降は公開報告が途絶え活動停止とみられていたが、2024年7月にESETが米国の金融分野の業界団体で侵害を確認し、2025年3月の報告で未文書化のSparrowDoor 2版を公開した。2025年7月以降は標的をラテンアメリカへ集中させ、2025年8月から SparroWocky の展開を開始した。",
+        "capability_details": "SparroWockyはC++製のモジュール型バックドアで、コマンド実行、PE実行、Beacon Object File(BOF)のロードと実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット取得、データ窃取に対応する。メモリ上の低レベル構造の操作と実行時のコードパッチにより検知回避を図り、オープンソースプロジェクトのコードを直接取り込む設計へ変化している。",
+        "infrastructure_details": "",
+        "targeting_details": "構造化ターゲット監査: 標的国=アルゼンチン、エクアドル、グアテマラ、パナマ、ベネズエラ、ペルー、ホンジュラス。標的地域=中南米、南米。日本は確認時に個別国として保持する。\n\nSparroWockyの展開先として、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関が挙げられている。",
+        "additional_notes": ""
+      }
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--36fb3b7a-c6e5-42c7-ab38-f94e9cb75f79",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "SparroWocky",
+      "description": "FamousSparrowとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_profile_object_id": "malware--daily-0304bc2996ed2600a585",
+      "x_confidence": "high",
+      "x_analyst_notes": "ESETが本稿で命名・解析した当該グループの新主力バックドア。初期の攻撃の一部でFamousSparrow専用のSparrowDoorにより展開された事例が示されており、当該アクターの利用が原文で確認できる。",
+      "is_family": true,
+      "malware_types": [
+        "backdoor"
+      ],
+      "aliases": []
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:37:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+      "description": "中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。",
+      "first_seen": "2025-08-01T00:00:00Z",
+      "last_seen": "2026-06-17T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-887e71cb9547566da1dd",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--887e71cb9547566da1ddbc99 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用(新規プロファイル famoussparrow への初回反映)。原文(ESET Research「Beware the SparroWock: The backdoor that bites, the commands that catch」、表示公開日 17 Sep 2026、著者 Alexandre Côté Cyr / Romain Dumont)をcurlでHTTP 200を取得して確認した。ESETは「we attribute the latest campaign and the SparroWocky backdoor to FamousSparrow with high confidence」として、(1)SparroWockyを用いた初期の攻撃の一部でFamousSparrow専用のSparrowDoorにより展開されていたこと、(2)被害者像が従来の標的と一致すること、(3)以前SparrowDoorで標的とされた同一組織群への展開試行が記録されていること、を根拠に高確度で帰属する。標的はアルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関で、2025年半ばから2026年にかけてESETテレメトリに記録された標的の90%がラテンアメリカに所在する。 IOC CSVのactor列「FamousSparrow」23観測(ipv4 18、sha1 5)は既存プロファイルへ一致せずunmatched_actor_valuesに現れていた。profiles/famoussparrowをstatus: draftで新規作成し、config.jsonのactivity_reference_aliasesへ「https://github.com/eset/malware-ioc/tree/master/famoussparrow」から当該記事URLへの対応を追加して、IOC一覧と記事を1活動へ集約した。 Salt Typhoon / GhostEmperor / UNC2286 / Earth Estriesとの同一性は確定させていない。ESETは本稿で「FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.」と述べ、Earth Estriesとの関連も「the exact nature of the link is not fully known」とする。集約参照データ(Microsoft命名マッピング、ETDA Threat Group Cards)が示す別名関係とは両論のまま、プロファイルのrelationshipsとassessment.uncertaintiesへ残した。",
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--famoussparrow",
+          "name": "FamousSparrow",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--347ae49d2b4abd38cd88",
+            "ttp--activity-rule--3eb2cb2b43f6ff5058e1"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--1f2ead709658f7c05ba9"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+          },
+          "last_observed": {
+            "value": "2026-06-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+          },
+          "reported_at": {
+            "value": "2026-09-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Discovery",
+            "Execution",
+            "Stealth"
+          ],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--7620eff7-41e3-423c-88cd-3a3466995b97",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "アルゼンチン",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--89c05905-e716-4968-b16b-9329775b06fa",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "エクアドル",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--31db17c5-f71a-45e1-bd2f-4d5894d13719",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "グアテマラ",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--befdba7d-ff50-4cc9-9f7b-7d5d92fbe116",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "パナマ",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--898fd762-44f4-43d8-8825-984a56142dc5",
+      "created": "2026-09-20T07:37:00Z",
+      "modified": "2026-09-20T07:37:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ベネズエラ",
+      "identity_class": "organization",
+      "description": "ESETは「we've seen the new backdoor deployed against governmental entities in Argentina, Ecuador, Guatemala, Honduras, Panama, Peru, Puerto Rico, and Venezuela.」として8か国・地域の政府機関を挙げる。",
+      "external_references": [
+        {
+          "source_name": "ESET Research",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "external_id": "source--eset-famoussparrow-sparrowocky-2026"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a33c6afb-5b37-4e7a-95e6-8e5dba173975",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ペルー",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b98f6bf0-66a0-4822-b6da-c1cdbb99759c",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ホンジュラス",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--839a901a-5056-47ba-b541-759daf62aab0",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:37:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中南米",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として中南米が明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        },
+        {
+          "source_name": "ESET Research",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "external_id": "source--eset-famoussparrow-sparrowocky-2026"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--495e7ded-6e49-430b-b4b0-2c537563bf0d",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:37:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "南米",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として南米が明示されている。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        },
+        {
+          "source_name": "ESET Research",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "external_id": "source--eset-famoussparrow-sparrowocky-2026"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "政府・行政",
+      "identity_class": "organization",
+      "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--99b5dd3e-9410-4a4e-96a3-59e2598f70e6",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:37:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+      "identity_class": "organization",
+      "description": "中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。",
+      "external_references": [
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--1f2ead709658f7c05ba9",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--347ae49d2b4abd38cd88",
+        "ttp--activity-rule--3eb2cb2b43f6ff5058e1"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+      },
+      "x_last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--069386a0-a6c2-4cda-b43c-b95547b64d67",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "File and Directory Discovery",
+      "description": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1083",
+          "url": "https://attack.mitre.org/techniques/T1083/"
+        },
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--347ae49d2b4abd38cd88",
+      "x_tactic": "Discovery",
+      "x_activity_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--bfd70d3d-43e3-4935-9982-25dff50e4f1a",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "DLL",
+      "description": "DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1574.001",
+          "url": "https://attack.mitre.org/techniques/T1574/001/"
+        },
+        {
+          "source_name": "welivesecurity.com",
+          "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "external_id": "source--daily-7e7db1cf1c7586215c8d"
+        },
+        {
+          "source_name": "github.com",
+          "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--3eb2cb2b43f6ff5058e1",
+      "x_tactic": "Execution, Stealth",
+      "x_activity_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--963280da-e95b-42c7-aaa2-041c2f59ab0f",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "malware--36fb3b7a-c6e5-42c7-ab38-f94e9cb75f79",
+      "description": "FamousSparrow uses SparroWocky.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0df883ca-982a-47d4-a0d4-5a42ff10ad64",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--7620eff7-41e3-423c-88cd-3a3466995b97",
+      "description": "FamousSparrow targets アルゼンチン (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--57a36ce8-e74b-4317-af20-6787a296000f",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--89c05905-e716-4968-b16b-9329775b06fa",
+      "description": "FamousSparrow targets エクアドル (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--767c3b22-0394-49aa-b10b-48ed4b3540be",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--31db17c5-f71a-45e1-bd2f-4d5894d13719",
+      "description": "FamousSparrow targets グアテマラ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b48181de-3640-4244-a4c8-6eae0b790b44",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--befdba7d-ff50-4cc9-9f7b-7d5d92fbe116",
+      "description": "FamousSparrow targets パナマ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7919210b-076d-4f43-9024-c1f628612330",
+      "created": "2026-09-20T07:37:00Z",
+      "modified": "2026-09-20T07:37:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--898fd762-44f4-43d8-8825-984a56142dc5",
+      "description": "FamousSparrow targets ベネズエラ (profile target category: countries).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2372ce85-d357-45dd-8578-34b18fa59346",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--a33c6afb-5b37-4e7a-95e6-8e5dba173975",
+      "description": "FamousSparrow targets ペルー (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c7c81a81-0ed6-4b79-8028-5fc2d8d3f7db",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--b98f6bf0-66a0-4822-b6da-c1cdbb99759c",
+      "description": "FamousSparrow targets ホンジュラス (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--95b49101-5d23-4a9c-a000-ee81bd670045",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--839a901a-5056-47ba-b541-759daf62aab0",
+      "description": "FamousSparrow targets 中南米 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4a38b3ee-ddfc-41ee-8d59-05e28c734db9",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--495e7ded-6e49-430b-b4b0-2c537563bf0d",
+      "description": "FamousSparrow targets 南米 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--20a200e1-dea8-41e5-98ed-9d9ae5a2d87d",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "FamousSparrow targets 政府・行政 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--72cebebb-f167-42ef-aef2-6428eb8ba516",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド is attributed or linked to FamousSparrow.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--629f1442-4fa4-4547-b50f-4fe362d9668b",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "target_ref": "malware--36fb3b7a-c6e5-42c7-ab38-f94e9cb75f79",
+      "description": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド uses malware--daily-0304bc2996ed2600a585.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a426da49-0ae4-4ae4-ba74-8b8ff5b605d2",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+      "description": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド targets target--activity-rule--sector--210dddb39397dbe50e91.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5a4cfcc9-0b39-48d5-a733-ca7dbaec1298",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "target_ref": "attack-pattern--069386a0-a6c2-4cda-b43c-b95547b64d67",
+      "description": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド uses ttp--activity-rule--347ae49d2b4abd38cd88.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a2b47d8b-3249-478b-be2c-0c4530c56d82",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "target_ref": "attack-pattern--bfd70d3d-43e3-4935-9982-25dff50e4f1a",
+      "description": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド uses ttp--activity-rule--3eb2cb2b43f6ff5058e1.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c167761d-1d93-4d46-a8cb-8f8ec350ea61",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+      "target_ref": "identity--99b5dd3e-9410-4a4e-96a3-59e2598f70e6",
+      "description": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド affected victim--activity-rule--1f2ead709658f7c05ba9.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2f78ba74-7e35-419b-8efd-697b64f5c4ae",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "attack-pattern--069386a0-a6c2-4cda-b43c-b95547b64d67",
+      "description": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96227fa1-cecb-4b6e-a8a5-a598a3088514",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "attack-pattern--bfd70d3d-43e3-4935-9982-25dff50e4f1a",
+      "description": "DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--03d87cb4-cf82-4135-8d3c-0a2c16f4be4b",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 3209689e509205ccdb7e49062b7b407ddc23cac1",
+      "pattern": "[file:hashes.'SHA-1' = '3209689e509205ccdb7e49062b7b407ddc23cac1']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:15fb8c435943bed9b4d7a14a58f9c8f7169adc2839a13c2100ab3cdc7d26ab56",
+          "observed_at": {
+            "value": "2026-09-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 9
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "3209689e509205ccdb7e49062b7b407ddc23cac1",
+          "context_excerpt": "AI generated. SHA-1 of a SparroWocky loader DLL listed in the ESET IOC repository.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8c0b982f-76e6-4dd9-8342-ecbc76f909a1",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--03d87cb4-cf82-4135-8d3c-0a2c16f4be4b",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--1c9a2f86-76be-4f8c-ae00-00b0c22d08c1",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 52c6646759cf6037bb17466203631c4bd794532f",
+      "pattern": "[file:hashes.'SHA-1' = '52c6646759cf6037bb17466203631c4bd794532f']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:70b6a454acb5a93bbf97cf3e44b4943cd04e73e4c69312f5ce1194412b449f5d",
+          "observed_at": {
+            "value": "2026-09-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 10
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "52c6646759cf6037bb17466203631c4bd794532f",
+          "context_excerpt": "AI generated. SHA-1 of a SparroWocky loader DLL listed in the ESET IOC repository.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--20a45c30-a63e-4681-aa15-f7696aa99e9f",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--1c9a2f86-76be-4f8c-ae00-00b0c22d08c1",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c86c09d1-4706-46a1-95d9-f61d45534975",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 99e7070b5af24a0fe1e6febe5954b03cb385e91f",
+      "pattern": "[file:hashes.'SHA-1' = '99e7070b5af24a0fe1e6febe5954b03cb385e91f']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "related-file"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b45c045015bb3117e89ffaf329451922a398bdc4b947380fd50194d889e77d0b",
+          "observed_at": {
+            "value": "2026-09-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 11
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "related-file"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "99e7070b5af24a0fe1e6febe5954b03cb385e91f",
+          "context_excerpt": "AI generated. SHA-1 of a SparroWocky loader DLL listed in the ESET IOC repository.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cd97d6d0-41d9-4f87-8e48-324a92f4ca48",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c86c09d1-4706-46a1-95d9-f61d45534975",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--6e63b16c-b47a-473d-b22c-d8a4ac18659c",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 44f0a22b143b79fa760bf31e14c8fff714c8a2a1",
+      "pattern": "[file:hashes.'SHA-1' = '44f0a22b143b79fa760bf31e14c8fff714c8a2a1']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:a8fbc1796fa02c6e287b1aca1984d7a0893ca97246340965782a452667b2389e",
+          "observed_at": {
+            "value": "2026-09-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 12
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "44f0a22b143b79fa760bf31e14c8fff714c8a2a1",
+          "context_excerpt": "AI generated. SHA-1 of the SparroWocky backdoor payload listed in the ESET IOC repository.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7d764479-8291-4349-b2c4-c408bb0dad18",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--6e63b16c-b47a-473d-b22c-d8a4ac18659c",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--89a8f5e3-8dbe-4e8f-bf6e-928f1a1dd0a4",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "sha1: 9aa9ff61bc63ccab9074fe837f39c980ca9ddc8c",
+      "pattern": "[file:hashes.'SHA-1' = '9aa9ff61bc63ccab9074fe837f39c980ca9ddc8c']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "payload"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:52cdb46c491d8ad45d7364d2c0b09089824aaef2e49e8012356df25e0f6eb45d",
+          "observed_at": {
+            "value": "2026-09-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 13
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "payload"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "9aa9ff61bc63ccab9074fe837f39c980ca9ddc8c",
+          "context_excerpt": "AI generated. SHA-1 of the SparroWocky backdoor payload listed in the ESET IOC repository.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--03b77aa7-36d1-47bb-8480-4a20741c73a4",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--89a8f5e3-8dbe-4e8f-bf6e-928f1a1dd0a4",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--bbcbb6fa-cc3d-41cd-b259-110173e637dd",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.54.57.17",
+      "pattern": "[ipv4-addr:value = '38.54.57.17']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-25T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:8e403b4ded5465ebe14f8b2c3a125e72ffdb52edd92160e7b5bc5adde38e8b0c",
+          "observed_at": {
+            "value": "2026-02-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 14
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.54.57.17",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a7c00fa4-b78e-4c4d-8994-c20073c3e366",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--bbcbb6fa-cc3d-41cd-b259-110173e637dd",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3df108c8-9609-40cd-a69c-eeb270054a8d",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.197.55",
+      "pattern": "[ipv4-addr:value = '38.60.197.55']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-16T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b395b495958dbe161ecbb79ae8c8516fc8b1054af24b32cc886069bd320b956a",
+          "observed_at": {
+            "value": "2026-03-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 15
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.197.55",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--de61d747-6fec-457f-8989-9888a3d74f56",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3df108c8-9609-40cd-a69c-eeb270054a8d",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3a2fc0ab-afdb-4519-ad54-fb74004db4a4",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.209.106",
+      "pattern": "[ipv4-addr:value = '38.60.209.106']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:6e720fc2b0aeb185aaf2a433dd9ba1eb10e7f9b8664fc8da6aa96a8ad689290f",
+          "observed_at": {
+            "value": "2026-02-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 16
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.209.106",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--53b804b2-cbf5-4091-8253-2a29e7c6ec53",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3a2fc0ab-afdb-4519-ad54-fb74004db4a4",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--757b624e-3c0b-49e7-a0bd-7c532a66520a",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.224.51",
+      "pattern": "[ipv4-addr:value = '38.60.224.51']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-25T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7c77cd68c552867f658045b6bfb59986a2d0f061a237e3ac8b444efb8f4a589b",
+          "observed_at": {
+            "value": "2026-02-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 17
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.224.51",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3730faf5-2a22-4f6e-9251-39e01de2d1d5",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--757b624e-3c0b-49e7-a0bd-7c532a66520a",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--384f7241-30e9-4d89-be85-ae68da2f910e",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.224.235",
+      "pattern": "[ipv4-addr:value = '38.60.224.235']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-24T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d78c613c75d6b556b6d3466d2ecbb43b15878ac529d2c04020dae4639dbf6f4f",
+          "observed_at": {
+            "value": "2026-02-24T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 18
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.224.235",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0defda59-0f4b-44b7-b5b0-f8687a2fd51a",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--384f7241-30e9-4d89-be85-ae68da2f910e",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--0693fe16-7e2c-4b86-9dc2-e954dabc5a71",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.241.65",
+      "pattern": "[ipv4-addr:value = '38.60.241.65']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-10T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:034968c4a57d2736b754b30e823ee806708dd5fc95128aee4686e487385f66ae",
+          "observed_at": {
+            "value": "2026-03-10T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 19
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.241.65",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--549ac6a3-6357-4e37-b15a-9587f9fcddfa",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--0693fe16-7e2c-4b86-9dc2-e954dabc5a71",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--95c92efb-26c6-4a88-b61f-e69fc87c191c",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.241.127",
+      "pattern": "[ipv4-addr:value = '38.60.241.127']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-04T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c6b46c1cba9b3d684b1040673e529c8706248fb821bd4c4927788adaff883ca5",
+          "observed_at": {
+            "value": "2026-03-04T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 20
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.241.127",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3dfc05af-6c1e-44f8-8f84-8ee2fa5dd87a",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--95c92efb-26c6-4a88-b61f-e69fc87c191c",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c57e4207-cbec-4abe-ba46-238d24b3b638",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 38.60.241.193",
+      "pattern": "[ipv4-addr:value = '38.60.241.193']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-01-22T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:2d0fab29224d0f8e9b4271340db16cb7345a8990e1815575155018971290a024",
+          "observed_at": {
+            "value": "2026-01-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 21
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "38.60.241.193",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--12671174-3947-410f-a499-41e79ce003c3",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c57e4207-cbec-4abe-ba46-238d24b3b638",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b9c1de68-8dd8-44dc-8176-8bce0f2e2186",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 77.111.101.40",
+      "pattern": "[ipv4-addr:value = '77.111.101.40']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-20T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e1f508477c49a511ec1a5a01f367f8ae3f797d1a74d8994d01f3fca84501576f",
+          "observed_at": {
+            "value": "2026-05-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 22
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "77.111.101.40",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--42df8e06-20ea-4900-a3de-642746953d77",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--b9c1de68-8dd8-44dc-8176-8bce0f2e2186",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4ff161db-f0d6-4684-91f6-8a406b21131c",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 91.148.134.115",
+      "pattern": "[ipv4-addr:value = '91.148.134.115']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-17T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:cca625a591e63aac95f82b17831a645c397fa0384bc2fc2e8921f2cd8effa386",
+          "observed_at": {
+            "value": "2026-06-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 23
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "91.148.134.115",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bb7b53de-4d71-4135-9a50-ab201a67ff4b",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4ff161db-f0d6-4684-91f6-8a406b21131c",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e3286fa3-1d9c-40a5-9255-d375a7d680c7",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 130.94.101.82",
+      "pattern": "[ipv4-addr:value = '130.94.101.82']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b73556fb060e0a7b5451c643b5cd54cac9d8e4bae803cdf3346fe46c1db6a96b",
+          "observed_at": {
+            "value": "2026-02-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 24
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "130.94.101.82",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--604810b0-91aa-469e-b699-addcf3a8011d",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--e3286fa3-1d9c-40a5-9255-d375a7d680c7",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--2803f3db-bde7-44f1-b9b1-8c2971d2fbe1",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 140.99.164.199",
+      "pattern": "[ipv4-addr:value = '140.99.164.199']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-26T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:76504025cf4de2a32b9c146bafb185defdc776b78bd46cbe38671e60b565f809",
+          "observed_at": {
+            "value": "2026-02-26T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 25
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "140.99.164.199",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--da492c49-790a-4a04-84b1-4f00d68e95ae",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--2803f3db-bde7-44f1-b9b1-8c2971d2fbe1",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3c23b3a1-796c-4c9a-b6cf-a2b88aaf77d0",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 149.104.87.228",
+      "pattern": "[ipv4-addr:value = '149.104.87.228']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-24T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:3da4226c6f16f3acc73ce47bc8562931d44c755dc6fb8039e03af8a9ef7d083c",
+          "observed_at": {
+            "value": "2026-02-24T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 26
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "149.104.87.228",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--db049530-089a-4f4b-b1f6-466808b85af2",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3c23b3a1-796c-4c9a-b6cf-a2b88aaf77d0",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--844d39c6-9801-4b6f-93d4-3c690d85fc3a",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 149.104.90.203",
+      "pattern": "[ipv4-addr:value = '149.104.90.203']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-01-22T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0868043ef1d60f87fe12ed87f020e44025f5dde56571f542901bf85d06e796e6",
+          "observed_at": {
+            "value": "2026-01-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 27
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "149.104.90.203",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--233543e5-0f94-43fc-92f2-00e0eb051b36",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--844d39c6-9801-4b6f-93d4-3c690d85fc3a",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c68f630b-3725-4ffa-abac-890a28b4f712",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 216.238.92.2",
+      "pattern": "[ipv4-addr:value = '216.238.92.2']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-02-25T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f1d53a666b7daab36234e446faf7521702b7b3d1c035dd6d81a332fdf61a26d4",
+          "observed_at": {
+            "value": "2026-02-25T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 28
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "216.238.92.2",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--386de8e9-f2d0-4c2d-855f-ef3c146df338",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c68f630b-3725-4ffa-abac-890a28b4f712",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3bf6a420-7c58-4529-83c1-d40e679263ab",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 216.238.105.53",
+      "pattern": "[ipv4-addr:value = '216.238.105.53']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-01-22T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:38a91ac307fb425e3ac9ba9fe1866e0614c73058c56900a3d8282edf5b50d43e",
+          "observed_at": {
+            "value": "2026-01-22T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 29
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "216.238.105.53",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d8f7ff90-d66b-45f5-85d9-e1a13a14fd10",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--3bf6a420-7c58-4529-83c1-d40e679263ab",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--094a22f0-72da-4d4e-9c13-9a146c502c35",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 216.238.110.120",
+      "pattern": "[ipv4-addr:value = '216.238.110.120']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2025-12-11T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b245f15b560742cbedac025c56d439646d4f63e60d160c9ecb96dfcd6cb336a3",
+          "observed_at": {
+            "value": "2025-12-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 30
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "216.238.110.120",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ec9700f5-99bc-45db-a8dd-8c3fc9c79ea8",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--094a22f0-72da-4d4e-9c13-9a146c502c35",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--576073e0-c536-4694-ab4e-7129f5b70587",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 216.238.121.164",
+      "pattern": "[ipv4-addr:value = '216.238.121.164']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-03-16T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 1,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "x_malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "x_infrastructure_refs": [],
+      "x_roles": [
+        "c2"
+      ],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:cded9fc2ca36b981455b39e5c387a6a881d4d3503964396beba42f4fd6053db0",
+          "observed_at": {
+            "value": "2026-03-16T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-ioc-date"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--daily-8ad4c8f610ba00d8b741",
+          "source_path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+          "source_location": {
+            "repository": "proshiba/tech-memo",
+            "commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+            "path": "daily-news/iocs/2026_07-09/20260918.csv",
+            "row": 31
+          },
+          "campaign_refs": [
+            "activity--daily-887e71cb9547566da1dd"
+          ],
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "infrastructure_refs": [],
+          "roles": [
+            "c2"
+          ],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "tech-memo-structured-csv",
+          "raw_value": "216.238.121.164",
+          "context_excerpt": "AI generated. SparroWocky C&C server listed in the ESET IOC repository with this first-seen date.",
+          "analyst_notes": "actor field: FamousSparrow; actor_attribute: china; reference: https://github.com/eset/malware-ioc/tree/master/famoussparrow"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--98af30f4-ce18-4c68-bbab-46f4350b80c7",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--576073e0-c536-4694-ab4e-7129f5b70587",
+      "target_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--50457cb1-0a8b-4503-995a-9c9354f533de",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "abstract": "Non-IOC artifact dataset",
+      "content": "Commands, sample strings, paths, registry keys, mutexes, named pipes, task/service names and other non-IOC artifacts are stored in artifacts.csv.",
+      "object_refs": [
+        "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316"
+      ],
+      "x_artifacts_path": "artifacts.csv",
+      "x_artifact_observation_count": 0
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--045605e4-80fc-4c1d-86c8-13cf926c4c3a",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:40:49Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "FamousSparrow Threat Actor Profile",
+      "description": "FamousSparrowはESETが2021年に命名した中国関連のサイバースパイ活動グループである。2025年8月以降、専有バックドア SparrowDoor から新型の SparroWocky へ移行し、ラテンアメリカの政府機関を集中的に標的としている。",
+      "report_types": [
+        "threat-actor"
+      ],
+      "published": "2026-09-20T07:40:49Z",
+      "object_refs": [
+        "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+        "malware--36fb3b7a-c6e5-42c7-ab38-f94e9cb75f79",
+        "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+        "identity--7620eff7-41e3-423c-88cd-3a3466995b97",
+        "identity--89c05905-e716-4968-b16b-9329775b06fa",
+        "identity--31db17c5-f71a-45e1-bd2f-4d5894d13719",
+        "identity--befdba7d-ff50-4cc9-9f7b-7d5d92fbe116",
+        "identity--898fd762-44f4-43d8-8825-984a56142dc5",
+        "identity--a33c6afb-5b37-4e7a-95e6-8e5dba173975",
+        "identity--b98f6bf0-66a0-4822-b6da-c1cdbb99759c",
+        "identity--839a901a-5056-47ba-b541-759daf62aab0",
+        "identity--495e7ded-6e49-430b-b4b0-2c537563bf0d",
+        "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
+        "identity--99b5dd3e-9410-4a4e-96a3-59e2598f70e6",
+        "attack-pattern--069386a0-a6c2-4cda-b43c-b95547b64d67",
+        "attack-pattern--bfd70d3d-43e3-4935-9982-25dff50e4f1a",
+        "indicator--03d87cb4-cf82-4135-8d3c-0a2c16f4be4b",
+        "indicator--1c9a2f86-76be-4f8c-ae00-00b0c22d08c1",
+        "indicator--c86c09d1-4706-46a1-95d9-f61d45534975",
+        "indicator--6e63b16c-b47a-473d-b22c-d8a4ac18659c",
+        "indicator--89a8f5e3-8dbe-4e8f-bf6e-928f1a1dd0a4",
+        "indicator--bbcbb6fa-cc3d-41cd-b259-110173e637dd",
+        "indicator--3df108c8-9609-40cd-a69c-eeb270054a8d",
+        "indicator--3a2fc0ab-afdb-4519-ad54-fb74004db4a4",
+        "indicator--757b624e-3c0b-49e7-a0bd-7c532a66520a",
+        "indicator--384f7241-30e9-4d89-be85-ae68da2f910e",
+        "indicator--0693fe16-7e2c-4b86-9dc2-e954dabc5a71",
+        "indicator--95c92efb-26c6-4a88-b61f-e69fc87c191c",
+        "indicator--c57e4207-cbec-4abe-ba46-238d24b3b638",
+        "indicator--b9c1de68-8dd8-44dc-8176-8bce0f2e2186",
+        "indicator--4ff161db-f0d6-4684-91f6-8a406b21131c",
+        "indicator--e3286fa3-1d9c-40a5-9255-d375a7d680c7",
+        "indicator--2803f3db-bde7-44f1-b9b1-8c2971d2fbe1",
+        "indicator--3c23b3a1-796c-4c9a-b6cf-a2b88aaf77d0",
+        "indicator--844d39c6-9801-4b6f-93d4-3c690d85fc3a",
+        "indicator--c68f630b-3725-4ffa-abac-890a28b4f712",
+        "indicator--3bf6a420-7c58-4529-83c1-d40e679263ab",
+        "indicator--094a22f0-72da-4d4e-9c13-9a146c502c35",
+        "indicator--576073e0-c536-4694-ab4e-7129f5b70587"
+      ],
+      "x_schema_version": "1.2.0"
+    }
+  ]
+}

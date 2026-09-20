@@ -13,6 +13,7 @@ HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 
 import daily_check  # noqa: E402
+import validate_daily  # noqa: E402
 from build_review_queue import apply_decision  # noqa: E402
 from daily_check import latest_activity  # noqa: E402
 
@@ -698,6 +699,40 @@ class AliasedSourceTests(unittest.TestCase):
         aliased = next(i for i in items if i["url"] == "https://vendor.example/writeup")
         self.assertEqual(aliased["news_date"], "2026-09-12")
         self.assertEqual(aliased["title"], "集約した記事の見出し")
+
+    def test_ioc_validation_ignores_aggregated_source_without_iocs(self) -> None:
+        """IOCを1件も掲載していない集約元の記事はIOC出典の欠落として扱わない。
+
+        2026-09-20 の FamousSparrow の取込が実例である。ESETの記事URLと
+        github.com/eset/malware-ioc のIOC一覧を1活動へ集約したが、IOC行は
+        すべてIOC一覧側を参照しており、記事URLは iocs.json へ観測を持たない。
+        """
+        record = self._record()
+        record["iocs"] = [
+            {"reference": "https://vendor.example/iocs", "value": "198.51.100.10"},
+            {"reference": "https://vendor.example/iocs", "value": "198.51.100.11"},
+        ]
+        ids = validate_daily.ioc_bearing_source_ids(record, self.QUEUE)
+        self.assertEqual(ids, {source_id_for_value("https://vendor.example/iocs")})
+        # 記事側(集約先・集約元のいずれも)はIOCを掲載していないため対象外になる
+        self.assertNotIn(source_id_for_value("https://x.example/status/1"), ids)
+        self.assertNotIn(source_id_for_value("https://vendor.example/writeup"), ids)
+
+    def test_ioc_validation_still_covers_every_source_that_published_iocs(self) -> None:
+        """複数のURLがIOCを掲載している場合は、その全URLを検証対象に残す。"""
+        record = self._record()
+        record["iocs"] = [
+            {"reference": "https://vendor.example/iocs", "value": "198.51.100.10"},
+            {"reference": "https://x.example/status/1", "value": "198.51.100.12"},
+        ]
+        ids = validate_daily.ioc_bearing_source_ids(record, self.QUEUE)
+        self.assertEqual(
+            ids,
+            {
+                source_id_for_value("https://vendor.example/iocs"),
+                source_id_for_value("https://x.example/status/1"),
+            },
+        )
 
     def test_profile_source_prefers_the_source_own_date_and_title(self) -> None:
         record = self._record()

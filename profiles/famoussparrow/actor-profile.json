@@ -1,0 +1,779 @@
+{
+  "schema_version": "1.2.0",
+  "profile_id": "actor--famoussparrow",
+  "name": "FamousSparrow",
+  "status": "draft",
+  "created_at": "2026-09-20T01:30:00Z",
+  "updated_at": "2026-09-20T07:40:49Z",
+  "languages": [
+    "ja"
+  ],
+  "actor": {
+    "canonical_name": "FamousSparrow",
+    "aliases": [],
+    "actor_types": [
+      "threat-group"
+    ],
+    "first_seen": {
+      "value": "2019-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "last_seen": {
+      "value": "2026-01-01T00:00:00Z",
+      "precision": "year",
+      "status": "known",
+      "basis": "source-stated"
+    },
+    "active": "likely",
+    "description": "ESETが2021年9月の初報で命名した中国関連(China-aligned)のサイバースパイ活動グループ。ESETは少なくとも2019年から活動していると評価する。初報時点ではProxyLogon脆弱性を悪用して世界各国のホテルを標的とすることで知られたが、その後は政府機関、国際機関、業界団体、エンジニアリング企業、法律事務所も標的としている。独自バックドア SparrowDoor の唯一の既知の利用者であり、2025年8月以降は新型のC++製モジュール型バックドア SparroWocky へ移行している。2025年7月以降はラテンアメリカの政府機関へ標的を集中させ、ESETのテレメトリでは2025年半ばから2026年にかけて記録された標的の90%が同地域に所在する。",
+    "analyst_notes": "命名元はESETである。2026-09-20の日次チェックで、tech-memo daily-news 2026-09-18 収録のESET記事に伴うIOC CSVのactor値「FamousSparrow」23観測が既存プロファイルへ一致せず unmatched_actor_values として検知されたことを契機に作成した。集約参照データ(actor_profile/reference/osint/microsoft-threat-actor-mapping.json、etda-threat-group-cards.json)はFamousSparrowをSalt Typhoon / GhostEmperor / UNC2286 / Earth Estriesと同一クラスタの別名として扱うが、ESETは2026-09-17の原文で「FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.」と述べ別クラスタとして追跡している。本リポジトリには salt-typhoon と unc2286 のプロファイルが別に存在するため、parse-daily/AGENT.md および actor_profile/GENERATION_RULES.md の規則に従い名称一致による統合は行わず、relationships と assessment.uncertainties へ両論を残した。"
+  },
+  "attribution": {
+    "countries": [
+      "China"
+    ],
+    "sponsor_type": "state-aligned",
+    "organizations": [],
+    "assessment": "ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage group believed to have been active since at least 2019.」と述べ、中国関連のサイバースパイ活動グループと評価する。最新キャンペーンとSparroWockyバックドアのFamousSparrowへの帰属は「we attribute the latest campaign and the SparroWocky backdoor to FamousSparrow with high confidence」として高確度で行われ、根拠は(1)SparroWockyを用いた初期の攻撃の一部で、FamousSparrow専用のSparrowDoorによって展開されていたこと、(2)被害者像が従来の標的と一致すること、(3)以前SparrowDoorで標的とされた同一組織群への展開試行が記録されていること、の3点である。ESETはラテンアメリカへの標的集中について「likely reflects China's reaction to various recent US initiatives in the region」と地政学的な解釈を示すが、支援組織や指揮系統は名指ししていない。",
+    "confidence": "medium",
+    "evidence_refs": [
+      "source--eset-famoussparrow-sparrowocky-2026",
+      "source--eset-famoussparrow-2021"
+    ],
+    "analyst_notes": "「China-aligned」は単一ベンダー(ESET)による整合性評価であり、政府による帰属、起訴、制裁資料は確認できていない。支援機関の特定もないため sponsor_type は state ではなく state-aligned とした。被害国(ラテンアメリカ諸国)や標的地域を帰属国へ流用していない。"
+  },
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "政府機関、国際機関、業界団体、エンジニアリング企業、法律事務所に対する情報収集。2025年7月以降はラテンアメリカの政府機関に集中しており、ESETは米国の同地域への関与に対する中国の反応を反映した標的選択である可能性が高いと評価する。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--eset-famoussparrow-sparrowocky-2026",
+        "source--eset-famoussparrow-2021"
+      ],
+      "analyst_notes": "ESETは2021年と2026年の両報告で cyberespionage group と明記している。動機の記述は原文の範囲にとどめ、国家支援の有無から動機を導出していない。"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "relationship--famoussparrow--overlaps--earth-estries",
+      "target_actor": "Earth Estries",
+      "relationship_type": "overlaps-with",
+      "description": "ESETは2026-09-17の原文で「As mentioned by Trend Micro, FamousSparrow is linked to Earth Estries; however, the exact nature of the link is not fully known.」と述べ、Trend Microが指摘する関連を紹介しつつ、関連の正確な性質は完全には判明していないとする。",
+      "confidence": "low",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--eset-famoussparrow-sparrowocky-2026"
+      ],
+      "analyst_notes": "本リポジトリに Earth Estries のプロファイルは存在しない。Trend Microの原典は本走査で未確認であり、ESET経由の言及にとどまる。同一性の主張ではないため統合しない。"
+    },
+    {
+      "relationship_id": "relationship--famoussparrow--taxonomy-overlaps--salt-typhoon",
+      "target_actor": "Salt Typhoon",
+      "relationship_type": "taxonomy-overlaps-with",
+      "description": "公開情報ではFamousSparrowはSalt Typhoonと結び付けられているが、ESETは「due to the absence of any technical indicators, we track them as separate」として技術指標の不在を理由に別クラスタとして追跡している。",
+      "confidence": "low",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--eset-famoussparrow-sparrowocky-2026"
+      ],
+      "analyst_notes": "Microsoftの命名マッピングとETDA Threat Group CardsはFamousSparrowをSalt Typhoon(GhostEmperor / UNC2286 / Earth Estries / RedMike / Operator Panda)の別名として扱う。いずれも集約参照データであり一次資料ではない。命名上の対応と技術的同一性を分離し、一次資料が同一性を確定するまでプロファイルを統合しない。profiles/salt-typhoon と profiles/unc2286 が別に存在する点も併せて assessment.uncertainties へ記録している。"
+    }
+  ],
+  "diamond_model": {
+    "adversary": "",
+    "capability": "",
+    "infrastructure": "",
+    "victim": "",
+    "socio_political": "",
+    "analyst_notes": "活動別ダイヤモンドモデルは materialize_activity_diamonds.py が活動単位で生成する。"
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--daily-0304bc2996ed2600a585",
+        "name": "SparroWocky",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "FamousSparrowとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "ESETが本稿で命名・解析した当該グループの新主力バックドア。初期の攻撃の一部でFamousSparrow専用のSparrowDoorにより展開された事例が示されており、当該アクターの利用が原文で確認できる。"
+      }
+    ],
+    "tools": [],
+    "infrastructure": [],
+    "delivery_formats": [],
+    "vulnerabilities": [],
+    "operational_capabilities": [],
+    "analyst_notes": "SparroWocky と SparrowDoor の構造化は日次取込(apply_review_queue.py)による材料化に委ねる。ESET原文が記述する機能詳細のうち、活動へ結び付かないものは補完しない。"
+  },
+  "activities": [
+    {
+      "activity_id": "activity--daily-887e71cb9547566da1dd",
+      "name": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+      "activity_type": "cyber-espionage",
+      "first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+      },
+      "last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+      },
+      "reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。",
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--347ae49d2b4abd38cd88",
+        "ttp--activity-rule--3eb2cb2b43f6ff5058e1"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--1f2ead709658f7c05ba9"
+      ],
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-7e7db1cf1c7586215c8d",
+        "source--daily-8ad4c8f610ba00d8b741"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--887e71cb9547566da1ddbc99 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用(新規プロファイル famoussparrow への初回反映)。原文(ESET Research「Beware the SparroWock: The backdoor that bites, the commands that catch」、表示公開日 17 Sep 2026、著者 Alexandre Côté Cyr / Romain Dumont)をcurlでHTTP 200を取得して確認した。ESETは「we attribute the latest campaign and the SparroWocky backdoor to FamousSparrow with high confidence」として、(1)SparroWockyを用いた初期の攻撃の一部でFamousSparrow専用のSparrowDoorにより展開されていたこと、(2)被害者像が従来の標的と一致すること、(3)以前SparrowDoorで標的とされた同一組織群への展開試行が記録されていること、を根拠に高確度で帰属する。標的はアルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関で、2025年半ばから2026年にかけてESETテレメトリに記録された標的の90%がラテンアメリカに所在する。 IOC CSVのactor列「FamousSparrow」23観測(ipv4 18、sha1 5)は既存プロファイルへ一致せずunmatched_actor_valuesに現れていた。profiles/famoussparrowをstatus: draftで新規作成し、config.jsonのactivity_reference_aliasesへ「https://github.com/eset/malware-ioc/tree/master/famoussparrow」から当該記事URLへの対応を追加して、IOC一覧と記事を1活動へ集約した。 Salt Typhoon / GhostEmperor / UNC2286 / Earth Estriesとの同一性は確定させていない。ESETは本稿で「FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.」と述べ、Earth Estriesとの関連も「the exact nature of the link is not fully known」とする。集約参照データ(Microsoft命名マッピング、ETDA Threat Group Cards)が示す別名関係とは両論のまま、プロファイルのrelationshipsとassessment.uncertaintiesへ残した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--famoussparrow",
+          "name": "FamousSparrow",
+          "attribution_countries": [
+            "China"
+          ],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-0304bc2996ed2600a585"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--347ae49d2b4abd38cd88",
+            "ttp--activity-rule--3eb2cb2b43f6ff5058e1"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--210dddb39397dbe50e91"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--1f2ead709658f7c05ba9"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-08-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+          },
+          "last_observed": {
+            "value": "2026-06-17T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+          },
+          "reported_at": {
+            "value": "2026-09-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "cyber-espionage",
+          "phases": [
+            "Discovery",
+            "Execution",
+            "Stealth"
+          ],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [
+              "China"
+            ],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    }
+  ],
+  "victim_cases": [
+    {
+      "victim_case_id": "victim--activity-rule--1f2ead709658f7c05ba9",
+      "name": "被害事例: SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "中国関連APT「FamousSparrow」は2025年7月頃から中南米への攻撃を強化し、2025年8月以降、新型バックドアSparroWockyを主要インプラントとして使用している。 2025年半ばから2026年に観測された標的の90%が中南米にあり、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルーなどの政府機関が狙われた。 SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。 DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。 ESETはFamousSparrowが中国関連の諜報活動として、中南米政府が米国からの圧力へどう対応するかを監視・予測する目的で活動している可能性が高いと分析した。",
+      "activity_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "target_refs": [
+        "target--activity-rule--sector--210dddb39397dbe50e91"
+      ],
+      "malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--347ae49d2b4abd38cd88",
+        "ttp--activity-rule--3eb2cb2b43f6ff5058e1"
+      ],
+      "affected_assets": [],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+      },
+      "last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+      },
+      "reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--daily-7e7db1cf1c7586215c8d",
+        "source--daily-8ad4c8f610ba00d8b741"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    }
+  ],
+  "targets": {
+    "countries": [
+      {
+        "id": "target--targeting-audit--country--0241a2eb55502ccf50d4",
+        "name": "アルゼンチン",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--6a93aca55900d94aefce",
+        "name": "エクアドル",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--10a5063a82e414b95408",
+        "name": "グアテマラ",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--90eb33789aa52aea1f7e",
+        "name": "パナマ",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--f391528a95a85a8289c6",
+        "name": "ベネズエラ",
+        "description": "ESETは「we've seen the new backdoor deployed against governmental entities in Argentina, Ecuador, Guatemala, Honduras, Panama, Peru, Puerto Rico, and Venezuela.」として8か国・地域の政府機関を挙げる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eset-famoussparrow-sparrowocky-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] tech-memoの日次要約はこのうち6か国(アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー)しか列挙しないため、活動記述からの構造化では残る2件が欠落する。ベネズエラを curation として補った。プエルトリコは米国の自治連邦区であり本リポジトリの国・地域語彙に対応する値がないため構造化していない(未解決値として扱わないよう countries へ入れていない)。米国は原文で被害側としてではなく、中南米への関与を強める地政学的主体として言及されるだけであるため標的へ含めない。"
+      },
+      {
+        "id": "target--targeting-audit--country--40cd7a37e880686f66ac",
+        "name": "ペルー",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--targeting-audit--country--2cf29d18337a08e084d8",
+        "name": "ホンジュラス",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      }
+    ],
+    "regions": [
+      {
+        "id": "target--targeting-audit--region--517128e07ed31657f60b",
+        "name": "中南米",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として中南米が明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741",
+          "source--eset-famoussparrow-sparrowocky-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      },
+      {
+        "id": "target--targeting-audit--region--75b22ced3e8ad3742979",
+        "name": "南米",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として南米が明示されている。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741",
+          "source--eset-famoussparrow-sparrowocky-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 複数の個別国から導出した地域表示。域内の全国家・組織が標的だったことを意味しない。"
+      }
+    ],
+    "sectors": [
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2025-08-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-06-17T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-7e7db1cf1c7586215c8d",
+          "source--daily-8ad4c8f610ba00d8b741"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。"
+      }
+    ],
+    "roles": [],
+    "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
+    "analyst_notes": "標的は活動単位の記述から enrich_targeting_scope.py が再集約する。 [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。 2026-09-20: 活動記述からの自動構造化が「米国」を標的国として抽出したが、ESET原文およびtech-memo要約における米国は、中南米への関与を強める地政学的主体として言及されるだけであり被害側ではない(「中南米政府が米国からの圧力へどう対応するかを監視・予測する目的」)。actor_profile/RULES.mdの標的記録規則に反するため当該エントリと参照を削除した。activity-observation-rules.jsonの国名抽出は文中の標的文脈語(諜報等)だけを見るため、同じ文型では再び抽出される。除外文脈の規則化は別作業とする。"
+  },
+  "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--347ae49d2b4abd38cd88",
+      "tactic": "Discovery",
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "observed_behavior": "SparroWockyはC++製のモジュール型バックドアで、コマンド・PE・BOF実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット、データ窃取を実行できる。",
+      "activity_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "malware_refs": [
+        "malware--daily-0304bc2996ed2600a585"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-7e7db1cf1c7586215c8d",
+        "source--daily-8ad4c8f610ba00d8b741"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--3eb2cb2b43f6ff5058e1",
+      "tactic": "Execution, Stealth",
+      "technique_id": "T1574.001",
+      "technique_name": "DLL",
+      "observed_behavior": "DLLサイドローディング、RC4暗号化、リフレクティブロード、APIハッシュ、SilentMoonwalk、スレッド開始位置偽装など高度な検知・解析回避技術を利用する。",
+      "activity_refs": [
+        "activity--daily-887e71cb9547566da1dd"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-7e7db1cf1c7586215c8d",
+        "source--daily-8ad4c8f610ba00d8b741"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "source--daily-7e7db1cf1c7586215c8d",
+      "path": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+      "title": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+      "publisher": "welivesecurity.com",
+      "published_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260918.md; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--daily-8ad4c8f610ba00d8b741",
+      "path": "https://github.com/eset/malware-ioc/tree/master/famoussparrow",
+      "title": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド — IOC補助資料",
+      "publisher": "github.com",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/iocs/2026_07-09/20260918.csv; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
+      "source_id": "source--eset-famoussparrow-2021",
+      "path": "https://www.welivesecurity.com/2021/09/23/famoussparrow-suspicious-hotel-guest/",
+      "url": "https://www.welivesecurity.com/2021/09/23/famoussparrow-suspicious-hotel-guest/",
+      "title": "FamousSparrow: A suspicious hotel guest",
+      "publisher": "ESET Research",
+      "published_at": {
+        "value": "2021-09-23T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-20T01:30:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "curlでHTTP 200を取得して原文冒頭を確認した。著者 Matthieu Faou / Tahseen Bin Taj、表示公開日 23 Sep 2021。命名の初報であり、ホテル・政府・民間企業を標的とするサイバースパイ活動グループとして記述する。"
+    },
+    {
+      "source_id": "source--eset-famoussparrow-sparrowdoor-2025",
+      "path": "https://www.welivesecurity.com/en/eset-research/you-will-always-remember-this-as-the-day-you-finally-caught-famoussparrow/",
+      "url": "https://www.welivesecurity.com/en/eset-research/you-will-always-remember-this-as-the-day-you-finally-caught-famoussparrow/",
+      "title": "You will always remember this as the day you finally caught FamousSparrow",
+      "publisher": "ESET Research",
+      "published_at": {
+        "value": "2025-03-26T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-stated"
+      },
+      "accessed_at": "2026-09-20T01:30:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "curlでHTTP 200を取得して原文冒頭を確認した。著者 Alexandre Côté Cyr、表示公開日 26 Mar 2025。2024年7月に米国の金融分野の業界団体で観測した侵害と、未文書化のSparrowDoor 2版の解析を扱う。本プロファイルでは活動レコードを作成せず、グループの継続性と SparrowDoor 専有性の根拠として参照する。"
+    },
+    {
+      "source_id": "source--eset-famoussparrow-sparrowocky-2026",
+      "path": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+      "url": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+      "title": "Beware the SparroWock: The backdoor that bites, the commands that catch",
+      "publisher": "ESET Research",
+      "published_at": {
+        "value": "2026-09-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-20T01:30:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "direct",
+      "claims_supported": [
+        "activity",
+        "targeting",
+        "victim-impact"
+      ],
+      "analyst_notes": "curlでHTTP 200を取得して原文を直接確認した。SparroWockyの展開先として8か国の政府機関を列挙する。"
+    }
+  ],
+  "assessment": {
+    "key_judgments": [
+      {
+        "statement": "ESETはSparroWockyの展開経路(FamousSparrow専用のSparrowDoorによる配布)と被害者像の一致を根拠に、最新キャンペーンを高確度でFamousSparrowへ帰属している。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--eset-famoussparrow-sparrowocky-2026"
+        ],
+        "analyst_notes": "単一ベンダーによる帰属である。政府・CERTによる帰属は確認していない。"
+      },
+      {
+        "statement": "2025年7月以降、標的がラテンアメリカの政府機関へ集中しており、ESETテレメトリでは2025年半ばから2026年の標的の90%が同地域に所在する。中国関連APTとしては観測地域が限定される点が特異である。",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--eset-famoussparrow-sparrowocky-2026"
+        ],
+        "analyst_notes": "割合はESETの自社テレメトリに基づく値であり、母集団はESETの可視範囲に限られる。"
+      }
+    ],
+    "gaps": [
+      "SparroWockyの初期侵入経路について原文に明示がない。",
+      "本走査ではESETが公開するIOCリポジトリ(github.com/eset/malware-ioc)の原本を未取得であり、tech-memoのIOC CSV経由の値のみを扱う。"
+    ],
+    "uncertainties": [
+      "Salt Typhoon / GhostEmperor / UNC2286 / Earth Estries との同一性は未解決である。ESETは技術指標の不在を理由にSalt Typhoonとは別クラスタとして追跡し、Earth Estriesとの関連も性質不明としている。一方でMicrosoftの命名マッピングとETDA Threat Group Cardsは同一クラスタの別名として扱う。",
+      "本プロファイルの作成により、同一の集約クラスタを指し得る famoussparrow / salt-typhoon / unc2286 の3プロファイルが併存する。統合または関係の確定には一次資料が必要である。",
+      "昇格根拠として確認できた actor-specific な一次資料はESETの3本で、いずれも同一ベンダーである。第三者の一次資料としてはTrend Micro(Earth Estriesとの関連)とBitdefenderのSilkParasite報告(2026-08-19、FamousSparrowとの重複を指摘)があるが、どちらも本走査では原典を未確認であり、ESETおよびHunt.io経由の言及にとどまる。"
+    ],
+    "collection_notes": "2026-09-20の日次チェックにおいて、ESET Researchの公開一覧巡回と tech-memo daily-news 2026-09-18 の収録記事の双方から検知した。原文3本はいずれもcurlで取得して直接確認している。",
+    "analyst_notes": "status は draft から開始する。"
+  },
+  "free_text": {
+    "executive_summary": "FamousSparrowはESETが2021年に命名した中国関連のサイバースパイ活動グループである。2025年8月以降、専有バックドア SparrowDoor から新型の SparroWocky へ移行し、ラテンアメリカの政府機関を集中的に標的としている。",
+    "history": "2021年9月にESETが初報を公開し、ProxyLogon悪用によるホテル・政府・民間企業への攻撃を記述した。2022年以降は公開報告が途絶え活動停止とみられていたが、2024年7月にESETが米国の金融分野の業界団体で侵害を確認し、2025年3月の報告で未文書化のSparrowDoor 2版を公開した。2025年7月以降は標的をラテンアメリカへ集中させ、2025年8月から SparroWocky の展開を開始した。",
+    "capability_details": "SparroWockyはC++製のモジュール型バックドアで、コマンド実行、PE実行、Beacon Object File(BOF)のロードと実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット取得、データ窃取に対応する。メモリ上の低レベル構造の操作と実行時のコードパッチにより検知回避を図り、オープンソースプロジェクトのコードを直接取り込む設計へ変化している。",
+    "infrastructure_details": "",
+    "targeting_details": "構造化ターゲット監査: 標的国=アルゼンチン、エクアドル、グアテマラ、パナマ、ベネズエラ、ペルー、ホンジュラス。標的地域=中南米、南米。日本は確認時に個別国として保持する。\n\nSparroWockyの展開先として、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関が挙げられている。",
+    "additional_notes": ""
+  }
+}

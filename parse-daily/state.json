@@ -2,8 +2,8 @@
   "schema_version": "2.0.0",
   "source_repository": "proshiba/tech-memo",
   "source_branch": "main",
-  "last_scanned_commit": "1bbf859c0dd176974962c4c00ed76a92df1be301",
-  "last_scanned_date": "2026-09-16",
+  "last_scanned_commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+  "last_scanned_date": "2026-09-19",
   "initial_import": {
     "news_files": 941,
     "articles": 5577,
@@ -3465,6 +3465,178 @@
         }
       ],
       "analyst_notes": "本走査で最も重要な検知は、政府・法執行機関による2資料(FBI FLASH と 英NCSC/米FBI/蘭AIVD 合同アドバイザリ、ともに2026-09-15公開)である。両資料の PDF 原文を取得して確認した結果、FBI FLASH に CHOSEN BRICK の語は1度も現れず(0回)、NCSC 合同アドバイザリに HEAVYGRAM の語も1度も現れない(0回)ことが判明した。tech-memo の日次要約は両者を「HEAVYGRAM／CHOSEN BRICK」と一体で扱っているが、これは二次要約による統合であり、一次資料は名称の等価性を述べていない。同日公開・同一の被害者像・Telegram を C2 とする点・偽装対象アプリ(Pictory、Telegram、KeePass、RunwayML)の一致・FBI が両資料に関与していることから同一活動を別名で扱っている可能性が高いが、片方が stage 1、他方が stage 2 を指している可能性も排除できないため、台帳では1クラスタとして登録したうえで名称の等価性を unresolved_questions に残した。二次要約が複数の一次資料を統合して提示する場合、名称の対応付けは必ず一次資料側で検証する。\n構造的な問題として、tech-memo の IOC CSV は日次ニュースより遅れて作成されることがある。2026-09-15分の CSV は前回走査時点で未作成だったため、PasteSwitch(234観測)と JeetBot(12観測)は本走査で初めて unmatched_actor_values に現れた。前回走査の Red Heron も同じ原因でIOC CSV 経路からは検知できていない。IOC CSV の actor 列経路は、last_scanned_date を前日に戻すか、走査窓を前日1日分だけ重ねて実行しないと取りこぼす。本走査の窓は 2026-09-15 起点であったため結果的に拾えている。\n承認レコードは0件のため profiles/ 配下は一切変更していない。state.json の last_scanned_date は、レビューと反映が完了した 2026-09-16 まで進めた。"
+    },
+    {
+      "completed_at": "2026-09-20T02:40:00Z",
+      "window": {
+        "since": "2026-09-16",
+        "until": "2026-09-19"
+      },
+      "source_commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+      "statistics": {
+        "news_files": 4,
+        "articles": 40,
+        "review_records": 9,
+        "approved_records": 3,
+        "rejected_records": 6,
+        "pending_records": 0,
+        "applied_records": 3,
+        "ioc_observations": 45,
+        "unmatched_actor_values": 375,
+        "materialization_window": "承認3レコードを apply_review_queue.py --apply で反映した。対象は contagious-interview、famoussparrow、transparent-tribe。続けて enrich_activity_intelligence.py、enrich_targeting_scope.py、materialize_activity_diamonds.py を --actor 指定で当該3アクターと unc4899 へ限定実行し、render_profile.py と validate_profile.py を再実行した。全プロファイルを対象とした一括実行は行っていない。enrich_activity_intelligence.py を無指定で実行すると本作業と無関係な299プロファイルに差分が出るため、過去コミットの前例に従い対象を限定した。ui/build_data.py と ui/build_portal_index.py は再生成した。"
+      },
+      "applied": [
+        {
+          "actor": "transparent-tribe",
+          "name": "Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+          "source": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
+          "decision": "採用。原文(Zscaler ThreatLabz、2026-09-16公開)をcurlでHTTP 200を取得して確認した。APT36を実行主体として明記する新規キャンペーン報告であり、post-compromise活動の観測期間2026-08-20〜2026-09-01は原文が明示する。IOC 22件の観測日はすべて2026-09-16でIOC CSVの収集日と同値のため活動期間へ転用していない。一致語「APT36」はscope: overlappingのaliasであるためconfidenceはmediumとし、alias scope自体の見直しは別レビューとした。RUSTYSHADEとRUSTYMOVEの2 capabilityを承認した。"
+        },
+        {
+          "actor": "famoussparrow",
+          "name": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+          "source": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "decision": "採用(新規プロファイルの初回反映)。原文(ESET Research、2026-09-17公開)をcurlでHTTP 200を取得して確認した。ESETはSparrowDoor経由の展開と被害者像の一致を根拠に高確度で帰属している。活動期間は原文の「since at least August 2025」を起点とし、終期はIOC CSVのC2初観測日の最新値2026-06-17を採用した。IOC CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため期間へ転用していない。SparroWocky capabilityを承認した。"
+        },
+        {
+          "actor": "contagious-interview",
+          "name": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について",
+          "source": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "decision": "採用(政府・法執行機関の一次資料)。警察庁 国家サイバー統括室が2026-09-18にNCO・FBI・DC3・ASD/ACSC・BND・BfVとの連名で公表した注意喚起である。PDF原文を取得して本文を確認した。原文は「WaterPlum」(関連名称:Contagious Interview)と記載し、被害把握期間を2025年12月頃〜2026年7月と明示する。alias「WaterPlum」はscope: overlappingで追加したためassessmentはscope-review-requiredであり、confidenceはmediumとした。IOCの掲載はない。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "indigozebra",
+          "name": "SilkParasiteインフラ：中央アジアのエネルギー・政府機関を標的とするSpiceRATサーバー",
+          "source": "https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure",
+          "decision": "不採用(過去の別クラスタへの類似言及)。原文(Hunt.io、2026-09-09公開)をcurlでHTTP 200を取得して確認した。IndigoZebraへの言及は2021年にCheck Point Researchが報告した別クラスタとのドメイン命名パターンの類似のみで、原文自身が「The overlap is noted here as context」として帰属を否定している。実体はSilkParasiteであり台帳へ登録した。"
+        },
+        {
+          "actor": "famoussparrow",
+          "name": "SilkParasiteインフラ：中央アジアのエネルギー・政府機関を標的とするSpiceRATサーバー",
+          "source": "https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure",
+          "decision": "不採用(類似・関連のみの言及)。同記事のFamousSparrowへの言及はBitdefenderのSilkParasite報告が指摘した重複を紹介する文脈にとどまり、Hunt.io自身は本インフラをFamousSparrowへ帰属していない。新規プロファイル作成後も本記事からは活動レコードを作成しない。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [
+        {
+          "slug": "famoussparrow",
+          "status": "draft",
+          "note": "ESETが2021年9月の初報で命名した中国関連のサイバースパイ活動グループ。tech-memo daily-news 2026-09-18収録のESET記事に伴うIOC CSVのactor値「FamousSparrow」23観測が既存プロファイルへ一致しなかったため作成した。確認したactor-specificな一次資料はESETの3本(2021-09-23 / 2025-03-26 / 2026-09-17)で、いずれも同一ベンダーである。集約参照データ(Microsoft命名マッピング、ETDA)はFamousSparrowをSalt Typhoon / GhostEmperor / UNC2286 / Earth Estriesの別名として扱うが、ESETは技術指標の不在を理由にSalt Typhoonと別クラスタとして追跡しているため統合せず、relationshipsとassessment.uncertaintiesへ両論を残した。同一の集約クラスタを指し得るプロファイルがfamoussparrow / salt-typhoon / unc2286の3件併存する点も記録済みである。"
+        }
+      ],
+      "alias_updates": [
+        {
+          "actor": "contagious-interview",
+          "alias": "WaterPlum",
+          "scope": "overlapping",
+          "note": "警察庁の2026-09-18公表が「WaterPlum」(関連名称:Contagious Interview)と記載する。原文が『関連名称』と述べるにとどまるためexactへ昇格させていない。この別名追加により当該記事のレビューレコードが生成された。"
+        },
+        {
+          "actor": "unc4899",
+          "alias": "TraderTraitor / PUKCHONG / Jade Sleet",
+          "scope": "overlapping",
+          "note": "SentinelOneの2026-09-18報告が「TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)」と併記する。ベンダーによる呼称の対応付けでありクラスタ境界の同一性を確定する記述ではないためoverlappingとした。PUKCHONGとJade Sleetの命名元(Recorded Future、Microsoft)の原典は未確認である。"
+        }
+      ],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--silkparasite",
+          "action": "added",
+          "status": "tracking",
+          "note": "Bitdefenderが2026-08-19に命名した指定子で、Hunt.io(2026-09-09)がインフラ側から同一クラスタを拡張した。IOC CSVのactor列に114観測。Hunt.ioは帰属を行わず、中国系認証局TLC(CAICT出資)からの証明書取得を「China-based procurement channel」への言及にとどめる。Bitdefender原報告は未確認のため昇格は保留した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "SilkParasite",
+          "observations": 114,
+          "source": "https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure",
+          "note": "台帳へ status: tracking で登録済み。"
+        },
+        {
+          "value": "FamousSparrow",
+          "observations": 23,
+          "source": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "note": "profiles/famoussparrow を新規作成して解消した。IOC 23観測は同プロファイルへ反映済みである。"
+        },
+        {
+          "value": "WaterPlum",
+          "observations": 0,
+          "source": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "note": "IOCを伴わない記事のため本文抽出の unmatched_name_candidates として検知した。contagious-interview へ alias を追加して解消した。"
+        },
+        {
+          "value": "REF9334 / Government of Iran cyber actors / Vectra (formerly Nyxel) / NightEagle (APT-Q-95)",
+          "observations": 261,
+          "source": "",
+          "note": "いずれも台帳に登録済みのため本走査では追加対応なし。"
+        }
+      ],
+      "extraction_rule_changes": [
+        {
+          "file": "parse-daily/validate_daily.py",
+          "change": "ioc-source-missing の判定対象を、レコードの全出典からIOC行が実際に掲載されていた出典(ioc_bearing_source_ids)へ限定した。activity_reference_aliases で同一活動へ集約した記事は出典ではあってもIOCを掲載しておらず iocs.json に観測を持たないため、従来の判定では FamousSparrow の取込が error になっていた。プロファイル側のsource参照は profile-source-missing が従来どおり検証する。",
+          "tests": "parse-daily/tests/test_daily.py の AliasedSourceTests へ回帰テスト2件を追加した(IOCを持たない集約元を対象外にすること、IOCを掲載した全URLは対象に残すこと)。"
+        },
+        {
+          "file": "parse-daily/config.json",
+          "change": "activity_reference_aliases へ「https://github.com/eset/malware-ioc/tree/master/famoussparrow」からESET記事URLへの対応を追加し、IOC一覧と記事を1活動へ集約した。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "Microsoft Security",
+          "url": "https://www.microsoft.com/en-us/security/blog/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし(既反映)。2026-09-17の2件を確認した。「From guidance to action: Security fundamentals that materially reduce risk」は Storm-2945(Midnight Blizzardのサブクラスタ)による CaptiveCrunch 作戦へ言及するが、これは profiles/apt29 へ2026-08-05に反映済みの活動の回顧参照である。もう1件(Defenderのメールセキュリティ指標)は命名アクターを含まない。"
+        },
+        {
+          "publisher": "Google Threat Intelligence",
+          "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+          "latest_relevant_publication": "2026-09-08",
+          "result": "該当なし。一覧ページはJavaScript描画のためcurlでは記事一覧を取得できず、cloudblog.withgoogle.com のRSSで機械照合した。最新は2026-09-08「GTIG AI Threat Tracker」で、GTG系クラスタは2026-09-14に台帳登録済みである。前回走査以降の新規公開はない。"
+        },
+        {
+          "publisher": "Palo Alto Networks Unit 42",
+          "url": "https://unit42.paloaltonetworks.com/",
+          "latest_relevant_publication": "2026-09-16",
+          "result": "該当なし。2026-09-16「Atomic macOS (AMOS) Stealer Activity」を原文確認したが、ラボ環境で生成した感染の指標紹介であり命名アクターを含まない。2026-09-17・09-18の2件(SOC運用、AWS AgentCore)も命名アクターを含まない。"
+        },
+        {
+          "publisher": "Cisco Talos",
+          "url": "https://blog.talosintelligence.com/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし(既反映)。2026-09-17「Ransomware incidents in Japan in the first half of 2026」はThe Gentlemenのインフラを扱い、2026-09-18の走査で unknown-cluster--gold-sherwood と unknown-cluster--the-gentlemen-affiliate へ観測を追加済みである。"
+        },
+        {
+          "publisher": "ESET Research",
+          "url": "https://www.welivesecurity.com/en/eset-research/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当あり。2026-09-17「Beware the SparroWock: The backdoor that bites, the commands that catch」を検知した。tech-memo daily-news 2026-09-18 にも収録されていたが、FamousSparrow のプロファイルが存在しないためIOC CSVのactor値がunmatched_actor_valuesへ落ちていた。profiles/famoussparrow を新規作成して反映した。"
+        },
+        {
+          "publisher": "SentinelLabs",
+          "url": "https://www.sentinelone.com/labs/",
+          "latest_relevant_publication": "2026-09-18",
+          "result": "該当あり。2026-09-18「Don't Call Us, We'll Call Your APIs | TraderTraitor Backdoors Resurface on Victim With No Crypto Ties」を検知した。tech-memo daily-news には未収録でありレビューキューを経由できないため、profiles/unc4899 へ活動・被害事例・マルウェア2件・別名3件・Lazarusとのpart-of関係を直接追記した。原文掲載のIOC 10件は本走査では未取込である。2026-09-16「Agents at Large」は命名アクターを含まない。"
+        },
+        {
+          "publisher": "Kaspersky Securelist",
+          "url": "https://securelist.com/",
+          "latest_relevant_publication": "2026-09-17",
+          "result": "該当なし(既反映)。最新は2026-09-17 MovieReaper(2026-09-18に台帳登録済み)、次が2026-09-16 NightEagle(台帳登録済み)である。"
+        },
+        {
+          "publisher": "Kaspersky Securelist（ロシア語版）",
+          "url": "https://securelist.ru/",
+          "latest_relevant_publication": "2026-09-11",
+          "result": "該当なし(既反映)。.com に対応英語版がない2026-09-11「Распутывая клубок: разбираем инструментарий группировки Hacking Cat」は unknown-cluster--hacking-cat として2026-09-13に登録済みである。"
+        }
+      ],
+      "analyst_notes": "本走査では、tech-memoの構造化経路(IOC CSVのactor列)と本文抽出経路の双方が検知していながら、受け皿となるプロファイルやaliasが無いために未処理のまま残っていた2件を解消した。FamousSparrow(IOC 23観測、2026-09-18収録)は新規プロファイル作成で、WaterPlum(警察庁の2026-09-18公表、IOCなし)は contagious-interview への alias 追加で、いずれもレビューキューへレコードを生成させたうえで承認・反映している。未一致名の検知はレビューの入口にすぎず、プロファイルまたはaliasを作るまで反映経路が開かない点が本走査の構造的な所見である。\n一次情報源の巡回では SentinelLabs の TraderTraitor 報告(2026-09-18)を検知した。tech-memo 未収録のためレビューキューを経由できず、profiles/unc4899 へ直接追記した。この経路では IOC CSV が存在しないため IOC は取り込んでおらず、原文掲載の10件は未取込として活動の analyst_notes に明記した。\n警察庁の公表は北朝鮮IT労働者の活動実態も扱うが、これは profiles/dprk-it-workers が扱う上位エコシステム側の主題である。同プロファイルのcanonical name/aliasは日本語表記「北朝鮮IT労働者」を持たず本走査では一致しなかった。日本語aliasの追加は本文一致の粒度を大きく変えるため実施せず、別途の判断対象として残した。\nvalidate_daily.py の ioc-source-missing 判定は、activity_reference_aliases による活動集約とIOC掲載URLの分離を想定していなかったため修正した。回帰テストを同時に追加している。\nstate.json の last_scanned_date は、レビューと反映が完了した 2026-09-19 まで進めた。"
     }
   ],
   "full_history_activity_audit": {

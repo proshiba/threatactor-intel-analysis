@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-20T07:40:50Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18,7 +18,8 @@
         "Gwisin Gang",
         "PurpleBravo",
         "TAG-121",
-        "Tenacious Pungsan"
+        "Tenacious Pungsan",
+        "WaterPlum"
       ],
       "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) is a North Korea–aligned threat group active since 2023. The group conducts both cyberespionage and financially motivated operations, including the theft of cryptocurrency and user credentials. [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. (Citation: Validin Contagious Interview North Korea ClickFix January 2025)(Citation: Esentire ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: Datadog Contagious Interview Tenacious Pungsan October 2024)(Citation: Recorded Future Contagious Inteview BeaverTail InvisibleFerret OtterCookie February 2025)(Citation: ESET Contagious Interview BeaverTail InvisibleFerret February 2025)(Citation: Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024)(Citation: PaloAlto ContagiousInterview BeaverTail InvisibleFerret November 2023)(Citation: PaloAlto Unit42 ContagiousInterview BeaverTail InvisibileFerret October 2024)",
       "goals": [
@@ -87,6 +88,16 @@
             "source--mitre-attack-19-1"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "WaterPlum",
+          "vendor": "警察庁(National Police Agency, Japan)",
+          "scope": "overlapping",
+          "confidence": "medium",
+          "evidence_refs": [
+            "source--daily-93d3e92093f60de33c10"
+          ],
+          "analyst_notes": "警察庁 国家サイバー統括室が2026-09-18に公表した注意喚起(FBI、DC3、ASD/ACSC、BND、BfVとの連名)が、表題と本文で「北朝鮮を背景とするサイバー攻撃グループ『WaterPlum』(ウォータープラム)(関連名称:Contagious Interview)」と記載する。原文は『関連名称』と述べるにとどまり同一性を断定していないため、scope は exact ではなく overlapping とした。集約参照データ(actor_profile/reference/osint/misp-threat-actor.json)でもWaterPlumはContagious Interview / UNC5267 の candidate_names に含まれるが、集約データを根拠に exact へ昇格させていない。"
         }
       ],
       "x_attribution": {
@@ -103,7 +114,7 @@
         "history": "",
         "capability_details": "InvisibleFerret, HexEval Loader, BeaverTail, XORIndex Loader",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=タイ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+        "targeting_details": "構造化ターゲット監査: 標的国=タイ、日本、米国。標的地域=欧州。日本は確認時に個別国として保持する。",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
@@ -1319,9 +1330,102 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--9eb11c93-73b8-4184-a737-1df282592497",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:40:50Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について",
+      "description": "WaterPlumは求人・ヘッドハンティングを装って世界中のIT技術者へ接触し、悪意あるコーディング課題やNPMパッケージを実行させてマルウェアへ感染させる。 BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleなどを使用し、認証情報、暗号資産ウォレット、身分証画像などを窃取する。 2025年12月頃～2026年7月に100以上の国・地域で3万台以上とみられるPCが感染し、7千件以上の暗号資産ウォレット情報が窃取された。 WaterPlum管理ウォレットには少なくとも約17億円相当の暗号資産が送金され、北朝鮮IT労働者もラップトップ・ファームやVPSを使い外貨を獲得していた。 警察庁とFBIはWaterPlumと一部北朝鮮IT労働者が朝鮮労働党中央委員会軍需工業部313総局の指揮下で運用されていると評価している。",
+      "first_seen": "2025-12-01T00:00:00Z",
+      "last_seen": "2026-07-01T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "npa.go.jp",
+          "description": "Local source: https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "external_id": "source--daily-93d3e92093f60de33c10"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-76fcf361688e927b40e0",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--76fcf361688e927b40e0928c から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: scope-review-required。 レビュー: 採用(政府・法執行機関の一次資料)。原文PDF(警察庁 国家サイバー統括室、令和8年9月18日)をcurlで取得しpypdfで本文を確認した。国家サイバー統括室(NCO)、米FBI、米DC3、豪ASD/ACSC、独BND、独BfVとの連名公表である。原文は表題と本文で「北朝鮮を背景とするサイバー攻撃グループ『WaterPlum』（ウォータープラム）（関連名称：Contagious Interview）」と記載し、WaterPlumを実行主体として記述する。手口は求人・ヘッドハンティングを装った接触と悪性コーディング課題・NPMパッケージの実行で、BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleを使用する。被害は2025年12月頃から2026年7月にかけて100以上の国・地域で3万台以上の感染、7千件以上の暗号資産ウォレット情報の窃取、WaterPlum管理ウォレットへ約17億円相当の送金。警察庁とFBIはWaterPlumと一部の北朝鮮IT労働者が朝鮮労働党中央委員会軍需工業部313総局の指揮下で運用されていると評価する。 本レコードはalias「WaterPlum」(vendor: 警察庁、scope: overlapping)経由の一致でassessmentはscope-review-requiredであった。原文が『関連名称』と述べるにとどまり同一性を断定していないため、aliasをexactへ昇格させずconfidenceはmediumとした。 本資料は北朝鮮IT労働者の活動実態(国内初のラップトップ・ファーム摘発、2025年5月のbitFlyerへの採用応募事例)も扱うが、これはprofiles/dprk-it-workersが扱う上位エコシステム側の主題である。当該プロファイルのcanonical name/aliasは日本語表記「北朝鮮IT労働者」を持たず本走査では一致しなかった。エコシステム側プロファイルへの日本語alias追加は本文一致の粒度を大きく変えるため本レコードでは行わず、別途の判断対象として残す。原文・tech-memoともにIOCの掲載はない。",
+      "x_reported_at": {
+        "value": "2026-09-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--beavertail",
+            "malware--invisibleferret"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--6604ad21c713b8dfd8c7"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--57efb187e55e126a8d4a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-12-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "警察庁: 「2025 年 12 月頃から 2026 年 7 月にかけて、少なくとも、我が国を含む 100 以上の国と地域で、3 万台以上とみられる PC がマルウェアに感染していました。」。月初へ正規化"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "警察庁: 同一文が示す被害把握期間の終期。公表日(2026-09-18)は活動期間へ転用しない"
+          },
+          "reported_at": {
+            "value": "2026-09-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "malware-campaign",
+          "phases": [],
+          "results": [
+            "credential-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--6604ad21c713b8dfd8c7"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-93d3e92093f60de33c10"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--27b346ab-80f9-409f-a909-19e5adeb616f",
       "created": "2026-07-27T11:04:31Z",
-      "modified": "2026-07-29T23:12:00Z",
+      "modified": "2026-09-20T07:22:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1388,9 +1492,7 @@
           },
           "activity_type": "malware-campaign",
           "phases": [],
-          "results": [
-            "data-theft"
-          ],
+          "results": [],
           "direction": {
             "source_countries": [],
             "target_country_refs": [],
@@ -2034,6 +2136,72 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--ce779dc4-787c-4ab2-9633-ddd394505807",
+      "created": "2026-09-20T07:40:50Z",
+      "modified": "2026-09-20T07:40:50Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "日本",
+      "identity_class": "organization",
+      "description": "警察庁 国家サイバー統括室の2026-09-18公表(FBI・DC3・ASD/ACSC・BND・BfVとの連名)は、WaterPlum(関連名称:Contagious Interview)の攻撃について「日本、米国、欧州及びその他の国々を標的としています」と記載し、2025年12月頃から2026年7月にかけて我が国を含む100以上の国と地域で3万台以上の感染を把握したとする。",
+      "external_references": [
+        {
+          "source_name": "npa.go.jp",
+          "description": "Local source: https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "external_id": "source--daily-93d3e92093f60de33c10"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "米国",
+      "identity_class": "organization",
+      "description": "活動「北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について」の記述で標的として明示された国・地域。",
+      "external_references": [
+        {
+          "source_name": "npa.go.jp",
+          "description": "Local source: https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "external_id": "source--daily-93d3e92093f60de33c10"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5d39fae6-1072-454a-8530-d734eac86fa4",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "欧州",
+      "identity_class": "organization",
+      "description": "活動「北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について」の記述で標的地域として欧州が明示されている。",
+      "external_references": [
+        {
+          "source_name": "npa.go.jp",
+          "description": "Local source: https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "external_id": "source--daily-93d3e92093f60de33c10"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "created": "2026-07-29T15:20:22Z",
       "modified": "2026-07-29T15:20:22Z",
@@ -2183,6 +2351,67 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--1de7ec4a-c18b-4626-b11e-36d2d3b25a7b",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:40:50Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について",
+      "identity_class": "organization",
+      "description": "WaterPlumは求人・ヘッドハンティングを装って世界中のIT技術者へ接触し、悪意あるコーディング課題やNPMパッケージを実行させてマルウェアへ感染させる。 BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleなどを使用し、認証情報、暗号資産ウォレット、身分証画像などを窃取する。 2025年12月頃～2026年7月に100以上の国・地域で3万台以上とみられるPCが感染し、7千件以上の暗号資産ウォレット情報が窃取された。 WaterPlum管理ウォレットには少なくとも約17億円相当の暗号資産が送金され、北朝鮮IT労働者もラップトップ・ファームやVPSを使い外貨を獲得していた。 警察庁とFBIはWaterPlumと一部北朝鮮IT労働者が朝鮮労働党中央委員会軍需工業部313総局の指揮下で運用されていると評価している。",
+      "external_references": [
+        {
+          "source_name": "npa.go.jp",
+          "description": "Local source: https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "external_id": "source--daily-93d3e92093f60de33c10"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--57efb187e55e126a8d4a",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--6604ad21c713b8dfd8c7"
+      ],
+      "x_malware_refs": [
+        "malware--beavertail",
+        "malware--invisibleferret"
+      ],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "エンドポイント"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "credential-theft",
+          "description": "BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleなどを使用し、認証情報、暗号資産ウォレット、身分証画像などを窃取する。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2025-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "警察庁: 「2025 年 12 月頃から 2026 年 7 月にかけて、少なくとも、我が国を含む 100 以上の国と地域で、3 万台以上とみられる PC がマルウェアに感染していました。」。月初へ正規化"
+      },
+      "x_last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "警察庁: 同一文が示す被害把握期間の終期。公表日(2026-09-18)は活動期間へ転用しない"
+      },
+      "x_reported_at": {
+        "value": "2026-09-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--d4e5c7fb-1ec7-4e21-97b6-46ee7eabb0fd",
       "created": "2026-08-04T04:27:08Z",
       "modified": "2026-08-04T04:27:08Z",
@@ -2236,7 +2465,7 @@
       "spec_version": "2.1",
       "id": "identity--1403f5d2-af58-4c52-9adc-db6e556fb7e2",
       "created": "2026-07-29T15:20:22Z",
-      "modified": "2026-07-29T15:20:22Z",
+      "modified": "2026-09-20T07:22:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2262,12 +2491,7 @@
       ],
       "x_ttp_refs": [],
       "x_affected_assets": [],
-      "x_impacts": [
-        {
-          "impact_type": "data-theft",
-          "description": "マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。"
-        }
-      ],
+      "x_impacts": [],
       "x_first_observed": {
         "value": null,
         "precision": "unknown",
@@ -5480,6 +5704,51 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--a6012bcd-acd8-4a95-bbf7-67e600e5c10d",
+      "created": "2026-09-20T07:40:50Z",
+      "modified": "2026-09-20T07:40:50Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "target_ref": "identity--ce779dc4-787c-4ab2-9633-ddd394505807",
+      "description": "Contagious Interview targets 日本 (profile target category: countries).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cf9a0072-716b-4d18-9589-1ac91d9f7bd1",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
+      "description": "Contagious Interview targets 米国 (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1e330d6b-3d12-4bea-a90f-0f224fd1ccb0",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "target_ref": "identity--5d39fae6-1072-454a-8530-d734eac86fa4",
+      "description": "Contagious Interview targets 欧州 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--152b8f98-1b6f-49fc-807e-a35161c1c42d",
       "created": "2026-07-29T23:12:00Z",
       "modified": "2026-07-29T23:12:00Z",
@@ -5865,6 +6134,81 @@
       "source_ref": "campaign--8fc6a044-de98-48cf-ade1-713dab67358c",
       "target_ref": "identity--ed839d38-2e74-44c3-b605-8d2856f7626e",
       "description": "北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 affected victim--activity-rule--dcdc8d3a6f0ce46415ff.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--17ebf505-ca2d-4afd-8667-af0938fa461f",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--9eb11c93-73b8-4184-a737-1df282592497",
+      "target_ref": "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
+      "description": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について is attributed or linked to Contagious Interview.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--36bd49ca-f04d-4a84-8340-8562251067bd",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9eb11c93-73b8-4184-a737-1df282592497",
+      "target_ref": "malware--13467814-c037-4e30-80c4-d1e517fb452c",
+      "description": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について uses malware--beavertail.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--74ae835f-6c61-4e1d-aec4-17b7e1e56fbc",
+      "created": "2026-09-20T07:17:21Z",
+      "modified": "2026-09-20T07:17:21Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--9eb11c93-73b8-4184-a737-1df282592497",
+      "target_ref": "malware--443e3fe4-5d4d-42db-a89a-a874190cd6f7",
+      "description": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について uses malware--invisibleferret.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0fc49ee7-2606-4a67-a12c-07f55a34ae5c",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9eb11c93-73b8-4184-a737-1df282592497",
+      "target_ref": "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
+      "description": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について targets target--activity-rule--country--6604ad21c713b8dfd8c7.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--52301c96-e09b-4500-a35b-abf74e5f4b91",
+      "created": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T07:22:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--9eb11c93-73b8-4184-a737-1df282592497",
+      "target_ref": "identity--1de7ec4a-c18b-4626-b11e-36d2d3b25a7b",
+      "description": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について affected victim--activity-rule--57efb187e55e126a8d4a.",
       "x_confidence": "medium"
     },
     {
@@ -7516,7 +7860,7 @@
       "spec_version": "2.1",
       "id": "report--18120405-d5f0-4eab-b859-51696e7c9a2d",
       "created": "2026-07-25T15:22:56Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-20T07:40:50Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -7525,7 +7869,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-20T07:40:50Z",
       "object_refs": [
         "intrusion-set--6f5dff55-5c03-433b-8f72-65d2150b312c",
         "malware--13467814-c037-4e30-80c4-d1e517fb452c",
@@ -7538,6 +7882,7 @@
         "campaign--e5083166-b580-4790-b216-ad1e0d383292",
         "campaign--684ce431-862c-4d03-8f2c-b6dc6367e14d",
         "campaign--8fc6a044-de98-48cf-ade1-713dab67358c",
+        "campaign--9eb11c93-73b8-4184-a737-1df282592497",
         "campaign--27b346ab-80f9-409f-a909-19e5adeb616f",
         "campaign--a820341d-f6ae-4b5d-815a-276a03d37806",
         "campaign--287d9f0c-67c7-4047-9fe1-e54774627c28",
@@ -7547,10 +7892,14 @@
         "campaign--6fb5ce7c-3178-4ed3-9066-f9730a6520cc",
         "campaign--69c7e241-4561-424a-89b5-6963e3c67498",
         "identity--9cff34eb-7c6e-4f54-8597-6afb4f1711bc",
+        "identity--ce779dc4-787c-4ab2-9633-ddd394505807",
+        "identity--78475785-5e6f-4d30-85b1-eb2ec03c4062",
+        "identity--5d39fae6-1072-454a-8530-d734eac86fa4",
         "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
         "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
         "identity--60988064-b642-43b7-88c0-37787ed2421f",
         "identity--b6b5a402-fec8-49ac-9d0e-a895bce17305",
+        "identity--1de7ec4a-c18b-4626-b11e-36d2d3b25a7b",
         "identity--d4e5c7fb-1ec7-4e21-97b6-46ee7eabb0fd",
         "identity--1403f5d2-af58-4c52-9adc-db6e556fb7e2",
         "identity--e220b58f-8a9e-432d-b7a5-659a03e6b2bd",

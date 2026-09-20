@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T07:40:50Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -24,6 +24,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | PurpleBravo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TAG-121 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Tenacious Pungsan | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| WaterPlum | 警察庁(National Police Agency, Japan) | overlapping | 中 | `source--daily-93d3e92093f60de33c10` | 警察庁 国家サイバー統括室が2026-09-18に公表した注意喚起(FBI、DC3、ASD/ACSC、BND、BfVとの連名)が、表題と本文で「北朝鮮を背景とするサイバー攻撃グループ『WaterPlum』(ウォータープラム)(関連名称:Contagious Interview)」と記載する。原文は『関連名称』と述べるにとどまり同一性を断定していないため、scope は exact ではなく overlapping とした。集約参照データ(actor_profile/reference/osint/misp-threat-actor.json)でもWaterPlumはContagious Interview / UNC5267 の candidate_names に含まれるが、集約データを根拠に exact へ昇格させていない。 |
 
 ## 帰属
 
@@ -128,6 +129,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | campaign | 不明 | 不明 | 2026-04-09 | target--activity-rule--sector--d406c8e5b7fa7aeff7d2 |  | ttp--activity-rule--6b786b9be7290d0da343, ttp--activity-rule--74e655e05d84ec47e3e9 | victim--activity-rule--ba353bbe87673efbe856 | Socket は、Contagious Interview に結び付く北朝鮮系活動として、npm・PyPI・Go Modules・Rust・PHP を含む5系統にまたがる悪性パッケージ群を確認した。 各パッケージは debug や license などの正規開発ツールを装い、通常メソッドの裏で downloadUrl を取得し、ZIP や base64 の第2段階ペイロードを配信した。 主目的は資格情報、ブラウザデータ、パスワードマネージャー情報、暗号資産ウォレットの窃取で、RAT を伴う情報窃取活動として設計されていた。 特に Windows 寄りの license-utils-kitなどは、リモートシェル、キーロギング、ブラウザ窃取、AnyDesk 展開、機密ファイル収集まで可能な後続インプラントを含んでいた。 攻撃者は golangorg や aokisasakidev など複数の GitHub ペルソナを使い分け、一部パッケージは削除済みだが、執筆時点でなお残存しているものもあった。 | 高 | `source--daily-828c717719b991a7c676` |
 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | infrastructure-operation | 不明 | 不明 | 2025-07-16 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--acbdb28e817b4bf3d9cf | Contagious Interviewキャンペーンの北朝鮮系攻撃者が67個の悪意あるnpmパッケージを公開。XORIndexという新たなローダーも発見された。 これらは計17,000以上のダウンロードを獲得し、先月の35パッケージ（HexEvalローダー）攻撃を拡大。 悪意あるパッケージはJavaScriptローダーBeaverTailでブラウザや暗号ウォレットからデータ窃取、InvisibleFerretを展開。 XORIndexは第1世代の試作から第3世代でシステム偵察・ステルス機能を追加し、C2にビークン送信。 2023年末に公開以来、開発者を装う演出でサプライチェーン攻撃を継続的に実行中。 | 中 | `source--daily-d00e6abeb3390b2c40e7` |
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | malware-campaign | 不明 | 不明 | 2025-04-26 |  | malware--beavertail | ttp--activity-rule--f408909e69d6ddf20b90 | victim--activity-rule--dcdc8d3a6f0ce46415ff | 北朝鮮支援のグループが偽の仮想通貨企業を設立し、就職面接を装いマルウェアを拡散。 BlockNovas、Angeloper、SoftGlideの3社を使い、BeaverTailなど複数マルウェアを配布。 マルウェアはシステム情報収集やリバースシェル作成、ブラウザデータ窃取が可能。 ロシアのIPレンジを使い活動を匿名化し、米FBIはBlockNovasドメインを押収。 活動の背後にはAIツールを利用した偽プロファイル作成も含まれる。 | 中 | `source--daily-cf8c33fcf3e4b3907567` |
+| 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について | malware-campaign | 2025-12 | 2026-07 | 2026-09-19 | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--57efb187e55e126a8d4a | WaterPlumは求人・ヘッドハンティングを装って世界中のIT技術者へ接触し、悪意あるコーディング課題やNPMパッケージを実行させてマルウェアへ感染させる。 BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleなどを使用し、認証情報、暗号資産ウォレット、身分証画像などを窃取する。 2025年12月頃～2026年7月に100以上の国・地域で3万台以上とみられるPCが感染し、7千件以上の暗号資産ウォレット情報が窃取された。 WaterPlum管理ウォレットには少なくとも約17億円相当の暗号資産が送金され、北朝鮮IT労働者もラップトップ・ファームやVPSを使い外貨を獲得していた。 警察庁とFBIはWaterPlumと一部北朝鮮IT労働者が朝鮮労働党中央委員会軍需工業部313総局の指揮下で運用されていると評価している。 | 中 | `source--daily-93d3e92093f60de33c10` |
 | 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | malware-campaign | 不明 | 不明 | 2024-08-31 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--invisibleferret |  | victim--activity-rule--6e417d99ab0a8ac0baa3 | 北朝鮮のハッカーが、npmレジストリに悪意のあるパッケージを公開し、開発者を標的に。 マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。 攻撃は8月12日から27日の間に確認され、「temp-etherscan-api」「ethersscan-api」「telegram-con」「helmet-validate」「qq-console」という名称のパッケージが使用された。 これらの攻撃は「Contagious Interview」作戦の一環とされる。CrowdStrikeはこの活動を「Famous Chollima」として追跡中。 攻撃目的は主に金銭だが、機密情報の窃取が目的であったケースもある | 中 | `source--daily-b84641d39a296b1d232d` |
 | 北朝鮮系ハッカー、BeaverTailとOtterCookieを統合した高度なJSマルウェアを展開 | infrastructure-operation | 不明 | 不明 | 2025-10-18 |  | malware--beavertail |  |  | 北朝鮮系「Contagious Interview」集団がBeaverTailとOtterCookieの機能を収斂、進化させたJS系マルウェア運用が確認。 OtterCookieはキー入力記録・画面撮影モジュールを新搭載し、取得データをC2へ送信する改良版（v5）が観測された。 Google/MandiantはEtherHidingでBSCやEthereumから次段階ペイロード取得と報告し、国家支援勢力の初事例と位置づけ。 スリランカ企業の端末で感染を確認。偽求人の課題でBitbucket配布のNode.jsアプリ「Chessfi」を導入させたのが起点。 npmには8/20公開の悪性依存「node-nvm-ssh」が混入し6日後に削除、計306回ダウンロード。VS Code拡張やQt派生など多様な配布形態も示唆。 | 中 | `source--daily-e8f48a18d1cc39fa808c` |
 | 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | infrastructure-operation | 不明 | 不明 | 2025-11-15 | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  | victim--activity-rule--cf6980464e1532c85677 | NVISOの報告に基づき、「Contagious Interview」作戦がJSONストレージを悪用し、隠密にペイロードを配信とTHNが報道。 攻撃者はLinkedIn等で開発者に接触し、GitHub/GitLab/Bitbucketのデモ取得を装いトロイ化プロジェクトを配布。 プロジェクト内の“.config.env”にBase64偽API鍵を埋め込み、実態はJSON Keeperやnpoint.io等の次段URLを指す。 取得されたBeaverTailが情報窃取やInvisibleFerret投下、さらにPastebin経由のTsunamiKit取得など機能が観測。 ESETは9月にTsunamiKit等を確認；.onionのC2は現在オフラインで、広範な開発者狙いが継続と結論。 | 中 | `source--daily-cdb23aca8de000a4d647` |
@@ -147,6 +149,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | Contagious Interview | 情報なし | T1555.003 Credentials from Web Browsers, T1083 File and Directory Discovery | 情報なし | 非営利・市民社会 | 被害事例: 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | 高 |
 | 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮のハッカー、継続中の攻撃キャンペーンでXORIndexマルウェアを用いnpmレジストリに大量の不正パッケージを公開 | 中 |
 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | Contagious Interview | BeaverTail | T1082 System Information Discovery | 情報なし | 情報なし | 被害事例: 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | 中 |
+| 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | 米国 | 被害事例: 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について | 中 |
 | 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | Contagious Interview | InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | 中 |
 | 北朝鮮系ハッカー、BeaverTailとOtterCookieを統合した高度なJSマルウェアを展開 | Contagious Interview | BeaverTail | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | Contagious Interview | BeaverTail, InvisibleFerret | 情報なし | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | 中 |
@@ -163,6 +166,9 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | タイ | 活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的・被害国として明示されている。 | 不明 | 不明 | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
+| countries | 日本 | 警察庁 国家サイバー統括室の2026-09-18公表(FBI・DC3・ASD/ACSC・BND・BfVとの連名)は、WaterPlum(関連名称:Contagious Interview)の攻撃について「日本、米国、欧州及びその他の国々を標的としています」と記載し、2025年12月頃から2026年7月にかけて我が国を含む100以上の国と地域で3万台以上の感染を把握したとする。 | 不明 | 不明 | 高 | `source--daily-93d3e92093f60de33c10` |
+| countries | 米国 | 活動「北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について」の記述で標的として明示された国・地域。 | 2025-12 | 2026-07 | 中 | `source--daily-93d3e92093f60de33c10` |
+| regions | 欧州 | 活動「北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について」の記述で標的地域として欧州が明示されている。 | 2025-12 | 2026-07 | 中 | `source--daily-93d3e92093f60de33c10` |
 | sectors | IT・ソフトウェア | 活動「35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-2a32ed98e1bd6d1661b4`, `source--daily-47e80e1dc37b49447e5b`, `source--daily-b84641d39a296b1d232d`, `source--daily-cdb23aca8de000a4d647`, `source--daily-d00e6abeb3390b2c40e7` |
 | sectors | 非営利・市民社会 | 活動「北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-828c717719b991a7c676` |
 | sectors | 暗号資産・Web3 | [Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities. | 不明 | 不明 | 高 | `source--daily-3b508815c5f991656dcb`, `source--mitre-attack-19-1` |
@@ -174,8 +180,9 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--437616c0b22d107a1a92 | 開発環境／ソースコード | credential-theft: OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | 2025-02 | 2025-04 | 2025-05-12 | 中 | `source--daily-56f1f7edcfb3f507fe75` |
+| 被害事例: 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6604ad21c713b8dfd8c7 | malware--beavertail, malware--invisibleferret |  | エンドポイント | credential-theft: BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleなどを使用し、認証情報、暗号資産ウォレット、身分証画像などを窃取する。 | 2025-12 | 2026-07 | 2026-09-19 | 中 | `source--daily-93d3e92093f60de33c10` |
 | 被害事例: NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--9344745b7aeff4dbe6af |  |  |  |  | 不明 | 不明 | 2026-08-04 | 中 | `source--daily-3b508815c5f991656dcb` |
-| 被害事例: 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--invisibleferret |  |  | data-theft: マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。 | 不明 | 不明 | 2024-08-31 | 中 | `source--daily-b84641d39a296b1d232d` |
+| 被害事例: 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--invisibleferret |  |  |  | 不明 | 不明 | 2024-08-31 | 中 | `source--daily-b84641d39a296b1d232d` |
 | 被害事例: 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | 非公開 | anonymous | unknown | reported | target--activity-rule--sector--932f4928d5e1ec28e2df | malware--beavertail, malware--invisibleferret |  |  |  | 不明 | 不明 | 2025-06-26 | 中 | `source--daily-2a32ed98e1bd6d1661b4` |
 | 被害事例: ClickFix、EtherHiding、北朝鮮関連ウォレットの追跡 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--be9df4470bc382b06ff7 |  | credential-theft: 手口はUNC5342およびContagious Interviewと一致し、暗号資産と開発者認証情報の窃取を目的とする北朝鮮関連活動と評価された。 | 不明 | 不明 | 2026-07-31 | 中 | `source--daily-f258b76090beb4d8cca9` |
 | 被害事例: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | 非公開 | anonymous | unknown | reported |  |  | ttp--activity-rule--33bfe0dee0f21b67e99c | 開発環境／ソースコード | credential-theft: 観測されたペイロードにはDEV#POPPERとOmniStealerが含まれ、認証情報窃取やC2通信などの機能を持つ。<br>supply-chain: PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | 不明 | 不明 | 2026-07-02 | 中 | `source--daily-93581ba9dc03b85be996` |
@@ -296,6 +303,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--contagious-interview--c543cad730a42fed | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | International Strategic/Korea/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
 | source--contagious-interview--f488db60801250db | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
 | source--contagious-interview--fea0ffb36c7936d4 | eset threat report h12025 |  | 不明 | summary/2025/eset-threat-report-h12025.pdf | report | TLP:CLEAR | 中 |
+| source--crowdstrike-famous-chollima | FAMOUS CHOLLIMA \| Adversary profile | CrowdStrike | 不明 | https://www.crowdstrike.com/adversaries/famous-chollima/ | vendor-adversary-profile | TLP:CLEAR | 中 |
 | source--daily-25f950d9ddf02f2d5ba4 | FlexibleFerretマルウェアの攻撃が続く | jamf.com | 2025-11-26 | https://www.jamf.com/blog/flexibleferret-malware-continues-to-adapt/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-2a32ed98e1bd6d1661b4 | 35のnpmパッケージを使用してマルウェアを拡散する新たな“偽の面接”キャンペーン | bleepingcomputer.com | 2025-06-26 | https://www.bleepingcomputer.com/news/security/new-wave-of-fake-interviews-use-35-npm-packages-to-spread-malware/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-3b508815c5f991656dcb | NullReceiverの空の暗号資産送金がEtherHidingの課題を解決 | opensourcemalware.com | 2026-08-04 | https://opensourcemalware.com/blog/nullreceiver-dprk-c2-technique | osint-report | TLP:CLEAR | 中 |
@@ -303,6 +311,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--daily-56f1f7edcfb3f507fe75 | OtterCookie v4、VM検出とChrome・MetaMaskの認証情報窃取機能を追加 | thehackernews.com | 2025-05-12 | https://thehackernews.com/2025/05/ottercookie-v4-adds-vm-detection-and.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-828c717719b991a7c676 | 北朝鮮の Contagious Interview キャンペーンが5つのエコシステムへ拡大し、段階的な RAT ペイロードを配布 | socket.dev | 2026-04-09 | https://socket.dev/blog/contagious-interview-campaign-spreads-across-5-ecosystems | osint-report | TLP:CLEAR | 中 |
 | source--daily-93581ba9dc03b85be996 | PolinRider：北朝鮮関連のサプライチェーン攻撃キャンペーンがオープンソースエコシステム全体へ拡大 | socket.dev | 2026-07-02 | https://socket.dev/blog/polinrider-north-korea-linked-supply-chain-campaign-expands | osint-report | TLP:CLEAR | 中 |
+| source--daily-93d3e92093f60de33c10 | 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について | npa.go.jp | 2026-09-19 | https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf | osint-report | TLP:CLEAR | 中 |
 | source--daily-b84641d39a296b1d232d | 北朝鮮のハッカーが悪意のあるnpmパッケージで開発者を標的に | thehackernews.com | 2024-08-31 | https://thehackernews.com/2024/08/north-korean-hackers-target-developers.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-cdb23aca8de000a4d647 | 北朝鮮ハッカー、JSONサービスを秘匿型マルウェア配信経路に転用 | thehackernews.com | 2025-11-15 | https://thehackernews.com/2025/11/north-korean-hackers-turn-json-services.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-cf8c33fcf3e4b3907567 | 北朝鮮ハッカー、偽の仮想通貨企業と偽就職面接でマルウェアを拡散 | thehackernews.com | 2025-04-26 | https://thehackernews.com/2025/04/north-korean-hackers-spread-malware-via.html | osint-report | TLP:CLEAR | 中 |
@@ -314,7 +323,6 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
-| source--crowdstrike-famous-chollima | FAMOUS CHOLLIMA \| Adversary profile | CrowdStrike | 不明 | https://www.crowdstrike.com/adversaries/famous-chollima/ | vendor-adversary-profile | TLP:CLEAR | 中 |
 
 ## 自由記述
 
