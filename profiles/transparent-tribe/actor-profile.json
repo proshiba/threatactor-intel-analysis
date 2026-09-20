@@ -4,7 +4,7 @@
   "name": "Transparent Tribe",
   "status": "draft",
   "created_at": "2026-07-25T09:00:44Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-20T06:42:36Z",
   "languages": [
     "ja"
   ],
@@ -144,6 +144,58 @@
           "source--actor-mapping-workbook"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--daily-1d97d5ffd61e5802a06e",
+        "name": "RUSTYMOVE",
+        "aliases": [],
+        "types": [
+          "worm"
+        ],
+        "description": "Transparent Tribeとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": "2026-08-20T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+        },
+        "last_observed": {
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-08ae19a58641703181dc"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
+      },
+      {
+        "id": "malware--daily-2b114530a9ff0ce2fd56",
+        "name": "RUSTYSHADE",
+        "aliases": [],
+        "types": [
+          "backdoor"
+        ],
+        "description": "Transparent Tribeとの直接的な利用関係が一次資料レビューで確認されたマルウェア。",
+        "first_observed": {
+          "value": "2026-08-20T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+        },
+        "last_observed": {
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-08ae19a58641703181dc"
+        ],
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
       {
         "id": "malware--darkcomet",
@@ -528,6 +580,127 @@
       }
     },
     {
+      "activity_id": "activity--daily-f67a995b730f22598f48",
+      "name": "Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+      "activity_type": "infrastructure-operation",
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      },
+      "reported_at": {
+        "value": "2026-09-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "description": "Zscaler ThreatLabzは2026年8月、パキスタン関連APT36がインドとアフガニスタンの政府・防衛組織を標的とするOperation RapidRustを確認した。 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。",
+      "target_refs": [
+        "target--country--india",
+        "target--sector--defense",
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--daily-1d97d5ffd61e5802a06e",
+        "malware--daily-2b114530a9ff0ce2fd56"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [
+        "ttp--activity-rule--020762fe457528c8574b",
+        "ttp--activity-rule--129d02cbbb4b2b22994d",
+        "ttp--activity-rule--2e6dcc75ce17ffa11a68"
+      ],
+      "victim_refs": [
+        "victim--activity-rule--ff3a3b7d94a3e670bdd0"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-08ae19a58641703181dc"
+      ],
+      "analyst_notes": "日次収集レコード daily-record--f67a995b730f22598f48a1c5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Zscaler ThreatLabz, 2026-09-16公開)を確認。記事はOperation RapidRustを主題とし、実行主体を \"the Pakistan-nexus threat actor APT36\" と同一文で明記している。標的はインドとアフガニスタンの政府・防衛組織、展開マルウェアはRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCH。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもなく、APT36はvendor/developerではなく攻撃実行主体として記述されている。活動期間は原文が2026-08-20〜2026-09-01と明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-09-19)はreported_atとして分離する。confidenceはmediumとする。原文は \"Transparent Tribe\" を用いずAPT36のみで呼称しており、本プロファイルのAPT36 aliasはMITRE ATT&CK由来でscopeがoverlappingであるため、ベンダークラスタ境界の不確実性が残る。この一致をexact identityへ昇格させず、alias scopeはoverlappingのまま維持する。IOC22件(MD5/SHA1/SHA256各4組、ドメイン3件、URL7件)は原文のIOC付録と値およびマルウェア対応を突き合わせ、全件一致を確認した。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--transparent-tribe",
+          "name": "Transparent Tribe",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--daily-1d97d5ffd61e5802a06e",
+            "malware--daily-2b114530a9ff0ce2fd56"
+          ],
+          "ttp_refs": [
+            "ttp--activity-rule--020762fe457528c8574b",
+            "ttp--activity-rule--129d02cbbb4b2b22994d",
+            "ttp--activity-rule--2e6dcc75ce17ffa11a68"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--india",
+            "target--sector--defense",
+            "target--sector--government"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--ff3a3b7d94a3e670bdd0"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-08-20T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+          },
+          "last_observed": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+          },
+          "reported_at": {
+            "value": "2026-09-19T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "infrastructure-operation",
+          "phases": [
+            "Command And Control",
+            "Execution",
+            "Persistence",
+            "Privilege Escalation"
+          ],
+          "results": [
+            "data-theft"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country--india"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-08ae19a58641703181dc"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
       "activity_id": "activity--operation-c-major",
       "name": "Operation C-Major",
       "activity_type": "operation",
@@ -641,24 +814,25 @@
       {
         "id": "target--targeting-audit--country--bbb723409f1dd4f40a48",
         "name": "アフガニスタン",
-        "description": "構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアフガニスタンが記録されている。",
+        "description": "活動「Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開」の記述で標的・被害国として明示されている。",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-08-20T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "confidence": "medium",
         "evidence_refs": [
+          "source--daily-08ae19a58641703181dc",
           "source--target-audit-etda-threat-group-cards"
         ],
-        "analyst_notes": "[targeting-scope-audit-v1] 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。 集約データの追跡範囲はベンダーごとに異なるため、中確度の標的地理情報として扱う。"
       },
       {
         "id": "target--targeting-audit--country--ef6f2ecdff96c21a5874",
@@ -715,14 +889,15 @@
           "basis": "mitre-attack; activity-period"
         },
         "last_observed": {
-          "value": "2022-07-01T05:00:00.000Z",
-          "precision": "second",
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
           "status": "known",
-          "basis": "mitre-attack; activity-period"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-08ae19a58641703181dc",
           "source--daily-b5bf76c5ef95da099eb5",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards",
@@ -1389,6 +1564,7 @@
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-08ae19a58641703181dc",
           "source--daily-b5bf76c5ef95da099eb5",
           "source--mitre-attack-19-1",
           "source--target-audit-etda-threat-group-cards",
@@ -1492,20 +1668,21 @@
         "name": "Defense",
         "description": "Targeting text indicates the Defense sector.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-08-20T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-08ae19a58641703181dc",
           "source--daily-b5bf76c5ef95da099eb5",
           "source--mitre-attack-19-1"
         ],
@@ -1522,14 +1699,15 @@
           "basis": "mitre-attack; activity-period"
         },
         "last_observed": {
-          "value": "2022-07-01T05:00:00.000Z",
-          "precision": "second",
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
           "status": "known",
-          "basis": "mitre-attack; activity-period"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--actor-mapping-workbook",
+          "source--daily-08ae19a58641703181dc",
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Automatically structured from target text; review scope and granularity."
@@ -1540,6 +1718,95 @@
     "analyst_notes": "Structured targets are extracted from workbook prose and require review. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
   "ttps": [
+    {
+      "ttp_id": "ttp--activity-rule--020762fe457528c8574b",
+      "tactic": "Execution, Persistence, Privilege Escalation",
+      "technique_id": "T1053.005",
+      "technique_name": "Scheduled Task",
+      "observed_behavior": "侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。",
+      "activity_refs": [
+        "activity--daily-f67a995b730f22598f48"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-08ae19a58641703181dc"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--129d02cbbb4b2b22994d",
+      "tactic": "Execution",
+      "technique_id": "T1059.001",
+      "technique_name": "PowerShell",
+      "observed_behavior": "APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。",
+      "activity_refs": [
+        "activity--daily-f67a995b730f22598f48"
+      ],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-08ae19a58641703181dc"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
+    {
+      "ttp_id": "ttp--activity-rule--2e6dcc75ce17ffa11a68",
+      "tactic": "Command And Control",
+      "technique_id": "T1102.003",
+      "technique_name": "One-Way Communication",
+      "observed_behavior": "新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。",
+      "activity_refs": [
+        "activity--daily-f67a995b730f22598f48"
+      ],
+      "malware_refs": [
+        "malware--daily-2b114530a9ff0ce2fd56"
+      ],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-08ae19a58641703181dc"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
+    },
     {
       "ttp_id": "ttp--activity-rule--9f71c23b587163876322",
       "tactic": "Execution",
@@ -2960,6 +3227,24 @@
       "analyst_notes": "Mappings are leads, not definitive attribution; workbook disclaimer applies."
     },
     {
+      "source_id": "source--daily-08ae19a58641703181dc",
+      "path": "https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and",
+      "title": "Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+      "publisher": "zscaler.com",
+      "published_at": {
+        "value": "2026-09-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "language": "unknown",
+      "source_type": "osint-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "analyst_notes": "tech-memo日次収集から取込。元ファイル: daily-news/news/2026_07-09/20260919.md; source commit: bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a; 出典信頼性はアクター帰属確度と分離して評価。"
+    },
+    {
       "source_id": "source--daily-b5bf76c5ef95da099eb5",
       "path": "https://www.bleepingcomputer.com/news/security/hackers-now-testing-clickfix-attacks-against-linux-targets/",
       "title": "ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中",
@@ -3152,6 +3437,56 @@
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     },
     {
+      "source_id": "source--target-audit-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "ETDA Threat Group Cards observed-country fields",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:52:47Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
+    },
+    {
+      "source_id": "source--target-audit-misp-360net",
+      "path": "actor_profile/reference/osint/misp-360net.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/360net.json",
+      "title": "MISP 360.net suspected-victim fields",
+      "publisher": "MISP Project / 360.net",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-07-25T13:35:12Z",
+      "language": "zh",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "targeting-lead",
+        "victim-geography"
+      ],
+      "analyst_notes": "High-confidence actor-name matches only. Suspected-victim fields are vendor assessments and may reflect geopolitical source bias; entries use medium confidence."
+    },
+    {
       "source_id": "source--transparent-tribe--0f08047cfac5b7bb",
       "path": "APT36/README.MD",
       "title": "README",
@@ -3222,56 +3557,6 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "Repository source; publication metadata requires review."
-    },
-    {
-      "source_id": "source--target-audit-misp-360net",
-      "path": "actor_profile/reference/osint/misp-360net.json",
-      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/360net.json",
-      "title": "MISP 360.net suspected-victim fields",
-      "publisher": "MISP Project / 360.net",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:35:12Z",
-      "language": "zh",
-      "source_type": "structured-osint-aggregation",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. Suspected-victim fields are vendor assessments and may reflect geopolitical source bias; entries use medium confidence."
-    },
-    {
-      "source_id": "source--target-audit-etda-threat-group-cards",
-      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
-      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
-      "title": "ETDA Threat Group Cards observed-country fields",
-      "publisher": "ETDA / ThaiCERT",
-      "published_at": {
-        "value": null,
-        "precision": "unknown",
-        "status": "unknown",
-        "basis": "not-stated"
-      },
-      "accessed_at": "2026-07-25T13:52:47Z",
-      "language": "en",
-      "source_type": "government-threat-actor-encyclopedia",
-      "tlp": "TLP:CLEAR",
-      "reliability": "medium",
-      "sha256": null,
-      "actor_scope": "overlapping",
-      "claims_supported": [
-        "targeting-lead",
-        "victim-geography"
-      ],
-      "analyst_notes": "High-confidence actor-name matches only. ETDA aggregates vendor reporting; observed-country entries are retained as medium-confidence targeting evidence with scope caveats."
     }
   ],
   "assessment": {
@@ -3398,6 +3683,65 @@
       "confidence": "high",
       "evidence_refs": [
         "source--mitre-attack-19-1"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--ff3a3b7d94a3e670bdd0",
+      "name": "被害事例: Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開",
+      "victim_name": null,
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
+      "case_status": "reported",
+      "description": "Zscaler ThreatLabzは2026年8月、パキスタン関連APT36がインドとアフガニスタンの政府・防衛組織を標的とするOperation RapidRustを確認した。 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。",
+      "activity_refs": [
+        "activity--daily-f67a995b730f22598f48"
+      ],
+      "target_refs": [
+        "target--country--india",
+        "target--sector--defense",
+        "target--sector--government"
+      ],
+      "malware_refs": [
+        "malware--daily-1d97d5ffd61e5802a06e",
+        "malware--daily-2b114530a9ff0ce2fd56"
+      ],
+      "ttp_refs": [
+        "ttp--activity-rule--020762fe457528c8574b",
+        "ttp--activity-rule--129d02cbbb4b2b22994d",
+        "ttp--activity-rule--2e6dcc75ce17ffa11a68"
+      ],
+      "affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。"
+        }
+      ],
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      },
+      "reported_at": {
+        "value": "2026-09-19T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--daily-08ae19a58641703181dc"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     }
