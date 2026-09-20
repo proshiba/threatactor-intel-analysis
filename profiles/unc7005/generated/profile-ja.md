@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc7005`
 - 状態: draft
-- 更新日時: 2026-08-21T01:45:24Z
+- 更新日時: 2026-09-20T10:03:35Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -51,6 +51,35 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | Infrastructure | Microsoft認証リソース、実在の行事・団体(GLOBSEC、Finnish Operations Center)、WhatsAppを装う多数の攻撃者管理ドメイン。Googleクラウドプロジェクトを認証トークン窃取の受け皿として悪用する。宿泊施設・会議施設のcaptive portalリダイレクト作戦のインフラと結び付けられている。 |
 | Victim | ウクライナ、西欧、米国の学術関係者、外交関係者、非営利団体の職員。欧州の防衛産業に属するか関係する標的。ロシアと旧ソビエト諸国を専門とする米国の研究者。 |
 | Socio-political | GTIGはロシア国家にとって関心の対象となる個人を狙う諜報目的の活動と位置付け、3クラスタのロシア関連性をhigh confidenceで評価している。 |
+
+## OSINTクロスチェック
+
+- 判定: `no-match`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 

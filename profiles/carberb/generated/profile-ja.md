@@ -52,7 +52,7 @@ Group-IB identifies Carberp as a criminal hacking group focused on financial the
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

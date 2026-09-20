@@ -122,6 +122,25 @@ class EntityBoundaryTests(unittest.TestCase):
                 directory.name,
             )
 
+    def test_deprecated_profiles_have_only_superseded_claims(self) -> None:
+        for directory in (ROOT / "profiles").iterdir():
+            profile_path = directory / "actor-profile.json"
+            audit_path = directory / "claim-audit.json"
+            if not profile_path.is_file():
+                continue
+            profile = json.loads(profile_path.read_text(encoding="utf-8"))
+            if profile.get("status") != "deprecated":
+                continue
+            self.assertTrue(audit_path.is_file(), directory.name)
+            audit = json.loads(audit_path.read_text(encoding="utf-8"))
+            self.assertEqual(audit["counts"], {"superseded": 1}, directory.name)
+            self.assertEqual(len(audit["claims"]), 1, directory.name)
+            self.assertEqual(
+                audit["claims"][0]["verification_status"],
+                "superseded",
+                directory.name,
+            )
+
     def test_active_relationships_do_not_target_deprecated_profiles(self) -> None:
         deprecated_names = set()
         for directory in (ROOT / "profiles").iterdir():
@@ -181,6 +200,26 @@ class EntityBoundaryTests(unittest.TestCase):
         targets = {item["target_actor"] for item in famous["relationships"]}
         self.assertIn("DPRK IT Worker Schemes", targets)
         self.assertIn("Contagious Interview", targets)
+
+    def test_operation_names_and_normalized_duplicates_are_not_actor_aliases(self) -> None:
+        fox_kitten = self.load_profile("fox-kitten")
+        self.assertNotIn(
+            "Pay2key",
+            {item["name"] for item in fox_kitten["actor"]["aliases"]},
+        )
+        earth_berberoka_aliases = {
+            item["name"]
+            for item in self.load_profile("earth-berberoka")["actor"]["aliases"]
+        }
+        self.assertEqual(
+            earth_berberoka_aliases,
+            {"GamblingPuppet"},
+        )
+        ke3chang_aliases = {
+            item["name"] for item in self.load_profile("ke3chang")["actor"]["aliases"]
+        }
+        self.assertIn("RoyalAPT", ke3chang_aliases)
+        self.assertNotIn("Royal APT", ke3chang_aliases)
 
 
 if __name__ == "__main__":

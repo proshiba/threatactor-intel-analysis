@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5976`
 - 状態: draft
-- 更新日時: 2026-08-21T01:45:24Z
+- 更新日時: 2026-09-20T10:03:35Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,6 +48,35 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | Infrastructure | ファイル共有を思わせる名称の購入ドメインと、対応する攻撃者管理のクラウドプロジェクト。無効化後およそ3か月で少なくとも12件の新規ドメインを再構築しており、Google以外の事業者への移行が進んでいると評価されている。 |
 | Victim | 軍、航空宇宙、防衛産業基盤、NGO・シンクタンク。地理的にはウクライナとアルメニアへの偏りが指摘される。HEADRUSHの配布ではウクライナの研究機関を装い、ウクライナの航空宇宙・画像関連企業が標的となった可能性がある。 |
 | Socio-political | GTIGは3クラスタのロシア関連性をhigh confidenceで評価し、UNC5976については異なる戦略的任務と、別のロシア情報機関との整合の可能性を指摘している。 |
+
+## OSINTクロスチェック
+
+- 判定: `no-match`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 

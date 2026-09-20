@@ -49,6 +49,35 @@ Gunraは2025年4月に出現した二重恐喝型ランサムウェアの運用�
 | Victim | 南北アメリカ、欧州、中東、アフリカ、アジア太平洋の政府機関・重要インフラを含む10業種の組織。 |
 | Socio-political | ダークウェブフォーラムを通じたアフィリエイト募集と、ペネトレーションテスター・初期アクセスブローカーへの利益分配を伴う商業的なランサムウェアエコシステム。 |
 
+## OSINTクロスチェック
+
+- 判定: `no-match`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
+
 ## Capability
 
 ### マルウェア

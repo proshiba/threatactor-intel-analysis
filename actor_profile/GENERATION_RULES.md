@@ -150,6 +150,8 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 4. 会社名、malware名、operation名の同名衝突ではないか
 
 先頭の`The`、空白、ハイフン、大小文字だけの差は重複候補として扱います。
+同一プロファイル内で正規化後に同じになるaliasは、先に現れた根拠付き表記を残して
+materialization時に重複排除します。
 
 ## 8. Claim auditからの昇格条件
 
@@ -162,6 +164,22 @@ canonical nameとaliasの正規化一致を検出したら、自動統合では�
 - source scopeが主張のscopeと一致する
 - entity種別が一致する
 - contradictionが未解消ではない
+
+`build_claim_audits.py`は、identity/alias/relationshipに加えて、actor type、sponsor type、
+帰属組織、motivation、activity、victim case、target、全capability区分、TTP、key judgmentを
+監査対象にします。参照がない主張は`unresolved`、集約資料またはrepository内取込だけを
+根拠とする主張は原則`partially-supported`です。
+deprecated profileの台帳は過去の主張を現行主張として残さず、`superseded`の
+lifecycle claim 1件だけを保持し、現行コレクション集計から除外します。
+
+`state-sponsored`の自動支持は次のいずれかに限定します。
+
+- actor-specificな証拠を持つ`attribution.sponsor_type: state`
+- actor-specificなMITRE ATT&CK記述が国家支援を明示する
+- nation-state区分であることを明示した外部taxonomyにcanonical名または`exact` aliasが一致する
+
+国・originの値だけ、非exact alias、`state-aligned`だけでは`state-sponsored`を
+`supported`にしません。
 
 ## 9. Source precedence
 

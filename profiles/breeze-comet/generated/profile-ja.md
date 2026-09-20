@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-02T13:04:42Z
+- 更新日時: 2026-09-20T09:33:42Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -27,7 +27,7 @@ BREEZE COMET(旧UNC5669)は、ブラジルの金融サービス、小売、eコ�
 GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクターと評価し、国家や特定組織への帰属は行っていない。標的と運用がブラジルに集中し、回収されたスクリプトのコメントがポルトガル語であることは運用言語・活動地域の指標であって、攻撃者の所在国の帰属根拠として扱わない。
 
 - 国: 不明
-- スポンサー種別: non-state
+- スポンサー種別: criminal
 - 確度: 中
 - 証拠: `source--breeze-comet--gtig-brazil-2026`
 
@@ -50,6 +50,35 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
+
+## OSINTクロスチェック
+
+- 判定: `no-match`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sandworm`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:45Z
+- 更新日時: 2026-09-20T10:03:34Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -32,12 +32,12 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 
 ## 帰属
 
-未評価
+MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special Technologies, military unit 74455, citing U.S. and UK government sources.
 
-- 国: 不明
-- スポンサー種別: unknown
-- 確度: 不明
-- 証拠: なし
+- 国: Russia
+- スポンサー種別: state
+- 確度: 高
+- 証拠: `source--mitre-live-sandworm-2024`
 
 ## モチベーション
 
@@ -62,7 +62,7 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

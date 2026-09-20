@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--arid-viper`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:44Z
+- 更新日時: 2026-09-20T10:03:33Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -28,12 +28,12 @@ Arid Viperの標準化プロファイル。リポジトリ内の専用資料2件
 
 ## 帰属
 
-未評価
+Meta attributed the observed Arid Viper campaigns to state-sponsored cyber espionage operations with high confidence.
 
 - 国: 不明
-- スポンサー種別: unknown
-- 確度: 不明
-- 証拠: なし
+- スポンサー種別: state
+- 確度: 高
+- 証拠: `source--arid-viper--7bb09a5f09aa4e3b`
 
 ## モチベーション
 
@@ -56,7 +56,7 @@ Arid Viperの標準化プロファイル。リポジトリ内の専用資料2件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

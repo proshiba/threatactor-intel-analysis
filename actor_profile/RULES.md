@@ -451,6 +451,18 @@ OSINTはプロファイル本文への追記だけで終わらせず、各プロ
 公式ATT&CK、当該ベンダーの一次調査を優先し、発行日とアクセス日を分けて記録する。
 反証が見つからないことを「反証なし」と断定せず、検索範囲と未解決点を残す。
 
+claim auditはalias、帰属国、関係、主要malware/TTPだけに限定しない。少なくとも
+`actor.actor_types`、`attribution.sponsor_type`、帰属組織、motivation、activity、
+victim case、target、全capability区分、TTP、key judgmentを個別のclaimとして監査する。
+根拠参照が空の主張を既定で`partially-supported`にしてはならず、`unresolved`とする。
+
+`state-sponsored`は特に強い主張として扱い、actor-specificなスポンサー関係の明示を
+必要とする。一般的な国・originラベルは根拠にしない。外部taxonomyを使う場合も、その
+taxonomy自身が対象区分をnation-state actorとして明示し、canonical名または`exact`
+aliasが一致するときだけ使用する。`overlapping`、`related`、`broader`、`narrower`の
+alias一致から国家支援を継承しない。`state-aligned`の根拠しかない場合、
+`state-sponsored` claimは最大でも`partially-supported`である。
+
 アクター関係は、最低でも次を分離する。
 
 - 組織関係: `part-of`、`subordinate-to`

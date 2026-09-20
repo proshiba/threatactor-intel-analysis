@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6508`
 - 状態: draft
-- 更新日時: 2026-09-10T22:21:38Z
+- 更新日時: 2026-09-20T10:03:35Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,8 +23,8 @@ Aliasなし
 GTIGは2026-06-15の報告で「GTIG attributes this activity to UNC6508 with high confidence.」と述べ、根拠としてキャンペーン間のインフラ重複、REDCapサーバー上でのINFINITEREDバックドアの一貫した使用、医学研究および防衛分野への特異的な標的選択を挙げている。動機については「We assess UNC6508 is an espionage motivated threat cluster, with priorities that align with historic PRC state-sponsored espionage trends and intelligence collection requirements.」として、PRCの国家支援型諜報の傾向および情報収集要求と優先度が整合すると評価する。特定の政府機関・企業への帰属は行われていない。
 
 - 国: China
-- スポンサー種別: state-sponsored
-- 確度: 高
+- スポンサー種別: state-aligned
+- 確度: 中
 - 証拠: `source--gtig-unc6508-medical-research-2026`, `source--gtig-adversarial-ai-2026`
 
 ## モチベーション
@@ -47,6 +47,35 @@ GTIGは2026-06-15の報告で「GTIG attributes this activity to UNC6508 with hi
 | Infrastructure |  |
 | Victim |  |
 | Socio-political |  |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | UNC6508 | canonical-name | 高 | CN | https://cloud.google.com/blog/topics/threat-intelligence/prc-targets-us-medical-research |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -155,6 +184,7 @@ GTIGは2026-06-15の報告で、2023年9月の最初期の侵害から2025年11�
 |---|---|---|---|---|---|---|---|
 | source--gtig-unc6508-medical-research-2026 | Public and Private Medical Community Targeted by China-Nexus Threat Actor Pursuing Artificial Intelligence, Cyber, Medical, and National Defense Research | Google Threat Intelligence Group | 2026-06-15 | https://cloud.google.com/blog/topics/threat-intelligence/prc-targets-us-medical-research | vendor-research | TLP:CLEAR | 高 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

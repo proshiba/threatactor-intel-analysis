@@ -4,7 +4,7 @@
   "name": "Jewelbug",
   "status": "draft",
   "created_at": "2026-08-14T00:00:00Z",
-  "updated_at": "2026-09-20T08:53:44Z",
+  "updated_at": "2026-09-20T10:03:34Z",
   "languages": [
     "ja"
   ],
@@ -1827,6 +1827,58 @@
       "reliability": "high",
       "sha256": null,
       "analyst_notes": "別名REF7707の一次資料。原文を確認(アクセス日 2026-08-14)。Elasticは同資料で出身国の帰属を主張していない。本プロファイルでは別名の実在確認と昇格閾値の判断にのみ用いる。"
+    },
+    {
+      "source_id": "source--osint-etda-threat-group-cards",
+      "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
+      "url": "https://apt.etda.or.th/cgi-bin/listgroups.cgi",
+      "title": "Threat Group Cards: A Threat Actor Encyclopedia",
+      "publisher": "ETDA / ThaiCERT",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "government-threat-actor-encyclopedia",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "3e0db459512336c6d54789ed77747c57af362604fd14f9ad5e043667c9f6efc2",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2025-08-16. ETDA/ThaiCERT aggregates the cited vendor and government reporting. Actor scope and attribution must be checked against the card's original references."
+    },
+    {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T09:48:58Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "5f5bdfb71a3bc3464b4ce6caed27c7651bf8fd316d6c30f097c61e4421434f81",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {
@@ -1874,9 +1926,10 @@
     ],
     "uncertainties": [
       "Earth Alux(Trend Micro, 2025-03-31)およびREF7707(Elastic, 2025-02-13)の観測期間・マルウェア群はSymantecがJewelbugとして報告した実装群と重ならないため、3者が同一クラスタであるかは未解決である。aliasのscopeはoverlappingとし、実績を相互に流用していない。",
-      "hack-for-hireという性格付けはSymantecの評価であり、顧客・発注関係を示す直接証拠は公開されていない。"
+      "hack-for-hireという性格付けはSymantecの評価であり、顧客・発注関係を示す直接証拠は公開されていない。",
+      "Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review."
     ],
-    "collection_notes": "Symantecの原文(2026-08-13)を一次資料として確認した。別名の実在確認のためTrend MicroのEarth Alux記事(2025-03-31)とElastic Security LabsのREF7707記事(2025-02-13)の原文も確認した。IOCはproshiba/tech-memoのdaily-news IOC CSV(2026-08-14)がSymantec原文のIOC節から収録した52件を取り込んだ。",
+    "collection_notes": "Symantecの原文(2026-08-13)を一次資料として確認した。別名の実在確認のためTrend MicroのEarth Alux記事(2025-03-31)とElastic Security LabsのREF7707記事(2025-02-13)の原文も確認した。IOCはproshiba/tech-memoのdaily-news IOC CSV(2026-08-14)がSymantec原文のIOC節から収録した52件を取り込んだ。\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=matched.",
     "analyst_notes": "status: draft。単一ベンダーの初報を主資料とするが、別名として独立した2ベンダー(Trend Micro、Elastic)の一次資料が存在するため、parse-daily/AGENT.mdの昇格閾値(独立した一次資料2本以上)を満たすと判断した。"
   },
   "free_text": {

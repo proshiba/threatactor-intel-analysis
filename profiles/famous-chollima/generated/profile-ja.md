@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--famous-chollima`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:44Z
+- 更新日時: 2026-09-20T10:03:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -23,7 +23,7 @@ Aliasなし
 CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; its IT-worker revenue generation supports the North Korean regime.
 
 - 国: North Korea
-- スポンサー種別: state-aligned
+- スポンサー種別: state
 - 確度: 高
 - 証拠: `source--crowdstrike-famous-chollima-2026`, `source--crowdstrike-famous-chollima-2025`
 
@@ -53,7 +53,7 @@ CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; it
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

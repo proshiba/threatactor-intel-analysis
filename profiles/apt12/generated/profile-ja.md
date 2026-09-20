@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt12`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:43Z
+- 更新日時: 2026-09-20T10:03:33Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -21,7 +21,7 @@ APT12の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | BeeBus | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Calc Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Crimson Iron | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| DNSCalc | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| DNSCALC | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | DynCalc | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Group 22 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | IXESHE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -58,7 +58,7 @@ APT12の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

@@ -151,6 +151,31 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
             ["source--government-advisory"],
         )
 
+    def test_actor_type_order_alone_is_not_a_change(self) -> None:
+        profile = base_profile()
+        profile["actor"]["actor_types"] = ["threat-cluster", "espionage"]
+        profile["actor"]["aliases"] = []
+        profile["attribution"] = {
+            "countries": [],
+            "sponsor_type": "unknown",
+            "organizations": [],
+            "assessment": "",
+            "confidence": "unknown",
+            "evidence_refs": [],
+            "analyst_notes": "",
+        }
+        profile["motivations"] = []
+        actor = {
+            "slug": "example",
+            "actor_types": ["espionage", "threat-cluster"],
+        }
+        report = migrate_profile(profile, actor, None)
+        self.assertFalse(report["changed"])
+        self.assertEqual(
+            profile["actor"]["actor_types"], ["threat-cluster", "espionage"]
+        )
+        self.assertEqual(profile["updated_at"], "2026-01-01T00:00:00Z")
+
 
 if __name__ == "__main__":
     unittest.main()

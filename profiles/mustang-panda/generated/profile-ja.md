@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:45Z
+- 更新日時: 2026-09-20T10:03:34Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -26,7 +26,7 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | FIREANT | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | HIVE0154 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | HoneyMyte | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Luminous Moth | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| LUMINOUS MOTH | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Red Lich | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | RedDelta | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | STATELY TAURUS | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -68,7 +68,7 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

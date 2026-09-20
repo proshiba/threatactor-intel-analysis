@@ -4,7 +4,7 @@
   "name": "Syrian Electronic Army (SEA)",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T08:53:28Z",
+  "updated_at": "2026-09-20T10:03:11Z",
   "languages": [
     "ja"
   ],
@@ -13,13 +13,23 @@
     "aliases": [
       {
         "name": "Deadeye Jackal",
-        "vendor": "catalog",
+        "vendor": "CrowdStrike",
         "scope": "overlapping",
         "confidence": "medium",
         "evidence_refs": [
-          "source--actor-mapping-workbook"
+          "source--crowdstrike-sea-deadeye-jackal-2015"
         ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
+        "analyst_notes": "CrowdStrike's 2015 report states that it tracked the Syrian Electronic Army as DEADEYE JACKAL. Scope remains overlapping because the vendor tracking boundary may not be identical to the public SEA label."
+      },
+      {
+        "name": "Deadeye Hawk",
+        "vendor": "CrowdStrike",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--syrian-electronic-army-sea--bfcd17832a028098"
+        ],
+        "analyst_notes": "CrowdStrike's 2023 report renamed its Syria-nexus adversary from DEADEYE JACKAL to DEADEYE HAWK. This is retained as a scoped rename rather than an exact identity assertion."
       }
     ],
     "actor_types": [
@@ -38,8 +48,8 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
-    "analyst_notes": "2026-09 workbook-alias migration: workbook-only aliases were removed because the source workbook is not retained in this repository. MITRE, catalog, and actor-specific aliases were kept. Future workbook ingestion uses explicit actor-name columns only."
+    "description": "The Syrian Electronic Army is a pro-regime hacking collective that CrowdStrike historically tracked as DEADEYE JACKAL; CrowdStrike later renamed its Syria-nexus adversary tracking to DEADEYE HAWK.",
+    "analyst_notes": "CrowdStrike's DEADEYE names are retained with overlapping scope because a vendor adversary collection may not be coextensive with the broad public Syrian Electronic Army label."
   },
   "attribution": {
     "countries": [],
@@ -247,6 +257,26 @@
       "analyst_notes": "Original report containing actor-associated evidence. IOC ingestion uses the scoped evidence extract to avoid cross-actor contamination."
     },
     {
+      "source_id": "source--crowdstrike-sea-deadeye-jackal-2015",
+      "path": "https://www.crowdstrike.com/wp-content/uploads/Global_Threat_Report-2015/Exec-Summary/crowdStrike-2015-threat-report-exec-summary.pdf",
+      "url": "https://www.crowdstrike.com/wp-content/uploads/Global_Threat_Report-2015/Exec-Summary/crowdStrike-2015-threat-report-exec-summary.pdf",
+      "title": "CrowdStrike 2015 Global Threat Report Executive Summary",
+      "publisher": "CrowdStrike",
+      "published_at": {
+        "value": "2015-01-01T00:00:00Z",
+        "precision": "year",
+        "status": "known",
+        "basis": "report-title"
+      },
+      "accessed_at": "2026-09-20T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Primary vendor source for the statement that CrowdStrike tracked the Syrian Electronic Army as DEADEYE JACKAL."
+    },
+    {
       "source_id": "source--osint-misp-threat-actor",
       "path": "actor_profile/reference/osint/misp-threat-actor.json",
       "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
@@ -308,7 +338,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/syrian-electronic-army-sea.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T08:53:28Z; result=possible-match.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/syrian-electronic-army-sea.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=possible-match.",
     "analyst_notes": ""
   },
   "free_text": {

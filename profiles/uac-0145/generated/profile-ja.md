@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0145`
 - 状態: draft
-- 更新日時: 2026-08-13T10:58:19Z
+- 更新日時: 2026-09-20T10:03:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -49,6 +49,35 @@ CERT-UAは2件の資料でいずれも「кластером кіберзагро
 | Infrastructure | 偽CAPTCHAを配信する侵害済みウェブサイト群、クローキングサービスCloaking.House、SopraVPNを配布するSourceForgeプロジェクト、Sopra SteriaとATLAS Business Groupを騙る偽企業ドメイン、コマンド取得に悪用される正規サービスとEthereumスマートコントラクト。 |
 | Victim | ウクライナの政府機関・軍と、企業リソースへ接続しうるシステム管理者・IT専門職個人。CERT-UAは通信事業者とIT企業に対して注意喚起している。 |
 | Socio-political | ウクライナの国家機関と防衛関連要員、およびそこへ接続しうる技術者個人を対象とする諜報活動。中央行政機関インフラへの破壊的攻撃の前提が作られた事例が報告されている。 |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | 一致なし |  |  |  |  |
+| cert-ua-uac-index | UAC-0145 | canonical-name | 高 |  | https://cert.gov.ua/article/6318437 |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -201,6 +230,7 @@ CERT-UAはウクライナの主要なサイバーセキュリティ確保主体�
 |---|---|---|---|---|---|---|---|
 | source--certua-6318437-uac-0145 | Вектори первинної компрометації UAC-0145 станом на липень 2026 року | CERT-UA | 2026-07-15 | https://cert.gov.ua/article/6318437 | government-advisory | TLP:CLEAR | 高 |
 | source--certua-6318863-uac-0145 | Соціальна інженерія у виконанні UAC-0145: компрометація у процесі працевлаштування | CERT-UA | 2026-08-08 | https://cert.gov.ua/article/6318863 | government-advisory | TLP:CLEAR | 高 |
+| source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
 
 ## 自由記述
 

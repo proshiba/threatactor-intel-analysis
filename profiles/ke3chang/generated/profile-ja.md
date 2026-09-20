@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ke3chang`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:44Z
+- 更新日時: 2026-09-20T10:03:34Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,21 +19,15 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | APT15 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| BackdoorDiplomacy | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| BackdoorDiplomacy | Palo Alto Networks Unit 42 | overlapping | 高 | `source--unit42-playful-taurus-2023` | Unit 42 maps BackdoorDiplomacy to Playful Taurus/APT15; retained as overlapping because MITRE also tracks BackdoorDiplomacy as a distinct collection boundary. |
 | GREF | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Lurid | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Metushy | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Mirage | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Mirage Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | NICKEL | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Nylon Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Playful Dragon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Playful Taurus | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Royal APT | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Playful Taurus | Palo Alto Networks Unit 42 | overlapping | 高 | `source--unit42-playful-taurus-2023` | Unit 42 directly identifies Playful Taurus as APT15/Ke3chang; scope remains overlapping to preserve vendor collection-boundary uncertainty. |
 | RoyalAPT | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Social Network Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Vixen Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Winnti Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -73,7 +67,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -337,6 +331,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
+| source--unit42-playful-taurus-2023 | Chinese Playful Taurus Activity in Iran | Palo Alto Networks Unit 42 | 不明 | https://unit42.paloaltonetworks.com/playful-taurus/ | vendor-research | TLP:CLEAR | 高 |
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--ke3chang--2240dc28698bf6cd | ke3chang |  | 不明 | actor_profile/evidence/ke3chang.csv | structured-data | TLP:CLEAR | 中 |

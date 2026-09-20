@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--bbabd4e7-49c8-4c3e-9106-be965f4bb35a",
       "created": "2026-08-13T00:00:00Z",
-      "modified": "2026-08-13T10:58:19Z",
+      "modified": "2026-09-20T10:03:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -31,6 +31,7 @@
         }
       ],
       "x_profile_id": "actor--uac-0145",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [],
@@ -51,6 +52,96 @@
         "infrastructure_details": "偽CAPTCHAの配信には10件超の侵害済みウェブサイトが使われ、クローキングサービスCloaking.Houseの標準機能と独自コードSMARTAXEが併用される。SopraVPNはSourceForge上のプロジェクト(soprabulgariavpn、sopravpn)から配布され、偽企業サイトsoprasteria-bg[.]comの「Corporate VPN on Sourceforge」ボタンから誘導される。VPNの接続先はudp://139.28.36[.]23:51820、追加ペイロードの取得先はdouncloud[.]siteである。",
         "targeting_details": "構造化ターゲット監査: 標的国=ウクライナ。標的地域=広域情報なし。日本は確認時に個別国として保持する。\n\n求人サイト上で履歴書を事前に調査したうえで接触し、対象は通常システム管理者またはIT専門職である。CERT-UAは、IT技術者がオンライン・オフラインのいずれで勤務するかを問わず、EDRを導入しポリシーを設定して継続監視される管理対象端末(managed devices)からのみ企業リソースへ接続させるよう、とりわけ通信事業者・プロバイダーとIT企業へ推奨している。",
         "additional_notes": "CERT-UAは、ウェブサイトが攻撃に使われた事実自体が、CMSやコンポーネントの脆弱性、認証情報の漏えい、ウェブシェル、外部プラグイン、正規スクリプトとウェブページの改変、サーバー上のバックドア等のいずれかによる侵害を示すとして、ウェブサイト管理者とホスティング事業者に対応を求めている。"
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--uac-0145",
+        "actor_name": "UAC-0145",
+        "searched_at": "2026-09-20T10:03:11Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "UAC-0145"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [],
+          "cert-ua-uac-index": [
+            {
+              "entry_uuid": "cert-ua-actor--sha256:f94f9f0c78dfcce394e7b37d39b61c7de326299ba683610bf99767f1409eb391",
+              "entry_value": "UAC-0145",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "uac0145",
+                  "profile_value": "UAC-0145",
+                  "dataset_value": "UAC-0145"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "UAC-0145"
+              ],
+              "countries": [],
+              "description": "Дослідження кластера кіберзагроз UAC-0145 (субкластер UAC-0002, також відомий як Sandworm, APT44, Seashell Blizzard).",
+              "refs": [
+                "https://cert.gov.ua/article/6318437"
+              ],
+              "related": []
+            }
+          ],
+          "microsoft-threat-actor-mapping": [],
+          "misp-threat-actor": [],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [
+          {
+            "profile_malware_id": "malware--uac-0145-kalambur",
+            "profile_name": "KALAMBUR",
+            "entry_uuid": "5823aa92-75d1-4fdc-adcb-ff6a4918b226",
+            "entry_value": "Kalambur",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.kalambur",
+              "https://blog.eclecticiq.com/sandworm-apt-targets-ukrainian-users-with-trojanized-microsoft-kms-activation-tools-in-cyber-espionage-campaigns"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          }
+        ],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [],
+          "external_values": [],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
       }
     },
     {
@@ -8962,7 +9053,7 @@
       "spec_version": "2.1",
       "id": "report--ff075dea-c2da-4a85-9580-e866c1c6f0b4",
       "created": "2026-08-13T00:00:00Z",
-      "modified": "2026-08-13T10:58:19Z",
+      "modified": "2026-09-20T10:03:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8971,7 +9062,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-08-13T10:58:19Z",
+      "published": "2026-09-20T10:03:11Z",
       "object_refs": [
         "intrusion-set--bbabd4e7-49c8-4c3e-9106-be965f4bb35a",
         "malware--79e4d7c8-19db-4b4a-90a7-4b8038e1be52",

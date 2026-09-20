@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--earth-berberoka`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:44Z
+- 更新日時: 2026-09-20T10:03:33Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,8 +18,7 @@ Earth Berberokaの標準化プロファイル。リポジトリ内の専用資�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Gambling Puppet | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| GamblingPuppet | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| GamblingPuppet | Trend Micro | exact | 高 | `source--trendmicro-earth-berberoka-2022` | Trend Micro introduced Earth Berberoka as the same tracked group also named GamblingPuppet. |
 
 ## 帰属
 
@@ -51,7 +50,7 @@ Earth Berberokaの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -170,6 +169,7 @@ Earth Berberokaの標準化プロファイル。リポジトリ内の専用資�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
+| source--trendmicro-earth-berberoka-2022 | Operation Earth Berberoka: An Analysis of a Multivector and Multiplatform APT Campaign Targeting Online Gambling Sites | Trend Micro Research | 2022-05-24 | https://documents.trendmicro.com/assets/white_papers/wp-operation-earth-berberoka.pdf | vendor-research | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--earth-berberoka--1ee1533d6cfe60f0 | earth berberoka |  | 不明 | actor_profile/evidence/earth-berberoka.csv | structured-data | TLP:CLEAR | 中 |
 | source--earth-berberoka--396faba6a4d82eb7 | top 10 macos malware discoveries in 2022 |  | 2022 | summary/2022/top-10-macos-malware-discoveries-in-2022.pdf | report | TLP:CLEAR | 中 |

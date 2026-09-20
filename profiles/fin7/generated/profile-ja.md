@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin7`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:44Z
+- 更新日時: 2026-09-20T10:03:33Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,7 +22,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | ELBRUS | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | GOLD NIAGARA | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ITG14 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Sangria Tempest | MITRE ATT&CK / Microsoft | exact | 高 | `source--mitre-attack-19-1` | Curated merge into the canonical MITRE Group profile. |
+| Sangria Tempest | MITRE ATT&CK | exact | 高 | `source--mitre-attack-19-1` | Curated merge into the canonical MITRE Group profile. |
 
 ## 帰属
 
@@ -58,7 +58,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

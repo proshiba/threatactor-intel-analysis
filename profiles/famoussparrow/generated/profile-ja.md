@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--famoussparrow`
 - 状態: draft
-- 更新日時: 2026-09-20T07:53:26Z
+- 更新日時: 2026-09-20T10:03:33Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,6 +50,37 @@ ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage 
 | Victim |  |
 | Socio-political |  |
 
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: なし
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | Salt Typhoon, GhostEmperor | canonical-name | 高 | China | https://securelist.com/ghostemperor-from-proxylogon-to-kernel-mode/104407/<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2021/09/30094337/GhostEmperor_technical-details_PDF_eng.pdf<br>https://www.trendmicro.com/en_us/research/24/k/breaking-down-earth-estries-persistent-ttps-in-prolonged-cyber-o.html |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Salt Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | GhostEmperor | canonical-name | 高 | CN | https://securelist.com/ghostemperor-from-proxylogon-to-kernel-mode/104407/<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2021/09/30094337/GhostEmperor_technical-details_PDF_eng.pdf<br>https://www.welivesecurity.com/2021/09/23/famoussparrow-suspicious-hotel-guest/ |
+| misp-microsoft-activity-group | Salt Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+| 対象 | 関係 | データセット | 確度 | 評価 |
+|---|---|---|---|---|
+| Earth Estries | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
+
 ## Capability
 
 ### マルウェア
@@ -96,15 +127,48 @@ ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage 
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アルゼンチン | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
+| countries | アフガニスタン | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アルゼンチン | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--target-audit-etda-threat-group-cards` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | エクアドル | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
-| countries | グアテマラ | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
+| countries | エジプト | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エスワティニ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエスワティニが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | エチオピア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエチオピアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | オランダ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カナダ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | グアテマラ | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | バングラデシュ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | パナマ | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | フランス | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブラジル | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ブルキナファソ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてブルキナファソが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ベネズエラ | ESETは「we've seen the new backdoor deployed against governmental entities in Argentina, Ecuador, Guatemala, Honduras, Panama, Peru, Puerto Rico, and Venezuela.」として8か国・地域の政府機関を挙げる。 | 不明 | 不明 | 高 | `source--eset-famoussparrow-sparrowocky-2026` |
 | countries | ペルー | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 | countries | ホンジュラス | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的・被害国として明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
-| regions | 中南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として中南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026` |
-| regions | 南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | メキシコ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてメキシコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | リトアニア | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 南アフリカ | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 台湾 | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | アフリカ | エジプト、エスワティニ、エチオピア、ブルキナファソ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 中南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として中南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 中東 | イスラエル、サウジアラビアで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | アフガニスタン、インド、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 南米 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的地域として南米が明示されている。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741`, `source--eset-famoussparrow-sparrowocky-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 欧州 | オランダ、ドイツ、フランス、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 政府・行政 | 活動「SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド」の記述で標的として明示された産業。 | 2025-08 | 2026-06-17 | 中 | `source--daily-7e7db1cf1c7586215c8d`, `source--daily-8ad4c8f610ba00d8b741` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
@@ -157,6 +221,11 @@ ESETは2026-09-17の報告で「FamousSparrow is a China-aligned cyberespionage 
 | source--eset-famoussparrow-2021 | FamousSparrow: A suspicious hotel guest | ESET Research | 2021-09-23 | https://www.welivesecurity.com/2021/09/23/famoussparrow-suspicious-hotel-guest/ | vendor-research | TLP:CLEAR | 高 |
 | source--eset-famoussparrow-sparrowdoor-2025 | You will always remember this as the day you finally caught FamousSparrow | ESET Research | 2025-03-26 | https://www.welivesecurity.com/en/eset-research/you-will-always-remember-this-as-the-day-you-finally-caught-famoussparrow/ | vendor-research | TLP:CLEAR | 高 |
 | source--eset-famoussparrow-sparrowocky-2026 | Beware the SparroWock: The backdoor that bites, the commands that catch | ESET Research | 2026-09-17 | https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/ | vendor-research | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 
 ## 自由記述
 

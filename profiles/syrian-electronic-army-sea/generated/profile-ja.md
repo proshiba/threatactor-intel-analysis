@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--syrian-electronic-army-sea`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:28Z
+- 更新日時: 2026-09-20T10:03:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,8 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Deadeye Jackal | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| Deadeye Jackal | CrowdStrike | overlapping | 中 | `source--crowdstrike-sea-deadeye-jackal-2015` | CrowdStrike's 2015 report states that it tracked the Syrian Electronic Army as DEADEYE JACKAL. Scope remains overlapping because the vendor tracking boundary may not be identical to the public SEA label. |
+| Deadeye Hawk | CrowdStrike | overlapping | 中 | `source--syrian-electronic-army-sea--bfcd17832a028098` | CrowdStrike's 2023 report renamed its Syria-nexus adversary from DEADEYE JACKAL to DEADEYE HAWK. This is retained as a scoped rename rather than an exact identity assertion. |
 
 ## 帰属
 
@@ -50,7 +51,7 @@ Syrian Electronic Army (SEA)の標準化プロファイル。リポジトリ内�
 ## OSINTクロスチェック
 
 - 判定: `possible-match`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -161,6 +162,7 @@ TTPなし
 | source--syrian-electronic-army-sea--2a175decc9b12af7 | syrian electronic army sea |  | 不明 | actor_profile/evidence/syrian-electronic-army-sea.csv | structured-data | TLP:CLEAR | 中 |
 | source--syrian-electronic-army-sea--b3473908897c477a | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--syrian-electronic-army-sea--bfcd17832a028098 | CrowdStrike2023GlobalThreatReport |  | 2023 | summary/2023/CrowdStrike2023GlobalThreatReport.pdf | report | TLP:CLEAR | 中 |
+| source--crowdstrike-sea-deadeye-jackal-2015 | CrowdStrike 2015 Global Threat Report Executive Summary | CrowdStrike | 2015 | https://www.crowdstrike.com/wp-content/uploads/Global_Threat_Report-2015/Exec-Summary/crowdStrike-2015-threat-report-exec-summary.pdf | vendor-threat-research | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 

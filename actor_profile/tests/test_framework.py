@@ -14,8 +14,17 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from common import normalize_observable, normalize_time, refang  # noqa: E402
-from bootstrap_all_profiles import alias_source_metadata, derive_actor_types, derive_motivations  # noqa: E402
-from materialize_actor_census import actor_types as census_actor_types, identity_curation_rule  # noqa: E402
+from bootstrap_all_profiles import (  # noqa: E402
+    alias_source_metadata,
+    derive_actor_types,
+    derive_motivations,
+    normalized_name,
+)
+from materialize_actor_census import (  # noqa: E402
+    actor_types as census_actor_types,
+    identity_curation_rule,
+    normalized_unique_names,
+)
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
@@ -365,6 +374,14 @@ class GenerationGuardrailTests(unittest.TestCase):
         )
         self.assertEqual(identity_curation_rule(curation, "REvil")["action"], "exclude")
 
+    def test_census_aliases_are_deduplicated_after_normalization(self) -> None:
+        self.assertEqual(
+            normalized_unique_names(
+                ["DNSCALC", "DNSCalc", "RoyalAPT", "Royal APT", "GREF"]
+            ),
+            ["DNSCALC", "RoyalAPT", "GREF"],
+        )
+
     def test_catalog_alias_does_not_inherit_mitre_evidence(self) -> None:
         group = {"aliases": ["Hecamede"]}
         self.assertEqual(
@@ -436,11 +453,39 @@ class CollectionTests(unittest.TestCase):
         )
         slugs = [actor["slug"] for actor in catalog["actors"]]
         self.assertEqual(len(slugs), len(set(slugs)))
+        active_profile_slugs = {
+            path.parent.name
+            for path in (root / "profiles").glob("*/actor-profile.json")
+            if json.loads(path.read_text(encoding="utf-8"))["status"]
+            != "deprecated"
+        }
+        self.assertEqual(
+            set(slugs),
+            active_profile_slugs,
+            "The catalog must include every active profile and exclude deprecated tombstones.",
+        )
         for actor in catalog["actors"]:
+            normalized_catalog_aliases = [
+                normalized_name(alias) for alias in actor.get("aliases", [])
+            ]
+            self.assertEqual(
+                len(normalized_catalog_aliases),
+                len(set(normalized_catalog_aliases)),
+                f"normalized duplicate catalog alias: {actor['slug']}",
+            )
             profile_path = root / "profiles" / actor["slug"] / "actor-profile.json"
             self.assertTrue(profile_path.is_file(), actor["slug"])
             profile = json.loads(profile_path.read_text(encoding="utf-8"))
             self.assertEqual(profile["profile_id"], f"actor--{actor['slug']}")
+            normalized_profile_aliases = [
+                normalized_name(alias["name"])
+                for alias in profile["actor"]["aliases"]
+            ]
+            self.assertEqual(
+                len(normalized_profile_aliases),
+                len(set(normalized_profile_aliases)),
+                f"normalized duplicate profile alias: {actor['slug']}",
+            )
             self.assertFalse(
                 any(
                     alias["name"].lower().startswith(("http://", "https://"))

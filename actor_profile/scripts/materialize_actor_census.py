@@ -33,6 +33,19 @@ COUNTRY_ORIGINS = {
 }
 
 
+def normalized_unique_names(names: list[str]) -> list[str]:
+    """Deduplicate display variants while preserving the first sourced spelling."""
+    result: list[str] = []
+    seen: set[str] = set()
+    for name in names:
+        key = normalized_name(name)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        result.append(name)
+    return result
+
+
 def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
     preferred = next((item for item in items if item.get("mitre_group_id")), items[0])
     result = {
@@ -45,7 +58,8 @@ def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
         "mentions": [],
     }
     seen_mentions: set[str] = set()
-    for item in items:
+    ordered_items = [preferred, *(item for item in items if item is not preferred)]
+    for item in ordered_items:
         result["actor_ids"].append(item["actor_id"])
         result["aliases"].extend(item.get("aliases", []))
         result["origins"].extend(item.get("origins", []))
@@ -55,8 +69,9 @@ def merge_identity_group(items: list[dict[str, Any]]) -> dict[str, Any]:
             if key not in seen_mentions:
                 seen_mentions.add(key)
                 result["mentions"].append(mention)
-    for key in ("actor_ids", "aliases", "origins"):
+    for key in ("actor_ids", "origins"):
         result[key] = list(dict.fromkeys(result[key]))
+    result["aliases"] = normalized_unique_names(result["aliases"])
     result["reference_evidence"] = list(
         {
             json.dumps(item, sort_keys=True, ensure_ascii=False): item
@@ -271,13 +286,13 @@ def main() -> int:
         original_sources = sorted(
             {mention["source_path"] for mention in item["mentions"]}
         )
-        aliases = [
+        aliases = normalized_unique_names([
             alias
             for alias in item["aliases"]
             if normalized_name(alias) != normalized_name(original_canonical_name)
-        ]
+        ])
         if "aliases" in rule:
-            aliases = list(rule["aliases"])
+            aliases = normalized_unique_names(list(rule["aliases"]))
         elif canonical_name != original_canonical_name:
             aliases = list(dict.fromkeys([original_canonical_name, *aliases]))
         entry = {

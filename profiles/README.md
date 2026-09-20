@@ -1,18 +1,18 @@
 # Threat Actor Profile Collection
 
-Generated: 2026-09-20T08:59:26Z
+Generated: 2026-09-20T10:05:36Z
 
 同一スキーマで作成したアクター／脅威クラスターの一覧です。各ディレクトリの`actor-profile.json`が正規データで、MarkdownとSTIXは生成物です。
 
 ## 集計
 
-- プロファイル: 669
-- 処理資料: 962
-- IOC: 13909（観測イベント: 16248）
-- 非IOC artifact観測: 16920
-- Alias: 689
-- マルウェア／ツール: 1876
-- TTP: 6111
+- プロファイル: 680
+- 処理資料: 973
+- IOC: 14161（観測イベント: 16500）
+- 非IOC artifact観測: 16971
+- Alias: 691
+- マルウェア／ツール: 1937
+- TTP: 6232
 - 検証エラー: 0
 
 警告は主に、資料に観測日がない、または自動抽出値がcandidateであることを示します。不明値を推測で埋めず、レビュー対象として保持しています。
@@ -73,7 +73,7 @@ Generated: 2026-09-20T08:59:26Z
 | [apt69](apt69/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 5 |
 | [APT73](apt73/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 5 |
 | [Aquatic Panda](aquatic-panda/generated/profile-ja.md) | 1 | 0 | 6 | 35 | 0 | 0 | 8 | 0 | 17 |
-| [Arid Viper](arid-viper/generated/profile-ja.md) | 2 | 7 | 1 | 0 | 140 | 148 | 4 | 0 | 159 |
+| [Arid Viper](arid-viper/generated/profile-ja.md) | 2 | 7 | 1 | 0 | 140 | 148 | 4 | 0 | 158 |
 | [AVIVORE](avivore/generated/profile-ja.md) | 1 | 0 | 3 | 0 | 0 | 0 | 9 | 0 | 19 |
 | [Awaken Likho](awaken-likho/generated/profile-ja.md) | 0 | 1 | 5 | 9 | 0 | 0 | 0 | 0 | 0 |
 | [Axiom](axiom/generated/profile-ja.md) | 1 | 6 | 14 | 16 | 2 | 2 | 32 | 0 | 64 |
@@ -94,6 +94,7 @@ Generated: 2026-09-20T08:59:26Z
 | [BlueHornet](bluehornet/generated/profile-ja.md) | 1 | 2 | 0 | 0 | 0 | 0 | 12 | 0 | 25 |
 | [Bohrium](bohrium/generated/profile-ja.md) | 1 | 1 | 0 | 0 | 0 | 0 | 18 | 0 | 37 |
 | [Boson Spider](boson-spider/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 1 | 1 | 6 | 0 | 12 |
+| [BREEZE COMET](breeze-comet/generated/profile-ja.md) | 0 | 3 | 7 | 1 | 0 | 0 | 0 | 0 | 0 |
 | [Buhtrap](buhtrap/generated/profile-ja.md) | 1 | 0 | 6 | 0 | 3 | 3 | 0 | 0 | 7 |
 | [Callisto Group](callisto/generated/profile-ja.md) | 4 | 4 | 1 | 25 | 79 | 98 | 1 | 0 | 104 |
 | [Calypso](calypso/generated/profile-ja.md) | 1 | 2 | 0 | 3 | 1 | 1 | 55 | 0 | 111 |
@@ -159,7 +160,7 @@ Generated: 2026-09-20T08:59:26Z
 | [DragonSpark](dragonspark/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 15 |
 | [Dungeon Spider](dungeon-spider/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 17 | 0 | 35 |
 | [Dust Storm](dust-storm/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 13 | 0 | 27 |
-| [Earth Berberoka](earth-berberoka/generated/profile-ja.md) | 1 | 2 | 0 | 5 | 1 | 1 | 12 | 0 | 26 |
+| [Earth Berberoka](earth-berberoka/generated/profile-ja.md) | 1 | 1 | 0 | 5 | 1 | 1 | 12 | 0 | 26 |
 | [Earth Lusca](earth-lusca/generated/profile-ja.md) | 2 | 4 | 10 | 46 | 18 | 18 | 103 | 0 | 197 |
 | [Earth Yako](earth-yako/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 2 |
 | [Elderwood](elderwood/generated/profile-ja.md) | 1 | 5 | 10 | 9 | 0 | 0 | 25 | 0 | 49 |
@@ -176,6 +177,7 @@ Generated: 2026-09-20T08:59:26Z
 | [EXOTIC LILY](exotic-lily/generated/profile-ja.md) | 1 | 0 | 2 | 15 | 0 | 0 | 3 | 0 | 7 |
 | [Extreme Jackal](extreme-jackal/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 1 | 1 | 15 | 0 | 29 |
 | [Famous Chollima](famous-chollima/generated/profile-ja.md) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| [FamousSparrow](famoussparrow/generated/profile-ja.md) | 1 | 0 | 1 | 2 | 23 | 23 | 0 | 0 | 0 |
 | [Ferocious Kitten](ferocious-kitten/generated/profile-ja.md) | 1 | 0 | 2 | 6 | 0 | 0 | 8 | 0 | 12 |
 | [FIN10](fin10/generated/profile-ja.md) | 1 | 0 | 1 | 11 | 0 | 0 | 27 | 0 | 55 |
 | [FIN1125](fin1125/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
@@ -186,7 +188,7 @@ Generated: 2026-09-20T08:59:26Z
 | [FIN7](fin7/generated/profile-ja.md) | 1 | 5 | 19 | 75 | 0 | 0 | 123 | 0 | 243 |
 | [FIN8](fin8/generated/profile-ja.md) | 1 | 1 | 14 | 37 | 0 | 0 | 38 | 0 | 68 |
 | [FIN9](fin9/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
-| [Fox Kitten](fox-kitten/generated/profile-ja.md) | 1 | 7 | 18 | 41 | 5 | 5 | 77 | 0 | 156 |
+| [Fox Kitten](fox-kitten/generated/profile-ja.md) | 1 | 5 | 18 | 41 | 5 | 5 | 77 | 0 | 156 |
 | [Foxy Panda](foxy-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 11 |
 | [Frankenstein](frankenstein/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [FruityArmor](fruityarmor/generated/profile-ja.md) | 1 | 0 | 4 | 0 | 0 | 0 | 27 | 0 | 50 |
@@ -203,6 +205,7 @@ Generated: 2026-09-20T08:59:26Z
 | [Ghoul](ghoul/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 16 | 0 | 33 |
 | [Gibberish Panda](gibberish-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 5 |
 | [Goblin Panda](goblin-panda/generated/profile-ja.md) | 1 | 6 | 8 | 1 | 0 | 0 | 43 | 0 | 82 |
+| [GOFFEE](goffee/generated/profile-ja.md) | 3 | 1 | 13 | 41 | 71 | 71 | 30 | 0 | 24 |
 | [Gold lowell](gold-lowell/generated/profile-ja.md) | 1 | 1 | 1 | 0 | 0 | 0 | 22 | 0 | 45 |
 | [GOLD SOUTHFIELD](gold-southfield/generated/profile-ja.md) | 1 | 1 | 3 | 9 | 0 | 0 | 29 | 0 | 59 |
 | [Golden Chickens](golden-chickens/generated/profile-ja.md) | 1 | 0 | 0 | 2 | 0 | 0 | 12 | 0 | 26 |
@@ -213,6 +216,7 @@ Generated: 2026-09-20T08:59:26Z
 | [Group 27](group-27/generated/profile-ja.md) | 1 | 0 | 4 | 0 | 0 | 0 | 18 | 0 | 34 |
 | [Group5](group5/generated/profile-ja.md) | 1 | 0 | 2 | 4 | 0 | 0 | 22 | 0 | 42 |
 | [GRU GTsST (Main Center for Special Technology)](gru-gtsst-main-center-for-special-technology/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 1 | 1 | 1 | 0 | 3 |
+| [Gunra](gunra/generated/profile-ja.md) | 0 | 1 | 11 | 35 | 0 | 0 | 0 | 0 | 13 |
 | [HAFNIUM](hafnium/generated/profile-ja.md) | 1 | 3 | 10 | 44 | 0 | 0 | 34 | 0 | 56 |
 | [Hammer Panda](hammer-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 7 | 0 | 15 |
 | [Head Mare](head-mare/generated/profile-ja.md) | 1 | 0 | 9 | 12 | 35 | 35 | 0 | 0 | 0 |
@@ -233,9 +237,10 @@ Generated: 2026-09-20T08:59:26Z
 | [InvisiMole](invisimole/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 1 | 1 | 38 | 0 | 70 |
 | [IronHusky](ironhusky/generated/profile-ja.md) | 1 | 0 | 2 | 2 | 0 | 0 | 8 | 0 | 18 |
 | [ItaDuke](itaduke/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
+| [Jewelbug](jewelbug/generated/profile-ja.md) | 1 | 3 | 4 | 13 | 52 | 52 | 0 | 0 | 65 |
 | [Judgement Panda](judgement-panda/generated/profile-ja.md) | 1 | 0 | 2 | 0 | 0 | 0 | 4 | 0 | 9 |
 | [Karakurt](karakurt/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 16 | 0 | 33 |
-| [Ke3chang](ke3chang/generated/profile-ja.md) | 1 | 16 | 27 | 50 | 2 | 2 | 108 | 0 | 217 |
+| [Ke3chang](ke3chang/generated/profile-ja.md) | 1 | 10 | 27 | 50 | 2 | 2 | 108 | 0 | 217 |
 | [Keksec](keksec/generated/profile-ja.md) | 1 | 3 | 1 | 0 | 1 | 2 | 24 | 0 | 52 |
 | [Kimsuky](kimsuky/generated/profile-ja.md) | 28 | 7 | 10 | 53 | 1091 | 1357 | 871 | 0 | 2464 |
 | [Konni](konni/generated/profile-ja.md) | 7 | 0 | 0 | 38 | 169 | 252 | 289 | 0 | 849 |
@@ -309,6 +314,7 @@ Generated: 2026-09-20T08:59:26Z
 | [Prince of Persia](prince-of-persia/generated/profile-ja.md) | 1 | 1 | 1 | 0 | 0 | 0 | 19 | 0 | 34 |
 | [Pumpkin Sandstorm](pumpkin-sandstorm/generated/profile-ja.md) | 1 | 2 | 0 | 0 | 0 | 0 | 31 | 0 | 60 |
 | [Putter Panda](putter-panda/generated/profile-ja.md) | 1 | 6 | 6 | 4 | 2 | 2 | 24 | 0 | 53 |
+| [QTFY](qtfy/generated/profile-ja.md) | 2 | 1 | 3 | 1 | 4 | 4 | 0 | 0 | 1 |
 | [Radio Panda](radio-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
 | [Rancor](rancor/generated/profile-ja.md) | 1 | 0 | 8 | 9 | 1 | 3 | 20 | 0 | 37 |
 | [RedAlpha](redalpha/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 8 | 0 | 15 |
@@ -322,7 +328,7 @@ Generated: 2026-09-20T08:59:26Z
 | [Sabre Panda](sabre-panda/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [Salt Typhoon](salt-typhoon/generated/profile-ja.md) | 1 | 0 | 1 | 16 | 0 | 0 | 40 | 0 | 82 |
 | [Sandcat](sandcat/generated/profile-ja.md) | 1 | 0 | 3 | 0 | 0 | 0 | 16 | 0 | 28 |
-| [Sandworm Team](sandworm/generated/profile-ja.md) | 15 | 11 | 28 | 163 | 420 | 593 | 183 | 0 | 1081 |
+| [Sandworm Team](sandworm/generated/profile-ja.md) | 15 | 11 | 28 | 163 | 420 | 593 | 183 | 0 | 1080 |
 | [Scarab](scarab/generated/profile-ja.md) | 1 | 0 | 3 | 0 | 1 | 1 | 7 | 0 | 17 |
 | [Scarlet Mimic](scarlet-mimic/generated/profile-ja.md) | 1 | 0 | 4 | 1 | 0 | 0 | 20 | 0 | 39 |
 | [Scattered Spider](scattered-spider/generated/profile-ja.md) | 1 | 4 | 11 | 97 | 0 | 0 | 128 | 0 | 260 |
@@ -411,7 +417,7 @@ Generated: 2026-09-20T08:59:26Z
 | [SunFlower](sunflower/generated/profile-ja.md) | 1 | 4 | 0 | 0 | 0 | 0 | 9 | 0 | 14 |
 | [Sunglow Blizzard](sunglow-blizzard/generated/profile-ja.md) | 1 | 1 | 0 | 0 | 0 | 0 | 2 | 0 | 5 |
 | [SVCMONDR](svcmondr/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 0 | 0 | 14 | 0 | 26 |
-| [Syrian Electronic Army (SEA)](syrian-electronic-army-sea/generated/profile-ja.md) | 1 | 1 | 2 | 0 | 0 | 0 | 8 | 0 | 17 |
+| [Syrian Electronic Army (SEA)](syrian-electronic-army-sea/generated/profile-ja.md) | 1 | 2 | 2 | 0 | 0 | 0 | 8 | 0 | 17 |
 | [TA2101](ta2101/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 0 | 0 | 10 | 0 | 20 |
 | [TA2541](ta2541/generated/profile-ja.md) | 1 | 0 | 9 | 28 | 0 | 0 | 7 | 0 | 15 |
 | [TA402](ta402/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 9 | 0 | 14 |
@@ -523,6 +529,7 @@ Generated: 2026-09-20T08:59:26Z
 | [UAC-0132](uac-0132/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [UAC-0133](uac-0133/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 1 | 1 | 4 | 0 | 11 |
 | [UAC-0142](uac-0142/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
+| [UAC-0145](uac-0145/generated/profile-ja.md) | 2 | 0 | 15 | 24 | 56 | 56 | 21 | 0 | 76 |
 | [UAC-0149](uac-0149/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [UAC-0150](uac-0150/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UAC-0165](uac-0165/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 4 | 0 | 9 |
@@ -638,19 +645,23 @@ Generated: 2026-09-20T08:59:26Z
 | [UNC5691](unc5691/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UNC577](unc577/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
 | [UNC5791](unc5791/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
+| [UNC5792](unc5792/generated/profile-ja.md) | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 | [UNC5812](unc5812/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UNC5820](unc5820/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 8 | 0 | 17 |
 | [UNC5923](unc5923/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
+| [UNC5976](unc5976/generated/profile-ja.md) | 1 | 0 | 1 | 0 | 3 | 3 | 0 | 0 | 3 |
 | [UNC6040](unc6040/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 6 | 0 | 13 |
 | [UNC6240](unc6240/generated/profile-ja.md) | 1 | 1 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [UNC6293](unc6293/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 2 | 2 | 3 | 0 | 8 |
 | [UNC638](unc638/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UNC6395](unc6395/generated/profile-ja.md) | 1 | 0 | 0 | 1 | 0 | 0 | 6 | 0 | 14 |
 | [UNC6485](unc6485/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| [UNC6508](unc6508/generated/profile-ja.md) | 0 | 0 | 1 | 2 | 0 | 0 | 0 | 0 | 0 |
 | [UNC6619](unc6619/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UNC666](unc666/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 3 | 0 | 7 |
 | [UNC6661](unc6661/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 5 | 0 | 11 |
 | [UNC6671](unc6671/generated/profile-ja.md) | 2 | 0 | 0 | 0 | 83 | 166 | 1 | 0 | 3 |
+| [UNC7005](unc7005/generated/profile-ja.md) | 1 | 1 | 4 | 2 | 43 | 43 | 0 | 0 | 47 |
 | [UnC718](unc718/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UNC785](unc785/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 3 |
 | [UNC786](unc786/generated/profile-ja.md) | 1 | 0 | 0 | 0 | 0 | 0 | 2 | 0 | 5 |

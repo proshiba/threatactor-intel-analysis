@@ -4,7 +4,7 @@
   "name": "Equation Group",
   "status": "draft",
   "created_at": "2026-07-25T09:00:34Z",
-  "updated_at": "2026-09-20T08:53:44Z",
+  "updated_at": "2026-09-20T10:03:33Z",
   "languages": [
     "ja"
   ],
@@ -23,7 +23,8 @@
       }
     ],
     "actor_types": [
-      "state-sponsored"
+      "espionage",
+      "threat-group"
     ],
     "first_seen": {
       "value": null,
@@ -39,7 +40,7 @@
     },
     "active": "unknown",
     "description": "[Equation](https://attack.mitre.org/groups/G0020) is a sophisticated threat group that employs multiple remote access tools. The group is known to use zero-day exploits and has developed the capability to overwrite the firmware of hard disk drives. (Citation: Kaspersky Equation QA)",
-    "analyst_notes": "2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific. 2026-09 workbook-alias migration: workbook-only aliases were removed because the source workbook is not retained in this repository. MITRE, catalog, and actor-specific aliases were kept. Future workbook ingestion uses explicit actor-name columns only."
+    "analyst_notes": "Kaspersky directly documents Equation Group's cyberespionage activity, but the reviewed source does not establish a specific sponsoring state. The former state-sponsored actor type was therefore removed rather than inferred from sophistication or geography. 2026-09 workbook-alias migration: workbook-only aliases were removed because the source workbook is not retained in this repository. MITRE, catalog, and actor-specific aliases were kept. Future workbook ingestion uses explicit actor-name columns only."
   },
   "attribution": {
     "countries": [],
@@ -50,7 +51,17 @@
     "evidence_refs": [],
     "analyst_notes": ""
   },
-  "motivations": [],
+  "motivations": [
+    {
+      "type": "espionage",
+      "description": "Kaspersky identifies EquationDrug as one of the main espionage platforms used by Equation Group and describes the group's computer-network-exploitation operations.",
+      "confidence": "high",
+      "evidence_refs": [
+        "source--kaspersky-equationdrug-2015"
+      ],
+      "analyst_notes": "This supports the espionage classification, but it is not used to infer a specific sponsoring government."
+    }
+  ],
   "relationships": [],
   "diamond_model": {
     "adversary": "[Equation](https://attack.mitre.org/groups/G0020) is a sophisticated threat group that employs multiple remote access tools. The group is known to use zero-day exploits and has developed the capability to overwrite the firmware of hard disk drives. (Citation: Kaspersky Equation QA)",
@@ -2358,6 +2369,26 @@
       "analyst_notes": "Derived from the official MITRE attack-stix-data repository."
     },
     {
+      "source_id": "source--kaspersky-equationdrug-2015",
+      "path": "https://securelist.com/inside-the-equationdrug-espionage-platform/69203/",
+      "url": "https://securelist.com/inside-the-equationdrug-espionage-platform/69203/",
+      "title": "Inside the EquationDrug Espionage Platform",
+      "publisher": "Kaspersky GReAT",
+      "published_at": {
+        "value": "2015-03-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "accessed_at": "2026-09-20T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-technical-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "Actor-specific primary research used for the espionage classification; it does not establish a named sponsoring state."
+    },
+    {
       "source_id": "source--actor-mapping-workbook",
       "path": "APT Groups and Operations.xlsx",
       "title": "APT Groups and Operations",
@@ -2575,7 +2606,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: EquationGroup\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T08:53:28Z; result=matched.",
+    "collection_notes": "Catalog source roots: EquationGroup\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

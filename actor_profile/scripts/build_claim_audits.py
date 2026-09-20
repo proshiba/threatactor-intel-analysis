@@ -5,12 +5,26 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from bootstrap_all_profiles import normalized_name
+from bootstrap_all_profiles import (
+    STATE_SPONSORSHIP_MARKERS,
+    normalized_name,
+    text_contains_any,
+)
 from common import load_json, stable_digest, utc_now, write_json_atomic
+
+
+NON_NATION_STATE_CATEGORIES = {
+    "covert network",
+    "financially motivated",
+    "group in development",
+    "influence operations",
+    "private sector offensive actor",
+}
 
 
 def claim(
@@ -40,25 +54,209 @@ def claim(
 
 
 def evidence_tier(refs: list[str], source_by_id: dict[str, dict[str, Any]]) -> str:
-    types = {
-        source_by_id[ref].get("source_type", "")
-        for ref in refs
-        if ref in source_by_id
-    }
-    publishers = {
-        source_by_id[ref].get("publisher", "")
-        for ref in refs
-        if ref in source_by_id
-    }
-    if any("government" in item or "legal" in item for item in types):
-        return "authoritative"
-    if "MITRE" in publishers or "MITRE ATT&CK" in publishers:
-        return "knowledge-base"
-    if any(item in {"vendor-research", "report"} for item in types):
-        return "research"
-    if refs:
+    if not refs:
+        return "none"
+
+    def source_tier(source: dict[str, Any]) -> str:
+        source_type = source.get("source_type", "")
+        publisher = source.get("publisher", "")
+        # Aggregations stay leads even when a government body publishes them
+        # or their publisher string mentions an upstream knowledge base.
+        if any(
+            marker in source_type
+            for marker in ("aggregation", "mapping", "encyclopedia")
+        ):
+            return "aggregation"
+        if any(
+            marker in source_type
+            for marker in ("government", "legal", "law-enforcement", "cert")
+        ):
+            return "authoritative"
+        if "knowledge-base" in source_type or publisher in {
+            "MITRE",
+            "MITRE ATT&CK",
+        }:
+            return "knowledge-base"
+        if (
+            source_type == "report"
+            or source_type
+            in {"actor-specific-investigation", "primary-report", "technical-report"}
+            or any(
+                marker in source_type for marker in ("vendor-", "-research")
+            )
+        ):
+            return "research"
         return "repository"
-    return "none"
+
+    rank = {
+        "repository": 0,
+        "aggregation": 1,
+        "research": 2,
+        "knowledge-base": 3,
+        "authoritative": 4,
+    }
+    tiers = [source_tier(source_by_id.get(ref, {})) for ref in refs]
+    return max(tiers, key=rank.__getitem__)
+
+
+def verification_from_refs(
+    refs: list[str], source_by_id: dict[str, dict[str, Any]]
+) -> tuple[str, str]:
+    tier = evidence_tier(refs, source_by_id)
+    if tier in {"authoritative", "knowledge-base", "research"}:
+        return "supported", tier
+    if refs:
+        return "partially-supported", tier
+    return "unresolved", tier
+
+
+def microsoft_nation_state_match(
+    profile: dict[str, Any], mapping: list[dict[str, Any]]
+) -> dict[str, Any] | None:
+    """Return an exact-name Microsoft nation-state taxonomy match.
+
+    The mapping's country field is usable here only because Microsoft's source
+    explicitly defines country-labelled entries as the nation-state actor
+    category. Generic country/origin fields remain insufficient evidence.
+    """
+    exact_names = {
+        normalized_name(profile["name"]),
+        normalized_name(profile["actor"]["canonical_name"]),
+        *(
+            normalized_name(alias["name"])
+            for alias in profile["actor"].get("aliases", [])
+            if alias.get("scope") == "exact"
+        ),
+    }
+    for row in mapping:
+        row_names = [row.get("Threat actor name", "")]
+        row_names.extend(
+            item.strip()
+            for item in re.split(r"[,;]", row.get("Other names", ""))
+            if item.strip()
+        )
+        if not exact_names.intersection(
+            normalized_name(name) for name in row_names if name
+        ):
+            continue
+        category = row.get("Origin/Threat", "").strip()
+        category_folded = category.casefold()
+        if not category or any(
+            marker in category_folded for marker in NON_NATION_STATE_CATEGORIES
+        ):
+            continue
+        return row
+    return None
+
+
+def actor_type_support(
+    actor_type: str,
+    profile: dict[str, Any],
+    catalog_actor: dict[str, Any],
+    source_by_id: dict[str, dict[str, Any]],
+    attack_groups: dict[str, dict[str, Any]],
+    microsoft_mapping: list[dict[str, Any]],
+) -> tuple[str, str, list[str], str]:
+    """Return verification metadata for a profile-level actor type."""
+    attribution = profile.get("attribution", {})
+    attribution_refs = attribution.get("evidence_refs", [])
+    mitre_refs = [
+        source_id
+        for source_id, source in source_by_id.items()
+        if source.get("publisher") in {"MITRE", "MITRE ATT&CK"}
+        or "attack-index.json" in (source.get("path") or "")
+    ]
+    mitre_group = attack_groups.get(catalog_actor.get("mitre_group_id", ""), {})
+
+    if actor_type == "state-sponsored":
+        if attribution.get("sponsor_type") == "state" and attribution_refs:
+            status, tier = verification_from_refs(attribution_refs, source_by_id)
+            return status, attribution.get("confidence", "unknown"), attribution_refs, (
+                f"Structured sponsor_type=state; evidence tier={tier}."
+            )
+        if text_contains_any(
+            mitre_group.get("description", ""), STATE_SPONSORSHIP_MARKERS
+        ):
+            return (
+                "supported",
+                "high",
+                mitre_refs,
+                "The actor-specific MITRE ATT&CK description explicitly states state sponsorship.",
+            )
+        microsoft_match = microsoft_nation_state_match(profile, microsoft_mapping)
+        microsoft_ref = "source--osint-microsoft-threat-actor-mapping"
+        if microsoft_match and microsoft_ref in source_by_id:
+            return (
+                "supported",
+                "high",
+                [microsoft_ref],
+                "Microsoft places the exact actor name in its nation-state taxonomy "
+                f"(category={microsoft_match['Origin/Threat']}); this is not inferred "
+                "from generic geography.",
+            )
+        if attribution.get("sponsor_type") == "state-aligned" and attribution_refs:
+            return (
+                "partially-supported",
+                attribution.get("confidence", "unknown"),
+                attribution_refs,
+                "The structured assessment supports state alignment but not the stronger state-sponsored label.",
+            )
+        return (
+            "unresolved",
+            "unknown",
+            [],
+            "No actor-specific sponsorship evidence was linked to this actor type.",
+        )
+
+    motivation_type = {
+        "financially-motivated": "financial-gain",
+        "espionage": "espionage",
+        "hacktivist": "ideological",
+        "hacktivist-collective": "ideological",
+    }.get(actor_type)
+    refs: list[str] = []
+    confidences: list[str] = []
+    if motivation_type:
+        for item in profile.get("motivations", []):
+            if item.get("type") == motivation_type:
+                refs.extend(item.get("evidence_refs", []))
+                confidences.append(item.get("confidence", "unknown"))
+    if actor_type == "private-sector-offensive" and attribution.get(
+        "sponsor_type"
+    ) == "private-sector-offensive":
+        refs.extend(attribution_refs)
+        confidences.append(attribution.get("confidence", "unknown"))
+    if actor_type in {"cybercrime", "business-email-compromise"} and attribution.get(
+        "sponsor_type"
+    ) == "criminal":
+        refs.extend(attribution_refs)
+        confidences.append(attribution.get("confidence", "unknown"))
+    if actor_type in {"threat-cluster", "threat-group"} and catalog_actor.get(
+        "mitre_group_id"
+    ):
+        refs.extend(mitre_refs)
+        confidences.append("high")
+    refs = sorted(set(refs))
+    if not refs and actor_type in {"threat-cluster", "threat-group"}:
+        for section in (
+            profile.get("motivations", []),
+            profile.get("activities", []),
+            profile.get("assessment", {}).get("key_judgments", []),
+        ):
+            for item in section:
+                candidate_refs = item.get("evidence_refs", [])
+                if evidence_tier(candidate_refs, source_by_id) in {
+                    "authoritative",
+                    "knowledge-base",
+                    "research",
+                }:
+                    refs.extend(candidate_refs)
+            if refs:
+                break
+        refs = sorted(set(refs))[:5]
+    status, tier = verification_from_refs(refs, source_by_id)
+    confidence = "high" if "high" in confidences else "medium" if refs else "unknown"
+    return status, confidence, refs, f"Evidence tier={tier}; actor type is audited independently of geography."
 
 
 def main() -> int:
@@ -71,6 +269,18 @@ def main() -> int:
         "--output", type=Path, default=Path("profiles/claim-audit-summary.json")
     )
     parser.add_argument(
+        "--attack-index",
+        type=Path,
+        default=Path("actor_profile/reference/attack-index.json"),
+    )
+    parser.add_argument(
+        "--microsoft-mapping",
+        type=Path,
+        default=Path(
+            "actor_profile/reference/osint/microsoft-threat-actor-mapping.json"
+        ),
+    )
+    parser.add_argument(
         "--actor",
         action="append",
         default=[],
@@ -78,6 +288,8 @@ def main() -> int:
     )
     args = parser.parse_args()
     catalog = load_json(args.catalog)
+    attack_groups = load_json(args.attack_index).get("groups", {})
+    microsoft_mapping = load_json(args.microsoft_mapping)
     profiles_root = args.profiles_root.resolve()
     collection_counts: Counter[str] = Counter()
     actors: list[dict[str, Any]] = []
@@ -108,7 +320,7 @@ def main() -> int:
             source_id
             for source_id, source in source_by_id.items()
             if source.get("publisher") in {"MITRE", "MITRE ATT&CK"}
-            or "attack-index.json" in source.get("path", "")
+            or "attack-index.json" in (source.get("path") or "")
         ]
         canonical_status = "supported" if actor.get("mitre_group_id") else "unresolved"
         claims.append(
@@ -127,6 +339,27 @@ def main() -> int:
                 ),
             )
         )
+        for actor_type in profile["actor"].get("actor_types", []):
+            status, confidence, refs, rationale = actor_type_support(
+                actor_type,
+                profile,
+                actor,
+                source_by_id,
+                attack_groups,
+                microsoft_mapping,
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "actor-type",
+                    actor_type,
+                    f"{profile['name']} is classified as {actor_type}.",
+                    status,
+                    confidence,
+                    refs,
+                    rationale,
+                )
+            )
         if crosscheck:
             assessment = crosscheck.get("overall_assessment", "no-match")
             matched_dataset_ids = sorted(
@@ -197,20 +430,50 @@ def main() -> int:
         refs = attribution.get("evidence_refs", [])
         if attribution.get("countries"):
             tier = evidence_tier(refs, source_by_id)
+            attribution_status, _ = verification_from_refs(refs, source_by_id)
             claims.append(
                 claim(
                     slug,
                     "attribution",
                     "countries",
                     f"Attributed country or countries: {', '.join(attribution['countries'])}.",
-                    (
-                        "supported"
-                        if tier in {"authoritative", "knowledge-base", "research"}
-                        else "partially-supported"
-                    ),
+                    attribution_status,
                     attribution.get("confidence", "unknown"),
                     refs,
                     f"Evidence tier={tier}. Community workbook-only attribution requires independent corroboration.",
+                )
+            )
+        if attribution.get("sponsor_type") != "unknown":
+            sponsor_status, sponsor_tier = verification_from_refs(
+                attribution.get("evidence_refs", []), source_by_id
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "attribution",
+                    "sponsor-type",
+                    f"Sponsor classification: {attribution['sponsor_type']}.",
+                    sponsor_status,
+                    attribution.get("confidence", "unknown"),
+                    attribution.get("evidence_refs", []),
+                    f"Evidence tier={sponsor_tier}; sponsor classification is audited separately from country labels.",
+                )
+            )
+        for organization in attribution.get("organizations", []):
+            organization_refs = organization.get("evidence_refs", [])
+            organization_status, organization_tier = verification_from_refs(
+                organization_refs, source_by_id
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "attribution-organization",
+                    organization["id"],
+                    f"{profile['name']} has relationship {organization['relationship']} with {organization['name']}.",
+                    organization_status,
+                    organization.get("confidence", "unknown"),
+                    organization_refs,
+                    f"Evidence tier={organization_tier}; organization relationship is distinct from country attribution.",
                 )
             )
         if "Supersedes the workbook-only China attribution" in attribution.get(
@@ -232,6 +495,23 @@ def main() -> int:
                     counterevidence=[
                         "The former assessment was inferred from workbook worksheet placement."
                     ],
+                )
+            )
+        for motivation in profile.get("motivations", []):
+            motivation_refs = motivation.get("evidence_refs", [])
+            motivation_status, motivation_tier = verification_from_refs(
+                motivation_refs, source_by_id
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "motivation",
+                    motivation["type"],
+                    f"{profile['name']} has motivation {motivation['type']}: {motivation['description']}",
+                    motivation_status,
+                    motivation.get("confidence", "unknown"),
+                    motivation_refs,
+                    f"Evidence tier={motivation_tier}; motivation is not inferred from sponsorship.",
                 )
             )
         for relationship in profile.get("relationships", []):
@@ -266,35 +546,119 @@ def main() -> int:
                     counterevidence=[notes] if "counterevidence=" in notes else [],
                 )
             )
-        for field in ("malware", "tools", "infrastructure"):
+        for field in (
+            "malware",
+            "tools",
+            "infrastructure",
+            "delivery_formats",
+            "vulnerabilities",
+            "operational_capabilities",
+        ):
             for item in profile.get("capabilities", {}).get(field, []):
                 refs = item.get("evidence_refs", [])
                 tier = evidence_tier(refs, source_by_id)
+                capability_status, _ = verification_from_refs(refs, source_by_id)
                 claims.append(
                     claim(
                         slug,
                         f"capability-{field}",
                         item["id"],
                         f"{profile['name']} uses or has used {item['name']}.",
-                        "supported" if tier in {"authoritative", "knowledge-base", "research"} else "partially-supported",
+                        capability_status,
                         item.get("confidence", "unknown"),
                         refs,
                         f"Evidence tier={tier}.",
                     )
                 )
+        for activity in profile.get("activities", []):
+            activity_refs = activity.get("evidence_refs", [])
+            activity_status, activity_tier = verification_from_refs(
+                activity_refs, source_by_id
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "activity",
+                    activity["activity_id"],
+                    f"{profile['name']} conducted or is associated with {activity['name']}: {activity['description']}",
+                    activity_status,
+                    activity.get("confidence", "unknown"),
+                    activity_refs,
+                    f"Evidence tier={activity_tier}; observation dates remain separate from report dates.",
+                )
+            )
+        for victim_case in profile.get("victim_cases", []):
+            victim_refs = victim_case.get("evidence_refs", [])
+            victim_status, victim_tier = verification_from_refs(
+                victim_refs, source_by_id
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "victim-case",
+                    victim_case["victim_case_id"],
+                    f"{profile['name']} victim case {victim_case['victim_name']} has status {victim_case['case_status']}.",
+                    victim_status,
+                    victim_case.get("confidence", "unknown"),
+                    victim_refs,
+                    f"Evidence tier={victim_tier}; allegation and confirmation status are preserved.",
+                )
+            )
+        target_labels = {
+            "countries": "country",
+            "regions": "region",
+            "sectors": "sector",
+            "roles": "role",
+        }
+        for target_kind, target_label in target_labels.items():
+            for target in profile.get("targets", {}).get(target_kind, []):
+                target_refs = target.get("evidence_refs", [])
+                target_status, target_tier = verification_from_refs(
+                    target_refs, source_by_id
+                )
+                claims.append(
+                    claim(
+                        slug,
+                        f"target-{target_label}",
+                        target["id"],
+                        f"{profile['name']} targets {target_label} {target['name']}.",
+                        target_status,
+                        target.get("confidence", "unknown"),
+                        target_refs,
+                        f"Evidence tier={target_tier}; attribution and infrastructure geography are not targeting evidence.",
+                    )
+                )
         for item in profile.get("ttps", []):
             refs = item.get("evidence_refs", [])
             tier = evidence_tier(refs, source_by_id)
+            ttp_status, _ = verification_from_refs(refs, source_by_id)
             claims.append(
                 claim(
                     slug,
                     "ttp",
                     item["ttp_id"],
                     f"{profile['name']} exhibits {item['technique_id']} {item['technique_name']}.",
-                    "supported" if tier in {"authoritative", "knowledge-base", "research"} else "partially-supported",
+                    ttp_status,
                     item.get("confidence", "unknown"),
                     refs,
                     f"Evidence tier={tier}; activity-level context may still be incomplete.",
+                )
+            )
+        for judgment in profile.get("assessment", {}).get("key_judgments", []):
+            judgment_refs = judgment.get("evidence_refs", [])
+            judgment_status, judgment_tier = verification_from_refs(
+                judgment_refs, source_by_id
+            )
+            claims.append(
+                claim(
+                    slug,
+                    "assessment",
+                    stable_digest(judgment.get("statement", ""))[:16],
+                    judgment.get("statement", ""),
+                    judgment_status,
+                    judgment.get("confidence", "unknown"),
+                    judgment_refs,
+                    f"Evidence tier={judgment_tier}; analyst judgment remains distinct from source wording.",
                 )
             )
         status_counts = Counter(item["verification_status"] for item in claims)
@@ -322,6 +686,43 @@ def main() -> int:
                 "counts": dict(status_counts),
             }
         )
+    if not selected_slugs:
+        active_slugs = {actor["slug"] for actor in catalog_actors}
+        for profile_path in sorted(profiles_root.glob("*/actor-profile.json")):
+            slug = profile_path.parent.name
+            if slug in active_slugs:
+                continue
+            profile = load_json(profile_path)
+            if profile.get("status") != "deprecated":
+                continue
+            tombstone_claim = claim(
+                slug,
+                "lifecycle",
+                "deprecated-profile",
+                f"Legacy profile {profile['name']} is deprecated and must not be used as an active canonical actor.",
+                "superseded",
+                "high",
+                [],
+                profile.get("actor", {}).get("analyst_notes")
+                or "The profile is retained only as a stable legacy tombstone.",
+            )
+            write_json_atomic(
+                profile_path.parent / "claim-audit.json",
+                {
+                    "schema_version": "1.0.0",
+                    "actor_ref": profile["profile_id"],
+                    "generated_at": utc_now(),
+                    "status_values": [
+                        "supported",
+                        "partially-supported",
+                        "contradicted",
+                        "unresolved",
+                        "superseded",
+                    ],
+                    "counts": {"superseded": 1},
+                    "claims": [tombstone_claim],
+                },
+            )
     summary = {
         "schema_version": "1.0.0",
         "generated_at": utc_now(),

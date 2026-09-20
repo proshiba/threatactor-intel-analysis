@@ -108,6 +108,7 @@ COUNTRY_EQUIVALENTS = {
     "cn": "china",
     "china": "china",
     "prc": "china",
+    "中国": "china",
     "ru": "russia",
     "russia": "russia",
     "russianfederation": "russia",
@@ -170,6 +171,9 @@ def names_for_entry(entry: dict[str, Any]) -> list[str]:
 
 
 def country_key(value: str) -> str:
+    direct = value.strip().casefold()
+    if direct in COUNTRY_EQUIVALENTS:
+        return COUNTRY_EQUIVALENTS[direct]
     normalized = normalized_name(value)
     return COUNTRY_EQUIVALENTS.get(normalized, normalized)
 

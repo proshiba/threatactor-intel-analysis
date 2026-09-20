@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--jewelbug`
 - 状態: draft
-- 更新日時: 2026-08-25T22:34:54Z
+- 更新日時: 2026-09-20T10:03:34Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -51,6 +51,36 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 | Infrastructure | 侵害した国営通信事業者の共有Webメールホスティング、40台超のCMSサーバーと数百の類似ドメイン、Google Fontsを模したC&Cドメイン、C&CチャネルとしてのMicrosoft Graph API、Google Docs経由のペイロード配信。 |
 | Victim | 中東・東南アジア・南アジアの政府省庁、軍、国営通信事業者、警察。詐欺側では中国語話者の暗号資産利用者。 |
 | Socio-political | 政府・軍への諜報という国家的関心の対象と、中国語話者を狙う金銭目的の詐欺が、同一の運用者・同一の管理パネルで並行している。Symantecはこれをhack-for-hireの性格として整理している。 |
+
+## OSINTクロスチェック
+
+- 判定: `matched`
+- 調査日時: 2026-09-20T10:03:11Z
+- 国別メタデータ衝突: なし
+- 複数taxonomyスコープ: あり
+
+| データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
+|---|---|---|---|---|---|
+| etda-threat-group-cards | Earth Alux | single-alias-intersection | 中 | China | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Earth+Alux&n=1 |
+| cert-ua-uac-index | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| misp-threat-actor | REF7707 | canonical-name | 高 | CN | https://unit42.paloaltonetworks.com/advanced-backdoor-squidoor/<br>https://www.elastic.co/security-labs/fragile-web-ref7707<br>https://www.security.com/threat-intelligence/jewelbug-apt-russia |
+| misp-threat-actor | Earth Alux | single-alias-intersection | 中 | CN | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html |
+| misp-microsoft-activity-group | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-intrusion-set | 一致なし |  |  |  |  |
+| misp-360net | 一致なし |  |  |  |  |
+
+### 関係性候補（未統合）
+
+候補なし
+
+### クロスチェック上の制約
+
+- Exact normalized-name matching does not prove one-to-one actor identity.
+- MISP Galaxy is an aggregation layer; original references remain authoritative.
+- A no-match result means no exact match in the fixed datasets, not that the actor does not exist.
+- A Malpedia name match confirms catalogue presence only, not actor use.
 
 ## Capability
 
@@ -189,6 +219,7 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 
 - Earth Alux(Trend Micro, 2025-03-31)およびREF7707(Elastic, 2025-02-13)の観測期間・マルウェア群はSymantecがJewelbugとして報告した実装群と重ならないため、3者が同一クラスタであるかは未解決である。aliasのscopeはoverlappingとし、実績を相互に流用していない。
 - hack-for-hireという性格付けはSymantecの評価であり、顧客・発注関係を示す直接証拠は公開されていない。
+- Structured OSINT country metadata is disjoint from the profile attribution; see osint-crosscheck.json and retain both assessments pending original-source review.
 
 ## 出典
 
@@ -197,6 +228,8 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 | source--symantec-jewelbug-2026 | Jewelbug: Crypto Fraud and Espionage | Symantec Threat Hunter Team | 2026-08-13 | https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage | vendor-research-report | TLP:CLEAR | 高 |
 | source--trendmicro-earth-alux-2025 | The Espionage Toolkit of Earth Alux: A Closer Look at its Advanced Techniques | Trend Micro | 2025-03-31 | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html | vendor-research-report | TLP:CLEAR | 高 |
 | source--elastic-ref7707-2025 | From South America to Southeast Asia: The Fragile Web of REF7707 | Elastic Security Labs | 2025-02-13 | https://www.elastic.co/security-labs/fragile-web-ref7707 | vendor-research-report | TLP:CLEAR | 高 |
+| source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

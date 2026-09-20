@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--zirconium`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:46Z
+- 更新日時: 2026-09-20T10:03:35Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,7 +19,7 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | APT31 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Violet Typhoon | MITRE ATT&CK / Microsoft | exact | 高 | `source--mitre-attack-19-1` | Curated merge into the canonical MITRE Group profile. |
+| Violet Typhoon | MITRE ATT&CK | exact | 高 | `source--mitre-attack-19-1` | Curated merge into the canonical MITRE Group profile. |
 
 ## 帰属
 
@@ -53,7 +53,7 @@ ZIRCONIUMの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
       "created": "2026-09-20T07:17:21Z",
-      "modified": "2026-09-20T07:40:49Z",
+      "modified": "2026-09-20T10:03:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -32,6 +32,7 @@
         }
       ],
       "x_profile_id": "actor--famoussparrow",
+      "x_profile_status": "draft",
       "x_alias_assessments": [],
       "x_attribution": {
         "countries": [
@@ -52,8 +53,234 @@
         "history": "2021年9月にESETが初報を公開し、ProxyLogon悪用によるホテル・政府・民間企業への攻撃を記述した。2022年以降は公開報告が途絶え活動停止とみられていたが、2024年7月にESETが米国の金融分野の業界団体で侵害を確認し、2025年3月の報告で未文書化のSparrowDoor 2版を公開した。2025年7月以降は標的をラテンアメリカへ集中させ、2025年8月から SparroWocky の展開を開始した。",
         "capability_details": "SparroWockyはC++製のモジュール型バックドアで、コマンド実行、PE実行、Beacon Object File(BOF)のロードと実行、TCPプロキシ、ファイル操作、情報収集、スクリーンショット取得、データ窃取に対応する。メモリ上の低レベル構造の操作と実行時のコードパッチにより検知回避を図り、オープンソースプロジェクトのコードを直接取り込む設計へ変化している。",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=アルゼンチン、エクアドル、グアテマラ、パナマ、ベネズエラ、ペルー、ホンジュラス。標的地域=中南米、南米。日本は確認時に個別国として保持する。\n\nSparroWockyの展開先として、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関が挙げられている。",
+        "targeting_details": "構造化ターゲット監査: 標的国=アフガニスタン、アルゼンチン、イスラエル、インド、インドネシア、エクアドル、エジプト、エスワティニ、エチオピア、オランダ、カナダ、グアテマラ、サウジアラビア、シンガポール、タイ、ドイツ、バングラデシュ、パキスタン、パナマ、フィリピン、フランス、ブラジル、ブルキナファソ、ベトナムほか10か国。標的地域=アフリカ、中南米、中東、北米、南アジア、南米、東南アジア、欧州。日本は確認時に個別国として保持する。\n\nSparroWockyの展開先として、アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関が挙げられている。",
         "additional_notes": ""
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--famoussparrow",
+        "actor_name": "FamousSparrow",
+        "searched_at": "2026-09-20T10:03:11Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "FamousSparrow"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [
+            {
+              "entry_uuid": "b88e37a4-1fc1-42da-bd72-6ad44758193f",
+              "entry_value": "Salt Typhoon, GhostEmperor",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "famoussparrow",
+                  "profile_value": "FamousSparrow",
+                  "dataset_value": "FamousSparrow"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Salt Typhoon, GhostEmperor",
+                "Salt Typhoon",
+                "GhostEmperor",
+                "UNC2286",
+                "FamousSparrow",
+                "Earth Estries",
+                "RedMike",
+                "Operator Panda"
+              ],
+              "countries": [
+                "China"
+              ],
+              "description": "(Kaspersky) GhostEmperor is a Chinese-speaking threat actor that has mostly focused on targets in Southeast Asia, including several government entities and telecom companies. The group stands out because it uses a formerly unknown Windows kernel-mode rootkit. Rootkits provide remote control access over the servers they target. Acting covertly, rootkits are notorious for hiding from investigators and security solutions. To bypass the Windows Driver Signature Enforcement mechanism, GhostEmperor uses a loading scheme involving a component of an open-source project named “Cheat Engine.” This advanced toolset is unique and Kaspersky researchers see no similarity to already known threat actors. Kaspersky experts have surmised that the toolset has been in use since at least July 2020.",
+              "refs": [
+                "https://securelist.com/ghostemperor-from-proxylogon-to-kernel-mode/104407/",
+                "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2021/09/30094337/GhostEmperor_technical-details_PDF_eng.pdf",
+                "https://www.trendmicro.com/en_us/research/24/k/breaking-down-earth-estries-persistent-ttps-in-prolonged-cyber-o.html",
+                "https://content.govdelivery.com/accounts/USDHSCISA/bulletins/3c1b400",
+                "https://www.politico.com/news/2024/11/06/chinese-hackers-american-cell-phones-00187873",
+                "https://therecord.media/us-agencies-confirm-china-telecom-hack-wiretaps",
+                "https://www.trendmicro.com/en_us/research/24/k/earth-estries.html",
+                "https://www.cisa.gov/resources-tools/resources/enhanced-visibility-and-hardening-guidance-communications-infrastructure",
+                "https://therecord.media/eight-telcos-breached-salt-typhoon-nsc",
+                "https://therecord.media/salt-typhoon-csrb-review",
+                "https://docs.fcc.gov/public/attachments/DOC-408945A1.pdf",
+                "https://www.tenable.com/blog/salt-typhoon-an-analysis-of-vulnerabilities-exploited-by-this-state-sponsored-actor",
+                "https://blog.talosintelligence.com/salt-typhoon-analysis/",
+                "https://www.darkreading.com/cyberattacks-data-breaches/salt-typhoon-wake-up-call-critical-infrastructure",
+                "https://www.darkreading.com/cyberattacks-data-breaches/what-should-us-do-salt-typhoon",
+                "https://www.bleepingcomputer.com/news/security/fbi-seeks-help-to-unmask-salt-typhoon-hackers-behind-telecom-breaches/",
+                "https://spycloud.com/blog/state-secrets-for-sale-chinese-hacking/",
+                "https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Salt+Typhoon%2C+GhostEmperor&n=1"
+              ],
+              "related": []
+            }
+          ],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [
+            {
+              "entry_uuid": "microsoft-actor--sha256:24c902f480e6b5d499cbce5c6ee6c16a31b7fd4364d37376dd0cb9ff7cf5e6b7",
+              "entry_value": "Salt Typhoon",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "famoussparrow",
+                  "profile_value": "FamousSparrow",
+                  "dataset_value": "FamousSparrow"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Salt Typhoon",
+                "OPERATOR PANDA",
+                "GhostEmperor",
+                "FamousSparrow"
+              ],
+              "countries": [
+                "China"
+              ],
+              "description": "Microsoft threat actor mapping. Origin/Threat: China",
+              "refs": [
+                "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+              ],
+              "related": []
+            }
+          ],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "3c3ca8f3-c6ab-4c5d-9bd0-be6677d6cdeb",
+              "entry_value": "GhostEmperor",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "famoussparrow",
+                  "profile_value": "FamousSparrow",
+                  "dataset_value": "FamousSparrow"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "GhostEmperor",
+                "FamousSparrow",
+                "UNC2286",
+                "Salt Typhoon",
+                "RedMike",
+                "OPERATOR PANDA"
+              ],
+              "countries": [
+                "CN"
+              ],
+              "description": "GhostEmperor is a Chinese-speaking threat actor that targets government entities and telecom companies in Southeast Asia. They employ a Windows kernel-mode rootkit called Demodex to gain remote control over their targeted servers. The actor demonstrates a high level of sophistication and uses various anti-forensic and anti-analysis techniques to evade detection. They have been active for a significant period of time and continue to pose a threat to their targets.",
+              "refs": [
+                "https://securelist.com/ghostemperor-from-proxylogon-to-kernel-mode/104407/",
+                "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2021/09/30094337/GhostEmperor_technical-details_PDF_eng.pdf",
+                "https://www.welivesecurity.com/2021/09/23/famoussparrow-suspicious-hotel-guest/",
+                "https://www.ncsc.gov.uk/files/NCSC-MAR-SparrowDoor.pdf",
+                "https://cloud.google.com/blog/topics/threat-intelligence/unc4841-post-barracuda-zero-day-remediation",
+                "https://www.sygnia.co/blog/ghost-emperor-demodex-rootkit/",
+                "https://www.wsj.com/politics/national-security/china-cyberattack-internet-providers-260bd835",
+                "https://www.recordedfuture.com/research/redmike-salt-typhoon-exploits-vulnerable-devices"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "1f7f4a51-c4a8-4365-ade3-83b222e7cb67",
+                  "tags": [
+                    "estimative-language:likelihood-probability=\"likely\""
+                  ],
+                  "type": "similar"
+                }
+              ]
+            }
+          ],
+          "misp-microsoft-activity-group": [
+            {
+              "entry_uuid": "3b357ed0-c50c-5793-b0e9-e60ada7a50e5",
+              "entry_value": "Salt Typhoon",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "famoussparrow",
+                  "profile_value": "FamousSparrow",
+                  "dataset_value": "FamousSparrow"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Salt Typhoon",
+                "OPERATOR PANDA",
+                "GhostEmperor",
+                "FamousSparrow"
+              ],
+              "countries": [
+                "CN",
+                "China"
+              ],
+              "description": "Microsoft threat actor profile. Origin/Threat: China.",
+              "refs": [
+                "https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+              ],
+              "related": []
+            }
+          ],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [],
+        "relationship_candidates": [
+          {
+            "dataset_id": "misp-threat-actor",
+            "source_entry_uuid": "3c3ca8f3-c6ab-4c5d-9bd0-be6677d6cdeb",
+            "relationship_type": "similar",
+            "target_entry_uuid": "1f7f4a51-c4a8-4365-ade3-83b222e7cb67",
+            "target_actor": "Earth Estries",
+            "estimative_tags": [
+              "estimative-language:likelihood-probability=\"likely\""
+            ],
+            "confidence": "low",
+            "assessment": "MISP Galaxy relationship candidate. Review the original references and actor scopes before integration."
+          }
+        ],
+        "country_comparison": {
+          "profile_values": [
+            "china"
+          ],
+          "external_values": [
+            "china"
+          ],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
       }
     },
     {
@@ -199,9 +426,31 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--547c336b-ffce-4111-be8d-8150a1bd0659",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "アフガニスタン",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてアフガニスタンが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--7620eff7-41e3-423c-88cd-3a3466995b97",
       "created": "2026-09-20T07:22:51Z",
-      "modified": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T10:03:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -218,6 +467,77 @@
           "source_name": "github.com",
           "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
           "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        },
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8733da45-12b2-451e-a74b-a5c3d32486bf",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "イスラエル",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてイスラエルが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2e872ceb-03a4-4882-b371-7583d48ea739",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "インド",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてインドが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--00d09c74-2ed5-4677-a653-7d07390c0904",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "インドネシア",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてインドネシアが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
@@ -253,9 +573,119 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--3c073148-6a91-4e25-be94-719ecd5bb98f",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "エジプト",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエジプトが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--070ea845-5e3e-4db8-b84f-8e7fa2bbb91e",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "エスワティニ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエスワティニが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3061cfce-aaa3-4b2e-af67-e85676e19b5c",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "エチオピア",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてエチオピアが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b3234af2-633f-4e20-b7ca-9eb7403ea243",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "オランダ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてオランダが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0e33caa7-1436-440a-a91d-ec7fd5014685",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "カナダ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてカナダが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--31db17c5-f71a-45e1-bd2f-4d5894d13719",
       "created": "2026-09-20T07:22:51Z",
-      "modified": "2026-09-20T07:22:51Z",
+      "modified": "2026-09-20T10:03:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -272,6 +702,143 @@
           "source_name": "github.com",
           "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
           "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        },
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--5616e8c6-9a87-4252-a25d-3a7523f3ed76",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "サウジアラビア",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてサウジアラビアが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--deccb767-9782-42d8-8d87-8fadcec26b9d",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "シンガポール",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてシンガポールが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ebb1f3e8-6c02-4419-9d22-f2ae13425b70",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "タイ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてタイが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ae9cef03-1e20-4c12-a741-2d067cb4ffe0",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ドイツ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてドイツが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--f31a59c8-63d6-4d31-92d8-234893e337d5",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "バングラデシュ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてバングラデシュが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e89676e9-1a9b-437f-b347-f6747a0088b0",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "パキスタン",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてパキスタンが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
@@ -299,6 +866,116 @@
           "source_name": "github.com",
           "description": "Local source: https://github.com/eset/malware-ioc/tree/master/famoussparrow",
           "external_id": "source--daily-8ad4c8f610ba00d8b741"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0c781860-7291-47d7-9cef-6ad31cf77d39",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "フィリピン",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてフィリピンが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--de2fe0d2-9773-4322-9f53-d75b164e610c",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "フランス",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてフランスが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--028fd5d0-9540-4fed-b465-4c07b7abd7ca",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ブラジル",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてブラジルが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--3cdb7d6f-d8a7-4e97-ad1c-d787d9b9e488",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ブルキナファソ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてブルキナファソが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--bc38a947-4587-443c-af6a-6d9d7254a3ac",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ベトナム",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてベトナムが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "countries",
@@ -383,9 +1060,185 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--5d4bc7b8-40d0-4168-9b94-29acfa65ad91",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "マレーシア",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてマレーシアが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0e283c58-384f-4611-8288-0c7720e78f9b",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "メキシコ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてメキシコが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--885f3343-77e9-44f1-89d9-dd88cea2d769",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "リトアニア",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国としてリトアニアが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--594562ed-f14f-4d16-a983-68779b9e7954",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "南アフリカ",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として南アフリカが記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--31b25e30-7997-4f82-b2d2-375ff3221586",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "台湾",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として台湾が記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--e857ea9a-4809-4a8a-a732-2e2d6d4f84bc",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "米国",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として米国が記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8d675ef6-76d5-450a-9103-ff7d8f065bbb",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "英国",
+      "identity_class": "organization",
+      "description": "構造化OSINTの被害国フィールドでFamousSparrowの標的・被害国として英国が記録されている。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--f44fdf30-bae1-4119-a9ef-ae9184c163bc",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "アフリカ",
+      "identity_class": "organization",
+      "description": "エジプト、エスワティニ、エチオピア、ブルキナファソ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--839a901a-5056-47ba-b541-759daf62aab0",
       "created": "2026-09-20T07:22:51Z",
-      "modified": "2026-09-20T07:37:00Z",
+      "modified": "2026-09-20T10:03:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -407,6 +1260,77 @@
           "source_name": "ESET Research",
           "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
           "external_id": "source--eset-famoussparrow-sparrowocky-2026"
+        },
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--16c2a1fe-0200-4e75-a44c-6d0806814600",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中東",
+      "identity_class": "organization",
+      "description": "イスラエル、サウジアラビアで確認された標的・被害事例を中東として集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d5010c25-0b3a-4145-a1d5-54e8f6f0f92f",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "北米",
+      "identity_class": "organization",
+      "description": "カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--c106260c-f357-4c40-8aeb-0506aa3837a8",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "南アジア",
+      "identity_class": "organization",
+      "description": "アフガニスタン、インド、バングラデシュ、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "regions",
@@ -417,7 +1341,7 @@
       "spec_version": "2.1",
       "id": "identity--495e7ded-6e49-430b-b4b0-2c537563bf0d",
       "created": "2026-09-20T07:22:51Z",
-      "modified": "2026-09-20T07:37:00Z",
+      "modified": "2026-09-20T10:03:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -439,6 +1363,55 @@
           "source_name": "ESET Research",
           "description": "Local source: https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
           "external_id": "source--eset-famoussparrow-sparrowocky-2026"
+        },
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--113207ec-2346-4492-a84e-ae5243a5dee5",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "東南アジア",
+      "identity_class": "organization",
+      "description": "インドネシア、シンガポール、タイ、フィリピン、ベトナム、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d625011e-1819-460d-a8b1-ab3caf420838",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "欧州",
+      "identity_class": "organization",
+      "description": "オランダ、ドイツ、フランス、リトアニア、英国で確認された標的・被害事例を欧州として集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "ETDA / ThaiCERT",
+          "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
+          "external_id": "source--target-audit-etda-threat-group-cards"
         }
       ],
       "x_target_category": "regions",
@@ -661,6 +1634,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--bf125759-a101-4419-8e5e-d2f05c88c569",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--547c336b-ffce-4111-be8d-8150a1bd0659",
+      "description": "FamousSparrow targets アフガニスタン (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--0df883ca-982a-47d4-a0d4-5a42ff10ad64",
       "created": "2026-09-20T07:22:51Z",
       "modified": "2026-09-20T07:22:51Z",
@@ -671,6 +1659,51 @@
       "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
       "target_ref": "identity--7620eff7-41e3-423c-88cd-3a3466995b97",
       "description": "FamousSparrow targets アルゼンチン (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--479fc061-dfd0-4d02-80ab-23023ba482a7",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--8733da45-12b2-451e-a74b-a5c3d32486bf",
+      "description": "FamousSparrow targets イスラエル (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f89cf0bf-de28-42ba-86b1-1ef545cf5b50",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--2e872ceb-03a4-4882-b371-7583d48ea739",
+      "description": "FamousSparrow targets インド (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--da050d92-4cbb-4d0c-b023-e3e221e3d0a7",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--00d09c74-2ed5-4677-a653-7d07390c0904",
+      "description": "FamousSparrow targets インドネシア (profile target category: countries).",
       "x_confidence": "medium"
     },
     {
@@ -691,6 +1724,81 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--0729a4e6-f1c0-4601-b513-6645824aa9c3",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--3c073148-6a91-4e25-be94-719ecd5bb98f",
+      "description": "FamousSparrow targets エジプト (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--30606f35-c994-498d-912b-8dae939ef2ba",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--070ea845-5e3e-4db8-b84f-8e7fa2bbb91e",
+      "description": "FamousSparrow targets エスワティニ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--6072c755-8698-4d11-884a-a11aba5d05cc",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--3061cfce-aaa3-4b2e-af67-e85676e19b5c",
+      "description": "FamousSparrow targets エチオピア (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--94bbb3da-2bfd-4bb9-a2a4-413d4948cdf2",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--b3234af2-633f-4e20-b7ca-9eb7403ea243",
+      "description": "FamousSparrow targets オランダ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fcfea514-f514-4478-a45a-ec2cbe5970e4",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--0e33caa7-1436-440a-a91d-ec7fd5014685",
+      "description": "FamousSparrow targets カナダ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--767c3b22-0394-49aa-b10b-48ed4b3540be",
       "created": "2026-09-20T07:22:51Z",
       "modified": "2026-09-20T07:22:51Z",
@@ -706,6 +1814,96 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--89470cfd-d00c-42f6-880b-5a1150db1c72",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--5616e8c6-9a87-4252-a25d-3a7523f3ed76",
+      "description": "FamousSparrow targets サウジアラビア (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9ea73627-cc8c-4be7-8176-8b5a3095f0a3",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--deccb767-9782-42d8-8d87-8fadcec26b9d",
+      "description": "FamousSparrow targets シンガポール (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c03d949a-1e88-4753-916c-19946ae9a00d",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--ebb1f3e8-6c02-4419-9d22-f2ae13425b70",
+      "description": "FamousSparrow targets タイ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d72809c1-9311-42ac-bb4d-8e221a997e74",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--ae9cef03-1e20-4c12-a741-2d067cb4ffe0",
+      "description": "FamousSparrow targets ドイツ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--11018e21-d03c-4892-9b00-759e914b1319",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--f31a59c8-63d6-4d31-92d8-234893e337d5",
+      "description": "FamousSparrow targets バングラデシュ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ab5dce06-5ee5-4a47-9d73-d5a9835e35f8",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--e89676e9-1a9b-437f-b347-f6747a0088b0",
+      "description": "FamousSparrow targets パキスタン (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--b48181de-3640-4244-a4c8-6eae0b790b44",
       "created": "2026-09-20T07:22:51Z",
       "modified": "2026-09-20T07:22:51Z",
@@ -716,6 +1914,81 @@
       "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
       "target_ref": "identity--befdba7d-ff50-4cc9-9f7b-7d5d92fbe116",
       "description": "FamousSparrow targets パナマ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aaf62e2b-1001-468d-811e-14ba479d1fc9",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--0c781860-7291-47d7-9cef-6ad31cf77d39",
+      "description": "FamousSparrow targets フィリピン (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ac0b4096-4966-4ae4-81a1-e3bf0ebe76ff",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--de2fe0d2-9773-4322-9f53-d75b164e610c",
+      "description": "FamousSparrow targets フランス (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a188df3b-ca5e-4144-afe6-2352405ac1d3",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--028fd5d0-9540-4fed-b465-4c07b7abd7ca",
+      "description": "FamousSparrow targets ブラジル (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a34cf463-8d01-498a-8c55-2c335e7c8802",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--3cdb7d6f-d8a7-4e97-ad1c-d787d9b9e488",
+      "description": "FamousSparrow targets ブルキナファソ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--fa19f504-b2ee-4aba-adec-d623f05adf4b",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--bc38a947-4587-443c-af6a-6d9d7254a3ac",
+      "description": "FamousSparrow targets ベトナム (profile target category: countries).",
       "x_confidence": "medium"
     },
     {
@@ -766,6 +2039,126 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--8f764a80-500b-4f15-96c5-d7d2955fad2c",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--5d4bc7b8-40d0-4168-9b94-29acfa65ad91",
+      "description": "FamousSparrow targets マレーシア (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2bbb4beb-17bc-415e-944f-fcdc12d5af27",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--0e283c58-384f-4611-8288-0c7720e78f9b",
+      "description": "FamousSparrow targets メキシコ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--78ca5b37-86f0-4181-83ec-f679d4e9667a",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--885f3343-77e9-44f1-89d9-dd88cea2d769",
+      "description": "FamousSparrow targets リトアニア (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bd5c8450-2d84-4e32-bb26-688439271a0d",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--594562ed-f14f-4d16-a983-68779b9e7954",
+      "description": "FamousSparrow targets 南アフリカ (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a450fc68-9191-4dc1-be65-5aa27a3ae5e6",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--31b25e30-7997-4f82-b2d2-375ff3221586",
+      "description": "FamousSparrow targets 台湾 (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7149f23f-d8ac-4059-bdd3-8d2bef478451",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--e857ea9a-4809-4a8a-a732-2e2d6d4f84bc",
+      "description": "FamousSparrow targets 米国 (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c5563096-a285-4c1a-bd82-0ac02fb28060",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--8d675ef6-76d5-450a-9103-ff7d8f065bbb",
+      "description": "FamousSparrow targets 英国 (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--eaabf401-b09d-46b3-8178-5b634eda3b92",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--f44fdf30-bae1-4119-a9ef-ae9184c163bc",
+      "description": "FamousSparrow targets アフリカ (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--95b49101-5d23-4a9c-a000-ee81bd670045",
       "created": "2026-09-20T07:22:51Z",
       "modified": "2026-09-20T07:22:51Z",
@@ -781,6 +2174,51 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--919110fd-5b33-4dc1-bce5-9f37ccffb535",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--16c2a1fe-0200-4e75-a44c-6d0806814600",
+      "description": "FamousSparrow targets 中東 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d59d25e2-522c-4583-893f-441ae1d99515",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--d5010c25-0b3a-4145-a1d5-54e8f6f0f92f",
+      "description": "FamousSparrow targets 北米 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4f2908b6-5798-4242-978b-5a78ef0d47cf",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--c106260c-f357-4c40-8aeb-0506aa3837a8",
+      "description": "FamousSparrow targets 南アジア (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--4a38b3ee-ddfc-41ee-8d59-05e28c734db9",
       "created": "2026-09-20T07:22:51Z",
       "modified": "2026-09-20T07:22:51Z",
@@ -791,6 +2229,36 @@
       "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
       "target_ref": "identity--495e7ded-6e49-430b-b4b0-2c537563bf0d",
       "description": "FamousSparrow targets 南米 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4ee252bb-df26-4095-abb8-622fedf48dd6",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--113207ec-2346-4492-a84e-ae5243a5dee5",
+      "description": "FamousSparrow targets 東南アジア (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a8eb740e-4c55-4433-a857-458834c3abcb",
+      "created": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T10:03:33Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
+      "target_ref": "identity--d625011e-1819-460d-a8b1-ab3caf420838",
+      "description": "FamousSparrow targets 欧州 (profile target category: regions).",
       "x_confidence": "medium"
     },
     {
@@ -2997,7 +4465,7 @@
       "spec_version": "2.1",
       "id": "report--045605e4-80fc-4c1d-86c8-13cf926c4c3a",
       "created": "2026-09-20T07:17:21Z",
-      "modified": "2026-09-20T07:53:26Z",
+      "modified": "2026-09-20T10:03:33Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3006,20 +4474,53 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T07:53:26Z",
+      "published": "2026-09-20T10:03:33Z",
       "object_refs": [
         "intrusion-set--799e9517-b01a-45d3-a87a-53c5b57b5316",
         "malware--36fb3b7a-c6e5-42c7-ab38-f94e9cb75f79",
         "campaign--5ced9c7e-c664-443d-ac78-33b5c0411a15",
+        "identity--547c336b-ffce-4111-be8d-8150a1bd0659",
         "identity--7620eff7-41e3-423c-88cd-3a3466995b97",
+        "identity--8733da45-12b2-451e-a74b-a5c3d32486bf",
+        "identity--2e872ceb-03a4-4882-b371-7583d48ea739",
+        "identity--00d09c74-2ed5-4677-a653-7d07390c0904",
         "identity--89c05905-e716-4968-b16b-9329775b06fa",
+        "identity--3c073148-6a91-4e25-be94-719ecd5bb98f",
+        "identity--070ea845-5e3e-4db8-b84f-8e7fa2bbb91e",
+        "identity--3061cfce-aaa3-4b2e-af67-e85676e19b5c",
+        "identity--b3234af2-633f-4e20-b7ca-9eb7403ea243",
+        "identity--0e33caa7-1436-440a-a91d-ec7fd5014685",
         "identity--31db17c5-f71a-45e1-bd2f-4d5894d13719",
+        "identity--5616e8c6-9a87-4252-a25d-3a7523f3ed76",
+        "identity--deccb767-9782-42d8-8d87-8fadcec26b9d",
+        "identity--ebb1f3e8-6c02-4419-9d22-f2ae13425b70",
+        "identity--ae9cef03-1e20-4c12-a741-2d067cb4ffe0",
+        "identity--f31a59c8-63d6-4d31-92d8-234893e337d5",
+        "identity--e89676e9-1a9b-437f-b347-f6747a0088b0",
         "identity--befdba7d-ff50-4cc9-9f7b-7d5d92fbe116",
+        "identity--0c781860-7291-47d7-9cef-6ad31cf77d39",
+        "identity--de2fe0d2-9773-4322-9f53-d75b164e610c",
+        "identity--028fd5d0-9540-4fed-b465-4c07b7abd7ca",
+        "identity--3cdb7d6f-d8a7-4e97-ad1c-d787d9b9e488",
+        "identity--bc38a947-4587-443c-af6a-6d9d7254a3ac",
         "identity--898fd762-44f4-43d8-8825-984a56142dc5",
         "identity--a33c6afb-5b37-4e7a-95e6-8e5dba173975",
         "identity--b98f6bf0-66a0-4822-b6da-c1cdbb99759c",
+        "identity--5d4bc7b8-40d0-4168-9b94-29acfa65ad91",
+        "identity--0e283c58-384f-4611-8288-0c7720e78f9b",
+        "identity--885f3343-77e9-44f1-89d9-dd88cea2d769",
+        "identity--594562ed-f14f-4d16-a983-68779b9e7954",
+        "identity--31b25e30-7997-4f82-b2d2-375ff3221586",
+        "identity--e857ea9a-4809-4a8a-a732-2e2d6d4f84bc",
+        "identity--8d675ef6-76d5-450a-9103-ff7d8f065bbb",
+        "identity--f44fdf30-bae1-4119-a9ef-ae9184c163bc",
         "identity--839a901a-5056-47ba-b541-759daf62aab0",
+        "identity--16c2a1fe-0200-4e75-a44c-6d0806814600",
+        "identity--d5010c25-0b3a-4145-a1d5-54e8f6f0f92f",
+        "identity--c106260c-f357-4c40-8aeb-0506aa3837a8",
         "identity--495e7ded-6e49-430b-b4b0-2c537563bf0d",
+        "identity--113207ec-2346-4492-a84e-ae5243a5dee5",
+        "identity--d625011e-1819-460d-a8b1-ab3caf420838",
         "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
         "identity--99b5dd3e-9410-4a4e-96a3-59e2598f70e6",
         "attack-pattern--069386a0-a6c2-4cda-b43c-b95547b64d67",

@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
       "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T01:45:20Z",
+      "modified": "2026-09-20T10:03:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -40,6 +40,7 @@
         }
       ],
       "x_profile_id": "actor--goffee",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "Paper Werewolf",
@@ -73,6 +74,109 @@
         "infrastructure_details": "キャンペーンごとにドメインを使い分け、C2 の所在を隠すためにリバースプロキシサーバを多用する。2026年の報告が列挙するドメインは NTP・時刻同期・SSL 検証を思わせる語を組み合わせた命名が目立ち、timemirror[.]online、ntpcheck[.]online、sslfix[.]online、ntp[.]report などが含まれる。WarpRAT は 443/TCP・TLS・POST を用い、sleepTime と anti-VM を設定に持つ。PowerModul は http://<C2>/api/texts/<computer>_<user>_<disk-serial> の形式で被害端末の識別子を URL へ付与する。BI.ZONE は C2 とマルウェアの設置に VPS が用いられることを記録している。",
         "targeting_details": "構造化ターゲット監査: 標的国=ロシア。標的地域=CIS諸国、欧州。日本は確認時に個別国として保持する。\n\n被害はロシア連邦の組織に集中する。Kaspersky は2025年の報告で被害の所在をロシアとし、業種をマスメディアと通信、建設、政府機関、エネルギーとした。2026年の報告では約120の被害組織をロシア連邦で、数件を CIS 諸国で、単発を EU で確認し、EU への攻撃は偶発的な性質のものと評価している。同報告は主たる業種を機械製造・製造業・政府部門とする。BI.ZONE は被害組織に政府、エネルギー、金融、メディアほかを挙げる。おとり文書は研究機関、自治体、電力系統会社、規制当局、法執行機関といった被害者が信頼しやすい実在組織の文書を模したものが用いられる。",
         "additional_notes": "本プロファイルの被害国はロシア連邦であり、これを攻撃者の帰属国へ流用してはならない。3本の一次資料はいずれも攻撃者の出身国を述べていない。Kaspersky が中程度の確度で述べる HeartlessSoul との背後の同一性、および PowerModul と PowerRAT の名称対応は、いずれも未解決として assessment へ残している。"
+      },
+      "x_osint_crosscheck": {
+        "schema_version": "1.0.0",
+        "actor_ref": "actor--goffee",
+        "actor_name": "GOFFEE",
+        "searched_at": "2026-09-20T10:03:11Z",
+        "search_scope": {
+          "datasets": [
+            "etda-threat-group-cards",
+            "cert-ua-uac-index",
+            "microsoft-threat-actor-mapping",
+            "misp-threat-actor",
+            "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
+            "misp-mitre-intrusion-set",
+            "misp-360net",
+            "misp-malpedia"
+          ],
+          "name_inputs": [
+            "GOFFEE",
+            "Paper Werewolf"
+          ],
+          "mitre_group_id": null
+        },
+        "overall_assessment": "matched",
+        "actor_matches": {
+          "etda-threat-group-cards": [],
+          "cert-ua-uac-index": [],
+          "microsoft-threat-actor-mapping": [],
+          "misp-threat-actor": [
+            {
+              "entry_uuid": "785b33c9-9da5-4561-bee9-0acb00a5406c",
+              "entry_value": "GOFFEE",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "goffee",
+                  "profile_value": "GOFFEE",
+                  "dataset_value": "GOFFEE"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "GOFFEE"
+              ],
+              "countries": [],
+              "description": "GOFFEE is a threat actor that has targeted entities in the Russian Federation since early 2022, employing spear phishing emails with malicious attachments, including modified Owowa and patched explorer.exe. They have utilized PowerTaskel, a non-public Mythic agent in PowerShell, and introduced a new implant called \"PowerModul\" for attacks against sectors such as media, telecommunications, and government. GOFFEE has increasingly shifted to a binary Mythic agent for lateral movement and has incorporated Word documents with malicious VBA scripts in their infection chains. The group has demonstrated a consistent evolution in their TTPs while maintaining identifiable characteristics that attribute their campaigns with high confidence.",
+              "refs": [
+                "https://securelist.com/goffee-apt-new-attacks/116139/"
+              ],
+              "related": []
+            }
+          ],
+          "misp-microsoft-activity-group": [],
+          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-intrusion-set": [],
+          "misp-360net": []
+        },
+        "malware_catalog_matches": [
+          {
+            "profile_malware_id": "malware--goffee-owowa",
+            "profile_name": "Owowa",
+            "entry_uuid": "aa985bc5-92e4-43c6-a01b-1de02818cfc9",
+            "entry_value": "Owowa",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/win.owowa",
+              "https://securelist.com/goffee-apt-new-attacks/116139/",
+              "https://securelist.com/owowa-credential-stealer-and-remote-access/105219/"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          },
+          {
+            "profile_malware_id": "malware--goffee-powermodul",
+            "profile_name": "PowerModul",
+            "entry_uuid": "970bdeaf-bc34-458a-ae67-8c3578e8663d",
+            "entry_value": "PowerRAT",
+            "refs": [
+              "https://malpedia.caad.fkie.fraunhofer.de/details/ps1.power_rat",
+              "https://blog.talosintelligence.com/gophish-powerrat-dcrat/"
+            ],
+            "assessment": "Name exists in Malpedia; this does not independently verify that the actor used the malware."
+          }
+        ],
+        "relationship_candidates": [],
+        "country_comparison": {
+          "profile_values": [],
+          "external_values": [],
+          "conflict": false,
+          "assessment": "No disjoint country conflict detected."
+        },
+        "ambiguities": {
+          "datasets_with_multiple_matches": [],
+          "scope_divergence_detected": false,
+          "requires_review": false,
+          "assessment": "No multiple-match ambiguity detected."
+        },
+        "limitations": [
+          "Exact normalized-name matching does not prove one-to-one actor identity.",
+          "MISP Galaxy is an aggregation layer; original references remain authoritative.",
+          "A no-match result means no exact match in the fixed datasets, not that the actor does not exist.",
+          "A Malpedia name match confirms catalogue presence only, not actor use."
+        ]
       }
     },
     {
@@ -884,7 +988,7 @@
       "spec_version": "2.1",
       "id": "campaign--95d9ea71-d515-4146-8372-b8770b91b1e9",
       "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -936,7 +1040,6 @@
         },
         "victim": {
           "target_refs": [
-            "target--activity-rule--sector--210dddb39397dbe50e91",
             "target--goffee--country--russia",
             "target--goffee--region--cis",
             "target--goffee--region--europe",
@@ -1072,13 +1175,13 @@
       "spec_version": "2.1",
       "id": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "政府・行政",
       "identity_class": "organization",
-      "description": "Kasperskyは2025年の報告で対象業種に「government entities」を挙げ、2026年の報告では「Большая часть целей принадлежала к машиностроению, производству и государственному сектору」として政府部門を主たる標的の1つとする。BI.ZONEも被害組織に政府機関を挙げ、GOFFEEのキャンペーンに典型的な被害者層としてKasperskyは「в основном это государственные учреждения и промышленные предприятия РФ」と述べる。",
+      "description": "活動「Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為」の記述で標的として明示された産業。",
       "external_references": [
         {
           "source_name": "BI.ZONE Threat Intelligence",
@@ -1089,28 +1192,23 @@
           "source_name": "Kaspersky GReAT (Securelist)",
           "description": "Local source: https://securelist.com/goffee-apt-new-attacks/116139/",
           "external_id": "source--kaspersky-goffee-recent-attacks-2025"
-        },
-        {
-          "source_name": "Kaspersky GReAT (Securelist ロシア語版)",
-          "description": "Local source: https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/",
-          "external_id": "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
         }
       ],
       "x_target_category": "sectors",
-      "x_confidence": "high"
+      "x_confidence": "medium"
     },
     {
       "type": "identity",
       "spec_version": "2.1",
       "id": "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
       "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "メディア・報道",
       "identity_class": "organization",
-      "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。BI.ZONEも被害組織にメディアを挙げる。",
+      "description": "活動「Paper Werewolfによるマクロ文書を用いた一連のキャンペーンと破壊的行為」の記述で標的として明示された産業。",
       "external_references": [
         {
           "source_name": "BI.ZONE Threat Intelligence",
@@ -1124,47 +1222,25 @@
         }
       ],
       "x_target_category": "sectors",
-      "x_confidence": "high"
+      "x_confidence": "medium"
     },
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--8b6b300b-53ec-4b66-8066-0a4699379f49",
-      "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "id": "identity--8862d256-cbdc-4340-8359-e870f7e433d0",
+      "created": "2026-09-18T02:20:00Z",
+      "modified": "2026-09-18T02:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "情報通信",
+      "name": "建設",
       "identity_class": "organization",
-      "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。",
+      "description": "Kasperskyは2025年の報告で対象業種に「construction」を挙げる。",
       "external_references": [
         {
           "source_name": "Kaspersky GReAT (Securelist)",
           "description": "Local source: https://securelist.com/goffee-apt-new-attacks/116139/",
           "external_id": "source--kaspersky-goffee-recent-attacks-2025"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "high"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--c77ff243-2cdb-4b1e-9d8a-fc2dbee7de96",
-      "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T02:40:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "製造・産業",
-      "identity_class": "organization",
-      "description": "Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。",
-      "external_references": [
-        {
-          "source_name": "Kaspersky GReAT (Securelist ロシア語版)",
-          "description": "Local source: https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/",
-          "external_id": "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
         }
       ],
       "x_target_category": "sectors",
@@ -1200,28 +1276,6 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--8862d256-cbdc-4340-8359-e870f7e433d0",
-      "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T02:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "建設",
-      "identity_class": "organization",
-      "description": "Kasperskyは2025年の報告で対象業種に「construction」を挙げる。",
-      "external_references": [
-        {
-          "source_name": "Kaspersky GReAT (Securelist)",
-          "description": "Local source: https://securelist.com/goffee-apt-new-attacks/116139/",
-          "external_id": "source--kaspersky-goffee-recent-attacks-2025"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "high"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--62833539-d108-46ed-821f-f393cb3ecf6e",
       "created": "2026-09-18T02:20:00Z",
       "modified": "2026-09-18T02:20:00Z",
@@ -1244,9 +1298,53 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--31bd4c9c-b010-4690-833c-14d05ed8c32b",
+      "id": "identity--c77ff243-2cdb-4b1e-9d8a-fc2dbee7de96",
+      "created": "2026-09-18T02:20:00Z",
+      "modified": "2026-09-18T02:40:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "organization",
+      "description": "Kasperskyは2026年の報告で「машиностроению, производству」(機械製造、製造業)を主たる標的業種として挙げ、GOFFEEの典型的な被害者層を「государственные учреждения и промышленные предприятия РФ」(ロシア連邦の政府機関と工業企業)と要約する。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist ロシア語版)",
+          "description": "Local source: https://securelist.ru/tr/goffee-apt-attacks-with-mythic-agent-and-warprat/116796/",
+          "external_id": "source--kaspersky-goffee-warprat-powertaskel-v2-2026"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--8b6b300b-53ec-4b66-8066-0a4699379f49",
       "created": "2026-09-18T02:40:00Z",
       "modified": "2026-09-18T02:40:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "情報通信",
+      "identity_class": "organization",
+      "description": "Kasperskyは2025年の報告で対象業種に「media and telecommunications sectors」を挙げる。",
+      "external_references": [
+        {
+          "source_name": "Kaspersky GReAT (Securelist)",
+          "description": "Local source: https://securelist.com/goffee-apt-new-attacks/116139/",
+          "external_id": "source--kaspersky-goffee-recent-attacks-2025"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "high"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--31bd4c9c-b010-4690-833c-14d05ed8c32b",
+      "created": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1269,7 +1367,8 @@
         "target--activity-rule--sector--5403aec9c83d6a925f61",
         "target--goffee--country--russia",
         "target--goffee--sector--construction",
-        "target--goffee--sector--energy"
+        "target--goffee--sector--energy",
+        "target--goffee--sector--telecom"
       ],
       "x_malware_refs": [
         "malware--goffee-flashfilegrabber",
@@ -1410,7 +1509,7 @@
       "spec_version": "2.1",
       "id": "identity--70843d06-35b5-46d3-b28f-5861790cf7b6",
       "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1429,7 +1528,6 @@
       "x_victim_type": "unknown",
       "x_case_status": "reported",
       "x_target_refs": [
-        "target--activity-rule--sector--210dddb39397dbe50e91",
         "target--goffee--country--russia",
         "target--goffee--region--cis",
         "target--goffee--region--europe",
@@ -3660,7 +3758,7 @@
       "spec_version": "2.1",
       "id": "relationship--f08067f8-f364-4793-bb43-e27aff446335",
       "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3668,14 +3766,14 @@
       "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
       "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
       "description": "GOFFEE targets 政府・行政 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--1f2de632-9d02-40da-9eaa-6924fffe28e9",
       "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-19T00:00:42Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3683,36 +3781,21 @@
       "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
       "target_ref": "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
       "description": "GOFFEE targets メディア・報道 (profile target category: sectors).",
-      "x_confidence": "high"
+      "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--7da31c9d-f37e-4167-b83d-1be9b1885aa9",
-      "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
-      "target_ref": "identity--8b6b300b-53ec-4b66-8066-0a4699379f49",
-      "description": "GOFFEE targets 情報通信 (profile target category: sectors).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c73ca0d5-b356-4a01-a782-028215c7400a",
+      "id": "relationship--62136eba-e03c-4d7e-86b4-1f1d15b370ac",
       "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-18T02:20:00Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
       "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
-      "target_ref": "identity--c77ff243-2cdb-4b1e-9d8a-fc2dbee7de96",
-      "description": "GOFFEE targets 製造・産業 (profile target category: sectors).",
+      "target_ref": "identity--8862d256-cbdc-4340-8359-e870f7e433d0",
+      "description": "GOFFEE targets 建設 (profile target category: sectors).",
       "x_confidence": "high"
     },
     {
@@ -3733,21 +3816,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--62136eba-e03c-4d7e-86b4-1f1d15b370ac",
-      "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T02:20:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
-      "target_ref": "identity--8862d256-cbdc-4340-8359-e870f7e433d0",
-      "description": "GOFFEE targets 建設 (profile target category: sectors).",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--412c8d90-7e54-432a-ae43-6d56a99bc190",
       "created": "2026-09-18T02:20:00Z",
       "modified": "2026-09-18T02:20:00Z",
@@ -3759,6 +3827,36 @@
       "target_ref": "identity--62833539-d108-46ed-821f-f393cb3ecf6e",
       "description": "GOFFEE targets 金融 (profile target category: sectors).",
       "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c73ca0d5-b356-4a01-a782-028215c7400a",
+      "created": "2026-09-18T02:20:00Z",
+      "modified": "2026-09-18T02:40:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
+      "target_ref": "identity--c77ff243-2cdb-4b1e-9d8a-fc2dbee7de96",
+      "description": "GOFFEE targets 製造・産業 (profile target category: sectors).",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7da31c9d-f37e-4167-b83d-1be9b1885aa9",
+      "created": "2026-09-18T02:40:00Z",
+      "modified": "2026-09-18T02:40:00Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
+      "target_ref": "identity--8b6b300b-53ec-4b66-8066-0a4699379f49",
+      "description": "GOFFEE targets 情報通信 (profile target category: sectors).",
+      "x_confidence": "high"
     },
     {
       "type": "relationship",
@@ -4748,21 +4846,6 @@
       "source_ref": "campaign--95d9ea71-d515-4146-8372-b8770b91b1e9",
       "target_ref": "infrastructure--456099c9-7f02-4e6f-8e48-8ae67ebc2742",
       "description": "GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 uses infra--goffee-reverse-proxy.",
-      "x_confidence": "high"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--c61ceb56-2b65-4d5c-9fc6-1d1e7af30603",
-      "created": "2026-09-18T02:40:00Z",
-      "modified": "2026-09-18T02:40:00Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--95d9ea71-d515-4146-8372-b8770b91b1e9",
-      "target_ref": "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
-      "description": "GOFFEEによる偽Acrobat Reader更新を用いたWarpRATとPowerTaskel v2の配布 targets target--activity-rule--sector--210dddb39397dbe50e91.",
       "x_confidence": "high"
     },
     {
@@ -11672,7 +11755,7 @@
       "spec_version": "2.1",
       "id": "report--00a2e882-a6f8-4b1a-9177-1a478b505dc9",
       "created": "2026-09-18T02:20:00Z",
-      "modified": "2026-09-18T01:45:20Z",
+      "modified": "2026-09-20T10:03:11Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -11681,7 +11764,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-18T01:45:20Z",
+      "published": "2026-09-20T10:03:11Z",
       "object_refs": [
         "intrusion-set--61ad19be-d572-42b3-a334-0cce884c728e",
         "malware--5665242d-f279-426f-8796-3d5bb8f34f3a",
@@ -11709,11 +11792,11 @@
         "identity--6b6713cb-106a-4b1d-bfdb-f1b830ac2d09",
         "identity--04b4cc8d-26d5-4a9a-ae7f-88c985024bf6",
         "identity--37850feb-7598-4bfd-9771-4a0d124e4adb",
-        "identity--8b6b300b-53ec-4b66-8066-0a4699379f49",
-        "identity--c77ff243-2cdb-4b1e-9d8a-fc2dbee7de96",
-        "identity--edfd0d72-a738-4137-b90f-f63b911296ab",
         "identity--8862d256-cbdc-4340-8359-e870f7e433d0",
+        "identity--edfd0d72-a738-4137-b90f-f63b911296ab",
         "identity--62833539-d108-46ed-821f-f393cb3ecf6e",
+        "identity--c77ff243-2cdb-4b1e-9d8a-fc2dbee7de96",
+        "identity--8b6b300b-53ec-4b66-8066-0a4699379f49",
         "identity--31bd4c9c-b010-4690-833c-14d05ed8c32b",
         "identity--a53259ab-39f6-468e-a529-ded4476e9158",
         "identity--70843d06-35b5-46d3-b28f-5861790cf7b6",

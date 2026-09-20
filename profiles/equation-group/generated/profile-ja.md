@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--equation-group`
 - 状態: draft
-- 更新日時: 2026-09-20T08:53:44Z
+- 更新日時: 2026-09-20T10:03:33Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -31,7 +31,9 @@ Equation Groupの標準化プロファイル。リポジトリ内の専用資料
 
 ## モチベーション
 
-未評価
+| 種別 | 説明 | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|
+| espionage | Kaspersky identifies EquationDrug as one of the main espionage platforms used by Equation Group and describes the group's computer-network-exploitation operations. | 高 | `source--kaspersky-equationdrug-2015` | This supports the espionage classification, but it is not used to infer a specific sponsoring government. |
 
 ## 他アクターとの関係
 
@@ -50,7 +52,7 @@ Equation Groupの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T08:53:28Z
+- 調査日時: 2026-09-20T10:03:11Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -253,6 +255,7 @@ Socialist; Olympic Games / Stuxnet; Project Sauron / Strider
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--kaspersky-equationdrug-2015 | Inside the EquationDrug Espionage Platform | Kaspersky GReAT | 2015-03-11 | https://securelist.com/inside-the-equationdrug-espionage-platform/69203/ | vendor-technical-report | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--equation-group--220879bf45031f3f | README |  | 不明 | EquationGroup/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--equation-group--f24ac6a0296c1df8 | The Bvp47 a top tier backdoor of us nsa equation group.en |  | 不明 | EquationGroup/The_Bvp47_a_top-tier_backdoor_of_us_nsa_equation_group.en.pdf | report | TLP:CLEAR | 中 |
