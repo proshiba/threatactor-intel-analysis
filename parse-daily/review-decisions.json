@@ -2985,5 +2985,41 @@
     "confidence": "low",
     "review_notes": "不採用(製品名との名称衝突)。一致語「CHROMIUM」は earth-lusca の alias(scope: overlapping)だが、根拠文「KREMLINはChromiumのSecure Preferencesを書き換えて…」の Chromium は Chrome・Edge の基盤となるブラウザエンジンを指す。原文(Elastic Security Labs「The extension you never installed: KREMLIN forges Chrome's own integrity checks to steal banking sessions」、2026-09-14公開、Cyril François / Andrew Pease)を curl で HTTP 200 を取得して確認したが、Earth Lusca の言及はない。Elastic は当該作戦を自社指定子で「Elastic Security Labs has tracked REF9334, a Brazilian banking malware operation, since May 2025.」と記述し、ポルトガル語の成果物と標的からポルトガル語話者・ブラジル拠点と評価する一方、既知の命名グループへの帰属も否定も行っていない。実体側は unknown-cluster--ref9334 として台帳へ登録した。2026-09-16 の hellsing-apt の alias「Asia」と同型の、一般語・製品名 alias による機械的一致である。",
     "review_status": "rejected"
+  },
+  "famoussparrow|https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs": {
+    "activity_period": {
+      "first_observed": {
+        "value": "2025-08-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "ESET Research: 「has been deploying it to several countries in Latin America since at least August 2025」。月初へ正規化"
+      },
+      "last_observed": {
+        "value": "2026-06-17T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "IOC CSVが示すSparroWocky C2サーバーの初観測日のうち最新値(91[.]148[.]134[.]115、2026-06-17)。ESET原文は活動の終期を明示しない。同CSVのsha1 5件は観測日が記事公開日2026-09-17と同値のため活動期間へ転用しない"
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "SparroWocky",
+        "reason": "ESETが本稿で命名・解析した当該グループの新主力バックドア。初期の攻撃の一部でFamousSparrow専用のSparrowDoorにより展開された事例が示されており、当該アクターの利用が原文で確認できる。",
+        "status": "approved"
+      }
+    ],
+    "confidence": "high",
+    "review_notes": "採用(新規プロファイル famoussparrow への初回反映)。原文(ESET Research「Beware the SparroWock: The backdoor that bites, the commands that catch」、表示公開日 17 Sep 2026、著者 Alexandre Côté Cyr / Romain Dumont)をcurlでHTTP 200を取得して確認した。ESETは「we attribute the latest campaign and the SparroWocky backdoor to FamousSparrow with high confidence」として、(1)SparroWockyを用いた初期の攻撃の一部でFamousSparrow専用のSparrowDoorにより展開されていたこと、(2)被害者像が従来の標的と一致すること、(3)以前SparrowDoorで標的とされた同一組織群への展開試行が記録されていること、を根拠に高確度で帰属する。標的はアルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関で、2025年半ばから2026年にかけてESETテレメトリに記録された標的の90%がラテンアメリカに所在する。 IOC CSVのactor列「FamousSparrow」23観測(ipv4 18、sha1 5)は既存プロファイルへ一致せずunmatched_actor_valuesに現れていた。profiles/famoussparrowをstatus: draftで新規作成し、config.jsonのactivity_reference_aliasesへ「https://github.com/eset/malware-ioc/tree/master/famoussparrow」から当該記事URLへの対応を追加して、IOC一覧と記事を1活動へ集約した。 Salt Typhoon / GhostEmperor / UNC2286 / Earth Estriesとの同一性は確定させていない。ESETは本稿で「FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.」と述べ、Earth Estriesとの関連も「the exact nature of the link is not fully known」とする。集約参照データ(Microsoft命名マッピング、ETDA Threat Group Cards)が示す別名関係とは両論のまま、プロファイルのrelationshipsとassessment.uncertaintiesへ残した。",
+    "review_status": "approved"
+  },
+  "contagious-interview|https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf": {
+    "confidence": "medium",
+    "review_notes": "資料自体は採用済みだが、日次キュー経由では反映しない。本資料(警察庁 国家サイバー統括室 2026-09-18、NCO・FBI・DC3・ASD/ACSC・BND・BfV との連名)は、PR #53 により profiles/contagious-interview へ osint-updates.json 経由で活動 activity--waterplum-it-engineer-targeting-2026 として既に反映されている(活動期間 2025-12〜2026-07)。本ブランチでは別名「WaterPlum」(scope: overlapping)の追加により同一資料のレビューレコードが生成されたが、承認すると同一資料から2つ目の活動がmaterializeされ重複するため、キュー側のレコードは不採用として扱う。資料の不採用ではない。原文PDFはcurlで取得しpypdfで本文を確認しており、「WaterPlum」(関連名称:Contagious Interview)の記載、2025年12月頃〜2026年7月の被害把握期間、100以上の国と地域で3万台以上の感染、7千件以上の暗号資産ウォレット情報の窃取、313総局の指揮下とする警察庁・FBIの評価をいずれも確認済みである。",
+    "review_status": "rejected"
+  },
+  "famoussparrow|https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure": {
+    "confidence": "low",
+    "review_notes": "不採用(類似・関連のみの言及)。原文(Hunt.io「SilkParasite Infrastructure: SpiceRAT Servers Tied to Energy and Government Targets Across Central Asia」、公開 2026-09-09、研究者 Guy Yasur との共同調査)をcurlでHTTP 200を取得して確認した。FamousSparrowへの言及は「Parallels to Previous Central Asia Targeting」節の「The SilkParasite report noted overlaps with FamousSparrow, a suspected China-nexus actor previously documented targeting hotels, government entities, and international organizations.」のみで、Bitdefenderの SilkParasite 報告が指摘した重複を紹介する文脈である。Hunt.io自身は本インフラをFamousSparrowへ帰属しておらず、同節末尾で「The overlap is noted here as context alongside the SilkParasite report's FamousSparrow reference.」と明記する。assessmentもattribution-uncertainであった。実体はSilkParasiteであり、unknown-clusters.jsonへstatus: trackingで登録した。",
+    "review_status": "rejected"
   }
 }

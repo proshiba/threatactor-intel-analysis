@@ -137,6 +137,59 @@ class ActivityIntelligenceTests(unittest.TestCase):
         self.assertIn("米国", countries)
         self.assertNotIn("中国", countries)
 
+    def test_backing_country_phrase_is_not_a_victim_country(self) -> None:
+        """「Xを背景とするグループ」は支援国側の記述であり被害国ではない。
+
+        2026-09-20の取込で、警察庁公表(WaterPlum)の活動記述から「北朝鮮」が
+        標的国として構造化された実例に基づく回帰テスト。
+        """
+        profile = self.profile("Contagious Interview")
+        activity = self.activity(
+            "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的とした"
+            "サイバー攻撃並びに北朝鮮IT労働者の活動実態について",
+            "北朝鮮を背景とするサイバー攻撃グループWaterPlumは、"
+            "日本、米国及び欧州のIT技術者を標的として攻撃を行っている。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("米国", countries)
+        self.assertNotIn("北朝鮮", countries)
+
+    def test_geopolitical_pressure_source_is_not_a_victim_country(self) -> None:
+        """「Xからの圧力」は地政学的な働きかけの主体であり被害国ではない。
+
+        2026-09-20の取込で、ESETのFamousSparrow記事の要約から「米国」が
+        標的国として構造化された実例に基づく回帰テスト。
+        """
+        profile = self.profile("FamousSparrow")
+        activity = self.activity(
+            "SparroWockに注意",
+            "中国関連APTは台湾の政府機関を標的として侵害した。"
+            "各国政府が米国からの圧力へどう対応するかを"
+            "監視・予測する目的の諜報活動とみられる。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("台湾", countries)
+        self.assertNotIn("米国", countries)
+
+    def test_victim_side_it_workers_keep_their_country(self) -> None:
+        """「Xの IT労働者」は被害側であり、帰属文脈として除外しない。"""
+        profile = self.profile("Contagious Interview")
+        activity = self.activity(
+            "IT労働者を狙う攻撃",
+            "攻撃者は日本のIT労働者を標的として偽の求人を送付した。",
+        )
+
+        add_targets(profile, activity, self.rules)
+
+        countries = {item["name"] for item in profile["targets"]["countries"]}
+        self.assertIn("日本", countries)
+
     def test_nationality_of_perpetrators_is_not_a_victim_country(self) -> None:
         profile = self.profile("Silent Librarian")
         activity = self.activity(

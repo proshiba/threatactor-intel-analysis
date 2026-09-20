@@ -3628,6 +3628,105 @@
         }
       ],
       "analyst_notes": "上流(origin/main)が 2026-09-19 に workbook alias 境界の移行(PR #51)と entity 境界の是正(PR #52)を取り込んでおり、本走査前に ddf0f6af から 087ffc01 へ追従した。この移行により hellsing-apt の alias「Asia」と sidewinder の alias「India」が除去され、2026-09-19 時点の走査で name-collision として挙がっていた2件のレコードが構造的に発生しなくなった。レビューキューは9レコード(未判断4)から6レコード(未判断2)へ減少している。また tech-memo 側で 2026-09-19 分の IOC CSV が収集されたため、Transparent Tribe のレコードは news-title 由来の scope-review-required から IOC actor 列由来の structured-actor-field へ格上げされ、IOC 22件が付随するようになった。本走査では tech-memo 経路で検知できない一次資料が2本見つかった(ESET の FamousSparrow、SentinelLabs の TraderTraitor)ほか、tech-memo に掲載されていながら名称未登録のためにレコード化されなかった政府共同注意喚起(警察庁等の WaterPlum)が1本あった。後者は daily_check.py の「本文から抽出した未登録のアクター名候補」に現れており、この出力を毎回原文まで確認する運用の有効性を示している。unmatched_actor_values の上位名称(FamousSparrow 23観測、SilkParasite 114観測)が台帳未登録のまま蓄積していたため、上位名称と unknown-clusters.json の突き合わせを日次手順へ組み込む必要がある。"
+    },
+    {
+      "completed_at": "2026-09-20T08:20:00Z",
+      "window": {
+        "since": "2026-09-16",
+        "until": "2026-09-19"
+      },
+      "source_commit": "bb887320cb4fc57ce5bec2c36fe6ebb0c44bb17a",
+      "statistics": {
+        "news_files": 4,
+        "articles": 40,
+        "review_records": 9,
+        "approved_records": 1,
+        "rejected_records": 8,
+        "pending_records": 0,
+        "applied_records": 1,
+        "ioc_observations": 23,
+        "unmatched_actor_values": 375,
+        "materialization_window": "同一走査日の追補である。直前のエントリ(2026-09-20T07:20:00Z)は同じ窓を別作業で処理しており、transparent-tribe の反映、unc4899 と contagious-interview への osint-updates 経由の取込、SilkParasite と FamousSparrow の台帳登録を完了している。本エントリはそこへ追加した分だけを記録する。apply_review_queue.py --apply の対象は famoussparrow の1レコード(IOC 23件)のみで、enrich_activity_intelligence.py・enrich_targeting_scope.py・materialize_activity_diamonds.py・render_profile.py は --actor で famoussparrow、contagious-interview、transparent-tribe、unc4899 に限定して実行した。ui/build_data.py と ui/build_portal_index.py を再生成した。"
+      },
+      "applied": [
+        {
+          "actor": "famoussparrow",
+          "name": "SparroWockに注意：噛みつくバックドアと、捕捉につながるコマンド",
+          "source": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs",
+          "decision": "採用(新規プロファイルの初回反映)。ESET Research(2026-09-17公開)の原文をcurlでHTTP 200を取得して確認した。SparrowDoor経由の展開と被害者像の一致を根拠に高確度で帰属されている。活動期間は原文の「since at least August 2025」を起点とし、終期はIOC CSVのC2初観測日の最新値2026-06-17を採用した。IOC 23件を反映し、SparroWocky を capability として承認した。"
+        }
+      ],
+      "rejected": [
+        {
+          "actor": "contagious-interview",
+          "name": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃(警察庁 2026-09-18)",
+          "source": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+          "decision": "資料は採用済みだが、キュー経由では反映しない。別名「WaterPlum」(scope: overlapping)の追加によりレビューレコードが生成されたが、本資料は同日の別作業で osint-updates.json 経由の活動activity--waterplum-it-engineer-targeting-2026 として既に反映済みである。承認すると同一資料から2つ目の活動が materialize され重複するため、キュー側のレコードを不採用として扱った。"
+        },
+        {
+          "actor": "famoussparrow",
+          "name": "SilkParasiteインフラ：中央アジアのエネルギー・政府機関を標的とするSpiceRATサーバー",
+          "source": "https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure",
+          "decision": "不採用(類似・関連のみの言及)。Hunt.io の FamousSparrow への言及は Bitdefender の SilkParasite 報告が指摘した重複の紹介にとどまり、Hunt.io 自身は本インフラを FamousSparrow へ帰属していない。profiles/famoussparrow の作成後も本記事からは活動レコードを作成しない。"
+        }
+      ],
+      "pending": [],
+      "new_profiles": [
+        {
+          "slug": "famoussparrow",
+          "status": "draft",
+          "note": "unknown-cluster--famous-sparrow を profiles/famoussparrow へ昇格し、台帳側は status: merged として保持した。確認できた actor-specific な一次資料は ESET の3本(2021-09-23 / 2025-03-26 / 2026-09-17)でいずれも同一ベンダーであり、昇格閾値「独立した一次資料2本以上、または政府・CERT・法執行機関の言及」を形式的には満たしていない。昇格は利用者の指示による判断であり、同一ベンダー複数報告での昇格はprofiles/unc6508 に前例がある。この留保はプロファイルの assessment.uncertainties と台帳のanalyst_notes の双方に記録した。Salt Typhoon / GhostEmperor / UNC2286 / Earth Estries との同一性は未解決のまま relationships へ両論として残している。"
+        }
+      ],
+      "alias_updates": [
+        {
+          "actor": "contagious-interview",
+          "alias": "WaterPlum",
+          "scope": "overlapping",
+          "note": "警察庁の2026-09-18公表が「WaterPlum」(関連名称:Contagious Interview)と記載する。原文が『関連名称』と述べるにとどまるため exact へ昇格させていない。別作業でも同じ別名が追加されており、マージ後も1件のみ存在することを確認した。"
+        }
+      ],
+      "unknown_cluster_updates": [
+        {
+          "cluster_id": "unknown-cluster--famous-sparrow",
+          "action": "merged",
+          "status": "merged",
+          "note": "profiles/famoussparrow へ昇格した。merged_into と merged_on を記録し、昇格閾値の留保は analyst_notes に残した。"
+        }
+      ],
+      "unmatched_actor_candidates_flagged": [
+        {
+          "value": "FamousSparrow",
+          "observations": 23,
+          "source": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "note": "profiles/famoussparrow の作成により解消した。IOC 23観測は同プロファイルへ反映済みである。"
+        }
+      ],
+      "extraction_rule_changes": [
+        {
+          "file": "parse-daily/validate_daily.py",
+          "change": "ioc-source-missing の判定対象を、IOC行が実際に掲載されていた出典(ioc_bearing_source_ids)へ限定した。activity_reference_aliases で同一活動へ集約した記事は出典ではあってもIOCを掲載しておらず iocs.json に観測を持たないため、従来の判定では FamousSparrow の取込が error になっていた。プロファイル側の source 参照は profile-source-missing が従来どおり検証する。",
+          "tests": "parse-daily/tests/test_daily.py の AliasedSourceTests へ回帰テスト2件を追加した。"
+        },
+        {
+          "file": "parse-daily/config.json",
+          "change": "activity_reference_aliases へ「https://github.com/eset/malware-ioc/tree/master/famoussparrow」からESET記事URLへの対応を追加し、IOC一覧と記事を1活動へ集約した。"
+        },
+        {
+          "file": "actor_profile/scripts/enrich_activity_intelligence.py",
+          "change": "活動記述からの国名抽出で「Xを背景とする」「Xサイバー攻撃グループ」「XIT労働者」「Xからの圧力」を帰属・第三者文脈として除外した。警察庁公表から「北朝鮮」が、ESET記事から「米国」が標的国として構造化されていたためである。過去の取込で入った同種の値(unc4899 の「北朝鮮」)も除去した。既存エントリは自動削除されないため、規則修正後の手動除去が必要である。",
+          "tests": "actor_profile/tests/test_activity_intelligence.py へ肯定・否定の回帰テスト3件を追加し、GENERATION_RULES.md へ語形の一覧を記載した。"
+        }
+      ],
+      "external_source_checks": [
+        {
+          "publisher": "全8情報源",
+          "url": "parse-daily/config.json の external_sources",
+          "latest_relevant_publication": "2026-09-18",
+          "result": "直前のエントリ(2026-09-20T07:20:00Z)と同じ窓を別経路で巡回した結果であり、検知した新規公開は同一である。本エントリで追加確認した点は次の2件。ESET Research 2026-09-17 の SparroWock 記事は tech-memo daily-news 2026-09-18 にも収録済みで、IOC CSV の actor 値が未照合のまま残っていた(profiles/famoussparrow の作成で解消)。SentinelLabs 2026-09-18 の TraderTraitor 記事は tech-memo 未収録で、profiles/unc4899 へは別作業が osint-updates.json 経由で反映済みであることをマージ時に確認した。"
+        }
+      ],
+      "analyst_notes": "本エントリは 2026-09-20T07:20:00Z のエントリと同じ走査窓を扱った並行作業の追補である。同日に2つのセッションが同じ日次チェックを実行し、PR #53 が先に main へマージされたため、本ブランチ(PR #54)側では重複部分を main の内容へ寄せて解決した。具体的には transparent-tribe の適用結果、contagious-interview と unc4899 への取込、SilkParasite の台帳登録は main の版を採用し、review-decisions.json の重複キー2件(transparent-tribe の Zscaler 記事、indigozebra の Hunt.io 記事)は main の判断を残した。本ブランチ固有の成果は、profiles/famoussparrow の作成(台帳エントリは merged)、IOC一覧と記事を1活動へ集約するための config.json の別名追加、および validate_daily.py と enrich_activity_intelligence.py の2つの修正である。並行実行の検知が事後になった点は運用上の課題として記録する。同じ走査窓を複数セッションが処理すると、同一資料が異なる経路(日次キュー / osint-updates)で二重に反映されうる。state.json の last_scanned_date は 2026-09-19 のままで変更していない。"
     }
   ],
   "full_history_activity_audit": {

@@ -13,6 +13,7 @@ from typing import Any
 from daily_common import is_file_like, load_json
 from daily_materializer import (
     activity_id_for,
+    source_for_row,
     source_id_for_value,
     source_items,
 )
@@ -26,6 +27,19 @@ VALID_IOC_TYPES = {
     "md5", "sha1", "sha256", "sha512", "ipv4", "ipv6",
     "domain", "url", "email", "certificate-fingerprint",
 }
+
+
+def ioc_bearing_source_ids(record: dict[str, Any], queue: dict[str, Any]) -> set[str]:
+    """IOC行が実際に掲載されていた出典のIDだけを返す。
+
+    activity_reference_aliases で同一活動へ集約した記事のように、レコードの出典
+    ではあってもIOCを1件も掲載していないURLは`iocs.json`へ観測を持たない。
+    materializationの欠落検証はIOCを掲載した出典に限って行う。
+    """
+    return {
+        source_id_for_value(source_for_row(record, row, queue)["url"])
+        for row in record.get("iocs", [])
+    }
 
 
 def finding(level: str, code: str, message: str, record_id: str = "") -> dict[str, str]:
@@ -214,7 +228,9 @@ def main() -> int:
                         finding("error", "profile-activity-missing", activity_id, item["record_id"])
                     )
                 if item.get("iocs"):
-                    missing_ioc_sources = expected_source_ids - (
+                    # レコードの全出典ではなく、IOCを掲載した出典だけを検証する。
+                    # プロファイル側のsource参照は上のprofile-source-missingで検証済み。
+                    missing_ioc_sources = ioc_bearing_source_ids(item, queue) - (
                         ioc_source_ids & observation_source_ids
                     )
                     for source_id in sorted(missing_ioc_sources):
