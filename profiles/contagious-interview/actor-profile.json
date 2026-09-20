@@ -2,9 +2,9 @@
   "schema_version": "1.2.0",
   "profile_id": "actor--contagious-interview",
   "name": "Contagious Interview",
-  "status": "draft",
+  "status": "review",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-19T01:10:23Z",
+  "updated_at": "2026-09-20T06:51:51Z",
   "languages": [
     "ja"
   ],
@@ -70,6 +70,16 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
+      },
+      {
+        "name": "WaterPlum",
+        "vendor": "警察庁 (NPA) 他 共同注意喚起",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--npa-waterplum-joint-advisory-2026-09"
+        ],
+        "analyst_notes": "本資料は警察庁・国家サイバー統括室(NCO)・FBI・米国防総省サイバー犯罪センター(DC3)・豪州通信情報局(ASD)豪州サイバーセキュリティセンター(ACSC)・ドイツ連邦情報庁(BND)・ドイツ連邦憲法擁護庁(BfV)による共同の注意喚起である。原文は「北朝鮮を背景とするサイバー攻撃グループ「WaterPlum」（ウォータープラム）（関連名称： Contagious Interview）」と記載する。「関連名称」は同一性の断定ではないため scope は exact へ昇格させず overlapping とする。"
       }
     ],
     "actor_types": [
@@ -273,6 +283,90 @@
           "source--mitre-attack-19-1"
         ],
         "analyst_notes": ""
+      },
+      {
+        "id": "malware--ottercookie",
+        "name": "OtterCookie",
+        "aliases": [
+          "OtterCookie"
+        ],
+        "types": [
+          "JavaScript"
+        ],
+        "description": "原文の記載は「OtterCookie マルウェアは、JavaScript ベースのリモートアクセス型トロイ（RAT）であり、情報窃取機能も備えたマルウェアです。」である。悪性NPMパッケージへ埋め込まれて配布される。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--npa-waterplum-joint-advisory-2026-09"
+        ],
+        "analyst_notes": "共同注意喚起がWaterPlumの使用マルウェアとして明示している。"
+      },
+      {
+        "id": "malware--ottercandy",
+        "name": "OtterCandy",
+        "aliases": [
+          "OtterCandy"
+        ],
+        "types": [
+          "JavaScript"
+        ],
+        "description": "原文の記載は「OtterCandy マルウェアは、OtterCookieとRATatouille の機能を組み合わせたものです。」である。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--npa-waterplum-joint-advisory-2026-09"
+        ],
+        "analyst_notes": "共同注意喚起がWaterPlumの使用マルウェアとして明示している。"
+      },
+      {
+        "id": "malware--stoatwaffle",
+        "name": "StoatWaffle",
+        "aliases": [
+          "StoatWaffle"
+        ],
+        "types": [
+          "Node.js"
+        ],
+        "description": "原文の記載は「StoatWaffle はモジュラー構造の Node.js マルウェアファミリーで、マルウェアローダー、認証情報収集コンポーネント、永続性と被害者システムへの横展開を実現する RAT を組み合わせており、悪意ある Microsoft Visual Studio Code（VSCode）プロジェクトを通じて配布されます。」である。ブロックチェーンをテーマにしたリポジトリをデコイに用い、フォルダが開かれ信頼された際に自動実行される .vscode/tasks.json を埋め込む。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--npa-waterplum-joint-advisory-2026-09"
+        ],
+        "analyst_notes": "共同注意喚起がWaterPlumの使用マルウェアとして明示している。"
       }
     ],
     "tools": [],
@@ -963,9 +1057,7 @@
           },
           "activity_type": "malware-campaign",
           "phases": [],
-          "results": [
-            "data-theft"
-          ],
+          "results": [],
           "direction": {
             "source_countries": [],
             "target_country_refs": [],
@@ -1601,7 +1693,9 @@
           "organization_refs": []
         },
         "capability": {
-          "malware_refs": [],
+          "malware_refs": [
+            "malware--ottercookie"
+          ],
           "ttp_refs": [
             "ttp--activity-rule--437616c0b22d107a1a92"
           ]
@@ -1653,6 +1747,118 @@
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
+    },
+    {
+      "activity_id": "activity--waterplum-it-engineer-targeting-2026",
+      "name": "WaterPlum によるIT技術者標的のマルウェア配布と暗号資産窃取 (警察庁・FBI等 共同注意喚起 2026-09-18)",
+      "activity_type": "intrusion",
+      "description": "警察庁は、NCO、FBI、DC3、ASD/ACSC、BND、BfV とともに、北朝鮮を背景とするサイバー攻撃グループ WaterPlum（関連名称: Contagious Interview）の攻撃手口を公表した。WaterPlum はソーシャルメディア、オンライン求人サイト、ギグワークプラットフォーム、フリーランスマーケットプレイスを通じて求職者へ接近し、技術面接やコーディング課題を名目に共同開発プラットフォームやコードリポジトリ上の不正プログラムを実行させる。悪性NPMパッケージへ BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffle とその亜種を埋め込み、ローダー経由でバックドアを設置したうえで RAT により接続性と横展開経路を維持し、情報窃取ツールで機密データと暗号資産を第三者のC2 IPアドレスへ送出する。窃取対象にはブラウザ保存の認証情報、クリップボード、キー入力ログ、スクリーンショット、暗号資産ウォレットの秘密鍵・シードフレーズ、運転免許証・パスポート等の身分証画像が含まれる。警察庁は2025年12月頃から2026年7月にかけて日本を含む100以上の国と地域で3万台以上のPCがマルウェアに感染し、7千件以上の暗号資産ウォレット情報が窃取され、WaterPlum が管理するウォレットへ少なくとも約17億円相当の暗号資産が送金されていたと把握している。主な標的はWeb関係のデザイナー・エンジニアおよび暗号資産・ブロックチェーン・Web3分野の技術者である。",
+      "first_observed": {
+        "value": "2025-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了"
+      },
+      "reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "target_refs": [
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--mitre-group--sector--9344745b7aeff4dbe6af"
+      ],
+      "malware_refs": [
+        "malware--beavertail",
+        "malware--invisibleferret",
+        "malware--ottercookie",
+        "malware--ottercandy",
+        "malware--stoatwaffle"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [
+        "victim--activity-rule--4980b713f99d02bb9b2a"
+      ],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--npa-waterplum-joint-advisory-2026-09"
+      ],
+      "analyst_notes": "一次情報源(政府共同注意喚起)の原文PDFを確認して取り込んだ。tech-memo daily-news には 2026-09-19 付で掲載されているが、WaterPlum が未登録名称のためレビューキューにレコードが生成されず、日次経路では検知されなかった。本活動は WaterPlum の活動として記述されており、本プロファイルへの結び付けは原文の「関連名称： Contagious Interview」に依拠する。同一性の断定ではないため confidence は medium とし、alias scope も overlapping のまま維持する。感染期間は原文が明示する「2025年12月頃から2026年7月にかけて」を precision: month で設定し、公開日 2026-09-18 は reported_at として分離した。被害組織名の明示はないため victim_refs は空とする。bitFlyer社への採用応募事例は北朝鮮IT労働者による応募活動であって本グループのマルウェア攻撃とは別の主張であるため、本活動へは統合しない。",
+      "diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--contagious-interview",
+          "name": "Contagious Interview",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [
+            "malware--beavertail",
+            "malware--invisibleferret",
+            "malware--ottercandy",
+            "malware--ottercookie",
+            "malware--stoatwaffle"
+          ],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--f35cd09db0a72555b38a",
+            "target--mitre-group--sector--9344745b7aeff4dbe6af"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--4980b713f99d02bb9b2a"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2025-12-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始"
+          },
+          "last_observed": {
+            "value": "2026-07-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了"
+          },
+          "reported_at": {
+            "value": "2026-09-18T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "source-publication"
+          },
+          "activity_type": "intrusion",
+          "phases": [],
+          "results": [
+            "financial-loss"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--f35cd09db0a72555b38a"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--npa-waterplum-joint-advisory-2026-09"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
     }
   ],
   "targets": {
@@ -1678,6 +1884,28 @@
           "source--daily-2a32ed98e1bd6d1661b4"
         ],
         "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
+      },
+      {
+        "id": "target--activity-rule--country--f35cd09db0a72555b38a",
+        "name": "日本",
+        "description": "活動「WaterPlum によるIT技術者標的のマルウェア配布と暗号資産窃取 (警察庁・FBI等 共同注意喚起 2026-09-18)」の記述で標的として明示された国・地域。",
+        "first_observed": {
+          "value": "2025-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--npa-waterplum-joint-advisory-2026-09"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。 [targeting-scope-audit-v1] 活動記述の標的文脈から構造化。"
       }
     ],
     "regions": [],
@@ -1735,21 +1963,22 @@
         "name": "暗号資産・Web3",
         "description": "[Contagious Interview](https://attack.mitre.org/groups/G1052) targets Windows, Linux, and macOS systems, with a particular focus on individuals engaged in software development and cryptocurrency-related activities.",
         "first_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2025-12-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始; activity-period"
         },
         "last_observed": {
-          "value": null,
-          "precision": "unknown",
-          "status": "unknown",
-          "basis": "not-stated"
+          "value": "2026-07-01T00:00:00Z",
+          "precision": "month",
+          "status": "known",
+          "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
           "source--daily-3b508815c5f991656dcb",
-          "source--mitre-attack-19-1"
+          "source--mitre-attack-19-1",
+          "source--npa-waterplum-joint-advisory-2026-09"
         ],
         "analyst_notes": "[mitre-group-target-v1] 公式ATT&CKのGroup概要で標的として明示された国・地域または産業。Group概要には通常、個別の観測日はない。"
       }
@@ -1797,7 +2026,9 @@
       "activity_refs": [
         "activity--daily-e98674dd97bf22866f7f"
       ],
-      "malware_refs": [],
+      "malware_refs": [
+        "malware--ottercookie"
+      ],
       "infrastructure_refs": [],
       "first_observed": {
         "value": "2025-02-01T00:00:00Z",
@@ -4156,6 +4387,35 @@
       "reliability": "medium",
       "sha256": null,
       "analyst_notes": "原文を確認(アクセス日 2026-08-12)。「The adversary primarily conducts operations to illicitly obtain freelance or full-time equivalent (FTE) work to earn a salary that can be funneled to North Korea.」と定義し、community identifiersにContagious Interviewを含む。ベンダー独自のクラスタ定義であり、政府帰属とは分離して扱う。"
+    },
+    {
+      "source_id": "source--npa-waterplum-joint-advisory-2026-09",
+      "path": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+      "url": "https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf",
+      "title": "北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について",
+      "publisher": "警察庁 国家サイバー統括室 (NPA/NCO)",
+      "published_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-20T00:00:00Z",
+      "language": "ja",
+      "source_type": "government-advisory",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "alias",
+        "activity",
+        "malware",
+        "victim-geography",
+        "attribution-claim",
+        "uncertainty"
+      ],
+      "analyst_notes": "警察庁・NCO・FBI・DC3・ASD/ACSC・BND・BfV による共同注意喚起。情報源優先順位の第1位(政府機関・法執行機関)に該当する。PDF原文を取得して本文を直接確認した。tech-memo daily-news には 2026-09-19 付で掲載されているが、WaterPlum が既存プロファイルの canonical name / alias のいずれにも未登録であったためレビューキューにレコードが生成されなかった。"
     }
   ],
   "assessment": {
@@ -4165,7 +4425,10 @@
       "Automatically mapped aliases, targets, and workbook software require analyst review."
     ],
     "uncertainties": [
-      "Vendor cluster boundaries may differ from the canonical name used here."
+      "Vendor cluster boundaries may differ from the canonical name used here.",
+      "警察庁とFBIは、WaterPlumによるサイバー攻撃と北朝鮮IT労働者による一部の外貨獲得活動について「朝鮮労働党中央委員会軍需工業部313総局が中心的な役割を果たしている」と評価している。政府共同注意喚起による国家支援・組織帰属の明示であるが、当該評価の対象は WaterPlum であり、本プロファイル(Contagious Interview)との関係は原文上「関連名称」にとどまる。scope が一致しないため attribution.countries / sponsor_type / organizations へは昇格させず、主張として保持する。scope を確定できる追加の一次資料が得られた時点で再評価する。",
+      "WaterPlum と Contagious Interview の同一性は未確定である。原文の記載は「関連名称」であり、同一クラスタであるとも、部分的な重複であるとも述べていない。alias scope は overlapping とし、exact identity へ昇格させない。",
+      "原文は WaterPlum と北朝鮮IT労働者の関連について、双方が使用したIPアドレスの一致を根拠として挙げている。本リポジトリでは DPRK IT Worker Schemes のエコシステムと vendor 追跡アクターを別 entity として扱うため、この記述を根拠に profiles/dprk-it-workers と統合しない。"
     ],
     "collection_notes": "Catalog source roots: actor_profile/evidence/contagious-interview.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-19T01:10:23Z; result=matched.",
     "analyst_notes": ""
@@ -4175,7 +4438,7 @@
     "history": "",
     "capability_details": "InvisibleFerret, HexEval Loader, BeaverTail, XORIndex Loader",
     "infrastructure_details": "",
-    "targeting_details": "構造化ターゲット監査: 標的国=タイ。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
+    "targeting_details": "構造化ターゲット監査: 標的国=タイ、日本。標的地域=広域情報なし。日本は確認時に個別国として保持する。",
     "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
   },
   "victim_cases": [
@@ -4225,6 +4488,63 @@
       "confidence": "medium",
       "evidence_refs": [
         "source--daily-56f1f7edcfb3f507fe75"
+      ],
+      "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "victim_case_id": "victim--activity-rule--4980b713f99d02bb9b2a",
+      "name": "被害事例: WaterPlum によるIT技術者標的のマルウェア配布と暗号資産窃取 (警察庁・FBI等 共同注意喚起 2026-09-18)",
+      "victim_name": null,
+      "disclosure_status": "anonymous",
+      "victim_type": "unknown",
+      "case_status": "reported",
+      "description": "警察庁は、NCO、FBI、DC3、ASD/ACSC、BND、BfV とともに、北朝鮮を背景とするサイバー攻撃グループ WaterPlum（関連名称: Contagious Interview）の攻撃手口を公表した。WaterPlum はソーシャルメディア、オンライン求人サイト、ギグワークプラットフォーム、フリーランスマーケットプレイスを通じて求職者へ接近し、技術面接やコーディング課題を名目に共同開発プラットフォームやコードリポジトリ上の不正プログラムを実行させる。悪性NPMパッケージへ BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffle とその亜種を埋め込み、ローダー経由でバックドアを設置したうえで RAT により接続性と横展開経路を維持し、情報窃取ツールで機密データと暗号資産を第三者のC2 IPアドレスへ送出する。窃取対象にはブラウザ保存の認証情報、クリップボード、キー入力ログ、スクリーンショット、暗号資産ウォレットの秘密鍵・シードフレーズ、運転免許証・パスポート等の身分証画像が含まれる。警察庁は2025年12月頃から2026年7月にかけて日本を含む100以上の国と地域で3万台以上のPCがマルウェアに感染し、7千件以上の暗号資産ウォレット情報が窃取され、WaterPlum が管理するウォレットへ少なくとも約17億円相当の暗号資産が送金されていたと把握している。主な標的はWeb関係のデザイナー・エンジニアおよび暗号資産・ブロックチェーン・Web3分野の技術者である。",
+      "activity_refs": [
+        "activity--waterplum-it-engineer-targeting-2026"
+      ],
+      "target_refs": [
+        "target--activity-rule--country--f35cd09db0a72555b38a",
+        "target--mitre-group--sector--9344745b7aeff4dbe6af"
+      ],
+      "malware_refs": [
+        "malware--beavertail",
+        "malware--invisibleferret",
+        "malware--ottercandy",
+        "malware--ottercookie",
+        "malware--stoatwaffle"
+      ],
+      "ttp_refs": [],
+      "affected_assets": [
+        "エンドポイント",
+        "開発環境／ソースコード"
+      ],
+      "impacts": [
+        {
+          "impact_type": "financial-loss",
+          "description": "悪性NPMパッケージへ BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffle とその亜種を埋め込み、ローダー経由でバックドアを設置したうえで RAT により接続性と横展開経路を維持し、情報窃取ツールで機密データと暗号資産を第三者のC2 IPアドレスへ送出する。"
+        }
+      ],
+      "first_observed": {
+        "value": "2025-12-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の開始"
+      },
+      "last_observed": {
+        "value": "2026-07-01T00:00:00Z",
+        "precision": "month",
+        "status": "known",
+        "basis": "警察庁: 「2025年12月頃から2026年7月にかけて」把握した感染期間の終了"
+      },
+      "reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--npa-waterplum-joint-advisory-2026-09"
       ],
       "analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
@@ -4289,12 +4609,7 @@
       ],
       "ttp_refs": [],
       "affected_assets": [],
-      "impacts": [
-        {
-          "impact_type": "data-theft",
-          "description": "マルウェア「InvisibleFerret」は、仮想通貨ウォレットのデータを窃取し、持続的なアクセスを確立。"
-        }
-      ],
+      "impacts": [],
       "first_observed": {
         "value": null,
         "precision": "unknown",
