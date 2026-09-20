@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blacktech`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,11 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Palmerworm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| CAVERN CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| Circuit Panda | NSA / joint government advisory | exact | 高 | `source--nsa-blacktech-2023` | The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
+| Palmerworm | MITRE ATT&CK / NSA / joint government advisory | exact | 高 | `source--mitre-attack-19-1`, `source--nsa-blacktech-2023` | Alias scope must be reviewed before publication. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
+| Radio Panda | NSA / joint government advisory | exact | 高 | `source--nsa-blacktech-2023`, `source--blacktech--24eb19b60ca5a2a3` | The joint U.S.-Japan advisory explicitly identifies Radio Panda as another name for BlackTech. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
+| TEMP.Overboard | Google Threat Intelligence Group / NSA / joint government advisory | exact | 高 | `source--gtig-unified-actor-naming-2026`, `source--nsa-blacktech-2023` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. The joint U.S.-Japan advisory explicitly identifies this name with BlackTech. |
 
 ## 帰属
 
@@ -52,18 +56,20 @@ BlackTechの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
-- 複数taxonomyスコープ: なし
+- 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | CAVERN CASTLE | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | BlackTech, Circuit Panda, Radio Panda | canonical-name | 高 | China | https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/<br>https://www.trendmicro.com/en_us/research/24/d/earth-hundun-waterbear-deuterbear.html<br>https://www.trendmicro.com/en_us/research/24/e/earth-hundun-2.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Canary Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | RADIO PANDA | single-alias-intersection | 中 | CN |  |
 | misp-threat-actor | BlackTech | canonical-name | 高 | CN | https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/<br>https://www.welivesecurity.com/2018/07/09/certificates-stolen-taiwanese-tech-companies-plead-malware-campaign/<br>https://www.welivesecurity.com/2019/05/14/plead-malware-mitm-asus-webstorage/ |
 | misp-microsoft-activity-group | Canary Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | BlackTech - G0098 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0098<br>https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/palmerworm-blacktech-espionage-apt |
 | misp-mitre-intrusion-set | BlackTech - G0098 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0098<br>https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/palmerworm-blacktech-espionage-apt |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -200,8 +206,8 @@ PLEAD; Shrouded Crossbow; Waterbear
 
 ## IOC／artifact概要
 
-- IOC値: 4件
-- IOC観測: 4件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 11件（`artifacts.csv`）
@@ -236,6 +242,12 @@ PLEAD; Shrouded Crossbow; Waterbear
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--nsa-blacktech-2023 | U.S. and Japanese Agencies Issue Advisory about BlackTech | NSA | 2023-09-27 | https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/article/3539209/us-and-japanese-agencies-issue-advisory-about-china-linked-actors-hiding-in-rou/ | government-advisory | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--radio-panda--b03c6ae427a5b789 | radio panda |  | 不明 | actor_profile/evidence/radio-panda.csv | structured-data | TLP:CLEAR | 中 |
+| source--radio-panda--55abd31c10e03798 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 
 ## 自由記述
 

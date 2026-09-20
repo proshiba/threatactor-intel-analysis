@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--rocke`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,19 +50,20 @@ Rockeの標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Rocke, Iron Group | canonical-name | 高 | China | https://redcanary.com/blog/rocke-cryptominer/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Rocke%2C+Iron+Group&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Iron Group | single-alias-intersection | 中 |  | https://www.intezer.com/iron-cybercrime-group-under-the-scope-2/ |
 | misp-threat-actor | Rocke | canonical-name | 高 |  | https://blog.talosintelligence.com/2018/08/rocke-champion-of-monero-miners.html<br>https://unit42.paloaltonetworks.com/malware-used-by-rocke-group-evolves-to-evade-detection-by-cloud-security-products/<br>https://www.intezer.com/blog-technical-analysis-cryptocurrency-mining-war-on-the-cloud/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Rocke - G0106 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0106<br>https://blog.talosintelligence.com/2018/08/rocke-champion-of-monero-miners.html |
 | misp-mitre-intrusion-set | Rocke - G0106 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0106<br>https://blog.talosintelligence.com/2018/08/rocke-champion-of-monero-miners.html |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -170,8 +171,8 @@ Rockeの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 3件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 29件（`artifacts.csv`）
@@ -204,6 +205,7 @@ Rockeの標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

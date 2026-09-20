@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--aquatic-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Aquatic Panda | canonical-name | 高 | China | https://www.crowdstrike.com/blog/overwatch-exposes-aquatic-panda-in-possession-of-log-4-shell-exploit-tools/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Aquatic+Panda&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Charcoal Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Earth Lusca | canonical-name | 高 | CN | https://hello.global.ntt/-/media/ntt/global/insights/white-papers/the-operations-of-winnti-group.pdf<br>https://www.trendmicro.com/content/dam/trendmicro/global/en/research/22/a/earth-lusca-employs-sophisticated-infrastructure-varied-tools-and-techniques/technical-brief-delving-deep-an-analysis-of-earth-lusca-operations.pdf<br>https://www.recordedfuture.com/chinese-group-tag-22-targets-nepal-philippines-taiwan |
 | misp-microsoft-activity-group | Charcoal Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Aquatic Panda - G0143 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0143<br>https://www.crowdstrike.com/blog/overwatch-exposes-aquatic-panda-in-possession-of-log-4-shell-exploit-tools/ |
 | misp-mitre-intrusion-set | Aquatic Panda - G0143 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0143<br>https://www.crowdstrike.com/blog/overwatch-exposes-aquatic-panda-in-possession-of-log-4-shell-exploit-tools/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -240,6 +241,7 @@ Aliasなし
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--wizard-spider`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -63,12 +63,13 @@ Wizard Spiderの標準化プロファイル。リポジトリ内の専用資料2
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | FIN12 | single-alias-intersection | 中 |  | https://www.mandiant.com/resources/fin12-ransomware-intrusion-actor-pursuing-healthcare-targets<br>https://www.mandiant.com/media/12596/download<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=FIN12&n=1 |
 | etda-threat-group-cards | UNC1878 | single-alias-intersection | 中 |  | https://www.bleepingcomputer.com/news/security/brooklyn-and-vermont-hospitals-are-latest-ryuk-ransomware-victims/<br>https://redcanary.com/blog/how-one-hospital-thwarted-a-ryuk-ransomware-outbreak/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=UNC1878&n=1 |
 | etda-threat-group-cards | Wizard Spider, Gold Blackburn | canonical-name | 高 | Russia | https://www.crowdstrike.com/blog/sin-ful-spiders-wizard-spider-and-lunar-spider-sharing-the-same-web/<br>https://www.crowdstrike.com/blog/wizard-spider-lunar-spider-shared-proxy-module/<br>https://www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/ |
@@ -82,7 +83,7 @@ Wizard Spiderの標準化プロファイル。リポジトリ内の専用資料2
 | misp-microsoft-activity-group | Periwinkle Tempest | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Pistachio Tempest | multiple-name-intersection | 高 |  | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Storm-0230 | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Wizard Spider - G0102 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0102<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://securityintelligence.com/posts/trickbot-gang-doubles-down-enterprise-infection/ |
 | misp-mitre-intrusion-set | Wizard Spider - G0102 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0102<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://securityintelligence.com/posts/trickbot-gang-doubles-down-enterprise-infection/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -271,8 +272,8 @@ Onslow, North Carolina water; Dataresolution.net (MSP for multiple US newpapers)
 
 ## IOC／artifact概要
 
-- IOC値: 96件
-- IOC観測: 112件
+- IOC値: 97件
+- IOC観測: 113件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 52件
 - 非IOC artifact観測: 5件（`artifacts.csv`）
@@ -305,6 +306,7 @@ Onslow, North Carolina water; Dataresolution.net (MSP for multiple US newpapers)
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

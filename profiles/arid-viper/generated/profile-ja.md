@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--arid-viper`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,19 +56,20 @@ Meta attributed the observed Arid Viper campaigns to state-sponsored cyber espio
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Desert Falcons | canonical-name | 高 | [Gaza] | https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064309/The-Desert-Falcons-targeted-attacks.pdf<br>https://team-cymru.com/blog/2020/12/16/mapping-out-aridviper-infrastructure-using-augurys-malware-addon/<br>https://about.fb.com/wp-content/uploads/2021/04/Technical-threat-report-Arid-Viper-April-2021.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Pinstripe Lightning | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | AridViper | canonical-name | 高 | PS, Palestine | http://www.trendmicro.com/cloud-content/us/pdfs/security-intelligence/white-papers/wp-operation-arid-viper.pdf<br>http://securityaffairs.co/wordpress/33785/cyber-crime/arid-viper-israel-sex-video.html<br>https://securelist.com/blog/research/68817/the-desert-falcons-targeted-attacks/ |
 | misp-threat-actor | Pinstripe Lightning | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Pinstripe Lightning | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | APT-C-23 - G1028 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1028<br>https://web.archive.org/web/20201123042131/www.welivesecurity.com/2020/09/30/aptc23-group-evolves-its-android-spyware/<br>https://web.archive.org/web/20230604112435/https://research.checkpoint.com/2018/interactive-mapping-of-apt-c-23/ |
 | misp-mitre-intrusion-set | APT-C-23 - G1028 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1028<br>https://web.archive.org/web/20201123042131/www.welivesecurity.com/2020/09/30/aptc23-group-evolves-its-android-spyware/<br>https://web.archive.org/web/20230604112435/https://research.checkpoint.com/2018/interactive-mapping-of-apt-c-23/ |
 | misp-360net | 双尾蝎 - APT-C-23 | single-alias-intersection | 中 |  | https://apt.360.net/report/apts/27.html |
 
@@ -199,8 +200,8 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 140件
-- IOC観測: 148件
+- IOC値: 172件
+- IOC観測: 187件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 6件
 - 非IOC artifact観測: 4件（`artifacts.csv`）
@@ -234,6 +235,7 @@ TTPなし
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

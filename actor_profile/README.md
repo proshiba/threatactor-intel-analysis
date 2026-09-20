@@ -127,6 +127,9 @@ python3 actor_profile/scripts/materialize_actor_census.py
 # 既存の手動プロファイルを保持し、不足するプロファイルを作成
 python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
 
+# 一次情報で確認した最新alias、改称、明示的なentity境界を反映
+python3 actor_profile/scripts/apply_verified_alias_updates.py
+
 # IOC/artifact取込、Markdown/STIX生成、検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3
 
@@ -147,7 +150,8 @@ python3 actor_profile/scripts/render_collection_index.py \
 ```
 
 MITRE ATT&CKのactor、software、campaign、technique関係は
-`reference/attack-index.json`に保存したEnterprise ATT&CK 19.1のコンパクト索引を使います。
+`reference/attack-index.json`に保存したEnterprise ATT&CK 19.1と、
+`reference/attack-ics-index.json`に保存したICS ATT&CK 19.2のコンパクト索引を使います。
 資料本文にTechnique IDがある場合は、その資料もTTPの根拠へ追加します。
 
 全コーパス走査の根拠は`actor-census.json`、採用・統合・除外判断は

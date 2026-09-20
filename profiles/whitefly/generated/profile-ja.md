@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--whitefly`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Whitefly, Mofang | canonical-name | 高 |  | https://foxitsecurity.files.wordpress.com/2016/06/fox-it_mofang_threatreport_tlp-white.pdf<br>https://www.symantec.com/blogs/threat-intelligence/whitefly-espionage-singapore<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Whitefly%2C+Mofang&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Whitefly | canonical-name | 高 |  | https://www.symantec.com/blogs/threat-intelligence/whitefly-espionage-singapore<br>https://www.reuters.com/article/us-singapore-cyberattack/cyberattack-on-singapore-health-database-steals-details-of-1-5-million-including-pm-idUSKBN1KA14J |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Whitefly - G0107 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0107<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/whitefly-espionage-singapore |
 | misp-mitre-intrusion-set | Whitefly - G0107 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0107<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/whitefly-espionage-singapore |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -195,6 +196,7 @@ SingHealth
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

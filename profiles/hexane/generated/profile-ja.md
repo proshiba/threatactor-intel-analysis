@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--hexane`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -57,18 +57,19 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Hexane | canonical-name | 高 | Iran | https://dragos.com/resource/hexane/<br>https://www.secureworks.com/blog/lyceum-takes-center-stage-in-middle-east-campaign<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Hexane&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-0133 | canonical-name | 高 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | LYCEUM | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://www.secureworks.com/blog/lyceum-takes-center-stage-in-middle-east-campaign<br>https://www.secureworks.com/research/threat-profiles/cobalt-lyceum<br>https://www.prevailion.com/latest-targets-of-cyber-group-lyceum/ |
 | misp-microsoft-activity-group | Storm-0133 | canonical-name | 高 | IR, Iran | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | HEXANE - G1001 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1001<br>https://dragos.com/resource/hexane/<br>https://vblocalhost.com/uploads/VB2021-Kayal-etal.pdf |
 | misp-mitre-intrusion-set | HEXANE - G1001 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1001<br>https://dragos.com/resource/hexane/<br>https://vblocalhost.com/uploads/VB2021-Kayal-etal.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -203,8 +204,8 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 2件
+- IOC観測: 2件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
 - 非IOC artifact観測: 65件（`artifacts.csv`）
@@ -252,6 +253,7 @@ HEXANEの標準化プロファイル。リポジトリ内の専用資料1件とM
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

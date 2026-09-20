@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin8`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,6 +18,7 @@ FIN8の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
+| PUNCH COMET | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Syssphinx | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 
 ## 帰属
@@ -52,18 +53,19 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | PUNCH COMET | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | FIN8 | canonical-name | 高 |  | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=FIN8&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-0288 | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | FIN8 | canonical-name | 高 |  | https://www.fireeye.com/blog/threat-research/2016/05/windows-zero-day-payment-cards.html<br>https://www2.fireeye.com/WBNR-Know-Your-Enemy-UNC622-Spear-Phishing.html<br>https://www.root9b.com/sites/default/files/whitepapers/PoS%20Malware%20ShellTea%20PoSlurp.pdf |
 | misp-microsoft-activity-group | Storm-0288 | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | FIN8 - G0061 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0061<br>https://www.fireeye.com/blog/threat-research/2017/06/obfuscation-in-the-wild.html<br>https://www.fireeye.com/blog/threat-research/2016/05/windows-zero-day-payment-cards.html |
+| misp-mitre-enterprise-intrusion-set | FIN8 - G0061 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0061<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/syssphinx-fin8-backdoor<br>https://web.archive.org/web/20170923102302/https://www.fireeye.com/blog/threat-research/2017/06/obfuscation-in-the-wild.html |
 | misp-mitre-intrusion-set | FIN8 - G0061 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0061<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/syssphinx-fin8-backdoor<br>https://web.archive.org/web/20170923102302/https://www.fireeye.com/blog/threat-research/2017/06/obfuscation-in-the-wild.html |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -201,10 +203,10 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 38件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -248,6 +250,8 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

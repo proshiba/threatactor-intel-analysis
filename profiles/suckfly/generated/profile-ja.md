@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--suckfly`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Suckfly | canonical-name | 高 | China | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Suckfly&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT22 | canonical-name | 高 | CN | https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=62e325ae-f551-4855-b9cf-28a7d52d1534&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments<br>https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=7a60af1f-7786-446c-976b-7c71a16e9d3b&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments<br>https://attack.mitre.org/groups/G0039/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Suckfly - G0039 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0039<br>http://www.symantec.com/connect/blogs/suckfly-revealing-secret-life-your-code-signing-certificates |
+| misp-mitre-enterprise-intrusion-set | Suckfly - G0039 | mitre-external-id | 高 |  | http://www.symantec.com/connect/blogs/indian-organizations-targeted-suckfly-attacks<br>http://www.symantec.com/connect/blogs/suckfly-revealing-secret-life-your-code-signing-certificates<br>https://attack.mitre.org/groups/G0039 |
 | misp-mitre-intrusion-set | Suckfly - G0039 | mitre-external-id | 高 |  | http://www.symantec.com/connect/blogs/indian-organizations-targeted-suckfly-attacks<br>http://www.symantec.com/connect/blogs/suckfly-revealing-secret-life-your-code-signing-certificates<br>https://attack.mitre.org/groups/G0039 |
 | misp-360net | 一致なし |  |  |  |  |
 

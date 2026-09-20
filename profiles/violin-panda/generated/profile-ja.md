@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--violin-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,9 +18,10 @@ Violin Pandaの標準化プロファイル。リポジトリ内の専用資料1�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT20 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| APT20 | catalog / Google Threat Intelligence Group | exact | 高 | `source--actor-mapping-workbook`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | APT8 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Covert Grove | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+| RIDGE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -52,12 +53,13 @@ Violin Pandaの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | RIDGE CASTLE | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | APT 20, Violin Panda | canonical-name | 高 | China | https://unit42.paloaltonetworks.com/recent-watering-hole-attacks-attributed-apt-group-th3bug-using-poison-ivy/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+20%2C+Violin+Panda&n=1 |
 | etda-threat-group-cards | Nitro, Covert Grove | single-alias-intersection | 中 | China | https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the_nitro_attacks.pdf<br>https://blog.trendmicro.com/trendlabs-security-intelligence/the-significance-of-the-nitro-attacks/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Nitro%2C+Covert+Grove&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -196,6 +198,8 @@ TTPなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -1,8 +1,8 @@
 # Storm-0784 脅威アクタープロファイル
 
 - プロファイルID: `actor--storm-0784`
-- 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 状態: deprecated
+- 更新日時: 2026-09-20T11:56:28Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -134,16 +134,15 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is an exact-identity duplicate of CyberAv3ngers (actor--cyberav3ngers). | 高 | `source--storm-0784--aec98db679bde4a0` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 

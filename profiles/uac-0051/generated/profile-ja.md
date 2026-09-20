@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0051`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Operation Ghostwriter | canonical-name | 高 | Belarus | https://www.fireeye.com/content/dam/fireeye-www/blog/pdfs/Ghostwriter-Influence-Campaign.pdf<br>https://www.prevailion.com/diving-deep-into-unc1151s-infrastructure-ghostwriter-and-beyond/<br>https://www.mandiant.com/resources/unc1151-linked-to-belarus-government |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |

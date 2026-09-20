@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--putter-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -57,18 +57,19 @@ Putter Pandaの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Putter Panda, APT 2 | canonical-name | 高 | China | https://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://en.wikipedia.org/wiki/PLA_Unit_61486<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Putter+Panda%2C+APT+2&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT2 | canonical-name | 高 | CN, China | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://www.cfr.org/interactive/cyber-operations/putter-panda<br>https://attack.mitre.org/groups/G0024 |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Putter Panda - G0024 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0024<br>http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf |
+| misp-mitre-enterprise-intrusion-set | Putter Panda - G0024 | mitre-external-id | 高 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0024<br>https://blogs.blackberry.com/en/2016/01/puttering-into-the-future |
 | misp-mitre-intrusion-set | Putter Panda - G0024 | mitre-external-id | 高 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0024<br>https://blogs.blackberry.com/en/2016/01/puttering-into-the-future |
 | misp-360net | 一致なし |  |  |  |  |
 

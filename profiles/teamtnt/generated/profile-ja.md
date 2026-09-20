@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--teamtnt`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | TeamTNT | canonical-name | 高 |  | https://unit42.paloaltonetworks.com/hildegard-malware-teamtnt/<br>https://malpedia.caad.fkie.fraunhofer.de/details/elf.teamtnt<br>https://blog.aquasec.com/teamtnt-campaign-against-docker-kubernetes-environment |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | TeamTNT - G0139 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0139<br>https://blog.aquasec.com/container-security-tnt-container-attack<br>https://cybersecurity.att.com/blogs/labs-research/teamtnt-with-new-campaign-aka-chimaera |
 | misp-mitre-intrusion-set | TeamTNT - G0139 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0139<br>https://blog.aquasec.com/container-security-tnt-container-attack<br>https://cybersecurity.att.com/blogs/labs-research/teamtnt-with-new-campaign-aka-chimaera |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -191,8 +192,8 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 4件
-- IOC観測: 8件
+- IOC値: 5件
+- IOC観測: 9件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 13件（`artifacts.csv`）
@@ -224,6 +225,7 @@ Aliasなし
 | source--teamtnt--55801a20e41e69f6 | Cloud Security Risk Report 2025 |  | 2025 | summary/2026/Cloud_Security_Risk_Report_2025.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

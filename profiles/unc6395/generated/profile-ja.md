@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6395`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -132,7 +133,7 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Salesloftが侵害され、Salesforceデータ窃取攻撃用のOAuthトークンが盗まれる | Salesloft | named | organization | reported |  |  | ttp--activity-rule--b489d625786d2bc516b3 | クラウド／SaaS | data-theft: Salesloftが侵害され、Salesforceデータ窃取攻撃用のOAuthトークンが盗まれる<br>credential-theft: SalesloftのDrift-Salesforce連携のOAuth/リフレッシュトークンが盗まれ、顧客環境で窃取に悪用。 | 不明 | 不明 | 2025-08-27 | 中 | `source--daily-1280007d047388eb38ef` |
+| 被害事例: Salesloftが侵害され、Salesforceデータ窃取攻撃用のOAuthトークンが盗まれる | Salesloft | named | organization | reported |  |  | ttp--activity-rule--b489d625786d2bc516b3 | クラウド／SaaS | data-theft: Salesloftが侵害され、Salesforceデータ窃取攻撃用のOAuthトークンが盗まれる | 不明 | 不明 | 2025-08-27 | 中 | `source--daily-1280007d047388eb38ef` |
 | 被害事例: Salesloft：3月のGitHubリポジトリ侵害がSalesforceデータ窃取攻撃に発展 | Salesloft：3月 | named | organization | reported |  |  |  | クラウド／SaaS, 開発環境／ソースコード | data-theft: Salesloft：3月のGitHubリポジトリ侵害がSalesforceデータ窃取攻撃に発展 | 不明 | 不明 | 2025-09-09 | 中 | `source--daily-5ccc06758fe72e4fc05e` |
 | 被害事例: パロアルトネットワークス、データ侵害で顧客情報とサポートケース情報が流出 | パロアルトネットワークス | named | organization | reported |  |  |  | クラウド／SaaS | data-theft: パロアルトネットワークス、データ侵害で顧客情報とサポートケース情報が流出<br>credential-theft: Paloalto Networksは、Salesloft Drift由来のOAuthトークン悪用でSalesforceデータが流出と公表。<br>privacy: パロアルトネットワークス、データ侵害で顧客情報とサポートケース情報が流出 | 不明 | 不明 | 2025-09-03 | 中 | `source--daily-f65973d8369eb0277faf` |
 | 被害事例: Google、Salesloft侵害が一部Workspaceアカウントに影響と警告 | 非公開 | anonymous | unknown | reported |  |  |  | メール／メールアカウント, クラウド／SaaS |  | 不明 | 不明 | 2025-08-30 | 中 | `source--daily-14a0a74759d412438e33` |

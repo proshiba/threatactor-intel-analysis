@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--pittytiger`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ PittyTigerの標準化プロファイル。リポジトリ内の専用資料1件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | PittyTiger, Pitty Panda | canonical-name | 高 | China | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=PittyTiger%2C+Pitty+Panda&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT24 | single-alias-intersection | 中 | CN | http://blog.airbuscybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>http://blog.cassidiancybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2014/2014.07.11.Pitty_Tiger/Pitty_Tiger_Final_Report.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | PittyTiger - G0011 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0011<br>http://blog.cassidiancybersecurity.com/post/2014/07/The-Eye-of-the-Tiger2<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
+| misp-mitre-enterprise-intrusion-set | PittyTiger - G0011 | mitre-external-id | 高 |  | https://airbus-cyber-security.com/the-eye-of-the-tiger/<br>https://attack.mitre.org/groups/G0011<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
 | misp-mitre-intrusion-set | PittyTiger - G0011 | mitre-external-id | 高 |  | https://airbus-cyber-security.com/the-eye-of-the-tiger/<br>https://attack.mitre.org/groups/G0011<br>https://www.fireeye.com/blog/threat-research/2014/07/spy-of-the-tiger.html |
 | misp-360net | 一致なし |  |  |  |  |
 

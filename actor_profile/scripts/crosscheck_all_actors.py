@@ -27,6 +27,14 @@ from common import load_json, normalize_time, stable_id, utc_now, write_json_ato
 
 
 DATASETS = {
+    "gtig-threat-actor-naming": {
+        "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+        "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+        "publisher": "Google Threat Intelligence Group",
+        "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+        "reliability": "high",
+        "kind": "actor",
+    },
     "etda-threat-group-cards": {
         "path": "actor_profile/reference/osint/etda-threat-group-cards.json",
         "title": "Threat Group Cards: A Threat Actor Encyclopedia",
@@ -222,7 +230,10 @@ def source_object(
         "language": "en",
         "source_type": (
             "official-vendor-actor-mapping"
-            if dataset_id == "microsoft-threat-actor-mapping"
+            if dataset_id in {
+                "gtig-threat-actor-naming",
+                "microsoft-threat-actor-mapping",
+            }
             else "government-cert-article-index"
             if dataset_id == "cert-ua-uac-index"
             else "government-threat-actor-encyclopedia"
@@ -237,9 +248,13 @@ def source_object(
         "analyst_notes": (
             f"Dataset version={manifest['version']}. "
             + (
-                "This is Microsoft's published mapping; other vendors' "
+                "This is the vendor's published actor-name mapping; names are "
+                "exact within that vendor taxonomy, while other vendors' "
                 "collection boundaries may differ."
-                if dataset_id == "microsoft-threat-actor-mapping"
+                if dataset_id in {
+                    "gtig-threat-actor-naming",
+                    "microsoft-threat-actor-mapping",
+                }
                 else "This index is derived from CERT-UA's official article "
                 "titles and summaries; open the linked article before extending "
                 "the claim beyond the indexed text."

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--threat-group-3390`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT27 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| APT27 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--mitre-attack-19-1`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | BRONZE UNION | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | BRONZE UNION, TG-3390 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Earth Smilodon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -27,6 +27,7 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 | Iron Tiger | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Linen Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | LuckyMouse | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| SHORE CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | TEMP.Hippo | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | TG-3390 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ZipToken | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
@@ -61,12 +62,13 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | SHORE CASTLE | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Emissary Panda, APT 27, LuckyMouse, Bronze Union | multiple-name-intersection | 高 | China | https://www.secureworks.com/research/threat-group-3390-targets-organizations-for-cyberespionage<br>https://www.secureworks.com/research/a-peek-into-bronze-unions-toolbox<br>https://www.secureworks.com/research/bronze-union |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Circle Typhoon | multiple-name-intersection | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -74,7 +76,7 @@ Threat Group-3390の標準化プロファイル。リポジトリ内の専用資
 | misp-threat-actor | APT27 | multiple-name-intersection | 高 | CN, Unknown | https://i.blackhat.com/Asia-22/Friday-Materials/AS-22-Li-To-Loot-Or-Not-To-Loot-That-Is-Not-a-Question.pdf<br>https://web.archive.org/web/20140129192702/https://www.scmagazineuk.com/iran-and-russia-blamed-for-state-sponsored-espionage/article/330401/<br>https://labs.bitdefender.com/2018/02/operation-pzchao-a-possible-return-of-the-iron-tiger-apt/ |
 | misp-microsoft-activity-group | Circle Typhoon | multiple-name-intersection | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Linen Typhoon | multiple-name-intersection | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Threat Group-3390 - G0027 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0027<br>http://www.secureworks.com/cyber-threat-intelligence/threats/threat-group-3390-targets-organizations-for-cyberespionage/<br>https://www.secureworks.com/research/bronze-union |
+| misp-mitre-enterprise-intrusion-set | Threat Group-3390 - G0027 | mitre-external-id | 高 |  | http://arstechnica.com/security/2015/08/newly-discovered-chinese-hacking-group-hacked-100-websites-to-use-as-watering-holes/<br>https://attack.mitre.org/groups/G0027<br>https://documents.trendmicro.com/assets/white_papers/wp-uncovering-DRBcontrol.pdf |
 | misp-mitre-intrusion-set | Threat Group-3390 - G0027 | mitre-external-id | 高 |  | http://arstechnica.com/security/2015/08/newly-discovered-chinese-hacking-group-hacked-100-websites-to-use-as-watering-holes/<br>https://attack.mitre.org/groups/G0027<br>https://documents.trendmicro.com/assets/white_papers/wp-uncovering-DRBcontrol.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -266,8 +268,8 @@ A Tale of Two Targets
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 2件
+- IOC観測: 4件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 73件（`artifacts.csv`）
@@ -324,6 +326,8 @@ A Tale of Two Targets
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

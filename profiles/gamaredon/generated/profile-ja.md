@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gamaredon`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -60,18 +60,19 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Gamaredon Group | multiple-name-intersection | 高 | Russia | https://www.lookingglasscyber.com/wp-content/uploads/2015/08/Operation_Armageddon_Final.pdf<br>https://unit42.paloaltonetworks.com/unit-42-title-gamaredon-group-toolset-evolution/<br>https://www.fortinet.com/blog/threat-research/gamaredon-group-ttp-profile-analysis.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Aqua Blizzard | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Gamaredon Group | multiple-name-intersection | 高 | RU | http://researchcenter.paloaltonetworks.com/2017/02/unit-42-title-gamaredon-group-toolset-evolution<br>https://www.lookingglasscyber.com/wp-content/uploads/2015/08/Operation_Armageddon_Final.pdf<br>https://unit42.paloaltonetworks.com/unit-42-title-gamaredon-group-toolset-evolution |
 | misp-microsoft-activity-group | Aqua Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Gamaredon Group - G0047 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0047<br>https://researchcenter.paloaltonetworks.com/2017/02/unit-42-title-gamaredon-group-toolset-evolution/ |
+| misp-mitre-enterprise-intrusion-set | Gamaredon Group - G0047 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0047<br>https://blog.cloudflare.com/2026-threat-report/<br>https://blog.trendmicro.com/trendlabs-security-intelligence/gamaredon-apt-group-use-covid-19-lure-in-campaigns/ |
 | misp-mitre-intrusion-set | Gamaredon Group - G0047 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0047<br>https://blog.cloudflare.com/2026-threat-report/<br>https://blog.trendmicro.com/trendlabs-security-intelligence/gamaredon-apt-group-use-covid-19-lure-in-campaigns/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -341,8 +342,8 @@ Gamaredonの標準化プロファイル。リポジトリ内の専用資料9件�
 
 ## IOC／artifact概要
 
-- IOC値: 1591件
-- IOC観測: 1637件
+- IOC値: 1633件
+- IOC観測: 1685件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 48件
 - 非IOC artifact観測: 532件（`artifacts.csv`）

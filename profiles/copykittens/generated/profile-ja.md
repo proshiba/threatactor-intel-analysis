@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--copykittens`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,12 +56,13 @@ CopyKittensの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | CopyKittens, Slayer Kitten | canonical-name | 高 | Iran | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=CopyKittens%2C+Slayer+Kitten&n=1 |
 | etda-threat-group-cards | DarkHydrus, LazyMeerkat | multiple-name-intersection | 高 | Iran | https://unit42.paloaltonetworks.com/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=DarkHydrus%2C+LazyMeerkat&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -69,7 +70,8 @@ CopyKittensの標準化プロファイル。リポジトリ内の専用資料1�
 | misp-threat-actor | CopyKittens | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://s3-eu-west-1.amazonaws.com/minervaresearchpublic/CopyKittens/CopyKittens.pdf<br>https://www.domaintools.com/resources/blog/case-study-hunting-campaign-indicators-on-privacy-protected-attack-infrastr<br>http://www.clearskysec.com/copykitten-jpost/ |
 | misp-threat-actor | DarkHydrus | multiple-name-intersection | 高 |  | https://researchcenter.paloaltonetworks.com/2018/07/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/<br>https://mobile.twitter.com/360TIC/status/1083289987339042817<br>https://ti.360.net/blog/articles/latest-target-attack-of-darkhydruns-group-against-middle-east-en/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | CopyKittens - G0052 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0052<br>http://www.clearskysec.com/copykitten-jpost/<br>http://www.clearskysec.com/wp-content/uploads/2017/07/Operation%20Wilted%20Tulip.pdf |
+| misp-mitre-enterprise-intrusion-set | CopyKittens - G0052 | mitre-external-id | 高 |  | http://www.clearskysec.com/copykitten-jpost/<br>http://www.clearskysec.com/wp-content/uploads/2017/07/Operation_Wilted_Tulip.pdf<br>https://attack.mitre.org/groups/G0052 |
+| misp-mitre-enterprise-intrusion-set | DarkHydrus - G0079 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0079<br>https://pan-unit42.github.io/playbook_viewer/<br>https://researchcenter.paloaltonetworks.com/2018/07/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/ |
 | misp-mitre-intrusion-set | CopyKittens - G0052 | mitre-external-id | 高 |  | http://www.clearskysec.com/copykitten-jpost/<br>http://www.clearskysec.com/wp-content/uploads/2017/07/Operation_Wilted_Tulip.pdf<br>https://attack.mitre.org/groups/G0052 |
 | misp-mitre-intrusion-set | DarkHydrus - G0079 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0079<br>https://pan-unit42.github.io/playbook_viewer/<br>https://researchcenter.paloaltonetworks.com/2018/07/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/ |
 | misp-360net | 一致なし |  |  |  |  |

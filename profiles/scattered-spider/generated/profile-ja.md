@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--scattered-spider`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,18 +53,19 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Scattered Spider | canonical-name | 高 |  | https://www.mandiant.com/resources/blog/unc3944-sms-phishing-sim-swapping-ransomware<br>https://unit42.paloaltonetworks.com/muddled-libra/<br>https://thehackernews.com/2023/10/lucr-3-scattered-spider-getting-saas-y.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Octo Tempest | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Scattered Spider | canonical-name | 高 |  | https://www.cybersecurity-insiders.com/scattered-spider-managed-mgm-resort-network-outage-brings-8m-loss-daily/<br>https://www.loginradius.com/blog/identity/oktapus-phishing-targets-okta-identity-credentials/<br>https://www.attackiq.com/2023/11/21/attack-graph-response-to-cisa-advisory-aa23-320a/ |
 | misp-microsoft-activity-group | Octo Tempest | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Scattered Spider - G1015 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1015<br>https://cloud.google.com/blog/topics/threat-intelligence/defending-vsphere-from-unc3944<br>https://cloud.google.com/blog/topics/threat-intelligence/unc3944-proactive-hardening-recommendations |
 | misp-mitre-intrusion-set | Scattered Spider - G1015 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1015<br>https://cloud.google.com/blog/topics/threat-intelligence/defending-vsphere-from-unc3944<br>https://cloud.google.com/blog/topics/threat-intelligence/unc3944-proactive-hardening-recommendations |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -203,7 +204,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: Aflac、散発するScattered Spiderによる保険会社攻撃の中で侵害を公表 | Aflac | named | organization | reported | target--mitre-group--sector--39a48843dcf982340819 |  |  |  | data-theft: 2025年6月20日、米保険大手Aflacがシステム侵害を公表、顧客の個人情報や健康情報が窃取された可能性 ランサムウェア被害は確認されず、データ窃取攻撃の可能性が示唆される 数時間で侵害を検知・封じ込めし、事業継続性は維持されたと発表 外部セキュリティ専門家を招聘し、SEC提出資料で契約者・社員らの請求情報やSSNなど機微情報流出を報告 攻撃はソーシャルエンジニアリングに長けた「Scattered Spider」グループの手口と類似<br>encryption: 2025年6月20日、米保険大手Aflacがシステム侵害を公表、顧客の個人情報や健康情報が窃取された可能性 ランサムウェア被害は確認されず、データ窃取攻撃の可能性が示唆される 数時間で侵害を検知・封じ込めし、事業継続性は維持されたと発表 外部セキュリティ専門家を招聘し、SEC提出資料で契約者・社員らの請求情報やSSNなど機微情報流出を報告 攻撃はソーシャルエンジニアリングに長けた「Scattered Spider」グループの手口と類似<br>privacy: 2025年6月20日、米保険大手Aflacがシステム侵害を公表、顧客の個人情報や健康情報が窃取された可能性 ランサムウェア被害は確認されず、データ窃取攻撃の可能性が示唆される 数時間で侵害を検知・封じ込めし、事業継続性は維持されたと発表 外部セキュリティ専門家を招聘し、SEC提出資料で契約者・社員らの請求情報やSSNなど機微情報流出を報告 攻撃はソーシャルエンジニアリングに長けた「Scattered Spider」グループの手口と類似 | 2025-06-20 | 2025-06-20 | 2025-06-21 | 高 | `source--daily-f9d510457677ce905d57` |
 | 被害事例: Scattered SpiderがVMware ESXiを狙ったハッキングを拡大 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--6604ad21c713b8dfd8c7, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--mitre-group--sector--61d17a0f32698969a06a |  | ttp--activity-rule--6aab8c3f01da987f7d19 |  | encryption: Scattered Spiderが米国の小売・航空などでVMware ESXiハイパーバイザーを集中的に攻撃 初期アクセスはヘルプデスクへのなりすまし電話でADパスワードを変更させ侵入 権限奪取後、vCenter経由でESXiにSSHを有効化しroot再設定、ディスクスワップでNTDS.ditを窃取 バックアップを削除しVMデータストアにランサムウェアを展開、数時間で全環境を制圧可能 GoogleはMFA徹底・SSH無効化・SIEM監視・immutableバックアップなどでの防御を推奨 | 不明 | 不明 | 2025-07-28 | 高 | `source--daily-d395324d918e79d06dc6` |
-| 被害事例: Google、データ侵害でGoogle広告の見込み顧客情報が露出したと確認 | Google | named | organization | reported |  |  |  | メール／メールアカウント, クラウド／SaaS | privacy: Google、データ侵害でGoogle広告の見込み顧客情報が露出したと確認 | 不明 | 不明 | 2025-08-11 | 中 | `source--daily-dc3caa8934acd3a0365f` |
+| 被害事例: Google、データ侵害でGoogle広告の見込み顧客情報が露出したと確認 | Google | named | organization | reported |  |  |  | メール／メールアカウント | privacy: Google、データ侵害でGoogle広告の見込み顧客情報が露出したと確認 | 不明 | 不明 | 2025-08-11 | 中 | `source--daily-dc3caa8934acd3a0365f` |
 | 被害事例: Qantas、Scattered Spiderによる航空業界攻撃の中でサイバー攻撃を公表 | Qantas | named | organization | reported | target--activity-rule--sector--b8d6639a1884e2bacaa4 |  |  | メール／メールアカウント |  | 不明 | 不明 | 2025-07-03 | 高 | `source--daily-0a6ab6298790c80e707e` |
 | 被害事例: DragonForceランサムとScattered Spiderの関係を深掘り | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--39a48843dcf982340819 |  |  | エンドポイント, クラウド／SaaS |  | 不明 | 不明 | 2025-12-04 | 高 | `source--daily-bc6f4aecde8159d70fd7` |
 | 被害事例: C0027 | 非公開 | aggregate | multiple-organizations | reported | target--mitre-group--sector--6e961f4b96d877f47851 |  | ttp--mitre-campaign--09b3fd70d78b5bc0fc11, ttp--mitre-campaign--16a4ce96c3e260d44117, ttp--mitre-campaign--17f020e30891f61b4ddb, ttp--mitre-campaign--1a2b672d67b9db52005e, ttp--mitre-campaign--26ebd7603c417f69ca3e, ttp--mitre-campaign--319d219e3542456c626f, ttp--mitre-campaign--472734df6c039c26e923, ttp--mitre-campaign--6e0477f5d498e841c268, ttp--mitre-campaign--741e79e442c831a56310, ttp--mitre-campaign--7db83ecd0aa299f9235e, ttp--mitre-campaign--8062a437607e1d2587b7, ttp--mitre-campaign--829674e7fb12a615d6d0, ttp--mitre-campaign--86285856090967ae718c, ttp--mitre-campaign--8658575be2d13df4b902, ttp--mitre-campaign--8a4d5ae3490096f1cbef, ttp--mitre-campaign--992671a3b03d2ef846c0, ttp--mitre-campaign--b1760aa651cf65020c1f, ttp--mitre-campaign--b70109cfe60d29d04a80, ttp--mitre-campaign--becf5f4d98bc0437c536, ttp--mitre-campaign--c24be4bd9a3ad6b87d5b, ttp--mitre-campaign--c3ed2cb99743503fe4a8, ttp--mitre-campaign--c402d1b70d4a5e45578e, ttp--mitre-campaign--c8437ce6397d7368816d, ttp--mitre-campaign--caa6a49498e68d87d045, ttp--mitre-campaign--d7f33d32c51708a340b9, ttp--mitre-campaign--e277a952aeed0c7947c4, ttp--mitre-campaign--e6f0ed3d3d0bfb660e0f, ttp--mitre-campaign--f2e1a707a9abce9db182 |  |  | 2022-06-01T04:00:00.000Z | 2022-12-01T05:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-1` |
@@ -329,10 +330,10 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 128件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -428,6 +429,7 @@ Scattered Spiderの標準化プロファイル。リポジトリ内の専用資�
 | source--scattered-spider--f71c4f74eb7a89ae | stokes superseding complaint 0 |  | 不明 | cybercrime/2026/stokes_superseding_complaint_0.pdf | report | TLP:CLEAR | 中 |
 | source--scattered-spider--f8504fa88662a428 | Threat Report 2026 v4 |  | 2026 | summary/2026/Threat Report 2026 v4.pdf | report | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

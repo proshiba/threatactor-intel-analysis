@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-09-20T10:03:34Z",
+      "modified": "2026-09-20T12:23:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -21,6 +21,7 @@
         "Nylon Typhoon",
         "Playful Dragon",
         "Playful Taurus",
+        "RIVER CASTLE",
         "RoyalAPT",
         "Vixen Panda"
       ],
@@ -32,13 +33,14 @@
       "x_alias_assessments": [
         {
           "name": "APT15",
-          "vendor": "MITRE ATT&CK",
-          "scope": "overlapping",
+          "vendor": "MITRE ATT&CK / Google Threat Intelligence Group",
+          "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-1",
+            "source--gtig-unified-actor-naming-2026"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
+          "analyst_notes": "Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         },
         {
           "name": "BackdoorDiplomacy",
@@ -111,6 +113,16 @@
           "analyst_notes": "Unit 42 directly identifies Playful Taurus as APT15/Ke3chang; scope remains overlapping to preserve vendor collection-boundary uncertainty."
         },
         {
+          "name": "RIVER CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
           "name": "RoyalAPT",
           "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
@@ -152,9 +164,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--ke3chang",
         "actor_name": "Ke3chang",
-        "searched_at": "2026-09-20T10:03:11Z",
+        "searched_at": "2026-09-20T12:23:31Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -175,6 +188,7 @@
             "Nylon Typhoon",
             "Playful Dragon",
             "Playful Taurus",
+            "RIVER CASTLE",
             "RoyalAPT",
             "Vixen Panda"
           ],
@@ -182,6 +196,37 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-river-castle",
+              "entry_value": "RIVER CASTLE",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt15",
+                  "profile_value": "APT15",
+                  "dataset_value": "APT15"
+                },
+                {
+                  "normalized": "rivercastle",
+                  "profile_value": "RIVER CASTLE",
+                  "dataset_value": "RIVER CASTLE"
+                }
+              ],
+              "match_basis": "multiple-name-intersection",
+              "match_confidence": "high",
+              "candidate_names": [
+                "RIVER CASTLE",
+                "APT15"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for APT15.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": []
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "110ed515-11db-4bf1-af41-a66f513ecf70",
@@ -378,6 +423,11 @@
                   "dataset_value": "Playful Dragon"
                 },
                 {
+                  "normalized": "rivercastle",
+                  "profile_value": "RIVER CASTLE",
+                  "dataset_value": "RIVER CASTLE"
+                },
+                {
                   "normalized": "royalapt",
                   "profile_value": "RoyalAPT",
                   "dataset_value": "Royal APT"
@@ -406,7 +456,8 @@
                 "G0004",
                 "Red Vulture",
                 "Nylon Typhoon",
-                "Mirage"
+                "Mirage",
+                "RIVER CASTLE"
               ],
               "countries": [
                 "CN",
@@ -427,7 +478,8 @@
                 "https://www.mandiant.com/resources/insights/apt-groups",
                 "https://www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/cyber-year-in-retrospect/yir-cyber-threats-report-download.pdf",
                 "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWMFIi",
-                "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html"
+                "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
               "related": [
                 {
@@ -572,28 +624,407 @@
               "external_id": "G0004",
               "matched_names": [
                 {
+                  "normalized": "apt15",
+                  "profile_value": "APT15",
+                  "dataset_value": "APT15"
+                },
+                {
+                  "normalized": "gref",
+                  "profile_value": "GREF",
+                  "dataset_value": "GREF"
+                },
+                {
                   "normalized": "ke3chang",
                   "profile_value": "Ke3chang",
                   "dataset_value": "Ke3chang"
+                },
+                {
+                  "normalized": "mirage",
+                  "profile_value": "Mirage",
+                  "dataset_value": "Mirage"
+                },
+                {
+                  "normalized": "nickel",
+                  "profile_value": "NICKEL",
+                  "dataset_value": "NICKEL"
+                },
+                {
+                  "normalized": "nylontyphoon",
+                  "profile_value": "Nylon Typhoon",
+                  "dataset_value": "Nylon Typhoon"
+                },
+                {
+                  "normalized": "playfuldragon",
+                  "profile_value": "Playful Dragon",
+                  "dataset_value": "Playful Dragon"
+                },
+                {
+                  "normalized": "royalapt",
+                  "profile_value": "RoyalAPT",
+                  "dataset_value": "RoyalAPT"
+                },
+                {
+                  "normalized": "vixenpanda",
+                  "profile_value": "Vixen Panda",
+                  "dataset_value": "Vixen Panda"
                 }
               ],
               "match_basis": "mitre-external-id",
               "match_confidence": "high",
               "candidate_names": [
-                "Ke3chang"
+                "Ke3chang",
+                "APT15",
+                "Mirage",
+                "Vixen Panda",
+                "GREF",
+                "Playful Dragon",
+                "RoyalAPT",
+                "NICKEL",
+                "Nylon Typhoon"
               ],
               "countries": [],
-              "description": "Ke3chang is a threat group attributed to actors operating out of China. (Citation: Villeneuve et al 2014)",
+              "description": "[Ke3chang](https://attack.mitre.org/groups/G0004) is a threat group attributed to actors operating out of China. [Ke3chang](https://attack.mitre.org/groups/G0004) has targeted oil, government, diplomatic, military, and NGOs in Central and South America, the Caribbean, Europe, and North America since at least 2010.(Citation: Mandiant Operation Ke3chang November 2014)(Citation: NCC Group APT15 Alive and Strong)(Citation: APT15 Intezer June 2018)(Citation: Microsoft NICKEL December 2021)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0004",
-                "https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-ke3chang.pdf"
+                "https://attack.mitre.org/groups/G0004",
+                "https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide",
+                "https://research.nccgroup.com/2018/03/10/apt15-is-alive-and-strong-an-analysis-of-royalcli-and-royaldns/",
+                "https://web.archive.org/web/20180615122133/https://www.intezer.com/miragefox-apt15-resurfaces-with-new-tools-based-on-old-ones/",
+                "https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-ke3chang.pdf",
+                "https://www.mandiant.com/resources/operation-ke3chang-targeted-attacks-against-ministries-of-foreign-affairs",
+                "https://www.microsoft.com/security/blog/2021/12/06/nickel-targeting-government-organizations-across-latin-america-and-europe"
               ],
               "related": [
                 {
-                  "dest-uuid": "72b74d71-8169-42aa-92e0-e7b04b9f5a08",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
+                  "dest-uuid": "00f90846-cbd1-4fc5-9233-df5c2bf2a662",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03342581-f790-4f03-ba41-e82e67392e23",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03d7999c-1f4c-42cc-8373-e7690d318104",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "09a60ea3-a8d1-4ae5-976e-5783248b72a4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0c4b4fda-9062-47da-98b9-ceae2dcf052a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "10d51417-ee35-4589-b1ff-b6df1c334e8d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1644e709-12d2-41e5-a60f-3470991f5011",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1996eef1-ced3-4d7f-bf94-33298cabbf72",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1ecfdab8-7d59-4c98-95d4-dc41970f57fc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "212306d8-efa4-44c9-8c2d-ed3d2e224aa0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "21875073-b0ee-49e3-9077-1e2a885359af",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "25659dd6-ea12-45c4-97e6-381e3e4b593e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "294e2560-bd48-44b2-9da2-833b5588ad11",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2959d63f-73fd-46a1-abd2-109d7dcede32",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2aed01ad-3df3-4410-a8cb-11ea4ded587c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e45723a-31da-4a7e-aaa6-e01998a6788f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "30208d3e-0d6b-43c8-883e-44462a514619",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "31225cd3-cd46-4575-b287-c2c14011c074",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "322bad5a-1c49-4d23-ab79-76d641794afa",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "33b9e38f-103c-412d-bdcf-904a91fff1e4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3c4a2599-71ee-4405-ba1e-0e28414b4bc5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ccef7ae-cb5e-48f6-8302-897105fbf55c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3f886f2a-874f-4333-b794-aa6075009b1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4664b683-f578-434f-919b-1c1aad2a1111",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4b6ec280-7bbb-48ff-ae59-b189520ebe83",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4d7bf2ac-f953-4907-b114-be44dc174d67",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4f9ca633-15c5-463c-9724-bdcd54fde541",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "53ac20cd-aca3-406e-9aa0-9fc7fdc60a5a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7385dfaf-6886-4229-9ecd-6fd678040830",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "768dce68-8d0d-477a-b01d-0eea98b963a1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "774a3188-6ba9-4dc4-879d-d54ee48a5ce9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "77eae145-55db-4519-8ae5-77b0c7215d69",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7e150503-88e7-4861-866b-ff1ac82c4475",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7fcbc4e8-1989-441f-9ac5-e7b6ff5806f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8f4a33ec-8b1f-4b80-a2f6-642b2e479580",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92d7da27-2d91-488e-a00c-059dc162766d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b17a1a56-e99c-403c-8948-561df0cffe81",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b4694861-542c-48ea-9eb1-10d356e7140a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b77b563c-34bb-4fb8-86a3-3694338f7b47",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c1b68a96-3c48-49ea-a6c0-9b27359f9c19",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d1fcf083-a721-4223-aedf-bf8960798d62",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3cedcfe-6515-4348-af65-7f2c4157bf0d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "edf91964-b26e-4b4a-9600-ccacd7d7df24",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f1951e8a-500e-4a26-8803-76d95c4554b4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f232fa7a-025c-4d43-abc7-318e81a73d65",
+                  "type": "uses"
+                }
+              ]
+            },
+            {
+              "entry_uuid": "9735c036-8ebe-47e9-9c77-b0ae656dab93",
+              "entry_value": "BackdoorDiplomacy - G0135",
+              "external_id": "G0135",
+              "matched_names": [
+                {
+                  "normalized": "backdoordiplomacy",
+                  "profile_value": "BackdoorDiplomacy",
+                  "dataset_value": "BackdoorDiplomacy"
+                }
+              ],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "candidate_names": [
+                "BackdoorDiplomacy"
+              ],
+              "countries": [],
+              "description": "[BackdoorDiplomacy](https://attack.mitre.org/groups/G0135) is a cyber espionage threat group that has been active since at least 2017. [BackdoorDiplomacy](https://attack.mitre.org/groups/G0135) has targeted Ministries of Foreign Affairs and telecommunication companies in Africa, Europe, the Middle East, and Asia.(Citation: ESET BackdoorDiplomacy Jun 2021)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0135",
+                "https://www.welivesecurity.com/2021/06/10/backdoordiplomacy-upgrading-quarian-turian/"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "1c34f7aa-9341-4a48-bfab-af22e51aca6c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2fee9321-3e71-4cf4-af24-d4d40d355b34",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "348f1eef-964b-4eb6-bb53-69b3dcb0c643",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "350f12cf-fd3b-4dad-b323-14b943090df4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3f886f2a-874f-4333-b794-aa6075009b1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5a3a31fe-5a8f-48e1-bff0-a753e5b1be70",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5d0d3609-d06d-49e1-b9c9-b544e0c618cb",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7807d3a4-a885-4639-a786-c1ed41484970",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bdca9d5-d500-4d7d-8c52-5fd47baf4c0c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7e150503-88e7-4861-866b-ff1ac82c4475",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b63970b7-ddfb-4aee-97b1-80d335e033a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c21d5a77-d422-4a69-acd7-2c53c1faa34b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "da04ac30-27da-4959-a67d-450ce47d9470",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3a12395-188d-4051-9a16-ea8e14d07b88",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f4599aa0-4f85-4a32-80ea-fc39dc965945",
                   "type": "uses"
                 }
               ]
@@ -1389,6 +1820,7 @@
         },
         "ambiguities": {
           "datasets_with_multiple_matches": [
+            "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-threat-actor"
           ],
@@ -8445,9 +8877,305 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
+      "id": "indicator--60f7ae6e-4592-479a-abc1-363d32e8ee77",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: aecert.org",
+      "pattern": "[domain-name:value = 'aecert.org']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:661129422fb8430d898769605b7899a748419f73085a6337209ff5b3b30f19ce",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--ke3chang--2240dc28698bf6cd",
+          "source_path": "actor_profile/evidence/ke3chang.csv",
+          "source_location": {
+            "row": 69
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/.review_notes\"} mirage lt of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続す",
+          "analyst_notes": "",
+          "raw_value": "aecert[.]org"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--601572a3-7f63-4eb6-af7e-74d5e2240844",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--60f7ae6e-4592-479a-abc1-363d32e8ee77",
+      "target_ref": "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--013f686a-3462-49c6-ad8c-a670515df002",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: neexportfolio.azurewebsites.net",
+      "pattern": "[domain-name:value = 'neexportfolio.azurewebsites.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:d2cab39d594ea9001c91d0f8f6d291227ca8a805593a8dc208903af45ddf6735",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--ke3chang--2240dc28698bf6cd",
+          "source_path": "actor_profile/evidence/ke3chang.csv",
+          "source_location": {
+            "row": 69
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/.review_notes\"} mirage lt of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続す",
+          "analyst_notes": "",
+          "raw_value": "neexportfolio.azurewebsites.net"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--01999915-4941-4d76-8773-efec96b92eae",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--013f686a-3462-49c6-ad8c-a670515df002",
+      "target_ref": "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--349e416c-ca5f-4275-9740-a5c4c7fa70ee",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: neexportfolio.com",
+      "pattern": "[domain-name:value = 'neexportfolio.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:3b5bc83b7c4292e72a887748c83841653a5416859ddb61a0ea2f6492b3c26eef",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--ke3chang--2240dc28698bf6cd",
+          "source_path": "actor_profile/evidence/ke3chang.csv",
+          "source_location": {
+            "row": 69
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/.review_notes\"} mirage lt of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続す",
+          "analyst_notes": "",
+          "raw_value": "neexportfolio.com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--15f6a174-1b2a-451c-98bc-6176660af72e",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--349e416c-ca5f-4275-9740-a5c4c7fa70ee",
+      "target_ref": "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c748956a-aa0d-48d4-abb5-0ef847febf76",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: neexportfolio.eastus.cloudapp.azure.com",
+      "pattern": "[domain-name:value = 'neexportfolio.eastus.cloudapp.azure.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:76e6a22fe4e63358bc497aa7a7247e89e8930b26bfd786f8ef58b7e3ec1cfe4c",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--ke3chang--2240dc28698bf6cd",
+          "source_path": "actor_profile/evidence/ke3chang.csv",
+          "source_location": {
+            "row": 69
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/.review_notes\"} mirage lt of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続す",
+          "analyst_notes": "",
+          "raw_value": "neexportfolio.eastus.cloudapp.azure.com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--afab2e03-f901-42c0-95b4-21eac70f330b",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--c748956a-aa0d-48d4-abb5-0ef847febf76",
+      "target_ref": "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
       "id": "indicator--a73a482d-4a55-435b-ae65-441abdfd5261",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8470,7 +9198,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:308aead053b9d2017e9e3b44b87e8da1e62a1724fa545f1f1e3d81111381a1d8",
+          "observation_id": "observation--sha256:7d5259a97f3e69f14fa83820588490599d490b0866904d68e07d531a43f929a9",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -8486,7 +9214,7 @@
           "source_id": "source--ke3chang--2240dc28698bf6cd",
           "source_path": "actor_profile/evidence/ke3chang.csv",
           "source_location": {
-            "row": 46
+            "row": 75
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -8504,9 +9232,142 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
+      "id": "indicator--47404088-1439-4437-9e8c-3ab579bea0c1",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 172.86.98.113",
+      "pattern": "[ipv4-addr:value = '172.86.98.113']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:06Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:47ed9b583030367b641a00d02150360b6486c713d634b082884af51639325e5d",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--ke3chang--2240dc28698bf6cd",
+          "source_path": "actor_profile/evidence/ke3chang.csv",
+          "source_location": {
+            "row": 69
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://www.group-ib.com/blog/tortoiseshell-apt-toolset-infrastructure/.review_notes\"} mirage lt of pivoting from the known C2 domain (aecert[.]org) from the Securelist report」と述べる。実際にaecert.org、neexportfolio.com、neexportfolio.azurewebsites.net、neexportfolio.eastus.cloudapp.azure.com、172.86.98.113の5件は既にactivity--mirage-kitten-middle-east-africa-2026として本プロファイルへ登録済みで、独立ベンダー2社のインフラ一致を確認した。新規情報は、正規wtsapi32.dllを偽装し172.86.98.113へTCP/443でSSH接続す",
+          "analyst_notes": "",
+          "raw_value": "172.86.98.113"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8c72f93b-876b-4406-9d0c-25742d2428e7",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--47404088-1439-4437-9e8c-3ab579bea0c1",
+      "target_ref": "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3c438b18-67ac-4bf2-a6d6-d8b04fcfba8f",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "md5: 810f8e3b88eb05f710c09552941d6f56",
+      "pattern": "[file:hashes.'MD5' = '810f8e3b88eb05f710c09552941d6f56']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-09-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b785138506350d5062e1f4d084a5e94f22fa67f8af7fc0cdc736e144a76500f2",
+          "observed_at": {
+            "value": "2026-09-01T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--ke3chang--2240dc28698bf6cd",
+          "source_path": "actor_profile/evidence/ke3chang.csv",
+          "source_location": {
+            "row": 66
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/review-decisions.json {\"json_path\": \"$.unc1549|https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/.review_notes\"} Mirage 原文(Kaspersky Securelist、2026-09-01公開)をHTTP 200で取得して確認。Attribution節に「We attribute this activity to Mirage Kitten with a high degree of confidence」と明記され、根拠としてRetrograde/MiniFast(MD5: 810F8E3B88EB05F710C09552941D6F56)との構造的類似、PollCatとRetrograde/MiniFastが共通のC2ハンドシェイク手順(ホスト情報を含むJSONをHTTP POSTし、HTTP 400を成功応答として扱う)を持つこと、WinHttpQue",
+          "analyst_notes": "",
+          "raw_value": "810f8e3b88eb05f710c09552941d6f56"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
       "id": "indicator--203e6300-0bec-471b-b00a-6de26e3ae947",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8529,7 +9390,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:85c7598445719ddfd9625ff5af274e78a5d80599c167757b25696597efe6a4ef",
+          "observation_id": "observation--sha256:92090f14ec3086dc18654277f3c57000593d60ca6885f6318ba5fdf8df247c49",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -8545,7 +9406,7 @@
           "source_id": "source--ke3chang--2240dc28698bf6cd",
           "source_path": "actor_profile/evidence/ke3chang.csv",
           "source_location": {
-            "row": 90
+            "row": 119
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -8565,7 +9426,7 @@
       "spec_version": "2.1",
       "id": "note--68b4ad55-0246-476b-a6f0-680193d07e78",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-07-25T15:22:59Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8575,14 +9436,14 @@
         "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 108
+      "x_artifact_observation_count": 110
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--7b0d09d7-beef-4d2a-bc28-39de5505dc72",
       "created": "2026-07-25T15:22:59Z",
-      "modified": "2026-09-20T10:03:34Z",
+      "modified": "2026-09-20T12:23:41Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -8591,7 +9452,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T10:03:34Z",
+      "published": "2026-09-20T12:23:41Z",
       "object_refs": [
         "intrusion-set--eb48e7b6-617d-44a3-b45f-6905dba004b7",
         "malware--e750736c-184f-4b8f-8c21-771542e974d9",
@@ -8747,7 +9608,13 @@
         "attack-pattern--8df14407-cbaf-45fd-b524-e1699b2b54f0",
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
         "attack-pattern--5319c1f7-c723-478f-8158-57b00ebf4b23",
+        "indicator--60f7ae6e-4592-479a-abc1-363d32e8ee77",
+        "indicator--013f686a-3462-49c6-ad8c-a670515df002",
+        "indicator--349e416c-ca5f-4275-9740-a5c4c7fa70ee",
+        "indicator--c748956a-aa0d-48d4-abb5-0ef847febf76",
         "indicator--a73a482d-4a55-435b-ae65-441abdfd5261",
+        "indicator--47404088-1439-4437-9e8c-3ab579bea0c1",
+        "indicator--3c438b18-67ac-4bf2-a6d6-d8b04fcfba8f",
         "indicator--203e6300-0bec-471b-b00a-6de26e3ae947"
       ],
       "x_schema_version": "1.2.0"

@@ -1,7 +1,242 @@
 {
   "schema_version": "1.0.0",
   "description": "Analyst-reviewed overrides for identities that automatic corpus census materialization cannot classify safely by name/origin alone.",
+  "identity_boundaries": [
+    {
+      "names": ["TA505", "FIN11"],
+      "reason": "Mandiant states that FIN11 contains only a subset of activity called TA505 and explicitly cautions against using the names interchangeably.",
+      "evidence_urls": ["https://cloud.google.com/blog/topics/threat-intelligence/fin11-email-campaigns-precursor-for-ransomware-data-theft"]
+    },
+    {
+      "names": ["TA505", "Indrik Spider"],
+      "reason": "MITRE ATT&CK tracks TA505 as G0092 and Indrik Spider/Evil Corp as separate Group G0119.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0092/",
+        "https://attack.mitre.org/groups/G0119/"
+      ]
+    },
+    {
+      "names": ["TA505", "Lace Tempest"],
+      "reason": "Microsoft's current official mapping tracks Spandex Tempest with TA505 and tracks Lace Tempest separately with DEV-0950.",
+      "evidence_urls": ["https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"]
+    },
+    {
+      "names": ["FIN11", "Lace Tempest"],
+      "reason": "GTIG tracks FIN11 as RAZOR COMET while Microsoft's current official mapping tracks Lace Tempest with DEV-0950; neither primary mapping makes the names interchangeable.",
+      "evidence_urls": [
+        "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+        "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+      ]
+    },
+    {
+      "names": ["APT38", "TEMP.Hermit"],
+      "reason": "Mandiant states that APT38 activity is disparate from TEMP.Hermit despite shared resources.",
+      "evidence_urls": ["https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/"]
+    },
+    {
+      "names": ["Naikon", "APT30"],
+      "reason": "MITRE ATT&CK tracks Naikon (G0019) and APT30 (G0013) separately and says they share characteristics but are not exact matches.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0019/",
+        "https://attack.mitre.org/groups/G0013/"
+      ]
+    },
+    {
+      "names": ["Dragonfly", "ALLANITE"],
+      "reason": "MITRE ATT&CK tracks Dragonfly (G0035) and ALLANITE (G1000) separately; ALLANITE has similar tactics but a distinct observed capability boundary.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0035/",
+        "https://attack.mitre.org/groups/G1000/"
+      ]
+    }
+  ],
+  "reference_identities": [
+    {
+      "canonical_name": "FIN11",
+      "aliases": ["RAZOR COMET"],
+      "origins": ["Cybercriminal"],
+      "source": "Google Threat Intelligence Group unified actor naming",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+    },
+    {
+      "canonical_name": "TEMP.Hermit",
+      "aliases": ["HERMIT NEPTUNE"],
+      "origins": ["North Korea"],
+      "source": "Google Threat Intelligence Group unified actor naming",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+    }
+  ],
   "identities": {
+    "ta505": {
+      "action": "override",
+      "aliases": [
+        "CHIMBORAZO",
+        "GOLD TAHOE",
+        "Hive0065",
+        "SectorJ04",
+        "Spandex Tempest"
+      ],
+      "actor_types": ["threat-cluster"],
+      "reason": "FIN11, Indrik Spider/Evil Corp, and Lace Tempest are removed from TA505 using Mandiant, MITRE, and Microsoft's current primary mappings.",
+      "evidence_urls": [
+        "https://cloud.google.com/blog/topics/threat-intelligence/fin11-email-campaigns-precursor-for-ransomware-data-theft",
+        "https://attack.mitre.org/groups/G0092/",
+        "https://attack.mitre.org/groups/G0119/",
+        "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+      ]
+    },
+    "fin11": {
+      "action": "override",
+      "aliases": ["RAZOR COMET"],
+      "actor_types": ["financially-motivated", "threat-cluster"],
+      "reason": "Mandiant tracks FIN11 separately from TA505; GTIG renamed FIN11 to RAZOR COMET in July 2026.",
+      "evidence_urls": [
+        "https://cloud.google.com/blog/topics/threat-intelligence/fin11-email-campaigns-precursor-for-ransomware-data-theft",
+        "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+      ]
+    },
+    "indrikspider": {
+      "action": "override",
+      "aliases": ["DEV-0243", "Evil Corp", "Manatee Tempest", "UNC2165"],
+      "actor_types": ["financially-motivated", "threat-cluster"],
+      "reason": "MITRE ATT&CK defines Indrik Spider/Evil Corp as Group G0119, separate from TA505 G0092.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0119/",
+        "https://attack.mitre.org/groups/G0092/"
+      ]
+    },
+    "lacetempest": {
+      "action": "override",
+      "aliases": ["DEV-0950"],
+      "actor_types": ["financially-motivated", "threat-cluster"],
+      "reason": "Microsoft's current official mapping tracks Lace Tempest with DEV-0950 in a separate row from Spandex Tempest/TA505.",
+      "evidence_urls": ["https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"]
+    },
+    "apt38": {
+      "action": "override",
+      "aliases": [
+        "BeagleBoyz",
+        "Bluenoroff",
+        "COPERNICIUM",
+        "COPERNICIUM (Microsoft)",
+        "ElectricFish",
+        "Genie Spider",
+        "NICKEL GLADSTONE",
+        "Sapphire Sleet",
+        "Stardust Chollima",
+        "TA444 (Proofpoint)"
+      ],
+      "actor_types": ["threat-cluster"],
+      "reason": "TEMP.Hermit is removed because Mandiant explicitly separates it from APT38 despite shared resources.",
+      "evidence_urls": ["https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/"]
+    },
+    "temphermit": {
+      "action": "override",
+      "canonical_name": "TEMP.Hermit",
+      "slug": "temp-hermit",
+      "aliases": ["HERMIT NEPTUNE"],
+      "actor_types": ["threat-cluster"],
+      "reason": "Mandiant tracks TEMP.Hermit separately from APT38; GTIG renamed TEMP.Hermit to HERMIT NEPTUNE in July 2026.",
+      "evidence_urls": [
+        "https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/",
+        "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+      ]
+    },
+    "naikon": {
+      "action": "override",
+      "aliases": [
+        "Lotus Panda",
+        "Naikon Team",
+        "NAIKON CASTLE",
+        "PLA Unit 78020",
+        "Thrip, Billbug"
+      ],
+      "actor_types": ["threat-cluster"],
+      "reason": "APT30 is removed because ATT&CK tracks the groups separately and says they are not exact matches. GTIG maps Naikon Team to NAIKON CASTLE.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0019/",
+        "https://attack.mitre.org/groups/G0013/",
+        "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+      ]
+    },
+    "apt30": {
+      "action": "override",
+      "aliases": ["ISTHMUS CASTLE"],
+      "actor_types": ["threat-cluster"],
+      "reason": "ATT&CK tracks APT30 separately from Naikon; GTIG renamed APT30 to ISTHMUS CASTLE.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G0013/",
+        "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+      ]
+    },
+    "dragonfly": {
+      "action": "override",
+      "aliases": [
+        "Anger Bear",
+        "Berserk Bear",
+        "BROMINE",
+        "Crouching Yeti",
+        "DYMALLOY",
+        "Energetic Bear",
+        "Fertger",
+        "Ghost Blizzard",
+        "Group 24",
+        "Havex",
+        "IRON LIBERTY",
+        "Koala Team",
+        "PEACEPIPE",
+        "TEMP.Isotope",
+        "TG-4192"
+      ],
+      "actor_types": ["threat-cluster"],
+      "reason": "ALLANITE is removed because ATT&CK ICS tracks it as separate Group G1000 with similar TTPs but a distinct capability boundary.",
+      "evidence_urls": ["https://attack.mitre.org/groups/G1000/"]
+    },
+    "allanite": {
+      "action": "override",
+      "aliases": ["Palmetto Fusion"],
+      "actor_types": ["threat-cluster"],
+      "reason": "MITRE ICS ATT&CK defines ALLANITE as Group G1000 and lists Palmetto Fusion as its associated group name.",
+      "evidence_urls": ["https://attack.mitre.org/groups/G1000/"]
+    },
+    "cyberav3ngers": {
+      "action": "override",
+      "aliases": [
+        "APT Iran",
+        "Bauxite",
+        "Hydro Kitten",
+        "Mr. Soul",
+        "Shahid Kaveh Group",
+        "Soldiers of Soloman",
+        "Soldiers of Solomon",
+        "Storm-0784",
+        "UNC5691"
+      ],
+      "actor_types": ["state-sponsored", "threat-cluster"],
+      "reason": "MITRE ICS ATT&CK defines CyberAv3ngers as G1027. The joint CISA advisory explicitly lists the additional private-industry and open-source names, including UNC5691.",
+      "evidence_urls": [
+        "https://attack.mitre.org/groups/G1027/",
+        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a"
+      ]
+    },
+    "unc5691": {
+      "action": "merge",
+      "target_slug": "cyberav3ngers",
+      "reason": "The corpus's joint CISA advisory explicitly identifies UNC5691 as another name used for CyberAv3ngers.",
+      "evidence_urls": ["https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a"]
+    },
+    "storm0784": {
+      "action": "merge",
+      "target_slug": "cyberav3ngers",
+      "reason": "The corpus's joint CISA advisory explicitly identifies Storm-0784 as another name used for CyberAv3ngers.",
+      "evidence_urls": ["https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a"]
+    },
+    "radiopanda": {
+      "action": "merge",
+      "target_slug": "blacktech",
+      "reason": "The joint U.S.-Japan cybersecurity advisory explicitly identifies Radio Panda as another name for BlackTech.",
+      "evidence_urls": ["https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/article/3539209/us-and-japanese-agencies-issue-advisory-about-china-linked-actors-hiding-in-rou/"]
+    },
     "revil": {
       "action": "exclude",
       "reason": "REvil is a ransomware/RaaS software-brand entity in this corpus context. MITRE ATT&CK tracks REvil as Software S0496 and tracks GOLD SOUTHFIELD (G0115) as the financially motivated group that operates the REvil RaaS. Do not materialize REvil as an independent canonical actor from name mentions alone.",

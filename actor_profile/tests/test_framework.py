@@ -138,6 +138,26 @@ class ObservableBoundaryTests(unittest.TestCase):
         urls = {value for kind, value, _ in values if kind == "url"}
         self.assertEqual(urls, {"https://evil-c2.net/gate"})
 
+    def test_ocr_concatenated_emails_are_dropped(self) -> None:
+        """PDF抽出で本文が連結されたメール値をIOCにしない。"""
+        values = extract_iocs(
+            "IOC: zeg888@gmail[.]comisnamed; valid zeg888@gmail[.]com",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        emails = {normalize_observable(kind, value) for kind, value, _ in values if kind == "email"}
+        self.assertEqual(emails, {"zeg888@gmail.com"})
+
+    def test_www_plus_public_suffix_fragments_are_dropped(self) -> None:
+        """www[.]ru のような登録可能名を含まないOCR断片をIOCにしない。"""
+        values = extract_iocs(
+            "IOC: www[.]ru www[.]gmail www[.]malicious-c2.com",
+            allow_plain_domains=True,
+            explicit_structured=False,
+        )
+        domains = {normalize_observable(kind, value) for kind, value, _ in values if kind == "domain"}
+        self.assertEqual(domains, {"malicious-c2.com"})
+
 
 class HashClassificationTests(unittest.TestCase):
     """長さがハッシュと一致するだけの16進列を取り込まないこと。"""

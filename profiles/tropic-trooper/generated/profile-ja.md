@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--tropic-trooper`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ Tropic Trooperの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Tropic Trooper, Pirate Panda, APT 23, KeyBoy | canonical-name | 高 | China | https://blogs.cisco.com/security/scope-of-keyboy-targeted-malware-attacks<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Tropic+Trooper%2C+Pirate+Panda%2C+APT+23%2C+KeyBoy&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT23 | canonical-name | 高 | CN | https://blog.rapid7.com/2013/06/07/keyboy-targeted-attacks-against-vietnam-and-india/<br>http://www.crowdstrike.com/blog/rhetoric-foreshadows-cyber-activity-in-the-south-china-sea/<br>https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Tropic Trooper - G0081 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0081<br>https://blog.trendmicro.com/trendlabs-security-intelligence/tropic-trooper-new-strategy/<br>https://documents.trendmicro.com/assets/Tech-Brief-Tropic-Trooper-s-Back-USBferry-Attack-Targets-Air-gapped-Environments.pdf |
 | misp-mitre-intrusion-set | Tropic Trooper - G0081 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0081<br>https://blog.trendmicro.com/trendlabs-security-intelligence/tropic-trooper-new-strategy/<br>https://documents.trendmicro.com/assets/Tech-Brief-Tropic-Trooper-s-Back-USBferry-Attack-Targets-Air-gapped-Environments.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -234,6 +235,7 @@ Tropic Trooperの標準化プロファイル。リポジトリ内の専用資料
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

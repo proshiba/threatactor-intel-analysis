@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--transparent-tribe`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,18 +53,19 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Transparent Tribe, APT 36 | canonical-name | 高 | Pakistan | https://www.fireeye.com/blog/threat-research/2016/06/apt_group_sends_spea.html<br>https://www.crowdstrike.com/blog/adversary-of-the-month-for-may/<br>https://cyberstanc.com/blog/a-look-into-apt36-transparent-tribe/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Viridian Vortex | canonical-name | 高 | Pakistan | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Operation C-Major | canonical-name | 高 | PK, Pakistan | http://documents.trendmicro.com/assets/pdf/Indian-military-personnel-targeted-by-information-theft-campaign-cmajor.pdf<br>https://www.proofpoint.com/sites/default/files/proofpoint-operation-transparent-tribe-threat-insight-en.pdf<br>https://www.amnesty.org/en/documents/asa33/8366/2018/en/ |
 | misp-microsoft-activity-group | Storm-0156 | canonical-name | 高 | PK, Pakistan | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Transparent Tribe - G0134 | mitre-external-id | 高 |  | https://adversary.crowdstrike.com/en-US/adversary/mythic-leopard/<br>https://attack.mitre.org/groups/G0134<br>https://blog.talosintelligence.com/2021/05/transparent-tribe-infra-and-targeting.html |
 | misp-mitre-intrusion-set | Transparent Tribe - G0134 | mitre-external-id | 高 |  | https://adversary.crowdstrike.com/en-US/adversary/mythic-leopard/<br>https://attack.mitre.org/groups/G0134<br>https://blog.talosintelligence.com/2021/05/transparent-tribe-infra-and-targeting.html |
 | misp-360net | 透明部落 - APT-C-56 | multiple-name-intersection | 高 | southeast |  |
 
@@ -252,8 +253,8 @@ Operation C-Major
 
 ## IOC／artifact概要
 
-- IOC値: 445件
-- IOC観測: 520件
+- IOC値: 456件
+- IOC観測: 545件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 84件
 - 非IOC artifact観測: 72件（`artifacts.csv`）
@@ -291,6 +292,7 @@ Operation C-Major
 | source--transparent-tribe--3fb4d998121e8765 | transparent tribe threat insight en2020 |  | 2020 | TransparentTribe/transparent-tribe-threat-insight-en2020.pdf | report | TLP:CLEAR | 中 |
 | source--transparent-tribe--8c7cc7c46f9a6fd9 | transparent tribe apt36 cc network tradecraft report |  | 不明 | APT36/transparent-tribe-apt36-cc-network-tradecraft-report.pdf | report | TLP:CLEAR | 中 |
 | source--transparent-tribe--be73ac7ec108bc35 | README |  | 不明 | TransparentTribe/README.MD | repository-notes | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

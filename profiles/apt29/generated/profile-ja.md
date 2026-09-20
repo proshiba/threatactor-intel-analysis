@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt29`
 - 状態: review
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,7 +22,8 @@ APT29の標準化プロファイル。リポジトリ内の専用資料19件とM
 | Cozy Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | CozyDuke | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Dark Halo | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| ICE RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-going-with-the-flows-2026` | GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 |
+| ICECAP | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| ICE RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-going-with-the-flows-2026`, `source--gtig-unified-actor-naming-2026` | GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | IRON HEMLOCK | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | IRON RITUAL | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Midnight Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -67,12 +68,13 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | ICE RELIC | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | APT 29, Cozy Bear, The Dukes | canonical-name | 高 | Russia | https://www.f-secure.com/documents/996508/1030745/dukes_whitepaper.pdf<br>https://www.welivesecurity.com/2019/10/17/operation-ghost-dukes-never-left/<br>https://www.carbonblack.com/2020/03/26/the-dukes-of-moscow/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Midnight Blizzard | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -81,7 +83,8 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | misp-threat-actor | UNC3524 | single-alias-intersection | 中 |  | https://www.mandiant.com/resources/unc3524-eye-spy-email |
 | misp-microsoft-activity-group | Midnight Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | NOBELIUM | single-alias-intersection | 中 |  | https://www.microsoft.com/security/blog/2021/05/27/new-sophisticated-email-based-attack-from-nobelium/<br>https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html |
-| misp-mitre-enterprise-intrusion-set | APT29 - G0016 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0016<br>https://www.f-secure.com/documents/996508/1030745/dukes%20whitepaper.pdf<br>https://www.crowdstrike.com/blog/bears-midst-intrusion-democratic-national-committee/ |
+| misp-mitre-enterprise-intrusion-set | APT29 - G0016 | mitre-external-id | 高 |  | http://www.secureworks.com/research/threat-profiles/iron-hemlock<br>https://attack.mitre.org/groups/G0016<br>https://labs.sentinelone.com/noblebaron-new-poisoned-installers-could-be-used-in-supply-chain-attacks/ |
+| misp-mitre-enterprise-intrusion-set | UNC2452 - G0118 | multiple-name-intersection | 高 |  | https://attack.mitre.org/groups/G0118<br>https://www.crowdstrike.com/blog/sunspot-malware-technical-analysis/<br>https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html |
 | misp-mitre-intrusion-set | APT29 - G0016 | mitre-external-id | 高 |  | http://www.secureworks.com/research/threat-profiles/iron-hemlock<br>https://attack.mitre.org/groups/G0016<br>https://labs.sentinelone.com/noblebaron-new-poisoned-installers-could-be-used-in-supply-chain-attacks/ |
 | misp-mitre-intrusion-set | UNC2452 - G0118 | multiple-name-intersection | 高 |  | https://attack.mitre.org/groups/G0118<br>https://www.crowdstrike.com/blog/sunspot-malware-technical-analysis/<br>https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises-with-sunburst-backdoor.html |
 | misp-360net | 一致なし |  |  |  |  |
@@ -607,9 +610,9 @@ Operation Ghost
 
 ## IOC／artifact概要
 
-- IOC値: 1042件
-- IOC観測: 1131件
-- 複数攻撃で観測: 7件
+- IOC値: 1107件
+- IOC観測: 1212件
+- 複数攻撃で観測: 0件
 - 要レビュー候補: 125件
 - 非IOC artifact観測: 481件（`artifacts.csv`）
 
@@ -678,6 +681,8 @@ Operation Ghost
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

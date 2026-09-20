@@ -26,6 +26,9 @@ MERGES = {
     "raspberry-typhoon": "lotus-blossom",
     "sangria-tempest": "fin7",
     "violet-typhoon": "zirconium",
+    "unc5691": "cyberav3ngers",
+    "storm-0784": "cyberav3ngers",
+    "radio-panda": "blacktech",
 }
 EXCLUSIONS = {"zebrocy"}
 
@@ -34,6 +37,9 @@ EVIDENCE_URLS = {
     "raspberry-typhoon": "https://attack.mitre.org/groups/G0030/",
     "sangria-tempest": "https://attack.mitre.org/groups/G0046/",
     "violet-typhoon": "https://attack.mitre.org/groups/G0128/",
+    "unc5691": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
+    "storm-0784": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
+    "radio-panda": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/article/3539209/us-and-japanese-agencies-issue-advisory-about-china-linked-actors-hiding-in-rou/",
     "zebrocy": "https://attack.mitre.org/software/S0251/",
 }
 
@@ -266,6 +272,34 @@ def merge_profiles(
             result["diamond_model"][key] = "; ".join(x for x in (current, old) if x)
 
     alias_name = source["actor"]["canonical_name"]
+    if source_slug in {"unc5691", "storm-0784"}:
+        alias_vendor = "CISA / joint government advisory"
+        alias_source_ids = [
+            item["source_id"]
+            for item in source.get("sources", [])
+            if "Iranian-Affiliated Cyber Actors" in item.get("path", "")
+        ]
+        alias_source_ids = [ref_map.get(item, item) for item in alias_source_ids]
+        alias_source_ids = alias_source_ids or ["source--cisa-aa23-335a"]
+        alias_note = (
+            f"The joint CISA advisory explicitly lists {alias_name} as another "
+            "name used for CyberAv3ngers."
+        )
+    elif source_slug == "radio-panda":
+        alias_vendor = "NSA / joint government advisory"
+        alias_source_ids = [
+            ref_map.get(item["source_id"], item["source_id"])
+            for item in source.get("sources", [])
+            if "CSA_BLACKTECH" in item.get("path", "")
+        ] or ["source--nsa-blacktech-2023"]
+        alias_note = (
+            "The joint U.S.-Japan advisory explicitly identifies Radio Panda "
+            "as another name for BlackTech."
+        )
+    else:
+        alias_vendor = "MITRE ATT&CK / Microsoft"
+        alias_source_ids = ["source--mitre-attack-19-1"]
+        alias_note = "Curated merge into the canonical MITRE Group profile."
     aliases = result["actor"].setdefault("aliases", [])
     alias = next(
         (item for item in aliases if normalized_name(item["name"]) == normalized_name(alias_name)),
@@ -275,25 +309,30 @@ def merge_profiles(
         aliases.append(
             {
                 "name": alias_name,
-                "vendor": "MITRE ATT&CK / Microsoft",
+                "vendor": alias_vendor,
                 "scope": "exact",
                 "confidence": "high",
-                "evidence_refs": ["source--mitre-attack-19-1"],
-                "analyst_notes": "Curated merge into the canonical MITRE Group profile.",
+                "evidence_refs": alias_source_ids,
+                "analyst_notes": alias_note,
             }
         )
     else:
+        valid_source_ids = {item["source_id"] for item in result.get("sources", [])}
+        alias["evidence_refs"] = [
+            item for item in alias.get("evidence_refs", [])
+            if item in valid_source_ids
+        ]
         alias["scope"] = "exact"
         alias["confidence"] = "high"
-        alias["vendor"] = "MITRE ATT&CK / Microsoft"
+        alias["vendor"] = alias_vendor
         alias["evidence_refs"] = _merge_scalar_lists(
-            alias.get("evidence_refs", []), ["source--mitre-attack-19-1"]
+            alias.get("evidence_refs", []), alias_source_ids
         )
-        alias["analyst_notes"] = "Curated merge into the canonical MITRE Group profile."
+        alias["analyst_notes"] = alias_note
 
     note = (
         f"2026-09 entity-boundary migration: actor--{source_slug} was merged into "
-        f"{result['profile_id']} after official same-Group alias verification."
+        f"{result['profile_id']} after primary-source exact-identity verification."
     )
     existing_note = result["actor"].get("analyst_notes", "")
     if note not in existing_note:
@@ -306,7 +345,8 @@ def merge_profiles(
 
 
 def deprecated_profile(
-    profile: dict[str, Any], *, target: dict[str, Any] | None = None
+    profile: dict[str, Any], *, target: dict[str, Any] | None = None,
+    source_slug: str | None = None,
 ) -> dict[str, Any]:
     result = copy.deepcopy(profile)
     is_software = target is None
@@ -347,6 +387,18 @@ def deprecated_profile(
     result["ttps"] = []
     result["victim_cases"] = []
     evidence_refs = ["source--mitre-attack-19-1"]
+    if source_slug in {"unc5691", "storm-0784"}:
+        evidence_refs = [
+            item["source_id"]
+            for item in result.get("sources", [])
+            if "Iranian-Affiliated Cyber Actors" in item.get("path", "")
+        ] or ["source--cisa-aa23-335a"]
+    elif source_slug == "radio-panda":
+        evidence_refs = [
+            item["source_id"]
+            for item in result.get("sources", [])
+            if "CSA_BLACKTECH" in item.get("path", "")
+        ] or ["source--actor-mapping-workbook"]
     if is_software:
         mitre_source = {
             "source_id": "source--mitre-zebrocy-s0251",
@@ -517,6 +569,60 @@ def migrate_inbound_relationships(root: Path) -> int:
     return changed
 
 
+def repair_merged_aliases(root: Path) -> int:
+    """Keep canonical aliases valid after their legacy profiles are tombstoned."""
+    changed_targets: set[str] = set()
+    for source_slug, target_slug in MERGES.items():
+        source = load_json(root / "profiles" / source_slug / "actor-profile.json")
+        target_path = root / "profiles" / target_slug / "actor-profile.json"
+        target = load_json(target_path)
+        alias_name = source["actor"]["canonical_name"]
+        alias = next(
+            (
+                item for item in target.get("actor", {}).get("aliases", [])
+                if normalized_name(item.get("name", "")) == normalized_name(alias_name)
+            ),
+            None,
+        )
+        if alias is None:
+            continue
+        before = copy.deepcopy(alias)
+        valid_source_ids = {item["source_id"] for item in target.get("sources", [])}
+        alias["evidence_refs"] = [
+            item for item in alias.get("evidence_refs", [])
+            if item in valid_source_ids
+        ]
+        if source_slug in {"unc5691", "storm-0784"}:
+            if "source--cisa-aa23-335a" in valid_source_ids:
+                alias["evidence_refs"] = _merge_scalar_lists(
+                    alias["evidence_refs"], ["source--cisa-aa23-335a"]
+                )
+            alias["vendor"] = "CISA / joint government advisory"
+            alias["scope"] = "exact"
+            alias["confidence"] = "high"
+            alias["analyst_notes"] = (
+                f"The joint CISA advisory explicitly lists {alias_name} as "
+                "another name used for CyberAv3ngers."
+            )
+        elif source_slug == "radio-panda":
+            if "source--nsa-blacktech-2023" in valid_source_ids:
+                alias["evidence_refs"] = _merge_scalar_lists(
+                    alias["evidence_refs"], ["source--nsa-blacktech-2023"]
+                )
+            alias["vendor"] = "NSA / joint government advisory"
+            alias["scope"] = "exact"
+            alias["confidence"] = "high"
+            alias["analyst_notes"] = (
+                "The joint U.S.-Japan advisory explicitly identifies Radio "
+                "Panda as another name for BlackTech."
+            )
+        if alias != before:
+            target["updated_at"] = utc_now()
+            write_json_atomic(target_path, target)
+            changed_targets.add(target_slug)
+    return len(changed_targets)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=REPO_ROOT)
@@ -533,7 +639,9 @@ def main() -> int:
         if source.get("status") == "deprecated":
             continue
         merged = merge_profiles(target, source, source_slug)
-        deprecated = deprecated_profile(source, target=merged)
+        deprecated = deprecated_profile(
+            source, target=merged, source_slug=source_slug
+        )
         if merged != target or deprecated != source:
             changed.extend([source_slug, target_slug])
             if args.apply:
@@ -562,11 +670,13 @@ def main() -> int:
 
     decision_changes = 0
     inbound_relationship_changes = 0
+    merged_alias_repairs = 0
     if args.apply:
         decision_changes = migrate_review_decisions(
             root / "parse-daily" / "review-decisions.json"
         )
         inbound_relationship_changes = migrate_inbound_relationships(root)
+        merged_alias_repairs = repair_merged_aliases(root)
     print(
         json.dumps(
             {
@@ -574,6 +684,7 @@ def main() -> int:
                 "profiles_changed": sorted(set(changed)),
                 "review_decisions_rekeyed": decision_changes,
                 "inbound_relationship_profiles_changed": inbound_relationship_changes,
+                "merged_alias_profiles_repaired": merged_alias_repairs,
             },
             ensure_ascii=False,
             indent=2,

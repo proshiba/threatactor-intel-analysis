@@ -7,12 +7,13 @@
       "spec_version": "2.1",
       "id": "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "APT42",
       "aliases": [
+        "CALANQUE",
         "CALANQUE ION"
       ],
       "description": "[APT42](https://attack.mitre.org/groups/G1044) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.(Citation: Mandiant APT42-charms) The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.(Citation: Mandiant APT42-charms) [APT42](https://attack.mitre.org/groups/G1044) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.(Citation: Mandiant APT42-charms) Finally, [APT42](https://attack.mitre.org/groups/G1044) exfiltrates data using native features and open-source tools.(Citation: Mandiant APT42-untangling) \n\n[APT42](https://attack.mitre.org/groups/G1044) activities have been linked to [Magic Hound](https://attack.mitre.org/groups/G0059) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
@@ -24,14 +25,25 @@
       "x_profile_status": "draft",
       "x_alias_assessments": [
         {
+          "name": "CALANQUE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
           "name": "CALANQUE ION",
           "vendor": "Google Threat Intelligence Group",
           "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--gtig-adversarial-ai-2026"
+            "source--gtig-adversarial-ai-2026",
+            "source--gtig-unified-actor-naming-2026"
           ],
-          "analyst_notes": "GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。"
+          "analyst_notes": "GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         }
       ],
       "x_attribution": {
@@ -55,9 +67,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--apt42",
         "actor_name": "APT42",
-        "searched_at": "2026-09-20T10:03:11Z",
+        "searched_at": "2026-09-20T12:23:31Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -70,12 +83,50 @@
           ],
           "name_inputs": [
             "APT42",
+            "CALANQUE",
             "CALANQUE ION"
           ],
           "mitre_group_id": "G1044"
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-calanque-ion",
+              "entry_value": "CALANQUE ION",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt42",
+                  "profile_value": "APT42",
+                  "dataset_value": "APT42"
+                },
+                {
+                  "normalized": "calanque",
+                  "profile_value": "CALANQUE",
+                  "dataset_value": "CALANQUE"
+                },
+                {
+                  "normalized": "calanqueion",
+                  "profile_value": "CALANQUE ION",
+                  "dataset_value": "CALANQUE ION"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "CALANQUE ION",
+                "APT42",
+                "CALANQUE"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for APT42 and CALANQUE.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": []
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "fa55484b-2760-4ac1-9105-96199054d1df",
@@ -118,6 +169,16 @@
                   "normalized": "apt42",
                   "profile_value": "APT42",
                   "dataset_value": "APT42"
+                },
+                {
+                  "normalized": "calanque",
+                  "profile_value": "CALANQUE",
+                  "dataset_value": "CALANQUE"
+                },
+                {
+                  "normalized": "calanqueion",
+                  "profile_value": "CALANQUE ION",
+                  "dataset_value": "CALANQUE ION"
                 }
               ],
               "match_basis": "canonical-name",
@@ -125,7 +186,8 @@
               "candidate_names": [
                 "APT42",
                 "UNC788",
-                "CALANQUE"
+                "CALANQUE",
+                "CALANQUE ION"
               ],
               "countries": [
                 "IR",
@@ -134,7 +196,8 @@
               "description": "Iranian state-sponsored cyber espionage group tasked with conducting information collection and surveillance operations against individuals and organizations of strategic interest to the Iranian government.",
               "refs": [
                 "https://www.mandiant.com/resources/blog/apt42-charms-cons-compromises",
-                "https://services.google.com/fh/files/misc/tool-of-first-resort-israel-hamas-war-cyber.pdf"
+                "https://services.google.com/fh/files/misc/tool-of-first-resort-israel-hamas-war-cyber.pdf",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
               "related": [
                 {
@@ -155,7 +218,170 @@
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "c0291346-defe-48d7-9542-9e074ba1bdfb",
+              "entry_value": "APT42 - G1044",
+              "external_id": "G1044",
+              "matched_names": [
+                {
+                  "normalized": "apt42",
+                  "profile_value": "APT42",
+                  "dataset_value": "APT42"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "APT42"
+              ],
+              "countries": [],
+              "description": "[APT42](https://attack.mitre.org/groups/G1044) is an Iranian-sponsored threat group that conducts cyber espionage and surveillance.(Citation: Mandiant APT42-charms) The group primarily focuses on targets in the Middle East region, but has targeted a variety of industries and countries since at least 2015.(Citation: Mandiant APT42-charms) [APT42](https://attack.mitre.org/groups/G1044) starts cyber operations through spearphishing emails and/or the PINEFLOWER Android malware, then monitors and collects information from the compromised systems and devices.(Citation: Mandiant APT42-charms) Finally, [APT42](https://attack.mitre.org/groups/G1044) exfiltrates data using native features and open-source tools.(Citation: Mandiant APT42-untangling) \n\n[APT42](https://attack.mitre.org/groups/G1044) activities have been linked to [Magic Hound](https://attack.mitre.org/groups/G0059) by other commercial vendors. While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. ",
+              "refs": [
+                "https://attack.mitre.org/groups/G1044",
+                "https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations",
+                "https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "01a5a209-b94c-450b-b7f9-946497d91055",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0259baeb-9f63-4c69-bf10-eb038c390688",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "04fd5427-79c7-44ea-ae13-11b24778ff1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0659f55c-3b68-4e5d-8071-12ded6684731",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "09a60ea3-a8d1-4ae5-976e-5783248b72a4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "10ffac09-e42d-4f56-ab20-db94c67d76ff",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "12fdf05a-4bd1-4f45-9cde-d3af35f82db1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "143122a8-fcda-4dd7-aded-5b9387d9c2d6",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1ecb2399-e8ba-4f6b-8ba7-5c27d49405cf",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "25659dd6-ea12-45c4-97e6-381e3e4b593e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2b742742-28c3-4e1b-bab7-8350d6300fa7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3298ce88-1628-43b1-87d9-0b5336b193d7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ee16395-03f0-4690-a32e-69ce9ada0f9e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "40f5caa0-4cb7-4117-89fc-d421bb493df3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "438c967d-3996-4870-bfc2-3954752a1927",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "57340c81-c025-4189-8fa0-fc7ede51bae4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "58a3e6aa-4453-4cc8-a51f-4befe80b31a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65013dd2-bc61-43e3-afb5-a14c4fa7437a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "799ace7f-e227-4411-baa0-8868704f2a69",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "79da0971-3147-4af6-a4f5-e8cd447cd795",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "830c9528-df21-472c-8c14-a036bf17d665",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bb5a00de-e086-4859-a231-fa793f6797e2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf176076-b789-408e-8cba-7275e81c0ada",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cba37adb-d6fb-4610-b069-dd04c0643384",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cd92d2b8-ce43-4666-9472-f1b4b9f4f8be",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dd43c543-bb85-4a6f-aa6e-160d90d06a49",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfd7cc1d-e1d8-4394-a198-97c4cab8aa67",
+                  "type": "uses"
+                }
+              ]
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "c0291346-defe-48d7-9542-9e074ba1bdfb",
@@ -3599,7 +3825,7 @@
       "spec_version": "2.1",
       "id": "indicator--b07e145d-734e-480b-a5cb-c93a9ef78e88",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3622,7 +3848,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:15a78fed93a3ac5ff20f4729d990d52900dbdf62c1e9ccb7be07e392392f38e4",
+          "observation_id": "observation--sha256:2b0ff4d66050f872410bda4904afeb7966f46e4f81b6cc511d7ae4cf48b8ef93",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3638,7 +3864,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3673,7 +3899,7 @@
       "spec_version": "2.1",
       "id": "indicator--9fe79e9a-50a0-4132-b6a5-c4bfbbbe3068",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3696,7 +3922,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e5ba31e222a26eed6b5bb54140e3ec06dcbe95dd05d6ac486a59ad4a3abeb7ae",
+          "observation_id": "observation--sha256:e6f83892cfc1ae8960d6cfcbfc97f981cd0a94d742476af14162aa7fda70ad00",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3712,7 +3938,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3747,7 +3973,7 @@
       "spec_version": "2.1",
       "id": "indicator--0e03b3f0-6093-4f7e-92c1-aadcd1fe3158",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3770,7 +3996,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1588de52479d92efbb09739e186663bc5746288247294bf9528cb2c031a1c63b",
+          "observation_id": "observation--sha256:b1b4e8c5a7fe336028d74a8d5b8a7c18514abfdb33d81f6e0af30a97285f7fad",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3786,7 +4012,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3821,7 +4047,7 @@
       "spec_version": "2.1",
       "id": "indicator--3f0fc025-2ba1-4644-986f-b64a6c8394cc",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3844,7 +4070,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:c6f3e0775f8e39a1d8d9b8632aaa80025caedf0d2e3be4b5bc3886860ac7b55b",
+          "observation_id": "observation--sha256:1654b871e0f06fd20bb4c7b865c7946a06f33185c1d119a22e9827e41433a985",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3860,7 +4086,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3895,7 +4121,7 @@
       "spec_version": "2.1",
       "id": "indicator--32ec0aae-7e0c-464a-8047-c4958f1f5c78",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3918,7 +4144,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:691bd1c81bfca59341516bf48fc3ca7886b357db53682ca8aa1a3b0e19362169",
+          "observation_id": "observation--sha256:454304ccc22fb184ff34bc0572ec709849cce8a7cc9d8db3bc088d6ea257e647",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -3934,7 +4160,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -3969,7 +4195,7 @@
       "spec_version": "2.1",
       "id": "indicator--856d0842-a095-4600-8576-c2bf2872dfd0",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -3992,7 +4218,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b19514b2cf6ddf95017eae537e69df9bf294dbe9a5682e941833c28a1a53141e",
+          "observation_id": "observation--sha256:b23dec5bc15609146a46edd27f1021854150bad5c6023bc0c9ee4dce6cb44a8f",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -4008,7 +4234,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 43
+            "row": 60
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4043,7 +4269,7 @@
       "spec_version": "2.1",
       "id": "indicator--eb147ec0-475c-4a9e-96e4-a7666e87569f",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4066,7 +4292,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:14b47576cc2e5de741732900ffa81fb794457fe216538d4ae67070b439fb22d2",
+          "observation_id": "observation--sha256:38efa60d9b20f6b1b5085cabbed2e6177cd1f37d53e509539098d297ab325dbc",
           "observed_at": {
             "value": "2022-09-01T00:00:00Z",
             "precision": "month",
@@ -4082,7 +4308,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 55
+            "row": 72
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4102,7 +4328,7 @@
       "spec_version": "2.1",
       "id": "indicator--c26bcafd-bb7a-46ea-9cd0-801bac9efa34",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4125,7 +4351,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:60945a091b65b09283add4fccc6b207744120f31a5dbc3ad7b3d25b7a9efde24",
+          "observation_id": "observation--sha256:3eed3cd9ae48e0873649fbf1d07fe9e2a018dad2413754325bf139112342c0fb",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -4141,7 +4367,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 41
+            "row": 58
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4161,7 +4387,7 @@
       "spec_version": "2.1",
       "id": "indicator--e6ccec89-f9d1-4a30-bfeb-a7e6d5cdfde3",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4184,7 +4410,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:386c20586d39415939031f77ab1542df27e61e3641abb3ce88066740c5f5255f",
+          "observation_id": "observation--sha256:35a93be1f9dd728d65028bb395651a6e6f272e038ed736cf48e1141ca480ac48",
           "observed_at": {
             "value": "2022-08-09T00:00:00Z",
             "precision": "day",
@@ -4200,7 +4426,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 28
+            "row": 45
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4220,7 +4446,7 @@
       "spec_version": "2.1",
       "id": "indicator--a94baeac-01e5-455d-947d-dad95896e7c7",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-07-25T15:22:54Z",
+      "modified": "2026-09-20T11:57:56Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4243,7 +4469,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:b0050f83f98cc03ec7b2ec6d938dde81f68fe708283a804c986762ddfae580f5",
+          "observation_id": "observation--sha256:a8b97a1de0f543870859284fb737ceaf0d3a1180e6077488409ea90a12b6024e",
           "observed_at": {
             "value": "2022-08-09T00:00:00Z",
             "precision": "day",
@@ -4259,7 +4485,7 @@
           "source_id": "source--apt42--ecc18e15a462bb18",
           "source_path": "actor_profile/evidence/apt42.csv",
           "source_location": {
-            "row": 28
+            "row": 45
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -4415,7 +4641,7 @@
       "spec_version": "2.1",
       "id": "report--b3acdb9c-7dd7-43bd-89ba-5e0ec700c759",
       "created": "2026-07-25T15:22:54Z",
-      "modified": "2026-09-20T10:03:33Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4424,7 +4650,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T10:03:33Z",
+      "published": "2026-09-20T12:23:31Z",
       "object_refs": [
         "intrusion-set--a03b5c61-d46a-44b5-9842-9c0d1827bdc4",
         "malware--9afda9d1-2024-44dd-ae7e-b3f87ae5acc2",

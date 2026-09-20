@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lucky-cat`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,12 +52,13 @@ Lucky Catの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Lucky Cat | canonical-name | 高 | China | https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the_luckycat_hackers.pdf<br>https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp_luckycat_redux.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Lucky+Cat&n=1 |
 | etda-threat-group-cards | Shadow Network | single-alias-intersection | 中 | China | https://citizenlab.ca/wp-content/uploads/2017/05/shadows-in-the-cloud.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Shadow+Network&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |

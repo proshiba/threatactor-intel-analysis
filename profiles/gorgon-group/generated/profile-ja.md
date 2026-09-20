@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gorgon-group`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -51,12 +51,13 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Aggah | single-alias-intersection | 中 |  | https://unit42.paloaltonetworks.com/aggah-campaign-bit-ly-blogspot-and-pastebin-used-for-c2-in-large-scale-campaign/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Aggah&n=1 |
 | etda-threat-group-cards | Gorgon Group | canonical-name | 高 | Pakistan | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Gorgon+Group&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -64,7 +65,7 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 | misp-threat-actor | The Gorgon Group | canonical-name | 高 |  | https://unit42.paloaltonetworks.com/unit42-gorgon-group-slithering-nation-state-cybercrime/<br>https://unit42.paloaltonetworks.com/unit42-tracking-subaat-targeted-phishing-attacks-point-leader-threat-actors-repository/<br>https://unit42.paloaltonetworks.com/aggah-campaign-bit-ly-blogspot-and-pastebin-used-for-c2-in-large-scale-campaign/ |
 | misp-threat-actor | Hagga | single-alias-intersection | 中 |  | https://www.team-cymru.com/post/an-analysis-of-infrastructure-linked-to-the-hagga-threat-actor<br>https://otx.alienvault.com/pulse/62cfe4ef3415be5f83be81d1<br>https://team-cymru.com/blog/2022/07/12/an-analysis-of-infrastructure-linked-to-the-hagga-threat-actor/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Gorgon Group - G0078 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0078<br>https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/ |
 | misp-mitre-intrusion-set | Gorgon Group - G0078 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0078<br>https://researchcenter.paloaltonetworks.com/2018/08/unit42-gorgon-group-slithering-nation-state-cybercrime/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -200,6 +201,7 @@ Gorgon Groupの標準化プロファイル。リポジトリ内の専用資料1�
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

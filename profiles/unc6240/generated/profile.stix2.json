@@ -7,13 +7,15 @@
       "spec_version": "2.1",
       "id": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-20T10:03:11Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "UNC6240",
       "aliases": [
-        "ShinyHunters"
+        "Bling Libra",
+        "ShinyHunters",
+        "Storm-3127"
       ],
       "description": "UNC6240の標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
@@ -22,14 +24,35 @@
       "x_profile_status": "draft",
       "x_alias_assessments": [
         {
-          "name": "ShinyHunters",
-          "vendor": "Google Threat Intelligence Group",
+          "name": "Bling Libra",
+          "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
           "confidence": "high",
           "evidence_refs": [
-            "source--gtig-adversarial-ai-2026"
+            "source--mitre-attack-g1057"
           ],
-          "analyst_notes": "GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。"
+          "analyst_notes": "Official MITRE ATT&CK associated-group name for G1057."
+        },
+        {
+          "name": "ShinyHunters",
+          "vendor": "Google Threat Intelligence Group / MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-adversarial-ai-2026",
+            "source--mitre-attack-g1057"
+          ],
+          "analyst_notes": "GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057."
+        },
+        {
+          "name": "Storm-3127",
+          "vendor": "Microsoft",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--osint-microsoft-threat-actor-mapping"
+          ],
+          "analyst_notes": "Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ."
         }
       ],
       "x_attribution": {
@@ -53,9 +76,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--unc6240",
         "actor_name": "UNC6240",
-        "searched_at": "2026-09-20T10:03:11Z",
+        "searched_at": "2026-09-20T12:23:31Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -68,12 +92,15 @@
           ],
           "name_inputs": [
             "UNC6240",
-            "ShinyHunters"
+            "Bling Libra",
+            "ShinyHunters",
+            "Storm-3127"
           ],
-          "mitre_group_id": null
+          "mitre_group_id": "G1057"
         },
-        "overall_assessment": "possible-match",
+        "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "92cc31c7-3c18-4ae2-9f9b-649b6cb029e1",
@@ -113,7 +140,37 @@
             }
           ],
           "cert-ua-uac-index": [],
-          "microsoft-threat-actor-mapping": [],
+          "microsoft-threat-actor-mapping": [
+            {
+              "entry_uuid": "microsoft-actor--sha256:c9a3d49cad0797087f43a0b8ff44c08b8e969f8f561678352cc3a49fa49189c0",
+              "entry_value": "Storm-3127",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "storm3127",
+                  "profile_value": "Storm-3127",
+                  "dataset_value": "Storm-3127"
+                },
+                {
+                  "normalized": "unc6240",
+                  "profile_value": "UNC6240",
+                  "dataset_value": "UNC6240"
+                }
+              ],
+              "match_basis": "canonical-name",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Storm-3127",
+                "UNC6240"
+              ],
+              "countries": [],
+              "description": "Microsoft threat actor mapping. Origin/Threat: Financially motivated",
+              "refs": [
+                "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json"
+              ],
+              "related": []
+            }
+          ],
           "misp-threat-actor": [
             {
               "entry_uuid": "d4fd0a30-15d4-4dfd-bf98-beff5fe34c33",
@@ -142,7 +199,240 @@
             }
           ],
           "misp-microsoft-activity-group": [],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "5e30362d-935b-4b1c-8bf2-96c7b7b7e299",
+              "entry_value": "ShinyHunters - G1057",
+              "external_id": "G1057",
+              "matched_names": [
+                {
+                  "normalized": "blinglibra",
+                  "profile_value": "Bling Libra",
+                  "dataset_value": "Bling Libra"
+                },
+                {
+                  "normalized": "shinyhunters",
+                  "profile_value": "ShinyHunters",
+                  "dataset_value": "ShinyHunters"
+                },
+                {
+                  "normalized": "unc6240",
+                  "profile_value": "UNC6240",
+                  "dataset_value": "UNC6240"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "ShinyHunters",
+                "UNC6240",
+                "Bling Libra"
+              ],
+              "countries": [],
+              "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) is a cyber criminal collective that has been active since at least 2019 operating under the ShinyCorp persona. [ShinyHunters](https://attack.mitre.org/groups/G1057) has targeted multiple industries and geographic regions gathering legitimate credentials and personally identifiable information (PII) for resale or extortion of victims. [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). Public reporting has mentioned a variety of names for operations [ShinyHunters](https://attack.mitre.org/groups/G1057) members have reportedly conducted with members of other groups, including “Scattered Lapsus Hunters,” “Scattered Lapsus Shiny Hunters,” and “SLSH.”(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)(Citation: SOCRadar_ShinyHunters_Mar2024)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: Intel471_SH_Aug2021)(Citation: FBI_SHLMS_May2026)(Citation: Google_SHOracle_Jun2026)(Citation: Mandiant_SHDataTheft_Jan2026)(Citation: Google Salesforce JUN 2025)",
+              "refs": [
+                "https://attack.mitre.org/groups/G1057",
+                "https://blog.eclecticiq.com/shinyhunters-calling-financially-motivated-data-extortion-group-targeting-enterprise-cloud-applications",
+                "https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft",
+                "https://cloud.google.com/blog/topics/threat-intelligence/shinyhunters-targets-education-sector-oracle-exploit",
+                "https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion",
+                "https://socradar.io/dark-web-profile-shinyhunters/",
+                "https://unit42.paloaltonetworks.com/shinyhunters-ransomware-extortion/",
+                "https://www.ic3.gov/PSA/2026/PSA260515",
+                "https://www.intel471.com/blog/shinyhunters-data-breach-mitre-attack"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "0cc222f5-c3ff-48e6-9f52-3314baf9d37e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0f4a0c76-ab2d-4cb0-85d3-3f0efb8cba0d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "16e94db9-b5b1-4cd0-b851-f38fbd0a70f2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "191cc6af-1bb2-4344-ab5f-28e496638720",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "248d3fe1-7fe1-4d71-91c7-8bb7ef35cad3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2d3f5b3c-54ca-4f4d-bb1f-849346d31230",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3298ce88-1628-43b1-87d9-0b5336b193d7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3f886f2a-874f-4333-b794-aa6075009b1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "40597f16-0963-4249-bf4c-ac93b7fb9807",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4061e78c-1284-44b4-9116-73e4ac3912f7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "40f5caa0-4cb7-4117-89fc-d421bb493df3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "41868330-6ee2-4d0f-b743-9f2294c3c9b6",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "41e4d77a-6275-4976-9e35-785985598519",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5502c4e9-24ef-4d5f-8ee9-9e906c2f82c4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "55bb4471-ff1f-43b4-88c1-c9384ec47abf",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "57a3d31a-d04f-4663-b2da-7df8ec3f8c9d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "60c4b628-4807-4b0b-bbf5-fdac8643c337",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65013dd2-bc61-43e3-afb5-a14c4fa7437a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "70910fbd-58dc-4c1c-8c48-814d11fcd022",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "837f9164-50af-4ac0-8219-379d8a74cefc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "851e071f-208d-4c79-adc6-5974c85c78f3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8565825b-21c8-4518-b75e-cbc4c717a156",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "890c9858-598c-401d-a4d5-c67ebcdd703a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8c41090b-aa47-4331-986b-8c9a51a91103",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92a78814-b191-47ca-909c-1ccfe3777414",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9db0cf3a-a3c9-4012-8268-123b9db6fd82",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a782ebe2-daba-42c7-bc82-e8e9d923162d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a93494bb-4b80-4ea1-8695-3236a49916fd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b17a1a56-e99c-403c-8948-561df0cffe81",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bbc3cba7-84ae-410d-b18b-16750731dfa2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bc76d0a4-db11-4551-9ac4-01a469cfb161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "be2dcee9-a7a7-4e38-afd6-21b31ecc3d63",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf176076-b789-408e-8cba-7275e81c0ada",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c3d4bdd9-2cfe-4a80-9d0c-07a29ecdce8f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cca0ccb6-a068-4574-a722-b1556f86833a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cff94884-3b1c-4987-a70b-6d5643c621c3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d45a3d09-b3cf-48f4-9f0f-f521ee5cb05c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ed7d0cb1-87a6-43b4-9f46-ef1bc56d6c68",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f005e783-57d4-4837-88ad-dbe7faee1c51",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f232fa7a-025c-4d43-abc7-318e81a73d65",
+                  "type": "uses"
+                }
+              ]
+            }
+          ],
           "misp-mitre-intrusion-set": [],
           "misp-360net": []
         },
@@ -367,7 +657,7 @@
       "spec_version": "2.1",
       "id": "identity--9ffe6d7f-62e9-4df1-8fb5-732766c49abe",
       "created": "2026-07-29T15:20:25Z",
-      "modified": "2026-07-29T15:20:25Z",
+      "modified": "2026-09-20T11:56:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -382,13 +672,14 @@
         }
       ],
       "x_profile_object_id": "victim--activity-rule--08fecf1c5b48c6bc87e9",
-      "x_disclosure_status": "anonymous",
-      "x_victim_type": "unknown",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
       "x_case_status": "reported",
       "x_target_refs": [],
       "x_malware_refs": [],
       "x_ttp_refs": [],
       "x_affected_assets": [
+        "メール／メールアカウント",
         "クラウド／SaaS"
       ],
       "x_impacts": [
@@ -567,11 +858,1168 @@
       "x_confidence": "medium"
     },
     {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--75a83978-c2e5-47d8-9ce2-f90399f69902",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: azurenetfiles.net",
+      "pattern": "[domain-name:value = 'azurenetfiles.net']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:3cbbba5825b6caa6fa7750cbc3060c021f5927d9001c88a6c3b0788055ae10b2",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 335
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/news/2026_04-06/20260611.md {\"line\": 77} ShinyHunters - azurenetfiles[.]net,FQDN名,知られていない,一部IPのTLS証明書Common Nameで、ShinyHuntersとの過去関連があるドメイン,NA(IP以外)",
+          "analyst_notes": "",
+          "raw_value": "azurenetfiles[.]net"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2700e988-7c99-4c90-85e1-4f9037ceb397",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--75a83978-c2e5-47d8-9ce2-f90399f69902",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--96d477a8-4a31-4e2b-8992-122334107333",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: shinyhunte.rs",
+      "pattern": "[domain-name:value = 'shinyhunte.rs']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:698a64129134fc99a2ebfaf7dc0cc59234ea8604e9cf6f97b0ea0c7bed68a649",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 206
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/news/2026_01-03/20260112.md {\"line\": 47} ShinyHunters - shinyhunte[.]rs,FQDN名,知られていない,ShinyHunters名を冠したサイトが流出アーカイブを公開と記載（アーカイブ内のファイル名にも同FQDNを含む）,NA(IP以外)",
+          "analyst_notes": "",
+          "raw_value": "shinyhunte[.]rs"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f2f826dd-f5d7-4698-b09d-3cc4f3ceeba9",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--96d477a8-4a31-4e2b-8992-122334107333",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--46f8b1b2-6aa0-4aa6-a9ee-db6ddc782144",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.75.11.110",
+      "pattern": "[ipv4-addr:value = '103.75.11.110']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:468f731f4c9529e9d828bd0806e27e04190277f01b562a7050c525eed0925ec2",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 50
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.md {\"line\": 43} ShinyHunters - ShinyHunters/Salesforce API悪用キャンペーン(Microsoft blog)の一次ソースを再取得したところ、以前IOCとして記載されていた2件のIPアドレス(103.75.11.78, 103.75.11.110)について、Microsoftが「正規のセキュリティ研究者の調査によるものと判明したため報告から削除した」と明記していたため、今回のCSVには含めなかった。",
+          "analyst_notes": "",
+          "raw_value": "103.75.11.110"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--24370431-c137-46b0-a1a7-0882622d6d1b",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 103.75.11.78",
+      "pattern": "[ipv4-addr:value = '103.75.11.78']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:4bc63668216ff3778f419b9d68005217e3bdbc80f8059d6b8735885bd37c88fb",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 50
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.md {\"line\": 43} ShinyHunters - ShinyHunters/Salesforce API悪用キャンペーン(Microsoft blog)の一次ソースを再取得したところ、以前IOCとして記載されていた2件のIPアドレス(103.75.11.78, 103.75.11.110)について、Microsoftが「正規のセキュリティ研究者の調査によるものと判明したため報告から削除した」と明記していたため、今回のCSVには含めなかった。",
+          "analyst_notes": "",
+          "raw_value": "103.75.11.78"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a6f65297-8cb5-422e-83b2-cc0fc4c8e2fe",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 138.226.246.94",
+      "pattern": "[ipv4-addr:value = '138.226.246.94']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-11T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 3,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:32ed601658d42208767854daa802c5741ce5c06f8798df235b110f7a72c4b62c",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 48
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.csv {\"row\": 9} ShinyHunters ip 138.226.246.94 2026-06-11 srcip ShinyHunters cybercrime N/A N/A https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/ AI generated. Source IP that called the Salesforce API through a compromise",
+          "analyst_notes": "",
+          "raw_value": "138.226.246.94"
+        },
+        {
+          "observation_id": "observation--sha256:e78d38c47d0534bc10c959e8eb7dc74d7b8cdddeab84a22668907f12b994d114",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 49
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.csv {\"row\": 9} shinyhunters ip 138.226.246.94 2026-06-11 srcip ShinyHunters cybercrime N/A N/A https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/ AI generated. Source IP that called the Salesforce API through a compromised Klue integration to query CRM data. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "138.226.246.94"
+        },
+        {
+          "observation_id": "observation--sha256:cffd26643a20b06e7d7289040577bcfcfd096b4297f0d0ba700baebe358074f0",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 51
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.md {\"line\": 74} ShinyHunters - ShinyHuntersのIOCのうち、日付が明記されていたのは138.226.246.94(2026-06-11)のみ。他3件のIPは一次ソースの公開日(2026-07-13)を代替使用した。",
+          "analyst_notes": "",
+          "raw_value": "138.226.246.94"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2af5731b-2c65-4025-bcfb-b8201bc5a905",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a6f65297-8cb5-422e-83b2-cc0fc4c8e2fe",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--a515bd5c-c891-4f25-b09e-c3eae03b1b88",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 142.11.200.186",
+      "pattern": "[ipv4-addr:value = '142.11.200.186']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-11T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 4,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e364f49302f1771cf26d1c274fbea3eb09a33e1ead4e008c69e6df72ae1e3b7a",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 20
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260611.csv {\"row\": 11} ShinyHunters ip 142.11.200.186 2026-06-11 c2 ShinyHunters cybercrime unknown unknown https://www.bleepingcomputer.com/news/security/oracle-peoplesoft-servers-hacked-in-shinyhunters-data-theft-attacks/ AI generated. Attacker infrastructure IP linked to ShinyHunters Oracle Peopl",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.186"
+        },
+        {
+          "observation_id": "observation--sha256:6184050445faabc90af502f3f981dbcc09ae23c83ebbd1eaf712fc84fa12c79b",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 22
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260611.csv {\"row\": 11} shinyhunters ip 142.11.200.186 2026-06-11 c2 ShinyHunters cybercrime unknown unknown https://www.bleepingcomputer.com/news/security/oracle-peoplesoft-servers-hacked-in-shinyhunters-data-theft-attacks/ AI generated. Attacker infrastructure IP linked to ShinyHunters Oracle PeopleSoft data theft campaign. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.186"
+        },
+        {
+          "observation_id": "observation--sha256:28ba1f60720f03c29c6e1fcb42b62b923baa94320af5762606567190cf0cd192",
+          "observed_at": {
+            "value": "2026-06-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 28
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260612.csv {\"row\": 2} ShinyHunters ip 142.11.200.186 2026-06-12 c2 ShinyHunters cybercrime N/A N/A https://www.bleepingcomputer.com/news/security/oracle-mitigates-peoplesoft-zero-day-exploited-in-data-theft-attacks/ AI generated. IP address used in ShinyHunters Oracle PeopleSoft data theft attack i",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.186"
+        },
+        {
+          "observation_id": "observation--sha256:9e8743d92fc2e47506dfd5ffbd91e6aa12236b3bf360d58f7daef5dc463efc94",
+          "observed_at": {
+            "value": "2026-06-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 29
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260612.csv {\"row\": 2} ShinyHunters ip 142.11.200.186 2026-06-12 c2 ShinyHunters cybercrime N/A N/A https://www.bleepingcomputer.com/news/security/oracle-mitigates-peoplesoft-zero-day-exploited-in-data-theft-attacks/ AI generated. IP address used in ShinyHunters Oracle PeopleSoft data theft attack infrastructure. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.186"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--40f92f7c-6d98-4d4c-8e61-a8b64bbb551a",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--a515bd5c-c891-4f25-b09e-c3eae03b1b88",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--368e429c-bd01-42b5-ac0f-79ee6a089727",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 142.11.200.187",
+      "pattern": "[ipv4-addr:value = '142.11.200.187']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-11T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 4,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b147e7b62204dd0bf4f3785e1769740a76ae19728a2cb927ba7e8a5007502c3c",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 23
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260611.csv {\"row\": 12} ShinyHunters ip 142.11.200.187 2026-06-11 c2 ShinyHunters cybercrime unknown unknown https://www.bleepingcomputer.com/news/security/oracle-peoplesoft-servers-hacked-in-shinyhunters-data-theft-attacks/ AI generated. Attacker infrastructure IP linked to ShinyHunters Oracle Peopl",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.187"
+        },
+        {
+          "observation_id": "observation--sha256:bba2976a1aab3050d3b5b982bee7ec790ec8befe70f27b557b74efbc4e87f70a",
+          "observed_at": {
+            "value": "2026-06-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 24
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260611.csv {\"row\": 12} shinyhunters ip 142.11.200.187 2026-06-11 c2 ShinyHunters cybercrime unknown unknown https://www.bleepingcomputer.com/news/security/oracle-peoplesoft-servers-hacked-in-shinyhunters-data-theft-attacks/ AI generated. Attacker infrastructure IP linked to ShinyHunters Oracle PeopleSoft data theft campaign. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.187"
+        },
+        {
+          "observation_id": "observation--sha256:d6021b3073ca783a2363cb35cf155cc9dbe87384fae96045cda6ab1757ad2a54",
+          "observed_at": {
+            "value": "2026-06-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 30
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260612.csv {\"row\": 3} ShinyHunters ip 142.11.200.187 2026-06-12 c2 ShinyHunters cybercrime N/A N/A https://www.bleepingcomputer.com/news/security/oracle-mitigates-peoplesoft-zero-day-exploited-in-data-theft-attacks/ AI generated. IP address used in ShinyHunters Oracle PeopleSoft data theft attack i",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.187"
+        },
+        {
+          "observation_id": "observation--sha256:f3a7db66355f8d27aa20abe55941db9b072eae8ddcb665a56d4c2037c807271c",
+          "observed_at": {
+            "value": "2026-06-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 31
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260612.csv {\"row\": 3} ShinyHunters ip 142.11.200.187 2026-06-12 c2 ShinyHunters cybercrime N/A N/A https://www.bleepingcomputer.com/news/security/oracle-mitigates-peoplesoft-zero-day-exploited-in-data-theft-attacks/ AI generated. IP address used in ShinyHunters Oracle PeopleSoft data theft attack infrastructure. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.187"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--22110d55-21ed-4f7d-b73b-6b5af4e1c2e3",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--368e429c-bd01-42b5-ac0f-79ee6a089727",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f58343c1-d789-4831-bd2b-1158d4bdd4e3",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 142.11.200.188",
+      "pattern": "[ipv4-addr:value = '142.11.200.188']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-06-12T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:7ed1a6ee5f4bd7384b4bfe7dbec524b8e752c11afef9cd57a8ab97af3330e7fc",
+          "observed_at": {
+            "value": "2026-06-12T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 32
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260612.csv {\"row\": 4} ShinyHunters ip 142.11.200.188 2026-06-12 c2 ShinyHunters cybercrime N/A N/A https://www.bleepingcomputer.com/news/security/oracle-mitigates-peoplesoft-zero-day-exploited-in-data-theft-attacks/ AI generated. IP address used in ShinyHunters Oracle PeopleSoft data theft attack i",
+          "analyst_notes": "",
+          "raw_value": "142.11.200.188"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cded1a73-fae8-456b-a294-13d3543851d5",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f58343c1-d789-4831-bd2b-1158d4bdd4e3",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--504bd1ad-2e5f-44b5-aef1-34877ae835cf",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 212.86.125.24",
+      "pattern": "[ipv4-addr:value = '212.86.125.24']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-13T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:f00b98cb786f19524e6a83e4c92f17dee381211659f71aa26f089181c2555287",
+          "observed_at": {
+            "value": "2026-07-13T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 45
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.csv {\"row\": 10} ShinyHunters ip 212.86.125.24 2026-07-13 srcip ShinyHunters cybercrime N/A N/A https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/ AI generated. Source IP associated with the Klue-related Salesforce API abu",
+          "analyst_notes": "",
+          "raw_value": "212.86.125.24"
+        },
+        {
+          "observation_id": "observation--sha256:ce1b6f87458df29011850f3693ad38e80ed0c1f2cbb22ff100ac7d1e00274145",
+          "observed_at": {
+            "value": "2026-07-13T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 46
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.csv {\"row\": 10} shinyhunters ip 212.86.125.24 2026-07-13 srcip ShinyHunters cybercrime N/A N/A https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/ AI generated. Source IP associated with the Klue-related Salesforce API abuse campaign. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "212.86.125.24"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a0770163-7bb3-4985-94a3-439b1ba3f102",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--504bd1ad-2e5f-44b5-aef1-34877ae835cf",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f5ef2009-9bae-4cdf-b9d4-2a9dba07df4b",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 213.111.148.90",
+      "pattern": "[ipv4-addr:value = '213.111.148.90']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-13T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:c7191e05d9971a7bbd514854b42e445161deed6b010f060813dcdbb0abbc33bf",
+          "observed_at": {
+            "value": "2026-07-13T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 47
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260715.csv {\"row\": 11} ShinyHunters ip 213.111.148.90 2026-07-13 srcip ShinyHunters cybercrime N/A N/A https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/ AI generated. Source IP associated with the Klue-related Salesforce API abu",
+          "analyst_notes": "",
+          "raw_value": "213.111.148.90"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e5468ef5-ba62-433d-954d-58d01ddcb18d",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--f5ef2009-9bae-4cdf-b9d4-2a9dba07df4b",
+      "target_ref": "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f335fbf0-ad78-41db-8fa1-bd5d8f8e0b27",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://cybernews.com/security/breachforums-reboot-shinyhunters-intelbroker/",
+      "pattern": "[url:value = 'https://cybernews.com/security/breachforums-reboot-shinyhunters-intelbroker/']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:16d50c21286eff7730f0c7a835f5fe7d3f76b05fc5f35d266d8ba2d2b76d2d8c",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 88
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/news/2025_04-06/20250607.md {\"line\": 176} shinyhunters https://cybernews.com/security/breachforums-reboot-shinyhunters-intelbroker/",
+          "analyst_notes": "",
+          "raw_value": "https://cybernews.com/security/breachforums-reboot-shinyhunters-intelbroker/"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--47d7d03a-4a9d-490d-8180-b696e6ab63b7",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://mp.weixin.qq.com/s/e6-6VpyCcgrK0jtAuRllug",
+      "pattern": "[url:value = 'https://mp.weixin.qq.com/s/e6-6VpyCcgrK0jtAuRllug']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:0751246526fad7b5c18e47c7e41b0d28294df87b7c193be123aae478738907a0",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 399
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf {\"page\": 111} shinyhunters cale-cloud-extortion-operation/ [130]https://mp.weixin.qq.com/s/e6-6VpyCcgrK0jtAuRllug [131]https://www.trendmicro.com/en_us/research/24/h/pressing-pause-on-play-ransomware. html [132]https://unit42.paloaltonetworks.com/shinyhunters-ransomware-extortion/ [133]https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly- disclosed-vulnerabilities-to-support-ongoing-attacks/ [134]ht",
+          "analyst_notes": "",
+          "raw_value": "https://mp.weixin.qq.com/s/e6-6VpyCcgrK0jtAuRllug"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--e302ec2c-6646-4f6d-803f-eb18401a0f9b",
+      "created": "2026-09-20T12:20:06Z",
+      "modified": "2026-09-20T12:20:06Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "url: https://www.kovrr.com/reports/the-",
+      "pattern": "[url:value = 'https://www.kovrr.com/reports/the-']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-07-25T11:07:07Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "candidate",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:acd7fd1ae858698da8c935d08abb86803d10cf40bb49e472e20798e0bde6d44e",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--unc6240--df2a78f9305a5534",
+          "source_path": "actor_profile/evidence/unc6240.csv",
+          "source_location": {
+            "row": 411
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "summary/2026/CERTFR-2026-CTI-003.pdf {\"page\": 56} shinyhunters osecurity- magazine.com/news/ fraudsters-clop-ransomware-extort/ [61] SHINYHUNTERS BEHIND SALESFORCE DATA THEFT ATTACKS AT QANTAS, ALLIANZ LIFE, AND LVMH. 30 07 2025. https://www.bleepingcomputer.com/ news/security/shinyhunters-behind- salesforce-data-theft-attacks-at- qantas-allianz-life-and-lvmh/ [62] THE RANSOMWARE CYBER THREAT LANDSCAPE H1-23. 13 07 2023. https://www.kovrr.com/reports/the- ransomware-threat-landscape-h123 [63] TR",
+          "analyst_notes": "",
+          "raw_value": "https://www.kovrr.com/reports/the-"
+        }
+      ]
+    },
+    {
       "type": "note",
       "spec_version": "2.1",
       "id": "note--09eecdbe-6ebd-471e-967a-430b30905102",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-07-25T15:23:09Z",
+      "modified": "2026-09-20T12:20:06Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -581,14 +2029,14 @@
         "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 3
+      "x_artifact_observation_count": 32
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--f2a9c8ea-8041-4d4a-84d2-50d9c0c55c84",
       "created": "2026-07-25T15:23:09Z",
-      "modified": "2026-09-20T10:03:11Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -597,14 +2045,27 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T10:03:11Z",
+      "published": "2026-09-20T12:23:31Z",
       "object_refs": [
         "intrusion-set--3b01afff-cc35-4e43-99b2-1f4b8eae2532",
         "campaign--c1405f24-0c45-498b-9dae-00aec301e660",
         "campaign--8e6f56c3-e190-404f-9866-f2c03368db5e",
         "identity--4a0d17ec-0f2b-4673-a7ef-6a6c7b62a242",
         "identity--9ffe6d7f-62e9-4df1-8fb5-732766c49abe",
-        "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46"
+        "identity--1d4691d8-5c25-498e-97fa-5c6e74c47d46",
+        "indicator--75a83978-c2e5-47d8-9ce2-f90399f69902",
+        "indicator--96d477a8-4a31-4e2b-8992-122334107333",
+        "indicator--46f8b1b2-6aa0-4aa6-a9ee-db6ddc782144",
+        "indicator--24370431-c137-46b0-a1a7-0882622d6d1b",
+        "indicator--a6f65297-8cb5-422e-83b2-cc0fc4c8e2fe",
+        "indicator--a515bd5c-c891-4f25-b09e-c3eae03b1b88",
+        "indicator--368e429c-bd01-42b5-ac0f-79ee6a089727",
+        "indicator--f58343c1-d789-4831-bd2b-1158d4bdd4e3",
+        "indicator--504bd1ad-2e5f-44b5-aef1-34877ae835cf",
+        "indicator--f5ef2009-9bae-4cdf-b9d4-2a9dba07df4b",
+        "indicator--f335fbf0-ad78-41db-8fa1-bd5d8f8e0b27",
+        "indicator--47d7d03a-4a9d-490d-8180-b696e6ab63b7",
+        "indicator--e302ec2c-6646-4f6d-803f-eb18401a0f9b"
       ],
       "x_schema_version": "1.2.0"
     }

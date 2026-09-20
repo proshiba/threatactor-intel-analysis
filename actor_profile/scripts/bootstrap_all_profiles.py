@@ -509,15 +509,27 @@ def create_profile(
     # Actor types are finalized after actor-scoped reference data is loaded.
     profile["actor"]["actor_types"] = []
 
-    reference_source_id = "source--mitre-attack-19-1"
+    mitre_group = attack["groups"].get(actor.get("mitre_group_id", ""))
+    reference = (mitre_group or {}).get(
+        "_reference_source",
+        {
+            "source_id": "source--mitre-attack-19-1",
+            "path": "actor_profile/reference/attack-index.json",
+            "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+            "published_at": "2026-05-12",
+        },
+    )
+    reference_source_id = reference["source_id"]
     workbook_source_id = "source--actor-mapping-workbook"
     all_sources: list[dict[str, Any]] = [
         {
             "source_id": reference_source_id,
-            "path": "actor_profile/reference/attack-index.json",
-            "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
+            "path": reference["path"],
+            "title": reference["title"],
             "publisher": "MITRE",
-            "published_at": normalize_time("2026-05-12", basis="upstream-release"),
+            "published_at": normalize_time(
+                reference["published_at"], basis="upstream-release"
+            ),
             "language": "en",
             "source_type": "structured-knowledge-base",
             "tlp": "TLP:CLEAR",
@@ -587,7 +599,6 @@ def create_profile(
         )
     profile["sources"] = all_sources
 
-    mitre_group = attack["groups"].get(actor.get("mitre_group_id", ""))
     profile["actor"]["actor_types"] = derive_actor_types(actor, mitre_group)
     if mitre_group:
         profile["actor"]["canonical_name"] = actor["name"]
@@ -943,7 +954,32 @@ def main() -> int:
 
     root = args.repository_root.resolve()
     catalog = load_json(args.catalog.resolve())
-    attack = load_json((root / catalog["reference_sources"]["mitre_attack_index"]).resolve())
+    attack_path = catalog["reference_sources"]["mitre_attack_index"]
+    attack = load_json((root / attack_path).resolve())
+
+    def annotate_reference(index: dict[str, Any], relative_path: str) -> None:
+        source = index.get("source", {})
+        version = str(source.get("version") or "unknown")
+        published = str(source.get("modified") or "").split("T", 1)[0] or None
+        collection = str(source.get("name") or "MITRE ATT&CK")
+        source_id = "source--mitre-attack-" + version.replace(".", "-")
+        if "ICS" in collection.upper():
+            source_id = "source--mitre-attack-ics-" + version.replace(".", "-")
+        for group in index.get("groups", {}).values():
+            group["_reference_source"] = {
+                "source_id": source_id,
+                "path": relative_path,
+                "title": f"MITRE {collection} {version} compact local index",
+                "published_at": published,
+            }
+
+    annotate_reference(attack, attack_path)
+    ics_path = catalog["reference_sources"].get("mitre_attack_ics_index")
+    if ics_path:
+        ics = load_json((root / ics_path).resolve())
+        annotate_reference(ics, ics_path)
+        for collection in ("groups", "software", "campaigns", "techniques"):
+            attack.setdefault(collection, {}).update(ics.get(collection, {}))
     workbook_rows = load_workbook_rows(
         (root / catalog["reference_sources"]["actor_mapping_workbook"]).resolve()
     )

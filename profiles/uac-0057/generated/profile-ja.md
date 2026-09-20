@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0057`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Operation Ghostwriter | canonical-name | 高 | Belarus | https://www.fireeye.com/content/dam/fireeye-www/blog/pdfs/Ghostwriter-Influence-Campaign.pdf<br>https://www.prevailion.com/diving-deep-into-unc1151s-infrastructure-ghostwriter-and-beyond/<br>https://www.mandiant.com/resources/unc1151-linked-to-belarus-government |
 | cert-ua-uac-index | UAC-0057 | canonical-name | 高 |  | https://cert.gov.ua/article/6280159<br>https://cert.gov.ua/article/6315762<br>https://cert.gov.ua/article/4905718 |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -141,11 +142,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 6件
+- IOC観測: 13件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
-- 非IOC artifact観測: 4件（`artifacts.csv`）
+- 要レビュー候補: 6件
+- 非IOC artifact観測: 6件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

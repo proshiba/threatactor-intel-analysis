@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt17`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -42,8 +42,8 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Axiom | overlaps-with | 共有alias: APT17, Tailgater Team | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | Winnti Group | related-to | The group has heavily targeted the gaming industry, but it has also expanded the scope of its targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) Some reporting suggests a number of other groups, including [Axiom](https://attack.mitre.org/groups/G0001), [APT17](https://attack.mitre.org/groups/G0025), and [Ke3chang](https://attack.mitre.org/groups/G0004), are closely linked to [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: 401 TRG Winnti Umbrella May 2018) | 中 | `source--mitre-attack-19-1` |
+| Axiom | overlaps-with | 共有alias: APT17, Tailgater Team | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 
 ## ダイヤモンドモデル
 
@@ -58,28 +58,26 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 17, Deputy Dog, Elderwood, Sneaky Panda | canonical-name | 高 | China | http://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the-elderwood-project.pdf<br>https://intrusiontruth.wordpress.com/2019/07/24/apt17-is-run-by-the-jinan-bureau-of-the-chinese-ministry-of-state-security/<br>https://intezer.com/evidence-aurora-operation-still-active-supply-chain-attack-through-ccleaner/ |
 | etda-threat-group-cards | Hidden Lynx, Aurora Panda | multiple-name-intersection | 高 | China | https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/hidden_lynx.pdf<br>https://www.symantec.com/connect/blogs/hidden-lynx-professional-hackers-hire<br>https://www.recordedfuture.com/hidden-lynx-analysis/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Heart Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT17 | canonical-name | 高 | CN, China | https://web.archive.org/web/20130924130243/https://www.fireeye.com/blog/technical/cyber-exploits/2013/09/operation-deputydog-zero-day-cve-2013-3893-attack-against-japanese-targets.html<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2013/hidden_lynx.pdf<br>https://www.cfr.org/interactive/cyber-operations/apt-17 |
 | misp-microsoft-activity-group | Heart Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | APT17 - G0025 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17%20Report.pdf |
+| misp-mitre-enterprise-intrusion-set | APT17 - G0025 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17_Report.pdf |
 | misp-mitre-intrusion-set | APT17 - G0025 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17_Report.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| Axiom | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Winnti Group | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--toddycat`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | ToddyCat | canonical-name | 高 | China | https://securelist.com/toddycat/106799/<br>https://securelist.com/toddycat-keep-calm-and-check-logs/110696/<br>https://securelist.com/toddycat-traffic-tunneling-data-extraction-tools/112443/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-0247 | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | ToddyCat | canonical-name | 高 |  | https://www.bleepingcomputer.com/news/security/new-toddycat-apt-group-targets-exchange-servers-in-asia-europe/<br>https://securelist.com/toddycat/106799/<br>https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/ |
 | misp-microsoft-activity-group | Storm-0247 | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | ToddyCat - G1022 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1022<br>https://securelist.com/toddycat-keep-calm-and-check-logs/110696/<br>https://securelist.com/toddycat/106799/ |
 | misp-mitre-intrusion-set | ToddyCat - G1022 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1022<br>https://securelist.com/toddycat-keep-calm-and-check-logs/110696/<br>https://securelist.com/toddycat/106799/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -238,6 +239,7 @@ Aliasなし
 | source--toddycat--f93d8ac1da540be8 | group ib hi tech crime trends 2022 2023 ru |  | 不明 | summary/2023/group-ib-hi-tech-crime-trends-2022-2023-ru.pdf | report | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

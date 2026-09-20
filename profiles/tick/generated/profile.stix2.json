@@ -7,14 +7,16 @@
       "spec_version": "2.1",
       "id": "intrusion-set--11c9cbae-bdb4-4d91-aa7e-026169243faa",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-20T10:03:35Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "BRONZE BUTLER",
       "aliases": [
+        "REDBALDKNIGHT",
+        "TEMP.Tick",
         "Tick",
-        "REDBALDKNIGHT"
+        "TICK CASTLE"
       ],
       "description": "[BRONZE BUTLER](https://attack.mitre.org/groups/G0060) is a cyber espionage group with likely Chinese origins that has been active since at least 2008. The group primarily targets Japanese organizations, particularly those in government, biotechnology, electronics manufacturing, and industrial chemistry.(Citation: Trend Micro Daserf Nov 2017)(Citation: Secureworks BRONZE BUTLER Oct 2017)(Citation: Trend Micro Tick November 2019)",
       "goals": [
@@ -36,6 +38,26 @@
       "x_profile_status": "draft",
       "x_alias_assessments": [
         {
+          "name": "REDBALDKNIGHT",
+          "vendor": "MITRE ATT&CK",
+          "scope": "overlapping",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--mitre-attack-19-1"
+          ],
+          "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "TEMP.Tick",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
+        {
           "name": "Tick",
           "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
@@ -46,14 +68,14 @@
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
         {
-          "name": "REDBALDKNIGHT",
-          "vendor": "MITRE ATT&CK",
-          "scope": "overlapping",
+          "name": "TICK CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--gtig-unified-actor-naming-2026"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         }
       ],
       "x_attribution": {
@@ -82,9 +104,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--tick",
         "actor_name": "BRONZE BUTLER",
-        "searched_at": "2026-09-20T10:03:11Z",
+        "searched_at": "2026-09-20T12:23:31Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -97,13 +120,46 @@
           ],
           "name_inputs": [
             "BRONZE BUTLER",
+            "TEMP.Tick",
             "Tick",
+            "TICK CASTLE",
             "REDBALDKNIGHT"
           ],
           "mitre_group_id": "G0060"
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-tick-castle",
+              "entry_value": "TICK CASTLE",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "temptick",
+                  "profile_value": "TEMP.Tick",
+                  "dataset_value": "TEMP.Tick"
+                },
+                {
+                  "normalized": "tickcastle",
+                  "profile_value": "TICK CASTLE",
+                  "dataset_value": "TICK CASTLE"
+                }
+              ],
+              "match_basis": "multiple-name-intersection",
+              "match_confidence": "high",
+              "candidate_names": [
+                "TICK CASTLE",
+                "TEMP.Tick"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for TEMP.Tick.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": []
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "334d9e0e-dab2-4bc5-8db2-5ab016f36947",
@@ -114,6 +170,11 @@
                   "normalized": "bronzebutler",
                   "profile_value": "BRONZE BUTLER",
                   "dataset_value": "Bronze Butler"
+                },
+                {
+                  "normalized": "temptick",
+                  "profile_value": "TEMP.Tick",
+                  "dataset_value": "TEMP.Tick"
                 },
                 {
                   "normalized": "tick",
@@ -210,9 +271,19 @@
                   "dataset_value": "REDBALDKNIGHT"
                 },
                 {
+                  "normalized": "temptick",
+                  "profile_value": "TEMP.Tick",
+                  "dataset_value": "TEMP.Tick"
+                },
+                {
                   "normalized": "tick",
                   "profile_value": "Tick",
                   "dataset_value": "Tick"
+                },
+                {
+                  "normalized": "tickcastle",
+                  "profile_value": "TICK CASTLE",
+                  "dataset_value": "TICK CASTLE"
                 }
               ],
               "match_basis": "canonical-name",
@@ -226,7 +297,9 @@
                 "G0060",
                 "Stalker Taurus",
                 "PLA Unit 61419",
-                "Swirl Typhoon"
+                "Swirl Typhoon",
+                "TEMP.Tick",
+                "TICK CASTLE"
               ],
               "countries": [
                 "CN",
@@ -246,7 +319,8 @@
                 "https://www.secureworks.com/research/threat-profiles/bronze-butler",
                 "https://unit42.paloaltonetworks.com/atoms/stalkertaurus/",
                 "https://twitter.com/iiyonite/status/1384431491485155331",
-                "https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/"
+                "https://www.welivesecurity.com/2021/03/10/exchange-servers-under-siege-10-apt-groups/",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
               "related": [
                 {
@@ -257,6 +331,32 @@
                   "type": "similar"
                 }
               ]
+            },
+            {
+              "entry_uuid": "3f3ff6de-a6a7-11e8-92b4-3743eb1c7762",
+              "entry_value": "TempTick",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "temptick",
+                  "profile_value": "TEMP.Tick",
+                  "dataset_value": "TempTick"
+                }
+              ],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "candidate_names": [
+                "TempTick"
+              ],
+              "countries": [
+                "CN",
+                "China"
+              ],
+              "description": "This threat actor targets organizations in the finance, defense, aerospace, technology, health-care, and automotive sectors and media organizations in East Asia for the purpose of espionage. Believed to be responsible for the targeting of South Korean actors prior to the meeting of Donald J. Trump and Kim Jong-un",
+              "refs": [
+                "https://www.cfr.org/interactive/cyber-operations/temptick"
+              ],
+              "related": []
             }
           ],
           "misp-microsoft-activity-group": [
@@ -332,13 +432,135 @@
                 "Tick"
               ],
               "countries": [],
-              "description": "BRONZE BUTLER is a cyber espionage group with likely Chinese origins that has been active since at least 2008. The group primarily targets Japanese organizations, particularly those in government, biotechnology, electronics manufacturing, and industrial chemistry. (Citation: Trend Micro Daserf Nov 2017) (Citation: Secureworks BRONZE BUTLER Oct 2017)",
+              "description": "[BRONZE BUTLER](https://attack.mitre.org/groups/G0060) is a cyber espionage group with likely Chinese origins that has been active since at least 2008. The group primarily targets Japanese organizations, particularly those in government, biotechnology, electronics manufacturing, and industrial chemistry.(Citation: Trend Micro Daserf Nov 2017)(Citation: Secureworks BRONZE BUTLER Oct 2017)(Citation: Trend Micro Tick November 2019)",
               "refs": [
-                "https://attack.mitre.org/wiki/Group/G0060",
                 "http://blog.trendmicro.com/trendlabs-security-intelligence/redbaldknight-bronze-butler-daserf-backdoor-now-using-steganography/",
-                "https://www.secureworks.com/research/bronze-butler-targets-japanese-businesses"
+                "https://attack.mitre.org/groups/G0060",
+                "https://documents.trendmicro.com/assets/pdf/Operation-ENDTRADE-TICK-s-Multi-Stage-Backdoors-for-Attacking-Industries-and-Stealing-Classified-Data.pdf",
+                "https://www.secureworks.com/research/bronze-butler-targets-japanese-businesses",
+                "https://www.symantec.com/connect/blogs/tick-cyberespionage-group-zeros-japan"
               ],
               "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "00f90846-cbd1-4fc5-9233-df5c2bf2a662",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0259baeb-9f63-4c69-bf10-eb038c390688",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03342581-f790-4f03-ba41-e82e67392e23",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "04fd5427-79c7-44ea-ae13-11b24778ff1c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0c8465c0-d0b4-4670-992e-4eee8d7ff952",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "120d5519-3098-4e1c-9191-2aa61232f073",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "21875073-b0ee-49e3-9077-1e2a885359af",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "242f3da3-4425-4d11-8f5c-b842886da966",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "246fd3c7-f5e3-466d-8787-4c13d9e3b61c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "24bfaeba-cb0d-4525-b3dc-507c77ecec41",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2fee9321-3e71-4cf4-af24-d4d40d355b34",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "322bad5a-1c49-4d23-ab79-76d641794afa",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "36ede314-7db4-4d09-b53d-81bbfbe5f6f8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3c4a2599-71ee-4405-ba1e-0e28414b4bc5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ccef7ae-cb5e-48f6-8302-897105fbf55c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "42e8de7b-37b2-4258-905a-6897815e58e0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5bfccc3f-2326-4112-86cc-c1ece9d8a2b5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "77eae145-55db-4519-8ae5-77b0c7215d69",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7b211ac6-c815-4189-93a9-ab415deca926",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8be7c69e-d8e3-4970-9668-61de08e508cc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a0ebedca-d558-4e48-8ff7-4bf76208d90c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
                 {
                   "dest-uuid": "add6554a-815a-4ac3-9b22-9337b9661ab8",
                   "tags": [
@@ -347,10 +569,99 @@
                   "type": "similar"
                 },
                 {
-                  "dest-uuid": "9422fc14-1c43-410d-ab0f-a709b76c72dc",
-                  "tags": [
-                    "estimative-language:likelihood-probability=\"almost-certain\""
-                  ],
+                  "dest-uuid": "ae676644-d2d2-41b7-af7e-9bed1b55898c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b07c2c47-fefb-4d7c-a69e-6a3296171f54",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b6b3dfc7-9a81-43ff-ac04-698bad48973a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bba595da-b73a-4354-aa6c-224d4de7cb4e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bbde9781-60aa-4b8a-a911-895b0c1b3872",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "be2dcee9-a7a7-4e38-afd6-21b31ecc3d63",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c2e147a9-d1a8-4074-811a-d8789202d916",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c9703cd3-141c-43a0-a926-380082be5d04",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cc3502b5-30cc-4473-ad48-42d51a6ef6d1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d1fcf083-a721-4223-aedf-bf8960798d62",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d2c7f8ad-3b50-4cfa-bbb1-799eff06fb40",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d63a3fb8-9452-4e9d-a60a-54be68d5998c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d742a578-d70e-4d0e-96a6-02a9c30204e6",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfd7cc1d-e1d8-4394-a198-97c4cab8aa67",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3b6daca-e963-4a69-aee6-ed4fd653ad58",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ec9e00dd-0313-4d5b-8105-c20aa47abffc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f0fc920e-57a3-4af5-89be-9ea594c8b1ea",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f3c544dc-673c-4ef3-accb-53229f1ae077",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f3d95a1f-bba2-44ce-9af7-37866cd63fd0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f7827069-0bf2-4764-af4f-23fae0d181b7",
                   "type": "uses"
                 }
               ]
@@ -777,10 +1088,12 @@
           "assessment": "No disjoint country conflict detected."
         },
         "ambiguities": {
-          "datasets_with_multiple_matches": [],
-          "scope_divergence_detected": false,
+          "datasets_with_multiple_matches": [
+            "misp-threat-actor"
+          ],
+          "scope_divergence_detected": true,
           "requires_review": false,
-          "assessment": "No multiple-match ambiguity detected."
+          "assessment": "Multiple taxonomy entries share names or aliases. A canonical name or MITRE ID anchors this profile, so the additional entries are retained as scope-divergence leads."
         },
         "limitations": [
           "Exact normalized-name matching does not prove one-to-one actor identity.",
@@ -4780,6 +5093,80 @@
       "target_ref": "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
       "description": "[BRONZE BUTLER](https://attack.mitre.org/groups/G0060) has incorporated code into several tools that attempts to terminate anti-virus processes.(Citation: Trend Micro Tick November 2019)",
       "x_confidence": "high"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ee3ed7a4-5710-422e-9127-e474c6117689",
+      "created": "2026-09-20T11:57:58Z",
+      "modified": "2026-09-20T11:57:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: amamihanahana.com",
+      "pattern": "[domain-name:value = 'amamihanahana.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2018-10-01T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 1,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b39ca90eb801c9d6995e17a2330ed7e3bab22ff56ac194b93cab70f797f8e915",
+          "observed_at": {
+            "value": "2018-10-01T00:00:00Z",
+            "precision": "month",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--tick--2314f8608742ea50",
+          "source_path": "tick/D1 COMMSEC - Tick Group - Activities Of The Tick Cyber Espionage Group In East Asia Over The Last 10 Years - Cha Minseok.pdf",
+          "source_location": {
+            "page": 48
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "pdf-text",
+          "context_excerpt": "© AhnLab, Inc. All rights reserved. 48 Connections • Correlations with C2 -amamihanahana.com : Xxmm, Datper -21 1.13.196.164 : Datper, Emdivi(campaign Blue termite) * Source : https://blog.talosintelligence.com/2018/10/tracking-tick-through-recent-campaigns.html",
+          "analyst_notes": "",
+          "raw_value": "amamihanahana.com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b61599f2-8361-471c-b5ac-bd06a30391ad",
+      "created": "2026-09-20T11:57:58Z",
+      "modified": "2026-09-20T11:57:58Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--ee3ed7a4-5710-422e-9127-e474c6117689",
+      "target_ref": "intrusion-set--11c9cbae-bdb4-4d91-aa7e-026169243faa",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
     },
     {
       "type": "indicator",
@@ -10824,7 +11211,7 @@
       "spec_version": "2.1",
       "id": "report--713663fe-da65-4457-a622-0db398b77eac",
       "created": "2026-07-25T15:23:05Z",
-      "modified": "2026-09-20T10:03:35Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -10833,7 +11220,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T10:03:35Z",
+      "published": "2026-09-20T12:23:31Z",
       "object_refs": [
         "intrusion-set--11c9cbae-bdb4-4d91-aa7e-026169243faa",
         "malware--2323da90-bf8b-408e-8bd5-bf6922cd0423",
@@ -10914,6 +11301,7 @@
         "attack-pattern--bfde2a4f-906b-4b0b-b541-5a5cde84bff9",
         "attack-pattern--02c48a5e-7c60-4c08-8712-3903640f6880",
         "attack-pattern--6fe6813c-50c5-4432-bc0e-a14668e421c1",
+        "indicator--ee3ed7a4-5710-422e-9127-e474c6117689",
         "indicator--0818dd7a-0d8f-4cda-8519-896c08828963",
         "indicator--1ce8581b-6cca-4889-8227-d5b5a31d3d4b",
         "indicator--6001e500-106c-4580-b9bf-b860fe593814",

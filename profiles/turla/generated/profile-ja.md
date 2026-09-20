@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--turla`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -24,6 +24,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | Krypton | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Secret Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Snake | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| TURLA RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| Turla Team | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Venomous Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Waterbug | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | WhiteBear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -60,19 +62,20 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | TURLA RELIC | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Turla, Waterbug, Venomous Bear | canonical-name | 高 | Russia | https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/waterbug-attack-group.pdf<br>https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-march-venomous-bear/<br>https://www.recordedfuture.com/turla-apt-infrastructure/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Secret Blizzard | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Turla | canonical-name | 高 | RU, Russian Federation | https://www.circl.lu/pub/tr-25/<br>https://securelist.com/introducing-whitebear/81638/<br>https://securelist.com/the-epic-turla-operation/65545/ |
 | misp-threat-actor | White Bear | single-alias-intersection | 中 | RU, Russian Federation | https://securelist.com/introducing-whitebear/81638/<br>https://www.cfr.org/interactive/cyber-operations/whitebear |
 | misp-microsoft-activity-group | Secret Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Turla - G0010 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0010<br>https://securelist.com/the-epic-turla-operation/65545/<br>https://www.welivesecurity.com/wp-content/uploads/2017/08/eset-gazer.pdf |
+| misp-mitre-enterprise-intrusion-set | Turla - G0010 | mitre-external-id | 高 |  | http://www.secureworks.com/research/threat-profiles/iron-hunter<br>https://attack.mitre.org/groups/G0010<br>https://blog.talosintelligence.com/2021/09/tinyturla.html |
 | misp-mitre-intrusion-set | Turla - G0010 | mitre-external-id | 高 |  | http://www.secureworks.com/research/threat-profiles/iron-hunter<br>https://attack.mitre.org/groups/G0010<br>https://blog.talosintelligence.com/2021/09/tinyturla.html |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -394,8 +397,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 125件
-- IOC観測: 159件
+- IOC値: 117件
+- IOC観測: 151件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 62件
 - 非IOC artifact観測: 84件（`artifacts.csv`）
@@ -443,6 +446,8 @@ Turlaの標準化プロファイル。リポジトリ内の専用資料7件とMI
 | source--turla--e6c93c546a97e314 | README |  | 不明 | Turla/2017/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--turla--f0c7ef1fbe87f2c6 | Malware Technical Insight  Turla “Penquin x64” |  | 不明 | Turla/Malware Technical Insight _Turla “Penquin_x64”.pdf | report | TLP:CLEAR | 中 |
 | source--gtig-stockstay-turla-2026 | STOCKSTAY Another Day: The Latest Addition to Turla's Intelligence Gathering Apparatus | Google Threat Intelligence Group | 2026-06-25 | https://cloud.google.com/blog/topics/threat-intelligence/stockstay-turla-intelligence-gathering | vendor-research-report | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

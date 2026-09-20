@@ -27,6 +27,7 @@ IDENTIFIER_RE = re.compile(
     r"Storm-\d{4}|CL-STA-\d{4})(?![A-Z0-9-])",
     re.IGNORECASE,
 )
+ATTACK_TACTIC_LIKE_TA_RE = re.compile(r"TA0*([0-9]+)", re.IGNORECASE)
 GENERIC_NAMES = {
     "actor", "actors", "adversary", "campaign", "china", "group", "iran",
     "malware", "north korea", "operation", "russia", "team", "threat actor",
@@ -148,6 +149,51 @@ def add_identity(
     return actor_id
 
 
+def identity_boundaries(curation: dict[str, Any]) -> dict[str, set[str]]:
+    """Return family-aware alias exclusions for reviewed entity boundaries."""
+    exclusions: dict[str, set[str]] = defaultdict(set)
+    rules = curation.get("identities", {})
+    for item in curation.get("identity_boundaries", []):
+        if len(item.get("names", [])) != 2:
+            continue
+        families: list[set[str]] = []
+        for name in item["names"]:
+            rule = rules.get(normalized_name(name), {})
+            family = {
+                normalized_name(value)
+                for value in [name, *rule.get("aliases", [])]
+                if normalized_name(value)
+            }
+            families.append(family)
+        left, right = families
+        for name in left:
+            exclusions[name].update(right)
+        for name in right:
+            exclusions[name].update(left)
+    return exclusions
+
+
+def filter_separated_aliases(
+    canonical_name: str,
+    names: Iterable[str],
+    boundaries: dict[str, set[str]],
+) -> list[str]:
+    """Remove aliases explicitly separated from one canonical identity."""
+    canonical = normalized_name(canonical_name)
+    blocked = boundaries.get(canonical, set())
+    return [
+        name
+        for name in names
+        if normalized_name(name) not in blocked
+    ]
+
+
+def attack_tactic_like_ta(value: str) -> bool:
+    """Reject ATT&CK tactic IDs and obvious truncated variants as actors."""
+    match = ATTACK_TACTIC_LIKE_TA_RE.fullmatch(value.strip())
+    return bool(match and int(match.group(1)) < 100)
+
+
 def load_microsoft_names(path: Path) -> list[dict[str, Any]]:
     from openpyxl import load_workbook
 
@@ -243,23 +289,55 @@ def main() -> int:
     parser.add_argument("--catalog", type=Path, default=Path("actor_profile/corpus-catalog.json"))
     parser.add_argument("--output", type=Path, default=Path("actor_profile/actor-census.json"))
     parser.add_argument("--csv-output", type=Path, default=Path("actor_profile/actor-census.csv"))
+    parser.add_argument(
+        "--curation",
+        type=Path,
+        default=Path("actor_profile/actor-census-curation.json"),
+    )
     parser.add_argument("--max-mentions-per-actor-source", type=int, default=5)
     args = parser.parse_args()
 
     root = args.repository_root.resolve()
     catalog = load_json((root / args.catalog).resolve())
-    attack = load_json((root / catalog["reference_sources"]["mitre_attack_index"]).resolve())
+    curation_path = (root / args.curation).resolve()
+    curation = load_json(curation_path) if curation_path.exists() else {}
+    boundaries = identity_boundaries(curation)
     identities: dict[str, dict[str, Any]] = {}
     alias_index: dict[str, set[str]] = defaultdict(set)
 
-    for mitre_id, group in attack["groups"].items():
+    attack_sources = [
+        ("mitre_attack_index", "MITRE Enterprise ATT&CK"),
+        ("mitre_attack_ics_index", "MITRE ICS ATT&CK"),
+    ]
+    for source_key, source_name in attack_sources:
+        relative = catalog["reference_sources"].get(source_key)
+        if not relative:
+            continue
+        attack = load_json((root / relative).resolve())
+        for mitre_id, group in attack["groups"].items():
+            add_identity(
+                identities,
+                alias_index,
+                name=group["name"],
+                aliases=group.get("aliases", []),
+                mitre_id=mitre_id,
+                reference={"source": source_name, "external_id": mitre_id},
+            )
+
+    # Some vendor clusters are not represented in ATT&CK. Seed them before
+    # reading community workbooks so a workbook's broad row cannot silently
+    # collapse an explicitly separated actor into another identity.
+    for item in curation.get("reference_identities", []):
         add_identity(
             identities,
             alias_index,
-            name=group["name"],
-            aliases=group.get("aliases", []),
-            mitre_id=mitre_id,
-            reference={"source": "MITRE ATT&CK", "external_id": mitre_id},
+            name=item["canonical_name"],
+            aliases=item.get("aliases", []),
+            origins=item.get("origins", []),
+            reference={
+                "source": item.get("source", "analyst-curated-primary-source"),
+                "url": item.get("url"),
+            },
         )
 
     workbook_path = root / catalog["reference_sources"]["actor_mapping_workbook"]
@@ -267,16 +345,25 @@ def main() -> int:
         names = workbook_actor_names(record)
         if not names:
             continue
+        workbook_name = record["fields"].get("Common Name", names[0])
+        mitre_id = (
+            record["fields"].get("MITRE ATT&CK")
+            if re.fullmatch(r"G\d{4}", record["fields"].get("MITRE ATT&CK", ""))
+            else None
+        )
+        mitre_actor_id = f"actor-census--mitre:{mitre_id}" if mitre_id else ""
+        canonical_name = (
+            identities[mitre_actor_id]["canonical_name"]
+            if mitre_actor_id in identities
+            else workbook_name
+        )
+        names = filter_separated_aliases(canonical_name, names, boundaries)
         add_identity(
             identities,
             alias_index,
-            name=record["fields"].get("Common Name", names[0]),
+            name=canonical_name,
             aliases=names,
-            mitre_id=(
-                record["fields"].get("MITRE ATT&CK")
-                if re.fullmatch(r"G\d{4}", record["fields"].get("MITRE ATT&CK", ""))
-                else None
-            ),
+            mitre_id=mitre_id,
             origins=[record["sheet"]],
             reference={
                 "source": workbook_path.name,
@@ -287,24 +374,34 @@ def main() -> int:
 
     microsoft_path = root / catalog["reference_sources"]["microsoft_mapping_workbook"]
     for record in load_microsoft_names(microsoft_path):
+        aliases = filter_separated_aliases(
+            record["name"], record["aliases"], boundaries
+        )
         add_identity(
             identities,
             alias_index,
             name=record["name"],
-            aliases=record["aliases"],
+            aliases=aliases,
             origins=[record["origin"]] if record["origin"] else [],
             reference={"source": microsoft_path.name, "sheet": "alphabetical", "row": record["row"]},
         )
 
     catalog_aliases: set[str] = set()
     for actor in catalog["actors"]:
-        names = [actor["name"], *actor.get("aliases", [])]
+        if attack_tactic_like_ta(actor["name"]):
+            continue
+        names = [
+            actor["name"],
+            *filter_separated_aliases(
+                actor["name"], actor.get("aliases", []), boundaries
+            ),
+        ]
         catalog_aliases.update(normalized_name(name) for name in names)
         add_identity(
             identities,
             alias_index,
             name=actor["name"],
-            aliases=actor.get("aliases", []),
+            aliases=names[1:],
             mitre_id=actor.get("mitre_group_id"),
             reference={"source": "corpus-catalog.json", "slug": actor["slug"]},
         )
@@ -334,6 +431,8 @@ def main() -> int:
                             found.append((actor_id, match.start(), match.end(), match.group()))
                 for match in IDENTIFIER_RE.finditer(text):
                     surface = clean_name(match.group())
+                    if attack_tactic_like_ta(surface):
+                        continue
                     normalized = normalized_name(surface)
                     actor_ids = alias_index.get(normalized, set())
                     if not actor_ids:
@@ -383,9 +482,17 @@ def main() -> int:
                 flush=True,
             )
 
+    # Generated census entries are removed and rebuilt by the materializer.
+    # Treating them as already represented here would delete them on a repeat
+    # run without re-adding them.
+    stable_catalog_actors = [
+        actor
+        for actor in catalog["actors"]
+        if actor.get("profile_basis") != "actor-scoped-census-evidence"
+    ]
     catalog_by_norm = {
         normalized_name(name): actor["slug"]
-        for actor in catalog["actors"]
+        for actor in stable_catalog_actors
         for name in [actor["name"], *actor.get("aliases", [])]
     }
     for item in identities.values():
@@ -441,6 +548,7 @@ def main() -> int:
                 "actor_id", "canonical_name", "mitre_group_id", "is_profiled",
                 "catalog_slugs", "mention_source_count", "mention_count", "aliases",
             ],
+            lineterminator="\n",
         )
         writer.writeheader()
         for item in actor_rows:

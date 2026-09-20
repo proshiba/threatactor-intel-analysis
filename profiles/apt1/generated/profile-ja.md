@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt1`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -62,18 +62,19 @@ APT1の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Comment Crew, APT 1 | canonical-name | 高 | China | https://www.symantec.com/connect/blogs/apt1-qa-attacks-comment-crew<br>https://en.wikipedia.org/wiki/PLA_Unit_61398<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Comment+Crew%2C+APT+1&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT1 | canonical-name | 高 | CN, China | https://en.wikipedia.org/wiki/PLA_Unit_61398<br>http://intelreport.mandiant.com/Mandiant_APT1_Report.pdf<br>https://www.cfr.org/interactive/cyber-operations/pla-unit-61398 |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | APT1 - G0006 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
+| misp-mitre-enterprise-intrusion-set | APT1 - G0006 | mitre-external-id | 高 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
 | misp-mitre-intrusion-set | APT1 - G0006 | mitre-external-id | 高 |  | http://cdn0.vox-cdn.com/assets/4589853/crowdstrike-intelligence-report-putter-panda.original.pdf<br>https://attack.mitre.org/groups/G0006<br>https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/mandiant-apt1-report.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--donot-team`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,12 +50,13 @@ Donot Teamの標準化プロファイル。リポジトリ内の専用資料3件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Donot Team | canonical-name | 高 | India | https://ti.360.net/blog/articles/donot-group-is-targeting-pakistani-businessman-working-in-china-en/<br>https://www.netscout.com/blog/asert/donot-team-leverages-new-modular-malware-framework-south-asia<br>http://blog.ptsecurity.com/2019/11/studying-donot-team.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -152,8 +153,8 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 24件
-- IOC観測: 37件
+- IOC値: 30件
+- IOC観測: 44件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 5件
 - 非IOC artifact観測: 25件（`artifacts.csv`）

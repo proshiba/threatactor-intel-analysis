@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--strider`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Striderの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Strider, ProjectSauron | canonical-name | 高 | USA | https://www.symantec.com/connect/blogs/strider-cyberespionage-group-turns-eye-sauron-targets<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07190154/The-ProjectSauron-APT_research_KL.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Strider%2C+ProjectSauron&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | ProjectSauron | canonical-name | 高 | US, United States | https://securelist.com/analysis/publications/75533/faq-the-projectsauron-apt/<br>https://www.cfr.org/interactive/cyber-operations/project-sauron<br>https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=ce2df4da-afe9-4a24-b28c-0fb3ba671d95&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Strider - G0041 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0041<br>http://www.symantec.com/connect/blogs/strider-cyberespionage-group-turns-eye-sauron-targets<br>https://securelist.com/faq-the-projectsauron-apt/75533/ |
+| misp-mitre-enterprise-intrusion-set | Strider - G0041 | mitre-external-id | 高 |  | http://www.symantec.com/connect/blogs/strider-cyberespionage-group-turns-eye-sauron-targets<br>https://attack.mitre.org/groups/G0041<br>https://securelist.com/faq-the-projectsauron-apt/75533/ |
 | misp-mitre-intrusion-set | Strider - G0041 | mitre-external-id | 高 |  | http://www.symantec.com/connect/blogs/strider-cyberespionage-group-turns-eye-sauron-targets<br>https://attack.mitre.org/groups/G0041<br>https://securelist.com/faq-the-projectsauron-apt/75533/ |
 | misp-360net | 索伦之眼 - APT-C-16 | canonical-name | 高 | america | https://apt.360.net/report/apts/70.html |
 

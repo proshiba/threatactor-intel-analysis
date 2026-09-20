@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-20T09:33:42Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,17 +53,18 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 
 ## OSINTクロスチェック
 
-- 判定: `no-match`
-- 調査日時: 2026-09-20T10:03:11Z
+- 判定: `matched`
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-threat-actor | BREEZE COMET | canonical-name | 高 |  | https://www.hendryadrian.com/financially-motivated-threat-actor-breeze-comet-targets-brazil/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -188,6 +189,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--breeze-comet--gtig-brazil-2026 | Financially Motivated Threat Actor BREEZE COMET Targets Brazil | Google Threat Intelligence Group / Mandiant | 2026-09-01 | https://cloud.google.com/blog/topics/threat-intelligence/financially-motivated-threat-actor-breeze-comet-targets-brazil | vendor-technical-report | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

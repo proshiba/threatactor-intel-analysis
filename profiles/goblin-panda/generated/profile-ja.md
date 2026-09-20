@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--goblin-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,12 +55,13 @@ Goblin Pandaの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Goblin Panda, Cycldek, Conimes | canonical-name | 高 | China | https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-august-goblin-panda/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Goblin+Panda%2C+Cycldek%2C+Conimes&n=1 |
 | etda-threat-group-cards | Naikon, Lotus Panda | single-alias-intersection | 中 | China | https://securelist.com/the-chronicles-of-the-hellsing-apt-the-empire-strikes-back/69567/<br>https://securelist.com/the-naikon-apt/69953/<br>https://exchange.xforce.ibmcloud.com/threat-group/guid:2f1962c4d7c0c994981c5bc363823c44 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -162,10 +163,10 @@ Goblin Pandaの標準化プロファイル。リポジトリ内の専用資料1�
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 43件（`artifacts.csv`）
 
 ## 主要判断と不確実性

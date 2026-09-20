@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--wirte`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,18 +53,19 @@ WIRTEの標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | WIRTE | canonical-name | 高 | PS | https://securelist.com/wirtes-campaign-in-the-middle-east-living-off-the-land-since-at-least-2019/105044/<br>https://lab52.io/blog/wirte-group-attacking-the-middle-east/<br>https://unit42.paloaltonetworks.com/hamas-affiliate-ashen-lepus-uses-new-malware-suite-ashtag/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | WIRTE - G0090 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0090<br>https://lab52.io/blog/wirte-group-attacking-the-middle-east/<br>https://research.checkpoint.com/2024/hamas-affiliated-threat-actor-expands-to-disruptive-activity/ |
 | misp-mitre-intrusion-set | WIRTE - G0090 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0090<br>https://lab52.io/blog/wirte-group-attacking-the-middle-east/<br>https://research.checkpoint.com/2024/hamas-affiliated-threat-actor-expands-to-disruptive-activity/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -216,6 +217,7 @@ WIRTEの標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--wirte--01dab65cafb63414 | 2025 Cyber Security Report Final |  | 2025 | summary/2026/2025 Cyber Security Report_Final.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

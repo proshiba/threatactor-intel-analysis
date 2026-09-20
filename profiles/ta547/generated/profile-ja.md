@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta547`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Scully Spider, TA547 | canonical-name | 高 |  | https://www.proofpoint.com/us/threat-insight/post/danabot-new-banking-trojan-surfaces-down-under-0<br>https://h3collective.io/review-of-a-danabot-infection/<br>https://www.fortinet.com/blog/threat-research/breakdown-of-a-targeted-danabot-attack.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -162,7 +163,7 @@ Aliasなし
 - IOC観測: 1件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 13件（`artifacts.csv`）
+- 非IOC artifact観測: 15件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

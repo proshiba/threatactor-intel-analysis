@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--taidoor`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Taidoor | canonical-name | 高 | China | https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp_the_taidoor_campaign.pdf<br>https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/connecting-taidoors-dots-earth-aughisky-over-the-last-10-years<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Taidoor&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Taidoor | canonical-name | 高 |  | https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp_the_taidoor_campaign.pdf<br>https://attack.mitre.org/groups/G0015/<br>https://www.trendmicro.com/en_us/research/22/j/tracking-earth-aughiskys-malware-and-changes.html |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Taidoor - G0015 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0015<br>http://www.trendmicro.com/cloud-content/us/pdfs/security-intelligence/white-papers/wp%20the%20taidoor%20campaign.pdf |
+| misp-mitre-enterprise-intrusion-set | Taidoor - G0015 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0015 |
 | misp-mitre-intrusion-set | Taidoor - G0015 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0015 |
 | misp-360net | 一致なし |  |  |  |  |
 

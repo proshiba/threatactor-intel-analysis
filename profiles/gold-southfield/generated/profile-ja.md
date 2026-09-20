@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gold-southfield`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,19 +52,20 @@ GOLD SOUTHFIELDの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Pinchy Spider, Gold Southfield | canonical-name | 高 | Russia | https://www.crowdstrike.com/blog/pinchy-spider-adopts-big-game-hunting/<br>https://krebsonsecurity.com/2019/07/whos-behind-the-gandcrab-ransomware/<br>https://www.secureworks.com/blog/revil-the-gandcrab-connection |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | PINCHY SPIDER | single-alias-intersection | 中 |  | https://www.crowdstrike.com/resources/reports/2019-crowdstrike-global-threat-report/<br>https://www.crowdstrike.com/blog/pinchy-spider-adopts-big-game-hunting/<br>https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf |
 | misp-threat-actor | GOLD SOUTHFIELD | canonical-name | 高 |  | http://www.secureworks.com/research/threat-profiles/gold-southfield<br>https://www.secureworks.com/research/revil-sodinokibi-ransomware<br>https://www.secureworks.com/blog/how-cyber-adversaries-are-adapting-to-exploit-the-global-pandemic |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | GOLD SOUTHFIELD - G0115 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0115<br>https://www.crowdstrike.com/blog/the-evolution-of-revil-ransomware-and-pinchy-spider/<br>https://www.secureworks.com/blog/revil-the-gandcrab-connection |
 | misp-mitre-intrusion-set | GOLD SOUTHFIELD - G0115 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0115<br>https://www.crowdstrike.com/blog/the-evolution-of-revil-ransomware-and-pinchy-spider/<br>https://www.secureworks.com/blog/revil-the-gandcrab-connection |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -187,6 +188,7 @@ GOLD SOUTHFIELDの標準化プロファイル。リポジトリ内の専用資�
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

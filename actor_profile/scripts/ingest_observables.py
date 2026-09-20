@@ -456,7 +456,10 @@ def plausible_url_host(raw: str) -> bool:
 
 def plausible_domain(raw: str) -> bool:
     """Reject common filename/OCR shapes before treating text as a domain."""
-    value = refang(raw).strip().strip(".").lower()
+    # Use the same host normalization as validation.  In particular, a bare
+    # ``www[.]ru`` OCR fragment must not pass ingestion and then become the
+    # single-label host ``ru`` when validation strips the conventional prefix.
+    value = host_of(raw).strip(".")
     labels = value.split(".")
     if len(labels) < 2:
         return False
@@ -471,6 +474,15 @@ def plausible_domain(raw: str) -> bool:
     if len(labels) == 4 and all(label.isdigit() for label in labels[:3]):
         return False
     return True
+
+
+def plausible_email(raw: str) -> bool:
+    """Reject OCR-concatenated email matches with a non-domain suffix."""
+    value = refang(raw).strip().strip("<>\"'`")
+    if value.count("@") != 1:
+        return False
+    local, domain = value.rsplit("@", 1)
+    return bool(local and plausible_domain(domain))
 
 
 def extract_iocs(
@@ -503,6 +515,8 @@ def extract_iocs(
     for match in EMAIL_RE.finditer(text):
         raw = match.group()
         occupied.append(match.span())
+        if not plausible_email(raw):
+            continue
         if not analyst_marked(raw, explicit_structured) and reference_host(raw):
             continue  # ベンダーの問い合わせ窓口など、出典側の連絡先
         results.append(("email", raw, disposition))

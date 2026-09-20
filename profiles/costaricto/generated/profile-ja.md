@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--costaricto`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | CostaRicto | canonical-name | 高 |  | https://blogs.blackberry.com/en/2020/11/the-costaricto-campaign-cyber-espionage-outsourced<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=CostaRicto&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | CostaRicto | canonical-name | 高 |  | https://blogs.blackberry.com/en/2020/11/the-costaricto-campaign-cyber-espionage-outsourced<br>https://www.cybersecurityintelligence.com/blog/outsourced-cyber-spying-5335.html |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | CostaRicto - G0132 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0132<br>https://blogs.blackberry.com/en/2020/11/the-costaricto-campaign-cyber-espionage-outsourced |
 | misp-mitre-intrusion-set | CostaRicto - G0132 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0132<br>https://blogs.blackberry.com/en/2020/11/the-costaricto-campaign-cyber-espionage-outsourced |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -178,6 +179,7 @@ TTPなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

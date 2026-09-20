@@ -7,12 +7,13 @@
       "spec_version": "2.1",
       "id": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-09-20T10:03:34Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "Mustang Panda",
       "aliases": [
+        "BASIN CASTLE",
         "BRONZE PRESIDENT",
         "CAMARO DRAGON",
         "ClumsyToad",
@@ -22,8 +23,8 @@
         "HIVE0154",
         "HoneyMyte",
         "LUMINOUS MOTH",
-        "Red Lich",
         "RedDelta",
+        "Red Lich",
         "STATELY TAURUS",
         "TA416",
         "TANTALUM",
@@ -39,6 +40,16 @@
       "x_profile_id": "actor--mustang-panda",
       "x_profile_status": "draft",
       "x_alias_assessments": [
+        {
+          "name": "BASIN CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+        },
         {
           "name": "BRONZE PRESIDENT",
           "vendor": "MITRE ATT&CK",
@@ -130,7 +141,7 @@
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
         {
-          "name": "Red Lich",
+          "name": "RedDelta",
           "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
           "confidence": "high",
@@ -140,7 +151,7 @@
           "analyst_notes": "Alias scope must be reviewed before publication."
         },
         {
-          "name": "RedDelta",
+          "name": "Red Lich",
           "vendor": "MITRE ATT&CK",
           "scope": "overlapping",
           "confidence": "high",
@@ -181,13 +192,14 @@
         },
         {
           "name": "TEMP.Hex",
-          "vendor": "MITRE ATT&CK",
-          "scope": "overlapping",
+          "vendor": "MITRE ATT&CK / Google Threat Intelligence Group",
+          "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
-            "source--mitre-attack-19-1"
+            "source--mitre-attack-19-1",
+            "source--gtig-unified-actor-naming-2026"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。"
+          "analyst_notes": "Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         },
         {
           "name": "TWILL TYPHOON",
@@ -231,9 +243,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--mustang-panda",
         "actor_name": "Mustang Panda",
-        "searched_at": "2026-09-20T10:03:11Z",
+        "searched_at": "2026-09-20T12:23:31Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -246,6 +259,7 @@
           ],
           "name_inputs": [
             "Mustang Panda",
+            "BASIN CASTLE",
             "BRONZE PRESIDENT",
             "CAMARO DRAGON",
             "ClumsyToad",
@@ -255,8 +269,8 @@
             "HIVE0154",
             "HoneyMyte",
             "Luminous Moth",
-            "Red Lich",
             "RedDelta",
+            "Red Lich",
             "STATELY TAURUS",
             "TA416",
             "TANTALUM",
@@ -269,6 +283,37 @@
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-basin-castle",
+              "entry_value": "BASIN CASTLE",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "basincastle",
+                  "profile_value": "BASIN CASTLE",
+                  "dataset_value": "BASIN CASTLE"
+                },
+                {
+                  "normalized": "temphex",
+                  "profile_value": "TEMP.Hex",
+                  "dataset_value": "TEMP.Hex"
+                }
+              ],
+              "match_basis": "multiple-name-intersection",
+              "match_confidence": "high",
+              "candidate_names": [
+                "BASIN CASTLE",
+                "TEMP.Hex"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for TEMP.Hex.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": []
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "2198ddbe-ccb6-4cfb-898f-3757226c1482",
@@ -536,6 +581,11 @@
               "external_id": null,
               "matched_names": [
                 {
+                  "normalized": "basincastle",
+                  "profile_value": "BASIN CASTLE",
+                  "dataset_value": "BASIN CASTLE"
+                },
+                {
                   "normalized": "bronzepresident",
                   "profile_value": "BRONZE PRESIDENT",
                   "dataset_value": "BRONZE PRESIDENT"
@@ -544,6 +594,11 @@
                   "normalized": "earthpreta",
                   "profile_value": "EARTH PRETA",
                   "dataset_value": "Earth Preta"
+                },
+                {
+                  "normalized": "hive0154",
+                  "profile_value": "HIVE0154",
+                  "dataset_value": "Hive0154"
                 },
                 {
                   "normalized": "honeymyte",
@@ -558,7 +613,7 @@
                 {
                   "normalized": "mustangpanda",
                   "profile_value": "Mustang Panda",
-                  "dataset_value": "MUSTANG PANDA"
+                  "dataset_value": "Mustang Panda"
                 },
                 {
                   "normalized": "redlich",
@@ -606,7 +661,12 @@
                 "LuminousMoth",
                 "Polaris",
                 "TANTALUM",
-                "Twill Typhoon"
+                "Twill Typhoon",
+                "BASIN CASTLE",
+                "ITG27",
+                "Hive0154",
+                "Mustang Panda",
+                "UNK_SteadySplit"
               ],
               "countries": [
                 "CN",
@@ -629,7 +689,9 @@
                 "https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Analysen-und-Prognosen/Threat-Intelligence/Aktive_APT-Gruppen/aktive-apt-gruppen_node.html",
                 "https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1aFyW",
                 "https://jsac.jpcert.or.jp/archive/2023/pdf/JSAC2023_2_LT4.pdf",
-                "https://thecyberwire.com/podcasts/microsoft-threat-intelligence/4/notes"
+                "https://thecyberwire.com/podcasts/microsoft-threat-intelligence/4/notes",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/",
+                "https://www.ibm.com/think/x-force/trapping-a-mustang-panda"
               ],
               "related": [
                 {
@@ -820,7 +882,732 @@
               "related": []
             }
           ],
-          "misp-mitre-enterprise-intrusion-set": [],
+          "misp-mitre-enterprise-intrusion-set": [
+            {
+              "entry_uuid": "420ac20b-f2b9-42b8-aa1a-6d4b72895ca4",
+              "entry_value": "Mustang Panda - G0129",
+              "external_id": "G0129",
+              "matched_names": [
+                {
+                  "normalized": "bronzepresident",
+                  "profile_value": "BRONZE PRESIDENT",
+                  "dataset_value": "BRONZE PRESIDENT"
+                },
+                {
+                  "normalized": "camarodragon",
+                  "profile_value": "CAMARO DRAGON",
+                  "dataset_value": "CAMARO DRAGON"
+                },
+                {
+                  "normalized": "clumsytoad",
+                  "profile_value": "ClumsyToad",
+                  "dataset_value": "ClumsyToad"
+                },
+                {
+                  "normalized": "earthpreta",
+                  "profile_value": "EARTH PRETA",
+                  "dataset_value": "EARTH PRETA"
+                },
+                {
+                  "normalized": "fireant",
+                  "profile_value": "FIREANT",
+                  "dataset_value": "FIREANT"
+                },
+                {
+                  "normalized": "hive0154",
+                  "profile_value": "HIVE0154",
+                  "dataset_value": "HIVE0154"
+                },
+                {
+                  "normalized": "luminousmoth",
+                  "profile_value": "LUMINOUS MOTH",
+                  "dataset_value": "LUMINOUS MOTH"
+                },
+                {
+                  "normalized": "mustangpanda",
+                  "profile_value": "Mustang Panda",
+                  "dataset_value": "Mustang Panda"
+                },
+                {
+                  "normalized": "reddelta",
+                  "profile_value": "RedDelta",
+                  "dataset_value": "RedDelta"
+                },
+                {
+                  "normalized": "redlich",
+                  "profile_value": "Red Lich",
+                  "dataset_value": "Red Lich"
+                },
+                {
+                  "normalized": "statelytaurus",
+                  "profile_value": "STATELY TAURUS",
+                  "dataset_value": "STATELY TAURUS"
+                },
+                {
+                  "normalized": "ta416",
+                  "profile_value": "TA416",
+                  "dataset_value": "TA416"
+                },
+                {
+                  "normalized": "tantalum",
+                  "profile_value": "TANTALUM",
+                  "dataset_value": "TANTALUM"
+                },
+                {
+                  "normalized": "temphex",
+                  "profile_value": "TEMP.Hex",
+                  "dataset_value": "TEMP.Hex"
+                },
+                {
+                  "normalized": "twilltyphoon",
+                  "profile_value": "TWILL TYPHOON",
+                  "dataset_value": "TWILL TYPHOON"
+                },
+                {
+                  "normalized": "unc6384",
+                  "profile_value": "UNC6384",
+                  "dataset_value": "UNC6384"
+                }
+              ],
+              "match_basis": "mitre-external-id",
+              "match_confidence": "high",
+              "candidate_names": [
+                "Mustang Panda",
+                "TA416",
+                "RedDelta",
+                "BRONZE PRESIDENT",
+                "STATELY TAURUS",
+                "FIREANT",
+                "CAMARO DRAGON",
+                "EARTH PRETA",
+                "HIVE0154",
+                "TWILL TYPHOON",
+                "TANTALUM",
+                "LUMINOUS MOTH",
+                "UNC6384",
+                "TEMP.Hex",
+                "Red Lich",
+                "ClumsyToad"
+              ],
+              "countries": [],
+              "description": "[Mustang Panda](https://attack.mitre.org/groups/G0129) is a China-based cyber espionage threat actor that has been conducting operations since at least 2012. [Mustang Panda](https://attack.mitre.org/groups/G0129) has been known to use tailored phishing lures and decoy documents to deliver malicious payloads.  [Mustang Panda](https://attack.mitre.org/groups/G0129) has targeted government, diplomatic, and non-governmental organizations, including think tanks, religious institutions, and research entities, across the United States, Europe, and Asia, with notable activity in Russia, Mongolia, Myanmar, Pakistan, and Vietnam. (Citation: BlackBerry MUSTANG PANDA October 2022)(Citation: Eset PlugX Korplug Mustang Panda March 2022)(Citation: Anomali MUSTANG PANDA October 2019)(Citation: Cisco Talos MUSTANG PANDA PLUGX PUBLOAD MAY 2022)(Citation: Secureworks BRONZE PRESIDENT December 2019)(Citation: DOJ Affidavit Search and Seizure PlugX December 2024)(Citation: EclecticIQ Mustang Panda PlugX)(Citation: ATTACKIQ MUSTANG PANDA TONESHELL March 2023)(Citation: Crowdstrike MUSTANG PANDA June 2018)(Citation: Palo Alto Networks, Unit 42)(Citation: Sophos PlugX September 2022)(Citation: Sophos Mustang Panda PLUGX)(Citation: Zscaler)",
+              "refs": [
+                "https://attack.mitre.org/groups/G0129",
+                "https://blog.cloudflare.com/2026-threat-report/",
+                "https://blog.eclecticiq.com/mustang-panda-apt-group-uses-european-commission-themed-lure-to-deliver-plugx-malware",
+                "https://blog.talosintelligence.com/mustang-panda-targets-europe/",
+                "https://blogs.blackberry.com/en/2022/10/mustang-panda-abuses-legitimate-apps-to-target-myanmar-based-victims",
+                "https://cloud.google.com/blog/topics/threat-intelligence/prc-nexus-espionage-targets-diplomats",
+                "https://csirt-cti.net/2024/01/23/stately-taurus-targets-myanmar/",
+                "https://go.recordedfuture.com/hubfs/reports/cta-2020-0728.pdf",
+                "https://learn.microsoft.com/en-us/unified-secops-platform/microsoft-threat-actor-naming",
+                "https://research.checkpoint.com/2023/the-dragon-who-sold-his-camaro-analyzing-custom-router-implant/",
+                "https://unit42.paloaltonetworks.com/bookworm-trojan-a-model-of-modular-architecture/",
+                "https://unit42.paloaltonetworks.com/stately-taurus-abuses-vscode-southeast-asian-espionage/",
+                "https://unit42.paloaltonetworks.com/stately-taurus-attacks-se-asian-government/",
+                "https://unit42.paloaltonetworks.com/stately-taurus-uses-bookworm-malware/",
+                "https://www.anomali.com/blog/china-based-apt-mustang-panda-targets-minority-groups-public-and-private-sector-organizations",
+                "https://www.attackiq.com/2023/03/23/emulating-the-politically-motivated-chinese-apt-mustang-panda/",
+                "https://www.broadcom.com/support/security-center/protection-bulletin/bookworm-malware-linked-to-fireant-aka-stately-tarurus-activity-observed-in-southeast-asia",
+                "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-june-mustang-panda/",
+                "https://www.ibm.com/think/x-force/hive0154-mustang-panda-shifts-focus-tibetan-community-deploy-pubload-backdoor",
+                "https://www.ibm.com/think/x-force/hive0154-targeting-us-philippines-pakistan-taiwan",
+                "https://www.justice.gov/archives/opa/media/1384136/dl",
+                "https://www.proofpoint.com/us/blog/threat-insight/good-bad-and-web-bug-ta416-increases-operational-tempo-against-european",
+                "https://www.proofpoint.com/us/blog/threat-insight/ta416-goes-ground-and-returns-golang-plugx-malware-loader",
+                "https://www.pwc.co.uk/cyber-security/pdf/pwc-cyber-threats-2020-a-year-in-retrospect.pdf",
+                "https://www.secureworks.com/blog/bronze-president-targets-government-officials",
+                "https://www.secureworks.com/blog/bronze-president-targets-russian-speakers-with-updated-plugx",
+                "https://www.secureworks.com/research/bronze-president-targets-ngos",
+                "https://www.trendmicro.com/en_us/research/22/k/earth-preta-spear-phishing-governments-worldwide.html",
+                "https://www.trendmicro.com/en_us/research/23/f/behind-the-scenes-unveiling-the-hidden-workings-of-earth-preta.html",
+                "https://www.trendmicro.com/en_us/research/24/i/earth-preta-new-malware-and-strategies.html",
+                "https://www.trendmicro.com/en_us/research/25/b/earth-preta-mixes-legitimate-and-malicious-components-to-sidestep-detection.html",
+                "https://www.welivesecurity.com/2022/03/23/mustang-panda-hodur-old-tricks-new-korplug-variant/",
+                "https://www.zscaler.com/blogs/security-research/latest-mustang-panda-arsenal-toneshell-and-starproxy-p1"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "00f90846-cbd1-4fc5-9233-df5c2bf2a662",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "01a5a209-b94c-450b-b7f9-946497d91055",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "035bb001-ab69-4a0b-9f6c-2de8b09e1b9d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03acae53-9b98-46f6-b204-16b930839055",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0a3ead4e-6d47-4ccb-854c-a6a4f9d96b22",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0a5231ec-41af-4a35-83d0-6bdf11f28c65",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0bf64997-7ce1-43e5-b01a-bcd2bf5dc87f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "0f4a0c76-ab2d-4cb0-85d3-3f0efb8cba0d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "11f29a39-0942-4d62-92b6-fe236cf3066e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "143c0cbb-a297-4142-9624-87ffc778980b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "19401639-28d0-4c3c-adcc-bc2ba22f6421",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c34f7aa-9341-4a48-bfab-af22e51aca6c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "208884f1-7b83-4473-ac22-4e1cf6c41471",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "212306d8-efa4-44c9-8c2d-ed3d2e224aa0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "21875073-b0ee-49e3-9077-1e2a885359af",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "232b7f21-adf9-4b42-b936-b9d6f7df856e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "24bfaeba-cb0d-4525-b3dc-507c77ecec41",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2683fde8-1dc4-415c-94bd-9bb95cc5b7ff",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "26c87906-d750-42c5-946c-d4162c73fc7b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2aed01ad-3df3-4410-a8cb-11ea4ded587c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2b742742-28c3-4e1b-bab7-8350d6300fa7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2cd950a6-16c4-404a-aa01-044322395107",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2ceddaf9-b16a-4f8b-b252-bcccccd3d79f",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2d3f5b3c-54ca-4f4d-bb1f-849346d31230",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2e34237d-8574-43f6-aace-ae2915de8597",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2fee9321-3e71-4cf4-af24-d4d40d355b34",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "301e7370-c3d3-4f3e-893f-8a79345c2eb5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "30208d3e-0d6b-43c8-883e-44462a514619",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "32901740-b42c-4fdd-bc02-345b5dc57082",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "354a7f88-63fb-41b5-a801-ce3b377b36f1",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3824852d-1957-4712-9da0-38143723c060",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "391d824f-0ef1-47a0-b0ee-c59a75e27670",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3b744087-9945-4a6f-91e8-9dbceda417a4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ccef7ae-cb5e-48f6-8302-897105fbf55c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3d1f234e-6c60-43c1-b1f1-6bbc9e5b8e44",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3dc8c101-d4db-4f4d-8150-1b5a76ca5f1b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ee16395-03f0-4690-a32e-69ce9ada0f9e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "40f5caa0-4cb7-4117-89fc-d421bb493df3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "451a9977-d255-43c9-b431-66de80130c8c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "47e4b55a-7803-4bf5-822c-906a1ecbdd6e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "47f2d673-ca62-47e9-929b-1b0be9657611",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "4fe28b27-b13c-453e-a386-c2ef362a573b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5a3a31fe-5a8f-48e1-bff0-a753e5b1be70",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "5d0d3609-d06d-49e1-b9c9-b544e0c618cb",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "6114c345-4c09-42ce-8d37-aef16360a7f3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "64fa0de0-6240-41f4-8638-f4ca7ed528fd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65013dd2-bc61-43e3-afb5-a14c4fa7437a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "65f2d882-3f41-4d48-8a06-29af77ec9f90",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "66b34be7-6915-4b83-8d5a-b0f0592b5e41",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "671cd17f-a765-48fd-adc4-dad1941b1ae3",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "707399d6-ab3e-4963-9315-d9d3818cd6a0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "70d81154-b187-45f9-8ec5-295d01255979",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7385dfaf-6886-4229-9ecd-6fd678040830",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "77e29a47-e263-4f11-8692-e5012f44dbac",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "799ace7f-e227-4411-baa0-8868704f2a69",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7e150503-88e7-4861-866b-ff1ac82c4475",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "830c9528-df21-472c-8c14-a036bf17d665",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "840a987a-99bd-4a80-a5c9-0cb2baa6cade",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "84771bc3-f6a0-403e-b144-01af70e5fda0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "866d0d6d-02c6-42bd-aa2f-02907fdc0969",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "887274fc-2d63-4bdc-82f3-fae56d1d5fdc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "88d31120-5bc7-4ce3-a9c0-7cf147be8e54",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "8f4a33ec-8b1f-4b80-a2f6-642b2e479580",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "910906dd-8c0a-475a-9cc1-5e029e2fad58",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92a78814-b191-47ca-909c-1ccfe3777414",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92d7da27-2d91-488e-a00c-059dc162766d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "970a3432-3237-47ad-bcca-7d8cbb217736",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9fd4e24b-3b12-4c7c-925f-226e2e3c3758",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a0e6614a-7740-4b24-bd65-f1bde09fc365",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a1df809c-7d0e-459f-8fe5-25474bab770b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a3e1e6c5-9c74-4fc0-a16c-a9d228c17829",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a7881f21-e978-4fe4-af56-92c9416a2616",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "afc079f3-c0ea-4096-b75d-3f05338b7f60",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b42378e0-f147-496f-992a-26a49705395b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "b63970b7-ddfb-4aee-97b1-80d335e033a8",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "be2dcee9-a7a7-4e38-afd6-21b31ecc3d63",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf1b6176-597c-4600-bfcd-ac989670f96b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c21d5a77-d422-4a69-acd7-2c53c1faa34b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c325b232-d5bc-4dde-a3ec-71f3db9e8adc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d1fcf083-a721-4223-aedf-bf8960798d62",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d4287702-e2f7-4946-bdfa-2c7f5aaa5032",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "d63a3fb8-9452-4e9d-a60a-54be68d5998c",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "da43312a-0188-4949-bab3-0df9a5df0aba",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "dfd7cc1d-e1d8-4394-a198-97c4cab8aa67",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e358d692-23c0-4a31-9eb6-ecc13a8d7735",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3a12395-188d-4051-9a16-ea8e14d07b88",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e3b6daca-e963-4a69-aee6-ed4fd653ad58",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e4dc8c01-417f-458d-9ee0-bb0617c1b391",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e7cbc1de-1f79-48ee-abfd-da1241c65a15",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e91d3543-ca5d-474b-8b20-5a753ebc6e49",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ea4c2f9c-9df1-477c-8c42-6da1118f2ac4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ec8fc7e2-b356-455c-8db5-2e37be158e7d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ec9e00dd-0313-4d5b-8105-c20aa47abffc",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "edf91964-b26e-4b4a-9600-ccacd7d7df24",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ef67e13e-5598-4adc-bdb2-998225874fa9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f303a39a-6255-4b89-aecc-18c4d8ca7163",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f39c6d39-0165-46db-a7ae-43341c428d22",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f59508a6-3615-47c3-b493-6676e1a39a87",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "f91162cc-1686-4ff8-8115-bf3f61a4cc7a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "fb8d023d-45be-47e9-bc51-f56bcae6435b",
+                  "type": "uses"
+                }
+              ]
+            },
+            {
+              "entry_uuid": "b7f627e2-0817-4cd5-8d50-e75f8aa85cc6",
+              "entry_value": "LuminousMoth - G1014",
+              "external_id": "G1014",
+              "matched_names": [
+                {
+                  "normalized": "luminousmoth",
+                  "profile_value": "LUMINOUS MOTH",
+                  "dataset_value": "LuminousMoth"
+                }
+              ],
+              "match_basis": "single-alias-intersection",
+              "match_confidence": "medium",
+              "candidate_names": [
+                "LuminousMoth"
+              ],
+              "countries": [],
+              "description": "[LuminousMoth](https://attack.mitre.org/groups/G1014) is a Chinese-speaking cyber espionage group that has been active since at least October 2020. [LuminousMoth](https://attack.mitre.org/groups/G1014) has targeted high-profile organizations, including government entities, in Myanmar, the Philippines, Thailand, and other parts of Southeast Asia. Some security researchers have concluded there is a connection between [LuminousMoth](https://attack.mitre.org/groups/G1014) and [Mustang Panda](https://attack.mitre.org/groups/G0129) based on similar targeting and TTPs, as well as network infrastructure overlaps.(Citation: Kaspersky LuminousMoth July 2021)(Citation: Bitdefender LuminousMoth July 2021)",
+              "refs": [
+                "https://attack.mitre.org/groups/G1014",
+                "https://securelist.com/apt-luminousmoth/103332/",
+                "https://www.bitdefender.com/blog/labs/luminousmoth-plugx-file-exfiltration-and-persistence-revisited"
+              ],
+              "related": [
+                {
+                  "dest-uuid": "005a06c6-14bf-4118-afa0-ebcd8aebb0c9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "03d7999c-1f4c-42cc-8373-e7690d318104",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "10ffac09-e42d-4f56-ab20-db94c67d76ff",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "19401639-28d0-4c3c-adcc-bc2ba22f6421",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "1c4e5d32-1fe9-4116-9d9d-59e3925bd6a2",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "212306d8-efa4-44c9-8c2d-ed3d2e224aa0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2b742742-28c3-4e1b-bab7-8350d6300fa7",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "2fee9321-3e71-4cf4-af24-d4d40d355b34",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "31fe0ba2-62fd-4fd9-9293-4043d84f7fe9",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "32901740-b42c-4fdd-bc02-345b5dc57082",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3b744087-9945-4a6f-91e8-9dbceda417a4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3c4a2599-71ee-4405-ba1e-0e28414b4bc5",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "3ee16395-03f0-4690-a32e-69ce9ada0f9e",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "53ac20cd-aca3-406e-9aa0-9fc7fdc60a5a",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "57340c81-c025-4189-8fa0-fc7ede51bae4",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "64fa0de0-6240-41f4-8638-f4ca7ed528fd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7807d3a4-a885-4639-a786-c1ed41484970",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "7bc57495-ea59-4380-be31-a64af124ef18",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "84ae8255-b4f4-4237-b5c5-e717405a9701",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "92d7da27-2d91-488e-a00c-059dc162766d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "9efb1ea7-c37b-4595-9640-b7680cd84279",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a2fdce72-04b2-409a-ac10-cc1695f4fce0",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "a7881f21-e978-4fe4-af56-92c9416a2616",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "bf1b6176-597c-4600-bfcd-ac989670f96b",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "c3888c54-775d-4b2f-b759-75a2ececcbfd",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "cabe189c-a0e3-4965-a473-dcff00f17213",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "df8b2a25-8bdf-4856-953c-a04372b1c161",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "e6919abc-99f9-4c6c-95a5-14761e7b2add",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ec8fc7e2-b356-455c-8db5-2e37be158e7d",
+                  "type": "uses"
+                },
+                {
+                  "dest-uuid": "ef67e13e-5598-4adc-bdb2-998225874fa9",
+                  "type": "uses"
+                }
+              ]
+            }
+          ],
           "misp-mitre-intrusion-set": [
             {
               "entry_uuid": "420ac20b-f2b9-42b8-aa1a-6d4b72895ca4",
@@ -2979,6 +3766,7 @@
             "etda-threat-group-cards",
             "microsoft-threat-actor-mapping",
             "misp-microsoft-activity-group",
+            "misp-mitre-enterprise-intrusion-set",
             "misp-mitre-intrusion-set",
             "misp-threat-actor"
           ],
@@ -16667,14 +17455,14 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--5606ed5a-2161-4edc-9292-f0bd9a81342a",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "indicator--6eec59a9-0476-4f07-b633-c85dc677d1df",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "domain: black-popular.com",
-      "pattern": "[domain-name:value = 'black-popular.com']",
+      "name": "domain: 20260701.md",
+      "pattern": "[domain-name:value = '20260701.md']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
       "valid_from": "2026-07-25T11:08:02Z",
@@ -16684,21 +17472,15 @@
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
       "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:e1e3380998f812ec926c4ca216ee54156b944c9e3c5365d1e713b5525e844a82",
+          "observation_id": "observation--sha256:743960c2736e7c7dde5517024c759dbe46365f638f3b64b20d766b7a7605e420",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -16706,48 +17488,40 @@
             "basis": "not-stated"
           },
           "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
           },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
+            "row": 43
           },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
+          "roles": [],
+          "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.md {\"line\": 27} Mustang Panda | 10 | Mustang Panda(ZOHOMURK/MINIRECON) | acronis.com TRUブログ（記事自体が一次ソース） | IOCあり（ドメイン1件、IP 2件） |",
+          "analyst_notes": "",
+          "raw_value": "20260701.md"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--07b3b8e0-6a48-47e2-91ca-c4c42342f264",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "relationship--f2b8074b-6d6e-43f6-935f-6fe296fc5f69",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--5606ed5a-2161-4edc-9292-f0bd9a81342a",
+      "source_ref": "indicator--6eec59a9-0476-4f07-b633-c85dc677d1df",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -16755,14 +17529,14 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--cc69cee9-f3f7-4c03-a15f-927b1952f7ba",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "indicator--b14c5d04-0327-45a0-8f28-888fecdd2887",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "domain: cloudtroe.giize.com",
-      "pattern": "[domain-name:value = 'cloudtroe.giize.com']",
+      "name": "domain: acronis.com",
+      "pattern": "[domain-name:value = 'acronis.com']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
       "valid_from": "2026-07-25T11:08:02Z",
@@ -16772,21 +17546,15 @@
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
       "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:98cdebe16280141dd1a6c2dd8b582fa2da70d6abb6713c8f661712d9bcf4e506",
+          "observation_id": "observation--sha256:35e97f928c2fde622cd6e3dab4600db4f675e65085887009038bc622888f252f",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -16794,48 +17562,40 @@
             "basis": "not-stated"
           },
           "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
           },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
+            "row": 43
           },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
+          "roles": [],
+          "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.md {\"line\": 27} Mustang Panda | 10 | Mustang Panda(ZOHOMURK/MINIRECON) | acronis.com TRUブログ（記事自体が一次ソース） | IOCあり（ドメイン1件、IP 2件） |",
+          "analyst_notes": "",
+          "raw_value": "acronis.com"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--739257f9-8b25-48c1-a078-d06879fced59",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "relationship--61c8f1cf-67d0-4943-867e-2016b95f0d5b",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--cc69cee9-f3f7-4c03-a15f-927b1952f7ba",
+      "source_ref": "indicator--b14c5d04-0327-45a0-8f28-888fecdd2887",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -16843,9 +17603,9 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--4ff353ad-c11d-4215-a2fd-8f2c11d7cb4e",
-      "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-08-07T10:34:20Z",
+      "id": "indicator--38fd1dd2-fa03-42bc-8d20-7c6d17dfa646",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -16859,72 +17619,87 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_observation_count": 2,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-f5b1390941db8dd04e59"
-      ],
-      "x_malware_refs": [
-        "malware--daily-2e2fae64b72baefca8c8"
-      ],
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:bd8e500eb96a58c8f96c3048f961f88c48a9d8b104407b1dc41ee477b79ea0e1",
+          "observation_id": "observation--sha256:dc9bb6a95dd1a2077a55ca87d06859189edfab3020bf8cd85d2ca309e6e011b6",
           "observed_at": {
             "value": "2026-06-28T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-ioc-date"
+            "basis": "same-record"
           },
           "source_published_at": {
-            "value": "2026-07-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
           },
-          "source_id": "source--daily-f24514e21b73cfc154c2",
-          "source_path": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/",
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
-            "path": "daily-news/iocs/2026_07-09/20260701.csv",
-            "row": 28
+            "row": 38
           },
-          "campaign_refs": [
-            "activity--daily-f5b1390941db8dd04e59"
-          ],
-          "malware_refs": [
-            "malware--daily-2e2fae64b72baefca8c8"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
+          "roles": [],
           "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "couldinstallup.com",
-          "context_excerpt": "AI generated. WebSocket C2 domain used by the MINIRECON implant in campaigns targeting Indian government and energy sectors.",
-          "analyst_notes": "actor field: Mustang Panda (high confidence); actor_attribute: china; reference: https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 28} Mustang Panda domain couldinstallup.com 2026-06-28 c2 Mustang Panda (high confidence) china MINIRECON backdoor https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. WebSocket C2 domain used by the MINIRECON implant in campaigns ta",
+          "analyst_notes": "",
+          "raw_value": "couldinstallup.com"
+        },
+        {
+          "observation_id": "observation--sha256:443a9ef3687cacd1e496012b4781da757c5852b11eb8aaa10c0d08eb726f398e",
+          "observed_at": {
+            "value": "2026-06-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 39
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 29} Mustang Panda ip 188.208.141.177 2026-06-28 c2 Mustang Panda (high confidence) china MINIRECON backdoor https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP address that couldinstallup.com resolved to, hosted by Leapswi",
+          "analyst_notes": "",
+          "raw_value": "couldinstallup.com"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--a7a85a92-b55f-4ea4-a93b-b79d085b09e2",
-      "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-07-26T05:28:45Z",
+      "id": "relationship--7356bbf2-522a-403a-a2a6-30d51f957a05",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--4ff353ad-c11d-4215-a2fd-8f2c11d7cb4e",
+      "source_ref": "indicator--38fd1dd2-fa03-42bc-8d20-7c6d17dfa646",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -16932,87 +17707,281 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--85d81375-818e-42ae-bb6c-1c1bd93df750",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "indicator--8927138d-4180-4770-86c7-5376e01fe507",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "domain: employers.theworkpc.com",
-      "pattern": "[domain-name:value = 'employers.theworkpc.com']",
+      "name": "domain: www.icloud-cdn.net",
+      "pattern": "[domain-name:value = 'www.icloud-cdn.net']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
+      "valid_from": "2026-05-14T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:b30cfa7cb11b0129efc7ab9838210ddf91b6ff8aa13172fb84b2e888324aef4f",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 30
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260516.csv {\"row\": 19} Twill Typhoon domain www.icloud-cdn.net 2026-05-14 c2 Twill Typhoon china FDMTP backdoor https://www.darktrace.com/blog/chinese-apt-campaign-targets-entities-with-updated-fdmtp-backdoor AI generated. Fake iCloud CDN domain used by Twill Typhoon as FDMTP C2 checked every 5 minutes. AI ag",
+          "analyst_notes": "",
+          "raw_value": "www.icloud-cdn.net"
+        },
+        {
+          "observation_id": "observation--sha256:22623d91655ff44de25127621c79a9097abf6c011f62cde827fbef93293a735a",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 31
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260516.csv {\"row\": 19} Twill Typhoon domain www.icloud-cdn.net 2026-05-14 c2 Twill Typhoon china FDMTP backdoor https://www.darktrace.com/blog/chinese-apt-campaign-targets-entities-with-updated-fdmtp-backdoor AI generated. Fake iCloud CDN domain used by Twill Typhoon as FDMTP C2 checked every 5 minutes. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "www.icloud-cdn.net"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--79d46a58-936e-46d9-ad61-2c1f68577a5d",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--8927138d-4180-4770-86c7-5376e01fe507",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--488c1a00-7c5e-4476-82f6-1606746e8261",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "domain: www.yahoo-cdn.it.com",
+      "pattern": "[domain-name:value = 'www.yahoo-cdn.it.com']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-14T00:00:00Z",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
+      "x_disposition": "confirmed",
+      "x_observation_count": 2,
+      "x_campaign_count": 0,
+      "x_seen_in_multiple_campaigns": false,
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_roles": [],
+      "x_observations": [
+        {
+          "observation_id": "observation--sha256:e10f05d8b1c5958368252aa9a62d9901768e5d7cf7e38df1301058319b0c83f8",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 32
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260516.csv {\"row\": 20} Twill Typhoon domain www.yahoo-cdn.it.com 2026-05-14 c2 Twill Typhoon china FDMTP backdoor https://www.darktrace.com/blog/chinese-apt-campaign-targets-entities-with-updated-fdmtp-backdoor AI generated. Fake Yahoo CDN domain used by Twill Typhoon to maintain 11-day persistence in finance s",
+          "analyst_notes": "",
+          "raw_value": "www.yahoo-cdn.it.com"
+        },
+        {
+          "observation_id": "observation--sha256:eae6a4b5abb6547044ac8bd1cbefa19cabf992c39a6a474d6a658da5f220a928",
+          "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 33
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260516.csv {\"row\": 20} Twill Typhoon domain www.yahoo-cdn.it.com 2026-05-14 c2 Twill Typhoon china FDMTP backdoor https://www.darktrace.com/blog/chinese-apt-campaign-targets-entities-with-updated-fdmtp-backdoor AI generated. Fake Yahoo CDN domain used by Twill Typhoon to maintain 11-day persistence in finance sector target. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "www.yahoo-cdn.it.com"
+        }
+      ]
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e997685a-d4a9-4c41-8ee4-6f242a02bb09",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "indicates",
+      "source_ref": "indicator--488c1a00-7c5e-4476-82f6-1606746e8261",
+      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
+      "description": "Confirmed repository-derived indicator associated with this actor profile.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--68ef6df2-0857-4946-8dd2-8a8fb93c5c7d",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ipv4: 154.223.58.142",
+      "pattern": "[ipv4-addr:value = '154.223.58.142']",
+      "pattern_type": "stix",
+      "pattern_version": "2.1",
+      "valid_from": "2026-05-14T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
       "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:1dc20ac01ff6cd0ba59cb168f8fb4be9563b69fb229720210f228d5a798533a2",
+          "observation_id": "observation--sha256:4777c67a2522b48885857ff719dfd202234220e9b3f9c9a473188c1d359e648f",
           "observed_at": {
+            "value": "2026-05-14T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
             "value": null,
             "precision": "unknown",
             "status": "unknown",
             "basis": "not-stated"
           },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
+            "row": 34
           },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
+          "roles": [],
+          "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_04-06/20260516.csv {\"row\": 21} Twill Typhoon ip 154.223.58.142 2026-05-14 c2 Twill Typhoon china FDMTP backdoor https://www.darktrace.com/blog/chinese-apt-campaign-targets-entities-with-updated-fdmtp-backdoor AI generated. C2 IP associated with Twill Typhoon FDMTP backdoor campaign targeting Japan/APAC. AI ag",
+          "analyst_notes": "",
+          "raw_value": "154.223.58.142"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--54afc628-6c38-4207-9e22-c277653a1144",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "relationship--bed634b2-bfc5-461f-a37f-4ac278def7c7",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--85d81375-818e-42ae-bb6c-1c1bd93df750",
+      "source_ref": "indicator--68ef6df2-0857-4946-8dd2-8a8fb93c5c7d",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -17020,625 +17989,9 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--aa6a86c0-eb98-48b5-9b2a-dddd54690860",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: freeread.casacam.net",
-      "pattern": "[domain-name:value = 'freeread.casacam.net']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:df7a8613ee2d06a97bfac34a85754951493d18588b450e4f8294c5412701aeb8",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5a9c0dae-17cc-4dce-8f10-47bbe87c5cbb",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--aa6a86c0-eb98-48b5-9b2a-dddd54690860",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--d4520abc-6511-4ef9-bff3-5abe3f5b8d25",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: news.dursamjbataar.org",
-      "pattern": "[domain-name:value = 'news.dursamjbataar.org']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:32ddabae53690ea9223367600954769ec069fc776e425203b4e53f683c2b2d78",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--7dcebd85-ca81-4c63-a756-517b9aa33519",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--d4520abc-6511-4ef9-bff3-5abe3f5b8d25",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--6708a6be-a6ee-4bef-bd5f-4707c0daea51",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: sundanish.freeddns.org",
-      "pattern": "[domain-name:value = 'sundanish.freeddns.org']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:b1baee21200fb9cf0a05c4c3b5b757f842ef9070e0df35789351611439200d64",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--2891dbce-d787-4f98-846d-259f434ae829",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--6708a6be-a6ee-4bef-bd5f-4707c0daea51",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--ddee16dd-bde1-4971-8fb8-e694d63a3263",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: torinarlabs.webredirect.org",
-      "pattern": "[domain-name:value = 'torinarlabs.webredirect.org']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:4a4c739701686feac0f079501ce3d8313d4ca5131ef6cf37e02cb62743c7e5f6",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--73067151-78ad-4bc3-9f80-c754e12091fd",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--ddee16dd-bde1-4971-8fb8-e694d63a3263",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--2bddc531-06f4-45e4-b54d-3e0407d21fc3",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: us.lenovoappstore.com",
-      "pattern": "[domain-name:value = 'us.lenovoappstore.com']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:e18369b62427f79bac8df526ae6aff162331eaa625b880882419510f5640f90c",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--6bfff7f9-d8e7-4927-81a9-6ffb7fa01122",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--2bddc531-06f4-45e4-b54d-3e0407d21fc3",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--cc16e1d0-9774-42a4-9474-e4975f111074",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: video.dursamjbataar.org",
-      "pattern": "[domain-name:value = 'video.dursamjbataar.org']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:900129ca8d6bc1a9e0d142596cac00b06c318f46db79f9c08aacb474f8f9798e",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--0c9d3882-1bc3-439a-8cb4-db385f46bda1",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--cc16e1d0-9774-42a4-9474-e4975f111074",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--8869874c-6aaa-47c2-9cb4-23fb348c002d",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "domain: whatismybestthing.com",
-      "pattern": "[domain-name:value = 'whatismybestthing.com']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:042971ca5c78f4bf95d4447b4719f15d5f3530ad5964d87eeff3c652799cbd25",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのC2インフラとして原文のIOC一覧に掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--8c2eccf3-0113-4c48-9b09-bd69fcb8e15f",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--8869874c-6aaa-47c2-9cb4-23fb348c002d",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--fea4a0c6-14ca-47a9-8d1b-870911c20be6",
-      "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-08-07T10:34:20Z",
+      "id": "indicator--53ea91cd-5fc1-413a-86ed-650fed50f4a4",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17653,71 +18006,56 @@
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
       "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-f5b1390941db8dd04e59"
-      ],
-      "x_malware_refs": [
-        "malware--daily-2e2fae64b72baefca8c8"
-      ],
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:d74537c421bd17c64bc2d0d3c59d32e6772ea04c0838ca75fec8002e202a6c9f",
+          "observation_id": "observation--sha256:0787a2834c396a2de96c2b273171f05c6a84a7d90211c35ba8ddb55d36226f45",
           "observed_at": {
             "value": "2026-06-28T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "daily-ioc-date"
+            "basis": "same-record"
           },
           "source_published_at": {
-            "value": "2026-07-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
           },
-          "source_id": "source--daily-f24514e21b73cfc154c2",
-          "source_path": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/",
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
-            "path": "daily-news/iocs/2026_07-09/20260701.csv",
-            "row": 29
+            "row": 39
           },
-          "campaign_refs": [
-            "activity--daily-f5b1390941db8dd04e59"
-          ],
-          "malware_refs": [
-            "malware--daily-2e2fae64b72baefca8c8"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
+          "roles": [],
           "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "188.208.141.177",
-          "context_excerpt": "AI generated. IP address that couldinstallup.com resolved to, hosted by Leapswitch Networks in India.",
-          "analyst_notes": "actor field: Mustang Panda (high confidence); actor_attribute: china; reference: https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 29} Mustang Panda ip 188.208.141.177 2026-06-28 c2 Mustang Panda (high confidence) china MINIRECON backdoor https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP address that couldinstallup.com resolved to, hosted by Leapswi",
+          "analyst_notes": "",
+          "raw_value": "188.208.141.177"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--339bd4c0-e85f-4459-85e0-fd1554caf040",
-      "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-07-26T05:28:45Z",
+      "id": "relationship--88d585a1-0e39-489b-9a2d-3d8eddff1455",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--fea4a0c6-14ca-47a9-8d1b-870911c20be6",
+      "source_ref": "indicator--53ea91cd-5fc1-413a-86ed-650fed50f4a4",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -17725,9 +18063,9 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--b104de18-e906-4f46-b73f-b485627ba5c1",
-      "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-08-07T10:34:20Z",
+      "id": "indicator--f6f0d7c7-6b6e-4680-a970-8172b36e4cc7",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17741,107 +18079,16 @@
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_observation_count": 3,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-f5b1390941db8dd04e59"
-      ],
+      "x_campaign_refs": [],
       "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "c2"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:48e4bcf44b5321c47944d1f0f1767c6cd92a359f2b0a1fb32616b4c5baf34958",
-          "observed_at": {
-            "value": "2026-06-28T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-ioc-date"
-          },
-          "source_published_at": {
-            "value": "2026-07-01T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "daily-news-file-date"
-          },
-          "source_id": "source--daily-f24514e21b73cfc154c2",
-          "source_path": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/",
-          "source_location": {
-            "repository": "proshiba/tech-memo",
-            "commit": "153b082489afea8d247b3e646cb25c96e25b5601",
-            "path": "daily-news/iocs/2026_07-09/20260701.csv",
-            "row": 30
-          },
-          "campaign_refs": [
-            "activity--daily-f5b1390941db8dd04e59"
-          ],
-          "malware_refs": [],
-          "infrastructure_refs": [],
-          "roles": [
-            "c2"
-          ],
-          "confidence": "medium",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "tech-memo-structured-csv",
-          "raw_value": "188.208.141.196",
-          "context_excerpt": "AI generated. IP in the same /24 subnet as the MINIRECON C2, previously identified by IBM X-Force as a Hive0154/Mustang Panda Pubload C2 server.",
-          "analyst_notes": "actor field: Mustang Panda (high confidence); actor_attribute: china; reference: https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--0a46ded5-5b4b-49cb-963d-6c71ce778dd0",
-      "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-07-26T05:28:45Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--b104de18-e906-4f46-b73f-b485627ba5c1",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--72b252e6-9c11-434e-a570-c99f4e30da39",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "md5: 2d7c8780e97409770a9d4f31c66c9d63",
-      "pattern": "[file:hashes.'MD5' = '2d7c8780e97409770a9d4f31c66c9d63']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "payload"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:fd1d2d8fcc424b6fda6f317db9982d6705dec04161cd4205b83b8870bbf87844",
+          "observation_id": "observation--sha256:cb96fe6593415e18c71f84ad3dd3677c56c7adad1796fc826d63e973b396747c",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -17849,48 +18096,100 @@
             "basis": "not-stated"
           },
           "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 112
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/news/2026_07-09/20260701.md {\"line\": 233} Hive0154 - 188[.]208[.]141[.]196,IPアドレス,知られていない,IBM X-Forceが過去にHive0154/Mustang Panda関連Pubload C2として特定した同一/24内IPとして記載,グローバル",
+          "analyst_notes": "",
+          "raw_value": "188[.]208[.]141[.]196"
+        },
+        {
+          "observation_id": "observation--sha256:024342e35b0bae7aa283fec548bb23e57b466bc0f6dde44a098c6710130c02c0",
+          "observed_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 113
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/news/2026_07-09/20260701.md {\"line\": 233} Mustang Panda - 188[.]208[.]141[.]196,IPアドレス,知られていない,IBM X-Forceが過去にHive0154/Mustang Panda関連Pubload C2として特定した同一/24内IPとして記載,グローバル",
+          "analyst_notes": "",
+          "raw_value": "188[.]208[.]141[.]196"
+        },
+        {
+          "observation_id": "observation--sha256:033475ecedb80c9a2af376ccb291ab8c0fc58b213ed705760ef485700d06e427",
+          "observed_at": {
+            "value": "2026-06-28T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "source-publication"
+            "basis": "same-record"
           },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
+            "row": 41
           },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "payload"
-          ],
-          "confidence": "high",
+          "roles": [],
+          "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientがWindowsサービスとして展開する署名済みカーネルモードドライバー。 原文のIOC一覧にmsagent.sysのMD5として掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 30} Mustang Panda ip 188.208.141.196 2026-06-28 c2 Mustang Panda (high confidence) china Pubload loader https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP in the same /24 subnet as the MINIRECON C2, previously identified",
+          "analyst_notes": "",
+          "raw_value": "188.208.141.196"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--4688a5b1-34d6-41f0-97b9-51c01a935ab7",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "relationship--3e0d5d4f-5540-40e3-a88b-8ce1370e71d5",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--72b252e6-9c11-434e-a570-c99f4e30da39",
+      "source_ref": "indicator--f6f0d7c7-6b6e-4680-a970-8172b36e4cc7",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -17900,7 +18199,7 @@
       "spec_version": "2.1",
       "id": "indicator--1eb1f382-4eaf-4537-a27e-3ba662215cea",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-07-26T05:28:45Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -17923,7 +18222,7 @@
       "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:723de3e6447e50a532127ca8006b0de037265da28217fc82fdf4de4d04a5b4c3",
+          "observation_id": "observation--sha256:54a65bc54167494bcf0a14716379485f3f2019ec191f2d834bd02d11e2c1ca3b",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -17939,7 +18238,7 @@
           "source_id": "source--mustang-panda--74a1fe33de49e62b",
           "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "row": 60
+            "row": 155
           },
           "campaign_refs": [],
           "malware_refs": [],
@@ -17957,38 +18256,92 @@
     {
       "type": "indicator",
       "spec_version": "2.1",
-      "id": "indicator--a0d50e40-6c59-451d-91ab-99ee52695f6a",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "indicator--1699f678-d830-442d-a5b9-927a587bf082",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "md5: 9460e150e1981d5c165043520c5c12fe",
-      "pattern": "[file:hashes.'MD5' = '9460e150e1981d5c165043520c5c12fe']",
+      "name": "url: https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/",
+      "pattern": "[url:value = 'https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/']",
       "pattern_type": "stix",
       "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
+      "valid_from": "2026-06-28T00:00:00Z",
       "indicator_types": [
         "malicious-activity"
       ],
       "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
       "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
+      "x_observation_count": 5,
+      "x_campaign_count": 0,
       "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
+      "x_campaign_refs": [],
+      "x_malware_refs": [],
       "x_infrastructure_refs": [],
-      "x_roles": [
-        "payload"
-      ],
+      "x_roles": [],
       "x_observations": [
         {
-          "observation_id": "observation--sha256:7a30914796484d08ff63c4f961735a1b40e4e09729b2ec58e8d655debe4324d4",
+          "observation_id": "observation--sha256:42bbae059af8e9000b63b6237bbd47a3d51b527162fbbadc9c6a08ce6eb8c356",
+          "observed_at": {
+            "value": "2026-06-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 38
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 28} Mustang Panda domain couldinstallup.com 2026-06-28 c2 Mustang Panda (high confidence) china MINIRECON backdoor https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. WebSocket C2 domain used by the MINIRECON implant in campaigns ta",
+          "analyst_notes": "",
+          "raw_value": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
+        },
+        {
+          "observation_id": "observation--sha256:0625e00ff377eb2528601ced0939a47d6c5a4f01c2521df6d2191902b643e6bd",
+          "observed_at": {
+            "value": "2026-06-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "same-record"
+          },
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 39
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 29} Mustang Panda ip 188.208.141.177 2026-06-28 c2 Mustang Panda (high confidence) china MINIRECON backdoor https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP address that couldinstallup.com resolved to, hosted by Leapswi",
+          "analyst_notes": "",
+          "raw_value": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
+        },
+        {
+          "observation_id": "observation--sha256:fa4b4137796f82649a27c02e5ade581d6e16d57a6970a124ce759ce6b9e4d6f9",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -17996,87 +18349,59 @@
             "basis": "not-stated"
           },
           "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
+          "source_location": {
+            "row": 40
+          },
+          "campaign_refs": [],
+          "malware_refs": [],
+          "infrastructure_refs": [],
+          "roles": [],
+          "confidence": "medium",
+          "tlp": "TLP:CLEAR",
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 30} Hive0154 hina Pubload loader https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP in the same /24 subnet as the MINIRECON C2, previously identified by IBM X-Force as a Hive0154/Mustang Panda Pubload C2 server. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
+        },
+        {
+          "observation_id": "observation--sha256:74cacdd4bed113b7e0630a8a21ecfb5eeaa9981f28fcade2e6bbad439f905c20",
+          "observed_at": {
+            "value": "2026-06-28T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "source-publication"
+            "basis": "same-record"
           },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_published_at": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
+            "row": 41
           },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "payload"
-          ],
-          "confidence": "high",
+          "roles": [],
+          "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientがWindowsサービスとして展開する署名済みカーネルモードドライバー。 原文のIOC一覧にmsagent.sysのMD5として掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--5eef63e6-2df9-4850-a499-d6d4c9c3f41b",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--a0d50e40-6c59-451d-91ab-99ee52695f6a",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--928b7299-dda0-419b-9394-2d4ea8ee47df",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "md5: 9717f005c5fb98e08d2ad983d88f94ee",
-      "pattern": "[file:hashes.'MD5' = '9717f005c5fb98e08d2ad983d88f94ee']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "payload"
-      ],
-      "x_observations": [
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 30} Mustang Panda ip 188.208.141.196 2026-06-28 c2 Mustang Panda (high confidence) china Pubload loader https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP in the same /24 subnet as the MINIRECON C2, previously identified",
+          "analyst_notes": "",
+          "raw_value": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
+        },
         {
-          "observation_id": "observation--sha256:f46d19af7ab3898ca7c4d795001e9723fce702464ae648317ed57d39868a7cb3",
+          "observation_id": "observation--sha256:6ff3a58ed45dffa080707c6ea9282b17664dfe4fb07591567c33ae3cd435443b",
           "observed_at": {
             "value": null,
             "precision": "unknown",
@@ -18084,224 +18409,40 @@
             "basis": "not-stated"
           },
           "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "payload"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "DLLサイドローディングで読み込まれるCoolClientの第1段階。 原文のIOC一覧にlibngs.dllのMD5として掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--e26791d8-bb65-4eac-a024-645212673470",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--928b7299-dda0-419b-9394-2d4ea8ee47df",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--cd03fbd0-ab84-4a1e-8d91-681a6d11d47c",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "md5: eb79558b037669792652a816e2c669de",
-      "pattern": "[file:hashes.'MD5' = 'eb79558b037669792652a816e2c669de']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "payload"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:ffe2badc785e1c38ff445d066e5a78baea1b327832fd4047db7c16213b7fda93",
-          "observed_at": {
             "value": null,
             "precision": "unknown",
             "status": "unknown",
             "basis": "not-stated"
           },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
+          "source_id": "source--mustang-panda--74a1fe33de49e62b",
+          "source_path": "actor_profile/evidence/mustang-panda.csv",
           "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
+            "row": 42
           },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
+          "campaign_refs": [],
+          "malware_refs": [],
           "infrastructure_refs": [],
-          "roles": [
-            "payload"
-          ],
-          "confidence": "high",
+          "roles": [],
+          "confidence": "medium",
           "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "CoolClientのコンポーネントとしてIOC一覧に掲載されたDLL。 原文のIOC一覧にctxmui.dllのMD5として掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
+          "extraction_method": "csv-row",
+          "context_excerpt": "parse-daily/.cache/tech-memo/daily-news/iocs/2026_07-09/20260701.csv {\"row\": 30} Mustang Panda oad loader https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/ AI generated. IP in the same /24 subnet as the MINIRECON C2, previously identified by IBM X-Force as a Hive0154/Mustang Panda Pubload C2 server. AI agent medium",
+          "analyst_notes": "",
+          "raw_value": "https://www.acronis.com/en/tru/posts/mustang-panda-targets-indias-government-and-energy-sectors/"
         }
       ]
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--83c938da-0c1a-4dc6-a8b0-b42330cb7fac",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "id": "relationship--b92a1cdf-ac8a-4f51-a918-2daa6c3048df",
+      "created": "2026-09-20T11:57:57Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "indicates",
-      "source_ref": "indicator--cd03fbd0-ab84-4a1e-8d91-681a6d11d47c",
-      "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
-      "description": "Confirmed repository-derived indicator associated with this actor profile.",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "indicator",
-      "spec_version": "2.1",
-      "id": "indicator--587cbf32-2a9a-4f47-b0b7-04525fc1fdc9",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "md5: f518d8e5fe70d9090f6280c68a95998f",
-      "pattern": "[file:hashes.'MD5' = 'f518d8e5fe70d9090f6280c68a95998f']",
-      "pattern_type": "stix",
-      "pattern_version": "2.1",
-      "valid_from": "2026-07-25T11:08:02Z",
-      "indicator_types": [
-        "malicious-activity"
-      ],
-      "description": "Repository-derived observable. Historical data; do not use as sole attribution evidence.",
-      "x_disposition": "confirmed",
-      "x_observation_count": 1,
-      "x_campaign_count": 1,
-      "x_seen_in_multiple_campaigns": false,
-      "x_campaign_refs": [
-        "activity--daily-b8b3301d837c22e89850"
-      ],
-      "x_malware_refs": [
-        "malware--coolclient"
-      ],
-      "x_infrastructure_refs": [],
-      "x_roles": [
-        "payload"
-      ],
-      "x_observations": [
-        {
-          "observation_id": "observation--sha256:b55d5503e6eec540faee3488e42dfd02e979cd5857ce98a16cf0126306eaa1c4",
-          "observed_at": {
-            "value": null,
-            "precision": "unknown",
-            "status": "unknown",
-            "basis": "not-stated"
-          },
-          "source_published_at": {
-            "value": "2026-08-14T00:00:00Z",
-            "precision": "day",
-            "status": "known",
-            "basis": "source-publication"
-          },
-          "source_id": "source--securelist-honeymyte-coolclient-rootkit-2026",
-          "source_path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/",
-          "source_location": {
-            "repository": null,
-            "commit": null,
-            "path": "https://securelist.com/honeymyte-coolclient-driver-rootkit/121028/#iocs",
-            "row": null
-          },
-          "campaign_refs": [
-            "activity--daily-b8b3301d837c22e89850"
-          ],
-          "malware_refs": [
-            "malware--coolclient"
-          ],
-          "infrastructure_refs": [],
-          "roles": [
-            "payload"
-          ],
-          "confidence": "high",
-          "tlp": "TLP:CLEAR",
-          "extraction_method": "primary-source-ioc-table",
-          "context_excerpt": "DLLサイドローディングで読み込まれるCoolClientの第1段階。 原文のIOC一覧にlibngs.dllのMD5として掲載。",
-          "analyst_notes": "原文のIOC節から直接収録。IOC CSVのactor列が「HoneyMyte (Mustang Panda)」という複合名で自動一致しないため、日次取込経由ではなく一次資料から収録した。"
-        }
-      ]
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
-      "id": "relationship--86cee9f6-5d5c-4ef8-b3b5-d7508bc7f86a",
-      "created": "2026-08-15T01:12:40Z",
-      "modified": "2026-08-15T01:12:40Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "indicates",
-      "source_ref": "indicator--587cbf32-2a9a-4f47-b0b7-04525fc1fdc9",
+      "source_ref": "indicator--1699f678-d830-442d-a5b9-927a587bf082",
       "target_ref": "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
       "description": "Confirmed repository-derived indicator associated with this actor profile.",
       "x_confidence": "medium"
@@ -18311,7 +18452,7 @@
       "spec_version": "2.1",
       "id": "note--6c683e28-fec1-4106-afa2-de4ca06e3203",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-08-15T01:12:40Z",
+      "modified": "2026-09-20T11:57:57Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18321,14 +18462,14 @@
         "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd"
       ],
       "x_artifacts_path": "artifacts.csv",
-      "x_artifact_observation_count": 158
+      "x_artifact_observation_count": 139
     },
     {
       "type": "report",
       "spec_version": "2.1",
       "id": "report--951a21f9-0480-4342-8ff1-c978ad52fa81",
       "created": "2026-07-26T05:28:45Z",
-      "modified": "2026-09-20T10:03:34Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -18337,7 +18478,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T10:03:34Z",
+      "published": "2026-09-20T12:23:31Z",
       "object_refs": [
         "intrusion-set--040206d0-0434-4141-9a66-2fa08d017cbd",
         "malware--78f32f36-e41f-4ec1-8aab-a53288748a8f",
@@ -18565,25 +18706,16 @@
         "attack-pattern--d31d4add-d417-4ccd-8d9d-7115dfa0dfcd",
         "attack-pattern--c3532af8-0189-4f80-825e-abdf3ce5848c",
         "attack-pattern--f6fb09a0-7776-4b7c-a3a6-cb02e1e0b528",
-        "indicator--5606ed5a-2161-4edc-9292-f0bd9a81342a",
-        "indicator--cc69cee9-f3f7-4c03-a15f-927b1952f7ba",
-        "indicator--4ff353ad-c11d-4215-a2fd-8f2c11d7cb4e",
-        "indicator--85d81375-818e-42ae-bb6c-1c1bd93df750",
-        "indicator--aa6a86c0-eb98-48b5-9b2a-dddd54690860",
-        "indicator--d4520abc-6511-4ef9-bff3-5abe3f5b8d25",
-        "indicator--6708a6be-a6ee-4bef-bd5f-4707c0daea51",
-        "indicator--ddee16dd-bde1-4971-8fb8-e694d63a3263",
-        "indicator--2bddc531-06f4-45e4-b54d-3e0407d21fc3",
-        "indicator--cc16e1d0-9774-42a4-9474-e4975f111074",
-        "indicator--8869874c-6aaa-47c2-9cb4-23fb348c002d",
-        "indicator--fea4a0c6-14ca-47a9-8d1b-870911c20be6",
-        "indicator--b104de18-e906-4f46-b73f-b485627ba5c1",
-        "indicator--72b252e6-9c11-434e-a570-c99f4e30da39",
+        "indicator--6eec59a9-0476-4f07-b633-c85dc677d1df",
+        "indicator--b14c5d04-0327-45a0-8f28-888fecdd2887",
+        "indicator--38fd1dd2-fa03-42bc-8d20-7c6d17dfa646",
+        "indicator--8927138d-4180-4770-86c7-5376e01fe507",
+        "indicator--488c1a00-7c5e-4476-82f6-1606746e8261",
+        "indicator--68ef6df2-0857-4946-8dd2-8a8fb93c5c7d",
+        "indicator--53ea91cd-5fc1-413a-86ed-650fed50f4a4",
+        "indicator--f6f0d7c7-6b6e-4680-a970-8172b36e4cc7",
         "indicator--1eb1f382-4eaf-4537-a27e-3ba662215cea",
-        "indicator--a0d50e40-6c59-451d-91ab-99ee52695f6a",
-        "indicator--928b7299-dda0-419b-9394-2d4ea8ee47df",
-        "indicator--cd03fbd0-ab84-4a1e-8d91-681a6d11d47c",
-        "indicator--587cbf32-2a9a-4f47-b0b7-04525fc1fdc9"
+        "indicator--1699f678-d830-442d-a5b9-927a587bf082"
       ],
       "x_schema_version": "1.2.0"
     }

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc3886`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | UNC3886 | canonical-name | 高 | China | https://cloud.google.com/blog/topics/threat-intelligence/uncovering-unc3886-espionage-operations<br>https://therecord.media/singapore-accuses-chinese-backed-hackers-critical-infrastructure-attacks<br>https://www.trendmicro.com/en_us/research/25/g/revisiting-unc3886-tactics-to-defend-against-present-risk.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | UNC3886 | canonical-name | 高 | CN | https://www.mandiant.com/resources/blog/fortinet-malware-ecosystem<br>https://www.mandiant.com/resources/blog/esxi-hypervisors-malware-persistence<br>https://www.mandiant.com/resources/blog/vmware-esxi-zero-day-bypass |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | UNC3886 - G1048 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1048<br>https://cloud.google.com/blog/topics/threat-intelligence/vmware-esxi-zero-day-bypass/<br>https://www.mandiant.com/resources/blog/fortinet-malware-ecosystem |
 | misp-mitre-intrusion-set | UNC3886 - G1048 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1048<br>https://cloud.google.com/blog/topics/threat-intelligence/vmware-esxi-zero-day-bypass/<br>https://www.mandiant.com/resources/blog/fortinet-malware-ecosystem |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -288,6 +289,7 @@ Aliasなし
 | source--unc3886--af780f84a52f5356 | m trends 2024 |  | 2024 | summary/2024/m-trends-2024.pdf | report | TLP:CLEAR | 中 |
 | source--unc3886--e5512d3a63039b72 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
 | source--unc3886--fb18a320d1b96523 | 2025 Year in Review  Malicious Infrastructure |  | 2025 | summary/2026/2025 Year in Review- Malicious Infrastructure.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

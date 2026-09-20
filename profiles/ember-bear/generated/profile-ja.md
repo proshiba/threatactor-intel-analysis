@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ember-bear`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -62,12 +62,13 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Cadet Blizzard | multiple-name-intersection | 高 | Russia | https://www.microsoft.com/en-us/security/blog/2023/06/14/cadet-blizzard-emerges-as-a-novel-and-distinct-russian-threat-actor/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Cadet+Blizzard&n=1 |
 | etda-threat-group-cards | SaintBear, Lorec53 | canonical-name | 高 | Russia | https://nsfocusglobal.com/apt-retrospection-lorec53-an-active-russian-hack-group-launched-phishing-attacks-against-georgian-government/<br>https://www.crowdstrike.com/blog/who-is-ember-bear/<br>https://services.google.com/fh/files/blogs/google_fog_of_war_research_report.pdf |
 | cert-ua-uac-index | UAC-0056 | single-alias-intersection | 中 |  | https://cert.gov.ua/article/38374<br>https://cert.gov.ua/article/703548<br>https://cert.gov.ua/article/619229 |
@@ -75,7 +76,8 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | misp-threat-actor | SaintBear | canonical-name | 高 | RU | https://malpedia.caad.fkie.fraunhofer.de/details/win.graphsteel<br>https://cert.gov.ua/article/38374<br>https://blog.malwarebytes.com/threat-intelligence/2022/04/new-uac-0056-activity-theres-a-go-elephant-in-the-room/ |
 | misp-threat-actor | DEV-0586 | multiple-name-intersection | 高 | RU | https://www.microsoft.com/security/blog/2022/01/15/destructive-malware-targeting-ukrainian-organizations/<br>https://msrc-blog.microsoft.com/2022/02/28/analysis-resources-cyber-threat-activity-ukraine/<br>https://unit42.paloaltonetworks.com/atoms/ruinousursa/ |
 | misp-microsoft-activity-group | Cadet Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Ember Bear - G1003 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1003<br>https://unit42.paloaltonetworks.com/ukraine-targeted-outsteel-saintbot/<br>https://www.cisa.gov/sites/default/files/2024-09/aa24-249a-russian-military-cyber-actors-target-us-and-global-critical-infrastructure.pdf |
+| misp-mitre-enterprise-intrusion-set | Saint Bear - G1031 | multiple-name-intersection | 高 |  | https://attack.mitre.org/groups/G1031<br>https://unit42.paloaltonetworks.com/ukraine-targeted-outsteel-saintbot/<br>https://www.microsoft.com/en-us/security/blog/2023/06/14/cadet-blizzard-emerges-as-a-novel-and-distinct-russian-threat-actor/ |
 | misp-mitre-intrusion-set | Ember Bear - G1003 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1003<br>https://unit42.paloaltonetworks.com/ukraine-targeted-outsteel-saintbot/<br>https://www.cisa.gov/sites/default/files/2024-09/aa24-249a-russian-military-cyber-actors-target-us-and-global-critical-infrastructure.pdf |
 | misp-mitre-intrusion-set | Saint Bear - G1031 | multiple-name-intersection | 高 |  | https://attack.mitre.org/groups/G1031<br>https://unit42.paloaltonetworks.com/ukraine-targeted-outsteel-saintbot/<br>https://www.microsoft.com/en-us/security/blog/2023/06/14/cadet-blizzard-emerges-as-a-novel-and-distinct-russian-threat-actor/ |
 | misp-360net | 一致なし |  |  |  |  |
@@ -222,10 +224,10 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 ## IOC／artifact概要
 
-- IOC値: 3件
-- IOC観測: 3件
+- IOC値: 4件
+- IOC観測: 6件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 3件
+- 要レビュー候補: 4件
 - 非IOC artifact観測: 102件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -286,6 +288,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

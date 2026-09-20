@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--kimsuky`
 - 状態: review
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -49,9 +49,9 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 |---|---|---|---|---|
 | APT37 | overlaps-with | 標的、誘引テーマ、ツール、インフラに重複が報告されるが、別アクターとして扱う。 | 中 | `source--darkhorse-2023`, `source--qax-2024` |
 | Lazarus Group | shares-tools-with | PEBBLEDASH等の再利用はDPRK内部のツール共有または開発者再配置の可能性を示す。 | 中 | `source--blurred-attribution`, `source--qax-2024` |
-| APT43 | overlaps-with | 共有alias: Kimsuky | 低 | `source--joint-csa-2023` |
 | APT43 | overlaps-with | MITRE treats APT43 as an associated Kimsuky group name, while Mandiant defines APT43 using its own collection scope. The overlap is well supported, but exact one-to-one identity is not. | 高 | `source--mitre-live-kimsuky-2026`, `source--mandiant-apt43-2023` |
 | Lazarus Group | overlaps-with | DPRK threat actor cluster boundaries overlap in open source reporting, with some security researchers consolidating all attributed North Korean state-sponsored cyber activity under [Lazarus Group](https://attack.mitre.org/groups/G0032), rather than tracking operationally distinct subgroups. | 高 | `source--mitre-live-kimsuky-2026` |
+| APT43 | overlaps-with | 共有alias: Kimsuky | 低 | `source--mitre-attack-19-1` |
 
 ## ダイヤモンドモデル
 
@@ -66,12 +66,13 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Kimsuky, Velvet Chollima | canonical-name | 高 | North Korea | https://securelist.com/the-kimsuky-operation-a-north-korean-apt/57915/<br>https://securityintelligence.com/media/recent-activity-from-itg16-a-north-korean-threat-group/<br>https://us-cert.cisa.gov/ncas/alerts/aa20-301a |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Emerald Sleet | canonical-name | 高 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -82,7 +83,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | misp-microsoft-activity-group | Emerald Sleet | canonical-name | 高 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Opal Sleet | multiple-name-intersection | 高 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Ruby Sleet | single-alias-intersection | 中 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Kimsuky - G0094 | mitre-external-id | 高 |  | https://asert.arbornetworks.com/stolen-pencil-campaign-targets-academia/<br>https://attack.mitre.org/groups/G0094<br>https://blog.alyac.co.kr/2234 |
 | misp-mitre-intrusion-set | Kimsuky - G0094 | mitre-external-id | 高 |  | https://asert.arbornetworks.com/stolen-pencil-campaign-targets-academia/<br>https://attack.mitre.org/groups/G0094<br>https://blog.alyac.co.kr/2234 |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -352,11 +353,11 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 
 ## IOC／artifact概要
 
-- IOC値: 1091件
-- IOC観測: 1357件
+- IOC値: 1061件
+- IOC観測: 1369件
 - 複数攻撃で観測: 1件
 - 要レビュー候補: 280件
-- 非IOC artifact観測: 871件（`artifacts.csv`）
+- 非IOC artifact観測: 869件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -433,6 +434,7 @@ Kimsukyは北朝鮮RGB傘下と評価される国家支援型サイバー諜報�
 | source--smoke-screen | Analysis of the APT Campaign Smoke Screen | ESRC | 2019-04-17 | kimsuky/Smoke Screen.pdf | vendor-report | TLP:CLEAR | 高 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

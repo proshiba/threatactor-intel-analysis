@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--callisto`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,10 +18,12 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| COLDRIVER | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| COLD RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| COLDRIVER | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--mitre-attack-19-1`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | SEABORGIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Star Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA446 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| UNC4057 | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -55,12 +57,13 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | COLD RELIC | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Callisto Group | canonical-name | 高 |  | https://www.f-secure.com/documents/996508/1030745/callisto-group<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Callisto+Group&n=1 |
 | etda-threat-group-cards | Cold River | multiple-name-intersection | 高 | Russia | https://www.lastline.com/labsblog/threat-actor-cold-river-network-traffic-analysis-and-a-deep-dive-on-agent-drable/<br>https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-341a<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Cold+River&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -68,7 +71,7 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | misp-threat-actor | Callisto | multiple-name-intersection | 高 | RU | https://web.archive.org/web/20170417102235/https://www.f-secure.com/documents/996508/1030745/callisto-group<br>https://blog.google/threat-analysis-group/tracking-cyber-activity-eastern-europe<br>https://blog.google/threat-analysis-group/update-on-cyber-activity-in-eastern-europe |
 | misp-threat-actor | Cold River | single-alias-intersection | 中 |  | https://www.lastline.com/labsblog/threat-actor-cold-river-network-traffic-analysis-and-a-deep-dive-on-agent-drable/ |
 | misp-microsoft-activity-group | Star Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Star Blizzard - G1033 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1033<br>https://blog.google/threat-analysis-group/google-tag-coldriver-russian-phishing-malware/<br>https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-341a |
 | misp-mitre-intrusion-set | Star Blizzard - G1033 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1033<br>https://blog.google/threat-analysis-group/google-tag-coldriver-russian-phishing-malware/<br>https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-341a |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -184,8 +187,8 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 
 ## IOC／artifact概要
 
-- IOC値: 79件
-- IOC観測: 98件
+- IOC値: 109件
+- IOC観測: 139件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 1件（`artifacts.csv`）
@@ -220,6 +223,9 @@ Callisto Groupの標準化プロファイル。リポジトリ内の専用資料
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

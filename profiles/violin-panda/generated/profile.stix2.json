@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--d2fc500a-1386-4cf8-beb6-2107c1db5c2e",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-20T10:03:35Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -15,7 +15,8 @@
       "aliases": [
         "APT20",
         "APT8",
-        "Covert Grove"
+        "Covert Grove",
+        "RIDGE CASTLE"
       ],
       "description": "Violin Pandaの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。",
       "goals": [],
@@ -25,13 +26,14 @@
       "x_alias_assessments": [
         {
           "name": "APT20",
-          "vendor": "catalog",
-          "scope": "overlapping",
-          "confidence": "medium",
+          "vendor": "catalog / Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
           "evidence_refs": [
-            "source--actor-mapping-workbook"
+            "source--actor-mapping-workbook",
+            "source--gtig-unified-actor-naming-2026"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
+          "analyst_notes": "Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         },
         {
           "name": "APT8",
@@ -52,6 +54,16 @@
             "source--actor-mapping-workbook"
           ],
           "analyst_notes": "Alias scope must be reviewed before publication."
+        },
+        {
+          "name": "RIDGE CASTLE",
+          "vendor": "Google Threat Intelligence Group",
+          "scope": "exact",
+          "confidence": "high",
+          "evidence_refs": [
+            "source--gtig-unified-actor-naming-2026"
+          ],
+          "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
         }
       ],
       "x_attribution": {
@@ -75,9 +87,10 @@
         "schema_version": "1.0.0",
         "actor_ref": "actor--violin-panda",
         "actor_name": "Violin Panda",
-        "searched_at": "2026-09-20T10:03:11Z",
+        "searched_at": "2026-09-20T12:23:31Z",
         "search_scope": {
           "datasets": [
+            "gtig-threat-actor-naming",
             "etda-threat-group-cards",
             "cert-ua-uac-index",
             "microsoft-threat-actor-mapping",
@@ -92,12 +105,44 @@
             "Violin Panda",
             "APT20",
             "APT8",
-            "Covert Grove"
+            "Covert Grove",
+            "RIDGE CASTLE"
           ],
           "mitre_group_id": null
         },
         "overall_assessment": "matched",
         "actor_matches": {
+          "gtig-threat-actor-naming": [
+            {
+              "entry_uuid": "gtig-2026-ridge-castle",
+              "entry_value": "RIDGE CASTLE",
+              "external_id": null,
+              "matched_names": [
+                {
+                  "normalized": "apt20",
+                  "profile_value": "APT20",
+                  "dataset_value": "APT20"
+                },
+                {
+                  "normalized": "ridgecastle",
+                  "profile_value": "RIDGE CASTLE",
+                  "dataset_value": "RIDGE CASTLE"
+                }
+              ],
+              "match_basis": "multiple-name-intersection",
+              "match_confidence": "high",
+              "candidate_names": [
+                "RIDGE CASTLE",
+                "APT20"
+              ],
+              "countries": [],
+              "description": "GTIG unified name for APT20.",
+              "refs": [
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+              ],
+              "related": []
+            }
+          ],
           "etda-threat-group-cards": [
             {
               "entry_uuid": "73a85c37-08ef-4df4-ac98-7cb07b58715b",
@@ -212,6 +257,11 @@
                   "dataset_value": "APT20"
                 },
                 {
+                  "normalized": "ridgecastle",
+                  "profile_value": "RIDGE CASTLE",
+                  "dataset_value": "RIDGE CASTLE"
+                },
+                {
                   "normalized": "violinpanda",
                   "profile_value": "Violin Panda",
                   "dataset_value": "VIOLIN PANDA"
@@ -223,7 +273,8 @@
                 "APT20",
                 "VIOLIN PANDA",
                 "TH3Bug",
-                "Crawling Taurus"
+                "Crawling Taurus",
+                "RIDGE CASTLE"
               ],
               "countries": [
                 "CN"
@@ -234,7 +285,8 @@
                 "https://www.fox-it.com/nl/actueel/whitepapers/operation-wocao-shining-a-light-on-one-of-chinas-hidden-hacking-groups/",
                 "https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2015/Aug.10.The_Italian_Connection_An_analysis_of_exploit_supply_chains_and_digital_quartermasters/HTExploitTelemetry.pdf",
                 "https://unit42.paloaltonetworks.com/atoms/crawling-taurus/",
-                "https://www.mandiant.com/resources/insights/apt-groups"
+                "https://www.mandiant.com/resources/insights/apt-groups",
+                "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
               ],
               "related": []
             }
@@ -1420,7 +1472,7 @@
       "spec_version": "2.1",
       "id": "report--4a05766a-8d4f-41c8-9059-6eabc034e505",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-20T10:03:35Z",
+      "modified": "2026-09-20T12:23:31Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1429,7 +1481,7 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T10:03:35Z",
+      "published": "2026-09-20T12:23:31Z",
       "object_refs": [
         "intrusion-set--d2fc500a-1386-4cf8-beb6-2107c1db5c2e",
         "malware--e002734c-eb64-420c-8642-4a14015d7ec9",

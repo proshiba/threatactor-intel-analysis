@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--redecho`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | RedEcho | canonical-name | 高 | China | https://go.recordedfuture.com/redecho-insikt-group-report<br>https://therecord.media/redecho-group-parks-domains-after-public-exposure/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=RedEcho&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | RedEcho | canonical-name | 高 |  | https://www.recordedfuture.com/redecho-targeting-indian-power-sector/<br>https://therecord.media/redecho-group-parks-domains-after-public-exposure/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | RedEcho - G1042 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1042<br>https://go.recordedfuture.com/hubfs/reports/cta-2021-0228.pdf<br>https://go.recordedfuture.com/hubfs/reports/ta-2022-0406.pdf |
 | misp-mitre-intrusion-set | RedEcho - G1042 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1042<br>https://go.recordedfuture.com/hubfs/reports/cta-2021-0228.pdf<br>https://go.recordedfuture.com/hubfs/reports/ta-2022-0406.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -170,6 +171,7 @@ Aliasなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

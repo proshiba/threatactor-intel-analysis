@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--axiom`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -44,13 +44,12 @@ Axiomの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| APT17 | overlaps-with | 共有alias: APT17, Tailgater Team | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| BARIUM | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| Ke3chang | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| LEAD | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| PassCV | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | Winnti Group | overlaps-with | Some reporting suggests a degree of overlap between [Axiom](https://attack.mitre.org/groups/G0001) and [Winnti Group](https://attack.mitre.org/groups/G0044) but the two groups appear to be distinct based on differences in reporting on TTPs and targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) | 高 | `source--mitre-attack-19-1` |
 | Winnti Group | related-to | The group has heavily targeted the gaming industry, but it has also expanded the scope of its targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) Some reporting suggests a number of other groups, including [Axiom](https://attack.mitre.org/groups/G0001), [APT17](https://attack.mitre.org/groups/G0025), and [Ke3chang](https://attack.mitre.org/groups/G0004), are closely linked to [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: 401 TRG Winnti Umbrella May 2018) | 中 | `source--mitre-attack-19-1` |
+| APT17 | overlaps-with | 共有alias: APT17, Tailgater Team | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| BARIUM | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| LEAD | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| PassCV | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 
 ## ダイヤモンドモデル
 
@@ -65,31 +64,28 @@ Axiomの標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 17, Deputy Dog, Elderwood, Sneaky Panda | multiple-name-intersection | 高 | China | http://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the-elderwood-project.pdf<br>https://intrusiontruth.wordpress.com/2019/07/24/apt17-is-run-by-the-jinan-bureau-of-the-chinese-ministry-of-state-security/<br>https://intezer.com/evidence-aurora-operation-still-active-supply-chain-attack-through-ccleaner/ |
 | etda-threat-group-cards | Axiom, Group 72 | canonical-name | 高 | China | https://blogs.cisco.com/security/talos/threat-spotlight-group-72<br>http://www.novetta.com/wp-content/uploads/2015/04/novetta_winntianalysis.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Axiom%2C+Group+72&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Heart Typhoon | single-alias-intersection | 中 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT17 | canonical-name | 高 | CN, China | https://web.archive.org/web/20130924130243/https://www.fireeye.com/blog/technical/cyber-exploits/2013/09/operation-deputydog-zero-day-cve-2013-3893-attack-against-japanese-targets.html<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2013/hidden_lynx.pdf<br>https://www.cfr.org/interactive/cyber-operations/apt-17 |
 | misp-microsoft-activity-group | Heart Typhoon | single-alias-intersection | 中 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | APT17 - G0025 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17%20Report.pdf |
-| misp-mitre-enterprise-intrusion-set | Axiom - G0001 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0001<br>http://www.novetta.com/wp-content/uploads/2014/11/Executive%20Summary-Final%201.pdf<br>https://kasperskycontenthub.com/wp-content/uploads/sites/43/vlpdfs/winnti-more-than-just-a-game-130410.pdf |
+| misp-mitre-enterprise-intrusion-set | Axiom - G0001 | mitre-external-id | 高 |  | http://blogs.cisco.com/security/talos/threat-spotlight-group-72<br>https://attack.mitre.org/groups/G0001<br>https://securelist.com/games-are-over/70991/ |
+| misp-mitre-enterprise-intrusion-set | APT17 - G0025 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17_Report.pdf |
 | misp-mitre-intrusion-set | Axiom - G0001 | mitre-external-id | 高 |  | http://blogs.cisco.com/security/talos/threat-spotlight-group-72<br>https://attack.mitre.org/groups/G0001<br>https://securelist.com/games-are-over/70991/ |
 | misp-mitre-intrusion-set | APT17 - G0025 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17_Report.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| APT17 | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Axiom | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Winnti Group | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 
@@ -202,8 +198,8 @@ Axiomの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 2件
-- IOC観測: 2件
+- IOC値: 6件
+- IOC観測: 8件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 2件
 - 非IOC artifact観測: 32件（`artifacts.csv`）

@@ -4,7 +4,7 @@
   "name": "TA505",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T10:03:35Z",
+  "updated_at": "2026-09-20T12:23:41Z",
   "languages": [
     "ja"
   ],
@@ -18,36 +18,6 @@
         "confidence": "high",
         "evidence_refs": [
           "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "DEV-0950",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "Evil Corp",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "FIN11",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
@@ -72,26 +42,6 @@
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
       {
-        "name": "Indrik Spider",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "Lace Tempest",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
         "name": "SectorJ04",
         "vendor": "catalog",
         "scope": "overlapping",
@@ -108,16 +58,6 @@
         "confidence": "high",
         "evidence_refs": [
           "source--mitre-attack-19-1"
-        ],
-        "analyst_notes": "Alias scope must be reviewed before publication."
-      },
-      {
-        "name": "TA505 (merged w/Indrik Spider)",
-        "vendor": "catalog",
-        "scope": "overlapping",
-        "confidence": "medium",
-        "evidence_refs": [
-          "source--actor-mapping-workbook"
         ],
         "analyst_notes": "Alias scope must be reviewed before publication."
       }
@@ -153,11 +93,11 @@
   "motivations": [],
   "relationships": [
     {
-      "relationship_id": "relationship--ta505--alias-overlap--3e7d3b3a0f01924d",
-      "target_actor": "Indrik Spider",
+      "relationship_id": "relationship--ta505--verified-overlap--8a12aa59d7aa895a",
+      "target_actor": "FIN11",
       "relationship_type": "overlaps-with",
-      "description": "共有alias: Evil Corp, Indrik Spider",
-      "confidence": "low",
+      "description": "FIN11 includes a subset of activity publicly called TA505, but early TA505 operations are not attributed to FIN11 and the names are not interchangeable.",
+      "confidence": "high",
       "first_observed": {
         "value": null,
         "precision": "unknown",
@@ -171,10 +111,9 @@
         "basis": "not-stated"
       },
       "evidence_refs": [
-        "source--mitre-attack-19-1",
-        "source--actor-mapping-workbook"
+        "source--mandiant-fin11-ta505-boundary-2020"
       ],
-      "analyst_notes": "共有aliasに基づくtaxonomy overlap候補。同一主体であることを断定せず、ベンダーごとの追跡スコープ差を個別に確認する。"
+      "analyst_notes": "Primary-source-verified taxonomy boundary; this relationship must not be converted into an exact alias."
     },
     {
       "relationship_id": "relationship--ta505--alias-overlap--f69117d7c99a8671",
@@ -3323,6 +3262,56 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    {
+      "source_id": "source--mandiant-fin11-ta505-boundary-2020",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/fin11-email-campaigns-precursor-for-ransomware-data-theft",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/fin11-email-campaigns-precursor-for-ransomware-data-theft",
+      "title": "FIN11: Widespread Email Campaigns as Precursor for Ransomware and Data Theft",
+      "publisher": "Mandiant",
+      "published_at": {
+        "value": "2020-10-14T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-threat-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity-boundary",
+        "relationship"
+      ],
+      "analyst_notes": "Mandiant says FIN11 includes a subset of activity called TA505, excludes early TA505 operations, and cautions against interchangeable use."
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {
@@ -3334,7 +3323,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/ta505.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/ta505.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T12:23:31Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--gallium`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,19 +54,20 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Gallium | canonical-name | 高 | China | https://www.microsoft.com/security/blog/2019/12/12/gallium-targeting-global-telecom/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Gallium&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Granite Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | GALLIUM | canonical-name | 高 | CN | https://www.microsoft.com/security/blog/2019/12/12/gallium-targeting-global-telecom/<br>https://www.youtube.com/watch?v=fBFm2fiEPTg<br>https://troopers.de/troopers22/talks/7cv8pz/ |
 | misp-microsoft-activity-group | GALLIUM | canonical-name | 高 |  | https://www.microsoft.com/security/blog/2019/12/12/gallium-targeting-global-telecom/ |
 | misp-microsoft-activity-group | Granite Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | GALLIUM - G0093 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0093<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://unit42.paloaltonetworks.com/pingpull-gallium/ |
 | misp-mitre-intrusion-set | GALLIUM - G0093 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0093<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://unit42.paloaltonetworks.com/pingpull-gallium/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -203,10 +204,10 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 28件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -242,6 +243,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

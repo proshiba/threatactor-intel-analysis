@@ -228,14 +228,15 @@ python3 -m unittest discover -s parse-daily/tests -v
 
 python3 actor_profile/scripts/materialize_actor_census.py
 
-# 新しいmerge/exclude curationで既存profileが残る場合にcanonical側へデータを移行
-python3 actor_profile/scripts/migrate_curated_entity_boundaries.py --apply
-
 # 旧生成ルールで既存profileへ入った地理由来のstate/espionage等だけを安全に移行
 python3 actor_profile/scripts/migrate_generated_attribution.py --apply
 
 # 新規profileをbootstrapする場合のみ使用（既存profileの一括overwriteは禁止）
 python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
+
+# 新規profileを含むcanonical側へmergeデータを移し、一次情報aliasを反映
+python3 actor_profile/scripts/migrate_curated_entity_boundaries.py --apply
+python3 actor_profile/scripts/apply_verified_alias_updates.py
 
 python3 actor_profile/scripts/build_claim_audits.py
 python3 actor_profile/scripts/enrich_activity_intelligence.py --apply

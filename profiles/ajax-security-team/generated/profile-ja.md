@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ajax-security-team`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:32Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,12 +56,13 @@ Ajax Security Teamの標準化プロファイル。リポジトリ内の専用�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Flying Kitten, Ajax Security Team | canonical-name | 高 | Iran | https://www.crowdstrike.com/blog/cat-scratch-fever-crowdstrike-tracks-newly-reported-iranian-actor-flying-kitten/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Flying+Kitten%2C+Ajax+Security+Team&n=1 |
 | etda-threat-group-cards | Rocket Kitten, Newscaster, NewsBeef | single-alias-intersection | 中 | Iran | https://securelist.com/freezer-paper-around-free-meat/74503/<br>https://blog.checkpoint.com/wp-content/uploads/2015/11/rocket-kitten-report.pdf<br>https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp-the-spy-kittens-are-back.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -69,7 +70,7 @@ Ajax Security Teamの標準化プロファイル。リポジトリ内の専用�
 | misp-threat-actor | Flying Kitten | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/rpt-operation-saffron-rose.pdf<br>https://www.crowdstrike.com/blog/cat-scratch-fever-crowdstrike-tracks-newly-reported-iranian-actor-flying-kitten/<br>https://www.cfr.org/interactive/cyber-operations/saffron-rose |
 | misp-threat-actor | Rocket Kitten | multiple-name-intersection | 高 | IR, Iran (Islamic Republic of) | https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/operation-woolen-goldfish-when-kittens-go-phishing<br>https://www.trendmicro.com/cloud-content/us/pdfs/security-intelligence/white-papers/wp-the-spy-kittens-are-back.pdf<br>http://www.clearskysec.com/thamar-reservoir/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Magic Hound - G0059 | canonical-name | 高 |  | https://attack.mitre.org/wiki/Group/G0059<br>https://researchcenter.paloaltonetworks.com/2017/02/unit42-magic-hound-campaign-attacks-saudi-targets/ |
+| misp-mitre-enterprise-intrusion-set | Ajax Security Team - G0130 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0130<br>https://blog.checkpoint.com/wp-content/uploads/2015/11/rocket-kitten-report.pdf<br>https://documents.trendmicro.com/assets/wp/wp-operation-woolen-goldfish.pdf |
 | misp-mitre-intrusion-set | Ajax Security Team - G0130 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0130<br>https://blog.checkpoint.com/wp-content/uploads/2015/11/rocket-kitten-report.pdf<br>https://documents.trendmicro.com/assets/wp/wp-operation-woolen-goldfish.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -77,7 +78,6 @@ Ajax Security Teamの標準化プロファイル。リポジトリ内の専用�
 
 | 対象 | 関係 | データセット | 確度 | 評価 |
 |---|---|---|---|---|
-| Cleaver | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | CHRYSENE | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Charming Kitten | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 | Cleaver | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |

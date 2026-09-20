@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sidewinder`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,18 +53,19 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | SideWinder, Rattlesnake | canonical-name | 高 | India | https://securelist.com/apt-trends-report-q1-2018/85280/<br>https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/fireeye-sidewinder-targeted-attack.pdf<br>https://medium.com/@Sebdraven/apt-sidewinder-tricks-powershell-anti-forensics-and-execution-side-loading-5bc1a7e7c84c |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | RAZOR TIGER | canonical-name | 高 | IN, India | https://securelist.com/apt-trends-report-q1-2018/85280/<br>https://blog.trendmicro.com/trendlabs-security-intelligence/first-active-attack-exploiting-cve-2019-2215-found-on-google-play-linked-to-sidewinder-apt-group/<br>https://otx.alienvault.com/pulse/5fd10760f9afb730d37c4742/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Sidewinder - G0121 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0121<br>https://cdn-cybersecurity.att.com/docs/global-perspective-of-the-sidewinder-apt.pdf<br>https://cybleinc.com/2020/09/26/sidewinder-apt-targets-with-futuristic-tactics-and-techniques/ |
 | misp-mitre-intrusion-set | Sidewinder - G0121 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0121<br>https://cdn-cybersecurity.att.com/docs/global-perspective-of-the-sidewinder-apt.pdf<br>https://cybleinc.com/2020/09/26/sidewinder-apt-targets-with-futuristic-tactics-and-techniques/ |
 | misp-360net | 响尾蛇 - APT-C-24 | canonical-name | 高 | india | https://apt.360.net/report/apts/92.html |
 
@@ -240,8 +241,8 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 
 ## IOC／artifact概要
 
-- IOC値: 182件
-- IOC観測: 202件
+- IOC値: 198件
+- IOC観測: 218件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 19件
 - 非IOC artifact観測: 171件（`artifacts.csv`）
@@ -276,6 +277,7 @@ Sidewinderの標準化プロファイル。リポジトリ内の専用資料3件
 | source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

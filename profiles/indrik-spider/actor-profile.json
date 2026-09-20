@@ -4,7 +4,7 @@
   "name": "Indrik Spider",
   "status": "draft",
   "created_at": "2026-07-25T11:07:06Z",
-  "updated_at": "2026-09-20T10:03:11Z",
+  "updated_at": "2026-09-20T12:23:31Z",
   "languages": [
     "ja"
   ],
@@ -53,6 +53,7 @@
       }
     ],
     "actor_types": [
+      "financially-motivated",
       "threat-cluster"
     ],
     "first_seen": {
@@ -69,7 +70,7 @@
     },
     "active": "unknown",
     "description": "[Indrik Spider](https://attack.mitre.org/groups/G0119) is a Russia-based cybercriminal group that has been active since at least 2014. [Indrik Spider](https://attack.mitre.org/groups/G0119) initially started with the [Dridex](https://attack.mitre.org/software/S0384) banking Trojan, and then by 2017 they began running ransomware operations using [BitPaymer](https://attack.mitre.org/software/S0570), [WastedLocker](https://attack.mitre.org/software/S0612), and Hades ransomware. Following U.S. sanctions and an indictment in 2019, [Indrik Spider](https://attack.mitre.org/groups/G0119) changed their tactics and diversified their toolset.(Citation: Crowdstrike Indrik November 2018)(Citation: Crowdstrike EvilCorp March 2021)(Citation: Treasury EvilCorp Dec 2019)",
-    "analyst_notes": "2026-09 workbook-alias migration: workbook-only aliases were removed because the source workbook is not retained in this repository. MITRE, catalog, and actor-specific aliases were kept. Future workbook ingestion uses explicit actor-name columns only."
+    "analyst_notes": "2026-09 workbook-alias migration: workbook-only aliases were removed because the source workbook is not retained in this repository. MITRE, catalog, and actor-specific aliases were kept. Future workbook ingestion uses explicit actor-name columns only. 2026-09 migration: removed or re-scoped legacy geography-derived state sponsorship, generated espionage motivation, and alias evidence that was not source-specific."
   },
   "attribution": {
     "countries": [],
@@ -80,7 +81,17 @@
     "evidence_refs": [],
     "analyst_notes": ""
   },
-  "motivations": [],
+  "motivations": [
+    {
+      "type": "financial-gain",
+      "description": "Financially motivated intrusion or fraud.",
+      "confidence": "low",
+      "evidence_refs": [
+        "source--actor-mapping-workbook"
+      ],
+      "analyst_notes": "Derived from a scoped actor type; corroborate with actor-specific reporting."
+    }
+  ],
   "relationships": [
     {
       "relationship_id": "relationship--indrik-spider--alias-overlap--551db18a4a26210f",
@@ -2180,6 +2191,32 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {
@@ -2191,7 +2228,7 @@
     "uncertainties": [
       "Vendor cluster boundaries may differ from the canonical name used here."
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/indrik-spider.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/indrik-spider.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T12:23:31Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--bohrium`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,12 +50,13 @@ Bohriumの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | TA455, Smoke Sandstorm | canonical-name | 高 | Iran | https://www.microsoft.com/en-us/security/security-insider/smoke-sandstorm<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+TA455%2C+Smoke+Sandstorm&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Smoke Sandstorm | single-alias-intersection | 中 | Iran | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -140,11 +141,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
-- 非IOC artifact観測: 18件（`artifacts.csv`）
+- 要レビュー候補: 1件
+- 非IOC artifact観測: 19件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

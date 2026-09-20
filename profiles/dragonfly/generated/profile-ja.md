@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--dragonfly`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,6 @@ Dragonflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| ALLANITE | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Anger Bear | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Berserk Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | BROMINE | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -52,7 +51,9 @@ Dragonflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| ALLANITE | overlaps-with | ALLANITE has tactics and techniques similar to Dragonfly, but MITRE ATT&CK tracks it as separate Group G1000 with a distinct observed capability boundary. | 高 | `source--mitre-attack-ics-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -67,13 +68,13 @@ Dragonflyの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
-| etda-threat-group-cards | Allanite | single-alias-intersection | 中 |  | https://dragos.com/resource/allanite/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Allanite&n=1 |
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Berserk Bear, Dragonfly 2.0 | multiple-name-intersection | 高 | Russia | https://www.symantec.com/blogs/threat-intelligence/dragonfly-energy-sector-cyber-attacks<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Berserk+Bear%2C+Dragonfly+2.0&n=1 |
 | etda-threat-group-cards | Energetic Bear, Dragonfly | canonical-name | 高 | Russia | https://www.symantec.com/blogs/threat-intelligence/dragonfly-energy-sector-cyber-attacks<br>https://www.kaspersky.com/resource-center/threats/crouching-yeti-energetic-bear-malware-threat<br>https://www.sans.org/reading-room/whitepapers/ICS/impact-dragonfly-malware-industrial-control-systems-36672 |
 | etda-threat-group-cards | TeamSpy Crew | single-alias-intersection | 中 | Russia | https://www.crysys.hu/publications/files/teamspy.pdf<br>https://d2538mqrb7brka.cloudfront.net/wp-content/uploads/sites/43/2018/03/20134928/theteamspystory_final_t2.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=TeamSpy+Crew&n=1 |
@@ -81,9 +82,9 @@ Dragonflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | microsoft-threat-actor-mapping | Ghost Blizzard | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | ENERGETIC BEAR | canonical-name | 高 | RU, Russian Federation | https://www.gov.uk/government/publications/russias-fsb-malign-cyber-activity-factsheet/russias-fsb-malign-activity-factsheet<br>https://web.archive.org/web/20161020180305/http://www.scmagazineuk.com/iran-and-russia-blamed-for-state-sponsored-espionage/article/330401/<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2014/Dragonfly_Threat_Against_Western_Energy_Suppliers.pdf |
 | misp-threat-actor | TeamSpy Crew | single-alias-intersection | 中 | RU, Russian Federation | https://securelist.com/blog/incidents/35520/the-teamspy-crew-attacks-abusing-teamviewer-for-cyberespionage-8/<br>https://www.cfr.org/interactive/cyber-operations/team-spy-crew<br>https://threatpost.com/researchers-uncover-teamspy-attack-campaign-targeting-government-research-targets-032013/77646/ |
-| misp-threat-actor | ALLANITE | single-alias-intersection | 中 |  | https://dragos.com/adversaries.html<br>https://dragos.com/blog/20180510Allanite.html |
 | misp-microsoft-activity-group | Ghost Blizzard | canonical-name | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Dragonfly - G0035 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0035<br>http://www.symantec.com/content/en/us/enterprise/media/security%20response/whitepapers/Dragonfly%20Threat%20Against%20Western%20Energy%20Suppliers.pdf |
+| misp-mitre-enterprise-intrusion-set | Dragonfly 2.0 - G0074 | multiple-name-intersection | 高 |  | http://fortune.com/2017/09/06/hack-energy-grid-symantec/<br>https://attack.mitre.org/groups/G0074<br>https://www.dragos.com/threat/dymalloy/ |
+| misp-mitre-enterprise-intrusion-set | Dragonfly - G0035 | mitre-external-id | 高 |  | http://fortune.com/2017/09/06/hack-energy-grid-symantec/<br>https://attack.mitre.org/groups/G0035<br>https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=7382dce7-0260-4782-84cc-890971ed3f17&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments |
 | misp-mitre-intrusion-set | Dragonfly 2.0 - G0074 | multiple-name-intersection | 高 |  | http://fortune.com/2017/09/06/hack-energy-grid-symantec/<br>https://attack.mitre.org/groups/G0074<br>https://www.dragos.com/threat/dymalloy/ |
 | misp-mitre-intrusion-set | Dragonfly - G0035 | mitre-external-id | 高 |  | http://fortune.com/2017/09/06/hack-energy-grid-symantec/<br>https://attack.mitre.org/groups/G0035<br>https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=7382dce7-0260-4782-84cc-890971ed3f17&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments |
 | misp-360net | 一致なし |  |  |  |  |
@@ -274,8 +275,8 @@ Dragonflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## IOC／artifact概要
 
-- IOC値: 2件
-- IOC観測: 2件
+- IOC値: 7件
+- IOC観測: 8件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 98件（`artifacts.csv`）
@@ -332,6 +333,7 @@ Dragonflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-ics-19-2 | MITRE ICS ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-ics-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 
 ## 自由記述
 

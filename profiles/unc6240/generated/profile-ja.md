@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6240`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,9 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| ShinyHunters | Google Threat Intelligence Group | overlapping | 高 | `source--gtig-adversarial-ai-2026` | GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 |
+| Bling Libra | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-g1057` | Official MITRE ATT&CK associated-group name for G1057. |
+| ShinyHunters | Google Threat Intelligence Group / MITRE ATT&CK | overlapping | 高 | `source--gtig-adversarial-ai-2026`, `source--mitre-attack-g1057` | GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057. |
+| Storm-3127 | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 
 ## 帰属
 
@@ -49,19 +51,20 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## OSINTクロスチェック
 
-- 判定: `possible-match`
-- 調査日時: 2026-09-20T10:03:11Z
+- 判定: `matched`
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | ShinyHunters | single-alias-intersection | 中 |  | https://www.zerofox.com/blog/shinyhunters-breach/<br>https://www.bleepingcomputer.com/news/security/hacker-group-floods-dark-web-with-data-stolen-from-11-companies/<br>https://www.zdnet.com/article/a-hacker-group-is-selling-more-than-73-million-user-records-on-the-dark-web/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Storm-3127 | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | ShinyHunters | single-alias-intersection | 中 |  | https://cyberwarzone.com/shinyhunters-22-year-old-member-pleads-guilty-to-cyber-extortion-causing-6-million-in-damage/<br>https://www.bitdefender.com/blog/hotforsecurity/pizza-hut-australia-leaks-one-million-customers-details-claims-shinyhunters-hacking-group/<br>https://www.justice.gov/usao-wdwa/pr/alleged-french-cybercriminal-appear-seattle-indictment-conspiracy-computer-intrusion |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | ShinyHunters - G1057 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1057<br>https://blog.eclecticiq.com/shinyhunters-calling-financially-motivated-data-extortion-group-targeting-enterprise-cloud-applications<br>https://cloud.google.com/blog/topics/threat-intelligence/expansion-shinyhunters-saas-data-theft |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -130,7 +133,7 @@ UNC6240の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 非公開 | anonymous | unknown | reported |  |  |  | クラウド／SaaS | data-theft: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 不明 | 不明 | 2026-02-02 | 中 | `source--daily-02e1336153d9062de8f2` |
+| 被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 非公開 | aggregate | multiple-organizations | reported |  |  |  | メール／メールアカウント, クラウド／SaaS | data-theft: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述 | 不明 | 不明 | 2026-02-02 | 中 | `source--daily-02e1336153d9062de8f2` |
 | 被害事例: Salesforce攻撃後にFarmers Insuranceのデータ侵害、110万人に影響 | Salesforce攻撃後にFarmers Insurance | named | organization | reported | target--activity-rule--sector--4221b5fbb827488c6eaa |  |  | クラウド／SaaS | data-theft: サードパーティベンダー経由で不正アクセス、1,111,386人の顧客データが流出。 | 2025-05-29 | 2025-05-29 | 2025-08-26 | 中 | `source--daily-8012423fa9a259605e9c` |
 
 ## MITRE ATT&CK Matrixデータ
@@ -139,11 +142,11 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 13件
+- IOC観測: 22件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
-- 非IOC artifact観測: 3件（`artifacts.csv`）
+- 要レビュー候補: 5件
+- 非IOC artifact観測: 32件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -173,6 +176,9 @@ TTPなし
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-g1057 | ShinyHunters, Group G1057 | MITRE ATT&CK | 2026-07-31 | https://attack.mitre.org/groups/G1057/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

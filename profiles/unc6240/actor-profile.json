@@ -4,7 +4,7 @@
   "name": "UNC6240",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T10:03:11Z",
+  "updated_at": "2026-09-20T12:23:31Z",
   "languages": [
     "ja"
   ],
@@ -12,14 +12,35 @@
     "canonical_name": "UNC6240",
     "aliases": [
       {
-        "name": "ShinyHunters",
-        "vendor": "Google Threat Intelligence Group",
+        "name": "Bling Libra",
+        "vendor": "MITRE ATT&CK",
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-adversarial-ai-2026"
+          "source--mitre-attack-g1057"
         ],
-        "analyst_notes": "GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。"
+        "analyst_notes": "Official MITRE ATT&CK associated-group name for G1057."
+      },
+      {
+        "name": "ShinyHunters",
+        "vendor": "Google Threat Intelligence Group / MITRE ATT&CK",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-adversarial-ai-2026",
+          "source--mitre-attack-g1057"
+        ],
+        "analyst_notes": "GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057."
+      },
+      {
+        "name": "Storm-3127",
+        "vendor": "Microsoft",
+        "scope": "overlapping",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--osint-microsoft-threat-actor-mapping"
+        ],
+        "analyst_notes": "Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ."
       }
     ],
     "actor_types": [
@@ -476,6 +497,82 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=345. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--mitre-attack-g1057",
+      "path": "https://attack.mitre.org/groups/G1057/",
+      "url": "https://attack.mitre.org/groups/G1057/",
+      "title": "ShinyHunters, Group G1057",
+      "publisher": "MITRE ATT&CK",
+      "published_at": {
+        "value": "2026-07-31T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "Official ATT&CK Group G1057 associated-group names."
+    },
+    {
+      "source_id": "source--osint-microsoft-threat-actor-mapping",
+      "path": "actor_profile/reference/osint/microsoft-threat-actor-mapping.json",
+      "url": "https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json",
+      "title": "Microsoft Threat Actor Naming Mapping",
+      "publisher": "Microsoft",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "f69bdfe941cd5f7e139c6a498895799e337a1affc03e24b4a9062cff886c4542",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=None. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
+    },
+    {
+      "source_id": "source--osint-misp-mitre-enterprise-intrusion-set",
+      "path": "actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/mitre-enterprise-attack-intrusion-set.json",
+      "title": "MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set",
+      "publisher": "MISP Project / MITRE ATT&CK",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "95ca7865c421266d283ccff3dfbbdc98da4dd8591a07519bd23bb808f04dd422",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
     }
   ],
   "assessment": {
@@ -489,7 +586,7 @@
       "parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters は本プロファイルへ統合(merged)したが、同台帳が保持する観測4件(Health-ISAC 2026-07-30、Brinks Home 2026-07-31、ReliaQuest 2026-08-26、McKesson SEC Form 8-K 2026-08-29)は活動としては取り込んでいない。被害組織3社の開示はいずれもShinyHuntersを名指ししておらず、帰属が攻撃者の犯行主張と報道に依存するためである。犯行主張のみを根拠とする活動を本リポジトリでどう扱うかの方針が未決であり、方針決定後に観測単位で再判断する。",
       "2026-09-14の走査で、フロリダ州DAVIDデータベース侵害について州当局の公式確認が得られた。フロリダ州高速道路安全自動車局(FLHSMV)は2026-09-11に「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」と公表し、Plant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものを悪用された経路も示した。ただしFLHSMVは実行主体を「international cybercriminal organization」とのみ表現してShinyHuntersを名指しせず、同集団が主張する20万件超という件数も確認していない。すなわち確認されたのは侵害の発生であって帰属ではないため、犯行主張のみを根拠とする活動の扱いという上記の未決方針は解消していない。関連レコード(unc6240|https://x.com/flhsmv/status/2098239548660514979)は不採用として判断理由を保存している。"
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6240.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=possible-match.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6240.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T12:23:31Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {
@@ -505,8 +602,8 @@
       "victim_case_id": "victim--activity-rule--08fecf1c5b48c6bc87e9",
       "name": "被害事例: Mandiant、ShinyHuntersがSSOを悪用してクラウドデータを窃取する手口を詳述",
       "victim_name": null,
-      "disclosure_status": "anonymous",
-      "victim_type": "unknown",
+      "disclosure_status": "aggregate",
+      "victim_type": "multiple-organizations",
       "case_status": "reported",
       "description": "Mandiantは、ShinyHuntersのSaaSデータ窃取が、電話を伴うvishingと企業風フィッシングでSSO資格情報とMFAコードを奪う手口で拡大と説明。 攻撃者はIT/ヘルプデスクを装い通話中に偽ポータルへ誘導、奪取直後にログインし正規MFAを操作して自機を登録して持続化。 侵害後はOkta/Entra/GoogleのSSOダッシュボードを足場に、Salesforce（主標的）やMicrosoft 365、SharePoint、DocuSignなどへ横断アクセス。 MandiantはUNC6661/UNC6671/UNC6240（ShinyHunters）を追跡し、前二者が侵入・窃取、UNC6240が恐喝を担いTox IDを再利用と指摘。 これらの攻撃を検知するために、SSO侵害直後の大量流出、SharePoint/OneDriveのPowerShell UAでのアクセス、ToogleBox Recallの不意なOAuthやMFA通知削除を監視することを提案。",
       "activity_refs": [
@@ -516,6 +613,7 @@
       "malware_refs": [],
       "ttp_refs": [],
       "affected_assets": [
+        "メール／メールアカウント",
         "クラウド／SaaS"
       ],
       "impacts": [

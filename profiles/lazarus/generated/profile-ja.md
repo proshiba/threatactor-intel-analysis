@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lazarus`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -66,12 +66,13 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Covellite | single-alias-intersection | 中 | North Korea | https://dragos.com/resource/covellite/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Covellite&n=1 |
 | etda-threat-group-cards | Lazarus Group, Hidden Cobra, Labyrinth Chollima | canonical-name | 高 | North Korea | https://blog.malwarebytes.com/threat-analysis/2019/03/the-advanced-persistent-threat-files-lazarus-group/<br>https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/a-look-into-the-lazarus-groups-operations<br>https://www.kaspersky.com/about/press-releases/2017_chasing-lazarus-a-hunt-for-the-infamous-hackers-to-prevent-large-bank-robberies |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -84,7 +85,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | misp-microsoft-activity-group | Diamond Sleet | multiple-name-intersection | 高 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Jade Sleet | single-alias-intersection | 中 | KP, North Korea | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Moonstone Sleet | single-alias-intersection | 中 | KP, North Korea | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Lazarus Group - G0032 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0032<br>https://www.us-cert.gov/ncas/alerts/TA17-164A<br>https://www.operationblockbuster.com/wp-content/uploads/2016/02/Operation-Blockbuster-Report.pdf |
+| misp-mitre-enterprise-intrusion-set | Lazarus Group - G0032 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0032<br>https://blogs.jpcert.or.jp/en/2025/03/classifying-lazaruss-subgroup.html<br>https://blogs.microsoft.com/on-the-issues/2017/12/19/microsoft-facebook-disrupt-zinc-malware-attack-protect-customers-internet-ongoing-cyberthreats/ |
 | misp-mitre-intrusion-set | Lazarus Group - G0032 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0032<br>https://blogs.jpcert.or.jp/en/2025/03/classifying-lazaruss-subgroup.html<br>https://blogs.microsoft.com/on-the-issues/2017/12/19/microsoft-facebook-disrupt-zinc-malware-attack-protect-customers-internet-ongoing-cyberthreats/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -493,9 +494,9 @@ Blockbuster; Dark Seoul; Applejeus; Inception; NorthStar; Dream Job; KuCoin Hack
 
 ## IOC／artifact概要
 
-- IOC値: 1112件
-- IOC観測: 1298件
-- 複数攻撃で観測: 2件
+- IOC値: 1162件
+- IOC観測: 1403件
+- 複数攻撃で観測: 6件
 - 要レビュー候補: 338件
 - 非IOC artifact観測: 1139件（`artifacts.csv`）
 

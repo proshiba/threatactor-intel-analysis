@@ -35,6 +35,8 @@ class EntityBoundaryTests(unittest.TestCase):
             "raspberry-typhoon": ("lotus-blossom", "Raspberry Typhoon"),
             "sangria-tempest": ("fin7", "Sangria Tempest"),
             "violet-typhoon": ("zirconium", "Violet Typhoon"),
+            "radio-panda": ("blacktech", "Radio Panda"),
+            "white-company-fefa7c0a": ("white-company", "White Company"),
         }
         for duplicate, (canonical, alias) in merges.items():
             self.assertNotIn(duplicate, by_slug)
@@ -67,6 +69,8 @@ class EntityBoundaryTests(unittest.TestCase):
             "raspberry-typhoon": "lotus-blossom",
             "sangria-tempest": "fin7",
             "violet-typhoon": "zirconium",
+            "radio-panda": "blacktech",
+            "white-company-fefa7c0a": "white-company",
         }
         for duplicate, canonical in merges.items():
             legacy = self.load_profile(duplicate)
@@ -220,6 +224,113 @@ class EntityBoundaryTests(unittest.TestCase):
         }
         self.assertIn("RoyalAPT", ke3chang_aliases)
         self.assertNotIn("Royal APT", ke3chang_aliases)
+
+    def test_primary_source_boundaries_remain_separate(self) -> None:
+        catalog = json.loads(
+            (ROOT / "actor_profile" / "corpus-catalog.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        by_slug = {item["slug"]: item for item in catalog["actors"]}
+        boundaries = {
+            "ta505": ("FIN11", "fin11"),
+            "apt38": ("TEMP.Hermit", "temp-hermit"),
+            "naikon": ("APT30", "apt30"),
+            "dragonfly": ("ALLANITE", "allanite"),
+        }
+        for broad_slug, (separate_name, separate_slug) in boundaries.items():
+            self.assertIn(separate_slug, by_slug)
+            self.assertNotIn(separate_name, by_slug[broad_slug].get("aliases", []))
+            self.assertNotIn(
+                separate_name,
+                {
+                    item["name"]
+                    for item in self.load_profile(broad_slug)["actor"]["aliases"]
+                },
+            )
+
+    def test_gtig_2026_names_are_materialized_on_supported_profiles(self) -> None:
+        expected = {
+            "fin11": "RAZOR COMET",
+            "fin6": "SQUID COMET",
+            "fin7": "WILD COMET",
+            "fin8": "PUNCH COMET",
+            "apt33": "BLEAK ION",
+            "apt34": "SOLAR ION",
+            "charming-kitten": "RICH ION",
+            "apt39": "CINDER ION",
+            "apt42": "CALANQUE ION",
+            "muddywater": "MUDDY ION",
+            "apt37": "PLAIN NEPTUNE",
+            "apt45": "GRASS NEPTUNE",
+            "unc1069": "MIDNIGHT NEPTUNE",
+            "temp-hermit": "HERMIT NEPTUNE",
+            "ke3chang": "RIVER CASTLE",
+            "violin-panda": "RIDGE CASTLE",
+            "apt24": "RAVINE CASTLE",
+            "threat-group-3390": "SHORE CASTLE",
+            "apt30": "ISTHMUS CASTLE",
+            "zirconium": "TIDE CASTLE",
+            "leviathan": "ISLAND CASTLE",
+            "apt41": "SPIRE CASTLE",
+            "apt5": "BASALT CASTLE",
+            "tonto-team": "LONE CASTLE",
+            "tick": "TICK CASTLE",
+            "unc2814": "DARK CASTLE",
+            "naikon": "NAIKON CASTLE",
+            "mustang-panda": "BASIN CASTLE",
+            "blacktech": "CAVERN CASTLE",
+            "apt28": "LAKE RELIC",
+            "apt29": "ICE RELIC",
+            "sandworm": "SANDWORM RELIC",
+            "callisto": "COLD RELIC",
+            "uac-0020": "VERMIN RELIC",
+            "turla": "TURLA RELIC",
+        }
+        for slug, alias in expected.items():
+            aliases = {
+                item["name"]: item
+                for item in self.load_profile(slug)["actor"]["aliases"]
+            }
+            self.assertIn(alias, aliases, slug)
+            self.assertIn(
+                "source--gtig-unified-actor-naming-2026",
+                aliases[alias]["evidence_refs"],
+                slug,
+            )
+
+    def test_latest_mitre_and_microsoft_aliases_are_present(self) -> None:
+        expected = {
+            "teampcp": {"DeadCatx3", "PCPCat", "SHADOW-WATER-058", "ShellForce", "UNC6780"},
+            "unc6240": {"Bling Libra", "ShinyHunters", "Storm-3127"},
+            "unc5792": {"Frontier Blizzard"},
+            "unc6040": {"Storm-2581"},
+        }
+        for slug, names in expected.items():
+            aliases = {
+                item["name"] for item in self.load_profile(slug)["actor"]["aliases"]
+            }
+            self.assertTrue(names <= aliases, f"{slug}: {sorted(names - aliases)}")
+
+    def test_cyberav3ngers_absorbs_exact_unc5691_identity(self) -> None:
+        cyber = self.load_profile("cyberav3ngers")
+        aliases = {item["name"] for item in cyber["actor"]["aliases"]}
+        self.assertTrue(
+            {
+                "APT Iran",
+                "Bauxite",
+                "Hydro Kitten",
+                "Mr. Soul",
+                "Shahid Kaveh Group",
+                "Soldiers of Soloman",
+                "Soldiers of Solomon",
+                "Storm-0784",
+                "UNC5691",
+            }
+            <= aliases
+        )
+        self.assertEqual(self.load_profile("unc5691")["status"], "deprecated")
+        self.assertEqual(self.load_profile("storm-0784")["status"], "deprecated")
 
 
 if __name__ == "__main__":

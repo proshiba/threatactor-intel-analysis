@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-1811`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-1811 | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | UNC4393 | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/unc4393-goes-gently-into-silentnight<br>https://www.security.com/threat-intelligence/black-basta-ransomware-zero-day<br>https://cloud.google.com/blog/topics/threat-intelligence/detecting-disrupting-malvertising-backdoors/ |
 | misp-microsoft-activity-group | Storm-1811 | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Storm-1811 - G1046 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1046<br>https://redcanary.com/blog/threat-intelligence/intelligence-insights-june-2024/<br>https://redcanary.com/blog/threat-intelligence/storm-1811-black-basta/ |
 | misp-mitre-intrusion-set | Storm-1811 - G1046 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1046<br>https://redcanary.com/blog/threat-intelligence/intelligence-insights-june-2024/<br>https://redcanary.com/blog/threat-intelligence/storm-1811-black-basta/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -212,6 +213,7 @@ Aliasなし
 | source--storm-1811--7187587b3cf12824 | Bridewell 2026 Cyber Threat Intelligence Report |  | 2026 | summary/2026/Bridewell 2026 Cyber Threat Intelligence Report.pdf | report | TLP:CLEAR | 中 |
 | source--storm-1811--b047318da9540fcf | storm 1811 |  | 不明 | actor_profile/evidence/storm-1811.csv | structured-data | TLP:CLEAR | 中 |
 | source--storm-1811--f48ceffd73aa076f | Cybersecurity Threats 2024 Mid Year Report |  | 2024 | summary/2024/Cybersecurity Threats 2024 Mid-Year Report.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

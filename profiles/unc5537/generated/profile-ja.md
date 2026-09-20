@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5537`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | UNC5537 | canonical-name | 高 | Canada | https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion<br>https://www.bleepingcomputer.com/news/security/pure-storage-confirms-data-breach-after-snowflake-account-hack/<br>https://krebsonsecurity.com/2025/02/u-s-soldier-charged-in-att-hack-searched-can-hacking-be-treason/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -138,7 +139,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 7件（`artifacts.csv`）
+- 非IOC artifact観測: 8件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

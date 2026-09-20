@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt18`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,12 +54,13 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 18, Dynamite Panda, Wekby | canonical-name | 高 | China | https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+18%2C+Dynamite+Panda%2C+Wekby&n=1 |
 | etda-threat-group-cards | TA428 | single-alias-intersection | 中 | China | https://www.proofpoint.com/us/threat-insight/post/chinese-apt-operation-lagtime-it-targets-government-information-technology<br>https://st.drweb.com/static/new-www/news/2021/april/drweb_research_attacks_on_russian_research_institutes_en.pdf<br>https://labs.sentinelone.com/thundercats-hack-the-fsb-your-taxes-didnt-pay-for-this-op/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -67,7 +68,7 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | misp-threat-actor | APT18 | canonical-name | 高 | CN, China | https://threatpost.com/apt-gang-branches-out-to-medical-espionage-in-community-health-breach/107828<br>https://www.cfr.org/interactive/cyber-operations/apt-18<br>https://attack.mitre.org/groups/G0026 |
 | misp-threat-actor | TA428 | single-alias-intersection | 中 | CN | https://www.proofpoint.com/us/threat-insight/post/chinese-apt-operation-lagtime-it-targets-government-information-technology<br>https://www.recordedfuture.com/china-linked-ta428-threat-group<br>https://decoded.avast.io/luigicamastra/apt-group-targeting-governmental-agencies-in-east-asia |
 | misp-microsoft-activity-group | Satin Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | APT18 - G0026 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0026<br>http://www.secureworks.com/resources/blog/where-you-at-indicators-of-lateral-movement-using-at-exe-on-windows-7-systems/ |
+| misp-mitre-enterprise-intrusion-set | APT18 - G0026 | mitre-external-id | 高 |  | http://www.secureworks.com/resources/blog/where-you-at-indicators-of-lateral-movement-using-at-exe-on-windows-7-systems/<br>https://attack.mitre.org/groups/G0026<br>https://www.anomali.com/blog/evasive-maneuvers-the-wekby-group-attempts-to-evade-analysis-via-custom-rop |
 | misp-mitre-intrusion-set | APT18 - G0026 | mitre-external-id | 高 |  | http://www.secureworks.com/resources/blog/where-you-at-indicators-of-lateral-movement-using-at-exe-on-windows-7-systems/<br>https://attack.mitre.org/groups/G0026<br>https://www.anomali.com/blog/evasive-maneuvers-the-wekby-group-attempts-to-evade-analysis-via-custom-rop |
 | misp-360net | 一致なし |  |  |  |  |
 

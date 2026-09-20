@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--platinum`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,19 +50,20 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Platinum | canonical-name | 高 | China | https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf<br>https://www.fireeye.com/content/dam/fireeye-www/blog/pdfs/twoforonefinal.pdf<br>https://en.wikipedia.org/wiki/PLATINUM_(cybercrime_group) |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Fallow Squall | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | PLATINUM | canonical-name | 高 |  | http://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf<br>https://blogs.technet.microsoft.com/mmpc/2016/04/26/digging-deep-for-platinum/<br>https://attack.mitre.org/groups/G0068/ |
 | misp-microsoft-activity-group | Fallow Squall | canonical-name | 高 | SG | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | PLATINUM | canonical-name | 高 |  | https://blogs.technet.microsoft.com/mmpc/2016/04/26/digging-deep-for-platinum/<br>http://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf |
-| misp-mitre-enterprise-intrusion-set | PLATINUM - G0068 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0068 |
+| misp-mitre-enterprise-intrusion-set | PLATINUM - G0068 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0068<br>https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf |
 | misp-mitre-intrusion-set | PLATINUM - G0068 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0068<br>https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -159,8 +160,8 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 
 ## IOC／artifact概要
 
-- IOC値: 9件
-- IOC観測: 9件
+- IOC値: 13件
+- IOC観測: 13件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
 - 非IOC artifact観測: 3件（`artifacts.csv`）

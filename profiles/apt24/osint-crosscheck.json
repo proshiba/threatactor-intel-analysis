@@ -2,9 +2,10 @@
   "schema_version": "1.0.0",
   "actor_ref": "actor--apt24",
   "actor_name": "APT24",
-  "searched_at": "2026-09-20T10:03:11Z",
+  "searched_at": "2026-09-20T12:23:31Z",
   "search_scope": {
     "datasets": [
+      "gtig-threat-actor-naming",
       "etda-threat-group-cards",
       "cert-ua-uac-index",
       "microsoft-threat-actor-mapping",
@@ -18,12 +19,44 @@
     "name_inputs": [
       "APT24",
       "RAVINE CASTLE",
+      "UNC1088",
       "COULEE"
     ],
     "mitre_group_id": null
   },
   "overall_assessment": "matched",
   "actor_matches": {
+    "gtig-threat-actor-naming": [
+      {
+        "entry_uuid": "gtig-2026-ravine-castle",
+        "entry_value": "RAVINE CASTLE",
+        "external_id": null,
+        "matched_names": [
+          {
+            "normalized": "ravinecastle",
+            "profile_value": "RAVINE CASTLE",
+            "dataset_value": "RAVINE CASTLE"
+          },
+          {
+            "normalized": "unc1088",
+            "profile_value": "UNC1088",
+            "dataset_value": "UNC1088"
+          }
+        ],
+        "match_basis": "multiple-name-intersection",
+        "match_confidence": "high",
+        "candidate_names": [
+          "RAVINE CASTLE",
+          "UNC1088"
+        ],
+        "countries": [],
+        "description": "GTIG unified name for UNC1088.",
+        "refs": [
+          "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system"
+        ],
+        "related": []
+      }
+    ],
     "etda-threat-group-cards": [],
     "cert-ua-uac-index": [],
     "microsoft-threat-actor-mapping": [
@@ -99,6 +132,37 @@
             "type": "similar"
           }
         ]
+      },
+      {
+        "entry_uuid": "faa47cb0-bfbf-4bd8-a499-2610c61b176b",
+        "entry_value": "UNC1088",
+        "external_id": null,
+        "matched_names": [
+          {
+            "normalized": "ravinecastle",
+            "profile_value": "RAVINE CASTLE",
+            "dataset_value": "RAVINE CASTLE"
+          },
+          {
+            "normalized": "unc1088",
+            "profile_value": "UNC1088",
+            "dataset_value": "UNC1088"
+          }
+        ],
+        "match_basis": "multiple-name-intersection",
+        "match_confidence": "high",
+        "candidate_names": [
+          "UNC1088",
+          "RAVINE CASTLE"
+        ],
+        "countries": [
+          "CN"
+        ],
+        "description": "UNC1088 is a China-nexus threat cluster tracked by Mandiant, renamed RAVINE CASTLE under Google Threat Intelligence's updated naming system.",
+        "refs": [
+          "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/"
+        ],
+        "related": []
       }
     ],
     "misp-microsoft-activity-group": [
@@ -148,10 +212,12 @@
     "assessment": "No disjoint country conflict detected."
   },
   "ambiguities": {
-    "datasets_with_multiple_matches": [],
-    "scope_divergence_detected": false,
+    "datasets_with_multiple_matches": [
+      "misp-threat-actor"
+    ],
+    "scope_divergence_detected": true,
     "requires_review": false,
-    "assessment": "No multiple-match ambiguity detected."
+    "assessment": "Multiple taxonomy entries share names or aliases. A canonical name or MITRE ID anchors this profile, so the additional entries are retained as scope-divergence leads."
   },
   "limitations": [
     "Exact normalized-name matching does not prove one-to-one actor identity.",

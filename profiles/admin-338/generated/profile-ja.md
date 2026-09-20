@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--admin-338`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ admin@338の標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Temper Panda, admin@338 | canonical-name | 高 | China | https://www.fireeye.com/blog/threat-research/2013/10/know-your-enemy-tracking-a-rapidly-evolving-apt-actor.html<br>https://www.fireeye.com/blog/threat-research/2015/11/china-based-threat.html<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Temper+Panda%2C+admin%40338&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | TEMPER PANDA | canonical-name | 高 | CN, China | https://www.fireeye.com/blog/threat-research/2013/10/know-your-enemy-tracking-a-rapidly-evolving-apt-actor.html<br>https://www.fireeye.com/blog/threat-research/2015/11/china-based-threat.html<br>https://www.cfr.org/interactive/cyber-operations/admin338 |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | admin@338 - G0018 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0018<br>https://www.fireeye.com/blog/threat-research/2015/11/china-based-threat.html |
+| misp-mitre-enterprise-intrusion-set | admin@338 - G0018 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0018<br>https://www.fireeye.com/blog/threat-research/2015/11/china-based-threat.html |
 | misp-mitre-intrusion-set | admin@338 - G0018 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0018<br>https://www.fireeye.com/blog/threat-research/2015/11/china-based-threat.html |
 | misp-360net | 一致なし |  |  |  |  |
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt45`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ APT45の標準化プロファイル。リポジトリ内の専用資料1件とMI
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| GRASS NEPTUNE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -48,16 +50,17 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | GRASS NEPTUNE | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Andariel, Silent Chollima | canonical-name | 高 | North Korea | https://asec.ahnlab.com/en/56405/<br>https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-207a<br>https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Onyx Sleet | canonical-name | 高 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-threat-actor | APT45 | canonical-name | 高 | KP | https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine |
+| misp-threat-actor | APT45 | canonical-name | 高 | KP | https://cloud.google.com/blog/topics/threat-intelligence/apt45-north-korea-digital-military-machine<br>https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/ |
 | misp-microsoft-activity-group | Onyx Sleet | canonical-name | 高 | KP, North Korea | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -144,7 +147,7 @@ Aliasなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 22件（`artifacts.csv`）
+- 非IOC artifact観測: 23件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -179,6 +182,8 @@ Aliasなし
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

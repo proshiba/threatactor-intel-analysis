@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cobalt-group`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -57,18 +57,19 @@ Cobalt Groupの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Cobalt Group | canonical-name | 高 | Russia | https://www.ptsecurity.com/upload/corporate/ww-en/analytics/Cobalt-2017-eng.pdf<br>https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-september-cobalt-spider/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Cobalt+Group&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Cobalt | canonical-name | 高 |  | https://www.helpnetsecurity.com/2016/11/22/cobalt-hackers-synchronized-atm-heists/<br>https://www.bleepingcomputer.com/news/security/cobalt-hacking-group-tests-banks-in-russia-and-romania/<br>https://www.secureworks.com/blog/cybercriminals-increasingly-trying-to-ensnare-the-big-financial-fish |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Cobalt Group - G0080 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0080<br>https://blog.morphisec.com/cobalt-gang-2.0<br>https://blog.talosintelligence.com/2018/07/multiple-cobalt-personality-disorder.html |
 | misp-mitre-intrusion-set | Cobalt Group - G0080 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0080<br>https://blog.morphisec.com/cobalt-gang-2.0<br>https://blog.talosintelligence.com/2018/07/multiple-cobalt-personality-disorder.html |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -261,6 +262,7 @@ Cobalt Groupの標準化プロファイル。リポジトリ内の専用資料1�
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--patchwork`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -58,12 +58,13 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Operation HangOver, Monsoon, Viceroy Tiger | multiple-name-intersection | 高 | India | https://keybase.pub/kung_foo/papers_and_presentations/Unveiling_an_Indian_Cyberattack_Infrastructure.pdf<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2013/Unveiling%20an%20Indian%20Cyberattack%20Infrastructure%20-%20appendixes.pdf<br>https://www.darkreading.com/attacks-breaches/hangover-persists-more-mac-malware-found/d/d-id/1140147 |
 | etda-threat-group-cards | Patchwork, Dropping Elephant | canonical-name | 高 | India | https://s3-us-west-2.amazonaws.com/cymmetria-blog/public/Unveiling_Patchwork.pdf<br>https://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries<br>https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -71,18 +72,15 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 | misp-threat-actor | VICEROY TIGER | single-alias-intersection | 中 | IN | https://github.com/jack8daniels2/threat-INTel/blob/master/2013/Unveiling-an-Indian-Cyberattack-Infrastructure-appendixes.pdf<br>https://ti.360.net/blog/articles/latest-activity-of-apt-c-35/<br>https://www.netscout.com/blog/asert/donot-team-leverages-new-modular-malware-framework-south-asia |
 | misp-threat-actor | QUILTED TIGER | canonical-name | 高 | IN, India | https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=09308982-77bd-41e0-8269-f2cc9ce3266e&CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&tab=librarydocuments<br>https://www.forcepoint.com/blog/x-labs/monsoon-analysis-apt-campaign<br>https://www.cymmetria.com/patchwork-targeted-attack/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Patchwork - G0040 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0040<br>https://s3-us-west-2.amazonaws.com/cymmetria-blog/public/Unveiling%20Patchwork.pdf<br>http://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries |
-| misp-mitre-enterprise-intrusion-set | MONSOON - G0042 | single-alias-intersection | 中 |  | https://attack.mitre.org/wiki/Group/G0042 |
+| misp-mitre-enterprise-intrusion-set | Patchwork - G0040 | mitre-external-id | 高 |  | http://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries<br>https://attack.mitre.org/groups/G0040<br>https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf |
+| misp-mitre-enterprise-intrusion-set | MONSOON - G0042 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0042 |
 | misp-mitre-intrusion-set | Patchwork - G0040 | mitre-external-id | 高 |  | http://www.symantec.com/connect/blogs/patchwork-cyberespionage-group-expands-targets-governments-wide-range-industries<br>https://attack.mitre.org/groups/G0040<br>https://documents.trendmicro.com/assets/tech-brief-untangling-the-patchwork-cyberespionage-group.pdf |
 | misp-mitre-intrusion-set | MONSOON - G0042 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0042 |
 | misp-360net | 摩诃草 - APT-C-09 | canonical-name | 高 | india | https://apt.360.net/report/apts/110.html<br>https://apt.360.net/report/apts/6.html |
 
 ### 関係性候補（未統合）
 
-| 対象 | 関係 | データセット | 確度 | 評価 |
-|---|---|---|---|---|
-| MONSOON | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
-| Patchwork | similar | misp-mitre-enterprise-intrusion-set | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
+候補なし
 
 ### クロスチェック上の制約
 

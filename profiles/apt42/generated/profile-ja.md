@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt42`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,8 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| CALANQUE ION | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026` | GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。 |
+| CALANQUE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
+| CALANQUE ION | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-unified-actor-naming-2026` | GTIG原文の「CALANQUE ION, an Iranian government-backed actor previously tracked as APT42」に基づく。APT42はMandiant/GTIG自身の指定子であり、本件は他ベンダーのクラスタとの対応付けではなく同一ベンダーによる自称の改称である。したがって追跡範囲の差が生じないためscopeはexact、confidenceはhighとする。GTIGの新命名体系(2026-07-24 https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system)に沿った改称であり、帰属の変更ではない。OSINT_RULESに従い、単独ベンダーの名称変更と政府帰属は分離して扱う。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 
 ## 帰属
 
@@ -54,18 +55,19 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | CALANQUE ION | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | APT 42 | canonical-name | 高 | Iran | https://www.mandiant.com/media/17826<br>https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+42&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | APT42 | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://www.mandiant.com/resources/blog/apt42-charms-cons-compromises<br>https://services.google.com/fh/files/misc/tool-of-first-resort-israel-hamas-war-cyber.pdf |
+| misp-threat-actor | APT42 | canonical-name | 高 | IR, Iran (Islamic Republic of) | https://www.mandiant.com/resources/blog/apt42-charms-cons-compromises<br>https://services.google.com/fh/files/misc/tool-of-first-resort-israel-hamas-war-cyber.pdf<br>https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | APT42 - G1044 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1044<br>https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations<br>https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf |
 | misp-mitre-intrusion-set | APT42 - G1044 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1044<br>https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations<br>https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -260,6 +262,9 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

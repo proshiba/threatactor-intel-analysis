@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--akira`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-1567 | single-alias-intersection | 中 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Storm-1567 | canonical-name | 高 |  | https://news.sophos.com/en-us/2023/12/20/cryptoguard-an-asymmetric-approach-to-the-ransomware-battle/<br>https://securelist.com/crimeware-report-fakesg-akira-amos/111483/<br>https://www.trellix.com/en-us/about/newsroom/stories/research/akira-ransomware.html |
 | misp-microsoft-activity-group | Storm-1567 | single-alias-intersection | 中 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Akira - G1024 | mitre-external-id | 高 |  | https://arcticwolf.com/resources/blog/conti-and-akira-chained-together/<br>https://attack.mitre.org/groups/G1024<br>https://blog.bushidotoken.net/2023/09/tracking-adversaries-akira-another.html |
 | misp-mitre-intrusion-set | Akira - G1024 | mitre-external-id | 高 |  | https://arcticwolf.com/resources/blog/conti-and-akira-chained-together/<br>https://attack.mitre.org/groups/G1024<br>https://blog.bushidotoken.net/2023/09/tracking-adversaries-akira-another.html |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -230,8 +231,8 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 21件
-- IOC観測: 23件
+- IOC値: 20件
+- IOC観測: 22件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 17件
 - 非IOC artifact観測: 181件（`artifacts.csv`）
@@ -337,6 +338,7 @@ Akiraの標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

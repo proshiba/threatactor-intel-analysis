@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--mustang-panda`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,6 +18,7 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
+| BASIN CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | BRONZE PRESIDENT | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | CAMARO DRAGON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ClumsyToad | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -27,12 +28,12 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | HIVE0154 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | HoneyMyte | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | LUMINOUS MOTH | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Red Lich | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | RedDelta | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Red Lich | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | STATELY TAURUS | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TANTALUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| TEMP.Hex | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 |
+| TEMP.Hex | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--mitre-attack-19-1`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. 2026-09-10追記(帰属競合・未解決): Google Threat Intelligence Group は原文(2026-09-08 https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai)で 「BASIN CASTLE, a PRC-nexus cyber espionage group previously tracked as BASIN and TEMP.Hex」と述べ、TEMP.Hex を BASIN CASTLE の旧称として扱っている。一方、本プロファイルは MITRE ATT&CK を典拠として TEMP.Hex を Mustang Panda の別名(scope: overlapping)に持つ。両者は同一の別名を異なるクラスタへ割り当てており、どちらが正しいかを判定できる一次資料は得られていない。OSINT_RULES に従い既存の帰属を上書きせず両論を残す。本別名を根拠に BASIN CASTLE 側の活動を本プロファイルへ取り込まないこと。境界評価は claim-audit.json の claim--gtig-basin-castle-temp-hex-boundary へ記録した。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | TWILL TYPHOON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | UNC6384 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 
@@ -68,12 +69,13 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | BASIN CASTLE | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | LuminousMoth | single-alias-intersection | 中 | China | https://securelist.com/apt-luminousmoth/103332/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=LuminousMoth&n=1 |
 | etda-threat-group-cards | Mustang Panda, Bronze President | canonical-name | 高 | China | https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-june-mustang-panda/<br>https://unit42.paloaltonetworks.com/pkplug_chinese_cyber_espionage_group_attacking_asia/<br>https://www.trendmicro.com/en_us/research/23/f/behind-the-scenes-unveiling-the-hidden-workings-of-earth-preta.html |
 | etda-threat-group-cards | RedDelta | multiple-name-intersection | 高 | China | https://go.recordedfuture.com/hubfs/reports/cta-2020-0728.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=RedDelta&n=1 |
@@ -87,7 +89,8 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | misp-threat-actor | UNC6384 | single-alias-intersection | 中 | CN | https://cloud.google.com/blog/topics/threat-intelligence/prc-nexus-espionage-targets-diplomats/ |
 | misp-microsoft-activity-group | Pink Sandstorm | single-alias-intersection | 中 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Twill Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Mustang Panda - G0129 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0129<br>https://blog.cloudflare.com/2026-threat-report/<br>https://blog.eclecticiq.com/mustang-panda-apt-group-uses-european-commission-themed-lure-to-deliver-plugx-malware |
+| misp-mitre-enterprise-intrusion-set | LuminousMoth - G1014 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1014<br>https://securelist.com/apt-luminousmoth/103332/<br>https://www.bitdefender.com/blog/labs/luminousmoth-plugx-file-exfiltration-and-persistence-revisited |
 | misp-mitre-intrusion-set | Mustang Panda - G0129 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0129<br>https://blog.cloudflare.com/2026-threat-report/<br>https://blog.eclecticiq.com/mustang-panda-apt-group-uses-european-commission-themed-lure-to-deliver-plugx-malware |
 | misp-mitre-intrusion-set | LuminousMoth - G1014 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1014<br>https://securelist.com/apt-luminousmoth/103332/<br>https://www.bitdefender.com/blog/labs/luminousmoth-plugx-file-exfiltration-and-persistence-revisited |
 | misp-360net | 一致なし |  |  |  |  |
@@ -401,11 +404,11 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 
 ## IOC／artifact概要
 
-- IOC値: 19件
+- IOC値: 10件
 - IOC観測: 19件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 158件（`artifacts.csv`）
+- 非IOC artifact観測: 139件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -490,6 +493,9 @@ Mustang Pandaの標準化プロファイル。リポジトリ内の専用資料1
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

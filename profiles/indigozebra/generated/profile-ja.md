@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--indigozebra`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | IndigoZebra | canonical-name | 高 | China | https://blog.checkpoint.com/2021/07/01/cyber-espionage-on-afghanistan-kyrgyzstan-and-uzbekistan-by-chinese-speaking-hacker-group/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=IndigoZebra&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | IndigoZebra | canonical-name | 高 | CN | https://research.checkpoint.com/2021/indigozebra-apt-continues-to-attack-central-asia-with-evolving-tools/<br>https://www.rewterz.com/rewterz-news/rewterz-threat-intel-indigozebra-apt-group-targeting-central-asia-active-iocs<br>https://securelist.com/apt-trends-report-q2-2017/79332/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | IndigoZebra - G0136 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0136<br>https://research.checkpoint.com/2021/indigozebra-apt-continues-to-attack-central-asia-with-evolving-tools/<br>https://securelist.com/apt-trends-report-q2-2017/79332/ |
 | misp-mitre-intrusion-set | IndigoZebra - G0136 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0136<br>https://research.checkpoint.com/2021/indigozebra-apt-continues-to-attack-central-asia-with-evolving-tools/<br>https://securelist.com/apt-trends-report-q2-2017/79332/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -178,6 +179,7 @@ Aliasなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

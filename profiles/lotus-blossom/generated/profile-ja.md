@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--lotus-blossom`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -60,12 +60,13 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 30, Override Panda | multiple-name-intersection | 高 | China | https://www2.fireeye.com/rs/fireye/images/rpt-apt30.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+30%2C+Override+Panda&n=1 |
 | etda-threat-group-cards | Lotus Blossom, Spring Dragon, Thrip | canonical-name | 高 | China | https://blog.talosintelligence.com/lotus-blossom-espionage-group/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Lotus+Blossom%2C+Spring+Dragon%2C+Thrip&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -74,7 +75,8 @@ Lotus Blossomの標準化プロファイル。リポジトリ内の専用資料1
 | misp-threat-actor | Thrip | single-alias-intersection | 中 | Unknown | https://www.cfr.org/interactive/cyber-operations/thrip<br>https://www.symantec.com/blogs/threat-intelligence/thrip-hits-satellite-telecoms-defense-targets<br>https://attack.mitre.org/groups/G0076/ |
 | misp-threat-actor | Raspberry Typhoon | multiple-name-intersection | 高 | CN | https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RW1aFyW |
 | misp-microsoft-activity-group | Raspberry Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Lotus Blossom - G0030 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0030<br>https://www.paloaltonetworks.com/resources/research/unit42-operation-lotus-blossom.html |
+| misp-mitre-enterprise-intrusion-set | Lotus Blossom - G0030 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0030<br>https://blog.talosintelligence.com/lotus-blossom-espionage-group/<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
+| misp-mitre-enterprise-intrusion-set | Thrip - G0076 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0076<br>https://www.symantec.com/blogs/threat-intelligence/thrip-hits-satellite-telecoms-defense-targets |
 | misp-mitre-intrusion-set | Lotus Blossom - G0030 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0030<br>https://blog.talosintelligence.com/lotus-blossom-espionage-group/<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-mitre-intrusion-set | Thrip - G0076 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0076<br>https://www.symantec.com/blogs/threat-intelligence/thrip-hits-satellite-telecoms-defense-targets |
 | misp-360net | 一致なし |  |  |  |  |

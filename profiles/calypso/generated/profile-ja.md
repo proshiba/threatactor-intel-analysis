@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--calypso`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,12 +53,13 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Calypso | canonical-name | 高 | China | https://www.ptsecurity.com/ww-en/analytics/calypso-apt-2019/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Calypso&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -162,11 +163,11 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 
 ## IOC／artifact概要
 
-- IOC値: 1件
-- IOC観測: 1件
+- IOC値: 10件
+- IOC観測: 10件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
-- 非IOC artifact観測: 55件（`artifacts.csv`）
+- 非IOC artifact観測: 58件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

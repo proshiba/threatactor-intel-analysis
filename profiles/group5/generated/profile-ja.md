@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--group5`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Group5 | canonical-name | 高 | Iran | https://www.securityweek.com/iranian-actor-group5-targeting-syrian-opposition<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Group5&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Group5 | canonical-name | 高 |  | https://www.securityweek.com/iranian-actor-group5-targeting-syrian-opposition<br>https://attack.mitre.org/groups/G0043/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Group5 - G0043 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0043<br>https://citizenlab.org/2016/08/group5-syria/ |
+| misp-mitre-enterprise-intrusion-set | Group5 - G0043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0043<br>https://citizenlab.ca/2016/08/group5-syria/ |
 | misp-mitre-intrusion-set | Group5 - G0043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0043<br>https://citizenlab.ca/2016/08/group5-syria/ |
 | misp-360net | 一致なし |  |  |  |  |
 

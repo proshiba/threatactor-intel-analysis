@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--void-balaur`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Void Balaur | canonical-name | 高 |  | https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/the-far-reaching-attacks-of-the-void-balaur-cybermercenary-group<br>https://documents.trendmicro.com/assets/white_papers/wp-void-balaur-tracking-a-cybermercenarys-activities.pdf<br>https://www.sentinelone.com/labs/the-sprawling-infrastructure-of-a-careless-mercenary/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -171,8 +172,8 @@ TTPなし
 
 ## IOC／artifact概要
 
-- IOC値: 175件
-- IOC観測: 230件
+- IOC値: 208件
+- IOC観測: 274件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 4件
 - 非IOC artifact観測: 5件（`artifacts.csv`）

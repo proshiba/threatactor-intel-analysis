@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--prince-of-persia`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,12 +50,13 @@ Prince of Persiaの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Domestic Kitten | single-alias-intersection | 中 | Iran | https://research.checkpoint.com/domestic-kitten-an-iranian-surveillance-operation/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Domestic+Kitten&n=1 |
 | etda-threat-group-cards | Infy, Prince of Persia | canonical-name | 高 | Iran | https://www.blackhat.com/docs/us-16/materials/us-16-Guarnieri-Iran-And-The-Soft-War-For-Internet-Dominance-wp.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Infy%2C+Prince+of+Persia&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |

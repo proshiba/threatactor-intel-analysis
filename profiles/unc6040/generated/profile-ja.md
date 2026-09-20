@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc6040`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,7 +16,9 @@ UNC6040の標準化プロファイル。リポジトリ内の専用資料1件と
 - 最終観測: 不明
 - 活動状態: unknown
 
-Aliasなし
+| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
+|---|---|---|---|---|---|
+| Storm-2581 | Microsoft | overlapping | 高 | `source--osint-microsoft-threat-actor-mapping` | Microsoft's official mapping links this name to the profile identifier; cross-vendor collection boundaries may differ. |
 
 ## 帰属
 
@@ -48,15 +50,16 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Storm-2581 | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | UNC6040 | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/voice-phishing-data-extortion<br>https://cloud.google.com/blog/topics/threat-intelligence/technical-analysis-vishing-threats/<br>https://www.varonis.com/blog/salesforce-vishing-threat-unc604 |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
@@ -175,6 +178,7 @@ TTPなし
 | source--unc6040--b0855250f118458d | ShinyHunters |  | 不明 | cybercrime/ShinyHunters/ShinyHunters.pdf | report | TLP:CLEAR | 中 |
 | source--unc6040--ba9208b874d30aa1 | unc6040 |  | 不明 | actor_profile/evidence/unc6040.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc6040--fa88612d0bc5ab99 | 2025 IC3Report |  | 2025 | cybercrime/2026/2025_IC3Report.pdf | report | TLP:CLEAR | 中 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

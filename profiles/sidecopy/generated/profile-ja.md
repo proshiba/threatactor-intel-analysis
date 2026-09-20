@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sidecopy`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | SideCopy | canonical-name | 高 | Pakistan | https://www.seqrite.com/blog/operation-sidecopy/<br>https://blog.malwarebytes.com/threat-intelligence/2021/12/sidecopy-apt-connecting-lures-to-victims-payloads-to-infrastructure/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=SideCopy&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Viridian Vortex | canonical-name | 高 | Pakistan | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | SideCopy | canonical-name | 高 | PK | https://www.seqrite.com/blog/operation-sidecopy/<br>https://blog.malwarebytes.com/threat-intelligence/2021/12/sidecopy-apt-connecting-lures-to-victims-payloads-to-infrastructure/<br>https://www.telsy.com/sidecopy-apt-from-windows-to-nix/ |
 | misp-microsoft-activity-group | Storm-0156 | canonical-name | 高 | PK, Pakistan | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | SideCopy - G1008 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1008<br>https://www.malwarebytes.com/blog/news/2021/12/sidecopy-apt-connecting-lures-to-victims-payloads-to-infrastructure |
 | misp-mitre-intrusion-set | SideCopy - G1008 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1008<br>https://www.malwarebytes.com/blog/news/2021/12/sidecopy-apt-connecting-lures-to-victims-payloads-to-infrastructure |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -153,8 +154,8 @@ Aliasなし
 
 ## IOC／artifact概要
 
-- IOC値: 371件
-- IOC観測: 480件
+- IOC値: 387件
+- IOC観測: 523件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 217件
 - 非IOC artifact観測: 73件（`artifacts.csv`）
@@ -188,6 +189,7 @@ Aliasなし
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

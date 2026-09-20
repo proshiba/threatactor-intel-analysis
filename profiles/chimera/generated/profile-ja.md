@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--chimera`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -37,7 +37,7 @@ Chimeraの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Gelsemium | overlaps-with | 共有alias: Gelsemium, GELSEMIUM | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| Gelsemium | overlaps-with | 共有alias: GELSEMIUM, Gelsemium | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 
 ## ダイヤモンドモデル
 
@@ -52,19 +52,21 @@ Chimeraの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Chimera | canonical-name | 高 | China | https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Chimera&n=1 |
 | etda-threat-group-cards | Gelsemium | single-alias-intersection | 中 | China | https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf<br>https://www.venustech.com.cn/uploads/2018/08/231401512426.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Gelsemium&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Gelsemium | single-alias-intersection | 中 |  | https://www.welivesecurity.com/2021/06/09/gelsemium-when-threat-actors-go-gardening/<br>https://www.venustech.com.cn/uploads/2018/08/231401512426.pdf<br>https://hitcon.org/2016/pacific/0composition/pdf/1202/1202%20R0%200930%20an%20intelligance-driven%20approach%20to%20cyber%20defense.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Chimera - G0114 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0114<br>https://cycraft.com/download/CyCraft-Whitepaper-Chimera_V4.1.pdf<br>https://web.archive.org/web/20230218064220/https://research.nccgroup.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ |
+| misp-mitre-enterprise-intrusion-set | Gelsemium - G0141 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0141<br>https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf |
 | misp-mitre-intrusion-set | Chimera - G0114 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0114<br>https://cycraft.com/download/CyCraft-Whitepaper-Chimera_V4.1.pdf<br>https://web.archive.org/web/20230218064220/https://research.nccgroup.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/ |
 | misp-mitre-intrusion-set | Gelsemium - G0141 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0141<br>https://www.welivesecurity.com/wp-content/uploads/2021/06/eset_gelsemium.pdf |
 | misp-360net | 一致なし |  |  |  |  |
@@ -245,6 +247,7 @@ Chimeraの標準化プロファイル。リポジトリ内の専用資料1件と
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

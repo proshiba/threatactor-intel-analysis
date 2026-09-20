@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--darkhotel`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,19 +53,20 @@ Darkhotelの標準化プロファイル。リポジトリ内の専用資料3件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | DarkHotel | canonical-name | 高 | South Korea | https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070903/darkhotel_kl_07.11.pdf<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070901/darkhotelappendixindicators_kl.pdf<br>https://www.securityweek.com/darkhotel-apt-uses-new-methods-target-politicians |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Zigzag Hail | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | DarkHotel | canonical-name | 高 | KR, Korea (Republic of) | https://securelist.com/blog/research/71713/darkhotels-attacks-in-2015/<br>https://blogs.technet.microsoft.com/mmpc/2016/06/09/reverse-engineering-dubnium-2<br>https://securelist.com/blog/research/66779/the-darkhotel-apt/ |
 | misp-microsoft-activity-group | DUBNIUM | canonical-name | 高 |  | https://securelist.com/blog/research/71713/darkhotels-attacks-in-2015/<br>https://blogs.technet.microsoft.com/mmpc/2016/06/09/reverse-engineering-dubnium-2<br>https://blogs.technet.microsoft.com/mmpc/2016/06/20/reverse-engineering-dubniums-flash-targeting-exploit/ |
 | misp-microsoft-activity-group | Zigzag Hail | canonical-name | 高 | KR | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Darkhotel - G0012 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0012<br>https://securelist.com/files/2014/11/darkhotel%20kl%2007.11.pdf |
+| misp-mitre-enterprise-intrusion-set | Darkhotel - G0012 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070903/darkhotel_kl_07.11.pdf |
 | misp-mitre-intrusion-set | Darkhotel - G0012 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070903/darkhotel_kl_07.11.pdf |
 | misp-360net | Darkhotel - APT-C-06 | single-alias-intersection | 中 | southKorea | https://apt.360.net/report/apts/97.html<br>https://apt.360.net/report/apts/3.html |
 
@@ -259,11 +260,11 @@ Daybreak?; Fallout Team; WizardOpium
 
 ## IOC／artifact概要
 
-- IOC値: 98件
-- IOC観測: 119件
+- IOC値: 96件
+- IOC観測: 118件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 77件
-- 非IOC artifact観測: 57件（`artifacts.csv`）
+- 非IOC artifact観測: 48件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

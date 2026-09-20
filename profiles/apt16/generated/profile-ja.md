@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt16`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 16, SVCMONDR | canonical-name | 高 | China | https://securelist.com/cve-2015-2545-overview-of-current-threats/74828/<br>https://www.fireeye.com/blog/threat-research/2015/12/the-eps-awakens-part-two.html<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+16%2C+SVCMONDR&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT16 | canonical-name | 高 | CN, China | https://www.fireeye.com/blog/threat-research/2015/12/the_eps_awakens.html<br>https://www.cfr.org/interactive/cyber-operations/apt-16<br>https://attack.mitre.org/groups/G0023 |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | APT16 - G0023 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0023<br>https://www.fireeye.com/blog/threat-research/2015/12/the-eps-awakens-part-two.html |
+| misp-mitre-enterprise-intrusion-set | APT16 - G0023 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0023<br>https://www.fireeye.com/blog/threat-research/2015/12/the-eps-awakens-part-two.html |
 | misp-mitre-intrusion-set | APT16 - G0023 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0023<br>https://www.fireeye.com/blog/threat-research/2015/12/the-eps-awakens-part-two.html |
 | misp-360net | 一致なし |  |  |  |  |
 

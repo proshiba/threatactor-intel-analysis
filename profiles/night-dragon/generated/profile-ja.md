@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--night-dragon`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,18 +48,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Night Dragon | canonical-name | 高 | China | https://securingtomorrow.mcafee.com/wp-content/uploads/2011/02/McAfee_NightDragon_wp_draft_to_customersv1-1.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Night+Dragon&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Night Dragon | canonical-name | 高 | CN | https://kc.mcafee.com/corporate/index?page=content&id=KB71150<br>https://securingtomorrow.mcafee.com/wp-content/uploads/2011/02/McAfee_NightDragon_wp_draft_to_customersv1-1.pdf<br>https://attack.mitre.org/groups/G0014/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Night Dragon - G0014 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0014<br>https://securingtomorrow.mcafee.com/wp-content/uploads/2011/02/McAfee%20NightDragon%20wp%20draft%20to%20customersv1-1.pdf<br>https://www.arbornetworks.com/blog/asert/musical-chairs-playing-tetris/ |
+| misp-mitre-enterprise-intrusion-set | Night Dragon - G0014 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0014<br>https://securingtomorrow.mcafee.com/wp-content/uploads/2011/02/McAfee_NightDragon_wp_draft_to_customersv1-1.pdf |
 | misp-mitre-intrusion-set | Night Dragon - G0014 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0014<br>https://securingtomorrow.mcafee.com/wp-content/uploads/2011/02/McAfee_NightDragon_wp_draft_to_customersv1-1.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 

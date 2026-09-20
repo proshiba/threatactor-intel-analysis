@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1549`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,12 +55,13 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | TA455, Smoke Sandstorm | canonical-name | 高 | Iran | https://www.microsoft.com/en-us/security/security-insider/smoke-sandstorm<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+TA455%2C+Smoke+Sandstorm&n=1 |
 | etda-threat-group-cards | Tortoiseshell, Imperial Kitten | single-alias-intersection | 中 | Iran | https://www.symantec.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain<br>https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Tortoiseshell%2C+Imperial+Kitten&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -71,7 +72,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | misp-threat-actor | UNC1549 | canonical-name | 高 | IR | https://www.mandiant.com/resources/blog/suspected-iranian-unc1549-targets-israel-middle-east<br>https://research.checkpoint.com/2025/nimbus-manticore-deploys-new-malware-targeting-europe<br>https://blog.checkpoint.com/research/iranian-threat-actor-nimbus-manticore-expands-campaigns-into-europe-with-advanced-malware-and-fake-job-lures/ |
 | misp-microsoft-activity-group | Crimson Sandstorm | single-alias-intersection | 中 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Smoke Sandstorm | canonical-name | 高 | IR, Iran | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | CURIUM - G1012 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain |
 | misp-mitre-intrusion-set | CURIUM - G1012 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -211,11 +212,11 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 
 ## IOC／artifact概要
 
-- IOC値: 215件
-- IOC観測: 272件
-- 複数攻撃で観測: 8件
-- 要レビュー候補: 0件
-- 非IOC artifact観測: 30件（`artifacts.csv`）
+- IOC値: 33件
+- IOC観測: 33件
+- 複数攻撃で観測: 0件
+- 要レビュー候補: 1件
+- 非IOC artifact観測: 33件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -257,6 +258,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | source--unc1549--c47ef662fbdb6d88 | m trends 2025 en |  | 2025 | summary/2025/m-trends-2025-en.pdf | report | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

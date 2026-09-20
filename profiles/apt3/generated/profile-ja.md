@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt3`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,18 +55,19 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 3, Gothic Panda, Buckeye | canonical-name | 高 | China | https://intrusiontruth.wordpress.com/2017/05/09/apt3-is-boyusec-a-chinese-intelligence-contractor/<br>https://www.recordedfuture.com/chinese-mss-behind-apt3/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=APT+3%2C+Gothic+Panda%2C+Buckeye&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Brocade Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT3 | canonical-name | 高 | CN, China | https://www.fireeye.com/blog/threat-research/2015/06/operation-clandestine-wolf-adobe-flash-zero-day.html<br>https://web.archive.org/web/20160910124439/http://www.symantec.com/connect/blogs/buckeye-cyberespionage-group-shifts-gaze-us-hong-kong<br>https://www.cfr.org/interactive/cyber-operations/apt-3 |
 | misp-microsoft-activity-group | Brocade Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | APT3 - G0022 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0022<br>https://www.fireeye.com/blog/threat-research/2015/06/operation-clandestine-wolf-adobe-flash-zero-day.html<br>https://www.recordedfuture.com/chinese-mss-behind-apt3/ |
+| misp-mitre-enterprise-intrusion-set | APT3 - G0022 | mitre-external-id | 高 |  | http://pwc.blogs.com/cyber_security_updates/2015/07/pirpi-scanbox.html<br>https://attack.mitre.org/groups/G0022<br>https://web.archive.org/web/20160910124439/http://www.symantec.com/connect/blogs/buckeye-cyberespionage-group-shifts-gaze-us-hong-kong |
 | misp-mitre-intrusion-set | APT3 - G0022 | mitre-external-id | 高 |  | http://pwc.blogs.com/cyber_security_updates/2015/07/pirpi-scanbox.html<br>https://attack.mitre.org/groups/G0022<br>https://web.archive.org/web/20160910124439/http://www.symantec.com/connect/blogs/buckeye-cyberespionage-group-shifts-gaze-us-hong-kong |
 | misp-360net | 一致なし |  |  |  |  |
 

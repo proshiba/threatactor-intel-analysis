@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: review
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -61,19 +61,20 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Operation Contagious Interview | multiple-name-intersection | 高 | North Korea | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://www.knowbe4.com/hubfs/North-Korean-Fake-Employees-Are-Everywhere-WP_EN-us.pdf<br>https://cloud.google.com/blog/topics/threat-intelligence/mitigating-dprk-it-worker-threat/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | WageMole | multiple-name-intersection | 高 | KP | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://unit42.paloaltonetworks.com/fake-north-korean-it-worker-activity-cluster/<br>https://www.trendmicro.com/en_us/research/25/d/russian-infrastructure-north-korean-cybercrime.html |
 | misp-threat-actor | Contagious Interview | canonical-name | 高 |  | https://about.gitlab.com/blog/gitlab-threat-intelligence-reveals-north-korean-tradecraft/<br>https://www.sentinelone.com/labs/contagious-interview-threat-actors-scout-cyber-intel-platforms-reveal-plans-and-ops/<br>https://www.microsoft.com/en-us/security/blog/2026/03/11/contagious-interview-malware-delivered-through-fake-developer-job-interviews/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Contagious Interview - G1052 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1052<br>https://reports.dtexsystems.com/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf<br>https://securitylabs.datadoghq.com/articles/tenacious-pungsan-dprk-threat-actor-contagious-interview/ |
 | misp-mitre-intrusion-set | Contagious Interview - G1052 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1052<br>https://reports.dtexsystems.com/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf<br>https://securitylabs.datadoghq.com/articles/tenacious-pungsan-dprk-threat-actor-contagious-interview/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -261,11 +262,11 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 
 ## IOC／artifact概要
 
-- IOC値: 4件
-- IOC観測: 4件
+- IOC値: 26件
+- IOC観測: 34件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
-- 非IOC artifact観測: 64件（`artifacts.csv`）
+- 要レビュー候補: 3件
+- 非IOC artifact観測: 65件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -327,6 +328,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--crowdstrike-famous-chollima | FAMOUS CHOLLIMA \| Adversary profile | CrowdStrike | 不明 | https://www.crowdstrike.com/adversaries/famous-chollima/ | vendor-adversary-profile | TLP:CLEAR | 中 |
 | source--npa-waterplum-joint-advisory-2026-09 | 北朝鮮サイバー攻撃グループ「WaterPlum」によるIT技術者を標的としたサイバー攻撃並びに北朝鮮IT労働者の我が国、米国及び欧州における活動実態等について | 警察庁 国家サイバー統括室 (NPA/NCO) | 2026-09-18 | https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf | government-advisory | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

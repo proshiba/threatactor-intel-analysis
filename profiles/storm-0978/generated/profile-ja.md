@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-0978`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Tropical Scorpius, RomCom | canonical-name | 高 | Russia | https://unit42.paloaltonetworks.com/cuba-ransomware-tropical-scorpius/<br>https://thehackernews.com/2025/04/nebulous-mantis-targets-nato-linked.html<br>https://www.proofpoint.com/us/blog/threat-insight/10-things-i-hate-about-attribution-romcom-vs-transferloader |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-0978 | canonical-name | 高 | Russia | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -136,7 +137,7 @@ TTPなし
 - IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 16件（`artifacts.csv`）
+- 非IOC artifact観測: 17件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

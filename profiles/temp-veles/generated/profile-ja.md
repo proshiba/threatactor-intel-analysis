@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--temp-veles`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ TEMP.Velesの標準化プロファイル。リポジトリ内の専用資料1件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | TEMP.Veles | canonical-name | 高 | Russia | https://dragos.com/resource/xenotime/<br>https://www.fireeye.com/blog/threat-research/2019/04/triton-actor-ttp-profile-custom-attack-tools-detections.html<br>https://ics-cert.us-cert.gov/sites/default/files/documents/MAR-17-352-01%20HatMan%E2%80%94Safety%20System%20Targeted%20Malware_S508C.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | TEMP.Veles | canonical-name | 高 |  | https://dragos.com/resource/trisis-analyzing-safety-system-targeting-malware/<br>https://www.fireeye.com/blog/threat-research/2017/12/attackers-deploy-new-ics-attack-framework-triton.html<br>https://attack.mitre.org/groups/G0088/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | TEMP.Veles - G0088 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0088<br>https://dragos.com/resource/xenotime/<br>https://pylos.co/2019/04/12/a-xenotime-to-remember-veles-in-the-wild/ |
 | misp-mitre-intrusion-set | TEMP.Veles - G0088 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0088<br>https://dragos.com/resource/xenotime/<br>https://pylos.co/2019/04/12/a-xenotime-to-remember-veles-in-the-wild/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -211,6 +212,7 @@ TEMP.Velesの標準化プロファイル。リポジトリ内の専用資料1件
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

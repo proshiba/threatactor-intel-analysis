@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--inception`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,18 +55,19 @@ Inceptionの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Inception Framework, Cloud Atlas | multiple-name-intersection | 高 | Russia | https://www.symantec.com/connect/blogs/blue-coat-exposes-inception-framework-very-sophisticated-layered-malware-attack-targeted-milit<br>https://www.akamai.com/uk/en/multimedia/documents/white-paper/upnproxy-blackhat-proxies-via-nat-injections-white-paper.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Inception+Framework%2C+Cloud+Atlas&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Inception Framework | multiple-name-intersection | 高 | RU, Russian Federation | https://www.cfr.org/interactive/cyber-operations/inception-framework<br>https://web.archive.org/web/20160710180729/https://www.bluecoat.com/security-blog/2014-12-09/blue-coat-exposes-%E2%80%9C-inception-framework%E2%80%9D-very-sophisticated-layered-malware<br>https://paper.seebug.org/papers/APT/APT_CyberCriminal_Campagin/2015/Inception_APT_Analysis_Bluecoat.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Inception - G0100 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0100<br>https://securelist.com/cloud-atlas-redoctober-apt-is-back-in-style/68083/<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/inception-framework-hiding-behind-proxies |
 | misp-mitre-intrusion-set | Inception - G0100 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0100<br>https://securelist.com/cloud-atlas-redoctober-apt-is-back-in-style/68083/<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/inception-framework-hiding-behind-proxies |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -242,10 +243,10 @@ Red October; Cloud Atlas
 
 ## IOC／artifact概要
 
-- IOC値: 115件
-- IOC観測: 115件
+- IOC値: 6件
+- IOC観測: 10件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 1件
+- 要レビュー候補: 2件
 - 非IOC artifact観測: 69件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -307,6 +308,7 @@ Red October; Cloud Atlas
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

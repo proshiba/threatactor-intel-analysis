@@ -125,7 +125,7 @@ def write_evidence_csv(
     path: Path,
     mentions: list[dict[str, Any]],
     *,
-    lineterminator: str | None = None,
+    lineterminator: str = "\n",
 ) -> None:
     """Write one deterministic actor-scoped evidence window."""
     with path.open("w", encoding="utf-8", newline="") as stream:
@@ -137,8 +137,7 @@ def write_evidence_csv(
                 "context_excerpt",
             ]
         }
-        if lineterminator is not None:
-            options["lineterminator"] = lineterminator
+        options["lineterminator"] = lineterminator
         writer = csv.DictWriter(stream, **options)
         writer.writeheader()
         for mention in mentions:

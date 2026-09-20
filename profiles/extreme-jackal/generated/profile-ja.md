@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--extreme-jackal`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Molerats, Extreme Jackal, Gaza Cybergang | canonical-name | 高 | [Gaza] | https://www.sentinelone.com/labs/gaza-cybergang-unified-front-targeting-hamas-opposition/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Molerats%2C+Extreme+Jackal%2C+Gaza+Cybergang&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |

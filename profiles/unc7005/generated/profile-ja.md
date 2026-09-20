@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc7005`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,17 +54,18 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 ## OSINTクロスチェック
 
-- 判定: `no-match`
-- 調査日時: 2026-09-20T10:03:11Z
+- 判定: `possible-match`
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
-| microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | 一致なし |  |  |  |  |
+| microsoft-threat-actor-mapping | Storm-2945 | single-alias-intersection | 中 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
+| misp-threat-actor | Storm-2945 | single-alias-intersection | 中 |  | https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -169,10 +170,10 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 
 ## IOC／artifact概要
 
-- IOC値: 43件
-- IOC観測: 43件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 4件
+- 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -199,6 +200,8 @@ GTIGは「GTIG assesses with high confidence that these three threat clusters - 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
 | source--gtig-going-with-the-flows-2026 | Going with the Flow(s): Distinct Clusters Target Individuals of Interest to Russia | Google Threat Intelligence Group | 2026-08-20 | https://cloud.google.com/blog/topics/threat-intelligence/distinct-clusters-target-individuals-of-interest-to-russia | vendor-research | TLP:CLEAR | 高 |
+| source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

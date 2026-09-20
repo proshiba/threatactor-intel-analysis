@@ -1,8 +1,8 @@
 # Radio Panda 脅威アクタープロファイル
 
 - プロファイルID: `actor--radio-panda`
-- 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 状態: deprecated
+- 更新日時: 2026-09-20T12:20:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T11:55:34Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | BlackTech, Circuit Panda, Radio Panda | canonical-name | 高 | China | https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/<br>https://www.trendmicro.com/en_us/research/24/d/earth-hundun-waterbear-deuterbear.html<br>https://www.trendmicro.com/en_us/research/24/e/earth-hundun-2.html |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -141,16 +142,15 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is an exact-identity duplicate of BlackTech (actor--blacktech). | 高 | `source--radio-panda--4b043c0feb9a5bce` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 

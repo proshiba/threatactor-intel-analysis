@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin13`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,19 +52,20 @@ FIN13の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Elephant Beetle | single-alias-intersection | 中 |  | https://f.hubspotusercontent30.net/hubfs/8776530/Sygnia- Elephant Beetle_Jan2022.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Elephant+Beetle&n=1 |
 | etda-threat-group-cards | FIN13 | canonical-name | 高 |  | https://www.mandiant.com/resources/fin13-cybercriminal-mexico<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=FIN13&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | FIN13 | canonical-name | 高 | RU | https://www.mandiant.com/resources/fin13-cybercriminal-mexico<br>https://blog.sygnia.co/elephant-beetle-an-organized-financial-theft-operation<br>https://f.hubspotusercontent30.net/hubfs/8776530/Sygnia-%20Elephant%20Beetle_Jan2022.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | FIN13 - G1016 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1016<br>https://web.archive.org/web/20220105132433/https://f.hubspotusercontent30.net/hubfs/8776530/Sygnia-%20Elephant%20Beetle_Jan2022.pdf<br>https://www.mandiant.com/resources/blog/fin13-cybercriminal-mexico |
 | misp-mitre-intrusion-set | FIN13 - G1016 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1016<br>https://web.archive.org/web/20220105132433/https://f.hubspotusercontent30.net/hubfs/8776530/Sygnia-%20Elephant%20Beetle_Jan2022.pdf<br>https://www.mandiant.com/resources/blog/fin13-cybercriminal-mexico |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -230,6 +231,7 @@ FIN13の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

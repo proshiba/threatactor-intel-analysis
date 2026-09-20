@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--volt-typhoon`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,18 +56,19 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Volt Typhoon | canonical-name | 高 | China | https://www.microsoft.com/en-us/security/blog/2023/05/24/volt-typhoon-targets-us-critical-infrastructure-with-living-off-the-land-techniques/<br>https://www.securityweek.com/mandiant-intelligence-chief-raises-alarm-over-chinas-volt-typhoon-hackers-in-us-critical-infrastructure/<br>https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Volt Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Volt Typhoon | canonical-name | 高 | CN | https://www.secureworks.com/blog/chinese-cyberespionage-group-bronze-silhouette-targets-us-government-and-defense-organizations<br>https://www.microsoft.com/en-us/security/blog/2023/05/24/volt-typhoon-targets-us-critical-infrastructure-with-living-off-the-land-techniques/<br>https://unit42.paloaltonetworks.com/volt-typhoon-threat-brief/ |
 | misp-microsoft-activity-group | Volt Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Volt Typhoon - G1017 | mitre-external-id | 高 |  | https://5943619.hs-sites.com/hubfs/312-Year-in-Review/2026/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf?hsCtaAttrib=205683189348<br>https://attack.mitre.org/groups/G1017<br>https://blog.cloudflare.com/2026-threat-report/ |
 | misp-mitre-intrusion-set | Volt Typhoon - G1017 | mitre-external-id | 高 |  | https://5943619.hs-sites.com/hubfs/312-Year-in-Review/2026/Dragos-2026-OT-Cybersecurity-Report-A-Year-in-Review.pdf?hsCtaAttrib=205683189348<br>https://attack.mitre.org/groups/G1017<br>https://blog.cloudflare.com/2026-threat-report/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -366,6 +367,7 @@ Volt Typhoonの標準化プロファイル。リポジトリ内の専用資料1�
 | source--volt-typhoon--d1bc3c7f4761742d | Norma+Cyber+Annual+Threat+Assessment+ +Spreads |  | 不明 | summary/2024/Norma+Cyber+Annual+Threat+Assessment+-+Spreads.pdf | report | TLP:CLEAR | 中 |
 | source--volt-typhoon--ec6d7ba098071619 | CyberProof 2026 Global Threat Intelligence Report |  | 2026 | summary/2026/CyberProof_2026_Global_Threat_Intelligence_Report.pdf | report | TLP:CLEAR | 中 |
 | source--volt-typhoon--fd75b99077ebc2cf | 2024 security report |  | 2024 | summary/2024/2024-security-report.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--mirrorface`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,19 +54,20 @@ MirrorFaceの標準化プロファイル。リポジトリ内の専用資料1件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Operation LiberalFace, MirrorFace | canonical-name | 高 | China | https://www.welivesecurity.com/2022/12/14/unmasking-mirrorface-operation-liberalface-targeting-japanese-political-entities/<br>https://www.bleepingcomputer.com/news/security/mirrorface-hackers-targeting-japanese-govt-politicians-since-2019/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Operation+LiberalFace%2C+MirrorFace&n=1 |
 | etda-threat-group-cards | Stone Panda, APT 10, menuPass | single-alias-intersection | 中 | China | https://intrusiontruth.wordpress.com/2018/08/15/apt10-was-managed-by-the-tianjin-bureau-of-the-chinese-ministry-of-state-security/<br>https://www.carbonblack.com/2019/02/25/defeating-compiler-level-obfuscations-used-in-apt10-malware/<br>https://adeo.com.tr/wp-content/uploads/2020/02/APT10_v1.2_public.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | MirrorFace | canonical-name | 高 | CN | https://www.welivesecurity.com/2022/12/14/unmasking-mirrorface-operation-liberalface-targeting-japanese-political-entities/<br>https://web-assets.esetstatic.com/wls/2023/01/eset_apt_activity_report_t32022.pdf<br>https://blog.sekoia.io/my-teas-not-cold-an-overview-of-china-cyber-threat/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | MirrorFace - G1054 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1054<br>https://blogs.jpcert.or.jp/en/2024/07/mirrorface-attack-against-japanese-organisations.html<br>https://securelist.com/apt10-tracking-down-lodeinfo-2022-part-i/107742/ |
 | misp-mitre-intrusion-set | MirrorFace - G1054 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1054<br>https://blogs.jpcert.or.jp/en/2024/07/mirrorface-attack-against-japanese-organisations.html<br>https://securelist.com/apt10-tracking-down-lodeinfo-2022-part-i/107742/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -252,10 +253,10 @@ MirrorFaceの標準化プロファイル。リポジトリ内の専用資料1件
 
 ## IOC／artifact概要
 
-- IOC値: 0件
-- IOC観測: 0件
+- IOC値: 1件
+- IOC観測: 1件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 0件
+- 要レビュー候補: 1件
 - 非IOC artifact観測: 15件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -289,6 +290,7 @@ MirrorFaceの標準化プロファイル。リポジトリ内の専用資料1件
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

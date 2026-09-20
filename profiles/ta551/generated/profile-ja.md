@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta551`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,18 +53,19 @@ TA551の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | TA551, Shathak | canonical-name | 高 | Russia | https://unit42.paloaltonetworks.com/ta551-shathak-icedid/<br>https://unit42.paloaltonetworks.com/valak-evolution/<br>https://github.com/pan-unit42/iocs/tree/master/TA551 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | GOLD CABIN | canonical-name | 高 |  | https://www.secureworks.com/research/threat-profiles/gold-cabin<br>https://attack.mitre.org/groups/G0127/<br>https://unit42.paloaltonetworks.com/atoms/monsterlibra/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | TA551 - G0127 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0127<br>https://unit42.paloaltonetworks.com/ta551-shathak-icedid/<br>https://unit42.paloaltonetworks.com/valak-evolution/ |
 | misp-mitre-intrusion-set | TA551 - G0127 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0127<br>https://unit42.paloaltonetworks.com/ta551-shathak-icedid/<br>https://unit42.paloaltonetworks.com/valak-evolution/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -161,8 +162,8 @@ TA551の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 ## IOC／artifact概要
 
-- IOC値: 2件
-- IOC観測: 10件
+- IOC値: 3件
+- IOC観測: 11件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 34件（`artifacts.csv`）
@@ -195,6 +196,7 @@ TA551の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

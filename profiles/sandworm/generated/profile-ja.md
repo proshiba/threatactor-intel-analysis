@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sandworm`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,17 +18,17 @@ Sandworm Teamの標準化プロファイル。リポジトリ内の専用資料1
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT44 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| APT44 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--mitre-attack-19-1`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | BlackEnergy (Group) | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ELECTRUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| FROZENBARENTS | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| FROZENBARENTS | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--mitre-attack-19-1`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | IRIDIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | IRON VIKING | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Quedagh | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| SANDWORM RELIC | Google Threat Intelligence Group | exact | 高 | `source--gtig-adversarial-ai-2026`, `source--gtig-unified-actor-naming-2026` | GTIG原文の「SANDWORM RELIC, the Russian cyber espionage group formerly known as FROZENBARENTS, SANDWORM, and APT44」に基づく。GTIG自身の改称ではあるが、本プロファイルのcanonical nameはMITRE ATT&CKのSandworm Team(G0034)であり、既存のAPT44・FROZENBARENTS別名もscope: overlappingとして登録されている。GTIGの追跡範囲とMITREのSandworm Teamの範囲が完全一致する保証がないため、既存別名と整合させscopeはoverlapping、confidenceはmediumとする。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Seashell Blizzard | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Telebots | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Voodoo Bear | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| SANDWORM RELIC | Google Threat Intelligence Group | overlapping | 中 | `source--gtig-adversarial-ai-2026` | GTIG原文の「SANDWORM RELIC, the Russian cyber espionage group formerly known as FROZENBARENTS, SANDWORM, and APT44」に基づく。GTIG自身の改称ではあるが、本プロファイルのcanonical nameはMITRE ATT&CKのSandworm Team(G0034)であり、既存のAPT44・FROZENBARENTS別名もscope: overlappingとして登録されている。GTIGの追跡範囲とMITREのSandworm Teamの範囲が完全一致する保証がないため、既存別名と整合させscopeはoverlapping、confidenceはmediumとする。 |
 
 ## 帰属
 
@@ -62,12 +62,13 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | SANDWORM RELIC | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Energetic Bear, Dragonfly | single-alias-intersection | 中 | Russia | https://www.symantec.com/blogs/threat-intelligence/dragonfly-energy-sector-cyber-attacks<br>https://www.kaspersky.com/resource-center/threats/crouching-yeti-energetic-bear-malware-threat<br>https://www.sans.org/reading-room/whitepapers/ICS/impact-dragonfly-malware-industrial-control-systems-36672 |
 | etda-threat-group-cards | Iridium | single-alias-intersection | 中 | Iran | https://hub.packtpub.com/resecurity-reports-iriduim-behind-citrix-data-breach-200-government-agencies-oil-and-gas-companies-and-technology-companies-also-targeted/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Iridium&n=1 |
 | etda-threat-group-cards | Sandworm Team, Iron Viking, Voodoo Bear | canonical-name | 高 | Russia | https://blog.trendmicro.com/trendlabs-security-intelligence/timeline-of-sandworm-attacks/<br>https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-january-voodoo-bear/<br>https://securelist.com/be2-custom-plugins-router-abuse-and-target-profiles/67353/ |
@@ -77,7 +78,7 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 | misp-threat-actor | Sandworm | multiple-name-intersection | 高 | RU, Russian Federation | https://dragos.com/blog/crashoverride/CrashOverride-01.pdf<br>https://www.us-cert.gov/ncas/alerts/TA17-163A<br>https://ics.sans.org/blog/2016/01/09/confirmation-of-a-coordinated-attack-on-the-ukrainian-power-grid |
 | misp-threat-actor | IRIDIUM | single-alias-intersection | 中 | IR | https://www.nbcnews.com/politics/national-security/iranian-backed-hackers-stole-data-major-u-s-government-contractor-n980986<br>https://threatpost.com/ranian-apt-6tb-data-citrix/142688/<br>https://hub.packtpub.com/resecurity-reports-iriduim-behind-citrix-data-breach-200-government-agencies-oil-and-gas-companies-and-technology-companies-also-targeted/ |
 | misp-microsoft-activity-group | Seashell Blizzard | multiple-name-intersection | 高 | RU, Russia | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Sandworm Team - G0034 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0034<br>https://www.fireeye.com/blog/threat-research/2016/01/ukraine-and-sandworm-team.html |
+| misp-mitre-enterprise-intrusion-set | Sandworm Team - G0034 | mitre-external-id | 高 |  | https://2017-2021.state.gov/the-united-states-condemns-russian-cyber-attack-against-the-country-of-georgia/index.html<br>https://attack.mitre.org/groups/G0034<br>https://blog-assets.f-secure.com/wp-content/uploads/2019/10/15163408/BlackEnergy_Quedagh.pdf |
 | misp-mitre-intrusion-set | Sandworm Team - G0034 | mitre-external-id | 高 |  | https://2017-2021.state.gov/the-united-states-condemns-russian-cyber-attack-against-the-country-of-georgia/index.html<br>https://attack.mitre.org/groups/G0034<br>https://blog-assets.f-secure.com/wp-content/uploads/2019/10/15163408/BlackEnergy_Quedagh.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -424,10 +425,10 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 
 ## IOC／artifact概要
 
-- IOC値: 420件
-- IOC観測: 593件
+- IOC値: 416件
+- IOC観測: 587件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 167件
+- 要レビュー候補: 165件
 - 非IOC artifact観測: 183件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -476,6 +477,8 @@ MITRE ATT&CK attributes Sandworm Team to the Russian GRU Main Center for Special
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--gtig-adversarial-ai-2026 | GTIG AI Threat Tracker: From Prompting to Autonomy - The Evolution of Adversarial AI | Google Threat Intelligence Group | 2026-09-08 | https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai | vendor-research | TLP:CLEAR | 高 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

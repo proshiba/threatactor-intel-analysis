@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--oniondog`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,12 +48,13 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | OnionDog | canonical-name | 高 | South Korea | https://www.prnewswire.com/news-releases/onion-dog-a-3-year-old-apt-focused-on-the-energy-and-transportation-industries-in-korean-language-countries-is-exposed-by-360-300232441.html<br>https://www.qianxin.com/assets/doc/apt_report/en/OPERATION%20ONIONDOG%20%E2%80%93Disclosing%20Targeted%20Attacks%20on%20Government.pdf<br>https://blog.trendmicro.com/trendlabs-security-intelligence/oniondog-not-targeted-attack-cyber-drill/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |

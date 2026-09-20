@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--bitter`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Bitter | canonical-name | 高 | [South Asia] | https://unit42.paloaltonetworks.com/multiple-artradownloader-variants-used-by-bitter-to-target-pakistan/<br>https://www.proofpoint.com/us/blog/threat-insight/bitter-end-unraveling-eight-years-espionage-antics-part-one<br>https://www.threatray.com/blog/the-bitter-end-unraveling-eight-years-of-espionage-antics-part-two |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | HAZY TIGER | canonical-name | 高 | IN | https://www.bitdefender.com/files/News/CaseStudies/study/352/Bitdefender-PR-Whitepaper-BitterAPT-creat4571-en-EN-GenericUse.pdf<br>https://mp.weixin.qq.com/s/8j_rHA7gdMxY1_X8alj8Zg<br>https://www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/cyber-year-in-retrospect/yir-cyber-threats-report-download.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | BITTER - G1002 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1002<br>https://blog.talosintelligence.com/2022/05/bitter-apt-adds-bangladesh-to-their.html<br>https://www.forcepoint.com/blog/x-labs/bitter-targeted-attack-against-pakistan |
 | misp-mitre-intrusion-set | BITTER - G1002 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1002<br>https://blog.talosintelligence.com/2022/05/bitter-apt-adds-bangladesh-to-their.html<br>https://www.forcepoint.com/blog/x-labs/bitter-targeted-attack-against-pakistan |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -197,8 +198,8 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 
 ## IOC／artifact概要
 
-- IOC値: 422件
-- IOC観測: 571件
+- IOC値: 454件
+- IOC観測: 609件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 46件
 - 非IOC artifact観測: 51件（`artifacts.csv`）
@@ -239,6 +240,7 @@ BITTERの標準化プロファイル。リポジトリ内の専用資料8件とM
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

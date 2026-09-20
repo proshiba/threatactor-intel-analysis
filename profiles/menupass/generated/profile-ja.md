@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--menupass`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -49,8 +49,8 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Cinnamon Tempest | overlaps-with | 共有alias: DEV-0401 | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | MirrorFace | overlaps-with | [MirrorFace](https://attack.mitre.org/groups/G1054) is a People's Republic of China (PRC)-aligned cyberespionage actor believed to be a subgroup under the [menuPass](https://attack.mitre.org/groups/G0045) umbrella based on targeting, tools, and infrastructure overlaps. | 高 | `source--mitre-attack-19-1` |
+| Cinnamon Tempest | overlaps-with | 共有alias: DEV-0401 | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 
 ## ダイヤモンドモデル
 
@@ -65,12 +65,13 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Bronze Starlight | single-alias-intersection | 中 | China | https://www.secureworks.com/research/threat-profiles/bronze-starlight<br>https://www.secureworks.com/research/bronze-starlight-ransomware-operations-use-hui-loader<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Bronze+Starlight&n=1 |
 | etda-threat-group-cards | Stone Panda, APT 10, menuPass | canonical-name | 高 | China | https://intrusiontruth.wordpress.com/2018/08/15/apt10-was-managed-by-the-tianjin-bureau-of-the-chinese-ministry-of-state-security/<br>https://www.carbonblack.com/2019/02/25/defeating-compiler-level-obfuscations-used-in-apt10-malware/<br>https://adeo.com.tr/wp-content/uploads/2020/02/APT10_v1.2_public.pdf |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
@@ -80,7 +81,8 @@ menuPassの標準化プロファイル。リポジトリ内の専用資料1件�
 | misp-threat-actor | BRONZE STARLIGHT | single-alias-intersection | 中 | CN | https://i.blackhat.com/Asia-22/Friday-Materials/AS-22-Li-To-Loot-Or-Not-To-Loot-That-Is-Not-a-Question.pdf<br>https://www.microsoft.com/security/blog/2022/05/09/ransomware-as-a-service-understanding-the-cybercrime-gig-economy-and-how-to-protect-yourself<br>https://www.microsoft.com/security/blog/2021/12/11/guidance-for-preventing-detecting-and-hunting-for-cve-2021-44228-log4j-2-exploitation |
 | misp-microsoft-activity-group | Cinnamon Tempest | single-alias-intersection | 中 | CN | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-microsoft-activity-group | Purple Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | menuPass - G0045 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0045<br>http://researchcenter.paloaltonetworks.com/2017/02/unit42-menupass-returns-new-malware-new-attacks-japanese-academics-organizations/<br>https://www.slideshare.net/CrowdStrike/crowd-casts-monthly-you-have-an-adversary-problem |
+| misp-mitre-enterprise-intrusion-set | Cinnamon Tempest - G1021 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1021<br>https://blog.sygnia.co/revealing-emperor-dragonfly-a-chinese-ransomware-group<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
+| misp-mitre-enterprise-intrusion-set | menuPass - G0045 | mitre-external-id | 高 |  | http://researchcenter.paloaltonetworks.com/2017/02/unit42-menupass-returns-new-malware-new-attacks-japanese-academics-organizations/<br>http://web.archive.org/web/20220810112638/https:/www.accenture.com/t20180423T055005Z_w_/se-en/_acnmedia/PDF-76/Accenture-Hogfish-Threat-Analysis.pdf<br>https://attack.mitre.org/groups/G0045 |
 | misp-mitre-intrusion-set | Cinnamon Tempest - G1021 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1021<br>https://blog.sygnia.co/revealing-emperor-dragonfly-a-chinese-ransomware-group<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-mitre-intrusion-set | menuPass - G0045 | mitre-external-id | 高 |  | http://researchcenter.paloaltonetworks.com/2017/02/unit42-menupass-returns-new-malware-new-attacks-japanese-academics-organizations/<br>http://web.archive.org/web/20220810112638/https:/www.accenture.com/t20180423T055005Z_w_/se-en/_acnmedia/PDF-76/Accenture-Hogfish-Threat-Analysis.pdf<br>https://attack.mitre.org/groups/G0045 |
 | misp-360net | 一致なし |  |  |  |  |

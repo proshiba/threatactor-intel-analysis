@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--goffee`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,12 +53,13 @@ GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭から�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
@@ -226,11 +227,11 @@ Kaspersky が本アクターを認知したのは2022年初頭である。2022�
 
 ## IOC／artifact概要
 
-- IOC値: 71件
-- IOC観測: 71件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
-- 非IOC artifact観測: 30件（`artifacts.csv`）
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 

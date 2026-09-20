@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt38`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -28,7 +28,6 @@ APT38の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | Sapphire Sleet | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Stardust Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TA444 (Proofpoint) | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| TEMP.Hermit | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -48,6 +47,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Lazarus Group | overlaps-with | Government sources connect Bluenoroff/APT38 and Lazarus under the RGB and a common conspiracy, while industry reporting preserves APT38 as a financially focused cluster. | 高 | `source--treasury-dprk-groups-2019`, `source--doj-dprk-conspiracy-2021` |
+| TEMP.Hermit | overlaps-with | APT38 and TEMP.Hermit have shared resources, but Mandiant describes their activity as disparate and tracks them separately. | 高 | `source--mandiant-apt38-temp-hermit-boundary-2018` |
 
 ## ダイヤモンドモデル
 
@@ -62,21 +62,21 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | BeagleBoyz | single-alias-intersection | 中 | North Korea | https://us-cert.cisa.gov/ncas/alerts/aa20-239a<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+BeagleBoyz&n=1 |
 | etda-threat-group-cards | Bluenoroff, APT 38, Stardust Chollima | canonical-name | 高 | North Korea | https://threatpost.com/lazarus-apt-spinoff-linked-to-banking-hacks/124746/<br>https://www.microsoft.com/en-us/security/blog/2024/11/22/microsoft-shares-latest-intelligence-on-north-korean-and-chinese-threat-actors-at-cyberwarcon/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+Bluenoroff%2C+APT+38%2C+Stardust+Chollima&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Sapphire Sleet | multiple-name-intersection | 高 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Lazarus Group | canonical-name | 高 | KP, Korea (Democratic People's Republic of) | https://threatpost.com/operation-blockbuster-coalition-ties-destructive-attacks-to-lazarus-group/116422/<br>https://www.us-cert.gov/ncas/alerts/TA17-164A<br>https://www.us-cert.gov/ncas/alerts/TA17-318A |
-| misp-threat-actor | TEMP.Hermit | single-alias-intersection | 中 | KP | https://www.fireeye.com/blog/threat-research/2018/02/attacks-leveraging-adobe-zero-day.html |
 | misp-threat-actor | STARDUST CHOLLIMA | multiple-name-intersection | 高 |  | https://www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/ |
 | misp-microsoft-activity-group | Sapphire Sleet | multiple-name-intersection | 高 | KP, North Korea | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | APT38 - G0082 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0082<br>https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2021GTR.pdf<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-mitre-intrusion-set | APT38 - G0082 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0082<br>https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2021GTR.pdf<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-360net | Lazarus - APT-C-26 | canonical-name | 高 | korea | https://apt.360.net/report/apts/9.html<br>https://apt.360.net/report/apts/101.html<br>https://apt.360.net/report/apts/90.html |
 
@@ -261,11 +261,11 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 ## IOC／artifact概要
 
-- IOC値: 172件
-- IOC観測: 176件
+- IOC値: 35件
+- IOC観測: 51件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 14件
-- 非IOC artifact観測: 148件（`artifacts.csv`）
+- 要レビュー候補: 15件
+- 非IOC artifact観測: 157件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -357,6 +357,8 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
+| source--mandiant-apt38-temp-hermit-boundary-2018 | APT38: Details on New North Korean Regime-Backed Threat Group | Mandiant | 2018-10-03 | https://cloud.google.com/blog/topics/threat-intelligence/apt38-details-on-new-north-korean-regime-backed-threat-group/ | vendor-threat-research | TLP:CLEAR | 高 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

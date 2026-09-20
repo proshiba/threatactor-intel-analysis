@@ -4,7 +4,7 @@
   "name": "APT29",
   "status": "review",
   "created_at": "2026-07-25T09:00:19Z",
-  "updated_at": "2026-09-20T10:03:33Z",
+  "updated_at": "2026-09-20T12:23:31Z",
   "languages": [
     "ja"
   ],
@@ -52,14 +52,25 @@
         "analyst_notes": "Alias scope must be reviewed before publication."
       },
       {
+        "name": "ICECAP",
+        "vendor": "Google Threat Intelligence Group",
+        "scope": "exact",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--gtig-unified-actor-naming-2026"
+        ],
+        "analyst_notes": "GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
+      },
+      {
         "name": "ICE RELIC",
         "vendor": "Google Threat Intelligence Group",
         "scope": "exact",
         "confidence": "high",
         "evidence_refs": [
-          "source--gtig-going-with-the-flows-2026"
+          "source--gtig-going-with-the-flows-2026",
+          "source--gtig-unified-actor-naming-2026"
         ],
-        "analyst_notes": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。"
+        "analyst_notes": "GTIGが原文で「ICE RELIC (formerly APT29)」と明記した、同一クラスタに対するGTIGの新しい呼称である。GTIGの脅威アクター命名体系の更新に伴うベンダー呼称の変更であり、帰属の変更ではない(OSINT_RULES.md「帰属変更は、単独ベンダーの名称変更と政府帰属を分離する」)。GTIG以外のベンダーが本呼称を採用しているかは未確認である。 GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries."
       },
       {
         "name": "IRON HEMLOCK",
@@ -13891,6 +13902,56 @@
         "victim-geography"
       ],
       "analyst_notes": "High-confidence actor-name matches only. Victim fields are aggregation leads and may inherit vendor collection-boundary differences; profile entries therefore use medium confidence."
+    },
+    {
+      "source_id": "source--gtig-unified-actor-naming-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Updated Cyber Threat Actor Naming System",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": "2026-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias"
+      ],
+      "analyst_notes": "GTIG's July 30 update supplies the explicit previous-name to new-name table. Exactness applies inside GTIG's taxonomy; other vendors may draw different cluster boundaries."
+    },
+    {
+      "source_id": "source--osint-gtig-threat-actor-naming",
+      "path": "actor_profile/reference/osint/gtig-threat-actor-naming.json",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system",
+      "title": "Google Threat Intelligence Group Unified Threat Actor Naming",
+      "publisher": "Google Threat Intelligence Group",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "official-vendor-actor-mapping",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": "e01b8e701fb7961ca512ddf12214c8ab6b1c0168d8106520a446066e885dd113",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=2026-07-30. This is the vendor's published actor-name mapping; names are exact within that vendor taxonomy, while other vendors' collection boundaries may differ."
     }
   ],
   "assessment": {
@@ -13912,7 +13973,7 @@
       "Vendor cluster boundaries may differ from the canonical name used here.",
       "captive portal作戦を担ったクラスタの境界について、Microsoft(2026-07-31)はStorm-2945をMidnight Blizzard(=APT29)の運用サブクラスタとして扱うのに対し、GTIG(2026-08-20)は同一クラスタをUNC7005 (aka STORM-2945)として別個に追跡し、ICE RELIC(=APT29)への接続をmoderate confidenceにとどめている。本プロファイルの activity--captivecrunch-travel-wifi-2026 はMicrosoftの帰属に基づくconfidence: highのまま保持し、GTIG側の評価はclaim-audit.jsonとprofiles/unc7005へ記録した。"
     ],
-    "collection_notes": "Catalog source roots: APT29, SunBurst\nOSINT update: Microsoft Threat Intelligence report dated 2024-10-29, accessed 2026-07-25.\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T10:03:11Z; result=matched.",
+    "collection_notes": "Catalog source roots: APT29, SunBurst\nOSINT update: Microsoft Threat Intelligence report dated 2024-10-29, accessed 2026-07-25.\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T12:23:31Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

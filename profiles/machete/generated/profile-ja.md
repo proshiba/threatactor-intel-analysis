@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--machete`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,18 +53,19 @@ Macheteの標準化プロファイル。リポジトリ内の専用資料2件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | El Machete | multiple-name-intersection | 高 |  | https://securelist.com/el-machete/66108/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=El+Machete&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | El Machete | canonical-name | 高 | Unknown | https://attack.mitre.org/groups/G0095/<br>https://securelist.com/el-machete/66108/<br>https://www.cylance.com/en_us/blog/el-machete-malware-attacks-cut-through-latam.html |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Machete - G0095 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0095<br>https://blog.360totalsecurity.com/en/apt-c-43-steals-venezuelan-military-secrets-to-provide-intelligence-support-for-the-reactionaries-hpreact-campaign/<br>https://securelist.com/el-machete/66108/ |
 | misp-mitre-intrusion-set | Machete - G0095 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0095<br>https://blog.360totalsecurity.com/en/apt-c-43-steals-venezuelan-military-secrets-to-provide-intelligence-support-for-the-reactionaries-hpreact-campaign/<br>https://securelist.com/el-machete/66108/ |
 | misp-360net | Machete - APT-C-43 | canonical-name | 高 | namerica | https://apt.360.net/report/apts/159.html |
 
@@ -214,8 +215,8 @@ Macheteの標準化プロファイル。リポジトリ内の専用資料2件と
 
 ## IOC／artifact概要
 
-- IOC値: 77件
-- IOC観測: 85件
+- IOC値: 80件
+- IOC観測: 87件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 51件
 - 非IOC artifact観測: 88件（`artifacts.csv`）
@@ -248,6 +249,7 @@ Macheteの標準化プロファイル。リポジトリ内の専用資料2件と
 | source--target-audit-misp-360net | MISP 360.net suspected-victim fields | MISP Project / 360.net | 不明 | actor_profile/reference/osint/misp-360net.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--applejeus`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,19 +55,20 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Lazarus Group, Hidden Cobra, Labyrinth Chollima | multiple-name-intersection | 高 | North Korea | https://blog.malwarebytes.com/threat-analysis/2019/03/the-advanced-persistent-threat-files-lazarus-group/<br>https://www.trendmicro.com/vinfo/us/security/news/cybercrime-and-digital-threats/a-look-into-the-lazarus-groups-operations<br>https://www.kaspersky.com/about/press-releases/2017_chasing-lazarus-a-hunt-for-the-infamous-hackers-to-prevent-large-bank-robberies |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Citrine Sleet | single-alias-intersection | 中 | North Korea | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Lazarus Group | single-alias-intersection | 中 | KP, Korea (Democratic People's Republic of) | https://threatpost.com/operation-blockbuster-coalition-ties-destructive-attacks-to-lazarus-group/116422/<br>https://www.us-cert.gov/ncas/alerts/TA17-164A<br>https://www.us-cert.gov/ncas/alerts/TA17-318A |
 | misp-threat-actor | UNC4736 | single-alias-intersection | 中 | KP | https://www.mandiant.com/resources/blog/3cx-software-supply-chain-compromise |
 | misp-microsoft-activity-group | Citrine Sleet | single-alias-intersection | 中 | KP, North Korea | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | AppleJeus - G1049 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1049<br>https://blogs.jpcert.or.jp/en/2025/03/classifying-lazaruss-subgroup.html<br>https://cloud.google.com/blog/topics/threat-intelligence/3cx-software-supply-chain-compromise/ |
 | misp-mitre-intrusion-set | AppleJeus - G1049 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1049<br>https://blogs.jpcert.or.jp/en/2025/03/classifying-lazaruss-subgroup.html<br>https://cloud.google.com/blog/topics/threat-intelligence/3cx-software-supply-chain-compromise/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -215,10 +216,10 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## IOC／artifact概要
 
-- IOC値: 2件
-- IOC観測: 2件
+- IOC値: 3件
+- IOC観測: 3件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 2件
+- 要レビュー候補: 3件
 - 非IOC artifact観測: 84件（`artifacts.csv`）
 
 ## 主要判断と不確実性
@@ -279,6 +280,7 @@ AppleJeusの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

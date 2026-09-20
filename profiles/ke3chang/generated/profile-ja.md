@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ke3chang`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:41Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| APT15 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| APT15 | MITRE ATT&CK / Google Threat Intelligence Group | exact | 高 | `source--mitre-attack-19-1`, `source--gtig-unified-actor-naming-2026` | Alias scope must be reviewed before publication. GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | BackdoorDiplomacy | Palo Alto Networks Unit 42 | overlapping | 高 | `source--unit42-playful-taurus-2023` | Unit 42 maps BackdoorDiplomacy to Playful Taurus/APT15; retained as overlapping because MITRE also tracks BackdoorDiplomacy as a distinct collection boundary. |
 | GREF | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Mirage | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
@@ -26,6 +26,7 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | Nylon Typhoon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Playful Dragon | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Playful Taurus | Palo Alto Networks Unit 42 | overlapping | 高 | `source--unit42-playful-taurus-2023` | Unit 42 directly identifies Playful Taurus as APT15/Ke3chang; scope remains overlapping to preserve vendor collection-boundary uncertainty. |
+| RIVER CASTLE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | RoyalAPT | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Vixen Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 
@@ -46,13 +47,8 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Axiom | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| BackdoorDiplomacy | overlaps-with | 共有alias: BackdoorDiplomacy | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| BARIUM | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| Calypso | overlaps-with | 共有alias: Mirage | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| LEAD | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| PassCV | overlaps-with | 共有alias: Winnti Umbrella | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | Winnti Group | related-to | The group has heavily targeted the gaming industry, but it has also expanded the scope of its targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) Some reporting suggests a number of other groups, including [Axiom](https://attack.mitre.org/groups/G0001), [APT17](https://attack.mitre.org/groups/G0025), and [Ke3chang](https://attack.mitre.org/groups/G0004), are closely linked to [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: 401 TRG Winnti Umbrella May 2018) | 中 | `source--mitre-attack-19-1` |
+| BackdoorDiplomacy | overlaps-with | 共有alias: BackdoorDiplomacy | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 
 ## ダイヤモンドモデル
 
@@ -67,12 +63,13 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | RIVER CASTLE | multiple-name-intersection | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Ke3chang, Vixen Panda, APT 15, GREF, Playful Dragon | canonical-name | 高 | China | https://github.com/nccgroup/Royal_APT<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Ke3chang%2C+Vixen+Panda%2C+APT+15%2C+GREF%2C+Playful+Dragon&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Nylon Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
@@ -80,7 +77,8 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | misp-threat-actor | BackdoorDiplomacy | single-alias-intersection | 中 |  | https://www.welivesecurity.com/2021/06/10/backdoordiplomacy-upgrading-quarian-turian/ |
 | misp-threat-actor | GREF | single-alias-intersection | 中 | CN | https://www.welivesecurity.com/en/eset-research/badbazaar-espionage-tool-targets-android-users-trojanized-signal-telegram-apps/ |
 | misp-microsoft-activity-group | Nylon Typhoon | canonical-name | 高 | CN, China | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | Ke3chang - G0004 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0004<br>https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-ke3chang.pdf |
+| misp-mitre-enterprise-intrusion-set | Ke3chang - G0004 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0004<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://research.nccgroup.com/2018/03/10/apt15-is-alive-and-strong-an-analysis-of-royalcli-and-royaldns/ |
+| misp-mitre-enterprise-intrusion-set | BackdoorDiplomacy - G0135 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0135<br>https://www.welivesecurity.com/2021/06/10/backdoordiplomacy-upgrading-quarian-turian/ |
 | misp-mitre-intrusion-set | Ke3chang - G0004 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0004<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://research.nccgroup.com/2018/03/10/apt15-is-alive-and-strong-an-analysis-of-royalcli-and-royaldns/ |
 | misp-mitre-intrusion-set | BackdoorDiplomacy - G0135 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G0135<br>https://www.welivesecurity.com/2021/06/10/backdoordiplomacy-upgrading-quarian-turian/ |
 | misp-360net | 一致なし |  |  |  |  |
@@ -308,11 +306,11 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 
 ## IOC／artifact概要
 
-- IOC値: 2件
-- IOC観測: 2件
+- IOC値: 8件
+- IOC観測: 8件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 2件
-- 非IOC artifact観測: 108件（`artifacts.csv`）
+- 要レビュー候補: 3件
+- 非IOC artifact観測: 110件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -375,6 +373,8 @@ Ke3changの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0145`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,16 +53,17 @@ CERT-UAは2件の資料でいずれも「кластером кіберзагро
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | UAC-0145 | canonical-name | 高 |  | https://cert.gov.ua/article/6318437 |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | 一致なし |  |  |  |  |
+| misp-threat-actor | Sandworm | canonical-name | 高 | RU, Russian Federation | https://dragos.com/blog/crashoverride/CrashOverride-01.pdf<br>https://www.us-cert.gov/ncas/alerts/TA17-163A<br>https://ics.sans.org/blog/2016/01/09/confirmation-of-a-coordinated-attack-on-the-ukrainian-power-grid |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -70,7 +71,9 @@ CERT-UAは2件の資料でいずれも「кластером кіберзагро
 
 ### 関係性候補（未統合）
 
-候補なし
+| 対象 | 関係 | データセット | 確度 | 評価 |
+|---|---|---|---|---|
+| GreyEnergy | similar | misp-threat-actor | 低 | MISP Galaxy relationship candidate. Review the original references and actor scopes before integration. |
 
 ### クロスチェック上の制約
 
@@ -147,7 +150,22 @@ CERT-UAはウクライナの主要なサイバーセキュリティ確保主体�
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | ウクライナ | CERT-UAはウクライナのサイバーセキュリティ確保主体と連携してUAC-0145を継続調査しており、被害はウクライナ国内で観測されている。中央行政機関のインフラに対する破壊的サイバー攻撃の前提条件が作られた事例が報告されている。 | 2026-03 | 2026-07 | 高 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145` |
+| countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | イスラエル | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | イラン | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ウクライナ | CERT-UAはウクライナのサイバーセキュリティ確保主体と連携してUAC-0145を継続調査しており、被害はウクライナ国内で観測されている。中央行政機関のインフラに対する破壊的サイバー攻撃の前提条件が作られた事例が報告されている。 | 2026-03 | 2026-07 | 高 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145`, `source--target-audit-misp-threat-actor` |
+| countries | カザフスタン | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | キルギス | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ジョージア | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてジョージアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ベラルーシ | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ポーランド | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてポーランドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | リトアニア | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてリトアニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| countries | ロシア | 構造化OSINTの被害国フィールドでUAC-0145の標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | コーカサス | アゼルバイジャン、ジョージアで確認された標的・被害事例をコーカサスとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中央アジア | カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 中東 | イスラエル、イランで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
+| regions | 東欧 | ウクライナ、ベラルーシ、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | ウクライナ、ベラルーシ、ポーランド、リトアニアで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--certua-6318437-uac-0145`, `source--certua-6318863-uac-0145`, `source--target-audit-misp-threat-actor` |
 | sectors | 国防・軍 | Signalでの「アンチウイルス保護」導入を装った配布は、とりわけ軍人を対象として拡大したとCERT-UAが記載している。 | 不明 | 不明 | 高 | `source--certua-6318437-uac-0145` |
 | sectors | 政府機関 | トレント経由で侵害された端末が組織内ネットワークでの присутність確保と横展開に利用され、ウクライナ中央行政機関のインフラに対する破壊的攻撃の条件が作られた事例が少なくとも1件記載されている。 | 不明 | 不明 | 高 | `source--certua-6318437-uac-0145` |
 | sectors | IT企業 | 偽の求人・技術面接を通じてIT専門職へ接触する手口の対象。CERT-UAは通信事業者と並べてIT企業へ注意喚起している。 | 2026-05 | 不明 | 中 | `source--certua-6318863-uac-0145` |
@@ -196,11 +214,11 @@ CERT-UAはウクライナの主要なサイバーセキュリティ確保主体�
 
 ## IOC／artifact概要
 
-- IOC値: 56件
-- IOC観測: 56件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 2件
-- 非IOC artifact観測: 21件（`artifacts.csv`）
+- 要レビュー候補: 0件
+- 非IOC artifact観測: 0件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -231,6 +249,8 @@ CERT-UAはウクライナの主要なサイバーセキュリティ確保主体�
 | source--certua-6318437-uac-0145 | Вектори первинної компрометації UAC-0145 станом на липень 2026 року | CERT-UA | 2026-07-15 | https://cert.gov.ua/article/6318437 | government-advisory | TLP:CLEAR | 高 |
 | source--certua-6318863-uac-0145 | Соціальна інженерія у виконанні UAC-0145: компрометація у процесі працевлаштування | CERT-UA | 2026-08-08 | https://cert.gov.ua/article/6318863 | government-advisory | TLP:CLEAR | 高 |
 | source--osint-cert-ua-uac-index | CERT-UA UAC Article Index | CERT-UA | 不明 | actor_profile/reference/osint/cert-ua-uac-index.json | government-cert-article-index | TLP:CLEAR | 高 |
+| source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

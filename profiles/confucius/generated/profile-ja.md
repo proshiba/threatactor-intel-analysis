@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--confucius`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,18 +54,19 @@ Confuciusの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Confucius | canonical-name | 高 | India | https://unit42.paloaltonetworks.com/unit42-confucius-says-malware-families-get-further-by-abusing-legitimate-websites/<br>https://documents.trendmicro.com/assets/research-deciphering-confucius-cyberespionage-operations.pdf<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Confucius&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Confucius - G0142 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0142<br>https://www.trendmicro.com/en_us/research/18/b/deciphering-confucius-cyberespionage-operations.html<br>https://www.trendmicro.com/en_us/research/21/h/confucius-uses-pegasus-spyware-related-lures-to-target-pakistani.html |
 | misp-mitre-intrusion-set | Confucius - G0142 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0142<br>https://www.trendmicro.com/en_us/research/18/b/deciphering-confucius-cyberespionage-operations.html<br>https://www.trendmicro.com/en_us/research/21/h/confucius-uses-pegasus-spyware-related-lures-to-target-pakistani.html |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -191,8 +192,8 @@ Confuciusの標準化プロファイル。リポジトリ内の専用資料2件�
 
 ## IOC／artifact概要
 
-- IOC値: 59件
-- IOC観測: 81件
+- IOC値: 64件
+- IOC観測: 86件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 35件
 - 非IOC artifact観測: 64件（`artifacts.csv`）
@@ -222,6 +223,7 @@ Confuciusの標準化プロファイル。リポジトリ内の専用資料2件�
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

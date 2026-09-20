@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--wild-neutron`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,12 +52,13 @@ Wild Neutronの標準化プロファイル。リポジトリ内の専用資料1�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Deceptikons, DeathStalker | single-alias-intersection | 中 |  | https://securelist.com/deathstalker-mercenary-triumvirate/98177/<br>https://securelist.com/apt-trends-report-q2-2020/97937/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Deceptikons%2C+DeathStalker&n=1 |
 | etda-threat-group-cards | Wild Neutron, Butterfly, Sphinx Moth | canonical-name | 高 |  | https://www.symantec.com/connect/blogs/butterfly-profiting-high-level-corporate-attacks<br>https://securelist.com/wild-neutron-economic-espionage-threat-actor-returns-with-new-tricks/71275/<br>https://research.kudelskisecurity.com/2015/11/05/sphinx-moth-expanding-our-knowledge-of-the-wild-neutron-morpho-apt/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin5`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | FIN5 | canonical-name | 高 |  | https://www.darkreading.com/analytics/prolific-cybercrime-gang-favors-legit-login-credentials/d/d-id/1322645<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=FIN5&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | FIN5 | canonical-name | 高 |  | https://www.darkreading.com/analytics/prolific-cybercrime-gang-favors-legit-login-credentials/d/d-id/1322645?<br>https://attack.mitre.org/groups/G0053/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | FIN5 - G0053 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0053<br>https://www2.fireeye.com/WBNR-Are-you-ready-to-respond.html<br>https://www.youtube.com/watch?v=fevGZs0EQu8 |
+| misp-mitre-enterprise-intrusion-set | FIN5 - G0053 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0053<br>https://www.darkreading.com/analytics/prolific-cybercrime-gang-favors-legit-login-credentials/d/d-id/1322645?<br>https://www.youtube.com/watch?v=fevGZs0EQu8 |
 | misp-mitre-intrusion-set | FIN5 - G0053 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0053<br>https://www.darkreading.com/analytics/prolific-cybercrime-gang-favors-legit-login-credentials/d/d-id/1322645?<br>https://www.youtube.com/watch?v=fevGZs0EQu8 |
 | misp-360net | 一致なし |  |  |  |  |
 

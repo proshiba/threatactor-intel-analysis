@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--winter-vivern`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:35Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -51,18 +51,19 @@ Winter Vivernの標準化プロファイル。リポジトリ内の専用資料2
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Winter Vivern | canonical-name | 高 |  | https://www.sentinelone.com/labs/winter-vivern-uncovering-a-wave-of-global-espionage/<br>https://www.domaintools.com/resources/blog/winter-vivern-a-look-at-re-crafted-government-maldocs/<br>https://lab52.io/blog/winter-vivern-all-summer/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Winter Vivern | canonical-name | 高 | RU | https://www.sentinelone.com/labs/winter-vivern-uncovering-a-wave-of-global-espionage/<br>https://www.domaintools.com/resources/blog/winter-vivern-a-look-at-re-crafted-government-maldocs<br>https://www.welivesecurity.com/en/eset-research/winter-vivern-exploits-zero-day-vulnerability-roundcube-webmail-servers/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Winter Vivern - G1035 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1035<br>https://cert.gov.ua/article/3761104<br>https://www.domaintools.com/resources/blog/winter-vivern-a-look-at-re-crafted-government-maldocs/ |
 | misp-mitre-intrusion-set | Winter Vivern - G1035 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1035<br>https://cert.gov.ua/article/3761104<br>https://www.domaintools.com/resources/blog/winter-vivern-a-look-at-re-crafted-government-maldocs/ |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -184,8 +185,8 @@ Winter Vivernの標準化プロファイル。リポジトリ内の専用資料2
 
 ## IOC／artifact概要
 
-- IOC値: 5件
-- IOC観測: 5件
+- IOC値: 10件
+- IOC観測: 11件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 1件
 - 非IOC artifact観測: 0件（`artifacts.csv`）
@@ -216,6 +217,7 @@ Winter Vivernの標準化プロファイル。リポジトリ内の専用資料2
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

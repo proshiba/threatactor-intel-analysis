@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--equation-group`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,18 +52,19 @@ Equation Groupの標準化プロファイル。リポジトリ内の専用資料
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Equation Group | canonical-name | 高 | USA | https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064459/Equation_group_questions_and_answers.pdf<br>https://arstechnica.com/information-technology/2015/02/how-omnipotent-hackers-tied-to-the-nsa-hid-for-14-years-and-were-found-at-last/<br>https://en.wikipedia.org/wiki/Equation_Group |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | Equation Group | canonical-name | 高 | US, United States | https://en.wikipedia.org/wiki/Equation_Group<br>https://www.cfr.org/interactive/cyber-operations/equation-group<br>https://arstechnica.com/information-technology/2015/02/how-omnipotent-hackers-tied-to-the-nsa-hid-for-14-years-and-were-found-at-last/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | Equation - G0020 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0020<br>https://securelist.com/files/2015/02/Equation%20group%20questions%20and%20answers.pdf |
+| misp-mitre-enterprise-intrusion-set | Equation - G0020 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0020<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064459/Equation_group_questions_and_answers.pdf |
 | misp-mitre-intrusion-set | Equation - G0020 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0020<br>https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064459/Equation_group_questions_and_answers.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -231,10 +232,10 @@ Socialist; Olympic Games / Stuxnet; Project Sauron / Strider
 
 ## IOC／artifact概要
 
-- IOC値: 327件
-- IOC観測: 328件
+- IOC値: 328件
+- IOC観測: 329件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 160件
+- 要レビュー候補: 159件
 - 非IOC artifact観測: 16件（`artifacts.csv`）
 
 ## 主要判断と不確実性

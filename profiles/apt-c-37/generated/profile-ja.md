@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt-c-37`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,12 +56,13 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Pat Bear, APT-C-37 | canonical-name | 高 | Syria | http://blogs.360.cn/post/SEA_role_influence_cyberattacks.html<br>https://cybersecurity.att.com/blogs/labs-research/alien-labs-2019-analysis-of-threat-groups-molerats-and-apt-c-37#When:14:00:00Z<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Subgroup%3A+Pat+Bear%2C+APT-C-37&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |

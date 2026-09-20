@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blackbyte`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | 一致なし |  |  |  |  |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | BlackByte - G1043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1043<br>https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/<br>https://www.ic3.gov/CSA/2022/220211.pdf |
 | misp-mitre-intrusion-set | BlackByte - G1043 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1043<br>https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/<br>https://www.ic3.gov/CSA/2022/220211.pdf |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -194,11 +195,11 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 
 ## IOC／artifact概要
 
-- IOC値: 6件
-- IOC観測: 6件
+- IOC値: 9件
+- IOC観測: 9件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 6件
-- 非IOC artifact観測: 494件（`artifacts.csv`）
+- 要レビュー候補: 8件
+- 非IOC artifact観測: 496件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -371,6 +372,7 @@ No state sponsor is asserted by the actor-specific MITRE ATT&CK description used
 | source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

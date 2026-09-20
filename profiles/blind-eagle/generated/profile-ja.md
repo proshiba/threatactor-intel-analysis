@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blind-eagle`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,18 +56,19 @@ Blind Eagleの標準化プロファイル。リポジトリ内の専用資料3�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Blind Eagle | canonical-name | 高 | Colombia | https://ti.360.net/blog/articles/apt-c-36-continuous-attacks-targeting-colombian-government-institutions-and-corporations-en/<br>https://threatmon.io/apt-blind-eagles-malware-arsenal-technical-analysis/<br>https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/tracing-blind-eagle-to-proton66/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT-C-36 | canonical-name | 高 |  | https://ti.360.net/blog/articles/apt-c-36-continuous-attacks-targeting-colombian-government-institutions-and-corporations-en/<br>https://www.ecucert.gob.ec/wp-content/uploads/2022/03/alerta-APTs-2022-03-23.pdf<br>https://blogs.blackberry.com/en/2023/02/blind-eagle-apt-c-36-targets-colombia |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | APT-C-36 - G0099 | mitre-external-id | 高 |  | https://assets.recordedfuture.com/insikt-report-pdfs/2025/cta-2025-0826.pdf<br>https://attack.mitre.org/groups/G0099<br>https://research.checkpoint.com/2025/blind-eagle-and-justice-for-all/ |
 | misp-mitre-intrusion-set | APT-C-36 - G0099 | mitre-external-id | 高 |  | https://assets.recordedfuture.com/insikt-report-pdfs/2025/cta-2025-0826.pdf<br>https://attack.mitre.org/groups/G0099<br>https://research.checkpoint.com/2025/blind-eagle-and-justice-for-all/ |
 | misp-360net | 盲眼鹰 - APT-C-36 | single-alias-intersection | 中 | namerica | https://apt.360.net/report/apts/83.html |
 
@@ -204,8 +205,8 @@ Blind Eagleの標準化プロファイル。リポジトリ内の専用資料3�
 
 ## IOC／artifact概要
 
-- IOC値: 102件
-- IOC観測: 106件
+- IOC値: 104件
+- IOC観測: 108件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 74件
 - 非IOC artifact観測: 68件（`artifacts.csv`）
@@ -238,6 +239,7 @@ Blind Eagleの標準化プロファイル。リポジトリ内の専用資料3�
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

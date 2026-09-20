@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--oceanlotus`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,19 +54,20 @@ OceanLotusの標準化プロファイル。リポジトリ内の専用資料9件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 32, OceanLotus, SeaLotus | canonical-name | 高 | Vietnam | https://www.fireeye.com/blog/threat-research/2017/05/cyber-espionage-apt32.html<br>https://www.welivesecurity.com/wp-content/uploads/2018/03/ESET_OceanLotus.pdf<br>https://www.cylance.com/content/dam/cylance-web/en-us/resources/knowledge-center/resource-library/reports/SpyRATsofOceanLotusMalwareWhitePaper.pdf |
 | etda-threat-group-cards | Bismuth | multiple-name-intersection | 高 | Vietnam | https://www.microsoft.com/security/blog/2020/11/30/threat-actor-leverages-coin-miner-techniques-to-stay-under-the-radar-heres-how-to-spot-them/<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Bismuth&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Canvas Cyclone | canonical-name | 高 | Vietnam | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT32 | canonical-name | 高 | VN, Vietnam | https://attack.mitre.org/groups/G0050/<br>https://www.fireeye.com/blog/threat-research/2017/05/cyber-espionage-apt32.html<br>https://www.cybereason.com/labs-operation-cobalt-kitty-a-large-scale-apt-in-asia-carried-out-by-the-oceanlotus-group/ |
 | misp-microsoft-activity-group | Canvas Cyclone | canonical-name | 高 | VN, Vietnam | https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | APT32 - G0050 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0050<br>https://www.fireeye.com/blog/threat-research/2017/05/cyber-espionage-apt32.html<br>https://www.volexity.com/blog/2017/11/06/oceanlotus-blossoms-mass-digital-surveillance-and-exploitation-of-asean-nations-the-media-human-rights-and-civil-society/ |
+| misp-mitre-enterprise-intrusion-set | APT32 - G0050 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0050<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://www.amnestyusa.org/wp-content/uploads/2021/02/Click-and-Bait_Vietnamese-Human-Rights-Defenders-Targeted-with-Spyware-Attacks.pdf |
 | misp-mitre-intrusion-set | APT32 - G0050 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0050<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://www.amnestyusa.org/wp-content/uploads/2021/02/Click-and-Bait_Vietnamese-Human-Rights-Defenders-Targeted-with-Spyware-Attacks.pdf |
 | misp-360net | 海莲花 - APT-C-00 | canonical-name | 高 | vietnam | https://apt.360.net/report/apts/93.html<br>https://apt.360.net/report/apts/1.html<br>https://apt.360.net/report/apts/94.html |
 
@@ -297,10 +298,10 @@ Cobalt Kitty
 
 ## IOC／artifact概要
 
-- IOC値: 335件
-- IOC観測: 383件
+- IOC値: 437件
+- IOC観測: 500件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 182件
+- 要レビュー候補: 183件
 - 非IOC artifact観測: 327件（`artifacts.csv`）
 
 ## 主要判断と不確実性

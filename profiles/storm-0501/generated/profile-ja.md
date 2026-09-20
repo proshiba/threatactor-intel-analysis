@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--storm-0501`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:11Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,18 +50,19 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | 一致なし |  |  |  |  |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Storm-0501 | canonical-name | 高 |  | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | Storm-0501 | canonical-name | 高 |  | https://www.microsoft.com/en-us/security/blog/2024/09/26/storm-0501-ransomware-attacks-expanding-to-hybrid-cloud-environments/ |
 | misp-microsoft-activity-group | Storm-0501 | canonical-name | 高 |  | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
+| misp-mitre-enterprise-intrusion-set | Storm-0501 - G1053 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1053<br>https://cloud.google.com/blog/topics/threat-intelligence/sabbath-ransomware-affiliate/<br>https://www.avertium.com/resources/threat-reports/in-depth-look-at-sabbath-ransomware-gang |
 | misp-mitre-intrusion-set | Storm-0501 - G1053 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1053<br>https://cloud.google.com/blog/topics/threat-intelligence/sabbath-ransomware-affiliate/<br>https://www.avertium.com/resources/threat-reports/in-depth-look-at-sabbath-ransomware-gang |
 | misp-360net | 一致なし |  |  |  |  |
 
@@ -230,6 +231,7 @@ Aliasなし
 | source--storm-0501--b8e6cf9fc5201b4c | Cybersecurity Threats 2024 Annual Report QAX |  | 2024 | summary/2025/Cybersecurity Threats 2024 Annual Report_QAX.pdf | report | TLP:CLEAR | 中 |
 | source--storm-0501--c9befc46d5a04a83 | 2026 safebreach state of the breach report final 1 |  | 2026 | summary/2026/2026_safebreach_state_of_the_breach_report_final-1.pdf | report | TLP:CLEAR | 中 |
 | source--storm-0501--d9ec7370b268af85 | Cloud Security Risk Report 2025 |  | 2025 | summary/2026/Cloud_Security_Risk_Report_2025.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 
 ## 自由記述
 

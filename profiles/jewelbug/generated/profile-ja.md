@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--jewelbug`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:34Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,17 +55,18 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | Earth Alux | single-alias-intersection | 中 | China | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html<br>https://apt.etda.or.th/cgi-bin/showcard.cgi?g=Earth+Alux&n=1 |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | REF7707 | canonical-name | 高 | CN | https://unit42.paloaltonetworks.com/advanced-backdoor-squidoor/<br>https://www.elastic.co/security-labs/fragile-web-ref7707<br>https://www.security.com/threat-intelligence/jewelbug-apt-russia |
-| misp-threat-actor | Earth Alux | single-alias-intersection | 中 | CN | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html |
+| misp-threat-actor | Earth Alux | single-alias-intersection | 中 | CN | https://www.trendmicro.com/en_us/research/25/c/the-espionage-toolkit-of-earth-alux.html<br>https://www.security.com/threat-intelligence/jewelbug-crypto-fraud-espionage |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
@@ -193,8 +194,8 @@ Symantecは数カ月にわたる調査として本件を報告しているが、
 
 ## IOC／artifact概要
 
-- IOC値: 52件
-- IOC観測: 52件
+- IOC値: 0件
+- IOC観測: 0件
 - 複数攻撃で観測: 0件
 - 要レビュー候補: 0件
 - 非IOC artifact観測: 0件（`artifacts.csv`）

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt12`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -58,18 +58,19 @@ APT12の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | 一致なし |  |  |  |  |
 | etda-threat-group-cards | APT 12, Numbered Panda | canonical-name | 高 | China | https://www.crowdstrike.com/blog/whois-numbered-panda/<br>https://www.fireeye.com/blog/threat-research/2014/09/darwins-favorite-apt-group-2.html<br>https://en.wikipedia.org/wiki/Numbered_Panda |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | Hexagon Typhoon | canonical-name | 高 | China | https://github.com/microsoft/mstic/blob/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
 | misp-threat-actor | APT12 | canonical-name | 高 | CN, China | http://www.crowdstrike.com/blog/whois-numbered-panda/<br>https://www.cfr.org/interactive/cyber-operations/apt-12<br>https://www.fireeye.com/blog/threat-research/2014/09/darwins-favorite-apt-group-2.html |
 | misp-microsoft-activity-group | Hexagon Typhoon | canonical-name | 高 | CN, China | https://raw.githubusercontent.com/microsoft/mstic/master/PublicFeeds/ThreatActorNaming/MicrosoftMapping.json |
-| misp-mitre-enterprise-intrusion-set | APT12 - G0005 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0005<br>http://www.crowdstrike.com/blog/whois-numbered-panda/ |
+| misp-mitre-enterprise-intrusion-set | APT12 - G0005 | mitre-external-id | 高 |  | http://www.crowdstrike.com/blog/whois-numbered-panda/<br>https://attack.mitre.org/groups/G0005<br>https://www.fireeye.com/blog/threat-research/2014/09/darwins-favorite-apt-group-2.html |
 | misp-mitre-intrusion-set | APT12 - G0005 | mitre-external-id | 高 |  | http://www.crowdstrike.com/blog/whois-numbered-panda/<br>https://attack.mitre.org/groups/G0005<br>https://www.fireeye.com/blog/threat-research/2014/09/darwins-favorite-apt-group-2.html |
 | misp-360net | 一致なし |  |  |  |  |
 

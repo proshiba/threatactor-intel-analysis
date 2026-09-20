@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt37`
 - 状態: draft
-- 更新日時: 2026-09-20T10:03:33Z
+- 更新日時: 2026-09-20T12:23:31Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -19,10 +19,11 @@ APT37の標準化プロファイル。リポジトリ内の専用資料14件とM
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
 | Group123 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| ScarCruft | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | InkySquid | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| PLAIN NEPTUNE | Google Threat Intelligence Group | exact | 高 | `source--gtig-unified-actor-naming-2026` | GTIG's July 2026 table explicitly maps the previous name to this new unified name. Exactness is within GTIG's taxonomy; other vendors may use different collection boundaries. |
 | Reaper | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | Ricochet Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| ScarCruft | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | TEMP.Reaper | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 
 ## 帰属
@@ -59,18 +60,19 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T10:03:11Z
+- 調査日時: 2026-09-20T12:23:31Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
 | データセット | 一致エントリ | 根拠 | 確度 | 帰属候補 | 原典URL |
 |---|---|---|---|---|---|
+| gtig-threat-actor-naming | PLAIN NEPTUNE | canonical-name | 高 |  | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system |
 | etda-threat-group-cards | Reaper, APT 37, Ricochet Chollima, ScarCruft | canonical-name | 高 | North Korea | https://www2.fireeye.com/rs/848-DID-242/images/rpt_APT37.pdf<br>https://blog.talosintelligence.com/2018/01/korea-in-crosshairs.html<br>https://threatpost.com/scarcruft-apt-group-used-latest-flash-zero-day-in-two-dozen-attacks/118642/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
 | misp-threat-actor | APT37 | canonical-name | 高 | KP, Korea (Democratic People's Republic of) | https://www.volexity.com/blog/2021/08/17/north-korean-apt-inkysquid-infects-victims-using-browser-exploits/<br>https://www.fireeye.com/blog/threat-research/2018/02/apt37-overlooked-north-korean-actor.html<br>https://www2.fireeye.com/rs/848-DID-242/images/rpt_APT37.pdf |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
-| misp-mitre-enterprise-intrusion-set | APT37 - G0067 | mitre-external-id | 高 |  | https://attack.mitre.org/wiki/Group/G0067<br>https://www2.fireeye.com/rs/848-DID-242/images/rpt%20APT37.pdf<br>https://securelist.com/operation-daybreak/75100/ |
+| misp-mitre-enterprise-intrusion-set | APT37 - G0067 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0067<br>https://blog.talosintelligence.com/2018/01/korea-in-crosshairs.html<br>https://securelist.com/operation-daybreak/75100/ |
 | misp-mitre-intrusion-set | APT37 - G0067 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0067<br>https://blog.talosintelligence.com/2018/01/korea-in-crosshairs.html<br>https://securelist.com/operation-daybreak/75100/ |
 | misp-360net | ScarCruft - APT-C-28 | single-alias-intersection | 中 | korea | https://apt.360.net/report/apts/79.html |
 
@@ -309,11 +311,11 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 
 ## IOC／artifact概要
 
-- IOC値: 361件
-- IOC観測: 480件
+- IOC値: 316件
+- IOC観測: 463件
 - 複数攻撃で観測: 0件
-- 要レビュー候補: 66件
-- 非IOC artifact観測: 363件（`artifacts.csv`）
+- 要レビュー候補: 61件
+- 非IOC artifact観測: 362件（`artifacts.csv`）
 
 ## 主要判断と不確実性
 
@@ -367,6 +369,8 @@ Erebus; Golden Time; Evil New Year; Are you Happy?; FreeMilk; North Korean Human
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
+| source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 
 ## 自由記述
 
