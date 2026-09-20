@@ -1,8 +1,8 @@
 # Zebrocy 脅威アクタープロファイル
 
 - プロファイルID: `actor--zebrocy`
-- 状態: draft
-- 更新日時: 2026-09-19T00:00:54Z
+- 状態: deprecated
+- 更新日時: 2026-09-20T08:53:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -42,7 +42,7 @@ Aliasなし
 | Adversary |  |
 | Capability |  |
 | Infrastructure |  |
-| Victim | Germany, Indonesia, the United States, Taiwan, India, France, Serbia, Ecuador, Argentina, South Korea, Japan, China, Britain, South Africa, Italy, Hong Kong, Romania, Ukraine, Macedonia, Russia, Switzerland, Senegal, the Philippines, UAE, Qatar, Saudi Arabia, Pakistan, Thailand, Bahrain, Turkey, Bulgaria, Bangladesh |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
@@ -115,36 +115,36 @@ Aliasなし
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | アラブ首長国連邦 | レビュー済みアクターマッピングの標的欄に記録されたアラブ首長国連邦を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | アルゼンチン | Targeting text mentions argentina. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | イタリア | Targeting text mentions italy. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | インド | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | インドネシア | Targeting text mentions indonesia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ウクライナ | Targeting text mentions ukraine. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | エクアドル | Targeting text mentions ecuador. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | アルゼンチン | レビュー済みアクターマッピングの標的欄に記録されたアルゼンチンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | イタリア | レビュー済みアクターマッピングの標的欄に記録されたイタリアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | インド | レビュー済みアクターマッピングの標的欄に記録されたインドを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | インドネシア | レビュー済みアクターマッピングの標的欄に記録されたインドネシアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ウクライナ | レビュー済みアクターマッピングの標的欄に記録されたウクライナを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | エクアドル | レビュー済みアクターマッピングの標的欄に記録されたエクアドルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | カタール | レビュー済みアクターマッピングの標的欄に記録されたカタールを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | サウジアラビア | Targeting text mentions saudi arabia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | スイス | Targeting text mentions switzerland. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | サウジアラビア | レビュー済みアクターマッピングの標的欄に記録されたサウジアラビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | スイス | レビュー済みアクターマッピングの標的欄に記録されたスイスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | セネガル | レビュー済みアクターマッピングの標的欄に記録されたセネガルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | セルビア | レビュー済みアクターマッピングの標的欄に記録されたセルビアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | タイ | Targeting text mentions thailand. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | トルコ | Targeting text mentions turkey. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ドイツ | Targeting text mentions germany. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | バングラデシュ | Targeting text mentions bangladesh. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | タイ | レビュー済みアクターマッピングの標的欄に記録されたタイを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | トルコ | レビュー済みアクターマッピングの標的欄に記録されたトルコを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ドイツ | レビュー済みアクターマッピングの標的欄に記録されたドイツを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | バングラデシュ | レビュー済みアクターマッピングの標的欄に記録されたバングラデシュを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | バーレーン | レビュー済みアクターマッピングの標的欄に記録されたバーレーンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | パキスタン | Targeting text mentions pakistan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | フィリピン | Targeting text mentions philippines. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | フランス | Targeting text mentions france. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | パキスタン | レビュー済みアクターマッピングの標的欄に記録されたパキスタンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | フィリピン | レビュー済みアクターマッピングの標的欄に記録されたフィリピンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | フランス | レビュー済みアクターマッピングの標的欄に記録されたフランスを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | ブルガリア | レビュー済みアクターマッピングの標的欄に記録されたブルガリアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ルーマニア | Targeting text mentions romania. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | ロシア | Targeting text mentions russia. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ルーマニア | レビュー済みアクターマッピングの標的欄に記録されたルーマニアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ロシア | レビュー済みアクターマッピングの標的欄に記録されたロシアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 中国 | レビュー済みアクターマッピングの標的欄に記録された中国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | 北マケドニア | レビュー済みアクターマッピングの標的欄に記録された北マケドニアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | countries | 南アフリカ | レビュー済みアクターマッピングの標的欄に記録された南アフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 台湾 | Targeting text mentions taiwan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 日本 | Targeting text mentions japan. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 米国 | Targeting text mentions united states. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 香港 | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 台湾 | レビュー済みアクターマッピングの標的欄に記録された台湾を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 日本 | レビュー済みアクターマッピングの標的欄に記録された日本を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 韓国 | レビュー済みアクターマッピングの標的欄に記録された韓国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | 香港 | レビュー済みアクターマッピングの標的欄に記録された香港を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | regions | アフリカ | レビュー済みアクターマッピングの標的欄に記録されたアフリカを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | regions | 中南米 | アルゼンチン、エクアドルで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | regions | 中東 | アラブ首長国連邦、カタール、サウジアラビア、トルコ、バーレーンで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -176,16 +176,15 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| Zebrocy is malware used by APT28/Sednit, not a canonical threat actor. | 高 | `source--mitre-zebrocy-s0251`, `source--eset-zebrocy-2018` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 
@@ -207,6 +206,8 @@ TTPなし
 | source--zebrocy--a477e036e7598530 | XForce Threat Intelligence 2022 |  | 2022 | summary/2022/XForce_Threat_Intelligence_2022.pdf | report | TLP:CLEAR | 中 |
 | source--zebrocy--2b771e6a90f71ed6 | 360 APT Annual Research Report 2022 |  | 2022 | summary/2023/360_APT_Annual_Research_Report_2022.pdf | report | TLP:CLEAR | 中 |
 | source--zebrocy--be5e9f1e9d5be62f | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
+| source--mitre-zebrocy-s0251 | Zebrocy, Software S0251 | MITRE ATT&CK | 不明 | https://attack.mitre.org/software/S0251/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--eset-zebrocy-2018 | Sednit: What's going on with Zebrocy? | ESET | 2018-11-20 | https://www.welivesecurity.com/2018/11/20/sednit-whats-going-zebrocy/ | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

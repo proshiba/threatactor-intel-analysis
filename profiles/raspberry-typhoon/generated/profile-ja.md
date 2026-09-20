@@ -1,8 +1,8 @@
 # Raspberry Typhoon 脅威アクタープロファイル
 
 - プロファイルID: `actor--raspberry-typhoon`
-- 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 状態: deprecated
+- 更新日時: 2026-09-20T08:53:45Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,11 +16,7 @@ Raspberry Typhoonの標準化プロファイル。リポジトリ内の専用資
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| APT30 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| LotusBlossom | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| RADIUM | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -37,20 +33,16 @@ Raspberry Typhoonの標準化プロファイル。リポジトリ内の専用資
 
 ## 他アクターとの関係
 
-| 対象 | 関係 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|
-| APT30 | overlaps-with | 共有alias: APT30 | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| Lotus Blossom | overlaps-with | 共有alias: Lotus Blossom, LotusBlossom, RADIUM, Raspberry Typhoon | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
-| Naikon | overlaps-with | 共有alias: APT30 | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+確認された関係なし
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | RARSTONE, BACKSPACe, NETEAGLE, XSControl |
+| Capability |  |
 | Infrastructure |  |
-| Victim | satellite communications operator, Telecoms, and Defense Companies, Hong Kong |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
@@ -95,12 +87,7 @@ Raspberry Typhoonの標準化プロファイル。リポジトリ内の専用資
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--rarstone | RARSTONE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--backspace | BACKSPACe | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--neteagle | NETEAGLE | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--xscontrol | XSControl | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -124,17 +111,11 @@ Raspberry Typhoonの標準化プロファイル。リポジトリ内の専用資
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Camera Shy | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
-| Naikon | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Camera Shy | Raspberry Typhoon | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
-| Naikon | Raspberry Typhoon | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
 Naikon; Camera Shy
 
@@ -142,32 +123,27 @@ Naikon; Camera Shy
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インドネシア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カンボジア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | サウジアラビア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | タイ | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | インド | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | インドネシア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてインドネシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | カンボジア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてカンボジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | サウジアラビア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | シンガポール | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | タイ | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ネパール | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フィリピン | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | フィリピン | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてフィリピンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ブルネイ | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてブルネイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ブータン | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてブータンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | マレーシア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ミャンマー | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | ラオス | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてラオスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 中国 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 香港 | Targeting text mentions hong kong. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | インド、ネパール、ブータンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | 中国、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | 構造化OSINTの被害地域フィールドでRaspberry Typhoonの標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| countries | ベトナム | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | マレーシア | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ミャンマー | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてミャンマーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | ラオス | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国としてラオスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 日本 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 韓国 | 構造化OSINTの被害国フィールドでRaspberry Typhoonの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 香港 | レビュー済みアクターマッピングの標的欄に記録された香港を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| regions | 南アジア | インド、ネパール、ブータンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | 日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
+| regions | 東南アジア | 構造化OSINTの被害地域フィールドでRaspberry Typhoonの標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -189,16 +165,15 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is an exact-identity duplicate of Lotus Blossom (actor--lotus-blossom). | 高 | `source--mitre-attack-19-1` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 

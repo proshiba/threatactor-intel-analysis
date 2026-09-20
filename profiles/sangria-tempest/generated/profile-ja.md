@@ -1,8 +1,8 @@
 # Sangria Tempest 脅威アクタープロファイル
 
 - プロファイルID: `actor--sangria-tempest`
-- 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 状態: deprecated
+- 更新日時: 2026-09-20T08:53:45Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -16,11 +16,7 @@ Sangria Tempestの標準化プロファイル。リポジトリ内の専用資�
 - 最終観測: 不明
 - 活動状態: unknown
 
-| Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
-|---|---|---|---|---|---|
-| Carbon Spider | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| ELBRUS | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| FIN7 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
+Aliasなし
 
 ## 帰属
 
@@ -37,18 +33,16 @@ Sangria Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 ## 他アクターとの関係
 
-| 対象 | 関係 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|
-| FIN7 | overlaps-with | 共有alias: Carbon Spider, ELBRUS, FIN7, Sangria Tempest | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+確認された関係なし
 
 ## ダイヤモンドモデル
 
 | 要素 | 内容 |
 |---|---|
 | Adversary |  |
-| Capability | PowerSource |
+| Capability |  |
 | Infrastructure |  |
-| Victim | Bank of Valetta, Malta |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
@@ -89,9 +83,7 @@ Sangria Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 ### マルウェア
 
-| ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| malware--powersource | PowerSource | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+未確認
 
 ### ツール
 
@@ -115,15 +107,11 @@ Sangria Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | malware-campaign | 不明 | 不明 | 2025-04-03 |  |  | ttp--activity-rule--64ed665cb1f7db9eca79, ttp--activity-rule--8c922b8a2654133dc680, ttp--activity-rule--a1a927be99acfa6a147e, ttp--activity-rule--bf8e55ed5ea1e36409d8 | victim--activity-rule--be5e68d40dea8e62c598 | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 Anubisは、被害者を誘導して、侵害されたSharePointサイト上のペイロードを実行させるマルスパムキャンペーンで拡散。 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 バックドアは、Base64エンコードされたTCPソケット通信を介してリモートサーバーと通信し、システム操作を実行。 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | Sangria Tempest | 情報なし | T1059.006 Python, T1113 Screen Capture, T1027 Obfuscated Files or Information, T1560.001 Archive via Utility | 情報なし | 情報なし | 被害事例: FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | 中 |
+活動別ダイヤモンドモデルなし
 
 
 
@@ -165,25 +153,16 @@ Sangria Tempestの標準化プロファイル。リポジトリ内の専用資�
 | regions | 東アジア | 中国、台湾、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東欧 | ウクライナ、チェコ、ブルガリア、ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | アイスランド、ウクライナ、オーストリア、スイス、スウェーデン、スペイン、チェコ、ドイツ、ノルウェー、フランス、ブルガリア、ポーランド、マルタ、ルクセンブルク、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
-| sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
-| 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: FIN7、Anubisバックドアを展開し、SharePoint経由でWindowsシステムを乗っ取り | 非公開 | aggregate | multiple-organizations | reported |  |  | ttp--activity-rule--64ed665cb1f7db9eca79, ttp--activity-rule--8c922b8a2654133dc680, ttp--activity-rule--a1a927be99acfa6a147e, ttp--activity-rule--bf8e55ed5ea1e36409d8 | VPN／リモートアクセス機器, サーバー, エンドポイント | credential-theft: 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 | 不明 | 不明 | 2025-04-03 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
+構造化された被害事例なし
 
 ## MITRE ATT&CK Matrixデータ
 
-| Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|
-| Execution | T1059.006 | Python | 金銭目的の脅威アクターFIN7が、Pythonベースのバックドア「Anubis」を使用してWindowsシステムへのリモートアクセスを確立。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
-| Collection | T1113 | Screen Capture | 攻撃者は、キーロギング、スクリーンショット取得、パスワード窃取などの操作を、被害者のシステム上に直接ツールを保存せずに実行可能。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
-| Stealth | T1027 | Obfuscated Files or Information | 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
-| Collection | T1560.001 | Archive via Utility | 感染はZIPアーカイブ内のPythonスクリプトから始まり、メモリ内で難読化されたペイロードを復号・実行。 |  | activity--daily-f4ad872d6b6c19798c2a | 不明 | 不明 | 中 | `source--daily-aa4ff1b6006e51c3ed82` |
-| Initial Access | T1200 | Hardware Additions | доступ к инфраструктуре жертв через наборы эксплоитов. Например, опера - торы ZLoader использовали Spelevo EK, а с Dridex – набор Rig EK. • Hardware additions T1200 В 2021 году группировка FIN7 продолжила проводить атаки типа BadUSB для заражения компьютеров в корпоративной среде, отправляя посылки через почтовую службу США и логистическую компанию UPS. Отправителями значились Министерство здраво - охранени |  |  | 不明 | 不明 | 中 | `source--sangria-tempest--2880b4cdea94039e` |
+TTPなし
 
 ## IOC／artifact概要
 
@@ -195,16 +174,15 @@ Sangria Tempestの標準化プロファイル。リポジトリ内の専用資�
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is an exact-identity duplicate of FIN7 (actor--fin7). | 高 | `source--mitre-attack-19-1` | Entity-boundary correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 

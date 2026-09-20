@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--spacecobra`
 - 状態: draft
-- 更新日時: 2026-09-19T00:59:00Z
+- 更新日時: 2026-09-20T08:53:45Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ ESET states that the real identity of the actor behind GravityRAT remains unknow
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -116,7 +116,7 @@ ESETは2023年、BingeChatおよびChaticoを用いるGravityRATキャンペー�
 
 ターゲット情報なし
 
-選定ロジック: Only source-explicit targeting should be structured.
+選定ロジック: Only source-explicit targeting should be structured. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 

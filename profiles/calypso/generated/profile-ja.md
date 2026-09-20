@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--calypso`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -124,41 +124,23 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | アフガニスタン | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イスラエル | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | インド | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | インド | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ウクライナ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてウクライナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | カザフスタン | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてカザフスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | キルギス | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | スイス | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてスイスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | タイ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | トルコ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ノルウェー | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | フランス | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | ブラジル | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベトナム | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてベトナムが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ベラルーシ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてベラルーシが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | モンゴル | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてモンゴルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ルクセンブルク | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてルクセンブルクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | ロシア | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国としてロシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 中国 | Targeting text mentions china. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| countries | 南アフリカ | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 台湾 | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでCalypsoの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | regions | 中央アジア | カザフスタン、キルギスで確認された標的・被害事例を中央アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | アラブ首長国連邦、イスラエル、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | アフガニスタン、インドで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | モンゴル、中国、台湾、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | シンガポール、タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 南アジア | アフガニスタン、インドで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| regions | 東アジア | モンゴル、中国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
 | regions | 東欧 | ウクライナ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | ウクライナ、スイス、トルコ、ノルウェー、フランス、ベラルーシ、ベルギー、ルクセンブルク、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | ウクライナ、トルコ、ベラルーシで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 情報通信 | 活動「中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-350d930382dd3ed9f923` |
 | sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
@@ -223,7 +205,6 @@ ETDA Threat Group Cards lists Calypso as China-linked. This geographic attributi
 | source--calypso--cbe1bfe741302951 | 2024 Malicious Infrastructure Report |  | 2024 | summary/2025/2024 Malicious Infrastructure Report.pdf | report | TLP:CLEAR | 中 |
 | source--calypso--e04640fed1c55bf5 | Threat Group Cards v2.0 |  | 不明 | Threat_Group_Cards_v2.0.pdf | report | TLP:CLEAR | 中 |
 | source--daily-350d930382dd3ed9f923 | 中国系ハッカーが新たなLinux/Windowsマルウェアで通信事業者を標的化 | lumen.com | 2026-05-22 | https://www.lumen.com/blog/en-us/introducing-showboat-a-new-malware-family-taunts-defenses-and-targets-international-telecom-firms | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc3886`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:45Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -119,7 +119,7 @@ Aliasなし
 | 中国のサイバースパイ、Juniperルーターにバックドアを仕掛けてステルスアクセスを実現 | cyber-espionage | 不明 | 不明 | 2025-03-13 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | victim--activity-rule--fa16f6615c2860a4a10c | 中国のハッカーグループUNC3886は、サポートが終了したJuniper NetworksのJunos OS MXルーターにカスタムバックドアを展開し、ステルスアクセスを実現している。 これらのバックドアは、Linuxシステム上でデータ交換やコマンド実行を可能にするオープンソースツール「TinyShell」の亜種である。 攻撃者は、ネットワークデバイスを管理するためのターミナルサーバーから侵入し、Junos OSのCLIにアクセス、FreeBSDシェルモードにエスカレーションしている。 信頼されたプロセスにコードを注入することで、Junos OSのファイル整合性システム「Veriexec」を回避し、6つのカスタムバックドアをMXルーターにインストールしている。 UNC3886は、以前にもFortinetやVMware ESXiのゼロデイ脆弱性を利用した攻撃を行っていた。 | 中 | `source--daily-68aa782163620e0cd16f` |
 | Juniper、2024年半ば以降、中国のサイバースパイがルーターにバックドアを仕掛けた脆弱性を修正 | cyber-espionage | 不明 | 不明 | 2025-03-14 | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | victim--activity-rule--ff287b7e64cce34375d0 | Juniper Networksは、Junos OSの脆弱性（CVE-2025-21590）を修正する緊急セキュリティアップデートをリリースしました。 この脆弱性は、中国のサイバースパイグループUNC3886によって悪用され、ルーターにバックドアを設置されていました。 攻撃者は、TINYSHELLバックドアの改変版を使用し、ルーターへのステルスアクセスを維持していました。 脆弱性は、NFXシリーズ、Virtual SRX、SRXシリーズ、EXシリーズ、QFXシリーズ、ACX、MXシリーズのデバイスに影響を及ぼします。 Juniperは、影響を受けるデバイスのファームウェアを最新バージョンにアップデートすることを強く推奨しています。 | 中 | `source--daily-dd052f5bf8f217c32fc3` |
 | UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏 | malware-campaign | 不明 | 不明 | 2024-06-21 | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--sector--e68e01d9baac208e6b2d | malware--medusa, malware--mopsled, malware--reptile, malware--riflespine |  | victim--activity-rule--fb99d2c0e1337648a132 | UNC3886という中国のハッカー集団がLinuxルートキット「Reptile」と「Medusa」を使用してVMware ESXi仮想マシンに潜伏 これらのルートキットは長期的なアクセス維持と検出回避のために使用 攻撃は政府、通信、技術、航空宇宙、防衛、エネルギー・ユーティリティ部門をターゲット 地理的には、北米、東南アジア、オセアニアの組織を標的としており、ヨーロッパ、アフリカ、アジアの他の地域でも被害者が確認されている UNC3886はカスタムマルウェアツール「Mopsled」や「Riflespine」を使用 | 高 | `source--daily-4fd1a9d4d043a65933bd` |
-| 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | cyber-espionage | 不明 | 不明 | 2024-06-20 | target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--210dddb39397dbe50e91 | malware--medusa, malware--mopsled, malware--reptile, malware--riflespine | ttp--activity-rule--4b68390034dd0a918d46 | victim--activity-rule--ea1152a5d569414a67bb | UNC3886がFortinetとVMwareのゼロデイ脆弱性を利用。 侵入後、持続的なアクセスを確保するための多くの手法を使用。 北米、東南アジア、オセアニアの政府や企業を主な標的。 ReptileやMedusaなどのルートキットを使用。 GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。 | 中 | `source--daily-2991ab0470fb4a03b3f8` |
+| 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | cyber-espionage | 不明 | 不明 | 2024-06-20 | target--activity-rule--sector--210dddb39397dbe50e91 | malware--medusa, malware--mopsled, malware--reptile, malware--riflespine | ttp--activity-rule--4b68390034dd0a918d46 | victim--activity-rule--ea1152a5d569414a67bb | UNC3886がFortinetとVMwareのゼロデイ脆弱性を利用。 侵入後、持続的なアクセスを確保するための多くの手法を使用。 北米、東南アジア、オセアニアの政府や企業を主な標的。 ReptileやMedusaなどのルートキットを使用。 GitHubとGoogle DriveをC2チャンネルとして活用するMOPSLEDとRIFLESPINEといったバックドアも利用。 | 中 | `source--daily-2991ab0470fb4a03b3f8` |
 | RedPenguin | campaign | 2024-07-01T04:00:00.000Z | 2025-03-01T05:00:00.000Z | 2026-05-12 |  | malware--medusa, malware--reptile | ttp--mitre-campaign--08acf831aa5f21efc6cc, ttp--mitre-campaign--17ac5ae8828f0e5e6755, ttp--mitre-campaign--265dbd000d8ddc451e5a, ttp--mitre-campaign--3914e5b54be82cc8d66b, ttp--mitre-campaign--427f0f6f61e6a719c020, ttp--mitre-campaign--5863cbc30bb68710714a, ttp--mitre-campaign--5afc7da9618dfa8f1a0a, ttp--mitre-campaign--64c2f929021967ac10d4, ttp--mitre-campaign--6e804efb01a0ebd3e8c2, ttp--mitre-campaign--7622212b1a65bdcc887f, ttp--mitre-campaign--77515494201647c9e27d, ttp--mitre-campaign--7d3ae469a41321736e42, ttp--mitre-campaign--80d19865f75e3da5dc96, ttp--mitre-campaign--829c435afdc9dd012f72, ttp--mitre-campaign--97376d5a2ae3627753a5, ttp--mitre-campaign--9ba4c615f3f2810d25ec, ttp--mitre-campaign--9d551f6c5d33c8d526ea, ttp--mitre-campaign--a1a85fbf7d7a470f82a9, ttp--mitre-campaign--a438d8e0f62e542e8149, ttp--mitre-campaign--a7c159e46c2d21e2584d, ttp--mitre-campaign--abbbfed5cc4113d555e0, ttp--mitre-campaign--bf327b3e5b4642f4573c, ttp--mitre-campaign--dc6aafc7f13540e9c00e, ttp--mitre-campaign--e5e4c0875bfa513a1e3e, ttp--mitre-campaign--e6fc785007a6dfdb6edc, ttp--mitre-campaign--ff05cc93ff678bea66e9 |  | The [RedPenguin](https://attack.mitre.org/campaigns/C0056) project was launched by Juniper in July 2024 to investigate reported malware infections of Juniper MX Series routers. [RedPenguin](https://attack.mitre.org/campaigns/C0056) activity was separately attributed to [UNC3886](https://attack.mitre.org/groups/G1048) and included the deployment of multiple custom versions of the publicly-available TINYSHELL backdoor on Juniper routers.(Citation: Juniper RedPenguin MAR 2025)(Citation: Mandiant UNC3886 Juniper Routers MAR 2025) | 高 | `source--mitre-attack-19-1` |
 
 ### 活動別ダイヤモンドモデル
@@ -130,7 +130,7 @@ Aliasなし
 | 中国のサイバースパイ、Juniperルーターにバックドアを仕掛けてステルスアクセスを実現 | UNC3886 | 情報なし | 情報なし | 情報なし | 中国 | 被害事例: 中国のサイバースパイ、Juniperルーターにバックドアを仕掛けてステルスアクセスを実現 | 中 |
 | Juniper、2024年半ば以降、中国のサイバースパイがルーターにバックドアを仕掛けた脆弱性を修正 | UNC3886 | 情報なし | 情報なし | 情報なし | 中国 | 被害事例: Juniper、2024年半ば以降、中国のサイバースパイがルーターにバックドアを仕掛けた脆弱性を修正 | 中 |
 | UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏 | UNC3886 | MEDUSA, MOPSLED, REPTILE, RIFLESPINE | 情報なし | 情報なし | 政府・行政, 運輸・航空・海運, エネルギー, 防衛・軍事 | 被害事例: UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏 | 高 |
-| 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | UNC3886 | MEDUSA, MOPSLED, REPTILE, RIFLESPINE | T1102.003 One-Way Communication | 情報なし | 中国, 政府・行政 | 被害事例: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | 中 |
+| 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | UNC3886 | MEDUSA, MOPSLED, REPTILE, RIFLESPINE | T1102.003 One-Way Communication | 情報なし | 政府・行政 | 被害事例: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | 中 |
 | RedPenguin | UNC3886 | MEDUSA, REPTILE | T1587.001 Malware, T1014 Rootkit, T1205 Traffic Signaling, T1070.004 File Deletion, T1036.005 Match Legitimate Resource Name or Location, T1055 Process Injection, T1070.007 Clear Network Connection History and Configurations, T1554 Compromise Host Software Binary, T1104 Multi-Stage Channels, T1095 Non-Application Layer Protocol, T1105 Ingress Tool Transfer, T1059.004 Unix Shell, T1090 Proxy, T1140 Deobfuscate/Decode Files or Information, T1690 Prevent Command History Logging, T1059.008 Network Device CLI, T1016 System Network Configuration Discovery, T1078 Valid Accounts, T1571 Non-Standard Port, T1203 Exploitation for Client Execution, T1041 Exfiltration Over C2 Channel, T1573.001 Symmetric Cryptography, T1090.003 Multi-hop Proxy, T1027.013 Encrypted/Encoded File, T1057 Process Discovery, T1040 Network Sniffing | 情報なし | 情報なし | 情報なし | 高 |
 
 
@@ -139,7 +139,7 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | 中国 | 活動「中国のサイバースパイ、Juniperルーターにバックドアを仕掛けてステルスアクセスを実現」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-2991ab0470fb4a03b3f8`, `source--daily-68aa782163620e0cd16f`, `source--daily-dd052f5bf8f217c32fc3` |
+| countries | 中国 | 活動「中国のサイバースパイ、Juniperルーターにバックドアを仕掛けてステルスアクセスを実現」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-68aa782163620e0cd16f`, `source--daily-dd052f5bf8f217c32fc3` |
 | countries | 米国 | [UNC3886](https://attack.mitre.org/groups/G1048) is a China-nexus cyberespionage group that has been active since at least 2022, targeting defense, technology, and telecommunication organizations located in the United States and the Asia-Pacific-Japan (APJ) regions. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | regions | アジア | 活動「UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-2991ab0470fb4a03b3f8`, `source--daily-4fd1a9d4d043a65933bd` |
 | regions | オセアニア | 活動「UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏」の記述で標的地域としてオセアニアが明示されている。 | 不明 | 不明 | 中 | `source--daily-2991ab0470fb4a03b3f8`, `source--daily-4fd1a9d4d043a65933bd` |
@@ -158,7 +158,7 @@ Aliasなし
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 被害事例: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb, target--activity-rule--sector--210dddb39397dbe50e91 | malware--medusa, malware--mopsled, malware--reptile, malware--riflespine | ttp--activity-rule--4b68390034dd0a918d46 | 開発環境／ソースコード | espionage: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | 不明 | 不明 | 2024-06-20 | 中 | `source--daily-2991ab0470fb4a03b3f8` |
+| 被害事例: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91 | malware--medusa, malware--mopsled, malware--reptile, malware--riflespine | ttp--activity-rule--4b68390034dd0a918d46 | 開発環境／ソースコード | espionage: 中国のサイバー諜報グループがFortinetとVMwareのゼロデイを悪用 | 不明 | 不明 | 2024-06-20 | 中 | `source--daily-2991ab0470fb4a03b3f8` |
 | 被害事例: 中国関連のUNC3886、サイバースパイ活動でシンガポール通信業界を標的に | 非公開 | anonymous | unknown | reported | target--mitre-group--sector--821695aff5b1b61d9bc1 |  |  | ネットワーク機器 | data-theft: ただしサービス停止に至るほど深刻ではなく、顧客記録など個人データ流出やインターネット断の証拠はないとCSAは述べた。<br>disruption: ただしサービス停止に至るほど深刻ではなく、顧客記録など個人データ流出やインターネット断の証拠はないとCSAは述べた。<br>espionage: 中国関連のUNC3886、サイバースパイ活動でシンガポール通信業界を標的に | 不明 | 不明 | 2026-02-10 | 高 | `source--daily-7033dbe4bb2c2c20106c` |
 | 被害事例: 中国のサイバースパイ、Juniperルーターにバックドアを仕掛けてステルスアクセスを実現 | 非公開 | anonymous | unknown | reported | target--activity-rule--country--95e363d6dfa8c6f2ecbb |  |  | サーバー, ネットワーク機器 |  | 不明 | 不明 | 2025-03-13 | 中 | `source--daily-68aa782163620e0cd16f` |
 | 被害事例: UNC3886のハッカーがLinuxルートキットを使用してVMware ESXi VMに潜伏 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--210dddb39397dbe50e91, target--activity-rule--sector--b8d6639a1884e2bacaa4, target--activity-rule--sector--fb803c0a91ed53ea76f9, target--mitre-group--sector--e68e01d9baac208e6b2d | malware--medusa, malware--mopsled, malware--reptile, malware--riflespine |  |  |  | 不明 | 不明 | 2024-06-21 | 高 | `source--daily-4fd1a9d4d043a65933bd` |

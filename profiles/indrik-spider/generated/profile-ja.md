@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--indrik-spider`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -56,7 +56,7 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -140,29 +140,7 @@ Indrik Spiderの標準化プロファイル。リポジトリ内の専用資料1
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | インド | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | オーストラリア | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | シンガポール | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | セルビア | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてセルビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | タイ | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | チェコ | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ハンガリー | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてハンガリーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | ルーマニア | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国としてルーマニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 日本 | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国として日本が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 米国 | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| countries | 韓国 | 構造化OSINTの被害国フィールドでIndrik Spiderの標的・被害国として韓国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | regions | 全世界 | 構造化OSINTの被害地域フィールドでIndrik Spiderの標的範囲として全世界が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 南欧 | スペイン、セルビアで確認された標的・被害事例を南欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 東アジア | 日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | シンガポール、タイで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 東欧 | チェコ、ハンガリー、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| regions | 欧州 | スペイン、セルビア、チェコ、トルコ、ドイツ、ハンガリー、ルーマニア、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Retail and Hospitality | Targeting text indicates the Retail and Hospitality sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt33`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:43Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,7 +20,7 @@ APT33の標準化プロファイル。リポジトリ内の専用資料1件とMI
 |---|---|---|---|---|---|
 | Elfin | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | HOLMIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Peach Sandstorm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Peach Sandstorm | MITRE ATT&CK / Microsoft | exact | 高 | `source--mitre-attack-19-1` | Curated merge into the canonical MITRE Group profile. |
 
 ## 帰属
 
@@ -39,7 +39,6 @@ APT33の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Peach Sandstorm | overlaps-with | 共有alias: APT33, HOLMIUM, Peach Sandstorm | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | HEXANE | related-to | [HEXANE](https://attack.mitre.org/groups/G1001)'s TTPs appear similar to [APT33](https://attack.mitre.org/groups/G0064) and [OilRig](https://attack.mitre.org/groups/G0049) but due to differences in victims and tools it is tracked as a separate entity.(Citation: Dragos Hexane)(Citation: Kaspersky Lyceum October 2021)(Citation: ClearSky Siamesekitten August 2021)(Citation: Accenture Lyceum Targets November 2021) | 中 | `source--mitre-attack-19-1` |
 
 ## ダイヤモンドモデル
@@ -47,7 +46,7 @@ APT33の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | 要素 | 内容 |
 |---|---|
 | Adversary | [APT33](https://attack.mitre.org/groups/G0064) is a suspected Iranian threat group that has carried out operations since at least 2013. The group has targeted organizations across multiple industries in the United States, Saudi Arabia, and South Korea, with a particular interest in the aviation and energy sectors.(Citation: FireEye APT33 Sept 2017)(Citation: FireEye APT33 Webinar Sept 2017) |
-| Capability | NETWIRE, StoneDrill, NanoCore, TURNEDUP, POWERTON, DEADWOOD, AutoIt backdoor, Shamoon, PUPYRAT, POSHC2 (.NET backdoor), Gpppassword, Quasar RAT, Remcos, SniffPass, DarkComet, AutoIt FTP tool, .NET FTP tool, PowerShell downloader (registry.ps1), POSHC2 backdoor, different keyloggers, Net, PowerSploit, Empire, PoshC2, Ruler, Mimikatz, LaZagne, Pupy, ftp |
+| Capability | NETWIRE, StoneDrill, NanoCore, TURNEDUP, POWERTON, DEADWOOD, AutoIt backdoor, Shamoon, PUPYRAT, POSHC2 (.NET backdoor), Gpppassword, Quasar RAT, Remcos, SniffPass, DarkComet, AutoIt FTP tool, .NET FTP tool, PowerShell downloader (registry.ps1), POSHC2 backdoor, different keyloggers, Net, PowerSploit, Empire, PoshC2, Ruler, Mimikatz, LaZagne, Pupy, ftp; Shamoon, POWERTON, Ruler, PUPYRAT, POSHC2 (.NET backdoor), TURNEDUP, AutoIt backdoor, Gpppassword, LaZagne, Quasar RAT, Remcos, SniffPass, DarkComet, AutoIt FTP tool, .NET FTP tool, PowerShell downloader (registry.ps1), POSHC2 backdoor, different keyloggers |
 | Infrastructure |  |
 | Victim | A threat actor used malware known as Shamoon 2.0 to exfiltrate and delete data from computers in the Saudi transportation sector. Commercial entities, Middle East, US, South Korea, DND focussed entities, Airlines, Airline suppliers. |
 | Socio-political |  |
@@ -55,7 +54,7 @@ APT33の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -87,7 +86,7 @@ APT33の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--autoit-backdoor | AutoIt backdoor | [AutoIt backdoor](https://attack.mitre.org/software/S0129) is malware that has been used by the actors responsible for the MONSOON campaign. The actors frequently used it in weaponized .pps files exploiting CVE-2014-6352. (Citation: Forcepoint Monsoon) This malware makes use of the legitimate scripting language for Windows GUI automation with the same name. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--autoit-backdoor | AutoIt backdoor | [AutoIt backdoor](https://attack.mitre.org/software/S0129) is malware that has been used by the actors responsible for the MONSOON campaign. The actors frequently used it in weaponized .pps files exploiting CVE-2014-6352. (Citation: Forcepoint Monsoon) This malware makes use of the legitimate scripting language for Windows GUI automation with the same name. | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | malware--autoit-ftp-tool | AutoIt FTP tool | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--darkcomet | DarkComet | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--deadwood | DEADWOOD | [DEADWOOD](https://attack.mitre.org/software/S1134) is wiper malware written in C++ using Boost libraries. [DEADWOOD](https://attack.mitre.org/software/S1134) was first observed in an unattributed wiping event in Saudi Arabia in 2019, and has since been incorporated into [Agrius](https://attack.mitre.org/groups/G1030) operations.(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -99,14 +98,16 @@ APT33の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | malware--poshc2-backdoor | POSHC2 backdoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--poshc2-net-backdoor | POSHC2 (.NET backdoor) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--powershell-downloader-registry-ps1 | PowerShell downloader (registry.ps1) | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--powerton | POWERTON | [POWERTON](https://attack.mitre.org/software/S0371) is a custom PowerShell backdoor first observed in 2018. It has typically been deployed as a late-stage backdoor by [APT33](https://attack.mitre.org/groups/G0064). At least two variants of the backdoor have been identified, with the later version containing improved functionality.(Citation: FireEye APT33 Guardrail) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--powerton | POWERTON | [POWERTON](https://attack.mitre.org/software/S0371) is a custom PowerShell backdoor first observed in 2018. It has typically been deployed as a late-stage backdoor by [APT33](https://attack.mitre.org/groups/G0064). At least two variants of the backdoor have been identified, with the later version containing improved functionality.(Citation: FireEye APT33 Guardrail) | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | malware--pupyrat | PUPYRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--quasar-rat | Quasar RAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--remcos | Remcos | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--shamoon | Shamoon | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--sniffpass | SniffPass | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--stonedrill | StoneDrill | [StoneDrill](https://attack.mitre.org/software/S0380) is wiper malware discovered in destructive campaigns against both Middle Eastern and European targets in association with [APT33](https://attack.mitre.org/groups/G0064).(Citation: FireEye APT33 Sept 2017)(Citation: Kaspersky StoneDrill 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--turnedup | TURNEDUP | [TURNEDUP](https://attack.mitre.org/software/S0199) is a non-public backdoor. It has been dropped by [APT33](https://attack.mitre.org/groups/G0064)'s [StoneDrill](https://attack.mitre.org/software/S0380) malware. (Citation: FireEye APT33 Sept 2017) (Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--turnedup | TURNEDUP | [TURNEDUP](https://attack.mitre.org/software/S0199) is a non-public backdoor. It has been dropped by [APT33](https://attack.mitre.org/groups/G0064)'s [StoneDrill](https://attack.mitre.org/software/S0380) malware. (Citation: FireEye APT33 Sept 2017) (Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| malware--ruler | Ruler | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--lazagne | LaZagne | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
@@ -158,38 +159,15 @@ Stonedrill/ Shamoon2.0
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | イエメン | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてイエメンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | イスラエル | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | イラク | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | イラン | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | エジプト | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | カナダ | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてカナダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | クウェート | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてクウェートが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | サウジアラビア | MITRE ATT&CKのGroup概要でAPT33の標的国として明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | シリア | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてシリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | スペイン | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてスペインが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | トルコ | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パレスチナ | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてパレスチナが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | フランス | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてフランスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ブラジル | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてブラジルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベネズエラ | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてベネズエラが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ベルギー | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてベルギーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | モロッコ | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてモロッコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ヨルダン | 構造化OSINTの被害国フィールドでAPT33の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 米国 | The group has targeted organizations across multiple industries in the United States, Saudi Arabia, and South Korea, with a particular interest in the aviation and energy sectors.(Citation: FireEye APT33 Sept 2017)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | 英国 | 構造化OSINTの被害国フィールドでAPT33の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 韓国 | Targeting text mentions south korea. | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | アフリカ | エジプト、モロッコで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中南米 | ブラジル、ベネズエラで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 北アフリカ | エジプト、モロッコで確認された標的・被害事例を北アフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南アジア | アフガニスタン、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南米 | ブラジル、ベネズエラで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | スペイン、トルコ、フランス、ベルギー、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | sectors | 運輸・航空・海運 | The group has targeted organizations across multiple industries in the United States, Saudi Arabia, and South Korea, with a particular interest in the aviation and energy sectors.(Citation: FireEye APT33 Sept 2017)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | エネルギー | The group has targeted organizations across multiple industries in the United States, Saudi Arabia, and South Korea, with a particular interest in the aviation and energy sectors.(Citation: FireEye APT33 Sept 2017)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | sectors | Transportation | Targeting text indicates the Transportation sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -302,6 +280,7 @@ Stonedrill/ Shamoon2.0
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--peach-sandstorm--e74afb110d61528f | peach sandstorm |  | 不明 | actor_profile/evidence/peach-sandstorm.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

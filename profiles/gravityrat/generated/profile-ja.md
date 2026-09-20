@@ -1,13 +1,13 @@
 # GravityRAT 脅威アクタープロファイル
 
 - プロファイルID: `actor--gravityrat`
-- 状態: draft
-- 更新日時: 2026-09-19T00:54:52Z
+- 状態: deprecated
+- 更新日時: 2026-09-20T08:53:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-GravityRATの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+GravityRATはMalwareとして扱い、旧actor profileはdeprecatedとする。ESETが追跡するGravityRAT運用主体はSpaceCobraとして別profile化する。
 
 ## アクター名とAlias
 
@@ -20,7 +20,7 @@ Aliasなし
 
 ## 帰属
 
-未評価
+Deprecated entity conflation; no actor attribution is asserted for the GravityRAT software name.
 
 - 国: 不明
 - スポンサー種別: unknown
@@ -42,7 +42,7 @@ Aliasなし
 | Adversary |  |
 | Capability |  |
 | Infrastructure |  |
-| Victim | India |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
@@ -112,11 +112,9 @@ Aliasなし
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | インド | Targeting text mentions india. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Deprecated legacy actor profile. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -136,16 +134,16 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| GravityRAT is malware rather than a canonical actor; the legacy actor profile is deprecated. | 高 | `source--mitre-gravityrat-s0237`, `source--eset-spacecobra-gravityrat-2023` | Entity-type correction. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
+- Historical reporting may use malware names metonymically for operators; source scope must be checked before actor attribution.
 
 ## 出典
 
@@ -153,7 +151,9 @@ TTPなし
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--gravityrat--f52b2c246b760d7a | gravityrat |  | 不明 | actor_profile/evidence/gravityrat.csv | structured-data | TLP:CLEAR | 中 |
+| source--mitre-gravityrat-s0237 | GravityRAT, Software S0237 | MITRE ATT&CK | 不明 | https://attack.mitre.org/software/S0237/ | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--eset-spacecobra-gravityrat-2023 | Android GravityRAT goes after WhatsApp backups | ESET | 2023-06-15 | https://www.welivesecurity.com/2023/06/15/android-gravityrat-goes-after-whatsapp-backups/ | vendor-threat-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+actor--gravityratは既存参照互換性のため保持するが、新規Actor帰属には使用しない。

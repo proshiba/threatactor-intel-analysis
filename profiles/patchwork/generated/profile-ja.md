@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--patchwork`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:45Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -58,7 +58,7 @@ Patchworkの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -164,7 +164,7 @@ Hangover; Monsoon
 | countries | スリランカ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてスリランカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | タイ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてタイが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | トルコ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | ドイツ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | ドイツ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてドイツが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ネパール | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてネパールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ノルウェー | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてノルウェーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | バングラデシュ | 構造化OSINTの被害国フィールドでPatchworkの標的・被害国としてバングラデシュが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net`, `source--target-audit-misp-threat-actor` |
@@ -191,7 +191,7 @@ Hangover; Monsoon
 | regions | 東アジア | 構造化OSINTの被害地域フィールドでPatchworkの標的範囲として東アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
 | regions | 東南アジア | 構造化OSINTの被害地域フィールドでPatchworkの標的範囲として東南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東欧 | ポーランド、ルーマニア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | レビュー済みアクターマッピングの標的欄に記録された欧州を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 欧州 | レビュー済みアクターマッピングの標的欄に記録された欧州を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
 | sectors | 非営利・市民社会 | 活動「Patchworkハッカー、高度なBrute Ratel C4ツールでブータンを標的に」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-b4dd81678daba2178538` |
 | sectors | 政府・行政 | [Patchwork](https://attack.mitre.org/groups/G0040) has been seen targeting industries related to diplomatic and government agencies. | 不明 | 不明 | 高 | `source--daily-b4dd81678daba2178538`, `source--mitre-attack-19-1` |
 

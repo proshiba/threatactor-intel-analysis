@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--transparent-tribe`
 - 状態: draft
-- 更新日時: 2026-09-20T06:38:47Z
+- 更新日時: 2026-09-20T08:53:45Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -119,19 +119,19 @@ Transparent Tribeの標準化プロファイル。リポジトリ内の専用資
 
 | 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | malware-campaign | 不明 | 不明 | 2025-05-13 | target--country--india, target--sector--defense |  | ttp--activity-rule--9f71c23b587163876322 | victim--activity-rule--a0e47c664c46d16a865d | ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
-| Operation C-Major | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 | C0011 | campaign | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 2026-05-12 | target--country--india, target--sector--government | malware--crimson | ttp--mitre-campaign--2190b7f723ca8b505db8, ttp--mitre-campaign--316336d66e0779a09423, ttp--mitre-campaign--491f3c666f93e55402d6, ttp--mitre-campaign--588e8190abaf6ad385cd, ttp--mitre-campaign--7d63f0df6c08571978c6, ttp--mitre-campaign--9b709fe37ae48a5728e2, ttp--mitre-campaign--ad8a4a3eb993f5fe638e, ttp--mitre-campaign--f324682b1c519c6387c3 | victim--activity-rule--d28e41b1d16aa4dca383 | [C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shift from [Transparent Tribe](https://attack.mitre.org/groups/G0134)'s historic targeting Indian government, military, and think tank personnel, and assessed it was still ongoing as of July 2022.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022)  | 高 | `source--mitre-attack-19-1` |
-| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | infrastructure-operation | 2026-08-20 | 2026-09-01 | 2026-09-19 | target--targeting-audit--country--3576409a050f649c4fdb, target--targeting-audit--country--bbb723409f1dd4f40a48 | malware--daily-1d97d5ffd61e5802a06e, malware--daily-2b114530a9ff0ce2fd56 |  |  | Zscaler ThreatLabzは2026年8月、パキスタン関連APT36がインドとアフガニスタンの政府・防衛組織を標的とするOperation RapidRustを確認した。 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。 | 中 | `source--daily-08ae19a58641703181dc` |
+| ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | malware-campaign | 不明 | 不明 | 2025-05-13 | target--country--india, target--sector--defense |  | ttp--activity-rule--9f71c23b587163876322 | victim--activity-rule--a0e47c664c46d16a865d | ClickFixは、偽のエラーメッセージや検証手順を用いて、ユーザーに悪意のあるコマンドを実行させるソーシャルエンジニアリング手法。 これまでWindowsやmacOSが主な標的だったが、最近Linuxシステムへの攻撃が確認された。 パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。 被害者は、偽のプレスリリースリンクをクリックすると、OSに応じた攻撃フローに誘導される。 Linuxユーザーには、ターミナルでのコマンド実行を促す指示が表示されるが、現在のバージョンでは悪意のあるアクションは実行せず、攻撃者のサーバーからJPEG画像をフェッチするだけに限定。 APT36がLinux感染経路の有効性を判断するために実験を行っている可能性があり、画像をシェルスクリプトに置き換えるだけで、マルウェアをインストールしたり、その他の悪意のあるアクティビティを実行したりすることが可能。 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
+| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | infrastructure-operation | 2026-08-20 | 2026-09-01 | 2026-09-19 | target--country--india, target--sector--defense, target--sector--government | malware--daily-1d97d5ffd61e5802a06e, malware--daily-2b114530a9ff0ce2fd56 | ttp--activity-rule--020762fe457528c8574b, ttp--activity-rule--129d02cbbb4b2b22994d, ttp--activity-rule--2e6dcc75ce17ffa11a68 | victim--activity-rule--ff3a3b7d94a3e670bdd0 | Zscaler ThreatLabzは2026年8月、パキスタン関連APT36がインドとアフガニスタンの政府・防衛組織を標的とするOperation RapidRustを確認した。 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。 | 中 | `source--daily-08ae19a58641703181dc` |
+| Operation C-Major | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
 
 ### 活動別ダイヤモンドモデル
 
 | 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
 |---|---|---|---|---|---|---|---|
-| ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | Transparent Tribe | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | インド, Defense | 被害事例: ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | 中 |
-| Operation C-Major | Transparent Tribe | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | C0011 | Transparent Tribe | Crimson | T1204.002 Malicious File, T1204.001 Malicious Link, T1566.001 Spearphishing Attachment, T1587.003 Digital Certificates, T1583.001 Domains, T1566.002 Spearphishing Link, T1608.001 Upload Malware, T1059.005 Visual Basic | 情報なし | インド, Government | 被害事例: C0011 | 高 |
-| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | Transparent Tribe | RUSTYMOVE, RUSTYSHADE | 情報なし | 情報なし | パキスタン, アフガニスタン | 情報なし | 中 |
+| ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | Transparent Tribe | 情報なし | T1204.004 Malicious Copy and Paste | 情報なし | インド, Defense | 被害事例: ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | 中 |
+| Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | Transparent Tribe | RUSTYMOVE, RUSTYSHADE | T1053.005 Scheduled Task, T1059.001 PowerShell, T1102.003 One-Way Communication | 情報なし | インド, Defense, Government | 被害事例: Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | 中 |
+| Operation C-Major | Transparent Tribe | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 
 Operation C-Major
 
@@ -140,10 +140,10 @@ Operation C-Major
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | アゼルバイジャン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアゼルバイジャンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | アフガニスタン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
+| countries | アフガニスタン | 活動「Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開」の記述で標的・被害国として明示されている。 | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc`, `source--target-audit-etda-threat-group-cards` |
 | countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | イラン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてイランが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | Targeting text mentions india. | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 高 | `source--actor-mapping-workbook`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
+| countries | インド | Targeting text mentions india. | 2021-12-01T06:00:00.000Z | 2026-09-01 | 高 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
 | countries | オマーン | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オランダ | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オーストラリア | 構造化OSINTの被害国フィールドでTransparent Tribeの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
@@ -173,13 +173,13 @@ Operation C-Major
 | regions | アフリカ | ケニア、ボツワナで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 中東 | アラブ首長国連邦、イラン、オマーン、サウジアラビア、トルコで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | アフガニスタン、インド、ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
+| regions | 南アジア | アフガニスタン、インド、ネパール、パキスタンで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
 | regions | 東アジア | モンゴル、中国、日本で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東南アジア | タイ、マレーシアで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東欧 | チェコ、ブルガリア、ルーマニアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | 構造化OSINTの被害地域フィールドでTransparent Tribeの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-360net` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1` |
-| sectors | Government | Targeting text indicates the Government sector. | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 2026-08-20 | 2026-09-01 | 中 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--daily-b5bf76c5ef95da099eb5`, `source--mitre-attack-19-1` |
+| sectors | Government | Targeting text indicates the Government sector. | 2021-12-01T06:00:00.000Z | 2026-09-01 | 中 | `source--actor-mapping-workbook`, `source--daily-08ae19a58641703181dc`, `source--mitre-attack-19-1` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -189,11 +189,15 @@ Operation C-Major
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 被害事例: ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 | 非公開 | aggregate | multiple-organizations | reported | target--country--india, target--sector--defense |  | ttp--activity-rule--9f71c23b587163876322 | サーバー |  | 不明 | 不明 | 2025-05-13 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
 | 被害事例: C0011 | 非公開 | anonymous | unknown | reported | target--country--india, target--sector--government | malware--crimson | ttp--mitre-campaign--2190b7f723ca8b505db8, ttp--mitre-campaign--316336d66e0779a09423, ttp--mitre-campaign--491f3c666f93e55402d6, ttp--mitre-campaign--588e8190abaf6ad385cd, ttp--mitre-campaign--7d63f0df6c08571978c6, ttp--mitre-campaign--9b709fe37ae48a5728e2, ttp--mitre-campaign--ad8a4a3eb993f5fe638e, ttp--mitre-campaign--f324682b1c519c6387c3 |  | espionage: [C0011](https://attack.mitre.org/campaigns/C0011) was a suspected cyber espionage campaign conducted by [Transparent Tribe](https://attack.mitre.org/groups/G0134) that targeted students at universities and colleges in India. | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 2026-05-12 | 高 | `source--mitre-attack-19-1` |
+| 被害事例: Operation RapidRust：APT36がRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCHを展開 | 非公開 | aggregate | multiple-organizations | reported | target--country--india, target--sector--defense, target--sector--government | malware--daily-1d97d5ffd61e5802a06e, malware--daily-2b114530a9ff0ce2fd56 | ttp--activity-rule--020762fe457528c8574b, ttp--activity-rule--129d02cbbb4b2b22994d, ttp--activity-rule--2e6dcc75ce17ffa11a68 | エンドポイント, 開発環境／ソースコード | data-theft: PSNATCHとLinux版BASHNATCHは文書などを探索して非公開GitHubへ窃取し、RUSTYMOVEはUSBなどへ悪性ファイルを複製して隔離ネットワークへの侵入を狙う。 | 2026-08-20 | 2026-09-01 | 2026-09-19 | 中 | `source--daily-08ae19a58641703181dc` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | 侵害後は端末・ネットワーク偵察、SMB共有の列挙、横展開、スケジュールタスクによる永続化、痕跡削除などの活動が2026年8月20日～9月1日に観測された。 |  | activity--daily-f67a995b730f22598f48 | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc` |
+| Execution | T1059.001 | PowerShell | APT36はインドの報道機関を模倣したタイポスクワッティングドメインとBackblazeを利用し、PowerShellスクリプトや次段階ペイロードを配布した。 |  | activity--daily-f67a995b730f22598f48 | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc` |
+| Command And Control | T1102.003 | One-Way Communication | 新型Rust製バックドアRUSTYSHADEは攻撃者管理の非公開GitHubリポジトリをC2に利用し、AES-256-GCMで通信を暗号化する。 | malware--daily-2b114530a9ff0ce2fd56 | activity--daily-f67a995b730f22598f48 | 2026-08-20 | 2026-09-01 | 中 | `source--daily-08ae19a58641703181dc` |
 | Execution | T1204.004 | Malicious Copy and Paste | ハッカーがLinuxを標的にClickFix攻撃を試験的に実施中 |  | activity--daily-48f331a7033096914857 | 不明 | 不明 | 中 | `source--daily-b5bf76c5ef95da099eb5` |
 | Execution | T1204.002 | Malicious File | During [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) relied on a student target to open a malicious document delivered via email.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) |  | activity--c0011 | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 高 | `source--mitre-attack-19-1` |
 | Execution | T1204.001 | Malicious Link | During [C0011](https://attack.mitre.org/campaigns/C0011), [Transparent Tribe](https://attack.mitre.org/groups/G0134) relied on student targets to click on a malicious link sent via email.(Citation: Cisco Talos Transparent Tribe Education Campaign July 2022) |  | activity--c0011 | 2021-12-01T06:00:00.000Z | 2022-07-01T05:00:00.000Z | 高 | `source--mitre-attack-19-1` |

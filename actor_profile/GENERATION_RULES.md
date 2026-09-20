@@ -112,6 +112,16 @@ cloud/CDN、hosting providerにも適用します。
   `related-to` / `overlaps-with`等のrelationshipで結ぶ。
 - `actor-census-curation.json`の`exclude`/`override`を使い、次回census materializationで
   software名や誤aliasが再びcanonical Actorへ戻らないようにする。
+- ATT&CKの同一Group IDでvendor renameがAssociated Groupとして確認できる場合は、
+  rename後の名称を第二のcanonical Actorとして残さず、`merge`で既存のstable profileへ
+  統合する。統合元のactor-scoped evidenceは統合先の`source_dirs`へ引き継ぎ、既存profileは
+  stable ID互換のため`deprecated` tombstoneとして残す。
+- ATT&CK Softwareと同名の候補は、命名元の原典が独立したoperator/groupも同名で追跡して
+  いる場合を除きActor化しない。Zebrocyのように原典が明示的にmalware/toolsetとし、別の
+  groupが運用すると述べる名称は`exclude`する。
+- deprecated profileをSTIXへ出力する場合、`intrusion-set`に`revoked: true`と
+  `x_profile_status: deprecated`を付け、active entityとして再利用されないようにする。
+
 ## 6. Workbookからのalias抽出
 
 `APT Groups and Operations.xlsx`等のmapping workbookでは、alias候補として扱う列を
@@ -199,6 +209,9 @@ python3 -m unittest discover -s actor_profile/tests -v
 python3 -m unittest discover -s parse-daily/tests -v
 
 python3 actor_profile/scripts/materialize_actor_census.py
+
+# 新しいmerge/exclude curationで既存profileが残る場合にcanonical側へデータを移行
+python3 actor_profile/scripts/migrate_curated_entity_boundaries.py --apply
 
 # 旧生成ルールで既存profileへ入った地理由来のstate/espionage等だけを安全に移行
 python3 actor_profile/scripts/migrate_generated_attribution.py --apply

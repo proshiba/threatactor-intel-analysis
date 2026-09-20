@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin7`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -22,7 +22,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | ELBRUS | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | GOLD NIAGARA | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
 | ITG14 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Sangria Tempest | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Sangria Tempest | MITRE ATT&CK / Microsoft | exact | 高 | `source--mitre-attack-19-1` | Curated merge into the canonical MITRE Group profile. |
 
 ## 帰属
 
@@ -43,7 +43,6 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Sangria Tempest | overlaps-with | 共有alias: Carbon Spider, ELBRUS, FIN7, Sangria Tempest | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | Carbanak | related-to | FIN7 may be linked to the [Carbanak](https://attack.mitre.org/groups/G0008) Group, but multiple threat groups have been observed using [Carbanak](https://attack.mitre.org/software/S0030), leading these groups to be tracked separately.(Citation: FireEye FIN7 March 2017)(Citation: FireEye FIN7 April 2017)(Citation: FireEye CARBANAK June 2017)(Citation: FireEye FIN7 Aug 2018)(Citation: CrowdStrike Carbon Spider August 2021)(Citation: Mandiant FIN7 Apr 2022)(Citation: BiZone Lizar May 2021) | 中 | `source--mitre-attack-19-1` |
 
 ## ダイヤモンドモデル
@@ -51,7 +50,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | 要素 | 内容 |
 |---|---|
 | Adversary | [FIN7](https://attack.mitre.org/groups/G0046) is a financially-motivated threat group that has been active since 2013. [FIN7](https://attack.mitre.org/groups/G0046) has targeted the retail, restaurant, hospitality, software, consulting, financial services, medical equipment, cloud services, media, food and beverage, transportation, pharmaceutical, and utilities industries in the United States. A portion of [FIN7](https://attack.mitre.org/groups/G0046) was operated out of a front company called Combi Security and often used point-of-sale malware for targeting efforts. Since 2020, [FIN7](https://attack.mitre.org/groups/G0046) shifted operations to big game hunting (BGH), including use of [REvil](https://attack.mitre.org/software/S0496) ransomware and their own Ransomware-as-a-Service (RaaS), Darkside. FIN7 may be linked to the [Carbanak](https://attack.mitre.org/groups/G0008) Group, but multiple threat groups have been observed using [Carbanak](https://attack.mitre.org/software/S0030), leading these groups to be tracked separately.(Citation: FireEye FIN7 March 2017)(Citation: FireEye FIN7 April 2017)(Citation: FireEye CARBANAK June 2017)(Citation: FireEye FIN7 Aug 2018)(Citation: CrowdStrike Carbon Spider August 2021)(Citation: Mandiant FIN7 Apr 2022)(Citation: BiZone Lizar May 2021) |
-| Capability | GRIFFON, RDFSNIFFER, HALFBAKED, POWERSOURCE, SystemBC, TEXTMATE, BOOSTWRITE, Carbanak, SQLRat, Cobalt Strike, REvil, Pillowmint, Maze, JSS Loader, Lizar, PowerSploit, Mimikatz, CrackMapExec, AdFind |
+| Capability | GRIFFON, RDFSNIFFER, HALFBAKED, POWERSOURCE, SystemBC, TEXTMATE, BOOSTWRITE, Carbanak, SQLRat, Cobalt Strike, REvil, Pillowmint, Maze, JSS Loader, Lizar, PowerSploit, Mimikatz, CrackMapExec, AdFind; PowerSource |
 | Infrastructure |  |
 | Victim | Bank of Valetta, Malta |
 | Socio-political |  |
@@ -59,7 +58,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -105,7 +104,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | malware--lizar | Lizar | [Lizar](https://attack.mitre.org/software/S0681) is a modular remote access tool written using the .NET Framework that shares structural similarities to [Carbanak](https://attack.mitre.org/software/S0030). It has likely been used by [FIN7](https://attack.mitre.org/groups/G0046) since at least February 2021.(Citation: BiZone Lizar May 2021)(Citation: Threatpost Lizar May 2021)(Citation: Gemini FIN7 Oct 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--maze | Maze | [Maze](https://attack.mitre.org/software/S0449) ransomware, previously known as "ChaCha", was discovered in May 2019. In addition to encrypting files on victim machines for impact, [Maze](https://attack.mitre.org/software/S0449) operators conduct information stealing campaigns prior to encryption and post the information online to extort affected companies.(Citation: FireEye Maze May 2020)(Citation: McAfee Maze March 2020)(Citation: Sophos Maze VM September 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--pillowmint | Pillowmint | [Pillowmint](https://attack.mitre.org/software/S0517) is a point-of-sale malware used by [FIN7](https://attack.mitre.org/groups/G0046) designed to capture credit card information.(Citation: Trustwave Pillowmint June 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--powersource | POWERSOURCE | [POWERSOURCE](https://attack.mitre.org/software/S0145) is a PowerShell backdoor that is a heavily obfuscated and modified version of the publicly available tool DNS_TXT_Pwnage. It was observed in February 2017 in spearphishing campaigns against personnel involved with United States Securities and Exchange Commission (SEC) filings at various organizations. The malware was delivered when macros were enabled by the victim and a VBS script was dropped. (Citation: FireEye FIN7 March 2017) (Citation: Cisco DNSMessenger March 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--powersource | POWERSOURCE | [POWERSOURCE](https://attack.mitre.org/software/S0145) is a PowerShell backdoor that is a heavily obfuscated and modified version of the publicly available tool DNS_TXT_Pwnage. It was observed in February 2017 in spearphishing campaigns against personnel involved with United States Securities and Exchange Commission (SEC) filings at various organizations. The malware was delivered when macros were enabled by the victim and a VBS script was dropped. (Citation: FireEye FIN7 March 2017) (Citation: Cisco DNSMessenger March 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
 | malware--rdfsniffer | RDFSNIFFER | [RDFSNIFFER](https://attack.mitre.org/software/S0416) is a module loaded by [BOOSTWRITE](https://attack.mitre.org/software/S0415) which allows an attacker to monitor and tamper with legitimate connections made via an application designed to provide visibility and system management capabilities to remote IT techs.(Citation: FireEye FIN7 Oct 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--revil | REvil | [REvil](https://attack.mitre.org/software/S0496) is a ransomware family that has been linked to the [GOLD SOUTHFIELD](https://attack.mitre.org/groups/G0115) group and operated as ransomware-as-a-service (RaaS) since at least April 2019. [REvil](https://attack.mitre.org/software/S0496), which as been used against organizations in the manufacturing, transportation, and electric sectors, is highly configurable and shares code similarities with the GandCrab RaaS.(Citation: Secureworks REvil September 2019)(Citation: Intel 471 REvil March 2020)(Citation: Group IB Ransomware May 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | malware--sqlrat | SQLRat | [SQLRat](https://attack.mitre.org/software/S0390) is malware that executes SQL scripts to avoid leaving traditional host artifacts. [FIN7](https://attack.mitre.org/groups/G0046) has been observed using it.(Citation: Flashpoint FIN 7 March 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -260,7 +259,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | Stealth | T1140 | Deobfuscate/Decode Files or Information | [FIN7](https://attack.mitre.org/groups/G0046) has decoded a malicious PowerShell script using `certutil -decode hex` and has decoded an XOR-obfuscated block of data with the key `qawsed1q2w3e`, which led to the installation of [Lizar](https://attack.mitre.org/software/S0681).(Citation: Gemini_FIN7_Jan2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access | T1190 | Exploit Public-Facing Application | [FIN7](https://attack.mitre.org/groups/G0046) has compromised targeted organizations through exploitation of CVE-2021-31207 in Exchange.(Citation: Microsoft Ransomware as a Service) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Initial Access | T1195.002 | Compromise Software Supply Chain | [FIN7](https://attack.mitre.org/groups/G0046) has gained initial access by compromising a victim's software supply chain.(Citation: Mandiant FIN7 Apr 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1200 | Hardware Additions | доступ к инфраструктуре жертв через наборы эксплоитов. Например, опера - торы ZLoader использовали Spelevo EK, а с Dridex – набор Rig EK. • Hardware additions T1200 В 2021 году группировка FIN7 продолжила проводить атаки типа BadUSB для заражения компьютеров в корпоративной среде, отправляя посылки через почтовую службу США и логистическую компанию UPS. Отправителями значились Министерство здраво - охранени |  |  | 不明 | 不明 | 中 | `source--fin7--6269b5f18e206dc0` |
+| Initial Access | T1200 | Hardware Additions | доступ к инфраструктуре жертв через наборы эксплоитов. Например, опера - торы ZLoader использовали Spelevo EK, а с Dridex – набор Rig EK. • Hardware additions T1200 В 2021 году группировка FIN7 продолжила проводить атаки типа BadUSB для заражения компьютеров в корпоративной среде, отправляя посылки через почтовую службу США и логистическую компанию UPS. Отправителями значились Министерство здраво - охранени |  |  | 不明 | 不明 | 中 | `source--fin7--6269b5f18e206dc0`, `source--sangria-tempest--2880b4cdea94039e` |
 | Execution | T1204.001 | Malicious Link | [FIN7](https://attack.mitre.org/groups/G0046) has used malicious links to lure victims into downloading malware.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Execution | T1204.002 | Malicious File | [FIN7](https://attack.mitre.org/groups/G0046) lured victims to double-click on images in the attachments they sent which would then execute the hidden LNK file.(Citation: FireEye FIN7 April 2017)(Citation: eSentire FIN7 July 2021)(Citation: CrowdStrike Carbon Spider August 2021) Additionally, [FIN7](https://attack.mitre.org/groups/G0046) has used malicious Microsoft Word and Excel files and Leo VBS to distribute an updated version of [JSS Loader](https://attack.mitre.org/software/S0648) and to distribute the Harpy backdoor.(Citation: Crowdstrike_CarbonSpider_Part2_Nov2024)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | Lateral Movement | T1210 | Exploitation of Remote Services | [FIN7](https://attack.mitre.org/groups/G0046) has exploited ZeroLogon (CVE-2020-1472) against vulnerable domain controllers.(Citation: CrowdStrike Carbon Spider August 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
@@ -374,6 +373,7 @@ FIN7の標準化プロファイル。リポジトリ内の専用資料1件とMIT
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--sangria-tempest--2880b4cdea94039e | sangria tempest |  | 不明 | actor_profile/evidence/sangria-tempest.csv | structured-data | TLP:CLEAR | 中 |
 
 ## 自由記述
 

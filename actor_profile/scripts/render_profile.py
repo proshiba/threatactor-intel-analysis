@@ -637,11 +637,16 @@ def render_stix(
                 profile["attribution"].get("evidence_refs", []), source_by_id
             ),
             "x_profile_id": profile["profile_id"],
+            "x_profile_status": profile["status"],
             "x_alias_assessments": actor["aliases"],
             "x_attribution": profile["attribution"],
             "x_free_text": profile["free_text"],
         },
     )
+    if profile["status"] == "deprecated":
+        # A retained stable-ID tombstone must not be interpreted as an active
+        # intrusion set when the bundle is consumed outside the catalog/UI.
+        intrusion["revoked"] = True
     for key in ("first_seen", "last_seen"):
         if intrusion[key] is None:
             del intrusion[key]

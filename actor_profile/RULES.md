@@ -144,6 +144,12 @@ python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 
 異なるベンダークラスタを、名称一覧だけを根拠に`exact`へ統合しない。
 
+一方、公式ATT&CKの同一Group IDと命名元ベンダー資料で単なるrenameであることを確認した
+名称は、別のcanonical profileを作らず既存profileの`exact` aliasとして保持する。
+同一性の確認には名前一致だけでなく、Group IDとactor-specificな原典を必要とする。
+Software/Malware名とActor名が一致する場合はentity種別を先に確認し、原典が独立した
+operator/groupを定義していなければActorとしてmaterializeしない。
+
 ## 6. アクター間関係
 
 `relationship_type`は次を優先する。

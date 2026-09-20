@@ -66,6 +66,9 @@
 - IOC CSVの`actor`列は強い候補根拠だが、帰属の確定そのものではない。
 - canonical nameまたは`scope: exact`のaliasへ一意に一致した場合だけ自動承認候補に
   できる。`overlapping`、`broader`、`narrower`、複数プロファイル一致は手動確認する。
+- `deprecated` profileの旧canonical名が、curationで統合済みのactive profileに
+  `scope: exact` aliasとして存在する場合はactive側へ解決する。旧slugへ新規レコードを
+  保存せず、過去のreview decisionとdaily observationもcanonical slugへ移行する。
 - `low confidence`、`suspected`、`possible`、複合名、`unknown`は自動承認しない。
 - ニュース本文の名前一致は発見用途に限り、自動承認しない。同名マルウェア、製品名、
   被害組織名、過去事例への言及でないか原文を確認する。

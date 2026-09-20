@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--contagious-interview`
 - 状態: review
-- 更新日時: 2026-09-20T06:51:51Z
+- 更新日時: 2026-09-20T08:53:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -61,7 +61,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -70,7 +70,7 @@ Contagious Interviewの標準化プロファイル。リポジトリ内の専用
 | etda-threat-group-cards | Operation Contagious Interview | multiple-name-intersection | 高 | North Korea | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://www.knowbe4.com/hubfs/North-Korean-Fake-Employees-Are-Everywhere-WP_EN-us.pdf<br>https://cloud.google.com/blog/topics/threat-intelligence/mitigating-dprk-it-worker-threat/ |
 | cert-ua-uac-index | 一致なし |  |  |  |  |
 | microsoft-threat-actor-mapping | 一致なし |  |  |  |  |
-| misp-threat-actor | WageMole | single-alias-intersection | 中 | KP | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://unit42.paloaltonetworks.com/fake-north-korean-it-worker-activity-cluster/<br>https://www.trendmicro.com/en_us/research/25/d/russian-infrastructure-north-korean-cybercrime.html |
+| misp-threat-actor | WageMole | multiple-name-intersection | 高 | KP | https://unit42.paloaltonetworks.com/two-campaigns-by-north-korea-bad-actors-target-job-hunters/<br>https://unit42.paloaltonetworks.com/fake-north-korean-it-worker-activity-cluster/<br>https://www.trendmicro.com/en_us/research/25/d/russian-infrastructure-north-korean-cybercrime.html |
 | misp-threat-actor | Contagious Interview | canonical-name | 高 |  | https://about.gitlab.com/blog/gitlab-threat-intelligence-reveals-north-korean-tradecraft/<br>https://www.sentinelone.com/labs/contagious-interview-threat-actors-scout-cyber-intel-platforms-reveal-plans-and-ops/<br>https://www.microsoft.com/en-us/security/blog/2026/03/11/contagious-interview-malware-delivered-through-fake-developer-job-interviews/ |
 | misp-microsoft-activity-group | 一致なし |  |  |  |  |
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |

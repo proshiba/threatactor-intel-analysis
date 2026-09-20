@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -20,6 +20,7 @@
       "goals": [],
       "external_references": [],
       "x_profile_id": "actor--zirconium",
+      "x_profile_status": "draft",
       "x_alias_assessments": [
         {
           "name": "APT31",
@@ -33,13 +34,13 @@
         },
         {
           "name": "Violet Typhoon",
-          "vendor": "MITRE ATT&CK",
-          "scope": "overlapping",
+          "vendor": "MITRE ATT&CK / Microsoft",
+          "scope": "exact",
           "confidence": "high",
           "evidence_refs": [
             "source--mitre-attack-19-1"
           ],
-          "analyst_notes": "Alias scope must be reviewed before publication."
+          "analyst_notes": "Curated merge into the canonical MITRE Group profile."
         }
       ],
       "x_attribution": {
@@ -56,14 +57,14 @@
         "history": "Op. Poisoned Hurricane",
         "capability_details": "China Chopper Webshell, PlugX, Mimikatz, Sakula",
         "infrastructure_details": "",
-        "targeting_details": "構造化ターゲット監査: 標的国=インド、オーストラリア、カナダ、スイス、スウェーデン、タイ、チェコ、ノルウェー、フィンランド、フランス、ブラジル、ベラルーシ、モンゴル、ロシア、南アフリカ、日本、米国、英国、韓国。標的地域=アフリカ、北米、東アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nAerospace, Healthcare, Energy (gas & electric turbine manufacturing), Military and defense, Finance, Agriculture, Technology, Japan, United States, United Kingdom, India, Canada, Brazil, South Africa, Australia, Thailand, South Korea, France, Switzerland, Sweden, Finland, Norway",
+        "targeting_details": "構造化ターゲット監査: 標的国=インド、オーストラリア、カナダ、スイス、スウェーデン、タイ、チェコ、ノルウェー、フィンランド、フランス、ブラジル、ベトナム、ベラルーシ、モンゴル、ロシア、中国、南アフリカ、日本、米国、英国、韓国。標的地域=アフリカ、中東、北米、東アジア、東南アジア、東欧、欧州。日本は確認時に個別国として保持する。\n\nAerospace, Healthcare, Energy (gas & electric turbine manufacturing), Military and defense, Finance, Agriculture, Technology, Japan, United States, United Kingdom, India, Canada, Brazil, South Africa, Australia, Thailand, South Korea, France, Switzerland, Sweden, Finland, Norway",
         "additional_notes": "自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。"
       },
       "x_osint_crosscheck": {
         "schema_version": "1.0.0",
         "actor_ref": "actor--zirconium",
         "actor_name": "ZIRCONIUM",
-        "searched_at": "2026-09-19T01:10:23Z",
+        "searched_at": "2026-09-20T08:53:28Z",
         "search_scope": {
           "datasets": [
             "etda-threat-group-cards",
@@ -1051,6 +1052,360 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
+      "id": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃",
+      "description": "中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。 Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。 週末・祝日に活動を集中し、SNS上に暗号化コマンドを置く手口で秘匿性を強化。2022年末侵入例も言及。 フィッシングでLNKを起点にCloudyLoaderをDLLサイドロードし、Cobalt Strike展開が確認された。 SharpChromeやOwawa、LocalPlugX、CloudSorcerer等の多様なツールを使用し、タスク登録で永続化を確立。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-3b5c1885cc442243df7f",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--3b5c1885cc442243df7f05a6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 攻撃者は中国系APT31（別名Altaire/Judgement Panda/Violet Typhoon等）、目的は政治・経済・軍事情報の収集。",
+      "x_reported_at": {
+        "value": "2025-11-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--zirconium",
+          "name": "ZIRCONIUM",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [],
+          "victim_refs": [
+            "victim--activity-rule--03dce615119b36418765"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-11-24T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [],
+          "results": [
+            "data-theft",
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-627b32691a33594d7d9a"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用",
+      "description": "複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。",
+      "first_seen": "2026-08-28T00:00:00Z",
+      "last_seen": "2026-09-02T00:00:00Z",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-8ce58d59eaf0a7bf846e",
+      "x_confidence": "high",
+      "x_analyst_notes": "日次収集レコード daily-record--8ce58d59eaf0a7bf846e0be6 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: candidate。 レビュー: 採用。独立した一次資料2本が当該アクターを実行主体として明記している。Proofpoint(2026-09-09公開)は「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」と記載し、Volexity(2026-09-09公開)も「JungleBamboo (also known as APT31/Violet Typhoon/TA412)」として同一クラスターを指し、2026-09-01の初回メールと2026-09-02の2回目の標的型キャンペーンを観測している。Violet Typhoon は本プロファイルの canonical name であり、APT31 は scope: overlapping の別名として登録済みで、2025-11-24 の APT31 活動を既に採用した前例と整合する。BlueMoon は Chrome の CVE-2026-85046(V8 type confusion)、CVE-2026-87491(V8 sandbox escape)、Windows の CVE-2026-85880(カーネル権限昇格)を連鎖させる攻撃キットで、成功後は Chrome の親プロセスへコードを注入し curl でローダーを取得する。標的は Proofpoint によれば米国のNGO、鉱業、現物商品取引企業。活動期間は両資料が明示した観測日のみを採り、記事公開日および tech-memo 日次ファイルの日付は流用していない。同キットを用いた UNK_LateNight(米航空宇宙・防衛、ShadowPad)、UNK_DoubleCheck(ベトナム製造業)、UNK_QuietRacket(インドネシア・シンガポールの政府/コンサル/金融)、UTA0560(NGO、Volexity観測)は本アクターへの帰属が示されていないため取り込まず、unknown-clusters.json へ記録した。記事見出しはキット側を主題としているが、当該アクターが参加したキャンペーンそのものを指しており別クラスターの作戦ではないため activity_overrides は用いていない。",
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--zirconium",
+          "name": "ZIRCONIUM",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": [
+            "ttp--activity-rule--a86dd406f18f33373746"
+          ]
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+            "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+            "target--activity-rule--sector--dfc80b76cad93a318adc",
+            "target--sector--defense"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--4d5fb1e290f1911f9a4c"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": "2026-08-28T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+          },
+          "last_observed": {
+            "value": "2026-09-02T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+          },
+          "reported_at": {
+            "value": "2026-09-11T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "phishing-campaign",
+          "phases": [
+            "Command And Control"
+          ],
+          "results": [
+            "espionage"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--daily-4f5ca8613b6408a00d37"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
+      "description": "Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
+          "external_id": "source--daily-0e75e392e2685f601677"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-f1508e67055f2e956163",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--f1508e67055f2e956163f49d から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。",
+      "x_reported_at": {
+        "value": "2025-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--zirconium",
+          "name": "ZIRCONIUM",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--9137916c1796c538b660"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-08-05T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "ransomware-extortion",
+          "phases": [],
+          "results": [
+            "encryption"
+          ],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-0e75e392e2685f601677"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
+      "description": "Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
+        }
+      ],
+      "x_profile_object_id": "activity--daily-f8164c2182ec1f2d8e79",
+      "x_confidence": "medium",
+      "x_analyst_notes": "日次収集レコード daily-record--f8164c2182ec1f2d8e79e31a から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: strong-subject。 レビュー: tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。",
+      "x_reported_at": {
+        "value": "2025-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_diamond_model": {
+        "adversary": {
+          "actor_ref": "actor--zirconium",
+          "name": "ZIRCONIUM",
+          "attribution_countries": [],
+          "organization_refs": []
+        },
+        "capability": {
+          "malware_refs": [],
+          "ttp_refs": []
+        },
+        "infrastructure": {
+          "infrastructure_refs": []
+        },
+        "victim": {
+          "target_refs": [
+            "target--country--united-states"
+          ],
+          "victim_refs": [
+            "victim--activity-rule--bfa1750b45d1967b2dd7"
+          ]
+        },
+        "meta_features": {
+          "first_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "last_observed": {
+            "value": null,
+            "precision": "unknown",
+            "status": "unknown",
+            "basis": "not-stated"
+          },
+          "reported_at": {
+            "value": "2025-07-24T00:00:00Z",
+            "precision": "day",
+            "status": "known",
+            "basis": "daily-news-file-date"
+          },
+          "activity_type": "intrusion",
+          "phases": [],
+          "results": [],
+          "direction": {
+            "source_countries": [],
+            "target_country_refs": [
+              "target--country--united-states"
+            ],
+            "target_region_refs": []
+          }
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--daily-c9fa26bbe8d21f50b441"
+        ],
+        "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+      }
+    },
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
       "id": "campaign--8b29dec4-154c-4f9d-b8a6-e63e4e6071a8",
       "created": "2026-07-25T15:23:10Z",
       "modified": "2026-09-19T00:00:54Z",
@@ -1393,6 +1748,28 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--fa7ac6b0-c0cd-4692-8b21-ae3b7e2b7990",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "ベトナム",
+      "identity_class": "organization",
+      "description": "活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的・被害国として明示されている。",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--5ba75da7-db59-4979-acd5-918d74af85a5",
       "created": "2026-07-29T23:13:55Z",
       "modified": "2026-07-29T23:13:55Z",
@@ -1439,18 +1816,45 @@
       "spec_version": "2.1",
       "id": "identity--7903e903-1adf-4342-9a0a-a4343a893397",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "ロシア",
       "identity_class": "organization",
-      "description": "構造化OSINTの被害国フィールドでZIRCONIUMの標的・被害国としてロシアが記録されている。",
+      "description": "活動「中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃」の記述で標的・被害国として明示されている。",
       "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        },
         {
           "source_name": "ETDA / ThaiCERT",
           "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
           "external_id": "source--target-audit-etda-threat-group-cards"
+        }
+      ],
+      "x_target_category": "countries",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中国",
+      "identity_class": "organization",
+      "description": "活動「ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢」の記述で標的として明示された国・地域。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
+          "external_id": "source--daily-0e75e392e2685f601677"
         }
       ],
       "x_target_category": "countries",
@@ -1505,7 +1909,7 @@
       "spec_version": "2.1",
       "id": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1517,6 +1921,11 @@
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
         },
         {
           "source_name": "MITRE",
@@ -1611,9 +2020,31 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "中東",
+      "identity_class": "organization",
+      "description": "活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として中東が明示されている。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--641397af-c0c1-403a-93b5-292c15262dc6",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1625,6 +2056,11 @@
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
         },
         {
           "source_name": "MITRE",
@@ -1650,18 +2086,23 @@
       "spec_version": "2.1",
       "id": "identity--7290b5a3-aa5a-45a2-b656-c5080edc88aa",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "東アジア",
       "identity_class": "organization",
-      "description": "モンゴル、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。",
+      "description": "モンゴル、中国、日本、韓国で確認された標的・被害事例を東アジアとして集約した地域表示。",
       "external_references": [
         {
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
+          "external_id": "source--daily-0e75e392e2685f601677"
         },
         {
           "source_name": "ETDA / ThaiCERT",
@@ -1675,9 +2116,36 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--1a1cfa0e-eafc-4c3b-af65-b14c72169034",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "東南アジア",
+      "identity_class": "organization",
+      "description": "タイ、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。",
+      "external_references": [
+        {
+          "source_name": "Florian Roth and community contributors",
+          "description": "Local source: APT Groups and Operations.xlsx",
+          "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_target_category": "regions",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--f42beef6-2801-4516-8736-19f95417c6e1",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1685,6 +2153,11 @@
       "identity_class": "organization",
       "description": "チェコ、ベラルーシ、ロシアで確認された標的・被害事例を東欧として集約した地域表示。",
       "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        },
         {
           "source_name": "ETDA / ThaiCERT",
           "description": "Local source: actor_profile/reference/osint/etda-threat-group-cards.json",
@@ -1699,18 +2172,23 @@
       "spec_version": "2.1",
       "id": "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
       "created": "2026-07-29T23:13:55Z",
-      "modified": "2026-07-29T23:13:55Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "欧州",
       "identity_class": "organization",
-      "description": "スイス、スウェーデン、チェコ、ノルウェー、フィンランド、フランス、ベラルーシ、英国で確認された標的・被害事例を欧州として集約した地域表示。",
+      "description": "活動「米国国家核安全保障局、Microsoft SharePoint攻撃で侵害」の記述で標的地域として欧州が明示されている。",
       "external_references": [
         {
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
         },
         {
           "source_name": "ETDA / ThaiCERT",
@@ -1724,9 +2202,75 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "運輸・航空・海運",
+      "identity_class": "organization",
+      "description": "活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "非営利・市民社会",
+      "identity_class": "organization",
+      "description": "活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "製造・産業",
+      "identity_class": "organization",
+      "description": "活動「新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用」の記述で標的として明示された産業。",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_target_category": "sectors",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-07-25T15:23:10Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1738,6 +2282,11 @@
           "source_name": "Florian Roth and community contributors",
           "description": "Local source: APT Groups and Operations.xlsx",
           "external_id": "source--actor-mapping-workbook"
+        },
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
         }
       ],
       "x_target_category": "sectors",
@@ -1852,6 +2401,281 @@
       ],
       "x_target_category": "sectors",
       "x_confidence": "medium"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--453b125a-e472-4e49-a6e2-1d9d7a409163",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃",
+      "identity_class": "organization",
+      "description": "中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。 Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。 週末・祝日に活動を集中し、SNS上に暗号化コマンドを置く手口で秘匿性を強化。2022年末侵入例も言及。 フィッシングでLNKを起点にCloudyLoaderをDLLサイドロードし、Cobalt Strike展開が確認された。 SharpChromeやOwawa、LocalPlugX、CloudSorcerer等の多様なツールを使用し、タスク登録で永続化を確立。",
+      "external_references": [
+        {
+          "source_name": "thehackernews.com",
+          "description": "Local source: https://thehackernews.com/2025/11/china-linked-apt31-launches-stealthy.html",
+          "external_id": "source--daily-627b32691a33594d7d9a"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--03dce615119b36418765",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "クラウド／SaaS"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "data-theft",
+          "description": "Yandex CloudやOneDriveなど正規クラウドをC2/データ流出に活用し、通常トラフィックに紛れて検知を回避。"
+        },
+        {
+          "impact_type": "espionage",
+          "description": "中国関与とされるAPT31が2024～2025年にロシアIT分野を標的に長期潜伏し、サイバースパイ活動を実施。"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-11-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--7d50a980-d718-40f9-ae87-a0ccd2ae8cb6",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用",
+      "identity_class": "organization",
+      "description": "複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。 BlueMoonはChromeのCVE-2026-85046によるメモリアクセス、CVE-2026-87491によるV8サンドボックス脱出、WindowsのCVE-2026-85880による権限昇格を組み合わせる。 Proofpointは8月28日以降、中国関連のJungleBambooによるスピアフィッシングでの利用を確認し、Volexityも9月1日にUTA0560によるNGO標的の攻撃を観測した。 攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。 UNK_LateNightは米航空宇宙・防衛産業を狙ってShadowPadを展開し、UNK_DoubleCheckはベトナムの製造業を標的とするなど、少なくとも4つの活動クラスターが確認された。",
+      "external_references": [
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--4d5fb1e290f1911f9a4c",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--sector--b8d6639a1884e2bacaa4",
+        "target--activity-rule--sector--d406c8e5b7fa7aeff7d2",
+        "target--activity-rule--sector--dfc80b76cad93a318adc",
+        "target--sector--defense"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [
+        "ttp--activity-rule--a86dd406f18f33373746"
+      ],
+      "x_affected_assets": [],
+      "x_impacts": [
+        {
+          "impact_type": "espionage",
+          "description": "複数のサイバー諜報グループが、WindowsとGoogle Chromeの脆弱性3件を連鎖させる「BlueMoon」エクスプロイトキットを実際の攻撃で使用している。"
+        }
+      ],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測"
+      },
+      "x_reported_at": {
+        "value": "2026-09-11T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "high",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2347f772-96da-4a4d-b4db-6744a23fbe17",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢",
+      "identity_class": "organization",
+      "description": "Palo Alto Networks Unit 42はSharePoint脆弱性チェーン「ToolShell」で4L4MD4Rランサムウェアを確認。 ローダーは theinnovationfactory[.]it (145[.]239[.]97[.]206) からペイロードを取得し、監視機能を無効化。 CVE-2025-49706/49704は、CVE-2025-53770/53771という新しいCVE IDを割り当て2025年7月のパッチで修正済み。 Linen/Violet Typhoonなど中国国家系3グループが関与し、少なくとも148組織を侵害。 CISAはCVE-2025-53770をKEVに追加し、24時間以内の対策を要求。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/ransomware-gangs-join-attacks-targeting-microsoft-sharepoint-servers/",
+          "external_id": "source--daily-0e75e392e2685f601677"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--9137916c1796c538b660",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--activity-rule--country--95e363d6dfa8c6f2ecbb"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [
+        "サーバー"
+      ],
+      "x_impacts": [
+        {
+          "impact_type": "encryption",
+          "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢"
+        }
+      ],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--57f64d79-e093-467d-99de-3988f7db75f1",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: 米国国家核安全保障局、Microsoft SharePoint攻撃で侵害",
+      "identity_class": "organization",
+      "description": "Microsoft SharePointゼロデイ（ToolShell）悪用で米国国家核安全保障局(NNSA)に侵入。 攻撃は7月18日開始、影響はごく少数システムで復旧中、機密データ流出は未確認。 米教育省・州政府や欧州・中東の政府など計148組織以上が同一手口で被害。 Microsoft/Googleは中国系Linen Typhoon・Violet Typhoon・Storm-2603の関与を指摘。 CISAはCVE-2025-53770を緊急カタログ入り、連邦機関へ24時間以内の対策を命令。",
+      "external_references": [
+        {
+          "source_name": "bleepingcomputer.com",
+          "description": "Local source: https://www.bleepingcomputer.com/news/security/us-nuclear-weapons-agency-hacked-in-microsoft-sharepoint-attacks/",
+          "external_id": "source--daily-c9fa26bbe8d21f50b441"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--bfa1750b45d1967b2dd7",
+      "x_disclosure_status": "anonymous",
+      "x_victim_type": "unknown",
+      "x_case_status": "reported",
+      "x_target_refs": [
+        "target--country--united-states"
+      ],
+      "x_malware_refs": [],
+      "x_ttp_refs": [],
+      "x_affected_assets": [],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "x_reported_at": {
+        "value": "2025-07-24T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "daily-news-file-date"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "Ingress Tool Transfer",
+      "description": "攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1105",
+          "url": "https://attack.mitre.org/techniques/T1105/"
+        },
+        {
+          "source_name": "proofpoint.com",
+          "description": "Local source: https://www.proofpoint.com/us/blog/threat-insight/once-bluemoon-multiple-state-aligned-threat-actors-rapidly-adopt-novel-exploit",
+          "external_id": "source--daily-4f5ca8613b6408a00d37"
+        }
+      ],
+      "x_profile_object_id": "ttp--activity-rule--a86dd406f18f33373746",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--daily-8ce58d59eaf0a7bf846e"
+      ],
+      "x_malware_refs": [],
+      "x_infrastructure_refs": [],
+      "x_first_observed": {
+        "value": "2026-08-28T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Proofpoint: 「The first observed cluster using the BlueMoon exploit kit was the China-aligned threat actor TA412 (JungleBamboo, Violet Typhoon, APT31, TIDE CASTLE) on 28 August 2026」; activity-period"
+      },
+      "x_last_observed": {
+        "value": "2026-09-02T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Volexity: JungleBamboo による2回目の標的型キャンペーンを2026-09-02に観測; activity-period"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -3328,6 +4152,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--2af7e5f4-de45-4e82-9377-e33b5fb1f2d0",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--fa7ac6b0-c0cd-4692-8b21-ae3b7e2b7990",
+      "description": "ZIRCONIUM targets ベトナム (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--0c4acfe0-2b44-4517-a16b-d20713b19fa0",
       "created": "2026-07-29T23:13:55Z",
       "modified": "2026-07-29T23:13:55Z",
@@ -3368,6 +4207,21 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--7903e903-1adf-4342-9a0a-a4343a893397",
       "description": "ZIRCONIUM targets ロシア (profile target category: countries).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--49fc10ac-61b5-4f1b-bf60-498efca3ca72",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
+      "description": "ZIRCONIUM targets 中国 (profile target category: countries).",
       "x_confidence": "medium"
     },
     {
@@ -3463,6 +4317,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--ffc72d75-78d4-4045-aeba-59d699ebd90c",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
+      "description": "ZIRCONIUM targets 中東 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--43816aac-ec9a-42e3-88b6-1a39a7ea7d0d",
       "created": "2026-07-29T23:13:55Z",
       "modified": "2026-07-29T23:13:55Z",
@@ -3493,6 +4362,21 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--4209a97e-f00e-41a1-a0d2-de8abe9822b1",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--1a1cfa0e-eafc-4c3b-af65-b14c72169034",
+      "description": "ZIRCONIUM targets 東南アジア (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--c79ad39d-ce94-4570-a0b2-fb10d538b123",
       "created": "2026-07-29T23:13:55Z",
       "modified": "2026-07-29T23:13:55Z",
@@ -3518,6 +4402,51 @@
       "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "target_ref": "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
       "description": "ZIRCONIUM targets 欧州 (profile target category: regions).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--087afc6b-283a-425e-a13d-d7f36abdcae6",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "ZIRCONIUM targets 運輸・航空・海運 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96ec9c60-ceff-4d98-850d-71b66c002356",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+      "description": "ZIRCONIUM targets 非営利・市民社会 (profile target category: sectors).",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96614386-5e5c-4f2c-89d9-f6c10f6fb4ab",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "ZIRCONIUM targets 製造・産業 (profile target category: sectors).",
       "x_confidence": "medium"
     },
     {
@@ -3613,6 +4542,231 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
+      "id": "relationship--abc7c181-9b1d-48df-8701-3e4d78b785d4",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
+      "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "description": "中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--8b62f6bf-cf77-4626-a75d-b39b0ece7a57",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
+      "target_ref": "identity--453b125a-e472-4e49-a6e2-1d9d7a409163",
+      "description": "中国関与のAPT31、クラウドサービスを悪用してロシアITを秘匿攻撃 affected victim--activity-rule--03dce615119b36418765.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c4775778-f125-4b64-8325-e64485f00aae",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d2db1b04-2fb6-4f0f-8b03-ea3bdd594a45",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--activity-rule--sector--b8d6639a1884e2bacaa4.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c45b7e43-638e-4360-801a-d3e041580156",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--activity-rule--sector--d406c8e5b7fa7aeff7d2.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ce503340-445f-4ba4-9611-6994c7a8051e",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--activity-rule--sector--dfc80b76cad93a318adc.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--a9eaeb12-4c85-4124-bab0-73d6d96bab2d",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 targets target--sector--defense.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--b6515504-97b0-4142-84fc-f5633da350b0",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 uses ttp--activity-rule--a86dd406f18f33373746.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--e6fcd4ad-324a-4ac7-9908-7a3574fc14ff",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+      "target_ref": "identity--7d50a980-d718-40f9-ae87-a0ccd2ae8cb6",
+      "description": "新たな「BlueMoon」キットがWindowsとChromeのゼロデイ脆弱性を悪用 affected victim--activity-rule--4d5fb1e290f1911f9a4c.",
+      "x_confidence": "high"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ece94f36-04f5-481e-b696-0eae5a52447d",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+      "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ad86c646-9a30-4f7d-b168-2437cf297f77",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+      "target_ref": "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
+      "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 targets target--activity-rule--country--95e363d6dfa8c6f2ecbb.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--66789d16-64d4-46cd-8141-398559502108",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+      "target_ref": "identity--2347f772-96da-4a4d-b4db-6744a23fbe17",
+      "description": "ランサムウェアグループがMicrosoft SharePointサーバーを狙う攻撃に加勢 affected victim--activity-rule--9137916c1796c538b660.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5aad674b-d84a-48b8-a3d2-ec850f6fe86e",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
+      "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--cee5fe1a-4612-4292-b3ab-3d60074c15f9",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
+      "target_ref": "identity--09b0a513-0510-473d-82e0-6062fd18219c",
+      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 targets target--country--united-states.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--abd570bf-d4a0-4a62-b441-f79d3ee88aa3",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "targets",
+      "source_ref": "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
+      "target_ref": "identity--57f64d79-e093-467d-99de-3988f7db75f1",
+      "description": "米国国家核安全保障局、Microsoft SharePoint攻撃で侵害 affected victim--activity-rule--bfa1750b45d1967b2dd7.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
       "id": "relationship--5e3f52ad-7c3e-408f-bf5c-e46fa4ad9df0",
       "created": "2026-07-25T15:23:10Z",
       "modified": "2026-07-25T15:23:10Z",
@@ -3623,6 +4777,21 @@
       "source_ref": "campaign--8b29dec4-154c-4f9d-b8a6-e63e4e6071a8",
       "target_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
       "description": "Op. Poisoned Hurricane is attributed or linked to ZIRCONIUM.",
+      "x_confidence": "medium"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--94684dc5-6542-450e-a0c6-89486817f6d0",
+      "created": "2026-09-20T08:53:46Z",
+      "modified": "2026-09-20T08:53:46Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
+      "target_ref": "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
+      "description": "攻撃成功後はChromeの親プロセスへコードを注入して任意コマンドを実行し、通常はcurlを使用してマルウェアローダーなどの実行ファイルをダウンロード・起動する。",
       "x_confidence": "medium"
     },
     {
@@ -4200,7 +5369,7 @@
       "spec_version": "2.1",
       "id": "report--4be844d8-47a0-4214-b3e6-f6f46b5eb22e",
       "created": "2026-07-25T15:23:10Z",
-      "modified": "2026-09-19T01:10:23Z",
+      "modified": "2026-09-20T08:53:46Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -4209,13 +5378,17 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-19T01:10:23Z",
+      "published": "2026-09-20T08:53:46Z",
       "object_refs": [
         "intrusion-set--2093d26d-0fbc-415f-917a-86dfca7f9d4a",
         "malware--90ba5e84-70f2-4e29-afcc-8cbc6cd7afe5",
         "malware--5b91557a-4f89-4454-bf9f-157d157ba2a7",
         "malware--19089b2a-d9d1-4efc-a650-ef7935706b5b",
         "malware--007cee57-a69c-4073-876c-b8b2ec8b2805",
+        "campaign--654bbc98-2370-4bf8-9666-9231d491bd06",
+        "campaign--29687754-934a-4530-8304-60b0dd151cc8",
+        "campaign--c7017c09-f0af-4ef2-afd2-17b3f6a05694",
+        "campaign--63d4c970-1a37-41fc-94be-dbd8a03f58c8",
         "campaign--8b29dec4-154c-4f9d-b8a6-e63e4e6071a8",
         "identity--80cb1786-1a4b-43f9-b20b-ac4a346538b5",
         "identity--46b60d24-079a-4e87-a9c2-a5bb6e437891",
@@ -4228,25 +5401,37 @@
         "identity--96490826-124c-498d-9543-8c4b28c7fcc9",
         "identity--9414ca63-e3f0-411a-88f4-53988d7621d4",
         "identity--015f7f55-00a0-4bee-aa9f-ca7ad86ecef5",
+        "identity--fa7ac6b0-c0cd-4692-8b21-ae3b7e2b7990",
         "identity--5ba75da7-db59-4979-acd5-918d74af85a5",
         "identity--dd28a4f4-f17c-4e23-9183-2d2e86782e70",
         "identity--7903e903-1adf-4342-9a0a-a4343a893397",
+        "identity--dedc0dc8-5de9-4f8c-8083-cfff3a72ab23",
         "identity--c96fe754-09c7-42cf-8294-6f4b1cc24eb7",
         "identity--b4e84a68-25b4-4b30-a317-131ed2c10591",
         "identity--09b0a513-0510-473d-82e0-6062fd18219c",
         "identity--06d05d23-958f-4f3e-8489-f39e62ac9280",
         "identity--468c0de9-57a0-4756-8e31-44d013fd75a6",
         "identity--0064c5cc-53f1-448f-91cf-5a76327eb9ef",
+        "identity--245db794-28c1-4af3-94a3-56fb7ebab09b",
         "identity--641397af-c0c1-403a-93b5-292c15262dc6",
         "identity--7290b5a3-aa5a-45a2-b656-c5080edc88aa",
+        "identity--1a1cfa0e-eafc-4c3b-af65-b14c72169034",
         "identity--f42beef6-2801-4516-8736-19f95417c6e1",
         "identity--322b755d-a5ba-4eb8-9f05-aa119d248013",
+        "identity--ea1334d5-3938-4782-a3f1-55ee86cf42c0",
+        "identity--199cd9c0-25d1-4d6f-b916-a0a5fcf0374c",
+        "identity--ceecce5e-b735-4b2c-92a8-105eda047c34",
         "identity--0420a448-cdeb-4030-b961-93d7c9a3c5e0",
         "identity--66251a77-93ed-4960-b417-bc9827b462a3",
         "identity--eb5dba35-d489-41d1-a4c5-81de751d1865",
         "identity--5cbb8ad7-16ed-405d-a8f5-33399b7ac4f1",
         "identity--af1923ab-ef72-4e86-b533-864b3e06892e",
         "identity--2acee7b1-573e-43b6-9740-b9ad74ea9c43",
+        "identity--453b125a-e472-4e49-a6e2-1d9d7a409163",
+        "identity--7d50a980-d718-40f9-ae87-a0ccd2ae8cb6",
+        "identity--2347f772-96da-4a4d-b4db-6744a23fbe17",
+        "identity--57f64d79-e093-467d-99de-3988f7db75f1",
+        "attack-pattern--e0482d73-699a-4c9a-91af-6aa6fb83f1d3",
         "attack-pattern--0ea399d3-fc58-453a-a447-2010f54858ac",
         "attack-pattern--1f0e31b2-1a68-42c1-b79d-f774605f5290",
         "attack-pattern--127e22a3-a59c-49b2-ae9d-40edf2229b5b",

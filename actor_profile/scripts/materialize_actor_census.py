@@ -106,6 +106,41 @@ def identity_curation_rule(curation: dict[str, Any], canonical_name: str) -> dic
     return curation.get("identities", {}).get(normalized_name(canonical_name), {})
 
 
+def write_evidence_csv(
+    path: Path,
+    mentions: list[dict[str, Any]],
+    *,
+    lineterminator: str | None = None,
+) -> None:
+    """Write one deterministic actor-scoped evidence window."""
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        options: dict[str, Any] = {
+            "fieldnames": [
+                "original_source_path",
+                "original_source_location",
+                "matched_name",
+                "context_excerpt",
+            ]
+        }
+        if lineterminator is not None:
+            options["lineterminator"] = lineterminator
+        writer = csv.DictWriter(stream, **options)
+        writer.writeheader()
+        for mention in mentions:
+            writer.writerow(
+                {
+                    "original_source_path": mention["source_path"],
+                    "original_source_location": json.dumps(
+                        mention["source_location"],
+                        ensure_ascii=False,
+                        sort_keys=True,
+                    ),
+                    "matched_name": mention["matched_name"],
+                    "context_excerpt": mention["context_excerpt"],
+                }
+            )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=Path.cwd())
@@ -148,6 +183,7 @@ def main() -> int:
     accepted_raw: list[dict[str, Any]] = []
     rejected: list[dict[str, Any]] = []
     represented: list[dict[str, Any]] = []
+    curated_merges: list[tuple[dict[str, Any], dict[str, Any]]] = []
     for item in census["actors"]:
         rule = identity_curation_rule(curation, item["canonical_name"])
         if rule.get("action") == "exclude":
@@ -162,6 +198,7 @@ def main() -> int:
             )
             continue
         if rule.get("action") == "merge":
+            curated_merges.append((item, rule))
             represented.append(
                 {
                     "actor_id": item["actor_id"],
@@ -230,30 +267,7 @@ def main() -> int:
             slug = unique_slug(canonical_name, item.get("mitre_group_id"), used_slugs)
         relative_evidence = (Path(args.evidence_root) / f"{slug}.csv").as_posix()
         evidence_path = root / relative_evidence
-        with evidence_path.open("w", encoding="utf-8", newline="") as stream:
-            writer = csv.DictWriter(
-                stream,
-                fieldnames=[
-                    "original_source_path",
-                    "original_source_location",
-                    "matched_name",
-                    "context_excerpt",
-                ],
-            )
-            writer.writeheader()
-            for mention in item["mentions"]:
-                writer.writerow(
-                    {
-                        "original_source_path": mention["source_path"],
-                        "original_source_location": json.dumps(
-                            mention["source_location"],
-                            ensure_ascii=False,
-                            sort_keys=True,
-                        ),
-                        "matched_name": mention["matched_name"],
-                        "context_excerpt": mention["context_excerpt"],
-                    }
-                )
+        write_evidence_csv(evidence_path, item["mentions"])
         original_sources = sorted(
             {mention["source_path"] for mention in item["mentions"]}
         )
@@ -286,6 +300,60 @@ def main() -> int:
         added_entries.append(entry)
 
     catalog["actors"].extend(added_entries)
+    entries_by_slug = {entry["slug"]: entry for entry in catalog["actors"]}
+    for item, rule in curated_merges:
+        target_slug = rule["target_slug"]
+        target = entries_by_slug.get(target_slug)
+        if target is None:
+            raise ValueError(
+                f"curated merge target is not an active catalog entry: {target_slug}"
+            )
+        evidence_name = (
+            f"{target_slug}--merged--"
+            f"{stable_digest(normalized_name(item['canonical_name']))[:12]}.csv"
+        )
+        relative_evidence = (Path(args.evidence_root) / evidence_name).as_posix()
+        write_evidence_csv(
+            root / relative_evidence,
+            item.get("mentions", []),
+            lineterminator="\n",
+        )
+        target["source_dirs"] = list(
+            dict.fromkeys([*target.get("source_dirs", []), relative_evidence])
+        )
+        target["reported_sources"] = sorted(
+            set(target.get("reported_sources", []))
+            | {mention["source_path"] for mention in item.get("mentions", [])}
+        )
+        target["census_actor_ids"] = list(
+            dict.fromkeys(
+                [*target.get("census_actor_ids", []), item["actor_id"]]
+            )
+        )
+        # The census can contain aggregation aliases whose scope has not been
+        # reviewed.  Do not promote those into the canonical catalog entry.
+        # Start from the target profile's evidence-scoped aliases and add only
+        # the curated merge identity itself.
+        profile_path = root / "profiles" / target_slug / "actor-profile.json"
+        reviewed_aliases = target.get("aliases", [])
+        if profile_path.is_file():
+            target_profile = load_json(profile_path)
+            reviewed_aliases = [
+                alias["name"] for alias in target_profile["actor"].get("aliases", [])
+            ]
+        merged_names = [item["canonical_name"]]
+        target["aliases"] = list(
+            dict.fromkeys(
+                [
+                    *reviewed_aliases,
+                    *(
+                        name
+                        for name in merged_names
+                        if normalized_name(name) != normalized_name(target["name"])
+                    ),
+                ]
+            )
+        )
     catalog["actors"].sort(key=lambda item: item["slug"])
     catalog["description"] = (
         "Corpus catalog covering every evidence-backed actor identity named in "

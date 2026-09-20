@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt34`
 - 状態: review
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:43Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -62,7 +62,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -205,7 +205,7 @@ Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016�
 | countries | アラブ首長国連邦 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアラブ首長国連邦が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | アルバニア | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてアルバニアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | イスラエル | 活動「Juicy Mix」の記述で標的として明示された国・地域。 | 2021-01-01T05:00:00.000Z | 2022-12-01T05:00:00.000Z | 中 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | イラク | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | イラク | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてイラクが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | イラン | The group works on behalf of the Iranian government based on infrastructure details that contain references to Iran, use of Iranian infrastructure, and targeting that aligns with nation-state interests.(Citation: FireEye APT34 Dec 2017)(Citation: Palo Alto OilRig April 2017)(Citation: ClearSky Oi | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | countries | エジプト | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてエジプトが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オマーン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてオマーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
@@ -214,13 +214,13 @@ Unit 42は2026年の回顧分析で、Evasive Serpens（APT34/OilRig）を2016�
 | countries | サウジアラビア | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてサウジアラビアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | トルコ | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてトルコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | バーレーン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてバーレーンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | パキスタン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | パキスタン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてパキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | モーリシャス | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてモーリシャスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ヨルダン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてヨルダンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | レバノン | 構造化OSINTの被害国フィールドでAPT34の標的・被害国としてレバノンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | 中国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 米国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| countries | 英国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| countries | 英国 | 構造化OSINTの被害国フィールドでAPT34の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | アフリカ | エジプト、モーリシャスで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 中東 | MITRE ATT&CKのGroup概要でAPT34の標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 欧州 | アルバニア、トルコ、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |

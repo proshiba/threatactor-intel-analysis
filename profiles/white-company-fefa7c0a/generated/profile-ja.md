@@ -1,13 +1,13 @@
 # White Company 脅威アクタープロファイル
 
 - プロファイルID: `actor--white-company-fefa7c0a`
-- 状態: draft
-- 更新日時: 2026-07-29T23:13:55Z
+- 状態: deprecated
+- 更新日時: 2026-09-19T00:00:54Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
 
-White Companyの標準化プロファイル。リポジトリ内の専用資料1件とMITRE ATT&CK、アクターマッピング表を基礎情報としている。
+このWhite CompanyプロファイルはThe White Company（actor--white-company）の重複としてdeprecatedとする。
 
 ## アクター名とAlias
 
@@ -20,7 +20,7 @@ Aliasなし
 
 ## 帰属
 
-未評価
+Duplicate profile; attribution is maintained in actor--white-company.
 
 - 国: 不明
 - スポンサー種別: unknown
@@ -42,7 +42,7 @@ Aliasなし
 | Adversary |  |
 | Capability |  |
 | Infrastructure |  |
-| Victim | Pakistani government and military — in particular, the Pakistani Air Force |
+| Victim |  |
 | Socio-political |  |
 
 ## OSINTクロスチェック
@@ -102,27 +102,19 @@ Aliasなし
 
 ## 攻撃活動の履歴
 
-| 活動 | 種別 | 初回 | 最終 | 報告日 | 標的 | マルウェア | TTP | 被害事例 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Shaheen | operation | 不明 | 不明 | 不明 |  |  |  |  | Operation name listed in the repository actor-mapping workbook. | 中 | `source--actor-mapping-workbook` |
+活動履歴なし
 
 ### 活動別ダイヤモンドモデル
 
-| 活動 | 攻撃者 | マルウェア | TTP | インフラ | 標的属性 | 被害事例 | 確度 |
-|---|---|---|---|---|---|---|---|
-| Shaheen | White Company | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
+活動別ダイヤモンドモデルなし
 
-Shaheen
+
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| countries | パキスタン | レビュー済みアクターマッピングの標的欄に記録されたパキスタンを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+ターゲット情報なし
 
-選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
+選定ロジック: Deprecated duplicate; targets are maintained in actor--white-company. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
@@ -142,16 +134,15 @@ TTPなし
 
 ## 主要判断と不確実性
 
-主要判断なし
+| 判断 | 確度 | 証拠 | 補足 |
+|---|---|---|---|
+| This profile is a duplicate of The White Company (actor--white-company / MITRE G0089) and is deprecated. | 高 | `source--white-company-fefa7c0a--d836b38e032577f3` | Both profiles point to Operation Shaheen and the same WhiteCompany report corpus. |
 
 ### 情報ギャップ
 
-- Unknown observation dates must not be replaced by publication dates.
-- Automatically mapped aliases, targets, and workbook software require analyst review.
 
 ### 不確実性
 
-- Vendor cluster boundaries may differ from the canonical name used here.
 
 ## 出典
 
@@ -164,4 +155,4 @@ TTPなし
 
 ## 自由記述
 
-自動構造化した項目はdraftであり、candidateとunknownを分析者がレビューする。
+新規参照はactor--white-companyを使用する。

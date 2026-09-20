@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt-c-27`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:43Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,7 +54,7 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--famous-chollima`
 - 状態: draft
-- 更新日時: 2026-09-19T01:10:23Z
+- 更新日時: 2026-09-20T08:53:44Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; it
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-19T01:10:23Z
+- 調査日時: 2026-09-20T08:53:28Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -119,7 +119,7 @@ CrowdStrikeは2024〜2026年にかけてFAMOUS CHOLLIMAのIT-worker/insider型�
 
 ターゲット情報なし
 
-選定ロジック: Only source-explicit actor-specific targeting is structured.
+選定ロジック: Only source-explicit actor-specific targeting is structured. 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
 ## 被害事例
 
