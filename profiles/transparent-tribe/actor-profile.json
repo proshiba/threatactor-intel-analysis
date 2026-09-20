@@ -4,7 +4,7 @@
   "name": "Transparent Tribe",
   "status": "draft",
   "created_at": "2026-07-25T09:00:44Z",
-  "updated_at": "2026-09-20T07:40:51Z",
+  "updated_at": "2026-09-20T06:42:36Z",
   "languages": [
     "ja"
   ],
@@ -157,19 +157,19 @@
           "value": "2026-08-20T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "last_observed": {
           "value": "2026-09-01T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-08ae19a58641703181dc"
         ],
-        "analyst_notes": "原文が本作戦で新規に命名・解析したRust製のUSB伝播ツール。「During post-compromise activity, APT36 deployed RUSTYMOVE on a compromised machine」として当該アクターによる展開を明記している。"
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
       {
         "id": "malware--daily-2b114530a9ff0ce2fd56",
@@ -183,19 +183,19 @@
           "value": "2026-08-20T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "last_observed": {
           "value": "2026-09-01T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "confidence": "medium",
         "evidence_refs": [
           "source--daily-08ae19a58641703181dc"
         ],
-        "analyst_notes": "原文が本作戦で新規に命名・解析したRust製バックドア。「During post-compromise activity, APT36 deployed RUSTYSHADE on compromised systems」として当該アクターによる展開を明記している。"
+        "analyst_notes": "malware列の値。一次資料で直接利用を確認する必要がある。"
       },
       {
         "id": "malware--darkcomet",
@@ -587,13 +587,13 @@
         "value": "2026-08-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
       },
       "last_observed": {
         "value": "2026-09-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
       },
       "reported_at": {
         "value": "2026-09-19T00:00:00Z",
@@ -624,7 +624,7 @@
       "evidence_refs": [
         "source--daily-08ae19a58641703181dc"
       ],
-      "analyst_notes": "日次収集レコード daily-record--f67a995b730f22598f48a1c5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 採用(構造化actor列一致 + 原文確認)。原文(Zscaler ThreatLabz、datePublished 2026-09-16、著者 Sudeep Singh)をcurlでHTTP 200を取得して確認した。冒頭は「In August 2026, Zscaler ThreatLabz observed new activity by the Pakistan-nexus threat actor APT36 in a campaign we're tracking as Operation RapidRust.」であり、APT36を実行主体として明記する新規キャンペーン報告である。新規のRUSTYSHADE(攻撃者管理のprivate GitHubリポジトリをC2とし、AES-256-GCMでC2通信を暗号化するRust製バックドア)、RUSTYMOVE(リムーバブルメディアへ事前配置ファイルを複製しエアギャップ網への伝播を狙うツール)、PSNATCH/BASHNATCHを扱い、標的はインドとアフガニスタンの政府・防衛組織である。インドの報道機関を模倣したタイポスクワッティングドメイン(theprints[.]org、indiatodays[.]org)とBackblazeの悪用も原文で確認した。過去事例の再掲でも製品名衝突でもない。 一致語「APT36」はtransparent-tribeのalias(vendor: MITRE ATT&CK、scope: overlapping、analyst_notesは\"Alias scope must be reviewed before publication.\")であり、原文にTransparent Tribeの表記はない。ただし本プロファイルには「パキスタンに関連するAPT36（別名：Transparent Tribe）」と明記する2025-05-13の記事が既に活動として採用済みであり、同一クラスタとして扱う先例がある。本レコードも同じ寄せ先とし、alias scope自体の見直しは別レビューとする。scopeがoverlappingである点を踏まえconfidenceはmediumとした。 IOC 22件(md5/sha1/sha256各4、URL 7、domain 3)のobserved_dateはいずれも2026-09-16でIOC CSVの収集日と同値であり、活動期間へ転用していない。",
+      "analyst_notes": "日次収集レコード daily-record--f67a995b730f22598f48a1c5 から取込。活動期間はレビュー済みの一次資料記載がある場合だけ設定し、ニュース公開日やIOC収集日からは推定しない。 reported_atは活動期間ではなくtech-memo日次ファイルの日付。 主体判定: structured-actor-field。 レビュー: 原文(Zscaler ThreatLabz, 2026-09-16公開)を確認。記事はOperation RapidRustを主題とし、実行主体を \"the Pakistan-nexus threat actor APT36\" と同一文で明記している。標的はインドとアフガニスタンの政府・防衛組織、展開マルウェアはRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCH。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもなく、APT36はvendor/developerではなく攻撃実行主体として記述されている。活動期間は原文が2026-08-20〜2026-09-01と明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-09-19)はreported_atとして分離する。confidenceはmediumとする。原文は \"Transparent Tribe\" を用いずAPT36のみで呼称しており、本プロファイルのAPT36 aliasはMITRE ATT&CK由来でscopeがoverlappingであるため、ベンダークラスタ境界の不確実性が残る。この一致をexact identityへ昇格させず、alias scopeはoverlappingのまま維持する。IOC22件(MD5/SHA1/SHA256各4組、ドメイン3件、URL7件)は原文のIOC付録と値およびマルウェア対応を突き合わせ、全件一致を確認した。",
       "diamond_model": {
         "adversary": {
           "actor_ref": "actor--transparent-tribe",
@@ -661,13 +661,13 @@
             "value": "2026-08-20T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
+            "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
           },
           "last_observed": {
             "value": "2026-09-01T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
+            "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
           },
           "reported_at": {
             "value": "2026-09-19T00:00:00Z",
@@ -819,13 +819,13 @@
           "value": "2026-08-20T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "last_observed": {
           "value": "2026-09-01T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
         },
         "confidence": "medium",
         "evidence_refs": [
@@ -892,7 +892,7 @@
           "value": "2026-09-01T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない; activity-period"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "confidence": "high",
         "evidence_refs": [
@@ -1671,13 +1671,13 @@
           "value": "2026-08-20T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日; activity-period"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "last_observed": {
           "value": "2026-09-01T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない; activity-period"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
@@ -1702,7 +1702,7 @@
           "value": "2026-09-01T00:00:00Z",
           "precision": "day",
           "status": "known",
-          "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない; activity-period"
+          "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
         },
         "confidence": "medium",
         "evidence_refs": [
@@ -1733,13 +1733,13 @@
         "value": "2026-08-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日; activity-period"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
       },
       "last_observed": {
         "value": "2026-09-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない; activity-period"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
       },
       "confidence": "medium",
       "evidence_refs": [
@@ -1762,13 +1762,13 @@
         "value": "2026-08-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日; activity-period"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
       },
       "last_observed": {
         "value": "2026-09-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない; activity-period"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
       },
       "confidence": "medium",
       "evidence_refs": [
@@ -1793,13 +1793,13 @@
         "value": "2026-08-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日; activity-period"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
       },
       "last_observed": {
         "value": "2026-09-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない; activity-period"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\"; activity-period"
       },
       "confidence": "medium",
       "evidence_refs": [
@@ -3725,13 +3725,13 @@
         "value": "2026-08-20T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
       },
       "last_observed": {
         "value": "2026-09-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
       },
       "reported_at": {
         "value": "2026-09-19T00:00:00Z",

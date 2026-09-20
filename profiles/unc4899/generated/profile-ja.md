@@ -1,8 +1,8 @@
 # UNC4899 脅威アクタープロファイル
 
 - プロファイルID: `actor--unc4899`
-- 状態: draft
-- 更新日時: 2026-09-20T07:40:51Z
+- 状態: review
+- 更新日時: 2026-09-20T06:46:51Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,9 +18,9 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| TraderTraitor | SentinelOne | overlapping | 中 | `source--sentinelone-tradertraitor-terraform-2026` | SentinelOneは2026-09-18の報告で「the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)」と併記する。ベンダーによる呼称の対応付けであり、クラスタ境界の同一性を確定する記述ではないため scope は overlapping とした。 |
-| PUKCHONG | SentinelOne | overlapping | 中 | `source--sentinelone-tradertraitor-terraform-2026` | 同上の併記による。命名元はRecorded Futureだが本走査では同社原典を未確認であり、SentinelOne経由の対応付けにとどまる。 |
-| Jade Sleet | SentinelOne | overlapping | 中 | `source--sentinelone-tradertraitor-terraform-2026` | 同上の併記による。命名元はMicrosoftだが本走査では同社原典を未確認であり、SentinelOne経由の対応付けにとどまる。 |
+| TraderTraitor | SentinelLabs | overlapping | 中 | `source--sentinellabs-tradertraitor-2026-09` | SentinelLabs が本報告の冒頭で "the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。 |
+| PUKCHONG | SentinelLabs | overlapping | 中 | `source--sentinellabs-tradertraitor-2026-09` | SentinelLabs が本報告の冒頭で "the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。 |
+| Jade Sleet | SentinelLabs | overlapping | 中 | `source--sentinellabs-tradertraitor-2026-09` | SentinelLabs が本報告の冒頭で "the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。 |
 
 ## 帰属
 
@@ -37,9 +37,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 
 ## 他アクターとの関係
 
-| 対象 | 関係 | 説明 | 確度 | 証拠 |
-|---|---|---|---|---|
-| Lazarus Group | part-of | SentinelOneは2026-09-18の報告で当該アクターを「the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor」と記述し、Lazarus Groupの下位グループと位置付ける。 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
+確認された関係なし
 
 ## ダイヤモンドモデル
 
@@ -88,8 +86,8 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--flatroof | FLATROOF | macOS向けバックドア。LayerZero侵害で最初に観測され、2026年3月のITサービス事業者の侵害でも同一検体が確認された。被害端末では ~/Library/com.apple.iTunesCloud/SystemUpdate として配置され、technicais.sytes[.]net をC2とする。 | 2026-03-18 | 2026-06-17 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
-| malware--roofdeck | ROOFDECK | macOS向けバックドア。コマンドは運用者の秘密鍵で署名され、埋め込み公開鍵で完全性を検証してから実行される。ディレクトリ・ファイル操作に関する一般的なシェルコマンドを自前で再実装する。被害端末では ~/Library/com.apple.internal.ck/iSync として配置され、storage.hubpage[.]cloud および grenight[.]com をC2とする。 | 2026-03-18 | 2026-06-17 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
+| malware--flatroof | FLATROOF | ARM64 の Rust 製 macOS バックドア。"SystemUpdate" として配置され、ブラウザーデータ、ターミナル履歴、プロセス一覧、システムプロファイルを収集し Telegram 経由で外部送信する。次段ペイロードに対して Gatekeeper の検証を抑止する。SentinelLabs が以前 macOS.Gaslight として報告した実装と同一である。 | 2026-03-18 | 2026-04-20 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
+| malware--roofdeck | ROOFDECK | ARM64 の Rust 製 macOS バックドア。C2 の探索に Nostr リレーネットワークを用いる。シェル実行、ファイル操作、LaunchAgents による永続化に対応し、埋め込んだ RSA 公開鍵でコマンドの署名を検証する。 | 2026-03-29 | 2026-06-01 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 
 ### ツール
 
@@ -117,7 +115,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | phishing-campaign | 不明 | 不明 | 2024-06-15 |  |  |  |  | 北朝鮮のハッカーが、ブラジルのフィンテック企業を標的に洗練されたフィッシング攻撃を実行。 UNC4899（Jade Sleet）がPythonアプリをトロイの木馬化し、SNSで標的に接触し、GitHubプロジェクトを通じてマルウェアを配布。 有名な暗号通貨企業を装う求人でフィッシング。無害なPDFが添付されている。ターゲットが求人に反応したら追加のPDFを送る。 PDFで、スキルに関するアンケートと、GitHubからプロジェクトをダウンロードして、コーディング課題を完了するように要求。このプロジェクトにマルウェアが仕込まれている。 他の北朝鮮グループも同様の手法を使用し、フィッシングメールで悪意のあるソフトウェアを配信。 | 中 | `source--daily-eba291a90b11ea99ea6e` |
 | 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | infrastructure-operation | 不明 | 不明 | 2025-04-16 | target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--5287d9830bb2ca5ae994 | victim--activity-rule--a255592b2e5fc1bdeb05 | 北朝鮮と関連があるとされるハッカーグループ「Slow Pisces」（別名：Jade Sleet、PUKCHONG、TraderTraitor、UNC4899）は、暗号通貨開発者を標的にしたマルウェアキャンペーンを実施。 LinkedInを通じて開発者に接触し、偽の求人情報やコーディング課題を装ってマルウェアを配布。 被害者は、GitHub上のトロイの木馬化されたPythonプロジェクトをダウンロード・実行するよう誘導され、これにより「RN Loader」および「RN Stealer」と呼ばれるマルウェアに感染。 「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。 攻撃は多段階で行われ、C2サーバーは被害者のIPアドレスや地理情報などに基づいてペイロードの配信を制御。 コード実行には、`yaml.load()`や`ejs.render()`などの手法を用いて検出を回避。 | 中 | `source--daily-744b9664f686bf2ed5cd` |
-| 偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 | intrusion | 2026-03-18 | 2026-06-17 | 2026-09-18 | target--activity-rule--sector--63c9fa67327d005b07b7 | malware--flatroof, malware--roofdeck |  | victim--activity-rule--ec91e5726221209970c4, victim--unc4899-it-services-india-2026 | SentinelOneは2026年4月に公表されたLayerZero侵害(KelpDAOから2億9,200万米ドル相当の暗号資産が窃取された事案)で最初に観測されたmacOSバックドア FLATROOF(別名 macOS.Gaslight)と ROOFDECK を手掛かりに自社テレメトリを探索し、暗号資産と無関係な追加の被害組織を特定した。被害者はインドに所在するITサービス事業者で、侵害を受けた端末1台はDevOps担当者が日常利用する開発端末であり、クラウド資格情報とソースコード管理へのアクセスを保持していた。初期侵入は偽の求人面接を装った社会工学であり、攻撃者は標的企業の求職者へ接触し、インフラ関連のコーディング課題を装った GitHub リポジトリ(Northwind-IAC、novacart-interview、terraform-candidate-repo など)を実行させる。リポジトリには攻撃者が管理するTerraform provider レジストリ(registry.hashicorp-aws[.]com、registry.hashicorp-aws[.]io、registry.hashicorp-terraform[.]io)を指す悪性の .terraform.lock.hcl が含まれ、terraform init の実行でマルウェアが取得される。両バックドアは2026-03-18から端末上に存在し、3月29日に開発者がCursorでワークスペースを開いた際にビーコンが開始した。その後2026-06-01までgrenight[.]comへの断続的なビーコンが観測され、6月17日にloginwindowバイナリがゴミ箱へ移動された。SentinelOneは本被害組織について、最終的に侵入を維持するだけの価値が得られなかったと評価している。 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
+| インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | intrusion | 2026-03-18 | 2026-06-01 | 2026-09-18 |  | malware--flatroof, malware--roofdeck | ttp--activity-rule--27317de8fad143103d24 | victim--activity-rule--02cdbdef3e6b8d3a8be3 | SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を "an IT services provider based in India and unaffiliated with cryptocurrency" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 
 ### 活動別ダイヤモンドモデル
 
@@ -125,7 +123,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 |---|---|---|---|---|---|---|---|
 | 北朝鮮のハッカー、洗練されたフィッシング戦術でブラジルのフィンテックを標的に | UNC4899 | 情報なし | 情報なし | 情報なし | 情報なし | 情報なし | 中 |
 | 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | UNC4899 | 情報なし | T1083 File and Directory Discovery | 情報なし | IT・ソフトウェア | 被害事例: 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | 中 |
-| 偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 | UNC4899 | FLATROOF, ROOFDECK | 情報なし | 情報なし | 暗号資産・Web3 | 被害事例: 偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開, 被害事例: インドのITサービス事業者に対するmacOSバックドア侵入 | 中 |
+| インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | UNC4899 | FLATROOF, ROOFDECK | T1102.003 One-Way Communication | 情報なし | 情報なし | 被害事例: インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | 中 |
 
 
 
@@ -134,7 +132,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | イスラエル | 構造化OSINTの被害国フィールドでUNC4899の標的・被害国としてイスラエルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | インド | 活動「偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開」の記述で標的・被害国として明示されている。 | 2026-03-18 | 2026-06-17 | 中 | `source--sentinelone-tradertraitor-terraform-2026`, `source--target-audit-etda-threat-group-cards` |
+| countries | インド | 活動「インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)」の記述で標的・被害国として明示されている。 | 2026-03-18 | 2026-06-01 | 中 | `source--sentinellabs-tradertraitor-2026-09`, `source--target-audit-etda-threat-group-cards` |
 | countries | エクアドル | 構造化OSINTの被害国フィールドでUNC4899の標的・被害国としてエクアドルが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オランダ | 構造化OSINTの被害国フィールドでUNC4899の標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オーストラリア | 構造化OSINTの被害国フィールドでUNC4899の標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
@@ -163,13 +161,12 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | regions | 中南米 | エクアドル、グアテマラ、チリ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-eba291a90b11ea99ea6e`, `source--target-audit-etda-threat-group-cards` |
 | regions | 全世界 | 構造化OSINTの被害地域フィールドでUNC4899の標的範囲として全世界が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--sentinelone-tradertraitor-terraform-2026`, `source--target-audit-etda-threat-group-cards` |
+| regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--sentinellabs-tradertraitor-2026-09`, `source--target-audit-etda-threat-group-cards` |
 | regions | 南米 | エクアドル、チリ、ブラジルで確認された標的・被害事例を南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-eba291a90b11ea99ea6e`, `source--target-audit-etda-threat-group-cards` |
 | regions | 東アジア | 中国、北朝鮮、台湾、日本、韓国、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-744b9664f686bf2ed5cd`, `source--target-audit-etda-threat-group-cards` |
 | regions | 東南アジア | タイ、フィリピン、ベトナムで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東欧 | ポーランド、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | オランダ、ドイツ、フランス、ベルギー、ポーランド、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| sectors | 暗号資産・Web3 | 活動「偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開」の記述で標的として明示された産業。 | 2026-03-18 | 2026-06-17 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
 | sectors | IT・ソフトウェア | 活動「北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-744b9664f686bf2ed5cd` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
@@ -178,14 +175,14 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 事例 | 被害者 | 公開状態 | 種別 | 事例状態 | 標的属性 | マルウェア | TTP | 影響資産 | 影響 | 初回 | 最終 | 報告日 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 被害事例: インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) | 非公開 | aggregate | multiple-organizations | reported |  | malware--flatroof, malware--roofdeck | ttp--activity-rule--27317de8fad143103d24 | 開発環境／ソースコード |  | 2026-03-18 | 2026-06-01 | 2026-09-18 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 | 被害事例: 北朝鮮系ハッカーグループ「Slow Pisces」、暗号通貨開発者を標的にしたPythonマルウェア攻撃を展開 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--932f4928d5e1ec28e2df |  | ttp--activity-rule--5287d9830bb2ca5ae994 | サーバー, クラウド／SaaS, 開発環境／ソースコード |  | 不明 | 不明 | 2025-04-16 | 中 | `source--daily-744b9664f686bf2ed5cd` |
-| 被害事例: 偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 | 非公開 | aggregate | multiple-organizations | reported | target--activity-rule--sector--63c9fa67327d005b07b7 | malware--flatroof, malware--roofdeck |  | エンドポイント, クラウド／SaaS, 開発環境／ソースコード |  | 2026-03-18 | 2026-06-17 | 2026-09-18 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
-| 被害事例: インドのITサービス事業者に対するmacOSバックドア侵入 | 非公開 | anonymous | organization | confirmed |  | malware--flatroof, malware--roofdeck |  | 開発環境／ソースコード, クラウド／SaaS |  | 2026-03-18 | 2026-06-17 | 2026-09-18 | 中 | `source--sentinelone-tradertraitor-terraform-2026` |
 
 ## MITRE ATT&CK Matrixデータ
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
+| Command And Control | T1102.003 | One-Way Communication | FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。 | malware--flatroof, malware--roofdeck | activity--unc4899-tradertraitor-india-it-services-2026 | 2026-03-18 | 2026-06-01 | 中 | `source--sentinellabs-tradertraitor-2026-09` |
 | Discovery | T1083 | File and Directory Discovery | 「RN Stealer」はmacOSシステム上で機密情報（iCloudキーチェーン、SSHキー、AWS/Kubernetes/Google Cloudの設定ファイルなど）を収集。 |  | activity--daily-db38d43f17473660e294 | 不明 | 不明 | 中 | `source--daily-744b9664f686bf2ed5cd` |
 
 ## IOC／artifact概要
@@ -208,6 +205,9 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 ### 不確実性
 
 - Vendor cluster boundaries may differ from the canonical name used here.
+- SentinelLabs は TraderTraitor を "DPRK state-sponsored Lazarus subgroup" と記述するが、本リポジトリの規約では国家支援の確定には政府共同勧告・公式帰属・ATT&CK の actor-specific な明示記述または複数の独立した高品質資料を要する。単一ベンダー報告であるため attribution と sponsor_type は unknown のまま据え置き、主張のみを記録する。
+- TraderTraitor / PUKCHONG / Jade Sleet と UNC4899 の同一性は SentinelLabs の "aka" 記載に基づく。ベンダークラスタの境界を原典で確認できていないため alias scope は overlapping とし、exact identity へ昇格させない。
+- Lazarus との組織関係(subgroup)も同じ単一ベンダー記述に依存するため、relationships へは追加せず未解決事項として保持する。
 
 ## 出典
 
@@ -229,7 +229,7 @@ UNC4899の標準化プロファイル。リポジトリ内の専用資料1件と
 | source--unc4899--d91b559d4a2e0f1b | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
 | source--unc4899--e1520dd17d1e4dfd | Qianxin 2023 APT Report |  | 2023 | summary/2024/Qianxin 2023 APT Report.pdf | report | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
-| source--sentinelone-tradertraitor-terraform-2026 | Don't Call Us, We'll Call Your APIs \| TraderTraitor Backdoors Resurface on Victim With No Crypto Ties | SentinelLabs (SentinelOne) | 2026-09-18 | https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/ | vendor-research | TLP:CLEAR | 高 |
+| source--sentinellabs-tradertraitor-2026-09 | Don't Call Us, We'll Call Your APIs \| TraderTraitor Backdoors Resurface on Victim With No Crypto Ties | SentinelLabs (SentinelOne) | 2026-09-18 | https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/ | vendor-research | TLP:CLEAR | 高 |
 
 ## 自由記述
 

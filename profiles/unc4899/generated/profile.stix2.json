@@ -7,7 +7,7 @@
       "spec_version": "2.1",
       "id": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
       "created": "2026-07-25T15:23:08Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -24,33 +24,33 @@
       "x_alias_assessments": [
         {
           "name": "TraderTraitor",
-          "vendor": "SentinelOne",
+          "vendor": "SentinelLabs",
           "scope": "overlapping",
           "confidence": "medium",
           "evidence_refs": [
-            "source--sentinelone-tradertraitor-terraform-2026"
+            "source--sentinellabs-tradertraitor-2026-09"
           ],
-          "analyst_notes": "SentinelOneは2026-09-18の報告で「the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)」と併記する。ベンダーによる呼称の対応付けであり、クラスタ境界の同一性を確定する記述ではないため scope は overlapping とした。"
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
         },
         {
           "name": "PUKCHONG",
-          "vendor": "SentinelOne",
+          "vendor": "SentinelLabs",
           "scope": "overlapping",
           "confidence": "medium",
           "evidence_refs": [
-            "source--sentinelone-tradertraitor-terraform-2026"
+            "source--sentinellabs-tradertraitor-2026-09"
           ],
-          "analyst_notes": "同上の併記による。命名元はRecorded Futureだが本走査では同社原典を未確認であり、SentinelOne経由の対応付けにとどまる。"
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
         },
         {
           "name": "Jade Sleet",
-          "vendor": "SentinelOne",
+          "vendor": "SentinelLabs",
           "scope": "overlapping",
           "confidence": "medium",
           "evidence_refs": [
-            "source--sentinelone-tradertraitor-terraform-2026"
+            "source--sentinellabs-tradertraitor-2026-09"
           ],
-          "analyst_notes": "同上の併記による。命名元はMicrosoftだが本走査では同社原典を未確認であり、SentinelOne経由の対応付けにとどまる。"
+          "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
         }
       ],
       "x_attribution": {
@@ -275,28 +275,29 @@
       "type": "malware",
       "spec_version": "2.1",
       "id": "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "FLATROOF",
-      "description": "macOS向けバックドア。LayerZero侵害で最初に観測され、2026年3月のITサービス事業者の侵害でも同一検体が確認された。被害端末では ~/Library/com.apple.iTunesCloud/SystemUpdate として配置され、technicais.sytes[.]net をC2とする。",
+      "description": "ARM64 の Rust 製 macOS バックドア。\"SystemUpdate\" として配置され、ブラウザーデータ、ターミナル履歴、プロセス一覧、システムプロファイルを収集し Telegram 経由で外部送信する。次段ペイロードに対して Gatekeeper の検証を抑止する。SentinelLabs が以前 macOS.Gaslight として報告した実装と同一である。",
       "external_references": [
         {
           "source_name": "SentinelLabs (SentinelOne)",
           "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
         }
       ],
       "x_profile_object_id": "malware--flatroof",
       "x_confidence": "medium",
-      "x_analyst_notes": "SentinelOneはmacOS.Gaslightを別名として併記する。同社が2026-06-23に公開したmacOS.Gaslightの解析記事は本走査では未確認である。",
+      "x_analyst_notes": "本プロファイル(UNC4899)での利用根拠は SentinelLabs の単一ベンダー報告である。",
       "is_family": true,
       "malware_types": [
-        "backdoor"
+        "macOS"
       ],
       "aliases": [
+        "FLATROOF",
         "macOS.Gaslight"
       ]
     },
@@ -304,28 +305,30 @@
       "type": "malware",
       "spec_version": "2.1",
       "id": "malware--6c4a366a-d582-440f-8c1d-611022aed385",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "ROOFDECK",
-      "description": "macOS向けバックドア。コマンドは運用者の秘密鍵で署名され、埋め込み公開鍵で完全性を検証してから実行される。ディレクトリ・ファイル操作に関する一般的なシェルコマンドを自前で再実装する。被害端末では ~/Library/com.apple.internal.ck/iSync として配置され、storage.hubpage[.]cloud および grenight[.]com をC2とする。",
+      "description": "ARM64 の Rust 製 macOS バックドア。C2 の探索に Nostr リレーネットワークを用いる。シェル実行、ファイル操作、LaunchAgents による永続化に対応し、埋め込んだ RSA 公開鍵でコマンドの署名を検証する。",
       "external_references": [
         {
           "source_name": "SentinelLabs (SentinelOne)",
           "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
         }
       ],
       "x_profile_object_id": "malware--roofdeck",
       "x_confidence": "medium",
-      "x_analyst_notes": "原文はROOFDECKの亜種として、シンボル情報を削除しloginwindowという名称で配置された検体にも言及している。",
+      "x_analyst_notes": "本プロファイル(UNC4899)での利用根拠は SentinelLabs の単一ベンダー報告である。",
       "is_family": true,
       "malware_types": [
-        "backdoor"
+        "macOS"
       ],
-      "aliases": []
+      "aliases": [
+        "ROOFDECK"
+      ]
     },
     {
       "type": "campaign",
@@ -412,7 +415,7 @@
       "spec_version": "2.1",
       "id": "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
       "created": "2026-07-27T11:04:38Z",
-      "modified": "2026-09-20T07:40:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -498,31 +501,31 @@
     {
       "type": "campaign",
       "spec_version": "2.1",
-      "id": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開",
-      "description": "SentinelOneは2026年4月に公表されたLayerZero侵害(KelpDAOから2億9,200万米ドル相当の暗号資産が窃取された事案)で最初に観測されたmacOSバックドア FLATROOF(別名 macOS.Gaslight)と ROOFDECK を手掛かりに自社テレメトリを探索し、暗号資産と無関係な追加の被害組織を特定した。被害者はインドに所在するITサービス事業者で、侵害を受けた端末1台はDevOps担当者が日常利用する開発端末であり、クラウド資格情報とソースコード管理へのアクセスを保持していた。初期侵入は偽の求人面接を装った社会工学であり、攻撃者は標的企業の求職者へ接触し、インフラ関連のコーディング課題を装った GitHub リポジトリ(Northwind-IAC、novacart-interview、terraform-candidate-repo など)を実行させる。リポジトリには攻撃者が管理するTerraform provider レジストリ(registry.hashicorp-aws[.]com、registry.hashicorp-aws[.]io、registry.hashicorp-terraform[.]io)を指す悪性の .terraform.lock.hcl が含まれ、terraform init の実行でマルウェアが取得される。両バックドアは2026-03-18から端末上に存在し、3月29日に開発者がCursorでワークスペースを開いた際にビーコンが開始した。その後2026-06-01までgrenight[.]comへの断続的なビーコンが観測され、6月17日にloginwindowバイナリがゴミ箱へ移動された。SentinelOneは本被害組織について、最終的に侵入を維持するだけの価値が得られなかったと評価している。",
+      "name": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)",
+      "description": "SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を \"an IT services provider based in India and unaffiliated with cryptocurrency\" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
       "first_seen": "2026-03-18T00:00:00Z",
-      "last_seen": "2026-06-17T00:00:00Z",
+      "last_seen": "2026-06-01T00:00:00Z",
       "external_references": [
         {
           "source_name": "SentinelLabs (SentinelOne)",
           "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
         }
       ],
-      "x_profile_object_id": "activity--unc4899-tradertraitor-terraform-2026",
+      "x_profile_object_id": "activity--unc4899-tradertraitor-india-it-services-2026",
       "x_confidence": "medium",
-      "x_analyst_notes": "2026-09-20の日次チェックにおいて、SentinelLabsの公開一覧巡回で検知した。tech-memo daily-news には未収録でありIOC CSVも存在しないため、日次レビューキューを経由せず本プロファイルへ直接追記した。原文はcurlでHTTP 200を取得して確認している(著者 Albert Priego / Alex Delamotte / Matej Havranek、公開 2026-09-18)。 アクターの同定は、SentinelOneが「TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)」と併記する呼称の対応付けに依存するため、confidenceはmediumとした。原文は当該アクターを「financially motivated DPRK state-sponsored Lazarus subgroup」と記述するが、プロファイルのattributionは本走査では変更していない。単一ベンダーの記述であり、政府共同勧告等の一次資料を確認していないためである。 原文が掲載するIOC 10件(SHA1 3件、ドメイン3件、IPアドレス4件)は本走査では取り込んでいない。tech-memo未収録でIOC CSVが存在せず、ingest_observables.pyが前提とするリポジトリ内資料も無いため、Observation IDの安定生成規則に沿った投入を別作業とした。",
+      "x_analyst_notes": "一次情報源の公開一覧巡回(SentinelLabs)で検知し、原文を確認して取り込んだ。tech-memo daily-news には未掲載であり、日次レビューキュー経由の取込ではない。原文は本侵害の実行主体を TraderTraitor と明記しており、製品・ベンダーの利用ではなく攻撃実行主体としての記述である。活動期間は原文が明示する観測日のみを用い、公開日 2026-09-18 は reported_at として分離した。被害組織名は原文に記載がないため victim_refs は空とする。",
       "x_reported_at": {
         "value": "2026-09-18T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "source-published-at"
+        "basis": "source-publication"
       },
       "x_diamond_model": {
         "adversary": {
@@ -536,18 +539,17 @@
             "malware--flatroof",
             "malware--roofdeck"
           ],
-          "ttp_refs": []
+          "ttp_refs": [
+            "ttp--activity-rule--27317de8fad143103d24"
+          ]
         },
         "infrastructure": {
           "infrastructure_refs": []
         },
         "victim": {
-          "target_refs": [
-            "target--activity-rule--sector--63c9fa67327d005b07b7"
-          ],
+          "target_refs": [],
           "victim_refs": [
-            "victim--activity-rule--ec91e5726221209970c4",
-            "victim--unc4899-it-services-india-2026"
+            "victim--activity-rule--02cdbdef3e6b8d3a8be3"
           ]
         },
         "meta_features": {
@@ -555,22 +557,24 @@
             "value": "2026-03-18T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "SentinelOne: 「According to our telemetry on this host, both backdoors were on disk as far back as March 18」"
+            "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
           },
           "last_observed": {
-            "value": "2026-06-17T00:00:00Z",
+            "value": "2026-06-01T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "SentinelOne: 「On June 17, the loginwindow binary was moved to Trash.」。侵入の最終観測事象"
+            "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
           },
           "reported_at": {
             "value": "2026-09-18T00:00:00Z",
             "precision": "day",
             "status": "known",
-            "basis": "source-published-at"
+            "basis": "source-publication"
           },
           "activity_type": "intrusion",
-          "phases": [],
+          "phases": [
+            "Command And Control"
+          ],
           "results": [],
           "direction": {
             "source_countries": [],
@@ -580,7 +584,7 @@
         },
         "confidence": "medium",
         "evidence_refs": [
-          "source--sentinelone-tradertraitor-terraform-2026"
+          "source--sentinellabs-tradertraitor-2026-09"
         ],
         "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
       }
@@ -612,18 +616,18 @@
       "spec_version": "2.1",
       "id": "identity--4c7c6843-7563-49d2-9498-2299b623c23e",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "name": "インド",
       "identity_class": "organization",
-      "description": "活動「偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開」の記述で標的・被害国として明示されている。",
+      "description": "活動「インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)」の記述で標的・被害国として明示されている。",
       "external_references": [
         {
           "source_name": "SentinelLabs (SentinelOne)",
           "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
         },
         {
           "source_name": "ETDA / ThaiCERT",
@@ -1265,7 +1269,7 @@
       "spec_version": "2.1",
       "id": "identity--c96d78b9-808b-4872-a0ba-1140f72d3ca4",
       "created": "2026-07-29T23:12:01Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1276,7 +1280,7 @@
         {
           "source_name": "SentinelLabs (SentinelOne)",
           "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
         },
         {
           "source_name": "ETDA / ThaiCERT",
@@ -1410,28 +1414,6 @@
     {
       "type": "identity",
       "spec_version": "2.1",
-      "id": "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "暗号資産・Web3",
-      "identity_class": "organization",
-      "description": "活動「偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開」の記述で標的として明示された産業。",
-      "external_references": [
-        {
-          "source_name": "SentinelLabs (SentinelOne)",
-          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
-        }
-      ],
-      "x_target_category": "sectors",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
       "id": "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
       "created": "2026-07-29T15:20:24Z",
       "modified": "2026-07-29T15:20:24Z",
@@ -1454,9 +1436,65 @@
     {
       "type": "identity",
       "spec_version": "2.1",
+      "id": "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
+      "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
+      ],
+      "name": "被害事例: インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)",
+      "identity_class": "organization",
+      "description": "SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を \"an IT services provider based in India and unaffiliated with cryptocurrency\" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "external_references": [
+        {
+          "source_name": "SentinelLabs (SentinelOne)",
+          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
+        }
+      ],
+      "x_profile_object_id": "victim--activity-rule--02cdbdef3e6b8d3a8be3",
+      "x_disclosure_status": "aggregate",
+      "x_victim_type": "multiple-organizations",
+      "x_case_status": "reported",
+      "x_target_refs": [],
+      "x_malware_refs": [
+        "malware--flatroof",
+        "malware--roofdeck"
+      ],
+      "x_ttp_refs": [
+        "ttp--activity-rule--27317de8fad143103d24"
+      ],
+      "x_affected_assets": [
+        "開発環境／ソースコード"
+      ],
+      "x_impacts": [],
+      "x_first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "x_last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "x_reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "x_confidence": "medium",
+      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
       "id": "identity--5793ff61-027f-4c82-99c5-923383735b9d",
       "created": "2026-07-29T15:20:24Z",
-      "modified": "2026-09-20T07:40:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1509,117 +1547,52 @@
       "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
     },
     {
-      "type": "identity",
+      "type": "attack-pattern",
       "spec_version": "2.1",
-      "id": "identity--19ce9e14-f742-4e0a-8b68-0476513cfca7",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "name": "被害事例: 偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開",
-      "identity_class": "organization",
-      "description": "SentinelOneは2026年4月に公表されたLayerZero侵害(KelpDAOから2億9,200万米ドル相当の暗号資産が窃取された事案)で最初に観測されたmacOSバックドア FLATROOF(別名 macOS.Gaslight)と ROOFDECK を手掛かりに自社テレメトリを探索し、暗号資産と無関係な追加の被害組織を特定した。被害者はインドに所在するITサービス事業者で、侵害を受けた端末1台はDevOps担当者が日常利用する開発端末であり、クラウド資格情報とソースコード管理へのアクセスを保持していた。初期侵入は偽の求人面接を装った社会工学であり、攻撃者は標的企業の求職者へ接触し、インフラ関連のコーディング課題を装った GitHub リポジトリ(Northwind-IAC、novacart-interview、terraform-candidate-repo など)を実行させる。リポジトリには攻撃者が管理するTerraform provider レジストリ(registry.hashicorp-aws[.]com、registry.hashicorp-aws[.]io、registry.hashicorp-terraform[.]io)を指す悪性の .terraform.lock.hcl が含まれ、terraform init の実行でマルウェアが取得される。両バックドアは2026-03-18から端末上に存在し、3月29日に開発者がCursorでワークスペースを開いた際にビーコンが開始した。その後2026-06-01までgrenight[.]comへの断続的なビーコンが観測され、6月17日にloginwindowバイナリがゴミ箱へ移動された。SentinelOneは本被害組織について、最終的に侵入を維持するだけの価値が得られなかったと評価している。",
+      "name": "One-Way Communication",
+      "description": "FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
       "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1102.003",
+          "url": "https://attack.mitre.org/techniques/T1102/003/"
+        },
         {
           "source_name": "SentinelLabs (SentinelOne)",
           "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
+          "external_id": "source--sentinellabs-tradertraitor-2026-09"
         }
       ],
-      "x_profile_object_id": "victim--activity-rule--ec91e5726221209970c4",
-      "x_disclosure_status": "aggregate",
-      "x_victim_type": "multiple-organizations",
-      "x_case_status": "reported",
-      "x_target_refs": [
-        "target--activity-rule--sector--63c9fa67327d005b07b7"
+      "x_profile_object_id": "ttp--activity-rule--27317de8fad143103d24",
+      "x_tactic": "Command And Control",
+      "x_activity_refs": [
+        "activity--unc4899-tradertraitor-india-it-services-2026"
       ],
       "x_malware_refs": [
         "malware--flatroof",
         "malware--roofdeck"
       ],
-      "x_ttp_refs": [],
-      "x_affected_assets": [
-        "エンドポイント",
-        "クラウド／SaaS",
-        "開発環境／ソースコード"
-      ],
-      "x_impacts": [],
+      "x_infrastructure_refs": [],
       "x_first_observed": {
         "value": "2026-03-18T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "SentinelOne: 「According to our telemetry on this host, both backdoors were on disk as far back as March 18」"
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日; activity-period"
       },
       "x_last_observed": {
-        "value": "2026-06-17T00:00:00Z",
+        "value": "2026-06-01T00:00:00Z",
         "precision": "day",
         "status": "known",
-        "basis": "SentinelOne: 「On June 17, the loginwindow binary was moved to Trash.」。侵入の最終観測事象"
-      },
-      "x_reported_at": {
-        "value": "2026-09-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-published-at"
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日; activity-period"
       },
       "x_confidence": "medium",
-      "x_analyst_notes": "[activity-rule-v1] 活動と標的・影響の明示記述から被害事例を構造化。個別被害者名が公開されていない場合は匿名または集約事例として保持。被害主張への明示的な否定・反論はdisputedとして分離。"
-    },
-    {
-      "type": "identity",
-      "spec_version": "2.1",
-      "id": "identity--6fcf4be7-4790-4ea6-8720-1dfa926c2ed2",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "name": "被害事例: インドのITサービス事業者に対するmacOSバックドア侵入",
-      "identity_class": "organization",
-      "description": "SentinelOneは「The affected organization is an IT services provider based in India and unaffiliated with cryptocurrency.」として、インドに所在し暗号資産と無関係なITサービス事業者の侵害を報告した。侵害されたのは端末1台で、DevOps業務に従事する開発者が日常的に利用し、クラウド資格情報とソースコード管理へのアクセスを保持していた。FLATROOFとROOFDECKの両バックドアが2026-03-18から端末上に存在し、3月29日にビーコンが開始した。SentinelOneは本組織について、攻撃者が侵入を維持するだけの価値を得られなかったと評価している。被害組織名は公表されていない。",
-      "external_references": [
-        {
-          "source_name": "SentinelLabs (SentinelOne)",
-          "description": "Local source: https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
-          "external_id": "source--sentinelone-tradertraitor-terraform-2026"
-        }
-      ],
-      "x_profile_object_id": "victim--unc4899-it-services-india-2026",
-      "x_disclosure_status": "anonymous",
-      "x_victim_type": "organization",
-      "x_case_status": "confirmed",
-      "x_target_refs": [],
-      "x_malware_refs": [
-        "malware--flatroof",
-        "malware--roofdeck"
-      ],
-      "x_ttp_refs": [],
-      "x_affected_assets": [
-        "開発環境／ソースコード",
-        "クラウド／SaaS"
-      ],
-      "x_impacts": [],
-      "x_first_observed": {
-        "value": "2026-03-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "SentinelOne: 同社テレメトリが示す両バックドアの最古の存在確認日"
-      },
-      "x_last_observed": {
-        "value": "2026-06-17T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "SentinelOne: 「On June 17, the loginwindow binary was moved to Trash.」"
-      },
-      "x_reported_at": {
-        "value": "2026-09-18T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "source-published-at"
-      },
-      "x_confidence": "medium",
-      "x_analyst_notes": "被害国(インド)は原文が明示する被害組織の所在国であり、アクターの帰属国とは分離している。原文はデータの外部持ち出しや暗号資産の窃取といった影響を本被害組織については述べていないため、impactsは空配列とした。LayerZero/KelpDAOの事案は本被害事例には含めない(別組織の被害であり、本プロファイルには当該一次資料を未収録)。"
+      "x_analyst_notes": "[activity-rule-v1] 活動記述に明示された行動をATT&CKへ分析者対応付け。資料発行日は観測日として使用していない。"
     },
     {
       "type": "attack-pattern",
@@ -1670,8 +1643,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--db699ce5-2383-4eec-ba4b-a47b46bd5ee5",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -1685,8 +1658,8 @@
       "type": "relationship",
       "spec_version": "2.1",
       "id": "relationship--843beec8-c926-41b4-b556-c23860728c9c",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2239,21 +2212,6 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--65deb2bd-7741-4c0d-b5a5-95212314683b",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
-      "object_marking_refs": [
-        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
-      ],
-      "relationship_type": "targets",
-      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
-      "target_ref": "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
-      "description": "UNC4899 targets 暗号資産・Web3 (profile target category: sectors).",
-      "x_confidence": "medium"
-    },
-    {
-      "type": "relationship",
-      "spec_version": "2.1",
       "id": "relationship--8b96b3a5-e78b-4e28-ac69-a408c44b50df",
       "created": "2026-07-29T23:12:01Z",
       "modified": "2026-07-29T23:12:01Z",
@@ -2344,91 +2302,91 @@
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--7acd2d53-189d-4783-b146-44ffa9ad2141",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "relationship--30c288ee-d29c-40cc-b26d-7a9798fa21b7",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "attributed-to",
-      "source_ref": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
+      "source_ref": "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
       "target_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
-      "description": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 is attributed or linked to UNC4899.",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) is attributed or linked to UNC4899.",
       "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--6f4d2eeb-1ff0-4dde-9013-21760b26378a",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "relationship--138c305d-fd9b-4d51-b9d0-c9dce06c889a",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
-      "source_ref": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
+      "source_ref": "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
       "target_ref": "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
-      "description": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 uses malware--flatroof.",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) uses malware--flatroof.",
       "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--b0205131-38a8-421a-9785-0a210ef9b8a3",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "relationship--b8ae3c9e-fb0e-426a-83d0-ba46ef938186",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "uses",
-      "source_ref": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
+      "source_ref": "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
       "target_ref": "malware--6c4a366a-d582-440f-8c1d-611022aed385",
-      "description": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 uses malware--roofdeck.",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) uses malware--roofdeck.",
       "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--a021e773-30af-4225-b81c-4e2b436a3766",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "relationship--e8877366-2d31-4e1c-a0aa-cadfaa661529",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
-      "target_ref": "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
-      "description": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 targets target--activity-rule--sector--63c9fa67327d005b07b7.",
+      "relationship_type": "uses",
+      "source_ref": "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
+      "target_ref": "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) uses ttp--activity-rule--27317de8fad143103d24.",
       "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--6d2c4415-013e-411d-abc7-d8a21548c625",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "relationship--b06d3f85-8081-4c83-9d93-0879e63dcc10",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
       "relationship_type": "targets",
-      "source_ref": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
-      "target_ref": "identity--19ce9e14-f742-4e0a-8b68-0476513cfca7",
-      "description": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 affected victim--activity-rule--ec91e5726221209970c4.",
+      "source_ref": "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
+      "target_ref": "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
+      "description": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月) affected victim--activity-rule--02cdbdef3e6b8d3a8be3.",
       "x_confidence": "medium"
     },
     {
       "type": "relationship",
       "spec_version": "2.1",
-      "id": "relationship--4673d11c-fe26-4bc2-87be-5f625c2e081f",
-      "created": "2026-09-20T07:28:54Z",
-      "modified": "2026-09-20T07:28:54Z",
+      "id": "relationship--b02a0919-fbee-42a5-a834-dd12d2c96dd1",
+      "created": "2026-09-20T06:46:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
-      "relationship_type": "targets",
-      "source_ref": "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
-      "target_ref": "identity--6fcf4be7-4790-4ea6-8720-1dfa926c2ed2",
-      "description": "偽の求人コーディング課題と悪性Terraform lockファイルによるmacOSバックドア展開 affected victim--unc4899-it-services-india-2026.",
+      "relationship_type": "uses",
+      "source_ref": "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
+      "target_ref": "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
+      "description": "FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
       "x_confidence": "medium"
     },
     {
@@ -2468,7 +2426,7 @@
       "spec_version": "2.1",
       "id": "report--c1648ea9-e4aa-4922-b616-fbafb1d327c7",
       "created": "2026-07-25T15:23:08Z",
-      "modified": "2026-09-20T07:40:51Z",
+      "modified": "2026-09-20T06:46:51Z",
       "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487"
       ],
@@ -2477,14 +2435,14 @@
       "report_types": [
         "threat-actor"
       ],
-      "published": "2026-09-20T07:40:51Z",
+      "published": "2026-09-20T06:46:51Z",
       "object_refs": [
         "intrusion-set--52544ed2-c6cc-4cf6-8373-3f30f055a7cb",
         "malware--4b601fe8-c475-407e-9234-68c9d97ad000",
         "malware--6c4a366a-d582-440f-8c1d-611022aed385",
         "campaign--3371bcbd-0b29-4bfd-a9df-9127e1c961d0",
         "campaign--677ba633-918e-425c-af13-ca2f471a4b54",
-        "campaign--9c2334ee-a3fd-4a3e-9f68-d11bfe024b9f",
+        "campaign--4133c6fc-11bc-48f3-b283-f90fe9e4e6f1",
         "identity--e98ccb53-4178-480c-b067-43b8d5b84ceb",
         "identity--4c7c6843-7563-49d2-9498-2299b623c23e",
         "identity--3c6823df-8622-43a6-835e-49600b8943a8",
@@ -2521,11 +2479,10 @@
         "identity--b6fd71cf-f8ff-4e27-a8d4-2565325a60b9",
         "identity--25112bf1-a420-4195-ba0b-11c7443d3da7",
         "identity--81c559be-b9d7-4357-979a-7ebeb032f080",
-        "identity--8cfaa436-6b1c-4d02-b680-fc7db40c76b9",
         "identity--23814093-97e2-4708-8b5a-b628853bb5e3",
+        "identity--e1a92eba-35dd-43c7-81d4-0de7ae827415",
         "identity--5793ff61-027f-4c82-99c5-923383735b9d",
-        "identity--19ce9e14-f742-4e0a-8b68-0476513cfca7",
-        "identity--6fcf4be7-4790-4ea6-8720-1dfa926c2ed2",
+        "attack-pattern--dd3d3bde-6adf-4965-811d-3dcd1d9761a4",
         "attack-pattern--ed9f5f57-b4c6-42b0-b466-18c409980bfa"
       ],
       "x_schema_version": "1.2.0"

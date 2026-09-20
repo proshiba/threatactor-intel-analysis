@@ -1027,6 +1027,11 @@
     "review_notes": "原文(Kaspersky securelist.ru)を確認。Cloud Atlasを実行主体として2025年後半〜2026年初頭のロシア・ベラルーシの政府・外交機関への攻撃を直接分析。Cloud AtlasはInception(inceptionプロファイル)のoverlapping aliasで、両名は同一クラスタとして各ベンダーが対応付けており手動確認の上で採用。VBCloud/PowerShower/PowerCloudと公開ツール(SSH逆トンネル、ReverseSocks、Tor)の併用を明記。",
     "review_status": "approved"
   },
+  "indigozebra|https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure": {
+    "confidence": "low",
+    "review_notes": "原文(Hunt.io, 2026-09-16公開)を確認。記事の主題はBitdefenderがSilkParasiteとして報告したSpiceRAT/NodeEdgeRAT/NomadRATのC2インフラ解析であり、IndigoZebraへの言及は \"The infrastructure examined here shares additional characteristics with IndigoZebra (also referred to as Speccom by ESET)\" というインフラ特性の類似指摘にとどまる。SilkParasiteをIndigoZebraへ帰属させる記述はなく、IndigoZebraを実行主体とする記述でもないため不採用とする。SilkParasiteは未帰属クラスタとしてparse-daily/unknown-clusters.jsonへ記録し、IndigoZebraとの関係は今後の一次資料で帰属が確定した場合に再検討する。",
+    "review_status": "rejected"
+  },
   "ironhusky|https://www.bleepingcomputer.com/news/security/chinese-hackers-target-russian-govt-with-upgraded-rat-malware/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - 中国語を話す「IronHusky」グループが、ロシアおよびモンゴルの政府機関を標的に、強化された「MysterySnail」RATマルウェアを使用している。",
@@ -2172,6 +2177,37 @@
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - パキスタンに関連するAPT36（別名：Transparent Tribe）が、インド国防省を装った偽サイトを使用して攻撃を実施。",
     "review_status": "approved"
   },
+  "transparent-tribe|https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and": {
+    "activity_period": {
+      "first_observed": {
+        "value": "2026-08-20T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      },
+      "last_observed": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "Zscaler ThreatLabz: \"Most of the activity took place between August 20, 2026 and September 1, 2026.\""
+      }
+    },
+    "capability_decisions": [
+      {
+        "name": "RUSTYSHADE",
+        "status": "approved",
+        "review_notes": "承認。原文がOperation RapidRustで展開された新型Rust製バックドアとして命名・解析し、攻撃者管理の非公開GitHubリポジトリをC2に用いAES-256-GCMで通信を暗号化すると記載している。IOC付録でもDriverInstaller.exeのハッシュをRUSTYSHADEとして掲載している。"
+      },
+      {
+        "name": "RUSTYMOVE",
+        "status": "approved",
+        "review_notes": "承認。原文がOperation RapidRustで展開されたコンポーネントとして命名・解析し、USB等のリムーバブルメディアへ悪性ファイルを複製して隔離ネットワークへの到達を狙うと記載している。IOC付録でAutomata-20.exeのハッシュをRUSTYMOVEとして掲載している。"
+      }
+    ],
+    "confidence": "medium",
+    "review_notes": "原文(Zscaler ThreatLabz, 2026-09-16公開)を確認。記事はOperation RapidRustを主題とし、実行主体を \"the Pakistan-nexus threat actor APT36\" と同一文で明記している。標的はインドとアフガニスタンの政府・防衛組織、展開マルウェアはRUSTYSHADE、RUSTYMOVE、PSNATCH、BASHNATCH。同名製品・別クラスタ・法執行報道・過去事例への言及のいずれでもなく、APT36はvendor/developerではなく攻撃実行主体として記述されている。活動期間は原文が2026-08-20〜2026-09-01と明示しているためactivity_periodへ設定し、tech-memo日次ファイルの日付(2026-09-19)はreported_atとして分離する。confidenceはmediumとする。原文は \"Transparent Tribe\" を用いずAPT36のみで呼称しており、本プロファイルのAPT36 aliasはMITRE ATT&CK由来でscopeがoverlappingであるため、ベンダークラスタ境界の不確実性が残る。この一致をexact identityへ昇格させず、alias scopeはoverlappingのまま維持する。IOC22件(MD5/SHA1/SHA256各4組、ドメイン3件、URL7件)は原文のIOC付録と値およびマルウェア対応を突き合わせ、全件一致を確認した。",
+    "review_status": "approved"
+  },
   "turla|https://www.bleepingcomputer.com/news/security/russian-cyber-spies-hide-behind-other-hackers-to-target-ukraine/": {
     "confidence": "medium",
     "review_notes": "tech-memo全履歴再監査: 記事要約の同一文で当該アクターが攻撃活動の実行主体として明記されている。攻撃期間は一次資料中の明示値を別途確認できていないためunknownとし、記事公開日はreported_atとして分離する。 根拠: - ロシアのサイバー諜報グループ「Turla」（別名「Secret Blizzard」）は、他の脅威アクターのインフラを利用してウクライナの軍事デバイスを標的にしている。",
@@ -2950,37 +2986,6 @@
     "review_notes": "不採用(製品名との名称衝突)。一致語「CHROMIUM」は earth-lusca の alias(scope: overlapping)だが、根拠文「KREMLINはChromiumのSecure Preferencesを書き換えて…」の Chromium は Chrome・Edge の基盤となるブラウザエンジンを指す。原文(Elastic Security Labs「The extension you never installed: KREMLIN forges Chrome's own integrity checks to steal banking sessions」、2026-09-14公開、Cyril François / Andrew Pease)を curl で HTTP 200 を取得して確認したが、Earth Lusca の言及はない。Elastic は当該作戦を自社指定子で「Elastic Security Labs has tracked REF9334, a Brazilian banking malware operation, since May 2025.」と記述し、ポルトガル語の成果物と標的からポルトガル語話者・ブラジル拠点と評価する一方、既知の命名グループへの帰属も否定も行っていない。実体側は unknown-cluster--ref9334 として台帳へ登録した。2026-09-16 の hellsing-apt の alias「Asia」と同型の、一般語・製品名 alias による機械的一致である。",
     "review_status": "rejected"
   },
-  "transparent-tribe|https://www.zscaler.com/blogs/security-research/operation-rapidrust-apt36-deploys-rustyshade-rustymove-psnatch-and": {
-    "activity_period": {
-      "first_observed": {
-        "value": "2026-08-20T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "Zscaler ThreatLabz: 「Most of the activity took place between August 20, 2026 and September 1, 2026.」が示すpost-compromise活動の観測開始日"
-      },
-      "last_observed": {
-        "value": "2026-09-01T00:00:00Z",
-        "precision": "day",
-        "status": "known",
-        "basis": "Zscaler ThreatLabz: 同一文が示す観測終了日。記事公開日(2026-09-16)とIOC CSVの収集日(2026-09-16)は活動期間へ転用しない"
-      }
-    },
-    "capability_decisions": [
-      {
-        "name": "RUSTYMOVE",
-        "reason": "原文が本作戦で新規に命名・解析したRust製のUSB伝播ツール。「During post-compromise activity, APT36 deployed RUSTYMOVE on a compromised machine」として当該アクターによる展開を明記している。",
-        "status": "approved"
-      },
-      {
-        "name": "RUSTYSHADE",
-        "reason": "原文が本作戦で新規に命名・解析したRust製バックドア。「During post-compromise activity, APT36 deployed RUSTYSHADE on compromised systems」として当該アクターによる展開を明記している。",
-        "status": "approved"
-      }
-    ],
-    "confidence": "medium",
-    "review_notes": "採用(構造化actor列一致 + 原文確認)。原文(Zscaler ThreatLabz、datePublished 2026-09-16、著者 Sudeep Singh)をcurlでHTTP 200を取得して確認した。冒頭は「In August 2026, Zscaler ThreatLabz observed new activity by the Pakistan-nexus threat actor APT36 in a campaign we're tracking as Operation RapidRust.」であり、APT36を実行主体として明記する新規キャンペーン報告である。新規のRUSTYSHADE(攻撃者管理のprivate GitHubリポジトリをC2とし、AES-256-GCMでC2通信を暗号化するRust製バックドア)、RUSTYMOVE(リムーバブルメディアへ事前配置ファイルを複製しエアギャップ網への伝播を狙うツール)、PSNATCH/BASHNATCHを扱い、標的はインドとアフガニスタンの政府・防衛組織である。インドの報道機関を模倣したタイポスクワッティングドメイン(theprints[.]org、indiatodays[.]org)とBackblazeの悪用も原文で確認した。過去事例の再掲でも製品名衝突でもない。 一致語「APT36」はtransparent-tribeのalias(vendor: MITRE ATT&CK、scope: overlapping、analyst_notesは\"Alias scope must be reviewed before publication.\")であり、原文にTransparent Tribeの表記はない。ただし本プロファイルには「パキスタンに関連するAPT36（別名：Transparent Tribe）」と明記する2025-05-13の記事が既に活動として採用済みであり、同一クラスタとして扱う先例がある。本レコードも同じ寄せ先とし、alias scope自体の見直しは別レビューとする。scopeがoverlappingである点を踏まえconfidenceはmediumとした。 IOC 22件(md5/sha1/sha256各4、URL 7、domain 3)のobserved_dateはいずれも2026-09-16でIOC CSVの収集日と同値であり、活動期間へ転用していない。",
-    "review_status": "approved"
-  },
   "famoussparrow|https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/#latin-america-in-the-crosshairs": {
     "activity_period": {
       "first_observed": {
@@ -3008,32 +3013,13 @@
     "review_status": "approved"
   },
   "contagious-interview|https://www.npa.go.jp/bureau/cyber/pdf/20260918_j.pdf": {
-    "activity_period": {
-      "first_observed": {
-        "value": "2025-12-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "警察庁: 「2025 年 12 月頃から 2026 年 7 月にかけて、少なくとも、我が国を含む 100 以上の国と地域で、3 万台以上とみられる PC がマルウェアに感染していました。」。月初へ正規化"
-      },
-      "last_observed": {
-        "value": "2026-07-01T00:00:00Z",
-        "precision": "month",
-        "status": "known",
-        "basis": "警察庁: 同一文が示す被害把握期間の終期。公表日(2026-09-18)は活動期間へ転用しない"
-      }
-    },
     "confidence": "medium",
-    "review_notes": "採用(政府・法執行機関の一次資料)。原文PDF(警察庁 国家サイバー統括室、令和8年9月18日)をcurlで取得しpypdfで本文を確認した。国家サイバー統括室(NCO)、米FBI、米DC3、豪ASD/ACSC、独BND、独BfVとの連名公表である。原文は表題と本文で「北朝鮮を背景とするサイバー攻撃グループ『WaterPlum』（ウォータープラム）（関連名称：Contagious Interview）」と記載し、WaterPlumを実行主体として記述する。手口は求人・ヘッドハンティングを装った接触と悪性コーディング課題・NPMパッケージの実行で、BeaverTail、InvisibleFerret、OtterCookie、OtterCandy、StoatWaffleを使用する。被害は2025年12月頃から2026年7月にかけて100以上の国・地域で3万台以上の感染、7千件以上の暗号資産ウォレット情報の窃取、WaterPlum管理ウォレットへ約17億円相当の送金。警察庁とFBIはWaterPlumと一部の北朝鮮IT労働者が朝鮮労働党中央委員会軍需工業部313総局の指揮下で運用されていると評価する。 本レコードはalias「WaterPlum」(vendor: 警察庁、scope: overlapping)経由の一致でassessmentはscope-review-requiredであった。原文が『関連名称』と述べるにとどまり同一性を断定していないため、aliasをexactへ昇格させずconfidenceはmediumとした。 本資料は北朝鮮IT労働者の活動実態(国内初のラップトップ・ファーム摘発、2025年5月のbitFlyerへの採用応募事例)も扱うが、これはprofiles/dprk-it-workersが扱う上位エコシステム側の主題である。当該プロファイルのcanonical name/aliasは日本語表記「北朝鮮IT労働者」を持たず本走査では一致しなかった。エコシステム側プロファイルへの日本語alias追加は本文一致の粒度を大きく変えるため本レコードでは行わず、別途の判断対象として残す。原文・tech-memoともにIOCの掲載はない。",
-    "review_status": "approved"
+    "review_notes": "資料自体は採用済みだが、日次キュー経由では反映しない。本資料(警察庁 国家サイバー統括室 2026-09-18、NCO・FBI・DC3・ASD/ACSC・BND・BfV との連名)は、PR #53 により profiles/contagious-interview へ osint-updates.json 経由で活動 activity--waterplum-it-engineer-targeting-2026 として既に反映されている(活動期間 2025-12〜2026-07)。本ブランチでは別名「WaterPlum」(scope: overlapping)の追加により同一資料のレビューレコードが生成されたが、承認すると同一資料から2つ目の活動がmaterializeされ重複するため、キュー側のレコードは不採用として扱う。資料の不採用ではない。原文PDFはcurlで取得しpypdfで本文を確認しており、「WaterPlum」(関連名称:Contagious Interview)の記載、2025年12月頃〜2026年7月の被害把握期間、100以上の国と地域で3万台以上の感染、7千件以上の暗号資産ウォレット情報の窃取、313総局の指揮下とする警察庁・FBIの評価をいずれも確認済みである。",
+    "review_status": "rejected"
   },
   "famoussparrow|https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure": {
     "confidence": "low",
     "review_notes": "不採用(類似・関連のみの言及)。原文(Hunt.io「SilkParasite Infrastructure: SpiceRAT Servers Tied to Energy and Government Targets Across Central Asia」、公開 2026-09-09、研究者 Guy Yasur との共同調査)をcurlでHTTP 200を取得して確認した。FamousSparrowへの言及は「Parallels to Previous Central Asia Targeting」節の「The SilkParasite report noted overlaps with FamousSparrow, a suspected China-nexus actor previously documented targeting hotels, government entities, and international organizations.」のみで、Bitdefenderの SilkParasite 報告が指摘した重複を紹介する文脈である。Hunt.io自身は本インフラをFamousSparrowへ帰属しておらず、同節末尾で「The overlap is noted here as context alongside the SilkParasite report's FamousSparrow reference.」と明記する。assessmentもattribution-uncertainであった。実体はSilkParasiteであり、unknown-clusters.jsonへstatus: trackingで登録した。",
-    "review_status": "rejected"
-  },
-  "indigozebra|https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure": {
-    "confidence": "low",
-    "review_notes": "不採用(過去の別クラスタへの類似言及)。原文(Hunt.io、公開 2026-09-09)をcurlでHTTP 200を取得して確認した。IndigoZebraへの言及は「The infrastructure examined here shares additional characteristics with IndigoZebra (also referred to as Speccom by ESET), in a separate cluster reported by Check Point Research in 2021 as targeting Central Asian government ministries and also assessed as suspected China-nexus.」と、それに続くドメイン命名パターンの類似(kginfocom[.]com / post.mfa-uz[.]com に対する infocomkg[.]org / mail.postmfa[.]com、mail・service・help等の共通サブドメイン語)だけである。原文自身が「Domain naming patterns and target lists circulate across China-nexus activity through shared tooling, vendor relationships, or independent convention. The overlap is noted here as context alongside the SilkParasite report's FamousSparrow reference.」と述べ、帰属ではなく文脈として提示している。2021年の別クラスタへの過去言及であってIndigoZebraの新規活動報告ではない。assessmentもattribution-uncertainであった。実体側のSilkParasiteはunknown-clusters.jsonへ登録した。",
     "review_status": "rejected"
   }
 }

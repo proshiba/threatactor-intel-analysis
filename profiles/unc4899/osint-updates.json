@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0.0",
+  "actor_ref": "actor--unc4899",
+  "resulting_status": "review",
+  "sources": [
+    {
+      "source_id": "source--sentinellabs-tradertraitor-2026-09",
+      "path": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+      "url": "https://www.sentinelone.com/labs/dont-call-us-well-call-your-apis-tradertraitor-backdoors-resurface-on-victim-with-no-crypto-ties/",
+      "title": "Don't Call Us, We'll Call Your APIs | TraderTraitor Backdoors Resurface on Victim With No Crypto Ties",
+      "publisher": "SentinelLabs (SentinelOne)",
+      "published_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "document"
+      },
+      "accessed_at": "2026-09-20T00:00:00Z",
+      "language": "en",
+      "source_type": "vendor-research",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "overlapping",
+      "claims_supported": [
+        "activity",
+        "malware",
+        "victim-geography",
+        "alias",
+        "uncertainty"
+      ],
+      "analyst_notes": "著者 Albert Priego、Alex Delamotte、Matej Havranek。SentinelOne が被害端末のフォレンジックから直接観測した一次報告である。公開日 2026-09-18 は観測日ではなく、侵害の観測期間 2026-03-18〜2026-06-01 とは分離して記録する。本資料は proshiba/tech-memo の daily-news に未掲載であり、一次情報源の公開一覧巡回で検知した。"
+    }
+  ],
+  "actor": {
+    "aliases": [
+      {
+        "name": "TraderTraitor",
+        "vendor": "SentinelLabs",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--sentinellabs-tradertraitor-2026-09"
+        ],
+        "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+      },
+      {
+        "name": "PUKCHONG",
+        "vendor": "SentinelLabs",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--sentinellabs-tradertraitor-2026-09"
+        ],
+        "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+      },
+      {
+        "name": "Jade Sleet",
+        "vendor": "SentinelLabs",
+        "scope": "overlapping",
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--sentinellabs-tradertraitor-2026-09"
+        ],
+        "analyst_notes": "SentinelLabs が本報告の冒頭で \"the financially motivated DPRK state-sponsored Lazarus subgroup TraderTraitor (aka UNC4899, PUKCHONG, Jade Sleet)\" と記載している。単一ベンダーによる呼称の並記であり、ベンダークラスタ境界を原典で確認できていないため scope は exact へ昇格させず overlapping とする。"
+      }
+    ]
+  },
+  "capabilities": {
+    "malware": [
+      {
+        "id": "malware--flatroof",
+        "name": "FLATROOF",
+        "aliases": [
+          "FLATROOF",
+          "macOS.Gaslight"
+        ],
+        "types": [
+          "macOS"
+        ],
+        "description": "ARM64 の Rust 製 macOS バックドア。\"SystemUpdate\" として配置され、ブラウザーデータ、ターミナル履歴、プロセス一覧、システムプロファイルを収集し Telegram 経由で外部送信する。次段ペイロードに対して Gatekeeper の検証を抑止する。SentinelLabs が以前 macOS.Gaslight として報告した実装と同一である。",
+        "first_observed": {
+          "value": "2026-03-18T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+        },
+        "last_observed": {
+          "value": "2026-04-20T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "SentinelLabs: 第3段階の配備と当初インプラントの削除が行われた日"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--sentinellabs-tradertraitor-2026-09"
+        ],
+        "analyst_notes": "本プロファイル(UNC4899)での利用根拠は SentinelLabs の単一ベンダー報告である。"
+      },
+      {
+        "id": "malware--roofdeck",
+        "name": "ROOFDECK",
+        "aliases": [
+          "ROOFDECK"
+        ],
+        "types": [
+          "macOS"
+        ],
+        "description": "ARM64 の Rust 製 macOS バックドア。C2 の探索に Nostr リレーネットワークを用いる。シェル実行、ファイル操作、LaunchAgents による永続化に対応し、埋め込んだ RSA 公開鍵でコマンドの署名を検証する。",
+        "first_observed": {
+          "value": "2026-03-29T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "SentinelLabs: 初回実行と C2 接続を観測した日 (05:00:41 UTC 以降)"
+        },
+        "last_observed": {
+          "value": "2026-06-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--sentinellabs-tradertraitor-2026-09"
+        ],
+        "analyst_notes": "本プロファイル(UNC4899)での利用根拠は SentinelLabs の単一ベンダー報告である。"
+      }
+    ]
+  },
+  "activities": [
+    {
+      "activity_id": "activity--unc4899-tradertraitor-india-it-services-2026",
+      "name": "インドのITサービス事業者に対する TraderTraitor の macOS バックドア侵害 (2026年3月〜6月)",
+      "activity_type": "intrusion",
+      "description": "SentinelOne は、2026年4月に公表された LayerZero に対する TraderTraitor の攻撃と同じ macOS バックドアを用いた別の被害組織を特定した。原文は被害組織を \"an IT services provider based in India and unaffiliated with cryptocurrency\" と記載し、暗号資産と無関係の組織が標的となった点を本報告の主眼としている。2026-03-18 に FLATROOF がディスク上に存在し、2026-03-25〜03-28 の休止期間を経て 2026-03-29 05:00:41 UTC 以降に初回実行と C2 接続が発生した。2026-04-13 に GitHub リポジトリがクローンされ、2026-04-20 に第3段階が配備されて当初のインプラントが削除された。最後の C2 ビーコンは 2026-06-01、検体のゴミ箱移動は 2026-06-17 に観測された。FLATROOF は Telegram を、ROOFDECK は Nostr リレーネットワークを C2 の探索・通信に用いる。",
+      "first_observed": {
+        "value": "2026-03-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 被害端末のディスク上に検体が存在した最初の日"
+      },
+      "last_observed": {
+        "value": "2026-06-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "SentinelLabs: 最後に観測された C2 ビーコンの日"
+      },
+      "reported_at": {
+        "value": "2026-09-18T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "target_refs": [],
+      "malware_refs": [
+        "malware--flatroof",
+        "malware--roofdeck"
+      ],
+      "infrastructure_refs": [],
+      "ttp_refs": [],
+      "victim_refs": [],
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--sentinellabs-tradertraitor-2026-09"
+      ],
+      "analyst_notes": "一次情報源の公開一覧巡回(SentinelLabs)で検知し、原文を確認して取り込んだ。tech-memo daily-news には未掲載であり、日次レビューキュー経由の取込ではない。原文は本侵害の実行主体を TraderTraitor と明記しており、製品・ベンダーの利用ではなく攻撃実行主体としての記述である。活動期間は原文が明示する観測日のみを用い、公開日 2026-09-18 は reported_at として分離した。被害組織名は原文に記載がないため victim_refs は空とする。"
+    }
+  ],
+  "assessment": {
+    "uncertainties": [
+      "SentinelLabs は TraderTraitor を \"DPRK state-sponsored Lazarus subgroup\" と記述するが、本リポジトリの規約では国家支援の確定には政府共同勧告・公式帰属・ATT&CK の actor-specific な明示記述または複数の独立した高品質資料を要する。単一ベンダー報告であるため attribution と sponsor_type は unknown のまま据え置き、主張のみを記録する。",
+      "TraderTraitor / PUKCHONG / Jade Sleet と UNC4899 の同一性は SentinelLabs の \"aka\" 記載に基づく。ベンダークラスタの境界を原典で確認できていないため alias scope は overlapping とし、exact identity へ昇格させない。",
+      "Lazarus との組織関係(subgroup)も同じ単一ベンダー記述に依存するため、relationships へは追加せず未解決事項として保持する。"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-09-20T02:30:00Z",
+  "generated_at": "2026-09-20T07:00:00Z",
   "purpose": "既存プロファイルへ帰属できないが、将来いずれかのアクターへつながる可能性があるクラスタの継続観察台帳。profiles/ 配下ではないためUIには出ない。証拠が揃った時点でプロファイルへ昇格させるか、既存プロファイルへ統合する。",
   "promotion_policy": {
     "ui_visibility": "ui/build_data.py と ui/build_portal_index.py は profiles/<slug>/actor-profile.json のみを読む。この台帳はUIに反映されない。",
@@ -656,6 +656,91 @@
         "IOC CSV に25観測が存在するため、プロファイル昇格時には build_review_queue が actor 列 Exilware で自動的にレコードを生成する。昇格前に台帳側の観測と重複しないよう取込経路を一本化すること。"
       ],
       "analyst_notes": "2026-09-02の日次チェックで検知。既存690プロファイル、台帳の clusters、excluded_name_collisions のいずれにも Exilware / BraZetsu の名称は存在しない。"
+    },
+    {
+      "cluster_id": "unknown-cluster--famous-sparrow",
+      "primary_name": "FamousSparrow",
+      "aliases": [],
+      "status": "merged",
+      "entity_type": "group",
+      "first_seen": "2026-09-20",
+      "last_seen": "2026-09-20",
+      "detected_via": "2026-09-20 の日次チェックで、一次情報源の公開一覧巡回(ESET Research)により 2026-09-17 公開の SparroWock 記事を確認して登録した。tech-memo daily-news には 2026-09-18 付で掲載済みであり IOC CSV の actor 列にも FamousSparrow として 23 観測が存在するが、既存 688 プロファイルの canonical name / alias のいずれにも FamousSparrow は登録されておらず、レビューキューにレコードが生成されないため検知漏れとなっていた。本台帳の clusters および excluded_name_collisions のいずれにも未登録であることを確認した。",
+      "attribution": {
+        "state": "china-aligned-per-vendor",
+        "actor_type": "cyber-espionage",
+        "notes": "ESET は FamousSparrow を中国寄り(China-aligned)の APT として独自に追跡しており、本稿では中南米政府の対米対応を監視・予測する諜報目的と高確度で評価している。国家支援そのものを述べる政府共同勧告・公式帰属は本稿にはないため、プロファイルへ昇格する場合も state-sponsored / sponsor_type: state を単独では設定しない。"
+      },
+      "observations": [
+        {
+          "observed_on": "2026-09-20",
+          "publisher": "ESET Research (WeLiveSecurity)",
+          "url": "https://www.welivesecurity.com/en/eset-research/beware-sparrowock-backdoor-bites-commands-catch/",
+          "title": "Beware the SparroWock: The backdoor that bites, the commands that catch",
+          "published_at": "2026-09-17",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "原文は中南米への集中を \"from mid-2025 and into 2026\"、SparroWocky の展開開始を 2025年8月、FamousSparrow 自体の活動を少なくとも 2019年以降と記載する。個別侵害の観測日は明示されない。IOC 表の C&C は first observed 2025-12-11〜2026-06-17 の範囲である。公開日 2026-09-17 は活動期間へ転用しない。",
+          "targets": "アルゼンチン、エクアドル、グアテマラ、ホンジュラス、パナマ、ペルー、プエルトリコ、ベネズエラの政府機関および国際機関。原文は2025年半ば〜2026年の標的の90%が当該地域に集中すると記載する。被害組織名の明示はない。",
+          "malware": [
+            "SparroWocky",
+            "SparrowDoor"
+          ],
+          "summary": "ESET は FamousSparrow が2025年7月頃から中南米への攻撃を強化し、2025年8月以降は従来の SparrowDoor に代えて新型バックドア SparroWocky を主要インプラントとして使用していると報告した。SparroWocky は C++ 製のモジュール型バックドアで、コマンド実行、PE 実行、BOF 実行、TCP プロキシ、ファイル操作、情報収集、スクリーンショット取得、データ窃取に対応する。ESET は地域集中の背景を \"China's reaction to various recent US initiatives in the region\" と評価している。",
+          "attribution_basis": "ESET 自身のテレメトリーと検体解析に基づく。原文は Salt Typhoon との関係について \"FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.\" と明記し、Earth Estries については \"FamousSparrow is linked to Earth Estries; however, the exact nature of the link is not fully known.\" と述べる。",
+          "iocs": {
+            "sha1": [
+              "3209689E509205CCDB7E49062B7B407DDC23CAC1",
+              "52C6646759CF6037BB17466203631C4BD794532F",
+              "99E7070B5AF24A0FE1E6FEBE5954B03CB385E91F",
+              "44F0A22B143B79FA760BF31E14C8FFF714C8A2A1",
+              "9AA9FF61BC63CCAB9074FE837F39C980CA9DDC8C"
+            ],
+            "ips": [
+              "38.54.57[.]17",
+              "38.60.197[.]55",
+              "38.60.209[.]106",
+              "38.60.224[.]51",
+              "38.60.224[.]235",
+              "38.60.241[.]65",
+              "38.60.241[.]127",
+              "38.60.241[.]193",
+              "77.111.101[.]40",
+              "91.148.134[.]115",
+              "130.94.101[.]82",
+              "140.99.164[.]199",
+              "149.104.87[.]228",
+              "149.104.90[.]203",
+              "216.238.92[.]2",
+              "216.238.105[.]53",
+              "216.238.110[.]120",
+              "216.238.121[.]164"
+            ],
+            "notes": "原文の IOC 表は SHA-1 5件(SparroWocky ローダー3件、メモリ上のバックドア2件)と SparroWocky C&C の IP 18件である。ファイル名 winfsp-x64.dll、DukeQt.dll と ESET 検出名は AGENT.md に従い IOC ではなく artifact として扱う。"
+          },
+          "verified_by_analyst": "ESET Research 一覧ページで 2026-09-17 公開を確認し、原文の帰属記述、標的国、活動期間、IOC 表を直接確認した。"
+        }
+      ],
+      "related_profiles": [
+        {
+          "slug": "salt-typhoon",
+          "relation": "explicitly-refuted",
+          "note": "profiles/salt-typhoon の日次由来の活動記述に「FamousSparrow、Earth Estries、Ghost Emperor、UNC2286としても追跡されているこの国家支援のハッキンググループ」という二次報道由来の別名列挙が残っているが、FamousSparrow の命名元である ESET は 2026-09-17 の原文で \"FamousSparrow has also been publicly linked to Salt Typhoon, but, due to the absence of any technical indicators, we track them as separate.\" と明記し、技術的指標の不在を理由に別クラスタとして追跡している。FamousSparrow を salt-typhoon の alias として登録したり、IOC CSV の FamousSparrow 観測を salt-typhoon へ寄せたりしてはならない。将来の誤統合を防ぐために記録する。"
+        },
+        {
+          "slug": "earth-lusca",
+          "relation": "false-match",
+          "note": "Earth Estries は Earth Lusca と名称が近いが別クラスタである。ESET が言及するのは Earth Estries であり、本リポジトリの profiles/earth-lusca とは無関係である。名称の近さによる誤統合を防ぐために記録する。"
+        }
+      ],
+      "unresolved_questions": [
+        "昇格閾値が未充足である。独立した一次資料は ESET の本稿1本のみで、ESET は FamousSparrow の命名元でもある。Bitdefender の SilkParasite 報告(2026-08-19)は BloodAlchemy を Deed RAT 系譜と位置付ける文脈で \"Deed RAT was FamousSparrow's primary backdoor\" と述べるにとどまり、FamousSparrow を実行主体とする独立報告ではない。政府・CERT・法執行機関による言及も未確認である。",
+        "Earth Estries との関係が未確定である。ESET は \"FamousSparrow is linked to Earth Estries; however, the exact nature of the link is not fully known.\" と述べるにとどまる。本リポジトリに Earth Estries のプロファイルは存在しない。",
+        "IOC CSV の actor 列に FamousSparrow として 23 観測が存在するが、本台帳はプロファイルではないためこれらの IOC の格納先がない。昇格するまで unmatched_actor_values に留まる。"
+      ],
+      "analyst_notes": "既存プロファイルに一致しない IOC actor 値として 23 観測が蓄積していながら台帳にも未登録だった事例である。unmatched_actor_values の上位名称を台帳と突き合わせる運用が漏れていたことを示す。 2026-09-20: 同日の別作業(PR #54)で profiles/famoussparrow を status: draft として作成したため、AGENT.md の「既存アクターへの帰属が確定した場合は当該プロファイルへ統合し、台帳側は削除せず status: merged と統合先・統合日を残す」に従い merged とした。本エントリの unresolved_questions が記録するとおり、確認できた actor-specific な一次資料はESET の報告のみで、ESET は FamousSparrow の命名元でもある。昇格閾値「独立した一次資料2本以上、または政府・CERT・法執行機関の言及」を形式的には満たしていない。昇格は利用者の指示による判断であり、同一ベンダー複数報告での昇格は profiles/unc6508 に前例がある(同プロファイルも GTIG 2本のみである旨を analyst_notes に明記している)。プロファイル側の assessment.uncertainties にも同じ留保を記載した。台帳の記録を優先して昇格を取り消す場合は、profiles/famoussparrow の削除とconfig.json の activity_reference_aliases・review-decisions.json の該当エントリの撤回が必要になる。",
+      "merged_into": "famoussparrow",
+      "merged_on": "2026-09-20"
     },
     {
       "cluster_id": "unknown-cluster--fire-ant",
@@ -2398,49 +2483,75 @@
       "entity_type": "group",
       "first_seen": "2026-09-20",
       "last_seen": "2026-09-20",
-      "detected_via": "2026-09-20 の日次チェックにおいて daily_check.py --run-scan の unmatched_actor_values として検知した。IOC CSV(daily-news/iocs/2026_07-09/20260919.csv)の actor 列「SilkParasite」114観測で、本走査の未照合値のうち2番目に多い。同記事はレビューキューへ indigozebra と famoussparrow のレコードも生成したが、いずれも原文が帰属ではなく文脈として言及した類似点による一致であり不採用とした(review-decisions.json に記録)。実体側が本エントリである。既存690プロファイルの canonical name / alias、本台帳の clusters および excluded_name_collisions のいずれにも SilkParasite は存在しないことを確認した。",
+      "detected_via": "2026-09-20 の日次チェックで、IOC CSV の actor 列に SilkParasite として 114 観測がunmatched_actor_values へ現れたことから登録した。あわせて 2026-09-19 付 tech-memo daily-news の Hunt.io 記事と、命名元である Bitdefender の原文を確認した。既存 688 プロファイルの canonical name / alias、本台帳の clusters および excluded_name_collisions のいずれにも未登録であることを確認した。",
       "attribution": {
-        "state": "unattributed",
-        "actor_type": "suspected-espionage-cluster",
-        "notes": "SilkParasite は Bitdefender が2026-08-19の報告で命名した指定子である。Hunt.io は本インフラ調査で帰属を行わず、C2検知について「C2 detections establish what is running on a particular server, not who may be operating it.」と明記する。中国との関連を示唆する材料として、ウズベキスタン国鉄を詐称するTLS証明書が中国工業情報化部傘下の研究機関CAICTが全額出資する認証局 TLC(泰尔认证中心有限公司)から発行されている点を挙げ、「The selection of TLC suggests a deliberate one and an operator with access to a China-based procurement channel.」と評価するにとどまる。発行元CAが指標そのものではないことも原文が断っており(過去30日で約3,000サーバーがTLC証明書を使用)、この評価を国家帰属へ昇格させない。FamousSparrow および IndigoZebra との類似は原文が文脈として提示するのみで帰属ではない。"
+        "state": "china-nexus-medium-confidence-per-vendor",
+        "actor_type": "cyber-espionage",
+        "notes": "命名元の Bitdefender は \"SilkParasite is a cyberespionage operation, assessed at medium confidence as China-nexus, that targeted government bodies across Central Asia.\" と記載する。中確度の China-nexus 評価であり、特定の既存アクターへの帰属ではない。Hunt.io も運用者を確定していない。"
       },
       "observations": [
+        {
+          "observed_on": "2026-09-20",
+          "publisher": "Bitdefender Labs",
+          "url": "https://www.bitdefender.com/en-us/blog/businessinsights/silkparasite-tracking-china-nexus-apt-across-central-asia",
+          "title": "SilkParasite: Tracking a China-Nexus APT Across Central Asia",
+          "published_at": "2026-08-19",
+          "source_type": "primary-report",
+          "reliability": "vendor-direct-observation",
+          "activity_period": "2025年10月に中央アジアの経済政策関連政府機関での単一の感染として発見され、作戦自体は概ね2024年半ば頃から約1年間継続していたと記載される。公開日 2026-08-19 は活動期間へ転用しない。",
+          "targets": "ウズベキスタン、トルクメニスタン、キルギス、タジキスタン、カザフスタン、ジョージアの政府機関(経済上の意思決定・政策立案に関与する部局)。",
+          "malware": [
+            "SpiceRAT",
+            "DriveSilkRAT",
+            "CookiETagRAT",
+            "BloodAlchemy",
+            "NomadRAT",
+            "GoginRAT",
+            "NodeEdgeRAT"
+          ],
+          "summary": "Bitdefender は7種の RAT ファミリー(うち5種は未文書化)を確認し、初期足掛かりに SpiceRAT と DriveSilkRAT が用いられたと報告した。攻撃連鎖はスピアフィッシングで配送されたと見られるパスワード保護 RAR 書庫と悪性 Office 文書から始まり、書庫のパスワードはメール本文に記載される。ツールセットは小規模かつモジュール化されており、AI 支援による開発の痕跡が指摘されている。",
+          "attribution_basis": "Bitdefender 自身のテレメトリーと検体解析に基づく中確度の China-nexus 評価。既存の命名アクターへの帰属は行っていない。",
+          "verified_by_analyst": "Bitdefender Business Insights の原文を確認した。"
+        },
         {
           "observed_on": "2026-09-20",
           "publisher": "Hunt.io",
           "url": "https://hunt.io/blog/silkparasite-spicerat-central-asia-infrastructure",
           "title": "SilkParasite Infrastructure: SpiceRAT Servers Tied to Energy and Government Targets Across Central Asia",
-          "published_at": "2026-09-09",
+          "published_at": "2026-09-16",
           "source_type": "primary-report",
           "reliability": "vendor-direct-observation",
-          "activity_period": "原文が明示する観測期間は2025年後半から2026年8月(「we tracked a cluster of SpiceRAT command and control servers active from late 2025 through August 2026」)。Hunt.ioの検知は2025年後半に始まり、2026年3月中旬に5台のSpiceRATサーバーが同時期に稼働。RTX社ホームページの複製に残るスタイルシートのビルド時刻は2026-01-05、ウズベキスタン鉄道を詐称する証明書の発行は2025-12-23。Passive DNS では関連サブドメインが少なくとも2022年半ばまで遡り、原文は「suggesting this activity has been ongoing for at least four years」と評価する。IOC CSV の date 列と公開日 2026-09-09 は区別して扱う。",
-          "targets": "中央アジアの政府機関・国営企業・重要産業。詐称対象として確認できた実体はウズベキスタン国鉄、ウズベキスタン行政(azure.adm-devon[.]com)、トルクメニスタンのTürkmengazとGalkynyshガス田(sanly.oilgas-tm[.]com)、トルクメニスタン外務省、タジキスタンのTojiktelecomおよび国家IT-hub事業(normativ.dushanbeidc[.]org)、キルギス大統領府(data.yntymak-ordo[.]com)。Bitdefenderの標的像はルアーと感染テレメトリ由来、Hunt.io側はインフラのドメイン命名由来であり、両者は情報源が異なる。",
+          "activity_period": "追跡対象の SpiceRAT C2 群は2025年後半〜2026年8月に活動し、Passive DNS 上の関連インフラは少なくとも2022年半ばまで遡ると記載される。公開日 2026-09-16 は活動期間へ転用しない。",
+          "targets": "トルクメニスタンのガス事業・外務省、タジキスタンの通信、カザフスタン政府、ウズベキスタン行政、ウズベキスタン国鉄を偽装するドメイン・TLS 証明書。偽装対象であり被害組織の確認ではない。",
           "malware": [
             "SpiceRAT",
             "NodeEdgeRAT",
-            "NomadRAT",
-            "BloodAlchemy (Bitdefender報告のC2ドメインが同一実体を詐称)"
+            "NomadRAT"
           ],
-          "tools": [
-            "RTX Corporation のホームページを複製した既定ページ(13サーバーで同一ハッシュ)",
-            "TLC DV TLS CA 発行の証明書(azure.uzrailwaystax[.]com、state.presldent[.]info、tmk.natcommunzu[.]com)",
-            "mkcert 由来の自己署名証明書(O=LokiDev、CN=localhost)",
-            "高番ポート(64350/64330/65535/65111)で公開されたRDP",
-            "nginx 1.29.3 / 1.31.3"
-          ],
-          "summary": "Hunt.io は Cisco Talos の2024年 SpiceRAT 研究から作成した検知ロジックで2025年後半からSpiceRAT C2群を追跡し、Bitdefender が2026-08-19に SilkParasite として報告したインフラとの広範な関連を確認した。共有された親ドメイン、同一のTLS証明書(SHA-256一致)、13サーバーで同一のRTX社複製ページのハッシュを結節点とし、Bitdefender の IoC に含まれない10台のサーバーを追加特定している。hoster-kg[.]com の登録共有を介した NodeEdgeRAT との関連、uzrailwaystax 証明書と BloodAlchemy の C2ドメイン uzrailway.devon-uz[.]com がいずれもウズベキスタン鉄道を詐称する点から、単一運用者が用途別に異なるツールを使い分けているか、共通の支援基盤を持つ複数運用者の存在を示唆する。",
-          "attribution_basis": "原文は運用者をいかなる既知グループにも帰属していない。中国系認証局からの証明書取得と中国関連と評価された活動群(FamousSparrow、IndigoZebra)との命名パターンの類似を文脈として示すのみで、「The overlap is noted here as context alongside the SilkParasite report's FamousSparrow reference.」と明記する。",
-          "iocs": "tech-memo daily-news 2026-09-19 経由の IOC CSV に actor 値「SilkParasite」で114観測が収録されている。原文のIoC節はIP、ホスト名、ポート、AS名、リセラー、国、初観測日、証明書、passive DNSの解決履歴を含む。",
-          "verified_by_analyst": "curl で HTTP 200 を取得して原文を直接確認した。公開日は本文の開示注記「ahead of publishing this research on September 9, 2026, we notified the affected organizations and the relevant national CERTs」により2026-09-09と判断した(tech-memo の収録日は2026-09-19)。共同研究者 Guy Yasur、Key Findings の5項目、13サーバーの表、証明書8ホストの表、TLC/CAICT に関する記述、FamousSparrow・IndigoZebra に関する記述を確認している。"
+          "summary": "Hunt.io は SpiceRAT の C2 群を追跡し、Bitdefender が SilkParasite として報告したインフラとの広範な関連を確認した。SpiceRAT、NodeEdgeRAT、NomadRAT のインフラは親ドメイン、TLS 証明書、ホスティングを共有し、単一運用者または共通の支援基盤の存在が示唆される。RTX の Web サイトを複製した同一ページが13サーバーで使用され、ウズベキスタン国鉄を偽装する同一 TLS 証明書も複数サーバーへ展開されていた。",
+          "attribution_basis": "インフラの相関に基づく。運用者の特定は行っていない。",
+          "verified_by_analyst": "原文を確認した。IndigoZebra への言及は \"The infrastructure examined here shares additional characteristics with IndigoZebra (also referred to as Speccom by ESET)\" というインフラ特性の類似指摘のみであり、Hellsing への言及は存在しない。"
         }
       ],
-      "related_profiles": [],
-      "unresolved_questions": [
-        "Bitdefender の SilkParasite 原報告(2026-08-19)を本走査では未確認である。昇格閾値(独立した一次資料2本以上)の判定には同報告の原文確認が必要であり、Hunt.io 記事の引用のみを2本目として数えない。",
-        "SpiceRAT は Cisco Talos が2024年に報告したマルウェアであり、当時の運用者と SilkParasite の関係は本稿に記述がない。",
-        "IndigoZebra(profiles/indigozebra)および FamousSparrow(profiles/famoussparrow)との関係は、原文が文脈として示す命名パターンの類似のみで、関係レコードを作成できる根拠はない。"
+      "related_profiles": [
+        {
+          "slug": "indigozebra",
+          "relation": "similarity-only-not-attributed",
+          "note": "Hunt.io の該当文は \"The infrastructure examined here shares additional characteristics with IndigoZebra (also referred to as Speccom by ESET)\" であり、インフラ特性の類似を述べるにとどまる。SilkParasite を IndigoZebra へ帰属させる記述はない。2026-09-20 の日次レビューで当該レコードは不採用としている。"
+        },
+        {
+          "slug": "hellsing-apt",
+          "relation": "false-match",
+          "note": "2026-09-19 の走査では hellsing-apt が alias「Asia」で一致していたが、これは記事 URL のスラッグ central-asia による名称衝突であり、原文に Hellsing への言及は存在しない。当該 alias は上流の workbook alias 移行(2026-09-19)で除去済みであり、以後一致しない。"
+        }
       ],
-      "analyst_notes": "2026-09-20の日次チェックで追加した。実体名が Bitdefender 指定子であり、Hunt.io はインフラ側から同一クラスタを拡張した二次的な一次資料である。昇格は Bitdefender 原文の確認後に再判断する。"
+      "related_organizations": [],
+      "unresolved_questions": [
+        "昇格閾値の判断が必要である。Bitdefender(2026-08-19)と Hunt.io(2026-09-16)の独立した一次資料が2本存在し、閾値「独立した一次資料が2本以上」は形式的には満たす。ただし Hunt.io は Bitdefender の命名を前提にインフラを相関させた報告であり、独立した実体確認かどうかの判断が残る。政府・CERT・法執行機関による言及は未確認である。",
+        "FamousSparrow との関係が未確定である。Bitdefender は BloodAlchemy を ShadowPad / Deed RAT の系譜に位置付ける文脈で \"Deed RAT was FamousSparrow's primary backdoor\" と述べるにとどまり、マルウェア系譜の共有であって SilkParasite を FamousSparrow へ帰属させる記述ではない。公開ツール・共有系譜による誤統合を行わない。",
+        "IOC CSV の actor 列に SilkParasite として 114 観測が存在するが、本台帳はプロファイルではないためこれらの IOC の格納先がない。昇格するまで unmatched_actor_values に留まる。"
+      ],
+      "analyst_notes": "運用者は未確定であり、SilkParasite は Bitdefender が付与した作戦・クラスタ名である。Campaign/Operation と Actor を混同せず、昇格時は entity 種別の判断を先に行う。"
     },
     {
       "cluster_id": "unknown-cluster--silver-dragon",
@@ -3882,5 +3993,5 @@
       "reason": "一次ソースURL文字列中の地域名(across-asia)との衝突。記事は MQTT を C2 に用いる BambooToken の解析であり、Lumen Black Lotus Labs は既知クラスタへの帰属を明示的に行っていない。Hellsing APT の alias「Asia」による同種の URL 断片衝突は本台帳に既に3件記録されている。追跡対象としない。"
     }
   ],
-  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。 2026-09-10の日次チェックで6件を追加した。CL-CRI-1171(Unit 42 2026-09-09。PPI型感染サービス。tech-memo未収録)、Ted / curlRAT ツールキット(Rapid7 2026-09-04。運用者未命名。apt37/kimsukyのレコードは類似言及のみで不採用とし実体を台帳へ登録)、Storm-3121 と Storm-3032(Microsoft 2026-09-09。tech-memo未収録。既存の unc6240 / unc6671 の恐喝ブランド生態系と接続するが同一性は未確認)、UNC6508 と UNC5792(GTIG 2026-09-08)。unknown-cluster--shinyhunters は profiles/unc6240 へ統合し status を merged とした。GTIG原文が「UNC6240 (also known as ShinyHunters)」と明示しており、本台帳が提案していた新規プロファイル作成は実行すれば unc6240 の重複を生んでいた。既存プロファイルに一致しない名前を見つけた際は canonical name だけでなくベンダー別名の対応付けを一次資料で確認する。unknown-cluster--city-forum の related_profiles が実在しない slug「shinyhunters」を指していたため unc6240 へ修正した。Toy Ghouls へ第2観測(Securelist 2026-09-04)と別名 Feral Wolf を追加した。GTIG 2026-09-08 は tech-memo が BleepingComputer の二次要約で収録しており、当該要約は12アクターのうち UNC5792 のみに言及していた。二次要約経由の収録は原文のアクター名を取りこぼすため、一次情報源の公開一覧チェックを継続する。 2026-09-10の追加作業で UNC6508 と UNC5792 を利用者の判断により profiles/ へ昇格させ、台帳エントリは status: merged として保持した。昇格作業の過程で、当日の登録時には「単一ベンダーのみ」と評価していた2件が、いずれも追加の一次資料を持つことが判明した。UNC6508は actor_profile/reference/osint/misp-threat-actor.json 経由でGTIGの2026-06-15技術報告へ、UNC5792は profiles/unc4221 の既存活動が参照するFBI・CISA共同PSA(2026-06-26)へ辿り着いた。後者は政府・法執行機関による言及であり、単独で昇格閾値を満たす。新規クラスタを台帳へ登録する際は、当日の一次情報源だけでなく、actor_profile/reference/osint 配下の参照データセットと既存プロファイルの source 群も照合する。 2026-09-14の日次チェックで、一次情報源チェックのRSS機械照合により Cisco Talos の2026-09-09公開「Active exploitation of Cisco Secure Firewall Management Center vulnerabilities」を検知し、UAT-11823・UAT-11988・UAT-12197 を追加した。本稿は tech-memo に2026-09-11の二次要約として収録されIOC CSV にも actor 値が存在したが、2026-09-12の走査では Talos の確認範囲が2026-09-08までで取りこぼしていた。一覧ページの目視では公開日の取りこぼしが生じるため、RSSによる機械照合を継続する。あわせて Anthropic 脅威インテリジェンスレポート2026年9月の残る未登録クラスタ(GTG-10007、GTG-50020、GTG-50021、GTG-50029、GTG-84005)を追加した。GTG-20006 は apt29 の活動として反映済み、GTG-50014 は2026-09-14に登録済みのため対象外とした。 2026-09-14に任意フィールド entity_type を導入した。省略時は従来どおり集団(group)を意味し、企業実体には organization、単独の個人には individual を付す。GTG-84005 を organization、GTG-50029 を individual とした。あわせて攻撃に関与する組織を組織側から一意に管理する台帳 actor_profile/organizations.json を新設し、GTG-84005 の企業実体 BBS Bilisim Teknolojileri を organization--bbs-bilisim として登録して related_organizations で相互参照した。組織は複数のアクターに関与しうるため、アクター単位の属性である attribution.organizations だけでは組織側から逆引きできない。i-Soon のように流出資料が多数のクラスタへ結び付く対象を扱うための土台である。 2026-09-16の日次チェックで4件を追加した。HEAVYGRAM／CHOSEN BRICK(FBI FLASH と 英NCSC/FBI/蘭AIVD 合同アドバイザリの2資料、ともに2026-09-15公開。MOIS へ帰属されるが命名済みグループ指定子がないため、被害者像が重なる Domestic Kitten / Sima / Charming Kitten へ寄せずに台帳登録した。政府機関の言及という昇格閾値は満たすが、アクター指定子の不在を理由に昇格を保留している)、Vectra(旧 Nyxel。VectraRAT の MaaS 運用者。自称ブランドであり国籍は未特定)、BambooToken(Lumen が既知クラスタへの相関付けを明示的に否定)、PasteSwitch(ADAMnetworks が命名した ClickFix 配信オペレーション。運用者が未命名のため actor_type を unknown として登録した。arrayref の前例に従い、アクター指定子の不在を理由に不登録としない)。unknown-cluster--cve-2026-59310-vcenter へ CISA KEV の ransomware 欄更新(Known)を第2観測として追加した。名称衝突として Hellsing APT の alias「Asia」と Lumen 記事URL の across-asia スラッグを excluded_name_collisions へ記録した。同一 alias による URL 断片衝突はこれで4件目である。本走査で判明した構造的な問題として、tech-memo の IOC CSV は日次ニュースより遅れて作成されることがあり、2026-09-15分の CSV は前回走査時点で未作成だった。そのため PasteSwitch(234観測)と JeetBot(12観測)は翌日の走査で初めて現れた。IOC CSV の actor 列経路は前日分を翌日に再走査しないと取りこぼす。 同日、判断保留としていた JeetBot を利用者の判断により entity_type: organization として登録した(B案)。挙動は無許可の Twitch OAuth セッショントークン持ち出しであり悪性と評価できるが、実体は侵入セットではなく公開の場で営業する商用ボットサービス事業者である。企業実体は actor_profile/curated-organizations.json の organization--jeetbot へ分離し、related_organizations で相互参照した。GTG-84005 / BBS Bilisim Teknolojileri と同じ構成である。組織レジストリの organization_type_vocabulary には、自社の一般利用者が被害者となる事業者を表す commercial-service-operator を新設した。 2026-09-18の日次チェックで、一次情報源の公開一覧巡回により3件を反映した。unknown-cluster--gold-sherwood と unknown-cluster--the-gentlemen-affiliate へ Cisco Talos(2026-09-17)の観測を追加し、unknown-cluster--qilin と unknown-cluster--moviereaper を新規追加した。いずれも tech-memo daily-news に未収録で daily_check.py --run-scan では検知できず、公開一覧の巡回でのみ拾えた事例である。同日、Kaspersky Securelist.ru の2026-08-28公開分から GOFFEE(別名 Paper Werewolf)の取りこぼしを検知し、独立した一次資料2本(Kaspersky 2025-04-10 / BI.ZONE 2024-12-25)を確認のうえ profiles/goffee へ新規プロファイルとして作成した。securelist.ru を巡回対象へ加えたのは2026-09-14の走査からであり、それ以前の公開分は未確認のまま残っている。 2026-09-20の日次チェックで unknown-cluster--silkparasite を新規追加した。Hunt.io(2026-09-09)が Bitdefender の SilkParasite 報告(2026-08-19)のインフラを拡張した調査で、tech-memo daily-news 2026-09-19 経由の IOC CSV に114観測がある。同記事から生成された indigozebra と famoussparrow のレコードは、いずれも原文が帰属ではなく文脈として提示した類似点による一致のため不採用とし、実体側を本台帳へ登録した。Bitdefender 原報告は未確認であり昇格は保留する。同日、FamousSparrow は台帳を経由せず profiles/famoussparrow へ新規プロファイルとして作成した。ESET が2021年の初報以来5年にわたり追跡する命名済みクラスタであり、tech-memo 収録記事のIOC 23観測の受け皿が必要だったためである。ただし確認できた actor-specific な一次資料はESETの3本で同一ベンダーであり、この点と Salt Typhoon / Earth Estries / UNC2286 との未解決の同一性は当該プロファイルの assessment.uncertainties に明記した。"
+  "analyst_notes": "2026-07-31の日次チェックで抽出(STAC4749、Toy Ghouls、OctLurk/SilkLurk)。2026-08-07の総点検で2026-07-30〜08-07の検知分10件を追加。追跡対象外と判断した名前: Gunra(AhnLab Operation Double Barrelのマルウェア名でありアクター名ではない)、knaithe/KnYuan(AIモデル悪用攻撃の攻撃者ハンドル。観測2件のみで実体の輪郭が不明)、Zhejiang Fengwo IoT Technology(ストリーミング端末のプリインストール型サプライチェーンに関わる企業名。侵入クラスタではない)。文字列断片による名称衝突はexcluded_name_collisionsに記録し、同じ衝突を毎日再検討しない。 2026-08-23の日次チェックでMoYu GroupへNokia Deepfield ERT（2026-07-11）の原文確認による第2観測を追加した。Armored Likhoの2026-08-20公開分は前日までに収録済みのため重複追加していない。 arrayref Rustクレート侵害キャンペーンを追加した。運用者は未命名であり、主目的はインフラ重複を根拠としたAPT38／UNC1069への誤統合を防ぐ explicitly-refuted の記録である。2026-08-22のチェックは同キャンペーンを不登録と判断していたが、2026-08-23に利用者が登録と決定した。運用者が未命名のキャンペーン単位クラスタは、アクター指定子の不在を理由に不登録としない。 2026-08-31の日次チェックで、FulcrumSec(データ恐喝グループ。tech-memo 2026-03-04 LexisNexis と 2026-08-31 Manchester Airports Group の2観測)と TerminalFix(Microsoftが帰属を行っていないClickFix亜種キャンペーン)を追加した。FulcrumSecは記事にIOCが無くIOC CSVのactor列へ現れないため daily_check.py の unmatched_actor_values では検知できず、新規日のニュース本文を直接確認して検知した。IOCを伴わない記事の新規アクター名は構造化フィールドの未一致名検知だけでは取りこぼす。ShinyHuntersへMcKesson事案(2026-08-29)の観測を追加し last_seen を更新した。これは2026-08-30のチェックで台帳への反映が漏れていた分である。 2026-09-02の日次チェックで5クラスタを追加した。Fire Ant（Sygnia。UNC3886 と strongly overlaps と評価されるが同一断定ではないため related として登録）、Exilware（Group-IB が BraZetsu を high confidence で帰属。IOC 25観測）、Spring Ring（Unit 42 の未帰属 Teams ビッシング作戦。tech-memo 未収録で一次情報源チェックのみで検知）、Gryxa（ReliaQuest の未帰属クラスタ。earth-lusca への CHROMIUM 誤一致の実体側）、Aur0ra（BHIS ActiveSOC のランサムウェアグループ。IOC 5観測）。SilverFox へ Kaspersky と Microsoft の2観測を追加し last_seen を 2026-09-02 へ更新した。QTFY（米DOJ/FBI）と BREEZE COMET（GTIG）は台帳を経由せず profiles/ へ直接昇格させた。QTFY は政府・法執行機関による帰属があるため昇格閾値を満たす。BREEZE COMET は UNC 指定子（旧 UNC5669）が一級プロファイルとして存在する前例に従った。 2026-09-04の日次チェックで4件を追加した。Gambling Goblin(Check Point 2026-09-02。実行主体として新規命名されたクラスタで、Earth Berberoka とは medium-to-high confidence の結び付き評価にとどまるため統合しない。既存alias「Gambling Puppet」と紛らわしいので混同しないこと)、GOLD SHERWOOD(Sophos/Secureworks CTU 2026-09-04収録。The Gentlemen RaaS の運営者であり、既存の unknown-cluster--the-gentlemen-affiliate はアフィリエイト側の記録である。運営者とアフィリエイトを分離して扱う)、CL-CRI-1131 と CL-CRI-1163(Unit 42 2026-09-03。tech-memo 未収録。相互にSOCKS5中継インフラが重複するがUnit 42自身が別クラスタとして追跡しており統合しない)。名称衝突として Cisco Silicon One ASIC と sea-turtle の alias「SILICON」を excluded_name_collisions へ記録した。当該aliasは config.json の matching.unsafe_prose_aliases に登録済みだが、この設定はレコード生成自体を抑止せず activity_claim を name-collision へ下げるだけであるため、再検討を避ける目的で review-decisions.json にも不採用判断を保存している。本文抽出の未登録名候補「Coder」は供給網侵害の被害側プロダクト名(coder/coder)であり、アクター名ではないため台帳へ登録せず config.json の matching.ignored_name_candidates へ追加した。 2026-09-10の日次チェックで6件を追加した。CL-CRI-1171(Unit 42 2026-09-09。PPI型感染サービス。tech-memo未収録)、Ted / curlRAT ツールキット(Rapid7 2026-09-04。運用者未命名。apt37/kimsukyのレコードは類似言及のみで不採用とし実体を台帳へ登録)、Storm-3121 と Storm-3032(Microsoft 2026-09-09。tech-memo未収録。既存の unc6240 / unc6671 の恐喝ブランド生態系と接続するが同一性は未確認)、UNC6508 と UNC5792(GTIG 2026-09-08)。unknown-cluster--shinyhunters は profiles/unc6240 へ統合し status を merged とした。GTIG原文が「UNC6240 (also known as ShinyHunters)」と明示しており、本台帳が提案していた新規プロファイル作成は実行すれば unc6240 の重複を生んでいた。既存プロファイルに一致しない名前を見つけた際は canonical name だけでなくベンダー別名の対応付けを一次資料で確認する。unknown-cluster--city-forum の related_profiles が実在しない slug「shinyhunters」を指していたため unc6240 へ修正した。Toy Ghouls へ第2観測(Securelist 2026-09-04)と別名 Feral Wolf を追加した。GTIG 2026-09-08 は tech-memo が BleepingComputer の二次要約で収録しており、当該要約は12アクターのうち UNC5792 のみに言及していた。二次要約経由の収録は原文のアクター名を取りこぼすため、一次情報源の公開一覧チェックを継続する。 2026-09-10の追加作業で UNC6508 と UNC5792 を利用者の判断により profiles/ へ昇格させ、台帳エントリは status: merged として保持した。昇格作業の過程で、当日の登録時には「単一ベンダーのみ」と評価していた2件が、いずれも追加の一次資料を持つことが判明した。UNC6508は actor_profile/reference/osint/misp-threat-actor.json 経由でGTIGの2026-06-15技術報告へ、UNC5792は profiles/unc4221 の既存活動が参照するFBI・CISA共同PSA(2026-06-26)へ辿り着いた。後者は政府・法執行機関による言及であり、単独で昇格閾値を満たす。新規クラスタを台帳へ登録する際は、当日の一次情報源だけでなく、actor_profile/reference/osint 配下の参照データセットと既存プロファイルの source 群も照合する。 2026-09-14の日次チェックで、一次情報源チェックのRSS機械照合により Cisco Talos の2026-09-09公開「Active exploitation of Cisco Secure Firewall Management Center vulnerabilities」を検知し、UAT-11823・UAT-11988・UAT-12197 を追加した。本稿は tech-memo に2026-09-11の二次要約として収録されIOC CSV にも actor 値が存在したが、2026-09-12の走査では Talos の確認範囲が2026-09-08までで取りこぼしていた。一覧ページの目視では公開日の取りこぼしが生じるため、RSSによる機械照合を継続する。あわせて Anthropic 脅威インテリジェンスレポート2026年9月の残る未登録クラスタ(GTG-10007、GTG-50020、GTG-50021、GTG-50029、GTG-84005)を追加した。GTG-20006 は apt29 の活動として反映済み、GTG-50014 は2026-09-14に登録済みのため対象外とした。 2026-09-14に任意フィールド entity_type を導入した。省略時は従来どおり集団(group)を意味し、企業実体には organization、単独の個人には individual を付す。GTG-84005 を organization、GTG-50029 を individual とした。あわせて攻撃に関与する組織を組織側から一意に管理する台帳 actor_profile/organizations.json を新設し、GTG-84005 の企業実体 BBS Bilisim Teknolojileri を organization--bbs-bilisim として登録して related_organizations で相互参照した。組織は複数のアクターに関与しうるため、アクター単位の属性である attribution.organizations だけでは組織側から逆引きできない。i-Soon のように流出資料が多数のクラスタへ結び付く対象を扱うための土台である。 2026-09-16の日次チェックで4件を追加した。HEAVYGRAM／CHOSEN BRICK(FBI FLASH と 英NCSC/FBI/蘭AIVD 合同アドバイザリの2資料、ともに2026-09-15公開。MOIS へ帰属されるが命名済みグループ指定子がないため、被害者像が重なる Domestic Kitten / Sima / Charming Kitten へ寄せずに台帳登録した。政府機関の言及という昇格閾値は満たすが、アクター指定子の不在を理由に昇格を保留している)、Vectra(旧 Nyxel。VectraRAT の MaaS 運用者。自称ブランドであり国籍は未特定)、BambooToken(Lumen が既知クラスタへの相関付けを明示的に否定)、PasteSwitch(ADAMnetworks が命名した ClickFix 配信オペレーション。運用者が未命名のため actor_type を unknown として登録した。arrayref の前例に従い、アクター指定子の不在を理由に不登録としない)。unknown-cluster--cve-2026-59310-vcenter へ CISA KEV の ransomware 欄更新(Known)を第2観測として追加した。名称衝突として Hellsing APT の alias「Asia」と Lumen 記事URL の across-asia スラッグを excluded_name_collisions へ記録した。同一 alias による URL 断片衝突はこれで4件目である。本走査で判明した構造的な問題として、tech-memo の IOC CSV は日次ニュースより遅れて作成されることがあり、2026-09-15分の CSV は前回走査時点で未作成だった。そのため PasteSwitch(234観測)と JeetBot(12観測)は翌日の走査で初めて現れた。IOC CSV の actor 列経路は前日分を翌日に再走査しないと取りこぼす。 同日、判断保留としていた JeetBot を利用者の判断により entity_type: organization として登録した(B案)。挙動は無許可の Twitch OAuth セッショントークン持ち出しであり悪性と評価できるが、実体は侵入セットではなく公開の場で営業する商用ボットサービス事業者である。企業実体は actor_profile/curated-organizations.json の organization--jeetbot へ分離し、related_organizations で相互参照した。GTG-84005 / BBS Bilisim Teknolojileri と同じ構成である。組織レジストリの organization_type_vocabulary には、自社の一般利用者が被害者となる事業者を表す commercial-service-operator を新設した。 2026-09-18の日次チェックで、一次情報源の公開一覧巡回により3件を反映した。unknown-cluster--gold-sherwood と unknown-cluster--the-gentlemen-affiliate へ Cisco Talos(2026-09-17)の観測を追加し、unknown-cluster--qilin と unknown-cluster--moviereaper を新規追加した。いずれも tech-memo daily-news に未収録で daily_check.py --run-scan では検知できず、公開一覧の巡回でのみ拾えた事例である。同日、Kaspersky Securelist.ru の2026-08-28公開分から GOFFEE(別名 Paper Werewolf)の取りこぼしを検知し、独立した一次資料2本(Kaspersky 2025-04-10 / BI.ZONE 2024-12-25)を確認のうえ profiles/goffee へ新規プロファイルとして作成した。securelist.ru を巡回対象へ加えたのは2026-09-14の走査からであり、それ以前の公開分は未確認のまま残っている。 2026-09-20の日次チェックでFamousSparrow(ESET 2026-09-17)とSilkParasite(Bitdefender 2026-08-19 / Hunt.io 2026-09-16)を追加した。どちらもIOC CSVのactor列に観測が蓄積していながら台帳未登録であり、unmatched_actor_valuesの上位名称と本台帳の突き合わせを日次手順へ組み込む必要がある。FamousSparrowはsalt-typhoonとの誤統合防止のexplicitly-refutedを主目的として記録した。"
 }
