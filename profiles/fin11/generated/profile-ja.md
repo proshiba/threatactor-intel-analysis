@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--fin11`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:01Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -40,6 +40,7 @@ FIN11の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | TA505 | overlaps-with | FIN11 includes a subset of activity publicly called TA505, but early TA505 operations are not attributed to FIN11 and the names are not interchangeable. | 高 | `source--mandiant-fin11-ta505-boundary-2020` |
+| TA505 | overlaps-with | FIN11 includes a subset of activity publicly called TA505, but early TA505 operations are not attributed to FIN11 and the names are not interchangeable. | 高 | `source--mandiant-fin11-ta505-boundary-2020` |
 
 ## ダイヤモンドモデル
 
@@ -54,7 +55,7 @@ FIN11の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -69,6 +70,7 @@ FIN11の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | FIN11 | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -183,6 +185,7 @@ TTPなし
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sea-turtle`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,10 +18,10 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Cosmic Wolf | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Marbled Dust | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| SILICON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Teal Kurma | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Cosmic Wolf | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Marbled Dust | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| SILICON | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Teal Kurma | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -36,7 +36,7 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -55,7 +55,7 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -70,6 +70,7 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 | misp-mitre-enterprise-intrusion-set | Sea Turtle - G1041 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1041<br>https://blog.talosintelligence.com/sea-turtle-keeps-on-swimming/<br>https://blog.talosintelligence.com/seaturtle/ |
 | misp-mitre-intrusion-set | Sea Turtle - G1041 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1041<br>https://blog.talosintelligence.com/sea-turtle-keeps-on-swimming/<br>https://blog.talosintelligence.com/seaturtle/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Sea Turtle | canonical-name | 高 | TR |  |
 
 ### 関係性候補（未統合）
 
@@ -97,7 +98,7 @@ Sea Turtleの標準化プロファイル。リポジトリ内の専用資料1件
 | malware--cve-2018-7600 | CVE-2018-7600 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--dns-hijacking | DNS hijacking | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--drupalgeddon | Drupalgeddon | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--snappytcp | SnappyTCP | [SnappyTCP](https://attack.mitre.org/software/S1163) is a web shell used by [Sea Turtle](https://attack.mitre.org/groups/G1041) between 2021 and 2023 against multiple victims. [SnappyTCP](https://attack.mitre.org/software/S1163) appears to be based on a public GitHub project that has since been removed from the code-sharing site. [SnappyTCP](https://attack.mitre.org/software/S1163) includes a simple reverse TCP shell for Linux and Unix environments with basic command and control capabilities.(Citation: PWC Sea Turtle 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--snappytcp | SnappyTCP | [SnappyTCP](https://attack.mitre.org/software/S1163) is a web shell used by [Sea Turtle](https://attack.mitre.org/groups/G1041) between 2021 and 2023 against multiple victims. [SnappyTCP](https://attack.mitre.org/software/S1163) appears to be based on a public GitHub project that has since been removed from the code-sharing site. [SnappyTCP](https://attack.mitre.org/software/S1163) includes a simple reverse TCP shell for Linux and Unix environments with basic command and control capabilities.(Citation: PWC Sea Turtle 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -176,33 +177,33 @@ Sea Turtle
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.004 | Compile After Delivery | [Sea Turtle](https://attack.mitre.org/groups/G1041) downloaded source code files from remote addresses then compiled them locally via GCC in victim environments.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.004 | Unix Shell | [Sea Turtle](https://attack.mitre.org/groups/G1041) used shell scripts for post-exploitation execution in victim environments.(Citation: PWC Sea Turtle 2023)(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | [Sea Turtle](https://attack.mitre.org/groups/G1041) connected over TCP using HTTP to establish command and control channels.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.002 | Remote Data Staging | [Sea Turtle](https://attack.mitre.org/groups/G1041) staged collected email archives in the public web directory of a website that was accessible from the internet.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [Sea Turtle](https://attack.mitre.org/groups/G1041) used compromised credentials to maintain long-term access to victim environments.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.003 | Local Accounts | [Sea Turtle](https://attack.mitre.org/groups/G1041) compromised cPanel accounts in victim environments.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1114.001 | Local Email Collection | [Sea Turtle](https://attack.mitre.org/groups/G1041) collected email archives from victim environments.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence | T1133 | External Remote Services | [Sea Turtle](https://attack.mitre.org/groups/G1041) has used external-facing SSH to achieve initial access to the IT environments of victim organizations.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | [Sea Turtle](https://attack.mitre.org/groups/G1041) gained access to victim environments by exploiting multiple known vulnerabilities over several campaigns.(Citation: Talos Sea Turtle 2019)(Citation: PWC Sea Turtle 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1199 | Trusted Relationship | [Sea Turtle](https://attack.mitre.org/groups/G1041) targeted third-party entities in trusted relationships with primary targets to ultimately achieve access at primary targets. Entities targeted included DNS registrars, telecommunication companies, and internet service providers.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1203 | Exploitation for Client Execution | [Sea Turtle](https://attack.mitre.org/groups/G1041) has used exploits for vulnerabilities such as CVE-2021-44228, CVE-2021-21974, and CVE-2022-0847 to achieve client code execution.(Citation: PWC Sea Turtle 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1213.006 | Databases | [Sea Turtle](https://attack.mitre.org/groups/G1041) used the tool Adminer to remotely logon to the MySQL service of victim machines.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | [Sea Turtle](https://attack.mitre.org/groups/G1041) deployed the [SnappyTCP](https://attack.mitre.org/software/S1163) web shell during intrusion operations.(Citation: PWC Sea Turtle 2023)(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1557 | Adversary-in-the-Middle | [Sea Turtle](https://attack.mitre.org/groups/G1041) modified DNS records at service providers to redirect traffic from legitimate resources to [Sea Turtle](https://attack.mitre.org/groups/G1041)-controlled servers to enable adversary-in-the-middle attacks for credential capture.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | [Sea Turtle](https://attack.mitre.org/groups/G1041) used the tar utility to create a local archive of email data on a victim system.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1564.011 | Ignore Process Interrupts | [Sea Turtle](https://attack.mitre.org/groups/G1041) executed [SnappyTCP](https://attack.mitre.org/software/S1163) using the tool NoHup, which keeps the malware running on a system after exiting the shell or terminal.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566 | Phishing | [Sea Turtle](https://attack.mitre.org/groups/G1041) used spear phishing to gain initial access to victims.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583 | Acquire Infrastructure | [Sea Turtle](https://attack.mitre.org/groups/G1041) accessed victim networks from VPN service provider networks.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | [Sea Turtle](https://attack.mitre.org/groups/G1041) registered domains for authoritative name servers used in DNS hijacking activity and for command and control servers.(Citation: Talos Sea Turtle 2019_2)(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.002 | DNS Server | [Sea Turtle](https://attack.mitre.org/groups/G1041) built adversary-in-the-middle DNS servers to impersonate legitimate services that were later used to capture credentials.(Citation: Talos Sea Turtle 2019_2)(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.003 | Virtual Private Server | [Sea Turtle](https://attack.mitre.org/groups/G1041) created adversary-in-the-middle servers to impersonate legitimate services and enable credential capture.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1584.002 | DNS Server | [Sea Turtle](https://attack.mitre.org/groups/G1041) modified Name Server (NS) items to refer to [Sea Turtle](https://attack.mitre.org/groups/G1041)-controlled DNS servers to provide responses for all DNS lookups.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | [Sea Turtle](https://attack.mitre.org/groups/G1041) has used tools such as Adminer during intrusions.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.004 | Digital Certificates | [Sea Turtle](https://attack.mitre.org/groups/G1041) created new certificates using a technique called the actors performed "certificate impersonation," a technique in which [Sea Turtle](https://attack.mitre.org/groups/G1041) obtained a certificate authority-signed X.509 certificate from another provider for the same domain imitating the one already used by the targeted organization.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.003 | Install Digital Certificate | [Sea Turtle](https://attack.mitre.org/groups/G1041) captured legitimate SSL certificates from victim organizations and installed these on [Sea Turtle](https://attack.mitre.org/groups/G1041)-controlled infrastructure to enable subsequent adversary-in-the-middle operations.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685.006 | Clear Linux or Mac System Logs | [Sea Turtle](https://attack.mitre.org/groups/G1041) has overwritten Linux system logs and unsets the Bash history file (effectively removing logging) during intrusions.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1690 | Prevent Command History Logging | [Sea Turtle](https://attack.mitre.org/groups/G1041) unset the Bash and MySQL history files on victim systems.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.004 | Compile After Delivery | [Sea Turtle](https://attack.mitre.org/groups/G1041) downloaded source code files from remote addresses then compiled them locally via GCC in victim environments.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.004 | Unix Shell | [Sea Turtle](https://attack.mitre.org/groups/G1041) used shell scripts for post-exploitation execution in victim environments.(Citation: PWC Sea Turtle 2023)(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.001 | Web Protocols | [Sea Turtle](https://attack.mitre.org/groups/G1041) connected over TCP using HTTP to establish command and control channels.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1074.002 | Remote Data Staging | [Sea Turtle](https://attack.mitre.org/groups/G1041) staged collected email archives in the public web directory of a website that was accessible from the internet.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [Sea Turtle](https://attack.mitre.org/groups/G1041) used compromised credentials to maintain long-term access to victim environments.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.003 | Local Accounts | [Sea Turtle](https://attack.mitre.org/groups/G1041) compromised cPanel accounts in victim environments.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1114.001 | Local Email Collection | [Sea Turtle](https://attack.mitre.org/groups/G1041) collected email archives from victim environments.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence | T1133 | External Remote Services | [Sea Turtle](https://attack.mitre.org/groups/G1041) has used external-facing SSH to achieve initial access to the IT environments of victim organizations.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [Sea Turtle](https://attack.mitre.org/groups/G1041) gained access to victim environments by exploiting multiple known vulnerabilities over several campaigns.(Citation: Talos Sea Turtle 2019)(Citation: PWC Sea Turtle 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1199 | Trusted Relationship | [Sea Turtle](https://attack.mitre.org/groups/G1041) targeted third-party entities in trusted relationships with primary targets to ultimately achieve access at primary targets. Entities targeted included DNS registrars, telecommunication companies, and internet service providers.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1203 | Exploitation for Client Execution | [Sea Turtle](https://attack.mitre.org/groups/G1041) has used exploits for vulnerabilities such as CVE-2021-44228, CVE-2021-21974, and CVE-2022-0847 to achieve client code execution.(Citation: PWC Sea Turtle 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1213.006 | Databases | [Sea Turtle](https://attack.mitre.org/groups/G1041) used the tool Adminer to remotely logon to the MySQL service of victim machines.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1505.003 | Web Shell | [Sea Turtle](https://attack.mitre.org/groups/G1041) deployed the [SnappyTCP](https://attack.mitre.org/software/S1163) web shell during intrusion operations.(Citation: PWC Sea Turtle 2023)(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1557 | Adversary-in-the-Middle | [Sea Turtle](https://attack.mitre.org/groups/G1041) modified DNS records at service providers to redirect traffic from legitimate resources to [Sea Turtle](https://attack.mitre.org/groups/G1041)-controlled servers to enable adversary-in-the-middle attacks for credential capture.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1560.001 | Archive via Utility | [Sea Turtle](https://attack.mitre.org/groups/G1041) used the tar utility to create a local archive of email data on a victim system.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1564.011 | Ignore Process Interrupts | [Sea Turtle](https://attack.mitre.org/groups/G1041) executed [SnappyTCP](https://attack.mitre.org/software/S1163) using the tool NoHup, which keeps the malware running on a system after exiting the shell or terminal.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566 | Phishing | [Sea Turtle](https://attack.mitre.org/groups/G1041) used spear phishing to gain initial access to victims.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583 | Acquire Infrastructure | [Sea Turtle](https://attack.mitre.org/groups/G1041) accessed victim networks from VPN service provider networks.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.001 | Domains | [Sea Turtle](https://attack.mitre.org/groups/G1041) registered domains for authoritative name servers used in DNS hijacking activity and for command and control servers.(Citation: Talos Sea Turtle 2019_2)(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.002 | DNS Server | [Sea Turtle](https://attack.mitre.org/groups/G1041) built adversary-in-the-middle DNS servers to impersonate legitimate services that were later used to capture credentials.(Citation: Talos Sea Turtle 2019_2)(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.003 | Virtual Private Server | [Sea Turtle](https://attack.mitre.org/groups/G1041) created adversary-in-the-middle servers to impersonate legitimate services and enable credential capture.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1584.002 | DNS Server | [Sea Turtle](https://attack.mitre.org/groups/G1041) modified Name Server (NS) items to refer to [Sea Turtle](https://attack.mitre.org/groups/G1041)-controlled DNS servers to provide responses for all DNS lookups.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.002 | Tool | [Sea Turtle](https://attack.mitre.org/groups/G1041) has used tools such as Adminer during intrusions.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.004 | Digital Certificates | [Sea Turtle](https://attack.mitre.org/groups/G1041) created new certificates using a technique called the actors performed "certificate impersonation," a technique in which [Sea Turtle](https://attack.mitre.org/groups/G1041) obtained a certificate authority-signed X.509 certificate from another provider for the same domain imitating the one already used by the targeted organization.(Citation: Talos Sea Turtle 2019)(Citation: Talos Sea Turtle 2019_2) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1608.003 | Install Digital Certificate | [Sea Turtle](https://attack.mitre.org/groups/G1041) captured legitimate SSL certificates from victim organizations and installed these on [Sea Turtle](https://attack.mitre.org/groups/G1041)-controlled infrastructure to enable subsequent adversary-in-the-middle operations.(Citation: Talos Sea Turtle 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685.006 | Clear Linux or Mac System Logs | [Sea Turtle](https://attack.mitre.org/groups/G1041) has overwritten Linux system logs and unsets the Bash history file (effectively removing logging) during intrusions.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1690 | Prevent Command History Logging | [Sea Turtle](https://attack.mitre.org/groups/G1041) unset the Bash and MySQL history files on victim systems.(Citation: Hunt Sea Turtle 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -231,7 +232,6 @@ Sea Turtle
 |---|---|---|---|---|---|---|---|
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--daily-cca0fa46e5e1b4b6bc18 | Output Messengerのゼロデイ脆弱性がスパイ活動に悪用される | bleepingcomputer.com | 2025-05-13 | https://www.bleepingcomputer.com/news/security/output-messenger-flaw-exploited-as-zero-day-in-espionage-attacks/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
@@ -241,6 +241,9 @@ Sea Turtle
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

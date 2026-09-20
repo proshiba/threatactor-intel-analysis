@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--taidoor`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | Taidoor - G0015 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0015 |
 | misp-mitre-intrusion-set | Taidoor - G0015 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0015 |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -157,7 +158,7 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--taidoor--45664179cfd0afcd | taidoor |  | 不明 | actor_profile/evidence/taidoor.csv | structured-data | TLP:CLEAR | 中 |
 | source--taidoor--16b43a6c7c765806 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--vanilla-tempest`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ Vanilla Tempestの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Vanilla Tempestの標準化プロファイル。リポジトリ内の専用資�
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Vanilla Tempest | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -179,6 +180,7 @@ TTPなし
 | source--vanilla-tempest--8a1291014fecfa23 | threat actor list from cs |  | 不明 | summary/2024/threat actor list from cs.csv | structured-data | TLP:CLEAR | 中 |
 | source--vanilla-tempest--aaf7df4e91b7c721 | microsoft threat actor list |  | 不明 | microsoft-threat-actor-list.xlsx | spreadsheet | TLP:CLEAR | 中 |
 | source--vanilla-tempest--b98106625f6c9506 | vanilla tempest |  | 不明 | actor_profile/evidence/vanilla-tempest.csv | structured-data | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

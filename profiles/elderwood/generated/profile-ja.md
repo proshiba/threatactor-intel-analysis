@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--elderwood`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,11 +18,11 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Beijing Group | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Elderwood Gang | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Beijing Group | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Elderwood Gang | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Hydraq | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | SIG22 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Sneaky Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Sneaky Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -37,7 +37,7 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -56,7 +56,7 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -71,6 +71,7 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 | misp-mitre-enterprise-intrusion-set | Elderwood - G0066 | mitre-external-id | 高 |  | http://securityaffairs.co/wordpress/8528/hacking/elderwood-project-who-is-behind-op-aurora-and-ongoing-attacks.html<br>https://attack.mitre.org/groups/G0066<br>https://web.archive.org/web/20190717233006/http:/www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the-elderwood-project.pdf |
 | misp-mitre-intrusion-set | Elderwood - G0066 | mitre-external-id | 高 |  | http://securityaffairs.co/wordpress/8528/hacking/elderwood-project-who-is-behind-op-aurora-and-ongoing-attacks.html<br>https://attack.mitre.org/groups/G0066<br>https://web.archive.org/web/20190717233006/http:/www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the-elderwood-project.pdf |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Elderwood | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -89,16 +90,16 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--wiarp | Wiarp | [Wiarp](https://attack.mitre.org/software/S0206) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Wiarp May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--naid | Naid | [Naid](https://attack.mitre.org/software/S0205) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Naid June 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--hydraq | Hydraq | [Hydraq](https://attack.mitre.org/software/S0203) is a data-theft trojan first used by [Elderwood](https://attack.mitre.org/groups/G0066) in the 2009 Google intrusion known as Operation Aurora, though variations of this trojan have been used in more recent campaigns by other Chinese actors, possibly including [APT17](https://attack.mitre.org/groups/G0025).(Citation: MicroFocus 9002 Aug 2016)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Trojan.Hydraq Jan 2010)(Citation: ASERT Seven Pointed Dagger Aug 2015)(Citation: FireEye DeputyDog 9002 November 2013)(Citation: ProofPoint GoT 9002 Aug 2017)(Citation: FireEye Sunshop Campaign May 2013)(Citation: PaloAlto 3102 Sept 2015) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--briba | Briba | [Briba](https://attack.mitre.org/software/S0204) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor and download files on to compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Briba May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--nerex | Nerex | [Nerex](https://attack.mitre.org/software/S0210) is a Trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Nerex May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--pasam | Pasam | [Pasam](https://attack.mitre.org/software/S0208) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Pasam May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--linfo | Linfo | [Linfo](https://attack.mitre.org/software/S0211) is a rootkit trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Linfo May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--vasport | Vasport | [Vasport](https://attack.mitre.org/software/S0207) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Vasport May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--briba | Briba | [Briba](https://attack.mitre.org/software/S0204) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor and download files on to compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Briba May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--elderwood-project | Elderwood Project | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--hydraq | Hydraq | [Hydraq](https://attack.mitre.org/software/S0203) is a data-theft trojan first used by [Elderwood](https://attack.mitre.org/groups/G0066) in the 2009 Google intrusion known as Operation Aurora, though variations of this trojan have been used in more recent campaigns by other Chinese actors, possibly including [APT17](https://attack.mitre.org/groups/G0025).(Citation: MicroFocus 9002 Aug 2016)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Trojan.Hydraq Jan 2010)(Citation: ASERT Seven Pointed Dagger Aug 2015)(Citation: FireEye DeputyDog 9002 November 2013)(Citation: ProofPoint GoT 9002 Aug 2017)(Citation: FireEye Sunshop Campaign May 2013)(Citation: PaloAlto 3102 Sept 2015) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--linfo | Linfo | [Linfo](https://attack.mitre.org/software/S0211) is a rootkit trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Linfo May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--naid | Naid | [Naid](https://attack.mitre.org/software/S0205) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Naid June 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--nerex | Nerex | [Nerex](https://attack.mitre.org/software/S0210) is a Trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Nerex May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--pasam | Pasam | [Pasam](https://attack.mitre.org/software/S0208) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Pasam May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--vasport | Vasport | [Vasport](https://attack.mitre.org/software/S0207) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Vasport May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--wiarp | Wiarp | [Wiarp](https://attack.mitre.org/software/S0206) is a trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) to open a backdoor on compromised hosts. (Citation: Symantec Elderwood Sept 2012) (Citation: Symantec Wiarp May 2012) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -154,10 +155,10 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 | regions | 北米 | カナダ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 東アジア | 中国、台湾、日本、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 欧州 | イタリア、オランダ、スイス、デンマーク、ドイツ、ベルギー、英国で確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | 非営利・市民社会 | (Citation: Security Affairs Elderwood Sept 2012) The group has targeted defense organizations, supply chain manufacturers, human rights and nongovernmental organizations (NGOs), and IT service providers. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 政府・行政 | (Citation: Security Affairs Elderwood Sept 2012) The group has targeted defense organizations, supply chain manufacturers, human rights and nongovernmental organizations (NGOs), and IT service providers. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 製造・産業 | (Citation: Security Affairs Elderwood Sept 2012) The group has targeted defense organizations, supply chain manufacturers, human rights and nongovernmental organizations (NGOs), and IT service providers. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| sectors | 非営利・市民社会 | (Citation: Security Affairs Elderwood Sept 2012) The group has targeted defense organizations, supply chain manufacturers, human rights and nongovernmental organizations (NGOs), and IT service providers. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 政府・行政 | (Citation: Security Affairs Elderwood Sept 2012) The group has targeted defense organizations, supply chain manufacturers, human rights and nongovernmental organizations (NGOs), and IT service providers. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 製造・産業 | (Citation: Security Affairs Elderwood Sept 2012) The group has targeted defense organizations, supply chain manufacturers, human rights and nongovernmental organizations (NGOs), and IT service providers. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | sectors | Energy | Targeting text indicates the Energy sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Nonprofit and Civil Society | Targeting text indicates the Nonprofit and Civil Society sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -173,15 +174,15 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.002 | Software Packing | [Elderwood](https://attack.mitre.org/groups/G0066) has packed malware payloads before delivery to victims.(Citation: Symantec Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | [Elderwood](https://attack.mitre.org/groups/G0066) has encrypted documents and malicious executables.(Citation: Symantec Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | The Ritsol backdoor trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) can download files onto a compromised host from a remote location.(Citation: Symantec Ristol May 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1189 | Drive-by Compromise | [Elderwood](https://attack.mitre.org/groups/G0066) has delivered zero-day exploits and malware to victims by injecting malicious code into specific public Web pages visited by targets within a particular sector.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012)(Citation: Security Affairs Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1203 | Exploitation for Client Execution | [Elderwood](https://attack.mitre.org/groups/G0066) has used exploitation of endpoint software, including Microsoft Internet Explorer Adobe Flash vulnerabilities, to gain execution. They have also used zero-day exploits.(Citation: Symantec Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | [Elderwood](https://attack.mitre.org/groups/G0066) has leveraged multiple types of spearphishing in order to attempt to get a user to open links.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [Elderwood](https://attack.mitre.org/groups/G0066) has leveraged multiple types of spearphishing in order to attempt to get a user to open attachments.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [Elderwood](https://attack.mitre.org/groups/G0066) has delivered zero-day exploits and malware to victims via targeted emails containing malicious attachments.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | [Elderwood](https://attack.mitre.org/groups/G0066) has delivered zero-day exploits and malware to victims via targeted emails containing a link to malicious content hosted on an uncommon Web server.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.002 | Software Packing | [Elderwood](https://attack.mitre.org/groups/G0066) has packed malware payloads before delivery to victims.(Citation: Symantec Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [Elderwood](https://attack.mitre.org/groups/G0066) has encrypted documents and malicious executables.(Citation: Symantec Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | The Ritsol backdoor trojan used by [Elderwood](https://attack.mitre.org/groups/G0066) can download files onto a compromised host from a remote location.(Citation: Symantec Ristol May 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1189 | Drive-by Compromise | [Elderwood](https://attack.mitre.org/groups/G0066) has delivered zero-day exploits and malware to victims by injecting malicious code into specific public Web pages visited by targets within a particular sector.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012)(Citation: Security Affairs Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1203 | Exploitation for Client Execution | [Elderwood](https://attack.mitre.org/groups/G0066) has used exploitation of endpoint software, including Microsoft Internet Explorer Adobe Flash vulnerabilities, to gain execution. They have also used zero-day exploits.(Citation: Symantec Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.001 | Malicious Link | [Elderwood](https://attack.mitre.org/groups/G0066) has leveraged multiple types of spearphishing in order to attempt to get a user to open links.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [Elderwood](https://attack.mitre.org/groups/G0066) has leveraged multiple types of spearphishing in order to attempt to get a user to open attachments.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [Elderwood](https://attack.mitre.org/groups/G0066) has delivered zero-day exploits and malware to victims via targeted emails containing malicious attachments.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.002 | Spearphishing Link | [Elderwood](https://attack.mitre.org/groups/G0066) has delivered zero-day exploits and malware to victims via targeted emails containing a link to malicious content hosted on an uncommon Web server.(Citation: Symantec Elderwood Sept 2012)(Citation: CSM Elderwood Sept 2012) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -208,7 +209,6 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--elderwood--c79af85dc7853360 | elderwood |  | 不明 | actor_profile/evidence/elderwood.csv | structured-data | TLP:CLEAR | 中 |
 | source--elderwood--71b66cc2a3dd5788 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
@@ -221,6 +221,9 @@ Elderwoodの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -16,7 +16,8 @@ profiles/<actor-slug>/
 ├── artifacts.csv               # コマンド、文字列、パス等の非IOC artifact観測
 └── generated/
     ├── profile-ja.md           # 人間向け文書
-    └── profile.stix2.json      # STIX 2.1 Bundle
+    ├── profile.stix2.json      # STIX 2.1 Bundle
+    └── research-dossier.json   # 活動・関係・malware・標的・動機・帰属の根拠付き調査票
 ```
 
 自由記述は`free_text`、分析上の留保は`assessment`、各構造化項目固有の補足は
@@ -130,6 +131,9 @@ python3 actor_profile/scripts/bootstrap_all_profiles.py --scan-report-ttps
 # 一次情報で確認した最新alias、改称、明示的なentity境界を反映
 python3 actor_profile/scripts/apply_verified_alias_updates.py
 
+# 現行ATT&CKへ同期し、非掲載IDの根拠は履歴索引へ固定
+python3 actor_profile/scripts/sync_attack_reference.py
+
 # IOC/artifact取込、Markdown/STIX生成、検証
 python3 actor_profile/scripts/process_all_profiles.py --workers 3
 
@@ -150,8 +154,11 @@ python3 actor_profile/scripts/render_collection_index.py \
 ```
 
 MITRE ATT&CKのactor、software、campaign、technique関係は
-`reference/attack-index.json`に保存したEnterprise ATT&CK 19.1と、
+`reference/attack-index.json`に保存したEnterprise ATT&CK 19.2と、
+`reference/attack-mobile-index.json`に保存したMobile ATT&CK 19.2、
 `reference/attack-ics-index.json`に保存したICS ATT&CK 19.2のコンパクト索引を使います。
+19.2で非掲載となった旧Groupの根拠は`reference/attack-enterprise-19.1.json`へ固定し、
+deprecatedをアクターの消滅や誤帰属と自動解釈しません。
 資料本文にTechnique IDがある場合は、その資料もTTPの根拠へ追加します。
 
 全コーパス走査の根拠は`actor-census.json`、採用・統合・除外判断は
@@ -193,7 +200,16 @@ python3 actor_profile/scripts/enrich_activity_intelligence.py --apply
 python3 actor_profile/scripts/enrich_targeting_scope.py --apply
 python3 actor_profile/scripts/materialize_activity_diamonds.py --apply
 python3 actor_profile/scripts/process_all_profiles.py --workers 3 --skip-ingest
+
+# TIDAL/MISPのcampaign・software関係を要原典確認の索引へ変換し、全actor調査票を生成
+python3 actor_profile/scripts/build_tidal_activity_index.py
+python3 actor_profile/scripts/build_actor_research_dossiers.py
 ```
+
+`research-dossier.json`は、正規プロファイル由来のcanonical層と、ETDA・MISP・TIDAL由来の
+external research lead層を分離します。集約データの名称、期間、malware、標的、動機、帰属は
+原典レビュー前にcanonicalへ昇格しません。全体の充足状況は
+`profiles/research-summary.json`と`profiles/research-summary.csv`で確認できます。
 
 `enrich_targeting_scope.py`は、活動本文、MITRE ATT&CK Group概要、高確度で
 アクター照合できたMISP／ETDAの被害地理フィールド、レビュー済み一次資料補正を

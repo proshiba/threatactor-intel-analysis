@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--famous-chollima`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; it
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -68,6 +68,7 @@ CrowdStrike consistently describes FAMOUS CHOLLIMA as a DPRK-nexus adversary; it
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Famous Chollima | canonical-name | 高 | KP |  |
 
 ### 関係性候補（未統合）
 
@@ -160,6 +161,7 @@ TTPなし
 | source--crowdstrike-famous-chollima-2025 | CrowdStrike 2025 Threat Hunting Report | CrowdStrike | 2025-08-04 | https://www.crowdstrike.com/en-us/blog/crowdstrike-2025-threat-hunting-report-ai-weapon-target/ | vendor-threat-research | TLP:CLEAR | 高 |
 | source--doj-dprk-it-worker-schemes-2025 | Justice Department Announces Coordinated, Nationwide Actions to Combat North Korean Remote IT Workers' Illicit Revenue Generation Schemes | U.S. Department of Justice | 2025-06-30 | https://www.justice.gov/opa/pr/justice-department-announces-coordinated-nationwide-actions-combat-north-korean-remote | government-law-enforcement | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--daggerfly`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,8 +18,8 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| BRONZE HIGHLAND | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Evasive Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| BRONZE HIGHLAND | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Evasive Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -51,7 +51,7 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -67,6 +67,7 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | misp-mitre-enterprise-intrusion-set | Daggerfly - G1034 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1034<br>https://symantec-enterprise-blogs.security.com/threat-intelligence/apt-attacks-telecoms-africa-mgbot<br>https://symantec-enterprise-blogs.security.com/threat-intelligence/daggerfly-espionage-updated-toolset |
 | misp-mitre-intrusion-set | Daggerfly - G1034 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1034<br>https://symantec-enterprise-blogs.security.com/threat-intelligence/apt-attacks-telecoms-africa-mgbot<br>https://symantec-enterprise-blogs.security.com/threat-intelligence/daggerfly-espionage-updated-toolset |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Daggerfly | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -85,17 +86,17 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--macma | MacMa | [MacMa](https://attack.mitre.org/software/S1016) is a macOS-based backdoor with a large set of functionalities to control and exfiltrate files from a compromised computer. [MacMa](https://attack.mitre.org/software/S1016) has been observed in the wild since November 2021.(Citation: ESET DazzleSpy Jan 2022) [MacMa](https://attack.mitre.org/software/S1016) shares command and control and unique libraries with [MgBot](https://attack.mitre.org/software/S1146) and [Nightdoor](https://attack.mitre.org/software/S1147), indicating a relationship with the [Daggerfly](https://attack.mitre.org/groups/G1034) threat actor.(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--mgbot | MgBot | [MgBot](https://attack.mitre.org/software/S1146) is a modular malware framework exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations since at least 2012. [MgBot](https://attack.mitre.org/software/S1146) was developed in C++ and features a module design with multiple available plugins that have been under active development through 2024.(Citation: Szappanos MgBot 2014)(Citation: ESET EvasivePanda 2023)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--nightdoor | Nightdoor | [Nightdoor](https://attack.mitre.org/software/S1147) is a backdoor exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations. [Nightdoor](https://attack.mitre.org/software/S1147) uses common libraries with [MgBot](https://attack.mitre.org/software/S1146) and [MacMa](https://attack.mitre.org/software/S1016), linking these malware families together.(Citation: ESET EvasivePanda 2024)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--macma | MacMa | [MacMa](https://attack.mitre.org/software/S1016) is a macOS-based backdoor with a large set of functionalities to control and exfiltrate files from a compromised computer. [MacMa](https://attack.mitre.org/software/S1016) has been observed in the wild since November 2021.(Citation: ESET DazzleSpy Jan 2022) [MacMa](https://attack.mitre.org/software/S1016) shares command and control and unique libraries with [MgBot](https://attack.mitre.org/software/S1146) and [Nightdoor](https://attack.mitre.org/software/S1147), indicating a relationship with the [Daggerfly](https://attack.mitre.org/groups/G1034) threat actor.(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--mgbot | MgBot | [MgBot](https://attack.mitre.org/software/S1146) is a modular malware framework exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations since at least 2012. [MgBot](https://attack.mitre.org/software/S1146) was developed in C++ and features a module design with multiple available plugins that have been under active development through 2024.(Citation: Szappanos MgBot 2014)(Citation: ESET EvasivePanda 2023)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--nightdoor | Nightdoor | [Nightdoor](https://attack.mitre.org/software/S1147) is a backdoor exclusively associated with [Daggerfly](https://attack.mitre.org/groups/G1034) operations. [Nightdoor](https://attack.mitre.org/software/S1147) uses common libraries with [MgBot](https://attack.mitre.org/software/S1146) and [MacMa](https://attack.mitre.org/software/S1016), linking these malware families together.(Citation: ESET EvasivePanda 2024)(Citation: Symantec Daggerfly 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--bitsadmin | BITSAdmin | [BITSAdmin](https://attack.mitre.org/software/S0190) is a command line tool used to create and manage [BITS Jobs](https://attack.mitre.org/techniques/T1197). (Citation: Microsoft BITSAdmin) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--reg | Reg | [Reg](https://attack.mitre.org/software/S0075) is a Windows utility used to interact with the Windows Registry. It can be used at the command-line interface to query, add, modify, and remove information. (Citation: Microsoft Reg)<br><br>Utilities such as [Reg](https://attack.mitre.org/software/S0075) are known to be used by persistent threats. (Citation: Windows Commands JPCERT) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--bitsadmin | BITSAdmin | [BITSAdmin](https://attack.mitre.org/software/S0190) is a command line tool used to create and manage [BITS Jobs](https://attack.mitre.org/techniques/T1197). (Citation: Microsoft BITSAdmin) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--reg | Reg | [Reg](https://attack.mitre.org/software/S0075) is a Windows utility used to interact with the Windows Registry. It can be used at the command-line interface to query, add, modify, and remove information. (Citation: Microsoft Reg)<br><br>Utilities such as [Reg](https://attack.mitre.org/software/S0075) are known to be used by persistent threats. (Citation: Windows Commands JPCERT) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -145,9 +146,9 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | regions | チベット | 構造化OSINTの被害地域フィールドでDaggerflyの標的範囲としてチベットが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東アジア | マカオ、中国、台湾、香港で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-3416f994a1eefc895ed4`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 東南アジア | フィリピン、ベトナム、マレーシア、ミャンマーで確認された標的・被害事例を東南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | 政府・行政 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 非営利・市民社会 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 情報通信 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 政府・行政 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 非営利・市民社会 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 情報通信 | [Daggerfly](https://attack.mitre.org/groups/G1034) has targeted individuals, government and NGO entities, and telecommunication companies in Asia and Africa. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -162,23 +163,23 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Discovery | T1082 | System Information Discovery | このマルウェアは、C2サーバーからのコマンドを待機し、システム情報の収集やデータの外部送信などを行う。 |  | activity--daily-e6a1fb3331093f1f95ff | 不明 | 不明 | 中 | `source--daily-3416f994a1eefc895ed4` |
-| Credential Access | T1003.002 | Security Account Manager | [Daggerfly](https://attack.mitre.org/groups/G1034) used [Reg](https://attack.mitre.org/software/S0075) to dump the Security Account Manager (SAM) hive from victim machines for follow-on credential extraction.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1012 | Query Registry | [Daggerfly](https://attack.mitre.org/groups/G1034) used [Reg](https://attack.mitre.org/software/S0075) to dump the Security Account Manager (SAM), System, and Security Windows registry hives from victim machines.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.003 | Rename Legitimate Utilities | [Daggerfly](https://attack.mitre.org/groups/G1034) used a renamed version of rundll32.exe, such as "dbengin.exe" located in the `ProgramData\Microsoft\PlayReady` directory, to proxy malicious DLL execution.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Daggerfly](https://attack.mitre.org/groups/G1034) has attempted to use scheduled tasks for persistence in victim environments.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | [Daggerfly](https://attack.mitre.org/groups/G1034) used PowerShell to download and execute remote-hosted files on victim systems.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | [Daggerfly](https://attack.mitre.org/groups/G1034) uses HTTP for command and control communication.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [Daggerfly](https://attack.mitre.org/groups/G1034) utilizes victim machine operating system information to create custom User Agent strings for subsequent command and control communication.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | [Daggerfly](https://attack.mitre.org/groups/G1034) has used PowerShell and [BITSAdmin](https://attack.mitre.org/software/S0190) to retrieve follow-on payloads from external locations for execution on victim machines.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1136.001 | Local Account | [Daggerfly](https://attack.mitre.org/groups/G1034) created a local account on victim machines to maintain access.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1189 | Drive-by Compromise | [Daggerfly](https://attack.mitre.org/groups/G1034) has used strategic website compromise for initial access against victims.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1195.002 | Compromise Software Supply Chain | [Daggerfly](https://attack.mitre.org/groups/G1034) is associated with several supply chain compromises using malicious updates to compromise victims.(Citation: ESET EvasivePanda 2023)(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | [Daggerfly](https://attack.mitre.org/groups/G1034) has used strategic website compromise to deliver a malicious link requiring user interaction.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.011 | Rundll32 | [Daggerfly](https://attack.mitre.org/groups/G1034) proxied execution of malicious DLLs through a renamed rundll32.exe binary.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1553.002 | Code Signing | [Daggerfly](https://attack.mitre.org/groups/G1034) has used signed, but not notarized, malicious files for execution in macOS environments.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Stealth | T1574.001 | DLL | [Daggerfly](https://attack.mitre.org/groups/G1034) has used legitimate software to side-load [PlugX](https://attack.mitre.org/software/S0013) loaders onto victim systems.(Citation: Symantec Daggerfly 2023) [Daggerfly](https://attack.mitre.org/groups/G1034) is also linked to multiple other instances of side-loading for initial loading activity.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1584.004 | Server | [Daggerfly](https://attack.mitre.org/groups/G1034) compromised web servers hosting updates for software as part of a supply chain intrusion.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1587.002 | Code Signing Certificates | [Daggerfly](https://attack.mitre.org/groups/G1034) created code signing certificates to sign malicious macOS files.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.002 | Security Account Manager | [Daggerfly](https://attack.mitre.org/groups/G1034) used [Reg](https://attack.mitre.org/software/S0075) to dump the Security Account Manager (SAM) hive from victim machines for follow-on credential extraction.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1012 | Query Registry | [Daggerfly](https://attack.mitre.org/groups/G1034) used [Reg](https://attack.mitre.org/software/S0075) to dump the Security Account Manager (SAM), System, and Security Windows registry hives from victim machines.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.003 | Rename Legitimate Utilities | [Daggerfly](https://attack.mitre.org/groups/G1034) used a renamed version of rundll32.exe, such as "dbengin.exe" located in the `ProgramData\Microsoft\PlayReady` directory, to proxy malicious DLL execution.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Daggerfly](https://attack.mitre.org/groups/G1034) has attempted to use scheduled tasks for persistence in victim environments.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.001 | PowerShell | [Daggerfly](https://attack.mitre.org/groups/G1034) used PowerShell to download and execute remote-hosted files on victim systems.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.001 | Web Protocols | [Daggerfly](https://attack.mitre.org/groups/G1034) uses HTTP for command and control communication.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [Daggerfly](https://attack.mitre.org/groups/G1034) utilizes victim machine operating system information to create custom User Agent strings for subsequent command and control communication.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Daggerfly](https://attack.mitre.org/groups/G1034) has used PowerShell and [BITSAdmin](https://attack.mitre.org/software/S0190) to retrieve follow-on payloads from external locations for execution on victim machines.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1136.001 | Local Account | [Daggerfly](https://attack.mitre.org/groups/G1034) created a local account on victim machines to maintain access.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1189 | Drive-by Compromise | [Daggerfly](https://attack.mitre.org/groups/G1034) has used strategic website compromise for initial access against victims.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1195.002 | Compromise Software Supply Chain | [Daggerfly](https://attack.mitre.org/groups/G1034) is associated with several supply chain compromises using malicious updates to compromise victims.(Citation: ESET EvasivePanda 2023)(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.001 | Malicious Link | [Daggerfly](https://attack.mitre.org/groups/G1034) has used strategic website compromise to deliver a malicious link requiring user interaction.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1218.011 | Rundll32 | [Daggerfly](https://attack.mitre.org/groups/G1034) proxied execution of malicious DLLs through a renamed rundll32.exe binary.(Citation: Symantec Daggerfly 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1553.002 | Code Signing | [Daggerfly](https://attack.mitre.org/groups/G1034) has used signed, but not notarized, malicious files for execution in macOS environments.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Stealth | T1574.001 | DLL | [Daggerfly](https://attack.mitre.org/groups/G1034) has used legitimate software to side-load [PlugX](https://attack.mitre.org/software/S0013) loaders onto victim systems.(Citation: Symantec Daggerfly 2023) [Daggerfly](https://attack.mitre.org/groups/G1034) is also linked to multiple other instances of side-loading for initial loading activity.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1584.004 | Server | [Daggerfly](https://attack.mitre.org/groups/G1034) compromised web servers hosting updates for software as part of a supply chain intrusion.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1587.002 | Code Signing Certificates | [Daggerfly](https://attack.mitre.org/groups/G1034) created code signing certificates to sign malicious macOS files.(Citation: ESET EvasivePanda 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -211,13 +212,15 @@ Daggerflyの標準化プロファイル。リポジトリ内の専用資料1件�
 | source--daggerfly--8a2cb6114c21a01c | eset threat report h12024 |  | 不明 | summary/2024/eset-threat-report-h12024.pdf | report | TLP:CLEAR | 中 |
 | source--daggerfly--e6cfc1fd35dfef7b | daggerfly |  | 不明 | actor_profile/evidence/daggerfly.csv | structured-data | TLP:CLEAR | 中 |
 | source--daily-3416f994a1eefc895ed4 | 中国のサイバースパイ、新たなSSHバックドアを使用してネットワークデバイスをハッキング | bleepingcomputer.com | 2025-02-05 | https://www.bleepingcomputer.com/news/security/chinese-cyberspies-use-new-ssh-backdoor-in-network-device-hacks/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -32,11 +32,29 @@ def main() -> int:
         type=Path,
         default=Path("actor_profile/actor-alias-overlaps.json"),
     )
+    parser.add_argument(
+        "--curation",
+        type=Path,
+        default=Path("actor_profile/actor-census-curation.json"),
+    )
     args = parser.parse_args()
 
     root = args.repository_root.resolve()
     catalog = load_json((root / args.catalog).resolve())
     actors = {item["slug"]: item for item in catalog["actors"]}
+    canonical_slugs = {
+        normalized_name(item["name"]): item["slug"] for item in catalog["actors"]
+    }
+    curation = load_json((root / args.curation).resolve())
+    blocked_pairs = {
+        tuple(sorted((canonical_slugs[left], canonical_slugs[right])))
+        for boundary in curation.get("identity_boundaries", [])
+        if len(boundary.get("names", [])) == 2
+        for left, right in [
+            tuple(normalized_name(name) for name in boundary["names"])
+        ]
+        if left in canonical_slugs and right in canonical_slugs
+    }
     name_index: dict[str, dict[str, set[str]]] = defaultdict(
         lambda: defaultdict(set)
     )
@@ -51,6 +69,8 @@ def main() -> int:
         if not 1 < len(by_actor) <= 10:
             continue
         for left, right in itertools.combinations(sorted(by_actor), 2):
+            if (left, right) in blocked_pairs:
+                continue
             pair_aliases[(left, right)].update(by_actor[left])
             pair_aliases[(left, right)].update(by_actor[right])
 
@@ -91,7 +111,7 @@ def main() -> int:
                     "first_observed": unknown_time(),
                     "last_observed": unknown_time(),
                     "evidence_refs": [
-                        "source--mitre-attack-19-1",
+                        "source--mitre-attack-19-2",
                         "source--actor-mapping-workbook",
                     ],
                     "analyst_notes": GENERATED_NOTE,
@@ -109,7 +129,7 @@ def main() -> int:
         preferred_evidence = [
             source_id
             for source_id in (
-                "source--mitre-attack-19-1",
+                "source--mitre-attack-19-2",
                 "source--actor-mapping-workbook",
             )
             if source_id in available_source_ids

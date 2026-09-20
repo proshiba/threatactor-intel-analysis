@@ -1,0 +1,1119 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-20T13:51:16Z",
+  "actor_ref": "actor--breeze-comet",
+  "actor_name": "BREEZE COMET",
+  "profile_updated_at": "2026-09-20T13:47:46Z",
+  "scope_note": "Canonical records come from actor-profile.json. External research leads are kept separate and are not proof of actor identity, use, targeting, motivation, or attribution until original sources are reviewed.",
+  "coverage": {
+    "dimensions": {
+      "activities": "canonical-present",
+      "relationships": "unknown",
+      "malware": "canonical-present",
+      "tools": "canonical-present",
+      "targets": "canonical-present",
+      "motivations": "canonical-present",
+      "attribution": "canonical-present"
+    },
+    "canonical_counts": {
+      "activities": 1,
+      "dated_activities": 1,
+      "relationships": 0,
+      "malware": 6,
+      "activity_linked_malware": 6,
+      "tools": 1,
+      "targets": 4,
+      "motivations": 1
+    },
+    "external_lead_counts": {
+      "activities": 0,
+      "relationships": 0,
+      "malware": 0,
+      "tools": 2,
+      "untyped_software": 0,
+      "targets": 0,
+      "motivations": 1
+    }
+  },
+  "canonical": {
+    "attribution": {
+      "countries": [],
+      "sponsor_type": "criminal",
+      "organizations": [],
+      "assessment": "GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクターと評価し、国家や特定組織への帰属は行っていない。標的と運用がブラジルに集中し、回収されたスクリプトのコメントがポルトガル語であることは運用言語・活動地域の指標であって、攻撃者の所在国の帰属根拠として扱わない。",
+      "confidence": "medium",
+      "evidence_refs": [
+        "source--breeze-comet--gtig-brazil-2026"
+      ],
+      "analyst_notes": "attribution.countriesは空のままとする。ブラジルは標的国であり、攻撃者の所在国ではない。標的国を帰属国へ流用しない(AGENT.md)。",
+      "claim_assessments": [
+        {
+          "claim_id": "claim--dcd8b8ba074063dd2b1bfa93",
+          "category": "attribution",
+          "verification_status": "supported",
+          "confidence": "medium",
+          "statement": "Sponsor classification: criminal.",
+          "evidence_refs": [
+            "source--breeze-comet--gtig-brazil-2026"
+          ],
+          "verification_rationale": "Evidence tier=research; sponsor classification is audited separately from country labels.",
+          "counterevidence": []
+        }
+      ]
+    },
+    "motivations": [
+      {
+        "type": "financial-gain",
+        "description": "銀行ソフトウェア、API、決済システム(Pix、STR、Boleto)を通じて取引を実行する権限を持つ組織を侵害し、大量の不正送金を実行して資産を窃取する。",
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "GTIGは「a financially motivated threat actor specializing in manipulating payment systems and banking software in Brazil to conduct fraudulent transfers」と明記している。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--853d427247e23898a24421b1",
+            "category": "motivation",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET has motivation financial-gain: 銀行ソフトウェア、API、決済システム(Pix、STR、Boleto)を通じて取引を実行する権限を持つ組織を侵害し、大量の不正送金を実行して資産を窃取する。",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; motivation is not inferred from sponsorship.",
+            "counterevidence": []
+          }
+        ]
+      }
+    ],
+    "relationships": [],
+    "activity_timeline": [
+      {
+        "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+        "name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+        "activity_type": "intrusion",
+        "first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+        },
+        "last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+        },
+        "reported_at": {
+          "value": "2026-09-01T00:00:00Z",
+          "precision": "day",
+          "status": "known",
+          "basis": "source-publication"
+        },
+        "description": "ブラジルの銀行、決済処理事業者、小売、取引所、フィンテックおよび銀行ソフトウェア提供者を標的とし、決済システムを操作して不正送金を実行する一連の侵害。標的はPix、STR、Boletoといった銀行ソフトウェア・API・決済システムを通じて取引を実行する権限を持つ組織である。初期アクセスにはパスワードスプレー、ITサポート部門を騙る音声通話によるAnyDesk等のRMM導入、内部関係者の勧誘の試み(Axurが報告)が用いられた。2025年半ば以降は、侵害したブラジルの小規模な政府系ウェブサイトを、税務書類や領収書(ComprovantePDF.exe等)を装ったインフォスティーラー、RMM、XWORMバックドアの配布拠点およびC2エンドポイントとして悪用し、ドメイン評価フィルタによる検知を回避した。権限昇格ではImpacket、ADRecon、ADVipscanに加えカスタムのLDAP総当たりツールREALBREEZEを用い、CI/CD環境からハードコードされたパイプライン資格情報、APIキー、高特権のクラウドアクセストークンを窃取する。中核銀行システムに対して認証するために必要なmTLS資格情報と管理者証明書を、内部のhostsファイルや環境変数からboleto、cnab、remessa、webhook.*pix、instant.*payment等の検索語で探索する。横展開では乗っ取ったサービスアカウントによる不正なRDPセッションとSMB共有経由のコマンド実行、およびRust製トンネラーCOBALTSPINによる境界ファイアウォール越えを行う。永続化にはLIGHTPAINT、MILDFROST、KICKPLATE、BOATBEAMの多層冗長構成と、2025年に観測された悪性Kubernetesポッドによるクラウドシークレット窃取(dontpad[.]com等の公開メモサイトへ持ち出し)を用いる。防御弱体化としてSet-MpPreference -DisableRealtimeMonitoring $true を実行しWindows Defenderのリアルタイム監視を停止する。アクセス確立から24〜48時間以内に数百件規模の不正送金を2波にわたって実行し、少なくとも1件で数万米ドル規模の資産を窃取した。その後、横展開・権限昇格・決済APIとの通信の証跡を隠すため、侵害ホスト全体のイベントログを消去し、作成したディレクトリを削除する。",
+        "target_refs": [
+          "target--activity-rule--sector--210dddb39397dbe50e91",
+          "target--activity-rule--sector--4221b5fbb827488c6eaa",
+          "target--activity-rule--sector--570d54d1d21fab6540a9"
+        ],
+        "malware_refs": [
+          "malware--cobaltspin",
+          "malware--lightpaint",
+          "malware--mildfrost",
+          "malware--kickplate",
+          "malware--boatbeam",
+          "malware--realbreeze"
+        ],
+        "infrastructure_refs": [],
+        "ttp_refs": [
+          "ttp--activity-rule--2b2ebbe6402eafb1b795"
+        ],
+        "victim_refs": [
+          "victim--activity-rule--c411e51fdcb57e39118a"
+        ],
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "GTIG/Mandiantが2024年以降の複数のインシデントレスポンス案件で直接観測した内容に基づく。活動期間は原文が明示した年のみを採用し、公開日2026-09-01はreported_atへ分離した。被害額「tens of thousands of USD」および不正送金の2波はクライアント報告および第三者フォレンジック分析に基づくとGTIG自身が但し書きしており、Mandiantの直接観測と区別する。ナイジェリア、パラグアイ、ガーナ、ベネズエラの自治体ドメインは攻撃者が侵害した配布インフラの所在であって標的国ではない。 配布インフラについて: GTIGは、XWORMペイパイロードの配信に再利用された侵害済み自治体ドメインがナイジェリア、パラグアイ、ガーナ、ベネズエラでも観測されたと記載している。これらは攻撃者が乗っ取った配布・C2基盤の所在国であって標的国ではないため、標的抽出の対象となる活動description本文には含めず、ここに記録する(AGENT.md: 帰属国やインフラ所在国を標的国へ流用しない)。",
+        "diamond_model": {
+          "adversary": {
+            "actor_ref": "actor--breeze-comet",
+            "name": "BREEZE COMET",
+            "attribution_countries": [],
+            "organization_refs": []
+          },
+          "capability": {
+            "malware_refs": [
+              "malware--boatbeam",
+              "malware--cobaltspin",
+              "malware--kickplate",
+              "malware--lightpaint",
+              "malware--mildfrost",
+              "malware--realbreeze"
+            ],
+            "ttp_refs": [
+              "ttp--activity-rule--2b2ebbe6402eafb1b795"
+            ]
+          },
+          "infrastructure": {
+            "infrastructure_refs": []
+          },
+          "victim": {
+            "target_refs": [
+              "target--activity-rule--sector--210dddb39397dbe50e91",
+              "target--activity-rule--sector--4221b5fbb827488c6eaa",
+              "target--activity-rule--sector--570d54d1d21fab6540a9"
+            ],
+            "victim_refs": [
+              "victim--activity-rule--c411e51fdcb57e39118a"
+            ]
+          },
+          "meta_features": {
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "reported_at": {
+              "value": "2026-09-01T00:00:00Z",
+              "precision": "day",
+              "status": "known",
+              "basis": "source-publication"
+            },
+            "activity_type": "intrusion",
+            "phases": [
+              "Credential Access"
+            ],
+            "results": [
+              "credential-theft"
+            ],
+            "direction": {
+              "source_countries": [],
+              "target_country_refs": [],
+              "target_region_refs": []
+            }
+          },
+          "confidence": "high",
+          "evidence_refs": [
+            "source--breeze-comet--gtig-brazil-2026"
+          ],
+          "analyst_notes": "[activity-diamond-v1] 活動、被害事例、TTPに明示された参照だけから生成。空配列は活動単位の根拠が確認できないことを示し、アクター全体の実績では補完しない。"
+        },
+        "claim_assessments": [
+          {
+            "claim_id": "claim--c9f1090c203fe7faea6e7db1",
+            "category": "activity",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET conducted or is associated with ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金: ブラジルの銀行、決済処理事業者、小売、取引所、フィンテックおよび銀行ソフトウェア提供者を標的とし、決済システムを操作して不正送金を実行する一連の侵害。標的はPix、STR、Boletoといった銀行ソフトウェア・API・決済システムを通じて取引を実行する権限を持つ組織である。初期アクセスにはパスワードスプレー、ITサポート部門を騙る音声通話によるAnyDesk等のRMM導入、内部関係者の勧誘の試み(Axurが報告)が用いられた。2025年半ば以降は、侵害したブラジルの小規模な政府系ウェブサイトを、税務書類や領収書(ComprovantePDF.exe等)を装ったインフォスティーラー、RMM、XWORMバックドアの配布拠点およびC2エンドポイントとして悪用し、ドメイン評価フィルタによる検知を回避した。権限昇格ではImpacket、ADRecon、ADVipscanに加えカスタムのLDAP総当たりツールREALBREEZEを用い、CI/CD環境からハードコードされたパイプライン資格情報、APIキー、高特権のクラウドアクセストークンを窃取する。中核銀行システムに対して認証するために必要なmTLS資格情報と管理者証明書を、内部のhostsファイルや環境変数からboleto、cnab、remessa、webhook.*pix、instant.*payment等の検索語で探索する。横展開では乗っ取ったサービスアカウントによる不正なRDPセッションとSMB共有経由のコマンド実行、およびRust製トンネラーCOBALTSPINによる境界ファイアウォール越えを行う。永続化にはLIGHTPAINT、MILDFROST、KICKPLATE、BOATBEAMの多層冗長構成と、2025年に観測された悪性Kubernetesポッドによるクラウドシークレット窃取(dontpad[.]com等の公開メモサイトへ持ち出し)を用いる。防御弱体化としてSet-MpPreference -DisableRealtimeMonitoring $true を実行しWindows Defenderのリアルタイム監視を停止する。アクセス確立から24〜48時間以内に数百件規模の不正送金を2波にわたって実行し、少なくとも1件で数万米ドル規模の資産を窃取した。その後、横展開・権限昇格・決済APIとの通信の証跡を隠すため、侵害ホスト全体のイベントログを消去し、作成したディレクトリを削除する。",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; observation dates remain separate from report dates.",
+            "counterevidence": []
+          }
+        ],
+        "malware": [
+          {
+            "id": "malware--cobaltspin",
+            "name": "COBALTSPIN"
+          },
+          {
+            "id": "malware--lightpaint",
+            "name": "LIGHTPAINT"
+          },
+          {
+            "id": "malware--mildfrost",
+            "name": "MILDFROST"
+          },
+          {
+            "id": "malware--kickplate",
+            "name": "KICKPLATE"
+          },
+          {
+            "id": "malware--boatbeam",
+            "name": "BOATBEAM"
+          },
+          {
+            "id": "malware--realbreeze",
+            "name": "REALBREEZE"
+          }
+        ],
+        "targets": [
+          {
+            "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+            "name": "政府・行政"
+          },
+          {
+            "id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+            "name": "金融"
+          },
+          {
+            "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
+            "name": "小売・ホスピタリティ"
+          }
+        ],
+        "victims": [
+          {
+            "id": "victim--activity-rule--c411e51fdcb57e39118a",
+            "name": "aggregate"
+          }
+        ],
+        "techniques": [
+          {
+            "id": "ttp--activity-rule--2b2ebbe6402eafb1b795",
+            "technique_id": "T1110.003",
+            "name": "Password Spraying"
+          }
+        ]
+      }
+    ],
+    "malware_usage": [
+      {
+        "id": "malware--boatbeam",
+        "name": "BOATBEAM",
+        "aliases": [],
+        "types": [
+          "Golang",
+          "backdoor"
+        ],
+        "description": "443番ポートで偽のIIS HTTPSサーバーを起動するGo製バックドア。正規のWebサーバーを装ってバックドア通信を隠蔽し、特定のセッションCookieを受信したときにのみC2機能を有効化する。冗長化アーキテクチャの最終層を成す。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--704dcba5f8fdbbc0ccd8c69d",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used BOATBEAM.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+            "activity_name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--cobaltspin",
+        "name": "COBALTSPIN",
+        "aliases": [],
+        "types": [
+          "Rust",
+          "network tunneler",
+          "reverse SOCKS5 proxy"
+        ],
+        "description": "Rustで書かれた軽量かつ回避性の高いネットワークトンネラー。WebSocket上にリバースSOCKS5プロキシを確立し、C2と内部標的の間でトラフィックを双方向に中継する。分割された金融ネットワークを移動し、内部ファイアウォールを越えた横展開を、検知を誘発しがちな常駐型の永続化機構なしで実現する。金融API基盤への持続的なネットワークアクセスの維持に用いられる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "Mandiantのフォレンジック証跡では、COBALTSPINと侵害した特権アカウントを用いて中核金融アプリケーションへアクセスしたとされる。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--cd22c606a6d87bb9a8092bc5",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used COBALTSPIN.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+            "activity_name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--kickplate",
+        "name": "KICKPLATE",
+        "aliases": [],
+        "types": [
+          "Nim",
+          "backdoor",
+          "loader"
+        ],
+        "description": "Windows Update Health Toolsを騙るNim製のカスタムバックドア。補助ペイロードの継続的な配信とホストレベルの永続化の強制に用いられる。SOCKS5トンネラーの制御、レジストリのスタートアップキーの更新、Windowsサービスの秘密裏な変更を行うコマンドを実行する。SYSTEM権限で動作するschtasks.exeによる標準の計画タスクと、ユーザーのスタートアップフォルダー内の悪性ショートカット(.lnk)の改変を補助的に併用する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--b5b1c678405ff1f71386b3ff",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used KICKPLATE.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+            "activity_name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--lightpaint",
+        "name": "LIGHTPAINT",
+        "aliases": [],
+        "types": [
+          "Java",
+          "backdoor"
+        ],
+        "description": "SoftEther等の正規VPNを導入し自動永続化するよう構成するJava製のカスタムバックドア。導入したVPNマネージャーからの全通信を許可するWindows Defenderファイアウォールの受信規則をプログラム的に追加し、その後Windows Networking Vpn Plugin Platformのイベントログを消去して接続のフォレンジック痕跡を抹消する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "GTIGは2025年および2026年に複数のバックドアを特定したと記載している。個別の初観測日は明示されていない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--d7adcbf20581119127836370",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used LIGHTPAINT.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+            "activity_name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--mildfrost",
+        "name": "MILDFROST",
+        "aliases": [],
+        "types": [
+          "Java",
+          "JAR backdoor",
+          "DNS tunneling"
+        ],
+        "description": "JVMのプロセス空間内に潜む受動型のJava JARバックドア。DnsCommandBeacon.classなどのクラスを用いて低速かつ隠密なDNSトンネルを確立する。フォールバックC2としても機能し、委譲されたサブドメインを動的に問い合わせて指示を受け取り、C++実行ファイルの新しいコピーを取得する。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--53e8c216b0a7551ab86871fb",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used MILDFROST.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+            "activity_name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      },
+      {
+        "id": "malware--realbreeze",
+        "name": "REALBREEZE",
+        "aliases": [],
+        "types": [
+          "LDAP brute-forcer"
+        ],
+        "description": "カスタムのLDAP総当たりユーティリティ。可視性の低い環境で特権昇格に用いられる。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--f6988a38e0fea62a04f8d32f",
+            "category": "capability-malware",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used REALBREEZE.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [
+          {
+            "activity_id": "activity--breeze-comet--brazil-payment-fraud-2026",
+            "activity_name": "ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金",
+            "first_observed": {
+              "value": "2024-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+            },
+            "last_observed": {
+              "value": "2026-01-01T00:00:00Z",
+              "precision": "year",
+              "status": "known",
+              "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+            },
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ]
+          }
+        ],
+        "derived_first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "derived_last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "inferred",
+          "basis": "explicit-linked-activity-period"
+        },
+        "temporal_assessment": "activity-linked"
+      }
+    ],
+    "tool_usage": [
+      {
+        "id": "tool--breeze-comet--commodity-set",
+        "name": "汎用ツール群(XWORM、AnyDesk等のRMM、Impacket、ADRecon、ADVipscan、Netcat)",
+        "aliases": [],
+        "types": [
+          "commodity",
+          "dual-use"
+        ],
+        "description": "初期アクセスと偵察に用いる共有ツール群。XWORMはサイバー犯罪フォーラムで広く販売され、リークまたはクラック版も流通する汎用バックドアで、スタートアップショートカットの自動改変によって永続化するよう設定される。AnyDesk等のRMMはITサポートを装う音声通話で導入させる。Impacket、ADRecon、ADVipscanはGitHubから取得しPowerShellでメモリ上で実行することで防御回避を図る。",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "いずれも複数アクターが利用する共有ツールであり、これらの一致だけで他プロファイルと関連付けない。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--05a4f52ad1bf1c8090963b2d",
+            "category": "capability-tools",
+            "verification_status": "supported",
+            "confidence": "high",
+            "statement": "BREEZE COMET uses or has used 汎用ツール群(XWORM、AnyDesk等のRMM、Impacket、ADRecon、ADVipscan、Netcat).",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research.",
+            "counterevidence": []
+          }
+        ],
+        "activity_observations": [],
+        "derived_first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "derived_last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "temporal_assessment": "actor-level-only; no campaign-specific use date is asserted"
+      }
+    ],
+    "targets": [
+      {
+        "id": "target--targeting-audit--country--204596d5a0a7a4b3a19e",
+        "name": "ブラジル",
+        "description": "活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的・被害国として明示されている。",
+        "first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」"
+        },
+        "last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "[targeting-scope-audit-v1] 活動記述の標的文脈から構造化。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--2a2a842cc9caf42148385a3d",
+            "category": "target-country",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "BREEZE COMET targets country ブラジル.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "countrie",
+        "activity_refs": []
+      },
+      {
+        "id": "target--activity-rule--sector--210dddb39397dbe50e91",
+        "name": "政府・行政",
+        "description": "活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--f4591290d7acdff6e690e3ec",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "BREEZE COMET targets sector 政府・行政.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--breeze-comet--brazil-payment-fraud-2026"
+        ]
+      },
+      {
+        "id": "target--activity-rule--sector--4221b5fbb827488c6eaa",
+        "name": "金融",
+        "description": "活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--39973323db021b6945052ba0",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "BREEZE COMET targets sector 金融.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--breeze-comet--brazil-payment-fraud-2026"
+        ]
+      },
+      {
+        "id": "target--activity-rule--sector--570d54d1d21fab6540a9",
+        "name": "小売・ホスピタリティ",
+        "description": "活動「ブラジルの金融・小売・eコマースを標的とした決済システム操作による不正送金」の記述で標的として明示された産業。",
+        "first_observed": {
+          "value": "2024-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「Beginning in 2024 Mandiant investigated a string of compromises」; activity-period"
+        },
+        "last_observed": {
+          "value": "2026-01-01T00:00:00Z",
+          "precision": "year",
+          "status": "known",
+          "basis": "GTIG: 「In 2025 and 2026 Mandiant identified multiple backdoors that BREEZE COMET developed」; activity-period"
+        },
+        "confidence": "medium",
+        "evidence_refs": [
+          "source--breeze-comet--gtig-brazil-2026"
+        ],
+        "analyst_notes": "[activity-rule-v1] 標的文脈を伴う明示語から構造化。アクター帰属国と被害国は分離している。",
+        "claim_assessments": [
+          {
+            "claim_id": "claim--4b7b965e8d7a562c0ae514bc",
+            "category": "target-sector",
+            "verification_status": "supported",
+            "confidence": "medium",
+            "statement": "BREEZE COMET targets sector 小売・ホスピタリティ.",
+            "evidence_refs": [
+              "source--breeze-comet--gtig-brazil-2026"
+            ],
+            "verification_rationale": "Evidence tier=research; attribution and infrastructure geography are not targeting evidence.",
+            "counterevidence": []
+          }
+        ],
+        "category": "sector",
+        "activity_refs": [
+          "activity--breeze-comet--brazil-payment-fraud-2026"
+        ]
+      }
+    ]
+  },
+  "external_research_leads": {
+    "activities": [],
+    "incident_types": [],
+    "relationships": [],
+    "malware": [],
+    "tools": [
+      {
+        "software_id": "46a9ee9c-6c4a-4db9-9385-46d2617d8050",
+        "name": "SoftEther VPN",
+        "description": "SoftEther VPN is an open-source software project that, according to its GitHub page, is \"cross-platform multi-protocol VPN software\".<sup>[[GitHub SoftEtherVPN SoftEtherVPN_Stable](/references/f9d28db2-499f-407c-94d2-652b9ed5f928)]</sup> In August 2023, Microsoft researchers reported how Flax Typhoon, a nation-state-sponsored espionage group based in China, used SoftEther VPN as a key element of its command and control infrastructure during attacks on targets in Taiwan and elsewhere.<sup>[[Microsoft Flax Typhoon August 24 2023](/references/ec962b72-7b7f-4f7e-b6d6-7c5380b07201)]</sup>",
+        "software_type": [
+          "tool"
+        ],
+        "platforms": [
+          "macOS",
+          "Linux",
+          "Windows"
+        ],
+        "attack_id": "S3071",
+        "group_refs": [
+          "3444e9ed-d79a-4c53-90a2-a3bd2fcc3f7c",
+          "5a7121d1-1699-4878-afe3-b643b639fdf2",
+          "b39d8eae-12e3-4903-a387-4c31d16a73b2"
+        ],
+        "source_urls": [
+          "https://github.com/SoftEtherVPN/SoftEtherVPN_Stable",
+          "https://www.microsoft.com/en-us/security/blog/2023/08/24/flax-typhoon-using-legitimate-software-to-quietly-access-taiwanese-organizations/"
+        ],
+        "match_basis": "single-alias-intersection",
+        "match_confidence": "medium",
+        "verification_status": "partially-supported",
+        "temporal_assessment": "unknown; actor-level aggregation lead"
+      },
+      {
+        "software_id": "6b5f6eb4-4cdd-4383-8623-d1f7de486865",
+        "name": "TeamViewer",
+        "description": "TeamViewer is a tool used to enable remote connections to network devices for support and administration.<sup>[[U.S. CISA Understanding LockBit June 2023](/references/9c03b801-2ebe-4c7b-aa29-1b7a3625964a)]</sup>",
+        "software_type": [
+          "tool"
+        ],
+        "platforms": [
+          "Windows"
+        ],
+        "attack_id": "S3048",
+        "group_refs": [
+          "0060bb76-6713-4942-a4c0-d4ae01ec2866",
+          "3444e9ed-d79a-4c53-90a2-a3bd2fcc3f7c",
+          "37f317d8-02f0-43d4-8a7d-7a65ce8aadf1",
+          "3d77fb6c-cfb4-5563-b0be-7aa1ad535337",
+          "4a4641b1-7686-49da-8d83-00d8013f4b47",
+          "4bdc62c9-af6a-4377-8431-58a6f39235dd",
+          "58db02e6-d908-47c2-bc82-ed58ada61331",
+          "666ab5f0-3ef1-4e74-8a10-65c60a7d1acd",
+          "72d9bea7-9ca1-43e6-8702-2fb7fb1355de",
+          "a1a03a84-1d75-40a3-916e-d3e0d1068d11",
+          "a2add2a0-2b54-4623-a380-a9ad91f1f2dd",
+          "d0f3353c-fbdd-4bd5-8793-a42e1f319b59"
+        ],
+        "source_urls": [
+          "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-165a"
+        ],
+        "match_basis": "single-alias-intersection",
+        "match_confidence": "medium",
+        "verification_status": "partially-supported",
+        "temporal_assessment": "unknown; actor-level aggregation lead"
+      }
+    ],
+    "untyped_software": [],
+    "targets": {
+      "countries": [],
+      "victims_or_geographies": [],
+      "sectors": []
+    },
+    "motivations": [
+      {
+        "value": "Financial Gain",
+        "dataset_entry": "PLUMP SPIDER",
+        "source_urls": [],
+        "match_basis": "single-alias-intersection",
+        "match_confidence": "medium",
+        "verification_status": "partially-supported"
+      }
+    ],
+    "attribution": []
+  },
+  "claim_audit_counts": {
+    "unresolved": 1,
+    "supported": 26
+  },
+  "evidence_catalog": {
+    "source--breeze-comet--gtig-brazil-2026": {
+      "source_id": "source--breeze-comet--gtig-brazil-2026",
+      "path": "https://cloud.google.com/blog/topics/threat-intelligence/financially-motivated-threat-actor-breeze-comet-targets-brazil",
+      "title": "Financially Motivated Threat Actor BREEZE COMET Targets Brazil",
+      "publisher": "Google Threat Intelligence Group / Mandiant",
+      "published_at": {
+        "value": "2026-09-01T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "source-publication"
+      },
+      "language": "en",
+      "source_type": "vendor-technical-report",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "analyst_notes": "2026-09-02の一次情報源チェック(Google Threat Intelligence 公開一覧)で検知。tech-memo daily-newsには未収録。記事一覧が時系列順でないため、掲載11件すべての記事URLのJSON-LD datePublishedを機械照合して公開日2026-09-01を確定した。原文をHTTP 200で取得して確認済み。Mandiantが2024年以降の複数のインシデントレスポンス案件で直接観測した内容に基づく技術報告であるため reliability は high とする。"
+    },
+    "source--osint-misp-threat-actor": {
+      "source_id": "source--osint-misp-threat-actor",
+      "path": "actor_profile/reference/osint/misp-threat-actor.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/threat-actor.json",
+      "title": "MISP Galaxy Threat Actor",
+      "publisher": "MISP Project",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T11:55:34Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "9caebf1f7b9680ba0f1c6a0b0c18e5d250acc74fe2bdc9b127a54dc1759cba6f",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead"
+      ],
+      "analyst_notes": "Dataset version=350. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    "source--osint-misp-tidal-groups": {
+      "source_id": "source--osint-misp-tidal-groups",
+      "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+      "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+      "title": "MISP Galaxy TIDAL Groups",
+      "publisher": "MISP Project / TIDAL Cyber",
+      "published_at": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "accessed_at": "2026-09-20T13:47:46Z",
+      "language": "en",
+      "source_type": "structured-osint-aggregation",
+      "tlp": "TLP:CLEAR",
+      "reliability": "medium",
+      "sha256": "dd4c593e35d08d6b92fb769c0c4312419eb169b72de985171845476cc8ee84ea",
+      "actor_scope": "unknown",
+      "claims_supported": [
+        "identity-crosscheck",
+        "alias-lead",
+        "relationship-lead",
+        "activity-lead",
+        "malware-lead",
+        "targeting-lead",
+        "motivation-lead"
+      ],
+      "analyst_notes": "Dataset version=1. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    }
+  },
+  "research_gaps": [
+    "No canonical cross-actor relationship is structured."
+  ]
+}

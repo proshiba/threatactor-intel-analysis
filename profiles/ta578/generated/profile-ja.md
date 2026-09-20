@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta578`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | TA578 - G1038 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1038<br>https://www.bitsight.com/blog/latrodectus-are-you-coming-back<br>https://www.proofpoint.com/us/blog/threat-insight/latrodectus-spider-bytes-ice |
 | misp-mitre-intrusion-set | TA578 - G1038 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1038<br>https://www.bitsight.com/blog/latrodectus-are-you-coming-back<br>https://www.proofpoint.com/us/blog/threat-insight/latrodectus-spider-bytes-ice |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | TA578 | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -81,9 +82,9 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--bumblebee | Bumblebee | [Bumblebee](https://attack.mitre.org/software/S1039) is a custom loader written in C++ that has been used by multiple threat actors, including possible initial access brokers, to download and execute additional payloads since at least March 2022. [Bumblebee](https://attack.mitre.org/software/S1039) has been linked to ransomware operations including [Conti](https://attack.mitre.org/software/S0575), Quantum, and Mountlocker and derived its name from the appearance of "bumblebee" in the user-agent.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022)(Citation: Symantec Bumblebee June 2022)<br> | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--icedid | IcedID | [IcedID](https://attack.mitre.org/software/S0483) is a modular banking malware designed to steal financial information that has been observed in the wild since at least 2017.  [IcedID](https://attack.mitre.org/software/S0483)  has been downloaded by [Emotet](https://attack.mitre.org/software/S0367) in multiple campaigns.(Citation: IBM IcedID November 2017)(Citation: Juniper IcedID June 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--latrodectus | Latrodectus | [Latrodectus](https://attack.mitre.org/software/S1160) is a Windows malware downloader that has been used since at least 2023 to download and execute additional payloads and modules. [Latrodectus](https://attack.mitre.org/software/S1160) has most often been distributed through email campaigns, primarily by [TA577](https://attack.mitre.org/groups/G1037) and [TA578](https://attack.mitre.org/groups/G1038), and has infrastructure overlaps with historic [IcedID](https://attack.mitre.org/software/S0483) operations.(Citation: Latrodectus APR 2024)(Citation: Bleeping Computer Latrodectus April 2024)(Citation: Bitsight Latrodectus June 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--bumblebee | Bumblebee | [Bumblebee](https://attack.mitre.org/software/S1039) is a custom loader written in C++ that has been used by multiple threat actors, including possible initial access brokers, to download and execute additional payloads since at least March 2022. [Bumblebee](https://attack.mitre.org/software/S1039) has been linked to ransomware operations including [Conti](https://attack.mitre.org/software/S0575), Quantum, and Mountlocker and derived its name from the appearance of "bumblebee" in the user-agent.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022)(Citation: Symantec Bumblebee June 2022)<br> | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--icedid | IcedID | [IcedID](https://attack.mitre.org/software/S0483) is a modular banking malware designed to steal financial information that has been observed in the wild since at least 2017.  [IcedID](https://attack.mitre.org/software/S0483)  has been downloaded by [Emotet](https://attack.mitre.org/software/S0367) in multiple campaigns.(Citation: IBM IcedID November 2017)(Citation: Juniper IcedID June 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--latrodectus | Latrodectus | [Latrodectus](https://attack.mitre.org/software/S1160) is a Windows malware downloader that has been used since at least 2023 to download and execute additional payloads and modules. [Latrodectus](https://attack.mitre.org/software/S1160) has most often been distributed through email campaigns, primarily by [TA577](https://attack.mitre.org/groups/G1037) and [TA578](https://attack.mitre.org/groups/G1038), and has infrastructure overlaps with historic [IcedID](https://attack.mitre.org/software/S0483) operations.(Citation: Latrodectus APR 2024)(Citation: Bleeping Computer Latrodectus April 2024)(Citation: Bitsight Latrodectus June 2024) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -129,10 +130,10 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Execution | T1059.007 | JavaScript | [TA578](https://attack.mitre.org/groups/G1038) has used JavaScript files in malware execution chains.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | [TA578](https://attack.mitre.org/groups/G1038) has placed malicious links in contact forms on victim sites, often spoofing a copyright complaint, to redirect users to malicious file downloads.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.006 | Web Services | [TA578](https://attack.mitre.org/groups/G1038) has used Google Firebase to host malicious scripts.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1594 | Search Victim-Owned Websites | [TA578](https://attack.mitre.org/groups/G1038) has filled out contact forms on victims' websites to direct them to adversary-controlled URLs.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.007 | JavaScript | [TA578](https://attack.mitre.org/groups/G1038) has used JavaScript files in malware execution chains.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.001 | Malicious Link | [TA578](https://attack.mitre.org/groups/G1038) has placed malicious links in contact forms on victim sites, often spoofing a copyright complaint, to redirect users to malicious file downloads.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.006 | Web Services | [TA578](https://attack.mitre.org/groups/G1038) has used Google Firebase to host malicious scripts.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1594 | Search Victim-Owned Websites | [TA578](https://attack.mitre.org/groups/G1038) has filled out contact forms on victims' websites to direct them to adversary-controlled URLs.(Citation: Latrodectus APR 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -159,13 +160,15 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--ta578--3b6e0cf5d9740894 | ta578 |  | 不明 | actor_profile/evidence/ta578.csv | structured-data | TLP:CLEAR | 中 |
 | source--ta578--e4407c968b337540 | 20240405 |  | 2024-04-05 | parse-daily/.cache/tech-memo/daily-news/news/2024_04-06/20240405.md | repository-notes | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

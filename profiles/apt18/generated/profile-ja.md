@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt18`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:06Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,10 +18,10 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Dynamite Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Dynamite Panda | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | TA428 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| TG-0416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Threat Group-0416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| TG-0416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Threat Group-0416 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Wekby | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 
 ## 帰属
@@ -54,7 +54,7 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -71,6 +71,7 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | misp-mitre-enterprise-intrusion-set | APT18 - G0026 | mitre-external-id | 高 |  | http://www.secureworks.com/resources/blog/where-you-at-indicators-of-lateral-movement-using-at-exe-on-windows-7-systems/<br>https://attack.mitre.org/groups/G0026<br>https://www.anomali.com/blog/evasive-maneuvers-the-wekby-group-attempts-to-evade-analysis-via-custom-rop |
 | misp-mitre-intrusion-set | APT18 - G0026 | mitre-external-id | 高 |  | http://www.secureworks.com/resources/blog/where-you-at-indicators-of-lateral-movement-using-at-exe-on-windows-7-systems/<br>https://attack.mitre.org/groups/G0026<br>https://www.anomali.com/blog/evasive-maneuvers-the-wekby-group-attempts-to-evade-analysis-via-custom-rop |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | APT18 | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -91,18 +92,18 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--hcdloader | hcdLoader | [hcdLoader](https://attack.mitre.org/software/S0071) is a remote access tool (RAT) that has been used by [APT18](https://attack.mitre.org/groups/G0026). (Citation: Dell Lateral Movement) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--pisloader | Pisloader | [Pisloader](https://attack.mitre.org/software/S0124) is a malware family that is notable due to its use of DNS as a C2 protocol as well as its use of anti-analysis tactics. It has been used by [APT18](https://attack.mitre.org/groups/G0026) and is similar to another malware family, [HTTPBrowser](https://attack.mitre.org/software/S0070), that has been used by the group. (Citation: Palo Alto DNS Requests) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--httpbrowser | HTTPBrowser | [HTTPBrowser](https://attack.mitre.org/software/S0070) is malware that has been used by several threat groups. (Citation: ThreatStream Evasion Analysis) (Citation: Dell TG-3390) It is believed to be of Chinese origin. (Citation: ThreatConnect Anthem) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--tokencontrol | TokenControl | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--hcdloader | hcdLoader | [hcdLoader](https://attack.mitre.org/software/S0071) is a remote access tool (RAT) that has been used by [APT18](https://attack.mitre.org/groups/G0026). (Citation: Dell Lateral Movement) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--httpbrowser | HTTPBrowser | [HTTPBrowser](https://attack.mitre.org/software/S0070) is malware that has been used by several threat groups. (Citation: ThreatStream Evasion Analysis) (Citation: Dell TG-3390) It is believed to be of Chinese origin. (Citation: ThreatConnect Anthem) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--pisloader | Pisloader | [Pisloader](https://attack.mitre.org/software/S0124) is a malware family that is notable due to its use of DNS as a C2 protocol as well as its use of anti-analysis tactics. It has been used by [APT18](https://attack.mitre.org/groups/G0026) and is similar to another malware family, [HTTPBrowser](https://attack.mitre.org/software/S0070), that has been used by the group. (Citation: Palo Alto DNS Requests) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--tmanger | TManger | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--tokencontrol | TokenControl | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--cmd | cmd | [cmd](https://attack.mitre.org/software/S0106) is the Windows command-line interpreter that can be used to interact with systems and execute other processes and utilities. (Citation: TechNet Cmd)<br><br>Cmd.exe contains native functionality to perform many operations to interact with the system, including listing files in a directory (e.g., <code>dir</code> (Citation: TechNet Dir)), deleting files (e.g., <code>del</code> (Citation: TechNet Del)), and copying files (e.g., <code>copy</code> (Citation: TechNet Copy)). | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--cmd | cmd | [cmd](https://attack.mitre.org/software/S0106) is the Windows command-line interpreter that can be used to interact with systems and execute other processes and utilities. (Citation: TechNet Cmd)<br><br>Cmd.exe contains native functionality to perform many operations to interact with the system, including listing files in a directory (e.g., <code>dir</code> (Citation: TechNet Dir)), deleting files (e.g., <code>del</code> (Citation: TechNet Del)), and copying files (e.g., <code>copy</code> (Citation: TechNet Copy)). | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -135,12 +136,12 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
 | countries | 米国 | 構造化OSINTの被害国フィールドでAPT18の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | 政府・行政 | [APT18](https://attack.mitre.org/groups/G0026) is a threat group that has operated since at least 2009 and has targeted a range of industries, including technology, manufacturing, human rights groups, government, and medical. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 製造・産業 | [APT18](https://attack.mitre.org/groups/G0026) is a threat group that has operated since at least 2009 and has targeted a range of industries, including technology, manufacturing, human rights groups, government, and medical. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 非営利・市民社会 | [APT18](https://attack.mitre.org/groups/G0026) is a threat group that has operated since at least 2009 and has targeted a range of industries, including technology, manufacturing, human rights groups, government, and medical. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 政府・行政 | [APT18](https://attack.mitre.org/groups/G0026) is a threat group that has operated since at least 2009 and has targeted a range of industries, including technology, manufacturing, human rights groups, government, and medical. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 製造・産業 | [APT18](https://attack.mitre.org/groups/G0026) is a threat group that has operated since at least 2009 and has targeted a range of industries, including technology, manufacturing, human rights groups, government, and medical. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 非営利・市民社会 | [APT18](https://attack.mitre.org/groups/G0026) is a threat group that has operated since at least 2009 and has targeted a range of industries, including technology, manufacturing, human rights groups, government, and medical. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| sectors | Healthcare | Targeting text indicates the Healthcare sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | sectors | Manufacturing | Targeting text indicates the Manufacturing sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Technology | Targeting text indicates the Technology sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -156,19 +157,19 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.013 | Encrypted/Encoded File | [APT18](https://attack.mitre.org/groups/G0026) obfuscates strings in the payload.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [APT18](https://attack.mitre.org/groups/G0026) obfuscates strings in the payload.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Execution | T1047 | Windows Management Instrumentation | summary/2023/Modern-Asian-APT-groups-TTPs_report_eng.pdf {"page": 98} TA428 ol remote systems. Windows Management Instrumentation T1047 Examples of procedures Example 1 One of the most widespread variants of WMI use is running a process on a remote machine using wmic.exe: Use of wmic.exe by the TA428 group: wmic /node:<ip> /user:<domain>\<username> /password:<password> process call create "cmd /c systeminfo >$te |  |  | 不明 | 不明 | 中 | `source--apt18--6bf111e59271820a` |
-| Execution, Persistence, Privilege Escalation | T1053.002 | At | [APT18](https://attack.mitre.org/groups/G0026) actors used the native [at](https://attack.mitre.org/software/S0110) Windows task scheduler tool to use scheduled tasks for execution on a victim network.(Citation: Dell Lateral Movement) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | [APT18](https://attack.mitre.org/groups/G0026) uses cmd.exe to execute commands on the victim’s machine.(Citation: PaloAlto DNS Requests May 2016)(Citation: Anomali Evasive Maneuvers July 2015) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | [APT18](https://attack.mitre.org/groups/G0026) actors deleted tools and batch files from victim systems.(Citation: Dell Lateral Movement) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | [APT18](https://attack.mitre.org/groups/G0026) uses HTTP for C2 communications.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.004 | DNS | [APT18](https://attack.mitre.org/groups/G0026) uses DNS for C2 communications.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [APT18](https://attack.mitre.org/groups/G0026) actors leverage legitimate credentials to log into external remote services.(Citation: RSA2017 Detect and Respond Adair) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [APT18](https://attack.mitre.org/groups/G0026) can collect system information from the victim’s machine.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | [APT18](https://attack.mitre.org/groups/G0026) can list files information for specific directories.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | [APT18](https://attack.mitre.org/groups/G0026) can upload a file to the victim’s machine.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence | T1133 | External Remote Services | [APT18](https://attack.mitre.org/groups/G0026) actors leverage legitimate credentials to log into external remote services.(Citation: RSA2017 Detect and Respond Adair) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [APT18](https://attack.mitre.org/groups/G0026) establishes persistence via the <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> key.(Citation: Anomali Evasive Maneuvers July 2015)(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution, Persistence, Privilege Escalation | T1053.002 | At | [APT18](https://attack.mitre.org/groups/G0026) actors used the native [at](https://attack.mitre.org/software/S0110) Windows task scheduler tool to use scheduled tasks for execution on a victim network.(Citation: Dell Lateral Movement) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.003 | Windows Command Shell | [APT18](https://attack.mitre.org/groups/G0026) uses cmd.exe to execute commands on the victim’s machine.(Citation: PaloAlto DNS Requests May 2016)(Citation: Anomali Evasive Maneuvers July 2015) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.004 | File Deletion | [APT18](https://attack.mitre.org/groups/G0026) actors deleted tools and batch files from victim systems.(Citation: Dell Lateral Movement) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.001 | Web Protocols | [APT18](https://attack.mitre.org/groups/G0026) uses HTTP for C2 communications.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.004 | DNS | [APT18](https://attack.mitre.org/groups/G0026) uses DNS for C2 communications.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078 | Valid Accounts | [APT18](https://attack.mitre.org/groups/G0026) actors leverage legitimate credentials to log into external remote services.(Citation: RSA2017 Detect and Respond Adair) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [APT18](https://attack.mitre.org/groups/G0026) can collect system information from the victim’s machine.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1083 | File and Directory Discovery | [APT18](https://attack.mitre.org/groups/G0026) can list files information for specific directories.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | [APT18](https://attack.mitre.org/groups/G0026) can upload a file to the victim’s machine.(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence | T1133 | External Remote Services | [APT18](https://attack.mitre.org/groups/G0026) actors leverage legitimate credentials to log into external remote services.(Citation: RSA2017 Detect and Respond Adair) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [APT18](https://attack.mitre.org/groups/G0026) establishes persistence via the <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code> key.(Citation: Anomali Evasive Maneuvers July 2015)(Citation: PaloAlto DNS Requests May 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -195,7 +196,6 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--apt18--6bf111e59271820a | apt18 |  | 不明 | actor_profile/evidence/apt18.csv | structured-data | TLP:CLEAR | 中 |
 | source--apt18--da821fe1c3ca05f4 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
@@ -220,6 +220,9 @@ APT18の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

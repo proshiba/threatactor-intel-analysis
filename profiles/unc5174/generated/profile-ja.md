@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc5174`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | UNC5174 | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -176,6 +177,7 @@ Aliasなし
 | source--unc5174--0aff60e0dfc1afff | UNC5174 |  | 不明 | UNC****/UNC5174/UNC5174.pdf | report | TLP:CLEAR | 中 |
 | source--unc5174--5b9b5bec8a63548a | readme |  | 不明 | UNC****/UNC5174/readme.md | repository-notes | TLP:CLEAR | 中 |
 | source--unc5174--626245061e5734b4 | VShell |  | 不明 | UNC****/UNC5174/VShell.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

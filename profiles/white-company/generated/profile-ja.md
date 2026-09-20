@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--white-company`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| White Company | MITRE ATT&CK / corpus curation | exact | 高 | `source--mitre-attack-19-1` | The corpus name without the leading article refers to the same Operation Shaheen actor canonicalized by MITRE as The White Company. |
+| White Company | MITRE ATT&CK / corpus curation | exact | 高 | `source--mitre-attack-19-2` | The corpus name without the leading article refers to the same Operation Shaheen actor canonicalized by MITRE as The White Company. |
 
 ## 帰属
 
@@ -33,11 +33,13 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
-確認された関係なし
+| 対象 | 関係 | 説明 | 確度 | 証拠 |
+|---|---|---|---|---|
+| Windshift | overlaps-with | 共有alias: The White Company | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
 
 ## ダイヤモンドモデル
 
@@ -52,7 +54,7 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -67,6 +69,7 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 | misp-mitre-enterprise-intrusion-set | The White Company - G0089 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0089<br>https://www.cylance.com/content/dam/cylance-web/en-us/resources/knowledge-center/resource-library/reports/WhiteCompanyOperationShaheenReport.pdf?_ga=2.161661948.1943296560.1555683782-1066572390.1555511517 |
 | misp-mitre-intrusion-set | The White Company - G0089 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0089<br>https://www.cylance.com/content/dam/cylance-web/en-us/resources/knowledge-center/resource-library/reports/WhiteCompanyOperationShaheenReport.pdf?_ga=2.161661948.1943296560.1555683782-1066572390.1555511517 |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | The White Company | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -85,8 +88,8 @@ The White Companyの標準化プロファイル。リポジトリ内の専用資
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--netwire | NETWIRE | [NETWIRE](https://attack.mitre.org/software/S0198) is a publicly available, multiplatform remote administration tool (RAT) that has been used by criminal and APT groups since at least 2012.(Citation: FireEye APT33 Sept 2017)(Citation: McAfee Netwire Mar 2015)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--revenge-rat | Revenge RAT | [Revenge RAT](https://attack.mitre.org/software/S0379) is a freely available remote access tool written in .NET (C#).(Citation: Cylance Shaheen Nov 2018)(Citation: Cofense RevengeRAT Feb 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--netwire | NETWIRE | [NETWIRE](https://attack.mitre.org/software/S0198) is a publicly available, multiplatform remote administration tool (RAT) that has been used by criminal and APT groups since at least 2012.(Citation: FireEye APT33 Sept 2017)(Citation: McAfee Netwire Mar 2015)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--revenge-rat | Revenge RAT | [Revenge RAT](https://attack.mitre.org/software/S0379) is a freely available remote access tool written in .NET (C#).(Citation: Cylance Shaheen Nov 2018)(Citation: Cofense RevengeRAT Feb 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -128,10 +131,10 @@ InPage zero-day; Malicious MDM
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| countries | パキスタン | From 2017 through 2018, the group led an espionage campaign called Operation Shaheen targeting government and military organizations in Pakistan.(Citation: Cylance Shaheen Nov 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | パキスタン | From 2017 through 2018, the group led an espionage campaign called Operation Shaheen targeting government and military organizations in Pakistan.(Citation: Cylance Shaheen Nov 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
 | regions | 中東 | レビュー済みアクターマッピングの標的欄に記録された中東を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | 防衛・軍事 | From 2017 through 2018, the group led an espionage campaign called Operation Shaheen targeting government and military organizations in Pakistan.(Citation: Cylance Shaheen Nov 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 政府・行政 | From 2017 through 2018, the group led an espionage campaign called Operation Shaheen targeting government and military organizations in Pakistan.(Citation: Cylance Shaheen Nov 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | From 2017 through 2018, the group led an espionage campaign called Operation Shaheen targeting government and military organizations in Pakistan.(Citation: Cylance Shaheen Nov 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 政府・行政 | From 2017 through 2018, the group led an espionage campaign called Operation Shaheen targeting government and military organizations in Pakistan.(Citation: Cylance Shaheen Nov 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | Nonprofit and Civil Society | Targeting text indicates the Nonprofit and Civil Society sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
@@ -144,13 +147,13 @@ InPage zero-day; Malicious MDM
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.002 | Software Packing | [The White Company](https://attack.mitre.org/groups/G0089) has obfuscated their payloads through packing.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | [The White Company](https://attack.mitre.org/groups/G0089) has the ability to delete its malware entirely from the target system.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1124 | System Time Discovery | [The White Company](https://attack.mitre.org/groups/G0089) has checked the current date on the victim system.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1203 | Exploitation for Client Execution |  [The White Company](https://attack.mitre.org/groups/G0089) has taken advantage of a known vulnerability in Microsoft Word (CVE 2012-0158) to execute code.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [The White Company](https://attack.mitre.org/groups/G0089) has used phishing lure documents that trick users into opening them and infecting their computers.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1518.001 | Security Software Discovery | [The White Company](https://attack.mitre.org/groups/G0089) has checked for specific antivirus products on the target’s computer, including Kaspersky, Quick Heal, AVG, BitDefender, Avira, Sophos, Avast!, and ESET.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [The White Company](https://attack.mitre.org/groups/G0089) has sent phishing emails with malicious Microsoft Word attachments to victims.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.002 | Software Packing | [The White Company](https://attack.mitre.org/groups/G0089) has obfuscated their payloads through packing.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.004 | File Deletion | [The White Company](https://attack.mitre.org/groups/G0089) has the ability to delete its malware entirely from the target system.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1124 | System Time Discovery | [The White Company](https://attack.mitre.org/groups/G0089) has checked the current date on the victim system.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1203 | Exploitation for Client Execution |  [The White Company](https://attack.mitre.org/groups/G0089) has taken advantage of a known vulnerability in Microsoft Word (CVE 2012-0158) to execute code.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [The White Company](https://attack.mitre.org/groups/G0089) has used phishing lure documents that trick users into opening them and infecting their computers.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1518.001 | Security Software Discovery | [The White Company](https://attack.mitre.org/groups/G0089) has checked for specific antivirus products on the target’s computer, including Kaspersky, Quick Heal, AVG, BitDefender, Avira, Sophos, Avast!, and ESET.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [The White Company](https://attack.mitre.org/groups/G0089) has sent phishing emails with malicious Microsoft Word attachments to victims.(Citation: Cylance Shaheen Nov 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -177,7 +180,6 @@ InPage zero-day; Malicious MDM
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--white-company--6f73b0791a1ce588 | README |  | 不明 | WhiteCompany/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--white-company--9a5333b9a4ad40b4 | WhiteCompanyOperationShaheenReport |  | 不明 | WhiteCompany/WhiteCompanyOperationShaheenReport.pdf | report | TLP:CLEAR | 中 |
@@ -186,6 +188,9 @@ InPage zero-day; Malicious MDM
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

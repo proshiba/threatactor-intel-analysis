@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--cyberav3ngers`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -58,7 +58,7 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -74,6 +74,7 @@ CyberAv3ngersの標準化プロファイル。リポジトリ内の専用資料1
 | misp-mitre-enterprise-intrusion-set | CyberAv3ngers - G1027 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1027<br>https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | CyberAv3ngers | canonical-name | 高 | IR |  |
 
 ### 関係性候補（未統合）
 
@@ -195,6 +196,7 @@ TTPなし
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

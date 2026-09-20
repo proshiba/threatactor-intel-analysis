@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt17`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:41Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -20,7 +20,7 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 |---|---|---|---|---|---|
 | Aurora Panda | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Burning Umbrella | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
-| Deputy Dog | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Deputy Dog | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 | Group 8 | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Hidden Lynx | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
 | Tailgater Team | catalog | overlapping | 中 | `source--actor-mapping-workbook` | Alias scope must be reviewed before publication. |
@@ -42,8 +42,8 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Winnti Group | related-to | The group has heavily targeted the gaming industry, but it has also expanded the scope of its targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) Some reporting suggests a number of other groups, including [Axiom](https://attack.mitre.org/groups/G0001), [APT17](https://attack.mitre.org/groups/G0025), and [Ke3chang](https://attack.mitre.org/groups/G0004), are closely linked to [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: 401 TRG Winnti Umbrella May 2018) | 中 | `source--mitre-attack-19-1` |
-| Axiom | overlaps-with | 共有alias: APT17, Tailgater Team | 低 | `source--mitre-attack-19-1`, `source--actor-mapping-workbook` |
+| Axiom | overlaps-with | 共有alias: APT17, Tailgater Team | 低 | `source--mitre-attack-19-2`, `source--actor-mapping-workbook` |
+| Winnti Group | related-to | The group has heavily targeted the gaming industry, but it has also expanded the scope of its targeting.(Citation: Kaspersky Winnti April 2013)(Citation: Kaspersky Winnti June 2015)(Citation: Novetta Winnti April 2015) Some reporting suggests a number of other groups, including [Axiom](https://attack.mitre.org/groups/G0001), [APT17](https://attack.mitre.org/groups/G0025), and [Ke3chang](https://attack.mitre.org/groups/G0004), are closely linked to [Winnti Group](https://attack.mitre.org/groups/G0044).(Citation: 401 TRG Winnti Umbrella May 2018) | 中 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -58,7 +58,7 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -74,6 +74,7 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | misp-mitre-enterprise-intrusion-set | APT17 - G0025 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17_Report.pdf |
 | misp-mitre-intrusion-set | APT17 - G0025 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0025<br>https://www2.fireeye.com/rs/fireye/images/APT17_Report.pdf |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | APT17 | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -95,7 +96,7 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | malware--backdoor-boda | Backdoor.Boda | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--backdoor-moudoor | Backdoor.Moudoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--backdoor-vasport | Backdoor.Vasport | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--blackcoffee | BLACKCOFFEE | [BLACKCOFFEE](https://attack.mitre.org/software/S0069) is malware that has been used by several Chinese groups since at least 2013. (Citation: FireEye APT17) (Citation: FireEye Periscope March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--blackcoffee | BLACKCOFFEE | [BLACKCOFFEE](https://attack.mitre.org/software/S0069) is malware that has been used by several Chinese groups since at least 2013. (Citation: FireEye APT17) (Citation: FireEye Periscope March 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--china-chopper | China Chopper | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--destroyrat | DestroyRAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--joy-rat | Joy RAT | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -187,8 +188,8 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Collection | T1113 | Screen Capture | 9002 RATはネットワークトラフィックの監視やスクリーンショットの取得が可能。 |  | activity--daily-ff68f3f6443d5bdb594f | 不明 | 不明 | 中 | `source--daily-b39a4a815a12eb24617a` |
-| Resource Development | T1583.006 | Web Services | [APT17](https://attack.mitre.org/groups/G0025) has created profile pages in Microsoft TechNet that were used as C2 infrastructure.(Citation: FireEye APT17) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585 | Establish Accounts | [APT17](https://attack.mitre.org/groups/G0025) has created and cultivated profile pages in Microsoft TechNet. To make profile pages appear more legitimate, [APT17](https://attack.mitre.org/groups/G0025) has created biographical sections and posted in forum threads.(Citation: FireEye APT17) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Resource Development | T1583.006 | Web Services | [APT17](https://attack.mitre.org/groups/G0025) has created profile pages in Microsoft TechNet that were used as C2 infrastructure.(Citation: FireEye APT17) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585 | Establish Accounts | [APT17](https://attack.mitre.org/groups/G0025) has created and cultivated profile pages in Microsoft TechNet. To make profile pages appear more legitimate, [APT17](https://attack.mitre.org/groups/G0025) has created biographical sections and posted in forum threads.(Citation: FireEye APT17) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -224,7 +225,6 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--apt17--abca3bc5432bb7d1 | Threat Group Cards |  | 不明 | Threat Group Cards.pdf | report | TLP:CLEAR | 中 |
 | source--apt17--c840c17920520b18 | china cyber report |  | 不明 | International Strategic/China/china-cyber-report.pdf | report | TLP:CLEAR | 中 |
 | source--daily-b39a4a815a12eb24617a | 中国関連APT17、イタリア企業を9002 RATマルウェアで標的に | thehackernews.com | 2024-07-18 | https://thehackernews.com/2024/07/china-linked-apt17-targets-italian.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
@@ -233,6 +233,9 @@ APT17の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

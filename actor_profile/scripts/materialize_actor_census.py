@@ -121,6 +121,14 @@ def identity_curation_rule(curation: dict[str, Any], canonical_name: str) -> dic
     return curation.get("identities", {}).get(normalized_name(canonical_name), {})
 
 
+def has_trusted_attack_reference(item: dict[str, Any]) -> bool:
+    """Return whether a reference-only identity has an official ATT&CK anchor."""
+    return any(
+        str(ref.get("source", "")).startswith("MITRE ") and ref.get("external_id")
+        for ref in item.get("reference_evidence", [])
+    )
+
+
 def write_evidence_csv(
     path: Path,
     mentions: list[dict[str, Any]],
@@ -189,7 +197,8 @@ def main() -> int:
     catalog["actors"] = [
         item
         for item in catalog["actors"]
-        if item.get("profile_basis") != "actor-scoped-census-evidence"
+        if item.get("profile_basis")
+        not in {"actor-scoped-census-evidence", "official-attack-reference"}
     ]
     existing_slugs = {item["slug"] for item in catalog["actors"]}
     used_slugs = set(existing_slugs)
@@ -224,15 +233,6 @@ def main() -> int:
                 }
             )
             continue
-        if not item.get("mentions"):
-            rejected.append(
-                {
-                    "actor_id": item["actor_id"],
-                    "canonical_name": item["canonical_name"],
-                    "reason": "reference-only-no-corpus-mention",
-                }
-            )
-            continue
         if item.get("catalog_slugs"):
             represented.append(
                 {
@@ -243,6 +243,16 @@ def main() -> int:
                 }
             )
             continue
+        if not item.get("mentions"):
+            if not has_trusted_attack_reference(item):
+                rejected.append(
+                    {
+                        "actor_id": item["actor_id"],
+                        "canonical_name": item["canonical_name"],
+                        "reason": "reference-only-no-corpus-mention",
+                    }
+                )
+                continue
         sources = {ref["source"] for ref in item.get("reference_evidence", [])}
         if sources == {"corpus-pattern-discovery"} and not VALID_DISCOVERED_ID.fullmatch(
             item["canonical_name"]
@@ -280,8 +290,11 @@ def main() -> int:
         else:
             slug = unique_slug(canonical_name, item.get("mitre_group_id"), used_slugs)
         relative_evidence = (Path(args.evidence_root) / f"{slug}.csv").as_posix()
-        evidence_path = root / relative_evidence
-        write_evidence_csv(evidence_path, item["mentions"])
+        source_dirs: list[str] = []
+        if item["mentions"]:
+            evidence_path = root / relative_evidence
+            write_evidence_csv(evidence_path, item["mentions"])
+            source_dirs.append(relative_evidence)
         original_sources = sorted(
             {mention["source_path"] for mention in item["mentions"]}
         )
@@ -298,11 +311,15 @@ def main() -> int:
             "slug": slug,
             "name": canonical_name,
             "aliases": aliases,
-            "source_dirs": [relative_evidence],
+            "source_dirs": source_dirs,
             "reported_sources": original_sources,
             "census_actor_ids": item["actor_ids"],
             "actor_types": rule.get("actor_types", actor_types(item["origins"])),
-            "profile_basis": "actor-scoped-census-evidence",
+            "profile_basis": (
+                "actor-scoped-census-evidence"
+                if item["mentions"]
+                else "official-attack-reference"
+            ),
         }
         if rule:
             entry["curation"] = {
@@ -371,8 +388,9 @@ def main() -> int:
     catalog["actors"].sort(key=lambda item: item["slug"])
     catalog["description"] = (
         "Corpus catalog covering every evidence-backed actor identity named in "
-        "the original report corpus. Actor-scoped evidence files prevent broad "
-        "multi-actor reports from contaminating IOC attribution."
+        "the report corpus plus current official ATT&CK Groups. Actor-scoped "
+        "evidence files prevent broad multi-actor reports from contaminating "
+        "IOC attribution; reference-only ATT&CK entries remain explicitly marked."
     )
     write_json_atomic(catalog_path, catalog)
     decisions = {
@@ -401,7 +419,10 @@ def main() -> int:
                 "name": entry["name"],
                 "census_actor_ids": entry["census_actor_ids"],
                 "reported_source_count": len(entry["reported_sources"]),
-                "evidence_path": entry["source_dirs"][0],
+                "evidence_path": (
+                    entry["source_dirs"][0] if entry["source_dirs"] else None
+                ),
+                "profile_basis": entry["profile_basis"],
             }
             for entry in added_entries
         ],

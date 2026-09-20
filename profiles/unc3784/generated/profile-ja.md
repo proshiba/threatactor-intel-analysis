@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc3784`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -47,8 +47,8 @@ Aliasなし
 
 ## OSINTクロスチェック
 
-- 判定: `no-match`
-- 調査日時: 2026-09-20T12:23:31Z
+- 判定: `matched`
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | UNC3784 | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -153,6 +154,7 @@ TTPなし
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--unc3784--d6ba2a1d6af51866 | unc3784 |  | 不明 | actor_profile/evidence/unc3784.csv | structured-data | TLP:CLEAR | 中 |
 | source--unc3784--548ad02f5e82f99e | M Trends 2023 Report MANDIANT SPECIAL REPORT |  | 2023 | summary/2023/M-Trends 2023 Report MANDIANT SPECIAL REPORT.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

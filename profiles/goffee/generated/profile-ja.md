@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--goffee`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -53,7 +53,7 @@ GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭から�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -68,6 +68,7 @@ GOFFEE(BI.ZONE 呼称: Paper Werewolf)は、少なくとも2022年初頭から�
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

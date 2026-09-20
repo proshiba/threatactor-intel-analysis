@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--breeze-comet`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,7 +54,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -69,6 +69,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | PLUMP SPIDER | single-alias-intersection | 中 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -190,6 +191,7 @@ GTIGはBREEZE COMETを金銭目的(financially motivated)の脅威アクター�
 |---|---|---|---|---|---|---|---|
 | source--breeze-comet--gtig-brazil-2026 | Financially Motivated Threat Actor BREEZE COMET Targets Brazil | Google Threat Intelligence Group / Mandiant | 2026-09-01 | https://cloud.google.com/blog/topics/threat-intelligence/financially-motivated-threat-actor-breeze-comet-targets-brazil | vendor-technical-report | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

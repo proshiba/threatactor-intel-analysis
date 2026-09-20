@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt42`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -34,13 +34,14 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Charming Kitten | overlaps-with | While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. | 高 | `source--mitre-attack-19-1` |
+| Charming Kitten | distinct-from | While there are behavior and software overlaps between [Magic Hound](https://attack.mitre.org/groups/G0059) and [APT42](https://attack.mitre.org/groups/G1044), they appear to be distinct entities and are tracked as separate entities by their originating vendor. | 高 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -55,7 +56,7 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -70,6 +71,7 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | misp-mitre-enterprise-intrusion-set | APT42 - G1044 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1044<br>https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations<br>https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf |
 | misp-mitre-intrusion-set | APT42 - G1044 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1044<br>https://cloud.google.com/blog/topics/threat-intelligence/untangling-iran-apt42-operations<br>https://services.google.com/fh/files/misc/apt42-crooked-charms-cons-and-compromises.pdf |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | APT42 | canonical-name | 高 | IR |  |
 
 ### 関係性候補（未統合）
 
@@ -91,8 +93,8 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--nicecurl | NICECURL | [NICECURL](https://attack.mitre.org/software/S1192) is a VBScript-based backdoor used by [APT42](https://attack.mitre.org/groups/G1044) to download additional modules.(Citation: Mandiant APT42-untangling) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--tamecat | TAMECAT | [TAMECAT](https://attack.mitre.org/software/S1193) is a malware that is used by [APT42](https://attack.mitre.org/groups/G1044) to execute PowerShell or C# content.(Citation: Mandiant APT42-untangling)  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--nicecurl | NICECURL | [NICECURL](https://attack.mitre.org/software/S1192) is a VBScript-based backdoor used by [APT42](https://attack.mitre.org/groups/G1044) to download additional modules.(Citation: Mandiant APT42-untangling) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--tamecat | TAMECAT | [TAMECAT](https://attack.mitre.org/software/S1193) is a malware that is used by [APT42](https://attack.mitre.org/groups/G1044) to execute PowerShell or C# content.(Citation: Mandiant APT42-untangling)  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -148,7 +150,7 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | countries | ロシア | 活動「Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-2cce580b31452f445118` |
 | countries | 米国 | 構造化OSINTの被害国フィールドでAPT42の標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | 英国 | 構造化OSINTの被害国フィールドでAPT42の標的・被害国として英国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | MITRE ATT&CKのGroup概要でAPT42の標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でAPT42の標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | regions | 東欧 | ウクライナ、ブルガリア、ロシアで確認された標的・被害事例を東欧として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-2cce580b31452f445118`, `source--target-audit-etda-threat-group-cards` |
 | regions | 欧州 | 構造化OSINTの被害地域フィールドでAPT42の標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | sectors | 防衛・軍事 | 活動「Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告」の記述で標的として明示された産業。 | 不明 | 不明 | 中 | `source--daily-e07d98b8e6a40e245f21` |
@@ -169,39 +171,39 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Discovery | T1016 | System Network Configuration Discovery | [APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect network information.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [APT42](https://attack.mitre.org/groups/G1044) has masqueraded the VINETHORN payload as a VPN application.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | [APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to query anti-virus products.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [APT42](https://attack.mitre.org/groups/G1044) has used scheduled tasks for persistence.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056 | Input Capture | [APT42](https://attack.mitre.org/groups/G1044) has used credential harvesting websites.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.001 | Keylogging | [APT42](https://attack.mitre.org/groups/G1044) has used custom malware to log keystrokes.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | [APT42](https://attack.mitre.org/groups/G1044) has downloaded and executed PowerShell payloads.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | [APT42](https://attack.mitre.org/groups/G1044) has used a VBScript to query anti-virus products.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070 | Indicator Removal | [APT42](https://attack.mitre.org/groups/G1044) has cleared Chrome browser history.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.008 | Clear Mailbox Data | [APT42](https://attack.mitre.org/groups/G1044) has deleted login notification emails and has cleared the Sent folder to cover their tracks.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | [APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect system information.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1087.001 | Local Account | [APT42](https://attack.mitre.org/groups/G1044) has used the PowerShell-based POWERPOST script to collect local account names from the victim machine.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1102 | Web Service | [APT42](https://attack.mitre.org/groups/G1044) has used various links, such as links with typo-squatted domains, links to Dropbox files and links to fake Google sites, in spearphishing operations.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)(Citation: TAG APT42)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1111 | Multi-Factor Authentication Interception | [APT42](https://attack.mitre.org/groups/G1044) has intercepted SMS-based one-time passwords and has set up two-factor authentication.(Citation: Mandiant APT42-charms) Additionally, [APT42](https://attack.mitre.org/groups/G1044) has used cloned or fake websites to capture MFA tokens.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment, Persistence | T1112 | Modify Registry | [APT42](https://attack.mitre.org/groups/G1044) has modified Registry keys to maintain persistence.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1113 | Screen Capture | [APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to take screenshots.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1132.001 | Standard Encoding |  [APT42](https://attack.mitre.org/groups/G1044) has encoded C2 traffic with Base64.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016 | System Network Configuration Discovery | [APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect network information.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [APT42](https://attack.mitre.org/groups/G1044) has masqueraded the VINETHORN payload as a VPN application.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1047 | Windows Management Instrumentation | [APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to query anti-virus products.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [APT42](https://attack.mitre.org/groups/G1044) has used scheduled tasks for persistence.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1056 | Input Capture | [APT42](https://attack.mitre.org/groups/G1044) has used credential harvesting websites.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1056.001 | Keylogging | [APT42](https://attack.mitre.org/groups/G1044) has used custom malware to log keystrokes.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.001 | PowerShell | [APT42](https://attack.mitre.org/groups/G1044) has downloaded and executed PowerShell payloads.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.005 | Visual Basic | [APT42](https://attack.mitre.org/groups/G1044) has used a VBScript to query anti-virus products.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070 | Indicator Removal | [APT42](https://attack.mitre.org/groups/G1044) has cleared Chrome browser history.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.008 | Clear Mailbox Data | [APT42](https://attack.mitre.org/groups/G1044) has deleted login notification emails and has cleared the Sent folder to cover their tracks.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.001 | Web Protocols | [APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to collect system information.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1087.001 | Local Account | [APT42](https://attack.mitre.org/groups/G1044) has used the PowerShell-based POWERPOST script to collect local account names from the victim machine.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1102 | Web Service | [APT42](https://attack.mitre.org/groups/G1044) has used various links, such as links with typo-squatted domains, links to Dropbox files and links to fake Google sites, in spearphishing operations.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)(Citation: TAG APT42)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1111 | Multi-Factor Authentication Interception | [APT42](https://attack.mitre.org/groups/G1044) has intercepted SMS-based one-time passwords and has set up two-factor authentication.(Citation: Mandiant APT42-charms) Additionally, [APT42](https://attack.mitre.org/groups/G1044) has used cloned or fake websites to capture MFA tokens.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment, Persistence | T1112 | Modify Registry | [APT42](https://attack.mitre.org/groups/G1044) has modified Registry keys to maintain persistence.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1113 | Screen Capture | [APT42](https://attack.mitre.org/groups/G1044) has used malware, such as GHAMBAR and POWERPOST, to take screenshots.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1132.001 | Standard Encoding |  [APT42](https://attack.mitre.org/groups/G1044) has encoded C2 traffic with Base64.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Initial Access | T1190 | Exploit Public-Facing Application | summary/2023/2022_APT_TRENDS_INSIGHT_REPORT.pdf {"page": 7} APT42 后门 NA 10 T1190 Windows MSDT 远程代码执行漏洞 CVE-2022-30190 系统漏洞 攻击公开暴露应用并植入后门 NA 11 T1190 Windows 脚本语言远程代码执行漏洞 CVE-2022-41128 系统漏洞 攻击公开暴露应用并植入后门 APT37 12 T1190 Apache log4j2 远程代码执行漏洞 CVE-2021-44228 应用程序漏洞 攻击公开暴露应用并植入后门 Lazarus/APT42 13 T1190 Atlassian Conﬂuence Server 远程代码执行漏洞 CVE-2022-26134 应用程序漏洞 攻 |  |  | 不明 | 不明 | 中 | `source--apt42--ecc18e15a462bb18` |
-| Discovery | T1518.001 | Security Software Discovery | [APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to check for anti-virus products.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1530 | Data from Cloud Storage | [APT42](https://attack.mitre.org/groups/G1044) has collected data from Microsoft 365 environments.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)    |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1539 | Steal Web Session Cookie | [APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal login and cookie data from common browsers.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547 | Boot or Logon Autostart Execution | [APT42](https://attack.mitre.org/groups/G1044) has modified the Registry to maintain persistence.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1555.003 | Credentials from Web Browsers | [APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal credentials.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | [APT42](https://attack.mitre.org/groups/G1044) has sent spearphishing emails containing malicious links.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling)(Citation: TAG APT42)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.002 | Asymmetric Cryptography | [APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | [APT42](https://attack.mitre.org/groups/G1044) has registered domains, several of which masqueraded as news outlets and login services, for use in operations.(Citation: Mandiant APT42-charms)(Citation: TAG APT42)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.003 | Virtual Private Server | [APT42](https://attack.mitre.org/groups/G1044) has used anonymized infrastructure and Virtual Private Servers (VPSs) to interact with the victim’s environment.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.002 | Email Accounts | [APT42](https://attack.mitre.org/groups/G1044) has created email accounts to use in spearphishing operations.(Citation: TAG APT42) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | [APT42](https://attack.mitre.org/groups/G1044) has used built-in features in the Microsoft 365 environment and publicly available tools to avoid detection.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | [APT42](https://attack.mitre.org/groups/G1044) has used its infrastructure for C2 and for staging the VINETHORN payload, which masqueraded as a VPN application.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1682 | Query Public AI Services | APT42 has leveraged LLMs to search for official emails to build target lists, and conduct reconnaissance on potential business partners.(Citation: GTIG AI Threat Tracker) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1684.001 | Impersonation | [APT42](https://attack.mitre.org/groups/G1044) has impersonated legitimate people in phishing emails to gain credentials.(Citation: Mandiant APT42-charms)(Citation: TAG APT42)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1518.001 | Security Software Discovery | [APT42](https://attack.mitre.org/groups/G1044) has used Windows Management Instrumentation (WMI) to check for anti-virus products.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1530 | Data from Cloud Storage | [APT42](https://attack.mitre.org/groups/G1044) has collected data from Microsoft 365 environments.(Citation: Mandiant APT42-untangling)(Citation: Mandiant APT42-charms)    |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1539 | Steal Web Session Cookie | [APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal login and cookie data from common browsers.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1547 | Boot or Logon Autostart Execution | [APT42](https://attack.mitre.org/groups/G1044) has modified the Registry to maintain persistence.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1555.003 | Credentials from Web Browsers | [APT42](https://attack.mitre.org/groups/G1044) has used custom malware to steal credentials.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.002 | Spearphishing Link | [APT42](https://attack.mitre.org/groups/G1044) has sent spearphishing emails containing malicious links.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling)(Citation: TAG APT42)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1573.002 | Asymmetric Cryptography | [APT42](https://attack.mitre.org/groups/G1044) has used tools such as [NICECURL](https://attack.mitre.org/software/S1192) with command and control communication taking place over HTTPS.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.001 | Domains | [APT42](https://attack.mitre.org/groups/G1044) has registered domains, several of which masqueraded as news outlets and login services, for use in operations.(Citation: Mandiant APT42-charms)(Citation: TAG APT42)   |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.003 | Virtual Private Server | [APT42](https://attack.mitre.org/groups/G1044) has used anonymized infrastructure and Virtual Private Servers (VPSs) to interact with the victim’s environment.(Citation: Mandiant APT42-charms)(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585.002 | Email Accounts | [APT42](https://attack.mitre.org/groups/G1044) has created email accounts to use in spearphishing operations.(Citation: TAG APT42) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.002 | Tool | [APT42](https://attack.mitre.org/groups/G1044) has used built-in features in the Microsoft 365 environment and publicly available tools to avoid detection.(Citation: Mandiant APT42-untangling)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1608.001 | Upload Malware | [APT42](https://attack.mitre.org/groups/G1044) has used its infrastructure for C2 and for staging the VINETHORN payload, which masqueraded as a VPN application.(Citation: Mandiant APT42-charms)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1682 | Query Public AI Services | APT42 has leveraged LLMs to search for official emails to build target lists, and conduct reconnaissance on potential business partners.(Citation: GTIG AI Threat Tracker) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1684.001 | Impersonation | [APT42](https://attack.mitre.org/groups/G1044) has impersonated legitimate people in phishing emails to gain credentials.(Citation: Mandiant APT42-charms)(Citation: TAG APT42)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -255,7 +257,6 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--daily-0917cfe45c04f45174f4 | イランのハッカーがジャーナリストになりすまし、バックドアマルウェアを配布 | bleepingcomputer.com | 2024-05-06 | https://www.bleepingcomputer.com/news/security/iranian-hackers-pose-as-journalists-to-push-backdoor-malware/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-2cce580b31452f445118 | Google、ハッカーがGemini AIを攻撃の全段階で悪用していると指摘 | bleepingcomputer.com | 2026-02-13 | https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-e07d98b8e6a40e245f21 | Google、57以上の国家支援型脅威グループがAIをサイバー作戦に利用していると報告 | thehackernews.com | 2025-01-31 | https://thehackernews.com/2025/01/google-over-57-nation-state-threat.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
@@ -265,6 +266,9 @@ APT42の標準化プロファイル。リポジトリ内の専用資料1件とMI
 | source--gtig-unified-actor-naming-2026 | Updated Cyber Threat Actor Naming System | Google Threat Intelligence Group | 2026-07-24 | https://cloud.google.com/blog/topics/threat-intelligence/updated-cyber-threat-actor-naming-system | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-gtig-threat-actor-naming | Google Threat Intelligence Group Unified Threat Actor Naming | Google Threat Intelligence Group | 不明 | actor_profile/reference/osint/gtig-threat-actor-naming.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

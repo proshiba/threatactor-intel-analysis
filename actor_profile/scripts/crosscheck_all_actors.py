@@ -101,6 +101,14 @@ DATASETS = {
         "reliability": "medium",
         "kind": "actor",
     },
+    "misp-tidal-groups": {
+        "path": "actor_profile/reference/osint/misp-tidal-groups.json",
+        "title": "MISP Galaxy TIDAL Groups",
+        "publisher": "MISP Project / TIDAL Cyber",
+        "url": "https://github.com/MISP/misp-galaxy/blob/main/clusters/tidal-groups.json",
+        "reliability": "medium",
+        "kind": "actor",
+    },
     "misp-malpedia": {
         "path": "actor_profile/reference/osint/misp-malpedia.json",
         "title": "MISP Galaxy Malpedia",
@@ -244,7 +252,15 @@ def source_object(
         "reliability": descriptor["reliability"],
         "sha256": manifest["sha256"],
         "actor_scope": "unknown",
-        "claims_supported": ["identity-crosscheck", "alias-lead", "relationship-lead"],
+        "claims_supported": [
+            "identity-crosscheck",
+            "alias-lead",
+            "relationship-lead",
+            "activity-lead",
+            "malware-lead",
+            "targeting-lead",
+            "motivation-lead",
+        ],
         "analyst_notes": (
             f"Dataset version={manifest['version']}. "
             + (
@@ -311,6 +327,9 @@ def normalize_dataset(
                         "first-seen": row.get("first-seen"),
                         "observed-sectors": row.get("observed-sectors", []),
                         "observed-countries": row.get("observed-countries", []),
+                        "operations": row.get("operations", []),
+                        "tools": row.get("tools", []),
+                        "sponsor": row.get("sponsor"),
                         "last-card-change": row.get("last-card-change"),
                     },
                 }
@@ -351,6 +370,36 @@ def normalize_dataset(
             }
         )
     return {"version": None, "values": values}
+
+
+def entry_research_data(entry: dict[str, Any]) -> dict[str, Any]:
+    """Retain non-authoritative research leads without promoting them.
+
+    These fields come from aggregation datasets.  They are useful for finding
+    original reports, but remain separate from canonical profile assertions.
+    """
+    meta = entry.get("meta", {})
+    allowed = (
+        "first-seen",
+        "motivation",
+        "observed_motivations",
+        "observed-sectors",
+        "target_categories",
+        "observed-countries",
+        "cfr-suspected-victims",
+        "cfr-target-category",
+        "cfr-type-of-incident",
+        "targeted-sector",
+        "tools",
+        "operations",
+        "sponsor",
+        "last-card-change",
+    )
+    return {
+        key: meta[key]
+        for key in allowed
+        if key in meta and meta[key] not in (None, "", [])
+    }
 
 
 def match_actor(
@@ -411,6 +460,7 @@ def match_actor(
                 "description": entry.get("description", ""),
                 "refs": entry.get("meta", {}).get("refs", []),
                 "related": entry.get("related", []),
+                "research_data": entry_research_data(entry),
             }
         )
     return matches

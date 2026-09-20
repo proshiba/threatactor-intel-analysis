@@ -48,7 +48,7 @@ ESET states that the real identity of the actor behind GravityRAT remains unknow
 ## OSINTクロスチェック
 
 - 判定: `no-match`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ ESET states that the real identity of the actor behind GravityRAT remains unknow
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

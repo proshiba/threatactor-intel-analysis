@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--platinum`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -66,6 +66,7 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 | misp-mitre-enterprise-intrusion-set | PLATINUM - G0068 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0068<br>https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf |
 | misp-mitre-intrusion-set | PLATINUM - G0068 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0068<br>https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | PLATINUM | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -84,11 +85,11 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--adbupd | adbupd | [adbupd](https://attack.mitre.org/software/S0202) is a backdoor used by [PLATINUM](https://attack.mitre.org/groups/G0068) that is similar to [Dipsind](https://attack.mitre.org/software/S0200). (Citation: Microsoft PLATINUM April 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--jpin | JPIN | [JPIN](https://attack.mitre.org/software/S0201) is a custom-built backdoor family used by [PLATINUM](https://attack.mitre.org/groups/G0068). Evidence suggests developers of [JPIN](https://attack.mitre.org/software/S0201) and [Dipsind](https://attack.mitre.org/software/S0200) code bases were related in some way. (Citation: Microsoft PLATINUM April 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--dipsind | Dipsind | [Dipsind](https://attack.mitre.org/software/S0200) is a malware family of backdoors that appear to be used exclusively by [PLATINUM](https://attack.mitre.org/groups/G0068). (Citation: Microsoft PLATINUM April 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--hotpatching-techniques | Hotpatching techniques | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--adbupd | adbupd | [adbupd](https://attack.mitre.org/software/S0202) is a backdoor used by [PLATINUM](https://attack.mitre.org/groups/G0068) that is similar to [Dipsind](https://attack.mitre.org/software/S0200). (Citation: Microsoft PLATINUM April 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--cve-2015-2545 | CVE-2015-2545 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--dipsind | Dipsind | [Dipsind](https://attack.mitre.org/software/S0200) is a malware family of backdoors that appear to be used exclusively by [PLATINUM](https://attack.mitre.org/groups/G0068). (Citation: Microsoft PLATINUM April 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--hotpatching-techniques | Hotpatching techniques | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--jpin | JPIN | [JPIN](https://attack.mitre.org/software/S0201) is a custom-built backdoor family used by [PLATINUM](https://attack.mitre.org/groups/G0068). Evidence suggests developers of [JPIN](https://attack.mitre.org/software/S0201) and [Dipsind](https://attack.mitre.org/software/S0200) code bases were related in some way. (Citation: Microsoft PLATINUM April 2016) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -133,7 +134,7 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 | countries | 中国 | 構造化OSINTの被害国フィールドでPLATINUMの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 東南アジア | レビュー済みアクターマッピングの標的欄に記録された東南アジアを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
 | sectors | Defense | Targeting text indicates the Defense sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 | sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
@@ -146,17 +147,17 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | [PLATINUM](https://attack.mitre.org/groups/G0068) has used keyloggers that are also capable of dumping credentials.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036 | Masquerading | [PLATINUM](https://attack.mitre.org/groups/G0068) has renamed rar.exe to avoid detection.(Citation: Twitter ItsReallyNick Platinum Masquerade) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | [PLATINUM](https://attack.mitre.org/groups/G0068) has used various methods of process injection including hot patching.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.001 | Keylogging | [PLATINUM](https://attack.mitre.org/groups/G0068) has used several different keyloggers.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.004 | Credential API Hooking | [PLATINUM](https://attack.mitre.org/groups/G0068) is capable of using Windows hook interfaces for information gathering such as credential access.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [PLATINUM](https://attack.mitre.org/groups/G0068) has leveraged a zero-day vulnerability to escalate privileges.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1095 | Non-Application Layer Protocol | [PLATINUM](https://attack.mitre.org/groups/G0068) has used the Intel® Active Management Technology (AMT) Serial-over-LAN (SOL) channel for command and control.(Citation: Microsoft PLATINUM June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | [PLATINUM](https://attack.mitre.org/groups/G0068) has transferred files using the Intel® Active Management Technology (AMT) Serial-over-LAN (SOL) channel.(Citation: Microsoft PLATINUM June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1189 | Drive-by Compromise | [PLATINUM](https://attack.mitre.org/groups/G0068) has sometimes used drive-by attacks against vulnerable browser plugins.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [PLATINUM](https://attack.mitre.org/groups/G0068) has attempted to get users to open malicious files by sending spearphishing emails with attachments to victims.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [PLATINUM](https://attack.mitre.org/groups/G0068) has sent spearphishing emails with attachments to victims as its primary initial access vector.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [PLATINUM](https://attack.mitre.org/groups/G0068) has used keyloggers that are also capable of dumping credentials.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036 | Masquerading | [PLATINUM](https://attack.mitre.org/groups/G0068) has renamed rar.exe to avoid detection.(Citation: Twitter ItsReallyNick Platinum Masquerade) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [PLATINUM](https://attack.mitre.org/groups/G0068) has used various methods of process injection including hot patching.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1056.001 | Keylogging | [PLATINUM](https://attack.mitre.org/groups/G0068) has used several different keyloggers.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1056.004 | Credential API Hooking | [PLATINUM](https://attack.mitre.org/groups/G0068) is capable of using Windows hook interfaces for information gathering such as credential access.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [PLATINUM](https://attack.mitre.org/groups/G0068) has leveraged a zero-day vulnerability to escalate privileges.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1095 | Non-Application Layer Protocol | [PLATINUM](https://attack.mitre.org/groups/G0068) has used the Intel® Active Management Technology (AMT) Serial-over-LAN (SOL) channel for command and control.(Citation: Microsoft PLATINUM June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | [PLATINUM](https://attack.mitre.org/groups/G0068) has transferred files using the Intel® Active Management Technology (AMT) Serial-over-LAN (SOL) channel.(Citation: Microsoft PLATINUM June 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1189 | Drive-by Compromise | [PLATINUM](https://attack.mitre.org/groups/G0068) has sometimes used drive-by attacks against vulnerable browser plugins.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [PLATINUM](https://attack.mitre.org/groups/G0068) has attempted to get users to open malicious files by sending spearphishing emails with attachments to victims.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [PLATINUM](https://attack.mitre.org/groups/G0068) has sent spearphishing emails with attachments to victims as its primary initial access vector.(Citation: Microsoft PLATINUM April 2016) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -183,7 +184,6 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--platinum--73dede210c019d97 | DeadlyKiss TAAR |  | 不明 | DeadlyKiss/DeadlyKiss_TAAR.pdf | report | TLP:CLEAR | 中 |
 | source--platinum--7f95adb5887fc5e9 | README |  | 不明 | DeadlyKiss/README.MD | repository-notes | TLP:CLEAR | 中 |
@@ -194,6 +194,9 @@ PLATINUMの標準化プロファイル。リポジトリ内の専用資料2件�
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

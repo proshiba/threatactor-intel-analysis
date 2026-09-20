@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--jewelbug`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,7 +55,7 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -71,6 +71,7 @@ Symantecは「Jewelbug (aka Earth Alux, REF7707, CL-STA-0049), a China-based APT
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

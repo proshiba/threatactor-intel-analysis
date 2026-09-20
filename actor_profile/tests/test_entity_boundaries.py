@@ -42,12 +42,13 @@ class EntityBoundaryTests(unittest.TestCase):
             self.assertNotIn(duplicate, by_slug)
             self.assertIn(canonical, by_slug)
             self.assertIn(alias, by_slug[canonical].get("aliases", []))
-            self.assertTrue(
-                any(
-                    "--merged--" in path
-                    for path in by_slug[canonical].get("source_dirs", [])
-                )
-            )
+            # MITRE-ID-backed census identities are now consolidated directly
+            # into the canonical evidence CSV.  Older catalog generations used
+            # a separate ``--merged--`` CSV, so require preserved evidence
+            # provenance rather than that implementation-specific filename.
+            self.assertTrue(by_slug[canonical].get("source_dirs", []))
+            self.assertTrue(by_slug[canonical].get("reported_sources", []))
+            self.assertTrue(by_slug[canonical].get("census_actor_ids", []))
         self.assertNotIn("APT30", by_slug["lotus-blossom"]["aliases"])
 
     def test_legacy_software_actor_profiles_are_deprecated(self) -> None:
@@ -237,6 +238,9 @@ class EntityBoundaryTests(unittest.TestCase):
             "apt38": ("TEMP.Hermit", "temp-hermit"),
             "naikon": ("APT30", "apt30"),
             "dragonfly": ("ALLANITE", "allanite"),
+            "lotus-blossom": ("Thrip", "thrip"),
+            "mustang-panda": ("LuminousMoth", "luminousmoth"),
+            "ember-bear": ("Saint Bear", "saint-bear"),
         }
         for broad_slug, (separate_name, separate_slug) in boundaries.items():
             self.assertIn(separate_slug, by_slug)
@@ -248,6 +252,39 @@ class EntityBoundaryTests(unittest.TestCase):
                     for item in self.load_profile(broad_slug)["actor"]["aliases"]
                 },
             )
+
+        expected_ids = {
+            "lotus-blossom": "G0030",
+            "thrip": "G0076",
+            "mustang-panda": "G0129",
+            "luminousmoth": "G1014",
+            "ember-bear": "G1003",
+            "saint-bear": "G1031",
+        }
+        for slug, group_id in expected_ids.items():
+            self.assertEqual(by_slug[slug].get("mitre_group_id"), group_id)
+
+        saint_relationships = {
+            (item["target_actor"], item["relationship_type"])
+            for item in self.load_profile("saint-bear")["relationships"]
+        }
+        self.assertIn(("Ember Bear", "distinct-from"), saint_relationships)
+
+        overlap_index = json.loads(
+            (ROOT / "actor_profile" / "actor-alias-overlaps.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        overlap_pairs = {
+            frozenset((item["source_actor_slug"], item["target_actor_slug"]))
+            for item in overlap_index["relationships"]
+        }
+        for pair in (
+            ("lotus-blossom", "thrip"),
+            ("mustang-panda", "luminousmoth"),
+            ("ember-bear", "saint-bear"),
+        ):
+            self.assertNotIn(frozenset(pair), overlap_pairs)
 
     def test_gtig_2026_names_are_materialized_on_supported_profiles(self) -> None:
         expected = {

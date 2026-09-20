@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--uac-0098`
 - 状態: draft
-- 更新日時: 2026-07-29T23:12:01Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -47,8 +47,8 @@ Aliasなし
 
 ## OSINTクロスチェック
 
-- 判定: `no-match`
-- 調査日時: 2026-09-20T12:23:31Z
+- 判定: `matched`
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | UAC-0098 | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -154,6 +155,7 @@ TTPなし
 | source--uac-0098--66f036700885251c | uac 0098 |  | 不明 | actor_profile/evidence/uac-0098.csv | structured-data | TLP:CLEAR | 中 |
 | source--uac-0098--f83e15cbc5107e24 | google fog of war research report |  | 不明 | International Strategic/Russia/google_fog_of_war_research_report.pdf | report | TLP:CLEAR | 中 |
 | source--uac-0098--e0623920b1a4559e | cybercrime multifaceted national security threat |  | 不明 | summary/2025/cybercrime-multifaceted-national-security-threat.pdf | report | TLP:CLEAR | 中 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

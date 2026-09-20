@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--costaricto`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | CostaRicto - G0132 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0132<br>https://blogs.blackberry.com/en/2020/11/the-costaricto-campaign-cyber-espionage-outsourced |
 | misp-mitre-intrusion-set | CostaRicto - G0132 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0132<br>https://blogs.blackberry.com/en/2020/11/the-costaricto-campaign-cyber-espionage-outsourced |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -119,7 +120,7 @@ Aliasなし
 |---|---|---|---|---|---|---|
 | countries | インド | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてインドが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オランダ | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてオランダが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | オーストラリア | [CostaRicto](https://attack.mitre.org/groups/G0132)'s targets, a large portion of which are financial institutions, are scattered across Europe, the Americas, Asia, Australia, and Africa, with a large concentration in South Asia.(Citation: BlackBerry CostaRicto November 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | オーストラリア | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてオーストラリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | オーストリア | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてオーストリアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | シンガポール | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてシンガポールが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | チェコ | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてチェコが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
@@ -130,11 +131,8 @@ Aliasなし
 | countries | モザンビーク | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国としてモザンビークが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 中国 | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国として中国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 米国 | 構造化OSINTの被害国フィールドでCostaRictoの標的・被害国として米国が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アジア | MITRE ATT&CKのGroup概要でCostaRictoの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| regions | アフリカ | MITRE ATT&CKのGroup概要でCostaRictoの標的範囲としてアフリカが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
 | regions | 南アジア | インド、バングラデシュで確認された標的・被害事例を南アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 欧州 | MITRE ATT&CKのGroup概要でCostaRictoの標的範囲として欧州が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
-| sectors | 金融 | [CostaRicto](https://attack.mitre.org/groups/G0132)'s targets, a large portion of which are financial institutions, are scattered across Europe, the Americas, Asia, Australia, and Africa, with a large concentration in South Asia.(Citation: BlackBerry CostaRicto November 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 欧州 | オランダ、オーストリア、チェコ、フランス、ポルトガルで確認された標的・被害事例を欧州として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -171,7 +169,7 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--costaricto--727de558d1ca38a2 | costaricto |  | 不明 | actor_profile/evidence/costaricto.csv | structured-data | TLP:CLEAR | 中 |
 | source--costaricto--ed284c947c7bc92d | hunting cobaltstrike beacons in the dark |  | 不明 | APT-hunting/hunting-cobaltstrike-beacons-in-the-dark.pdf | report | TLP:CLEAR | 中 |

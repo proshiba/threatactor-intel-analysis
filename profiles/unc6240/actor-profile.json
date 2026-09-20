@@ -4,7 +4,7 @@
   "name": "UNC6240",
   "status": "draft",
   "created_at": "2026-07-25T11:07:07Z",
-  "updated_at": "2026-09-20T12:23:31Z",
+  "updated_at": "2026-09-20T13:48:01Z",
   "languages": [
     "ja"
   ],
@@ -17,6 +17,7 @@
         "scope": "overlapping",
         "confidence": "high",
         "evidence_refs": [
+          "source--mitre-attack-19-2",
           "source--mitre-attack-g1057"
         ],
         "analyst_notes": "Official MITRE ATT&CK associated-group name for G1057."
@@ -28,6 +29,7 @@
         "confidence": "high",
         "evidence_refs": [
           "source--gtig-adversarial-ai-2026",
+          "source--mitre-attack-19-2",
           "source--mitre-attack-g1057"
         ],
         "analyst_notes": "GTIGは原文で「UNC6240 (also known as ShinyHunters), a financially motivated threat cluster specializing in high-volume software-as-a-service (SaaS) data exfiltration and extortion operations」と明示的に同一視している。UNC指定子の命名主体自身による対応付けであり確度はhighとする。ただしscopeはexactとしない。同じMandiant/GTIGが2026-02-02報告で「UNC6661/UNC6671/UNC6240(ShinyHunters)」と述べ、UNC6661とUNC6671が侵入・窃取、UNC6240が恐喝を担う分業として整理しているのに対し、報道や被害組織の文脈で用いられる「ShinyHunters」は侵入から恐喝までの作戦全体を指すことが多く、公称の指す範囲がUNC6240より広い。OSINT_RULESの「新aliasは既存クラスターとのスコープをexactと断定しない」に従いoverlappingとする。 Official MITRE ATT&CK associated-group name for G1057."
@@ -59,7 +61,7 @@
       "basis": "not-stated"
     },
     "active": "unknown",
-    "description": "",
+    "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) is a cyber criminal collective that has been active since at least 2019 operating under the ShinyCorp persona. [ShinyHunters](https://attack.mitre.org/groups/G1057) has targeted multiple industries and geographic regions gathering legitimate credentials and personally identifiable information (PII) for resale or extortion of victims. [ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004). Public reporting has mentioned a variety of names for operations [ShinyHunters](https://attack.mitre.org/groups/G1057) members have reportedly conducted with members of other groups, including “Scattered Lapsus Hunters,” “Scattered Lapsus Shiny Hunters,” and “SLSH.”(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)(Citation: SOCRadar_ShinyHunters_Mar2024)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: Intel471_SH_Aug2021)(Citation: FBI_SHLMS_May2026)(Citation: Google_SHOracle_Jun2026)(Citation: Mandiant_SHDataTheft_Jan2026)(Citation: Google Salesforce JUN 2025)",
     "analyst_notes": ""
   },
   "attribution": {
@@ -72,7 +74,54 @@
     "analyst_notes": ""
   },
   "motivations": [],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationship_id": "relationship--unc6240--mitre--a7c1228a3be8977a",
+      "target_actor": "Scattered Spider",
+      "relationship_type": "related-to",
+      "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004).",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "MITRE relationship extraction: status=partially-supported; A narrative cross-reference establishes a relationship but does not by itself prove exact actor identity or identical scope."
+    },
+    {
+      "relationship_id": "relationship--unc6240--mitre--8339f8d73388f080",
+      "target_actor": "LAPSUS$",
+      "relationship_type": "related-to",
+      "description": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has been associated with the broader collective called The Community, also known as The Com whose members have also included [Scattered Spider](https://attack.mitre.org/groups/G1015) and [LAPSUS$](https://attack.mitre.org/groups/G1004).",
+      "confidence": "medium",
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "MITRE relationship extraction: status=partially-supported; A narrative cross-reference establishes a relationship but does not by itself prove exact actor identity or identical scope."
+    }
+  ],
   "diamond_model": {
     "adversary": "",
     "capability": "",
@@ -83,7 +132,38 @@
   },
   "capabilities": {
     "malware": [],
-    "tools": [],
+    "tools": [
+      {
+        "id": "tool--tor",
+        "name": "Tor",
+        "aliases": [
+          "Tor"
+        ],
+        "types": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "description": "[Tor](https://attack.mitre.org/software/S0183) is a software suite and network that provides increased anonymity on the Internet. It creates a multi-hop proxy network and utilizes multilayer encryption to protect both the message and routing information. [Tor](https://attack.mitre.org/software/S0183) utilizes \"Onion Routing,\" in which messages are encrypted with multiple layers of encryption; at each step in the proxy network, the topmost layer is decrypted and the contents forwarded on to the next node until it reaches its destination. (Citation: Dingledine Tor The Second-Generation Onion Router)",
+        "first_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "last_observed": {
+          "value": null,
+          "precision": "unknown",
+          "status": "unknown",
+          "basis": "not-stated"
+        },
+        "confidence": "high",
+        "evidence_refs": [
+          "source--mitre-attack-19-2"
+        ],
+        "analyst_notes": ""
+      }
+    ],
     "infrastructure": [],
     "delivery_formats": [],
     "vulnerabilities": [],
@@ -311,7 +391,1250 @@
     "selection_logic": "標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。",
     "analyst_notes": "No structured target statement was available in the mapping workbook. [targeting-scope-audit-v1] 地域は明示記述または複数の個別国から導出する。導出地域は域内全体への攻撃を意味しない。OSINT集約値は中確度とし、ベンダー間のアクター集合境界差を保持する。"
   },
-  "ttps": [],
+  "ttps": [
+    {
+      "ttp_id": "ttp--t1016--general",
+      "tactic": "Discovery",
+      "technique_id": "T1016",
+      "technique_name": "System Network Configuration Discovery",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has collected machine names and IP addresses by parsing the process scheduler configuration file psappsrv.cfg.(Citation: Google_SHOracle_Jun2026)    ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1018--general",
+      "tactic": "Discovery",
+      "technique_id": "T1018",
+      "technique_name": "Remote System Discovery",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has enumerated the internal subnet using ` cat /etc/hosts | grep -E \"[redacted_victim_string]\"`.(Citation: Google_SHOracle_Jun2026)    ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1036-005--general",
+      "tactic": "Stealth",
+      "technique_id": "T1036.005",
+      "technique_name": "Match Legitimate Resource Name or Location",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has disguised MeshCentral agent binaries as Microsoft Azure services, e.g. meshagent32-azure-ops.exe, meshagent64-azure-ops.exe, and meshagent64-v2.exe.(Citation: Google_SHOracle_Jun2026) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1059-007--general",
+      "tactic": "Execution",
+      "technique_id": "T1059.007",
+      "technique_name": "JavaScript",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used the MeshCentral command-line interface utility meshctrl.js and npm to interact with compromised systems. Specifically for npm, [ShinyHunters](https://attack.mitre.org/groups/G1057) has checked for the authenticode tool using the command `npm list global authenticode`.(Citation: Google_SHOracle_Jun2026) Additionally, [ShinyHunters](https://attack.mitre.org/groups/G1057) has used the MeshCentral command to execute the propagation script: ` node meshctrl.js RunCommand --loginuser admin --loginpass '[password]' --id '[agent_id]' --run 'bash /tmp/[victim_abbreviation]_fanout.sh' `.(Citation: Google_SHOracle_Jun2026) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1059-009--general",
+      "tactic": "Execution",
+      "technique_id": "T1059.009",
+      "technique_name": "Cloud API",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used the AWS Command Line Interface (CLI) for operations to include a variety of API calls, such as `ListBuckets`, `CreateBucket` and `DeleteBucket`.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1069-003--general",
+      "tactic": "Discovery",
+      "technique_id": "T1069.003",
+      "technique_name": "Cloud Groups",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has executed API calls to enumerate permissions for compromised AWS accounts.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1072--general",
+      "tactic": "Execution, Lateral Movement",
+      "technique_id": "T1072",
+      "technique_name": "Software Deployment Tools",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has abused software deployment tools for lateral movement.(Citation: SOCRadar_ShinyHunters_Mar2024)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1078--general",
+      "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
+      "technique_id": "T1078",
+      "technique_name": "Valid Accounts",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used valid high-privileged SSO users as leverage during negotiations.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1078-002--general",
+      "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
+      "technique_id": "T1078.002",
+      "technique_name": "Domain Accounts",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used valid domain accounts to gain initial access or to escalate privileges within environments.(Citation: SOCRadar_ShinyHunters_Mar2024)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1078-004--general",
+      "tactic": "Initial Access, Persistence, Privilege Escalation, Stealth",
+      "technique_id": "T1078.004",
+      "technique_name": "Cloud Accounts",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used valid cloud accounts to gain initial access or to escalate privileges within cloud environments.(Citation: SOCRadar_ShinyHunters_Mar2024) Additionally, [ShinyHunters](https://attack.mitre.org/groups/G1057) has also used valid credentials from public repositories to include access keys to gain access to the victim organization’s AWS environment.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: Intel471_SH_Aug2021)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1082--general",
+      "tactic": "Discovery",
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used the MeshCentral command-line utility meshctrl.js to collect hostnames and IDs of compromised systems.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1083--general",
+      "tactic": "Discovery",
+      "technique_id": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has checked mount points for Oracle PeopleSoft configurations and has checked the process scheduler configuration file psappsrv.cfg. Additionally, [ShinyHunters](https://attack.mitre.org/groups/G1057) has read WebLogic server XML configurations files (config.xml).(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1090-003--general",
+      "tactic": "Command And Control",
+      "technique_id": "T1090.003",
+      "technique_name": "Multi-hop Proxy",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used [Tor](https://attack.mitre.org/software/S0183) to host their DLS.(Citation: FBI_SHLMS_May2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1105--general",
+      "tactic": "Command And Control",
+      "technique_id": "T1105",
+      "technique_name": "Ingress Tool Transfer",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has deployed custom scripts to targeted systems from customized MeshAgents in their staging environment.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1110--general",
+      "tactic": "Credential Access",
+      "technique_id": "T1110",
+      "technique_name": "Brute Force",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has performed brute force attacks against edge devices, such as VPNs or firewall solutions.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1190--general",
+      "tactic": "Initial Access",
+      "technique_id": "T1190",
+      "technique_name": "Exploit Public-Facing Application",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has exploited CVE-2026-35273 against Oracle PeopleSoft application infrastructure.(Citation: Google_SHOracle_Jun2026) [ShinyHunters](https://attack.mitre.org/groups/G1057) has exploited known vulnerabilities in internet-facing servers.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1195-001--general",
+      "tactic": "Initial Access",
+      "technique_id": "T1195.001",
+      "technique_name": "Compromise Software Dependencies and Development Tools",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has compromised CI/CD pipelines by gaining access to high privilege engineering accounts on Git version control, BrowserStack, JFrog and other cloud project management platforms.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1203--general",
+      "tactic": "Execution",
+      "technique_id": "T1203",
+      "technique_name": "Exploitation for Client Execution",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has exploited vulnerabilities in the target company’s GitHub repository source code to enable more complex follow-on third-party or supply chain attacks.(Citation: Intel471_SH_Aug2021)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1210--general",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1210",
+      "technique_name": "Exploitation of Remote Services",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has exploited vulnerabilities in remote services for lateral movement.(Citation: SOCRadar_ShinyHunters_Mar2024)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1213-003--general",
+      "tactic": "Collection",
+      "technique_id": "T1213.003",
+      "technique_name": "Code Repositories",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has gathered information from and has searched for vulnerabilities in the target company’s GitHub repository source code.(Citation: Intel471_SH_Aug2021)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1213-006--general",
+      "tactic": "Collection",
+      "technique_id": "T1213.006",
+      "technique_name": "Databases",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has collected Salesforce datasets from victims in the airline and retail sectors.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)    ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1219--general",
+      "tactic": "Command And Control",
+      "technique_id": "T1219",
+      "technique_name": "Remote Access Tools",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used MeshCentral and [ConnectWise](https://attack.mitre.org/software/S0591) to gain initial access, to run administrative command queries and to deploy the custom lateral movement and defacement script [victim_abbreviation]_fanout.sh.(Citation: Google_SHOracle_Jun2026)(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1485--general",
+      "tactic": "Impact",
+      "technique_id": "T1485",
+      "technique_name": "Data Destruction",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has executed the `DeleteBucket` API call to delete buckets.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1491-001--general",
+      "tactic": "Impact",
+      "technique_id": "T1491.001",
+      "technique_name": "Internal Defacement",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has left ransom notes titled README-IF-YOU-SEE-THIS-YOUVE-BEEN-HACKED.TXT.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1528--general",
+      "tactic": "Credential Access",
+      "technique_id": "T1528",
+      "technique_name": "Steal Application Access Token",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has stolen valid OAuth credentials from DevOps personnel or a company GitHub repository.(Citation: Intel471_SH_Aug2021) Additionally, [ShinyHunters](https://attack.mitre.org/groups/G1057) has stolen application access tokens to access cloud services and to bypass authentication mechanisms.(Citation: SOCRadar_ShinyHunters_Mar2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1530--general",
+      "tactic": "Collection",
+      "technique_id": "T1530",
+      "technique_name": "Data from Cloud Storage",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has collected data from insecure cloud buckets.(Citation: SOCRadar_ShinyHunters_Mar2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1550-001--general",
+      "tactic": "Lateral Movement",
+      "technique_id": "T1550.001",
+      "technique_name": "Application Access Token",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used stolen OAuth keys to access cloud infrastructure and to bypass two-factor authentication.(Citation: Intel471_SH_Aug2021) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1552-001--general",
+      "tactic": "Credential Access",
+      "technique_id": "T1552.001",
+      "technique_name": "Credentials In Files",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has gathered PII from database infrastructure.(Citation: Intel471_SH_Aug2021) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1560-002--general",
+      "tactic": "Collection",
+      "technique_id": "T1560.002",
+      "technique_name": "Archive via Library",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used the following command to compress collected data: ` pv -s \"$(du -sb exfil | awk '{print $1}')\" | zstd -3 -T0 -o exfil.tar.zst `.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1567--general",
+      "tactic": "Exfiltration",
+      "technique_id": "T1567",
+      "technique_name": "Exfiltration Over Web Service",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used compromised Salesforce CRM (Customer Relationship Management) dashboards to exfiltrate bulk data. Additionally, [ShinyHunters](https://attack.mitre.org/groups/G1057) has used LimeWire, a file-sharing service, to showcase samples of stolen data.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1573-002--general",
+      "tactic": "Command And Control",
+      "technique_id": "T1573.002",
+      "technique_name": "Asymmetric Cryptography",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has established a connection between the staging host and the C2 using SSH.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1580--general",
+      "tactic": "Discovery",
+      "technique_id": "T1580",
+      "technique_name": "Cloud Infrastructure Discovery",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used Amazon Simple Storage Service (S3) Browser and WinSCP to collect information on S3 bucket configurations.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: SOCRadar_ShinyHunters_Mar2024)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1583-001--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.001",
+      "technique_name": "Domains",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has established clearnet and Tor data leak sites (DLS) including one named “SHINYHUNTERS” for the exfiltration and posting of stolen data.(Citation: Mandiant_SHDataTheft_Jan2026)(Citation: FBI_SHLMS_May2026) Additionally, [ShinyHunters](https://attack.mitre.org/groups/G1057) has registered domains that mimic legitimate Microsoft Azure NetApp Files endpoints, such as azurenetfiles[.]net, and legitimate Okta SSO login pages, such as trial-6857053.okta[.]com.(Citation: Google_SHOracle_Jun2026)(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1583-004--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1583.004",
+      "technique_name": "Server",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used five IP addresses to host Python SimpleHTTP servers on port 8888, which exposed staging materials, customized agents, and .bash_history files.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1585-002--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1585.002",
+      "technique_name": "Email Accounts",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has established multiple email accounts, such as shinycorp@tutonota[.]com, for use in extortion activities.(Citation: Google Salesforce JUN 2025)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1587-004--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1587.004",
+      "technique_name": "Exploits",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has exploited zero-day vulnerability CVE-2026-35273 against Oracle PeopleSoft application infrastructure.(Citation: Google_SHOracle_Jun2026)",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1588-002--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1588.002",
+      "technique_name": "Tool",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has obtained MeshCentral to deploy agents masquerading as legitimate cloud endpoints.(Citation: Google_SHOracle_Jun2026) [ShinyHunters](https://attack.mitre.org/groups/G1057) has obtained WinSCP to gather information on S3 bucket configurations.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024) [ShinyHunters](https://attack.mitre.org/groups/G1057) has obtained [ConnectWise](https://attack.mitre.org/software/S0591) and other RMM tools to gain initial access.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)       ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1588-007--general",
+      "tactic": "Resource Development",
+      "technique_id": "T1588.007",
+      "technique_name": "Artificial Intelligence",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used Bland AI to create conversational pathways tailored to specific scenarios during voice phishing attacks.(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1589-001--general",
+      "tactic": "Reconnaissance",
+      "technique_id": "T1589.001",
+      "technique_name": "Credentials",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has collected credentials containing PII, ultimately selling the information on their DLS.(Citation: Intel471_SH_Aug2021)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1593-003--general",
+      "tactic": "Reconnaissance",
+      "technique_id": "T1593.003",
+      "technique_name": "Code Repositories",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has searched through target companies’ GitHub repositories for login credentials or API keys.(Citation: SOCRadar_ShinyHunters_Mar2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1595-002--general",
+      "tactic": "Reconnaissance",
+      "technique_id": "T1595.002",
+      "technique_name": "Vulnerability Scanning",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has searched through victim companies’ GitHub repositories for vulnerabilities.(Citation: SOCRadar_ShinyHunters_Mar2024)   ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1598--general",
+      "tactic": "Reconnaissance",
+      "technique_id": "T1598",
+      "technique_name": "Phishing for Information",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has sent phishing emails to Microsoft Office 365 corporate users in order to steal credentials.(Citation: Intel471_SH_Aug2021) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1598-003--general",
+      "tactic": "Reconnaissance",
+      "technique_id": "T1598.003",
+      "technique_name": "Spearphishing Link",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used spearphishing emails with malicious links to gain initial access and credentials.(Citation: SOCRadar_ShinyHunters_Mar2024)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1619--general",
+      "tactic": "Discovery",
+      "technique_id": "T1619",
+      "technique_name": "Cloud Storage Object Discovery",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used Amazon Simple Storage Service (S3) Browser and WinSCP to access S3 objects.(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1657--general",
+      "tactic": "Impact",
+      "technique_id": "T1657",
+      "technique_name": "Financial Theft",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has called or sent text messages or emails to employees of victim organizations to demand payment in Bitcoin within 72 hours. Email addresses used in extortion activities include shinycorp@tuta[.]com, shinygroup@tuta[.]com, shinycorp@tutanota[.]com, and shinygroup@onionmail[.]com.(Citation: Google Salesforce JUN 2025)(Citation: Mandiant_SHDataTheft_Jan2026)(Citation: FBI_SHLMS_May2026)(Citation: Intel471_SH_Aug2021)(Citation: Unit42KelleyVaya_BlingLibra_Aug2024)(Citation: SOCRadar_ShinyHunters_Mar2024)(Citation: ElecticIQ Buyukkaya_ShinyHunters_Sept2025)  ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    },
+    {
+      "ttp_id": "ttp--t1684--general",
+      "tactic": "Stealth",
+      "technique_id": "T1684",
+      "technique_name": "Social Engineering",
+      "observed_behavior": "[ShinyHunters](https://attack.mitre.org/groups/G1057) has used social engineering to demand payment from victims.(Citation: FBI_SHLMS_May2026) ",
+      "activity_refs": [],
+      "malware_refs": [],
+      "infrastructure_refs": [],
+      "first_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "last_observed": {
+        "value": null,
+        "precision": "unknown",
+        "status": "unknown",
+        "basis": "not-stated"
+      },
+      "confidence": "high",
+      "evidence_refs": [
+        "source--mitre-attack-19-2"
+      ],
+      "analyst_notes": "Current ATT&CK actor-level procedure example. No activity date is inferred from relationship modification time."
+    }
+  ],
   "sources": [
     {
       "source_id": "source--actor-mapping-workbook",
@@ -573,6 +1896,34 @@
         "relationship-lead"
       ],
       "analyst_notes": "Dataset version=44. Aggregation match is a cross-check lead; vendor collection boundaries and original references must be reviewed before asserting exact identity."
+    },
+    {
+      "source_id": "source--mitre-attack-19-2",
+      "path": "actor_profile/reference/attack-index.json",
+      "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+      "publisher": "MITRE",
+      "published_at": {
+        "value": "2026-08-05T00:00:00Z",
+        "precision": "day",
+        "status": "known",
+        "basis": "upstream-release"
+      },
+      "language": "en",
+      "source_type": "structured-knowledge-base",
+      "tlp": "TLP:CLEAR",
+      "reliability": "high",
+      "sha256": null,
+      "actor_scope": "exact",
+      "claims_supported": [
+        "identity",
+        "alias",
+        "relationship",
+        "activity",
+        "malware",
+        "targeting",
+        "ttp"
+      ],
+      "analyst_notes": "Derived from the official MITRE attack-stix-data release. ATT&CK modification dates are not activity observation dates."
     }
   ],
   "assessment": {
@@ -586,7 +1937,7 @@
       "parse-daily/unknown-clusters.json の unknown-cluster--shinyhunters は本プロファイルへ統合(merged)したが、同台帳が保持する観測4件(Health-ISAC 2026-07-30、Brinks Home 2026-07-31、ReliaQuest 2026-08-26、McKesson SEC Form 8-K 2026-08-29)は活動としては取り込んでいない。被害組織3社の開示はいずれもShinyHuntersを名指ししておらず、帰属が攻撃者の犯行主張と報道に依存するためである。犯行主張のみを根拠とする活動を本リポジトリでどう扱うかの方針が未決であり、方針決定後に観測単位で再判断する。",
       "2026-09-14の走査で、フロリダ州DAVIDデータベース侵害について州当局の公式確認が得られた。フロリダ州高速道路安全自動車局(FLHSMV)は2026-09-11に「On September 4, 2026, FLHSMV learned of a data breach conducted by an international cybercriminal organization」と公表し、Plant City警察署の職員1名の資格情報が個人所有端末へ不適切に保存されていたものを悪用された経路も示した。ただしFLHSMVは実行主体を「international cybercriminal organization」とのみ表現してShinyHuntersを名指しせず、同集団が主張する20万件超という件数も確認していない。すなわち確認されたのは侵害の発生であって帰属ではないため、犯行主張のみを根拠とする活動の扱いという上記の未決方針は解消していない。関連レコード(unc6240|https://x.com/flhsmv/status/2098239548660514979)は不採用として判断理由を保存している。"
     ],
-    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6240.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T12:23:31Z; result=matched.",
+    "collection_notes": "Catalog source roots: actor_profile/evidence/unc6240.csv\nStructured OSINT cross-check completed against MISP Galaxy datasets at 2026-09-20T13:47:46Z; result=matched.",
     "analyst_notes": ""
   },
   "free_text": {

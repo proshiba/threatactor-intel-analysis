@@ -72,6 +72,9 @@ BOUNDARY_REMOVALS = {
     "apt38": {"TEMP.Hermit"},
     "naikon": {"APT30"},
     "dragonfly": {"ALLANITE"},
+    "lotus-blossom": {"Thrip"},
+    "mustang-panda": {"LuminousMoth", "Luminous Moth"},
+    "ember-bear": {"Saint Bear"},
 }
 
 MICROSOFT_MAPPINGS = {
@@ -105,6 +108,22 @@ def time_value(value: str | None) -> dict[str, Any]:
 
 
 SOURCES: dict[str, dict[str, Any]] = {
+    "source--mitre-attack-19-2": {
+        "source_id": "source--mitre-attack-19-2",
+        "path": "actor_profile/reference/attack-index.json",
+        "url": "https://github.com/mitre-attack/attack-stix-data/releases/tag/v19.2",
+        "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+        "publisher": "MITRE",
+        "published_at": time_value("2026-08-05"),
+        "language": "en",
+        "source_type": "structured-knowledge-base",
+        "tlp": "TLP:CLEAR",
+        "reliability": "high",
+        "sha256": None,
+        "actor_scope": "exact",
+        "claims_supported": ["identity", "alias", "relationship", "ttp"],
+        "analyst_notes": "Official MITRE Enterprise ATT&CK 19.2 local compact index. Separate Group identifiers are treated as an entity boundary, not an exact alias assertion.",
+    },
     GTIG_SOURCE_ID: {
         "source_id": GTIG_SOURCE_ID,
         "path": GTIG_URL,
@@ -322,17 +341,19 @@ def add_relationship(
     right_slug: str,
     description: str,
     source_id: str,
+    relationship_type: str = "overlaps-with",
+    confidence: str = "high",
 ) -> None:
     relationship_id = (
-        f"relationship--{left_slug}--verified-overlap--"
-        + stable_digest(left_slug, right_slug, source_id)[:16]
+        f"relationship--{left_slug}--verified-boundary--"
+        + stable_digest(left_slug, right_slug, source_id, relationship_type)[:16]
     )
     record = {
         "relationship_id": relationship_id,
         "target_actor": right["actor"]["canonical_name"],
-        "relationship_type": "overlaps-with",
+        "relationship_type": relationship_type,
         "description": description,
-        "confidence": "high",
+        "confidence": confidence,
         "first_observed": unknown_time(),
         "last_observed": unknown_time(),
         "evidence_refs": [source_id],
@@ -474,13 +495,14 @@ def main() -> int:
         catalog_alias("blacktech", name)
 
     white_company = profile("white-company")
+    merge_source(white_company, "source--mitre-attack-19-2")
     merge_alias(
         white_company,
         name="White Company",
         vendor="MITRE ATT&CK / corpus curation",
         scope="exact",
         confidence="high",
-        source_id="source--mitre-attack-19-1",
+        source_id="source--mitre-attack-19-2",
         note=(
             "The corpus name without the leading article refers to the same "
             "Operation Shaheen actor canonicalized by MITRE as The White Company."
@@ -516,9 +538,33 @@ def main() -> int:
             "dragonfly",
             "ALLANITE has tactics and techniques similar to Dragonfly, but MITRE ATT&CK tracks it as separate Group G1000 with a distinct observed capability boundary.",
             "source--mitre-attack-ics-19-2",
+            "overlaps-with",
+        ),
+        (
+            "lotus-blossom",
+            "thrip",
+            "MITRE ATT&CK 19.2 tracks Lotus Blossom (G0030) and Thrip (G0076) as separate Groups even though Thrip remains an associated name in the Lotus Blossom record; the shared name is therefore an overlap signal, not a safe exact alias.",
+            "source--mitre-attack-19-2",
+            "overlaps-with",
+        ),
+        (
+            "mustang-panda",
+            "luminousmoth",
+            "MITRE ATT&CK 19.2 tracks Mustang Panda (G0129) and LuminousMoth (G1014) separately and describes their connection as based on targeting, TTP, and infrastructure overlap.",
+            "source--mitre-attack-19-2",
+            "overlaps-with",
+        ),
+        (
+            "ember-bear",
+            "saint-bear",
+            "MITRE ATT&CK 19.2 states that Saint Bear and Ember Bear were confused in past reporting but exhibit distinct behaviors, tools, and targeting; shared naming must not merge the clusters.",
+            "source--mitre-attack-19-2",
+            "distinct-from",
         ),
     ]
-    for left_slug, right_slug, description, source_id in boundaries:
+    for boundary in boundaries:
+        left_slug, right_slug, description, source_id, *relationship_types = boundary
+        relationship_type = relationship_types[0] if relationship_types else "overlaps-with"
         left = profile(left_slug)
         right = profile(right_slug)
         merge_source(left, source_id)
@@ -532,8 +578,24 @@ def main() -> int:
                     and "alias-overlap" in item.get("relationship_id", "")
                 )
             ]
-        add_relationship(left, right, left_slug=left_slug, right_slug=right_slug, description=description, source_id=source_id)
-        add_relationship(right, left, left_slug=right_slug, right_slug=left_slug, description=description, source_id=source_id)
+        add_relationship(
+            left,
+            right,
+            left_slug=left_slug,
+            right_slug=right_slug,
+            description=description,
+            source_id=source_id,
+            relationship_type=relationship_type,
+        )
+        add_relationship(
+            right,
+            left,
+            left_slug=right_slug,
+            right_slug=left_slug,
+            description=description,
+            source_id=source_id,
+            relationship_type=relationship_type,
+        )
 
     # Remove stale alias-overlap assertions between APT30 and Naikon; the
     # existing ATT&CK narrative relationship remains the authoritative record.

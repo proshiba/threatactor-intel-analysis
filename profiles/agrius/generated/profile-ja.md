@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--agrius`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:10Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,10 +18,10 @@ Agriusの標準化プロファイル。リポジトリ内の専用資料2件とM
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| AMERICIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Agonizing Serpens | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| BlackShadow | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Pink Sandstorm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Agonizing Serpens | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| AMERICIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| BlackShadow | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Pink Sandstorm | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -53,7 +53,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -68,6 +68,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | misp-mitre-enterprise-intrusion-set | Agrius - G1030 | mitre-external-id | 高 |  | https://assets.sentinelone.com/sentinellabs/evol-agrius<br>https://attack.mitre.org/groups/G1030<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-mitre-intrusion-set | Agrius - G1030 | mitre-external-id | 高 |  | https://assets.sentinelone.com/sentinellabs/evol-agrius<br>https://attack.mitre.org/groups/G1030<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Agrius | canonical-name | 高 | IR |  |
 
 ### 関係性候補（未統合）
 
@@ -86,22 +87,22 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--moneybird | Moneybird | [Moneybird](https://attack.mitre.org/software/S1137) is a ransomware variant written in C++ associated with [Agrius](https://attack.mitre.org/groups/G1030) operations. The name "Moneybird" is contained in the malware's ransom note and as strings in the executable.(Citation: CheckPoint Agrius 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--apostle | Apostle | [Apostle](https://attack.mitre.org/software/S1133) is malware that has functioned as both a wiper and, in more recent versions, as ransomware.  [Apostle](https://attack.mitre.org/software/S1133) is written in .NET and shares various programming and functional overlaps with [IPsec Helper](https://attack.mitre.org/software/S1132).(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--aspxspy | ASPXSpy | [ASPXSpy](https://attack.mitre.org/software/S0073) is a Web shell. It has been modified by [Threat Group-3390](https://attack.mitre.org/groups/G0027) actors to create the ASPXTool version. (Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--multilayer-wiper | MultiLayer Wiper | [MultiLayer Wiper](https://attack.mitre.org/software/S1135) is wiper malware written in .NET associated with [Agrius](https://attack.mitre.org/groups/G1030) operations. Observed samples of [MultiLayer Wiper](https://attack.mitre.org/software/S1135) have an anomalous, future compilation date suggesting possible metadata manipulation.(Citation: Unit42 Agrius 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--ipsec-helper | IPsec Helper | [IPsec Helper](https://attack.mitre.org/software/S1132) is a post-exploitation remote access tool linked to [Agrius](https://attack.mitre.org/groups/G1030) operations. This malware shares significant programming and functional overlaps with [Apostle](https://attack.mitre.org/software/S1133) ransomware, also linked to [Agrius](https://attack.mitre.org/groups/G1030). [IPsec Helper](https://attack.mitre.org/software/S1132) provides basic remote access tool functionality such as uploading files from victim systems, running commands, and deploying additional payloads.(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--bfg-agonizer | BFG Agonizer | [BFG Agonizer](https://attack.mitre.org/software/S1136) is a wiper related to the open-source project CRYLINE-v.5.0. The malware is associated with wiping operations conducted by the [Agrius](https://attack.mitre.org/groups/G1030) threat actor.(Citation: Unit42 Agrius 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--deadwood | DEADWOOD | [DEADWOOD](https://attack.mitre.org/software/S1134) is wiper malware written in C++ using Boost libraries. [DEADWOOD](https://attack.mitre.org/software/S1134) was first observed in an unattributed wiping event in Saudi Arabia in 2019, and has since been incorporated into [Agrius](https://attack.mitre.org/groups/G1030) operations.(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--detbosit | Detbosit | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--apostle | Apostle | [Apostle](https://attack.mitre.org/software/S1133) is malware that has functioned as both a wiper and, in more recent versions, as ransomware.  [Apostle](https://attack.mitre.org/software/S1133) is written in .NET and shares various programming and functional overlaps with [IPsec Helper](https://attack.mitre.org/software/S1132).(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--apstole | Apstole | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--aspxspy | ASPXSpy | [ASPXSpy](https://attack.mitre.org/software/S0073) is a Web shell. It has been modified by [Threat Group-3390](https://attack.mitre.org/groups/G0027) actors to create the ASPXTool version. (Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--bfg-agonizer | BFG Agonizer | [BFG Agonizer](https://attack.mitre.org/software/S1136) is a wiper related to the open-source project CRYLINE-v.5.0. The malware is associated with wiping operations conducted by the [Agrius](https://attack.mitre.org/groups/G1030) threat actor.(Citation: Unit42 Agrius 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--deadwood | DEADWOOD | [DEADWOOD](https://attack.mitre.org/software/S1134) is wiper malware written in C++ using Boost libraries. [DEADWOOD](https://attack.mitre.org/software/S1134) was first observed in an unattributed wiping event in Saudi Arabia in 2019, and has since been incorporated into [Agrius](https://attack.mitre.org/groups/G1030) operations.(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--detbosit | Detbosit | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--ipsec-helper | IPsec Helper | [IPsec Helper](https://attack.mitre.org/software/S1132) is a post-exploitation remote access tool linked to [Agrius](https://attack.mitre.org/groups/G1030) operations. This malware shares significant programming and functional overlaps with [Apostle](https://attack.mitre.org/software/S1133) ransomware, also linked to [Agrius](https://attack.mitre.org/groups/G1030). [IPsec Helper](https://attack.mitre.org/software/S1132) provides basic remote access tool functionality such as uploading files from victim systems, running commands, and deploying additional payloads.(Citation: SentinelOne Agrius 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--moneybird | Moneybird | [Moneybird](https://attack.mitre.org/software/S1137) is a ransomware variant written in C++ associated with [Agrius](https://attack.mitre.org/groups/G1030) operations. The name "Moneybird" is contained in the malware's ransom note and as strings in the executable.(Citation: CheckPoint Agrius 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--multilayer-wiper | MultiLayer Wiper | [MultiLayer Wiper](https://attack.mitre.org/software/S1135) is wiper malware written in .NET associated with [Agrius](https://attack.mitre.org/groups/G1030) operations. Observed samples of [MultiLayer Wiper](https://attack.mitre.org/software/S1135) have an anomalous, future compilation date suggesting possible metadata manipulation.(Citation: Unit42 Agrius 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--mimikatz | Mimikatz | [Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--nbtscan | NBTscan | [NBTscan](https://attack.mitre.org/software/S0590) is an open source tool that has been used by state groups to conduct internal reconnaissance within a compromised network.(Citation: Debian nbtscan Nov 2019)(Citation: SecTools nbtscan June 2003)(Citation: Symantec Waterbug Jun 2019)(Citation: FireEye APT39 Jan 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--mimikatz | Mimikatz | [Mimikatz](https://attack.mitre.org/software/S0002) is a credential dumper capable of obtaining plaintext Windows account logins and passwords, along with many other features that make it useful for testing the security of networks. (Citation: Deply Mimikatz) (Citation: Adsecurity Mimikatz Guide) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--nbtscan | NBTscan | [NBTscan](https://attack.mitre.org/software/S0590) is an open source tool that has been used by state groups to conduct internal reconnaissance within a compromised network.(Citation: Debian nbtscan Nov 2019)(Citation: SecTools nbtscan June 2003)(Citation: Symantec Waterbug Jun 2019)(Citation: FireEye APT39 Jan 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -136,8 +137,8 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | countries | イスラエル | レビュー済みアクターマッピングの標的欄に記録されたイスラエルを構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--target-audit-etda-threat-group-cards` |
 | countries | 南アフリカ | 構造化OSINTの被害国フィールドでAgriusの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 香港 | 構造化OSINTの被害国フィールドでAgriusの標的・被害国として香港が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 中東 | MITRE ATT&CKのGroup概要でAgriusの標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 政府・行政 | for a series of ransomware and wiper operations in the Middle East, with an emphasis on Israeli targets.(Citation: SentinelOne Agrius 2021)(Citation: CheckPoint Agrius 2023) Public reporting has linked [Agrius](https://attack.mitre.org/groups/G1030) to Iran's Ministry of Intelligence and Security (MOIS).(Citation: Microsoft Iran Cyber 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | 中東 | MITRE ATT&CKのGroup概要でAgriusの標的範囲として中東が明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 政府・行政 | for a series of ransomware and wiper operations in the Middle East, with an emphasis on Israeli targets.(Citation: SentinelOne Agrius 2021)(Citation: CheckPoint Agrius 2023) Public reporting has linked [Agrius](https://attack.mitre.org/groups/G1030) to Iran's Ministry of Intelligence and Security (MOIS).(Citation: Microsoft Iran Cyber 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | sectors | Education and Research | Targeting text indicates the Education and Research sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Finance | Targeting text indicates the Finance sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | sectors | Telecommunications | Targeting text indicates the Telecommunications sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
@@ -152,28 +153,28 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | [Agrius](https://attack.mitre.org/groups/G1030) used tools such as [Mimikatz](https://attack.mitre.org/software/S0002) to dump LSASS memory to capture credentials in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1003.002 | Security Account Manager | [Agrius](https://attack.mitre.org/groups/G1030) dumped the SAM file on victim machines to capture credentials.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1005 | Data from Local System | [Agrius](https://attack.mitre.org/groups/G1030) gathered data from database and other critical servers in victim environments, then used wiping mechanisms as an anti-analysis and anti-forensics mechanism.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1018 | Remote System Discovery | [Agrius](https://attack.mitre.org/groups/G1030) used the tool [NBTscan](https://attack.mitre.org/software/S0590) to scan for remote, accessible hosts in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1021.001 | Remote Desktop Protocol | [Agrius](https://attack.mitre.org/groups/G1030) tunnels RDP traffic through deployed web shells to access victim environments via compromised accounts.(Citation: SentinelOne Agrius 2021) [Agrius](https://attack.mitre.org/groups/G1030) used the Plink tool to tunnel RDP connections for remote access and lateral movement in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036 | Masquerading | [Agrius](https://attack.mitre.org/groups/G1030) used the Plink tool for tunneling and connections to remote machines, renaming it <code>systems.exe</code> in some instances.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1041 | Exfiltration Over C2 Channel | [Agrius](https://attack.mitre.org/groups/G1030) exfiltrated staged data using tools such as Putty and WinSCP, communicating with command and control servers.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1046 | Network Service Discovery | [Agrius](https://attack.mitre.org/groups/G1030) used the open-source port scanner <code>WinEggDrop</code> to perform detailed scans of hosts of interest in victim networks.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | [Agrius](https://attack.mitre.org/groups/G1030) uses [ASPXSpy](https://attack.mitre.org/software/S0073) web shells to enable follow-on command execution via <code>cmd.exe</code>.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.001 | Local Data Staging | [Agrius](https://attack.mitre.org/groups/G1030) has used the folder, <code>C:\\windows\\temp\\s\\</code>, to stage data for exfiltration.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [Agrius](https://attack.mitre.org/groups/G1030) attempted to acquire valid credentials for victim environments through various means to enable follow-on lateral movement.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110 | Brute Force | [Agrius](https://attack.mitre.org/groups/G1030) engaged in various brute forcing activities via SMB in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110.003 | Password Spraying | [Agrius](https://attack.mitre.org/groups/G1030) engaged in password spraying via SMB in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1119 | Automated Collection | [Agrius](https://attack.mitre.org/groups/G1030) used a custom tool, <code>sql.net4.exe</code>, to query SQL databases and then identify and extract personally identifiable information.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | [Agrius](https://attack.mitre.org/groups/G1030) has deployed base64-encoded variants of [ASPXSpy](https://attack.mitre.org/software/S0073) to evade detection.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | [Agrius](https://attack.mitre.org/groups/G1030) exploits public-facing applications for initial access to victim environments. Examples include widespread attempts to exploit CVE-2018-13379 in FortiOS devices and SQL injection activity.(Citation: SentinelOne Agrius 2021)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1505.003 | Web Shell | [Agrius](https://attack.mitre.org/groups/G1030) typically deploys a variant of the [ASPXSpy](https://attack.mitre.org/software/S0073) web shell following initial access via exploitation.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1543.003 | Windows Service | [Agrius](https://attack.mitre.org/groups/G1030) has deployed [IPsec Helper](https://attack.mitre.org/software/S1132) malware post-exploitation and registered it as a service for persistence.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | [Agrius](https://attack.mitre.org/groups/G1030) used 7zip to archive extracted data in preparation for exfiltration.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1570 | Lateral Tool Transfer | [Agrius](https://attack.mitre.org/groups/G1030) downloaded some payloads for follow-on execution from legitimate filesharing services such as <code>ufile.io</code> and <code>easyupload.io</code>.(Citation: CheckPoint Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583 | Acquire Infrastructure | [Agrius](https://attack.mitre.org/groups/G1030) typically uses commercial VPN services for anonymizing last-hop traffic to victim networks, such as ProtonVPN.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | [Agrius](https://attack.mitre.org/groups/G1030) used several mechanisms to try to disable security tools. [Agrius](https://attack.mitre.org/groups/G1030) attempted to modify EDR-related services to disable auto-start on system reboot. [Agrius](https://attack.mitre.org/groups/G1030) used a publicly available driver, <code>GMER64.sys</code> typically used for anti-rootkit functionality, to selectively stop and remove security software processes.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [Agrius](https://attack.mitre.org/groups/G1030) used tools such as [Mimikatz](https://attack.mitre.org/software/S0002) to dump LSASS memory to capture credentials in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1003.002 | Security Account Manager | [Agrius](https://attack.mitre.org/groups/G1030) dumped the SAM file on victim machines to capture credentials.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1005 | Data from Local System | [Agrius](https://attack.mitre.org/groups/G1030) gathered data from database and other critical servers in victim environments, then used wiping mechanisms as an anti-analysis and anti-forensics mechanism.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1018 | Remote System Discovery | [Agrius](https://attack.mitre.org/groups/G1030) used the tool [NBTscan](https://attack.mitre.org/software/S0590) to scan for remote, accessible hosts in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1021.001 | Remote Desktop Protocol | [Agrius](https://attack.mitre.org/groups/G1030) tunnels RDP traffic through deployed web shells to access victim environments via compromised accounts.(Citation: SentinelOne Agrius 2021) [Agrius](https://attack.mitre.org/groups/G1030) used the Plink tool to tunnel RDP connections for remote access and lateral movement in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036 | Masquerading | [Agrius](https://attack.mitre.org/groups/G1030) used the Plink tool for tunneling and connections to remote machines, renaming it <code>systems.exe</code> in some instances.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Exfiltration | T1041 | Exfiltration Over C2 Channel | [Agrius](https://attack.mitre.org/groups/G1030) exfiltrated staged data using tools such as Putty and WinSCP, communicating with command and control servers.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1046 | Network Service Discovery | [Agrius](https://attack.mitre.org/groups/G1030) used the open-source port scanner <code>WinEggDrop</code> to perform detailed scans of hosts of interest in victim networks.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.003 | Windows Command Shell | [Agrius](https://attack.mitre.org/groups/G1030) uses [ASPXSpy](https://attack.mitre.org/software/S0073) web shells to enable follow-on command execution via <code>cmd.exe</code>.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1074.001 | Local Data Staging | [Agrius](https://attack.mitre.org/groups/G1030) has used the folder, <code>C:\\windows\\temp\\s\\</code>, to stage data for exfiltration.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.002 | Domain Accounts | [Agrius](https://attack.mitre.org/groups/G1030) attempted to acquire valid credentials for victim environments through various means to enable follow-on lateral movement.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1110 | Brute Force | [Agrius](https://attack.mitre.org/groups/G1030) engaged in various brute forcing activities via SMB in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1110.003 | Password Spraying | [Agrius](https://attack.mitre.org/groups/G1030) engaged in password spraying via SMB in victim environments.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1119 | Automated Collection | [Agrius](https://attack.mitre.org/groups/G1030) used a custom tool, <code>sql.net4.exe</code>, to query SQL databases and then identify and extract personally identifiable information.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [Agrius](https://attack.mitre.org/groups/G1030) has deployed base64-encoded variants of [ASPXSpy](https://attack.mitre.org/software/S0073) to evade detection.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [Agrius](https://attack.mitre.org/groups/G1030) exploits public-facing applications for initial access to victim environments. Examples include widespread attempts to exploit CVE-2018-13379 in FortiOS devices and SQL injection activity.(Citation: SentinelOne Agrius 2021)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1505.003 | Web Shell | [Agrius](https://attack.mitre.org/groups/G1030) typically deploys a variant of the [ASPXSpy](https://attack.mitre.org/software/S0073) web shell following initial access via exploitation.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1543.003 | Windows Service | [Agrius](https://attack.mitre.org/groups/G1030) has deployed [IPsec Helper](https://attack.mitre.org/software/S1132) malware post-exploitation and registered it as a service for persistence.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1560.001 | Archive via Utility | [Agrius](https://attack.mitre.org/groups/G1030) used 7zip to archive extracted data in preparation for exfiltration.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1570 | Lateral Tool Transfer | [Agrius](https://attack.mitre.org/groups/G1030) downloaded some payloads for follow-on execution from legitimate filesharing services such as <code>ufile.io</code> and <code>easyupload.io</code>.(Citation: CheckPoint Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583 | Acquire Infrastructure | [Agrius](https://attack.mitre.org/groups/G1030) typically uses commercial VPN services for anonymizing last-hop traffic to victim networks, such as ProtonVPN.(Citation: SentinelOne Agrius 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [Agrius](https://attack.mitre.org/groups/G1030) used several mechanisms to try to disable security tools. [Agrius](https://attack.mitre.org/groups/G1030) attempted to modify EDR-related services to disable auto-start on system reboot. [Agrius](https://attack.mitre.org/groups/G1030) used a publicly available driver, <code>GMER64.sys</code> typically used for anti-rootkit functionality, to selectively stop and remove security software processes.(Citation: Unit42 Agrius 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -200,7 +201,6 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--agrius--d43b3afe9e3816bf | README |  | 不明 | Agrius/README.MD | repository-notes | TLP:CLEAR | 中 |
 | source--agrius--275a7a44530e53ff | evol agrius |  | 不明 | Agrius/evol-agrius.pdf | report | TLP:CLEAR | 中 |
@@ -211,6 +211,9 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

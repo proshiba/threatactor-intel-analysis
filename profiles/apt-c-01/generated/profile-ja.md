@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt-c-01`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Public reporting places Green Spot / PoisonVine / APT-C-01 in Taiwan and describ
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 毒云藤 - APT-C-01 | canonical-name | 高 | taiwan | https://apt.360.net/report/apts/2.html |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

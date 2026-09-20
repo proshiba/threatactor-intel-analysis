@@ -298,7 +298,7 @@ def merge_profiles(
         )
     else:
         alias_vendor = "MITRE ATT&CK / Microsoft"
-        alias_source_ids = ["source--mitre-attack-19-1"]
+        alias_source_ids = ["source--mitre-attack-19-2"]
         alias_note = "Curated merge into the canonical MITRE Group profile."
     aliases = result["actor"].setdefault("aliases", [])
     alias = next(
@@ -386,7 +386,7 @@ def deprecated_profile(
     result["targets"]["analyst_notes"] = ""
     result["ttps"] = []
     result["victim_cases"] = []
-    evidence_refs = ["source--mitre-attack-19-1"]
+    evidence_refs = ["source--mitre-attack-19-2"]
     if source_slug in {"unc5691", "storm-0784"}:
         evidence_refs = [
             item["source_id"]

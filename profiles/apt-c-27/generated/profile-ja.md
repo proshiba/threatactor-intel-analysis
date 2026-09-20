@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--apt-c-27`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -54,7 +54,7 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -69,6 +69,7 @@ Meta linked the observed 2021 network to Syria's Air Force Intelligence.
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 黄金鼠 - APT-C-27 | canonical-name | 高 |  | https://apt.360.net/report/apts/100.html<br>https://apt.360.net/report/apts/98.html<br>https://apt.360.net/report/apts/26.html |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

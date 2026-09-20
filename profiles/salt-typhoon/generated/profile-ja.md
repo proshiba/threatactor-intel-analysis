@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--salt-typhoon`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | Salt Typhoon - G1045 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1045<br>https://blog.talosintelligence.com/salt-typhoon-analysis/<br>https://home.treasury.gov/news/press-releases/jy2792 |
 | misp-mitre-intrusion-set | Salt Typhoon - G1045 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1045<br>https://blog.talosintelligence.com/salt-typhoon-analysis/<br>https://home.treasury.gov/news/press-releases/jy2792 |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Salt Typhoon | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -83,7 +84,7 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--jumbledpath | JumbledPath | [JumbledPath](https://attack.mitre.org/software/S1206) is a custom-built utility written in GO that has been used by [Salt Typhoon](https://attack.mitre.org/groups/G1045) since at least 2024 for packet capture on remote Cisco devices. [JumbledPath](https://attack.mitre.org/software/S1206) is compiled as an ELF binary using x86-64 architecture which makes it potentially useable across Linux operating systems and network devices from multiple vendors.(Citation: Cisco Salt Typhoon FEB 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--jumbledpath | JumbledPath | [JumbledPath](https://attack.mitre.org/software/S1206) is a custom-built utility written in GO that has been used by [Salt Typhoon](https://attack.mitre.org/groups/G1045) since at least 2024 for packet capture on remote Cisco devices. [JumbledPath](https://attack.mitre.org/software/S1206) is compiled as an ELF binary using x86-64 architecture which makes it potentially useable across Linux operating systems and network devices from multiple vendors.(Citation: Cisco Salt Typhoon FEB 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -185,13 +186,13 @@ Aliasなし
 | countries | 中国 | 活動「中国、米国の通信企業9社をハッキング、CharterやWindstreamも被害」の記述で標的として明示された国・地域。 | 不明 | 不明 | 中 | `source--daily-6148d7a5b4eb95ec4071`, `source--daily-ee88cbba9f3a1d88bf3a` |
 | countries | 南アフリカ | 構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国として南アフリカが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | 台湾 | 構造化OSINTの被害国フィールドでSalt Typhoonの標的・被害国として台湾が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| countries | 米国 | [Salt Typhoon](https://attack.mitre.org/groups/G1045) is a People's Republic of China (PRC) state-backed actor that has been active since at least 2019 and responsible for numerous compromises of network infrastructure at major U.S. telecommunication and internet service providers (ISP).(Citation: US Dept. | 2024-12 | 2025-01 | 高 | `source--daily-109114cb275f6abbc31b`, `source--daily-201526278f12b51ceb69`, `source--daily-6148d7a5b4eb95ec4071`, `source--daily-66a6db2a9826ffe94b34`, `source--daily-783a5f048c1b5f5d1e87`, `source--daily-8261fb78f465363bd3b1`, `source--daily-8e9e2a4c037c66bd65a0`, `source--daily-8f2935254e84a399c0e6`, `source--daily-976395d39cbe624f587e`, `source--daily-a83c00a6ec644814b818`, `source--daily-ee88cbba9f3a1d88bf3a`, `source--daily-f6737c6dffa112b7b406`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| countries | 米国 | [Salt Typhoon](https://attack.mitre.org/groups/G1045) is a People's Republic of China (PRC) state-backed actor that has been active since at least 2019 and responsible for numerous compromises of network infrastructure at major U.S. telecommunication and internet service providers (ISP).(Citation: US Dept. | 2024-12 | 2025-01 | 高 | `source--daily-109114cb275f6abbc31b`, `source--daily-201526278f12b51ceb69`, `source--daily-6148d7a5b4eb95ec4071`, `source--daily-66a6db2a9826ffe94b34`, `source--daily-783a5f048c1b5f5d1e87`, `source--daily-8261fb78f465363bd3b1`, `source--daily-8e9e2a4c037c66bd65a0`, `source--daily-8f2935254e84a399c0e6`, `source--daily-976395d39cbe624f587e`, `source--daily-a83c00a6ec644814b818`, `source--daily-ee88cbba9f3a1d88bf3a`, `source--daily-f6737c6dffa112b7b406`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
 | countries | 英国 | 活動「中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害」の記述で標的として明示された国・地域。 | 2024-12 | 2025-01 | 中 | `source--daily-f6737c6dffa112b7b406`, `source--target-audit-etda-threat-group-cards` |
 | regions | アジア | 活動「ホワイトハウスが9件目の通信事業者侵害を中国ハッカーに関連付ける」の記述で標的地域としてアジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-6489f1d71026c247f5db` |
 | regions | アフリカ | エジプト、エスワティニ、エチオピア、ブルキナファソ、南アフリカで確認された標的・被害事例をアフリカとして集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 中南米 | アルゼンチン、グアテマラ、ブラジル、メキシコで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | regions | 中東 | イスラエル、サウジアラビアで確認された標的・被害事例を中東として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-109114cb275f6abbc31b`, `source--daily-201526278f12b51ceb69`, `source--daily-6148d7a5b4eb95ec4071`, `source--daily-66a6db2a9826ffe94b34`, `source--daily-783a5f048c1b5f5d1e87`, `source--daily-8261fb78f465363bd3b1`, `source--daily-8e9e2a4c037c66bd65a0`, `source--daily-8f2935254e84a399c0e6`, `source--daily-976395d39cbe624f587e`, `source--daily-a83c00a6ec644814b818`, `source--daily-ee88cbba9f3a1d88bf3a`, `source--daily-f6737c6dffa112b7b406`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
+| regions | 北米 | カナダ、メキシコ、米国で確認された標的・被害事例を北米として集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-109114cb275f6abbc31b`, `source--daily-201526278f12b51ceb69`, `source--daily-6148d7a5b4eb95ec4071`, `source--daily-66a6db2a9826ffe94b34`, `source--daily-783a5f048c1b5f5d1e87`, `source--daily-8261fb78f465363bd3b1`, `source--daily-8e9e2a4c037c66bd65a0`, `source--daily-8f2935254e84a399c0e6`, `source--daily-976395d39cbe624f587e`, `source--daily-a83c00a6ec644814b818`, `source--daily-ee88cbba9f3a1d88bf3a`, `source--daily-f6737c6dffa112b7b406`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
 | regions | 南アジア | 活動「ホワイトハウスが9件目の通信事業者侵害を中国ハッカーに関連付ける」の記述で標的地域として南アジアが明示されている。 | 不明 | 不明 | 中 | `source--daily-6489f1d71026c247f5db`, `source--daily-976395d39cbe624f587e`, `source--daily-f6737c6dffa112b7b406`, `source--target-audit-etda-threat-group-cards` |
 | regions | 南米 | 活動「Salt Typhoon、JumbledPathマルウェアを使用して米国の通信ネットワークをスパイ」の記述で標的地域として南米が明示されている。 | 2024-12 | 2025-01 | 中 | `source--daily-976395d39cbe624f587e`, `source--daily-f6737c6dffa112b7b406`, `source--target-audit-etda-threat-group-cards` |
 | regions | 東アジア | 中国、台湾で確認された標的・被害事例を東アジアとして集約した地域表示。 | 不明 | 不明 | 中 | `source--daily-6148d7a5b4eb95ec4071`, `source--daily-ee88cbba9f3a1d88bf3a`, `source--target-audit-etda-threat-group-cards` |
@@ -231,20 +232,20 @@ Aliasなし
 |---|---|---|---|---|---|---|---|---|---|
 | Initial Access | T1190 | Exploit Public-Facing Application | 中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害 中国のハッカーグループ「Salt Typhoon」が、未修正のCisco IOS XEネットワークデバイスの脆弱性を悪用し、米国の通信事業者を含む複数の企業ネットワークに侵入。 |  | activity--daily-cadad398daa03d4d231e | 2024-12 | 2025-01 | 中 | `source--daily-f6737c6dffa112b7b406` |
 | Discovery | T1083 | File and Directory Discovery | 攻撃者は設定ファイルを取得し、GREトンネルでネットワークトラフィックを傍受。 |  | activity--daily-b313dc66c03e6d019180 | 不明 | 不明 | 中 | `source--daily-5ec4eadaaf818bc23030` |
-| Lateral Movement | T1021.004 | SSH | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has modified the loopback address on compromised switches and used them as the source of SSH connections to additional devices within the target environment, allowing them to bypass access control lists (ACLs).(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access, Discovery | T1040 | Network Sniffing | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used a variety of tools and techniques to capture packet data between network interfaces.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Exfiltration | T1048.003 | Exfiltration Over Unencrypted Non-C2 Protocol | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has exfiltrated configuration files from exploited network devices over FTP and TFTP.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1098.004 | SSH Authorized Keys | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has added SSH authorized_keys under root or other users at the Linux level on compromised network devices.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1110.002 | Password Cracking | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has cracked passwords for accounts with weak encryption obtained from the configuration files of compromised network devices.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence | T1136 | Create Account | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has created Linux-level users on compromised network devices through modification of `/etc/shadow` and `/etc/passwd`.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1190 | Exploit Public-Facing Application | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has exploited CVE-2018-0171 in the Smart Install feature of Cisco IOS and Cisco IOS XE software for initial access.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1572 | Protocol Tunneling | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has modified device configurations to create and use Generic Routing Encapsulation (GRE) tunnels.(Citation: Cisco Salt Typhoon FEB 2025)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1587.001 | Malware | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used custom tooling including [JumbledPath](https://attack.mitre.org/software/S1206).(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used publicly available tooling to exploit vulnerabilities.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1590.004 | Network Topology | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used configuration files from exploited network devices to help discover upstream and downstream network segments.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1602.002 | Network Device Configuration Dump | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has attempted to acquire credentials by dumping network device configurations.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685.006 | Clear Linux or Mac System Logs | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has cleared logs including .bash_history, auth.log, lastlog, wtmp, and btmp.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1686 | Disable or Modify System Firewall | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has made changes to the Access Control List (ACL) and loopback interface address on compromised devices.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.004 | SSH | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has modified the loopback address on compromised switches and used them as the source of SSH connections to additional devices within the target environment, allowing them to bypass access control lists (ACLs).(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access, Discovery | T1040 | Network Sniffing | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used a variety of tools and techniques to capture packet data between network interfaces.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Exfiltration | T1048.003 | Exfiltration Over Unencrypted Non-C2 Protocol | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has exfiltrated configuration files from exploited network devices over FTP and TFTP.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1098.004 | SSH Authorized Keys | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has added SSH authorized_keys under root or other users at the Linux level on compromised network devices.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1110.002 | Password Cracking | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has cracked passwords for accounts with weak encryption obtained from the configuration files of compromised network devices.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence | T1136 | Create Account | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has created Linux-level users on compromised network devices through modification of `/etc/shadow` and `/etc/passwd`.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1190 | Exploit Public-Facing Application | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has exploited CVE-2018-0171 in the Smart Install feature of Cisco IOS and Cisco IOS XE software for initial access.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1572 | Protocol Tunneling | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has modified device configurations to create and use Generic Routing Encapsulation (GRE) tunnels.(Citation: Cisco Salt Typhoon FEB 2025)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1587.001 | Malware | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used custom tooling including [JumbledPath](https://attack.mitre.org/software/S1206).(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.002 | Tool | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used publicly available tooling to exploit vulnerabilities.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1590.004 | Network Topology | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has used configuration files from exploited network devices to help discover upstream and downstream network segments.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1602.002 | Network Device Configuration Dump | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has attempted to acquire credentials by dumping network device configurations.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685.006 | Clear Linux or Mac System Logs | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has cleared logs including .bash_history, auth.log, lastlog, wtmp, and btmp.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1686 | Disable or Modify System Firewall | [Salt Typhoon](https://attack.mitre.org/groups/G1045) has made changes to the Access Control List (ACL) and loopback interface address on compromised devices.(Citation: Cisco Salt Typhoon FEB 2025) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -290,7 +291,6 @@ Aliasなし
 | source--daily-ee88cbba9f3a1d88bf3a | FCC、Salt Typhoon攻撃を受けた通信ネットワークの保護を命令 | bleepingcomputer.com | 2025-01-18 | https://www.bleepingcomputer.com/news/security/fcc-orders-telecoms-to-secure-their-networks-after-salt-tyhpoon-hacks/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-f2e6a61340cf29da66e3 | 中国のハッカー、T-Mobileのルーターを侵害しネットワークを探索 | bleepingcomputer.com | 2024-11-28 | https://www.bleepingcomputer.com/news/security/chinese-hackers-breached-t-mobiles-routers-to-scope-out-network/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-f6737c6dffa112b7b406 | 中国のハッカー、未修正のCiscoルーターを通じて米国の通信事業者をさらに侵害 | bleepingcomputer.com | 2025-02-16 | https://www.bleepingcomputer.com/news/security/chinese-hackers-breach-more-us-telecoms-via-unpatched-cisco-routers/ | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |
@@ -315,6 +315,9 @@ Aliasなし
 | source--salt-typhoon--dd333d0437859d3e | CrowdStrike 2025 Threat Hunting Report |  | 2025 | summary/2025/CrowdStrike 2025 Threat Hunting Report.pdf | report | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

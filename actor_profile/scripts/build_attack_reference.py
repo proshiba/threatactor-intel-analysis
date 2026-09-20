@@ -19,6 +19,16 @@ def external_id(obj: dict[str, Any]) -> str:
     return ""
 
 
+def active_object(obj: dict[str, Any]) -> bool:
+    """Return whether an ATT&CK object is current and safe to materialize.
+
+    ATT&CK keeps deprecated objects in its STIX bundles for compatibility.
+    ``revoked`` and ``x_mitre_deprecated`` are independent flags, so checking
+    only the former can silently resurrect retired Groups or relationships.
+    """
+    return not obj.get("revoked") and not obj.get("x_mitre_deprecated")
+
+
 def relationship_record(
     relationship: dict[str, Any],
     target: dict[str, Any],
@@ -52,7 +62,7 @@ def main() -> int:
     by_id = {obj["id"]: obj for obj in objects if obj.get("id")}
     relationships: dict[str, list[dict[str, str]]] = defaultdict(list)
     for obj in objects:
-        if obj.get("type") != "relationship" or obj.get("revoked"):
+        if obj.get("type") != "relationship" or not active_object(obj):
             continue
         relationships[obj.get("source_ref", "")].append(
             {
@@ -66,7 +76,7 @@ def main() -> int:
 
     techniques: dict[str, Any] = {}
     for obj in objects:
-        if obj.get("type") != "attack-pattern" or obj.get("revoked"):
+        if obj.get("type") != "attack-pattern" or not active_object(obj):
             continue
         technique_id = external_id(obj)
         if not technique_id.startswith("T"):
@@ -87,7 +97,7 @@ def main() -> int:
 
     software: dict[str, Any] = {}
     for obj in objects:
-        if obj.get("type") not in {"malware", "tool"} or obj.get("revoked"):
+        if obj.get("type") not in {"malware", "tool"} or not active_object(obj):
             continue
         software[obj["id"]] = {
             "stix_id": obj["id"],
@@ -101,7 +111,7 @@ def main() -> int:
 
     campaigns: dict[str, Any] = {}
     for obj in objects:
-        if obj.get("type") != "campaign" or obj.get("revoked"):
+        if obj.get("type") != "campaign" or not active_object(obj):
             continue
         campaign_relationships = relationships.get(obj["id"], [])
         campaigns[obj["id"]] = {
@@ -145,7 +155,7 @@ def main() -> int:
 
     groups: dict[str, Any] = {}
     for obj in objects:
-        if obj.get("type") != "intrusion-set" or obj.get("revoked"):
+        if obj.get("type") != "intrusion-set" or not active_object(obj):
             continue
         group_id = external_id(obj) or obj["id"]
         group_relationships = relationships.get(obj["id"], [])
@@ -184,6 +194,15 @@ def main() -> int:
                     if item["relationship_type"] == "uses"
                     and item["target_ref"] in software
                 }
+            ),
+            "software_uses": sorted(
+                [
+                    relationship_record(item, by_id[item["target_ref"]])
+                    for item in group_relationships
+                    if item["relationship_type"] == "uses"
+                    and item["target_ref"] in software
+                ],
+                key=lambda item: (item["target_type"], item["target_name"]),
             ),
             "campaign_refs": [],
         }

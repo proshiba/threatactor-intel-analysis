@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--velvet-ant`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:47:46Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | Velvet Ant - G1047 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1047<br>https://www.sygnia.co/blog/china-nexus-threat-group-velvet-ant/<br>https://www.sygnia.co/threat-reports-and-advisories/china-nexus-threat-group-velvet-ant-exploits-cisco-0-day/ |
 | misp-mitre-intrusion-set | Velvet Ant - G1047 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1047<br>https://www.sygnia.co/blog/china-nexus-threat-group-velvet-ant/<br>https://www.sygnia.co/threat-reports-and-advisories/china-nexus-threat-group-velvet-ant-exploits-cisco-0-day/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Velvet Ant | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -81,13 +82,13 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--plugx | PlugX | [PlugX](https://attack.mitre.org/software/S0013) is a remote access tool (RAT) with modular plugins that has been used by multiple threat groups.(Citation: Lastline PlugX Analysis)(Citation: FireEye Clandestine Fox Part 2)(Citation: New DragonOK)(Citation: Dell TG-3390) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--impacket | Impacket | [Impacket](https://attack.mitre.org/software/S0357) is an open source collection of modules written in Python for programmatically constructing and manipulating network protocols. [Impacket](https://attack.mitre.org/software/S0357) contains several tools for remote service execution, Kerberos manipulation, Windows credential dumping, packet sniffing, and relay attacks.(Citation: Impacket Tools) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--impacket | Impacket | [Impacket](https://attack.mitre.org/software/S0357) is an open source collection of modules written in Python for programmatically constructing and manipulating network protocols. [Impacket](https://attack.mitre.org/software/S0357) contains several tools for remote service execution, Kerberos manipulation, Windows credential dumping, packet sniffing, and relay attacks.(Citation: Impacket Tools) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -145,28 +146,28 @@ Aliasなし
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Command And Control | T1090 | Proxy | GS-Netcat、SOCKS5プロキシ、Nginx/FastCGI悪用に加え、PAMとOpenSSHを改ざんして認証基盤自体をバックドア化した。 |  | activity--daily-09a35affab31944a04d3 | 不明 | 不明 | 中 | `source--daily-2458b73767c4166d02ee` |
-| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [Velvet Ant](https://attack.mitre.org/groups/G1047) has transferred tools within victim environments using SMB.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Velvet Ant](https://attack.mitre.org/groups/G1047) used a malicious DLL, `iviewers.dll`, that mimics the legitimate "OLE/COM Object Viewer" within Windows.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1037.004 | RC Scripts | [Velvet Ant](https://attack.mitre.org/groups/G1047) used a modified `/etc/rc.local` file on compromised F5 BIG-IP devices to maintain persistence.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access, Discovery | T1040 | Network Sniffing | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used a custom tool, "VELVETTAP", to perform packet capture from compromised F5 BIG-IP devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | [Velvet Ant](https://attack.mitre.org/groups/G1047) used the `wmiexec.py` tool within [Impacket](https://attack.mitre.org/software/S0357) for remote process execution via WMI.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | [Velvet Ant](https://attack.mitre.org/groups/G1047) has enumerated existing network connections on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | [Velvet Ant](https://attack.mitre.org/groups/G1047) initial execution included launching multiple `svchost` processes and injecting code into them.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.004 | Unix Shell | [Velvet Ant](https://attack.mitre.org/groups/G1047) used a custom tool, VELVETSTING, to parse encoded inbound commands to compromised F5 BIG-IP devices and then execute them via the Unix shell.(Citation: Sygnia VelvetAnt 2024A)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071 | Application Layer Protocol | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used reverse SSH tunnels to communicate to victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.003 | Local Accounts | [Velvet Ant](https://attack.mitre.org/groups/G1047) accessed vulnerable Cisco switch devices using accounts with administrator privileges.(Citation: Sygnia VelvetAnt 2024B) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | [Velvet Ant](https://attack.mitre.org/groups/G1047) has enumerated local files and folders on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090.001 | Internal Proxy | [Velvet Ant](https://attack.mitre.org/groups/G1047) has tunneled traffic from victims through an internal, compromised host to proxy communications to command and control nodes.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1132 | Data Encoding | [Velvet Ant](https://attack.mitre.org/groups/G1047) sent commands to compromised F5 BIG-IP devices in an encoded format requiring a passkey before interpretation and execution.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access, Persistence | T1133 | External Remote Services | [Velvet Ant](https://attack.mitre.org/groups/G1047) has leveraged access to internet-facing remote services to compromise and retain access to victim environments.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1211 | Exploitation for Stealth | [Velvet Ant](https://attack.mitre.org/groups/G1047) exploited CVE-2024-20399 in Cisco Switches to which the threat actor was already able to authenticate in order to escape the NX-OS command line interface and gain access to the underlying operating system for arbitrary command execution.(Citation: Sygnia VelvetAnt 2024B) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | [Velvet Ant](https://attack.mitre.org/groups/G1047) executed and installed [PlugX](https://attack.mitre.org/software/S0013) as a Windows service.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Lateral Movement | T1570 | Lateral Tool Transfer | [Velvet Ant](https://attack.mitre.org/groups/G1047) transferred files laterally within victim networks through the [Impacket](https://attack.mitre.org/software/S0357) toolkit.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1571 | Non-Standard Port | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used random high number ports for [PlugX](https://attack.mitre.org/software/S0013) listeners on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.002 | Asymmetric Cryptography | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used a reverse SSH shell to securely communicate with victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Stealth | T1574.001 | DLL | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used malicious DLLs executed via legitimate EXE files through DLL search order hijacking to launch follow-on payloads such as [PlugX](https://attack.mitre.org/software/S0013).(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | [Velvet Ant](https://attack.mitre.org/groups/G1047) attempted to disable local security tools and endpoint detection and response (EDR) software during operations.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1686 | Disable or Modify System Firewall | [Velvet Ant](https://attack.mitre.org/groups/G1047) modified system firewall settings during [PlugX](https://attack.mitre.org/software/S0013) installation using `netsh.exe` to open a listening, random high number port on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Lateral Movement | T1021.002 | SMB/Windows Admin Shares | [Velvet Ant](https://attack.mitre.org/groups/G1047) has transferred tools within victim environments using SMB.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Velvet Ant](https://attack.mitre.org/groups/G1047) used a malicious DLL, `iviewers.dll`, that mimics the legitimate "OLE/COM Object Viewer" within Windows.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1037.004 | RC Scripts | [Velvet Ant](https://attack.mitre.org/groups/G1047) used a modified `/etc/rc.local` file on compromised F5 BIG-IP devices to maintain persistence.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access, Discovery | T1040 | Network Sniffing | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used a custom tool, "VELVETTAP", to perform packet capture from compromised F5 BIG-IP devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1047 | Windows Management Instrumentation | [Velvet Ant](https://attack.mitre.org/groups/G1047) used the `wmiexec.py` tool within [Impacket](https://attack.mitre.org/software/S0357) for remote process execution via WMI.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1049 | System Network Connections Discovery | [Velvet Ant](https://attack.mitre.org/groups/G1047) has enumerated existing network connections on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [Velvet Ant](https://attack.mitre.org/groups/G1047) initial execution included launching multiple `svchost` processes and injecting code into them.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.004 | Unix Shell | [Velvet Ant](https://attack.mitre.org/groups/G1047) used a custom tool, VELVETSTING, to parse encoded inbound commands to compromised F5 BIG-IP devices and then execute them via the Unix shell.(Citation: Sygnia VelvetAnt 2024A)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071 | Application Layer Protocol | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used reverse SSH tunnels to communicate to victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence, Privilege Escalation, Stealth | T1078.003 | Local Accounts | [Velvet Ant](https://attack.mitre.org/groups/G1047) accessed vulnerable Cisco switch devices using accounts with administrator privileges.(Citation: Sygnia VelvetAnt 2024B) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1083 | File and Directory Discovery | [Velvet Ant](https://attack.mitre.org/groups/G1047) has enumerated local files and folders on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1090.001 | Internal Proxy | [Velvet Ant](https://attack.mitre.org/groups/G1047) has tunneled traffic from victims through an internal, compromised host to proxy communications to command and control nodes.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1132 | Data Encoding | [Velvet Ant](https://attack.mitre.org/groups/G1047) sent commands to compromised F5 BIG-IP devices in an encoded format requiring a passkey before interpretation and execution.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access, Persistence | T1133 | External Remote Services | [Velvet Ant](https://attack.mitre.org/groups/G1047) has leveraged access to internet-facing remote services to compromise and retain access to victim environments.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1211 | Exploitation for Stealth | [Velvet Ant](https://attack.mitre.org/groups/G1047) exploited CVE-2024-20399 in Cisco Switches to which the threat actor was already able to authenticate in order to escape the NX-OS command line interface and gain access to the underlying operating system for arbitrary command execution.(Citation: Sygnia VelvetAnt 2024B) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1569.002 | Service Execution | [Velvet Ant](https://attack.mitre.org/groups/G1047) executed and installed [PlugX](https://attack.mitre.org/software/S0013) as a Windows service.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Lateral Movement | T1570 | Lateral Tool Transfer | [Velvet Ant](https://attack.mitre.org/groups/G1047) transferred files laterally within victim networks through the [Impacket](https://attack.mitre.org/software/S0357) toolkit.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1571 | Non-Standard Port | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used random high number ports for [PlugX](https://attack.mitre.org/software/S0013) listeners on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1573.002 | Asymmetric Cryptography | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used a reverse SSH shell to securely communicate with victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Stealth | T1574.001 | DLL | [Velvet Ant](https://attack.mitre.org/groups/G1047) has used malicious DLLs executed via legitimate EXE files through DLL search order hijacking to launch follow-on payloads such as [PlugX](https://attack.mitre.org/software/S0013).(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [Velvet Ant](https://attack.mitre.org/groups/G1047) attempted to disable local security tools and endpoint detection and response (EDR) software during operations.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1686 | Disable or Modify System Firewall | [Velvet Ant](https://attack.mitre.org/groups/G1047) modified system firewall settings during [PlugX](https://attack.mitre.org/software/S0013) installation using `netsh.exe` to open a listening, random high number port on victim devices.(Citation: Sygnia VelvetAnt 2024A) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -198,7 +199,6 @@ Aliasなし
 | source--daily-358b578d3773fff3ba70 | ハッカーがF5 BIG-IPマルウェアを使用して数年間データを密かに盗み続ける | bleepingcomputer.com | 2024-06-18 | https://www.bleepingcomputer.com/news/security/hackers-use-f5-big-ip-malware-to-stealthily-steal-data-for-years/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-5d965e40acbf5f57fde8 | Cisco、NX-OSのゼロデイ脆弱性がカスタムマルウェアの展開に悪用されたと警告 | bleepingcomputer.com | 2024-07-02 | https://www.bleepingcomputer.com/news/security/cisco-warns-of-nx-os-zero-day-exploited-to-deploy-custom-malware/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-fde72f5ea92c79372580 | 中国のハッカー、Ciscoスイッチのゼロデイ脆弱性を悪用してシステムを制御 | thehackernews.com | 2024-08-23 | https://thehackernews.com/2024/08/chinese-hackers-exploit-zero-day-cisco.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--velvet-ant--267d6aacf05086f7 | velvet ant |  | 不明 | actor_profile/evidence/velvet-ant.csv | structured-data | TLP:CLEAR | 中 |
@@ -206,6 +206,9 @@ Aliasなし
 | source--velvet-ant--89cef32c633ba5db | TLP CLEAR CERT EU TLR 2024 v1 |  | 2024 | summary/2025/TLP-CLEAR-CERT-EU-TLR-2024-v1.pdf | report | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

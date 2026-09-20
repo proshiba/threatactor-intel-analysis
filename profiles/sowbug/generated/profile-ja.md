@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sowbug`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | Sowbug - G0054 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0054<br>https://www.symantec.com/connect/blogs/sowbug-cyber-espionage-group-targets-south-american-and-southeast-asian-governments |
 | misp-mitre-intrusion-set | Sowbug - G0054 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0054<br>https://www.symantec.com/connect/blogs/sowbug-cyber-espionage-group-targets-south-american-and-southeast-asian-governments |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Sowbug | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -81,8 +82,8 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--felismus | Felismus | [Felismus](https://attack.mitre.org/software/S0171) is a modular backdoor that has been used by [Sowbug](https://attack.mitre.org/groups/G0054). (Citation: Symantec Sowbug Nov 2017) (Citation: Forcepoint Felismus Mar 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--starloader | Starloader | [Starloader](https://attack.mitre.org/software/S0188) is a loader component that has been observed loading [Felismus](https://attack.mitre.org/software/S0171) and associated tools. (Citation: Symantec Sowbug Nov 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--felismus | Felismus | [Felismus](https://attack.mitre.org/software/S0171) is a modular backdoor that has been used by [Sowbug](https://attack.mitre.org/groups/G0054). (Citation: Symantec Sowbug Nov 2017) (Citation: Forcepoint Felismus Mar 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--starloader | Starloader | [Starloader](https://attack.mitre.org/software/S0188) is a loader component that has been observed loading [Felismus](https://attack.mitre.org/software/S0171) and associated tools. (Citation: Symantec Sowbug Nov 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -125,11 +126,11 @@ Aliasなし
 | countries | ペルー | 構造化OSINTの被害国フィールドでSowbugの標的・被害国としてペルーが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | マレーシア | 構造化OSINTの被害国フィールドでSowbugの標的・被害国としてマレーシアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
 | countries | 米国 | レビュー済みアクターマッピングの標的欄に記録された米国を構造化した。 | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| regions | アジア | MITRE ATT&CKのGroup概要でSowbugの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | アジア | MITRE ATT&CKのGroup概要でSowbugの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | regions | 中南米 | アルゼンチン、エクアドル、ブラジル、ペルーで確認された標的・被害事例を中南米として集約した地域表示。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 南米 | MITRE ATT&CKのGroup概要でSowbugの標的範囲として南米が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| regions | 東南アジア | MITRE ATT&CKのGroup概要でSowbugの標的範囲として東南アジアが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
-| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1` |
+| regions | 南米 | MITRE ATT&CKのGroup概要でSowbugの標的範囲として南米が明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| regions | 東南アジア | MITRE ATT&CKのGroup概要でSowbugの標的範囲として東南アジアが明示されている。 | 不明 | 不明 | 高 | `source--actor-mapping-workbook`, `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards`, `source--target-audit-misp-threat-actor` |
+| sectors | Government | Targeting text indicates the Government sector. | 不明 | 不明 | 中 | `source--actor-mapping-workbook`, `source--mitre-attack-19-1`, `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -141,15 +142,15 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003 | OS Credential Dumping | [Sowbug](https://attack.mitre.org/groups/G0054) has used credential dumping tools.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Sowbug](https://attack.mitre.org/groups/G0054) named its tools to masquerade as Windows or Adobe Reader software, such as by using the file name adobecms.exe and the directory <code>CSIDL_APPDATA\microsoft\security</code>.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1039 | Data from Network Shared Drive | [Sowbug](https://attack.mitre.org/groups/G0054) extracted Word documents from a file server on a victim network.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection, Credential Access | T1056.001 | Keylogging | [Sowbug](https://attack.mitre.org/groups/G0054) has used keylogging tools.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.003 | Windows Command Shell | [Sowbug](https://attack.mitre.org/groups/G0054) has used command line during its intrusions.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [Sowbug](https://attack.mitre.org/groups/G0054) obtained OS version and hardware configuration from a victim.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1083 | File and Directory Discovery | [Sowbug](https://attack.mitre.org/groups/G0054) identified and extracted all Word documents on a server by using a command containing * .doc and *.docx. The actors also searched for documents based on a specific date range and attempted to identify all installed software on a victim.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1135 | Network Share Discovery | [Sowbug](https://attack.mitre.org/groups/G0054) listed remote shared drives that were accessible from a victim.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1560.001 | Archive via Utility | [Sowbug](https://attack.mitre.org/groups/G0054) extracted documents and bundled them into a RAR archive.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003 | OS Credential Dumping | [Sowbug](https://attack.mitre.org/groups/G0054) has used credential dumping tools.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [Sowbug](https://attack.mitre.org/groups/G0054) named its tools to masquerade as Windows or Adobe Reader software, such as by using the file name adobecms.exe and the directory <code>CSIDL_APPDATA\microsoft\security</code>.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1039 | Data from Network Shared Drive | [Sowbug](https://attack.mitre.org/groups/G0054) extracted Word documents from a file server on a victim network.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection, Credential Access | T1056.001 | Keylogging | [Sowbug](https://attack.mitre.org/groups/G0054) has used keylogging tools.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.003 | Windows Command Shell | [Sowbug](https://attack.mitre.org/groups/G0054) has used command line during its intrusions.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [Sowbug](https://attack.mitre.org/groups/G0054) obtained OS version and hardware configuration from a victim.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1083 | File and Directory Discovery | [Sowbug](https://attack.mitre.org/groups/G0054) identified and extracted all Word documents on a server by using a command containing * .doc and *.docx. The actors also searched for documents based on a specific date range and attempted to identify all installed software on a victim.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1135 | Network Share Discovery | [Sowbug](https://attack.mitre.org/groups/G0054) listed remote shared drives that were accessible from a victim.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1560.001 | Archive via Utility | [Sowbug](https://attack.mitre.org/groups/G0054) extracted documents and bundled them into a RAR archive.(Citation: Symantec Sowbug Nov 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -176,7 +177,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--sowbug--5277aebd5e1de42d | sowbug |  | 不明 | actor_profile/evidence/sowbug.csv | structured-data | TLP:CLEAR | 中 |
 | source--sowbug--477ab8cf58ecf271 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |
@@ -188,6 +188,9 @@ Aliasなし
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

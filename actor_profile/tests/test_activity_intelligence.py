@@ -278,13 +278,13 @@ class ActivityIntelligenceTests(unittest.TestCase):
     def test_existing_mitre_evidence_reference_is_detected(self) -> None:
         profile = self.profile("APT43")
         profile["relationships"] = [
-            {"evidence_refs": ["source--mitre-attack-19-1"]}
+            {"evidence_refs": ["source--mitre-attack-19-2"]}
         ]
 
         self.assertTrue(
             contains_evidence_reference(
                 profile,
-                "source--mitre-attack-19-1",
+                "source--mitre-attack-19-2",
             )
         )
 

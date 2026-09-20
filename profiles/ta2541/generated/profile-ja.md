@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--ta2541`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:09Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -48,7 +48,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -63,6 +63,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | TA2541 - G1018 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1018<br>https://blog.talosintelligence.com/operation-layover-how-we-tracked-attack/<br>https://www.proofpoint.com/us/blog/threat-insight/charting-ta2541s-flight |
 | misp-mitre-intrusion-set | TA2541 - G1018 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1018<br>https://blog.talosintelligence.com/operation-layover-how-we-tracked-attack/<br>https://www.proofpoint.com/us/blog/threat-insight/charting-ta2541s-flight |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | TA2541 | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -81,20 +82,20 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--netwire | NETWIRE | [NETWIRE](https://attack.mitre.org/software/S0198) is a publicly available, multiplatform remote administration tool (RAT) that has been used by criminal and APT groups since at least 2012.(Citation: FireEye APT33 Sept 2017)(Citation: McAfee Netwire Mar 2015)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--snip3 | Snip3 | [Snip3](https://attack.mitre.org/software/S1086) is a sophisticated crypter-as-a-service that has been used since at least 2021 to obfuscate and load numerous strains of malware including [AsyncRAT](https://attack.mitre.org/software/S1087), [Revenge RAT](https://attack.mitre.org/software/S0379), [Agent Tesla](https://attack.mitre.org/software/S0331), and [NETWIRE](https://attack.mitre.org/software/S0198).(Citation: Morphisec Snip3 May 2021)(Citation: Telefonica Snip3 December 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--revenge-rat | Revenge RAT | [Revenge RAT](https://attack.mitre.org/software/S0379) is a freely available remote access tool written in .NET (C#).(Citation: Cylance Shaheen Nov 2018)(Citation: Cofense RevengeRAT Feb 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--njrat | njRAT | [njRAT](https://attack.mitre.org/software/S0385) is a remote access tool (RAT) that was first observed in 2012. It has been used by threat actors in the Middle East.(Citation: Fidelis njRAT June 2013) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--agent-tesla | Agent Tesla | [Agent Tesla](https://attack.mitre.org/software/S0331) is a spyware Trojan written for the .NET framework that has been observed since at least 2014.(Citation: Fortinet Agent Tesla April 2018)(Citation: Bitdefender Agent Tesla April 2020)(Citation: Malwarebytes Agent Tesla April 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--jrat | jRAT | [jRAT](https://attack.mitre.org/software/S0283) is a cross-platform, Java-based backdoor originally available for purchase in 2012. Variants of [jRAT](https://attack.mitre.org/software/S0283) have been distributed via a software-as-a-service platform, similar to an online subscription model.(Citation: Kaspersky Adwind Feb 2016) (Citation: jRAT Symantec Aug 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--warzonerat | WarzoneRAT | [WarzoneRAT](https://attack.mitre.org/software/S0670) is a malware-as-a-service remote access tool (RAT) written in C++ that has been publicly available for purchase since at least late 2018.(Citation: Check Point Warzone Feb 2020)(Citation: Uptycs Warzone UAC Bypass November 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--agent-tesla | Agent Tesla | [Agent Tesla](https://attack.mitre.org/software/S0331) is a spyware Trojan written for the .NET framework that has been observed since at least 2014.(Citation: Fortinet Agent Tesla April 2018)(Citation: Bitdefender Agent Tesla April 2020)(Citation: Malwarebytes Agent Tesla April 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--jrat | jRAT | [jRAT](https://attack.mitre.org/software/S0283) is a cross-platform, Java-based backdoor originally available for purchase in 2012. Variants of [jRAT](https://attack.mitre.org/software/S0283) have been distributed via a software-as-a-service platform, similar to an online subscription model.(Citation: Kaspersky Adwind Feb 2016) (Citation: jRAT Symantec Aug 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--netwire | NETWIRE | [NETWIRE](https://attack.mitre.org/software/S0198) is a publicly available, multiplatform remote administration tool (RAT) that has been used by criminal and APT groups since at least 2012.(Citation: FireEye APT33 Sept 2017)(Citation: McAfee Netwire Mar 2015)(Citation: FireEye APT33 Webinar Sept 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--njrat | njRAT | [njRAT](https://attack.mitre.org/software/S0385) is a remote access tool (RAT) that was first observed in 2012. It has been used by threat actors in the Middle East.(Citation: Fidelis njRAT June 2013) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--revenge-rat | Revenge RAT | [Revenge RAT](https://attack.mitre.org/software/S0379) is a freely available remote access tool written in .NET (C#).(Citation: Cylance Shaheen Nov 2018)(Citation: Cofense RevengeRAT Feb 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--snip3 | Snip3 | [Snip3](https://attack.mitre.org/software/S1086) is a sophisticated crypter-as-a-service that has been used since at least 2021 to obfuscate and load numerous strains of malware including [AsyncRAT](https://attack.mitre.org/software/S1087), [Revenge RAT](https://attack.mitre.org/software/S0379), [Agent Tesla](https://attack.mitre.org/software/S0331), and [NETWIRE](https://attack.mitre.org/software/S0198).(Citation: Morphisec Snip3 May 2021)(Citation: Telefonica Snip3 December 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--warzonerat | WarzoneRAT | [WarzoneRAT](https://attack.mitre.org/software/S0670) is a malware-as-a-service remote access tool (RAT) written in C++ that has been publicly available for purchase since at least late 2018.(Citation: Check Point Warzone Feb 2020)(Citation: Uptycs Warzone UAC Bypass November 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--asyncrat | AsyncRAT | [AsyncRAT](https://attack.mitre.org/software/S1087) is an open-source remote access tool originally available through the NYANxCAT Github repository that has been used in malicious campaigns.(Citation: Morphisec Snip3 May 2021)(Citation: Cisco Operation Layover September 2021)(Citation: Telefonica Snip3 December 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| tool--imminent-monitor | Imminent Monitor | [Imminent Monitor](https://attack.mitre.org/software/S0434) was a commodity remote access tool (RAT) offered for sale from 2012 until 2019, when an operation was conducted to take down the Imminent Monitor infrastructure. Various cracked versions and variations of this RAT are still in circulation.(Citation: Imminent Unit42 Dec2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--asyncrat | AsyncRAT | [AsyncRAT](https://attack.mitre.org/software/S1087) is an open-source remote access tool originally available through the NYANxCAT Github repository that has been used in malicious campaigns.(Citation: Morphisec Snip3 May 2021)(Citation: Cisco Operation Layover September 2021)(Citation: Telefonica Snip3 December 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| tool--imminent-monitor | Imminent Monitor | [Imminent Monitor](https://attack.mitre.org/software/S0434) was a commodity remote access tool (RAT) offered for sale from 2012 until 2019, when an operation was conducted to take down the Imminent Monitor infrastructure. Various cracked versions and variations of this RAT are still in circulation.(Citation: Imminent Unit42 Dec2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -126,9 +127,9 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| sectors | 防衛・軍事 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 製造・産業 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 運輸・航空・海運 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 防衛・軍事 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 製造・産業 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| sectors | 運輸・航空・海運 | [TA2541](https://attack.mitre.org/groups/G1018) is a cybercriminal group that has been targeting the aviation, aerospace, transportation, manufacturing, and defense industries since at least 2017. | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -140,34 +141,34 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Discovery | T1016.001 | Internet Connection Discovery | <br>[TA2541](https://attack.mitre.org/groups/G1018) has run scripts to check internet connectivity from compromised hosts. (Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.002 | Software Packing | [TA2541](https://attack.mitre.org/groups/G1018) has used a .NET packer to obfuscate malicious files.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used compressed and char-encoded scripts in operations.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.015 | Compression | [TA2541](https://attack.mitre.org/groups/G1018) has used compressed and char-encoded scripts in operations.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [TA2541](https://attack.mitre.org/groups/G1018) has used file names to mimic legitimate Windows files or system functionality.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1047 | Windows Management Instrumentation | [TA2541](https://attack.mitre.org/groups/G1018) has used WMI to query targeted systems for security products.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [TA2541](https://attack.mitre.org/groups/G1018) has used scheduled tasks to establish persistence for installed tools.(Citation: Proofpoint TA2541 February 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055 | Process Injection | [TA2541](https://attack.mitre.org/groups/G1018) has injected malicious code into legitimate .NET related processes including  regsvcs.exe, msbuild.exe, and installutil.exe.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation, Stealth | T1055.012 | Process Hollowing | [TA2541](https://attack.mitre.org/groups/G1018) has used process hollowing to execute CyberGate malware.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | [TA2541](https://attack.mitre.org/groups/G1018) has used PowerShell to download files and to inject into various Windows processes.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.005 | Visual Basic | [TA2541](https://attack.mitre.org/groups/G1018) has used VBS files to execute or establish persistence for additional payloads, often using file names consistent with email themes or mimicking system functionality.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [TA2541](https://attack.mitre.org/groups/G1018) has collected system information prior to downloading malware on the targeted host.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used malicious scripts and macros with the ability to download additional payloads.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | [TA2541](https://attack.mitre.org/groups/G1018) has used malicious links to cloud and web services to gain execution on victim machines.(Citation: Proofpoint TA2541 February 2022)(Citation: FireEye NETWIRE March 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [TA2541](https://attack.mitre.org/groups/G1018) has used macro-enabled MS Word documents to lure victims into executing malicious payloads.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021)(Citation: Telefonica Snip3 December 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1218.005 | Mshta | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used `mshta` to execute scripts including VBS.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1518.001 | Security Software Discovery | [TA2541](https://attack.mitre.org/groups/G1018) has used tools to search victim systems for security products such as antivirus and firewall software.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [TA2541](https://attack.mitre.org/groups/G1018) has placed VBS files in the Startup folder and used Registry run keys to establish persistence for malicious payloads.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [TA2541](https://attack.mitre.org/groups/G1018) has sent phishing emails with malicious attachments for initial access including MS Word documents.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | [TA2541](https://attack.mitre.org/groups/G1018) has used spearphishing e-mails with malicious links to deliver malware.  (Citation: Proofpoint TA2541 February 2022)(Citation: Telefonica Snip3 December 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1568 | Dynamic Resolution | [TA2541](https://attack.mitre.org/groups/G1018) has used dynamic DNS services for C2 infrastructure.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1573.002 | Asymmetric Cryptography | [TA2541](https://attack.mitre.org/groups/G1018) has used TLS encrypted C2 communications including for campaigns using AsyncRAT.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | [TA2541](https://attack.mitre.org/groups/G1018) has registered domains often containing the keywords “kimjoy,” “h0pe,” and “grace,” using domain registrars including Netdorm and No-IP DDNS, and hosting providers including xTom GmbH and Danilenko, Artyom.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.006 | Web Services | [TA2541](https://attack.mitre.org/groups/G1018) has hosted malicious files on various platforms including Google Drive, OneDrive, Discord, PasteText, ShareText, and GitHub.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.001 | Malware | [TA2541](https://attack.mitre.org/groups/G1018) has used multiple strains of malware available for purchase on criminal forums or in open-source repositories.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used commodity remote access tools.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | [TA2541](https://attack.mitre.org/groups/G1018) has uploaded malware to various platforms including Google Drive, Pastetext, Sharetext, and GitHub.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Defense Impairment | T1685 | Disable or Modify Tools | [TA2541](https://attack.mitre.org/groups/G1018)  has attempted to disable built-in security protections such as Windows AMSI. (Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Discovery | T1016.001 | Internet Connection Discovery | <br>[TA2541](https://attack.mitre.org/groups/G1018) has run scripts to check internet connectivity from compromised hosts. (Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.002 | Software Packing | [TA2541](https://attack.mitre.org/groups/G1018) has used a .NET packer to obfuscate malicious files.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.013 | Encrypted/Encoded File | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used compressed and char-encoded scripts in operations.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.015 | Compression | [TA2541](https://attack.mitre.org/groups/G1018) has used compressed and char-encoded scripts in operations.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1036.005 | Match Legitimate Resource Name or Location | [TA2541](https://attack.mitre.org/groups/G1018) has used file names to mimic legitimate Windows files or system functionality.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1047 | Windows Management Instrumentation | [TA2541](https://attack.mitre.org/groups/G1018) has used WMI to query targeted systems for security products.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [TA2541](https://attack.mitre.org/groups/G1018) has used scheduled tasks to establish persistence for installed tools.(Citation: Proofpoint TA2541 February 2022)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055 | Process Injection | [TA2541](https://attack.mitre.org/groups/G1018) has injected malicious code into legitimate .NET related processes including  regsvcs.exe, msbuild.exe, and installutil.exe.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation, Stealth | T1055.012 | Process Hollowing | [TA2541](https://attack.mitre.org/groups/G1018) has used process hollowing to execute CyberGate malware.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.001 | PowerShell | [TA2541](https://attack.mitre.org/groups/G1018) has used PowerShell to download files and to inject into various Windows processes.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.005 | Visual Basic | [TA2541](https://attack.mitre.org/groups/G1018) has used VBS files to execute or establish persistence for additional payloads, often using file names consistent with email themes or mimicking system functionality.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [TA2541](https://attack.mitre.org/groups/G1018) has collected system information prior to downloading malware on the targeted host.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used malicious scripts and macros with the ability to download additional payloads.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.001 | Malicious Link | [TA2541](https://attack.mitre.org/groups/G1018) has used malicious links to cloud and web services to gain execution on victim machines.(Citation: Proofpoint TA2541 February 2022)(Citation: FireEye NETWIRE March 2019) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [TA2541](https://attack.mitre.org/groups/G1018) has used macro-enabled MS Word documents to lure victims into executing malicious payloads.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021)(Citation: Telefonica Snip3 December 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1218.005 | Mshta | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used `mshta` to execute scripts including VBS.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1518.001 | Security Software Discovery | [TA2541](https://attack.mitre.org/groups/G1018) has used tools to search victim systems for security products such as antivirus and firewall software.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [TA2541](https://attack.mitre.org/groups/G1018) has placed VBS files in the Startup folder and used Registry run keys to establish persistence for malicious payloads.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [TA2541](https://attack.mitre.org/groups/G1018) has sent phishing emails with malicious attachments for initial access including MS Word documents.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.002 | Spearphishing Link | [TA2541](https://attack.mitre.org/groups/G1018) has used spearphishing e-mails with malicious links to deliver malware.  (Citation: Proofpoint TA2541 February 2022)(Citation: Telefonica Snip3 December 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1568 | Dynamic Resolution | [TA2541](https://attack.mitre.org/groups/G1018) has used dynamic DNS services for C2 infrastructure.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1573.002 | Asymmetric Cryptography | [TA2541](https://attack.mitre.org/groups/G1018) has used TLS encrypted C2 communications including for campaigns using AsyncRAT.(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.001 | Domains | [TA2541](https://attack.mitre.org/groups/G1018) has registered domains often containing the keywords “kimjoy,” “h0pe,” and “grace,” using domain registrars including Netdorm and No-IP DDNS, and hosting providers including xTom GmbH and Danilenko, Artyom.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.006 | Web Services | [TA2541](https://attack.mitre.org/groups/G1018) has hosted malicious files on various platforms including Google Drive, OneDrive, Discord, PasteText, ShareText, and GitHub.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.001 | Malware | [TA2541](https://attack.mitre.org/groups/G1018) has used multiple strains of malware available for purchase on criminal forums or in open-source repositories.(Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.002 | Tool | <br>[TA2541](https://attack.mitre.org/groups/G1018) has used commodity remote access tools.(Citation: Cisco Operation Layover September 2021)<br> |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1608.001 | Upload Malware | [TA2541](https://attack.mitre.org/groups/G1018) has uploaded malware to various platforms including Google Drive, Pastetext, Sharetext, and GitHub.(Citation: Proofpoint TA2541 February 2022)(Citation: Cisco Operation Layover September 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Defense Impairment | T1685 | Disable or Modify Tools | [TA2541](https://attack.mitre.org/groups/G1018)  has attempted to disable built-in security protections such as Windows AMSI. (Citation: Proofpoint TA2541 February 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -194,7 +195,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--ta2541--697b24b766086295 | ta2541 |  | 不明 | actor_profile/evidence/ta2541.csv | structured-data | TLP:CLEAR | 中 |
 | source--ta2541--6f1b6f373cd1c299 | 2022cyberComprehensiveSituationObservationManual |  | 2022 | summary/2023/2022cyberComprehensiveSituationObservationManual.pdf | report | TLP:CLEAR | 中 |
@@ -204,6 +204,9 @@ Aliasなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

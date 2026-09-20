@@ -21,7 +21,7 @@ from common import load_json, utc_now, write_json_atomic
 
 
 WORKBOOK_SOURCE_ID = "source--actor-mapping-workbook"
-MITRE_SOURCE_ID = "source--mitre-attack-19-1"
+MITRE_SOURCE_ID = "source--mitre-attack-19-2"
 GENERATED_ESPIONAGE_DESCRIPTION = (
     "State-sponsored intelligence collection or strategic operations."
 )

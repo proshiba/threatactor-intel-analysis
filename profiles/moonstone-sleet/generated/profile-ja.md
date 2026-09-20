@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--moonstone-sleet`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,7 +18,7 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Storm-1789 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Storm-1789 | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -33,14 +33,14 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
-| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description. |
 
 ## 他アクターとの関係
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Lazarus Group | overlaps-with | The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://attack.mitre.org/groups/G0032), but has differentiated its tradecraft since 2023. | 高 | `source--mitre-attack-19-1` |
+| Lazarus Group | overlaps-with | The group previously overlapped significantly with another North Korean-linked entity, [Lazarus Group](https://attack.mitre.org/groups/G0032), but has differentiated its tradecraft since 2023. | 高 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -55,7 +55,7 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -70,6 +70,7 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 | misp-mitre-enterprise-intrusion-set | Moonstone Sleet - G1036 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1036<br>https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/ |
 | misp-mitre-intrusion-set | Moonstone Sleet - G1036 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1036<br>https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Moonstone Sleet | canonical-name | 高 | KP |  |
 
 ### 関係性候補（未統合）
 
@@ -92,7 +93,7 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--qilin | Qilin | [Qilin](https://attack.mitre.org/software/S1242) is a ransomware family operated as a ransomware-as-a-service (RaaS) that has been active since at least 2022. It includes variants written in Go and Rust capable of targeting Windows, Linux, and VMware ESXi environments. [Qilin](https://attack.mitre.org/software/S1242) shares functionality overlaps with [Black Basta](https://attack.mitre.org/software/S1070), [REvil](https://attack.mitre.org/software/S0496), and [BlackCat](https://attack.mitre.org/software/S1068) ransomware. [Qilin](https://attack.mitre.org/software/S1242) affiliates have targeted multiple entities worldwide with the majority of victims in the US, France, Canada, and the UK, primarily in the manufacturing, technology, financial services, and healthcare sectors.(Citation: Trend Micro Agenda Ransomware AUG 2022)(Citation: SentinelOne Qilin NOV 2022)(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: Sophos Qilin MSP APR 2025)(Citation: Trend Micro Agenda Ransomware OCT 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--qilin | Qilin | [Qilin](https://attack.mitre.org/software/S1242) is a ransomware family operated as a ransomware-as-a-service (RaaS) that has been active since at least 2022. It includes variants written in Go and Rust capable of targeting Windows, Linux, and VMware ESXi environments. [Qilin](https://attack.mitre.org/software/S1242) shares functionality overlaps with [Black Basta](https://attack.mitre.org/software/S1070), [REvil](https://attack.mitre.org/software/S0496), and [BlackCat](https://attack.mitre.org/software/S1068) ransomware. [Qilin](https://attack.mitre.org/software/S1242) affiliates have targeted multiple entities worldwide with the majority of victims in the US, France, Canada, and the UK, primarily in the manufacturing, technology, financial services, and healthcare sectors.(Citation: Trend Micro Agenda Ransomware AUG 2022)(Citation: SentinelOne Qilin NOV 2022)(Citation: BushidoToken Qilin RaaS JUN 2024)(Citation: Sophos Qilin MSP APR 2025)(Citation: Trend Micro Agenda Ransomware OCT 2025) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -171,36 +172,36 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Credential Access | T1003.001 | LSASS Memory | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) retrieved credentials from LSASS memory.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1016 | System Network Configuration Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim network configuration.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027 | Obfuscated Files or Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivers encrypted payloads in pieces that are then combined together to form a new portable executable (PE) file during installation.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.009 | Embedded Payloads | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) embedded payloads in trojanized software for follow-on execution.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.013 | Encrypted/Encoded File | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has used encrypted payloads within files for follow-on execution and defense evasion.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1033 | System Owner/User Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) deployed various malware such as YouieLoader that can perform system user discovery actions.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used scheduled tasks for program execution during initial access to victim machines.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1071.001 | Web Protocols | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used curl to connect to adversary-controlled infrastructure and retrieve additional payloads.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1082 | System Information Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim systems.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) retrieved a final stage payload from command and control infrastructure during initial installation on victim systems.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1140 | Deobfuscate/Decode Files or Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivered payloads using multiple rounds of obfuscation and encoding to evade defenses and analysis.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1195.002 | Compromise Software Supply Chain | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has distributed a trojanized version of PuTTY software for initial access to victims.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) relied on users interacting with malicious files, such as a trojanized PuTTY installer, for initial execution.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1217 | Browser Information Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) deployed malware such as YouieLoader capable of capturing victim system browser information.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Impact | T1486 | Data Encrypted for Impact | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has deployed ransomware in victim environments.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used registry run keys for process execution during initial victim infection.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivered various payloads to victims as spearphishing attachments.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.003 | Spearphishing via Service | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has used social media services to spear phish victims to deliver trojainized software.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1569.002 | Service Execution | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used intermediate loader malware such as YouieLoader and SplitLoader that create malicious services.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) registered domains to develop effective personas for fake companies used in phishing activity.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.003 | Virtual Private Server | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) registered virtual private servers to host payloads for download.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.001 | Social Media Accounts | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has created social media accounts to interact with victims.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.002 | Email Accounts | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has created email accounts to interact with victims, including for phishing purposes.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1587 | Develop Capabilities | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) developed malicious npm packages for delivery to or retrieval by victims.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1587.001 | Malware | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has developed custom malware, including a malware delivery mechanism masquerading as a legitimate game.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1589.002 | Email Addresses | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) gathered victim email address information for follow-on phishing activity.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1591 | Gather Victim Org Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim organizations through email and social media interaction.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1598 | Phishing for Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has interacted with victims to gather information via email.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1598.003 | Spearphishing Link | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used spearphishing messages containing items such as tracking pixels to determine if users interacted with malicious messages.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) staged malicious capabilities online for follow-on download by victims or malware.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1003.001 | LSASS Memory | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) retrieved credentials from LSASS memory.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1016 | System Network Configuration Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim network configuration.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027 | Obfuscated Files or Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivers encrypted payloads in pieces that are then combined together to form a new portable executable (PE) file during installation.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.009 | Embedded Payloads | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) embedded payloads in trojanized software for follow-on execution.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.013 | Encrypted/Encoded File | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has used encrypted payloads within files for follow-on execution and defense evasion.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1033 | System Owner/User Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) deployed various malware such as YouieLoader that can perform system user discovery actions.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Persistence, Privilege Escalation | T1053.005 | Scheduled Task | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used scheduled tasks for program execution during initial access to victim machines.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1071.001 | Web Protocols | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used curl to connect to adversary-controlled infrastructure and retrieve additional payloads.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1082 | System Information Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim systems.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) retrieved a final stage payload from command and control infrastructure during initial installation on victim systems.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1140 | Deobfuscate/Decode Files or Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivered payloads using multiple rounds of obfuscation and encoding to evade defenses and analysis.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1195.002 | Compromise Software Supply Chain | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has distributed a trojanized version of PuTTY software for initial access to victims.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) relied on users interacting with malicious files, such as a trojanized PuTTY installer, for initial execution.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1217 | Browser Information Discovery | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) deployed malware such as YouieLoader capable of capturing victim system browser information.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Impact | T1486 | Data Encrypted for Impact | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has deployed ransomware in victim environments.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Persistence, Privilege Escalation | T1547.001 | Registry Run Keys / Startup Folder | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used registry run keys for process execution during initial victim infection.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) delivered various payloads to victims as spearphishing attachments.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.003 | Spearphishing via Service | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has used social media services to spear phish victims to deliver trojainized software.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1569.002 | Service Execution | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used intermediate loader malware such as YouieLoader and SplitLoader that create malicious services.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.001 | Domains | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) registered domains to develop effective personas for fake companies used in phishing activity.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.003 | Virtual Private Server | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) registered virtual private servers to host payloads for download.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585.001 | Social Media Accounts | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has created social media accounts to interact with victims.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585.002 | Email Accounts | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has created email accounts to interact with victims, including for phishing purposes.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1587 | Develop Capabilities | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) developed malicious npm packages for delivery to or retrieval by victims.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1587.001 | Malware | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has developed custom malware, including a malware delivery mechanism masquerading as a legitimate game.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1589.002 | Email Addresses | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) gathered victim email address information for follow-on phishing activity.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1591 | Gather Victim Org Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has gathered information on victim organizations through email and social media interaction.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1598 | Phishing for Information | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) has interacted with victims to gather information via email.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1598.003 | Spearphishing Link | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) used spearphishing messages containing items such as tracking pixels to determine if users interacted with malicious messages.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1608.001 | Upload Malware | [Moonstone Sleet](https://attack.mitre.org/groups/G1036) staged malicious capabilities online for follow-on download by victims or malware.(Citation: Microsoft Moonstone Sleet 2024) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -231,7 +232,6 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 | source--daily-3361ec1dff6e8d1d939e | マイクロソフト、北朝鮮ハッカー「Moonstone Sleet」と新しいFakePennyランサムウェアを結びつける | bleepingcomputer.com | 2024-05-29 | https://www.bleepingcomputer.com/news/microsoft/microsoft-links-moonstone-sleet-north-korean-hackers-to-new-fakepenny-ransomware/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-79065a5586e0fb17d444 | マイクロソフト：北朝鮮のハッカー、Qilinランサムウェア・ギャングに参加 | bleepingcomputer.com | 2025-03-08 | https://www.bleepingcomputer.com/news/security/microsoft-north-korean-hackers-now-deploying-qilin-ransomware/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-9b109b5f0fe055ebeba0 | 北朝鮮のMoonstone Sleetが悪意あるコードの配布を拡大 | darkreading.com | 2024-06-14 | https://www.darkreading.com/cyberattacks-data-breaches/north-koreas-moonstone-sleet-widens-distribution-of-malicious-code-packages | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--moonstone-sleet--057dc52f1759be32 | moonstone sleet |  | 不明 | actor_profile/evidence/moonstone-sleet.csv | structured-data | TLP:CLEAR | 中 |
 | source--moonstone-sleet--0a5c0da2f99d1612 | The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities |  | 不明 | International Strategic/Korea/The DPRK’s Violation and Evasion of UN Sanctions through Cyber and Information Technology Worker Activities.pdf | report | TLP:CLEAR | 中 |
 | source--moonstone-sleet--0d31bb8755ee8e38 | DTEX Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce |  | 不明 | CyberMerceNary/ITWorker/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf | report | TLP:CLEAR | 中 |
@@ -254,6 +254,9 @@ Moonstone Sleetの標準化プロファイル。リポジトリ内の専用資�
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

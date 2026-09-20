@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--exotic-lily`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:07Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -31,13 +31,13 @@ Aliasなし
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description. |
+| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description. |
 
 ## 他アクターとの関係
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| Wizard Spider | related-to | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) is a financially motivated group that has been closely linked with [Wizard Spider](https://attack.mitre.org/groups/G0102) and the deployment of ransomware including [Conti](https://attack.mitre.org/software/S0575) and [Diavol](https://attack.mitre.org/software/S0659). | 中 | `source--mitre-attack-19-1` |
+| Wizard Spider | related-to | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) is a financially motivated group that has been closely linked with [Wizard Spider](https://attack.mitre.org/groups/G0102) and the deployment of ransomware including [Conti](https://attack.mitre.org/software/S0575) and [Diavol](https://attack.mitre.org/software/S0659). | 中 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -52,7 +52,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -67,6 +67,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | EXOTIC LILY - G1011 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1011<br>https://blog.google/threat-analysis-group/exposing-initial-access-broker-ties-conti/ |
 | misp-mitre-intrusion-set | EXOTIC LILY - G1011 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1011<br>https://blog.google/threat-analysis-group/exposing-initial-access-broker-ties-conti/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | EXOTIC LILY | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -85,8 +86,8 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--bumblebee | Bumblebee | [Bumblebee](https://attack.mitre.org/software/S1039) is a custom loader written in C++ that has been used by multiple threat actors, including possible initial access brokers, to download and execute additional payloads since at least March 2022. [Bumblebee](https://attack.mitre.org/software/S1039) has been linked to ransomware operations including [Conti](https://attack.mitre.org/software/S0575), Quantum, and Mountlocker and derived its name from the appearance of "bumblebee" in the user-agent.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022)(Citation: Symantec Bumblebee June 2022)<br> | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--bazar | Bazar | [Bazar](https://attack.mitre.org/software/S0534) is a downloader and backdoor that has been used since at least April 2020, with infections primarily against professional services, healthcare, manufacturing, IT, logistics and travel companies across the US and Europe. [Bazar](https://attack.mitre.org/software/S0534) reportedly has ties to [TrickBot](https://attack.mitre.org/software/S0266) campaigns and can be used to deploy additional malware, including ransomware, and to steal sensitive data.(Citation: Cybereason Bazar July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--bazar | Bazar | [Bazar](https://attack.mitre.org/software/S0534) is a downloader and backdoor that has been used since at least April 2020, with infections primarily against professional services, healthcare, manufacturing, IT, logistics and travel companies across the US and Europe. [Bazar](https://attack.mitre.org/software/S0534) reportedly has ties to [TrickBot](https://attack.mitre.org/software/S0266) campaigns and can be used to deploy additional malware, including ransomware, and to steal sensitive data.(Citation: Cybereason Bazar July 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--bumblebee | Bumblebee | [Bumblebee](https://attack.mitre.org/software/S1039) is a custom loader written in C++ that has been used by multiple threat actors, including possible initial access brokers, to download and execute additional payloads since at least March 2022. [Bumblebee](https://attack.mitre.org/software/S1039) has been linked to ransomware operations including [Conti](https://attack.mitre.org/software/S0575), Quantum, and Mountlocker and derived its name from the appearance of "bumblebee" in the user-agent.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022)(Citation: Symantec Bumblebee June 2022)<br> | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -122,7 +123,7 @@ Aliasなし
 
 | 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| sectors | 医療・ヘルスケア | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) may be acting as an initial access broker for other malicious actors, and has targeted a wide range of industries including IT, cybersecurity, and healthcare since at least September 2021.(Citation: Google EXOTIC LILY March 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 医療・ヘルスケア | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) may be acting as an initial access broker for other malicious actors, and has targeted a wide range of industries including IT, cybersecurity, and healthcare since at least September 2021.(Citation: Google EXOTIC LILY March 2022) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -134,21 +135,21 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Command And Control | T1102 | Web Service | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used file-sharing services including WeTransfer, TransferNow, and OneDrive to deliver payloads.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1203 | Exploitation for Client Execution | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used malicious documents containing exploits for CVE-2021-40444 affecting Microsoft MSHTML.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used malicious links to lure users into executing malicious payloads.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has gained execution through victims clicking on malicious LNK files contained within ISO files, which can execute hidden DLLs within the ISO.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) conducted an e-mail thread-hijacking campaign with malicious ISO attachments.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.002 | Spearphishing Link | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has relied on victims to open malicious links in e-mails for execution.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.003 | Spearphishing via Service | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used the e-mail notification features of legitimate file sharing services for spearphishing.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has registered domains to spoof targeted organizations by changing the top-level domain (TLD) to “.us”, “.co” or “.biz”.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.001 | Social Media Accounts | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has established social media profiles to mimic employees of targeted companies.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1585.002 | Email Accounts | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has created e-mail accounts to spoof targeted organizations.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1589.002 | Email Addresses | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has gathered targeted individuals' e-mail addresses through open source research and website contact forms.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1593.001 | Social Media | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has copied data from social media sites to impersonate targeted individuals.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1594 | Search Victim-Owned Websites | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used contact forms on victim websites to generate phishing e-mails.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1597 | Search Closed Sources | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has searched for information on targeted individuals on business databases including RocketReach and CrunchBase.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1608.001 | Upload Malware | [EXOTIC LILY](https://attack.mitre.org/groups/G1011)  has uploaded malicious payloads to file-sharing services including TransferNow, TransferXL, WeTransfer, and OneDrive.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1102 | Web Service | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used file-sharing services including WeTransfer, TransferNow, and OneDrive to deliver payloads.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1203 | Exploitation for Client Execution | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used malicious documents containing exploits for CVE-2021-40444 affecting Microsoft MSHTML.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.001 | Malicious Link | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used malicious links to lure users into executing malicious payloads.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has gained execution through victims clicking on malicious LNK files contained within ISO files, which can execute hidden DLLs within the ISO.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) conducted an e-mail thread-hijacking campaign with malicious ISO attachments.(Citation: Google EXOTIC LILY March 2022)(Citation: Proofpoint Bumblebee April 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.002 | Spearphishing Link | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has relied on victims to open malicious links in e-mails for execution.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.003 | Spearphishing via Service | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used the e-mail notification features of legitimate file sharing services for spearphishing.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.001 | Domains | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has registered domains to spoof targeted organizations by changing the top-level domain (TLD) to “.us”, “.co” or “.biz”.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585.001 | Social Media Accounts | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has established social media profiles to mimic employees of targeted companies.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1585.002 | Email Accounts | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has created e-mail accounts to spoof targeted organizations.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1589.002 | Email Addresses | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has gathered targeted individuals' e-mail addresses through open source research and website contact forms.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1593.001 | Social Media | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has copied data from social media sites to impersonate targeted individuals.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1594 | Search Victim-Owned Websites | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has used contact forms on victim websites to generate phishing e-mails.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1597 | Search Closed Sources | [EXOTIC LILY](https://attack.mitre.org/groups/G1011) has searched for information on targeted individuals on business databases including RocketReach and CrunchBase.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1608.001 | Upload Malware | [EXOTIC LILY](https://attack.mitre.org/groups/G1011)  has uploaded malicious payloads to file-sharing services including TransferNow, TransferXL, WeTransfer, and OneDrive.(Citation: Google EXOTIC LILY March 2022) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -175,7 +176,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--exotic-lily--510d915bba48a4e4 | exotic lily |  | 不明 | actor_profile/evidence/exotic-lily.csv | structured-data | TLP:CLEAR | 中 |
 | source--exotic-lily--2e2912a9c45f6649 | Google Cybersecurity Action Team Threat Horizons Report#3 |  | 不明 | summary/2022/Google_Cybersecurity_Action_Team_Threat_Horizons_Report#3.pdf | report | TLP:CLEAR | 中 |
@@ -184,6 +184,9 @@ Aliasなし
 | source--osint-misp-mitre-intrusion-set | MISP Galaxy MITRE Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

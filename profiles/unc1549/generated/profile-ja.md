@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--unc1549`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:13Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -55,7 +55,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -75,6 +75,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | misp-mitre-enterprise-intrusion-set | CURIUM - G1012 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain |
 | misp-mitre-intrusion-set | CURIUM - G1012 | single-alias-intersection | 中 |  | https://attack.mitre.org/groups/G1012<br>https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide<br>https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -246,7 +247,7 @@ UNC1549はイラン系と評価される情報収集クラスタで、Kaspersky�
 | source--daily-d9794d16b217472dc38d | 高速かつ激しい――イラン紛争中のNimbus Manticore作戦 | research.checkpoint.com | 2026-05-27 | https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-eac188700be16a552143 | Mirage Kitten、新たなマルウェア群で中東・アフリカの航空・FinTech分野を標的化 | securelist.com | 2026-09-02 | https://securelist.com/mirage-kitten-new-backdoors-noderabbit-pollcat/121244/ | osint-report | TLP:CLEAR | 中 |
 | source--kaspersky-mirage-kitten-2026 | Mirage Kitten targets Middle East and Africa region with new malware | Kaspersky GReAT | 2026-07-28 | https://securelist.com/mirage-kitten-new-tools/120811/ | vendor-research | TLP:CLEAR | 高 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 不明 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
 | source--osint-misp-microsoft-activity-group | MISP Galaxy Microsoft Activity Group | MISP Project / Microsoft | 不明 | actor_profile/reference/osint/misp-microsoft-activity-group.json | structured-osint-aggregation | TLP:CLEAR | 高 |

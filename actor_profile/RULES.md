@@ -156,6 +156,7 @@ operator/groupを定義していなければActorとしてmaterializeしない�
 
 - `part-of`
 - `subordinate-to`
+- `distinct-from`
 - `overlaps-with`
 - `shares-tools-with`
 - `shares-infrastructure-with`
@@ -496,6 +497,17 @@ taxonomyの`similar`関係は低信頼度の関係候補として保存する。
 
 Malpediaとの名前一致はマルウェアのカタログ存在だけを意味し、そのアクターが
 使用した証拠にはしない。
+
+## 15. 全アクター調査票
+
+全active actorに`generated/research-dossier.json`を生成し、少なくとも関係アクター、
+活動時期、活動別malware、標的、動機、帰属、各主張の根拠参照とclaim audit結果をまとめる。
+値が存在しない次元は空欄を推測で埋めず、`unknown`と`research_gaps`で明示する。
+
+ETDA、MISP、TIDAL等の集約データから得たcampaign、software、標的、動機、帰属候補は
+`external_research_leads`に隔離する。集約データの日付は、原典を確認するまで確定観測日と
+せず、`inferred`または報告日として保存する。canonicalへの昇格には、actor scope、
+entity種別、活動との結び付き、観測期間を原典で確認したevidenceが必要である。
 
 
 ## 14. 生成・エージェント用ガードレール

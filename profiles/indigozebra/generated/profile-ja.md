@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--indigozebra`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -31,7 +31,7 @@ Aliasなし
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | IndigoZebra - G0136 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0136<br>https://research.checkpoint.com/2021/indigozebra-apt-continues-to-attack-central-asia-with-evolving-tools/<br>https://securelist.com/apt-trends-report-q2-2017/79332/ |
 | misp-mitre-intrusion-set | IndigoZebra - G0136 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0136<br>https://research.checkpoint.com/2021/indigozebra-apt-continues-to-attack-central-asia-with-evolving-tools/<br>https://securelist.com/apt-trends-report-q2-2017/79332/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | IndigoZebra | canonical-name | 高 | CN |  |
 
 ### 関係性候補（未統合）
 
@@ -83,9 +84,9 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--xcaon | xCaon | [xCaon](https://attack.mitre.org/software/S0653) is an HTTP variant of the [BoxCaon](https://attack.mitre.org/software/S0651) malware family that has used by [IndigoZebra](https://attack.mitre.org/groups/G0136) since at least 2014. [xCaon](https://attack.mitre.org/software/S0653) has been used to target political entities in Central Asia, including Kyrgyzstan and Uzbekistan.(Citation: Checkpoint IndigoZebra July 2021)(Citation: Securelist APT Trends Q2 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--boxcaon | BoxCaon | [BoxCaon](https://attack.mitre.org/software/S0651) is a Windows backdoor that was used by [IndigoZebra](https://attack.mitre.org/groups/G0136) in a 2021 spearphishing campaign against Afghan government officials. [BoxCaon](https://attack.mitre.org/software/S0651)'s name stems from similarities shared with the malware family [xCaon](https://attack.mitre.org/software/S0653).(Citation: Checkpoint IndigoZebra July 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--boxcaon | BoxCaon | [BoxCaon](https://attack.mitre.org/software/S0651) is a Windows backdoor that was used by [IndigoZebra](https://attack.mitre.org/groups/G0136) in a 2021 spearphishing campaign against Afghan government officials. [BoxCaon](https://attack.mitre.org/software/S0651)'s name stems from similarities shared with the malware family [xCaon](https://attack.mitre.org/software/S0653).(Citation: Checkpoint IndigoZebra July 2021) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--poisonivy | PoisonIvy | [PoisonIvy](https://attack.mitre.org/software/S0012) is a popular remote access tool (RAT) that has been used by many groups.(Citation: FireEye Poison Ivy)(Citation: Symantec Elderwood Sept 2012)(Citation: Symantec Darkmoon Aug 2005) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--xcaon | xCaon | [xCaon](https://attack.mitre.org/software/S0653) is an HTTP variant of the [BoxCaon](https://attack.mitre.org/software/S0651) malware family that has used by [IndigoZebra](https://attack.mitre.org/groups/G0136) since at least 2014. [xCaon](https://attack.mitre.org/software/S0653) has been used to target political entities in Central Asia, including Kyrgyzstan and Uzbekistan.(Citation: Checkpoint IndigoZebra July 2021)(Citation: Securelist APT Trends Q2 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -124,9 +125,9 @@ Aliasなし
 | countries | アフガニスタン | 構造化OSINTの被害国フィールドでIndigoZebraの標的・被害国としてアフガニスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | ウズベキスタン | 構造化OSINTの被害国フィールドでIndigoZebraの標的・被害国としてウズベキスタンが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
 | countries | キルギス | 構造化OSINTの被害国フィールドでIndigoZebraの標的・被害国としてキルギスが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-etda-threat-group-cards` |
-| regions | アジア | MITRE ATT&CKのGroup概要でIndigoZebraの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| regions | 中央アジア | MITRE ATT&CKのGroup概要でIndigoZebraの標的範囲として中央アジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-1`, `source--target-audit-etda-threat-group-cards` |
-| sectors | 政府・行政 | [IndigoZebra](https://attack.mitre.org/groups/G0136) is a suspected Chinese cyber espionage group that has been targeting Central Asian governments since at least 2014.(Citation: HackerNews IndigoZebra July 2021)(Citation: Checkpoint IndigoZebra July 2021)(Citation: Securelist APT Trends Q2 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| regions | アジア | MITRE ATT&CKのGroup概要でIndigoZebraの標的範囲としてアジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| regions | 中央アジア | MITRE ATT&CKのGroup概要でIndigoZebraの標的範囲として中央アジアが明示されている。 | 不明 | 不明 | 高 | `source--mitre-attack-19-2`, `source--target-audit-etda-threat-group-cards` |
+| sectors | 政府・行政 | [IndigoZebra](https://attack.mitre.org/groups/G0136) is a suspected Chinese cyber espionage group that has been targeting Central Asian governments since at least 2014.(Citation: HackerNews IndigoZebra July 2021)(Citation: Checkpoint IndigoZebra July 2021)(Citation: Securelist APT Trends Q2 2017) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -138,13 +139,13 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Command And Control | T1105 | Ingress Tool Transfer | [IndigoZebra](https://attack.mitre.org/groups/G0136) has downloaded additional files and tools from its C2 server.(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [IndigoZebra](https://attack.mitre.org/groups/G0136) sent spearphishing emails containing malicious attachments that urged recipients to review modifications in the file which would trigger the attack.(Citation: HackerNews IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [IndigoZebra](https://attack.mitre.org/groups/G0136) sent spearphishing emails containing malicious password-protected RAR attachments.(Citation: HackerNews IndigoZebra July 2021)(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.001 | Domains | [IndigoZebra](https://attack.mitre.org/groups/G0136) has established domains, some of which were designed to look like official government domains, for their operations.(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1583.006 | Web Services | [IndigoZebra](https://attack.mitre.org/groups/G0136) created Dropbox accounts for their operations.(Citation: HackerNews IndigoZebra July 2021)(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1586.002 | Email Accounts | [IndigoZebra](https://attack.mitre.org/groups/G0136) has compromised legitimate email accounts to use in their spearphishing operations.(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Resource Development | T1588.002 | Tool | [IndigoZebra](https://attack.mitre.org/groups/G0136) has acquired open source tools such as [NBTscan](https://attack.mitre.org/software/S0590) and Meterpreter for their operations.(Citation: Checkpoint IndigoZebra July 2021)(Citation: Securelist APT Trends Q2 2017)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [IndigoZebra](https://attack.mitre.org/groups/G0136) has downloaded additional files and tools from its C2 server.(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [IndigoZebra](https://attack.mitre.org/groups/G0136) sent spearphishing emails containing malicious attachments that urged recipients to review modifications in the file which would trigger the attack.(Citation: HackerNews IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [IndigoZebra](https://attack.mitre.org/groups/G0136) sent spearphishing emails containing malicious password-protected RAR attachments.(Citation: HackerNews IndigoZebra July 2021)(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.001 | Domains | [IndigoZebra](https://attack.mitre.org/groups/G0136) has established domains, some of which were designed to look like official government domains, for their operations.(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1583.006 | Web Services | [IndigoZebra](https://attack.mitre.org/groups/G0136) created Dropbox accounts for their operations.(Citation: HackerNews IndigoZebra July 2021)(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1586.002 | Email Accounts | [IndigoZebra](https://attack.mitre.org/groups/G0136) has compromised legitimate email accounts to use in their spearphishing operations.(Citation: Checkpoint IndigoZebra July 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Resource Development | T1588.002 | Tool | [IndigoZebra](https://attack.mitre.org/groups/G0136) has acquired open source tools such as [NBTscan](https://attack.mitre.org/software/S0590) and Meterpreter for their operations.(Citation: Checkpoint IndigoZebra July 2021)(Citation: Securelist APT Trends Q2 2017)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -171,7 +172,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--indigozebra--fd33ac85814dabb8 | indigozebra |  | 不明 | actor_profile/evidence/indigozebra.csv | structured-data | TLP:CLEAR | 中 |
 | source--indigozebra--84c5961c47b0ba3a | APT group Intelligence Research handbook 2022 |  | 2022 | summary/2022/APT group Intelligence Research handbook-2022.pdf | report | TLP:CLEAR | 中 |
@@ -180,6 +180,9 @@ Aliasなし
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

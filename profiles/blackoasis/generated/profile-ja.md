@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--blackoasis`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -35,7 +35,7 @@ Aliasなし
 
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
-| NEODYMIUM | related-to | (Citation: Securelist BlackOasis Oct 2017) (Citation: Securelist APT Trends Q2 2017) A group known by Microsoft as [NEODYMIUM](https://attack.mitre.org/groups/G0055) is reportedly associated closely with [BlackOasis](https://attack.mitre.org/groups/G0063) operations, but evidence that the group names are aliases has not been identified. | 中 | `source--mitre-attack-19-1` |
+| NEODYMIUM | related-to | (Citation: Securelist BlackOasis Oct 2017) (Citation: Securelist APT Trends Q2 2017) A group known by Microsoft as [NEODYMIUM](https://attack.mitre.org/groups/G0055) is reportedly associated closely with [BlackOasis](https://attack.mitre.org/groups/G0063) operations, but evidence that the group names are aliases has not been identified. | 中 | `source--mitre-attack-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | BlackOasis - G0063 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0063<br>https://securelist.com/apt-trends-report-q2-2017/79332/<br>https://securelist.com/blackoasis-apt-and-new-targeted-attacks-leveraging-zero-day-exploit/82732/ |
 | misp-mitre-intrusion-set | BlackOasis - G0063 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0063<br>https://securelist.com/apt-trends-report-q2-2017/79332/<br>https://securelist.com/blackoasis-apt-and-new-targeted-attacks-leveraging-zero-day-exploit/82732/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | BlackOasis | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -86,8 +87,8 @@ Aliasなし
 | malware--cve-2015-5119-june-2015 | CVE-2015-5119 – June 2015 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2016-0984-june-2015 | CVE-2016-0984 – June 2015 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2016-4117-may-2016 | CVE-2016-4117 – May 2016 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--cve-2017-8759-sept-2017 | CVE-2017-8759 – Sept 2017 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--cve-2017-11292-oct-2017 | CVE-2017-11292 – Oct 2017 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
+| malware--cve-2017-8759-sept-2017 | CVE-2017-8759 – Sept 2017 | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 | malware--finspy-malware | FinSpy Malware | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
 
 ### ツール
@@ -152,7 +153,7 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027 | Obfuscated Files or Information | [BlackOasis](https://attack.mitre.org/groups/G0063)'s first stage shellcode contains a NOP sled with alternative instructions that was likely designed to bypass antivirus tools.(Citation: Securelist BlackOasis Oct 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027 | Obfuscated Files or Information | [BlackOasis](https://attack.mitre.org/groups/G0063)'s first stage shellcode contains a NOP sled with alternative instructions that was likely designed to bypass antivirus tools.(Citation: Securelist BlackOasis Oct 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -179,7 +180,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--blackoasis--aa63c23aba43ebc4 | blackoasis |  | 不明 | actor_profile/evidence/blackoasis.csv | structured-data | TLP:CLEAR | 中 |
 | source--blackoasis--3578daab0e62f99f | 0day  In the Wild |  | 不明 | 0day _In the Wild_.xlsx | spreadsheet | TLP:CLEAR | 中 |
@@ -192,6 +192,9 @@ Aliasなし
 | source--osint-misp-threat-actor | MISP Galaxy Threat Actor | MISP Project | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

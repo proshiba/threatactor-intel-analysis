@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--andariel`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -18,9 +18,9 @@ Andarielの標準化プロファイル。リポジトリ内の専用資料1件�
 
 | Alias | 追跡元 | スコープ | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|---|
-| Onyx Sleet | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| PLUTONIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
-| Silent Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-1` | Alias scope must be reviewed before publication. |
+| Onyx Sleet | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| PLUTONIUM | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
+| Silent Chollima | MITRE ATT&CK | overlapping | 高 | `source--mitre-attack-19-2` | Alias scope must be reviewed before publication. |
 
 ## 帰属
 
@@ -54,7 +54,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -70,6 +70,7 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 | misp-mitre-enterprise-intrusion-set | Andariel - G0138 | mitre-external-id | 高 |  | http://www.issuemakerslab.com/research3/<br>https://adversary.crowdstrike.com/en-US/adversary/silent-chollima/<br>https://attack.mitre.org/groups/G0138 |
 | misp-mitre-intrusion-set | Andariel - G0138 | mitre-external-id | 高 |  | http://www.issuemakerslab.com/research3/<br>https://adversary.crowdstrike.com/en-US/adversary/silent-chollima/<br>https://attack.mitre.org/groups/G0138 |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Andariel | canonical-name | 高 | KP |  |
 
 ### 関係性候補（未統合）
 
@@ -92,9 +93,9 @@ Actor-specific MITRE ATT&CK reporting supports state sponsorship; the community 
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--gh0st-rat | gh0st RAT | [gh0st RAT](https://attack.mitre.org/software/S0032) is a remote access tool (RAT). The source code is public and it has been used by multiple groups.(Citation: FireEye Hacking Team)(Citation: Arbor Musical Chairs Feb 2018)(Citation: Nccgroup Gh0st April 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | malware--phandoor | Phandoor | The actor-mapping workbook lists this software or tool. | 不明 | 不明 | 中 | `source--actor-mapping-workbook` |
-| malware--rifdoor | Rifdoor | [Rifdoor](https://attack.mitre.org/software/S0433) is a remote access trojan (RAT) that shares numerous code similarities with [HotCroissant](https://attack.mitre.org/software/S0431).(Citation: Carbon Black HotCroissant April 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--rifdoor | Rifdoor | [Rifdoor](https://attack.mitre.org/software/S0433) is a remote access trojan (RAT) that shares numerous code similarities with [HotCroissant](https://attack.mitre.org/software/S0431).(Citation: Carbon Black HotCroissant April 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -196,20 +197,20 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
 | Initial Access | T1190 | Exploit Public-Facing Application | 北朝鮮のハッカーがVPN更新の脆弱性を悪用してマルウェアをインストール 攻撃者はKimsukyとAndariel（APT43とAPT45）で、韓国の産業機密を狙う。 |  | activity--daily-9b903807e5f68679a7fc | 不明 | 不明 | 中 | `source--daily-444c87a0051642065f55` |
-| Collection | T1005 | Data from Local System | [Andariel](https://attack.mitre.org/groups/G0138) has collected large numbers of files from compromised network systems for later extraction.(Citation: FSI Andariel Campaign Rifle July 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1027.003 | Steganography | [Andariel](https://attack.mitre.org/groups/G0138) has hidden malicious executables within PNG files.(Citation: MalwareBytes Lazarus-Andariel Conceals Code April 2021)(Citation: Kaspersky Andariel Ransomware June 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1049 | System Network Connections Discovery | [Andariel](https://attack.mitre.org/groups/G0138) has used the <code>netstat -naop tcp</code> command to display TCP connections on a victim's machine.(Citation: Kaspersky Andariel Ransomware June 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery | T1057 | Process Discovery | [Andariel](https://attack.mitre.org/groups/G0138) has used <code>tasklist</code> to enumerate processes and find a specific string.(Citation: Kaspersky Andariel Ransomware June 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Collection | T1005 | Data from Local System | [Andariel](https://attack.mitre.org/groups/G0138) has collected large numbers of files from compromised network systems for later extraction.(Citation: FSI Andariel Campaign Rifle July 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1027.003 | Steganography | [Andariel](https://attack.mitre.org/groups/G0138) has hidden malicious executables within PNG files.(Citation: MalwareBytes Lazarus-Andariel Conceals Code April 2021)(Citation: Kaspersky Andariel Ransomware June 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1049 | System Network Connections Discovery | [Andariel](https://attack.mitre.org/groups/G0138) has used the <code>netstat -naop tcp</code> command to display TCP connections on a victim's machine.(Citation: Kaspersky Andariel Ransomware June 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery | T1057 | Process Discovery | [Andariel](https://attack.mitre.org/groups/G0138) has used <code>tasklist</code> to enumerate processes and find a specific string.(Citation: Kaspersky Andariel Ransomware June 2021) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Command And Control | T1090 | Proxy | w backdoor written in Go that we named ApolonTroy, based on strings found in the malware body. We also noticed that this group uses a variety of SOCKS proxies (T1090 [39]), including |  |  | 不明 | 不明 | 中 | `source--andariel--d8b5468150bbcc71` |
-| Command And Control | T1105 | Ingress Tool Transfer | [Andariel](https://attack.mitre.org/groups/G0138) has downloaded additional tools and malware onto compromised hosts.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1189 | Drive-by Compromise | [Andariel](https://attack.mitre.org/groups/G0138) has used watering hole attacks, often with zero-day exploits, to gain initial access to victims within a specific IP range.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018)(Citation: TrendMicro New Andariel Tactics July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Andariel](https://attack.mitre.org/groups/G0138) has downloaded additional tools and malware onto compromised hosts.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1189 | Drive-by Compromise | [Andariel](https://attack.mitre.org/groups/G0138) has used watering hole attacks, often with zero-day exploits, to gain initial access to victims within a specific IP range.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018)(Citation: TrendMicro New Andariel Tactics July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Initial Access | T1190 | Exploit Public-Facing Application | summary/2023/eset_apt_activity_report_t32022.pdf {"page": 9} Andariel Andariel Finally, we covered a campaign by Andariel, using a recent RCE vulnerability (T1190 [37]) against Confluence (CVE-2022-26134 [38]) to compromise an organization based in South Korea. This campaign used Andariel’s Tige |  |  | 不明 | 不明 | 中 | `source--andariel--d8b5468150bbcc71` |
-| Execution | T1203 | Exploitation for Client Execution | [Andariel](https://attack.mitre.org/groups/G0138) has exploited numerous ActiveX vulnerabilities, including zero-days.(Citation: FSI Andariel Campaign Rifle July 2017)(Citation: IssueMakersLab Andariel GoldenAxe May 2017)(Citation: TrendMicro New Andariel Tactics July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.002 | Malicious File | [Andariel](https://attack.mitre.org/groups/G0138) has attempted to lure victims into enabling malicious macros within email attachments.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Initial Access | T1566.001 | Spearphishing Attachment | [Andariel](https://attack.mitre.org/groups/G0138) has conducted spearphishing campaigns that included malicious Word or Excel attachments.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018)(Citation: MalwareBytes Lazarus-Andariel Conceals Code April 2021) |  |  | 不明 | 不明 | 高 | `source--andariel--d8b5468150bbcc71`, `source--mitre-attack-19-1` |
-| Resource Development | T1588.001 | Malware | [Andariel](https://attack.mitre.org/groups/G0138) has used a variety of publicly-available remote access Trojans (RATs) for its operations.(Citation: FSI Andariel Campaign Rifle July 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1590.005 | IP Addresses | [Andariel](https://attack.mitre.org/groups/G0138) has limited its watering hole attacks to specific IP address ranges.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Reconnaissance | T1592.002 | Software | [Andariel](https://attack.mitre.org/groups/G0138) has inserted a malicious script within compromised websites to collect potential victim information such as browser type, system language, Flash Player version, and other data.(Citation: TrendMicro New Andariel Tactics July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1203 | Exploitation for Client Execution | [Andariel](https://attack.mitre.org/groups/G0138) has exploited numerous ActiveX vulnerabilities, including zero-days.(Citation: FSI Andariel Campaign Rifle July 2017)(Citation: IssueMakersLab Andariel GoldenAxe May 2017)(Citation: TrendMicro New Andariel Tactics July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.002 | Malicious File | [Andariel](https://attack.mitre.org/groups/G0138) has attempted to lure victims into enabling malicious macros within email attachments.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Initial Access | T1566.001 | Spearphishing Attachment | [Andariel](https://attack.mitre.org/groups/G0138) has conducted spearphishing campaigns that included malicious Word or Excel attachments.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018)(Citation: MalwareBytes Lazarus-Andariel Conceals Code April 2021) |  |  | 不明 | 不明 | 高 | `source--andariel--d8b5468150bbcc71`, `source--mitre-attack-19-2` |
+| Resource Development | T1588.001 | Malware | [Andariel](https://attack.mitre.org/groups/G0138) has used a variety of publicly-available remote access Trojans (RATs) for its operations.(Citation: FSI Andariel Campaign Rifle July 2017) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1590.005 | IP Addresses | [Andariel](https://attack.mitre.org/groups/G0138) has limited its watering hole attacks to specific IP address ranges.(Citation: AhnLab Andariel Subgroup of Lazarus June 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Reconnaissance | T1592.002 | Software | [Andariel](https://attack.mitre.org/groups/G0138) has inserted a malicious script within compromised websites to collect potential victim information such as browser type, system language, Flash Player version, and other data.(Citation: TrendMicro New Andariel Tactics July 2018) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -298,7 +299,6 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 | source--daily-b9be11e58ab6c82617ab | 北朝鮮のハッキンググループが韓国の防衛請負業者を侵害 | bleepingcomputer.com | 2024-04-24 | https://www.bleepingcomputer.com/news/security/dprk-hacking-groups-breach-south-korean-defense-contractors/ | osint-report | TLP:CLEAR | 中 |
 | source--daily-cecaacd0e1f99bf64539 | Andarielハッカー、韓国の機関を新しいDora RATマルウェアで標的 | thehackernews.com | 2024-06-04 | https://thehackernews.com/2024/06/andariel-hackers-target-south-korean.html | osint-report | TLP:CLEAR | 中 |
 | source--daily-d2af83b6cab76368c85d | Andarielハッカーグループ、米国組織への金融攻撃に注力 | thehackernews.com | 2024-10-03 | https://thehackernews.com/2024/10/andariel-hacker-group-shifts-focus-to.html | osint-report | TLP:CLEAR | 中 |
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--mitre-live-andariel-2024 | Andariel, Group G0138 | MITRE ATT&CK | 2024-09-12 | https://attack.mitre.org/groups/G0138/ | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-microsoft-threat-actor-mapping | Microsoft Threat Actor Naming Mapping | Microsoft | 不明 | actor_profile/reference/osint/microsoft-threat-actor-mapping.json | official-vendor-actor-mapping | TLP:CLEAR | 高 |
@@ -308,6 +308,9 @@ DesertWolf; Vanxatm; Mayday; INITROY; XEDA; Sony
 | source--treasury-dprk-groups-2019 | Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups | U.S. Department of the Treasury | 2019-09-13 | https://home.treasury.gov/news/press-releases/sm774 | government-designation | TLP:CLEAR | 高 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

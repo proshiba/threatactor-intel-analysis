@@ -39,6 +39,10 @@
   その参照を付与する。
 - 既存情報と競合する場合は上書きせず、`assessment.uncertainties`と
   `analyst_notes`へ両論を残す。
+- 集約データセットのcampaign、malware、標的、動機、帰属は調査候補として別層に保存し、
+  原典を確認するまで正規プロファイルへ昇格しない。
+- 同じ非canonical aliasが複数actorへ一致する場合、mentionを全actorへ複製せず、
+  ambiguous aliasとしてレビューキューへ送る。canonical nameの明示一致を優先する。
 
 ## 調査状態
 

@@ -566,7 +566,7 @@ def collect_mitre(
         add_candidate(
             countries,
             name,
-            evidence_refs=["source--mitre-attack-19-1"],
+            evidence_refs=["source--mitre-attack-19-2"],
             confidence="high",
             description=(
                 f"MITRE ATT&CKのGroup概要で{profile['name']}の標的国として"
@@ -580,7 +580,7 @@ def collect_mitre(
         add_candidate(
             regions,
             name,
-            evidence_refs=["source--mitre-attack-19-1"],
+            evidence_refs=["source--mitre-attack-19-2"],
             confidence="high",
             description=(
                 f"MITRE ATT&CKのGroup概要で{profile['name']}の標的範囲として"

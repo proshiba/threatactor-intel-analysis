@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--evilnum`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -33,7 +33,7 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description. |
+| financial-gain | Financially motivated intrusion or fraud. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description. |
 
 ## 他アクターとの関係
 
@@ -52,7 +52,7 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -67,6 +67,7 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 | misp-mitre-enterprise-intrusion-set | Evilnum - G0120 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0120<br>https://www.welivesecurity.com/2020/07/09/more-evil-deep-look-evilnum-toolset/ |
 | misp-mitre-intrusion-set | Evilnum - G0120 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0120<br>https://www.welivesecurity.com/2020/07/09/more-evil-deep-look-evilnum-toolset/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | Evilnum | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -85,14 +86,14 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--evilnum | EVILNUM | [EVILNUM](https://attack.mitre.org/software/S0568) is fully capable backdoor that was first identified in 2018. [EVILNUM](https://attack.mitre.org/software/S0568) is used by the APT group [Evilnum](https://attack.mitre.org/groups/G0120) which has the same name.(Citation: ESET EvilNum July 2020)(Citation: Prevailion EvilNum May 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--more-eggs | More_eggs | [More_eggs](https://attack.mitre.org/software/S0284) is a JScript backdoor used by [Cobalt Group](https://attack.mitre.org/groups/G0080) and [FIN6](https://attack.mitre.org/groups/G0037). Its name was given based on the variable "More_eggs" being present in its code. There are at least two different versions of the backdoor being used, version 2.0 and version 4.4. (Citation: Talos Cobalt Group July 2018)(Citation: Security Intelligence More Eggs Aug 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--evilnum | EVILNUM | [EVILNUM](https://attack.mitre.org/software/S0568) is fully capable backdoor that was first identified in 2018. [EVILNUM](https://attack.mitre.org/software/S0568) is used by the APT group [Evilnum](https://attack.mitre.org/groups/G0120) which has the same name.(Citation: ESET EvilNum July 2020)(Citation: Prevailion EvilNum May 2020) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--more-eggs | More_eggs | [More_eggs](https://attack.mitre.org/software/S0284) is a JScript backdoor used by [Cobalt Group](https://attack.mitre.org/groups/G0080) and [FIN6](https://attack.mitre.org/groups/G0037). Its name was given based on the variable "More_eggs" being present in its code. There are at least two different versions of the backdoor being used, version 2.0 and version 4.4. (Citation: Talos Cobalt Group July 2018)(Citation: Security Intelligence More Eggs Aug 2019) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| tool--lazagne | LaZagne | [LaZagne](https://attack.mitre.org/software/S0349) is a post-exploitation, open-source tool used to recover stored passwords on a system. It has modules for Windows, Linux, and OSX, but is mainly focused on Windows systems. [LaZagne](https://attack.mitre.org/software/S0349) is publicly available on GitHub.(Citation: GitHub LaZagne Dec 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| tool--lazagne | LaZagne | [LaZagne](https://attack.mitre.org/software/S0349) is a post-exploitation, open-source tool used to recover stored passwords on a system. It has modules for Windows, Linux, and OSX, but is mainly focused on Windows systems. [LaZagne](https://attack.mitre.org/software/S0349) is publicly available on GitHub.(Citation: GitHub LaZagne Dec 2018) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### インフラ
 
@@ -148,20 +149,20 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Execution | T1059.007 | JavaScript | [Evilnum](https://attack.mitre.org/groups/G0120) has used malicious JavaScript files on the victim's machine.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Stealth | T1070.004 | File Deletion | [Evilnum](https://attack.mitre.org/groups/G0120) has deleted files used during infection.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1105 | Ingress Tool Transfer | [Evilnum](https://attack.mitre.org/groups/G0120) can deploy additional components or tools as needed.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1204.001 | Malicious Link | [Evilnum](https://attack.mitre.org/groups/G0120) has sent spearphishing emails designed to trick the recipient into opening malicious shortcut links which downloads a .LNK file.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1219.002 | Remote Desktop Software | [EVILNUM](https://attack.mitre.org/software/S0568) has used the malware variant, TerraTV, to run a legitimate TeamViewer application to connect to compromised machines.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Discovery, Stealth | T1497.001 | System Checks | [Evilnum](https://attack.mitre.org/groups/G0120) has used a component called TerraLoader to check certain hardware and file information to detect sandboxed environments. (Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Credential Access | T1539 | Steal Web Session Cookie | [Evilnum](https://attack.mitre.org/groups/G0120) can steal cookies and session information from browsers.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1548.002 | Bypass User Account Control | [Evilnum](https://attack.mitre.org/groups/G0120) has used PowerShell to bypass UAC.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Execution | T1059.007 | JavaScript | [Evilnum](https://attack.mitre.org/groups/G0120) has used malicious JavaScript files on the victim's machine.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Stealth | T1070.004 | File Deletion | [Evilnum](https://attack.mitre.org/groups/G0120) has deleted files used during infection.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1105 | Ingress Tool Transfer | [Evilnum](https://attack.mitre.org/groups/G0120) can deploy additional components or tools as needed.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1204.001 | Malicious Link | [Evilnum](https://attack.mitre.org/groups/G0120) has sent spearphishing emails designed to trick the recipient into opening malicious shortcut links which downloads a .LNK file.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1219.002 | Remote Desktop Software | [EVILNUM](https://attack.mitre.org/software/S0568) has used the malware variant, TerraTV, to run a legitimate TeamViewer application to connect to compromised machines.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Discovery, Stealth | T1497.001 | System Checks | [Evilnum](https://attack.mitre.org/groups/G0120) has used a component called TerraLoader to check certain hardware and file information to detect sandboxed environments. (Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Credential Access | T1539 | Steal Web Session Cookie | [Evilnum](https://attack.mitre.org/groups/G0120) can steal cookies and session information from browsers.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation | T1548.002 | Bypass User Account Control | [Evilnum](https://attack.mitre.org/groups/G0120) has used PowerShell to bypass UAC.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Defense Impairment | T1553.005 | Mark-of-the-Web Bypass | e": 31} Evilnum oses. In most scenarios, adversaries embed VBA content into Spearphishing Attachment [T1566.001] payloads, and execute the payload through the [T1553.005] technique to evade the Mark-of-the-Web (MOTW) controls [26]. Evilnum APT group is known for leveraging a relatively uncommon technique called the VBA code stomping [T1564.007] technique, which includes destroying the source code and storing only a compiled version of the VBA ma |  |  | 不明 | 不明 | 中 | `source--evilnum--1abbd9570b6aa88b` |
-| Credential Access | T1555 | Credentials from Password Stores | [Evilnum](https://attack.mitre.org/groups/G0120) can collect email credentials from victims.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Credential Access | T1555 | Credentials from Password Stores | [Evilnum](https://attack.mitre.org/groups/G0120) can collect email credentials from victims.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 | Stealth | T1564.007 | VBA Stomping | ique to evade the Mark-of-the-Web (MOTW) controls [26]. Evilnum APT group is known for leveraging a relatively uncommon technique called the VBA code stomping [T1564.007] technique, which includes destroying the source code and storing only a compiled version of the VBA macro code |  |  | 不明 | 不明 | 中 | `source--evilnum--1abbd9570b6aa88b` |
 | Initial Access | T1566.001 | Spearphishing Attachment | summary/2023/RedReport2023-Picus.pdf {"page": 31} Evilnum oses. In most scenarios, adversaries embed VBA content into Spearphishing Attachment [T1566.001] payloads, and execute the payload through the [T1553.005] technique to evade the Mark-of-the-Web (MOTW) controls [26]. Evilnum APT group is known for leveraging a relatively uncommon technique called the VBA code stomping [T1564.007] technique, which includes destroying the sou |  |  | 不明 | 不明 | 中 | `source--evilnum--1abbd9570b6aa88b` |
-| Initial Access | T1566.002 | Spearphishing Link | [Evilnum](https://attack.mitre.org/groups/G0120) has sent spearphishing emails containing a link to a zip file hosted on Google Drive.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution, Stealth | T1574.001 | DLL | [Evilnum](https://attack.mitre.org/groups/G0120) has used the malware variant, TerraTV, to load a malicious DLL placed in the TeamViewer directory, instead of the original Windows DLL located in a system folder.(Citation: ESET EvilNum July 2020)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Initial Access | T1566.002 | Spearphishing Link | [Evilnum](https://attack.mitre.org/groups/G0120) has sent spearphishing emails containing a link to a zip file hosted on Google Drive.(Citation: ESET EvilNum July 2020) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution, Stealth | T1574.001 | DLL | [Evilnum](https://attack.mitre.org/groups/G0120) has used the malware variant, TerraTV, to load a malicious DLL placed in the TeamViewer directory, instead of the original Windows DLL located in a system folder.(Citation: ESET EvilNum July 2020)  |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -188,7 +189,6 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--evilnum--1abbd9570b6aa88b | evilnum |  | 不明 | actor_profile/evidence/evilnum.csv | structured-data | TLP:CLEAR | 中 |
 | source--evilnum--f49271f9f937ab2f | Raport analize Teknikat Taktikat Procedurat per sulmuesit Iraniane |  | 不明 | International Strategic/Iran/Raport-analize-Teknikat-Taktikat-Procedurat-per-sulmuesit-Iraniane.pdf | report | TLP:CLEAR | 中 |
@@ -208,6 +208,9 @@ Evilnumの標準化プロファイル。リポジトリ内の専用資料1件と
 | source--osint-etda-threat-group-cards | Threat Group Cards: A Threat Actor Encyclopedia | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 

@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--sharpshooter`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:09Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -52,7 +52,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -67,6 +67,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | Sharpshooter - G0104 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0104<br>https://www.mcafee.com/enterprise/en-us/assets/reports/rp-operation-sharpshooter.pdf |
 | misp-mitre-intrusion-set | Sharpshooter - G0104 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G0104<br>https://www.mcafee.com/enterprise/en-us/assets/reports/rp-operation-sharpshooter.pdf |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 
@@ -117,11 +118,7 @@ Aliasなし
 
 ## ターゲット
 
-| 分類 | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
-|---|---|---|---|---|---|---|
-| sectors | 金融 | Operation [Sharpshooter](https://attack.mitre.org/groups/G0104) is the name of a cyber espionage campaign discovered in October 2018 targeting nuclear, defense, energy, and financial companies. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | 防衛・軍事 | Operation [Sharpshooter](https://attack.mitre.org/groups/G0104) is the name of a cyber espionage campaign discovered in October 2018 targeting nuclear, defense, energy, and financial companies. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| sectors | エネルギー | Operation [Sharpshooter](https://attack.mitre.org/groups/G0104) is the name of a cyber espionage campaign discovered in October 2018 targeting nuclear, defense, energy, and financial companies. | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+ターゲット情報なし
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -158,7 +155,7 @@ TTPなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--sharpshooter--b33b001b4b956bdb | sharpshooter |  | 不明 | actor_profile/evidence/sharpshooter.csv | structured-data | TLP:CLEAR | 中 |
 | source--sharpshooter--23040d732359e434 | A Threat Actor Encyclopedia |  | 不明 | A_Threat_Actor_Encyclopedia.pdf | report | TLP:CLEAR | 中 |

@@ -35,7 +35,7 @@ DEFAULT_RULES = FRAMEWORK_ROOT / "activity-observation-rules.json"
 DEFAULT_ATTACK = FRAMEWORK_ROOT / "reference" / "attack-index.json"
 DEFAULT_CATALOG = FRAMEWORK_ROOT / "corpus-catalog.json"
 DEFAULT_PROFILES = REPO_ROOT / "profiles"
-MITRE_SOURCE_ID = "source--mitre-attack-19-1"
+MITRE_SOURCE_ID = "source--mitre-attack-19-2"
 GENERATED_TTP_PREFIXES = ("ttp--activity-rule--", "ttp--mitre-campaign--")
 GENERATED_TARGET_PREFIX = "target--activity-rule--"
 GENERATED_MITRE_TARGET_PREFIX = "target--mitre-group--"
@@ -380,7 +380,12 @@ def ensure_mitre_source(profile: dict[str, Any], attack: dict[str, Any]) -> None
                 f"{source.get('version', '')} compact local index"
             ).strip(),
             "publisher": "MITRE",
-            "published_at": unknown_time(),
+            "published_at": {
+                "value": "2026-08-05T00:00:00Z",
+                "precision": "day",
+                "status": "known",
+                "basis": "upstream-release",
+            },
             "language": "en",
             "source_type": "structured-knowledge-base",
             "tlp": "TLP:CLEAR",

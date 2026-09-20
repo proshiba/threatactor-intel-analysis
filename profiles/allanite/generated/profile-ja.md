@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--allanite`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -40,6 +40,7 @@ ALLANITEの標準化プロファイル。リポジトリ内の専用資料1件�
 | 対象 | 関係 | 説明 | 確度 | 証拠 |
 |---|---|---|---|---|
 | Dragonfly | overlaps-with | ALLANITE has tactics and techniques similar to Dragonfly, but MITRE ATT&CK tracks it as separate Group G1000 with a distinct observed capability boundary. | 高 | `source--mitre-attack-ics-19-2` |
+| Dragonfly | overlaps-with | ALLANITE has tactics and techniques similar to Dragonfly, but MITRE ATT&CK tracks it as separate Group G1000 with a distinct observed capability boundary. | 高 | `source--mitre-attack-ics-19-2` |
 
 ## ダイヤモンドモデル
 
@@ -54,7 +55,7 @@ ALLANITEの標準化プロファイル。リポジトリ内の専用資料1件�
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: あり
 
@@ -70,6 +71,7 @@ ALLANITEの標準化プロファイル。リポジトリ内の専用資料1件�
 | misp-mitre-enterprise-intrusion-set | ALLANITE - G1000 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1000<br>https://dragos.com/resource/allanite/ |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

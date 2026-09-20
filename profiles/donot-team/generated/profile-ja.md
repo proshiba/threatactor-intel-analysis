@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--donot-team`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:11Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -50,7 +50,7 @@ Donot Teamの標準化プロファイル。リポジトリ内の専用資料3件
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Donot Teamの標準化プロファイル。リポジトリ内の専用資料3件
 | misp-mitre-enterprise-intrusion-set | 一致なし |  |  |  |  |
 | misp-mitre-intrusion-set | 一致なし |  |  |  |  |
 | misp-360net | 肚脑虫 - APT-C-35 | single-alias-intersection | 中 | india | https://apt.360.net/report/apts/102.html<br>https://apt.360.net/report/apts/32.html |
+| misp-tidal-groups | 一致なし |  |  |  |  |
 
 ### 関係性候補（未統合）
 

@@ -19,7 +19,7 @@ def base_profile() -> dict:
                     "vendor": "catalog",
                     "scope": "overlapping",
                     "confidence": "high",
-                    "evidence_refs": ["source--mitre-attack-19-1"],
+                    "evidence_refs": ["source--mitre-attack-19-2"],
                     "analyst_notes": "",
                 }
             ],
@@ -98,7 +98,7 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
         self.assertEqual(profile["attribution"]["sponsor_type"], "state")
         self.assertEqual(
             profile["attribution"]["evidence_refs"],
-            ["source--mitre-attack-19-1", "source--actor-mapping-workbook"],
+            ["source--mitre-attack-19-2", "source--actor-mapping-workbook"],
         )
         self.assertIn("state-sponsored", profile["actor"]["actor_types"])
         self.assertEqual(
@@ -107,7 +107,7 @@ class GeneratedAttributionMigrationTests(unittest.TestCase):
         )
         self.assertEqual(
             profile["motivations"][0]["evidence_refs"],
-            ["source--mitre-attack-19-1"],
+            ["source--mitre-attack-19-2"],
         )
 
     def test_old_generated_espionage_is_removed_from_non_census_profile(self) -> None:

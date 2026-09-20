@@ -6,6 +6,7 @@ from __future__ import annotations
 import sys
 import unittest
 import json
+from collections import defaultdict
 from itertools import groupby
 from pathlib import Path
 
@@ -22,9 +23,13 @@ from bootstrap_all_profiles import (  # noqa: E402
 )
 from materialize_actor_census import (  # noqa: E402
     actor_types as census_actor_types,
+    has_trusted_attack_reference,
     identity_curation_rule,
     normalized_unique_names,
 )
+from build_actor_census import add_identity, resolve_mention_identities  # noqa: E402
+from build_attack_reference import active_object  # noqa: E402
+from extract_mitre_relationships import relation_type  # noqa: E402
 from ingest_observables import (  # noqa: E402
     NON_HASH_WORD_RE,
     analyst_marked_indicator,
@@ -34,6 +39,132 @@ from ingest_observables import (  # noqa: E402
     extract_iocs,
     looks_like_hash,
 )
+
+
+class ActorCensusIdentityTests(unittest.TestCase):
+    def test_distinct_attack_group_ids_do_not_merge_on_shared_alias(self) -> None:
+        identities = {}
+        alias_index = defaultdict(set)
+        first = add_identity(
+            identities,
+            alias_index,
+            name="Ember Bear",
+            aliases=["UAC-0056"],
+            mitre_id="G1003",
+        )
+        second = add_identity(
+            identities,
+            alias_index,
+            name="Saint Bear",
+            aliases=["UAC-0056"],
+            mitre_id="G1031",
+        )
+        self.assertNotEqual(first, second)
+        self.assertEqual(len(identities), 2)
+
+    def test_ambiguous_workbook_row_does_not_create_or_merge_identity(self) -> None:
+        identities = {}
+        alias_index = defaultdict(set)
+        add_identity(identities, alias_index, name="Windshift", mitre_id="G0112")
+        add_identity(
+            identities, alias_index, name="The White Company", mitre_id="G0089"
+        )
+        actor_id = add_identity(
+            identities,
+            alias_index,
+            name="Broad workbook row",
+            aliases=["Windshift", "The White Company"],
+        )
+        self.assertEqual(actor_id, "")
+        self.assertEqual(len(identities), 2)
+
+    def test_curated_identity_can_survive_ambiguous_aliases(self) -> None:
+        identities = {}
+        alias_index = defaultdict(set)
+        add_identity(identities, alias_index, name="One", aliases=["Shared One"])
+        add_identity(identities, alias_index, name="Two", aliases=["Shared Two"])
+        actor_id = add_identity(
+            identities,
+            alias_index,
+            name="Curated Three",
+            aliases=["Shared One", "Shared Two"],
+            preserve_on_ambiguous=True,
+        )
+        self.assertTrue(actor_id)
+        self.assertEqual(len(identities), 3)
+
+    def test_reference_only_official_attack_group_is_materializable(self) -> None:
+        self.assertTrue(
+            has_trusted_attack_reference(
+                {
+                    "reference_evidence": [
+                        {
+                            "source": "MITRE Enterprise ATT&CK 19.2",
+                            "external_id": "G0076",
+                        }
+                    ]
+                }
+            )
+        )
+        self.assertFalse(
+            has_trusted_attack_reference(
+                {
+                    "reference_evidence": [
+                        {"source": "MISP threat-actor galaxy", "external_id": "x"}
+                    ]
+                }
+            )
+        )
+
+    def test_short_official_attack_group_name_is_retained(self) -> None:
+        identities = {}
+        actor_id = add_identity(
+            identities,
+            defaultdict(set),
+            name="RTM",
+            mitre_id="G0048",
+        )
+        self.assertEqual(actor_id, "actor-census--mitre:G0048")
+        self.assertEqual(identities[actor_id]["canonical_name"], "RTM")
+
+    def test_canonical_name_wins_over_ambiguous_alias(self) -> None:
+        identities = {
+            "actor--canonical": {"canonical_name": "Thrip"},
+            "actor--overlap": {"canonical_name": "Lotus Blossom"},
+        }
+        self.assertEqual(
+            resolve_mention_identities(
+                "Thrip", identities, identities
+            ),
+            {"actor--canonical"},
+        )
+
+    def test_ambiguous_noncanonical_alias_is_not_duplicated(self) -> None:
+        identities = {
+            "actor--one": {"canonical_name": "Saint Bear"},
+            "actor--two": {"canonical_name": "Ember Bear"},
+        }
+        self.assertEqual(
+            resolve_mention_identities(
+                "UAC-0056", identities, identities
+            ),
+            set(),
+        )
+
+
+class AttackReferenceTests(unittest.TestCase):
+    def test_deprecated_and_revoked_objects_are_not_active(self) -> None:
+        self.assertFalse(active_object({"x_mitre_deprecated": True}))
+        self.assertFalse(active_object({"revoked": True}))
+        self.assertTrue(active_object({"revoked": False, "x_mitre_deprecated": False}))
+
+    def test_explicit_distinct_cluster_language_is_not_generic_overlap(self) -> None:
+        self.assertEqual(
+            relation_type(
+                "Analysis of behaviors, tools, and targeting indicates these are distinct clusters."
+            ),
+            ("distinct-from", "high", "supported"),
+        )
 
 
 class ObservableBoundaryTests(unittest.TestCase):

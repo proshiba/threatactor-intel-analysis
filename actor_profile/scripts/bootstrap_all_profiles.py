@@ -513,10 +513,10 @@ def create_profile(
     reference = (mitre_group or {}).get(
         "_reference_source",
         {
-            "source_id": "source--mitre-attack-19-1",
+            "source_id": "source--mitre-attack-19-2",
             "path": "actor_profile/reference/attack-index.json",
-            "title": "MITRE Enterprise ATT&CK 19.1 compact local index",
-            "published_at": "2026-05-12",
+            "title": "MITRE Enterprise ATT&CK 19.2 compact local index",
+            "published_at": "2026-08-05",
         },
     )
     reference_source_id = reference["source_id"]
@@ -965,6 +965,8 @@ def main() -> int:
         source_id = "source--mitre-attack-" + version.replace(".", "-")
         if "ICS" in collection.upper():
             source_id = "source--mitre-attack-ics-" + version.replace(".", "-")
+        elif "MOBILE" in collection.upper():
+            source_id = "source--mitre-attack-mobile-" + version.replace(".", "-")
         for group in index.get("groups", {}).values():
             group["_reference_source"] = {
                 "source_id": source_id,
@@ -974,12 +976,19 @@ def main() -> int:
             }
 
     annotate_reference(attack, attack_path)
-    ics_path = catalog["reference_sources"].get("mitre_attack_ics_index")
-    if ics_path:
-        ics = load_json((root / ics_path).resolve())
-        annotate_reference(ics, ics_path)
+    for source_key in ("mitre_attack_ics_index", "mitre_attack_mobile_index"):
+        secondary_path = catalog["reference_sources"].get(source_key)
+        if not secondary_path:
+            continue
+        secondary = load_json((root / secondary_path).resolve())
+        annotate_reference(secondary, secondary_path)
         for collection in ("groups", "software", "campaigns", "techniques"):
-            attack.setdefault(collection, {}).update(ics.get(collection, {}))
+            destination = attack.setdefault(collection, {})
+            for object_id, value in secondary.get(collection, {}).items():
+                # Enterprise remains the primary record when an ATT&CK object
+                # is shared across domains. Domain-specific-only objects are
+                # added without changing the original evidence scope.
+                destination.setdefault(object_id, value)
     workbook_rows = load_workbook_rows(
         (root / catalog["reference_sources"]["actor_mapping_workbook"]).resolve()
     )

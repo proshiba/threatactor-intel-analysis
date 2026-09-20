@@ -2,7 +2,7 @@
 
 - プロファイルID: `actor--moustachedbouncer`
 - 状態: draft
-- 更新日時: 2026-09-20T12:23:31Z
+- 更新日時: 2026-09-20T13:48:12Z
 - 構造バージョン: 1.2.0
 
 ## エグゼクティブサマリー
@@ -31,7 +31,7 @@ Aliasなし
 
 | 種別 | 説明 | 確度 | 証拠 | 補足 |
 |---|---|---|---|---|
-| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
+| espionage | Actor-specific reporting explicitly describes espionage or intelligence collection. | 高 | `source--mitre-attack-19-1`, `source--mitre-attack-19-2` | Derived from explicit MITRE ATT&CK actor description; not inferred from country or state sponsorship. |
 
 ## 他アクターとの関係
 
@@ -50,7 +50,7 @@ Aliasなし
 ## OSINTクロスチェック
 
 - 判定: `matched`
-- 調査日時: 2026-09-20T12:23:31Z
+- 調査日時: 2026-09-20T13:47:46Z
 - 国別メタデータ衝突: なし
 - 複数taxonomyスコープ: なし
 
@@ -65,6 +65,7 @@ Aliasなし
 | misp-mitre-enterprise-intrusion-set | MoustachedBouncer - G1019 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1019<br>https://www.welivesecurity.com/en/eset-research/moustachedbouncer-espionage-against-foreign-diplomats-in-belarus/ |
 | misp-mitre-intrusion-set | MoustachedBouncer - G1019 | mitre-external-id | 高 |  | https://attack.mitre.org/groups/G1019<br>https://www.welivesecurity.com/en/eset-research/moustachedbouncer-espionage-against-foreign-diplomats-in-belarus/ |
 | misp-360net | 一致なし |  |  |  |  |
+| misp-tidal-groups | MoustachedBouncer | canonical-name | 高 |  |  |
 
 ### 関係性候補（未統合）
 
@@ -83,9 +84,9 @@ Aliasなし
 
 | ID | 名称 | 説明 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|
-| malware--sharpdisco | SharpDisco | [SharpDisco](https://attack.mitre.org/software/S1089) is a dropper developed in C# that has been used by [MoustachedBouncer](https://attack.mitre.org/groups/G1019) since at least 2020 to load malicious plugins.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--nightclub | NightClub | [NightClub](https://attack.mitre.org/software/S1090) is a modular implant written in C++ that has been used by [MoustachedBouncer](https://attack.mitre.org/groups/G1019) since at least 2014.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| malware--disco | Disco | [Disco](https://attack.mitre.org/software/S1088) is a custom implant that has been used by [MoustachedBouncer](https://attack.mitre.org/groups/G1019) since at least 2020 including in campaigns using targeted malicious content injection for initial access and command and control.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| malware--disco | Disco | [Disco](https://attack.mitre.org/software/S1088) is a custom implant that has been used by [MoustachedBouncer](https://attack.mitre.org/groups/G1019) since at least 2020 including in campaigns using targeted malicious content injection for initial access and command and control.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--nightclub | NightClub | [NightClub](https://attack.mitre.org/software/S1090) is a modular implant written in C++ that has been used by [MoustachedBouncer](https://attack.mitre.org/groups/G1019) since at least 2014.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| malware--sharpdisco | SharpDisco | [SharpDisco](https://attack.mitre.org/software/S1089) is a dropper developed in C# that has been used by [MoustachedBouncer](https://attack.mitre.org/groups/G1019) since at least 2020 to load malicious plugins.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ### ツール
 
@@ -126,7 +127,7 @@ Aliasなし
 | regions | 南アジア | 構造化OSINTの被害地域フィールドでMoustachedBouncerの標的範囲として南アジアが記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | regions | 東欧 | 構造化OSINTの被害地域フィールドでMoustachedBouncerの標的範囲として東欧が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
 | regions | 欧州 | 構造化OSINTの被害地域フィールドでMoustachedBouncerの標的範囲として欧州が記録されている。 | 不明 | 不明 | 中 | `source--target-audit-misp-threat-actor` |
-| sectors | 政府・行政 | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) is a cyberespionage group that has been active since at least 2014 targeting foreign embassies in Belarus.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| sectors | 政府・行政 | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) is a cyberespionage group that has been active since at least 2014 targeting foreign embassies in Belarus.(Citation: MoustachedBouncer ESET August 2023) | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 選定ロジック: 標的国・地域は、活動本文、MITRE ATT&CK、一次資料でレビューした個別補正、および高確度でアクター照合できた構造化OSINTの被害地理フィールドから収録する。帰属国、インフラ所在国、帰属表明国は除外し、日本は確認できた場合に地域表示とは別に個別保持する。
 
@@ -138,14 +139,14 @@ Aliasなし
 
 | Tactic | Technique ID | Technique | 観測内容 | マルウェア | 活動 | 初回 | 最終 | 確度 | 証拠 |
 |---|---|---|---|---|---|---|---|---|---|
-| Stealth | T1027.002 | Software Packing | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used malware plugins packed with Themida.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.001 | PowerShell | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used plugins to execute PowerShell scripts.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Execution | T1059.007 | JavaScript | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used JavaScript to deliver malware hosted on HTML pages.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has exploited CVE-2021-1732 to execute malware components with elevated rights.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1074.002 | Remote Data Staging | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used plugins to save captured screenshots to `.\AActdata\` on an SMB share.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control | T1090 | Proxy | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used a reverse proxy tool similar to the GitHub repository revsocks.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Collection | T1113 | Screen Capture | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used plugins to take screenshots on targeted systems.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
-| Command And Control, Initial Access | T1659 | Content Injection | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has injected content into DNS, HTTP, and SMB replies to redirect specifically-targeted victims to a fake Windows Update page to download malware.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-1` |
+| Stealth | T1027.002 | Software Packing | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used malware plugins packed with Themida.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.001 | PowerShell | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used plugins to execute PowerShell scripts.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Execution | T1059.007 | JavaScript | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used JavaScript to deliver malware hosted on HTML pages.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Privilege Escalation | T1068 | Exploitation for Privilege Escalation | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has exploited CVE-2021-1732 to execute malware components with elevated rights.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1074.002 | Remote Data Staging | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used plugins to save captured screenshots to `.\AActdata\` on an SMB share.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control | T1090 | Proxy | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used a reverse proxy tool similar to the GitHub repository revsocks.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Collection | T1113 | Screen Capture | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has used plugins to take screenshots on targeted systems.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
+| Command And Control, Initial Access | T1659 | Content Injection | [MoustachedBouncer](https://attack.mitre.org/groups/G1019) has injected content into DNS, HTTP, and SMB replies to redirect specifically-targeted victims to a fake Windows Update page to download malware.(Citation: MoustachedBouncer ESET August 2023) |  |  | 不明 | 不明 | 高 | `source--mitre-attack-19-2` |
 
 ## IOC／artifact概要
 
@@ -172,7 +173,6 @@ Aliasなし
 
 | Source ID | タイトル | 発行者 | 発行日 | パス | 種別 | TLP | 信頼度 |
 |---|---|---|---|---|---|---|---|
-| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
 | source--actor-mapping-workbook | APT Groups and Operations | Florian Roth and community contributors | 不明 | APT Groups and Operations.xlsx | community-actor-mapping | TLP:CLEAR | 中 |
 | source--moustachedbouncer--275a3f611e29e517 | moustachedbouncer |  | 不明 | actor_profile/evidence/moustachedbouncer.csv | structured-data | TLP:CLEAR | 中 |
 | source--moustachedbouncer--5d9a843bf66ba0c5 | 2024 Trustwave Public Sector Threat Landscape |  | 2024 | summary/2024/2024_Trustwave_Public_Sector_Threat_Landscape.pdf | report | TLP:CLEAR | 中 |
@@ -184,6 +184,9 @@ Aliasなし
 | source--target-audit-etda-threat-group-cards | ETDA Threat Group Cards observed-country fields | ETDA / ThaiCERT | 不明 | actor_profile/reference/osint/etda-threat-group-cards.json | government-threat-actor-encyclopedia | TLP:CLEAR | 中 |
 | source--target-audit-misp-threat-actor | MISP Galaxy Threat Actor victim geography fields | MISP Project / Council on Foreign Relations | 不明 | actor_profile/reference/osint/misp-threat-actor.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 | source--osint-misp-mitre-enterprise-intrusion-set | MISP Galaxy MITRE Enterprise ATT&CK Intrusion Set | MISP Project / MITRE ATT&CK | 不明 | actor_profile/reference/osint/misp-mitre-enterprise-attack-intrusion-set.json | structured-osint-aggregation | TLP:CLEAR | 高 |
+| source--mitre-attack-19-1 | MITRE Enterprise ATT&CK 19.1 compact local index | MITRE | 2026-05-12 | actor_profile/reference/attack-enterprise-19.1.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--mitre-attack-19-2 | MITRE Enterprise ATT&CK 19.2 compact local index | MITRE | 2026-08-05 | actor_profile/reference/attack-index.json | structured-knowledge-base | TLP:CLEAR | 高 |
+| source--osint-misp-tidal-groups | MISP Galaxy TIDAL Groups | MISP Project / TIDAL Cyber | 不明 | actor_profile/reference/osint/misp-tidal-groups.json | structured-osint-aggregation | TLP:CLEAR | 中 |
 
 ## 自由記述
 
